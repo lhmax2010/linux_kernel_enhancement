@@ -1,0 +1,11 @@
+branch=sandbox/lhmax2025/mlgo
+tip=0eb2748f5d698124d24a6368936992af889ac9de
+merge_base_tizen=8cdc66794c4281f47cc90efe8b218add97303274
+full_ahead=1 full_behind=10
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/lhmax2025/mlgo --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=1
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__lhmax2025__mlgo_ahead_01.txt: bytes=146 sha256=a2e97d1710ace9894037dafd4696b8f218fbc445237fe7ce437b85ce3e803926
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+0eb2748f5d698124d24a6368936992af889ac9de	lhmax2025 <hao.lin@samsung.com>	2026-07-03T11:32:38+08:00	packaging: enable MLGO for clang kernel builds

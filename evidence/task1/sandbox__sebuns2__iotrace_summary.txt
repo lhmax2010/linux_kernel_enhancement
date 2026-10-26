@@ -1,0 +1,31 @@
+branch=sandbox/sebuns2/iotrace
+tip=f4825da9cb3ff2548749a292ebf36374e27da82d
+merge_base_tizen=8bb7eca972ad531c9b149c0a51ab43a417385813
+full_ahead=13491 full_behind=284426
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/sebuns2/iotrace --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=19
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__sebuns2__iotrace_ahead_01.txt: bytes=849946 sha256=8be29e6185f3e290457b6fc7bfce1315faa16a1895f93da832ff4064f9d46e41
+sandbox__sebuns2__iotrace_ahead_02.txt: bytes=849977 sha256=6435cf1696c1d9a11b03573d8664b069607e95cd327c929a6e2b920cfdce9c5c
+sandbox__sebuns2__iotrace_ahead_03.txt: bytes=479086 sha256=42af8546d4a74b0ea21d0f4c791ff2c93077c5baad8bee028a78781c78d714d2
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+f4825da9cb3ff2548749a292ebf36374e27da82d	Sung-hun Kim <sfoon.kim@samsung.com>	2023-06-01T19:54:46+09:00	iotrace: Add "proc:" and "file:" labels to distinguish the process name and the file name
+4b9c65c2c12b3be13a0e7f9f21effd0626e86153	Sung-hun Kim <sfoon.kim@samsung.com>	2023-06-01T19:52:00+09:00	iotrace: Get iotrace without the dev file initialization
+e86e94dbd34baf219f895a4e794bd6ae0f10db90	Sung-hun Kim <sfoon.kim@samsung.com>	2023-06-01T17:20:16+09:00	iotrace: Add an iotrace point and pid information for catching missing traces and information
+d184bbd72b15e1e0e3029d609218a13d44f11c4a	Sung-hun Kim <sfoon.kim@samsung.com>	2023-05-09T16:52:26+09:00	iotrace: Fix a lock-after-free bug
+624b88f06b92a940ed6b6f25d3791f062208fb3b	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-28T12:44:21+09:00	iotrace: Reaarange iotrace trace points
+e447d23b73848e11dfa9e698ccee7f251a201a56	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-28T10:55:41+09:00	iotrace: Print the file name which is the I/O's target
+8b8d1d770950bb974ac5f1a36d023522ffca21d9	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-24T20:02:34+09:00	iotrace: Change macros to enum
+e53076783db30f39109e47369b07e6826fa2c989	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-19T15:02:03+09:00	iotrace: Refactor iotrace_add_io function by extracting two functions
+cb00b831bfeb6042870203b8f8c5b7536dcb5912	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-19T13:32:51+09:00	iotrace: Refactor iotrace_add_io by extracting the debug messaging routine as a function
+16c87444de535074783d6111a0165519b99b0145	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-18T17:10:59+09:00	iotrace: Fix a deadlock issue in iotrace_core.c
+cb883e18459810d4cf8380a31fdd4c7a741bed73	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-18T17:09:58+09:00	iotrace: Add tracepoint for iotrace_add_io
+8b389e1dd27033ee2f6ae01d3696be4cf5ec7640	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-18T10:43:01+09:00	iotrace: Separate spinlock and change spinlock methods to spin_lock_irqsave/spin_lock_irqrestore
+187eaa69676082a8000a503155a9c508b21da6fb	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-11T16:13:16+09:00	iotrace: Fix a condition for checking journal I/O
+846f94a5fd1128f22dcfc0d4fd27cf011611faae	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-11T13:43:40+09:00	iotrace: add the pid of I/O issueing process
+2ff6ba24e70a3d536727f50e82d1b65adedb8ccd	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-10T15:20:08+09:00	pid: handle a NULL dereference error case in find_task_by_pid_ns
+7f8896fbac9b2563f5b06310d35f27f6dd70b636	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-10T15:13:38+09:00	iotrace: Use find_get_task_by_vpid instead find_task_by_vpid
+abcce449a85a4bb880cb10a8f9ab6e73ec7bf864	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-07T19:44:03+09:00	iotrace: Increase buffer size to prevent kernel stack corruption
+b05f5e91b65654caaa0cf0b3b121cd597facc83e	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-07T19:31:36+09:00	iotrace: Enable iotrace
+5c2d1d8119eb623f6e07f59d859ce8d5c2a5f262	Sung-hun Kim <sfoon.kim@samsung.com>	2023-04-07T19:22:55+09:00	iotrace: Add iotrace driver codes and kernel modifications for using iotrace

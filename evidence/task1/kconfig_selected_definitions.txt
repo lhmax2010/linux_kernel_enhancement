@@ -1,0 +1,3025 @@
+
+### CONFIG_ARM_LPAE
+Defconfig: {'value': 'y', 'line': 36}
+arch/arm/mm/Kconfig
+663: config ARM_LPAE
+664: 	bool "Support for the Large Physical Address Extension"
+665: 	depends on MMU && CPU_32v7 && !CPU_32v6 && !CPU_32v5 && \
+666: 		!CPU_32v4 && !CPU_32v3
+667: 	select PHYS_ADDR_T_64BIT
+668: 	select SWIOTLB
+669: 	help
+670: 	  Say Y if you have an ARMv7 processor supporting the LPAE page
+671: 	  table format and you would like to access memory beyond the
+672: 	  4GB limit. The resulting kernel image will not run on
+673: 	  processors without the LPA extension.
+674: 
+675: 	  If unsure, say N.
+676: 
+Reverse selects:
+
+
+### CONFIG_BPF_JIT
+Defconfig: {'value': 'y', 'line': 9}
+kernel/bpf/Kconfig
+42: config BPF_JIT
+43: 	bool "Enable BPF Just In Time compiler"
+44: 	depends on BPF
+45: 	depends on HAVE_CBPF_JIT || HAVE_EBPF_JIT
+46: 	select EXECMEM
+47: 	help
+48: 	  BPF programs are normally handled by a BPF interpreter. This option
+49: 	  allows the kernel to generate native code when a program is loaded
+50: 	  into the kernel. This will significantly speed-up processing of BPF
+51: 	  programs.
+52: 
+53: 	  Note, an admin should enable this feature changing:
+54: 	  /proc/sys/net/core/bpf_jit_enable
+55: 	  /proc/sys/net/core/bpf_jit_harden   (optional)
+56: 	  /proc/sys/net/core/bpf_jit_kallsyms (optional)
+57: 
+Reverse selects:
+
+
+### CONFIG_BPF_JIT_ALWAYS_ON
+Defconfig: absent
+kernel/bpf/Kconfig
+58: config BPF_JIT_ALWAYS_ON
+59: 	bool "Permanently enable BPF JIT and remove BPF interpreter"
+60: 	depends on BPF_SYSCALL && HAVE_EBPF_JIT && BPF_JIT
+61: 	help
+62: 	  Enables BPF JIT and removes BPF interpreter to avoid speculative
+63: 	  execution of BPF instructions by the interpreter.
+64: 
+65: 	  When CONFIG_BPF_JIT_ALWAYS_ON is enabled, /proc/sys/net/core/bpf_jit_enable
+66: 	  is permanently set to 1 and setting any other value than that will
+67: 	  return failure.
+68: 
+Reverse selects:
+
+
+### CONFIG_BPF_JIT_DEFAULT_ON
+Defconfig: absent
+kernel/bpf/Kconfig
+69: config BPF_JIT_DEFAULT_ON
+70: 	def_bool ARCH_WANT_DEFAULT_BPF_JIT || BPF_JIT_ALWAYS_ON
+71: 	depends on HAVE_EBPF_JIT && BPF_JIT
+72: 
+Reverse selects:
+
+
+### CONFIG_BPF_SYSCALL
+Defconfig: {'value': 'y', 'line': 8}
+kernel/bpf/Kconfig
+27: config BPF_SYSCALL
+28: 	bool "Enable bpf() system call"
+29: 	select BPF
+30: 	select IRQ_WORK
+31: 	select NEED_TASKS_RCU
+32: 	select TASKS_TRACE_RCU
+33: 	select BINARY_PRINTF
+34: 	select NET_SOCK_MSG if NET
+35: 	select NET_XGRESS if NET
+36: 	select PAGE_POOL if NET
+37: 	default n
+38: 	help
+39: 	  Enable the bpf() system call that allows to manipulate BPF programs
+40: 	  and maps via file descriptors.
+41: 
+Reverse selects:
+AF_KCM at net/kcm/Kconfig:6: select BPF_SYSCALL
+
+### CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+Defconfig: absent
+init/Kconfig
+1459: config CC_OPTIMIZE_FOR_PERFORMANCE
+1460: 	bool "Optimize for performance (-O2)"
+1461: 	help
+1462: 	  This is the default optimization level for the kernel, building
+1463: 	  with the "-O2" compiler flag for best performance and most
+1464: 	  helpful compile-time warnings.
+1465: 
+Reverse selects:
+
+
+### CONFIG_CC_OPTIMIZE_FOR_SIZE
+Defconfig: absent
+init/Kconfig
+1466: config CC_OPTIMIZE_FOR_SIZE
+1467: 	bool "Optimize for size (-Os)"
+1468: 	help
+1469: 	  Choosing this option will pass "-Os" to your compiler resulting
+1470: 	  in a smaller kernel.
+1471: 
+Reverse selects:
+
+
+### CONFIG_CMA
+Defconfig: {'value': 'y', 'line': 66}
+mm/Kconfig
+925: config CMA
+926: 	bool "Contiguous Memory Allocator"
+927: 	depends on MMU
+928: 	select MIGRATION
+929: 	select MEMORY_ISOLATION
+930: 	help
+931: 	  This enables the Contiguous Memory Allocator which allows other
+932: 	  subsystems to allocate big physically-contiguous blocks of memory.
+933: 	  CMA reserves a region of memory and allows only movable pages to
+934: 	  be allocated from it. This way, the kernel can use the memory for
+935: 	  pagecache and when a subsystem requests for contiguous area, the
+936: 	  allocated pages are migrated away to serve the contiguous request.
+937: 
+938: 	  If unsure, say "n".
+939: 
+Reverse selects:
+ARCH_INTEGRATOR at arch/arm/mach-versatile/Kconfig:25: select CMA
+DRM_ASPEED_GFX at drivers/gpu/drm/aspeed/Kconfig:10: select CMA if HAVE_DMA_CONTIGUOUS
+DRM_ETNAVIV at drivers/gpu/drm/etnaviv/Kconfig:12: select CMA if HAVE_DMA_CONTIGUOUS
+VMCP at drivers/s390/char/Kconfig:156: select CMA
+
+### CONFIG_CMA_SIZE_MBYTES
+Defconfig: {'value': '256', 'line': 526}
+kernel/dma/Kconfig
+189: config CMA_SIZE_MBYTES
+190: 	int "Size in Mega Bytes"
+191: 	depends on !CMA_SIZE_SEL_PERCENTAGE
+192: 	default 0 if X86
+193: 	default 16
+194: 	help
+195: 	  Defines the size (in MiB) of the default memory area for Contiguous
+196: 	  Memory Allocator.  If the size of 0 is selected, CMA is disabled by
+197: 	  default, but it can be enabled by passing cma=size[MG] to the kernel.
+198: 
+199: 
+Reverse selects:
+
+
+### CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
+Defconfig: absent
+drivers/cpufreq/Kconfig
+85: config CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
+86: 	bool "conservative"
+87: 	depends on !(X86_INTEL_PSTATE && SMP)
+88: 	select CPU_FREQ_GOV_CONSERVATIVE
+89: 	select CPU_FREQ_GOV_PERFORMANCE
+90: 	help
+91: 	  Use the CPUFreq governor 'conservative' as default. This allows
+92: 	  you to get a full dynamic frequency capable system by simply
+93: 	  loading your cpufreq low-level hardware driver.
+94: 	  Be aware that not all cpufreq drivers support the conservative
+95: 	  governor. If unsure have a look at the help section of the
+96: 	  driver. Fallback governor will be the performance governor.
+97: 
+Reverse selects:
+
+
+### CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+Defconfig: absent
+drivers/cpufreq/Kconfig
+72: config CPU_FREQ_DEFAULT_GOV_ONDEMAND
+73: 	bool "ondemand"
+74: 	depends on !(X86_INTEL_PSTATE && SMP)
+75: 	select CPU_FREQ_GOV_ONDEMAND
+76: 	select CPU_FREQ_GOV_PERFORMANCE
+77: 	help
+78: 	  Use the CPUFreq governor 'ondemand' as default. This allows
+79: 	  you to get a full dynamic frequency capable system by simply
+80: 	  loading your cpufreq low-level hardware driver.
+81: 	  Be aware that not all cpufreq drivers support the ondemand
+82: 	  governor. If unsure have a look at the help section of the
+83: 	  driver. Fallback governor will be the performance governor.
+84: 
+Reverse selects:
+
+
+### CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+Defconfig: absent
+drivers/cpufreq/Kconfig
+47: config CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+48: 	bool "performance"
+49: 	select CPU_FREQ_GOV_PERFORMANCE
+50: 	help
+51: 	  Use the CPUFreq governor 'performance' as default. This sets
+52: 	  the frequency statically to the highest frequency supported by
+53: 	  the CPU.
+54: 
+Reverse selects:
+
+
+### CONFIG_CPU_FREQ_DEFAULT_GOV_POWERSAVE
+Defconfig: absent
+drivers/cpufreq/Kconfig
+55: config CPU_FREQ_DEFAULT_GOV_POWERSAVE
+56: 	bool "powersave"
+57: 	select CPU_FREQ_GOV_POWERSAVE
+58: 	help
+59: 	  Use the CPUFreq governor 'powersave' as default. This sets
+60: 	  the frequency statically to the lowest frequency supported by
+61: 	  the CPU.
+62: 
+Reverse selects:
+
+
+### CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+Defconfig: absent
+drivers/cpufreq/Kconfig
+98: config CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+99: 	bool "schedutil"
+100: 	depends on SMP
+101: 	select CPU_FREQ_GOV_SCHEDUTIL
+102: 	select CPU_FREQ_GOV_PERFORMANCE
+103: 	help
+104: 	  Use the 'schedutil' CPUFreq governor by default. If unsure,
+105: 	  have a look at the help section of that governor. The fallback
+106: 	  governor will be 'performance'.
+107: 
+Reverse selects:
+
+
+### CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+Defconfig: absent
+drivers/cpufreq/Kconfig
+63: config CPU_FREQ_DEFAULT_GOV_USERSPACE
+64: 	bool "userspace"
+65: 	select CPU_FREQ_GOV_USERSPACE
+66: 	help
+67: 	  Use the CPUFreq governor 'userspace' as default. This allows
+68: 	  you to set the CPU frequency manually or when a userspace 
+69: 	  program shall be able to set the CPU dynamically without having
+70: 	  to enable the userspace governor manually.
+71: 
+Reverse selects:
+
+
+### CONFIG_CRYPTO_842
+Defconfig: absent
+crypto/Kconfig
+1149: config CRYPTO_842
+1150: 	tristate "842"
+1151: 	select CRYPTO_ALGAPI
+1152: 	select CRYPTO_ACOMP2
+1153: 	select 842_COMPRESS
+1154: 	select 842_DECOMPRESS
+1155: 	help
+1156: 	  842 compression algorithm by IBM
+1157: 
+1158: 	  See https://github.com/plauth/lib842 for further information.
+1159: 
+Reverse selects:
+ZSWAP_COMPRESSOR_DEFAULT_842 at mm/Kconfig:94: select CRYPTO_842
+
+### CONFIG_CRYPTO_LZ4
+Defconfig: {'value': 'y', 'line': 517}
+crypto/Kconfig
+1160: config CRYPTO_LZ4
+1161: 	tristate "LZ4"
+1162: 	select CRYPTO_ALGAPI
+1163: 	select CRYPTO_ACOMP2
+1164: 	select LZ4_COMPRESS
+1165: 	select LZ4_DECOMPRESS
+1166: 	help
+1167: 	  LZ4 compression algorithm
+1168: 
+1169: 	  See https://github.com/lz4/lz4 for further information.
+1170: 
+Reverse selects:
+ZSWAP_COMPRESSOR_DEFAULT_LZ4 at mm/Kconfig:100: select CRYPTO_LZ4
+
+### CONFIG_CRYPTO_LZ4HC
+Defconfig: absent
+crypto/Kconfig
+1171: config CRYPTO_LZ4HC
+1172: 	tristate "LZ4HC"
+1173: 	select CRYPTO_ALGAPI
+1174: 	select CRYPTO_ACOMP2
+1175: 	select LZ4HC_COMPRESS
+1176: 	select LZ4_DECOMPRESS
+1177: 	help
+1178: 	  LZ4 high compression mode algorithm
+1179: 
+1180: 	  See https://github.com/lz4/lz4 for further information.
+1181: 
+Reverse selects:
+ZSWAP_COMPRESSOR_DEFAULT_LZ4HC at mm/Kconfig:106: select CRYPTO_LZ4HC
+
+### CONFIG_CRYPTO_LZO
+Defconfig: {'value': 'y', 'line': 516}
+crypto/Kconfig
+1138: config CRYPTO_LZO
+1139: 	tristate "LZO"
+1140: 	select CRYPTO_ALGAPI
+1141: 	select CRYPTO_ACOMP2
+1142: 	select LZO_COMPRESS
+1143: 	select LZO_DECOMPRESS
+1144: 	help
+1145: 	  LZO compression algorithm
+1146: 
+1147: 	  See https://www.oberhumer.com/opensource/lzo/ for further information.
+1148: 
+Reverse selects:
+UBIFS_FS at fs/ubifs/Kconfig:10: select CRYPTO_LZO if UBIFS_FS_LZO
+HIBERNATION at kernel/power/Kconfig:44: select CRYPTO_LZO
+ZSWAP_COMPRESSOR_DEFAULT_LZO at mm/Kconfig:88: select CRYPTO_LZO
+
+### CONFIG_CRYPTO_ZSTD
+Defconfig: {'value': 'y', 'line': 518}
+crypto/Kconfig
+1182: config CRYPTO_ZSTD
+1183: 	tristate "Zstd"
+1184: 	select CRYPTO_ALGAPI
+1185: 	select CRYPTO_ACOMP2
+1186: 	select ZSTD_COMPRESS
+1187: 	select ZSTD_DECOMPRESS
+1188: 	help
+1189: 	  zstd compression algorithm
+1190: 
+1191: 	  See https://github.com/facebook/zstd for further information.
+1192: 
+Reverse selects:
+UBIFS_FS at fs/ubifs/Kconfig:12: select CRYPTO_ZSTD if UBIFS_FS_ZSTD
+ZSWAP_COMPRESSOR_DEFAULT_ZSTD at mm/Kconfig:112: select CRYPTO_ZSTD
+
+### CONFIG_DAMON
+Defconfig: absent
+mm/damon/Kconfig
+5: config DAMON
+6: 	bool "DAMON: Data Access Monitoring Framework"
+7: 	help
+8: 	  This builds a framework that allows kernel subsystems to monitor
+9: 	  access frequency of each memory region. The information can be useful
+10: 	  for performance-centric DRAM level memory management.
+11: 
+12: 	  See https://www.kernel.org/doc/html/latest/mm/damon/index.html for
+13: 	  more information.
+14: 
+Reverse selects:
+
+
+### CONFIG_DAMON_DBGFS
+Defconfig: absent
+mm/damon/Kconfig
+87: config DAMON_DBGFS
+88: 	bool
+89: 	default y
+90: 	depends on DAMON_DBGFS_DEPRECATED
+91: 
+Reverse selects:
+
+
+### CONFIG_DAMON_DBGFS_DEPRECATED
+Defconfig: absent
+mm/damon/Kconfig
+74: config DAMON_DBGFS_DEPRECATED
+75: 	bool "DAMON debugfs interface (DEPRECATED!)"
+76: 	depends on DAMON_VADDR && DAMON_PADDR && DEBUG_FS
+77: 	help
+78: 	  This builds the debugfs interface for DAMON.  The user space admins
+79: 	  can use the interface for arbitrary data access monitoring.
+80: 
+81: 	  If unsure, say N.
+82: 
+83: 	  This is deprecated, so users should move to the sysfs interface
+84: 	  (DAMON_SYSFS).  If you depend on this and cannot move, please report
+85: 	  your usecase to damon@lists.linux.dev and linux-mm@kvack.org.
+86: 
+Reverse selects:
+
+
+### CONFIG_DAMON_DBGFS_KUNIT_TEST
+Defconfig: absent
+mm/damon/Kconfig
+92: config DAMON_DBGFS_KUNIT_TEST
+93: 	bool "Test for damon debugfs interface" if !KUNIT_ALL_TESTS
+94: 	depends on DAMON_DBGFS && KUNIT=y
+95: 	default KUNIT_ALL_TESTS
+96: 	help
+97: 	  This builds the DAMON debugfs interface Kunit test suite.
+98: 
+99: 	  For more information on KUnit and unit tests in general, please refer
+100: 	  to the KUnit documentation.
+101: 
+102: 	  If unsure, say N.
+103: 
+Reverse selects:
+
+
+### CONFIG_DAMON_KUNIT_TEST
+Defconfig: absent
+mm/damon/Kconfig
+15: config DAMON_KUNIT_TEST
+16: 	bool "Test for damon" if !KUNIT_ALL_TESTS
+17: 	depends on DAMON && KUNIT=y
+18: 	default KUNIT_ALL_TESTS
+19: 	help
+20: 	  This builds the DAMON Kunit test suite.
+21: 
+22: 	  For more information on KUnit and unit tests in general, please refer
+23: 	  to the KUnit documentation.
+24: 
+25: 	  If unsure, say N.
+26: 
+Reverse selects:
+
+
+### CONFIG_DAMON_LRU_SORT
+Defconfig: absent
+mm/damon/Kconfig
+116: config DAMON_LRU_SORT
+117: 	bool "Build DAMON-based LRU-lists sorting (DAMON_LRU_SORT)"
+118: 	depends on DAMON_PADDR
+119: 	help
+120: 	  This builds the DAMON-based LRU-lists sorting subsystem.  It tries to
+121: 	  protect frequently accessed (hot) pages while rarely accessed (cold)
+122: 	  pages reclaimed first under memory pressure.
+123: 
+Reverse selects:
+
+
+### CONFIG_DAMON_PADDR
+Defconfig: absent
+mm/damon/Kconfig
+35: config DAMON_PADDR
+36: 	bool "Data access monitoring operations for the physical address space"
+37: 	depends on DAMON && MMU
+38: 	select PAGE_IDLE_FLAG
+39: 	help
+40: 	  This builds the default data access monitoring operations for DAMON
+41: 	  that works for the physical address space.
+42: 
+Reverse selects:
+
+
+### CONFIG_DAMON_RECLAIM
+Defconfig: absent
+mm/damon/Kconfig
+104: config DAMON_RECLAIM
+105: 	bool "Build DAMON-based reclaim (DAMON_RECLAIM)"
+106: 	depends on DAMON_PADDR
+107: 	help
+108: 	  This builds the DAMON-based reclamation subsystem.  It finds pages
+109: 	  that not accessed for a long time (cold) using DAMON and reclaim
+110: 	  those.
+111: 
+112: 	  This is suggested to be used as a proactive and lightweight
+113: 	  reclamation under light memory pressure, while the traditional page
+114: 	  scanning-based reclamation is used for heavy pressure.
+115: 
+Reverse selects:
+
+
+### CONFIG_DAMON_SYSFS
+Defconfig: absent
+mm/damon/Kconfig
+55: config DAMON_SYSFS
+56: 	bool "DAMON sysfs interface"
+57: 	depends on DAMON && SYSFS
+58: 	help
+59: 	  This builds the sysfs interface for DAMON.  The user space can use
+60: 	  the interface for arbitrary data access monitoring.
+61: 
+Reverse selects:
+
+
+### CONFIG_DAMON_SYSFS_KUNIT_TEST
+Defconfig: absent
+mm/damon/Kconfig
+62: config DAMON_SYSFS_KUNIT_TEST
+63: 	bool "Test for damon debugfs interface" if !KUNIT_ALL_TESTS
+64: 	depends on DAMON_SYSFS && KUNIT=y
+65: 	default KUNIT_ALL_TESTS
+66: 	help
+67: 	  This builds the DAMON sysfs interface Kunit test suite.
+68: 
+69: 	  For more information on KUnit and unit tests in general, please refer
+70: 	  to the KUnit documentation.
+71: 
+72: 	  If unsure, say N.
+73: 
+Reverse selects:
+
+
+### CONFIG_DAMON_VADDR
+Defconfig: absent
+mm/damon/Kconfig
+27: config DAMON_VADDR
+28: 	bool "Data access monitoring operations for virtual address spaces"
+29: 	depends on DAMON && MMU
+30: 	select PAGE_IDLE_FLAG
+31: 	help
+32: 	  This builds the default data access monitoring operations for DAMON
+33: 	  that work for virtual address spaces.
+34: 
+Reverse selects:
+
+
+### CONFIG_DAMON_VADDR_KUNIT_TEST
+Defconfig: absent
+mm/damon/Kconfig
+43: config DAMON_VADDR_KUNIT_TEST
+44: 	bool "Test for DAMON operations" if !KUNIT_ALL_TESTS
+45: 	depends on DAMON_VADDR && KUNIT=y
+46: 	default KUNIT_ALL_TESTS
+47: 	help
+48: 	  This builds the DAMON virtual addresses operations Kunit test suite.
+49: 
+50: 	  For more information on KUnit and unit tests in general, please refer
+51: 	  to the KUnit documentation.
+52: 
+53: 	  If unsure, say N.
+54: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_ATOMIC_SLEEP
+Defconfig: absent
+lib/Kconfig.debug
+1560: config DEBUG_ATOMIC_SLEEP
+1561: 	bool "Sleep inside atomic section checking"
+1562: 	select PREEMPT_COUNT
+1563: 	depends on DEBUG_KERNEL
+1564: 	depends on !ARCH_NO_PREEMPT
+1565: 	help
+1566: 	  If you say Y here, various routines which may sleep will become very
+1567: 	  noisy if they are called inside atomic sections: when a spinlock is
+1568: 	  held, inside an rcu read side critical section, inside preempt disabled
+1569: 	  sections, inside an interrupt, etc...
+1570: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_BUGVERBOSE
+Defconfig: absent
+lib/Kconfig.debug
+200: config DEBUG_BUGVERBOSE
+201: 	bool "Verbose BUG() reporting (adds 70K)" if DEBUG_KERNEL && EXPERT
+202: 	depends on BUG && (GENERIC_BUG || HAVE_DEBUG_BUGVERBOSE)
+203: 	default y
+204: 	help
+205: 	  Say Y here to make BUG() panics output the file name and line number
+206: 	  of the BUG call as well as the EIP and oops trace.  This aids
+207: 	  debugging but costs about 70-100K of memory.
+208: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_FS
+Defconfig: absent
+lib/Kconfig.debug
+653: config DEBUG_FS
+654: 	bool "Debug Filesystem"
+655: 	help
+656: 	  debugfs is a virtual file system that kernel developers use to put
+657: 	  debugging files into.  Enable this option to be able to read and
+658: 	  write to these files.
+659: 
+660: 	  For detailed documentation on the debugfs API, see
+661: 	  Documentation/filesystems/.
+662: 
+663: 	  If unsure, say N.
+664: 
+Reverse selects:
+ARM_PTDUMP_DEBUGFS at arch/arm/Kconfig.debug:11: select DEBUG_FS
+EDAC_DEBUG at drivers/edac/Kconfig:36: select DEBUG_FS
+GPIO_VIRTUSER at drivers/gpio/Kconfig:1943: select DEBUG_FS
+DRM_I915_DEBUG at drivers/gpu/drm/i915/Kconfig.debug:41: select DEBUG_FS
+VCAP_KUNIT_TEST at drivers/net/ethernet/microchip/vcap/Kconfig:43: select DEBUG_FS
+XFS_ONLINE_SCRUB_STATS at fs/xfs/Kconfig:162: select DEBUG_FS
+BLK_DEV_IO_TRACE at kernel/trace/Kconfig:648: select DEBUG_FS
+DEBUG_CLOSURES at lib/Kconfig.debug:1758: select DEBUG_FS
+NOTIFIER_ERROR_INJECTION at lib/Kconfig.debug:1913: select DEBUG_FS
+FAIL_FUTEX at lib/Kconfig.debug:2040: select DEBUG_FS
+KCOV at lib/Kconfig.debug:2115: select DEBUG_FS
+ZSMALLOC_STAT at mm/Kconfig:214: select DEBUG_FS
+PAGE_OWNER at mm/Kconfig.debug:108: select DEBUG_FS
+DEBUG_KMEMLEAK at mm/Kconfig.debug:242: select DEBUG_FS
+SUNRPC_DEBUG at net/sunrpc/Kconfig:93: select DEBUG_FS
+
+### CONFIG_DEBUG_FS_ALLOW_ALL
+Defconfig: absent
+lib/Kconfig.debug
+675: config DEBUG_FS_ALLOW_ALL
+676: 	bool "Access normal"
+677: 	help
+678: 	  No restrictions apply. Both API and filesystem registration
+679: 	  is on. This is the normal default operation.
+680: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_INFO
+Defconfig: absent
+lib/Kconfig.debug
+227: config DEBUG_INFO
+228: 	bool
+229: 	help
+230: 	  A kernel debug info option other than "None" has been selected
+231: 	  in the "Debug information" choice below, indicating that debug
+232: 	  information will be generated for build targets.
+233: 
+234: # Clang generates .uleb128 with label differences for DWARF v5, a feature that
+235: # older binutils ports do not support when utilizing RISC-V style linker
+236: # relaxation: https://sourceware.org/bugzilla/show_bug.cgi?id=27215
+Reverse selects:
+DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT at lib/Kconfig.debug:261: select DEBUG_INFO
+DEBUG_INFO_DWARF4 at lib/Kconfig.debug:273: select DEBUG_INFO
+DEBUG_INFO_DWARF5 at lib/Kconfig.debug:285: select DEBUG_INFO
+
+### CONFIG_DEBUG_INFO_BTF
+Defconfig: {'value': 'y', 'line': 531}
+lib/Kconfig.debug
+377: config DEBUG_INFO_BTF
+378: 	bool "Generate BTF type information"
+379: 	depends on !DEBUG_INFO_SPLIT && !DEBUG_INFO_REDUCED
+380: 	depends on !GCC_PLUGIN_RANDSTRUCT || COMPILE_TEST
+381: 	depends on BPF_SYSCALL
+382: 	depends on PAHOLE_VERSION >= 116
+383: 	depends on DEBUG_INFO_DWARF4 || PAHOLE_VERSION >= 121
+384: 	# pahole uses elfutils, which does not have support for Hexagon relocations
+385: 	depends on !HEXAGON
+386: 	help
+387: 	  Generate deduplicated BTF type information from DWARF debug info.
+388: 	  Turning this on requires pahole v1.16 or later (v1.21 or later to
+389: 	  support DWARF 5), which will convert DWARF type info into equivalent
+390: 	  deduplicated BTF type info.
+391: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_INFO_BTF_MODULES
+Defconfig: absent
+lib/Kconfig.debug
+412: config DEBUG_INFO_BTF_MODULES
+413: 	bool "Generate BTF type information for kernel modules"
+414: 	default y
+415: 	depends on DEBUG_INFO_BTF && MODULES && PAHOLE_HAS_SPLIT_BTF
+416: 	help
+417: 	  Generate compact split BTF type information for kernel modules.
+418: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_INFO_COMPRESSED_NONE
+Defconfig: absent
+lib/Kconfig.debug
+325: config DEBUG_INFO_COMPRESSED_NONE
+326: 	bool "Don't compress debug information"
+327: 	help
+328: 	  Don't compress debug info sections.
+329: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_INFO_COMPRESSED_ZLIB
+Defconfig: absent
+lib/Kconfig.debug
+330: config DEBUG_INFO_COMPRESSED_ZLIB
+331: 	bool "Compress debugging information with zlib"
+332: 	depends on $(cc-option,-gz=zlib)
+333: 	depends on $(ld-option,--compress-debug-sections=zlib)
+334: 	help
+335: 	  Compress the debug information using zlib.  Requires GCC 5.0+ or Clang
+336: 	  5.0+, binutils 2.26+, and zlib.
+337: 
+338: 	  Users of dpkg-deb via scripts/package/builddeb may find an increase in
+339: 	  size of their debug .deb packages with this config set, due to the
+340: 	  debug info being compressed with zlib, then the object files being
+341: 	  recompressed with a different compression scheme. But this is still
+342: 	  preferable to setting $KDEB_COMPRESS to "none" which would be even
+343: 	  larger.
+344: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_INFO_COMPRESSED_ZSTD
+Defconfig: absent
+lib/Kconfig.debug
+345: config DEBUG_INFO_COMPRESSED_ZSTD
+346: 	bool "Compress debugging information with zstd"
+347: 	depends on $(cc-option,-gz=zstd)
+348: 	depends on $(ld-option,--compress-debug-sections=zstd)
+349: 	help
+350: 	  Compress the debug information using zstd.  This may provide better
+351: 	  compression than zlib, for about the same time costs, but requires newer
+352: 	  toolchain support.  Requires GCC 13.0+ or Clang 16.0+, binutils 2.40+, and
+353: 	  zstd.
+354: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_INFO_DWARF4
+Defconfig: {'value': 'y', 'line': 530}
+lib/Kconfig.debug
+271: config DEBUG_INFO_DWARF4
+272: 	bool "Generate DWARF Version 4 debuginfo"
+273: 	select DEBUG_INFO
+274: 	depends on !CC_IS_CLANG || AS_IS_LLVM || (AS_IS_GNU && AS_VERSION >= 23502)
+275: 	help
+276: 	  Generate DWARF v4 debug info. This requires gcc 4.5+, binutils 2.35.2
+277: 	  if using clang without clang's integrated assembler, and gdb 7.0+.
+278: 
+279: 	  If you have consumers of DWARF debug info that are not ready for
+280: 	  newer revisions of DWARF, you may wish to choose this or have your
+Reverse selects:
+
+
+### CONFIG_DEBUG_INFO_DWARF5
+Defconfig: absent
+lib/Kconfig.debug
+283: config DEBUG_INFO_DWARF5
+284: 	bool "Generate DWARF Version 5 debuginfo"
+285: 	select DEBUG_INFO
+286: 	depends on !ARCH_HAS_BROKEN_DWARF5
+287: 	depends on !CC_IS_CLANG || AS_IS_LLVM || (AS_IS_GNU && AS_VERSION >= 23502 && AS_HAS_NON_CONST_ULEB128)
+288: 	help
+289: 	  Generate DWARF v5 debug info. Requires binutils 2.35.2, gcc 5.0+ (gcc
+290: 	  5.0+ accepts the -gdwarf-5 flag but only had partial support for some
+291: 	  draft features until 7.0), and gdb 8.0+.
+292: 
+293: 	  Changes to the structure of debug info in Version 5 allow for around
+294: 	  15-18% savings in resulting image and debug info section sizes as
+295: 	  compared to DWARF Version 4. DWARF Version 5 standardizes previous
+296: 	  extensions such as accelerators for symbol indexing and the format
+297: 	  for fission (.dwo/.dwp) files. Users may not want to select this
+Reverse selects:
+
+
+### CONFIG_DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT
+Defconfig: absent
+lib/Kconfig.debug
+259: config DEBUG_INFO_DWARF_TOOLCHAIN_DEFAULT
+260: 	bool "Rely on the toolchain's implicit default DWARF version"
+261: 	select DEBUG_INFO
+262: 	depends on !CC_IS_CLANG || AS_IS_LLVM || CLANG_VERSION < 140000 || (AS_IS_GNU && AS_VERSION >= 23502 && AS_HAS_NON_CONST_ULEB128)
+263: 	help
+264: 	  The implicit default version of DWARF debug info produced by a
+265: 	  toolchain changes over time.
+266: 
+267: 	  This can break consumers of the debug info that haven't upgraded to
+268: 	  support newer revisions, and prevent testing newer versions, but
+269: 	  those should be less common scenarios.
+270: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_INFO_NONE
+Defconfig: absent
+lib/Kconfig.debug
+253: config DEBUG_INFO_NONE
+254: 	bool "Disable debug information"
+255: 	help
+256: 	  Do not build the kernel with debugging information, which will
+257: 	  result in a faster and smaller build.
+258: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_INFO_REDUCED
+Defconfig: absent
+lib/Kconfig.debug
+305: config DEBUG_INFO_REDUCED
+306: 	bool "Reduce debugging information"
+307: 	help
+308: 	  If you say Y here gcc is instructed to generate less debugging
+309: 	  information for structure types. This means that tools that
+310: 	  need full debugging information (like kgdb or systemtap) won't
+311: 	  be happy. But if you merely need debugging information to
+312: 	  resolve line numbers there is no loss. Advantage is that
+313: 	  build directory object sizes shrink dramatically over a full
+314: 	  DEBUG_INFO build and compile times are reduced too.
+315: 	  Only works with newer gcc versions.
+316: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_INFO_SPLIT
+Defconfig: absent
+lib/Kconfig.debug
+357: config DEBUG_INFO_SPLIT
+358: 	bool "Produce split debuginfo in .dwo files"
+359: 	depends on $(cc-option,-gsplit-dwarf)
+360: 	# RISC-V linker relaxation + -gsplit-dwarf has issues with LLVM and GCC
+361: 	# prior to 12.x:
+362: 	# https://github.com/llvm/llvm-project/issues/56642
+363: 	# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=99090
+364: 	depends on !RISCV || GCC_VERSION >= 120000
+365: 	help
+366: 	  Generate debug info into separate .dwo files. This significantly
+367: 	  reduces the build directory size for builds with DEBUG_INFO,
+368: 	  because it stores the information only once on disk in .dwo
+369: 	  files instead of multiple times in object files and executables.
+370: 	  In addition the debug information is also compressed.
+371: 
+372: 	  Requires recent gcc (4.7+) and recent gdb/binutils.
+373: 	  Any tool that packages or reads debug information would need
+374: 	  to know about the .dwo files and include them.
+375: 	  Incompatible with older versions of ccache.
+376: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_KERNEL
+Defconfig: absent
+lib/Kconfig.debug
+211: config DEBUG_KERNEL
+212: 	bool "Kernel debugging"
+213: 	help
+214: 	  Say Y here if you are developing drivers or trying to debug and
+215: 	  identify kernel problems.
+216: 
+Reverse selects:
+EXPERT at init/Kconfig:1546: select DEBUG_KERNEL
+
+### CONFIG_DEBUG_LL
+Defconfig: absent
+arch/arm/Kconfig.debug
+111: config DEBUG_LL
+112: 	bool "Kernel low-level debugging functions (read help!)"
+113: 	depends on DEBUG_KERNEL
+114: 	help
+115: 	  Say Y here to include definitions of printascii, printch, printhex
+116: 	  in the kernel.  This is helpful if you are debugging code that
+117: 	  executes before the console is initialized.
+118: 
+119: 	  Note that selecting this option will limit the kernel to a single
+120: 	  UART definition, as specified below. Attempting to boot the kernel
+121: 	  image on a different platform *will not work*, so this option should
+122: 	  not be enabled for kernels that are intended to be portable.
+123: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_MEMORY_INIT
+Defconfig: {'value': 'y', 'line': 535}
+lib/Kconfig.debug
+893: config DEBUG_MEMORY_INIT
+894: 	bool "Debug memory initialisation" if EXPERT
+895: 	default !EXPERT
+896: 	help
+897: 	  Enable this for additional checks during memory initialisation.
+898: 	  The sanity checks verify aspects of the VM such as the memory model
+899: 	  and other information provided by the architecture. Verbose
+900: 	  information will be printed at KERN_DEBUG loglevel depending
+901: 	  on the mminit_loglevel= command-line option.
+902: 
+903: 	  If unsure, say Y
+904: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_MISC
+Defconfig: absent
+lib/Kconfig.debug
+217: config DEBUG_MISC
+218: 	bool "Miscellaneous debug code"
+219: 	default DEBUG_KERNEL
+220: 	depends on DEBUG_KERNEL
+221: 	help
+222: 	  Say Y here if you need to enable miscellaneous debug code that should
+223: 	  be under a more specific debug option but isn't.
+224: 
+Reverse selects:
+
+
+### CONFIG_DEBUG_PREEMPT
+Defconfig: absent
+lib/Kconfig.debug
+1331: config DEBUG_PREEMPT
+1332: 	bool "Debug preemptible kernel"
+1333: 	depends on DEBUG_KERNEL && PREEMPTION && TRACE_IRQFLAGS_SUPPORT
+1334: 	help
+1335: 	  If you say Y here then the kernel will use a debug variant of the
+1336: 	  commonly used smp_processor_id() function and will print warnings
+1337: 	  if kernel code uses it in a preemption-unsafe way. Also, the kernel
+1338: 	  will detect preemption count underflows.
+1339: 
+1340: 	  This option has potential to introduce high runtime overhead,
+1341: 	  depending on workload as it triggers debugging routines for each
+1342: 	  this_cpu operation. It should only be used for debugging purposes.
+1343: 
+Reverse selects:
+
+
+### CONFIG_ENERGY_MODEL
+Defconfig: absent
+kernel/power/Kconfig
+362: config ENERGY_MODEL
+363: 	bool "Energy Model for devices with DVFS (CPUs, GPUs, etc)"
+364: 	depends on SMP
+365: 	depends on CPU_FREQ
+366: 	help
+367: 	  Several subsystems (thermal and/or the task scheduler for example)
+368: 	  can leverage information about the energy consumed by devices to
+369: 	  make smarter decisions. This config option enables the framework
+370: 	  from which subsystems can access the energy models.
+371: 
+372: 	  The exact usage of the energy model is subsystem-dependent.
+373: 
+374: 	  If in doubt, say N.
+Reverse selects:
+
+
+### CONFIG_FORCE_RECLAIM
+Defconfig: absent
+
+Reverse selects:
+
+
+### CONFIG_FTRACE
+Defconfig: absent
+kernel/trace/Kconfig
+182: menuconfig FTRACE
+183: 	bool "Tracers"
+184: 	depends on TRACING_SUPPORT
+185: 	default y if DEBUG_KERNEL
+186: 	help
+187: 	  Enable the kernel tracing infrastructure.
+188: 
+Reverse selects:
+
+
+### CONFIG_FUNCTION_TRACER
+Defconfig: absent
+kernel/trace/Kconfig
+200: config FUNCTION_TRACER
+201: 	bool "Kernel Function Tracer"
+202: 	depends on HAVE_FUNCTION_TRACER
+203: 	select KALLSYMS
+204: 	select GENERIC_TRACER
+205: 	select CONTEXT_SWITCH_TRACER
+206: 	select GLOB
+207: 	select NEED_TASKS_RCU
+208: 	select TASKS_RUDE_RCU
+209: 	help
+210: 	  Enable the kernel to trace every kernel function. This is done
+211: 	  by using a compiler feature to insert a small, 5-byte No-Operation
+212: 	  instruction at the beginning of every kernel function, which NOP
+213: 	  sequence is then dynamically patched into a tracer call when
+214: 	  tracing is enabled by the administrator. If it's runtime disabled
+215: 	  (the bootup default), then the overhead of the instructions is very
+216: 	  small and not measurable even in micro-benchmarks (at least on
+217: 	  x86, but may have impact on other architectures).
+218: 
+Reverse selects:
+STACK_TRACER at kernel/trace/Kconfig:319: select FUNCTION_TRACER
+
+### CONFIG_HIGHMEM
+Defconfig: {'value': 'y', 'line': 39}
+arch/arm/Kconfig
+1214: config HIGHMEM
+1215: 	bool "High Memory Support"
+1216: 	depends on MMU
+1217: 	select KMAP_LOCAL
+1218: 	select KMAP_LOCAL_NON_LINEAR_PTE_ARRAY
+1219: 	help
+1220: 	  The address space of ARM processors is only 4 Gigabytes large
+1221: 	  and it has to accommodate user address space, kernel address
+1222: 	  space as well as some memory mapped IO. That means that, if you
+1223: 	  have a large amount of physical memory and/or IO, not all of the
+1224: 	  memory can be "permanently mapped" by the kernel. The physical
+1225: 	  memory that is not permanently mapped is called "high memory".
+1226: 
+1227: 	  Depending on the selected kernel/user memory split, minimum
+1228: 	  vmalloc space and actual amount of RAM, you may not need this
+1229: 	  option which should result in a slightly faster kernel.
+1230: 
+1231: 	  If unsure, say n.
+1232: 
+Reverse selects:
+ARCH_OMAP2PLUS_TYPICAL at arch/arm/mach-omap2/Kconfig:138: select HIGHMEM
+
+### CONFIG_HZ
+Defconfig: absent
+arch/arm/Kconfig
+1124: config HZ
+1125: 	int
+1126: 	default HZ_FIXED if HZ_FIXED != 0
+1127: 	default 100 if HZ_100
+1128: 	default 200 if HZ_200
+1129: 	default 250 if HZ_250
+1130: 	default 300 if HZ_300
+1131: 	default 500 if HZ_500
+1132: 	default 1000
+1133: 
+kernel/Kconfig.hz
+51: config HZ
+52: 	int
+53: 	default 100 if HZ_100
+54: 	default 250 if HZ_250
+55: 	default 300 if HZ_300
+56: 	default 1000 if HZ_1000
+57: 
+Reverse selects:
+
+
+### CONFIG_HZ_100
+Defconfig: absent
+arch/arm/Kconfig
+1104: config HZ_100
+1105: 	bool "100 Hz"
+1106: 
+kernel/Kconfig.hz
+20: 	config HZ_100
+21: 		bool "100 HZ"
+22: 	help
+23: 	  100 Hz is a typical choice for servers, SMP and NUMA systems
+24: 	  with lots of processors that may show reduced performance if
+25: 	  too many timer interrupts are occurring.
+26: 
+Reverse selects:
+
+
+### CONFIG_HZ_1000
+Defconfig: absent
+arch/arm/Kconfig
+1119: config HZ_1000
+1120: 	bool "1000 Hz"
+1121: 
+kernel/Kconfig.hz
+43: 	config HZ_1000
+44: 		bool "1000 HZ"
+45: 	help
+46: 	 1000 Hz is the preferred choice for desktop systems and other
+47: 	 systems requiring fast interactive responses to events.
+48: 
+Reverse selects:
+
+
+### CONFIG_HZ_200
+Defconfig: absent
+arch/arm/Kconfig
+1107: config HZ_200
+1108: 	bool "200 Hz"
+1109: 
+Reverse selects:
+
+
+### CONFIG_HZ_250
+Defconfig: absent
+arch/arm/Kconfig
+1110: config HZ_250
+1111: 	bool "250 Hz"
+1112: 
+kernel/Kconfig.hz
+27: 	config HZ_250
+28: 		bool "250 HZ"
+29: 	help
+30: 	 250 Hz is a good compromise choice allowing server performance
+31: 	 while also showing good interactive responsiveness even
+32: 	 on SMP and NUMA systems. If you are going to be using NTSC video
+33: 	 or multimedia, selected 300Hz instead.
+34: 
+Reverse selects:
+
+
+### CONFIG_HZ_300
+Defconfig: absent
+arch/arm/Kconfig
+1113: config HZ_300
+1114: 	bool "300 Hz"
+1115: 
+kernel/Kconfig.hz
+35: 	config HZ_300
+36: 		bool "300 HZ"
+37: 	help
+38: 	 300 Hz is a good compromise choice allowing server performance
+39: 	 while also showing good interactive responsiveness even
+40: 	 on SMP and NUMA systems and exactly dividing by both PAL and
+41: 	 NTSC frame rates for video and multimedia work.
+42: 
+Reverse selects:
+
+
+### CONFIG_HZ_500
+Defconfig: absent
+arch/arm/Kconfig
+1116: config HZ_500
+1117: 	bool "500 Hz"
+1118: 
+Reverse selects:
+
+
+### CONFIG_HZ_FIXED
+Defconfig: absent
+arch/arm/Kconfig
+1095: config HZ_FIXED
+1096: 	int
+1097: 	default 128 if SOC_AT91RM9200
+1098: 	default 0
+1099: 
+Reverse selects:
+
+
+### CONFIG_HZ_PERIODIC
+Defconfig: absent
+kernel/time/Kconfig
+102: config HZ_PERIODIC
+103: 	bool "Periodic timer ticks (constant rate, no dynticks)"
+104: 	help
+105: 	  This option keeps the tick running periodically at a constant
+106: 	  rate, even when the CPU doesn't need it.
+107: 
+Reverse selects:
+
+
+### CONFIG_KALLSYMS_ALL
+Defconfig: absent
+init/Kconfig
+1852: config KALLSYMS_ALL
+1853: 	bool "Include all symbols in kallsyms"
+1854: 	depends on DEBUG_KERNEL && KALLSYMS
+1855: 	help
+1856: 	  Normally kallsyms only contains the symbols of functions for nicer
+1857: 	  OOPS messages and backtraces (i.e., symbols from the text and inittext
+1858: 	  sections). This is sufficient for most cases. And only if you want to
+1859: 	  enable kernel live patching, or other less common use cases (e.g.,
+1860: 	  when a debugger is used) all symbols are required (i.e., names of
+1861: 	  variables from the data sections, etc).
+1862: 
+1863: 	  This option makes sure that all symbols are loaded into the kernel
+1864: 	  image (i.e., symbols from all sections) in cost of increased kernel
+1865: 	  size (depending on the kernel configuration, it may be 300KiB or
+1866: 	  something like this).
+1867: 
+1868: 	  Say N unless you really need all symbols, or kernel live patching.
+1869: 
+Reverse selects:
+LOCKDEP at lib/Kconfig.debug:1506: select KALLSYMS_ALL
+LATENCYTOP at lib/Kconfig.debug:1811: select KALLSYMS_ALL
+
+### CONFIG_KASAN
+Defconfig: absent
+lib/Kconfig.kasan
+34: menuconfig KASAN
+35: 	bool "KASAN: dynamic memory safety error detector"
+36: 	depends on (((HAVE_ARCH_KASAN && CC_HAS_KASAN_GENERIC) || \
+37: 		     (HAVE_ARCH_KASAN_SW_TAGS && CC_HAS_KASAN_SW_TAGS)) && \
+38: 		    CC_HAS_WORKING_NOSANITIZE_ADDRESS) || \
+39: 		   HAVE_ARCH_KASAN_HW_TAGS
+40: 	depends on SYSFS && !SLUB_TINY
+41: 	select STACKDEPOT_ALWAYS_INIT
+42: 	help
+43: 	  Enables KASAN (Kernel Address Sanitizer) - a dynamic memory safety
+44: 	  error detector designed to find out-of-bounds and use-after-free bugs.
+45: 
+46: 	  See Documentation/dev-tools/kasan.rst for details.
+47: 
+48: 	  For better error reports, also enable CONFIG_STACKTRACE.
+49: 
+Reverse selects:
+
+
+### CONFIG_KSM
+Defconfig: absent
+mm/Kconfig
+728: config KSM
+729: 	bool "Enable KSM for page merging"
+730: 	depends on MMU
+731: 	select XXHASH
+732: 	help
+733: 	  Enable Kernel Samepage Merging: KSM periodically scans those areas
+734: 	  of an application's address space that an app has advised may be
+735: 	  mergeable.  When it finds pages of identical content, it replaces
+736: 	  the many instances by a single page with that content, so
+737: 	  saving memory until one or another app needs to modify the content.
+738: 	  Recommended for use with KVM, or with other duplicative applications.
+739: 	  See Documentation/mm/ksm.rst for more information: KSM is inactive
+740: 	  until a program has madvised that an area is MADV_MERGEABLE, and
+741: 	  root has set /sys/kernel/mm/ksm/run to 1 (if CONFIG_SYSFS is set).
+742: 
+Reverse selects:
+
+
+### CONFIG_LOCKDEP
+Defconfig: absent
+lib/Kconfig.debug
+1501: config LOCKDEP
+1502: 	bool
+1503: 	depends on DEBUG_KERNEL && LOCK_DEBUGGING_SUPPORT
+1504: 	select STACKTRACE
+1505: 	select KALLSYMS
+1506: 	select KALLSYMS_ALL
+1507: 
+Reverse selects:
+PROVE_LOCKING at lib/Kconfig.debug:1354: select LOCKDEP
+LOCK_STAT at lib/Kconfig.debug:1418: select LOCKDEP
+DEBUG_LOCK_ALLOC at lib/Kconfig.debug:1492: select LOCKDEP
+
+### CONFIG_LRU_GEN
+Defconfig: {'value': 'y', 'line': 68}
+mm/Kconfig
+1240: config LRU_GEN
+1241: 	bool "Multi-Gen LRU"
+1242: 	depends on MMU
+1243: 	# make sure folio->flags has enough spare bits
+1244: 	depends on 64BIT || !SPARSEMEM || SPARSEMEM_VMEMMAP
+1245: 	help
+1246: 	  A high performance LRU implementation to overcommit memory. See
+1247: 	  Documentation/admin-guide/mm/multigen_lru.rst for details.
+1248: 
+Reverse selects:
+
+
+### CONFIG_LRU_GEN_ENABLED
+Defconfig: {'value': 'y', 'line': 69}
+mm/Kconfig
+1249: config LRU_GEN_ENABLED
+1250: 	bool "Enable by default"
+1251: 	depends on LRU_GEN
+1252: 	help
+1253: 	  This option enables the multi-gen LRU by default.
+1254: 
+Reverse selects:
+
+
+### CONFIG_LRU_GEN_STATS
+Defconfig: absent
+mm/Kconfig
+1255: config LRU_GEN_STATS
+1256: 	bool "Full stats for debugging"
+1257: 	depends on LRU_GEN
+1258: 	help
+1259: 	  Do not enable this option unless you plan to look at historical stats
+1260: 	  from evicted generations for debugging purpose.
+1261: 
+1262: 	  This option has a per-memcg and per-node memory overhead.
+1263: 
+Reverse selects:
+
+
+### CONFIG_LRU_GEN_WALKS_MMU
+Defconfig: absent
+mm/Kconfig
+1264: config LRU_GEN_WALKS_MMU
+1265: 	def_bool y
+1266: 	depends on LRU_GEN && ARCH_HAS_HW_PTE_YOUNG
+1267: # }
+1268: 
+Reverse selects:
+
+
+### CONFIG_LTO
+Defconfig: absent
+arch/Kconfig
+726: config LTO
+727: 	bool
+728: 	help
+729: 	  Selected if the kernel will be built using the compiler's LTO feature.
+730: 
+Reverse selects:
+LTO_CLANG at arch/Kconfig:733: select LTO
+
+### CONFIG_LTO_CLANG
+Defconfig: absent
+arch/Kconfig
+731: config LTO_CLANG
+732: 	bool
+733: 	select LTO
+734: 	help
+735: 	  Selected if the kernel will be built using Clang's LTO feature.
+736: 
+Reverse selects:
+LTO_CLANG_FULL at arch/Kconfig:785: select LTO_CLANG
+LTO_CLANG_THIN at arch/Kconfig:803: select LTO_CLANG
+
+### CONFIG_LTO_CLANG_FULL
+Defconfig: absent
+arch/Kconfig
+781: config LTO_CLANG_FULL
+782: 	bool "Clang Full LTO (EXPERIMENTAL)"
+783: 	depends on HAS_LTO_CLANG
+784: 	depends on !COMPILE_TEST
+785: 	select LTO_CLANG
+786: 	help
+787: 	  This option enables Clang's full Link Time Optimization (LTO), which
+788: 	  allows the compiler to optimize the kernel globally. If you enable
+789: 	  this option, the compiler generates LLVM bitcode instead of ELF
+790: 	  object files, and the actual compilation from bitcode happens at
+791: 	  the LTO link step, which may take several minutes depending on the
+792: 	  kernel configuration. More information can be found from LLVM's
+793: 	  documentation:
+794: 
+795: 	    https://llvm.org/docs/LinkTimeOptimization.html
+796: 
+797: 	  During link time, this option can use a large amount of RAM, and
+798: 	  may take much longer than the ThinLTO option.
+799: 
+Reverse selects:
+
+
+### CONFIG_LTO_CLANG_THIN
+Defconfig: absent
+arch/Kconfig
+800: config LTO_CLANG_THIN
+801: 	bool "Clang ThinLTO (EXPERIMENTAL)"
+802: 	depends on HAS_LTO_CLANG && ARCH_SUPPORTS_LTO_CLANG_THIN
+803: 	select LTO_CLANG
+804: 	help
+805: 	  This option enables Clang's ThinLTO, which allows for parallel
+806: 	  optimization and faster incremental compiles compared to the
+807: 	  CONFIG_LTO_CLANG_FULL option. More information can be found
+808: 	  from Clang's documentation:
+809: 
+810: 	    https://clang.llvm.org/docs/ThinLTO.html
+811: 
+812: 	  If unsure, say Y.
+Reverse selects:
+
+
+### CONFIG_LTO_NONE
+Defconfig: absent
+arch/Kconfig
+776: config LTO_NONE
+777: 	bool "None"
+778: 	help
+779: 	  Build the kernel normally, without Link Time Optimization (LTO).
+780: 
+Reverse selects:
+
+
+### CONFIG_MEMCG
+Defconfig: {'value': 'y', 'line': 18}
+init/Kconfig
+998: config MEMCG
+999: 	bool "Memory controller"
+1000: 	select PAGE_COUNTER
+1001: 	select EVENTFD
+1002: 	select SLAB_OBJ_EXT
+1003: 	help
+1004: 	  Provides control over the memory footprint of tasks in a cgroup.
+1005: 
+Reverse selects:
+
+
+### CONFIG_MEMCG_V1
+Defconfig: {'value': 'y', 'line': 19}
+init/Kconfig
+1006: config MEMCG_V1
+1007: 	bool "Legacy cgroup v1 memory controller"
+1008: 	depends on MEMCG
+1009: 	default n
+1010: 	help
+1011: 	  Legacy cgroup v1 memory controller which has been deprecated by
+1012: 	  cgroup v2 implementation. The v1 is there for legacy applications
+1013: 	  which haven't migrated to the new cgroup v2 interface yet. If you
+1014: 	  do not have any such application then you are completely fine leaving
+1015: 	  this option disabled.
+1016: 
+1017: 	  Please note that feature set of the legacy memory controller is likely
+1018: 	  going to shrink due to deprecation process. New deployments with v1
+1019: 	  controller are highly discouraged.
+1020: 
+1021: 	  Say N if unsure.
+1022: 
+Reverse selects:
+
+
+### CONFIG_MODULES
+Defconfig: {'value': 'y', 'line': 57}
+kernel/module/Kconfig
+2: menuconfig MODULES
+3: 	bool "Enable loadable module support"
+4: 	modules
+5: 	select EXECMEM
+6: 	help
+7: 	  Kernel modules are small pieces of compiled code which can
+8: 	  be inserted in the running kernel, rather than being
+9: 	  permanently built into the kernel.  You use the "modprobe"
+10: 	  tool to add (and sometimes remove) them.  If you say Y here,
+11: 	  many parts of the kernel can be built as modules (by
+12: 	  answering M instead of Y where indicated): this is most
+13: 	  useful for infrequently used options which are not required
+14: 	  for booting.  For more information, see the man pages for
+15: 	  modprobe, lsmod, modinfo, insmod and rmmod.
+16: 
+17: 	  If you say Y here, you will need to run "make
+18: 	  modules_install" to put the modules under /lib/modules/
+19: 	  where modprobe can find them (you may need to be root to do
+20: 	  this).
+21: 
+22: 	  If unsure, say Y.
+23: 
+Reverse selects:
+
+
+### CONFIG_MODULE_COMPRESS
+Defconfig: absent
+kernel/module/Kconfig
+283: config MODULE_COMPRESS
+284: 	bool "Module compression"
+285: 	help
+286: 	  Enable module compression to reduce on-disk size of module binaries.
+287: 	  This is fully compatible with signed modules.
+288: 
+289: 	  The tool used to work with modules needs to support the selected
+290: 	  compression type. kmod MAY support gzip, xz and zstd. Other tools
+291: 	  might have a limited selection of the supported types.
+292: 
+293: 	  Note that for modules inside an initrd or initramfs, it's more
+294: 	  efficient to compress the whole ramdisk instead.
+295: 
+296: 	  If unsure, say N.
+297: 
+Reverse selects:
+
+
+### CONFIG_MODULE_COMPRESS_ALL
+Defconfig: absent
+kernel/module/Kconfig
+324: config MODULE_COMPRESS_ALL
+325: 	bool "Automatically compress all modules"
+326: 	default y
+327: 	depends on MODULE_COMPRESS
+328: 	help
+329: 	  Compress all modules during 'make modules_install'.
+330: 
+331: 	  Your build system needs to provide the appropriate compression tool
+332: 	  for the selected compression type. External modules will also be
+333: 	  compressed in the same way during the installation.
+334: 
+Reverse selects:
+
+
+### CONFIG_MODULE_COMPRESS_GZIP
+Defconfig: absent
+kernel/module/Kconfig
+304: config MODULE_COMPRESS_GZIP
+305: 	bool "GZIP"
+306: 	help
+307: 	  Support modules compressed with GZIP. The installed modules are
+308: 	  suffixed with .ko.gz.
+309: 
+Reverse selects:
+
+
+### CONFIG_MODULE_COMPRESS_XZ
+Defconfig: absent
+kernel/module/Kconfig
+310: config MODULE_COMPRESS_XZ
+311: 	bool "XZ"
+312: 	help
+313: 	  Support modules compressed with XZ. The installed modules are
+314: 	  suffixed with .ko.xz.
+315: 
+Reverse selects:
+
+
+### CONFIG_MODULE_COMPRESS_ZSTD
+Defconfig: absent
+kernel/module/Kconfig
+316: config MODULE_COMPRESS_ZSTD
+317: 	bool "ZSTD"
+318: 	help
+319: 	  Support modules compressed with ZSTD. The installed modules are
+320: 	  suffixed with .ko.zst.
+321: 
+Reverse selects:
+
+
+### CONFIG_NO_HZ
+Defconfig: {'value': 'y', 'line': 6}
+kernel/time/Kconfig
+184: config NO_HZ
+185: 	bool "Old Idle dynticks config"
+186: 	help
+187: 	  This is the old config entry that enables dynticks idle.
+188: 	  We keep it around for a little while to enforce backward
+189: 	  compatibility with older config files.
+190: 
+Reverse selects:
+
+
+### CONFIG_NO_HZ_COMMON
+Defconfig: absent
+kernel/time/Kconfig
+94: config NO_HZ_COMMON
+95: 	bool
+96: 	select TICK_ONESHOT
+97: 
+Reverse selects:
+NO_HZ_IDLE at kernel/time/Kconfig:110: select NO_HZ_COMMON
+NO_HZ_FULL at kernel/time/Kconfig:126: select NO_HZ_COMMON
+
+### CONFIG_NO_HZ_FULL
+Defconfig: absent
+kernel/time/Kconfig
+118: config NO_HZ_FULL
+119: 	bool "Full dynticks system (tickless)"
+120: 	# NO_HZ_COMMON dependency
+121: 	# We need at least one periodic CPU for timekeeping
+122: 	depends on SMP
+123: 	depends on HAVE_CONTEXT_TRACKING_USER
+124: 	# VIRT_CPU_ACCOUNTING_GEN dependency
+125: 	depends on HAVE_VIRT_CPU_ACCOUNTING_GEN
+126: 	select NO_HZ_COMMON
+127: 	select RCU_NOCB_CPU
+128: 	select VIRT_CPU_ACCOUNTING_GEN
+129: 	select IRQ_WORK
+130: 	select CPU_ISOLATION
+131: 	help
+132: 	 Adaptively try to shutdown the tick whenever possible, even when
+133: 	 the CPU is running tasks. Typically this requires running a single
+134: 	 task on the CPU. Chances for running tickless are maximized when
+135: 	 the task mostly runs in userspace and has few kernel activity.
+136: 
+137: 	 You need to fill up the nohz_full boot parameter with the
+138: 	 desired range of dynticks CPUs to use it. This is implemented at
+139: 	 the expense of some overhead in user <-> kernel transitions:
+140: 	 syscalls, exceptions and interrupts.
+141: 
+142: 	 By default, without passing the nohz_full parameter, this behaves just
+143: 	 like NO_HZ_IDLE.
+144: 
+145: 	 If you're a distro say Y.
+146: 
+Reverse selects:
+
+
+### CONFIG_NO_HZ_IDLE
+Defconfig: absent
+kernel/time/Kconfig
+108: config NO_HZ_IDLE
+109: 	bool "Idle dynticks system (tickless idle)"
+110: 	select NO_HZ_COMMON
+111: 	help
+112: 	  This option enables a tickless idle system: timer interrupts
+113: 	  will only trigger on an as-needed basis when the system is idle.
+114: 	  This is usually interesting for energy saving.
+115: 
+116: 	  Most of the time you want to say Y here.
+117: 
+Reverse selects:
+
+
+### CONFIG_PREEMPT
+Defconfig: absent
+kernel/Kconfig.preempt
+51: config PREEMPT
+52: 	bool "Preemptible Kernel (Low-Latency Desktop)"
+53: 	depends on !ARCH_NO_PREEMPT
+54: 	select PREEMPT_BUILD
+55: 	help
+56: 	  This option reduces the latency of the kernel by making
+57: 	  all kernel code (that is not executing in a critical section)
+58: 	  preemptible.  This allows reaction to interactive events by
+59: 	  permitting a low priority process to be preempted involuntarily
+60: 	  even if it is in kernel mode executing a system call and would
+61: 	  otherwise not be about to reach a natural preemption point.
+62: 	  This allows applications to run more 'smoothly' even when the
+63: 	  system is under load, at the cost of slightly lower throughput
+64: 	  and a slight runtime overhead to kernel code.
+65: 
+66: 	  Select this if you are building a kernel for a desktop or
+67: 	  embedded system with latency requirements in the milliseconds
+68: 	  range.
+69: 
+Reverse selects:
+
+
+### CONFIG_PREEMPTION
+Defconfig: absent
+kernel/Kconfig.preempt
+92: config PREEMPTION
+93:        bool
+94:        select PREEMPT_COUNT
+95: 
+Reverse selects:
+PREEMPT_BUILD at kernel/Kconfig.preempt:11: select PREEMPTION
+PREEMPT_RT at kernel/Kconfig.preempt:73: select PREEMPTION
+
+### CONFIG_PREEMPTIRQ_DELAY_TEST
+Defconfig: absent
+kernel/trace/Kconfig
+1118: config PREEMPTIRQ_DELAY_TEST
+1119: 	tristate "Test module to create a preempt / IRQ disable delay thread to test latency tracers"
+1120: 	depends on m
+1121: 	help
+1122: 	  Select this option to build a test module that can help test latency
+1123: 	  tracers by executing a preempt or irq disable section with a user
+1124: 	  configurable delay. The module busy waits for the duration of the
+1125: 	  critical section.
+1126: 
+1127: 	  For example, the following invocation generates a burst of three
+1128: 	  irq-disabled critical sections for 500us:
+1129: 	  modprobe preemptirq_delay_test test_mode=irq delay=500 burst_size=3
+1130: 
+1131: 	  What's more, if you want to attach the test on the cpu which the latency
+1132: 	  tracer is running on, specify cpu_affinity=cpu_num at the end of the
+1133: 	  command.
+1134: 
+1135: 	  If unsure, say N
+1136: 
+Reverse selects:
+
+
+### CONFIG_PREEMPTIRQ_TRACEPOINTS
+Defconfig: absent
+kernel/trace/Kconfig
+141: config PREEMPTIRQ_TRACEPOINTS
+142: 	bool
+143: 	depends on TRACE_PREEMPT_TOGGLE || TRACE_IRQFLAGS
+144: 	select TRACING
+145: 	default y
+146: 	help
+147: 	  Create preempt/irq toggle tracepoints if needed, so that other parts
+148: 	  of the kernel can use them to generate or add hooks to them.
+149: 
+150: # All tracer options should select GENERIC_TRACER. For those options that are
+151: # enabled by all tracers (context switch and event tracer) they select TRACING.
+152: # This allows those options to appear when no other tracer is selected. But the
+153: # options do not appear when something else selects it. We need the two options
+154: # GENERIC_TRACER and TRACING to avoid circular dependencies to accomplish the
+155: # hiding of the automatic options.
+156: 
+Reverse selects:
+
+
+### CONFIG_PREEMPT_BUILD
+Defconfig: absent
+kernel/Kconfig.preempt
+9: config PREEMPT_BUILD
+10: 	bool
+11: 	select PREEMPTION
+12: 	select UNINLINE_SPIN_UNLOCK if !ARCH_INLINE_SPIN_UNLOCK
+13: 
+Reverse selects:
+PREEMPT at kernel/Kconfig.preempt:54: select PREEMPT_BUILD
+PREEMPT_DYNAMIC at kernel/Kconfig.preempt:100: select PREEMPT_BUILD
+
+### CONFIG_PREEMPT_COUNT
+Defconfig: absent
+kernel/Kconfig.preempt
+89: config PREEMPT_COUNT
+90:        bool
+91: 
+Reverse selects:
+DRM_I915_DEBUG at drivers/gpu/drm/i915/Kconfig.debug:42: select PREEMPT_COUNT
+PREEMPTION at kernel/Kconfig.preempt:94: select PREEMPT_COUNT
+RCU_STRICT_GRACE_PERIOD at kernel/rcu/Kconfig.debug:160: select PREEMPT_COUNT if PREEMPT=n
+PROVE_LOCKING at lib/Kconfig.debug:1361: select PREEMPT_COUNT if !ARCH_NO_PREEMPT
+DEBUG_ATOMIC_SLEEP at lib/Kconfig.debug:1562: select PREEMPT_COUNT
+
+### CONFIG_PREEMPT_DYNAMIC
+Defconfig: absent
+kernel/Kconfig.preempt
+96: config PREEMPT_DYNAMIC
+97: 	bool "Preemption behaviour defined on boot"
+98: 	depends on HAVE_PREEMPT_DYNAMIC && !PREEMPT_RT
+99: 	select JUMP_LABEL if HAVE_PREEMPT_DYNAMIC_KEY
+100: 	select PREEMPT_BUILD
+101: 	default y if HAVE_PREEMPT_DYNAMIC_CALL
+102: 	help
+103: 	  This option allows to define the preemption model on the kernel
+104: 	  command line parameter and thus override the default preemption
+105: 	  model defined during compile time.
+106: 
+107: 	  The feature is primarily interesting for Linux distributions which
+108: 	  provide a pre-built kernel binary to reduce the number of kernel
+109: 	  flavors they offer while still offering different usecases.
+110: 
+111: 	  The runtime overhead is negligible with HAVE_STATIC_CALL_INLINE enabled
+112: 	  but if runtime patching is not available for the specific architecture
+113: 	  then the potential overhead should be considered.
+114: 
+115: 	  Interesting if you want the same pre-built kernel should be used for
+116: 	  both Server and Desktop workloads.
+117: 
+Reverse selects:
+
+
+### CONFIG_PREEMPT_NONE
+Defconfig: absent
+kernel/Kconfig.preempt
+18: config PREEMPT_NONE
+19: 	bool "No Forced Preemption (Server)"
+20: 	select PREEMPT_NONE_BUILD if !PREEMPT_DYNAMIC
+21: 	help
+22: 	  This is the traditional Linux preemption model, geared towards
+23: 	  throughput. It will still provide good latencies most of the
+24: 	  time, but there are no guarantees and occasional longer delays
+25: 	  are possible.
+26: 
+27: 	  Select this option if you are building a kernel for a server or
+28: 	  scientific/computation system, or if you want to maximize the
+29: 	  raw processing power of the kernel, irrespective of scheduling
+30: 	  latencies.
+31: 
+Reverse selects:
+
+
+### CONFIG_PREEMPT_NONE_BUILD
+Defconfig: absent
+kernel/Kconfig.preempt
+3: config PREEMPT_NONE_BUILD
+4: 	bool
+5: 
+Reverse selects:
+PREEMPT_NONE at kernel/Kconfig.preempt:20: select PREEMPT_NONE_BUILD if !PREEMPT_DYNAMIC
+
+### CONFIG_PREEMPT_NOTIFIERS
+Defconfig: absent
+init/Kconfig
+2041: config PREEMPT_NOTIFIERS
+2042: 	bool
+2043: 
+Reverse selects:
+KVM_COMMON at virt/kvm/Kconfig:8: select PREEMPT_NOTIFIERS
+
+### CONFIG_PREEMPT_RCU
+Defconfig: absent
+kernel/rcu/Kconfig
+19: config PREEMPT_RCU
+20: 	bool
+21: 	default y if PREEMPTION
+22: 	select TREE_RCU
+23: 	help
+24: 	  This option selects the RCU implementation that is
+25: 	  designed for very large SMP systems with hundreds or
+26: 	  thousands of CPUs, but for which real-time response
+27: 	  is also required.  It also scales down nicely to
+28: 	  smaller systems.
+29: 
+30: 	  Select this option if you are unsure.
+31: 
+Reverse selects:
+
+
+### CONFIG_PREEMPT_RT
+Defconfig: absent
+kernel/Kconfig.preempt
+70: config PREEMPT_RT
+71: 	bool "Fully Preemptible Kernel (Real-Time)"
+72: 	depends on EXPERT && ARCH_SUPPORTS_RT
+73: 	select PREEMPTION
+74: 	help
+75: 	  This option turns the kernel into a real-time kernel by replacing
+76: 	  various locking primitives (spinlocks, rwlocks, etc.) with
+77: 	  preemptible priority-inheritance aware variants, enforcing
+78: 	  interrupt threading and introducing mechanisms to break up long
+79: 	  non-preemptible sections. This makes the kernel, except for very
+80: 	  low level and critical code paths (entry code, scheduler, low
+81: 	  level interrupt handling) fully preemptible and brings most
+82: 	  execution contexts under scheduler control.
+83: 
+84: 	  Select this if you are building a kernel for systems which
+85: 	  require real-time guarantees.
+86: 
+Reverse selects:
+
+
+### CONFIG_PREEMPT_TRACER
+Defconfig: absent
+kernel/trace/Kconfig
+370: config PREEMPT_TRACER
+371: 	bool "Preemption-off Latency Tracer"
+372: 	default n
+373: 	depends on PREEMPTION
+374: 	select GENERIC_TRACER
+375: 	select TRACER_MAX_TRACE
+376: 	select RING_BUFFER_ALLOW_SWAP
+377: 	select TRACER_SNAPSHOT
+378: 	select TRACER_SNAPSHOT_PER_CPU_SWAP
+379: 	select TRACE_PREEMPT_TOGGLE
+380: 	help
+381: 	  This option measures the time spent in preemption-off critical
+382: 	  sections, with microsecond accuracy.
+383: 
+384: 	  The default measurement method is a maximum search, which is
+385: 	  disabled by default and can be runtime (re-)started
+386: 	  via:
+387: 
+388: 	      echo 0 > /sys/kernel/tracing/tracing_max_latency
+389: 
+390: 	  (Note that kernel size and overhead increase with this option
+391: 	  enabled. This option and the irqs-off timing option can be
+392: 	  used together or separately.)
+393: 
+Reverse selects:
+
+
+### CONFIG_PREEMPT_VOLUNTARY
+Defconfig: {'value': 'y', 'line': 10}
+kernel/Kconfig.preempt
+32: config PREEMPT_VOLUNTARY
+33: 	bool "Voluntary Kernel Preemption (Desktop)"
+34: 	depends on !ARCH_NO_PREEMPT
+35: 	select PREEMPT_VOLUNTARY_BUILD if !PREEMPT_DYNAMIC
+36: 	help
+37: 	  This option reduces the latency of the kernel by adding more
+38: 	  "explicit preemption points" to the kernel code. These new
+39: 	  preemption points have been selected to reduce the maximum
+40: 	  latency of rescheduling, providing faster application reactions,
+41: 	  at the cost of slightly lower throughput.
+42: 
+43: 	  This allows reaction to interactive events by allowing a
+44: 	  low priority process to voluntarily preempt itself even if it
+45: 	  is in kernel mode executing a system call. This allows
+46: 	  applications to run more 'smoothly' even when the system is
+47: 	  under load.
+48: 
+49: 	  Select this if you are building a kernel for a desktop system.
+50: 
+Reverse selects:
+
+
+### CONFIG_PREEMPT_VOLUNTARY_BUILD
+Defconfig: absent
+kernel/Kconfig.preempt
+6: config PREEMPT_VOLUNTARY_BUILD
+7: 	bool
+8: 
+Reverse selects:
+PREEMPT_VOLUNTARY at kernel/Kconfig.preempt:35: select PREEMPT_VOLUNTARY_BUILD if !PREEMPT_DYNAMIC
+
+### CONFIG_PROVE_LOCKING
+Defconfig: absent
+lib/Kconfig.debug
+1351: config PROVE_LOCKING
+1352: 	bool "Lock debugging: prove locking correctness"
+1353: 	depends on DEBUG_KERNEL && LOCK_DEBUGGING_SUPPORT
+1354: 	select LOCKDEP
+1355: 	select DEBUG_SPINLOCK
+1356: 	select DEBUG_MUTEXES if !PREEMPT_RT
+1357: 	select DEBUG_RT_MUTEXES if RT_MUTEXES
+1358: 	select DEBUG_RWSEMS if !PREEMPT_RT
+1359: 	select DEBUG_WW_MUTEX_SLOWPATH
+1360: 	select DEBUG_LOCK_ALLOC
+1361: 	select PREEMPT_COUNT if !ARCH_NO_PREEMPT
+1362: 	select TRACE_IRQFLAGS
+1363: 	default n
+1364: 	help
+1365: 	 This feature enables the kernel to prove that all locking
+1366: 	 that occurs in the kernel runtime is mathematically
+1367: 	 correct: that under no circumstance could an arbitrary (and
+1368: 	 not yet triggered) combination of observed locking
+1369: 	 sequences (on an arbitrary number of CPUs, running an
+1370: 	 arbitrary number of tasks and interrupt contexts) cause a
+1371: 	 deadlock.
+1372: 
+1373: 	 In short, this feature enables the kernel to report locking
+1374: 	 related deadlocks before they actually occur.
+1375: 
+1376: 	 The proof does not depend on how hard and complex a
+1377: 	 deadlock scenario would be to trigger: how many
+1378: 	 participant CPUs, tasks and irq-contexts would be needed
+1379: 	 for it to trigger. The proof also does not depend on
+1380: 	 timing: if a race and a resulting deadlock is possible
+1381: 	 theoretically (no matter how unlikely the race scenario
+1382: 	 is), it will be proven so and will immediately be
+1383: 	 reported by the kernel (once the event is observed that
+1384: 	 makes the deadlock theoretically possible).
+1385: 
+1386: 	 If a deadlock is impossible (i.e. the locking rules, as
+1387: 	 observed by the kernel, are mathematically correct), the
+1388: 	 kernel reports nothing.
+1389: 
+1390: 	 NOTE: this feature can also be enabled for rwlocks, mutexes
+1391: 	 and rwsems - in which case all dependencies between these
+1392: 	 different locking variants are observed and mapped too, and
+1393: 	 the proof of observed correctness is also maintained for an
+1394: 	 arbitrary combination of these separate locking variants.
+1395: 
+1396: 	 For more details, see Documentation/locking/lockdep-design.rst.
+1397: 
+Reverse selects:
+
+
+### CONFIG_PSI
+Defconfig: {'value': 'y', 'line': 17}
+init/Kconfig
+673: config PSI
+674: 	bool "Pressure stall information tracking"
+675: 	select KERNFS
+676: 	help
+677: 	  Collect metrics that indicate how overcommitted the CPU, memory,
+678: 	  and IO capacity are in the system.
+679: 
+680: 	  If you say Y here, the kernel will create /proc/pressure/ with the
+681: 	  pressure statistics files cpu, memory, and io. These will indicate
+682: 	  the share of walltime in which some or all tasks in the system are
+683: 	  delayed due to contention of the respective resource.
+684: 
+685: 	  In kernels with cgroup support, cgroups (cgroup2 only) will
+686: 	  have cpu.pressure, memory.pressure, and io.pressure files,
+687: 	  which aggregate pressure stalls for the grouped tasks only.
+688: 
+689: 	  For more details see Documentation/accounting/psi.rst.
+690: 
+691: 	  Say N if unsure.
+692: 
+Reverse selects:
+
+
+### CONFIG_PSI_DEFAULT_DISABLED
+Defconfig: absent
+init/Kconfig
+693: config PSI_DEFAULT_DISABLED
+694: 	bool "Require boot parameter to enable pressure stall information tracking"
+695: 	default n
+696: 	depends on PSI
+697: 	help
+698: 	  If set, pressure stall information tracking will be disabled
+699: 	  per default but can be enabled through passing psi=1 on the
+700: 	  kernel commandline during boot.
+701: 
+702: 	  This feature adds some code to the task wakeup and sleep
+703: 	  paths of the scheduler. The overhead is too low to affect
+704: 	  common scheduling-intense workloads in practice (such as
+705: 	  webservers, memcache), but it does show up in artificial
+706: 	  scheduler stress tests, such as hackbench.
+707: 
+708: 	  If you are paranoid and not sure what the kernel will be
+709: 	  used for, say Y.
+710: 
+711: 	  Say N if unsure.
+712: 
+Reverse selects:
+
+
+### CONFIG_SCHED_AUTOGROUP
+Defconfig: {'value': 'y', 'line': 30}
+init/Kconfig
+1355: config SCHED_AUTOGROUP
+1356: 	bool "Automatic process group scheduling"
+1357: 	select CGROUPS
+1358: 	select CGROUP_SCHED
+1359: 	select FAIR_GROUP_SCHED
+1360: 	help
+1361: 	  This option optimizes the scheduler for common desktop workloads by
+1362: 	  automatically creating and populating task groups.  This separation
+1363: 	  of workloads isolates aggressive CPU burners (like build jobs) from
+1364: 	  desktop applications.  Task group autogeneration is currently based
+1365: 	  upon task session.
+1366: 
+Reverse selects:
+
+
+### CONFIG_SCHED_CLASS_EXT
+Defconfig: absent
+kernel/Kconfig.preempt
+136: config SCHED_CLASS_EXT
+137: 	bool "Extensible Scheduling Class"
+138: 	depends on BPF_SYSCALL && BPF_JIT && DEBUG_INFO_BTF
+139: 	select STACKTRACE if STACKTRACE_SUPPORT
+140: 	help
+141: 	  This option enables a new scheduler class sched_ext (SCX), which
+142: 	  allows scheduling policies to be implemented as BPF programs to
+143: 	  achieve the following:
+144: 
+145: 	  - Ease of experimentation and exploration: Enabling rapid
+146: 	    iteration of new scheduling policies.
+147: 	  - Customization: Building application-specific schedulers which
+148: 	    implement policies that are not applicable to general-purpose
+149: 	    schedulers.
+150: 	  - Rapid scheduler deployments: Non-disruptive swap outs of
+151: 	    scheduling policies in production environments.
+152: 
+153: 	  sched_ext leverages BPF struct_ops feature to define a structure
+154: 	  which exports function callbacks and flags to BPF programs that
+155: 	  wish to implement scheduling policies. The struct_ops structure
+156: 	  exported by sched_ext is struct sched_ext_ops, and is conceptually
+157: 	  similar to struct sched_class.
+158: 
+159: 	  For more information:
+160: 	    Documentation/scheduler/sched-ext.rst
+161: 	    https://github.com/sched-ext/scx
+Reverse selects:
+
+
+### CONFIG_SHUFFLE_PAGE_ALLOCATOR
+Defconfig: absent
+mm/Kconfig
+349: config SHUFFLE_PAGE_ALLOCATOR
+350: 	bool "Page allocator randomization"
+351: 	default SLAB_FREELIST_RANDOM && ACPI_NUMA
+352: 	help
+353: 	  Randomization of the page allocator improves the average
+354: 	  utilization of a direct-mapped memory-side-cache. See section
+355: 	  5.2.27 Heterogeneous Memory Attribute Table (HMAT) in the ACPI
+356: 	  6.2a specification for an example of how a platform advertises
+357: 	  the presence of a memory-side-cache. There are also incidental
+358: 	  security benefits as it reduces the predictability of page
+359: 	  allocations to compliment SLAB_FREELIST_RANDOM, but the
+360: 	  default granularity of shuffling on the MAX_PAGE_ORDER i.e, 10th
+361: 	  order of pages is selected based on cache utilization benefits
+362: 	  on x86.
+363: 
+364: 	  While the randomization improves cache utilization it may
+365: 	  negatively impact workloads on platforms without a cache. For
+366: 	  this reason, by default, the randomization is not enabled even
+367: 	  if SHUFFLE_PAGE_ALLOCATOR=y. The randomization may be force enabled
+368: 	  with the 'page_alloc.shuffle' kernel command line parameter.
+369: 
+370: 	  Say Y if unsure.
+371: 
+Reverse selects:
+
+
+### CONFIG_SLAB_BUCKETS
+Defconfig: absent
+mm/Kconfig
+289: config SLAB_BUCKETS
+290: 	bool "Support allocation from separate kmalloc buckets"
+291: 	depends on !SLUB_TINY
+292: 	default SLAB_FREELIST_HARDENED
+293: 	help
+294: 	  Kernel heap attacks frequently depend on being able to create
+295: 	  specifically-sized allocations with user-controlled contents
+296: 	  that will be allocated into the same kmalloc bucket as a
+297: 	  target object. To avoid sharing these allocation buckets,
+298: 	  provide an explicitly separated set of buckets to be used for
+299: 	  user-controlled allocations. This may very slightly increase
+300: 	  memory fragmentation, though in practice it's only a handful
+301: 	  of extra pages since the bulk of user-controlled allocations
+302: 	  are relatively long-lived.
+303: 
+304: 	  If unsure, say Y.
+305: 
+Reverse selects:
+
+
+### CONFIG_SLAB_FREELIST_HARDENED
+Defconfig: absent
+mm/Kconfig
+280: config SLAB_FREELIST_HARDENED
+281: 	bool "Harden slab freelist metadata"
+282: 	depends on !SLUB_TINY
+283: 	help
+284: 	  Many kernel heap attacks try to target slab cache metadata and
+285: 	  other infrastructure. This options makes minor performance
+286: 	  sacrifices to harden the kernel slab allocator against common
+287: 	  freelist exploit methods.
+288: 
+Reverse selects:
+
+
+### CONFIG_SLAB_FREELIST_RANDOM
+Defconfig: absent
+mm/Kconfig
+272: config SLAB_FREELIST_RANDOM
+273: 	bool "Randomize slab freelist"
+274: 	depends on !SLUB_TINY
+275: 	help
+276: 	  Randomizes the freelist order used on creating new pages. This
+277: 	  security feature reduces the predictability of the kernel slab
+278: 	  allocator against heap overflows.
+279: 
+Reverse selects:
+
+
+### CONFIG_SLAB_MERGE_DEFAULT
+Defconfig: absent
+mm/Kconfig
+258: config SLAB_MERGE_DEFAULT
+259: 	bool "Allow slab caches to be merged"
+260: 	default y
+261: 	help
+262: 	  For reduced kernel memory fragmentation, slab caches can be
+263: 	  merged when they share the same size and other characteristics.
+264: 	  This carries a risk of kernel heap overflows being able to
+265: 	  overwrite objects from merged caches (and more easily control
+266: 	  cache layout), which makes such heap attacks easier to exploit
+267: 	  by attackers. By keeping caches unmerged, these kinds of exploits
+268: 	  can usually only damage objects in the same cache. To disable
+269: 	  merging at runtime, "slab_nomerge" can be passed on the kernel
+270: 	  command line.
+271: 
+Reverse selects:
+SLUB_TINY at mm/Kconfig:248: select SLAB_MERGE_DEFAULT
+
+### CONFIG_SLAB_OBJ_EXT
+Defconfig: absent
+init/Kconfig
+966: config SLAB_OBJ_EXT
+967: 	bool
+968: 
+Reverse selects:
+MEMCG at init/Kconfig:1002: select SLAB_OBJ_EXT
+MEM_ALLOC_PROFILING at lib/Kconfig.debug:1000: select SLAB_OBJ_EXT
+
+### CONFIG_SLUB
+Defconfig: absent
+mm/Kconfig
+242: config SLUB
+243: 	def_bool y
+244: 
+Reverse selects:
+
+
+### CONFIG_SLUB_CPU_PARTIAL
+Defconfig: absent
+mm/Kconfig
+319: config SLUB_CPU_PARTIAL
+320: 	default y
+321: 	depends on SMP && !SLUB_TINY
+322: 	bool "Enable per cpu partial caches"
+323: 	help
+324: 	  Per cpu partial caches accelerate objects allocation and freeing
+325: 	  that is local to a processor at the price of more indeterminism
+326: 	  in the latency of the free. On overflow these caches will be cleared
+327: 	  which requires the taking of locks that may cause latency spikes.
+328: 	  Typically one would choose no for a realtime system.
+329: 
+Reverse selects:
+
+
+### CONFIG_SLUB_DEBUG
+Defconfig: absent
+mm/Kconfig.debug
+48: config SLUB_DEBUG
+49: 	default y
+50: 	bool "Enable SLUB debugging support" if EXPERT
+51: 	depends on SYSFS && !SLUB_TINY
+52: 	select STACKDEPOT if STACKTRACE_SUPPORT
+53: 	help
+54: 	  SLUB has extensive debug support features. Disabling these can
+55: 	  result in significant savings in code size. While /sys/kernel/slab
+56: 	  will still exist (with SYSFS enabled), it will not provide e.g. cache
+57: 	  validation.
+58: 
+Reverse selects:
+KASAN_GENERIC at lib/Kconfig.kasan:81: select SLUB_DEBUG
+KASAN_SW_TAGS at lib/Kconfig.kasan:96: select SLUB_DEBUG
+
+### CONFIG_SLUB_DEBUG_ON
+Defconfig: absent
+mm/Kconfig.debug
+59: config SLUB_DEBUG_ON
+60: 	bool "SLUB debugging on by default"
+61: 	depends on SLUB_DEBUG
+62: 	select STACKDEPOT_ALWAYS_INIT if STACKTRACE_SUPPORT
+63: 	default n
+64: 	help
+65: 	  Boot with debugging on by default. SLUB boots by default with
+66: 	  the runtime debug capabilities switched off. Enabling this is
+67: 	  equivalent to specifying the "slab_debug" parameter on boot.
+68: 	  There is no support for more fine grained debug control like
+69: 	  possible with slab_debug=xxx. SLUB debugging may be switched
+70: 	  off in a kernel built with CONFIG_SLUB_DEBUG_ON by specifying
+71: 	  "slab_debug=-".
+72: 
+Reverse selects:
+
+
+### CONFIG_SLUB_KUNIT_TEST
+Defconfig: absent
+lib/Kconfig.debug
+2704: config SLUB_KUNIT_TEST
+2705: 	tristate "KUnit test for SLUB cache error detection" if !KUNIT_ALL_TESTS
+2706: 	depends on SLUB_DEBUG && KUNIT
+2707: 	default KUNIT_ALL_TESTS
+2708: 	help
+2709: 	  This builds SLUB allocator unit test.
+2710: 	  Tests SLUB cache debugging functionality.
+2711: 	  For more information on KUnit and unit tests in general please refer
+2712: 	  to the KUnit documentation in Documentation/dev-tools/kunit/.
+2713: 
+2714: 	  If unsure, say N.
+2715: 
+Reverse selects:
+
+
+### CONFIG_SLUB_RCU_DEBUG
+Defconfig: absent
+mm/Kconfig.debug
+73: config SLUB_RCU_DEBUG
+74: 	bool "Enable UAF detection in TYPESAFE_BY_RCU caches (for KASAN)"
+75: 	depends on SLUB_DEBUG
+76: 	# SLUB_RCU_DEBUG should build fine without KASAN, but is currently useless
+77: 	# without KASAN, so mark it as a dependency of KASAN for now.
+78: 	depends on KASAN
+79: 	default KASAN_GENERIC || KASAN_SW_TAGS
+80: 	help
+81: 	  Make SLAB_TYPESAFE_BY_RCU caches behave approximately as if the cache
+82: 	  was not marked as SLAB_TYPESAFE_BY_RCU and every caller used
+83: 	  kfree_rcu() instead.
+84: 
+85: 	  This is intended for use in combination with KASAN, to enable KASAN to
+86: 	  detect use-after-free accesses in such caches.
+87: 	  (KFENCE is able to do that independent of this flag.)
+88: 
+89: 	  This might degrade performance.
+90: 	  Unfortunately this also prevents a very specific bug pattern from
+91: 	  triggering (insufficient checks against an object being recycled
+92: 	  within the RCU grace period); so this option can be turned off even on
+93: 	  KASAN builds, in case you want to test for such a bug.
+94: 
+95: 	  If you're using this for testing bugs / fuzzing and care about
+96: 	  catching all the bugs WAY more than performance, you might want to
+97: 	  also turn on CONFIG_RCU_STRICT_GRACE_PERIOD.
+98: 
+99: 	  WARNING:
+100: 	  This is designed as a debugging feature, not a security feature.
+101: 	  Objects are sometimes recycled without RCU delay under memory pressure.
+102: 
+103: 	  If unsure, say N.
+104: 
+Reverse selects:
+
+
+### CONFIG_SLUB_STATS
+Defconfig: absent
+mm/Kconfig
+306: config SLUB_STATS
+307: 	default n
+308: 	bool "Enable performance statistics"
+309: 	depends on SYSFS && !SLUB_TINY
+310: 	help
+311: 	  The statistics are useful to debug slab allocation behavior in
+312: 	  order find ways to optimize the allocator. This should never be
+313: 	  enabled for production use since keeping statistics slows down
+314: 	  the allocator by a few percentage points. The slabinfo command
+315: 	  supports the determination of the most active slabs to figure
+316: 	  out which slabs are relevant to a particular load.
+317: 	  Try running: slabinfo -DA
+318: 
+Reverse selects:
+
+
+### CONFIG_SLUB_TINY
+Defconfig: absent
+mm/Kconfig
+245: config SLUB_TINY
+246: 	bool "Configure for minimal memory footprint"
+247: 	depends on EXPERT && !COMPILE_TEST
+248: 	select SLAB_MERGE_DEFAULT
+249: 	help
+250: 	   Configures the slab allocator in a way to achieve minimal memory
+251: 	   footprint, sacrificing scalability, debugging and other features.
+252: 	   This is intended only for the smallest system that had used the
+253: 	   SLOB allocator and is not recommended for systems with more than
+254: 	   16MB RAM.
+255: 
+256: 	   If unsure, say N.
+257: 
+Reverse selects:
+
+
+### CONFIG_STACKPROTECTOR
+Defconfig: absent
+arch/Kconfig
+646: config STACKPROTECTOR
+647: 	bool "Stack Protector buffer overflow detection"
+648: 	depends on HAVE_STACKPROTECTOR
+649: 	depends on $(cc-option,-fstack-protector)
+650: 	default y
+651: 	help
+652: 	  This option turns on the "stack-protector" GCC feature. This
+653: 	  feature puts, at the beginning of functions, a canary value on
+654: 	  the stack just before the return address, and validates
+655: 	  the value just before actually returning.  Stack based buffer
+656: 	  overflows (that need to overwrite this return address) now also
+657: 	  overwrite the canary, which gets detected and the attack is then
+658: 	  neutralized via a kernel panic.
+659: 
+660: 	  Functions will have the stack-protector canary logic added if they
+661: 	  have an 8-byte or larger character array on the stack.
+662: 
+663: 	  This feature requires gcc version 4.2 or above, or a distribution
+664: 	  gcc with the feature backported ("-fstack-protector").
+665: 
+666: 	  On an x86 "defconfig" build, this feature adds canary checks to
+667: 	  about 3% of all kernel functions, which increases kernel code size
+668: 	  by about 0.3%.
+669: 
+Reverse selects:
+
+
+### CONFIG_STACKPROTECTOR_PER_TASK
+Defconfig: absent
+arch/arm/Kconfig
+1379: config STACKPROTECTOR_PER_TASK
+1380: 	bool "Use a unique stack canary value for each task"
+1381: 	depends on STACKPROTECTOR && CURRENT_POINTER_IN_TPIDRURO && !XIP_DEFLATED_DATA
+1382: 	depends on GCC_PLUGINS || CC_HAVE_STACKPROTECTOR_TLS
+1383: 	select GCC_PLUGIN_ARM_SSP_PER_TASK if !CC_HAVE_STACKPROTECTOR_TLS
+1384: 	default y
+1385: 	help
+1386: 	  Due to the fact that GCC uses an ordinary symbol reference from
+1387: 	  which to load the value of the stack canary, this value can only
+1388: 	  change at reboot time on SMP systems, and all tasks running in the
+1389: 	  kernel's address space are forced to use the same canary value for
+1390: 	  the entire duration that the system is up.
+1391: 
+1392: 	  Enable this option to switch to a different method that uses a
+1393: 	  different canary value for each task.
+1394: 
+Reverse selects:
+
+
+### CONFIG_STACKPROTECTOR_STRONG
+Defconfig: absent
+arch/Kconfig
+670: config STACKPROTECTOR_STRONG
+671: 	bool "Strong Stack Protector"
+672: 	depends on STACKPROTECTOR
+673: 	depends on $(cc-option,-fstack-protector-strong)
+674: 	default y
+675: 	help
+676: 	  Functions will have the stack-protector canary logic added in any
+677: 	  of the following conditions:
+678: 
+679: 	  - local variable's address used as part of the right hand side of an
+680: 	    assignment or function argument
+681: 	  - local variable is an array (or union containing an array),
+682: 	    regardless of array type or length
+683: 	  - uses register local variables
+684: 
+685: 	  This feature requires gcc version 4.9 or above, or a distribution
+686: 	  gcc with the feature backported ("-fstack-protector-strong").
+687: 
+688: 	  On an x86 "defconfig" build, this feature adds canary checks to
+689: 	  about 20% of all kernel functions, which increases the kernel code
+690: 	  size by about 2%.
+691: 
+Reverse selects:
+
+
+### CONFIG_SWAP
+Defconfig: absent
+mm/Kconfig
+15: menuconfig SWAP
+16: 	bool "Support for paging of anonymous memory (swap)"
+17: 	depends on MMU && BLOCK && !ARCH_NO_SWAP
+18: 	default y
+19: 	help
+20: 	  This option allows you to choose whether you want to have support
+21: 	  for so called swap devices or swap files in your kernel that are
+22: 	  used to provide more virtual memory than the actual RAM present
+23: 	  in your computer.  If unsure say Y.
+24: 
+Reverse selects:
+
+
+### CONFIG_THUMB2_KERNEL
+Defconfig: absent
+arch/arm/Kconfig
+1137: config THUMB2_KERNEL
+1138: 	bool "Compile the kernel in Thumb-2 mode" if !CPU_THUMBONLY
+1139: 	depends on (CPU_V7 || CPU_V7M) && !CPU_V6 && !CPU_V6K
+1140: 	default y if CPU_THUMBONLY
+1141: 	select ARM_UNWIND
+1142: 	help
+1143: 	  By enabling this option, the kernel will be compiled in
+1144: 	  Thumb-2 mode.
+1145: 
+1146: 	  If unsure, say N.
+1147: 
+Reverse selects:
+
+
+### CONFIG_TRANSPARENT_HUGEPAGE
+Defconfig: absent
+mm/Kconfig
+816: menuconfig TRANSPARENT_HUGEPAGE
+817: 	bool "Transparent Hugepage Support"
+818: 	depends on HAVE_ARCH_TRANSPARENT_HUGEPAGE && !PREEMPT_RT
+819: 	select COMPACTION
+820: 	select XARRAY_MULTI
+821: 	help
+822: 	  Transparent Hugepages allows the kernel to use huge pages and
+823: 	  huge tlb transparently to the applications whenever possible.
+824: 	  This feature can improve computing performance to certain
+825: 	  applications by speeding up page faults during memory
+826: 	  allocation, by reducing the number of tlb misses and by speeding
+827: 	  up the pagetable walking.
+828: 
+829: 	  If memory constrained on embedded, you may want to say N.
+830: 
+Reverse selects:
+
+
+### CONFIG_TRANSPARENT_HUGEPAGE_ALWAYS
+Defconfig: absent
+mm/Kconfig
+840: 	config TRANSPARENT_HUGEPAGE_ALWAYS
+841: 		bool "always"
+842: 	help
+843: 	  Enabling Transparent Hugepage always, can increase the
+844: 	  memory footprint of applications without a guaranteed
+845: 	  benefit but it will work automatically for all applications.
+846: 
+Reverse selects:
+
+
+### CONFIG_TRANSPARENT_HUGEPAGE_MADVISE
+Defconfig: absent
+mm/Kconfig
+847: 	config TRANSPARENT_HUGEPAGE_MADVISE
+848: 		bool "madvise"
+849: 	help
+850: 	  Enabling Transparent Hugepage madvise, will only provide a
+851: 	  performance improvement benefit to the applications using
+852: 	  madvise(MADV_HUGEPAGE) but it won't risk to increase the
+853: 	  memory footprint of applications without a guaranteed
+854: 	  benefit.
+855: 
+Reverse selects:
+
+
+### CONFIG_TRANSPARENT_HUGEPAGE_NEVER
+Defconfig: absent
+mm/Kconfig
+856: 	config TRANSPARENT_HUGEPAGE_NEVER
+857: 		bool "never"
+858: 	help
+859: 	  Disable Transparent Hugepage by default. It can still be
+860: 	  enabled at runtime via sysfs.
+Reverse selects:
+
+
+### CONFIG_UCLAMP_TASK
+Defconfig: absent
+init/Kconfig
+837: config UCLAMP_TASK
+838: 	bool "Enable utilization clamping for RT/FAIR tasks"
+839: 	depends on CPU_FREQ_GOV_SCHEDUTIL
+840: 	help
+841: 	  This feature enables the scheduler to track the clamped utilization
+842: 	  of each CPU based on RUNNABLE tasks scheduled on that CPU.
+843: 
+844: 	  With this option, the user can specify the min and max CPU
+845: 	  utilization allowed for RUNNABLE tasks. The max utilization defines
+846: 	  the maximum frequency a task should use while the min utilization
+847: 	  defines the minimum frequency it should use.
+848: 
+849: 	  Both min and max utilization clamp values are hints to the scheduler,
+850: 	  aiming at improving its frequency selection policy, but they do not
+851: 	  enforce or grant any specific bandwidth for tasks.
+852: 
+853: 	  If in doubt, say N.
+854: 
+Reverse selects:
+
+
+### CONFIG_UCLAMP_TASK_GROUP
+Defconfig: absent
+init/Kconfig
+1102: config UCLAMP_TASK_GROUP
+1103: 	bool "Utilization clamping per group of tasks"
+1104: 	depends on CGROUP_SCHED
+1105: 	depends on UCLAMP_TASK
+1106: 	default n
+1107: 	help
+1108: 	  This feature enables the scheduler to track the clamped utilization
+1109: 	  of each CPU based on RUNNABLE tasks currently scheduled on that CPU.
+1110: 
+1111: 	  When this option is enabled, the user can specify a min and max
+1112: 	  CPU bandwidth which is allowed for each single task in a group.
+1113: 	  The max bandwidth allows to clamp the maximum frequency a task
+1114: 	  can use, while the min bandwidth allows to define a minimum
+1115: 	  frequency a task will always use.
+1116: 
+1117: 	  When task group based utilization clamping is enabled, an eventually
+1118: 	  specified task-specific clamp value is constrained by the cgroup
+1119: 	  specified clamp value. Both minimum and maximum task clamping cannot
+1120: 	  be bigger than the corresponding clamping defined at task group level.
+1121: 
+1122: 	  If in doubt, say N.
+1123: 
+Reverse selects:
+
+
+### CONFIG_VMSPLIT_1G
+Defconfig: absent
+arch/arm/Kconfig
+1043: 	config VMSPLIT_1G
+1044: 		bool "1G/3G user/kernel split"
+Reverse selects:
+
+
+### CONFIG_VMSPLIT_2G
+Defconfig: absent
+arch/arm/Kconfig
+1041: 	config VMSPLIT_2G
+1042: 		bool "2G/2G user/kernel split"
+Reverse selects:
+
+
+### CONFIG_VMSPLIT_3G
+Defconfig: absent
+arch/arm/Kconfig
+1036: 	config VMSPLIT_3G
+1037: 		bool "3G/1G user/kernel split"
+Reverse selects:
+
+
+### CONFIG_VMSPLIT_3G_OPT
+Defconfig: absent
+arch/arm/Kconfig
+1038: 	config VMSPLIT_3G_OPT
+1039: 		depends on !ARM_LPAE
+1040: 		bool "3G/1G user/kernel split (for full 1G low memory)"
+Reverse selects:
+
+
+### CONFIG_ZRAM
+Defconfig: {'value': 'y', 'line': 209}
+drivers/block/zram/Kconfig
+2: config ZRAM
+3: 	tristate "Compressed RAM block device support"
+4: 	depends on BLOCK && SYSFS && MMU
+5: 	select ZSMALLOC
+6: 	help
+7: 	  Creates virtual block devices called /dev/zramX (X = 0, 1, ...).
+8: 	  Pages written to these disks are compressed and stored in memory
+9: 	  itself. These disks allow very fast I/O and compression provides
+10: 	  good amounts of memory savings.
+11: 
+12: 	  It has several use cases, for example: /tmp storage, use as swap
+13: 	  disks and maybe many more.
+14: 
+15: 	  See Documentation/admin-guide/blockdev/zram.rst for more information.
+16: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_BACKEND_842
+Defconfig: absent
+drivers/block/zram/Kconfig
+41: config ZRAM_BACKEND_842
+42: 	bool "842 compression support"
+43: 	depends on ZRAM
+44: 	select 842_COMPRESS
+45: 	select 842_DECOMPRESS
+46: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_BACKEND_DEFLATE
+Defconfig: absent
+drivers/block/zram/Kconfig
+35: config ZRAM_BACKEND_DEFLATE
+36: 	bool "deflate compression support"
+37: 	depends on ZRAM
+38: 	select ZLIB_DEFLATE
+39: 	select ZLIB_INFLATE
+40: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_BACKEND_FORCE_LZO
+Defconfig: absent
+drivers/block/zram/Kconfig
+47: config ZRAM_BACKEND_FORCE_LZO
+48: 	depends on ZRAM
+49: 	def_bool !ZRAM_BACKEND_LZ4 && !ZRAM_BACKEND_LZ4HC && \
+50: 		!ZRAM_BACKEND_ZSTD && !ZRAM_BACKEND_DEFLATE && \
+51: 		!ZRAM_BACKEND_842
+52: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_BACKEND_LZ4
+Defconfig: absent
+drivers/block/zram/Kconfig
+17: config ZRAM_BACKEND_LZ4
+18: 	bool "lz4 compression support"
+19: 	depends on ZRAM
+20: 	select LZ4_COMPRESS
+21: 	select LZ4_DECOMPRESS
+22: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_BACKEND_LZ4HC
+Defconfig: absent
+drivers/block/zram/Kconfig
+23: config ZRAM_BACKEND_LZ4HC
+24: 	bool "lz4hc compression support"
+25: 	depends on ZRAM
+26: 	select LZ4HC_COMPRESS
+27: 	select LZ4_DECOMPRESS
+28: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_BACKEND_LZO
+Defconfig: absent
+drivers/block/zram/Kconfig
+53: config ZRAM_BACKEND_LZO
+54: 	bool "lzo and lzo-rle compression support" if !ZRAM_BACKEND_FORCE_LZO
+55: 	depends on ZRAM
+56: 	default ZRAM_BACKEND_FORCE_LZO
+57: 	select LZO_COMPRESS
+58: 	select LZO_DECOMPRESS
+59: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_BACKEND_ZSTD
+Defconfig: absent
+drivers/block/zram/Kconfig
+29: config ZRAM_BACKEND_ZSTD
+30: 	bool "zstd compression support"
+31: 	depends on ZRAM
+32: 	select ZSTD_COMPRESS
+33: 	select ZSTD_DECOMPRESS
+34: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_DEF_COMP
+Defconfig: absent
+drivers/block/zram/Kconfig
+95: config ZRAM_DEF_COMP
+96: 	string
+97: 	depends on ZRAM
+98: 	default "lzo-rle" if ZRAM_DEF_COMP_LZORLE
+99: 	default "lzo" if ZRAM_DEF_COMP_LZO
+100: 	default "lz4" if ZRAM_DEF_COMP_LZ4
+101: 	default "lz4hc" if ZRAM_DEF_COMP_LZ4HC
+102: 	default "zstd" if ZRAM_DEF_COMP_ZSTD
+103: 	default "deflate" if ZRAM_DEF_COMP_DEFLATE
+104: 	default "842" if ZRAM_DEF_COMP_842
+105: 	default "unset-value"
+106: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_DEF_COMP_842
+Defconfig: absent
+drivers/block/zram/Kconfig
+89: config ZRAM_DEF_COMP_842
+90: 	bool "842"
+91: 	depends on ZRAM_BACKEND_842
+92: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_DEF_COMP_DEFLATE
+Defconfig: absent
+drivers/block/zram/Kconfig
+85: config ZRAM_DEF_COMP_DEFLATE
+86: 	bool "deflate"
+87: 	depends on ZRAM_BACKEND_DEFLATE
+88: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_DEF_COMP_LZ4
+Defconfig: absent
+drivers/block/zram/Kconfig
+73: config ZRAM_DEF_COMP_LZ4
+74: 	bool "lz4"
+75: 	depends on ZRAM_BACKEND_LZ4
+76: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_DEF_COMP_LZ4HC
+Defconfig: absent
+drivers/block/zram/Kconfig
+77: config ZRAM_DEF_COMP_LZ4HC
+78: 	bool "lz4hc"
+79: 	depends on ZRAM_BACKEND_LZ4HC
+80: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_DEF_COMP_LZO
+Defconfig: absent
+drivers/block/zram/Kconfig
+69: config ZRAM_DEF_COMP_LZO
+70: 	bool "lzo"
+71: 	depends on ZRAM_BACKEND_LZO
+72: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_DEF_COMP_LZORLE
+Defconfig: absent
+drivers/block/zram/Kconfig
+65: config ZRAM_DEF_COMP_LZORLE
+66: 	bool "lzo-rle"
+67: 	depends on ZRAM_BACKEND_LZO
+68: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_DEF_COMP_ZSTD
+Defconfig: absent
+drivers/block/zram/Kconfig
+81: config ZRAM_DEF_COMP_ZSTD
+82: 	bool "zstd"
+83: 	depends on ZRAM_BACKEND_ZSTD
+84: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_MEMORY_TRACKING
+Defconfig: absent
+drivers/block/zram/Kconfig
+129: config ZRAM_MEMORY_TRACKING
+130: 	bool "Track zRam block status"
+131: 	depends on ZRAM && DEBUG_FS
+132: 	select ZRAM_TRACK_ENTRY_ACTIME
+133: 	help
+134: 	  With this feature, admin can track the state of allocated blocks
+135: 	  of zRAM. Admin could see the information via
+136: 	  /sys/kernel/debug/zram/zramX/block_state.
+137: 
+138: 	  See Documentation/admin-guide/blockdev/zram.rst for more information.
+139: 
+Reverse selects:
+
+
+### CONFIG_ZRAM_MULTI_COMP
+Defconfig: absent
+drivers/block/zram/Kconfig
+140: config ZRAM_MULTI_COMP
+141: 	bool "Enable multiple compression streams"
+142: 	depends on ZRAM
+143: 	help
+144: 	  This will enable multi-compression streams, so that ZRAM can
+145: 	  re-compress pages using a potentially slower but more effective
+146: 	  compression algorithm. Note, that IDLE page recompression
+147: 	  requires ZRAM_TRACK_ENTRY_ACTIME.
+Reverse selects:
+
+
+### CONFIG_ZRAM_TRACK_ENTRY_ACTIME
+Defconfig: absent
+drivers/block/zram/Kconfig
+121: config ZRAM_TRACK_ENTRY_ACTIME
+122: 	bool "Track access time of zram entries"
+123: 	depends on ZRAM
+124: 	help
+125: 	  With this feature zram tracks access time of every stored
+126: 	  entry (page), which can be used for a more fine grained IDLE
+127: 	  pages writeback.
+128: 
+Reverse selects:
+ZRAM_MEMORY_TRACKING at drivers/block/zram/Kconfig:132: select ZRAM_TRACK_ENTRY_ACTIME
+
+### CONFIG_ZRAM_WRITEBACK
+Defconfig: absent
+drivers/block/zram/Kconfig
+107: config ZRAM_WRITEBACK
+108:        bool "Write back incompressible or idle page to backing device"
+109:        depends on ZRAM
+110:        help
+111: 	 This lets zram entries (incompressible or idle pages) be written
+112: 	 back to a backing device, helping save memory.
+113: 	 For this feature, admin should set up backing device via
+114: 	 /sys/block/zramX/backing_dev.
+115: 
+116: 	 With /sys/block/zramX/{idle,writeback}, application could ask
+117: 	 idle page's writeback to the backing device to save in memory.
+118: 
+119: 	 See Documentation/admin-guide/blockdev/zram.rst for more information.
+120: 
+Reverse selects:
+
+
+### CONFIG_ZSMALLOC
+Defconfig: absent
+mm/Kconfig
+202: config ZSMALLOC
+203: 	tristate
+204: 	prompt "N:1 compression allocator (zsmalloc)" if (ZSWAP || ZRAM)
+205: 	depends on MMU
+206: 	help
+207: 	  zsmalloc is a slab-based memory allocator designed to store
+208: 	  pages of various compression levels efficiently. It achieves
+209: 	  the highest storage density with the least amount of fragmentation.
+210: 
+Reverse selects:
+ZRAM at drivers/block/zram/Kconfig:5: select ZSMALLOC
+ZSWAP_ZPOOL_DEFAULT_ZSMALLOC at mm/Kconfig:160: select ZSMALLOC
+
+### CONFIG_ZSMALLOC_CHAIN_SIZE
+Defconfig: absent
+mm/Kconfig
+221: config ZSMALLOC_CHAIN_SIZE
+222: 	int "Maximum number of physical pages per-zspage"
+223: 	default 8
+224: 	range 4 16
+225: 	depends on ZSMALLOC
+226: 	help
+227: 	  This option sets the upper limit on the number of physical pages
+228: 	  that a zmalloc page (zspage) can consist of. The optimal zspage
+229: 	  chain size is calculated for each size class during the
+230: 	  initialization of the pool.
+231: 
+232: 	  Changing this option can alter the characteristics of size classes,
+233: 	  such as the number of pages per zspage and the number of objects
+234: 	  per zspage. This can also result in different configurations of
+235: 	  the pool, as zsmalloc merges size classes with similar
+236: 	  characteristics.
+237: 
+238: 	  For more information, see zsmalloc documentation.
+239: 
+Reverse selects:
+
+
+### CONFIG_ZSMALLOC_STAT
+Defconfig: absent
+mm/Kconfig
+211: config ZSMALLOC_STAT
+212: 	bool "Export zsmalloc statistics"
+213: 	depends on ZSMALLOC
+214: 	select DEBUG_FS
+215: 	help
+216: 	  This option enables code in the zsmalloc to collect various
+217: 	  statistics about what's happening in zsmalloc and exports that
+218: 	  information to userspace via debugfs.
+219: 	  If unsure, say N.
+220: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP
+Defconfig: absent
+mm/Kconfig
+25: config ZSWAP
+26: 	bool "Compressed cache for swap pages"
+27: 	depends on SWAP
+28: 	select CRYPTO
+29: 	select ZPOOL
+30: 	help
+31: 	  A lightweight compressed cache for swap pages.  It takes
+32: 	  pages that are in the process of being swapped out and attempts to
+33: 	  compress them into a dynamically allocated RAM-based memory pool.
+34: 	  This can result in a significant I/O reduction on swap device and,
+35: 	  in the case where decompressing from RAM is faster than swap device
+36: 	  reads, can also improve workload performance.
+37: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_COMPRESSOR_DEFAULT
+Defconfig: absent
+mm/Kconfig
+117: config ZSWAP_COMPRESSOR_DEFAULT
+118:        string
+119:        depends on ZSWAP
+120:        default "deflate" if ZSWAP_COMPRESSOR_DEFAULT_DEFLATE
+121:        default "lzo" if ZSWAP_COMPRESSOR_DEFAULT_LZO
+122:        default "842" if ZSWAP_COMPRESSOR_DEFAULT_842
+123:        default "lz4" if ZSWAP_COMPRESSOR_DEFAULT_LZ4
+124:        default "lz4hc" if ZSWAP_COMPRESSOR_DEFAULT_LZ4HC
+125:        default "zstd" if ZSWAP_COMPRESSOR_DEFAULT_ZSTD
+126:        default ""
+127: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_COMPRESSOR_DEFAULT_842
+Defconfig: absent
+mm/Kconfig
+92: config ZSWAP_COMPRESSOR_DEFAULT_842
+93: 	bool "842"
+94: 	select CRYPTO_842
+95: 	help
+96: 	  Use the 842 algorithm as the default compression algorithm.
+97: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_COMPRESSOR_DEFAULT_DEFLATE
+Defconfig: absent
+mm/Kconfig
+80: config ZSWAP_COMPRESSOR_DEFAULT_DEFLATE
+81: 	bool "Deflate"
+82: 	select CRYPTO_DEFLATE
+83: 	help
+84: 	  Use the Deflate algorithm as the default compression algorithm.
+85: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4
+Defconfig: absent
+mm/Kconfig
+98: config ZSWAP_COMPRESSOR_DEFAULT_LZ4
+99: 	bool "LZ4"
+100: 	select CRYPTO_LZ4
+101: 	help
+102: 	  Use the LZ4 algorithm as the default compression algorithm.
+103: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4HC
+Defconfig: absent
+mm/Kconfig
+104: config ZSWAP_COMPRESSOR_DEFAULT_LZ4HC
+105: 	bool "LZ4HC"
+106: 	select CRYPTO_LZ4HC
+107: 	help
+108: 	  Use the LZ4HC algorithm as the default compression algorithm.
+109: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZO
+Defconfig: absent
+mm/Kconfig
+86: config ZSWAP_COMPRESSOR_DEFAULT_LZO
+87: 	bool "LZO"
+88: 	select CRYPTO_LZO
+89: 	help
+90: 	  Use the LZO algorithm as the default compression algorithm.
+91: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD
+Defconfig: absent
+mm/Kconfig
+110: config ZSWAP_COMPRESSOR_DEFAULT_ZSTD
+111: 	bool "zstd"
+112: 	select CRYPTO_ZSTD
+113: 	help
+114: 	  Use the zstd algorithm as the default compression algorithm.
+Reverse selects:
+
+
+### CONFIG_ZSWAP_DEFAULT_ON
+Defconfig: absent
+mm/Kconfig
+38: config ZSWAP_DEFAULT_ON
+39: 	bool "Enable the compressed cache for swap pages by default"
+40: 	depends on ZSWAP
+41: 	help
+42: 	  If selected, the compressed cache for swap pages will be enabled
+43: 	  at boot, otherwise it will be disabled.
+44: 
+45: 	  The selection made here can be overridden by using the kernel
+46: 	  command line 'zswap.enabled=' option.
+47: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_SHRINKER_DEFAULT_ON
+Defconfig: absent
+mm/Kconfig
+48: config ZSWAP_SHRINKER_DEFAULT_ON
+49: 	bool "Shrink the zswap pool on memory pressure"
+50: 	depends on ZSWAP
+51: 	default n
+52: 	help
+53: 	  If selected, the zswap shrinker will be enabled, and the pages
+54: 	  stored in the zswap pool will become available for reclaim (i.e
+55: 	  written back to the backing swap device) on memory pressure.
+56: 
+57: 	  This means that zswap writeback could happen even if the pool is
+58: 	  not yet full, or the cgroup zswap limit has not been reached,
+59: 	  reducing the chance that cold pages will reside in the zswap pool
+60: 	  and consume memory indefinitely.
+61: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_ZPOOL_DEFAULT
+Defconfig: absent
+mm/Kconfig
+165: config ZSWAP_ZPOOL_DEFAULT
+166:        string
+167:        depends on ZSWAP
+168:        default "zbud" if ZSWAP_ZPOOL_DEFAULT_ZBUD
+169:        default "z3fold" if ZSWAP_ZPOOL_DEFAULT_Z3FOLD_DEPRECATED
+170:        default "zsmalloc" if ZSWAP_ZPOOL_DEFAULT_ZSMALLOC
+171:        default ""
+172: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_ZPOOL_DEFAULT_Z3FOLD_DEPRECATED
+Defconfig: absent
+mm/Kconfig
+149: config ZSWAP_ZPOOL_DEFAULT_Z3FOLD_DEPRECATED
+150: 	bool "z3foldi (DEPRECATED)"
+151: 	select Z3FOLD_DEPRECATED
+152: 	help
+153: 	  Use the z3fold allocator as the default allocator.
+154: 
+155: 	  Deprecated and scheduled for removal in a few cycles,
+156: 	  see CONFIG_Z3FOLD_DEPRECATED.
+157: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_ZPOOL_DEFAULT_ZBUD
+Defconfig: absent
+mm/Kconfig
+143: config ZSWAP_ZPOOL_DEFAULT_ZBUD
+144: 	bool "zbud"
+145: 	select ZBUD
+146: 	help
+147: 	  Use the zbud allocator as the default allocator.
+148: 
+Reverse selects:
+
+
+### CONFIG_ZSWAP_ZPOOL_DEFAULT_ZSMALLOC
+Defconfig: absent
+mm/Kconfig
+158: config ZSWAP_ZPOOL_DEFAULT_ZSMALLOC
+159: 	bool "zsmalloc"
+160: 	select ZSMALLOC
+161: 	help
+162: 	  Use the zsmalloc allocator as the default allocator.
+Reverse selects:
+

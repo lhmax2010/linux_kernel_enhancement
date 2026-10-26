@@ -1,0 +1,11 @@
+branch=sandbox/swadas/selinux
+tip=271f7d7add415f98fc0a182ee8cb19afaf61d3ac
+merge_base_tizen=8cdc66794c4281f47cc90efe8b218add97303274
+full_ahead=1 full_behind=10
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/swadas/selinux --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=1
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__swadas__selinux_ahead_01.txt: bytes=148 sha256=451c87290427ec26e1efb5fa65a7c1967301861a48744fa3fafacb3e68b1ba6e
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+271f7d7add415f98fc0a182ee8cb19afaf61d3ac	Stanislaw Wadas <s.wadas@samsung.com>	2026-07-09T12:50:09+02:00	Add SELinux as a main lsm instead of SMACK

@@ -1,0 +1,95 @@
+branch=sandbox/mszyprowski/thp_stabilize2
+tip=058cb8e7a546e7e7ea2b0aaa8d509e71085f0939
+merge_base_tizen=219d54332a09e8d8741c1e1982f5eae56099de85
+full_ahead=7930 full_behind=455938
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/mszyprowski/thp_stabilize2 --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=84
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__mszyprowski__thp_stabilize2_ahead_01.txt: bytes=849969 sha256=5e15f65bcfe412ad7c9052434ac12b0ee01d83c3d5124bd195d861573bd1f1da
+sandbox__mszyprowski__thp_stabilize2_ahead_02.txt: bytes=421937 sha256=bb216393c4bc58ae265760015ca67bb50cc275a3a4f996eebd16f1170e3c7149
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+058cb8e7a546e7e7ea2b0aaa8d509e71085f0939	Marek Szyprowski <m.szyprowski@samsung.com>	2021-04-01T13:08:50+02:00	thp: add separate counters for 64KB anonymous THPs
+48bddc8f5ffac4bf30f0cd38a020fb1ed8a94a4a	Marek Szyprowski <m.szyprowski@samsung.com>	2021-04-01T13:07:42+02:00	thp: reorder enums to match vmstat_text mm/vmstat.c
+0b890e53bd609f4de6f3ed4e0f3b25c3702e5b02	Marek Szyprowski <m.szyprowski@samsung.com>	2021-04-01T10:49:33+02:00	thp: fix potential NULL pointer dereference in debug messages
+7afe7f551f016c1bc3361203d0c38429db52dbb8	Marek Szyprowski <m.szyprowski@samsung.com>	2021-04-01T10:19:29+02:00	thp: don't leak preallocated 2M huge page if 64k page is applied
+a329712ea85f299d0ac829dfdc8a3ff84ea6329b	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-31T15:21:39+02:00	thp: fix mapping a 64k THP at the 2M boundary for the new process
+af98b14900ee4597addc58fc6e211c23197c1c0e	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-29T14:40:14+02:00	thp: final fix for unmap/split related issues
+587c805a2131c3dedccde2455dcc398bdea41715	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-24T15:25:21+01:00	thp: even more fixes for the cleanup paths
+fa7260783573052981008e3e19c1bc3cc019bd17	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-18T08:08:16+01:00	THP: enable THP only if disk pages are properly aligned
+28b208e40c6eee01b8e7434ea150de48952cc29b	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-17T15:22:11+01:00	THP: disable sanity check
+56e9e4627793c088a09d738a0208fc04eeeeb0ef	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-15T14:18:58+01:00	thp: rework mmap
+f517d6f8331d142f4f7602d90473771026621f1f	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-16T15:34:17+01:00	thp: add potential important warning
+ddf0e2b2a4ac8e3831a3566249ffa07499e3ac1e	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-16T15:30:34+01:00	THP: simplify the code
+9bbe970dc865ef7cca8cc5a6010d9fe9607e1507	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-16T15:22:05+01:00	THP: sanity check
+f5f59f34d8ce40f795775274bf849e52fe7b281b	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-16T15:00:34+01:00	THP: fix and simplify copy pages code
+b251e812f7e7194e4c214bb37210a2e8296e806d	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-16T14:57:59+01:00	thp: don't leak 2M huge page in each scan try
+8d4f2b26e88533a4504e405d35d22ef110ebb616	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-16T11:59:25+01:00	thp: another fix
+de12114b1c7bd6ec5a401f0c5329aae434328c77	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-15T10:32:03+01:00	thp: another fix
+7818a433e7209be93cc98545440c604c7c00f44f	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-12T15:59:17+01:00	THP: real fixes
+e04edb366411dd6f466f319150db5c1dd23f71b2	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-15T14:14:02+01:00	vc4: disable debugs
+29c9a1cad24af344917d60c1bedc26f562165138	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-01T10:00:06+01:00	mm: thp: enable aligning all mmapped files
+898dd9adf03331b6332bcb759ec1a795d2a901f0	Marek Szyprowski <m.szyprowski@samsung.com>	2021-03-01T09:59:21+01:00	mm: thp: fix partial unmap of phys PMD
+747a8a4506f8430d7690990071696ea80b124d67	Marek Szyprowski <m.szyprowski@samsung.com>	2021-02-26T11:38:23+01:00	mm: thp: add missing case to vma_adjust_trans_huge
+c54c8afaff0ce9a7f696d36aaa02d8db3f8dcba6	Marek Szyprowski <m.szyprowski@samsung.com>	2021-02-26T11:36:50+01:00	mm: thp: add support for splitting thp pfn range mappings
+c1613b6479fae1083459ccd42c4f4fc077277fc2	Marek Szyprowski <m.szyprowski@samsung.com>	2021-02-22T14:40:36+01:00	mm: thp: add counters for physical memory mmaped to userspace
+1a1a44be04620d16de56056956a03b85ae8453bc	Marek Szyprowski <m.szyprowski@samsung.com>	2021-02-16T14:41:45+01:00	mm: thp: map CMA buffers with 64K or 2M huge pages
+7a9e6cf0d63ec637b51a4e069ccfaadc0a5dc44c	Marek Szyprowski <m.szyprowski@samsung.com>	2021-02-18T07:40:50+01:00	ARM64: defconfig: bcm2711: change maximum CMA buffer alignment to 2M
+b076e6cdc7c9291e35ae3bb0b5d47b200e15e032	Marek Szyprowski <m.szyprowski@samsung.com>	2021-02-18T16:10:48+01:00	drm: vc4: align mmaped buffers to huge page boundary
+a33c9e2493481ad9d8a0199a5f03bafc6877fab3	Marek Szyprowski <m.szyprowski@samsung.com>	2021-02-16T12:16:49+01:00	mm: thp: align mmap regions to 64K/2M
+69036605b359653157580171b3caf1172462c75d	Marek Szyprowski <m.szyprowski@samsung.com>	2021-02-16T12:15:30+01:00	mm: thp: fix warnings
+b075ad0f947afb2351501d8d24045411271b0d46	Sung-hun Kim <sfoon.kim@samsung.com>	2021-03-17T23:54:12+09:00	mm: THP: bug-fixes: resolve condition mis-matching
+ea9b764287de89cb8a756ec8b932719759fd2588	Sung-hun Kim <sfoon.kim@samsung.com>	2021-03-17T23:50:31+09:00	mm: THP: bug-fixes: resolve unexpected scanning for unmapped regions
+c306abb64906ff1c61c21c7c103345139ae4c664	Sung-hun Kim <sfoon.kim@samsung.com>	2021-03-09T17:06:18+09:00	mm: THP: extend 64KB hugepage for anonymous pages
+23fb286e14441fb81f5e88f8a4f1553c43c688a2	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-25T19:19:10+09:00	mm: THP: add memory hook for quick hugepage merging
+659db618ac568e8cebd28c3838fd3ba66f9ebc27	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-17T08:50:51+09:00	mm: THP: remove debugging message
+e9c21ffabee114f81a52207c48679104b4a853f0	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-08T17:34:51+09:00	mm: THP: remove unnecessary code and debugging messages
+29186e65a0f3abb6a6d0249c5e7cb4d60eb02af0	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-08T10:11:46+09:00	mm: THP: resolve an issue about available memory statistics
+045adf95b65d1d7fe1979bd443784744896d814f	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-04T13:43:06+09:00	mm: THP: clean codes and remove debugging messages
+0e32a0fae2d838813c507030067d22366d37841c	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-03T15:48:38+09:00	mm: THP: debug: modify contents of debugging messages
+bbeb5c3c91d6a88908a06fc8dca1f41434c04aae	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-03T15:12:26+09:00	mm: THP: change subpage finding for 64KB hugepage
+119846c6da39aea626afdda266d5ea54190358de	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-03T15:06:04+09:00	mm: THP: resolve cgroup charge issue on releasing 64KB hugepage
+cf645b1beafa49c67c741ade04100c38aa1e3c92	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-29T15:19:48+09:00	mm: THP: the first stable version of 64KB transparent hugepage
+38f8981cd4580d3551456cc08cac262e499f6e33	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-18T17:06:38+09:00	mm: THP: delaying changes of contiguous mapping in page-fault time
+c898937fff8951fd154beb2c150e5d14e3c36900	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-09T02:19:24+09:00	Merge branch 'sandbox/sebuns2/use_hugepage' of ssh://review.tizen.org:29418/platform/kernel/linux-rpi into sandbox/sebuns2/use_hugepage
+8c3e36f11281eeedda0615734c1fde4d313861f7	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-09T02:17:14+09:00	mm: THP: finding bugs for abnormally terminated processes (in progress)
+444759f0d65471316cc3ea5998ae381ab0223f8e	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-08T15:38:08+09:00	mm: THP: handling split of hugepages
+b11db665513c6d14803da3ab0b016ffe6926c5a9	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-08T15:38:08+09:00	mm: THP: handling split of hugepages
+958953b4c787d7095c8cb6d3e8119d9c9b92ad5e	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-08T15:38:08+09:00	mm: THP: handling split of hugepages
+d17f519e7d6704467e3ff89841d99057768b602d	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-06T09:23:34+09:00	mm: THP: add unmap and split handling for 64KB hugepages
+9a65f3e723899fc9641ca3d09db8c17cbc266de7	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-31T16:31:47+09:00	mm:THP: handling unmap for 64KB hugepage
+f75e158868f5e9d3181b05f965c077b6e365aa6a	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-31T16:31:07+09:00	Merge branch 'sandbox/sebuns2/use_hugepage' of ssh://review.tizen.org:29418/platform/kernel/linux-rpi into sandbox/sebuns2/use_hugepage
+1554c4eed8ccceb70cd74f916ca45d9c79a64abc	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T20:48:33+09:00	mm: THP: intermediate commit for handling unmap_vma
+1a75a45afd2879286aef669617ee84ad77e2f906	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T11:53:11+09:00	mm: THP: allow remove rmap of hugepage only for 2MB hugepages
+22962f4d9f88fe4ede498a5b373368c01a638559	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T10:36:18+09:00	mm: THP: disable unnecessary debugging messages
+3898376dff6ba23fbd224a5bf80022bd9c82685b	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T10:32:44+09:00	mm: THP: disable a debugging message for scanning anonymous page
+ba99cbfd22b0462eae3bf5c038d852635126fa99	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T01:47:41+09:00	mm: THP: handle delayed mapping controls
+0184ceaf3d8696457b0d996fa132ab2979865885	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-24T13:11:46+09:00	mm: THP: add mm counters for 64KB hugepage
+de52eb9fdb030b939f824d14fedc11ca68eb0765	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-23T15:51:09+09:00	mm: THP: commentize debugging message (wrong flag)
+1ebaed0a63b8da87e78cb25413bda4839d65ad54	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-22T17:35:40+09:00	mm: THP: fix buggy behavior in making hugepage from anoymous pages
+6d7560f858a559c844a56a0fba8346a4026374a8	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-18T17:26:13+09:00	mm: THP: add 64KB hugepage in THP (3)
+50da90d1b8f6b97a2672269c4c4f0b77ee3c5aa7	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-16T16:26:41+09:00	mm: THP: add page fault handling for mid-size hugepage
+dc176d4558faaf9d73b8ec3bae9913d978c51012	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-14T18:00:43+09:00	mm: THP: add cont-pte hugepage fault handler
+73d44b11956a47748e67b23f647da8bc6fd35627	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-14T15:53:35+09:00	mm: THP: add debugging messages
+bce4b351d89c35885ed4fab48137739e259ab0ff	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-02T15:44:41+09:00	Intermediate commit: must be recommitted
+c894a96b0da15b5db36afd3a847a6eccb1159acb	Sung-hun Kim <sfoon.kim@samsung.com>	2020-11-09T16:26:46+09:00	Revert "ARM64: configs: tizen_bcm2711_defconfig: enable CONFIG_LKSM"
+ae03784cae89a884dde18964b4aef300fb842edf	Sung-hun Kim <sfoon.kim@samsung.com>	2020-11-09T16:26:06+09:00	Revert "ARM64: configs: tizen_bcm2711_defconfig: enable CONFIG_LKSM_FILTER"
+b7fe7db7bdf02d6b8b844fa7d5289faa091ca270	Sung-hun Kim <sfoon.kim@samsung.com>	2020-10-12T12:05:32+09:00	mm:khugepaged:add debugging messages to anlalyze hugepage impacts
+2fe51a504b9803372b3ff1d3a21a8d23eaefddb6	Sung-hun Kim <sfoon.kim@samsung.com>	2020-09-21T16:22:09+09:00	ARM64: defconfig: enable configs for using hugepage
+00624ed3ae28b1235dc3ccb46eeffac255467570	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T20:48:33+09:00	mm: THP: intermediate commit for handling unmap_vma
+6263cd2399984ee9443b22b223794e394db9e8b8	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T11:53:11+09:00	mm: THP: allow remove rmap of hugepage only for 2MB hugepages
+235f8e43cfd13289c03e42e4eb93d752ee0a9cf7	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T10:36:18+09:00	mm: THP: disable unnecessary debugging messages
+b82b988678108595846baa4073662ad814196c0f	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T10:32:44+09:00	mm: THP: disable a debugging message for scanning anonymous page
+6584b69f46e67458559cd31f8b22d12726774eb6	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T01:47:41+09:00	mm: THP: handle delayed mapping controls
+a6574b51b6d7a727ba50ecf7d10c42775a5b1dec	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-24T13:11:46+09:00	mm: THP: add mm counters for 64KB hugepage
+0a28c4dacbc963c54fd9a4b227d73de0e3e44306	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-23T15:51:09+09:00	mm: THP: commentize debugging message (wrong flag)
+5fbee3fbbc61382a7f59eeec828a59a0b1171130	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-22T17:35:40+09:00	mm: THP: fix buggy behavior in making hugepage from anoymous pages
+7fa3a9d47560358a3afb7044a6131d18a5b58bc1	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-18T17:26:13+09:00	mm: THP: add 64KB hugepage in THP (3)
+4896f67378768ec3487cc57e2845c5fe771c0cc4	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-16T16:26:41+09:00	mm: THP: add page fault handling for mid-size hugepage
+5fec19633849c10c28cf737fadf5719198946a47	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-14T18:00:43+09:00	mm: THP: add cont-pte hugepage fault handler
+5a3d372711639c60ac72b796901f0bd6b30c00b7	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-14T15:53:35+09:00	mm: THP: add debugging messages
+bcdc9a28a0412e082dcdcdd5a91a4a79ceaaacdc	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-02T15:44:41+09:00	Intermediate commit: must be recommitted
+38001f4ed4891b07517c1914d2cb73bca1a009a8	Sung-hun Kim <sfoon.kim@samsung.com>	2020-11-09T16:26:46+09:00	Revert "ARM64: configs: tizen_bcm2711_defconfig: enable CONFIG_LKSM"
+3e954c2f698477f486c6839c82211d80dc75119d	Sung-hun Kim <sfoon.kim@samsung.com>	2020-11-09T16:26:06+09:00	Revert "ARM64: configs: tizen_bcm2711_defconfig: enable CONFIG_LKSM_FILTER"
+a6be381510391d37448f6f844fb48e4fa01a2d9b	Sung-hun Kim <sfoon.kim@samsung.com>	2020-10-12T12:05:32+09:00	mm:khugepaged:add debugging messages to anlalyze hugepage impacts
+c3364697d4835fd8c1e157077db5dc66179de4cc	Sung-hun Kim <sfoon.kim@samsung.com>	2020-09-21T16:22:09+09:00	ARM64: defconfig: enable configs for using hugepage

@@ -1,0 +1,13 @@
+branch=sandbox/jaehoon80/devel
+tip=c042b147b853219cf8a7f7db5bb44e0d94b7d193
+merge_base_tizen=ffc253263a1375a65fa6c9f62a893e9767fbebfa
+full_ahead=13813 full_behind=112095
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/jaehoon80/devel --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=1
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__jaehoon80__devel_ahead_01.txt: bytes=849855 sha256=cb1d4b3beb8a3491e2404db3d0993918ae33d2b990a79cdec3ef1665a8f6cd9d
+sandbox__jaehoon80__devel_ahead_02.txt: bytes=849964 sha256=37954c334eabdaa25f94b787fcc17355dbdb2dac1b8619ba39d62811c1d19712
+sandbox__jaehoon80__devel_ahead_03.txt: bytes=545472 sha256=72d929e9fa3846d2613c1927e795a5ec7a4134204949235104a65a2d8aaeaf9a
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+c042b147b853219cf8a7f7db5bb44e0d94b7d193	Jaehoon Chung <jh80.chung@samsung.com>	2025-09-16T10:16:22+09:00	Add debug option for checking message

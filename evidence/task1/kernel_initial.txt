@@ -1,0 +1,133 @@
+origin	ssh://lhmax2025@review.tizen.org:29418/platform/kernel/linux-rpi (fetch)
+origin	ssh://lhmax2025@review.tizen.org:29418/platform/kernel/linux-rpi (push)
+## tizen...origin/tizen
+commit 42aeefac58edeb081aff440f0b60be71cbe49755
+Author:     Seung-Woo Kim <sw0312.kim@samsung.com>
+AuthorDate: Thu Oct 15 15:00:03 2026 +0900
+Commit:     Seung-Woo Kim <sw0312.kim@samsung.com>
+CommitDate: Thu Oct 15 15:58:42 2026 +0900
+
+    drivers: media: pci: hailo: Port Hailo accelerator driver to v4.22.0
+    
+    Port the Hailo AI accelerator PCIe device driver up to v4.22.0.
+    
+    In upstream Raspberry Pi Linux 6.12, the in-tree Hailo driver was removed
+    by commit 391c2e3f0599 ("drivers: pcie: Hailo: Remove Hailo PCIe driver")
+    in favor of out-of-tree DKMS. However, Tizen platform requires the in-tree
+    kernel driver for Hailo NPU support.
+    
+    This consolidates the restoration of the driver tree and updates it to
+    HailoRT driver v4.22.0 sourced from upstream:
+    - Upstream repo: https://github.com/hailo-ai/hailort-drivers
+    - Upstream commit: c908685efd58e78fa9e600837a954bbe931bd6c3 (tag: v4.22.0)
+    
+    Assisted-by: Gemini:gemini-3.8-flash
+    Change-Id: I8dabd94fdc0e6dbf8ed7758d6961d2a002d8edd3
+    Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+false
+# SPDX-License-Identifier: GPL-2.0
+VERSION = 6
+PATCHLEVEL = 12
+SUBLEVEL = 80
+EXTRAVERSION =
+NAME = Baby Opossum Posse
+
+# *DOCUMENTATION*
+# To see a list of typical targets execute "make help"
+# More info can be located in ./README
+# Comments in this file are targeted only to the developer, do not
+# expect to learn how to build the kernel reading this file.
+42aeefac58edeb081aff440f0b60be71cbe49755 refs/heads/tizen
+1f44beafb99bca9378811787325446255e063d31 refs/remotes/origin/HEAD
+89ab806242368bcc9110f28e6c5be874ca6fb9de refs/remotes/origin/aarch64_ilp32
+3c40d9f387ee910baddda14f30a39fad2063f60a refs/remotes/origin/accepted/tizen_10.0_unified
+3c40d9f387ee910baddda14f30a39fad2063f60a refs/remotes/origin/accepted/tizen_10.0_unified_mr
+b6322b453844b6111e4619615fc65bd29b86c83e refs/remotes/origin/accepted/tizen_10.1_unified
+519fa20e28fd3f6eddea1a94b20e28a55865d537 refs/remotes/origin/accepted/tizen_6.0_unified
+519fa20e28fd3f6eddea1a94b20e28a55865d537 refs/remotes/origin/accepted/tizen_6.0_unified_hotfix
+a00f4121cc9fe0d7a3a3b6ec7d1767e4c67d8e11 refs/remotes/origin/accepted/tizen_6.5_unified
+5730fe16892ca13daa6c86d304161da90306c804 refs/remotes/origin/accepted/tizen_7.0_unified
+dc9aad9594b2c8a18b15f6315b2d3ff1ff3dbe50 refs/remotes/origin/accepted/tizen_7.0_unified_hotfix
+433f806705013a97568344f54539a0fb34ec339c refs/remotes/origin/accepted/tizen_8.0_unified
+4bf0040f4f4051479114fa94b83bd91c16cd5d76 refs/remotes/origin/accepted/tizen_9.0_unified
+42aeefac58edeb081aff440f0b60be71cbe49755 refs/remotes/origin/accepted/tizen_unified
+21645b17c0d913e2ba7e10fbc9c993d286b3f57d refs/remotes/origin/accepted/tizen_unified_dev
+56f9df5d2a99412e808cf748d53c288314684c7e refs/remotes/origin/accepted/tizen_unified_riscv
+21645b17c0d913e2ba7e10fbc9c993d286b3f57d refs/remotes/origin/accepted/tizen_unified_sc
+21645b17c0d913e2ba7e10fbc9c993d286b3f57d refs/remotes/origin/accepted/tizen_unified_toolchain
+42aeefac58edeb081aff440f0b60be71cbe49755 refs/remotes/origin/accepted/tizen_unified_x
+3c40d9f387ee910baddda14f30a39fad2063f60a refs/remotes/origin/accepted/tizen_unified_x_asan
+5cb115cb356495bb6c4bc81e858c716665dcccb8 refs/remotes/origin/klewandowski/enable-virtio
+1f44beafb99bca9378811787325446255e063d31 refs/remotes/origin/master
+14b269a61d1466aff4377d036efe44f6bf0502a6 refs/remotes/origin/old/tizen_20200402
+3a74cf0495cd176ee50a86127eba83ebe1fb5553 refs/remotes/origin/old/tizen_20200708
+801c45f0887e898cfb5399dc7fdc0edc8954a554 refs/remotes/origin/old/tizen_20210330
+3f2d18e19187e298d97e7c98ee42a98e4996b293 refs/remotes/origin/old/tizen_20220208
+dc9aad9594b2c8a18b15f6315b2d3ff1ff3dbe50 refs/remotes/origin/old/tizen_20221209
+2149a875c236c8c9ed3d858d3a903a18089039cc refs/remotes/origin/old/tizen_20230810
+a87d60ea97d4b4fea2d5a2baee80b28228a8866d refs/remotes/origin/old/tizen_20240417
+d9f37fa00337ce7fb554341eb5659a4603462d0d refs/remotes/origin/old/tizen_20241114
+ed92b62129183e1c8c2717e8532f0111cf49ec92 refs/remotes/origin/old/tizen_20250901
+37bf8279c81ebfd7fbe77cab0d6111aebaf533af refs/remotes/origin/old/tizen_20260428
+54b4fa6d39551639cb10664f6ac78b01993a1d7e refs/remotes/origin/old/upstream-4.19.y
+e515b9902f5fa362ca66db9b01e7b2161c324c06 refs/remotes/origin/old/upstream-5.15.y
+e75220890bf6b37c5f7b1dbd81d8292ed6d96643 refs/remotes/origin/old/upstream-5.4.y
+9b5aad3a7498c261116a0251fe57f14ba9c4c6cf refs/remotes/origin/old/upstream-6.6.y
+8d376edf0af576ebda586b313d103f9042b1e6a3 refs/remotes/origin/sandbox/aadaszkiewi/dm-user
+f2c3d799708c87ccbf50e912684db822222987cf refs/remotes/origin/sandbox/dkson95/clang
+eb2786e233dc779cb0920f0ffd94f6be1951a5b1 refs/remotes/origin/sandbox/dwlee08/erofs-backports-v5.4
+46f0811bf6a4b9ab2eab0a5c11c0b3c674003efa refs/remotes/origin/sandbox/dwlee08/v5.4-erofs-deflate
+8c29e11f893001bec76ae063c51b0fa594c6fc3f refs/remotes/origin/sandbox/dwlee08/v5.4-mg-lru
+6953fba32d63c8d105694ec7174ae28fcee711d7 refs/remotes/origin/sandbox/dwlee08/v5.4-tizen-mg-lru
+46287f81b53a8606434124649fcf9d101feac0fc refs/remotes/origin/sandbox/hoegeun/next-btf
+c042b147b853219cf8a7f7db5bb44e0d94b7d193 refs/remotes/origin/sandbox/jaehoon80/devel
+f08ff9bbd937038d7e293862debc4774dd803bca refs/remotes/origin/sandbox/jaehoon80/eevdf
+7459b2911b5224bba424b8fc47905437240f8fe3 refs/remotes/origin/sandbox/jaehoon80/lz4
+b9a6e80323a03e0a0670425f0b889f333aec51a8 refs/remotes/origin/sandbox/jaehoon80/rebase
+85fcc6edce0b0df05e5d630027f37634bde078bb refs/remotes/origin/sandbox/jaehoon80/zram
+734af7d599d2d0eee0fdb6917763393dd4f6b0f6 refs/remotes/origin/sandbox/jhoon20kim/iotrace
+6bc8f6fd11a8afa5a7f64b418e397c283040cd3f refs/remotes/origin/sandbox/jkryszyn/dm-snapshot
+6cacd00e9713b1982131d00483ba2d35ac144555 refs/remotes/origin/sandbox/kfrolov1/criu
+fb3cd7334c19cb8ded5f2f553f3109863859b8ad refs/remotes/origin/sandbox/klewandowski/rpi5
+0eb2748f5d698124d24a6368936992af889ac9de refs/remotes/origin/sandbox/lhmax2025/mlgo
+a9cc39b8dd1deaa8c9cb5ae45cb815526f3dd87a refs/remotes/origin/sandbox/lhmax2025/silent-reclaim-fix
+1669e94ae93dbc4ab275e3b40c78f93a761a11ff refs/remotes/origin/sandbox/lstelmach/arm-kexec-file
+513cc7e74e7809f4feda06372a82202b88924086 refs/remotes/origin/sandbox/lstelmach/perf-libtraceevent
+ea9488c6134cb8a1cd352a897106e5339918b9b1 refs/remotes/origin/sandbox/lstelmach/rt
+f19c6559602064e6368695cce8d3fef86959d0aa refs/remotes/origin/sandbox/lstelmach/stdio-dlog
+0dc49ee335dbd0f4fcd49922011e186459b8e4ba refs/remotes/origin/sandbox/m.szyprowski/virgl
+fab22ef8f5f69b5460782e7f919441b98cf38d16 refs/remotes/origin/sandbox/mbloch/binder
+c9bf4b7ea8f543a53949d86818075057ae5f4154 refs/remotes/origin/sandbox/mmajewski2/cache-ext
+d8150042a9c093053519043202d6eb09ae859a1d refs/remotes/origin/sandbox/mszyprowski/apply_kfence_arm32b
+96673a0b603f26f496280d8034a07ded6746df9a refs/remotes/origin/sandbox/mszyprowski/thp_stabilize
+058cb8e7a546e7e7ea2b0aaa8d509e71085f0939 refs/remotes/origin/sandbox/mszyprowski/thp_stabilize2
+4444c2e8fe718062e1a0269653f0dba4ed904c22 refs/remotes/origin/sandbox/mszyprowski/vc4_hugepage
+646c1c62b03720153b0e1cc7f018e9f055465ce2 refs/remotes/origin/sandbox/mwilczynski/btf-test
+724654aa2547ed81eb4ff2732d00532959e44610 refs/remotes/origin/sandbox/mwilczynski/xenomai_patches
+fc0dad964e2b218ef40d86c8174342d1d6609252 refs/remotes/origin/sandbox/opensw0312/android-memsize
+a9291486df4461fbc8c0183da18b281f7a2139e3 refs/remotes/origin/sandbox/opensw0312/incremental_fs
+2c223d5a64a33385934963e25666aa70f81e7a86 refs/remotes/origin/sandbox/sebuns2/apply_kfence
+445b27645e82a92361765b5ed10cc33f21cd52e8 refs/remotes/origin/sandbox/sebuns2/cma_workaround
+a18f4756f0047888d77dd7eb184a33ad5ff074c3 refs/remotes/origin/sandbox/sebuns2/fine_grained_thp
+f4825da9cb3ff2548749a292ebf36374e27da82d refs/remotes/origin/sandbox/sebuns2/iotrace
+624d6479ab03377b8b792b5605d3ecf27e0e6aa8 refs/remotes/origin/sandbox/sebuns2/kernel_compression
+8423391fa02bbd4132ba86f16de5f52e3d225bcd refs/remotes/origin/sandbox/sebuns2/pgo_applied_kernel
+af6525b0546aca0af3096636b639ecd69a9facad refs/remotes/origin/sandbox/sebuns2/thp-stabilize-sandbox
+1420492cc9226ad01c8b483da14b520a5985ea04 refs/remotes/origin/sandbox/sebuns2/thp_5.10_rebase
+ec6724e22ce5bcfe65962fecd8a04c0e439d8750 refs/remotes/origin/sandbox/sebuns2/tizen-5.10.y-thp
+5ce636ad561b6ac2701b488314e0b82afb19c689 refs/remotes/origin/sandbox/sebuns2/use_hugepage
+a4fe97e13a49f05869d685bcde1799394596168b refs/remotes/origin/sandbox/sebuns2/use_lto
+dd49d1840c83359c4a842b4914badbd3d35c33ca refs/remotes/origin/sandbox/shkim/lksm
+271f7d7add415f98fc0a182ee8cb19afaf61d3ac refs/remotes/origin/sandbox/swadas/selinux
+42aeefac58edeb081aff440f0b60be71cbe49755 refs/remotes/origin/tizen
+8432a78680cf3734413760f6e4d6ceda870939b6 refs/remotes/origin/tizen_10.0
+b6322b453844b6111e4619615fc65bd29b86c83e refs/remotes/origin/tizen_10.1
+519fa20e28fd3f6eddea1a94b20e28a55865d537 refs/remotes/origin/tizen_6.0
+519fa20e28fd3f6eddea1a94b20e28a55865d537 refs/remotes/origin/tizen_6.0_hotfix
+a00f4121cc9fe0d7a3a3b6ec7d1767e4c67d8e11 refs/remotes/origin/tizen_6.5
+5730fe16892ca13daa6c86d304161da90306c804 refs/remotes/origin/tizen_7.0
+dc9aad9594b2c8a18b15f6315b2d3ff1ff3dbe50 refs/remotes/origin/tizen_7.0_hotfix
+433f806705013a97568344f54539a0fb34ec339c refs/remotes/origin/tizen_8.0
+4bf0040f4f4051479114fa94b83bd91c16cd5d76 refs/remotes/origin/tizen_9.0
+8158e5b0ed5ac74a80099d5e1af2f8f5b67e612a refs/remotes/origin/tizen_dev
+8f5ff9784f3262e6e85c68d86f8b7931827f2983 refs/remotes/origin/upstream

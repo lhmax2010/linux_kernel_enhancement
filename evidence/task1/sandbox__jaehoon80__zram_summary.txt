@@ -1,0 +1,11 @@
+branch=sandbox/jaehoon80/zram
+tip=85fcc6edce0b0df05e5d630027f37634bde078bb
+merge_base_tizen=b9a6e80323a03e0a0670425f0b889f333aec51a8
+full_ahead=1 full_behind=14
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/jaehoon80/zram --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=1
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__jaehoon80__zram_ahead_01.txt: bytes=167 sha256=39fb3bb90da950faf062f4fe1886c9b487c6a3666b446e4d4ab0ceac254c3862
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+85fcc6edce0b0df05e5d630027f37634bde078bb	Jaehoon Chung <jh80.chung@samsung.com>	2026-04-29T23:22:40+09:00	zram: Enable zstd dictionary compression support for BCM2711

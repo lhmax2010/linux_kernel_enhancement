@@ -1,0 +1,12 @@
+branch=sandbox/sebuns2/thp_5.10_rebase
+tip=1420492cc9226ad01c8b483da14b520a5985ea04
+merge_base_tizen=2c85ebc57b3e1817b6ce1a6b703928e113a90442
+full_ahead=4117 full_behind=360601
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/sebuns2/thp_5.10_rebase --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=2
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__sebuns2__thp_5.10_rebase_ahead_01.txt: bytes=662014 sha256=fa256e2daac4fccbffbe923602dd85d98c8d782e0cddfde8773e5ddc1ee42935
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+1420492cc9226ad01c8b483da14b520a5985ea04	Sung-hun Kim <sfoon.kim@samsung.com>	2021-07-06T20:51:12+09:00	arm64: defconfig: add transparent hugepage configs
+431449ab209f1ba789edee8906946cef62993c7d	Sung-hun Kim <sfoon.kim@samsung.com>	2021-07-02T18:43:36+09:00	mm: THP: introducing a fine-grained transparent hugepage technique for ARM64 architecture

@@ -1,0 +1,89 @@
+commit 6cacd00e9713b1982131d00483ba2d35ac144555
+Author:     Kirill Frolov <k.frolov+1@samsung.com>
+AuthorDate: Tue Mar 3 23:31:23 2026 +0300
+Commit:     Kirill Frolov <k.frolov+1@samsung.com>
+CommitDate: Tue Mar 3 23:31:23 2026 +0300
+
+    fix
+
+ packaging/linux-rpi.spec | 56 +++++++++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 48 insertions(+), 8 deletions(-)
+commit 6cacd00e9713b1982131d00483ba2d35ac144555
+Author: Kirill Frolov <k.frolov+1@samsung.com>
+Date:   Tue Mar 3 23:31:23 2026 +0300
+
+    fix
+
+diff --git a/packaging/linux-rpi.spec b/packaging/linux-rpi.spec
+index 611a5c8b69de..3e4f6d782d97 100644
+--- a/packaging/linux-rpi.spec
++++ b/packaging/linux-rpi.spec
+@@ -185,20 +185,60 @@ for target in %{variant} %{variant}-rt; do
+     case $target in
+ 	%{variant})
+ 	    make O=build/${target} %{config_name} %{?_smp_mflags}
+-
+-            # Build perf
+-	    # WERROR=0 make O=build/${target} -s -C tools/lib/traceevent %{?_smp_mflags}
+-            WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" %{?_smp_mflags} NO_LIBTRACEEVENT=1 NO_JEVENTS=1
+-
+-	    # Build bpftool
+-	    WERROR=0 make O=build/${target} -s -C tools/bpf/bpftool %{?_smp_mflags}
+-
+ 	;;
+ 	%{variant}-rt)
+ 	    make O=build/${target} %{config_name_rt} %{?_smp_mflags}
+ 	;;
+     esac
+ 
++    cat >> build/${target}/.config <<-"."
++	# Auto reboot, allow reboot by command
++	CONFIG_PANIC_TIMEOUT=3
++	CONFIG_MAGIC_SYSRQ=y
++	CONFIG_MAGIC_SYSRQ_DEFAULT_ENABLE=1
++	CONFIG_MAGIC_SYSRQ_SERIAL=y
++	# Turn-off CIPSO and SMACK
++	CONFIG_SECURITY_SMACK=n
++	CONFIG_NETLABEL=n
++	# Requred for CRIU
++	CONFIG_CHECKPOINT_RESTORE=y
++	CONFIG_NAMESPACES=y
++	CONFIG_UTS_NS=y
++	CONFIG_IPC_NS=y
++	CONFIG_SYSVIPC_SYSCTL=y
++	CONFIG_PID_NS=y
++	CONFIG_NET_NS=y
++	CONFIG_FHANDLE=y
++	CONFIG_EVENTFD=y
++	CONFIG_EPOLL=y
++	CONFIG_UNIX_DIAG=y
++	CONFIG_INET_DIAG=y
++	CONFIG_INET_UDP_DIAG=y
++	CONFIG_PACKET_DIAG=y
++	CONFIG_NETLINK_DIAG=y
++	CONFIG_NETFILTER_XT_MARK=y
++	CONFIG_TUN=y
++	# Not directly required, but neede for tools
++	CONFIG_INOTIFY_USER=y
++	CONFIG_FANOTIFY=y
++	CONFIG_MEMCG=y
++	CONFIG_CGROUP_DEVICE=y
++	CONFIG_MACVLAN=y
++	CONFIG_BRIDGE=y
++	CONFIG_BINFMT_MISC=y
++	# Optional things (CONFIG_MEM_SOFT_DIRTY not supported)
++	CONFIG_MEM_SOFT_DIRTY=y
++	CONFIG_USERFAULTFD=y
++	.
++    make O=build/${target} olddefconfig
++
++    # Build perf
++    # WERROR=0 make O=build/${target} -s -C tools/lib/traceevent %{?_smp_mflags}
++    WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" %{?_smp_mflags} NO_LIBTRACEEVENT=1 NO_JEVENTS=1
++
++    # Build bpftool
++    WERROR=0 make O=build/${target} -s -C tools/bpf/bpftool %{?_smp_mflags}
++
+     # Build Image/Image.gz
+     make O=build/${target} %{?_smp_mflags}
+ 

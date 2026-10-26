@@ -1,0 +1,24 @@
+branch=sandbox/opensw0312/android-memsize
+tip=fc0dad964e2b218ef40d86c8174342d1d6609252
+merge_base_tizen=d2e59dfd2830321c006d84fa0864f35cfa441504
+full_ahead=14 full_behind=6
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/opensw0312/android-memsize --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=14
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__opensw0312__android-memsize_ahead_01.txt: bytes=2303 sha256=6ddbce6c16e6eae9e6a68d3a3f1cf2f658a6c48ec636cc1d7023c9dfc17a9a42
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+fc0dad964e2b218ef40d86c8174342d1d6609252	Jaewon Kim <jaewon31.kim@samsung.com>	2024-07-12T00:17:04+09:00	ANDROID: memblock: remove CONFIG_MEMBLOCK_MEMSIZE to simplify
+f3cd1172c1035be73756680715ad468e98537c8f	Jaewon Kim <jaewon31.kim@samsung.com>	2024-05-07T17:26:27+09:00	ANDROID: memblock: introduce an early param for memsize
+27d1b28261a73e8a8958f0f0b7caceddbfa2effe	Jaewon Kim <jaewon31.kim@samsung.com>	2023-04-20T12:17:49+09:00	ANDROID: memblock: support memsize reusable to consider as reusable
+18740c607557a76ba8fc1e9003762a2bc23b12bd	Jaewon Kim <jaewon31.kim@samsung.com>	2020-06-30T11:42:23+09:00	ANDROID: memblock: print kernel internal size
+e857e9987983bdd87578bfa1c8fabd7e1e39fade	Jaewon Kim <jaewon31.kim@samsung.com>	2020-06-30T10:57:32+09:00	ANDROID: memblock: print memsize summary information
+007f0a143ea857ed6f761f430a4a17cb5cab6ea9	Jaewon Kim <jaewon31.kim@samsung.com>	2020-06-30T10:32:13+09:00	ANDROID: memblock: track kernel size on memsize
+09165a4df331e4de4afd9185e4dc18af80b2d752	Jaewon Kim <jaewon31.kim@samsung.com>	2024-07-15T16:12:25+09:00	ANDROID: memblock: recognize late freed size at memblock_free_late
+a741e2699ca2dafe42747dd66927cbbc666cf274	Jaewon Kim <jaewon31.kim@samsung.com>	2020-08-28T15:42:44+09:00	ANDROID: memblock: recognize late freed size by checking PageReserved
+7cb7e412aee1b7b74f0a5d9171ed1446219ba647	Jaewon Kim <jaewon31.kim@samsung.com>	2024-07-17T10:51:09+09:00	ANDROID: memblock: do not track obsolete_checksetup and do_early_param
+79fee0003901d7a536acdbf98cdb3c9728efbb80	Jaewon Kim <jaewon31.kim@samsung.com>	2020-06-29T02:28:44+09:00	ANDROID: memblock: track memblock changed at early param
+ffcd65ae1011674c6cd23b0e26f2aafa266d9000	Jaewon Kim <jaewon31.kim@samsung.com>	2023-04-20T12:17:49+09:00	ANDROID: memblock: take a region intersecting an unknown region
+ef40e007f3beccfee6dacb8ff5e01c2c4db99828	Jaewon Kim <jaewon31.kim@samsung.com>	2021-07-29T15:08:19+09:00	ANDROID: memblock: handle overlapped reserved memory region
+9c9ed25533a2a9f42c51e8f0518c7da56f806d68	Jaewon Kim <jaewon31.kim@samsung.com>	2020-06-29T01:54:25+09:00	ANDROID: memblock: detect hidden memory hole size
+a9c68aa24e0a1b9e266027fc504a3054fe5a65ae	Jaewon Kim <jaewon31.kim@samsung.com>	2020-06-25T17:53:09+09:00	ANDROID: memblock: introduce memsize showing reserved memory

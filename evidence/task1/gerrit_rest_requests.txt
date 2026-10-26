@@ -1,0 +1,8 @@
+GET https://review.tizen.org/gerrit/changes/?q=project%3Aplatform%2Fkernel%2Flinux-rpi+status%3Aopen&n=100&S=0&o=CURRENT_REVISION&o=CURRENT_COMMIT&o=CURRENT_FILES&o=DETAILED_ACCOUNTS
+HTTP 200 bytes=8
+XSSI prefix present=True
+open: returned 0 changes; last_start=0
+GET https://review.tizen.org/gerrit/changes/?q=project%3Aplatform%2Fkernel%2Flinux-rpi+status%3Amerged+after%3A2026-04-26+before%3A2026-10-27&n=100&S=0&o=CURRENT_REVISION&o=CURRENT_COMMIT&o=CURRENT_FILES&o=DETAILED_ACCOUNTS
+HTTP 200 bytes=8
+XSSI prefix present=True
+merged_6months: returned 0 changes; last_start=0

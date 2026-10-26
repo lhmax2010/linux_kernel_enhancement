@@ -1,0 +1,135 @@
+branch=sandbox/mwilczynski/xenomai_patches
+tip=724654aa2547ed81eb4ff2732d00532959e44610
+merge_base_tizen=ffc253263a1375a65fa6c9f62a893e9767fbebfa
+full_ahead=4772 full_behind=112095
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/mwilczynski/xenomai_patches --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=125
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__mwilczynski__xenomai_patches_ahead_01.txt: bytes=772088 sha256=d0e4172823162e21d7bf58117b8251d5908d3ce58173ce34a5f91d214ad80e45
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+724654aa2547ed81eb4ff2732d00532959e44610	Michal Wilczynski <m.wilczynski@samsung.com>	2024-07-08T16:41:42+02:00	Xenomai: Enable missing xenomai cobalt code
+a691edbf7a3eb64518445dedebad1bb6384f001d	Michal Wilczynski <m.wilczynski@samsung.com>	2024-04-15T13:49:42+02:00	Xenomai: Enable xenomai cobalt
+d94d66aff795d29eb74386c1ad84b2a8494fdac5	Michal Wilczynski <m.wilczynski@samsung.com>	2024-04-11T10:08:25+02:00	ARM64: configs: Add the new config for xenomai builds
+c01a360a0f1c3f0a3c60eb4af28fdf96c6643750	Michal Wilczynski <m.wilczynski@samsung.com>	2024-04-11T09:21:13+02:00	packaging: Don't build kernel with xenomai and rt patches
+08684311d70c43cc0c5dc714dc7a7fc3523c9e60	Philippe Gerum <rpm@xenomai.org>	2024-03-12T10:02:57+01:00	x86: irq_pipeline: add missing __noreturn annotation
+ad6aef4fa580fecc49f57e88e7a380babdb1dbba	Florian Bezdeka <florian.bezdeka@siemens.com>	2024-02-26T23:53:42+01:00	dovetail: arch: Fix fetching of the first syscall argument from compat tasks
+167fbaf4fc4886f72c6d872bbe0d14d16e90aa1c	Florian Bezdeka <florian.bezdeka@siemens.com>	2024-02-26T23:53:41+01:00	dovetail: x86: Fix detection of prctl based compat syscalls
+bb22506b5ba087c9dabad6c3050ac2ccfabb4dd5	Philippe Gerum <rpm@xenomai.org>	2023-11-24T12:09:27+01:00	genirq: irq_pipeline: fix boot hang w/ IRQ_PIPELINE off
+8c3c8e45e135be3a4b5755ddbb6bcdfc04f3af2e	Philippe Gerum <rpm@xenomai.org>	2023-11-05T16:40:05+01:00	genirq: irq_pipeline: fix state irq tracing for local_irq_*_full()
+c27801a75724d709ed0a4dfdb505f5605d3ae176	Clara Kowalsky <clara.kowalsky@siemens.com>	2023-10-24T11:32:42+02:00	arm64: dovetail: Fix undefinstr/break trap handling
+852ee86bc142c2e1050e71b2bbaff4f02410daeb	Philippe Gerum <philippe.gerum@exail.com>	2023-10-23T11:48:14+02:00	net: dovetail: introduce net struct extension
+ba54b9a65882d5684b5f3c0f297781ffd63aeaf9	Philippe Gerum <philippe.gerum@exail.com>	2023-10-20T15:37:47+02:00	net: dovetail: drop rendundant check in netif_receive_oob_list()
+54fb9c4a349584857fc90178146def1f854c15bb	Philippe Gerum <philippe.gerum@exail.com>	2023-10-20T12:42:13+02:00	net: dovetail: notify oob about socket connection requests
+02b96948a443ad7dc12f1ac8e41cfe11c766087d	Philippe Gerum <philippe.gerum@exail.com>	2023-10-29T17:00:01+01:00	genirq: irq_pipeline: enable local_irq_*_full() on both stages
+65588bc18cf1b796d6e765b662ccc1d79c3c01a6	Philippe Gerum <philippe.gerum@exail.com>	2023-10-19T09:06:36+02:00	dmaengine: bcm2835: dovetail: use IRQ forwarding
+fb677d9ce69a046d707d110695f61ca1a345fd26	Philippe Gerum <philippe.gerum@exail.com>	2023-10-19T09:06:36+02:00	dmaengine: imx-sdma: dovetail: use IRQ forwarding
+1124512cb8e102f2febdccafc6ba9268e401b726	Philippe Gerum <philippe.gerum@exail.com>	2023-10-19T09:05:58+02:00	dmaengine: virt-dma: dovetail: switch to hybrid locking
+f4dfae802bd5555c4c773cfc4b4455008d82491e	Philippe Gerum <philippe.gerum@exail.com>	2023-10-19T09:07:36+02:00	genirq: irq_pipeline: enable IRQ event forwarding
+2613956a93f8b131de283237d51b3ff58d3238f2	Philippe Gerum <rpm@xenomai.org>	2023-10-03T16:06:50+02:00	genirq: irq_pipeline: extend in_nonmaskable() to any oob context
+34861e8e26ab0472e580e0103261f065977aac15	Philippe Gerum <rpm@xenomai.org>	2023-10-05T14:43:20+02:00	net: dovetail: fix use-after-free in __sock_release()
+30db837d7d83dbc0ac2bf7f8b7867ae172efd3f2	Jan Kiszka <jan.kiszka@siemens.com>	2023-09-23T11:56:16+02:00	x86: dovetail: Fix Intel shadow stack support
+a5155b9760a0c349835238cefd88cb644c468e36	Philippe Gerum <rpm@xenomai.org>	2023-09-21T12:31:56+02:00	genirq: irq_pipeline: fix inconsistent lockdep check
+c893b6d7c701352dd9819349d515182f0bbf254e	Philippe Gerum <rpm@xenomai.org>	2023-09-21T09:33:31+02:00	dovetail: fix build w/ IRQ_PIPELINE + !DOVETAIL
+a22b72c35f1f3a9689d295f807b492d4aa700c74	Philippe Gerum <rpm@xenomai.org>	2023-09-20T17:51:18+02:00	x86: irq_pipeline: enable IPI shorthand for irq_send_oob_ipi()
+d0da0797c0f32fbcb44a7f6dc576b3890585335f	Philippe Gerum <rpm@xenomai.org>	2023-09-18T11:07:21+02:00	genirq: irq_pipeline: protect irqchip handlers on percpu irq replay
+12a1d04048e526ddb0190d1fecc5a112695fbd4a	Philippe Gerum <rpm@xenomai.org>	2023-09-14T17:54:44+02:00	genirq: irq_pipeline: fix irq flow handling with stacked irqchips
+568ed133916904fadac6dbfe66c4cb65687084c9	Philippe Gerum <rpm@xenomai.org>	2023-09-17T16:53:15+02:00	genirq: irq_pipeline: introduce smp_call_function_oob()
+decd7d385415c1b8e07578e1f2234e043c9f7483	Philippe Gerum <rpm@xenomai.org>	2023-09-17T11:40:30+02:00	arm64: irq_pipeline: export CALL_FUNCTION_OOB_IPI
+05a87f3cb7235e4b6c65821a0786d1ac3a3de225	Philippe Gerum <rpm@xenomai.org>	2023-09-17T11:40:23+02:00	ARM: irq_pipeline: export CALL_FUNCTION_OOB_IPI
+28b76a0a246b7ab0aeaf659e14e9e4b3217fdf12	Philippe Gerum <rpm@xenomai.org>	2023-09-17T11:36:26+02:00	x86: irq_pipeline: export CALL_FUNCTION_OOB_VECTOR
+9e8a8e4a9527e8fa0509ca90f2ef902a497da0ce	Philippe Gerum <rpm@xenomai.org>	2020-06-13T15:30:13+02:00	net: dovetail: enable out-of-band networking (EXPERIMENTAL)
+25e7ef24d9a5dc138533a06370250cadb960897f	Philippe Gerum <rpm@xenomai.org>	2021-03-27T19:58:54+01:00	dovetail: add out-of-band open mode (O_OOB)
+16946400dc8a14b796b1cbebfc2feee5cdf25faf	Philippe Gerum <rpm@xenomai.org>	2020-04-06T17:16:46+02:00	spi: bcm2835: dovetail: enable out-of-band transfers
+099ef377fa363db59cd82b8b4df67440c3db1af7	Philippe Gerum <rpm@xenomai.org>	2020-04-06T17:16:35+02:00	spi: dovetail: add generic support for out-of-band transfers
+d972d4f08d9cbafcaa7ef3654072310e544cc1e6	Philippe Gerum <rpm@xenomai.org>	2020-04-02T20:00:09+02:00	dmaengine: bcm2835: dovetail: enable out-of-band operations
+d2f7317acfb5c1073f7574fe417760dfc177c2ab	Philippe Gerum <rpm@xenomai.org>	2020-04-02T11:22:07+02:00	dmaengine: imx-sdma: dovetail: enable out-of-band operations
+98cc15393314bb639eb20cad69a6e1076c56fa04	Philippe Gerum <rpm@xenomai.org>	2020-04-02T11:21:32+02:00	dmaengine: virt-dma: dovetail: enable out-of-band operations
+812d9c83776fc031a7e9f59f6e08352da694dc4c	Philippe Gerum <rpm@xenomai.org>	2019-08-14T16:05:14+02:00	dmaengine: dovetail: define out-of-band DMA requests
+471837b0da94618ca7fa217e234651b5a1cd1e31	Philippe Gerum <rpm@xenomai.org>	2020-04-07T10:43:35+02:00	KVM: x86: dovetail: enable coexistence with out-of-band scheduling
+495c1d52721e76f516b73020ba175f900d6d5cb2	Philippe Gerum <rpm@xenomai.org>	2022-04-09T16:19:51+02:00	x86/fpu: dovetail: enable alternate scheduling
+1f02cb50fe5ec94274c9a73f5b6dc9c933946d1b	Philippe Gerum <rpm@xenomai.org>	2019-05-06T17:59:42+02:00	x86: dovetail: route traps
+ed21b52d1639faf816e24a7c61bf93cbf57dbb00	Philippe Gerum <rpm@xenomai.org>	2019-05-06T18:37:41+02:00	x86: dovetail: route syscalls
+bf43139c9c592936b2387f458af1c2747318c23c	Philippe Gerum <rpm@xenomai.org>	2019-05-06T17:09:23+02:00	x86: dovetail: enable alternate scheduling
+857cec11fe162cee4426a59651899c13f5d5a0d2	Philippe Gerum <rpm@xenomai.org>	2019-05-06T17:08:45+02:00	x86: dovetail: add core support
+3265ff67e98d18a0300ac980ac060aaff1bb612a	Jan Kiszka <jan.kiszka@siemens.com>	2021-06-18T08:29:53+02:00	x86/hpet: irq_pipeline: enable access to clocksource
+1c6f5dc0580e3e5925596b588b86ca01d79c7188	Philippe Gerum <rpm@xenomai.org>	2019-04-28T16:23:29+02:00	x86/hpet: irq_pipeline: enable pipelined clock events
+de2889d1f4a35e05f9f57aae2454c9921d38041a	Philippe Gerum <rpm@xenomai.org>	2019-04-28T16:18:56+02:00	x86/apic: irq_pipeline: enable pipelined clock events
+6e17b4374edbc96f2c4c2d2dea73845d53203750	Philippe Gerum <rpm@xenomai.org>	2019-04-24T16:40:19+02:00	x86: irq_pipeline: add IRQ pipeline core
+b46a3a1ad56dae2106d535e2b69eb89bfbe0cc66	Philippe Gerum <rpm@xenomai.org>	2022-02-20T16:51:17+01:00	arm64: vDSO: export user-visible MMIO clocksources
+8df5a220655209f929f08ded82db614055074c0a	Philippe Gerum <rpm@xenomai.org>	2018-09-29T16:38:00+02:00	arm64: fpsimd: dovetail: enable alternate scheduling
+cb8bb283b2c5ceaf7499c9b0e01c5fa9306f0652	Philippe Gerum <rpm@xenomai.org>	2018-09-14T09:57:59+02:00	arm64: dovetail: enable alternate scheduling
+7c998092204b76e689f96ff719d25bb88aea4caf	Philippe Gerum <rpm@xenomai.org>	2018-09-14T11:17:29+02:00	arm64: dovetail: route traps
+8d4ff3227fbf5052d223b4da891f062d6520779a	Philippe Gerum <rpm@xenomai.org>	2020-07-07T18:39:36+02:00	arm64: dovetail: route syscalls
+8e958f444e45759ff4000e5bb6cca62d459254eb	Philippe Gerum <rpm@xenomai.org>	2018-09-13T19:11:56+02:00	arm64: dovetail: add core support
+e5a6eef6469d2fea2f61726c732336bf18825d8f	Philippe Gerum <rpm@xenomai.org>	2017-08-24T19:39:20+02:00	arm64: irq_pipeline: add IRQ pipeline core
+0cbedafcc5b90f1488284ce6ab860b42a87b2dba	Philippe Gerum <rpm@xenomai.org>	2018-07-22T16:45:45+02:00	ARM: vDSO: export user-visible MMIO clocksources
+c99fc8b679aacb3364d395140cb0cc58dfeb3f53	Philippe Gerum <rpm@xenomai.org>	2020-05-12T18:08:44+02:00	ARM: dovetail: route syscalls
+2b7ad3c2094b8f73d29807b3878f87828022034c	Philippe Gerum <rpm@xenomai.org>	2020-05-12T17:55:17+02:00	ARM: dovetail: enable alternate scheduling
+2053f78e1f70c173edd0497747e48dd35fbe42a7	Philippe Gerum <rpm@xenomai.org>	2020-05-12T18:08:35+02:00	ARM: dovetail: route traps
+93d9e96b42a7f762159c8b1c7b8713c8003d8886	Philippe Gerum <rpm@xenomai.org>	2020-05-12T17:55:05+02:00	ARM: dovetail: add core support
+f7f9547ad9d8f78e0e81959026369140a02e99fa	Philippe Gerum <rpm@xenomai.org>	2019-07-05T10:59:52+02:00	ARM: l2x0: irq_pipeline: enforce atomic operations on cacheline ranges
+b81e12a370bd7f9bf7e851508f7bd8afbd802641	Philippe Gerum <rpm@xenomai.org>	2016-12-11T18:07:58+01:00	ARM: l2x0: irq_pipeline: allow for disabling write-allocate
+c8d6f2d65228d1b69ba02269e2b1914175280df4	Philippe Gerum <rpm@xenomai.org>	2020-10-10T19:44:52+02:00	clocksource/exynos_mct: irq_pipeline: enable pipelined clock events
+fc0dfb8b209f8961e79549711970837b3984871e	Philippe Gerum <rpm@xenomai.org>	2020-08-11T19:42:36+02:00	clocksource/drivers/timer-ti-dm: irq_pipeline: enable pipelined clock events
+0fe18f6a1ec7a0fde529e3cd161dfb90954ab2da	Philippe Gerum <rpm@xenomai.org>	2018-07-22T18:02:10+02:00	clocksource/arm_global_timer: irq_pipeline: enable pipelined clock events
+8bec8ef550f96dae504bb16ba80b922580d0c135	Philippe Gerum <rpm@xenomai.org>	2017-02-18T12:11:36+01:00	ARM/twd: irq_pipeline: enable pipelined clock events
+c4fb13ed82ff9da471e0d69b9c3c12d2a3726281	leo <vtk-powerlab@yandex.ru>	2019-12-24T19:12:40+01:00	clocksource/sun4i: irq_pipeline: enable pipelined clock events
+851aa353faf2da78ab8d59837cace896d8c8b600	Philippe Gerum <rpm@xenomai.org>	2019-06-03T10:28:53+02:00	clocksource/bcm2835: irq_pipeline: enable pipelined clock events
+7d76d9e33deb9462e86eb519bfcc6e889c182d14	Philippe Gerum <rpm@xenomai.org>	2017-04-05T20:48:20+02:00	clocksource/arm_arch_timer: irq_pipeline: enable pipelined clock events
+6d4df9468e09b9c42164ebb107ea14bb047b6604	Philippe Gerum <rpm@xenomai.org>	2017-04-05T19:15:47+02:00	clocksource/timer-imx-gpt: irq_pipeline: enable pipelined clock events
+a5116b81b8c5d49b4f23a20c21fee7bb3ab56197	Philippe Gerum <rpm@xenomai.org>	2016-10-24T12:48:34+02:00	ARM: irq_pipeline: add IRQ pipeline core
+cf85a43a63f213cd5a439f95575401834b414fed	Philippe Gerum <rpm@xenomai.org>	2016-07-21T21:04:43+02:00	dovetail: add core support
+12e8ad4f421e576ee4a138b0a5311dbfde3b22e0	Philippe Gerum <rpm@xenomai.org>	2017-03-19T16:52:52+01:00	irq_pipeline: add torture test module
+4e0e0f31f4b1e40ecbc274059a5c9340fec98bf9	Philippe Gerum <rpm@xenomai.org>	2017-04-06T17:52:17+02:00	irq_pipeline: add proxy tick device
+6bdcb75f9f49b51e971e7ba9a278ce11a510d749	Philippe Gerum <rpm@xenomai.org>	2017-08-25T08:49:26+02:00	drivers: irqchip: irq_pipeline: advertise immediate readiness
+069f70b3ae9c3d38041d59526ab752442eb7c522	Philippe Gerum <rpm@xenomai.org>	2019-08-15T11:57:25+02:00	regmap: irq_pipeline: enable access from the out-of-band stage
+3a28ba5d21382d97bfb4ab7df9054b14b1ceabf8	hongzha1 via Xenomai <xenomai@xenomai.org>	2021-04-14T06:33:09+02:00	pinctrl/intel: irq_pipeline: enable pipelined interrupt control
+7a085b76c3b07658114f58af68e8edffec1df41a	Philippe Gerum <rpm@xenomai.org>	2021-07-16T09:09:47+02:00	PCI: brcmstb: irq_pipeline: enable pipelined interrupt control
+595d119cb053bd37d643de1192c991997827dacc	Philippe Gerum <rpm@xenomai.org>	2021-06-29T18:19:54+02:00	memory: omap-gpmc: irq_pipeline: enable pipelined interrupt control
+8de787a45dc1a68f7484b1a5cb9c5ef2f5c2a2d2	Philippe Gerum <rpm@xenomai.org>	2022-08-12T18:57:41+02:00	irqchip/ti-sci-inta: irq_pipeline: enable pipelined interrupt control
+36df19de7463ff24c32926657c2858f0394872d6	Philippe Gerum <rpm@xenomai.org>	2021-06-29T17:55:43+02:00	irqchip/omap-intc: irq_pipeline: enable pipelined interrupt control
+76cbc4fbab1f3c0970c6bec85c7003902ffc9d0a	Philippe Gerum <rpm@xenomai.org>	2021-06-29T17:55:20+02:00	irqchip/generic: irq_pipeline: enable pipelined interrupt control
+6aaad7a4df2d5329330ceb484bdfd93b4183029f	Philippe Gerum <rpm@xenomai.org>	2020-05-16T11:46:28+02:00	gpio: xilinx: irq_pipeline: enable pipelined interrupt control
+c5f0dac9fe33c2f9018e7a3df5577f578fa26cd0	Philippe Gerum <rpm@xenomai.org>	2020-10-10T18:57:35+02:00	pinctrl: samsung: irq_pipeline: enable pipelined interrupt control
+d93c52a257134482f806805655413cceeb1edbd2	Philippe Gerum <rpm@xenomai.org>	2020-10-10T11:39:01+02:00	pinctrl: samsung: irq_pipeline: convert per-bank lock to hard form
+ac4cff670db698a74b15b3a24e3cd752ec23ba74	leo <vtk-powerlab@yandex.ru>	2019-12-24T19:14:08+01:00	pinctrl/sunxi: irq_pipeline: enable pipelined interrupt control
+787759602765b3cbf774d8dcb32de0790c11fe85	Philippe Gerum <rpm@xenomai.org>	2020-10-10T18:57:08+02:00	irqchip/exynos-combiner: irq_pipeline: enable pipelined interrupt control
+c2edb08eb9ff8de693e53890dcb8cf0f6103efd7	Philippe Gerum <rpm@xenomai.org>	2017-02-18T14:41:32+01:00	ARM: imx/gpc: irq_pipeline: enable interrupt pipeline control
+40711fb04229df187f8072353aeeca8f681e6048	Philippe Gerum <rpm@xenomai.org>	2019-05-26T17:55:08+02:00	irqchip/imx-irqsteer: irq_pipeline: enable pipelined interrupt control
+75338a1a147d6332b5c19a8c87c4a73c8dfd89bc	Philippe Gerum <rpm@xenomai.org>	2019-04-04T12:29:11+02:00	gpio: omap: irq_pipeline: enable pipelined interrupt control
+d9db16f0762dea110a0a97e0ae894a739238ceb1	Philippe Gerum <rpm@xenomai.org>	2019-02-03T18:52:44+01:00	spmi: pmic-arb: irq_pipeline: enable pipelined interrupt control
+2a7e5c2ba4c9b7147daa060fbeebed300ef83ad5	Philippe Gerum <rpm@xenomai.org>	2019-02-03T18:52:19+01:00	pinctrl: msm: irq_pipeline: enable pipelined interrupt control
+d269b044cd7fc8fdc8c55e479bb820c80918ca6c	Philippe Gerum <rpm@xenomai.org>	2018-06-15T14:02:35+02:00	gpio: pl061: irq_pipeline: enable pipelined interrupt control
+e424a6774e6bc62c3815332b65c620efbcfe720f	Philippe Gerum <rpm@xenomai.org>	2017-08-25T16:25:14+02:00	pinctrl/bcm2835: irq_pipeline: enable pipelined interrupt control
+fee16dd5ebc6d9603686d405c4074de8232d1c6e	Philippe Gerum <rpm@xenomai.org>	2017-08-24T19:00:50+02:00	irqchip/bcm2835: irq_pipeline: enable pipelined interrupt control
+1279868259a98e4b23afe3fd5be59ea3978f3ea3	Philippe Gerum <rpm@xenomai.org>	2021-07-25T15:56:34+02:00	drm/msm/mdp5: irq_pipeline: enable pipelined interrupt control
+c940761cba61e99bb523096de3b89337c603e9d9	Philippe Gerum <rpm@xenomai.org>	2017-02-20T19:18:09+01:00	irqchip/gic: irq_pipeline: enable pipelined interrupt control
+51454eaea2ef355ee9f058830aa753a09f231b0f	Philippe Gerum <rpm@xenomai.org>	2018-12-20T15:28:26+01:00	kasan: irq_pipeline: serialize reports from oob contexts
+86e3d5a1391a41cb3cddd8233cab1a974a5726db	Philippe Gerum <rpm@xenomai.org>	2018-10-03T15:30:27+02:00	KGDB: irq_pipeline: basic adaptation to oob stage
+abbb0ec7fef1c0dc6ad0a784f4a6bc2119cd9287	Philippe Gerum <rpm@xenomai.org>	2017-03-04T14:59:48+01:00	tracing: irq_pipeline: add pipeline awareness
+bde17cac7ed07f97bdd2def5b20ccdb75d1db1ba	Philippe Gerum <rpm@xenomai.org>	2017-03-07T17:38:16+01:00	stop_machine: irq_pipeline: atomic stop-context operations
+a1d2b5d319e11edd5edc9f5b822f34e37ccfa9cf	Philippe Gerum <rpm@xenomai.org>	2016-07-27T21:27:59+02:00	printk: irq_pipeline: safe printk with IRQ pipelining
+1354b990b30c64848f341a1189b0c142b366f729	Philippe Gerum <rpm@xenomai.org>	2020-06-16T11:04:16+02:00	rcu: irq_pipeline: handle non-maskable pipeline entry context
+196651ac186bd1bd3f921e1b0021dcab0e664f38	Philippe Gerum <rpm@xenomai.org>	2016-07-20T15:06:15+02:00	genirq: irq_pipeline: add IRQ pipeline core
+4d08ced5b36d90432e01fb2621e501733b0e33ab	Philippe Gerum <rpm@xenomai.org>	2020-10-27T11:25:04+01:00	clocksource/exynos_mct: turn into user-visible MMIO clocksource
+32b3cc9ab34be533aaee8cfb2ca86c882b4fae92	Philippe Gerum <rpm@xenomai.org>	2020-05-27T09:40:00+02:00	clocksource/bcm2835: turn into user-visible MMIO clocksource
+0d5566edaea65d6bee27f7446ef8b44e9c3b4d57	Philippe Gerum <rpm@xenomai.org>	2018-07-24T21:42:33+02:00	clocksource/dw_apb_timer: turn into user-visible MMIO clocksource
+69ad0d2e7aa0307568636768545b85c98f2975f6	Philippe Gerum <rpm@xenomai.org>	2018-07-11T09:27:33+02:00	clocksource/st_lpc: turn into user-visible MMIO clocksource
+79988f5c0ee95482dcc851cf32872d144526981e	Philippe Gerum <rpm@xenomai.org>	2018-07-10T18:44:45+02:00	clocksource/arm_global_timer: turn into user-visible MMIO clocksource
+38bc20feeeca57e209e89159de630482e4907bcb	Philippe Gerum <rpm@xenomai.org>	2019-12-22T18:23:43+01:00	clocksource/timer-imx-gpt: turn into user-visible MMIO clocksource
+20171a1d7a4e0e6550dede5c3f06dea3ab9ea6e0	Philippe Gerum <rpm@xenomai.org>	2020-08-11T20:03:34+02:00	clocksource/drivers/timer-ti-dm: turn into user-visible MMIO clocksource
+cad02b3f05ea9fb0c061516cae63abb3354fa4a9	Philippe Gerum <rpm@xenomai.org>	2019-12-22T17:32:22+01:00	lib/vdso: export MMIO clocksources to applications
+147227591a118d5728f9ffba01a7596e340fc4fa	Gilles Chanteperdrix <gilles.chanteperdrix@xenomai.org>	2016-07-21T00:59:57+02:00	clocksource: mmio: add user-mappable mmio clocksources
+9da5d12d849d6e1501d3609746ded708f86f5520	Philippe Gerum <rpm@xenomai.org>	2020-11-11T18:17:09+01:00	eventfd: convert to f_op->write_iter()
+ed336c08d81b88fd076c1238671ff3c5b87bccd8	Philippe Gerum <rpm@xenomai.org>	2016-12-11T16:32:28+01:00	arm64/thread: add thread-local (synchronous) flags
+6e6d89618ef56fcb506c2eed323e6f4ea9917270	Philippe Gerum <rpm@xenomai.org>	2016-12-11T16:32:28+01:00	ARM/thread: add thread-local (synchronous) flags
+51e8086e76fef35ec4e7233e02782e6ad195db3c	Philippe Gerum <rpm@xenomai.org>	2016-07-28T19:29:24+02:00	sched: add interface to synchronous flags
+15ff781f190abda3317017ac118eeb44bf391f48	Philippe Gerum <rpm@xenomai.org>	2020-10-11T12:47:36+02:00	serial: samsung: add raw console channel
+c45cf86c9076e293256bc309e23d8337c5235711	Philippe Gerum <rpm@xenomai.org>	2019-08-22T10:36:23+02:00	tty: imx: add raw console channel
+4a267246ef1b01a80c4e8ecd7c86474e1af26d4e	Philippe Gerum <rpm@xenomai.org>	2019-04-29T18:02:06+02:00	serial: 8250: add raw console channel
+075719548ba072cf9bb162ab258ca420746fff63	Philippe Gerum <rpm@xenomai.org>	2018-07-23T18:28:48+02:00	tty: st-asc: add raw console channel
+ceb9948d21d2b91dddfa1e25cf5947aa58727003	Philippe Gerum <rpm@xenomai.org>	2018-06-17T19:43:28+02:00	tty: pl011: add raw console channel
+5abd58891277b7cc1f73a6d719da19ab9c6accd2	Philippe Gerum <rpm@xenomai.org>	2015-12-07T11:49:50+01:00	ARM: introduce raw console device
+d6856ac46b0e3a91fb1107f65fb0a3821b631213	Philippe Gerum <rpm@xenomai.org>	2015-12-05T18:36:25+01:00	printk: introduce raw console channel
+a80d539bb282607b90c13e550340483389adacb0	Michal <michalw628@gmail.com>	2024-04-05T11:31:02+02:00	Revert "Linux 6.6.15-rt22"

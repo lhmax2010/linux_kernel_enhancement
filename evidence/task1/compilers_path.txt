@@ -1,0 +1,12 @@
+/usr/bin/x86_64-linux-gnu-gcc-13	x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+/usr/bin/gcc-13	gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+/usr/bin/c89-gcc	gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+/usr/bin/c99-gcc	gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+/usr/bin/x86_64-linux-gnu-gcc	x86_64-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+/usr/bin/gcc	gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+/bin/x86_64-linux-gnu-gcc-13	x86_64-linux-gnu-gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+/bin/gcc-13	gcc-13 (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+/bin/c89-gcc	gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+/bin/c99-gcc	gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+/bin/x86_64-linux-gnu-gcc	x86_64-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+/bin/gcc	gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0

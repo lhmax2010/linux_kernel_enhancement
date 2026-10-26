@@ -1,0 +1,3 @@
+git diff --numstat 8cdc66794c4281f47cc90efe8b218add97303274 refs/remotes/origin/sandbox/swadas/selinux; grouped first two path components
+arch/arm64	files=2	+34	-4
+packaging/linux-rpi.spec	files=1	+2	-2

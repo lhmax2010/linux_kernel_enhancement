@@ -1,0 +1,71 @@
+Task1 collection recipe, 2026-10-26 Asia/Shanghai
+All commands ran from /home/linhao/Toolchain/development/linux_kernel_optimization.
+export TMPDIR=$WS/temp; export GIT_OPTIONAL_LOCKS=0; export PYTHONDONTWRITEBYTECODE=1
+No make/GBS build; no board shell; no checkout or worktree writes in linux-rpi.
+
+Repository setup:
+git rev-parse --show-toplevel  # initially fatal: not a git repository
+git ls-remote --symref https://github.com/lhmax2010/linux_kernel_enhancement.git  # exit 0, empty
+mkdir -p docs patches scripts evidence/task1 temp
+git init -b main
+git remote add origin https://github.com/lhmax2010/linux_kernel_enhancement.git
+git -c pack.threads=4 -c gc.auto=0 fetch --no-tags origin
+
+Kernel baseline:
+git -C linux-rpi remote -v
+git -C linux-rpi status --porcelain=v1 -b
+git -C linux-rpi log -1 --format=fuller
+git -C linux-rpi rev-parse --is-shallow-repository
+head -n 12 linux-rpi/Makefile
+nl -ba linux-rpi/packaging/linux-rpi.spec
+nl -ba linux-rpi/arch/arm/configs/tizen_bcm2711_defconfig
+nl -ba linux-rpi/kernel/configs/rt.config
+Kconfig definitions were extracted with Python from neutral + ARM Kconfig files;
+no Kconfig evaluator/compiler probes were run. Manual choice/select checks supplemented extraction.
+
+Official boundary:
+git -C linux-rpi ls-remote https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git 'refs/tags/v6.12.80*'
+git -C linux-rpi ls-remote https://github.com/raspberrypi/linux.git refs/heads/rpi-6.12.y
+git -C linux-rpi -c pack.threads=4 -c gc.auto=0 fetch --no-tags --no-write-fetch-head https://github.com/raspberrypi/linux.git refs/heads/rpi-6.12.y:refs/remotes/raspberrypi/rpi-6.12.y
+git -C linux-rpi merge-base --all HEAD v6.12.80
+git -C linux-rpi merge-base --all HEAD refs/remotes/raspberrypi/rpi-6.12.y
+Full topology counts include merges; directory patch counts explicitly use --no-merges.
+mm_zram_counts.txt contains in order:
+git -C linux-rpi rev-list --count --no-merges v6.12.80..HEAD -- mm/
+git -C linux-rpi rev-list --count --no-merges v6.12.80..HEAD -- drivers/block/zram/
+git -C linux-rpi rev-list --count --no-merges refs/remotes/raspberrypi/rpi-6.12.y..HEAD -- mm/
+git -C linux-rpi rev-list --count --no-merges refs/remotes/raspberrypi/rpi-6.12.y..HEAD -- drivers/block/zram/
+git -C linux-rpi diff --stat refs/remotes/raspberrypi/rpi-6.12.y...HEAD -- mm/ drivers/block/zram/
+
+Path scope for downstream candidates:
+mm/ drivers/block/zram/ lib/zstd/ lib/lz4/ crypto/ kernel/sched/ kernel/power/ drivers/cpufreq/ fs/ 'include/linux/mm*' 'include/linux/swap*' scripts/ Makefile arch/arm/configs/
+git log --no-merges --format='%H %an <%ae> %aI %s %b' BASE..HEAD -- <scope>
+git diff-tree --no-commit-id --name-only -r COMMIT
+fs-only page-cache selection: retain 010e02f6d336,2301bd779166,66f760ba4049,75cf0f5f1f2f;
+other fs-only candidates excluded with subjects in downstream_fs_exclusions.txt.
+Retain all commits matching other requested paths (including literal include/linux/mm* matching mmc/).
+
+Sandbox and REST commands/URLs:
+See docs/02_gerrit_overlap.md, *_summary.txt, *_dirs.txt, gerrit_rest_*.txt.
+Full ahead logs remain in temp/sandbox_raw; uploaded summaries include SHA-256 and byte counts.
+Regex searches cover all background-filtered commit messages, 2084 unique commits.
+
+Host:
+nproc
+free -h
+df -h .
+command -v gbs; gbs --version
+PATH executable inventory; GCC candidates --version
+rg --files /opt /home/linhao/Toolchain /usr/local -g '*gcc' -g '*clang' -g '*gcc-[0-9]*' -g '*clang-[0-9]*'
+file -L <candidate>; selected x86_64 compiler --version (no compile)
+command -v sdb
+sdb devices
+
+Final checks:
+git -C linux-rpi status --porcelain=v1 -b
+git -C linux-rpi rev-parse HEAD
+git -C linux-rpi diff --exit-code
+git -C linux-rpi diff --cached --exit-code
+python3 scripts/verify_publish.py
+Git commit uses only per-command user.name=Hao Lin and user.email=hao.lin@samsung.com.
+Only final project main is pushed to GitHub; no PR, force push, or Gerrit push.

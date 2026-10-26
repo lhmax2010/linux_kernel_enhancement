@@ -1,0 +1,16 @@
+branch=sandbox/jaehoon80/eevdf
+tip=f08ff9bbd937038d7e293862debc4774dd803bca
+merge_base_tizen=219d54332a09e8d8741c1e1982f5eae56099de85
+full_ahead=7854 full_behind=455938
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/jaehoon80/eevdf --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=5
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__jaehoon80__eevdf_ahead_01.txt: bytes=849919 sha256=ff409d3ff5832100fc5b25dd239da7e7ab3f4fd1e2e6686458a660ac1e1413f7
+sandbox__jaehoon80__eevdf_ahead_02.txt: bytes=410176 sha256=c0f322c98a28aa6bb410c2a89d69acf7239f5e719123e833dc1eab010fe64a85
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+f08ff9bbd937038d7e293862debc4774dd803bca	Jaehoon Chung <jh80.chung@samsung.com>	2026-04-14T05:18:26+09:00	sched/fair: Add cache affinity buddy heuristics to EEVDF scheduler
+b516ce5fa5a5747894ea8c519be013f1d3f1ef1a	Jaehoon Chung <jh80.chung@samsung.com>	2026-04-13T22:01:11+09:00	sched/fair: Add wakeup granularity guard to EEVDF preemption
+ab0bba206cfd88021ed5b136b9df167a81229134	Jaehoon Chung <jh80.chung@samsung.com>	2026-04-10T20:32:39+09:00	sched/fair: Optimize EEVDF pick with augmented rb-tree and min granularity
+d9a30342a6e3341f7723220b39b2d84009aa294a	Jaehoon Chung <jh80.chung@samsung.com>	2026-04-10T05:26:34+09:00	sched/fair: Fix multiple bugs in EEVDF scheduler implementation
+689dfcf307010646df76ed14adff01a1a02a5b39	Jaehoon Chung <jh80.chung@samsung.com>	2026-04-08T22:50:54+09:00	sched/fair: Implement EEVDF (Earliest Eligible Virtual Deadline First) scheduler

@@ -1,0 +1,32 @@
+branch=sandbox/sebuns2/apply_kfence
+tip=2c223d5a64a33385934963e25666aa70f81e7a86
+merge_base_tizen=2c85ebc57b3e1817b6ce1a6b703928e113a90442
+full_ahead=4174 full_behind=360601
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/sebuns2/apply_kfence --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=22
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__sebuns2__apply_kfence_ahead_01.txt: bytes=670875 sha256=af6437e3110e668070849601a1228ce6297ddc321e16d965810581f3f363383e
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+2c223d5a64a33385934963e25666aa70f81e7a86	Marco Elver <elver@google.com>	2021-03-17T09:47:40+01:00	kfence: make compatible with kmemleak
+d16b578a2d4d09a1ff11eaf4124152c6e31a663b	Marco Elver <elver@google.com>	2021-03-04T21:52:56+01:00	kfence, slab: fix cache_alloc_debugcheck_after() for bulk allocations
+6659d4ec39e482b8a93583234331dc3a21186f29	Marco Elver <elver@google.com>	2021-03-04T15:40:00+01:00	kfence: fix reports if constant function prefixes exist
+c58ee313b36b96425a577998852feb3353b0bf1a	Marco Elver <elver@google.com>	2021-03-03T13:11:57+01:00	kfence: fix printk format for ptrdiff_t
+59a34396014fcf8d398d7a81bc04355a634f6c9a	Marco Elver <elver@google.com>	2021-02-23T09:20:43+01:00	kfence: report sensitive information based on no_hash_pointers
+2c631c718b298edae21a7d1efeea935c4c3bb6da	Linus Torvalds <torvalds@linux-foundation.org>	2021-02-22T11:04:36-08:00	Merge tag 'printk-for-5.12' of git://git.kernel.org/pub/scm/linux/kernel/git/printk/linux
+33c93500444fb47c3db0b4dac793b74a55c72a7d	Marco Elver <elver@google.com>	2021-01-11T10:15:44+01:00	kfence: show access type in report
+38af8d6a157c8e33c6e5a1afe9645f1e2208c9fc	Marco Elver <elver@google.com>	2020-12-16T00:31:12+01:00	kfence: fix typo in test
+86a569b4b4b7a3444ea46f1eb9f0473216d60e52	Marco Elver <elver@google.com>	2020-11-10T14:53:20+01:00	kfence: Avoid stalling work queue task without allocations
+fd08ffd6708636d32ca2a8faff0d1134f1a56330	Marco Elver <elver@google.com>	2020-11-06T10:21:49+01:00	kfence: Fix parameter description for kfence_object_start()
+9178f09ea0ab5e6ff5c82cd593c999ec2e98d9eb	Sung-hun Kim <sfoon.kim@samsung.com>	2021-10-19T10:24:15+09:00	kfence, arm64, defconfig: enable KFENCE for tizen defconfig
+affe9d7bab514c4a0c4541cd2b84d55a72efdaa8	Marco Elver <elver@google.com>	2020-11-05T10:21:33+01:00	kfence: Use pt_regs to generate stack trace on faults
+faf3d1099f152e8442281da8af7460bccdf89601	Marco Elver <elver@google.com>	2020-11-03T18:58:41+01:00	MAINTAINERS: add entry for KFENCE
+381d6835ddf675ecff090c22c4cf9b19fedd9714	Marco Elver <elver@google.com>	2020-11-03T18:58:40+01:00	kfence: add test suite
+bdd4a9619163986ff044da4dcdeba5f429cb8e5b	Marco Elver <elver@google.com>	2020-11-03T18:58:39+01:00	kfence, Documentation: add KFENCE documentation
+18285948ec10b0b584620a61373ce23880963a0c	Alexander Potapenko <glider@google.com>	2020-11-03T18:58:38+01:00	kfence, kasan: make KFENCE compatible with KASAN
+c2353f4d023d4ad8ce0bc1b06a7a017575184d35	Alexander Potapenko <glider@google.com>	2020-11-03T18:58:37+01:00	mm, kfence: insert KFENCE hooks for SLUB
+536df00bff71848f5d067c6789837cd84ef8df48	Alexander Potapenko <glider@google.com>	2020-11-03T18:58:36+01:00	mm, kfence: insert KFENCE hooks for SLAB
+f91688141512caa15de9599a909396cc0001ccfe	Marco Elver <elver@google.com>	2020-11-03T18:58:35+01:00	arm64, kfence: enable KFENCE for ARM64
+d5904d4ecdb7688b6a42af04b11344d164537895	Alexander Potapenko <glider@google.com>	2020-11-03T18:58:34+01:00	x86, kfence: enable KFENCE for x86
+17d76ca64f04f0f8420bc1f27457f5c8e3ff0d1e	Alexander Potapenko <glider@google.com>	2020-11-03T18:58:33+01:00	mm: add Kernel Electric-Fence infrastructure
+6590a713f304daf33ace4b7cb22e7b0788637a0e	Anshuman Khandual <anshuman.khandual@arm.com>	2021-02-25T17:17:37-08:00	arm64/mm: define arch_get_mappable_range()

@@ -1,0 +1,43 @@
+fs-only exclusions: metadata, namespace, network/session and directory-cache changes; not page-cache data handling.
+8f795c6dade6 2020-12-21 Łukasz Stelmach kdbus: Revert "fs: unexport poll_schedule_timeout"
+bec7c627c4da 2025-06-08 Pali Rohár cifs: Remove duplicate fattr->cf_dtype assignment from wsl_to_fattr() function
+5e024df679bd 2025-06-19 zhangjian smb: client: fix first command failure during re-negotiation
+8b8cdd1709a7 2024-11-20 Paul Aurich smb: Log an error when close_all_cached_dirs fails
+ed70b888f3ff 2025-06-10 Namjae Jeon ksmbd: add free_transport ops in ksmbd connection
+f5b1c79eb83d 2025-03-17 Bharath SM smb: fix secondary channel creation issue with kerberos by populating hostname when adding channels
+40d4d55e0634 2025-05-27 Jeff Layton nfsd: use threads array as-is in netlink interface
+2d39d3c12351 2025-06-13 Namjae Jeon ksmbd: fix null pointer dereference in destroy_previous_session
+589f1e86c560 2025-06-11 Bharath SM smb: improve directory cache reuse for readdir operations
+796066f06386 2025-06-02 Shyam Prasad N cifs: do not disable interface polling on failure
+61d561460a0a 2025-06-02 Shyam Prasad N cifs: serialize other channels when query server interfaces is pending
+3dac42280ead 2025-06-02 Shyam Prasad N cifs: deal with the channel loading lag while picking channels
+dfa9ae89b1c3 2025-03-25 Fedor Pchelkin jffs2: check jffs2_prealloc_raw_node_refs() result in few other places
+9229a6ce18f5 2025-03-07 Artem Sadovnikov jffs2: check that raw node were preallocated before writing summary
+2d13cbe077c4 2025-06-05 Stephen Smalley fs/xattr.c: fix simple_xattr_list()
+6e7e182ea18a 2025-03-27 Chao Yu f2fs: fix to set atomic write status more clear
+b814dcf6a4ba 2025-04-11 Jonas 'Sortie' Termansen isofs: fix Y2038 and Y2156 issues in Rock Ridge TF entry
+aa49e4b63b87 2025-04-22 Chao Yu f2fs: fix to bail out in get_new_segment()
+0db40c2eb9e3 2025-06-01 Ruben Devos smb: client: add NULL check in automount_fullpath
+2020c70018c4 2025-06-02 Shyam Prasad N cifs: dns resolution is needed only for primary channel
+1611f86c11a8 2025-06-02 Shyam Prasad N cifs: update dstaddr whenever channel iface is updated
+25dfef128aa8 2025-06-02 Shyam Prasad N cifs: reset connections for all channels when reconnect requested
+2b57cfff7cbd 2025-04-29 André Almeida ovl: Fix nested backing file paths
+3ff352a024dc 2025-04-14 Chao Yu f2fs: fix to do sanity check on sit_bitmap_size
+5d7b1472d983 2025-04-12 Jaegeuk Kim f2fs: prevent kernel warning due to negative i_nlink from corrupted image
+de90f1554015 2025-03-24 Chao Yu f2fs: fix to do sanity check on ino and xnid
+da644da2ec0b 2025-05-06 Zhang Yi ext4: ensure i_size is smaller than maxbytes
+3d9df830faeb 2025-05-06 Zhang Yi ext4: factor out ext4_get_maxbytes()
+d61e3c8f15a2 2025-04-29 Jan Kara ext4: fix calculation of credits for extent tree modification
+b1c70cdee389 2025-04-15 Thadeu Lima de Souza Cascardo ext4: inline: fix len overflow in ext4_prepare_inline_data
+f769529f5964 2025-05-29 Dennis Marttinen ceph: set superblock s_magic for IMA fsmagic matching
+8484977557e0 2025-01-16 Viacheslav Dubeyko ceph: avoid kernel BUG for encrypted inode with unaligned file size
+d4f0cc9adb0e 2025-05-14 Jeongjun Park jbd2: fix data-race and null-ptr-deref in jbd2_journal_dirty_metadata()
+b2165b39da08 2025-04-30 Scott Mayhew NFSv4: Don't check for OPEN feature support in v4.1
+4d68d1e8cb3e 2025-04-14 Li Lingfeng nfsd: Initialize ssc before laundromat_work to prevent NULL dereference
+ec400f400403 2025-03-28 NeilBrown nfsd: nfsd4_spo_must_allow() must check this is a v4 compound request
+a7a915f02db7 2025-05-07 Chuck Lever NFSD: Implement FATTR4_CLONE_BLKSIZE attribute
+2e10ed83f61a 2025-03-06 Maninder Singh NFSD: fix race between nfsd registration and exports_proc
+276fb804bfdc 2025-03-06 Maninder Singh NFSD: unregister filesystem in case genl_register_family() fails
+68d7e0e803df 2025-03-31 Alexander Aring gfs2: move msleep to sleepable context
+b53ba0cdd40a 2025-05-07 Zijun Hu configfs: Do not override creating attribute file failure in populate_attrs()
+47394473b120 2025-02-24 Chao Yu f2fs: fix to avoid accessing uninitialized curseg

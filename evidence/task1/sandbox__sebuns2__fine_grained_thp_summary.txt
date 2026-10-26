@@ -1,0 +1,743 @@
+branch=sandbox/sebuns2/fine_grained_thp
+tip=a18f4756f0047888d77dd7eb184a33ad5ff074c3
+merge_base_tizen=2c85ebc57b3e1817b6ce1a6b703928e113a90442
+full_ahead=1739 full_behind=360601
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/sebuns2/fine_grained_thp --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=733
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__sebuns2__fine_grained_thp_ahead_01.txt: bytes=278754 sha256=153d4a6425d02c644e8ebb0bef8a7548bfbdae7882aac257cf90481cc0606606
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+a18f4756f0047888d77dd7eb184a33ad5ff074c3	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-25T19:22:40+09:00	mm: THP: separate arch-dependent code from core systems
+211bcca26e2862981a6e28f3dcb367a7461ff252	Seung-Woo Kim <sw0312.kim@samsung.com>	2021-02-15T16:21:27+09:00	staging/bcm2835-codec: fix 64-bit build warning for print format
+04652b2a7ca537a745ea37cf2ea63bc9f6b2562a	Łukasz Stelmach <l.stelmach@samsung.com>	2021-02-04T15:35:27+01:00	kdbus: read hide_pid and pid_gid from mounted proc
+11e83f87cd52f18df79c156368fc9d5aac7543c2	Łukasz Stelmach <l.stelmach@samsung.com>	2021-02-02T19:52:58+01:00	pid: mark struct pid* argument as const
+6cdf59872b45986ef9a2bbb11ec7b24b284b9780	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-28T17:31:15+01:00	kdbus: Use sizeof_field() macro
+3ad261e4731425e65a4ee9094c5d25b7ff90e3cb	Łukasz Stelmach <l.stelmach@samsung.com>	2020-12-22T12:56:00+01:00	kdbus: build and package kdbus-tests
+ecc6f8947e995f92690409d9069d3d69119987ad	Konrad Lipinski <konrad.l@samsung.com>	2019-09-11T15:42:10+02:00	kdbus: test suite changed to common format
+e172e7787be757478e60d24a0d3ecb6acccabbfe	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-14T15:02:02+09:00	ARM/ARM64: tizen_bcm2711_defconfig: Enable KDBUS
+b7c101c725c785bea668519cdd4f998429958e2c	Łukasz Stelmach <l.stelmach@samsung.com>	2020-12-21T16:34:08+01:00	kdbus: porting to to 5.4
+9dde7f0d7854f408f8b8e7089cabc1024e604ffb	Łukasz Stelmach <l.stelmach@samsung.com>	2020-12-21T12:40:27+01:00	kdbus: Revert "fs: unexport poll_schedule_timeout"
+25488abbc361e7bd60f64184cb66de7c80429e31	Adrian Szyndela <adrian.s@samsung.com>	2019-09-11T15:34:33+02:00	kdbus: porting to 4.14
+0c7e2921a413e98e930147422bea196644062ddc	Adrian Szyndela <adrian.s@samsung.com>	2016-09-09T13:35:49+02:00	kdbus: the driver, original and non-working
+b2fafdcbd77d3656e4e83bc399b89b1e97d5bc79	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-26T17:06:22+09:00	packaging: Change the kernel version of the spec file
+b43660df9c38382223647788dd26d5d26abf981f	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-21T19:04:45+09:00	rpi4: boot: Update the firmwares for kernel v5.10
+d03b029de82ba50888d23d5962a03752c6a7b261	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-21T19:10:27+09:00	ARM: tizen_bcm2711_defconfig: Sync with .config with v5.10.y
+4c9cd290b4a78bf96d53def89a047ca4433a31be	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-21T16:33:01+09:00	arm64: tizen_bcm2711_defconfig: Sync with .config with v5.10.y
+5bf271a365fc895d7022def836bc62bf1606a792	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-20T21:02:08+09:00	ARM: dts: bcm2711-rpi-4-b: Support for drm vc4 and v3d
+4251e72aded4faadf86e9ca01896872c935de81b	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-20T13:52:50+09:00	Revert "block: make function 'kill_bdev' static"
+9bc506b4c717026f2fcb09e8638f860ed9c3dd1b	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-20T15:15:09+09:00	mm: LKSM: Fix to use mmap_lock instead of mmap_sem.
+d73ee60ba18b256301a83df9c916850c81ac193e	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-20T16:33:20+09:00	ASoC: ac108: Fix changed interface
+1a08f19d192de85fdfb6adcdb6e6ee104e54e0bc	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-19T16:50:32+09:00	staging: android: logger: Fix to use ktime_get_ts64
+f6ee081decd878888f7b705f3925ffff0a1a14e8	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-19T16:28:41+09:00	misc: tizen-inform-reboot: Fix to use filp_open.
+de9d847d9889fc6ab04ab0af44c2cf9eb65d9382	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-04T20:23:41+01:00	spec: set CONFIG_LOCALVERSION
+ddd3a7c5a7361a3fd2cf4909bce89ff4726c9575	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-04T14:41:58+01:00	spec: support gbs(1) incremental builds
+c7bb2c73135dbd51f3e2ecc103a1635ec17f6ce5	Łukasz Stelmach <l.stelmach@samsung.com>	2020-12-21T13:46:37+01:00	script: adjust ccache support
+309eba0ef0222038247f1e8d719c9b2fd5947b41	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-13T11:24:40+01:00	script: increase the number of concurrent compilers
+c5e3f5d1bd16935f78d729b1684c18ca4404dbf2	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-13T11:12:04+01:00	script: use $NCPUS for arm64 builds too
+db45d8da7a415afa18fdf572566ad3cad65306f6	Seung-Woo Kim <sw0312.kim@samsung.com>	2021-01-07T18:09:20+09:00	ARM: mm: Free memblock from free_initrd_mem()
+3369a8ec8fe4d6f2a41bed756298a10153120d0d	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-07T13:01:01+09:00	ARM: dts: bcm2711-rpi-4-b: Adjust CMA size due to the OOM issue
+12067859d9c9631ab34b07e484f6b9189598f7f2	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-12-21T13:54:55+09:00	ARM: dts: bcm2711-rpi-4-b: Fix CMA size to 512M
+9125dd8fc38e50f5eeb4ff04feb55354505a19e3	Hoegeun Kwon <hoegeun.kwon@gmail.com>	2020-12-14T23:24:34+09:00	script: Fix to use NCPUS dynamically
+367c34bffa91094be70747567723b077e17aa940	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-11-09T16:44:46+09:00	ARM: tizen_bcm2711_defconfig: Fix console loglevel for logo display
+4e53b8f1ac031109b134027b2fb27e96a5d872d0	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-11-09T16:03:59+09:00	arm64: tizen_bcm2711_defconfig: Fix console loglevel for logo display
+dbf8d3b771e7a184a0803cf47e852a33d7311eae	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-11-03T17:09:20+09:00	rpi4: boot: config: Enable hdmi_force_hotplug
+54688cc7bb1a2d994a1113bf889777e6bf1a0743	Sung-hun Kim <sfoon.kim@samsung.com>	2020-10-28T19:26:31+09:00	mm: LKSM: bug fix for KASAN out-of-bound access error on accessing a filter
+c0c32b0707016acbfa61d20da5787128fde66487	Jaehoon Chung <jh80.chung@samsung.com>	2020-10-05T20:39:01+09:00	brcmfmac: change from brcmf_dbg to brcmf_info
+433039d3c1d0f63b42b55614e3f39924cf73d4c9	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-09-15T18:48:22+09:00	scripts: mkbootimg_rpi4.sh: use compress image
+fe45a7cad7136ae8f137ff61629f31436e4aec6f	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-09-10T13:28:11+09:00	ARM64: tizen_bcm2711_defconfig: Enable VIDEO_CODEC_BCM2835
+093357edd4df32394ec3fc2e99b2624a26f15bf3	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-09-10T13:25:20+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable VIDEO_CODEC_BCM2835
+2192c73b11b8da1f56a0b5104a1caa8fb48bffe9	Jaehoon Chung <jh80.chung@samsung.com>	2020-08-24T11:34:08+09:00	ARM64: tizen_bcm2711_defconfig: Enable RTL8192CU config as module
+0047b3e3285a5f57f2c71a39bad4af10ce763bf2	Jaehoon Chung <jh80.chung@samsung.com>	2020-08-24T11:33:04+09:00	ARM: tizen_bcm2711_defconfig: Enable RTL8192CU config as module
+eecd164f5677a5f4f867c32e5459dd0ff4e29c7a	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-08-21T10:08:34+09:00	Revert "WORKAROUND: security: smack: Allow ptracing even processes in onlycap set"
+7eb3ebf0686f271d59ed1c6abde5994e06472ed5	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-08-20T14:24:51+09:00	scripts: mkbootimg_rpi4.sh: Fix module image size to 32MB
+a3be27c9996adaf9e17f984a46592e7f6135ca2a	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-08-14T16:47:15+09:00	ARM: dts: bcm2711-rpi-4-b: Enable uart2 node
+06cbac977b2c03c60cbbbefe8f991ef4c113350d	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-08-14T16:24:24+09:00	rpi4: boot: config: disable eeprom i2c hat auto detect
+5868b992df9b45baf06edf565efae081790f4a6a	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-08-13T18:57:09+09:00	ARM64: configs: tizen_bcm2711_defconfig: enable I2C_STUB as module
+b740ea5fac2d83022448abe496c13098b7d6c7c9	Sung-hun Kim <sfoon.kim@samsung.com>	2020-08-13T15:46:36+09:00	mm: LKSM: remove unnecessary debug messages
+5398833570362dc52fecd563fd699550815580e0	Chanwoo Choi <cw00.choi@samsung.com>	2020-07-29T16:52:52+09:00	mm: Change fault_around_bytes default value from 65536 to 4096
+81c7698e5e634956961232d9fac2c480df2b8614	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T16:00:07+09:00	ARM64: configs: tizen_bcm2711_defconfig: enable CONFIG_LKSM_FILTER
+09b374ded48bdf0251a9650e1c5c69cf91cb13eb	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T15:58:28+09:00	mm: LKSM: new feature: use filter-based scanning to reduce scanning cost
+01ea449631542c4403b909db4e2f2b3147391318	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T09:07:37+09:00	ARM64: configs: tizen_bcm2711_defconfig: enable CONFIG_LKSM
+abbb1690e92860267037818e8a389494421edcea	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T09:05:12+09:00	mm: LKSM: lightweight memory deduplication for embedded devices
+a67ee428668bea527f90805c73427ccf762f7567	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-14T15:04:38+09:00	mm: LKSM: prepare to add LKSM code
+881340392e5e2d28b58291dc9eea37ed6f3081d5	Karol Lewandowski <k.lewandowsk@samsung.com>	2020-08-07T13:49:30+02:00	WORKAROUND: security: smack: Allow ptracing even processes in onlycap set
+9fb063fe4d2d3cf57ed910d196b08d6f6caf833b	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-31T15:19:08+09:00	Revert "brd: remove support for BLKFLSBUF"
+fab416f3119e8d0092b85f4698a285015a845191	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-31T15:18:06+09:00	Revert "brd: remove discard support"
+11b442be97a9f6da58411a6f0696a1493c7aad07	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-31T15:38:14+09:00	Revert "brd: remove unused brd_mutex"
+65fbcd2b61a8dcf9ae363e6d8f96aacc3fb7ae45	Jaehoon Chung <jh80.chung@samsung.com>	2020-08-03T14:45:35+09:00	Revert "brcmfmac: move configuration of probe request IEs"
+1a3b4f9bdcef3e8f81e17d29a31e517b04554f58	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-28T18:40:06+09:00	ARM64: configs: tizen_bcm2711_defconfig: Disable unused dwcotg
+9693c7e4cf3041723ca7c4a00755d36a143e233e	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-28T18:38:42+09:00	ARM: configs: tizen_bcm2711_defconfig: Disable unused dwcotg
+a0781b6cb0bcc9515fdbf41dc90fb32d9dea4e9c	Jaehoon Chung <jh80.chung@samsung.com>	2020-07-23T19:09:13+09:00	ARM: dts: bcm2711-rpi-4-b: add non-removable property about sd-card
+d799e001bc6c4c950a113ad1de2c30df045a968a	Jaehoon Chung <jh80.chung@samsung.com>	2020-07-22T17:16:16+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable Crypto extension configs
+b88c36b0d483a47f7b2e26ffc4648d08a8dd9786	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-22T17:15:09+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable FUSE_FS
+ecd55e055126410c6c16cb9902f4d66a7432cabd	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-10T18:02:01+09:00	ARM: dts: bcm2711-rpi-4-b: Add cts, rts pin setting for bt uart
+5fe1fba51d04865b98c4dd75eb5b347cd52bd64f	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-10T16:56:20+09:00	Revert "ARM: dts: bcm2711-rpi-4-b: Add cts pin setting for bluetooth uart"
+e9fb4cb30462029577e494623d58ee4335f72d14	Jaehoon Chung <jh80.chung@samsung.com>	2020-07-09T19:04:51+09:00	ASoC: ac108: fix build warning about '-Wimplict-fallthrough'
+41ca3475a297760815714f007a1220c1bb4756d5	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-07-03T14:27:18+09:00	packaging: Change the kernel version of the spec file
+34edee201236b13af3ce4ce5ba9e671627dc389a	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-07-03T14:18:53+09:00	rpi4: boot: Update the firmwares for kernel v5.4.50
+fba5d4b408c46177493ab6f08b405a5377946368	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-06T10:54:06+09:00	rpi4: boot: Update the firmwares for kernel v5.4.40
+83836a82e4446cf1f76d91de4a162bd4ff7e86d1	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-08-03T14:44:43+09:00	mm: memcontrol: Add force_reclaim to reclaim tasks' memory in memcg
+a87215067f6cfd92b2a4285db87fca80b79f15e1	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-07-10T12:53:26+09:00	configs: tizen_bcm2711: Enable memory cgroup swap controller
+1439478a041767f195ba724121f82d4080d2953c	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-07-10T11:23:19+09:00	configs: tizen_bcm2711: Sync up missing defconfig
+02d4d87c02dd81dd521b03d9ef7ff405bd267974	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-07-01T18:27:33+09:00	Revert "cgroup: Disable cgroup "memory" by default"
+ab0e29f400ec3738524bf6dddc37eeb45af17674	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-06-29T18:21:05+09:00	ARM64: tizen_bcm2711_defconfig: Enable lz4 and zstd cryptos
+19b02fcf47e6e6654504e14e0aa8a084e287d4f6	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-06-03T11:07:09+09:00	ARM: tizen_bcm2711_defconfig: Enable lz4 and zstd cryptos
+c0a73d65ec0cefd6cfb5f97dbebbb7a64d8adfb6	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-06-04T13:54:44+09:00	lib: zstd: Improve decode performance
+f9b308a38e440d5169831d0211f0a62edb2dc1f6	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-30T14:32:02+09:00	drm/vc4: add extcon hdmi connection uevent
+4492cf55278f9e268e7082034fdacf2de8472651	Jaehoon Chung <jh80.chung@samsung.com>	2020-06-22T16:03:28+09:00	ARM64: configs: tizen_bcm2711: change BLK_DEV_RAM_SIZE to 32MB
+bbdc52c930a8578647923505c01f6189f91461e1	Jaehoon Chung <jh80.chung@samsung.com>	2020-06-22T15:58:23+09:00	ARM: configs: tizen_bcm2711: change BLK_DEV_RAM_SIZE to 32MB
+3abdcd6d034c2c1b80914a51716627d448c5e603	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-06-15T16:20:33+09:00	scripts: mkbootimg_rpi4.sh: Fix how to check 64bit
+50490323dc5b6698977ae8a3c1944bad9cec0c9c	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-06-10T19:50:21+09:00	tools: Add support build for arm64
+eee02fe3b8530daf86954da9c235b4def1434967	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-06-10T20:04:00+09:00	scripts: mkbootimg_rpi4.sh: Add support make boot image for arm64
+bba06d620e0c69b940084e4d5e7646b142c16549	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-09T19:34:27+09:00	usb: dwc2: gadget: do not reset during core phy init
+32970129f9392e84050cb09a6d8272fbf2151ee2	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-05T19:37:35+09:00	packaging: add 64-bit kernel build
+cc654f2ced322791fd37dbe49707db763b6aa158	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-05T19:37:00+09:00	rpi4: boot: Add 64-bit config.txt
+5c96bbd4a4b4be9ebacc0e43c0f0ae41e5704959	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-05T19:08:27+09:00	ARM64: configs: tizen_bcm2711_defconfig: Enable tizen configs
+7235a78cd6569347d245f1df5fbdaa970bcc5ae0	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-08T11:02:43+09:00	ARM64: configs: tizen_bcm2711_defconfig: create tizen config from rpi os config
+8f719e4c8f2b9e7c1fed5be4115c4c62de247243	Junghoon Kim <jhoon20.kim@samsung.com>	2020-01-20T15:06:40+09:00	ARM: tizen_bcm2711_defconfig: Disable RAID6_PQ_BENCHMARK
+f3a1b92edcb675f627931ab3732a0a9ce65ed6c6	Jaehoon Chung <jh80.chung@samsung.com>	2020-06-09T20:15:33+09:00	ARM: tizen_bcm2711_defconfig: Enable btrfs filesystem
+7c62355b7ed156a333f1654b0b7442f11662d005	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-06-04T18:04:31+09:00	drm/vc4: Add gem_info node via debugfs
+c3edc14024ac9bcabfb42223f1f6d6f7b7c2dcaa	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-19T18:40:10+09:00	LOCAL / Revert "drm/vc4: Allocate binner bo when starting to use the V3D"
+e9c0970b499a28f814d3f855af28d54d3ef1ede8	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-20T16:23:37+09:00	ARM: dts: bcm2711: Remove audio-rx
+7bb68204dc859d817c42f01455a84168193017aa	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-20T16:41:06+09:00	ASoC: dmaengine: Add check to dma_dev
+784bb65b6b8d897dd9c8e74b478cc0fd198bb2ef	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-18T16:59:35+09:00	ASoC: seeed-voicecard: Fix init and parse func
+0a047c4c62b79aa64ca06f05416b911e57bc7c9d	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-14T16:51:59+09:00	packaging: Add rsync build requires
+e2b4f2b0350c9ece601915fcb8a9d7ba2814656f	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-06T16:52:20+09:00	packaging: Change the kernel version of the spec file
+f84f8bb6bd99308878139906f3172474844fab11	Marek Szyprowski <m.szyprowski@samsung.com>	2020-04-24T12:21:52+02:00	ARM: dts: bcm2711-rpi-4-b: Fix increase default CMA to 256M
+3bb1ee626040e34e6762f4d846b7c8c37a8baf30	Marek Szyprowski <m.szyprowski@samsung.com>	2020-04-24T12:21:34+02:00	drm: Fix let vc4 drm register before v3d.
+ed7b06a37401e25673230675f66965ccaee02fb4	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-14T14:48:03+09:00	ARM: tizen_bcm2711_defconfig: Sync due to kernel version update
+e4e273615ba26ec2613ed9ddeaeecc02df1919fb	Chanwoo Choi <cw00.choi@samsung.com>	2020-04-27T10:35:06+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable CONFIG_CPUFREQ_DT config
+a6c31cdc592e724c1c11766b7ca3a5246196daf6	Chanwoo Choi <cw00.choi@samsung.com>	2020-04-22T12:29:02+09:00	ARM: configs tizen_bcm2711_defconfig: Enable CONFIG_SENSORS_RASPBERRYPI_HWMON
+3aad2131fe0c00a500b1c367ff5bbbcdf0428ec0	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-04-02T18:56:01+09:00	ARM: tizen_bcm2711_defconfig: Enable CLK_RASPBERRYPI
+b179bc4e4bcfc0a273d4fb9d5fabcac6c2e42067	Junghoon Kim <jhoon20.kim@samsung.com>	2020-04-02T14:49:13+09:00	packaging: Change the kernel version of the spec file
+8d6f7dcd089261fe6ce7db277614bb128a15400f	Junghoon Kim <jhoon20.kim@samsung.com>	2020-04-02T13:56:26+09:00	configs: tizen_bcm2711_defconfig: Enable REGULATOR_FIXED_VOLTAGE option
+05dce1cb0789084d01bb08d06a492fe23755d141	Junghoon Kim <jhoon20.kim@samsung.com>	2020-04-02T13:48:35+09:00	rpi4: boot: Update the firmware with the latest version
+8abd0fb4357762a1623b6e71bac1bbd0b5c8c93c	Jaehoon Chung <jh80.chung@samsung.com>	2020-03-27T18:15:53+09:00	ARM: dts: bcm2711-rpi-4-b: add a brcmf wifi node
+5fb42f800ef93115ed941dae07fef5957d50a25d	Jaehoon Chung <jh80.chung@samsung.com>	2020-03-27T18:07:28+09:00	brcmfamc: add the feature-disable property
+2ca8766496b8a2e36372b3b0e42e7359c02e8908	Junghoon Kim <jhoon20.kim@samsung.com>	2020-03-27T15:49:54+09:00	packaging: Remove bootcode.bin from the boot image
+af73fa45e0553759d44101de6ab495fc03a7be62	Jaehoon Chung <jh80.chung@samsung.com>	2020-03-24T12:16:40+09:00	ARM: configs: tizen_bcm2711: disable BCM2835_SDHOST
+42e5a658c25106f0cf42a458de8424affddc285b	Junghoon Kim <jhoon20.kim@samsung.com>	2020-03-12T12:28:26+09:00	scripts: Make the kernel build and image creation in one step
+ecbf513f68270d6a2cd13e1dfa57da44c65d88b1	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-03-06T14:04:13+09:00	usb: dwc2: gadget: Expand buffer size of control endpoint
+fb9c23d8d435b2c148fac35c2afaa4074306d50a	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-02-26T19:39:04+09:00	usb: dwc2: Defer forcing peripheral mode
+137eced7235971746eb0d009c12afd3054c50fc0	Łukasz Stelmach <l.stelmach@samsung.com>	2020-02-26T13:00:08+01:00	ARM: configs: tizen_bcm2711_boot_defconfig: config for RPi4 bootloader
+817896a6b4226e80621b317a6962f6621dbde553	Dongwoo Lee <dwoo08.lee@samsung.com>	2018-10-26T10:41:41+09:00	usb: gadget: f_fs: Give chance to retry malloc for large size buffer
+87a7093dde9e112fa4342c8849b592e26ff3ae98	Jaehoon Chung <jh80.chung@samsung.com>	2018-10-22T13:44:11+09:00	usb: dwc2: gadget: set the quirk_ep_out_alinged_size as true
+827e4d245711fb70cdfdb4981d0219d5cc271d0a	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-02-18T14:23:00+09:00	ARM: dts: bcm2711-rpi-4-b: Set extcon state for dwc2 cable as always true
+3457c11cb2a014e584a0cedfc2827a8b56989068	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-02-18T17:11:43+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable extcon feature
+5c5fb67c9977ea353b713b19dd9afaa0b3ad48db	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-02-18T13:36:40+09:00	usb: dwc2: gadget: Set extcon state for usb cable as always true
+4e497620b8b231634c16f5dad8366c565b83f312	Chanwoo Choi <cw00.choi@samsung.com>	2020-02-14T16:15:38+09:00	ARM: configs: tizen_bcm2711_defconfig: Disable CONFIG_CFG80211_CRDA_SUPPORT
+d3245f90355b4da3c759176e0953d641e2803391	Chanwoo Choi <cw00.choi@samsung.com>	2020-02-06T11:03:57+09:00	ARM: configs: tizen_bcm2711_defconfig: Use schedutil as default governor
+64ec30f39252f30c9fece85ff81dda507ab02b4d	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-02-06T14:28:11+09:00	ARM: dts: bcm2711-rpi-4-b: Add support backlight
+96792a7f71d55519c1441c343054572ac6fcd6e8	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-02-06T10:36:50+09:00	packaging: Add kernel-headers package
+9a0beaa2ab8076a8080393ea646e2ec315cf87b8	Junghoon Kim <jhoon20.kim@samsung.com>	2020-01-20T15:06:40+09:00	ARM: tizen_bcm2711_defconfig: Disable RAID6_PQ_BENCHMARK
+cffedf981d7246b32699459e2b737abe6bbc8d0d	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-01-06T17:10:27+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable missing NETFILTER options for nether
+9a41e3805662ac117f2f603b7298ab538f96d1d6	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-01-06T10:39:15+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable USB SERIAL drivers for modem
+7579929a22a1bd79cddeebf71ed13e5746279009	Dongwoo Lee <dwoo08.lee@samsung.com>	2019-12-18T12:59:21+09:00	ARM: tizen_bcm2711_defconfig: Make USB configfs as built-in
+2e237b01349f517dc177cd27979a1d72f19ed05d	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-12-20T15:30:13+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable tethering config options
+061438e6f3f3c92c629b515943150e35aaf6256a	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-12-20T16:13:36+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable NETFILTER_XT_MATCH_LIMIT
+abfdf2ddbab918d3aea1fe31289e58a73e8bcbd8	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-12-20T16:08:28+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable HID_MULTITOUCH
+79f4890717f724391caac642b493251a6bedde9f	Jaehoon Chung <jh80.chung@samsung.com>	2019-12-19T08:42:11+09:00	ARM: config: tizen_bcm2711: Enable config relevant to DM-verity
+b21bdbcba8b019f940854d9bd09dbfdc18e4d6af	Junghoon Kim <jhoon20.kim@samsung.com>	2019-12-09T16:22:54+09:00	scripts: mkbootimg_rpi4.sh: Create boot tarball for the lthor flashing
+4e2c94978fd6586fe46351545875dd4b23a82cc9	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-12-02T09:50:36+09:00	scripts: mkbootimg_rpi4.sh: Remove cmdline.txt
+ed548b7d8e4eba480148a7c9d150fe31be6890f1	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-12-02T09:46:43+09:00	scripts: mkbootimg_rpi4.sh: Add u-boot-rpi4 package to boot image
+b9dc26637f0dd8c65efc0b4611e165710d2cfe60	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-11-27T16:41:21+09:00	ARM: dts: bcm2711-rpi-4-b: Add support for touchscreen touch
+6ffb34c4ca0fb0c9342bb4568272d6a0b5637973	Jaehoon Chung <jh80.chung@samsung.com>	2019-11-26T17:06:28+09:00	ARM: dts: bcm2711-rpi-4-b: Add cts pin setting for bluetooth uart
+19e9fb03fb233b6a5da49d1989d83e2a17d0f1e5	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-11-08T10:53:40+09:00	rpi4: boot: Enable u-boot booting
+aeedc00c8b42088f07351caef1710d9b26ec9741	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-11-04T18:19:38+09:00	rpi4: boot: Update the firmwares for kernel v4.19.81
+387507eda30a1fdbfe30f840789b250af77f2135	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-11-04T18:10:59+09:00	packaging: Change the kernel version of the spec file
+a3e77bae2ff5a4e5a9eb534157de7d2dacbdece8	Jaechul Lee <jcsing.lee@samsung.com>	2019-11-04T16:16:17+09:00	arm: dts: bcm2711-rpi-4-b: Adds buttons for speaker profile
+5e4e224879f9111ec174eac8323a9e01c3800263	Jaechul Lee <jcsing.lee@samsung.com>	2019-11-04T16:09:25+09:00	arm: dts: bcm2711-rpi-4-b: Adds respeaker 4mic nodes
+53e9ce96ac19b6b057273896a7ebe55e84f3aff1	Jaechul Lee <jcsing.lee@samsung.com>	2019-10-29T11:29:27+09:00	ARM: dts: bcm2711-rpi-4-b: Enable dt nodes for audio, i2c1, spi0
+92dd4206ccf09ea1802440ab7d17fa9f46505ec3	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-10-29T12:25:24+09:00	rpi4: boot: Fix hdmi group to DMT
+754cbe9c92a3796fbf6da46b0a9728582c0d6646	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-10-28T17:18:09+09:00	scripts: mkbootimg_rpi4.sh: Fix to install modules on non sudo
+c310b48cd48811949b12f5a99dfae1228a55b12f	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-10-28T15:14:49+09:00	rpi4: boot: Add to support mipi-csi camera module
+b123044ce34132b905ff8e2c6f665e063f7688c7	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-09-17T17:54:39+09:00	scripts: mkbootimg_rpi4.sh: Remove rename for kernel7l.img.
+8eb7a3eba03a3d2a4b125eac2f553bebd5255472	Jaehoon Chung <jh80.chung@samsung.com>	2019-09-11T09:13:18+09:00	rpi4: boot: add kernel name in config.txt
+04942f0f4bf3d1de4914018d6065764791d2399c	Jaehoon Chung <jh80.chung@samsung.com>	2019-09-03T10:48:57+09:00	packaging: remove unnecessary requirement
+2719a30cd2e72e5d2cdeef27bc471b70ac6b32ef	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-09-02T11:24:41+09:00	rpi4: Remove unused files
+ece0e788d0d62515fc7f3a513947f0571385567e	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-09-02T08:53:48+09:00	scripts: Add mkbootimg_rpi4.sh
+d7bc38537f9ef6ffac8fea78c396d0cd2cad8a82	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-09-02T08:50:45+09:00	rpi4: Add cmdline.txt file
+b11a5aaed2e891f644f522fd51895d67b1c88c6b	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-29T16:59:28+09:00	packaging: Add spec file for rpi4
+77f3aa8e1717315fa8e666232dd0cdf56e483238	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-29T15:50:07+09:00	ARM: tizen_bcm2711_defconfig: Fix modules cleanup
+ef21b499796595760b05f4637214ed2f5e0d23f7	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-20T14:35:10+09:00	ARM: tizen_bcm2711_defconfig: Fix I2C config to built-in
+4b872713262b94197f77adf1bf88356ff2953dea	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-20T11:17:43+09:00	ARM: tizen_bcm2711_defconfig: Fix drm-vc4 to built-in
+df88a3644137cfbd6700eae70814fefb846bd33b	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:58:44+09:00	tools: Add build script for ARM kernel of rpi4
+d26342d9e5dd8a92a181d2e2a8a4768431f2d132	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:51:47+09:00	ARM: tizen_bcm2711_defconfig: Disable bcm2708_fb
+5079b5b39510f6ae495fbd6384c8a495016fc8ab	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:44:09+09:00	ARM: tizen_bcm2711_defconfig: Enable SMACK
+abed7b3c75b39aa6b23759ad0bee8a6f1d27d29c	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:36:30+09:00	ARM: tizen_bcm2711_defconfig: Remove unused module
+2ec049f3495466ee94cb1cc8025daed558a7c485	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T11:28:15+09:00	ARM: defconfig: Add tizen_bcm2711_defconfig
+cb16c0d6179f5a88a3b4d05b8474ee8108634c0f	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:58:24+09:00	rpi4: config: Enable serial
+6319f3d429eb7530b8a7220c8b777619e89f0fdf	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:58:03+09:00	rpi4: Add config.txt extracted from raspbian full binary
+f70e00b6cb789024b2e689c8504bae1fa5558f29	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:55:53+09:00	rpi4: Add boot files from github
+f851143b5b71f833d7588f2a1a4af165f50dde51	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-07-25T16:34:59+09:00	ARM: dts: bcm2710-rpi-3-b-plus: remove duplicated uart0_ctsrts_gpio30 node
+d5840f0af1a93d1c1b45217ed131bdcddf43120d	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-07-23T18:31:05+09:00	ARM: dts: bcm2710-rpi-3-b-plus: Add cts pin setting for bluetooth uart
+8d7f3a871c34aee25ec190831ae5db6115c32b83	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-07-17T10:56:16+09:00	Bluetooth: fix wrong indent in __hci_req_update_{scan/adv}_rsp_data()
+e124747e23677804be56a31c2b972560a9ae3176	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-07-04T17:42:52+09:00	ARM: dts: bcm27xx: Fix to of_graph from bridge node for touchscreen
+e7a76e5d423034e2f5afc6c55b7103d5d143f68d	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-07-04T17:40:58+09:00	drm/vc4: Fix change to find_panel in the dsi_attach func
+fcf72b666d009682e5858bd330af1eb12a2d0af7	DoHyun Pyun <dh79.pyun@samsung.com>	2019-07-04T09:18:21+09:00	Bluetooth: Fix the potential crash issue
+dd4d1d862c5352ed1d8c356c93675eec0d0361ad	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-16T15:37:22+05:30	Bluetooth: Set le data length command and event
+d03b38e3947d2fd4ff7d3b25c733536b1faab75d	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-16T12:54:31+05:30	Bluetooth: Read host suggested default le data length
+bb9d3190821290d1953d95c9e4cf21cf849e6039	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-16T12:09:57+05:30	Bluetooth: Write host suggested default le data length
+9bf40bc9789292145f3913b9bdb06fbe900a5834	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-16T10:38:30+05:30	Bluetooth: Read LE Max data length command
+93b3773961aa83379c81f7e1b8fb257d4b210cdb	h.sandeep <h.sandeep@samsung.com>	2016-09-16T14:45:24+05:30	Bluetooth: Fix IPSP connection callback event issue.
+e0aef3f2fbc4c671349c7ab8bd058cec89c57e39	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-15T12:53:03+05:30	Bluetooth: IPSP Connect/Disconnect apis
+4f9c24c1bf2efe01dc2270366b1208085c15302e	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-15T10:12:09+05:30	Bluetooth: Add support to enable/disable IPSP
+1403ce911508d7c68c65293664f9c7e336bbc992	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T16:21:01+05:30	Bluetooth: Fix issue in the Set LE privacy function.
+f6f25a1504f13c48da8ce6ba2fef1888ad0fce16	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-12T12:46:44+05:30	Bluetooth: Store the key if auth type is P192
+dd12b83ce7fa86a0a6d55cc126e4f9e0a4ed27a8	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T17:01:39+05:30	Bluetooth: Cancel the Sniff timer
+c7d8d0b08c2be82f93df99e8fe77eacc9d74e8b0	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T16:40:50+05:30	Bluetooth: Enable sniff mode for incoming connection
+1a890d5b29a83a46bb549f622845087cb80a8c09	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T16:01:23+05:30	Bluetooth: Modify fast connectable type.
+b27247bed41d9fc7d3448bdb7ae0345068fc5527	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T15:11:28+05:30	Bluetooth: Send Authentication Request command on pairing failure
+b35f19488fe45cf1d776de70793d9118957cbb45	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T14:54:54+05:30	Bluetooth: Enable inquiry and page scan
+1dab82a998cc6a0f3bfb1387c2e27e7d21bd0e3f	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T13:04:11+05:30	Bluetooth: Change authentication requirement.
+6098ba1e56be70992ade48524a8a6673b3c86d57	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T12:24:43+05:30	Bluetooth: Set link Supervision timeout for a connection
+565ef2a318a80afb3f7d22a463f6567e15a107ba	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T11:21:06+05:30	Bluetooth: Set filter policy for LE connection
+3cfbadf273be3b6c660bb1cd0c5eaad759a17890	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-07T15:22:08+05:30	Bluetooth: Get Advertising TX power
+fc5fef7058205f3bf6e6aa7c1e5a1df142e74dc9	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T12:37:45+05:30	Bluetooth: Set the link for SCO connection
+d715b088e2ca5cf1a571a9a4221ea5d396e04f85	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-06T16:38:36+05:30	Bluetooth: Add MGMT command to set SCO settings
+4d2007c60add4c5a1994cf7e3e5ed17dea4fd6d0	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T10:31:17+05:30	Bluetooth: Add multiple LE advertise state change event
+736071152d7728bf0e207e6365aaecca480e1610	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T10:10:03+05:30	Bluetooth: Add LE device found MGMT event
+1d2e978f8562a1ffd40bb3c3eff76a5f1348a666	Seung-Woo Kim <sw0312.kim@samsung.com>	2016-09-29T01:59:05+09:00	Bluetooth: fix vendor ext rssi link alert event
+324cc667eae1bc58968f1f3324ce4de1cd1ec750	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-07T16:47:58+05:30	Bluetooth: Add H/W TX timeout error MGMT event
+c54e9e2bef8268dcf538b4076911a0fefca67450	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-07T15:42:22+05:30	Bluetooth: Add hardware error MGMT event
+615bf94712ecad5f731f9565a3a8632e1125d2bd	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T10:56:15+05:30	Bluetooth: Add LE vendor specific event handler
+46c21049f2d8c35a3f4e5d04e1930fd5739b118a	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T12:46:07+05:30	Bluetooth: Add set LE scan parameter feature
+c18bc77e2581c0f02c2117252f0d9e8d1b06282b	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T12:13:09+05:30	Bluetooth: Set Manufacturer data feature
+1ea9c8039d14f8178a10be27de2d8a755f901351	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T11:58:22+05:30	Bluetooth: Add LE connection parameter update procedure
+24c75eba624ddb3846eff2c3621e90f6a1a92b89	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T11:41:34+05:30	Bluetooth: Add stop LE auto connection feature
+4c0d4cb4b971fbfdbe16c60f502dfb018b700cca	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T11:23:02+05:30	Bluetooth: Add BT LE discovery feature
+50faa672ce4c6d8737ff592c5cbba79686235289	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T10:17:19+05:30	Bluetooth: Update device name on remote_name_event
+816aa2cb0757fdb4f0ad5b286461ea527f1415f2	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-24T17:21:15+05:30	Bluetooth: Add RSSI Monitor feature
+e9d7d9f344a0b5d7b66275a3a1c52ec94dc30d54	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-24T15:02:56+05:30	Bluetooth: Functions to modify WhiteList
+0e8ba320d0b34de29718222c5864d4c9fee38641	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-24T12:17:16+05:30	Bluetooth: Add Advertising Packet Configuration
+212ed06ce5a07c563d28a525cfbfbb5502b4d51c	h.sandeep <h.sandeep@samsung.com>	2016-09-01T12:00:57+05:30	Bluetooth: Add MGMT tizen_handlers and TIZEN_OP_BASE_CODE.
+6ef82a8277ab73c4abf285c502d812a1016a84e6	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-23T17:07:10+05:30	Bluetooth: Add "TIZEN_BT" flag
+c29f74e7196fc8e09911279bd77b82949d98ec74	Jaechul Lee <jcsing.lee@samsung.com>	2019-05-09T09:26:53+09:00	ASoC: ac108: Fixes kernel bug message when starting to capture
+b60296ce8db39864efbc846f2392ae0aa9717871	Junghoon Kim <jhoon20.kim@samsung.com>	2019-04-30T07:43:58+09:00	misc: tizen-inform-reboot: Use ksys_open() and ksys_close() wrappers
+b22fb9b2f7f877a397346d801cd94a47b51dbe80	Jaechul Lee <jcsing.lee@samsung.com>	2019-04-18T15:02:37+09:00	ASoC: ac108: Adds default 4channels mic volume
+a3b0e5127c087665c5ecbac1981b48b8ad078904	Jaechul Lee <jcsing.lee@samsung.com>	2019-04-02T10:30:46+09:00	ARM64: dts: bcm2710-rpi-3-b: Adds respeaker 4mic nodes
+e6be6173269480c12e2c3d68425c3058e6e9383c	Jaechul Lee <jcsing.lee@samsung.com>	2019-04-01T11:08:55+09:00	ASoC: ac108: Adds ac108 codec and machine code
+175752c07bdbabcb7ba3c0661b053ff9a6c733f2	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-03-22T16:00:27+09:00	drm/vc4: Fix with pm_runtime synchronization on DSI
+945259499b230f2f539666a1014121e3bb3f19c3	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-03-07T11:18:21+09:00	LOCAL / mm, page_alloc: Add print page allocation failure reason
+15458db0461c3dd94f8508a210ffbb089d34d216	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-03-07T11:02:10+09:00	sound: bcm: allo: Fix duplicate-decl-specifier build warnings
+107b367e0c83a4d64a5cf1e1deff328bc1e2b3b2	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-03-06T18:31:39+09:00	usb: dwc_otg: check value of uWord type after convert
+ef23d89585c28324d5bba791e4adc87a59846955	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-03-06T17:35:32+09:00	usb: dwc_otg: fiq_fsm: fix ignored-attributes build warnings
+a44fb9469585544c7a15713da579c6fcbc3078d7	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-03-06T17:53:48+09:00	misc: bcm2835_smi: use proper enum in dma_map_single
+c332bd7976bdd44f7d8e0c324df66577beacc289	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-02-14T11:22:19+09:00	drm/vc4: Fix reduce interrupt timeout 'workaround'
+c4c0d591369955975b64128d45db69d9b95f28a7	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-02-18T14:40:49+09:00	drm/panel: Add error handling for write of dsi
+66e8a3d68bf4d155830cb99538b992511a02e46f	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2018-12-05T19:23:05+09:00	ARM: dts: bcm283x: Fix the priority of pixelvalve0 to the lowest value
+f89511a332a0acbb73e85eff6dd1220feb3909df	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2018-10-19T15:23:42+09:00	ARM: dts: bcm2710-rpi-3-b-plus: Add DT support for DRM relevant devices
+55ffee5532d0d34c4286d3581181422069932d19	Seung-Woo Kim <sw0312.kim@samsung.com>	2018-10-19T10:46:53+09:00	ARM: dts: bcm2710-rpi-3-b-plus: Enable dt nodes for audio, i2c1, spi0
+80e605c47af4b8b775172e8168643136fff97103	Seung-Woo Kim <sw0312.kim@samsung.com>	2018-10-19T10:44:27+09:00	ARM: dts: bcm2710-rpi-3-b-plus: Add reserved memory for secure os
+32f9fbf579252cbb74b74ff5be9a5f0700f58544	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2018-10-18T16:49:04+09:00	ARM: dts: Add support for drm vc4 on RPI3 b plus
+9be3f199d367e170cf18e0d9e4e63ac3a0ac45f3	Jaehoon Chung <jh80.chung@samsung.com>	2018-09-18T18:43:43+09:00	net: rtl8192cu: change config name as vendor driver
+94bff31fe6418910e7bd8e2ca1bf34ebecbe5858	Seung-Woo Kim <sw0312.kim@samsung.com>	2018-08-20T13:07:05+09:00	staging: bcm2835-camera: fix overflow warnings
+a2feb1f32eb4c0251522e28d318c9c7574d7cc7b	Dongwoo Lee <dwoo08.lee@samsung.com>	2018-04-05T10:57:43+09:00	misc: tizen-inform-reboot: Add support for download mode
+defb14b51ec6b7d448c6c03991215d9fd309f1c8	Seung-Woo Kim <sw0312.kim@samsung.com>	2018-01-17T18:35:52+09:00	ARM: dts: bcm2809-rpi-2-b: enable display, touch, audio, spi and i2c
+d6ad061986525d880d3ec2fb9754c3a661a8a33d	Seung-Woo Kim <sw0312.kim@samsung.com>	2018-01-17T10:29:01+09:00	usb: dwc_otg: remove wrong memory accesses found by kasan
+685394aca5e3ab29669c9904c2c4a8a31da05087	egukim <egukim@dignsys.com>	2017-07-04T13:53:36+09:00	ARM64: dts: bcm2710-rpi-3-b : add memory reserve
+5be541712afcbefdd07aa78fbe11d2c2565cad00	egukim <egukim@dignsys.com>	2017-07-03T14:06:47+09:00	ARM64: dts: bcm2710: add psci device node
+49a48db5e9d1afe4aaea311b54e40aecec4e91db	egukim <egukim@dignsys.com>	2017-07-03T13:55:37+09:00	ARM64: dts: rpi3: Add optee node
+8a271de0b62d153d38ea95115eec4f6621dc31dd	Junghoon Kim <jhoon20.kim@samsung.com>	2017-10-17T14:43:04+09:00	misc: tizen-inform-reboot: resolve sync failure about reboot parameter
+db06c281e5d609061257366b492e4efcba97c60e	Łukasz Stelmach <l.stelmach@samsung.com>	2017-09-29T15:24:05+02:00	misc: make sure Tizen notifier is executed before reset
+c6c79d1027ad18686a7b112f366116caf7dd1dbe	Junghoon Kim <jhoon20.kim@samsung.com>	2017-08-21T11:04:32+09:00	misc: add Tizen reboot notifier for passing reboot parameter
+e09b8ae858b62775683fbea75ff264146ca1ee61	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2017-09-07T16:24:56+09:00	drm/vc4: Workaround for crtc scanout device problem
+27b04ff1c1bd364bc347e4d1197db88f7c36b692	KwangCheol Lee <kclee@dignsys.com>	2017-08-07T16:33:36+09:00	ARM64: dts: bcm2710-rpi-3-b: add DT support for DRM relevant devices
+5896df1e8923412ec44cc357534b1a2b8f7091d5	Eric Anholt <eric@anholt.net>	2016-06-02T15:09:35-07:00	BCM270X: Enable the DSI panel node in the VC4 overlay.
+795ca17ef22af862778b7e455d14269f5beb0b96	Inki Dae <inki.dae@samsung.com>	2017-09-05T12:09:36+09:00	ARM: dts: bcm2710-rpi-3-b: enable spi0 device node
+17751ec5dbb2d724a67b81dc53c680d0c2dce869	Lee Hackseung <lhs@dignsys.com>	2017-08-10T15:48:39+09:00	ARM: dts: bcm2710-rpi-3-b : Change audio node status as "okay"
+1a0ee8365837a4a675809838114db7df4793f76c	Inki Dae <inki.dae@samsung.com>	2016-07-04T17:28:46+09:00	staging: logger: fix build error due to removed ki_nbytes
+16b21ffbe031df4a88e9685639c8fd760cb7ce54	Jaehoon Chung <jh80.chung@samsung.com>	2018-01-05T09:40:02+09:00	staging: android: logger: fix the compiler error
+6557a8b6353fbbc4aedcee524251a25232702dc0	Karol Lewandowski <k.lewandowsk@samsung.com>	2017-07-03T14:01:57+02:00	Revert "staging: Remove logger and alarm-dev from android Makefile"
+0dde47712660f3efdbbe7784d1477036a2c0895c	Karol Lewandowski <k.lewandowsk@samsung.com>	2017-07-03T14:00:55+02:00	Revert "staging: Remove the Android logger driver"
+5601edf9a3511738e52e1c77f9e39dbe59331c11	Andi Shyti <andi.shyti@samsung.com>	2017-03-31T15:20:27+09:00	ARM64: dts: bcm2710-rpi-3-b: enable i2c1
+ceee3a4844eedfc8edb43cb76f7d8a95572c8038	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2017-01-19T13:49:54+09:00	arm: dts: Add support for drm vc4 on RPI3
+11eb350bd74689aad65ffb36818b4a2c900077e0	Jaechul Lee <jcsing.lee@samsung.com>	2017-01-31T08:58:22+09:00	packaging: Added '.gbs.conf' for partial build
+839c811efeb43c92345dd47d1e3d3bbac4474024	Naushir Patuck <naush@raspberrypi.com>	2021-01-14T09:20:52+00:00	staging: vc04_services: ISP: Add colour denoise control
+3b94cc7db18f323c2d2e7a2974705df8c1daff7c	Naushir Patuck <naush@raspberrypi.com>	2021-01-14T09:18:42+00:00	uapi: bcm2835-isp: Add colour denoise configuration
+177903cd7beb5419858cbcff9c9849c76c6ec579	Phil Elwell <phil@raspberrypi.com>	2021-01-19T08:57:21+00:00	configs: Enable BCM2835 thermal driver in kernel8
+c07747092a602a1e36dfae545c604c31e602362a	Dom Cobley <popcornmix@gmail.com>	2021-01-17T17:07:02+00:00	vc4: Correct POS1_SCL for hvs5
+58e590c9a47dec8d54b27c06963bb22e3dcf662e	Dom Cobley <popcornmix@gmail.com>	2021-01-14T16:01:50+00:00	vc4: Correct lbm size and calculation
+e9505f4612646533f53813aabef5ca040b0ea49d	Phil Elwell <phil@raspberrypi.com>	2021-01-13T21:27:56+00:00	SQUASH: Revert "overlays: Fix dtc warnings in i2c-gpio"
+d8a34392a66a607377c5bd77c8c3bfee98c8342e	Phil Elwell <phil@raspberrypi.com>	2021-01-13T21:25:38+00:00	SQUASH: Revert: "overlays: Make the i2c-gpio overlay safe again"
+cd6f018b16da561fb8ed06419cc4bb3f126004c0	Marc Kleine-Budde <mkl@pengutronix.de>	2021-01-09T17:03:32+01:00	overlays: seeed-can-fd-hat: clarify how to identify HAT version
+1784c6e20919faae2c22b61cf124bce9dd203cab	Dave Stevenson <dave.stevenson@raspberrypi.com>	2021-01-06T17:42:31+00:00	dtoverlays: Update sensor overlays to use cam1_reg where possible
+7b6580825dd0544cddf3ee96cdd27264ae4b2cb1	Dave Stevenson <dave.stevenson@raspberrypi.com>	2021-01-06T17:28:57+00:00	dt: Add a camera regulator node to all downstream Pi platforms
+591d01539ad819b5f3ecd881bb5201d0fdb2fc93	Aaron Shaw <shawaj@gmail.com>	2020-12-26T03:13:14+00:00	overlays: add spi override to merus-amp overlay
+02550a28529cb738acce3fc6a2d53b31abad5030	Aaron Shaw <shawaj@gmail.com>	2021-01-02T02:34:03+00:00	overlays: add wm8960-soundcard overlay
+76bb65a2f83e140c62a4a6cb152e82d47220cf4b	Marc Kleine-Budde <mkl@pengutronix.de>	2021-01-02T21:38:58+01:00	overlays: Add overlay for Seeed Studio CAN BUS FD HAT v1 (based on mcp2517fd)
+46c9e0c32ca987b381b123854b7490c97e5f104c	Marc Kleine-Budde <mkl@pengutronix.de>	2021-01-02T21:08:59+01:00	overlays: give Seeed Studio CAN BUS FD HAT a -v2 postfix
+28f9a1a051c2e702fa8cb8fa4803a9cfb224372f	Paul Elder <paul.elder@ideasonboard.com>	2020-12-22T14:27:46+09:00	media: i2c: ov5647: Selection compliance fixes
+91c670e5bc87910c9a8f303ba3a1f15b44f3d90d	Dom Cobley <popcornmix@gmail.com>	2021-01-06T18:16:29+00:00	bcm2711-rpi.dtsi: Bump hdmi audio dma panic priority to max
+507fb305019b1516dc0cb3e2f3203643a3ba8da8	popcornmix <popcornmix@gmail.com>	2021-01-11T13:06:23+00:00	dt: Enable DMA_WIDE_SOURCE and DMA_WIDE_DEST for hdmi audio
+c114fef4c3284286b282c4c2d7c9dc4261449e94	Dom Cobley <popcornmix@gmail.com>	2021-01-06T18:16:10+00:00	bcm2835-dma: Avoid losing CS flags after interrupt
+a9dc059ed4602a51646bc1efad7bbc61455186ac	popcornmix <popcornmix@gmail.com>	2021-01-11T14:49:33+00:00	bcm2835-dma: Move WAIT_RESP from extra to info
+b500dab84477d456c4b2bd6a8497cbdb8a3c9329	Dom Cobley <popcornmix@gmail.com>	2020-12-30T14:51:29+00:00	bcm2835-dma: Add bcm2835-dma: Add DMA_WIDE_SOURCE and DMA_WIDE_DEST flags
+795a7ded6c4b1109d0f87b631909e90863441f8d	Dave Stevenson <dave.stevenson@raspberrypi.com>	2021-01-07T11:43:22+00:00	staging/bcm2835-isp: Log the number of excess supported formats
+a25e479223f16f0d2dba0ecd6b1f88e8ee6e89d0	Dave Stevenson <dave.stevenson@raspberrypi.com>	2021-01-07T11:37:10+00:00	staging/bcm2835-isp: Add the unpacked (16bpp) raw formats
+a72d0145b45b356dd10afd5220ff22339efe4850	Dave Stevenson <dave.stevenson@raspberrypi.com>	2021-01-07T11:41:26+00:00	staging/bcm2835-codec: Log the number of excess supported formats
+ce0a9e9100ac8b387b88871bec86ada9ba196571	Dave Stevenson <dave.stevenson@raspberrypi.com>	2021-01-07T10:45:16+00:00	staging/bcm2835-codec: Add the unpacked (16bpp) raw formats
+3fa6c922f620923482e57d17b4248b8ea26d666a	Dave Stevenson <dave.stevenson@raspberrypi.com>	2021-01-07T10:43:20+00:00	staging/vc04_services: Add additional unpacked raw formats
+f8cd1b3c34172792dd0dd82822daed70d867dc23	Dave Stevenson <dave.stevenson@raspberrypi.com>	2021-01-05T14:34:20+00:00	staging/mmal-vchiq: Fix incorrect static vchiq_instance.
+a8646926c7e17acb62f9c83af26b18d346dd1456	Dave Stevenson <dave.stevenson@raspberrypi.com>	2021-01-02T10:51:58+00:00	staging/vc04-services/codec: Fix logical precedence issue
+9f85c85cfb47c1cc5bb78c8f8d1710a861780aa6	Phil Elwell <phil@raspberrypi.com>	2021-01-04T11:06:51+00:00	staging: vchiq: Fix bulk transfers on 64-bit builds
+790b1003aad59fcacc331b84e4108de0dbc940a6	gesangtome <gesangtome@foxmail.com>	2021-01-01T18:03:17+08:00	vc-sm-cma: fixed kbuild problem
+06831c09a8c445a3963cfafa95557edff139a43d	menschel <menschel.p@posteo.de>	2020-12-30T21:55:34+01:00	Add overlay for Seeed Studio CAN BUS FD HAT (#4034)
+efcfc073a8bfa81f7dd8d973d24871f2785e886c	Phil Elwell <phil@raspberrypi.com>	2020-12-30T20:00:38+00:00	overlays: Rebuild "upstream" with latest ovmerge
+056e5d433bf5e940bb56ba5154213ea8c9bdeea6	Phil Elwell <phil@raspberrypi.com>	2020-12-22T16:13:17+00:00	staging: vchiq: Fix bulk userdata handling
+385d77d0fb23d1945c659fe5f3924804c3f0ccd0	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-12-01T14:57:41+00:00	drm/vc4: Fixup fkms for API change
+e7e10b24068df03ee83a32e70b7f058b7e2485e9	Maxime Ripard <maxime@cerno.tech>	2020-12-15T16:42:43+01:00	drm/vc4: hdmi: Enable 10/12 bpc output
+2dca884ad8374a06da945752ca0e78962b3c6350	Maxime Ripard <maxime@cerno.tech>	2020-12-15T16:42:42+01:00	drm/vc4: hdmi: Limit the BCM2711 to the max without scrambling
+e3d530b45932b1d720fc9a7b182d3c99bebdbc1f	Maxime Ripard <maxime@cerno.tech>	2020-12-15T16:42:41+01:00	drm/vc4: hdmi: Use the connector state pixel rate for the PHY
+7de894b18e5a52b2067f267a1d46e329b53c6a83	Maxime Ripard <maxime@cerno.tech>	2020-12-15T16:42:40+01:00	drm/vc4: hdmi: Store pixel frequency in the connector state
+3cebb82236574efd15100e57156d402ab4e910ce	Maxime Ripard <maxime@cerno.tech>	2020-12-15T16:42:39+01:00	drm/vc4: hdmi: Create a custom connector state
+0e9fa45d747ff7c674ed7f04e29683b85db9e145	Maxime Ripard <maxime@cerno.tech>	2020-12-15T16:42:38+01:00	drm/vc4: hdmi: Don't access the connector state in reset if kmalloc fails
+71159017c54ca681d9e515e52c0199e09d543d88	Maxime Ripard <maxime@cerno.tech>	2020-12-15T16:42:37+01:00	drm/vc4: hdmi: Take into account the clock doubling flag in atomic_check
+213a2b300a3d7d12ad4435f06bc6712dce4730be	Maxime Ripard <maxime@cerno.tech>	2020-12-15T16:42:36+01:00	drm/vc4: Pass the atomic state to encoder hooks
+07af06749749c4c774582c3e3fb6104d54fbea92	Maxime Ripard <maxime@cerno.tech>	2020-12-07T16:57:11+01:00	drm/vc4: hvs: Align the HVS atomic hooks to the new API
+fe526bf215a1e70c77c28e39b7951017e8c726c1	Maxime Ripard <maxime@cerno.tech>	2020-10-28T13:32:22+01:00	drm/atomic: Pass the full state to CRTC atomic begin and flush
+167a464aa802cab25a77315a85762faaa65f2643	Maxime Ripard <maxime@cerno.tech>	2020-10-28T13:32:21+01:00	drm/atomic: Pass the full state to CRTC atomic_check
+e23afa38e909ca850d50aa9fe9731d212708eb00	Maxime Ripard <maxime@cerno.tech>	2020-10-08T14:44:08+02:00	drm/atomic: Pass the full state to CRTC atomic enable/disable
+39fc1e8c969e3c054298f51aa9dbd287808f273a	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-12-13T16:54:43+00:00	staging/vc04_services/codec: Clear last buf dequeued flag on START
+2bb23877d3de1b9115921783c69f4e1ab1e46183	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-12-13T16:45:58+00:00	staging/vc04_services/codec: Add support for CID MPEG_HEADER_MODE
+6a952676282ab677d2ce0e8fda96c303e4d777ec	Naushir Patuck <naush@raspberrypi.com>	2020-12-09T11:30:12+00:00	media: i2c: imx477: Selection compliance fixes
+1bfb780d12a605b56d81de7cd89f9496077a3f6e	Phil Elwell <phil@raspberrypi.com>	2020-12-16T09:28:17+00:00	overlays: Add missing addresses to ads1015/ads1115
+bbaa0980a3176db16f650134cc4a731f0965a914	Dom Cobley <popcornmix@gmail.com>	2020-12-15T16:26:51+00:00	drm/vc4: Make normalize_zpos conditional on using fkms
+f008613bb1674d778f8cda06d7f4e99ee8d93280	Phil Elwell <phil@raspberrypi.com>	2020-12-15T17:02:17+00:00	overlays: mpu6050: Add 'addr' parameter
+d303fa0b8001415b6016167d4fd86813a96178ef	Phil Elwell <phil@raspberrypi.com>	2020-12-15T16:38:37+00:00	net: lan78xx: Ack pending PHY ints when resetting
+d4eee998d0da2cc706647051fedd2b876cc15c94	Naushir Patuck <naush@raspberrypi.com>	2020-12-15T14:51:55+00:00	Revert "media: videobuf2: Fix length check for single plane dmabuf queueing"
+6ca12ff813b7c08949a8a0945997571897982d0f	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-11-04T18:31:02+00:00	staging/bcm2835-codec: Ensure OUTPUT timestamps are always forwarded
+7f6edd6a817ee8a21046935281850ed2ccce0c2c	Phil Elwell <phil@raspberrypi.com>	2020-12-07T17:18:39+00:00	overlays: Fix cut-and-paste error in README
+56c21ace7fdf5732474c0aa5c42118c38bb6eeb6	Phil Elwell <phil@raspberrypi.com>	2020-12-07T08:49:53+00:00	overlays: Add PCF85063 and PCF85063A to i2c-rtc
+4f96e35642abf48757872a65a48763b76d56f308	Phil Elwell <phil@raspberrypi.com>	2020-12-07T08:33:19+00:00	configs: Add RTC_DRV_PCF85063=m
+56202af3e85187148db853067910107ae9ac32f8	Phil Elwell <phil@raspberrypi.com>	2020-12-07T09:35:57+00:00	ARM: dts: CM4 audio pins are not connected
+b17151fd3fc0324ce41847e7bf47669cd8d9aa24	Phil Elwell <phil@raspberrypi.com>	2020-12-03T13:44:42+00:00	PCI: brcmstb: Advertise MSI-X support
+c5b8b16adcdf3ecc09820786ea20c7a11e1ccfab	Naushir Patuck <naush@raspberrypi.com>	2020-12-02T16:48:41+00:00	media: bcm2835-unicam: Clear clock state when stopping streaming
+798ef5d0645f19409245800fcc741503500d7b1c	Naushir Patuck <naush@raspberrypi.com>	2020-12-02T15:26:09+00:00	media: bcm2835-unicam: Return early from stop_streaming() if stopped
+fe06ef5c3e9824f6f0b97c3abd7675a7b1d1b94f	Naushir Patuck <naush@raspberrypi.com>	2020-12-02T15:22:23+00:00	media: bcm2835-unicam: Correctly handle error propagation for stream on
+675a35dd7088c0ac9e9e9120cccb1708257b1fb5	paul-1 <6473457+paul-1@users.noreply.github.com>	2020-11-04T19:17:48-05:00	Overlay: Update Allo Piano Plus dac driver for 5.4.y kernels.
+f9fa84e8d2def735934f3fb71082769c31148377	Sudeep <sudeepkumar@cem-solutions.net>	2020-10-23T15:52:38+05:30	Add allo boss2 config
+b7675c8198ae2b68d3981cf078fba88bb6621643	Sudeep <sudeepkumar@cem-solutions.net>	2020-10-23T15:51:15+05:30	Add allo boss2 overlay
+fe966f8bf0564b44a4f12bdcf4f6920864b1a916	Sudeep <sudeepkumar@cem-solutions.net>	2020-10-23T15:47:17+05:30	Allo boss2 driver
+8495369679ae26ed649785bbb0ef24ae01d88f06	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-11-30T16:16:03+00:00	drm/vc4: Correct DSI register definition
+45913286ca6c01d83c1d1cd1e537c2620cb8763b	Dom Cobley <popcornmix@gmail.com>	2020-10-22T19:07:24+01:00	vc4_hdmi: Move hdmi reset to bind
+56c372507e05fdfc2d3d4f42fbdde34718433a87	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-11-12T18:42:30+00:00	dt: Use compatible string for BCM2711 DSI1
+6846b9a1ef34773ed739da58de718fe3f39ea9da	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-11-12T17:18:13+00:00	drm/vc4: Add configuration for BCM2711 DSI1.
+6e1b1710de2f7de0c102d9221e3d06f50e2012bd	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-11-12T17:01:52+00:00	dt-bindings: Add compatible for BCM2711 DSI1
+ab0f211cfd68e054400ce55bccf2fa8839e9410f	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-11-11T17:18:01+00:00	drm/vc4: Add support for DSI0
+397cbf446d5eb4e3df5d3e02257a0d1e40a0b0c8	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-11-22T11:01:08+00:00	media: ov9281: Add 1280x720 and 640x480 modes
+47dffbfc950282c52938515c73d64e0a0d7a5eea	MichaIng <micha@dietpi.com>	2020-11-23T16:17:31+01:00	configs: Enable WireGuard kernel module on armhf configs
+efa62af54b405eb0baa6d3eca15223d7ba47cd89	Phil Elwell <phil@raspberrypi.com>	2020-11-23T14:56:18+00:00	configs: Restore BRIDGE_NETFILTER=m
+76264540133b752a584008e819b05bd3d18d4476	Phil Elwell <phil@raspberrypi.com>	2020-11-23T14:53:14+00:00	configs: Regenerate the defconfigs
+c9832395cfc8a5460b168d57ae5f1f8350945a88	Marc Kleine-Budde <mkl@pengutronix.de>	2019-11-15T00:54:07+01:00	mcp251xfd: add overlay
+77d73057c9fb962d561e30a32a045e379cb2d156	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-11-10T17:49:35+00:00	Add devicetree support for RaspberryPi 7" panel over DSI I2C
+ca6a8cd62af3f4b330c339f5a27025a2f606a449	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-11-10T11:21:56+00:00	drm/panel/raspberrypi-ts: Insert delay before polling for startup state
+b60aac46aca70c712219c63afa7ff8dd74ad35e2	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-23T10:17:18+01:00	drm/panel/raspberrypi-touchscreen: Use independent I2C actions with delay.
+ae434ab772522d1f71b5974137e6af51015226b9	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-11-06T18:52:25+00:00	dtoverlays: Add an overlay for the EDT FT5406 touchscreen
+19fab1bbeb042f6050bd5c63ce0123d822988485	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-11-06T18:45:10+00:00	Input: edt-ft5x06: Poll the device if no interrupt is configured.
+b4295ee4e8ef0f84a6c1824878cc396b66fd8133	Dom Cobley <popcornmix@gmail.com>	2020-11-10T20:04:08+00:00	vc4: Clear unused infoframe packet RAM registers
+6aeebec04ef7e7a6e57edbd466ea4a3a8b78ca83	Phil Elwell <phil@raspberrypi.com>	2020-11-11T17:08:33+00:00	PCI: brcmstb: Restore initial fundamental reset
+3146fc3be5559bc5b596b8b3b94dbc5761a1322d	Dom Cobley <popcornmix@gmail.com>	2020-11-09T19:49:32+00:00	vc4_hdmi: Report that 3d/stereo is allowed
+d5900ba5bba73d2160aeba46bb0e1e2bedf94d93	menschel <menschel.p@posteo.de>	2020-11-06T23:32:22+01:00	configs: Add CAN_MCP251XFD=m and CAN_ISOTP=m
+b754698d2e5742dcb5df59b734ed71445cc46521	Phil Elwell <phil@raspberrypi.com>	2020-11-05T11:39:35+00:00	ARM: dts: bcm27xx: Remove enable_headphones setting
+cb144247cde850ecf8252f72c6f13e1a3aeb359b	Phil Elwell <phil@raspberrypi.com>	2020-11-04T11:25:02+00:00	overlays: Deprecate and delete the sdtweak overlay
+5a820dfafa922e518d380fd6ae7949f6c30bec18	Phil Elwell <phil@raspberrypi.com>	2020-07-14T14:21:33+01:00	ARM: dts: Add bcm2711-rpi-400.dts
+554142ba7ac7de48a570b89b42181b0177cb6537	Phil Elwell <phil@raspberrypi.com>	2020-10-22T17:11:12+01:00	overlays: Add MAX31856 support to maxtherm overlay
+d2e813299ef0e857972be9adcda1b2cea163ea17	Phil Elwell <phil@raspberrypi.com>	2020-11-02T14:56:18+00:00	configs: Add CONFIG_MAX31856=m
+f3bffca98c226a062845a39b8f811598f8d882e7	Phil Elwell <phil@raspberrypi.com>	2020-10-29T14:10:56+00:00	phy: broadcom: Add bcm54213pe configuration
+e506a5fcf586882bc37aec7e0f3919775e424a11	Jonathan Bell <jonathan@raspberrypi.org>	2019-05-14T17:00:41+01:00	phy: broadcom: split out the BCM54213PE from the BCM54210E IDs
+6864f164d448043d342f2a3867a7b4285df01288	Tim Gover <tim.gover@raspberrypi.com>	2020-10-20T11:55:37+01:00	firmware: raspberrypi: Add support for tryonce reboot flag
+51aec999a84519fc8d41095f9f67cbca0302764e	Tim Gover <tim.gover@raspberrypi.org>	2020-10-22T15:30:55+01:00	watchdog: bcm2835: Ignore params after the partition number
+787e5a6c19574c293e8992d9dab72d622e5c2582	Dom Cobley <popcornmix@gmail.com>	2020-10-27T12:24:14+00:00	bcm2835-pcm: Fix up multichannel pcm audio
+cb7c2338b70fe611e733b6a0f5788ed5838b4715	David Knell <david.knell@gmail.com>	2020-10-28T14:21:37+00:00	PiFi-40 driver, Makefile and Kconfig
+fca87a18953171f3df26d8acb3be79fc930a1b10	David Knell <david.knell@gmail.com>	2020-10-28T14:20:56+00:00	PiFi-40 Devicetree files
+940c4437b91fa0d0fb414b9e834651fffaa3cf0c	David Knell <david.knell@gmail.com>	2020-10-28T14:18:42+00:00	PiFi-40 defconfigs
+b3cd915b739c95545057724ac5ed5fffeff10229	Phil Elwell <phil@raspberrypi.com>	2020-10-27T12:12:22+00:00	bcm2708_fb: Fix a build warning
+bec04d41d16a51a76823cc32aeb1543cc4dcc719	Phil Elwell <phil@raspberrypi.com>	2020-10-27T12:10:40+00:00	rpivid_h625: Fix build warnings
+6e707e493273b7b2b91a40f9c563741046947788	Phil Elwell <phil@raspberrypi.com>	2020-10-27T12:10:04+00:00	gpio-fsm: Fix a build warning
+a45db5f4913dcebddc67630570c8867dcb4b7400	Phil Elwell <phil@raspberrypi.com>	2020-10-27T09:59:49+00:00	dwc_otg: Minimise header and fix build warnings
+15623f1d72a9a16a33c144c5ef5097d2172c68a4	Phil Elwell <phil@raspberrypi.com>	2020-10-26T21:51:29+00:00	configs: Set RASPBERRYPI_FIRMWARE for arm64 bcm2711
+b9c207cb9810cc59ee7d8ae727a537bac8777fe8	Phil Elwell <phil@raspberrypi.com>	2020-10-26T10:35:43+00:00	ARM: dts: Expand PCIe space on BCM2711
+b24492d49435cd4b7ee9b46b1d966d9625fa04dc	Serge Schneider <serge@raspberrypi.com>	2020-10-26T16:38:21+00:00	rpisense-fb: Set pseudo_pallete to prevent crash on fbcon takeover
+927549852626b8def3ee073e1e9aaed50f555a57	Phil Elwell <phil@raspberrypi.com>	2020-10-26T10:21:23+00:00	overlays: Enable headphone audio in audremap
+3a23197bd2d10fd37d432d35050e2fdc7f84665f	Phil Elwell <phil@raspberrypi.com>	2020-10-26T10:18:50+00:00	ARM: dts: Disable headphone audio on Zeroes, CM4
+cf01a81534aa8750955679500a629e04bbebc229	Phil Elwell <phil@raspberrypi.com>	2020-10-26T10:23:22+00:00	staging: bcm2835-audio: Add disable-headphones flag
+54475fe784d7709abf9ed6290d8691f9f8941e67	Phil Elwell <phil@raspberrypi.com>	2020-10-26T15:01:21+00:00	dts: Tidy the Raspberry Pi Makefile entries
+ef837b8ea2bde6661b205236fca5066e8f51c884	Jonathan Bell <jonathan@raspberrypi.org>	2020-10-26T14:03:35+00:00	xhci: quirks: add link TRB quirk for VL805
+b43af98e74f902e351951978a13f8b5a7a4306bc	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-10-26T12:38:27+00:00	drm/vc4: Add the 2711 HVS as a suitable DMA node
+ebd61365a3d2da309d0f75c4996e70f95b6c41f8	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-10-23T15:45:11+01:00	dts: Add CM4 to arm64 dt files
+f164ad13d0b1e106a70d263e3aed43d46b2e4d79	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-03-11T12:07:57+00:00	overlays: imx219: Correct link frequency to match the upstream driver
+cfd6ff9d53561d64bfd723c647ec8c06bef77071	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-10-23T14:15:41+01:00	overlays: Add option to disable composite to vc4-kms-v3d
+c45f99689ec2c4d08bfbcf5b379e36991b5c60d2	Phil Elwell <phil@raspberrypi.com>	2020-03-19T10:04:46+00:00	ARM: dts: bcm271x: Use a53 pmu, drop RPI364
+e8d46cefaeed9ee7a8f2236ca2e8766407361e55	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-10-21T18:34:56+01:00	drm/vc4: Add all the HDMI registers into the debugfs dumps
+5d927fbb6700ce2546a63f37d0e48335720ff514	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-10-22T12:05:43+01:00	drm/vc4: Reading the hotplug register is only valid if no GPIO defined
+32ac69cb1dc8d624efc7bbc0386caaaeaad7c064	Phil Elwell <phil@raspberrypi.com>	2020-09-30T12:00:54+01:00	gpio: Add gpio-fsm driver
+6595dba3af4247e7d71c41223ac9c0108a3036d0	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-10-06T18:44:42+01:00	drm/vc4: Add debugfs node that dumps the current display lists
+acf4db54524a9ad95df8c91330d544644243daf1	Phil Elwell <phil@raspberrypi.org>	2019-07-31T17:36:34+01:00	drm/vc4: A present but empty dmas disables audio
+95896b801fc78f8a1330cb3406848b731a8b18b5	Naushir Patuck <naush@raspberrypi.com>	2020-04-23T10:17:37+01:00	staging: vc04_services: ISP: Add a more complex ISP processing component
+abf678f585a7379ec4c265cb494133bf6f3ccebb	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-10-12T17:03:14+01:00	uapi: bcm2835-isp: Add bcm2835-isp uapi header file
+6861ffb9c7a91b4457af265aec9efba2c8349d43	Matthias Reichl <hias@horus.com>	2020-10-11T00:48:55+02:00	bcm2835-dma: only reserve channel 0 if legacy dma driver is enabled
+01bb14f62ebdf16dab1a2459c094a8927ffa6796	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-10-08T20:24:12+01:00	staging: vc04_services: Add a V4L2 M2M codec driver
+7f9e859b47998d0cbfc3b56d193b579d6a318df1	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-09-25T16:07:55+01:00	staging: mmal-vchiq: Use vc-sm-cma to support zero copy
+0820705ffe32bcbe24774a91f5b6fa5f242104f3	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-05-06T18:11:14+01:00	staging: mmal-vchiq: Add monochrome image formats
+686f53f1b440985d3e5054e4b955bb0ed0d88a80	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-05-06T18:09:04+01:00	staging: vchiq-mmal: Add support for 14bit Bayer
+a41c595188e0cad629cc3f9fdaabc238cbf92568	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-10-08T18:49:52+01:00	staging: vc04_services: Add new vc-sm-cma driver
+967a6f3f66ffe521dbde47536593ff858e21cd12	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-10-08T15:35:14+01:00	staging: bcm2835-camera: Replace deprecated V4L2_PIX_FMT_BGR32
+cafb5f0ea4eb191641fa434e62be169964c03835	Jonathan Bell <jonathan@raspberrypi.org>	2020-10-07T15:09:29+01:00	dwc_otg: initialise sched_frame for periodic QHs that were parked
+2f650504e9a5e0e13833228f4c2b959f9b576f82	Phil Elwell <phil@raspberrypi.com>	2020-09-30T19:23:43+01:00	USB: gadget: f_hid: avoid crashes and log spam
+615adf8bdd0bdd37c60695b047ad5a91a1740998	popcornmix <popcornmix@gmail.com>	2020-09-28T20:23:30+01:00	char: Add broadcom char drivers back to build files
+1f2c7fc48ee476b4ad1a2400a0d09ef9eeaf5c97	Phil Elwell <phil@raspberrypi.com>	2020-09-25T15:07:23+01:00	net: bcmgenet: Reset RBUF on first open
+33bde416c8906bf602cfe5684d0c58914917d2bc	popcornmix <popcornmix@gmail.com>	2020-09-21T14:02:44+01:00	rpivid_h265: Fix width/height typo
+57b3fffabb37bca88ed412e6240b156377dcd92b	Phil Elwell <phil@raspberrypi.com>	2020-02-03T09:32:22+00:00	brcmfmac: Increase power saving delay to 2s
+a79766069def460a5f9268d70a6ba122ed31cc55	Phil Elwell <phil@raspberrypi.com>	2020-09-01T18:15:27+01:00	staging/fbtft: Add support for display variants
+94f5fcf59a57abe2ea0187818c391b90a0ac233b	David Plowman <david.plowman@raspberrypi.com>	2020-05-28T11:09:48+01:00	media: bcm2835-unicam: change minimum number of vb2_queue buffers to 1
+ffb357bd11661da2c445e1c44360dfbc94f62731	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-05-19T11:46:47+01:00	media: bcm2835-unicam: Retain packing information on G_FMT
+832fd3774c5a3f674dd89101c2c76600700b312d	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-23T15:14:05+01:00	media: bcm2835-unicam: Fixup review comments from Hans.
+5ac8711088118c2bd39b629b3560a5602029d36f	Jacko Dirks <jdirks.linuxdev@gmail.com>	2020-05-05T14:33:31+02:00	media: bcm2835: unicam: Fix uninitialized warning
+117223d4e6ce76775f8d939e188f17c724e49509	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-05-13T18:28:27+01:00	media: bcm2835-unicam: Always service interrupts
+3a4ff6502a57df80edd76ecc8797e938c9a48a7b	Laurent Pinchart <laurent.pinchart@ideasonboard.com>	2020-07-04T01:45:08+03:00	media: i2c: imx477: Parse and register properties
+24f3b285e621cf8291d75b7aecabb3b74cb6d1fb	Naushir Patuck <naush@raspberrypi.com>	2020-05-19T16:56:33+01:00	media: i2c: imx477: Return correct result on sensor id verification
+285ee539af9189609f08e724e910d0bda23632ee	Naushir Patuck <naush@raspberrypi.com>	2020-05-08T09:41:17+01:00	media: i2c: imx477: Add support for adaptive frame control
+8ee4d017305ae4286b8c4fa9b9c65fc144a1afb7	Naushir Patuck <naush@raspberrypi.com>	2020-05-08T10:00:12+01:00	media: i2c: Add driver for Sony IMX477 sensor
+3cd5c2beef8eb9d7718d2bcbdf147ff4bfee7338	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-05-19T16:20:30+01:00	drm/vc4: Add FKMS as an acceptable node for dma ranges.
+473cd558653dab5297a1cf2a76eb5d781d4a03ac	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-09-07T17:32:27+01:00	drm/vc4: Add firmware-kms mode
+511acab757c530debbd52feb1a5ca69d1b4e7961	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-09-17T18:28:17+01:00	drm/vc4: Add support for YUV color encodings and ranges
+eee50b110567c00431a94e611afa920a06a641be	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-01-24T14:25:41+00:00	drm/vc4: Add support for DRM_FORMAT_P030 to vc4 planes
+da42a9e88fa86d01be494382a1c675d9c3fa230c	Dom Cobley <popcornmix@gmail.com>	2020-06-03T12:20:19+01:00	vc4: cec: Restore cec physical address on reconnect
+5141fc9a7305e7ebf2c8d15cff1fd379edb20994	popcornmix <popcornmix@gmail.com>	2020-04-20T18:00:38+01:00	vc4: Report channel mapping back to userspace
+5ae96fa308aa6ea343b13297368b8a36be1faa66	Dom Cobley <popcornmix@gmail.com>	2020-06-30T11:23:49+01:00	vc_hdmi: Set VC4_HDMI_MAI_CONFIG_FORMAT_REVERSE
+5da4498756e17252d4a2a2f1315d8c95ec6c9a5e	Dom Cobley <popcornmix@gmail.com>	2020-06-25T18:48:40+01:00	vc4_hdmi: Remove firmware logic for MAI threshold setting
+74eccab67a01772c830d0928b87159db7d11df40	Dom Cobley <popcornmix@gmail.com>	2020-07-10T11:51:16+01:00	drm/vc4: enable HBR MAI format on HBR streams
+b2370a1ef61ddf27c1a1a153e0910a323391d07c	Matthias Reichl <hias@horus.com>	2020-03-19T20:00:35+01:00	drm/vc4: move setup from hw_params to prepare
+911b91ab7d90be2dd0f099f24bdeed83f7674902	Matthias Reichl <hias@horus.com>	2020-03-17T12:12:22+01:00	drm/vc4: add iec958 controls to vc4_hdmi
+25ed94ff958ae3cb17d7b30f3ff9199272876be6	popcornmix <popcornmix@gmail.com>	2020-03-10T22:21:15+00:00	vc4_hdmi: Set HDMI_MAI_FMT
+dd4e0babcf8deaee6b808416ae103081354f5697	Dom Cobley <popcornmix@gmail.com>	2020-06-23T18:37:01+01:00	vc4_hdmi: Set HD_CTL_WHOLSMP and HD_CTL_CHALIGN_SET
+e16b0cf2660769d0099dc9fda09c57e2f7cf20ef	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-05-19T14:54:28+01:00	drm/vc4: Adopt the dma configuration from the HVS or V3D component
+575f57024498066ca6edb92f1ef802b9a44a5ddb	Dom Cobley <popcornmix@gmail.com>	2020-05-07T18:16:09+01:00	vc4_hdmi: Remove cec_available flag as always supported
+0728f43d9f177887816c6c35029dab2eb5d879e8	Dom Cobley <popcornmix@gmail.com>	2020-05-07T18:16:08+01:00	vc4_hdmi: Adjust CEC ref clock based on its input clock
+68ebaf96d9344ae8be2499fa1d2a9530ecadc78b	Dom Cobley <popcornmix@gmail.com>	2020-05-07T18:16:08+01:00	vc4_hdmi: Make irq shared
+0dcde78530ae5623df7664d4b7289969dd4327dc	Dom Cobley <popcornmix@gmail.com>	2020-05-07T18:16:08+01:00	vc4_hdmi_regs: Make interrupt mask variant specific
+ae19b3b39afb9ee1dbabc251ebe7d662c8250ba6	Dom Cobley <popcornmix@gmail.com>	2020-05-07T18:16:07+01:00	vc4_hdmi_regs: Add Intr2 register block
+805e3e621f65b22c2a2fa18b84bb78639370595a	Dom Cobley <popcornmix@gmail.com>	2020-05-07T18:16:07+01:00	vc4_hdmi: Fix up CEC registers
+5c7849454da715bd4d9e3120df4b6ee80857f379	Dom Cobley <popcornmix@gmail.com>	2020-05-07T18:16:07+01:00	vc4_hdmi: Fix register offset when sending longer CEC messages
+d6693b51c5828df376e1fa3d53aefaad9df5f568	popcornmix <popcornmix@gmail.com>	2020-04-27T19:07:50+01:00	vc4_hdmi: BCM2835 requires a fixed hsm clock for CEC to work
+4c0a303f3127d1d93eec252014de7d9efb08cd87	Dom Cobley <popcornmix@gmail.com>	2020-06-02T19:31:49+01:00	vc4: Set driver_name for card
+0adc416f2ac14a6f9af3496603840ffd966b8512	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-09-03T17:09:07+01:00	include/firmware: Add enum for RPI_FIRMWARE_FRAMEBUFFER_GET_DISPLAY_ID
+3781e9fbd93bc3a1c36c9d802cc3604422fc0941	detule <ogjoneski@gmail.com>	2018-10-02T04:10:08-04:00	vchiq_2835_arm: Implement a DMA pool for small bulk transfers (#2699)
+6b8ca9790b98e68a4c2297a1fbecdaf60fc2476f	popcornmix <popcornmix@gmail.com>	2020-09-03T14:02:41+01:00	dwc_otg: whitelist_table is now productlist_table
+ffe228f2c794c9f95d98840b37af4e4da0c17167	popcornmix <popcornmix@gmail.com>	2020-09-03T14:02:21+01:00	bcm2835-mmc: uninitialized_var is no more
+9aa897d7af1ebf4c0fc3e04224be26fd71288366	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-07-07T18:29:10+01:00	media: i2c: ov9281: Add support for 8 bit readout
+300697d16fe385f315aacb6f7d10132ae7043a5c	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-07-10T12:40:50+01:00	media: i2c: tc358743: Only allow supported pixel fmts in set_fmt
+96cdb9aac0ea78f06bcb027de684c36e3e39e685	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-08-27T16:30:26+01:00	media: bcm2835-unicam: Drop WARN on uing direct cache alias
+c1eb068d37a21f2a94d7d9fdb94dd4a55263dac8	Hristo Venev <hristo@venev.name>	2020-08-19T17:05:53+03:00	staging: media: rpivid: Select MEDIA_CONTROLLER and MEDIA_CONTROLLER_REQUEST_API
+e35707ed104559768bd37b3e0899baec6b38e35c	Hristo Venev <hristo@venev.name>	2020-08-19T17:02:22+03:00	media: bcm2835: unicam: Select MEDIA_CONTROLLER and VIDEO_V4L2_SUBDEV_API
+0434cedb1598212e18baac60891d4871c6f51482	Phil Elwell <phil@raspberrypi.com>	2020-07-29T13:47:55+01:00	ARM: proc-v7: Force misalignment of early stmia
+96129aea7015cb0a9d6da1d0be1929d989d587e5	Phil Elwell <phil@raspberrypi.com>	2020-07-22T17:59:31+01:00	bcm2835-dma: Advertise the full DMA range
+79bcc5c14ea5a2798b24f8dc5d824bbdb0cc6e87	Phil Elwell <phil@raspberrypi.com>	2020-07-21T17:34:09+01:00	staging: vchiq_arm: children inherit DMA config
+9c309e3b0ec8b6e812be3062a8ac41ee4a95a8b9	Phil Elwell <phil@raspberrypi.com>	2020-07-13T10:33:19+01:00	leds: Add the actpwr trigger
+19adb8b30d712ae12327216f3b4c1cf8b4cd5621	Laurent Pinchart <laurent.pinchart@ideasonboard.com>	2020-07-04T01:45:08+03:00	media: i2c: ov5647: Parse and register properties
+aea8c926bf45300daa09494505a8606b2585f724	Naushir Patuck <naush@raspberrypi.com>	2020-05-11T13:06:27+01:00	dt-bindings: bcm2835-unicam: Update documentation with new clock params
+c6a2e9ac49aab6203963e5eadbb8e6c9220a4d2f	Naushir Patuck <naush@raspberrypi.com>	2020-05-11T13:02:22+01:00	media: bcm2835: unicam: Set VPU min clock freq to 250Mhz.
+24293ebee7aa714817ad2903abdd8462ef446205	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-07-07T14:52:43+01:00	media: bcm2835-unicam: Ensure type is VIDEO_CAPTURE in [g|s]_selection
+ff17d3c76e9cbbc8de434cca7dd5e63c7dc61771	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-07-07T14:23:40+01:00	media: bcm2835-unicam: Reinstate V4L2_CAP_READWRITE in the caps
+e276e6558066f5d6763ea599c2d8eb7016a7914c	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-07-07T11:51:26+01:00	media: i2c: imx290: Set the colorspace fields in the format
+2229af9f7397ff25c2f7f48a752f51cf751630a9	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-07-07T11:23:48+01:00	media: i2c: imx290: Add support for g_selection to report cropping
+fc9a0683fbb2bed5ee6f38683b6248919246ecf0	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-07-07T10:31:53+01:00	media: i2c: imx290: Explicitly set v&h blank on mode change
+b562780a8f522ec21aadd13b196d7d4170aff245	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-07-06T17:51:32+01:00	media: i2c: ov9281: Read chip ID via 2 reads
+4ccfb48c4bf52ee1c6bc3a3d592d7b473c30a1ee	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-14T16:12:33+01:00	media: i2c: ov9281: Fixup for recent kernel releases, and remove custom code
+40770d869e81c2fa3a0a2c8451733cb6a3e02bb8	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-14T15:51:50+01:00	media: i2c: ov9281: add enum_frame_interval function for iq tool 2.2 and hal3
+2499bc19cd72a6ff6bc333ddbbc60f547c5a2193	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-14T15:47:09+01:00	media: i2c: ov9281: fix mclk issue when probe multiple camera.
+fe2421d9ad42a7c30ef0f2224edad959d3b7d489	Zefa Chen <zefa.chen@rock-chips.com>	2019-05-17T18:23:03+08:00	media: i2c: add ov9281 driver.
+fcbbfe4832a9f2a16b9372109ce62143d97c18ca	Phil Elwell <phil@raspberrypi.com>	2020-07-01T20:28:27+01:00	bcm2835-dma: Add NO_WAIT_RESP flag
+b9e900d8a3d0753716a0e49a565a118fa6d49bec	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-07-01T10:57:57+01:00	media: bcm2835-unicam: Add support for unpacked 14bit Bayer formats
+359ec6debec94c38a483a542ae1ff3e389628802	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-25T18:03:47+01:00	media: bcm2835-unicam: Add support for 14bit mono sources
+fbdd0232377d7cccdc22ff1991b7fb640b18ad1f	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-25T17:53:32+01:00	media: bcm2835-unicam: Add support for 12bit mono packed format
+1e294ebd6b2c8f1d6b8553c317f0184dc616a47f	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-25T17:51:03+01:00	media: Add a pixel format for MIPI packed 14bit luma only.
+ac7a25bcab06f10a4bada398f6f94d55a5be219a	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-05-07T16:59:03+01:00	media: Add a pixel format for MIPI packed 12bit luma only.
+e54c21126be32373ca77e233e13b51fb74a5502f	Phil Elwell <phil@raspberrypi.com>	2020-07-02T13:53:20+01:00	serial: 8250: bcm2835aux - defer if clock is zero
+35f08544acd42aa3ec77f306fce3d927de1c3932	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-26T18:11:49+01:00	media: i2c: imx290: Switch set_hmax to use imx290_write_buffered_reg
+6589531a67f9765916798040ff6e0d0ed551efea	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-25T17:03:11+01:00	media : i2c: imx290: Add support for the mono sensor variant.
+7a6f722992561d5d9606ec453f4653dd88b9bb40	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-25T16:52:14+01:00	media: dt-bindings: media: i2c: Add mono version to IMX290 bindings
+69f7e3658d3944a02a73d1e5230111dfd951d156	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-11T18:34:16+01:00	media: i2c: imx290: Add H and V flip controls
+01b35aeeece5b68908517faedcb4599abddfd3da	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-11T18:19:13+01:00	media: i2c: imx290: Add exposure control to the driver.
+98d3260328ac3801bd7503b73f114b8e0624c74f	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-11T18:09:12+01:00	media: i2c: imx290: Add support for V4L2_CID_VBLANK
+ede3fa0df1756a270bf7dcb6e61d627e406ca753	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-11T14:36:40+01:00	media: i2c: imx290: Convert HMAX setting into V4L2_CID_HBLANK
+b13237044671e21ffead4f1711daafdfc5205274	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-11T13:41:43+01:00	media: i2c: imx290: Correct range for V4L2_CID_GAIN to 0-238
+26e878f07346e06d310a6a1ea752002bd729e710	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-25T08:28:51+01:00	media: i2c: imx290: Add support for 74.25MHz clock
+79c7e9c315b496ee45f9a025f5f64b30869f452c	Andrey Konovalov <andrey.konovalov@linaro.org>	2020-06-12T15:53:46+02:00	media: i2c: imx290: set the format before VIDIOC_SUBDEV_G_FMT is called
+9251591590bee4c389351fbe62bbe15075be3f21	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-26T15:53:44+01:00	media: bcm2835-unicam: Avoid gcc warning over {0} on endpoint
+b55926d70d4df06670bb0f6dc1bfc804d9bde9ca	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-23T14:32:51+01:00	media: bcm2835-unicam: Add support for get_mbus_config to set num lanes
+acfb11b2840472bca98c70d1f3d7573c06d681f2	Naushir Patuck <naush@raspberrypi.com>	2020-05-04T12:25:41+03:00	media: bcm2835-unicam: Driver for CCP2/CSI2 camera interface
+388a37acfdb443c6e759f15ba2076de8ff883e32	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-06-23T10:05:57+01:00	drivers: media: Remove the downstream version of bcm2835-unicam
+69a5a8185d7b6143957da066f7473929ac043952	Phil Elwell <phil@raspberrypi.com>	2020-06-26T11:51:05+01:00	brcmfmac: Prefer a ccode from OTP over nvram file
+9e6d984fe93f2d17aeaa321473817464d6e2a15b	Maxim Mikityanskiy <maxtram95@gmail.com>	2020-06-20T15:40:00+03:00	staging: bcm2835-audio: Add missing MODULE_ALIAS
+aacbf1cebb5e39dd171628047cebc398e50bb388	Markus Proeller <markus.proeller@pieye.org>	2020-06-16T13:33:56+02:00	media: irs1125: Keep HW in sync after imager reset
+39435506ff22cb55f03469e033933e44c2f40b85	Markus Proeller <markus.proeller@pieye.org>	2020-06-16T13:31:36+02:00	media: irs1125: Atomic access to imager reconfiguration
+a19d7a36bbcd6f3ba88726c81ee10bd32a5ad4ce	Markus Proeller <markus.proeller@pieye.org>	2020-06-16T13:27:42+02:00	media: irs1125: Refactoring and debug messages
+ba3377b1b3232a0ddc8502b85a625d1f9b58ca88	Markus Proeller <markus.proeller@pieye.org>	2020-06-16T13:24:31+02:00	media: irs1125: Using i2c_transfer for ic2 reads
+01bc9bd04fddabe0ecafda28be1298ea8d5c8bd1	Phil Elwell <phil@raspberrypi.com>	2020-06-11T09:57:03+01:00	PCI: brcmstb: Add DT property to control L1SS
+3ce476b0fd5b96a2c16307f93055a98320483bf9	Phil Elwell <phil@raspberrypi.org>	2018-04-24T14:42:27+01:00	gpiolib: Don't prevent IRQ usage of output GPIOs
+5ef077c3e050446e7ba9c152552c9d55476ef2bd	Hristo Venev <hristo@venev.name>	2020-06-05T09:22:49+00:00	snd_bcm2835: disable HDMI audio when vc4 is used (#3640)
+036298bd8cc9510483f911696fc6e3b4cafd8193	Phil Elwell <phil@raspberrypi.com>	2020-05-19T09:46:12+01:00	brcmfmac: BCM43436 needs dedicated firmware
+fa0b04b4084f2ec819bc97472ef0da2df8331211	David Plowman <david.plowman@raspberrypi.com>	2020-05-28T11:09:48+01:00	media: bcm2835-unicam: change minimum number of vb2_queue buffers to 1
+aa4e7382d38622ba33405141b47ccf7a5a3e8299	Phil Elwell <phil@raspberrypi.com>	2020-05-20T16:36:33+01:00	staging: vchiq_arm: Clean up 40-bit DMA support
+86f3831d1fbfb1cc222ffa75938c3ae5ab414743	Phil Elwell <phil@raspberrypi.com>	2020-05-22T11:35:33+01:00	SQUASH: pinctrl: bcm2835: Set base for bcm2711 GPIO to 0
+2d0ab7c1728226412e2327ae9e8dfb755932e4c1	Phil Elwell <phil@raspberrypi.com>	2020-05-05T15:23:32+01:00	zswap: Defer zswap initialisation
+30d2452fcc575386c248d2b93398748e5f9d34c4	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-05-19T11:46:47+01:00	media: bcm2835-unicam: Retain packing information on G_FMT
+1c298872e1fc5ffa8bfbe089009ad3cc3c62e817	Phil Elwell <phil@raspberrypi.com>	2020-04-08T15:23:56+01:00	kbuild: Disable gcc plugins
+42301c359873bdb668f79952e59b0157831dd284	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-05-15T13:48:59+01:00	staging:vc04_services: bcm2835-camera: Request headers with I-frame
+50068947b647405bacb4c35c7018601e3cfadbb8	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-05-15T13:42:10+01:00	staging: vc04_services: mmal-vchiq: Update parameters list
+76fadaadf6bfec90701ef27458681062602b7520	Phil Elwell <phil@raspberrypi.com>	2020-05-13T20:10:15+01:00	sc16is7xx: Fix for hardware flow control
+f2f0a594cd7508a49ca8c5b40911cf792e4c3412	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-05-13T18:28:27+01:00	media: bcm2835-unicam: Always service interrupts
+fb0ec31e4b4376f4f81722f3df6c2f0712d6ba7b	Naushir Patuck <naush@raspberrypi.com>	2020-05-07T15:50:54+01:00	dt-bindings: media: i2c: Add IMX477 CMOS sensor binding
+272f042771316b42732ea51a83e7e8c8c2e91ea3	Phil Elwell <phil@raspberrypi.com>	2020-05-05T19:45:41+01:00	video: bcm2708_fb: Disable FB if no displays found
+59aea95de554bb20c0d9b3628ef990a3fac6c1b8	Jacko Dirks <jdirks.linuxdev@gmail.com>	2020-05-05T14:33:31+02:00	media: bcm2835: unicam: Fix uninitialized warning
+32a1259fa59cfd753323bc129f7c0828edc33a66	Jacko Dirks <jdirks.linuxdev@gmail.com>	2020-05-05T14:28:14+02:00	media: i2c: tc358743: Fix fallthrough warning
+7005a5122d5bc90caa2a634410310245d1fc3574	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-30T09:52:50+01:00	media: bcm2835-unicam: Fix reference counting in unicam_open
+30a9518015128c20dd21555e0c84b329fc23e9e1	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-29T22:05:09+01:00	media: bcm2835-unicam: Do not stop streaming in unicam_release
+cf49e126fe4a04f0cf1ec59fae4bb3eb27fb8ef2	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-29T16:45:02+01:00	media: bcm2835-unicam: Add support for VIDIOC_[S|G]_SELECTION
+6b7202170702e0bd5535bc0f4faa1bc6fb7445b1	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-30T11:03:00+01:00	media: i2c: ov5647: Advertise the correct exposure range
+475e9c825aa2d5ce4b1bfbd041779176fee911dc	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-29T22:11:01+01:00	media: i2c: ov5647: Use member names in mode tables
+c4e956372553cb23ce6651ad5e93ecd539737ca3	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-29T21:47:25+01:00	media: i2c: ov5647: Neither analogue gain nor exposure need EXECUTE_ON_WRITE
+be2c0c07bb13645e46e2d419dcaf9e5a75fe1100	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-29T21:39:58+01:00	media: i2c: ov5647: Add support for V4L2_CID_VBLANK
+e9bdfbda0fddee06de6195022c80ad929584c987	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-29T17:25:56+01:00	media: i2c: ov5647: Set V4L2_SUBDEV_FL_HAS_EVENTS flag
+9adbbec6a3bdbcc96f96e29ecd31680b1313296f	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-29T12:25:13+01:00	media: i2c: ov5647: Support V4L2_CID_PIXEL_RATE
+d634092b0dd83a2fc37e98f461c951fc9555d818	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-29T11:50:52+01:00	media: i2c: ov5467: Fixup error path to release mutex
+7bc4e939f84584690a67cfbd851277f0051cb300	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-29T11:46:07+01:00	media: i2c: ov5647: Add support for g_selection to reflect cropping/binning
+217871cee698837d882fcb163b56c71da833a2f6	David Plowman <david.plowman@raspberrypi.com>	2020-01-29T15:31:32+00:00	media: ov5647: change defaults to better match raw camera applications.
+f2c99b7b716e6b43fb8a6e05002d763f93110d04	David Plowman <david.plowman@raspberrypi.com>	2020-01-29T15:31:28+00:00	media: ov5647: Add extra 10-bit sensor modes.
+ec2c882f26b1c7b1dd4d414386094021c2401ea6	David Plowman <david.plowman@raspberrypi.com>	2020-01-29T15:31:23+00:00	media: ov5647: Add V4L2 controls for analogue gain, exposure and AWB
+bd00a754b81590f9069e65f88b2190553db7e459	David Plowman <david.plowman@raspberrypi.com>	2020-01-29T15:30:53+00:00	media: ov5647: Add basic support for multiple sensor modes.
+a3baaf41baa388c784606e11938f64cbcc4a4850	David Plowman <david.plowman@raspberrypi.org>	2020-01-15T13:40:38+00:00	media: ov5647: Fix return codes from ov5647_write/ov5647_read functions.
+3965a5d5c94db0f0d6899bc3f1c970a76edc5bbe	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-04-20T11:01:21+01:00	media: i2c: imx219: Declare that the driver can create events
+10bdae188cbedebc07dda16904562c0b4f27c76b	Phil Elwell <phil@raspberrypi.com>	2020-05-01T17:56:13+01:00	overlays: Make the i2c-gpio overlay safe again
+563bf90601f1c929bc8e1c4676d27acd16df0c49	Phil Elwell <phil@raspberrypi.org>	2019-04-04T13:33:47+01:00	bcm2835-dma: Add proper 40-bit DMA support
+705db884cfed58715f17fe78f40b4d31488d74ad	Naushir Patuck <naush@raspberrypi.com>	2020-04-22T08:32:32+01:00	staging: vchiq: Load bcm2835_isp driver from vchiq
+aca31ae11dcb2e7930ac1c3f17620e6dd2616279	Naushir Patuck <naush@raspberrypi.com>	2020-04-21T15:06:19+01:00	media: uapi: v4l-ctrls: Add CID base for the bcm2835-isp driver
+4ffa386b99f92aa8fb20a68d59f67bbe7c122f3e	Naushir Patuck <naush@raspberrypi.com>	2020-04-23T10:20:26+01:00	media: uapi: v4l2-core: Add ISP statistics output V4L2 fourcc type
+4f8d37b2107af59ba0ace58a754e8800b55ecacd	Naushir Patuck <naush@raspberrypi.com>	2020-04-21T16:26:03+01:00	media: bcm2835-unicam: Re-fetch mbus code from subdev on a g_fmt call
+adc26331837ff1ed570f1e431c185858254b1b41	Naushir Patuck <naush@raspberrypi.com>	2020-03-12T14:09:38+00:00	media: imx219: Advertise embedded data node on media pad 1
+c4735164f3b34fe89eefa746c180b6e2b3e6eea0	Laurent Pinchart <laurent.pinchart@ideasonboard.com>	2020-03-24T23:13:02+02:00	media: bcm2835-unicam: Add support for the FRAME_SYNC event
+d668d9b0bbfb15568f2194019100b6b5aaf07a25	Laurent Pinchart <laurent.pinchart@ideasonboard.com>	2020-03-24T23:13:02+02:00	media: bcm2835-unicam: Disable event-related ioctls on metadata node
+66030e784f9dc0dabcf6cfa975927a8689b23af1	Naushir Patuck <naush@raspberrypi.com>	2020-04-02T16:08:51+01:00	media: bcm2835-unicam: Use dummy buffer if none have been queued
+91a36733069513e261d8e2513d49ee62565844c4	Naushir Patuck <naush@raspberrypi.com>	2020-04-16T11:35:41+01:00	media: bcm2835-unicam: Add embedded data node.
+3e67eb6f1256b843e6ef8e0560fb864f7056aa85	Naushir Patuck <naush@raspberrypi.com>	2020-04-07T10:42:14+01:00	media: bcm2835-unicam: Add support for mulitple device nodes.
+adadcd1486998f28307fdbfb6838457652ff3b94	Naushir Patuck <naush@raspberrypi.com>	2020-01-21T14:06:47+00:00	media: uapi: Add MEDIA_BUS_FMT_SENSOR_DATA media bus format
+3bb5aac5823f55f1d14f2c1ac6df2e425b01a711	Naushir Patuck <naush@raspberrypi.com>	2020-04-01T08:46:29+01:00	media: uapi: v4l2-core: Add sensor ancillary data V4L2 foucc type.
+3643a5553a7ffaa209f8783ed82a3816d40d213e	Naushir Patuck <naush@raspberrypi.com>	2020-04-01T08:39:49+01:00	media: bcm2835-unicam: Driver for CCP2/CSI2 camera interface
+02f06beef48fab2e83e63c20fd1276c6a635be8b	Phil Elwell <phil@raspberrypi.com>	2020-04-21T11:30:23+01:00	driver: char: rpivid: Don't map more than wanted
+858f448c520236219b14cdfdb73dee0d4d13e8f4	Phil Elwell <phil@raspberrypi.com>	2020-04-17T10:46:19+01:00	spi: Force CS_HIGH if GPIO descriptors are used
+8b3924a1ab3e1024834f24dee5bc3f0ac5183398	Phil Elwell <phil@raspberrypi.com>	2020-04-20T22:18:52+01:00	driver: char: rpivid: Remove legacy name support
+e4ebd54ea35685f30fbcc4fe832d442655dd411f	Phil Elwell <phil@raspberrypi.com>	2020-04-08T11:59:39+01:00	overlays: Fix dtc warnings in i2c-gpio
+5f64b3aa92af18133c536e98b9821827b69f3aff	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-01-27T10:22:44+00:00	drm: Checking of the pitch is only valid for linear formats
+269eab54b22061ec23cd16c2e4ee9e22cbac4440	Maxime Ripard <maxime@cerno.tech>	2020-02-13T16:45:24+01:00	dt-bindings: display: vc4: hdmi: Add BCM2711 HDMI controllers bindings
+131c05e6afcc826e52d4936a2c266571d312e63b	Maxime Ripard <maxime@cerno.tech>	2020-02-13T17:51:09+01:00	dt-bindings: clock: Add a binding for the RPi Firmware clocks
+e1c70c8c80ffb9f57701ce42bdd36f309986d587	Maxime Ripard <maxime@cerno.tech>	2019-12-06T13:05:27+01:00	mmc: sdhci: Silence MMC warnings
+b9ed3266c75c9ab8a5d7f3993a2cd368fc7a1d29	John Cox <jc@kynesim.co.uk>	2020-03-05T18:30:41+00:00	staging: media: Add Raspberry Pi V4L2 H265 decoder
+be4c2df97f0613bee3f3084c13de62797bc2e672	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-03-17T10:53:16+00:00	media: dt-bindings: media: Add binding for the Raspberry PI HEVC decoder
+eef71c3dc9756aed762ded83e782b9ec24f682bd	John Cox <jc@kynesim.co.uk>	2020-03-05T14:46:54+00:00	media: v4l2-mem2mem: allow request job buffer processing after job finish
+9bef1de17de5c20f03010a26a4ebabe9fdcb2c68	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-01-24T14:28:21+00:00	media: videodev2.h: Add a format for column YUV4:2:0 modes
+8c0f6d6286a1a37b90755703399aca7be5d17100	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-03-23T19:00:17+00:00	media: uapi: Add hevc ctrls for WPP decoding
+3250f55107b68d23f4236c56082b96639ae597ef	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-03-23T18:34:01+00:00	media: hevc_ctrls: Add slice param dependent slice segment
+299c81ae5b02bca94889eaf31cee1e23bfdf6292	Jernej Skrabec <jernej.skrabec@siol.net>	2019-12-13T17:04:27+01:00	media: uapi: hevc: Add segment address field
+ed37215adce62252ea788fc1dc11c7b059e2a053	Jernej Skrabec <jernej.skrabec@siol.net>	2019-12-13T17:04:25+01:00	media: uapi: hevc: Add scaling matrix control
+47512cec89863b871a563519bb87f778bff36f66	Dave Stevenson <dave.stevenson@raspberrypi.com>	2020-01-24T14:22:06+00:00	drm/fourcc: Add packed 10bit YUV 4:2:0 format
+31aafbff0c458dfba2b0c84849519ffb5a05ea9b	popcornmix <popcornmix@gmail.com>	2020-04-01T11:22:44+01:00	bcmgenet: Disable skip_umac_reset by default
+b680b1ff18d898fd2e47ab04a1cd4784f5a87401	Nataliya Korovkina <malus.brandywine@gmail.com>	2020-03-12T17:22:53-04:00	Kbuild: Allow .dtbo overlays to be built, adjust.
+82d57a32b02ccc8617171535ac941a485784ce6a	Jim Quinlan <jim2101024@gmail.com>	2018-01-15T18:28:39-05:00	dt-bindings: pci: Add DT docs for Brcmstb PCIe device
+4487680ca5a8a072d5e07438ede77177fd14f11b	Phil Elwell <phil@raspberrypi.com>	2020-02-06T12:23:15+00:00	of: overlay: Correct symbol path fixups
+550caef37d2604a2bbecf2bf7ccffef1dbbea828	Phil Elwell <phil@raspberrypi.com>	2020-03-02T14:42:23+00:00	video: fbdev: bcm2708_fb: Use common compat header
+11fd02cd2dcd7860a9795338b1f1ac1267b48190	Phil Elwell <phil@raspberrypi.com>	2020-03-02T14:40:19+00:00	drivers: char: vcio: Use common compat header
+75010a1b1d9b4b720f3e12d063885d9de60405d5	Phil Elwell <phil@raspberrypi.com>	2020-02-25T17:38:20+00:00	pinctrl: bcm2835: Accept fewer than expected IRQs
+bb7ded65965d1170130168dc98bb7c2a955144df	Phil Elwell <phil@raspberrypi.org>	2020-01-06T14:05:42+00:00	pinctrl: bcm2835: Change init order for gpio hogs
+461ac0899edb53743c53aebc12028e6d782aa916	Phil Elwell <phil@raspberrypi.org>	2020-01-06T16:04:30+00:00	pinctrl: bcm2835: Remove gpiochip on error
+573f1618b3571d99ac03f5f4d320db1f77b65689	Phil Elwell <phil@raspberrypi.com>	2020-02-03T17:30:46+00:00	staging: vchiq_arm: Give vchiq children DT nodes
+efe2fc9653e3ccdd1d7e63e6f114365ac6ea28d1	Luke Hinds <7058938+lukehinds@users.noreply.github.com>	2020-01-22T16:03:00+00:00	Initialise rpi-firmware before clk-bcm2835
+6e8becf09536019ca1ba63d39ef1b9e02cbcf685	Stefan Wahren <wahrenst@gmx.net>	2019-12-27T11:40:56+01:00	ARM: bcm: Backport BCM2711 support from upstream
+352cfc801639e5014c2c33e52b5582e38f8dcea1	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-06-18T12:15:50+01:00	staging: vchiq: Use the old dma controller for OF config on platform devices
+d4f26206047e3c0daea89ef1ebcc3a0f3f8ef938	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-01-29T16:13:25+00:00	staging: vchiq_arm: Set up dma ranges on child devices
+9be5461716c8a2940fc71d1d76ce44cf988c41f3	Phil Elwell <phil@raspberrypi.org>	2019-11-22T16:23:32+00:00	drm/v3d: Set dma_mask as well as coherent_dma_mask
+c321287e86fd854c920c7bd8107917415e0fb665	popcornmix <popcornmix@gmail.com>	2019-09-03T20:28:00+01:00	clk-bcm2835: Disable v3d clock
+db1226fdceccc85b14780c52b6d27eb9dd554bd0	popcornmix <popcornmix@gmail.com>	2019-09-09T15:49:56+01:00	clk-raspberrypi: Allow cpufreq driver to also adjust gpu clocks
+2bb8d6f0d850e2748706edc649fb18643a9c8e48	popcornmix <popcornmix@gmail.com>	2019-09-05T17:59:14+01:00	v3d_gem: Kick the clock so firmware knows we are using firmware clock interface
+09f5f6c457d6b66c31d1c04ccb23c42e291829ca	popcornmix <popcornmix@gmail.com>	2019-08-23T16:34:38+01:00	v3d_drv: Handle missing clock more gracefully
+42f2fc0f19713ec1ec96f8bbdaea0b4146ed1e29	James Hughes <james.hughes@raspberrypi.org>	2019-11-07T14:59:59+00:00	net:phy:2711 Change the default ethernet LED actions
+f1bb02978ead9dcf90fdad1e011f93b29e8fdf93	James Hughes <james.hughes@raspberrypi.org>	2019-10-31T14:39:44+00:00	net:phy:2711 Allow ethernet LED mode to be set via device tree
+39d0d32614b6eef35c34a7d5111d6cb6a1a9f01b	Phil Elwell <phil@raspberrypi.org>	2019-11-14T11:59:01+00:00	net: bcmgenet: The second IRQ is optional
+f814ba121f332ca7a3374eb14af8781155181902	Dave Stevenson <dave.stevenson@raspberrypi.com>	2019-11-06T13:57:58+00:00	staging: vchiq_arm: Register bcm2835-codec as a platform driver
+e320b73e6adaa4068dc47b4a83e69070e95b0b20	Dave Stevenson <dave.stevenson@raspberrypi.com>	2019-11-06T13:57:48+00:00	staging: vchiq_arm: Register vcsm-cma as a platform driver
+bb60a6cd76953e68772629a290d28b371484823a	Phil Elwell <phil@raspberrypi.org>	2019-11-12T16:41:21+00:00	drm/v3d: Plug dma_fence leak
+17a7fd0e5956a80e19ea5d068488ee9fd0efc342	Phil Elwell <phil@raspberrypi.org>	2019-11-11T20:18:08+00:00	drm/v3d: Suppress all but the first MMU error
+77b90c3f1f0d88f34d9fb6c89d62760e6c5e29c6	Phil Elwell <phil@raspberrypi.org>	2019-11-11T14:01:41+00:00	drm/v3d: Don't clear MMU control bits on exception
+fe1e6a0166b58c59d832841910876ecea1519aff	Markus Proeller <markus.proeller@pieye.org>	2019-10-10T19:12:36+02:00	media: i2c: Add a driver for the Infineon IRS1125 depth sensor
+47d1bcb061e9d1b0bb3f9f481284e93b413192db	Markus Proeller <markus.proeller@pieye.org>	2019-10-10T19:12:08+02:00	dt-bindings: Add binding for the Infineon IRS1125 sensor
+cdf6f95ae38506a66a84d4d603c4edfe60dc4b0a	James Hughes <james.hughes@raspberrypi.org>	2019-09-24T18:26:55+01:00	Rename HDMI ALSA device names, check for enable state
+eba3922d2d91c956fa2363195e857710d6375099	Stefan Wahren <wahrenst@gmx.net>	2019-09-19T20:45:30+02:00	ARM: bcm: Switch board, clk and pinctrl to bcm2711 compatible
+65b83ff5942676c176210228a90db335f56d5572	Phil Elwell <phil@raspberrypi.org>	2019-09-23T09:26:41+01:00	kbuild: Allow .dtbo overlays to be built piecemeal
+a7f2bcd639a4a08f133a7cfb7bb5bc4ba218a153	Phil Elwell <phil@raspberrypi.org>	2019-09-18T17:22:36+01:00	drm/v3d: Delete pm_runtime support
+dcef26d09925c8b2e9fbfe1410828e854ea7f10a	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-09-06T15:13:06+01:00	staging: bcm2835-camera: Add greyworld AWB mode
+171208ed2abd526d5d1669ed5a084de7772ba2d6	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-09-06T15:04:51+01:00	v4l2: Add a Greyworld AWB mode.
+72415f66da25500c1d2c9cfd00513cbe2bd20619	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-08-28T13:34:30+01:00	media: dt-bindings: Add binding for the Sony IMX219 sensor
+c3988e811742feb92e9922a5249347dbe3bc0dab	Phil Elwell <phil@raspberrypi.org>	2019-09-03T18:17:25+01:00	arch/arm64: Add Revision, Serial, Model to cpuinfo
+8ccbc483420341b197d0f4a8928e9a6b6068db09	Phil Elwell <phil@raspberrypi.org>	2019-09-03T18:16:56+01:00	arch/arm: Add model string to cpuinfo
+6843feac6194d9adefe45ce36f4f6831084f6263	Phil Elwell <phil@raspberrypi.org>	2019-08-15T12:02:34+01:00	configs: arm64/bcm2711: Enable V3D
+1f6625fc3210b69be0ac331dfe93eb4b8183aeb6	Jonathan Bell <jonathan@raspberrypi.org>	2019-08-13T15:53:29+01:00	xhci: Use more event ring segment table entries
+594fa2c94456172dcda51c8d652db5065109172d	Phil Elwell <phil@raspberrypi.org>	2019-08-09T08:51:43+01:00	net: bcmgenet: Workaround #2 for Pi4 Ethernet fail
+4d862f7ec2a574934bc6d06e678d36b08153375a	James Hughes <james.hughes@raspberrypi.org>	2019-07-16T12:18:21+01:00	Add HDMI1 facility to the driver.
+2d6915bd9d04532b542ef24ff85357de32b5b31f	Jonathan Bell <jonathan@raspberrypi.org>	2019-08-01T16:41:20+01:00	hid: usb: Add device quirks for Freeway Airmouse T3 and MX3
+463f49fcb16e2ddf94ec166e9b98e94f893929e3	Jonathan Bell <jonathan@raspberrypi.org>	2019-05-09T14:30:37+01:00	drivers: char: add chardev for mmap'ing the RPiVid control registers
+504480f4f51bc0a65e6234f3c36b9c77e6e6b80c	Eric Anholt <eric@anholt.net>	2019-05-02T13:22:53-07:00	drm/v3d: Clock V3D down when not in use.
+dfe1f1f31cac22e1dd75489203a5ebe21460c4ee	Eric Anholt <eric@anholt.net>	2019-01-14T15:13:17-08:00	drm/v3d: HACK: gut runtime pm for now.
+4bf3181e9b7239267533b69aa9d3cde8f8f3421f	popcornmix <popcornmix@gmail.com>	2019-08-06T15:23:14+01:00	clk-bcm2835: Avoid null pointer exception
+d46cf2f37c22978e2eff80708f4f1101df28b8ba	Phil Elwell <phil@raspberrypi.org>	2019-07-12T15:38:35+01:00	i2c: bcm2835: Set clock-stretch timeout to 35ms
+091a4bbc9ef94667e9ff9f7cfaaab45040e5ad1c	Jonathan Bell <jonathan@raspberrypi.org>	2019-07-11T17:55:43+01:00	xhci: add quirk for host controllers that don't update endpoint DCS
+6b2ad884663301f9bef5a43050b66ce31614805e	Eric Anholt <eric@anholt.net>	2019-01-14T14:47:57-08:00	drm/v3d: Hook up the runtime PM ops.
+effd62d01c08b42421b5c9535ce1c19410929745	Eric Anholt <eric@anholt.net>	2019-01-14T12:35:43-08:00	drm/v3d: Skip MMU flush if the device is currently off.
+3b7f2dd4038eed43d5605306756d7ea4b02fedef	Eric Anholt <eric@anholt.net>	2018-10-04T17:22:43-07:00	drm/v3d: Add support for 2711.
+c37367383841d96f3d83c8a71baae3eef5a63205	Phil Elwell <phil@raspberrypi.org>	2019-06-11T17:38:28+01:00	arm: bcm2835: Add bcm2838 compatible string.
+6a5cf8495924caeb05a742279190eccc7b6159fd	Jonathan Bell <jonathan@raspberrypi.org>	2019-06-11T11:42:03+01:00	usbhid: call usb_fixup_endpoint after mangling intervals
+17c772ef554ac244bcba7f88c1de3427a9bc34f1	Jonathan Bell <jonathan@raspberrypi.org>	2019-06-11T11:33:39+01:00	xhci: implement xhci_fixup_endpoint for interval adjustments
+444229741465aea84e3c18f16ba718b928911fb6	Jonathan Bell <jonathan@raspberrypi.org>	2019-06-11T10:55:00+01:00	usb: add plumbing for updating interrupt endpoint interval state
+93703b8da4b505e514a191564da0af518ecaa4b5	Eric Anholt <eric@anholt.net>	2019-05-02T15:24:04-07:00	clk: bcm2835: Allow reparenting leaf clocks while they're running.
+191d58a7350e1260fb9544869ca7307d97606cda	Eric Anholt <eric@anholt.net>	2019-05-02T15:11:05-07:00	clk: bcm2835: Add support for setting leaf clock rates while running.
+9e988ccb70f23e2bdeb5080a160dfe231aec599d	Eric Anholt <eric@anholt.net>	2019-01-11T17:31:07-08:00	soc: bcm: bcm2835-pm: Add support for 2711.
+7af5fb49c1be77d8ed04e7821ea66fbba40e9f9e	Phil Elwell <phil@raspberrypi.org>	2019-01-23T16:11:50+00:00	clk-bcm2835: Don't wait for pllh lock
+f59089793ca9132ac0491d83e4bbc9097d863024	Martin Sperl <kernel@martin.sperl.org>	2019-05-13T11:05:27+00:00	spi: bcm2835: enable shared interrupt support
+0197ab80a0c29137379ef178c34a247d9202a9c7	Tim Gover <tim.gover@raspberrypi.org>	2019-03-22T09:47:14+00:00	usb: xhci: Disable the XHCI 5 second timeout
+9a886be128b0eac2d2dc176585384c286f04cadc	Jonathan Bell <jonathan@raspberrypi.org>	2019-05-14T17:17:59+01:00	net: genet: enable link energy detect powerdown for external PHYs
+c3de772536b4db3f058eb26dfa106c62cc8f04ae	Phil Elwell <phil@raspberrypi.org>	2019-03-27T13:45:46+00:00	bcmgenet: Better coalescing parameter defaults
+a1d02ef3ff92eab11a1d5e4ffbb0f47c0f905d43	Jonathan Bell <jonathan@raspberrypi.org>	2018-09-12T14:44:53+01:00	bcmgenet: constrain max DMA burst length
+ddf83be6cc1257c1060c9f05f9df3d307998fd68	popcornmix <popcornmix@gmail.com>	2019-04-30T19:15:30+01:00	bcm2835-pcm.c: Support multichannel audio
+81484be598d2081338d76e352b8bfb4bd040c8f0	Phil Elwell <phil@raspberrypi.org>	2018-11-01T17:31:37+00:00	vchiq: Add 36-bit address support
+42c57044d5311dff927fd2bc72776a310ac5a205	Phil Elwell <phil@raspberrypi.org>	2019-08-02T15:20:11+01:00	mmc: sdhci-iproc: Fix vmmc regulators on iProc
+ab1bb9f556b407a050ebcb8cfe456a63f03f2e78	Stefan Wahren <wahrenst@gmx.net>	2019-05-04T17:06:15+02:00	hwrng: iproc-rng200: Add BCM2838 support
+08000ec1b705ea7c2c65e5820f4c9145d87badf5	Phil Elwell <phil@raspberrypi.org>	2019-05-29T15:47:42+01:00	arm: bcm2835: DMA can only address 1GB
+cba46709aeadd11cdb20ed0636eec1bf0cc71ded	Phil Elwell <phil@raspberrypi.org>	2019-02-20T08:49:39+00:00	arm: bcm2835: Fix FIQ early ioremap
+c4338e9e7815610577881db269eb4fa7ccb00b0f	Phil Elwell <phil@raspberrypi.org>	2019-06-12T17:15:05+01:00	w1: w1-gpio: Make GPIO an output for strong pullup
+f2667ccfe99ae9831090cf7448ae472002153589	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-05-02T15:50:01+01:00	staging: mmal-vchiq: Fix memory leak in error path
+3bb3879341bad68827629ba9be8bd107e7810efc	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-05-01T13:27:23+01:00	staging: mmal-vchiq: Free the event context for control ports
+368dcfa0d033a389f6bf9b52e14f7635866586c1	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-02-18T15:52:29+00:00	staging: mmal-vchiq: Update mmal_parameters.h with recently defined params
+74c4274be7c238d41c39470c1d5a7a85131f3543	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-02-13T12:33:29+00:00	staging: mmal_vchiq: Add in the Bayer encoding formats
+6401d690a929a76d873083cd1bf6bd5b5340c94e	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-09-18T11:08:51+01:00	media: ov5647: Use gpiod_set_value_cansleep
+dc525655205898f2fc92c99018daf7ffdbe3ad25	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-01-24T15:09:28+00:00	clk: clk-bcm2835: Use %zd when printing size_t
+5133bda24e992506bec0e08c31fec38e0f6ff4c2	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-01-22T12:04:09+00:00	staging: mmal-vchiq: Fix client_component for 64 bit kernel
+390f9a972b19cd962f057f7eff6e02ae5eb2605d	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-29T17:57:45+00:00	media: videobuf2: Allow exporting of a struct dmabuf
+b74715ab860a78f63eda9f83dc9c5733816aea10	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-09-24T18:26:02+01:00	staging: vc04_services: Support sending data to MMAL ports
+9bea5309e421ad0d69fd7f0798844beb3cf081c0	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-09-24T18:15:38+01:00	staging: mmal-vchiq: Add support for event callbacks.
+55178db06b5e2545a975a4ce64be38a1711985b1	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-29T16:20:46+00:00	staging: mmal-vchiq: Avoid use of bool in structures
+78ff016ff681a70c6d8865e9217df83315b31a16	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-11-22T17:31:06+00:00	media: tc358743: Return an appropriate colorspace from tc358743_set_fmt
+da13c1474ec0ddae55732e5dd5f005b531c75790	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-31T14:59:40+00:00	MAINTAINERS: Add entry for BCM2835 Unicam driver
+01a2e0c816979d503a6443ae9735108166eb8b3f	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-31T14:59:06+00:00	dt-bindings: Document BCM283x CSI2/CCP2 receiver
+74b55498a635e042eef7e027d29d02b2f1fd7eb4	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-31T14:58:08+00:00	media: videodev2: Add helper defines for printing FOURCCs
+5959133b4c6f3429b9d6774fa61bc264514f490f	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-31T14:57:56+00:00	media: adv7180: Add YPrPb support for ADV7282M
+dfea02e89d7efdc07cbeeb196a44a892892a7777	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-31T14:57:46+00:00	media: adv7180: Default to the first valid input
+e6ef90ddae680a1349f9a74da7c1e30498e208aa	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-31T14:57:34+00:00	media: tc358743: Check I2C succeeded during probe.
+72b00b902d2f1628ae5fd7ca82c02cc29713a468	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-31T14:57:21+00:00	media: tc358743: Add support for 972Mbit/s link freq.
+122b899526fb80eb934012467ae5b0b0d60e5d96	Philipp Zabel <p.zabel@pengutronix.de>	2017-09-21T17:30:24+02:00	media: tc358743: fix connected/active CSI-2 lane reporting
+4a7533a4130bcc3764dce84612c03847d5882949	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-31T14:56:59+00:00	media: tc358743: Increase FIFO level to 374.
+b594f853b51ba06775e10695ee866fd9a842eac2	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-31T14:56:47+00:00	media: ov5647: Add support for non-continuous clock mode
+f70843417039dd54ee690aa6cb4abba3c7b54f17	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-31T14:56:33+00:00	media: ov5647: Add support for PWDN GPIO.
+9af7d1fb8e281962d6c2b93a24588a262591bf35	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-10-31T14:55:37+00:00	media: ov5647: Add set_fmt and get_fmt calls.
+4ea02bf7d00a8dc46249b814c76a8ab6c072c372	P33M <p33m@github.com>	2019-05-02T11:53:45+01:00	lan78xx: use default alignment for rx buffers
+6ff416cb658274d3fe24b3ce04d129e0d1c9e98b	Phil Howard <phil@gadgetoid.com>	2019-03-29T10:53:14+00:00	rtc: rv3028: Add backup switchover mode support
+9f5231e35589418c13cf775b5635dc9e7eee7c03	Phil Elwell <phil@raspberrypi.org>	2018-07-20T22:03:41+01:00	bcm2835-dma: Add support for per-channel flags
+8631f4c25e1b92a0a81c5b6857d5eaac07664f34	Phil Elwell <phil@raspberrypi.org>	2019-03-05T09:51:22+00:00	lan78xx: EEE support is now a PHY property
+b777fdc1cb0d2702080e9f31cb1dfcc05d468987	Joshua Emele <jemele@acm.org>	2018-11-07T16:07:40-08:00	lan78xx: Debounce link events to minimize poll storm
+25ad2ee6d0ea348dd7e161705a3ef51bac3f4689	Dave Stevenson <dave.stevenson@raspberrypi.org>	2019-01-10T17:58:06+00:00	firmware: raspberrypi: Report the fw variant during probe
+a22a184a3620bead768e4233865ba806c27f6808	Phil Elwell <phil@raspberrypi.org>	2018-11-26T19:46:58+00:00	net: lan78xx: Support auto-downshift to 100Mb/s
+2f42f8211e3453f1827c7154fe21dd9e4b059228	James Hughes <JamesH65@users.noreply.github.com>	2018-11-02T11:55:49+00:00	Update issue templates (#2736)
+09fc5fa091e5bb5654ceed64c3b853b4a69bb72b	Serge Schneider <serge@raspberrypi.org>	2018-10-02T11:14:15+01:00	drivers: thermal: step_wise: avoid throttling at hysteresis temperature after dropping below it
+d07943a995b8ae5f00f82613313b9136cbf652e6	Ram Chandrasekar <rkumbako@codeaurora.org>	2018-05-07T11:54:08-06:00	drivers: thermal: step_wise: add support for hysteresis
+c70e968ee5bd665ef2d63b93d134ebc485550e5c	Phil Elwell <phil@raspberrypi.org>	2018-11-06T12:57:48+00:00	sc16is7xx: Don't spin if no data received
+66658326ab7c8fabec9774d86dc2da5c908b4c7a	Stefan Wahren <stefan.wahren@i2se.com>	2018-10-13T13:31:21+02:00	firmware: raspberrypi: Add backward compatible get_throttled
+3a07b46b1a305dc09853507d217afc62cb53db28	Stefan Wahren <stefan.wahren@i2se.com>	2018-10-06T16:46:18+02:00	hwmon: raspberrypi: Prevent voltage low warnings from filling log
+1fdd6af0f05b1d7011c9b5a39c16a335b99fca9e	popcornmix <popcornmix@gmail.com>	2018-09-17T17:31:18+01:00	cxd2880: CXD2880_SPI_DRV should select DVB_CXD2880 with MEDIA_SUBDRV_AUTOSELECT
+912296b9d84be29c8115d9157329b4b5487ce841	Serge Schneider <serge@raspberrypi.org>	2018-07-09T12:54:25+01:00	Add rpi-poe-fan driver
+60e7cdc637b9e40257e7b158c8001eb7d4be2858	Phil Elwell <phil@raspberrypi.org>	2018-04-05T14:46:11+01:00	lan78xx: Move enabling of EEE into PHY init code
+91963ba19978b5c46faef4291d591f04dc78885e	Phil Elwell <phil@raspberrypi.org>	2018-06-20T12:20:01+01:00	brcmfmac: Re-enable firmware roaming support
+03ac30bb16bc1186223f6af30cbc8caa88f79d85	Dave Stevenson <dave.stevenson@raspberrypi.org>	2018-06-13T15:21:10+01:00	net: lan78xx: Disable TCP Segmentation Offload (TSO)
+7c23dc6164c32ba1bf98864fb85545c85fe99212	Phil Elwell <phil@raspberrypi.org>	2018-06-14T15:07:26+01:00	of: configfs: Use of_overlay_fdt_apply API call
+ec91fb564cbcf8deff3662be36ce1a23cc81df61	Phil Elwell <phil@raspberrypi.org>	2018-06-14T11:21:04+01:00	irqchip: irq-bcm2835: Calc. FIQ_START at boot-time
+c9e2b3f5471f4ff1250b09a6fc84f39551d0193c	Phil Elwell <phil@raspberrypi.org>	2018-05-12T21:35:43+01:00	firmware/raspberrypi: Notify firmware of a reboot
+43ed482c7646dbd209a3e352d87dbf5f6bfb47b7	Nick Bulleid <nedbulleid@fastmail.com>	2018-05-10T21:57:02+01:00	Add ability to export gpio used by gpio-poweroff
+bf40f03c1c69140b20578c789cf226274e5ed719	popcornmix <popcornmix@gmail.com>	2014-07-14T22:02:09+01:00	hid: Reduce default mouse polling interval to 60Hz
+502a334dd41996d1724a25c35c90fda2c45049a7	Phil Elwell <phil@raspberrypi.org>	2018-03-09T12:01:00+00:00	lan78xx: Read initial EEE status from DT
+c44cdc5ab3b591ff692493b0d3dbd99d0115f62f	hdoverobinson <hdoverobinson@gmail.com>	2018-03-13T06:58:39-04:00	added capture_clear option to pps-gpio via dtoverlay (#2433)
+17bcea89a69e2da202426cec63dd3356a72ef8dc	Phil Elwell <phil@raspberrypi.org>	2018-02-20T10:07:27+00:00	i2c-gpio: Also set bus numbers from reg property
+d155c8aa928852533ac1de22696a9e17e0eb3b19	Eric Anholt <eric@anholt.net>	2016-09-14T09:16:19+01:00	raspberrypi-firmware: Export the general transaction function.
+e80168329231574287b90badc209f6769d7817ee	Phil Elwell <phil@raspberrypi.org>	2017-12-11T09:18:32+00:00	ARM: Activate FIQs to avoid __irq_startup warnings
+b6fc7a4a4531a3e6520131ddb982366a72873232	Phil Elwell <phil@raspberrypi.org>	2018-07-16T14:40:13+01:00	dwc-otg: FIQ: Fix "bad mode in data abort handler"
+2b25d0207b93a3d10c35edc3818209b3ed0e9a1c	Noralf Trønnes <noralf@tronnes.org>	2015-06-03T12:26:13+02:00	ARM: bcm2835: Set Serial number and Revision
+fda1972329df952e83a38ccf15e6cdc78ff1f62c	Phil Elwell <phil@raspberrypi.org>	2017-11-27T17:14:54+00:00	cgroup: Disable cgroup "memory" by default
+9503607a0a6509e2f3c0ef5fbc0ec2dad203b811	James Hughes <JamesH65@users.noreply.github.com>	2017-11-14T15:13:15+00:00	AXI performance monitor driver (#2222)
+bb66471010a4a72f7449e8baf4b72e57c0a2464a	popcornmix <popcornmix@gmail.com>	2017-08-25T19:18:13+01:00	cache: export clean and invalidate
+1dc10aa1f5bcae09692d8a6e8e5074bbf5126e2a	Michael Zoran <mzoran@crowfest.net>	2017-02-11T01:18:31-08:00	ARM64: Force hardware emulation of deprecated instructions.
+84bbdb9715bc3f250804f4710b8bf90b732173d7	Michael Zoran <mzoran@crowfest.net>	2017-01-14T21:43:57-08:00	ARM64: Round-Robin dispatch IRQs between CPUs.
+693a0b7ae0239d3651eab5c7a6ed3790524a4776	popcornmix <popcornmix@gmail.com>	2015-04-13T17:16:29+01:00	config: Add default configs
+19ccf59612b3f366947a0b039b8b68ed208a58f6	Phil Elwell <phil@raspberrypi.org>	2015-12-17T13:37:07+00:00	hci_h5: Don't send conf_req when ACTIVE
+f27e3b0b5f517ee69e1700d824175c4a3deefcc7	Cheong2K <cheong@redbear.cc>	2016-02-26T18:20:10+08:00	brcm: adds support for BCM43341 wifi
+70aa9495c33d46fe489768aadf5eb2787c5f0528	Pantelis Antoniou <pantelis.antoniou@konsulko.com>	2014-12-03T13:23:28+02:00	OF: DT-Overlay configfs interface
+165a0ec080cafe2d936caed164de6632e595a485	popcornmix <popcornmix@gmail.com>	2016-02-23T19:56:04+00:00	bcm2835-virtgpio: Virtual GPIO driver
+89d6d835441a55a45d11cbb2f9d50c0db77272bb	P33M <P33M@github.com>	2015-10-21T14:55:21+01:00	rpi_display: add backlight driver and overlay
+804888baf11a7ec6593fb978ce6b48c4abd20019	Joerg Schambacher <joerg@i2audio.com>	2020-10-16T15:17:07+02:00	Fixes a problem when module probes before i2c module is available
+36b73808f8421b54992bc3b769fe8e9fbf390d22	Florian Meier <florian.meier@koalo.de>	2016-01-25T15:48:59+00:00	Add support for all the downstream rpi sound card drivers
+c8411122af1d214a4ec59cc4afb40b238945f597	Phil Elwell <pelwell@users.noreply.github.com>	2015-07-14T14:32:47+01:00	mfd: Add Raspberry Pi Sense HAT core driver
+7036a379ad83923bd5c002a51145b7d15670997c	Phil Elwell <phil@raspberrypi.org>	2015-06-25T12:16:11+01:00	gpio-poweroff: Allow it to work on Raspberry Pi
+4e9f4d5f783e56705343af2da31dbc686af4421b	popcornmix <popcornmix@gmail.com>	2016-11-28T16:50:04+00:00	Improve __copy_to_user and __copy_from_user performance
+5366d6546cee1d806a5f223c0f3604d70cf3bcb6	popcornmix <popcornmix@gmail.com>	2013-07-03T00:54:08+01:00	Added Device IDs for August DVB-T 205
+a76aab06a5a015a160a5d81c9282096f6cf4a1f5	Phil Elwell <phil@raspberrypi.org>	2015-02-06T13:50:57+00:00	BCM270x_DT: Add pwr_led, and the required "input" trigger
+bff682d0e40fed6131ca3b4cde72c37acabe6b59	notro <notro@tronnes.org>	2014-07-09T14:46:08+02:00	BCM2708: Add core Device Tree support
+597119cfeb92debdfa71e0976816bab2ea67b92e	Noralf Trønnes <noralf@tronnes.org>	2015-06-26T14:25:01+02:00	firmware: bcm2835: Support ARCH_BCM270x
+ab60d81011081c2b5f64527cf2bab2af33ab4e40	Noralf Trønnes <noralf@tronnes.org>	2015-06-26T14:27:06+02:00	char: broadcom: Add vcio module
+c2f579b7126fbb83deb061200a4de15449c8d935	popcornmix <popcornmix@gmail.com>	2015-06-17T15:44:08+01:00	Add Chris Boot's i2c driver
+53a514c8020ef9d7e97dd0adcde9a5b53e88ed6b	Luke Wren <wren6991@gmail.com>	2015-09-05T01:14:45+01:00	Add SMI driver
+a8694002cd84e745ff1d99bb98bfcda721f47eb4	Luke Wren <luke@raspberrypi.org>	2015-08-21T23:14:48+01:00	Add /dev/gpiomem device for rootless user GPIO access
+d4702a7b85a37181f119a7f9998b9540f9b85384	popcornmix <popcornmix@gmail.com>	2016-10-28T15:36:43+01:00	vc_mem: Add vc_mem driver for querying firmware memory addresses
+fb0d02774ec2e79f791745dbf762ed70728d0396	Phil Elwell <phil@raspberrypi.org>	2015-03-25T17:49:47+00:00	Adding bcm2835-sdhost driver, and an overlay to enable it
+24e8030105278655fe5ae287e751659ab5f1d88a	gellert <gellert@raspberrypi.org>	2014-08-15T16:35:06+01:00	MMC: added alternative MMC driver
+476bb212272aa0da839579ff2f2dc31b7a8ad564	Florian Meier <florian.meier@koalo.de>	2013-11-22T14:22:53+01:00	dmaengine: Add support for BCM2708
+a8093e7e9424d3904829ba464d7b50b63372ef67	Harm Hanemaaijer <fgenfb@yahoo.com>	2013-06-20T20:21:39+02:00	Speed up console framebuffer imageblit function
+277ab3c0ebbdb0ab6391077341bf999824887303	Siarhei Siamashka <siarhei.siamashka@gmail.com>	2013-06-17T13:32:11+03:00	fbdev: add FBIOCOPYAREA ioctl
+e5d927f32c924e8b3431881c5d61bb69f220bf92	James Hughes <james.hughes@raspberrypi.org>	2019-03-14T13:27:54+00:00	Pulled in the multi frame buffer support from the Pi3 repo
+063dcf92ae771a4dff2a338c8dd66788dc8d981a	popcornmix <popcornmix@gmail.com>	2015-06-17T17:06:34+01:00	bcm2708 framebuffer driver
+8fca2b243afee9e1e70c8c12a7e5458eb9a88fab	popcornmix <popcornmix@gmail.com>	2013-05-01T19:46:17+01:00	Add dwc_otg driver
+a80bfbd25fda7a77827b15c8e92e2a554d93fb38	popcornmix <popcornmix@gmail.com>	2013-05-12T12:24:19+01:00	Main bcm2708/bcm2709 linux port
+4bc9a0a7454478ffc282248c95582c30859094e3	notro <notro@tronnes.org>	2014-07-10T13:59:47+02:00	pinctrl-bcm2835: Set base to 0 give expected gpio numbering
+70b97740d24d935d1b9628a5569a8b22c011a243	Phil Elwell <phil@raspberrypi.org>	2020-01-29T09:35:19+00:00	tty: amba-pl011: Avoid rare write-when-full error
+771e4c5ed8427ba0141d1eac8480c0b8560292df	Phil Elwell <phil@raspberrypi.org>	2020-01-24T11:38:28+00:00	tty: amba-pl011: Add un/throttle support
+f655d4ef3ae7852b6b2c6dec106ce43fec950767	Phil Elwell <phil@raspberrypi.org>	2019-07-11T13:13:39+01:00	tty: amba-pl011: Make TX optimisation conditional
+98fba0e739e83f2a7baa367a7af8a9c52b2d977a	Phil Elwell <phil@raspberrypi.org>	2017-09-29T10:32:19+01:00	amba_pl011: Add cts-event-workaround DT property
+9d483b8666fa4c525b25fcf9b00c4f3404eaf408	Phil Elwell <phil@raspberrypi.org>	2017-09-29T10:32:19+01:00	amba_pl011: Insert mb() for correct FIFO handling
+7cae9812b7bc147a3bb13a3ea6bc3e5f65260a62	Phil Elwell <phil@raspberrypi.org>	2017-03-01T16:07:39+00:00	amba_pl011: Round input clock up
+22e0ffeb8a024869996d9d72317ee268b1e9f38e	Phil Elwell <phil@raspberrypi.org>	2016-02-23T17:26:48+00:00	amba_pl011: Don't use DT aliases for numbering
+a5312567991bcf5936d80e00154a36d5777579b1	Phil Elwell <phil@raspberrypi.org>	2017-10-17T15:04:29+01:00	lan78xx: Enable LEDs and auto-negotiation
+50be68b89345d609a24c5fc53d92a1c5d12dfa72	Phil Elwell <phil@raspberrypi.org>	2018-01-23T16:52:45+00:00	irqchip: irq-bcm2836: Remove regmap and syscon use
+36e38dd0e4b1ae179aab213cafaad8b09799e3a2	Eric Anholt <eric@anholt.net>	2014-12-18T16:07:15-08:00	mm: Remove the PFN busy warning
+fa1c93062cc98a6979a59a409c3fe2aa5f7d95e2	Noralf Trønnes <noralf@tronnes.org>	2016-11-01T15:15:41+01:00	i2c: bcm2835: Add debug support
+ecafa9756ae2ab50104620d5f6fcb3d03e78791a	Claggy3 <stephen.maclagan@hotmail.com>	2017-02-11T14:00:30+00:00	Update vfpmodule.c
+7f253de95b4f4f3d58b46e234c6f4193ef556cd7	Phil Elwell <phil@raspberrypi.org>	2017-02-09T14:36:44+00:00	sound: Demote deferral errors to INFO level
+c1a57cc858df699fb221108fee8b2f3d34f9f71c	Phil Elwell <phil@raspberrypi.org>	2017-03-06T09:06:18+00:00	clk-bcm2835: Read max core clock from firmware
+57ee46dd1097fcdabd5866353ee06c540982b067	Phil Elwell <phil@raspberrypi.org>	2017-02-13T17:20:08+00:00	clk-bcm2835: Add claim-clocks property
+095708df1241e21ed1c9579b2975d35e7e124bd1	Phil Elwell <phil@raspberrypi.org>	2017-02-13T17:20:08+00:00	clk-bcm2835: Mark used PLLs and dividers CRITICAL
+d99030870a8f9a46026026d0f2f6db9ea034081b	popcornmix <popcornmix@gmail.com>	2016-12-06T17:05:39+00:00	bcm2835-rng: Avoid initialising if already enabled
+4725fa287f01431403ab7f934c114a86a3c02992	Martin Sperl <kernel@martin.sperl.org>	2016-09-02T16:45:27+01:00	Register the clocks early during the boot process, so that special/critical clocks can get enabled early on in the boot process avoiding the risk of disabling a clock, pll_divider or pll when a claiming driver fails to install propperly - maybe it needs to defer.
+63af8f7bc12659d707974374e29145c119b860f2	popcornmix <popcornmix@gmail.com>	2016-11-09T13:02:52+00:00	bcm: Make RASPBERRYPI_POWER depend on PM
+f1845d76cc43fa43f77ce73b473c4d164b43ed07	popcornmix <popcornmix@gmail.com>	2016-04-05T19:40:12+01:00	reboot: Use power off rather than busy spinning when halt is requested
+351883e5abaac2ba2bd0495407a3709b542b489c	Noralf Trønnes <noralf@tronnes.org>	2016-10-07T16:50:59+02:00	watchdog: bcm2835: Support setting reboot partition
+05ae712a44705b086424e467c79c4c6e9b6017f5	Phil Elwell <phil@raspberrypi.org>	2016-06-15T16:48:41+01:00	rtc: Add SPI alias for pcf2123 driver
+83117ad97588b84e9fe10609dc7ad5ebbc90239e	popcornmix <popcornmix@gmail.com>	2016-01-25T17:25:12+00:00	firmware: Updated mailbox header
+49e57e74b273d0526d988d4efbf4ecc9eb9096c1	Noralf Trønnes <noralf@tronnes.org>	2015-10-03T22:22:55+02:00	dmaengine: bcm2835: Load driver early and support legacy API
+3ad89bd0b0aa2df9d77862bbcc8821322b61102c	Phil Elwell <phil@raspberrypi.org>	2015-07-14T10:26:09+01:00	spi: spidev: Completely disable the spidev warning
+22ff2416914501260e6fe3ef6e551ad3be7a7560	Noralf Trønnes <noralf@tronnes.org>	2015-10-23T16:26:55+02:00	irqchip: irq-bcm2835: Add 2836 FIQ support
+f5489a2cb5050213273e630e2c40d5f4935f4c92	Noralf Trønnes <noralf@tronnes.org>	2015-06-12T19:01:05+02:00	irqchip: bcm2835: Add FIQ support
+1e8c1da09d0f70fc7741bf8bcd0bdd7b95765929	Phil Elwell <phil@raspberrypi.org>	2017-02-09T14:33:30+00:00	irq-bcm2836: Avoid "Invalid trigger warning"
+8843355205d4ad3cf265ab033fccb57ae333f47d	Phil Elwell <phil@raspberrypi.org>	2015-03-13T12:43:36+00:00	Protect __release_resource against resources without parents
+c66d1191333d09f0b7345a69cff334e8245b9872	popcornmix <popcornmix@gmail.com>	2013-03-26T17:26:38+00:00	Allow mac address to be set in smsc95xx
+4068604cdca38232d150b375a9b000b99031bb6e	Sam Nazarko <email@samnazarko.co.uk>	2016-04-01T17:27:21+01:00	smsc95xx: Experimental: Enable turbo_mode and packetsize=2560 by default
+d156e7bc35a698e5d0d1c63fd99630a2c0ef7797	Steve Glendinning <steve.glendinning@smsc.com>	2015-02-19T18:47:12+00:00	smsx95xx: fix crimes against truesize
+abdd90cfdd0502a24cca6e4555e2fd3507f6dfb8	Phil Elwell <phil@raspberrypi.com>	2020-11-03T11:49:53+00:00	Revert "mailbox: avoid timer start from callback"
+f4244d048db6f4c990a49c9cd33b98ae5025e569	Phil Elwell <phil@raspberrypi.com>	2020-04-20T13:41:10+01:00	Revert "spi: spidev: Fix CS polarity if GPIO descriptors are used"
+962cea69e7e9cdc4aff54e6b6a7d3614a38bd6f7	popcornmix <popcornmix@gmail.com>	2019-03-15T21:11:10+00:00	Revert "staging: bcm2835-audio: Drop DT dependency"
+c5c52db85b51bb2651914fedc2834980377e627a	Phil Elwell <phil@raspberrypi.org>	2018-10-29T14:45:45+00:00	Revert "rtc: pcf8523: properly handle oscillator stop bit"
+46c27e733e46c8cd1c2f63fcc7191231d62db4e4	Dan Pasanen <dan.pasanen@gmail.com>	2017-09-21T09:55:42-05:00	arm: partially revert 702b94bff3c50542a6e4ab9a4f4cef093262fe65

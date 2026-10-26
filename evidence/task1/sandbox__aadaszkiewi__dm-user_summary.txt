@@ -1,0 +1,12 @@
+branch=sandbox/aadaszkiewi/dm-user
+tip=8d376edf0af576ebda586b313d103f9042b1e6a3
+merge_base_tizen=ffc253263a1375a65fa6c9f62a893e9767fbebfa
+full_ahead=4675 full_behind=112095
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/aadaszkiewi/dm-user --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=2
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__aadaszkiewi__dm-user_ahead_01.txt: bytes=757168 sha256=17639a878547d638b3c2d8072434d5473505cf3fb9780a8669077692ef118cac
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+8d376edf0af576ebda586b313d103f9042b1e6a3	Antoni Adaszkiewicz <a.adaszkiewi@samsung.com>	2024-08-08T11:53:43+02:00	add dm user
+40c712e8c3567cba09071e0fa01359e66adfbfb3	Jacek Kryszyn <j.kryszyn@samsung.com>	2024-07-22T09:13:52+02:00	add dm snapshot

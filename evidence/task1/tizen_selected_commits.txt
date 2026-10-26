@@ -1,0 +1,382 @@
+d5ef43b342dcbcbddb464bc20deae6ced6ed7193
+Seung-Woo Kim <sw0312.kim@samsung.com>
+2026-10-07T20:34:14+09:00
+configs: packaging: modularize defconfig with RT and LSM fragments
+
+Currently, separate full defconfig files are maintained for normal and
+RT kernels (tizen_bcm2711_defconfig and tizen_bcm2711_rt_defconfig).
+Additionally, packaging/linux-rpi.spec directly modified the source
+defconfig files using scripts/config for dev_wos (Smack disable).
+
+This caused drift between normal and RT defconfigs (e.g. missing MG-LRU
+in RT), made it difficult to manage different LSM options (Smack,
+Without Smack, and SELinux), and dirtied the source tree during build.
+
+Modularize the configuration by:
+- Using arch/%{buildarch}/configs/tizen_bcm2711_defconfig as the single
+  base defconfig for all variants.
+- Introducing kernel/configs/rt.config for PREEMPT_RT dependencies.
+- Introducing kernel/configs/selinux.config for dev_sel option.
+- Introducing kernel/configs/nosmack.config for dev_wos option.
+- Removing redundant tizen_bcm2711_rt_defconfig files for arm and arm64.
+- Updating packaging/linux-rpi.spec and build-rpi.sh to merge base
+  defconfig with requested fragments into the build directory using
+  scripts/kconfig/merge_config.sh and resolve dependencies with
+  make olddefconfig.
+
+Change-Id: I4e3cd32cf76abb9d9f147680cddbd48aadbe9207
+Assisted-by: Gemini:gemini-3.8-flash
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+
+
+D	arch/arm/configs/tizen_bcm2711_rt_defconfig
+b78585126c312eb4e5a5fc7c664155a827e98dbc
+Seung-Woo Kim <sw0312.kim@samsung.com>
+2026-08-24T19:26:12+09:00
+ARM/ARM64: configs: tizen_bcm2711: Enable F2FS compression configs
+
+Enable CONFIG_F2FS_FS_COMPRESSION to support mounting and booting from
+F2FS compressed images.
+
+Change-Id: I123766a3ce95d1e80c7d1b1d7b81ae23e9e1982d
+Assisted-by: Gemini:gemini-3.5-flash
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	arch/arm/configs/tizen_bcm2711_rt_defconfig
+529e83fbf904835627b7da5ffd4b3c0639a2afa7
+Christian Schrrefl <chrisi.schrefl@gmail.com>
+2025-01-31T00:03:45+01:00
+ARM: 9441/1: rust: Enable Rust support for ARMv7
+
+This commit allows building ARMv7 kernels with Rust support.
+
+The rust core library expects some __eabi_... functions
+that are not implemented in the kernel.
+Those functions are some float operations and __aeabi_uldivmod.
+For now those are implemented with define_panicking_intrinsics!.
+
+This is based on the code by Sven Van Asbroeck from the original
+rust branch and inspired by the AArch version by Jamie Cunliffe.
+
+I have tested the rust samples and a custom simple MMIO module
+on hardware (De1SoC FPGA + Arm A9 CPU).
+
+Tested-by: Rudraksha Gupta <guptarud@gmail.com>
+Reviewed-by: Alice Ryhl <aliceryhl@google.com>
+Acked-by: Miguel Ojeda <ojeda@kernel.org>
+Tested-by: Miguel Ojeda <ojeda@kernel.org>
+Acked-by: Ard Biesheuvel <ardb@kernel.org>
+Signed-off-by: Christian Schrefl <chrisi.schrefl@gmail.com>
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+
+[sw0312.kim: backport the commit ccb8ce526807 to support rust in arm-32bit]
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+
+Change-Id: Ifdb13eadd61dc338181041a0f8a4d4d1042faa42
+
+
+M	scripts/generate_rust_target.rs
+c0b66bcd342caeb5ce8461e0deab606ddac184e1
+Jaehoon Chung <jh80.chung@samsung.com>
+2026-04-09T07:07:25+09:00
+ARM: configs: tizen_bcm2711: Enable MG-LRU configuration
+
+Enable MG-LRU configurations by default.
+It can be disabled with sysfs node. If wants to disable, use it.
+
+Change-Id: I16acba091b425622d3aa26dd4d3978443d4c78aa
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+4079759cc86fa93cc5c97e971f461a7ff331a65f
+Unsung Lee <unsung.lee@samsung.com>
+2025-12-01T17:02:42+09:00
+cputime: Export symbol of thread_group_cputime_adjusted for the kernel module
+
+Export symbol of thread_group_cputime_adjusted to count cputime of
+the process in the kernel module.
+
+Change-Id: Ib019a99dbf3ad6bb29df65ff9d172871285f4bb6
+Signed-off-by: Unsung Lee <unsung.lee@samsung.com>
+
+
+M	kernel/sched/cputime.c
+952e05b77038c35839cf7eecb9d0a770a170a669
+Seung-Woo Kim <sw0312.kim@samsung.com>
+2025-09-17T12:49:01+09:00
+ARM/ARM64: configs: tizen_bcm2711: Enable CGROUP_BPF config
+
+Enable CONFIG_CGROUP_BPF option.
+It will be used from waydroid in a container.
+
+Change-Id: I2f608baca18f1db52833a0cf782c821b4bf81ff4
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	arch/arm/configs/tizen_bcm2711_rt_defconfig
+7a5165a4f8b0bf725892e3a9688aacf3ab56e62e
+Seung-Woo Kim <sw0312.kim@samsung.com>
+2025-09-17T11:51:26+09:00
+ARM/ARM64: configs: tizen_bcm2711: Enable DMABUF_HEAPS related configs
+
+Enable DMABUF_HEAPS related configs as like original raspberry pi
+bcm2711_defconfig.
+
+The dmabufheaps will be used from waydroid in a container.
+
+Change-Id: I075684c98beca4d4657c6060e5a3861968f445d1
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	arch/arm/configs/tizen_bcm2711_rt_defconfig
+91730e1655f5d540eca04fef39c36238293bcf3a
+Florian Schmaus <flo@geekplace.eu>
+2024-11-02T11:04:51+01:00
+kbuild,bpf: Pass make jobs' value to pahole
+
+Pass the value of make's -j/--jobs argument to pahole, to avoid out of
+memory errors and make pahole respect the "jobs" value of make.
+
+On systems with little memory but many cores, invoking pahole using -j
+without argument potentially creates too many pahole instances,
+causing an out-of-memory situation. Instead, we should pass make's
+"jobs" value as an argument to pahole's -j, which is likely configured
+to be (much) lower than the actual core count on such systems.
+
+If make was invoked without -j, either via cmdline or MAKEFLAGS, then
+JOBS will be simply empty, resulting in the existing behavior, as
+expected.
+
+Signed-off-by: Florian Schmaus <flo@geekplace.eu>
+Signed-off-by: Andrii Nakryiko <andrii@kernel.org>
+Tested-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+Link: https://lore.kernel.org/bpf/20241102100452.793970-1-flo@geekplace.eu
+
+(cherry picked from commit 09048d22b7825a5025cf7e135f7e3134daff4df2)
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+Change-Id: Ie7c0b673d814d3a1f265751da5da3db08d1ca0c9
+
+
+M	scripts/Makefile.btf
+6f9c2a59325b25000e8337b757d5cf01125086d1
+Jaehoon Chung <jh80.chung@samsung.com>
+2025-09-03T09:37:44+09:00
+ARM/ARM64: configs: tizen_bcm2711: Disable unused configurations
+
+RPI doesn't support TV feature anywhere.
+If it needs to use tuner / dvb, it needs just enable at that time.
+
+Change-Id: I11eb786a3b31a453c4e2c5bc3477327034db1721
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	arch/arm/configs/tizen_bcm2711_rt_defconfig
+b7a217f07695fb7436bdf92d210da64f9c6d7e17
+Jaehoon Chung <jh80.chung@samsung.com>
+2025-09-02T16:23:22+09:00
+ARM: configs: tizen_bcm2711: Disable NFSD configuration
+
+Disable NFSD configuration.
+There is no use-case anywhere  on Tizen.
+After disabled NFSD, the below issue is disappeared.
+- It was occurred on some build systems.
+
+[  356s] [4953937] STRUCT xdr_stream's field 'p' offset=0 bit_size=0 type=4953938 Error emitting field
+[  356s] Error while encoding BTF.
+[ 7468s] Terminated
+[ 7468s] make[3]: *** [/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.41/scripts/Makefile.vmlinux:34: vmlinux] Terminated
+
+Change-Id: I496d32c2b37b90ab47c18b6eeda8c0e27f509500
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	arch/arm/configs/tizen_bcm2711_rt_defconfig
+5957526f38cb7294e6eab025f06105b3d6c2ddca
+Michal Wilczynski <m.wilczynski@samsung.com>
+2025-03-14T13:30:42+01:00
+kbuild: Remove unsupported dd option “status=none”
+
+Older versions of coreutils used in Tizen OS do not support the
+“status=none” option for dd, causing build failures in link-vmlinux.sh.
+To maintain compatibility and suppress dd’s output, remove “status=none”
+and redirects error output to /dev/null instead. This achieves
+effectively the same result - quiet operation of dd while preserving the
+ability to build the kernel in environments with older coreutils.
+
+Change-Id: I9299e1a2f841c17d2b05a73771468c9f23139377
+Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+
+
+M	scripts/link-vmlinux.sh
+fc7312683cf89b322e6e73b26eae92f56ee48848
+Michal Wilczynski <m.wilczynski@samsung.com>
+2025-03-17T09:31:27+01:00
+ARM/ARM64: configs: tizen: Enable BTF and DWARF4 debug options
+
+Enable:
+- CONFIG_DEBUG_INFO_DWARF4
+- CONFIG_DEBUG_INFO_BTF
+
+These options allow the kernel build to include full debug
+information in DWARF v4 format, as well as BTF (BPF Type
+Format) data, which is useful for eBPF introspection tools
+and CO-RE (Compile Once, Run Everywhere) BPF programs.
+
+Change-Id: I73af03a32b149dfe345e87f4b6723e61e401cbcd
+Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	arch/arm/configs/tizen_bcm2711_rt_defconfig
+2676158fe0dee60cccab369a1914d588ca2ed56a
+Jaehoon Chung <jh80.chung@samsung.com>
+2025-08-12T15:39:29+09:00
+ARM/ARM64: configs: Change CONFIG_HCIUART to module from built-in
+
+HCI device is registered during booting time. But it can't load the correct
+firmware file because kernel can't find the partition where firmware is
+located. That's causing unexpected behavior with ROM firmware.
+To load the correct firmware file, change CONFIG_HCIUART to module from
+built-in.
+
+Change-Id: Iad9b5416fac8a0ed12f80a5cf74e7c88eaa02bb3
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	arch/arm/configs/tizen_bcm2711_rt_defconfig
+ca5195aee1bd0d8a09131f7a8bd9c9d3cefa072d
+Hoegeun Kwon <hoegeun.kwon@samsung.com>
+2025-08-12T18:15:34+09:00
+ARM: configs: tizen: Enable zram configurations
+
+Enable zram configurations.
+
+Change-Id: I802af567c0170afec8fb3b87ced17b12ac97c307
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	arch/arm/configs/tizen_bcm2711_rt_defconfig
+9dc5d9b07b0af6e839e66cce984de51b49b69457
+Hoegeun Kwon <hoegeun.kwon@samsung.com>
+2025-07-15T15:31:57+09:00
+ARM/arm64: configs: tizen_bcm2711: Enable legacay CGROUP configs
+
+Enable legacy CGROUP configuration related to MEMCG and CPUSETS.
+There are configurations for cgroup V1, it's for not environmenet
+preparing to use cgroup V2 yet. Tizen still needs to utilize cgroup v1.
+
+Change-Id: I71c0a674aa1b284e1a0166d336fd0a726740b791
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	arch/arm/configs/tizen_bcm2711_rt_defconfig
+f90421e2aa5dd55408e1f33e0111d480596a86eb
+Hoegeun Kwon <hoegeun.kwon@samsung.com>
+2025-07-08T15:49:12+09:00
+ARM/arm64: configs: tizen_bcm2711: Enable MEMCG_V1
+
+The memory controller part of cgroup v1 has been moved to the
+memcontrol-v1 source files. Enable CONFIG_MEMCG_V1 to use the memory
+controller for cgroup v1.
+
+Refence link:
+ Link: https://lkml.kernel.org/r/20240625005906.106920-1-roman.gushchin@linux.dev
+ Link: https://lkml.kernel.org/r/20240625005906.106920-2-roman.gushchin@linux.dev
+
+Change-Id: If75c9a1edcd1ce5b8d53ebdeaf76ecf3314999e7
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	arch/arm/configs/tizen_bcm2711_rt_defconfig
+478d7fd169c2d7489bad1d52d69f037e4e830286
+Dongwoo Lee <dwoo08.lee@samsung.com>
+2020-08-03T14:44:43+09:00
+mm: memcontrol: Add force_reclaim to reclaim tasks' memory in memcg
+
+These days, platforms tend to manage memory on low memory state
+like andloid's lowmemory killer. These platforms might want to
+reclaim memory from background tasks as well as kill victims
+to guarantee free memory at use space level. This patch provides
+an interface to reclaim a given memcg. After platform's low memory
+handler moves tasks that the platform wants to reclaim to
+a memcg and decides how many pages should be reclaimed, it can
+reclaim the pages from the tasks by writing the number of pages
+at memory.force_reclaim.
+
+Signed-off-by: Hyunhee Kim <hyunhee.kim@samsung.com>
+Signed-off-by: Kyungmin Park <kyungmin.park@samsung.com>
+[dwoo08.lee: ported from mailing list https://www.spinics.net/lists/cgroups/msg07874.html]
+Signed-off-by: Dongwoo Lee <dwoo08.lee@samsung.com>
+[mszyprow: adapted for the changes from e55b9f96860f ("mm: memcontrol: drop
+ dead CONFIG_MEMCG_SWAP config symbol") in Linux v6.1]
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+
+[Hoegeun: adapted for the changes from v6.12 kernel,
+ from v6.6 kernel:
+ 9c173b44f924 mm: memcontrol: Add force_reclaim to reclaim tasks' memory in memc]
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+
+Change-Id: Ie012e49a7e6bd9e2e00b201f1c8ec0a161d8a6ae
+
+
+M	mm/memcontrol-v1.c
+5b793e7c2b346d01edfb675d44a5b3ba3aca8c71
+Mateusz Majewski <m.majewski2@samsung.com>
+2021-11-25T14:32:07+01:00
+kdbus: export needed symbols for out-of-tree support
+
+We have been asked to move kdbus out-of-tree. It uses a couple
+unexported symbols, so we need to (grudgingly) export them.
+
+Change-Id: I04cf2240bd96e7124b44e05b9ce8bf11baac65a1
+Signed-off-by: Mateusz Majewski <m.majewski2@samsung.com>
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+
+
+M	fs/namespace.c
+M	mm/memfd.c
+8f795c6dade674793b98ab1baeb5755101b9987e
+Łukasz Stelmach <l.stelmach@samsung.com>
+2020-12-21T12:40:27+01:00
+kdbus: Revert "fs: unexport poll_schedule_timeout"
+
+This reverts commit 8f546ae1fc5ce8396827d4868c7eee1f1cc6947a.
+
+Change-Id: I774c51285028c672dbb202e6dde60faa22a83b27
+Signed-off-by: Łukasz Stelmach <l.stelmach@samsung.com>
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+
+
+M	fs/select.c
+03fcf7417e286188b3ac16b7fbe5cfbc8c02b4f3
+Hoegeun Kwon <hoegeun.kwon@samsung.com>
+2025-06-30T15:52:16+09:00
+ARM/arm64: configs: Add the intial tizen defconfig for RPI
+
+Add the intial tizen defconfig for RPI.
+
+These defconfigs were taken from tizen branch (v6.6 kernel) and then
+saved with savedefconfig.
+
+Change-Id: I97800091cdf627d4e2217557e23be2245fac3c99
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+
+
+A	arch/arm/configs/tizen_bcm2711_defconfig
+A	arch/arm/configs/tizen_bcm2711_rt_defconfig

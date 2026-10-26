@@ -1,0 +1,2461 @@
+d5ef43b342dcbcbddb464bc20deae6ced6ed7193
+Seung-Woo Kim <sw0312.kim@samsung.com>
+2026-10-07T20:34:14+09:00
+configs: packaging: modularize defconfig with RT and LSM fragments
+Currently, separate full defconfig files are maintained for normal and
+RT kernels (tizen_bcm2711_defconfig and tizen_bcm2711_rt_defconfig).
+Additionally, packaging/linux-rpi.spec directly modified the source
+defconfig files using scripts/config for dev_wos (Smack disable).
+
+This caused drift between normal and RT defconfigs (e.g. missing MG-LRU
+in RT), made it difficult to manage different LSM options (Smack,
+Without Smack, and SELinux), and dirtied the source tree during build.
+
+Modularize the configuration by:
+- Using arch/%{buildarch}/configs/tizen_bcm2711_defconfig as the single
+  base defconfig for all variants.
+- Introducing kernel/configs/rt.config for PREEMPT_RT dependencies.
+- Introducing kernel/configs/selinux.config for dev_sel option.
+- Introducing kernel/configs/nosmack.config for dev_wos option.
+- Removing redundant tizen_bcm2711_rt_defconfig files for arm and arm64.
+- Updating packaging/linux-rpi.spec and build-rpi.sh to merge base
+  defconfig with requested fragments into the build directory using
+  scripts/kconfig/merge_config.sh and resolve dependencies with
+  make olddefconfig.
+
+Change-Id: I4e3cd32cf76abb9d9f147680cddbd48aadbe9207
+Assisted-by: Gemini:gemini-3.8-flash
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+b78585126c312eb4e5a5fc7c664155a827e98dbc
+Seung-Woo Kim <sw0312.kim@samsung.com>
+2026-08-24T19:26:12+09:00
+ARM/ARM64: configs: tizen_bcm2711: Enable F2FS compression configs
+Enable CONFIG_F2FS_FS_COMPRESSION to support mounting and booting from
+F2FS compressed images.
+
+Change-Id: I123766a3ce95d1e80c7d1b1d7b81ae23e9e1982d
+Assisted-by: Gemini:gemini-3.5-flash
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig, arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+529e83fbf904835627b7da5ffd4b3c0639a2afa7
+Christian Schrrefl <chrisi.schrefl@gmail.com>
+2025-01-31T00:03:45+01:00
+ARM: 9441/1: rust: Enable Rust support for ARMv7
+This commit allows building ARMv7 kernels with Rust support.
+
+The rust core library expects some __eabi_... functions
+that are not implemented in the kernel.
+Those functions are some float operations and __aeabi_uldivmod.
+For now those are implemented with define_panicking_intrinsics!.
+
+This is based on the code by Sven Van Asbroeck from the original
+rust branch and inspired by the AArch version by Jamie Cunliffe.
+
+I have tested the rust samples and a custom simple MMIO module
+on hardware (De1SoC FPGA + Arm A9 CPU).
+
+Tested-by: Rudraksha Gupta <guptarud@gmail.com>
+Reviewed-by: Alice Ryhl <aliceryhl@google.com>
+Acked-by: Miguel Ojeda <ojeda@kernel.org>
+Tested-by: Miguel Ojeda <ojeda@kernel.org>
+Acked-by: Ard Biesheuvel <ardb@kernel.org>
+Signed-off-by: Christian Schrefl <chrisi.schrefl@gmail.com>
+Signed-off-by: Russell King (Oracle) <rmk+kernel@armlinux.org.uk>
+
+[sw0312.kim: backport the commit ccb8ce526807 to support rust in arm-32bit]
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+
+Change-Id: Ifdb13eadd61dc338181041a0f8a4d4d1042faa42
+FILES: scripts/generate_rust_target.rs
+
+c0b66bcd342caeb5ce8461e0deab606ddac184e1
+Jaehoon Chung <jh80.chung@samsung.com>
+2026-04-09T07:07:25+09:00
+ARM: configs: tizen_bcm2711: Enable MG-LRU configuration
+Enable MG-LRU configurations by default.
+It can be disabled with sysfs node. If wants to disable, use it.
+
+Change-Id: I16acba091b425622d3aa26dd4d3978443d4c78aa
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig
+
+4079759cc86fa93cc5c97e971f461a7ff331a65f
+Unsung Lee <unsung.lee@samsung.com>
+2025-12-01T17:02:42+09:00
+cputime: Export symbol of thread_group_cputime_adjusted for the kernel module
+Export symbol of thread_group_cputime_adjusted to count cputime of
+the process in the kernel module.
+
+Change-Id: Ib019a99dbf3ad6bb29df65ff9d172871285f4bb6
+Signed-off-by: Unsung Lee <unsung.lee@samsung.com>
+FILES: kernel/sched/cputime.c
+
+952e05b77038c35839cf7eecb9d0a770a170a669
+Seung-Woo Kim <sw0312.kim@samsung.com>
+2025-09-17T12:49:01+09:00
+ARM/ARM64: configs: tizen_bcm2711: Enable CGROUP_BPF config
+Enable CONFIG_CGROUP_BPF option.
+It will be used from waydroid in a container.
+
+Change-Id: I2f608baca18f1db52833a0cf782c821b4bf81ff4
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig, arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+7a5165a4f8b0bf725892e3a9688aacf3ab56e62e
+Seung-Woo Kim <sw0312.kim@samsung.com>
+2025-09-17T11:51:26+09:00
+ARM/ARM64: configs: tizen_bcm2711: Enable DMABUF_HEAPS related configs
+Enable DMABUF_HEAPS related configs as like original raspberry pi
+bcm2711_defconfig.
+
+The dmabufheaps will be used from waydroid in a container.
+
+Change-Id: I075684c98beca4d4657c6060e5a3861968f445d1
+Signed-off-by: Seung-Woo Kim <sw0312.kim@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig, arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+91730e1655f5d540eca04fef39c36238293bcf3a
+Florian Schmaus <flo@geekplace.eu>
+2024-11-02T11:04:51+01:00
+kbuild,bpf: Pass make jobs' value to pahole
+Pass the value of make's -j/--jobs argument to pahole, to avoid out of
+memory errors and make pahole respect the "jobs" value of make.
+
+On systems with little memory but many cores, invoking pahole using -j
+without argument potentially creates too many pahole instances,
+causing an out-of-memory situation. Instead, we should pass make's
+"jobs" value as an argument to pahole's -j, which is likely configured
+to be (much) lower than the actual core count on such systems.
+
+If make was invoked without -j, either via cmdline or MAKEFLAGS, then
+JOBS will be simply empty, resulting in the existing behavior, as
+expected.
+
+Signed-off-by: Florian Schmaus <flo@geekplace.eu>
+Signed-off-by: Andrii Nakryiko <andrii@kernel.org>
+Tested-by: Holger Hoffstätte <holger@applied-asynchrony.com>
+Link: https://lore.kernel.org/bpf/20241102100452.793970-1-flo@geekplace.eu
+
+(cherry picked from commit 09048d22b7825a5025cf7e135f7e3134daff4df2)
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+Change-Id: Ie7c0b673d814d3a1f265751da5da3db08d1ca0c9
+FILES: scripts/Makefile.btf
+
+6f9c2a59325b25000e8337b757d5cf01125086d1
+Jaehoon Chung <jh80.chung@samsung.com>
+2025-09-03T09:37:44+09:00
+ARM/ARM64: configs: tizen_bcm2711: Disable unused configurations
+RPI doesn't support TV feature anywhere.
+If it needs to use tuner / dvb, it needs just enable at that time.
+
+Change-Id: I11eb786a3b31a453c4e2c5bc3477327034db1721
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig, arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+b7a217f07695fb7436bdf92d210da64f9c6d7e17
+Jaehoon Chung <jh80.chung@samsung.com>
+2025-09-02T16:23:22+09:00
+ARM: configs: tizen_bcm2711: Disable NFSD configuration
+Disable NFSD configuration.
+There is no use-case anywhere  on Tizen.
+After disabled NFSD, the below issue is disappeared.
+- It was occurred on some build systems.
+
+[  356s] [4953937] STRUCT xdr_stream's field 'p' offset=0 bit_size=0 type=4953938 Error emitting field
+[  356s] Error while encoding BTF.
+[ 7468s] Terminated
+[ 7468s] make[3]: *** [/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.41/scripts/Makefile.vmlinux:34: vmlinux] Terminated
+
+Change-Id: I496d32c2b37b90ab47c18b6eeda8c0e27f509500
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig, arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+5957526f38cb7294e6eab025f06105b3d6c2ddca
+Michal Wilczynski <m.wilczynski@samsung.com>
+2025-03-14T13:30:42+01:00
+kbuild: Remove unsupported dd option “status=none”
+Older versions of coreutils used in Tizen OS do not support the
+“status=none” option for dd, causing build failures in link-vmlinux.sh.
+To maintain compatibility and suppress dd’s output, remove “status=none”
+and redirects error output to /dev/null instead. This achieves
+effectively the same result - quiet operation of dd while preserving the
+ability to build the kernel in environments with older coreutils.
+
+Change-Id: I9299e1a2f841c17d2b05a73771468c9f23139377
+Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+FILES: scripts/link-vmlinux.sh
+
+fc7312683cf89b322e6e73b26eae92f56ee48848
+Michal Wilczynski <m.wilczynski@samsung.com>
+2025-03-17T09:31:27+01:00
+ARM/ARM64: configs: tizen: Enable BTF and DWARF4 debug options
+Enable:
+- CONFIG_DEBUG_INFO_DWARF4
+- CONFIG_DEBUG_INFO_BTF
+
+These options allow the kernel build to include full debug
+information in DWARF v4 format, as well as BTF (BPF Type
+Format) data, which is useful for eBPF introspection tools
+and CO-RE (Compile Once, Run Everywhere) BPF programs.
+
+Change-Id: I73af03a32b149dfe345e87f4b6723e61e401cbcd
+Signed-off-by: Michal Wilczynski <m.wilczynski@samsung.com>
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig, arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+2676158fe0dee60cccab369a1914d588ca2ed56a
+Jaehoon Chung <jh80.chung@samsung.com>
+2025-08-12T15:39:29+09:00
+ARM/ARM64: configs: Change CONFIG_HCIUART to module from built-in
+HCI device is registered during booting time. But it can't load the correct
+firmware file because kernel can't find the partition where firmware is
+located. That's causing unexpected behavior with ROM firmware.
+To load the correct firmware file, change CONFIG_HCIUART to module from
+built-in.
+
+Change-Id: Iad9b5416fac8a0ed12f80a5cf74e7c88eaa02bb3
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig, arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+ca5195aee1bd0d8a09131f7a8bd9c9d3cefa072d
+Hoegeun Kwon <hoegeun.kwon@samsung.com>
+2025-08-12T18:15:34+09:00
+ARM: configs: tizen: Enable zram configurations
+Enable zram configurations.
+
+Change-Id: I802af567c0170afec8fb3b87ced17b12ac97c307
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig, arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+9dc5d9b07b0af6e839e66cce984de51b49b69457
+Hoegeun Kwon <hoegeun.kwon@samsung.com>
+2025-07-15T15:31:57+09:00
+ARM/arm64: configs: tizen_bcm2711: Enable legacay CGROUP configs
+Enable legacy CGROUP configuration related to MEMCG and CPUSETS.
+There are configurations for cgroup V1, it's for not environmenet
+preparing to use cgroup V2 yet. Tizen still needs to utilize cgroup v1.
+
+Change-Id: I71c0a674aa1b284e1a0166d336fd0a726740b791
+Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig, arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+f90421e2aa5dd55408e1f33e0111d480596a86eb
+Hoegeun Kwon <hoegeun.kwon@samsung.com>
+2025-07-08T15:49:12+09:00
+ARM/arm64: configs: tizen_bcm2711: Enable MEMCG_V1
+The memory controller part of cgroup v1 has been moved to the
+memcontrol-v1 source files. Enable CONFIG_MEMCG_V1 to use the memory
+controller for cgroup v1.
+
+Refence link:
+ Link: https://lkml.kernel.org/r/20240625005906.106920-1-roman.gushchin@linux.dev
+ Link: https://lkml.kernel.org/r/20240625005906.106920-2-roman.gushchin@linux.dev
+
+Change-Id: If75c9a1edcd1ce5b8d53ebdeaf76ecf3314999e7
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig, arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+478d7fd169c2d7489bad1d52d69f037e4e830286
+Dongwoo Lee <dwoo08.lee@samsung.com>
+2020-08-03T14:44:43+09:00
+mm: memcontrol: Add force_reclaim to reclaim tasks' memory in memcg
+These days, platforms tend to manage memory on low memory state
+like andloid's lowmemory killer. These platforms might want to
+reclaim memory from background tasks as well as kill victims
+to guarantee free memory at use space level. This patch provides
+an interface to reclaim a given memcg. After platform's low memory
+handler moves tasks that the platform wants to reclaim to
+a memcg and decides how many pages should be reclaimed, it can
+reclaim the pages from the tasks by writing the number of pages
+at memory.force_reclaim.
+
+Signed-off-by: Hyunhee Kim <hyunhee.kim@samsung.com>
+Signed-off-by: Kyungmin Park <kyungmin.park@samsung.com>
+[dwoo08.lee: ported from mailing list https://www.spinics.net/lists/cgroups/msg07874.html]
+Signed-off-by: Dongwoo Lee <dwoo08.lee@samsung.com>
+[mszyprow: adapted for the changes from e55b9f96860f ("mm: memcontrol: drop
+ dead CONFIG_MEMCG_SWAP config symbol") in Linux v6.1]
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+
+[Hoegeun: adapted for the changes from v6.12 kernel,
+ from v6.6 kernel:
+ 9c173b44f924 mm: memcontrol: Add force_reclaim to reclaim tasks' memory in memc]
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+
+Change-Id: Ie012e49a7e6bd9e2e00b201f1c8ec0a161d8a6ae
+FILES: mm/memcontrol-v1.c
+
+5b793e7c2b346d01edfb675d44a5b3ba3aca8c71
+Mateusz Majewski <m.majewski2@samsung.com>
+2021-11-25T14:32:07+01:00
+kdbus: export needed symbols for out-of-tree support
+We have been asked to move kdbus out-of-tree. It uses a couple
+unexported symbols, so we need to (grudgingly) export them.
+
+Change-Id: I04cf2240bd96e7124b44e05b9ce8bf11baac65a1
+Signed-off-by: Mateusz Majewski <m.majewski2@samsung.com>
+Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+FILES: fs/namespace.c, mm/memfd.c
+
+03fcf7417e286188b3ac16b7fbe5cfbc8c02b4f3
+Hoegeun Kwon <hoegeun.kwon@samsung.com>
+2025-06-30T15:52:16+09:00
+ARM/arm64: configs: Add the intial tizen defconfig for RPI
+Add the intial tizen defconfig for RPI.
+
+These defconfigs were taken from tizen branch (v6.6 kernel) and then
+saved with savedefconfig.
+
+Change-Id: I97800091cdf627d4e2217557e23be2245fac3c99
+Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+FILES: arch/arm/configs/tizen_bcm2711_defconfig, arch/arm/configs/tizen_bcm2711_rt_defconfig
+
+42c8bbfa4cdd08eb5fe605e56ad13777559e9f24
+Nicolai Buchwitz <nb@tipi-net.de>
+2026-02-25T12:13:12+01:00
+configs: enable CONFIG_HID_CP2112=m
+Enable the Silicon Labs CP2112 HID USB to I2C/GPIO bridge driver as a
+module.
+
+Signed-off-by: Nicolai Buchwitz <nb@tipi-net.de>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+5aa2f4eae2c36dff194da2961d1cf5fd13992363
+Kurva Prashanth <krvprashanth@riseup.net>
+2026-02-06T14:13:55+05:30
+configs: enable Si5351 i2c common clock driver
+Build the Si5351 common clock driver as a module.
+
+Signed-off-by: Kurva Prashanth <krvprashanth@riseup.net>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+30c0c145c51b318f96f399bf1f92813c0f843645
+Leonard Lausen <leonard@lausen.nl>
+2026-01-25T18:27:24+00:00
+configs: enable CONFIG_CRYPTO_LZ4HC=m
+The lz4hc module is required to support bcachefs-tools dkms builds.
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+bf9a557b0c665167314222548c3926a1d5ef55e5
+Phil Elwell <phil@raspberrypi.com>
+2026-01-25T10:49:20+00:00
+defconfigs: Remove vestigial RTL8712 config usage
+Commit [1] removes the driver and config symbol for the RTL8712. Drop
+the references to it in our defconfigs.
+
+[1] bccf7c5cd434 ("staging: rtl8712: Remove driver using deprecated API
+    wext")
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+3b2b4267d502acb3f9183ceca20719c30e60fca3
+Dom Cobley <popcornmix@gmail.com>
+2026-01-09T16:31:20+00:00
+Revert "Partial Revert "BCM2708: Add core Device Tree support""
+This reverts commit 208d9dc8e153f8add8b5e2ce54269b91ce7b7771.
+FILES: scripts/Makefile.build
+
+208d9dc8e153f8add8b5e2ce54269b91ce7b7771
+Dom Cobley <popcornmix@gmail.com>
+2026-01-09T15:57:46+00:00
+Partial Revert "BCM2708: Add core Device Tree support"
+This reverts commit 3a44d1cb497e2c28bdcbda21369111287be953db.
+FILES: scripts/Makefile.build
+
+3df21d5eaa7e0736da7f0e12228ffdf5e375f66b
+Dave Stevenson <dave.stevenson@raspberrypi.com>
+2025-11-17T16:12:08+00:00
+defconfig: Add TOUCHSCREEN_ILITEK to all Pi configs
+Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+16fd946fa771d4809b6e3558caeb734583bde8e8
+JinShil <slavo5150@yahoo.com>
+2025-11-24T15:46:20+09:00
+configs: Add CONFIG_INPUT_PWM_BEEPER=m
+Added CONFIG_INPUT_PWM_BEEPR=m for proper integration of audible feedback devices.
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+11a1e7417c127bf42f5617c1e561b00a28d82fad
+Phil Elwell <phil@raspberrypi.com>
+2025-10-24T09:54:05+01:00
+configs: Add the AD799X driver module
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+391c2e3f0599e948194a8bdc89a8ea87cd8f7d6c
+Naushir Patuck <naush@raspberrypi.com>
+2025-09-30T09:58:09+01:00
+drivers: pcie: Hailo: Remove Hailo PCIe driver
+This driver will be installed through DKMS going forward.
+
+Signed-off-by: Naushir Patuck <naush@raspberrypi.com>
+FILES: arch/arm/configs/bcm2711_defconfig
+
+0923c467445c47fe69862e23cbfc75817872ceb8
+Phil Elwell <phil@raspberrypi.com>
+2025-10-17T16:43:59+01:00
+configs: Enable the SCD4X sensor driver
+See: https://github.com/raspberrypi/linux/issues/7091
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+0c7075b4607f90c2fecf5e290e91168a91567d70
+Phil Elwell <phil@raspberrypi.com>
+2025-10-08T22:44:35+01:00
+config: Add CONFIG_TMP117=m
+Enable the TMP117 driver as a module.
+
+See: https://github.com/raspberrypi/linux/issues/7077
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+bd56339b0399a3907e7a6386a9479a2525111853
+Phil Elwell <phil@raspberrypi.com>
+2025-09-17T17:11:50+01:00
+configs: Add CONFIG_VEML6030=m
+Enable support for the VEML6030 light sensor family.
+
+See: https://github.com/raspberrypi/linux/issues/7048
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+8bab73cd18169d341b7072f8fc9496ea0b986d2b
+Nicolai Buchwitz <nb@tipi-net.de>
+2025-09-18T16:58:51+02:00
+configs: Add CONFIG_W1_SLAVE_DS2430=m
+Enable support for the Maxim DS2430A 256-Bit 1-Wire EEPROM.
+
+Signed-off-by: Nicolai Buchwitz <nb@tipi-net.de>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+e60edb2c4b99e071cdd8353999c025a91ea20fcb
+Dave Stevenson <dave.stevenson@raspberrypi.com>
+2025-04-29T13:04:47+01:00
+defconfig: Add CONFIG_ADXL355_I2C to the defconfigs
+Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+58db9ee795e42c1597f502b5e2ce529295fa1d13
+Phil Elwell <phil@raspberrypi.com>
+2025-09-02T09:54:13+01:00
+configs: Add EROFS_FS_ZIP_ZSTD
+Allow the EROFS filing system to use the kernel's ZSTD compression
+library.
+
+See: https://github.com/raspberrypi/linux/issues/6726
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+1f724808d426ed0e46fd09f6be109ee5f28c64ce
+Phil Elwell <phil@raspberrypi.com>
+2025-07-04T15:06:24+01:00
+configs: Enable more packet classification options
+Add CLS_U32_PERF, NET_CLS_FLOWER and NET_CLS_MATCHALL.
+
+See: https://github.com/raspberrypi/linux/pull/6937
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+78c0bf89d051112edb9824bf14bddff7ca2406a1
+Dom Cobley <popcornmix@gmail.com>
+2025-06-30T15:14:45+01:00
+Revert "include/linux/mmc/card.h: Partial revert"
+This reverts commit fc7aa071e15e88b161752d07949b57ccab224cf7.
+FILES: include/linux/mmc/card.h
+
+19aa8bc1946aca9d3cd57effe773c79fb50f2bff
+Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+2025-06-27T11:11:46+01:00
+Linux 6.12.35
+Link: https://lore.kernel.org/r/20250623130642.015559452@linuxfoundation.org
+Tested-by: Harshit Mogalapalli <harshit.m.mogalapalli@oracle.com>
+Tested-by: Peter Schneider <pschneider1968@googlemail.com>
+Tested-by: Florian Fainelli <florian.fainelli@broadcom.com>
+Tested-by: Ron Economos <re@w6rz.net>
+Tested-by: Salvatore Bonaccorso <carnil@debian.org>
+Link: https://lore.kernel.org/r/20250624121426.466976226@linuxfoundation.org
+Tested-by: Peter Schneider <pschneider1968@googlemail.com>
+Tested-by: Florian Fainelli <florian.fainelli@broadcom.com>
+Tested-by: Jon Hunter <jonathanh@nvidia.com>
+Tested-by: Linux Kernel Functional Testing <lkft@linaro.org>
+Tested-by: Brett Mastbergen <bmastbergen@ciq.com>
+Tested-by: Mark Brown <broonie@kernel.org>
+Tested-by: Miguel Ojeda <ojeda@kernel.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: Makefile
+
+010e02f6d336d2102f77c0b45a21a428f2fb2b83
+Stefan Metzmacher <metze@samba.org>
+2025-06-18T18:51:40+02:00
+smb: client: fix max_sge overflow in smb_extract_folioq_to_rdma()
+commit a379a8a2a0032e12e7ef397197c9c2ad011588d6 upstream.
+
+This fixes the following problem:
+
+[  749.901015] [   T8673] run fstests cifs/001 at 2025-06-17 09:40:30
+[  750.346409] [   T9870] ==================================================================
+[  750.346814] [   T9870] BUG: KASAN: slab-out-of-bounds in smb_set_sge+0x2cc/0x3b0 [cifs]
+[  750.347330] [   T9870] Write of size 8 at addr ffff888011082890 by task xfs_io/9870
+[  750.347705] [   T9870]
+[  750.348077] [   T9870] CPU: 0 UID: 0 PID: 9870 Comm: xfs_io Kdump: loaded Not tainted 6.16.0-rc2-metze.02+ #1 PREEMPT(voluntary)
+[  750.348082] [   T9870] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[  750.348085] [   T9870] Call Trace:
+[  750.348086] [   T9870]  <TASK>
+[  750.348088] [   T9870]  dump_stack_lvl+0x76/0xa0
+[  750.348106] [   T9870]  print_report+0xd1/0x640
+[  750.348116] [   T9870]  ? __pfx__raw_spin_lock_irqsave+0x10/0x10
+[  750.348120] [   T9870]  ? kasan_complete_mode_report_info+0x26/0x210
+[  750.348124] [   T9870]  kasan_report+0xe7/0x130
+[  750.348128] [   T9870]  ? smb_set_sge+0x2cc/0x3b0 [cifs]
+[  750.348262] [   T9870]  ? smb_set_sge+0x2cc/0x3b0 [cifs]
+[  750.348377] [   T9870]  __asan_report_store8_noabort+0x17/0x30
+[  750.348381] [   T9870]  smb_set_sge+0x2cc/0x3b0 [cifs]
+[  750.348496] [   T9870]  smbd_post_send_iter+0x1990/0x3070 [cifs]
+[  750.348625] [   T9870]  ? __pfx_smbd_post_send_iter+0x10/0x10 [cifs]
+[  750.348741] [   T9870]  ? update_stack_state+0x2a0/0x670
+[  750.348749] [   T9870]  ? cifs_flush+0x153/0x320 [cifs]
+[  750.348870] [   T9870]  ? cifs_flush+0x153/0x320 [cifs]
+[  750.348990] [   T9870]  ? update_stack_state+0x2a0/0x670
+[  750.348995] [   T9870]  smbd_send+0x58c/0x9c0 [cifs]
+[  750.349117] [   T9870]  ? __pfx_smbd_send+0x10/0x10 [cifs]
+[  750.349231] [   T9870]  ? unwind_get_return_address+0x65/0xb0
+[  750.349235] [   T9870]  ? __pfx_stack_trace_consume_entry+0x10/0x10
+[  750.349242] [   T9870]  ? arch_stack_walk+0xa7/0x100
+[  750.349250] [   T9870]  ? stack_trace_save+0x92/0xd0
+[  750.349254] [   T9870]  __smb_send_rqst+0x931/0xec0 [cifs]
+[  750.349374] [   T9870]  ? kernel_text_address+0x173/0x190
+[  750.349379] [   T9870]  ? kasan_save_stack+0x39/0x70
+[  750.349382] [   T9870]  ? kasan_save_track+0x18/0x70
+[  750.349385] [   T9870]  ? __kasan_slab_alloc+0x9d/0xa0
+[  750.349389] [   T9870]  ? __pfx___smb_send_rqst+0x10/0x10 [cifs]
+[  750.349508] [   T9870]  ? smb2_mid_entry_alloc+0xb4/0x7e0 [cifs]
+[  750.349626] [   T9870]  ? cifs_call_async+0x277/0xb00 [cifs]
+[  750.349746] [   T9870]  ? cifs_issue_write+0x256/0x610 [cifs]
+[  750.349867] [   T9870]  ? netfs_do_issue_write+0xc2/0x340 [netfs]
+[  750.349900] [   T9870]  ? netfs_advance_write+0x45b/0x1270 [netfs]
+[  750.349929] [   T9870]  ? netfs_write_folio+0xd6c/0x1be0 [netfs]
+[  750.349958] [   T9870]  ? netfs_writepages+0x2e9/0xa80 [netfs]
+[  750.349987] [   T9870]  ? do_writepages+0x21f/0x590
+[  750.349993] [   T9870]  ? filemap_fdatawrite_wbc+0xe1/0x140
+[  750.349997] [   T9870]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  750.350002] [   T9870]  smb_send_rqst+0x22e/0x2f0 [cifs]
+[  750.350131] [   T9870]  ? __pfx_smb_send_rqst+0x10/0x10 [cifs]
+[  750.350255] [   T9870]  ? local_clock_noinstr+0xe/0xd0
+[  750.350261] [   T9870]  ? kasan_save_alloc_info+0x37/0x60
+[  750.350268] [   T9870]  ? __kasan_check_write+0x14/0x30
+[  750.350271] [   T9870]  ? _raw_spin_lock+0x81/0xf0
+[  750.350275] [   T9870]  ? __pfx__raw_spin_lock+0x10/0x10
+[  750.350278] [   T9870]  ? smb2_setup_async_request+0x293/0x580 [cifs]
+[  750.350398] [   T9870]  cifs_call_async+0x477/0xb00 [cifs]
+[  750.350518] [   T9870]  ? __pfx_smb2_writev_callback+0x10/0x10 [cifs]
+[  750.350636] [   T9870]  ? __pfx_cifs_call_async+0x10/0x10 [cifs]
+[  750.350756] [   T9870]  ? __pfx__raw_spin_lock+0x10/0x10
+[  750.350760] [   T9870]  ? __kasan_check_write+0x14/0x30
+[  750.350763] [   T9870]  ? __smb2_plain_req_init+0x933/0x1090 [cifs]
+[  750.350891] [   T9870]  smb2_async_writev+0x15ff/0x2460 [cifs]
+[  750.351008] [   T9870]  ? sched_clock_noinstr+0x9/0x10
+[  750.351012] [   T9870]  ? local_clock_noinstr+0xe/0xd0
+[  750.351018] [   T9870]  ? __pfx_smb2_async_writev+0x10/0x10 [cifs]
+[  750.351144] [   T9870]  ? __pfx__raw_spin_lock_irqsave+0x10/0x10
+[  750.351150] [   T9870]  ? _raw_spin_unlock+0xe/0x40
+[  750.351154] [   T9870]  ? cifs_pick_channel+0x242/0x370 [cifs]
+[  750.351275] [   T9870]  cifs_issue_write+0x256/0x610 [cifs]
+[  750.351554] [   T9870]  ? cifs_issue_write+0x256/0x610 [cifs]
+[  750.351677] [   T9870]  netfs_do_issue_write+0xc2/0x340 [netfs]
+[  750.351710] [   T9870]  netfs_advance_write+0x45b/0x1270 [netfs]
+[  750.351740] [   T9870]  ? rolling_buffer_append+0x12d/0x440 [netfs]
+[  750.351769] [   T9870]  netfs_write_folio+0xd6c/0x1be0 [netfs]
+[  750.351798] [   T9870]  ? __kasan_check_write+0x14/0x30
+[  750.351804] [   T9870]  netfs_writepages+0x2e9/0xa80 [netfs]
+[  750.351835] [   T9870]  ? __pfx_netfs_writepages+0x10/0x10 [netfs]
+[  750.351864] [   T9870]  ? exit_files+0xab/0xe0
+[  750.351867] [   T9870]  ? do_exit+0x148f/0x2980
+[  750.351871] [   T9870]  ? do_group_exit+0xb5/0x250
+[  750.351874] [   T9870]  ? arch_do_signal_or_restart+0x92/0x630
+[  750.351879] [   T9870]  ? exit_to_user_mode_loop+0x98/0x170
+[  750.351882] [   T9870]  ? do_syscall_64+0x2cf/0xd80
+[  750.351886] [   T9870]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  750.351890] [   T9870]  do_writepages+0x21f/0x590
+[  750.351894] [   T9870]  ? __pfx_do_writepages+0x10/0x10
+[  750.351897] [   T9870]  filemap_fdatawrite_wbc+0xe1/0x140
+[  750.351901] [   T9870]  __filemap_fdatawrite_range+0xba/0x100
+[  750.351904] [   T9870]  ? __pfx___filemap_fdatawrite_range+0x10/0x10
+[  750.351912] [   T9870]  ? __kasan_check_write+0x14/0x30
+[  750.351916] [   T9870]  filemap_write_and_wait_range+0x7d/0xf0
+[  750.351920] [   T9870]  cifs_flush+0x153/0x320 [cifs]
+[  750.352042] [   T9870]  filp_flush+0x107/0x1a0
+[  750.352046] [   T9870]  filp_close+0x14/0x30
+[  750.352049] [   T9870]  put_files_struct.part.0+0x126/0x2a0
+[  750.352053] [   T9870]  ? __pfx__raw_spin_lock+0x10/0x10
+[  750.352058] [   T9870]  exit_files+0xab/0xe0
+[  750.352061] [   T9870]  do_exit+0x148f/0x2980
+[  750.352065] [   T9870]  ? __pfx_do_exit+0x10/0x10
+[  750.352069] [   T9870]  ? __kasan_check_write+0x14/0x30
+[  750.352072] [   T9870]  ? _raw_spin_lock_irq+0x8a/0xf0
+[  750.352076] [   T9870]  do_group_exit+0xb5/0x250
+[  750.352080] [   T9870]  get_signal+0x22d3/0x22e0
+[  750.352086] [   T9870]  ? __pfx_get_signal+0x10/0x10
+[  750.352089] [   T9870]  ? fpregs_assert_state_consistent+0x68/0x100
+[  750.352101] [   T9870]  ? folio_add_lru+0xda/0x120
+[  750.352105] [   T9870]  arch_do_signal_or_restart+0x92/0x630
+[  750.352109] [   T9870]  ? __pfx_arch_do_signal_or_restart+0x10/0x10
+[  750.352115] [   T9870]  exit_to_user_mode_loop+0x98/0x170
+[  750.352118] [   T9870]  do_syscall_64+0x2cf/0xd80
+[  750.352123] [   T9870]  ? __kasan_check_read+0x11/0x20
+[  750.352126] [   T9870]  ? count_memcg_events+0x1b4/0x420
+[  750.352132] [   T9870]  ? handle_mm_fault+0x148/0x690
+[  750.352136] [   T9870]  ? _raw_spin_lock_irq+0x8a/0xf0
+[  750.352140] [   T9870]  ? __kasan_check_read+0x11/0x20
+[  750.352143] [   T9870]  ? fpregs_assert_state_consistent+0x68/0x100
+[  750.352146] [   T9870]  ? irqentry_exit_to_user_mode+0x2e/0x250
+[  750.352151] [   T9870]  ? irqentry_exit+0x43/0x50
+[  750.352154] [   T9870]  ? exc_page_fault+0x75/0xe0
+[  750.352160] [   T9870]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  750.352163] [   T9870] RIP: 0033:0x7858c94ab6e2
+[  750.352167] [   T9870] Code: Unable to access opcode bytes at 0x7858c94ab6b8.
+[  750.352175] [   T9870] RSP: 002b:00007858c9248ce8 EFLAGS: 00000246 ORIG_RAX: 0000000000000022
+[  750.352179] [   T9870] RAX: fffffffffffffdfe RBX: 00007858c92496c0 RCX: 00007858c94ab6e2
+[  750.352182] [   T9870] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[  750.352184] [   T9870] RBP: 00007858c9248d10 R08: 0000000000000000 R09: 0000000000000000
+[  750.352185] [   T9870] R10: 0000000000000000 R11: 0000000000000246 R12: fffffffffffffde0
+[  750.352187] [   T9870] R13: 0000000000000020 R14: 0000000000000002 R15: 00007ffc072d2230
+[  750.352191] [   T9870]  </TASK>
+[  750.352195] [   T9870]
+[  750.395206] [   T9870] Allocated by task 9870 on cpu 0 at 750.346406s:
+[  750.395523] [   T9870]  kasan_save_stack+0x39/0x70
+[  750.395532] [   T9870]  kasan_save_track+0x18/0x70
+[  750.395536] [   T9870]  kasan_save_alloc_info+0x37/0x60
+[  750.395539] [   T9870]  __kasan_slab_alloc+0x9d/0xa0
+[  750.395543] [   T9870]  kmem_cache_alloc_noprof+0x13c/0x3f0
+[  750.395548] [   T9870]  mempool_alloc_slab+0x15/0x20
+[  750.395553] [   T9870]  mempool_alloc_noprof+0x135/0x340
+[  750.395557] [   T9870]  smbd_post_send_iter+0x63e/0x3070 [cifs]
+[  750.395694] [   T9870]  smbd_send+0x58c/0x9c0 [cifs]
+[  750.395819] [   T9870]  __smb_send_rqst+0x931/0xec0 [cifs]
+[  750.395950] [   T9870]  smb_send_rqst+0x22e/0x2f0 [cifs]
+[  750.396081] [   T9870]  cifs_call_async+0x477/0xb00 [cifs]
+[  750.396232] [   T9870]  smb2_async_writev+0x15ff/0x2460 [cifs]
+[  750.396359] [   T9870]  cifs_issue_write+0x256/0x610 [cifs]
+[  750.396492] [   T9870]  netfs_do_issue_write+0xc2/0x340 [netfs]
+[  750.396544] [   T9870]  netfs_advance_write+0x45b/0x1270 [netfs]
+[  750.396576] [   T9870]  netfs_write_folio+0xd6c/0x1be0 [netfs]
+[  750.396608] [   T9870]  netfs_writepages+0x2e9/0xa80 [netfs]
+[  750.396639] [   T9870]  do_writepages+0x21f/0x590
+[  750.396643] [   T9870]  filemap_fdatawrite_wbc+0xe1/0x140
+[  750.396647] [   T9870]  __filemap_fdatawrite_range+0xba/0x100
+[  750.396651] [   T9870]  filemap_write_and_wait_range+0x7d/0xf0
+[  750.396656] [   T9870]  cifs_flush+0x153/0x320 [cifs]
+[  750.396787] [   T9870]  filp_flush+0x107/0x1a0
+[  750.396791] [   T9870]  filp_close+0x14/0x30
+[  750.396795] [   T9870]  put_files_struct.part.0+0x126/0x2a0
+[  750.396800] [   T9870]  exit_files+0xab/0xe0
+[  750.396803] [   T9870]  do_exit+0x148f/0x2980
+[  750.396808] [   T9870]  do_group_exit+0xb5/0x250
+[  750.396813] [   T9870]  get_signal+0x22d3/0x22e0
+[  750.396817] [   T9870]  arch_do_signal_or_restart+0x92/0x630
+[  750.396822] [   T9870]  exit_to_user_mode_loop+0x98/0x170
+[  750.396827] [   T9870]  do_syscall_64+0x2cf/0xd80
+[  750.396832] [   T9870]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  750.396836] [   T9870]
+[  750.397150] [   T9870] The buggy address belongs to the object at ffff888011082800
+                           which belongs to the cache smbd_request_0000000008f3bd7b of size 144
+[  750.397798] [   T9870] The buggy address is located 0 bytes to the right of
+                           allocated 144-byte region [ffff888011082800, ffff888011082890)
+[  750.398469] [   T9870]
+[  750.398800] [   T9870] The buggy address belongs to the physical page:
+[  750.399141] [   T9870] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x11082
+[  750.399148] [   T9870] flags: 0xfffffc0000000(node=0|zone=1|lastcpupid=0x1fffff)
+[  750.399155] [   T9870] page_type: f5(slab)
+[  750.399161] [   T9870] raw: 000fffffc0000000 ffff888022d65640 dead000000000122 0000000000000000
+[  750.399165] [   T9870] raw: 0000000000000000 0000000080100010 00000000f5000000 0000000000000000
+[  750.399169] [   T9870] page dumped because: kasan: bad access detected
+[  750.399172] [   T9870]
+[  750.399505] [   T9870] Memory state around the buggy address:
+[  750.399863] [   T9870]  ffff888011082780: fb fb fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+[  750.400247] [   T9870]  ffff888011082800: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+[  750.400618] [   T9870] >ffff888011082880: 00 00 fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+[  750.400982] [   T9870]                          ^
+[  750.401370] [   T9870]  ffff888011082900: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+[  750.401774] [   T9870]  ffff888011082980: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+[  750.402171] [   T9870] ==================================================================
+[  750.402696] [   T9870] Disabling lock debugging due to kernel taint
+[  750.403202] [   T9870] BUG: unable to handle page fault for address: ffff8880110a2000
+[  750.403797] [   T9870] #PF: supervisor write access in kernel mode
+[  750.404204] [   T9870] #PF: error_code(0x0003) - permissions violation
+[  750.404581] [   T9870] PGD 5ce01067 P4D 5ce01067 PUD 5ce02067 PMD 78aa063 PTE 80000000110a2021
+[  750.404969] [   T9870] Oops: Oops: 0003 [#1] SMP KASAN PTI
+[  750.405394] [   T9870] CPU: 0 UID: 0 PID: 9870 Comm: xfs_io Kdump: loaded Tainted: G    B               6.16.0-rc2-metze.02+ #1 PREEMPT(voluntary)
+[  750.406510] [   T9870] Tainted: [B]=BAD_PAGE
+[  750.406967] [   T9870] Hardware name: innotek GmbH VirtualBox/VirtualBox, BIOS VirtualBox 12/01/2006
+[  750.407440] [   T9870] RIP: 0010:smb_set_sge+0x15c/0x3b0 [cifs]
+[  750.408065] [   T9870] Code: 48 83 f8 ff 0f 84 b0 00 00 00 48 ba 00 00 00 00 00 fc ff df 4c 89 e1 48 c1 e9 03 80 3c 11 00 0f 85 69 01 00 00 49 8d 7c 24 08 <49> 89 04 24 48 b8 00 00 00 00 00 fc ff df 48 89 fa 48 c1 ea 03 0f
+[  750.409283] [   T9870] RSP: 0018:ffffc90005e2e758 EFLAGS: 00010246
+[  750.409803] [   T9870] RAX: ffff888036c53400 RBX: ffffc90005e2e878 RCX: 1ffff11002214400
+[  750.410323] [   T9870] RDX: dffffc0000000000 RSI: dffffc0000000000 RDI: ffff8880110a2008
+[  750.411217] [   T9870] RBP: ffffc90005e2e798 R08: 0000000000000001 R09: 0000000000000400
+[  750.411770] [   T9870] R10: ffff888011082800 R11: 0000000000000000 R12: ffff8880110a2000
+[  750.412325] [   T9870] R13: 0000000000000000 R14: ffffc90005e2e888 R15: ffff88801a4b6000
+[  750.412901] [   T9870] FS:  0000000000000000(0000) GS:ffff88812bc68000(0000) knlGS:0000000000000000
+[  750.413477] [   T9870] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[  750.414077] [   T9870] CR2: ffff8880110a2000 CR3: 000000005b0a6005 CR4: 00000000000726f0
+[  750.414654] [   T9870] Call Trace:
+[  750.415211] [   T9870]  <TASK>
+[  750.415748] [   T9870]  smbd_post_send_iter+0x1990/0x3070 [cifs]
+[  750.416449] [   T9870]  ? __pfx_smbd_post_send_iter+0x10/0x10 [cifs]
+[  750.417128] [   T9870]  ? update_stack_state+0x2a0/0x670
+[  750.417685] [   T9870]  ? cifs_flush+0x153/0x320 [cifs]
+[  750.418380] [   T9870]  ? cifs_flush+0x153/0x320 [cifs]
+[  750.419055] [   T9870]  ? update_stack_state+0x2a0/0x670
+[  750.419624] [   T9870]  smbd_send+0x58c/0x9c0 [cifs]
+[  750.420297] [   T9870]  ? __pfx_smbd_send+0x10/0x10 [cifs]
+[  750.420936] [   T9870]  ? unwind_get_return_address+0x65/0xb0
+[  750.421456] [   T9870]  ? __pfx_stack_trace_consume_entry+0x10/0x10
+[  750.421954] [   T9870]  ? arch_stack_walk+0xa7/0x100
+[  750.422460] [   T9870]  ? stack_trace_save+0x92/0xd0
+[  750.422948] [   T9870]  __smb_send_rqst+0x931/0xec0 [cifs]
+[  750.423579] [   T9870]  ? kernel_text_address+0x173/0x190
+[  750.424056] [   T9870]  ? kasan_save_stack+0x39/0x70
+[  750.424813] [   T9870]  ? kasan_save_track+0x18/0x70
+[  750.425323] [   T9870]  ? __kasan_slab_alloc+0x9d/0xa0
+[  750.425831] [   T9870]  ? __pfx___smb_send_rqst+0x10/0x10 [cifs]
+[  750.426548] [   T9870]  ? smb2_mid_entry_alloc+0xb4/0x7e0 [cifs]
+[  750.427231] [   T9870]  ? cifs_call_async+0x277/0xb00 [cifs]
+[  750.427882] [   T9870]  ? cifs_issue_write+0x256/0x610 [cifs]
+[  750.428909] [   T9870]  ? netfs_do_issue_write+0xc2/0x340 [netfs]
+[  750.429425] [   T9870]  ? netfs_advance_write+0x45b/0x1270 [netfs]
+[  750.429882] [   T9870]  ? netfs_write_folio+0xd6c/0x1be0 [netfs]
+[  750.430345] [   T9870]  ? netfs_writepages+0x2e9/0xa80 [netfs]
+[  750.430809] [   T9870]  ? do_writepages+0x21f/0x590
+[  750.431239] [   T9870]  ? filemap_fdatawrite_wbc+0xe1/0x140
+[  750.431652] [   T9870]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  750.432041] [   T9870]  smb_send_rqst+0x22e/0x2f0 [cifs]
+[  750.432586] [   T9870]  ? __pfx_smb_send_rqst+0x10/0x10 [cifs]
+[  750.433108] [   T9870]  ? local_clock_noinstr+0xe/0xd0
+[  750.433482] [   T9870]  ? kasan_save_alloc_info+0x37/0x60
+[  750.433855] [   T9870]  ? __kasan_check_write+0x14/0x30
+[  750.434214] [   T9870]  ? _raw_spin_lock+0x81/0xf0
+[  750.434561] [   T9870]  ? __pfx__raw_spin_lock+0x10/0x10
+[  750.434903] [   T9870]  ? smb2_setup_async_request+0x293/0x580 [cifs]
+[  750.435394] [   T9870]  cifs_call_async+0x477/0xb00 [cifs]
+[  750.435892] [   T9870]  ? __pfx_smb2_writev_callback+0x10/0x10 [cifs]
+[  750.436388] [   T9870]  ? __pfx_cifs_call_async+0x10/0x10 [cifs]
+[  750.436881] [   T9870]  ? __pfx__raw_spin_lock+0x10/0x10
+[  750.437237] [   T9870]  ? __kasan_check_write+0x14/0x30
+[  750.437579] [   T9870]  ? __smb2_plain_req_init+0x933/0x1090 [cifs]
+[  750.438062] [   T9870]  smb2_async_writev+0x15ff/0x2460 [cifs]
+[  750.438557] [   T9870]  ? sched_clock_noinstr+0x9/0x10
+[  750.438906] [   T9870]  ? local_clock_noinstr+0xe/0xd0
+[  750.439293] [   T9870]  ? __pfx_smb2_async_writev+0x10/0x10 [cifs]
+[  750.439786] [   T9870]  ? __pfx__raw_spin_lock_irqsave+0x10/0x10
+[  750.440143] [   T9870]  ? _raw_spin_unlock+0xe/0x40
+[  750.440495] [   T9870]  ? cifs_pick_channel+0x242/0x370 [cifs]
+[  750.440989] [   T9870]  cifs_issue_write+0x256/0x610 [cifs]
+[  750.441492] [   T9870]  ? cifs_issue_write+0x256/0x610 [cifs]
+[  750.441987] [   T9870]  netfs_do_issue_write+0xc2/0x340 [netfs]
+[  750.442387] [   T9870]  netfs_advance_write+0x45b/0x1270 [netfs]
+[  750.442969] [   T9870]  ? rolling_buffer_append+0x12d/0x440 [netfs]
+[  750.443376] [   T9870]  netfs_write_folio+0xd6c/0x1be0 [netfs]
+[  750.443768] [   T9870]  ? __kasan_check_write+0x14/0x30
+[  750.444145] [   T9870]  netfs_writepages+0x2e9/0xa80 [netfs]
+[  750.444541] [   T9870]  ? __pfx_netfs_writepages+0x10/0x10 [netfs]
+[  750.444936] [   T9870]  ? exit_files+0xab/0xe0
+[  750.445312] [   T9870]  ? do_exit+0x148f/0x2980
+[  750.445672] [   T9870]  ? do_group_exit+0xb5/0x250
+[  750.446028] [   T9870]  ? arch_do_signal_or_restart+0x92/0x630
+[  750.446402] [   T9870]  ? exit_to_user_mode_loop+0x98/0x170
+[  750.446762] [   T9870]  ? do_syscall_64+0x2cf/0xd80
+[  750.447132] [   T9870]  ? entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  750.447499] [   T9870]  do_writepages+0x21f/0x590
+[  750.447859] [   T9870]  ? __pfx_do_writepages+0x10/0x10
+[  750.448236] [   T9870]  filemap_fdatawrite_wbc+0xe1/0x140
+[  750.448595] [   T9870]  __filemap_fdatawrite_range+0xba/0x100
+[  750.448953] [   T9870]  ? __pfx___filemap_fdatawrite_range+0x10/0x10
+[  750.449336] [   T9870]  ? __kasan_check_write+0x14/0x30
+[  750.449697] [   T9870]  filemap_write_and_wait_range+0x7d/0xf0
+[  750.450062] [   T9870]  cifs_flush+0x153/0x320 [cifs]
+[  750.450592] [   T9870]  filp_flush+0x107/0x1a0
+[  750.450952] [   T9870]  filp_close+0x14/0x30
+[  750.451322] [   T9870]  put_files_struct.part.0+0x126/0x2a0
+[  750.451678] [   T9870]  ? __pfx__raw_spin_lock+0x10/0x10
+[  750.452033] [   T9870]  exit_files+0xab/0xe0
+[  750.452401] [   T9870]  do_exit+0x148f/0x2980
+[  750.452751] [   T9870]  ? __pfx_do_exit+0x10/0x10
+[  750.453109] [   T9870]  ? __kasan_check_write+0x14/0x30
+[  750.453459] [   T9870]  ? _raw_spin_lock_irq+0x8a/0xf0
+[  750.453787] [   T9870]  do_group_exit+0xb5/0x250
+[  750.454082] [   T9870]  get_signal+0x22d3/0x22e0
+[  750.454406] [   T9870]  ? __pfx_get_signal+0x10/0x10
+[  750.454709] [   T9870]  ? fpregs_assert_state_consistent+0x68/0x100
+[  750.455031] [   T9870]  ? folio_add_lru+0xda/0x120
+[  750.455347] [   T9870]  arch_do_signal_or_restart+0x92/0x630
+[  750.455656] [   T9870]  ? __pfx_arch_do_signal_or_restart+0x10/0x10
+[  750.455967] [   T9870]  exit_to_user_mode_loop+0x98/0x170
+[  750.456282] [   T9870]  do_syscall_64+0x2cf/0xd80
+[  750.456591] [   T9870]  ? __kasan_check_read+0x11/0x20
+[  750.456897] [   T9870]  ? count_memcg_events+0x1b4/0x420
+[  750.457280] [   T9870]  ? handle_mm_fault+0x148/0x690
+[  750.457616] [   T9870]  ? _raw_spin_lock_irq+0x8a/0xf0
+[  750.457925] [   T9870]  ? __kasan_check_read+0x11/0x20
+[  750.458297] [   T9870]  ? fpregs_assert_state_consistent+0x68/0x100
+[  750.458672] [   T9870]  ? irqentry_exit_to_user_mode+0x2e/0x250
+[  750.459191] [   T9870]  ? irqentry_exit+0x43/0x50
+[  750.459600] [   T9870]  ? exc_page_fault+0x75/0xe0
+[  750.460130] [   T9870]  entry_SYSCALL_64_after_hwframe+0x76/0x7e
+[  750.460570] [   T9870] RIP: 0033:0x7858c94ab6e2
+[  750.461206] [   T9870] Code: Unable to access opcode bytes at 0x7858c94ab6b8.
+[  750.461780] [   T9870] RSP: 002b:00007858c9248ce8 EFLAGS: 00000246 ORIG_RAX: 0000000000000022
+[  750.462327] [   T9870] RAX: fffffffffffffdfe RBX: 00007858c92496c0 RCX: 00007858c94ab6e2
+[  750.462653] [   T9870] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000000000000000
+[  750.462969] [   T9870] RBP: 00007858c9248d10 R08: 0000000000000000 R09: 0000000000000000
+[  750.463290] [   T9870] R10: 0000000000000000 R11: 0000000000000246 R12: fffffffffffffde0
+[  750.463640] [   T9870] R13: 0000000000000020 R14: 0000000000000002 R15: 00007ffc072d2230
+[  750.463965] [   T9870]  </TASK>
+[  750.464285] [   T9870] Modules linked in: siw ib_uverbs ccm cmac nls_utf8 cifs cifs_arc4 nls_ucs2_utils rdma_cm iw_cm ib_cm ib_core cifs_md4 netfs softdog vboxsf vboxguest cpuid intel_rapl_msr intel_rapl_common intel_uncore_frequency_common intel_pmc_core pmt_telemetry pmt_class intel_pmc_ssram_telemetry intel_vsec polyval_clmulni ghash_clmulni_intel sha1_ssse3 aesni_intel rapl i2c_piix4 i2c_smbus joydev input_leds mac_hid sunrpc binfmt_misc kvm_intel kvm irqbypass sch_fq_codel efi_pstore nfnetlink vsock_loopback vmw_vsock_virtio_transport_common vmw_vsock_vmci_transport vsock vmw_vmci dmi_sysfs ip_tables x_tables autofs4 hid_generic vboxvideo usbhid drm_vram_helper psmouse vga16fb vgastate drm_ttm_helper serio_raw hid ahci libahci ttm pata_acpi video wmi [last unloaded: vboxguest]
+[  750.467127] [   T9870] CR2: ffff8880110a2000
+
+cc: Tom Talpey <tom@talpey.com>
+cc: linux-cifs@vger.kernel.org
+Reviewed-by: David Howells <dhowells@redhat.com>
+Reviewed-by: Tom Talpey <tom@talpey.com>
+Fixes: c45ebd636c32 ("cifs: Provide the capability to extract from ITER_FOLIOQ to RDMA SGEs")
+Signed-off-by: Stefan Metzmacher <metze@samba.org>
+Signed-off-by: Steve French <stfrench@microsoft.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: fs/smb/client/smbdirect.c
+
+fed957da2007c2bed4dbc96514852db8c6bf108d
+Gary Guo <gary@garyguo.net>
+2025-05-17T09:55:59+01:00
+rust: compile libcore with edition 2024 for 1.87+
+commit f4daa80d6be7d3c55ca72a8e560afc4e21f886aa upstream.
+
+Rust 1.87 (released on 2025-05-15) compiles core library with edition
+2024 instead of 2021 [1]. Ensure that the edition matches libcore's
+expectation to avoid potential breakage.
+
+[ J3m3 reported in Zulip [2] that the `rust-analyzer` target was
+  broken after this patch -- indeed, we need to avoid `core-cfgs`
+  since those are passed to the `rust-analyzer` target.
+
+  So, instead, I tweaked the patch to create a new `core-edition`
+  variable and explicitly mention the `--edition` flag instead of
+  reusing `core-cfg`s.
+
+  In addition, pass a new argument using this new variable to
+  `generate_rust_analyzer.py` so that we set the right edition there.
+
+  By the way, for future reference: the `filter-out` change is needed
+  for Rust < 1.87, since otherwise we would skip the `--edition=2021`
+  we just added, ending up with no edition flag, and thus the compiler
+  would default to the 2015 one.
+
+  [2] https://rust-for-linux.zulipchat.com/#narrow/channel/291565/topic/x/near/520206547
+
+    - Miguel ]
+
+Cc: stable@vger.kernel.org # Needed in 6.12.y and later (Rust is pinned in older LTSs).
+Link: https://github.com/rust-lang/rust/pull/138162 [1]
+Reported-by: est31 <est31@protonmail.com>
+Closes: https://github.com/Rust-for-Linux/linux/issues/1163
+Signed-off-by: Gary Guo <gary@garyguo.net>
+Link: https://lore.kernel.org/r/20250517085600.2857460-1-gary@garyguo.net
+Signed-off-by: Miguel Ojeda <ojeda@kernel.org>
+[ Solved conflicts for 6.12.y backport. - Miguel ]
+Signed-off-by: Miguel Ojeda <ojeda@kernel.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: scripts/generate_rust_analyzer.py
+
+db1059490d6a4b30442cfa9003f34c9993e633ab
+Miguel Ojeda <ojeda@kernel.org>
+2025-02-10T17:42:45+01:00
+kbuild: rust: add rustc-min-version support function
+commit ac954145e1ee3f72033161cbe4ac0b16b5354ae7 upstream.
+
+Introduce `rustc-min-version` support function that mimics
+`{gcc,clang}-min-version` ones, following commit 88b61e3bff93
+("Makefile.compiler: replace cc-ifversion with compiler-specific macros").
+
+In addition, use it in the first use case we have in the kernel (which
+was done independently to minimize the changes needed for the fix).
+
+Signed-off-by: Miguel Ojeda <ojeda@kernel.org>
+Reviewed-by: Fiona Behrens <me@Kloenk.dev>
+Reviewed-by: Nicolas Schier <n.schier@avm.de>
+Signed-off-by: Masahiro Yamada <masahiroy@kernel.org>
+Signed-off-by: Miguel Ojeda <ojeda@kernel.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: scripts/Makefile.compiler
+
+d1fe5674dd43a5bf503515af8e1491a429be05a2
+Jann Horn <jannh@google.com>
+2025-05-27T23:23:53+02:00
+mm/hugetlb: unshare page tables during VMA split, not before
+commit 081056dc00a27bccb55ccc3c6f230a3d5fd3f7e0 upstream.
+
+Currently, __split_vma() triggers hugetlb page table unsharing through
+vm_ops->may_split().  This happens before the VMA lock and rmap locks are
+taken - which is too early, it allows racing VMA-locked page faults in our
+process and racing rmap walks from other processes to cause page tables to
+be shared again before we actually perform the split.
+
+Fix it by explicitly calling into the hugetlb unshare logic from
+__split_vma() in the same place where THP splitting also happens.  At that
+point, both the VMA and the rmap(s) are write-locked.
+
+An annoying detail is that we can now call into the helper
+hugetlb_unshare_pmds() from two different locking contexts:
+
+1. from hugetlb_split(), holding:
+    - mmap lock (exclusively)
+    - VMA lock
+    - file rmap lock (exclusively)
+2. hugetlb_unshare_all_pmds(), which I think is designed to be able to
+   call us with only the mmap lock held (in shared mode), but currently
+   only runs while holding mmap lock (exclusively) and VMA lock
+
+Backporting note:
+This commit fixes a racy protection that was introduced in commit
+b30c14cd6102 ("hugetlb: unshare some PMDs when splitting VMAs"); that
+commit claimed to fix an issue introduced in 5.13, but it should actually
+also go all the way back.
+
+[jannh@google.com: v2]
+  Link: https://lkml.kernel.org/r/20250528-hugetlb-fixes-splitrace-v2-1-1329349bad1a@google.com
+Link: https://lkml.kernel.org/r/20250528-hugetlb-fixes-splitrace-v2-0-1329349bad1a@google.com
+Link: https://lkml.kernel.org/r/20250527-hugetlb-fixes-splitrace-v1-1-f4136f5ec58a@google.com
+Fixes: 39dde65c9940 ("[PATCH] shared page table for hugetlb page")
+Signed-off-by: Jann Horn <jannh@google.com>
+Cc: Liam Howlett <liam.howlett@oracle.com>
+Reviewed-by: Lorenzo Stoakes <lorenzo.stoakes@oracle.com>
+Reviewed-by: Oscar Salvador <osalvador@suse.de>
+Cc: Lorenzo Stoakes <lorenzo.stoakes@oracle.com>
+Cc: Vlastimil Babka <vbabka@suse.cz>
+Cc: <stable@vger.kernel.org>	[b30c14cd6102: hugetlb: unshare some PMDs when splitting VMAs]
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
+[stable backport: added missing include]
+Signed-off-by: Jann Horn <jannh@google.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: mm/hugetlb.c, mm/vma.c, mm/vma_internal.h
+
+7b5214d9f158452a6a0317ef23ff233c4f48f3ba
+Dhananjay Ugwekar <dhananjay.ugwekar@amd.com>
+2025-02-05T11:25:21+00:00
+cpufreq/amd-pstate: Add missing NULL ptr check in amd_pstate_update
+commit 426db24d4db2e4f0d6720aeb7795eafcb9e82640 upstream.
+
+Check if policy is NULL before dereferencing it in amd_pstate_update.
+
+Fixes: e8f555daacd3 ("cpufreq/amd-pstate: fix setting policy current frequency value")
+Signed-off-by: Dhananjay Ugwekar <dhananjay.ugwekar@amd.com>
+Reviewed-by: Mario Limonciello <mario.limonciello@amd.com>
+Reviewed-by: Gautham R. Shenoy <gautham.shenoy@amd.com>
+Link: https://lore.kernel.org/r/20250205112523.201101-11-dhananjay.ugwekar@amd.com
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+[Minor context change fixed.]
+Signed-off-by: Wenshan Lan <jetlan9@163.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: drivers/cpufreq/amd-pstate.c
+
+69a5f46a1d9bf164c20b911c69c5609f554e091c
+Tejun Heo <tj@kernel.org>
+2025-06-16T10:13:25-10:00
+sched_ext, sched/core: Don't call scx_group_set_weight() prematurely from sched_create_group()
+commit 33796b91871ad4010c8188372dd1faf97cf0f1c0 upstream.
+
+During task_group creation, sched_create_group() calls
+scx_group_set_weight() with CGROUP_WEIGHT_DFL to initialize the sched_ext
+portion. This is premature and ends up calling ops.cgroup_set_weight() with
+an incorrect @cgrp before ops.cgroup_init() is called.
+
+sched_create_group() should just initialize SCX related fields in the new
+task_group. Fix it by factoring out scx_tg_init() from sched_init() and
+making sched_create_group() call that function instead of
+scx_group_set_weight().
+
+v2: Retain CONFIG_EXT_GROUP_SCHED ifdef in sched_init() as removing it leads
+    to build failures on !CONFIG_GROUP_SCHED configs.
+
+Signed-off-by: Tejun Heo <tj@kernel.org>
+Fixes: 819513666966 ("sched_ext: Add cgroup support")
+Cc: stable@vger.kernel.org # v6.12+
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: kernel/sched/core.c, kernel/sched/ext.c, kernel/sched/ext.h
+
+77665996850aeaf57f800987f4aa627665f5d5f8
+Ryan Roberts <ryan.roberts@arm.com>
+2025-06-06T10:28:07+01:00
+mm: close theoretical race where stale TLB entries could linger
+commit 383c4613c67c26e90e8eebb72e3083457d02033f upstream.
+
+Commit 3ea277194daa ("mm, mprotect: flush TLB if potentially racing with a
+parallel reclaim leaving stale TLB entries") described a theoretical race
+as such:
+
+
+"""
+Nadav Amit identified a theoretical race between page reclaim and mprotect
+due to TLB flushes being batched outside of the PTL being held.
+
+He described the race as follows:
+
+	CPU0                            CPU1
+	----                            ----
+					user accesses memory using RW PTE
+					[PTE now cached in TLB]
+	try_to_unmap_one()
+	==> ptep_get_and_clear()
+	==> set_tlb_ubc_flush_pending()
+					mprotect(addr, PROT_READ)
+					==> change_pte_range()
+					==> [ PTE non-present - no flush ]
+
+					user writes using cached RW PTE
+	...
+
+	try_to_unmap_flush()
+
+The same type of race exists for reads when protecting for PROT_NONE and
+also exists for operations that can leave an old TLB entry behind such as
+munmap, mremap and madvise.
+"""
+
+The solution was to introduce flush_tlb_batched_pending() and call it
+under the PTL from mprotect/madvise/munmap/mremap to complete any pending
+tlb flushes.
+
+However, while madvise_free_pte_range() and
+madvise_cold_or_pageout_pte_range() were both retro-fitted to call
+flush_tlb_batched_pending() immediately after initially acquiring the PTL,
+they both temporarily release the PTL to split a large folio if they
+stumble upon one.  In this case, where re-acquiring the PTL
+flush_tlb_batched_pending() must be called again, but it previously was
+not.  Let's fix that.
+
+There are 2 Fixes: tags here: the first is the commit that fixed
+madvise_free_pte_range().  The second is the commit that added
+madvise_cold_or_pageout_pte_range(), which looks like it copy/pasted the
+faulty pattern from madvise_free_pte_range().
+
+This is a theoretical bug discovered during code review.
+
+Link: https://lkml.kernel.org/r/20250606092809.4194056-1-ryan.roberts@arm.com
+Fixes: 3ea277194daa ("mm, mprotect: flush TLB if potentially racing with a parallel reclaim leaving stale TLB entries")
+Fixes: 9c276cc65a58 ("mm: introduce MADV_COLD")
+Signed-off-by: Ryan Roberts <ryan.roberts@arm.com>
+Reviewed-by: Jann Horn <jannh@google.com>
+Acked-by: David Hildenbrand <david@redhat.com>
+Cc: Liam Howlett <liam.howlett@oracle.com>
+Cc: Lorenzo Stoakes <lorenzo.stoakes@oracle.com>
+Cc: Mel Gorman <mgorman <mgorman@suse.de>
+Cc: Vlastimil Babka <vbabka@suse.cz>
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: mm/madvise.c
+
+a0de278b1d2b06e898d95a9b9a0ba095228d7bd5
+Mike Tipton <quic_mdtipton@quicinc.com>
+2025-05-14T20:53:12-07:00
+cpufreq: scmi: Skip SCMI devices that aren't used by the CPUs
+[ Upstream commit 6c9bb86922728c7a4cceb99f131e00dd87514f20 ]
+
+Currently, all SCMI devices with performance domains attempt to register
+a cpufreq driver, even if their performance domains aren't used to
+control the CPUs. The cpufreq framework only supports registering a
+single driver, so only the first device will succeed. And if that device
+isn't used for the CPUs, then cpufreq will scale the wrong domains.
+
+To avoid this, return early from scmi_cpufreq_probe() if the probing
+SCMI device isn't referenced by the CPU device phandles.
+
+This keeps the existing assumption that all CPUs are controlled by a
+single SCMI device.
+
+Signed-off-by: Mike Tipton <quic_mdtipton@quicinc.com>
+Reviewed-by: Peng Fan <peng.fan@nxp.com>
+Reviewed-by: Cristian Marussi <cristian.marussi@arm.com>
+Reviewed-by: Sudeep Holla <sudeep.holla@arm.com>
+Tested-by: Cristian Marussi <cristian.marussi@arm.com>
+Signed-off-by: Viresh Kumar <viresh.kumar@linaro.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+FILES: drivers/cpufreq/scmi-cpufreq.c
+
+2301bd7791661f8061a97b81fad06ad71b3262ca
+Chao Yu <chao@kernel.org>
+2025-05-13T13:57:20+08:00
+f2fs: use vmalloc instead of kvmalloc in .init_{,de}compress_ctx
+[ Upstream commit 70dd07c888451503c3e93b6821e10d1ea1ec9930 ]
+
+.init_{,de}compress_ctx uses kvmalloc() to alloc memory, it will try
+to allocate physically continuous page first, it may cause more memory
+allocation pressure, let's use vmalloc instead to mitigate it.
+
+[Test]
+cd /data/local/tmp
+touch file
+f2fs_io setflags compression file
+f2fs_io getflags file
+for i in $(seq 1 10); do sync; echo 3 > /proc/sys/vm/drop_caches;\
+time f2fs_io write 512 0 4096 zero osync file; truncate -s 0 file;\
+done
+
+[Result]
+Before		After		Delta
+21.243		21.694		-2.12%
+
+For compression, we recommend to use ioctl to compress file data in
+background for workaround.
+
+For decompression, only zstd will be affected.
+
+Signed-off-by: Chao Yu <chao@kernel.org>
+Signed-off-by: Jaegeuk Kim <jaegeuk@kernel.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+FILES: fs/f2fs/compress.c, fs/f2fs/f2fs.h
+
+f85468130b023ee4cabd35847847a4b54e5543a3
+Linus Torvalds <torvalds@linux-foundation.org>
+2025-05-27T14:35:51-07:00
+Make 'cc-option' work correctly for the -Wno-xyzzy pattern
+[ Upstream commit 550ccb178de2f379f5e1a1833dd6f4bdafef4b68 ]
+
+This is the follow-up to commit a79be02bba5c ("Fix mis-uses of
+'cc-option' for warning disablement") where I mentioned that the best
+fix would be to just make 'cc-option' a bit smarter, and work for all
+compiler options, including the '-Wno-xyzzy' pattern that it used to
+accept unknown options for.
+
+It turns out that fixing cc-option is pretty straightforward: just
+rewrite any '-Wno-xyzzy' option pattern to use '-Wxyzzy' instead for
+testing.
+
+That makes the whole artificial distinction between 'cc-option' and
+'cc-disable-warning' go away, and we can happily forget about the odd
+build rule that you have to treat compiler options that disable warnings
+specially.
+
+The 'cc-disable-warning' helper remains as a backwards compatibility
+syntax for now, but is implemented in terms of the new and improved
+cc-option.
+
+Acked-by: Masahiro Yamada <masahiroy@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: Arnd Bergmann <arnd@arndb.de>
+Cc: Stephen Rothwell <sfr@canb.auug.org.au>
+Cc: Thomas Weißschuh <linux@weissschuh.net>
+Cc: Nathan Chancellor <nathan@kernel.org>
+Signed-off-by: Linus Torvalds <torvalds@linux-foundation.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+FILES: scripts/Makefile.compiler
+
+3e83bac5c6856d8ffd72b721496caefa8a487756
+Erick Shepherd <erick.shepherd@ni.com>
+2025-03-31T17:13:37-05:00
+mmc: Add quirk to disable DDR50 tuning
+[ Upstream commit 9510b38dc0ba358c93cbf5ee7c28820afb85937b ]
+
+Adds the MMC_QUIRK_NO_UHS_DDR50_TUNING quirk and updates
+mmc_execute_tuning() to return 0 if that quirk is set. This fixes an
+issue on certain Swissbit SD cards that do not support DDR50 tuning
+where tuning requests caused I/O errors to be thrown.
+
+Signed-off-by: Erick Shepherd <erick.shepherd@ni.com>
+Acked-by: Adrian Hunter <adrian.hunter@intel.com>
+Link: https://lore.kernel.org/r/20250331221337.1414534-1-erick.shepherd@ni.com
+Signed-off-by: Ulf Hansson <ulf.hansson@linaro.org>
+Signed-off-by: Sasha Levin <sashal@kernel.org>
+FILES: include/linux/mmc/card.h
+
+477c28cd22acb5ccd0a2dbd6700247f135a182a7
+Jann Horn <jannh@google.com>
+2025-05-27T23:23:54+02:00
+mm/hugetlb: fix huge_pmd_unshare() vs GUP-fast race
+commit 1013af4f585fccc4d3e5c5824d174de2257f7d6d upstream.
+
+huge_pmd_unshare() drops a reference on a page table that may have
+previously been shared across processes, potentially turning it into a
+normal page table used in another process in which unrelated VMAs can
+afterwards be installed.
+
+If this happens in the middle of a concurrent gup_fast(), gup_fast() could
+end up walking the page tables of another process.  While I don't see any
+way in which that immediately leads to kernel memory corruption, it is
+really weird and unexpected.
+
+Fix it with an explicit broadcast IPI through tlb_remove_table_sync_one(),
+just like we do in khugepaged when removing page tables for a THP
+collapse.
+
+Link: https://lkml.kernel.org/r/20250528-hugetlb-fixes-splitrace-v2-2-1329349bad1a@google.com
+Link: https://lkml.kernel.org/r/20250527-hugetlb-fixes-splitrace-v1-2-f4136f5ec58a@google.com
+Fixes: 39dde65c9940 ("[PATCH] shared page table for hugetlb page")
+Signed-off-by: Jann Horn <jannh@google.com>
+Reviewed-by: Lorenzo Stoakes <lorenzo.stoakes@oracle.com>
+Cc: Liam Howlett <liam.howlett@oracle.com>
+Cc: Muchun Song <muchun.song@linux.dev>
+Cc: Oscar Salvador <osalvador@suse.de>
+Cc: Vlastimil Babka <vbabka@suse.cz>
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: mm/hugetlb.c
+
+0eff933ef9d1389db6dddc4d911a1338fc1df6cb
+Jinliang Zheng <alexjlzheng@tencent.com>
+2025-04-15T17:02:32+08:00
+mm: fix ratelimit_pages update error in dirty_ratio_handler()
+commit f83f362d40ccceb647f7d80eb92206733d76a36b upstream.
+
+In dirty_ratio_handler(), vm_dirty_bytes must be set to zero before
+calling writeback_set_ratelimit(), as global_dirty_limits() always
+prioritizes the value of vm_dirty_bytes.
+
+It's domain_dirty_limits() that's relevant here, not node_dirty_ok:
+
+  dirty_ratio_handler
+    writeback_set_ratelimit
+      global_dirty_limits(&dirty_thresh)           <- ratelimit_pages based on dirty_thresh
+        domain_dirty_limits
+          if (bytes)                               <- bytes = vm_dirty_bytes <--------+
+            thresh = f1(bytes)                     <- prioritizes vm_dirty_bytes      |
+          else                                                                        |
+            thresh = f2(ratio)                                                        |
+      ratelimit_pages = f3(dirty_thresh)                                              |
+    vm_dirty_bytes = 0                             <- it's late! ---------------------+
+
+This causes ratelimit_pages to still use the value calculated based on
+vm_dirty_bytes, which is wrong now.
+
+
+The impact visible to userspace is difficult to capture directly because
+there is no procfs/sysfs interface exported to user space.  However, it
+will have a real impact on the balance of dirty pages.
+
+For example:
+
+1. On default, we have vm_dirty_ratio=40, vm_dirty_bytes=0
+
+2. echo 8192 > dirty_bytes, then vm_dirty_bytes=8192,
+   vm_dirty_ratio=0, and ratelimit_pages is calculated based on
+   vm_dirty_bytes now.
+
+3. echo 20 > dirty_ratio, then since vm_dirty_bytes is not reset to
+   zero when writeback_set_ratelimit() -> global_dirty_limits() ->
+   domain_dirty_limits() is called, reallimit_pages is still calculated
+   based on vm_dirty_bytes instead of vm_dirty_ratio.  This does not
+   conform to the actual intent of the user.
+
+Link: https://lkml.kernel.org/r/20250415090232.7544-1-alexjlzheng@tencent.com
+Fixes: 9d823e8f6b1b ("writeback: per task dirty rate limit")
+Signed-off-by: Jinliang Zheng <alexjlzheng@tencent.com>
+Reviewed-by: MengEn Sun <mengensun@tencent.com>
+Cc: Andrea Righi <andrea@betterlinux.com>
+Cc: Fenggaung Wu <fengguang.wu@intel.com>
+Cc: Jinliang Zheng <alexjlzheng@tencent.com>
+Cc: Matthew Wilcox (Oracle) <willy@infradead.org>
+Cc: <stable@vger.kernel.org>
+Signed-off-by: Andrew Morton <akpm@linux-foundation.org>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: mm/page-writeback.c
+
+66f760ba40494b3e7a61e8ccb28d24c6244b47ae
+Brian Foster <bfoster@redhat.com>
+2025-05-16T13:38:00-04:00
+ext4: only dirty folios when data journaling regular files
+commit e26268ff1dcae5662c1b96c35f18cfa6ab73d9de upstream.
+
+fstest generic/388 occasionally reproduces a crash that looks as
+follows:
+
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+...
+Call Trace:
+ <TASK>
+ ext4_block_zero_page_range+0x30c/0x380 [ext4]
+ ext4_truncate+0x436/0x440 [ext4]
+ ext4_process_orphan+0x5d/0x110 [ext4]
+ ext4_orphan_cleanup+0x124/0x4f0 [ext4]
+ ext4_fill_super+0x262d/0x3110 [ext4]
+ get_tree_bdev_flags+0x132/0x1d0
+ vfs_get_tree+0x26/0xd0
+ vfs_cmd_create+0x59/0xe0
+ __do_sys_fsconfig+0x4ed/0x6b0
+ do_syscall_64+0x82/0x170
+ ...
+
+This occurs when processing a symlink inode from the orphan list. The
+partial block zeroing code in the truncate path calls
+ext4_dirty_journalled_data() -> folio_mark_dirty(). The latter calls
+mapping->a_ops->dirty_folio(), but symlink inodes are not assigned an
+a_ops vector in ext4, hence the crash.
+
+To avoid this problem, update the ext4_dirty_journalled_data() helper to
+only mark the folio dirty on regular files (for which a_ops is
+assigned). This also matches the journaling logic in the ext4_symlink()
+creation path, where ext4_handle_dirty_metadata() is called directly.
+
+Fixes: d84c9ebdac1e ("ext4: Mark pages with journalled data dirty")
+Signed-off-by: Brian Foster <bfoster@redhat.com>
+Link: https://patch.msgid.link/20250516173800.175577-1-bfoster@redhat.com
+Signed-off-by: Theodore Ts'o <tytso@mit.edu>
+Reviewed-by: Jan Kara <jack@suse.cz>
+Cc: stable@kernel.org
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: fs/ext4/inode.c
+
+75cf0f5f1f2f80811955d715e725fe72343b33e6
+Max Kellermann <max.kellermann@ionos.com>
+2025-04-23T15:22:50+02:00
+fs/nfs/read: fix double-unlock bug in nfs_return_empty_folio()
+commit 4c10fa44bc5f700e2ea21de2fbae520ba21f19d9 upstream.
+
+Sometimes, when a file was read while it was being truncated by
+another NFS client, the kernel could deadlock because folio_unlock()
+was called twice, and the second call would XOR back the `PG_locked`
+flag.
+
+Most of the time (depending on the timing of the truncation), nobody
+notices the problem because folio_unlock() gets called three times,
+which flips `PG_locked` back off:
+
+ 1. vfs_read, nfs_read_folio, ... nfs_read_add_folio,
+    nfs_return_empty_folio
+ 2. vfs_read, nfs_read_folio, ... netfs_read_collection,
+    netfs_unlock_abandoned_read_pages
+ 3. vfs_read, ... nfs_do_read_folio, nfs_read_add_folio,
+    nfs_return_empty_folio
+
+The problem is that nfs_read_add_folio() is not supposed to unlock the
+folio if fscache is enabled, and a nfs_netfs_folio_unlock() check is
+missing in nfs_return_empty_folio().
+
+Rarely this leads to a warning in netfs_read_collection():
+
+ ------------[ cut here ]------------
+ R=0000031c: folio 10 is not locked
+ WARNING: CPU: 0 PID: 29 at fs/netfs/read_collect.c:133 netfs_read_collection+0x7c0/0xf00
+ [...]
+ Workqueue: events_unbound netfs_read_collection_worker
+ RIP: 0010:netfs_read_collection+0x7c0/0xf00
+ [...]
+ Call Trace:
+  <TASK>
+  netfs_read_collection_worker+0x67/0x80
+  process_one_work+0x12e/0x2c0
+  worker_thread+0x295/0x3a0
+
+Most of the time, however, processes just get stuck forever in
+folio_wait_bit_common(), waiting for `PG_locked` to disappear, which
+never happens because nobody is really holding the folio lock.
+
+Fixes: 000dbe0bec05 ("NFS: Convert buffered read paths to use netfs when fscache is enabled")
+Cc: stable@vger.kernel.org
+Signed-off-by: Max Kellermann <max.kellermann@ionos.com>
+Reviewed-by: Dave Wysochanski <dwysocha@redhat.com>
+Signed-off-by: Anna Schumaker <anna.schumaker@oracle.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: fs/nfs/read.c
+
+fc7aa071e15e88b161752d07949b57ccab224cf7
+Dom Cobley <popcornmix@gmail.com>
+2025-06-30T14:47:24+01:00
+include/linux/mmc/card.h: Partial revert
+
+FILES: include/linux/mmc/card.h
+
+a0bc7675265ed4578254eefbdc92be43bb906e56
+Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+2025-06-10T07:13:00-04:00
+Linux 6.12.33
+Link: https://lore.kernel.org/r/20250607100717.910797456@linuxfoundation.org
+Tested-by: Salvatore Bonaccorso <carnil@debian.org>
+Tested-by: Markus Reichelt <lkt+2023@mareichelt.com>
+Tested-by: Ron Economos <re@w6rz.net>
+Tested-by: Linux Kernel Functional Testing <lkft@linaro.org>
+Tested-by: Peter Schneider <pschneider1968@googlemail.com>
+Tested-by: Pavel Machek (CIP) <pavel@denx.de>
+Tested-by: Mark Brown <broonie@kernel.org>
+Tested-by: Jon Hunter <jonathanh@nvidia.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: Makefile
+
+48a9cd5059ec1bdf5a918c5821fec54f350b248f
+Jon Hunter <jonathanh@nvidia.com>
+2025-06-05T13:54:32+01:00
+Revert "cpufreq: tegra186: Share policy per cluster"
+This reverts commit d95fdee2253e612216e72f29c65b92ec42d254eb which is
+upstream commit be4ae8c19492cd6d5de61ccb34ffb3f5ede5eec8.
+
+This commit is causing a suspend regression on Tegra186 Jetson TX2 with
+Linux v6.12.y kernels. This is not seen with Linux v6.15 that includes
+this change but indicates that there are there changes missing.
+Therefore, revert this change.
+
+Fixes: d95fdee2253e ("cpufreq: tegra186: Share policy per cluster")
+Link: https://lore.kernel.org/linux-tegra/bf1dabf7-0337-40e9-8b8e-4e93a0ffd4cc@nvidia.com/
+Signed-off-by: Jon Hunter <jonathanh@nvidia.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: drivers/cpufreq/tegra186-cpufreq.c
+
+f2670defdb00765c186ca2b57a1aab1dea4beab5
+Gautham R. Shenoy <gautham.shenoy@amd.com>
+2025-05-29T14:21:43+05:30
+acpi-cpufreq: Fix nominal_freq units to KHz in get_max_boost_ratio()
+commit cb6a85f38f456b086c366e346ebb67ffa70c7243 upstream.
+
+commit 083466754596 ("cpufreq: ACPI: Fix max-frequency computation")
+modified get_max_boost_ratio() to return the nominal_freq advertised
+in the _CPC object. This was for the purposes of computing the maximum
+frequency. The frequencies advertised in _CPC objects are in
+MHz. However, cpufreq expects the frequency to be in KHz. Since the
+nominal_freq returned by get_max_boost_ratio() was not in KHz but
+instead in MHz,the cpuinfo_max_frequency that was computed using this
+nominal_freq was incorrect and an invalid value which resulted in
+cpufreq reporting the P0 frequency as the cpuinfo_max_freq.
+
+Fix this by converting the nominal_freq to KHz before returning the
+same from get_max_boost_ratio().
+
+Reported-by: Manu Bretelle <chantr4@gmail.com>
+Closes: https://lore.kernel.org/lkml/aDaB63tDvbdcV0cg@HQ-GR2X1W2P57/
+Fixes: 083466754596 ("cpufreq: ACPI: Fix max-frequency computation")
+Signed-off-by: Gautham R. Shenoy <gautham.shenoy@amd.com>
+Cc: 6.14+ <stable@vger.kernel.org> # 6.14+
+Link: https://patch.msgid.link/20250529085143.709-1-gautham.shenoy@amd.com
+Signed-off-by: Rafael J. Wysocki <rafael.j.wysocki@intel.com>
+Signed-off-by: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+FILES: drivers/cpufreq/acpi-cpufreq.c
+
+63252ab94e4fcfeaad9e737719c303a9aa50cd95
+macmpi <16296055+macmpi@users.noreply.github.com>
+2025-06-04T12:42:08+02:00
+configs: add rtw88/89 PCI drivers
+Enable the drivers for the Realtek RTW88 and RTW89 PCI WiFi chips on
+PCI-capable kernels.
+FILES: arch/arm/configs/bcm2711_defconfig
+
+cee5723dd0c4abbe66b0738812767918cda2714d
+Kieran Bingham <kieran.bingham@ideasonboard.com>
+2025-05-23T15:09:00+01:00
+defconfigs: Add IMX283 to all Pi defconfigs
+Add support for the Sony IMX283 image sensor by including the module
+for supported Raspberry Pi platforms.
+
+Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+23e6672404e861634632f17e9d3253d265cc8186
+Tim Gover <tim.gover@raspberrypi.com>
+2025-05-29T15:38:33+01:00
+defconfigs: Enable WATCHDOG_SYSFS
+Enable watchdog sysfs for use with userspace scripts.
+
+Signed-off-by: Tim Gover <tim.gover@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+6a53eb83398415fa1203901f8cbd23ff2c4b3204
+philippe baetens <philippe.baetens@ams-osram.com>
+2025-04-15T17:39:15+02:00
+defconfigs: Add ams Mira220 image sensor to Pi defconfigs
+Adds defconfig for the Mira220 1600x1400 global
+shutter image sensor
+
+Signed-off-by: philippe baetens <philippe.baetens@ams-osram.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+d0c40456aae558f3f48548cb692a10b3ae1cf7b0
+Phil Elwell <phil@raspberrypi.com>
+2025-05-15T17:16:22+01:00
+configs: Enable more MediaTek drivers
+Enable the Mediatek MT7925U WiFi dongle driver, and support for MediaTek
+Bluetooth dongles.
+
+See: https://github.com/raspberrypi/linux/issues/6853
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+f9dfc609ca65f4bd6a661708db232dda2b697a2c
+Phil Elwell <phil@raspberrypi.com>
+2025-05-09T10:53:44+01:00
+configs: Enable SENSORS_POWERZ
+Enable drivers for the PowerZ range of power monitors.
+
+See: https://github.com/raspberrypi/linux/issues/6787
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+0dc20a3532309be94b690b6569eceedd5ff1f14d
+Phil Elwell <phil@raspberrypi.com>
+2025-04-01T20:05:13+01:00
+configs: Add FTRACE_SYSCALLS=y
+FTRACE_SYSCALLS enables the syscall entry and exit events to be traced.
+
+See: https://github.com/raspberrypi/linux/issues/6752
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+63f591d4a189873e706a150797beb2c749b649cd
+Phil Elwell <phil@raspberrypi.com>
+2025-05-02T11:32:12+01:00
+configs: Regenerate the defconfigs
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+20e8ae413c22825125a36baab04f0b088a3a9405
+Adam Wilson <adamwilson266@rocketmail.com>
+2025-04-28T12:45:58+01:00
+configs: add CONFIG_SENSORS_ADS2728=m
+
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+57bc100119ad10cb74a4b79e03f425acab6b4bce
+Waveshare_Team <support@waveshare.com>
+2025-04-08T20:53:58+08:00
+configs : Enable configs of new series of Waveshare DSI panels
+Enable the Waveshare DSI-TOUCH series panel driver in the
+defconfig files that support the Pi5/Pi4/Pi3 family.
+
+Signed-off-by: Waveshare_Team <support@waveshare.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+5d7f5656dabf027ab85982d4ba8f30b8e5df802e
+Phil Elwell <phil@raspberrypi.com>
+2025-04-23T17:05:48+01:00
+configs: Enable UNICODE support (for filesystems)
+CONFIG_UNICODE enables "UTF-8 normalization and casefolding support".
+Enable it for the standard defconfigs as a module, so that it is only
+loaded when needed, e.g. to support a case-insensitive filing system.
+
+See: https://github.com/raspberrypi/linux/issues/6808
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+cc0cf6abe3e458050664e5f750acec8e1551929d
+Phil Elwell <phil@raspberrypi.com>
+2024-10-29T11:52:41+00:00
+configs: Add TCS3472=m and VEML6040=m
+Enable support for the TCS3472 and VEML6040 families of light sensors.
+
+Link: https://github.com/raspberrypi/linux/issues/6446
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+8d1b6ad3fafd4702db78e0bd0b1b608497275979
+Kieran Bingham <kieran.bingham@ideasonboard.com>
+2025-04-23T11:26:41+01:00
+defconfigs: Add IMX335 to all Pi defconfigs
+Add support for the Sony IMX335 image sensor by including the module for
+supported Raspberry Pi platforms.
+
+Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+b086a4b406654e0ab84c58a76f8ca0b7a3d67b60
+Phil Elwell <phil@raspberrypi.com>
+2025-04-22T16:40:59+01:00
+configs: Enable the EROFS read-only filesystem
+Enable support for the EROFS filesystem as a module.
+
+See: https://github.com/raspberrypi/linux/pull/6163
+     https://github.com/raspberrypi/linux/issues/6726
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+2a536bfca932b9df066dff0b03444dfe4a35b592
+Phil Elwell <phil@raspberrypi.com>
+2025-04-03T16:11:14+01:00
+configs: Make the RTL8152 driver a module
+Remove a leftover from the 2711 bring-up by making the RTL8152 driver
+a module.
+
+See: https://github.com/raspberrypi/linux/issues/6767
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2711_defconfig
+
+82ea1311dc3851e5b51d95f084689b6dbb7bf425
+Trevor Man <tman_github@trejan.com>
+2025-04-02T16:48:10+01:00
+Show process name in set_mempolicy() ignored message
+Signed-off-by: Trevor Man <tman_github@trejan.com>
+FILES: mm/mempolicy.c
+
+550a46ee2e5b75f1ab6e59dc76fc9ea91093eb34
+Dom Cobley <popcornmix@gmail.com>
+2025-02-05T12:08:46+00:00
+mm/mempolicy: Ignore runtime policy changes when set through cmdline
+Some apps like linpack use numa_setpolicy to disable numa,
+but that tends to have a significant performance hit for us.
+
+If you have a cmdline.txt setting of numa_policy (to something other
+than default), then lets ignore runtime changes and stick with
+the cmdline.txt setting.
+
+Not specifying numa_setpolicy in cmdline, or setting
+numa_setpolicy=default(*) will allow runtime settings to work.
+
+(*) easier to do when numa_setpolicy=interleave is set in DT.
+
+Ignore logging for the first 40 seconds as there are some
+expected switches during boot.
+
+Signed-off-by: Dom Cobley <popcornmix@gmail.com>
+FILES: mm/mempolicy.c
+
+38142479eee17fb79b0e7fe80a45d2c3eca499a6
+Giedrius Trainavičius <giedrius@blokas.io>
+2025-03-19T19:56:02+02:00
+Include Pisound Micro kernel module in Raspberry Pi defconfigs
+Signed-off-by: Giedrius Trainavičius <giedrius@blokas.io>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+25ea121edd28e4a90db1bc2ed660eb646ab07e4f
+Dave Stevenson <dave.stevenson@raspberrypi.com>
+2025-03-17T16:35:52+00:00
+defconfigs: Add DRM_PANEL_ILITEK_ILI9806E_SPI to Pi defconfigs
+With upstream having merged a DSI driver for ILI9806E with the
+configu option DRM_PANEL_ILITEK_ILI9806E, we've added our
+DPI/SPI version of the driver under DRM_PANEL_ILITEK_ILI9806E_SPI.
+Used by Pimoroni's HyperPixel4 display.
+
+Add that option to all defconfigs.
+
+Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+d66ce1640ad6e587dd8272d22aeb7cc604a938c4
+Phil Elwell <phil@raspberrypi.com>
+2025-03-10T14:47:11+00:00
+configs: Add GPIO_FXL6408=m
+Enable support for the FXL6408 GPIO expander.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+d16d4e334c6e74679bbe62c179020add11d395c6
+Dave Stevenson <dave.stevenson@raspberrypi.com>
+2024-11-14T15:04:29+00:00
+arm: defconfig: Replace VIDEO_RPIVID with VIDEO_RPI_HEVC_DEC
+Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+FILES: arch/arm/configs/bcm2711_defconfig
+
+b3c4a07fdd65476971040682b16ce43e872c7ea7
+Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+2024-05-22T14:12:42+01:00
+mm/mempolicy: Add MPOL_RANDOM
+To help work around certain memory controller limitations or similar, a
+random NUMA allocation memory policy is added.
+
+Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+FILES: mm/mempolicy.c
+
+b3578eb7cd04da378f54a4a20fe062df4da82f8d
+Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+2024-06-18T15:48:59+01:00
+iommu/dma: Add ability to configure NUMA allocation policy for remapped allocations
+Add iommu_dma_numa_policy= kernel parameter which can be used to modify
+the NUMA allocation policy of remapped buffer allocations.
+
+Policy is only used for devices which are not associated with a NUMA node.
+
+Syntax identical to what tmpfs accepts as it's mpol argument is accepted.
+
+Some examples:
+
+ iommu_dma_numa_policy=interleave
+ iommu_dma_numa_policy=interleave=skip-interleave
+ iommu_dma_numa_policy=bind:0-3,5,7,9-15
+ iommu_dma_numa_policy=bind=static:1-2
+
+Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+FILES: mm/mempolicy.c
+
+939b392cfafa3a75bba446db29cd3a4d8acb2890
+Dom Cobley <popcornmix@gmail.com>
+2025-02-20T16:08:17+00:00
+configs: Enable more ZRAM backends
+6.12 kernel reworked how ZRAM backends were configured.
+Let's enable the ones we've lost.
+
+I've chosen zstd as the default.
+
+6.6 kernel supported:
+$ cat /sys/block/zram0/comp_algorithm
+[lzo-rle] lzo lz4 zstd
+
+6.12 currently supports:
+$ cat /sys/block/zram0/comp_algorithm
+[lzo-rle] lzo
+
+With this PR 6.12 supports:
+$ cat /sys/block/zram0/comp_algorithm
+lzo-rle lzo lz4 [zstd]
+
+See: https://forums.raspberrypi.com/viewtopic.php?p=2296678#p2296678
+
+Signed-off-by: Dom Cobley <popcornmix@gmail.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+965143c5491f223d8b479ea2231858e4a497de7c
+Phil Elwell <phil@raspberrypi.com>
+2024-12-09T22:05:11+00:00
+configs: Enable Intel Wireless (PCI) drivers
+See: https://github.com/raspberrypi/linux/issues/6497
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2711_defconfig
+
+22b60dde6f7f8070ae551d2c2086de7f2ee1385f
+Nicolai Buchwitz <n.buchwitz@kunbus.com>
+2025-02-02T15:35:41+01:00
+configs: Enable Renesas XHCI driver
+Renesas UPD720201/-202 is a popular alternative to the VL805 USB3 phy
+used in many CM4 based products.
+
+Commit 25f51b76f90f ("xhci-pci: Make xhci-pci-renesas a proper modular
+driver") reworked the Renesas XHCI driver, resulting in
+CONFIG_USB_XHCI_PCI_RENESAS no longer being implicitly enabled.
+
+Explicitly add it to the defconfig to restore USB3 functionality.
+
+Signed-off-by: Nicolai Buchwitz <n.buchwitz@kunbus.com>
+FILES: arch/arm/configs/bcm2711_defconfig
+
+d63ff92dfcec122f3a93bd1306a3959e5cc549be
+Ethan Shold <sholdee@gmail.com>
+2025-01-30T20:43:01-06:00
+Enable CONFIG_NETKIT
+
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+a3e84b3508b6686c746fde22690325f483596873
+James Sarrett <jsarrett@gmail.com>
+2025-01-26T11:38:54-08:00
+configs: add CONFIG_SENSORS_INA238=m
+
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+7023072d162a9f0493b95ec8bd7e9ce58ad2d700
+Phil Elwell <phil@raspberrypi.com>
+2025-01-22T09:11:14+00:00
+configs: add CONFIG_SND_SOC_WM8904=m
+Link: https://github.com/raspberrypi/linux/pull/6623
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+cb6b027dcd8c3bc50009e6c653fd84cc76f49369
+Phil Elwell <phil@raspberrypi.com>
+2025-01-13T15:07:56+00:00
+configs: Switch to the upstream SDHOST driver
+Now that the upstream driver is overclockable, switch to using it in
+preference of the downstream driver (which can be deleted by a followup
+commit).
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+42a3010523fc870a2d6d70a121a303d98a66af80
+Jonathan Bell <jonathan@raspberrypi.com>
+2025-01-08T16:02:27+00:00
+mmc: use downstream DT property to modify CQE and/or SD CQ behaviour
+Implement a tristate-style option for "supports-cqe". If the property is
+absent or zero, disable CQ completely. For 1, enable CQ unconditionally
+for eMMC cards, and known-good SD cards. For 2, enable for eMMC cards,
+and all SD cards that are not known-bad.
+
+The sdhci-brcmstb driver needs to know about the tristate as its probe
+sequence would otherwise override a disable in mmc_of_parse().
+
+Signed-off-by: Jonathan Bell <jonathan@raspberrypi.com>
+FILES: include/linux/mmc/host.h
+
+41e93ebc83bf91060a9d4a98418037698fb7b241
+Jonathan Bell <jonathan@raspberrypi.com>
+2025-01-08T15:09:53+00:00
+mmc: sd: filter card CQ support based on an allow-list
+We have found that many SD cards in the field, even of the same make and
+model, have latent bugs in their CQ implementation. Some product lines
+have fewer bugs with newer manufacture dates, but this is not a
+guarantee that a particular card is at a particular firmware revision
+level.
+
+Many of these bugs lead to card hangs or data corruption. Add a quirk to
+mark a card as having a tested, working CQ implementation and ignore the
+capability if absent.
+
+Signed-off-by: Jonathan Bell <jonathan@raspberrypi.com>
+FILES: include/linux/mmc/card.h
+
+d000637da7ae8883d25c3f9a031b3bcb2914bc35
+plumbeo <plumbeo@users.noreply.github.com>
+2025-01-09T11:06:23+01:00
+configs: add CONFIG_CRYPTO_NHPOLY1305_NEON=m
+Enable nhpoly1305_neon module to speed up Adiantum disk encryption.
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig
+
+53f22d9fc519fcdf575825385b519459326689c3
+Dave Stevenson <dave.stevenson@raspberrypi.com>
+2025-01-02T11:21:24+00:00
+defconfigs: Add IMX415 to all Pi defconfigs
+Signed-off-by: Dave Stevenson <dave.stevenson@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+185a017435049110c67f6c55d3402792e0605c4e
+Tim Gover <tim.gover@raspberrypi.com>
+2024-11-01T19:44:37+00:00
+configs: Enable the RPi FW UART driver
+Enable the RPi firmware driver for Raspberry Pi4 and
+earlier models.
+
+Signed-off-by: Tim Gover <tim.gover@raspberrypi.com>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+b055c79f0180e1b6cfb2cea6a73b013a12f8f4ed
+Giedrius <giedrius@blokas.io>
+2024-11-21T08:05:05+00:00
+Include snd-pimidi kernel module in Raspberry Pi defconfigs
+Signed-off-by: Giedrius Trainavičius <giedrius@blokas.io>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+ac68d8a7d3178db1ab4daa6e002150855eb9626f
+Michael Heimpold <mhei@heimpold.de>
+2024-11-17T15:32:57+01:00
+configs: enable driver for Vertexcom MSE102X
+This is a SPI to powerline chipset with host-side Ethernet interface.
+Is is usually used in e-mobility environments, e.g. on
+Electrical Vehicle Supply Equipment (EVSE) side.
+
+Signed-off-by: Michael Heimpold <mhei@heimpold.de>
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+532fc50f78c39fc56c1256ba1b11ec7d45adf214
+Phil Elwell <phil@raspberrypi.com>
+2024-09-12T10:06:50+01:00
+mm/vmscan: Maintain TLB coherency in LRU code
+As a workaround (and possibly a fix) for CPU spins observed on BCM2837,
+use ptep_clear_flush_young instead of ptep_test_and_clear_young inside
+lru_gen_look_around in order to expose PTE changes to the MMU. Note that
+on architectures that don't require an explicit flush,
+ptep_clear_flush_young just calls ptep_test_and_clear_young.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: mm/vmscan.c
+
+92719518d6336db632a00bcfb2ec28a8f82998a8
+Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+2024-07-29T16:53:18+01:00
+numa/emulation: Check emulated zones around the CMA window
+... Make sure CMA zones do not straddle the emulated NUMA nodes ...
+
+Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+FILES: mm/cma.c, mm/numa_emulation.c
+
+73f851d09df217e8ba8935118538ce4dcc8cb326
+Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+2024-05-22T17:12:16+01:00
+mm/numa: Allow override of kernel's default NUMA policy
+Add numa_policy kernel argument to allow overriding the kernel's default
+NUMA policy at boot time.
+
+Syntax identical to what tmpfs accepts as it's mpol argument is accepted.
+
+Some examples:
+
+ numa_policy=interleave
+ numa_policy=interleave=skip-interleave
+ numa_policy=bind:0-3,5,7,9-15
+ numa_policy=bind=static:1-2
+
+Signed-off-by: Tvrtko Ursulin <tvrtko.ursulin@igalia.com>
+FILES: mm/mempolicy.c
+
+514dc2cbb79cc42d4057278d4a207aca13f6afeb
+Jonathan Bell <jonathan@raspberrypi.com>
+2024-06-20T14:31:20+01:00
+mmc: restrict posted write counts for SD cards in CQ mode
+Command Queueing requires Write Cache and Power off Notification support
+from the card - but using the write cache forms a contract with the host
+whereby the card expects to be told about impending power-down.
+
+The implication is that (for performance) the card can do unsafe things
+with pending write data - including reordering what gets committed to
+nonvolatile storage at what time.
+
+Exposed SD slots and platforms powered by hotpluggable means (i.e.
+Raspberry Pis) can't guarantee that surprise removal won't happen.
+
+To limit the scope for cards to invent new ways to trash filesystems,
+limit pending writes to 1 (equivalent to the non-CQ behaviour).
+
+Signed-off-by: Jonathan Bell <jonathan@raspberrypi.com>
+
+fixup: mmc: restrict posted write counts for SD cards in CQ mode
+
+Leaving card->max_posted_writes unintialised was a bad thing to do.
+
+Also, cqe_enable is 1 if hsq is enabled as hsq substitutes the cqhci
+implementation with its own.
+
+Signed-off-by: Jonathan Bell <jonathan@raspberrypi.com>
+FILES: include/linux/mmc/card.h
+
+142ae0f3cfc5185ccd7aaff6ffe4336b47572235
+Jonathan Bell <jonathan@raspberrypi.com>
+2024-03-20T13:00:30+00:00
+drivers: mmc: preallocate a block for SD extension register accesses
+The Performance Extension register is regularly accessed in a hot path
+to do write cache flushes. Don't invoke kmalloc/kfree for every access,
+preallocate a 512B buffer for this purpose.
+
+Also remove an unused alloc in sd_enable_cache().
+
+Signed-off-by: Jonathan Bell <jonathan@raspberrypi.com>
+FILES: include/linux/mmc/card.h
+
+a0ca20d3436c8fc084b2e0eb0fba8bccb4407dce
+Jonathan Bell <jonathan@raspberrypi.com>
+2024-03-15T13:06:13+00:00
+drivers: mmc: add SD support for Command Queueing
+Application class A2 cards require CQ to be enabled to realise their
+stated performance figures. Add support to enable/disable card CQ via
+the Performance Enhancement extension register, and cater for the slight
+differences in command set versus eMMC.
+
+Signed-off-by: Jonathan Bell <jonathan@raspberrypi.com>
+FILES: include/linux/mmc/sd.h
+
+bb1e203d150d2f9f6723e889b8b6f444fad537e1
+Phil Elwell <phil@raspberrypi.com>
+2023-12-01T15:59:45+00:00
+dtc update
+
+FILES: scripts/dtc/checks.c
+
+e640262c2f69dd56acaf7feae56ab801700fde1a
+David Plowman <david.plowman@raspberrypi.com>
+2022-03-29T16:10:06+01:00
+mm,page_alloc,cma: introduce a customisable threshold for allocating pages in cma
+On some platforms the cma area can be half the entire system memory,
+meaning that allocations start happening in the cma area immediately.
+This leads to fragmentation and subsequent fatal cma_alloc failures.
+
+We introduce an "alloc_in_cma_threshold" parameter which requires that
+this many sixteenths of the free pages must be in cma before it will
+try to use them. By default this is set to 12, but the previous
+behaviour can be restored by setting it to 8 on startup.
+
+Signed-off-by: David Plowman <david.plowman@raspberrypi.com>
+FILES: mm/page_alloc.c
+
+561033b2ab5eb498b722f442e6d01690a3b289fd
+gellert <gellert@raspberrypi.org>
+2014-08-15T16:35:06+01:00
+MMC: added alternative MMC driver
+mmc: Disable CMD23 transfers on all cards
+
+Pending wire-level investigation of these types of transfers
+and associated errors on bcm2835-mmc, disable for now. Fallback of
+CMD18/CMD25 transfers will be used automatically by the MMC layer.
+
+Reported/Tested-by: Gellert Weisz <gellert@raspberrypi.org>
+
+mmc: bcm2835-mmc: enable DT support for all architectures
+
+Both ARCH_BCM2835 and ARCH_BCM270x are built with OF now.
+Enable Device Tree support for all architectures.
+
+Signed-off-by: Noralf Trønnes <noralf@tronnes.org>
+
+mmc: bcm2835-mmc: fix probe error handling
+
+Probe error handling is broken in several places.
+Simplify error handling by using device managed functions.
+Replace pr_{err,info} with dev_{err,info}.
+
+Signed-off-by: Noralf Trønnes <noralf@tronnes.org>
+
+bcm2835-mmc: Add locks when accessing sdhost registers
+
+bcm2835-mmc: Add range of debug options for slowing things down
+
+bcm2835-mmc: Add option to disable some delays
+
+bcm2835-mmc: Add option to disable MMC_QUIRK_BLK_NO_CMD23
+
+bcm2835-mmc: Default to disabling MMC_QUIRK_BLK_NO_CMD23
+
+bcm2835-mmc: Adding overclocking option
+
+Allow a different clock speed to be substitued for a requested 50MHz.
+This option is exposed using the "overclock_50" DT parameter.
+Note that the mmc interface is restricted to EVEN integer divisions of
+250MHz, and the highest sensible option is 63 (250/4 = 62.5), the
+next being 125 (250/2) which is much too high.
+
+Use at your own risk.
+
+bcm2835-mmc: Round up the overclock, so 62 works for 62.5Mhz
+
+Also only warn once for each overclock setting.
+
+mmc: bcm2835-mmc: Make available on ARCH_BCM2835
+
+Make the bcm2835-mmc driver available for use on ARCH_BCM2835.
+
+Signed-off-by: Noralf Trønnes <noralf@tronnes.org>
+
+BCM270x_DT: add bcm2835-mmc entry
+
+Add Device Tree entry for bcm2835-mmc.
+In non-DT mode, don't add the device in the board file.
+
+Signed-off-by: Noralf Trønnes <noralf@tronnes.org>
+
+bcm2835-mmc: Don't overwrite MMC capabilities from DT
+
+bcm2835-mmc: Don't override bus width capabilities from devicetree
+
+Take out the force setting of the MMC_CAP_4_BIT_DATA host capability
+so that the result read from devicetree via mmc_of_parse() is
+preserved.
+
+bcm2835-mmc: Only claim one DMA channel
+
+With both MMC controllers enabled there are few DMA channels left. The
+bcm2835-mmc driver only uses DMA in one direction at a time, so it
+doesn't need to claim two channels.
+
+See: https://github.com/raspberrypi/linux/issues/1327
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+bcm2835-mmc: New timer API
+
+mmc: bcm2835-mmc: Support underclocking
+
+Support underclocking of the SD bus using the max-frequency DT property
+(which currently has no DT parameter). The sd_overclock parameter
+already provides another way to achieve the same thing which should be
+equivalent in end result, but it is a bug not to support max-frequency
+as well.
+
+See: https://github.com/raspberrypi/linux/issues/2350
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+mmc/bcm2835: Recover from MMC_SEND_EXT_CSD
+
+If the user issues an "mmc extcsd read", the SD controller receives
+what it thinks is a SEND_IF_COND command with an unexpected data block.
+The resulting operations leave the FSM stuck in READWAIT, a state which
+persists until the MMC framework resets the controller, by which point
+the root filesystem is likely to have been unmounted.
+
+A less heavyweight solution is to detect the condition and nudge the
+FSM by asserting the (self-clearing) FORCE_DATA_MODE bit.
+
+N.B. This workaround was essentially discovered by accident and without
+a full understanding the inner workings of the controller, so it is
+fortunate that the "fix" only modifies error paths.
+
+See: https://github.com/raspberrypi/linux/issues/2728
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+bcm2835-mmc: Fix DMA channel leak
+
+The BCM2835 MMC host driver requests a DMA channel on probe but neglects
+to release the channel in the probe error path and on driver unbind.
+
+I'm seeing this happen on every boot of the Compute Module 3: On first
+driver probe, DMA channel 2 is allocated and then leaked with a "could
+not get clk, deferring probe" message. On second driver probe, channel 4
+is allocated.
+
+Fix it.
+
+Signed-off-by: Lukas Wunner <lukas@wunner.de>
+Cc: Frank Pavlic <f.pavlic@kunbus.de>
+
+bcm2835-mmc: Fix struct mmc_host leak on probe
+
+The BCM2835 MMC host driver requests the bus address of the host's
+register map on probe.  If that fails, the driver leaks the struct
+mmc_host allocated earlier.
+
+Fix it.
+
+Signed-off-by: Lukas Wunner <lukas@wunner.de>
+Cc: Frank Pavlic <f.pavlic@kunbus.de>
+
+bcm2835-mmc: Fix duplicate free_irq() on remove
+
+The BCM2835 MMC host driver requests its interrupt as a device-managed
+resource, so the interrupt is automatically freed after the driver is
+unbound.
+
+However on driver unbind, bcm2835_mmc_remove() frees the interrupt
+explicitly to avoid invocation of the interrupt handler after driver
+structures have been torn down.
+
+The interrupt is thus freed twice, leading to a WARN splat in
+__free_irq().  Fix by not requesting the interrupt as a device-managed
+resource.
+
+Signed-off-by: Lukas Wunner <lukas@wunner.de>
+Cc: Frank Pavlic <f.pavlic@kunbus.de>
+
+bcm2835-mmc: Handle mmc_add_host() errors
+
+The BCM2835 MMC host driver calls mmc_add_host() but doesn't check its
+return value.  Errors occurring in that function are therefore not
+handled.  Fix it.
+
+Signed-off-by: Lukas Wunner <lukas@wunner.de>
+Cc: Frank Pavlic <f.pavlic@kunbus.de>
+
+bcm2835-mmc: Deduplicate reset of driver data on remove
+
+The BCM2835 MMC host driver sets the device's driver data pointer to
+NULL on ->remove() even though the driver core subsequently does the
+same in __device_release_driver().  Drop the duplicate assignment.
+
+Signed-off-by: Lukas Wunner <lukas@wunner.de>
+Cc: Frank Pavlic <f.pavlic@kunbus.de>
+
+bcm2835_mmc: Remove vestigial threaded IRQ
+
+With SDIO processing now managed by the MMC framework with a
+workqueue, the bcm2835_mmc driver no longer needs a threaded
+IRQ.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+Add missing dma_unmap_sg calls to free relevant swiotlb bounce buffers.
+This prevents DMA leaks.
+
+Signed-off-by: Yaroslav Rosomakho <yaroslavros@gmail.com>
+
+Limit max_req_size under arm64 (or any other platform that uses swiotlb) to prevent potential buffer overflow due to bouncing.
+
+Signed-off-by: Yaroslav Rosomakho <yaroslavros@gmail.com>
+
+mmc: sdhci: Silence MMC warnings
+
+When the MMC isn't plugged in, the driver will spam the console which is
+pretty annoying when using NFS.
+
+Signed-off-by: Maxime Ripard <maxime@cerno.tech>
+
+mmc: sdhci-iproc: Fix vmmc regulators on iProc
+
+The Linux support for controlling card power via regulators appears to
+be contentious. I would argue that the default behaviour is contrary to
+the SDHCI spec - turning off the power writes a reserved value to the
+SD Bus Voltage Select field of the Power Control Register, which
+seems to kill the Arasan/iProc controller - but fortunately there is a
+hook in sdhci_ops to override the behaviour. Borrow the implementation
+from sdhci_arasan_set_power.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+bcm2835-mmc: uninitialized_var is no more
+
+Revert "mmc: sdhci-iproc: Fix vmmc regulators on iProc"
+
+This reverts commit aed19399a01733dbad9be8bf026a4f7dd823b04f.
+
+Commit 6c92ae1e452f ("mmc: sdhci: Introduce sdhci_set_power_and_bus_voltage()")
+introduced a generic helper that does the same thing so use that instead in
+the following commit.
+
+Signed-off-by: Juerg Haefliger <juergh@canonical.com>
+
+mmc: sdhci-iproc: Fix vmmc regulators (pre-bcm2711)
+
+The Linux support for controlling card power via regulators appears to
+be contentious. I would argue that the default behaviour is contrary to
+the SDHCI spec - turning off the power writes a reserved value to the
+SD Bus Voltage Select field of the Power Control Register, which
+seems to kill the Arasan/iProc controller - but fortunately there is a
+hook in sdhci_ops to override the behaviour.
+
+Signed-off-by: Juerg Haefliger <juergh@canonical.com>
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+
+bcm2835-mmc: Honor return value of mmc_of_parse()
+
+bcm2835_mmc_probe() ignores errors returned by mmc_of_parse() and in
+particular ignores -EPROBE_DEFER, which may be returned if the power
+sequencing driver configured in the devicetree is compiled as a module.
+
+The user-visible result is that access to the SDIO device fails because
+its power sequencing requirements have not been observed.  Fix it.
+
+Signed-off-by: Lukas Wunner <lukas@wunner.de>
+
+bcm2835-mmc: Use phys addresses for slave DMA config
+
+Contrary to what struct snd_dmaengine_dai_dma_data suggests, the
+configuration of addresses of DMA slave interfaces should be done in
+CPU physical addresses.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: include/linux/mmc/card.h
+
+20f7bfe9e4fcd019fc73d0e5ced80c431f0e84dd
+popcornmix <popcornmix@gmail.com>
+2015-04-13T17:16:29+01:00
+config: Add default configs
+
+FILES: arch/arm/configs/bcm2709_defconfig, arch/arm/configs/bcm2711_defconfig, arch/arm/configs/bcmrpi_defconfig
+
+3a44d1cb497e2c28bdcbda21369111287be953db
+Dom Cobley <popcornmix@gmail.com>
+2024-09-30T16:40:14+01:00
+BCM2708: Add core Device Tree support
+Add the bare minimum needed to boot BCM2708 from a Device Tree.
+
+Signed-off-by: Noralf Tronnes <notro@tronnes.org>
+
+BCM2708: DT: change 'axi' nodename to 'soc'
+
+Change DT node named 'axi' to 'soc' so it matches ARCH_BCM2835.
+The VC4 bootloader fills in certain properties in the 'axi' subtree,
+but since this is part of an upstreaming effort, the name is changed.
+
+Signed-off-by: Noralf Tronnes notro@tronnes.org
+
+BCM2708_DT: Correct length of the peripheral space
+
+Use dts-dirs feature for overlays.
+
+The kernel makefiles have a dts-dirs target that is for vendor subdirectories.
+
+Using this fixes the install_dtbs target, which previously did not install the overlays.
+
+BCM270X_DT: configure I2S DMA channels
+
+Signed-off-by: Matthias Reichl <hias@horus.com>
+
+BCM270X_DT: switch to bcm2835-i2s
+
+I2S soundcard drivers with proper devicetree support (i.e. not linking
+to the cpu_dai/platform via name but to cpu/platform via of_node)
+will work out of the box without any modifications.
+
+When the kernel is compiled without devicetree support the platform
+code will instantiate the bcm2708-i2s driver and I2S soundcard drivers
+will link to it via name, as before.
+
+Signed-off-by: Matthias Reichl <hias@horus.com>
+
+SDIO-overlay: add poll_once-boolean parameter
+
+Add paramter to toggle sdio-device-polling
+done every second or once at boot-time.
+
+Signed-off-by: Patrick Boettcher <patrick.boettcher@posteo.de>
+
+BCM270X_DT: Make mmc overlay compatible with current firmware
+
+The original DT overlay logic followed a merge-then-patch procedure,
+i.e. parameters are applied to the loaded overlay before the overlay
+is merged into the base DTB. This sequence has been changed to
+patch-then-merge, in order to support parameterised node names, and
+to protect against bad overlays. As a result, overrides (parameters)
+must only target labels in the overlay, but the overlay can obviously target nodes in the base DTB.
+
+mmc-overlay.dts (that switches back to the original mmc sdcard
+driver) is the only overlay violating that rule, and this patch
+fixes it.
+
+bcm270x_dt: Use the sdhost MMC controller by default
+
+The "mmc" overlay reverts to using the other controller.
+
+squash: Add cprman to dt
+
+BCM270X_DT: Use clk_core for I2C interfaces
+
+BCM270X_DT: Use bcm283x.dtsi, bcm2835.dtsi and bcm2836.dtsi
+
+The mainline Device Tree files are quite close to downstream now.
+Let's use bcm283x.dtsi, bcm2835.dtsi and bcm2836.dtsi as base files
+for our dts files.
+
+Mainline dts files are based on these files:
+
+          bcm2835-rpi.dtsi
+  bcm2835.dtsi    bcm2836.dtsi
+          bcm283x.dtsi
+
+Current downstream are based on these:
+
+  bcm2708.dtsi    bcm2709.dtsi    bcm2710.dtsi
+             bcm2708_common.dtsi
+
+This patch introduces this dependency:
+
+  bcm2708.dtsi    bcm2709.dtsi
+          bcm2708-rpi.dtsi
+          bcm270x.dtsi
+  bcm2835.dtsi    bcm2836.dtsi
+          bcm283x.dtsi
+
+And:
+          bcm2710.dtsi
+          bcm2708-rpi.dtsi
+          bcm270x.dtsi
+          bcm283x.dtsi
+
+bcm270x.dtsi contains the downstream bcm283x.dtsi diff.
+bcm2708-rpi.dtsi is the downstream version of bcm2835-rpi.dtsi.
+
+Other changes:
+- The led node has moved from /soc/leds to /leds. This is not a problem
+  since the label is used to reference it.
+- The clk_osc reg property changes from 6 to 3.
+- The gpu nodes has their interrupt property set in the base file.
+- the clocks label does not point to the /clocks node anymore, but
+  points to the cprman node. This is not a problem since the overlays
+  that use the clock node refer to it directly: target-path = "/clocks";
+- some nodes now have 2 labels since mainline and downstream differs in
+  this respect: cprman/clocks, spi0/spi, gpu/vc4.
+- some nodes doesn't have an explicit status = "okay" since they're not
+  disabled in the base file: watchdog and random.
+- gpiomem doesn't need an explicit status = "okay".
+- bcm2708-rpi-cm.dts got the hpd-gpios property from bcm2708_common.dtsi,
+  it's now set directly in that file.
+- bcm2709-rpi-2-b.dts has the timer node moved from /soc/timer to /timer.
+- Removed clock-frequency property on the bcm{2709,2710}.dtsi timer nodes.
+
+Signed-off-by: Noralf Trønnes <noralf@tronnes.org>
+
+BCM270X_DT: Use raspberrypi-power to turn on USB power
+
+Use the raspberrypi-power driver to turn on USB power.
+
+Signed-off-by: Noralf Trønnes <noralf@tronnes.org>
+
+BCM270X_DT: Add a .dtbo target, use for overlays
+
+Change the filenames and extensions to keep the pre-DDT style of
+overlay (<name>-overlay.dtb) distinct from new ones that use a
+different style of local fixups (<name>.dtbo), and to match other
+platforms.
+
+The RPi firmware uses the DDTK trailer atom to choose which type of
+overlay to use for each kernel.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+BCM270X_DT: Don't generate "linux,phandle" props
+
+The EPAPR standard says to use "phandle" properties to store phandles,
+rather than the deprecated "linux,phandle" version. By default, dtc
+generates both, but adding "-H epapr" causes it to only generate
+"phandle"s, saving some space and clutter.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+BCM270X_DT: Add overlay for enc28j60 on SPI2
+
+Works on SPI2 for compute module
+
+BCM270X_DT: Add midi-uart0 overlay
+
+MIDI requires 31.25kbaud, a baudrate unsupported by Linux. The
+midi-uart0 overlay configures uart0 (ttyAMA0) to use a fake clock
+so that requesting 38.4kbaud actually gets 31.25kbaud.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+BCM270X_DT: Add i2c-sensor overlay
+
+The i2c-sensor overlay is a container for various pressure and
+temperature sensors, currently bmp085 and bmp280. The standalone
+bmp085_i2c-sensor overlay is now deprecated.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+BCM270X_DT: overlays/*-overlay.dtb -> overlays/*.dtbo (#1752)
+
+We now create overlays as .dtbo files.
+
+build: support for .dtbo files for dtb overlays
+
+Kernel 4.4.6+ on RaspberryPi support .dtbo files for overlays, instead of .dtb.
+Patch the kernel, which has faulty rules to generate .dtbo the way yocto does
+
+Signed-off-by: Herve Jourdain <herve.jourdain@neuf.fr>
+Signed-off-by: Khem Raj <raj.khem@gmail.com>
+
+BCM270X: Drop position requirement for CMA in VC4 overlay.
+
+No longer necessary since 2aefcd576195a739a7a256099571c9c4a401005f,
+and will probably let peeople that want to choose a larger CMA
+allocation (particularly on pi0/1).
+
+Signed-off-by: Eric Anholt <eric@anholt.net>
+
+BCM270X_DT: RPi Device Tree tidy
+
+Use the upstream sdhost node, add thermal-zones, and factor out some
+common elements.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+kbuild: Silence unhelpful DTC warnings
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+BCM270X_DT: DT build rules no longer arch-specific
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.org>
+
+kbuild: Silence unavoidable dtc overlay warnings
+
+Much effort has been put into finding ways to avoid warnings from dtc
+about overlays, usually to do with the presence of #address-cells and
+size-cells, but not exclusively so. Since the issues being warned about
+are harmless, suppress the warnings to declutter the build output and
+to avoid alarming users.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+
+overlays: Suppress another dtc warning
+
+I'm sure the dtc warnings mean well, but overlays don't have enough
+context for the checkers to give meaningful results.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+
+overlays: Use dtbs-list for overlay installation
+
+Update the overlay build rules to use the dtbs-list mechanism. Also
+include the README, and don't set the executable bits.
+
+Signed-off-by: Phil Elwell <phil@raspberrypi.com>
+FILES: scripts/Makefile.build, scripts/Makefile.dtbinst, scripts/Makefile.lib

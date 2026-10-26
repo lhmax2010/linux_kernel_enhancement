@@ -1,0 +1,16 @@
+branch=sandbox/shkim/lksm
+tip=dd49d1840c83359c4a842b4914badbd3d35c33ca
+merge_base_tizen=219d54332a09e8d8741c1e1982f5eae56099de85
+full_ahead=7761 full_behind=455938
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/shkim/lksm --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=5
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__shkim__lksm_ahead_01.txt: bytes=849938 sha256=b471fb809185af787abe3f6cd0782d28ce1853764ca8cb5e034cf6777b2d0a18
+sandbox__shkim__lksm_ahead_02.txt: bytes=395007 sha256=589f9714d44dbdd41a8ca78877e31d6aa651213d361080191210f3092161369c
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+dd49d1840c83359c4a842b4914badbd3d35c33ca	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T16:00:07+09:00	arch: arm64: enable CONFIG_KSM_FILTER
+a5a9a84ddf95a573e9b8b5dc629290d614844f01	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T15:58:28+09:00	mm: LKSM: : new feature: use filter-based scanning to reduce scanning cost
+82a4475b9663f6940c260b6721b860f264908174	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T09:07:37+09:00	arch: arm64: enable CONFIG_LKSM
+437b277f4abd4526f7d8e4b3927b6b52cb61bfb0	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T09:05:12+09:00	mm: LKSM: lightweight memory deduplication for embedded devices
+d52823705573a7cdec6d6667fd72bd7d10666e46	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-14T15:04:38+09:00	mm: LKSM: prepare to add LKSM code

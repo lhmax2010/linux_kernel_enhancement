@@ -1,0 +1,2 @@
+     1	CONFIG_PREEMPT_RT=y
+     2	# CONFIG_RT_GROUP_SCHED is not set

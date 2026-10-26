@@ -1,0 +1,11 @@
+branch=sandbox/klewandowski/rpi5
+tip=fb3cd7334c19cb8ded5f2f553f3109863859b8ad
+merge_base_tizen=ffc253263a1375a65fa6c9f62a893e9767fbebfa
+full_ahead=4634 full_behind=112095
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/klewandowski/rpi5 --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=1
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__klewandowski__rpi5_ahead_01.txt: bytes=750657 sha256=1c37e772f1669949082fbcdac9c00108742d993ff96484f0b8a13519c925aa7d
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+fb3cd7334c19cb8ded5f2f553f3109863859b8ad	Karol Lewandowski <k.lewandowsk@samsung.com>	2024-03-12T00:27:19+01:00	tizen: packaging: Add baselibs.conf to provide 64-bit kernel & modules for 32-bit userspace

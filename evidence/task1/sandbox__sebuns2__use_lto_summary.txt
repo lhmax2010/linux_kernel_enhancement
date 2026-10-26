@@ -1,0 +1,12 @@
+branch=sandbox/sebuns2/use_lto
+tip=a4fe97e13a49f05869d685bcde1799394596168b
+merge_base_tizen=219d54332a09e8d8741c1e1982f5eae56099de85
+full_ahead=7841 full_behind=455938
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/sebuns2/use_lto --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=1
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__sebuns2__use_lto_ahead_01.txt: bytes=849834 sha256=abdac131761cb7dc70b4cff66c5adab003581c3fcb902fbce5c9c24829b1790c
+sandbox__sebuns2__use_lto_ahead_02.txt: bytes=408026 sha256=ffcf958946a43d6595bc40b1569fd2ba1ffc7ea5c7e9f0ec86b69fbb5ac849e6
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+a4fe97e13a49f05869d685bcde1799394596168b	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-03T12:44:05+09:00	Kconfig: Makefile: Scripts: apply link-time optimization for reducing kernel size

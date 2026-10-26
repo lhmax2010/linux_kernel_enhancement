@@ -1,0 +1,26 @@
+commit e640262c2f69dd56acaf7feae56ab801700fde1a
+Author: David Plowman <david.plowman@raspberrypi.com>
+Date:   Tue Mar 29 16:10:06 2022 +0100
+
+    mm,page_alloc,cma: introduce a customisable threshold for allocating pages in cma
+    
+    On some platforms the cma area can be half the entire system memory,
+    meaning that allocations start happening in the cma area immediately.
+    This leads to fragmentation and subsequent fatal cma_alloc failures.
+    
+    We introduce an "alloc_in_cma_threshold" parameter which requires that
+    this many sixteenths of the free pages must be in cma before it will
+    try to use them. By default this is set to 12, but the previous
+    behaviour can be restored by setting it to 8 on startup.
+    
+    Signed-off-by: David Plowman <david.plowman@raspberrypi.com>
+
+ mm/page_alloc.c | 28 +++++++++++++++++++++++++---
+ 1 file changed, 25 insertions(+), 3 deletions(-)
+linux-rpi/mm/page_alloc.c:240:static unsigned long _alloc_in_cma_threshold __read_mostly
+linux-rpi/mm/page_alloc.c:243:static int __init alloc_in_cma_threshold_setup(char *buf)
+linux-rpi/mm/page_alloc.c:249:		pr_err("Bad alloc_cma_threshold value\n");
+linux-rpi/mm/page_alloc.c:252:	_alloc_in_cma_threshold = res;
+linux-rpi/mm/page_alloc.c:253:	pr_info("Setting alloc_in_cma_threshold to %lu\n", res);
+linux-rpi/mm/page_alloc.c:256:early_param("alloc_in_cma_threshold", alloc_in_cma_threshold_setup);
+linux-rpi/mm/page_alloc.c:2322:		    * _alloc_in_cma_threshold) {

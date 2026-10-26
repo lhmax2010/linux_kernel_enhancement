@@ -1,0 +1,45 @@
+branch=sandbox/sebuns2/use_hugepage
+tip=5ce636ad561b6ac2701b488314e0b82afb19c689
+merge_base_tizen=219d54332a09e8d8741c1e1982f5eae56099de85
+full_ahead=7883 full_behind=455938
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/sebuns2/use_hugepage --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=34
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__sebuns2__use_hugepage_ahead_01.txt: bytes=849933 sha256=7defd05e9a35e60af5e38cf54d5a1297b61fa941aeaf85951c9ca78c5f4916fb
+sandbox__sebuns2__use_hugepage_ahead_02.txt: bytes=414601 sha256=c6d75ad98cdac3eddc4a1c91159f6ab04dfa8880da5fc150223f81a4cdc0f5c5
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+5ce636ad561b6ac2701b488314e0b82afb19c689	Sung-hun Kim <sfoon.kim@samsung.com>	2021-03-30T15:33:01+09:00	mm: THP: reconfigure scanning condition
+02326270855c334867620e2ad06d5e1f118cb1c4	Sung-hun Kim <sfoon.kim@samsung.com>	2021-03-24T19:35:11+09:00	mm: THP: expand memory hook for all kind of transparent hugepages
+89b2f505120372e56bdd108cb5d5eb13c0af2840	Sung-hun Kim <sfoon.kim@samsung.com>	2021-03-24T19:30:04+09:00	mm: THP: bug fix in hugepage fault handling on first pmd expansion
+1647de7ba73dbd898a70f3e0fc8b0a89575df91f	Sung-hun Kim <sfoon.kim@samsung.com>	2021-03-17T23:54:12+09:00	mm: THP: bug-fixes: resolve condition mis-matching
+f2ee4b5c858093f2d334aa597ac281cc2041a353	Sung-hun Kim <sfoon.kim@samsung.com>	2021-03-17T23:50:31+09:00	mm: THP: bug-fixes: resolve unexpected scanning for unmapped regions
+c217ce95e558c57b1cb3b05f3f7a477737a253e6	Sung-hun Kim <sfoon.kim@samsung.com>	2021-03-09T17:06:18+09:00	mm: THP: extend 64KB hugepage for anonymous pages
+827ea4d89fd43d0ff7b8a8eaf37b932f2a0fc009	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-25T19:19:10+09:00	mm: THP: add memory hook for quick hugepage merging
+90de754cad94c149b3c03d4a0c5cf6323510f586	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-17T08:50:51+09:00	mm: THP: remove debugging message
+0f64190daca2052e040178b0c8e793787fc9c901	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-08T17:34:51+09:00	mm: THP: remove unnecessary code and debugging messages
+9693da9c373a522faa362eac00cb6f9f0bdc9e5b	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-08T10:11:46+09:00	mm: THP: resolve an issue about available memory statistics
+cea2982c552c95ec1552153cab05b5b59b5374ae	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-04T13:43:06+09:00	mm: THP: clean codes and remove debugging messages
+56ad6a91d0fa1e0a10559aac4a433832da396b4b	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-03T15:48:38+09:00	mm: THP: debug: modify contents of debugging messages
+03ae9a061b2591795c69957205f9d82c96f10b53	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-03T15:12:26+09:00	mm: THP: change subpage finding for 64KB hugepage
+53cfcd2920b76c1334f93120dc0ffab9849b9d60	Sung-hun Kim <sfoon.kim@samsung.com>	2021-02-03T15:06:04+09:00	mm: THP: resolve cgroup charge issue on releasing 64KB hugepage
+7f67d32f005ecd9b063b60820d2c1231b7290c5e	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-29T15:19:48+09:00	mm: THP: the first stable version of 64KB transparent hugepage
+832b085de6211f1f9ffc3cfe9ff18a14dab0e19f	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-18T17:06:38+09:00	mm: THP: delaying changes of contiguous mapping in page-fault time
+76c7666a1e1ca55d8440e27080c24bfeea57b664	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-08T15:38:08+09:00	mm: THP: handling split of hugepages
+b3065a096ed4ae615e45008eb28780c7a0705cb7	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-09T02:17:14+09:00	mm: THP: finding bugs for abnormally terminated processes (in progress)
+40fc35a37abfd2656b76f20ee9a3e69a6690363f	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-08T15:38:08+09:00	mm: THP: handling split of hugepages
+fa5364c6bb7f6a27b2f64905e7dde6b3a4cfcd33	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-08T15:38:08+09:00	mm: THP: handling split of hugepages
+87141206ebb8cd6714a2e3153f0b9c5427c419ee	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-06T09:23:34+09:00	mm: THP: add unmap and split handling for 64KB hugepages
+a6f08d09ec8320472b03835595185c016e09eb60	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-31T16:31:47+09:00	mm:THP: handling unmap for 64KB hugepage
+a6222b859fe42295e96775dee9d86f3e8951ed80	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T20:48:33+09:00	mm: THP: intermediate commit for handling unmap_vma
+81a976b1364d8e00fa1889e69fee7612af9b4108	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T11:53:11+09:00	mm: THP: allow remove rmap of hugepage only for 2MB hugepages
+e5e211d0c5c3bd129e3599f9abc6477ca1059888	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T10:32:44+09:00	mm: THP: remove unnecessary debugging messages
+d2ef59a4dbdc47f4bccf0aa1aca70ed549973bba	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-29T01:47:41+09:00	mm: THP: handle delayed mapping controls
+37ddb5a396bd5b13cd432359d3661c504ab93f01	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-24T13:11:46+09:00	mm: THP: add mm counters for 64KB hugepage
+be31fb95bb716f8fd7b006726d44d68fafcc8bcc	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-14T18:00:43+09:00	mm: THP: implement a 64KB hugepage fault handler
+358dee4a1e8197274eba43467310d62605eb37f0	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-14T15:53:35+09:00	mm: THP: add debugging messages
+348e9daf58b193b9aceca25a9f15be0e226c3d72	Sung-hun Kim <sfoon.kim@samsung.com>	2020-12-02T15:44:41+09:00	mm: arm64: THP: khugepaged: scanning VMAs for creating 64KB hugepage
+7a2910df96327932f346afb20928da5e0c1c9f5c	Sung-hun Kim <sfoon.kim@samsung.com>	2020-11-09T16:26:46+09:00	Revert "ARM64: configs: tizen_bcm2711_defconfig: enable CONFIG_LKSM"
+5c20e23eac5a0a4b158897244ebbc987e6dde2ad	Sung-hun Kim <sfoon.kim@samsung.com>	2020-11-09T16:26:06+09:00	Revert "ARM64: configs: tizen_bcm2711_defconfig: enable CONFIG_LKSM_FILTER"
+6cae5595f3427430937d28c4e7ce04599acc25cb	Sung-hun Kim <sfoon.kim@samsung.com>	2020-10-12T12:05:32+09:00	mm:khugepaged:add debugging messages to anlalyze hugepage impacts
+cf03d4d2362dab0f07e14fc2090f8d77cd464ce2	Sung-hun Kim <sfoon.kim@samsung.com>	2020-09-21T16:22:09+09:00	ARM64: defconfig: enable configs for using hugepage

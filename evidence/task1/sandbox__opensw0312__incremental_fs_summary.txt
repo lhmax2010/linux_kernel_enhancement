@@ -1,0 +1,162 @@
+branch=sandbox/opensw0312/incremental_fs
+tip=a9291486df4461fbc8c0183da18b281f7a2139e3
+merge_base_tizen=ffc253263a1375a65fa6c9f62a893e9767fbebfa
+full_ahead=13956 full_behind=112095
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/opensw0312/incremental_fs --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=150
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__opensw0312__incremental_fs_ahead_01.txt: bytes=849933 sha256=ce9ad054d4243df1ffef1eea4e9ea7fb4ca29b46df12ca1512c703668f693b44
+sandbox__opensw0312__incremental_fs_ahead_02.txt: bytes=849940 sha256=49e6265f12c32171ed64a0c8dd3d533d60bf6e102f58e6fe39c94e196d8769b6
+sandbox__opensw0312__incremental_fs_ahead_03.txt: bytes=568677 sha256=9ab6e1526f480fb2d8b7260d4690c86795e2b376fb06895bc27e19f22291db71
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+a9291486df4461fbc8c0183da18b281f7a2139e3	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-07-07T15:25:43+09:00	selftests: incfs: Fix memory error with zero count mtree in incfs_perf
+8021da1fa57d8fcdc32ad3d9459ebc3cdc080972	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-07-01T14:21:32+09:00	selftests: incfs: Set read_timeout mount option only when not zero
+9e03ff2d615115c60f9a9aae3c9ad4fe5005a539	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-07-01T10:12:22+09:00	selftests: incfs: print error value with signed type
+0cc89716e891380fadefe88c1abee0b3e5591e0f	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-06-30T18:24:59+09:00	incfs: Use locked function for lock required inode
+ee1a6a8f4d25e0f3497240c9679af4ad5b2fc97d	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-06-24T15:25:20+09:00	selftests: incfs: avoid double free for verity_test
+9046d469df459a8c11a6673ec1223d5d06999bce	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-06-25T20:03:33+09:00	selftests: incfs: clear freed pointer in static variable
+2bc20dae5d89c15fda13b68fc3a90610def3c8fe	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-06-24T13:13:46+09:00	incfs: Fix open file when FS_VERITY is not enabled
+fc020fa86f5eadf818a99001f5577845f126ab8b	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-06-24T13:10:26+09:00	incfs: Support security smack xattr
+1b467fa0985ea8cf4498fc599b6fcf88eab2ec53	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-06-24T13:06:25+09:00	incfs: change log level for normal repeated log
+5eaaa24620ab67c4b5b18e1e2af616112e6d1314	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-06-17T17:21:47+09:00	packaging: add incfs selftest tool
+84b4b186f339776481f5ca6518e5f32e472a0af9	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-06-18T14:09:43+09:00	selftests: incfs: Remove Werror flags
+30eca188e71c570ecff3258a879b3e780cab3c15	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-06-17T17:15:19+09:00	selftests: incfs: Remove duplicated define
+c6b8b13950be8ad5bb88a1dfe33cbfa4d3a7542d	Seung-Woo Kim <sw0312.kim@samsung.com>	2025-05-23T13:51:15+09:00	ARM/ARM64: configs: tizen: Enable INCREMENTAL_FS
+5781e5e7f2f30b3269b1c24baae6e66518b70e01	Paul Lawrence <paullawrence@google.com>	2024-06-19T12:44:38-07:00	ANDROID: Incremental fs: Retry page faults on non-fatal errors
+d11468f783505eac6d8d181dc038af85488caada	Paul Lawrence <paullawrence@google.com>	2023-06-28T13:17:03-07:00	ANDROID: incremental-fs: Make work with 16k pages
+dfda58fb9e2e72cf2bc0d0af4d0cb186486de510	Greg Kroah-Hartman <gregkh@google.com>	2023-09-08T13:01:09+00:00	ANDROID: incfs: fix up build errors after upstream vfs changes
+30b26b62fa9909ca51ce863ab2d3fb7b7c937abe	Greg Kroah-Hartman <gregkh@google.com>	2023-08-23T14:18:24+00:00	ANDROID: incfs: fix build error due to ->iterate going away.
+bdec6f5bca6d64a32663cbfd7cfa1b4f656fa3ef	Eric Biggers <ebiggers@google.com>	2023-07-05T19:31:28+00:00	ANDROID: incfs: remove support for verifying fsverity builtin signatures
+64de1c2eb98341acc9bcdfbdbdaf852ddd19bf56	Lee Jones <joneslee@google.com>	2023-07-11T17:20:13+00:00	ANDROID: Incremental fs: Allocate data buffer based on input request size
+d13c4f1e8aa5f301592a1c00c5dc355c0d03e37f	Greg Kroah-Hartman <gregkh@google.com>	2023-07-10T15:24:33+00:00	ANDROID: incfs: fix build error due to generic_file_splice_read going away.
+32452356f04430a1a77dd6817efc1a707b2cef49	Paul Lawrence <paullawrence@google.com>	2023-02-23T08:59:38-08:00	ANDROID: incremental fs: Evict inodes before freeing mount data
+394c767188f27972224e28f00daa0a11769e3dd8	Greg Kroah-Hartman <gregkh@google.com>	2023-03-02T11:17:30+00:00	ANDROID: Incremental fs: fix up for vfs changes in 6.3-rc1
+30795f747aaa725bd029c69ef09c46ff149f3905	Paul Lawrence <paullawrence@google.com>	2022-07-07T08:24:12-07:00	ANDROID: incremental fs: Move throttling to outside page lock
+4157db721bdb17b80d06c421afe84445139f8373	Paul Lawrence <paullawrence@google.com>	2023-01-06T13:36:29-08:00	ANDROID: incremental fs: Fix race between truncate and write last block
+3a5c47e570681a5de186faa91a92f3c170d179cf	Greg Kroah-Hartman <gregkh@google.com>	2023-02-21T18:00:36+00:00	ANDROID: INCFS: fix build error due to upstream changes
+afa44bad08ca9594bb62b8092f89340823fb7760	Tadeusz Struk <tadeusz.struk@linaro.org>	2022-09-21T12:49:11-07:00	ANDROID: selftests: incfs: Increase timeout in concurrent_reads_and_writes_test
+55ad86a9dc11042c756677623fe55bb8caf0c480	Tadeusz Struk <tadeusz.struk@linaro.org>	2022-09-13T10:56:54-07:00	ANDROID: incfs: Add check for ATTR_KILL_SUID and ATTR_MODE in incfs_setattr
+dfd56ad0bfea018655e5291c6e571df69f6666ba	Greg Kroah-Hartman <gregkh@google.com>	2022-08-03T16:35:52+02:00	ANDROID: Incremental fs: fix setxattr callbacks due to upstream changes
+bad2bc694730599aef6777fa6d6b1439b6357f46	Nathan Chancellor <nathan@kernel.org>	2022-06-23T12:54:22-07:00	ANDROID: Incremental fs: Use ERR_CAST in handle_mapped_file()
+76a76c0f93097cea79712e7c20405aedbbc7b2e4	Greg Kroah-Hartman <gregkh@google.com>	2022-06-08T12:54:11+02:00	ANDROID: incremental-fs: convert to read_folio
+d22d1458a61d736240b41e2e97712eb0b0a2e13f	Paul Lawrence <paullawrence@google.com>	2022-02-01T17:56:46+00:00	ANDROID: Incremental fs: Mark merkle tree pages uptodate
+750f07477ae186dd756604e7d81ad3240fc8b78a	Tadeusz Struk <tadeusz.struk@linaro.org>	2022-03-10T15:40:05-08:00	ANDROID: selftests: incfs: Add stacked_mount_test
+fd5c67f06518a968d3b6ef041df83deb76aa3dfc	Tadeusz Struk <tadeusz.struk@linaro.org>	2022-03-10T08:51:45-08:00	ANDROID: selftests: incfs: Add umount helper function
+497b2a8f6c20b4ae3705fd57260f96ffc374da35	Tadeusz Struk <tadeusz.struk@linaro.org>	2022-03-09T15:33:45-08:00	ANDROID: selftests: incfs: skip large_file_test test is not enough free space
+27691a6c4f4f6ab1d2fdbd0f553d0fbca27bc7c0	Tadeusz Struk <tadeusz.struk@linaro.org>	2022-03-09T17:30:38-08:00	ANDROID: selftests: incfs: Add -fno-omit-frame-pointer
+6d94c457470b2fbb9deeeb0982b449bbe9759419	Tadeusz Struk <tadeusz.struk@linaro.org>	2022-03-08T17:20:15-08:00	ANDROID: incremental-fs: limit mount stack depth
+a5df7065bf289bba9b3d28796234d6c29560d7ff	Tadeusz Struk <tadeusz.struk@linaro.org>	2022-01-27T15:28:12-08:00	ANDROID: incremental-fs: populate userns before calling vfs_rename
+37b771761535099d4da15e818ac0511a790a5670	Tadeusz Struk <tadeusz.struk@linaro.org>	2022-01-03T12:50:26-08:00	ANDROID: incremental-fs: fix GPF in pending_reads_dispatch_ioctl
+3a77bb4ae22d375324de6fdac5669fded621ba8d	Tadeusz Struk <tadeusz.struk@linaro.org>	2022-01-12T18:42:35-08:00	ANDROID: selftests: fix incfs_test
+e40414e1dc8d16243e26dfb6ac2261b3709f1c73	Greg Kroah-Hartman <gregkh@google.com>	2021-11-23T11:44:52+01:00	ANDROID: Incremental fs: fix build due to zstd api changes
+d010c13a0f9186fd647b2d02dde633c18fd11980	Lee Jones <lee.jones@linaro.org>	2021-10-22T19:07:29+01:00	ANDROID: Incremental fs: Fix dentry get/put imbalance on vfs_mkdir() failure
+e539074d30d88ce6433e88b28b243c6d2126ce4c	Greg Kroah-Hartman <gregkh@google.com>	2021-09-06T13:49:19+02:00	ANDROID: Incremental fs: fix up the build for 5.15-rc1
+accf1ae382671738f59799625d42e06aab7f61da	Paul Lawrence <paullawrence@google.com>	2021-05-03T08:46:52-07:00	ANDROID: Incremental fs: Add uid to INCFS_IOC_GET_LAST_READ_ERROR
+618c34d4bfd44aac85a4a66261cc7da38827d9c3	Paul Lawrence <paullawrence@google.com>	2021-05-10T10:53:59-07:00	ANDROID: Incremental fs: Make sysfs_name changeable on remount
+22c79a4ebcb4c48bce50a7dba5ae532337c35310	Paul Lawrence <paullawrence@google.com>	2021-05-07T12:51:44-07:00	ANDROID: Incremental fs: Count pending_reads even when very short
+9315546690c3c7f60d166e6a04b31172e7c2c355	Lee Jones <lee.jones@linaro.org>	2021-05-11T16:13:16+01:00	ANDROID: Incremental fs: Explicitly include <linux/pagemap.h>
+27582f8b91966e1a10934223ed2c9067313452f6	Paul Lawrence <paullawrence@google.com>	2021-04-27T13:55:47-07:00	ANDROID: Incremental fs: Fix pseudo-file attributes
+a41d56713f527ba254db43d1143b3828e46df452	Paul Lawrence <paullawrence@google.com>	2021-04-19T14:09:01-07:00	ANDROID: Incremental fs: Add INCFS_IOC_GET_LAST_READ_ERROR
+4f5a74d2b00d75c721e55bdfbcc2c123a9c61888	Paul Lawrence <paullawrence@google.com>	2021-04-21T11:28:56-07:00	ANDROID: Incremental fs: Fix INCFS_MAGIC_NUMBER casts
+858ac0a1b5e0d6280f08d044dd33c9d3a5ef6a65	Paul Lawrence <paullawrence@google.com>	2021-03-23T13:45:30-07:00	ANDROID: Incremental fs: Add status to sysfs
+7b72b290d30623be35e53a5421e0767bb00d8bad	Carlos Llamas <cmllamas@google.com>	2021-04-15T23:27:49+00:00	ANDROID: Incremental fs: fix u64 integer cast to pointer
+89e66e0d81c7ffcd237e5ae22bb161b681913364	Carlos Llamas <cmllamas@google.com>	2021-04-15T01:09:02+00:00	ANDROID: Incremental fs: fix minor printk format warning
+9c3c33cf34de256d35f770d4c6ff9239f733d335	Paul Lawrence <paullawrence@google.com>	2021-04-01T10:08:32-07:00	ANDROID: Incremental fs: stat should return actual used blocks
+114bdbc0b33f7b3daf3b17fdbf6753e4d6711b30	Paul Lawrence <paullawrence@google.com>	2021-03-12T09:54:28-08:00	ANDROID: Incremental fs: Add FS_IOC_READ_VERITY_METADATA
+7b7fd9c6e4d55f000da505322bb820f6128a9ac7	Paul Lawrence <paullawrence@google.com>	2021-03-17T13:35:44-07:00	ANDROID: Incremental fs: Truncate file when complete
+91e87a5bd178a5a4d45370b110912e550a74651c	Paul Lawrence <paullawrence@google.com>	2021-03-10T08:40:53-08:00	ANDROID: Incremental fs: Fix mlock to fail gracefully on corrupt files
+90cfc1c753d7fc14f0130d90776f72b4afa88c9d	Paul Lawrence <paullawrence@google.com>	2021-03-08T15:03:50-08:00	ANDROID: Incremental fs: Finer readlog compression internally
+47a9dd267dc2ec81a32e5f309fc71e920050f15f	Paul Lawrence <paullawrence@google.com>	2021-03-08T09:32:40-08:00	ANDROID: Incremental fs: Support STATX_ATTR_VERITY
+52aba30869dab22e1e4422baa6b2dc7dfdd3dede	Greg Kroah-Hartman <gregkh@google.com>	2021-03-06T19:50:59+01:00	ANDROID: Incremental fs: fix up for recent vfs changes
+977643fe7df718d70ac9816cb5bd5d3f73a9c354	Greg Kroah-Hartman <gregkh@google.com>	2021-03-05T15:29:16+01:00	ANDROID: Incremental fs: Revert "FROMLIST: Add flags option to get xattr method paired to __vfs_getxattr"
+553ac0165f5238a9dd12c85457f04fbdcbe9f938	Yurii Zubrytskyi <zyy@google.com>	2021-02-18T09:22:52-08:00	ANDROID: Incremental fs: set the correct access to mapped files
+8f15c080f673c89e9ec0ac1796556aa9a6c4639a	Paul Lawrence <paullawrence@google.com>	2020-09-30T07:10:57-07:00	ANDROID: Incremental fs: Build merkle tree when enabling verity
+9ede5a1b17ff20a7ed24651c7cc812bbb5fff8fd	Paul Lawrence <paullawrence@google.com>	2020-12-17T11:28:02-08:00	ANDROID: Incremental fs: Add FS_IOC_MEASURE_VERITY
+c587499437703b4f419f359e8e327b26a80a0b3f	Paul Lawrence <paullawrence@google.com>	2020-08-12T15:12:47-07:00	ANDROID: Incremental fs: Store fs-verity state in backing file
+4c5db89f5b2aeb57f0ee5af6e90bdaabf4d7d52b	Paul Lawrence <paullawrence@google.com>	2020-10-06T14:36:01-07:00	ANDROID: Incremental fs: Add FS_IOC_GETFLAGS
+164d823ad3e09a155daff87d6f8537fc2bb3f579	Paul Lawrence <paullawrence@google.com>	2020-10-26T09:36:39-07:00	ANDROID: Incremental fs: Add FS_IOC_ENABLE_VERITY
+030aef2a2b6b76e3d5fd86bc0fe66c2b1536947b	Paul Lawrence <paullawrence@google.com>	2021-02-03T10:33:05-08:00	ANDROID: Incremental fs: Fix memory leak on closing file
+044760b86f197766b2044a12af11ac59fab8bcbb	Paul Lawrence <paullawrence@google.com>	2021-01-28T07:58:08-08:00	ANDROID: Incremental fs: inotify on create mapped file
+4a39594b7b03102f4b12a973d8ca5544f3508b40	Paul Lawrence <paullawrence@google.com>	2020-12-22T12:25:51-08:00	ANDROID: Incremental fs: inotify support
+a1c8731c2a7d96d19f6011ba0060828de503362c	Paul Lawrence <paullawrence@google.com>	2021-01-12T11:09:23-08:00	ANDROID: Incremental fs: Make data validation failure a warn
+f8027188ba909455761e898a169a842aad311f5f	Paul Lawrence <paullawrence@google.com>	2021-01-12T11:01:42-08:00	ANDROID: Incremental fs: Free mount info after files are flushed
+29ad870d17b020610f684a032c0a8f0810e1c3c6	Paul Lawrence <paullawrence@google.com>	2021-01-08T13:00:43-08:00	ANDROID: Incremental fs: Fix selinux issues
+ffad6273481a5e7490e3ee92744004fd4c2af6b0	Yurii Zubrytskyi <zyy@google.com>	2020-12-21T16:51:45-08:00	ANDROID: Incremental fs: fix .blocks_written
+5fc26ff3f55d521b3b85642e33eb7d0647c951f2	Greg Kroah-Hartman <gregkh@google.com>	2020-12-18T18:17:27+01:00	ANDROID: Incremental fs: switch ksys_close() to close_fd()
+5d75c9b4ae8004a154b64426e53206bc21fd8b35	Greg Kroah-Hartman <gregkh@google.com>	2020-12-15T15:42:38+01:00	ANDROID: Incremental fs: sha.h has been split into two, handle this.
+e30e2c962caed986e746fb5aa66a7017b143bb94	Paul Lawrence <paullawrence@google.com>	2020-12-09T11:17:58-08:00	ANDROID: Incremental fs: Set credentials before reading/writing
+6591f478fb04e5feb030a21dbc5e4581f999057b	Paul Lawrence <paullawrence@google.com>	2020-11-30T14:44:00-08:00	ANDROID: Incremental fs: Fix incfs_test use of atol, open
+7094c3505eacee2ab946257fa92959e50d351053	Paul Lawrence <paullawrence@google.com>	2020-11-30T11:36:28-08:00	ANDROID: Incremental fs: Change per UID timeouts to microseconds
+75045d4a9b0fe7b27af2c12e28607a74af2558df	Paul Lawrence <paullawrence@google.com>	2020-11-30T09:18:42-08:00	ANDROID: Incremental fs: Add v2 feature flag
+8820c293148249b707851a019302f3d15ae5963f	Paul Lawrence <paullawrence@google.com>	2020-11-30T09:03:36-08:00	ANDROID: Incremental fs: Add zstd feature flag
+facb5cf6ab3b25f1b5115196272cab71f4340038	Paul Lawrence <paullawrence@google.com>	2020-10-14T07:42:33-07:00	ANDROID: Incremental fs: Add zstd compression support
+d611af97790fabd8fa55d90c026b702a0ed4c5d6	Paul Lawrence <paullawrence@google.com>	2020-10-08T13:08:21-07:00	ANDROID: Incremental fs: Small improvements
+d4f44274f5d7bc804e4554d2dab9731e9f78f482	Paul Lawrence <paullawrence@google.com>	2020-10-27T07:43:06-07:00	ANDROID: Incremental fs: Initialize mount options correctly
+45939886a5cb9f04d1bf1ac07b3f3abf6c18535d	Paul Lawrence <paullawrence@google.com>	2020-10-05T14:07:34-07:00	ANDROID: Incremental fs: Fix read_log_test which failed sporadically
+6a728f23ebac77bf2cf9a3f997f9508d13324e59	Paul Lawrence <paullawrence@google.com>	2020-09-23T12:10:56-07:00	ANDROID: Incremental fs: Fix misuse of cpu_to_leXX and poll return
+17b30404f3765a05b814b12a32e116347e09b95b	Paul Lawrence <paullawrence@google.com>	2020-09-22T14:59:41-07:00	ANDROID: Incremental fs: Add per UID read timeouts
+55d1bf948fced2a6404522ebd583068c7d10573f	Paul Lawrence <paullawrence@google.com>	2020-09-09T08:16:37-07:00	ANDROID: Incremental fs: Add .incomplete folder
+8be2e5cc06eecd45e89dd1d33696f2b945b6bcd8	Eric Biggers <ebiggers@google.com>	2020-09-17T19:50:20-07:00	ANDROID: Incremental fs: Fix dangling else
+63e43445dd336a756a99f3f8ba5c4077371dc71a	Eric Biggers <ebiggers@google.com>	2020-09-17T19:46:48-07:00	ANDROID: Incremental fs: Fix uninitialized variable
+75264c78c538cb880cd6ad73a15831f7e60e2492	Paul Lawrence <paullawrence@google.com>	2020-09-03T13:40:25-07:00	ANDROID: Incremental fs: Fix filled block count from get filled blocks
+2c4fec8a6f7b0d60ca965db6de270165644c9a2b	Paul Lawrence <paullawrence@google.com>	2020-09-15T13:01:25-07:00	ANDROID: Incremental fs: Add hash block counts to IOC_IOCTL_GET_BLOCK_COUNT
+20114cce3fbec3aae289567cd3cd2874b5641f81	Paul Lawrence <paullawrence@google.com>	2020-09-02T15:56:09-07:00	ANDROID: Incremental fs: Add INCFS_IOC_GET_BLOCK_COUNT
+82673585343a078886745349e5557aa569a90174	Paul Lawrence <paullawrence@google.com>	2020-09-11T12:32:10-07:00	ANDROID: Incremental fs: Make compatible with existing files
+2612aa60347705a2f25323ba7c16fd04f95a7241	Paul Lawrence <paullawrence@google.com>	2020-08-27T14:08:30-07:00	ANDROID: Incremental fs: Remove block HASH flag
+63f35346e323b1cffb37fc18a0bf48ca8acd4be5	Paul Lawrence <paullawrence@google.com>	2020-08-27T14:01:52-07:00	ANDROID: Incremental fs: Remove back links and crcs
+b54fa7bf8335b4287aaae39b92be59bd7c08f6c9	Paul Lawrence <paullawrence@google.com>	2020-08-27T13:52:14-07:00	ANDROID: Incremental fs: Remove attributes from file
+a015ce42cfc43fd7e625b7fbececee49b46ef4f9	Paul Lawrence <paullawrence@google.com>	2020-08-20T15:03:54-07:00	ANDROID: Incremental fs: Add .blocks_written file
+7642006a78266107385b3721d29073811d8c64e3	Paul Lawrence <paullawrence@google.com>	2020-08-20T12:45:41-07:00	ANDROID: Incremental fs: Separate pseudo-file code
+06d87799a1e2221cd985d144979b3efd644d8816	Paul Lawrence <paullawrence@google.com>	2020-07-30T12:46:16-07:00	ANDROID: Incremental fs: Add UID to pending_read
+b6a3c7b1c74406fc76bc027b15ae6345b115f794	Paul Lawrence <paullawrence@google.com>	2020-05-27T13:57:34-07:00	ANDROID: Incremental fs: Create mapped file
+8d5227f84fecd2f8bdd54d08b208fd57e68f797d	mtk81325 <peng.zhou@mediatek.com>	2020-08-05T19:12:54+08:00	ANDROID: Incremental fs: fix magic compatibility again
+f2bdcc2bfe5947c4e6c79c98f01a0bbb7643a9ae	Akilesh Kailash <akailash@google.com>	2020-07-18T00:26:46+00:00	ANDROID: Incremental fs: Don't allow renaming .index directory.
+9a763dcd4eba34e0d4be17f3af4188ba39f7b692	Paul Lawrence <paullawrence@google.com>	2020-07-20T13:20:02-07:00	ANDROID: Incremental fs: Fix incfs to work on virtio-9p
+f77894823121e54fc082137dce9d8ce8bb6abf54	Paul Lawrence <paullawrence@google.com>	2020-05-21T09:14:51-07:00	ANDROID: Incremental fs: Allow running a single test
+c03792a36738befef346123635e219e6d658f04b	Paul Lawrence <paullawrence@google.com>	2020-05-06T12:31:31-07:00	ANDROID: Incremental fs: Adding perf test
+3fc8cd8fad586537ad629674cb46d2e744af3d3e	Paul Lawrence <paullawrence@google.com>	2020-04-27T16:07:16-07:00	ANDROID: Incremental fs: Stress tool
+9c7c1e7eb0d78d978c6cd592d31075a9a1ab7bd3	Akilesh Kailash <akailash@google.com>	2020-07-17T00:47:05+00:00	ANDROID: Incremental fs: Use R/W locks to read/write segment blockmap.
+b208da2ceb27e27da541e63b47c851e14d8d6aa1	Paul Lawrence <paullawrence@google.com>	2020-06-10T08:20:33-07:00	ANDROID: Incremental fs: Remove unnecessary dependencies
+fc069cafb24891d2d5efebfc766d5d47c872a42c	Paul Lawrence <paullawrence@google.com>	2020-06-05T09:32:10-07:00	ANDROID: Incremental fs: Remove annoying pr_debugs
+3d36ac7cb73a64eb0455a4f955467d4d3ef58f99	Akilesh Kailash <akailash@google.com>	2020-07-27T18:16:51+00:00	ANDROID: Incremental fs: dentry_revalidate should not return -EBADF.
+01c05f2373e9f4904eee70d05c4500f67e7b8028	Akilesh Kailash <akailash@google.com>	2020-07-17T00:18:50+00:00	ANDROID: Incremental fs: Fix minor bugs
+e49b1db5e361efdec8593ca7de7eb565dcc3ade8	Akilesh Kailash <akailash@google.com>	2020-07-17T00:33:09+00:00	ANDROID: Incremental fs: RCU locks instead of mutex for pending_reads.
+10ddefb6bb69a08ee9e42b5352c990ba411289c3	mtk81325 <peng.zhou@mediatek.com>	2020-07-13T14:56:24+08:00	ANDROID: Incremental fs: magic number compatible 32-bit
+c45d3380cb99887c41dafb5097cf0f84969343ff	Greg Kroah-Hartman <gregkh@google.com>	2020-06-25T14:46:07+02:00	ANDROID: Incremental fs: fix up attempt to copy structures with READ/WRITE_ONCE
+6f01dc1d6b26871a663ea99b69381ebf236018d5	Daniel Mentz <danielmentz@google.com>	2020-05-28T18:47:31-07:00	ANDROID: Incremental fs: Remove dependency on PKCS7_MESSAGE_PARSER
+421024a0aba4d5b6c5898f5587feb3ba1d5bf056	Paul Lawrence <paullawrence@google.com>	2020-06-04T15:35:02-07:00	ANDROID: Incremental fs: Fix four error-path bugs
+02624a2110d8394e92a5e3e5532e865a3a725e4b	Paul Lawrence <paullawrence@google.com>	2020-05-28T08:25:02-07:00	ANDROID: Incremental fs: Cache successful hash calculations
+a9aa8526648a57d4498cdf9ddd59124f81bcec40	Yurii Zubrytskyi <zyy@google.com>	2020-05-13T17:04:44-07:00	ANDROID: Incremental fs: wake up log pollers less often
+43fa8046092f788fea6cd2854b236acb9f1d1b40	Paul Lawrence <paullawrence@google.com>	2020-05-12T15:50:04-07:00	ANDROID: Incremental fs: Fix scheduling while atomic error
+8e04f4b781507b739a26eeaf24f04ebb7709d3b3	Paul Lawrence <paullawrence@google.com>	2020-05-04T10:55:19-07:00	ANDROID: Incremental fs: Fix issues with very large files
+7a48d5e7b01d8f61773353b2d9b63fd81f2b2fca	Paul Lawrence <paullawrence@google.com>	2020-04-29T08:00:18-07:00	ANDROID: Incremental fs: Add setattr call
+a21e84ae3919995b9da6fa0db89da474fbc3b1bf	Paul Lawrence <paullawrence@google.com>	2020-04-22T12:39:09-07:00	ANDROID: Incremental fs: Use simple compression in log buffer
+87d67870cbae8ee7114d0e371ff9fe9ca2b161df	Paul Lawrence <paullawrence@google.com>	2020-04-07T14:46:13-07:00	ANDROID: Incremental fs: Fix create_file performance
+589d7c146d2c0a81575a7474882191bfe1526086	Paul Lawrence <paullawrence@google.com>	2020-04-07T14:48:14-07:00	ANDROID: Incremental fs: Fix compound page usercopy crash
+2aa293774994ff78ca1a8109d74bbf35063f20b5	Paul Lawrence <paullawrence@google.com>	2020-04-08T10:10:53-07:00	ANDROID: Incremental fs: Clean up incfs_test build process
+332315877dcb2dc3cc8b87c37aeae3f4a81e95ab	Yurii Zubrytskyi <zyy@google.com>	2020-04-06T12:49:41-07:00	ANDROID: Incremental fs: make remount log buffer change atomic
+1536afdf4d458c456dcb5abd35259cb7794244a0	Paul Lawrence <paullawrence@google.com>	2020-04-03T11:17:53-07:00	ANDROID: Incremental fs: Fix mislabeled __user ptrs
+cb9b6c5eb37317aed29d87d79115a735cb0f9054	Paul Lawrence <paullawrence@google.com>	2020-04-03T10:36:30-07:00	ANDROID: Incremental fs: Optimize get_filled_block
+a70b26420a4a6dde085091ff4835b45444ac23ca	Yurii Zubrytskyi <zyy@google.com>	2020-04-03T20:39:33-07:00	ANDROID: Incremental fs: Use 64-bit int for file_size when writing hash blocks
+76154586ecddadc07569c21e82a50efa8d727905	Paul Lawrence <paullawrence@google.com>	2020-04-01T16:04:39-07:00	ANDROID: Incremental fs: Fix remount
+2f29ee4a89e870588ca86e2c2313c6b9a452880e	Paul Lawrence <paullawrence@google.com>	2020-04-01T10:15:12-07:00	ANDROID: Incremental fs: Protect get_fill_block, and add a field
+830b9eff3da2ae4d52d4aac37505ac98839ddabe	Paul Lawrence <paullawrence@google.com>	2020-03-31T15:05:33-07:00	ANDROID: Incremental fs: Fix crash polling 0 size read_log
+debc410e3fbe8cab0ca776f4c13564f0342c652a	Yurii Zubrytskyi <zyy@google.com>	2020-03-29T14:13:32-07:00	ANDROID: Incremental fs: get_filled_blocks: better index_out
+586d60096b24a24528a062c1941d1f7d2a03bd57	Paul Lawrence <paullawrence@google.com>	2020-03-26T12:53:11-07:00	ANDROID: Incremental fs: Fix four resource bugs
+eb015b1cb9e72ead269a6b412197319815893aaa	Paul Lawrence <paullawrence@google.com>	2020-03-18T09:28:29-07:00	ANDROID: Incremental fs: Add INCFS_IOC_GET_FILLED_BLOCKS
+104f04ac4cf21e4269016537c7dc3674397c3589	Paul Lawrence <paullawrence@google.com>	2020-03-19T07:43:40-07:00	ANDROID: Incremental fs: Fix two typos
+34eff38d356046c35fb26b562147c3eefa522755	Paul Lawrence <paullawrence@google.com>	2020-03-11T15:21:20-07:00	ANDROID: Incremental fs: Add INCFS_IOC_PERMIT_FILL
+1ddcc73bc1e32af0909f6a2acfb155feaf1f1f32	Paul Lawrence <paullawrence@google.com>	2020-03-13T12:38:35-07:00	ANDROID: Incremental fs: Remove signature checks from kernel
+c62ba2c23c21e6ff00ceb3db08960ee45f3da2cd	Paul Lawrence <paullawrence@google.com>	2020-02-19T10:07:25-08:00	ANDROID: Incremental fs: Pad hash blocks
+5d2c59d3bda7f27c304da55d891348640018dc11	Paul Lawrence <paullawrence@google.com>	2020-03-10T13:03:38-07:00	ANDROID: Incremental fs: Make fill block an ioctl
+7d63274659b2b7a12bbe4fdb598f48c6e3dd828c	Paul Lawrence <paullawrence@google.com>	2020-03-16T13:47:17-07:00	ANDROID: Incremental fs: Remove all access_ok checks
+45101ad322cabc15718d73ea084324439a809fae	Paul Lawrence <paullawrence@google.com>	2020-02-13T08:09:57-08:00	ANDROID: Incremental fs: Support xattrs
+605c1b79424ee1665f3612197a28c6e67a16357f	Paul Lawrence <paullawrence@google.com>	2020-02-05T08:50:12-08:00	ANDROID: Incremental fs: Fix crash on failed lookup
+dc0a60c098676a361a8df8a82586fcadec2fb8bc	Yurii Zubrytskyi <zyy@google.com>	2020-01-31T11:36:29-08:00	ANDROID: Incremental fs: Make files writeable
+ccddfbdc4ae64028c882e632c94186e37a715a97	Paul Lawrence <paullawrence@google.com>	2020-02-05T09:30:55-08:00	ANDROID: Incremental fs: Remove C++-style comments
+7dd4d09a4939518da0747995060937276cd50685	Paul Lawrence <paullawrence@google.com>	2020-01-30T13:53:08-08:00	ANDROID: Incremental fs: Remove unneeded compatibility typedef
+46417a17d15e985585f8b0a8612045db864af371	Paul Lawrence <paullawrence@google.com>	2020-01-29T09:15:17-08:00	ANDROID: Incremental fs: Fix sparse errors
+324dc1d7efa472d235d1da6c7de914a64a129956	Paul Lawrence <paullawrence@google.com>	2020-01-28T14:21:12-08:00	ANDROID: Fixing incremental fs style issues
+a9fe782b846cb0d37bc0b3014559e455002d326d	Paul Lawrence <paullawrence@google.com>	2020-01-27T14:48:38-08:00	ANDROID: Make incfs selftests pass
+e24e0daf56f81a8c5316be6e0f055ece2e6198ab	Eugene Zemtsov <ezemtsov@google.com>	2019-11-18T20:21:06-08:00	ANDROID: Initial commit of Incremental FS

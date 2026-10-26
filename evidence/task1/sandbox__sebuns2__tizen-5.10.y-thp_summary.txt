@@ -1,0 +1,315 @@
+branch=sandbox/sebuns2/tizen-5.10.y-thp
+tip=ec6724e22ce5bcfe65962fecd8a04c0e439d8750
+merge_base_tizen=2c85ebc57b3e1817b6ce1a6b703928e113a90442
+full_ahead=11192 full_behind=360601
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/sebuns2/tizen-5.10.y-thp --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=303
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__sebuns2__tizen-5.10.y-thp_ahead_01.txt: bytes=849994 sha256=759a55af8396a65970abd94971c11f3a6372b422a818dc73e46eba6ca6431662
+sandbox__sebuns2__tizen-5.10.y-thp_ahead_02.txt: bytes=849924 sha256=bd61f3c6345a831f77bb51fa639c1b08a42c2a79d2c431f7ea3d77e0b6a1f11a
+sandbox__sebuns2__tizen-5.10.y-thp_ahead_03.txt: bytes=101277 sha256=3201977b26687587bcd580a2c6306b71490139d15b1a0d2eac9b7d2dd3b35c0c
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+ec6724e22ce5bcfe65962fecd8a04c0e439d8750	Marek Szyprowski <m.szyprowski@samsung.com>	2021-11-10T08:39:34+01:00	mm: thp: add missing pte_unmap() calls
+35d157c2ac15679ea5b0886fe3fad8221f9d1203	Marek Szyprowski <m.szyprowski@samsung.com>	2021-11-09T15:34:52+01:00	mm: thp: fix split_huge_pte() operation on non-THP aligned address
+5d7b39b9a1e65bb2d7bb407bf9d591aed611ff7f	Sung-hun Kim <sfoon.kim@samsung.com>	2021-10-07T16:57:39+09:00	mm, thp: preventing hugepage creation for read-write file pages
+19067870caf7091389b38c548482a0170b96b03b	Sung-hun Kim <sfoon.kim@samsung.com>	2021-10-06T13:33:00+09:00	thp, khugepaged: skip retracting page table if a 64KB hugepage mapping is already established
+e53eabea7922f3d6ee2eed0d128e7e1c6fc8d31e	Sung-hun Kim <sfoon.kim@samsung.com>	2021-10-01T14:15:51+09:00	mm: thp: khugepaged: flush tlb range to prevent concurrent memory accesses
+dce079c99189d821982920a66b0df5ebd3081e42	Sung-hun Kim <sfoon.kim@samsung.com>	2021-10-01T13:06:07+09:00	mm, thp: do not set PTE_SPECIAL for huge zero page
+370c5058d01605720e283f7a9186bc1702217b8e	Sung-hun Kim <sfoon.kim@samsung.com>	2021-10-01T13:01:01+09:00	mm: thp: add acquisition/release of a lock to guarantee consistent locking state
+84b1cbc1de045c1d9cc875a4d784825634902c6d	Sung-hun Kim <sfoon.kim@samsung.com>	2021-09-30T12:28:56+09:00	mm, thp: modify coverage of CONFIG_FINEGRAINED_THP macro
+ae13025cef658dfcf67b07a9148ca82b3be9ad0c	Sung-hun Kim <sfoon.kim@samsung.com>	2021-09-30T09:37:45+09:00	meminfo, thp: modify ifdef coverage to remove unexpected variable printing
+73cd8414f97d705721b128cb4f0d2bcedef757fb	Adrian Szyndela <adrian.s@samsung.com>	2021-10-07T11:27:38+02:00	kdbus: don't unlink _synchronous_ replies
+04f56bd1590a2e1cb67727831ec7e11709e5f584	Adrian Szyndela <adrian.s@samsung.com>	2021-09-30T15:44:57+09:00	kdbus: don't unlink interrupted replies
+53a0312dd806adeb19c8f26eadb4b52a310f272e	Marek Szyprowski <m.szyprowski@samsung.com>	2021-09-22T15:29:33+02:00	mm: thp: count 64k shmem pages separately
+744ad3b32c3e1515eac6374796897eb0fdddd7e3	Sung-hun Kim <sfoon.kim@samsung.com>	2021-09-16T13:44:25+09:00	mm, thp, migrate: handling migration of 64KB hugepages
+9dde60c1859b629b8353d43794058d1924bc1f4c	Sung-hun Kim <sfoon.kim@samsung.com>	2021-09-15T16:39:13+09:00	mm, thp: hide remap_try_huge_pmd for the THP-disabled kernel
+41392a5793a975a68a1fea403b6476c3313b6688	Seung-Woo Kim <sw0312.kim@samsung.com>	2021-09-15T15:07:00+09:00	Partially Revert "brcmfmac: p2p: Deal with set but unused variables"
+0a94f2050d0a4878f68e9b535611edcfe8cbea82	Sung-hun Kim <sfoon.kim@samsung.com>	2021-08-30T15:16:52+09:00	arm64: defconfig: enable finegrained-THP configuration
+13ca8317b91ffbcf517d05a77a70027b48b0fffe	Sung-hun Kim <sfoon.kim@samsung.com>	2021-08-30T15:15:54+09:00	arm64: defconfig: enable default THP configurations
+90eb23660fef9f0fe4c7d0d2e93b7e71021b3799	Sung-hun Kim <sfoon.kim@samsung.com>	2021-07-02T18:43:36+09:00	mm: THP: introducing a fine-grained transparent hugepage technique for ARM64 architecture
+8467b6e6005fb00c860b4295e99a6869945f7f38	Minchan Kim <minchan@kernel.org>	2021-04-21T14:44:12+10:00	mm: use proper type for cma_[alloc|release]
+ef4667643d7cece94c713cec4bbbb4461371b432	Minchan Kim <minchan@kernel.org>	2021-04-21T14:44:12+10:00	mm: cma: support sysfs
+e4c1338e0a6f2b0322da726ab03f7a6dc02cba0e	Minchan Kim <minchan@kernel.org>	2021-05-04T18:37:31-07:00	mm: cma: add the CMA instance name to cma trace events
+915f2696d7b0f91a319e1b092a8b240e041d688d	Liam Mark <lmark@codeaurora.org>	2021-05-04T18:37:25-07:00	mm: cma: add trace events for CMA alloc perf testing
+8d7320a3cfb9762675dd6de15ba64af1ff49d0ce	Baolin Wang <baolin.wang@linux.alibaba.com>	2021-04-21T14:44:11+10:00	mm: cma: use pr_err_ratelimited for CMA warning
+08e6c8bc7ad9e80ee003816fc6af80f025cc37ed	Minchan Kim <minchan@kernel.org>	2021-04-21T14:44:11+10:00	mm: vmstat: add cma statistics
+1e33a41084856f89c24f9510db38ff4f7b9c0d88	Patrick Daly <pdaly@codeaurora.org>	2021-02-25T17:16:44-08:00	mm: cma: print region name on failure
+160d6b5f953deae9d70c4ba9f7414ff1e5e79fee	Charan Teja Reddy <charante@codeaurora.org>	2020-12-14T19:13:26-08:00	mm: cma: improve pr_debug log in cma_release()
+c963674755f0ee827ac2975d236e5926c513bd11	Kiwoong Ha <kw1981.ha@samsung.com>	2021-03-09T06:41:17+09:00	tizen_bcm2711_defconfig: Enable configs for docker
+f9f96f3874788adcd0b9139d089d00429ae3eab5	Miklos Szeredi <mszeredi@redhat.com>	2020-12-14T15:26:14+01:00	ovl: do not fail because of O_NOATIME
+7338790a2a2c8229d57d3d38a9122fa881116207	Mateusz Moscicki <m.moscicki2@partner.samsung.com>	2021-07-08T15:40:21+02:00	tizen_bcm2711_defconfig: Enable dm-bow
+47cdaa8285d31bc68915c06d2363f65da1ba3995	Mateusz Moscicki <m.moscicki2@partner.samsung.com>	2021-07-08T15:36:25+02:00	device-mapper: Add dm-bow
+440a65de8c528b10850e8000760424ea85c6da0e	Dongwoo Lee <dwoo08.lee@samsung.com>	2021-07-07T12:33:21+09:00	ARM64: tizen_bcm2711_defconfig: Sync with savedefconfig
+2ef39014430970798dff83a29091a75138f73666	Dongwoo Lee <dwoo08.lee@samsung.com>	2021-07-07T12:31:01+09:00	ARM: tizen_bcm2711_defconfig: Sync with savedefconfig
+3f4da4dfc84e346d451f7b731e7c84a4af9a212a	INSUN PYO <insun.pyo@samsung.com>	2021-06-30T11:35:05+09:00	ARM/ARM64: tizen_bcm2711_defconfig: disable ANDROID_LOGGER config
+83877816545ad0db131d1e517259d074635ab0b7	Sung-hun Kim <sfoon.kim@samsung.com>	2020-10-27T20:48:36+09:00	mm: LKSM: bug fix for kernel memory leak
+bd12d3937e236358ad269a6af7275da3e304732d	Dongwoo Lee <dwoo08.lee@samsung.com>	2021-06-02T11:48:28+09:00	ARM64: tizen_bcm2711_defconfig: Enable WireGuard
+ef5364573ff053862ea5a85dab5b1c4d15508e31	Dongwoo Lee <dwoo08.lee@samsung.com>	2021-06-02T11:36:45+09:00	ARM: tizen_bcm2711_defconfig: Enable WireGuard
+4d9fdf5e1abaa4c4e682e70c7434f9f356baf968	Sylwester Nawrocki <s.nawrocki@samsung.com>	2021-05-18T14:56:13+02:00	kdbus: Remove unreachable code from kdbus_msg_examine
+a90142dc7067faddaf94de4f3cbc869d28adab02	Sylwester Nawrocki <s.nawrocki@samsung.com>	2021-05-18T14:26:51+02:00	logger: Suppress SVACE sign extension warnings
+eb6b36d1e09884f0190748205d79de4a05755685	Seung-Woo Kim <sw0312.kim@samsung.com>	2021-05-14T10:56:44+09:00	Revert "sched: Remove sched_setscheduler*() EXPORTs"
+b094e3e34d0d9ddada2e4772beebdfe3c6ee3626	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-08T15:36:04+02:00	logger-test: more intensive tests
+7aabc2ac6fb8a64823f1e894d14c67aa5c9683a0	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-14T17:50:51+02:00	logger: introduce struct logger_set_tag
+5f21cee06e1df45319667c382a05a018f197bcd8	Łukasz Stelmach <l.stelmach@samsung.com>	2021-03-19T15:20:06+01:00	logger: move logger.h to uapi
+cce4a3ef308bd169277da40634e365e0b493c6f7	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-13T12:24:38+02:00	logger: return amount of data written to stdio
+e7762e3ef15dab69dd68e53b5980309b002ff29e	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-09T17:20:07+02:00	logger: fix temporary buffer handling
+fc24a42e7129c9d06a784180b33ce625f01ab069	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-09T16:59:56+02:00	logger: adapt access mode checks
+f841830c1823c2886e087c6f0978ec03a9340d08	Jaehoon Chung <jh80.chung@samsung.com>	2021-04-16T11:18:41+09:00	misc: tizen-inform-reboot: fix a potential NULL pointer dereference
+4dae47ad3b525784492d3571357dea5c82af89c5	Dongwoo Lee <dwoo08.lee@samsung.com>	2021-04-14T11:52:25+09:00	f2fs: Change default mount options
+9aeaaacf48ce2dfbd6a39ed71529bcb1ea8335ee	Dongwoo Lee <dwoo08.lee@samsung.com>	2021-04-12T12:56:59+09:00	ARM: tizen_bcm2711_defconfig: Enable security labels for f2fs
+23caef861ce18049d31427b73442862ac752ea22	Dongwoo Lee <dwoo08.lee@samsung.com>	2021-04-12T12:47:07+09:00	ARM64: tizen_bcm2711_defconfig: Enable security labels for f2fs
+1f2eedfa7d78eb8a8381d1e997cf30cc8cc9c79f	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-08T14:09:24+02:00	logger: Fix incorrect buffer access when writing data
+d4447664e73c868672ef6d812cf385b89a7ccc50	Seung-Woo Kim <sw0312.kim@samsung.com>	2021-04-06T16:56:45+09:00	staging: android: logger: remove build warnings
+a9ea471725d4d674182bf832c6e876fa0928d848	Łukasz Stelmach <l.stelmach@samsung.com>	2021-02-15T15:41:27+01:00	logger: testing tool for STDIO logger
+595e03a619da81ea3fc85a219aef1f0ea5e9f5c6	Łukasz Stelmach <l.stelmach@samsung.com>	2021-02-12T18:41:09+01:00	logger: accept untagged log entries
+a9ff76ccbb7c13b53089dcb34d7a6b482f5a311f	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-04-01T14:25:00+09:00	ARM: tizen_bcm2711_defconfig: Enable ARM_MODULE_PLTS config
+8c208ab13b773003225ea25287db437998dee8df	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-03-30T11:04:39+09:00	packaging: Change the kernel version of the spec file
+9da7892e1cd90f6f82026db82320a09a2cdf51fd	Chanwoo Choi <cw00.choi@samsung.com>	2021-03-24T12:45:52+09:00	ARM64: tizen_bcm2711_defconfig: Enable USB_PRINTER config
+c67b0abdf71ddcc64a574b7d05e39112cfeb16b9	Chanwoo Choi <cw00.choi@samsung.com>	2021-03-24T12:44:24+09:00	ARM: tizen_bcm2711_defconfig: Enable USB_PRINTER config
+9739322898fef85f8730fa8f33d0d0163385e469	Jaehoon Chung <jh80.chung@samsung.com>	2021-03-22T17:06:33+09:00	ARM64: tizen_bcm2711_defconfig: Enable CONFIG_CFG80211_CRDA_SUPPORT
+e539f907b3c52cd9616e0cd58510aea4b87f3ec5	Jaehoon Chung <jh80.chung@samsung.com>	2021-03-22T16:56:08+09:00	Revert "ARM: configs: tizen_bcm2711_defconfig: Disable CONFIG_CFG80211_CRDA_SUPPORT"
+c83aabb24af4b5f20c9a18008a9ef88f4c519ee3	Seung-Woo Kim <sw0312.kim@samsung.com>	2021-02-25T17:17:12+09:00	media: uvcvideo: Add a probe quirk to Jieli Technology USB PHY 2.0 (1224:2a25)
+767c25cd8044826c52c30a7aa0e9c85ca423da5c	Jaehoon Chung <jh80.chung@samsung.com>	2021-02-17T10:02:48+09:00	ARM/ARM64: defconfig: disable SECURITY_SMACK_NETFILTER config
+3ff3351f9f383fdd8447097c8321a4e212d25c35	Seung-Woo Kim <sw0312.kim@samsung.com>	2021-01-25T16:24:54+09:00	ARM: tizen_bcm2711_defconfig: Enable OVERLAY_FS
+48c9890dec6a404be0b1a621d65dd1c8af2498c0	Seung-Woo Kim <sw0312.kim@samsung.com>	2021-01-25T16:24:03+09:00	ARM64: tizen_bcm2711_defconfig: Enable OVERLAY_FS
+98ce271384dfc9e14300bbac05f1bb620ab54c7c	Dongwoo Lee <dwoo08.lee@samsung.com>	2021-01-22T12:40:18+09:00	usb: gadget: f_fs: Fix use-after-free for unbind with remaining io
+9bfa524de04d8e2544ae1f30b2a79ce4a0434c5b	Łukasz Stelmach <l.stelmach@samsung.com>	2021-02-04T15:35:27+01:00	kdbus: read hide_pid and pid_gid from mounted proc
+a5c20c0128c3bc607fe4940098387f8f803d8f42	Łukasz Stelmach <l.stelmach@samsung.com>	2021-02-02T19:52:58+01:00	pid: mark struct pid* argument as const
+5c58bfde93c820ed11d2b4792c8262645e38736d	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-28T17:31:15+01:00	kdbus: Use sizeof_field() macro
+8738377173a3b9fea9be08ee7fbde86f1a30cd23	Łukasz Stelmach <l.stelmach@samsung.com>	2020-12-22T12:56:00+01:00	kdbus: build and package kdbus-tests
+64c9e959ba98ac95fa7e4da2ece3242158a8dfb1	Konrad Lipinski <konrad.l@samsung.com>	2019-09-11T15:42:10+02:00	kdbus: test suite changed to common format
+ef888c970c2133f15e51db1d1391b814863658e1	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-14T15:02:02+09:00	ARM/ARM64: tizen_bcm2711_defconfig: Enable KDBUS
+a90aa72b2c7ed38fcf0dcd27e3d5c716bd703e0e	Łukasz Stelmach <l.stelmach@samsung.com>	2020-12-21T16:34:08+01:00	kdbus: porting to to 5.4
+d55356e06a29230d5a5ce5d06b167b0ccbca2226	Łukasz Stelmach <l.stelmach@samsung.com>	2020-12-21T12:40:27+01:00	kdbus: Revert "fs: unexport poll_schedule_timeout"
+a2108ee18ec06ff1245f310379e6cae6b86373b1	Adrian Szyndela <adrian.s@samsung.com>	2019-09-11T15:34:33+02:00	kdbus: porting to 4.14
+09e3637f3b610090a94cc54ed05fb6f32b7da9bb	Adrian Szyndela <adrian.s@samsung.com>	2016-09-09T13:35:49+02:00	kdbus: the driver, original and non-working
+68313e643479ed1bb36f184f25d36447d55ae000	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-21T19:10:27+09:00	ARM: tizen_bcm2711_defconfig: Sync with .config with v5.10.y
+2413278d6ffc6f6e2542f7b8a0b44816210453c1	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-21T16:33:01+09:00	arm64: tizen_bcm2711_defconfig: Sync with .config with v5.10.y
+fc979763bf5630029b43cf77185a83f600ac7b4a	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-20T21:02:08+09:00	ARM: dts: bcm2711-rpi-4-b: Support for drm vc4 and v3d
+f05f29e3ccb85b657c59d4f1741fe23dc14ae02c	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-20T13:52:50+09:00	Revert "block: make function 'kill_bdev' static"
+d2b0615b21ddd24249faa295e757e37d3f3c2ae3	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-20T15:15:09+09:00	mm: LKSM: Fix to use mmap_lock instead of mmap_sem.
+a4edb2569d933648467130804c70a7a310c3ce1a	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-20T16:33:20+09:00	ASoC: ac108: Fix changed interface
+dedfd9da820300d4956e90030361cf7060a6b018	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-19T16:50:32+09:00	staging: android: logger: Fix to use ktime_get_ts64
+c2791a1f4090e68ca3370e1d0fa742bd49c0829c	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-19T16:28:41+09:00	misc: tizen-inform-reboot: Fix to use filp_open.
+6bdd65b9454ef5bf900180fabcd4c2e22d965d7c	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-04T20:23:41+01:00	spec: set CONFIG_LOCALVERSION
+e97ee2374839ec5bc150163b9e514e0d23fb1ec5	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-04T14:41:58+01:00	spec: support gbs(1) incremental builds
+8bc1c45fd366bb5e6f197507ed2af6ea712d84ed	Łukasz Stelmach <l.stelmach@samsung.com>	2020-12-21T13:46:37+01:00	script: adjust ccache support
+e99b83e6c34bc0d67b1500d0ca640f1415f5fa1a	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-13T11:24:40+01:00	script: increase the number of concurrent compilers
+b40a8c6040a71b1f95b31dc86d62c9a61719ed07	Łukasz Stelmach <l.stelmach@samsung.com>	2021-01-13T11:12:04+01:00	script: use $NCPUS for arm64 builds too
+6210c522361a77bc24476a9f4f6f511a0c7ddd5d	Seung-Woo Kim <sw0312.kim@samsung.com>	2021-01-07T18:09:20+09:00	ARM: mm: Free memblock from free_initrd_mem()
+86bf3fbc5d4263f12b17199825ab087540876c3c	Sung-hun Kim <sfoon.kim@samsung.com>	2021-01-07T13:01:01+09:00	ARM: dts: bcm2711-rpi-4-b: Adjust CMA size due to the OOM issue
+0ecb66106dcfcdbb38ba2974c2859a74f2196498	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-12-21T13:54:55+09:00	ARM: dts: bcm2711-rpi-4-b: Fix CMA size to 512M
+b60bbb6c08c06a82aa0a9e4c5eef8ecb39eeecbc	Hoegeun Kwon <hoegeun.kwon@gmail.com>	2020-12-14T23:24:34+09:00	script: Fix to use NCPUS dynamically
+5e8041dbbdd9844cb126e54e7c72fe904c8ad96a	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-11-09T16:44:46+09:00	ARM: tizen_bcm2711_defconfig: Fix console loglevel for logo display
+2e169cb7a394ed65527c91393994faa660ff6359	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-11-09T16:03:59+09:00	arm64: tizen_bcm2711_defconfig: Fix console loglevel for logo display
+2c3bf6ef6efc3f308c6cb720307315bda57bd52b	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-11-03T17:09:20+09:00	rpi4: boot: config: Enable hdmi_force_hotplug
+283e6b1e6bb163ba3d746cdd1ab5225822074d69	Sung-hun Kim <sfoon.kim@samsung.com>	2020-10-28T19:26:31+09:00	mm: LKSM: bug fix for KASAN out-of-bound access error on accessing a filter
+e71ce500027cef7a335882296e8cef46196faf98	Jaehoon Chung <jh80.chung@samsung.com>	2020-10-05T20:39:01+09:00	brcmfmac: change from brcmf_dbg to brcmf_info
+c65124e919617e6893b0d2649e44cc64c912ab8e	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-09-15T18:48:22+09:00	scripts: mkbootimg_rpi4.sh: use compress image
+fbb3c3628f55347a86aebbb6cebec4a5cb1b1603	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-09-10T13:28:11+09:00	ARM64: tizen_bcm2711_defconfig: Enable VIDEO_CODEC_BCM2835
+f96202942df7fe13fd9ee41d1e11014a01731593	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-09-10T13:25:20+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable VIDEO_CODEC_BCM2835
+a0c9d0ec1ad8f0446f4f399754f9530bc891c765	Jaehoon Chung <jh80.chung@samsung.com>	2020-08-24T11:34:08+09:00	ARM64: tizen_bcm2711_defconfig: Enable RTL8192CU config as module
+26deb2d9b7109b9756e39a1039cea5cfbcac1bb6	Jaehoon Chung <jh80.chung@samsung.com>	2020-08-24T11:33:04+09:00	ARM: tizen_bcm2711_defconfig: Enable RTL8192CU config as module
+e42ecb349c7c8f7fefc2ae2f41307625802f0e4e	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-08-21T10:08:34+09:00	Revert "WORKAROUND: security: smack: Allow ptracing even processes in onlycap set"
+df170985ffaae86a387d162cf01362d69540306b	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-08-20T14:24:51+09:00	scripts: mkbootimg_rpi4.sh: Fix module image size to 32MB
+ae867ea98a3fcf36fc5c6585278ec118e618e103	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-08-14T16:47:15+09:00	ARM: dts: bcm2711-rpi-4-b: Enable uart2 node
+2961eb9d8537fd387cf0d0279a67ab41de5d67cb	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-08-14T16:24:24+09:00	rpi4: boot: config: disable eeprom i2c hat auto detect
+02c741493aa4a2f11746ca86911fcfcba6b01ee9	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-08-13T18:57:09+09:00	ARM64: configs: tizen_bcm2711_defconfig: enable I2C_STUB as module
+27fb9c58a7d83d5cc5f493d6d55c113ec8e1cd74	Sung-hun Kim <sfoon.kim@samsung.com>	2020-08-13T15:46:36+09:00	mm: LKSM: remove unnecessary debug messages
+e2b797acf7d3e16c7b7a6290c97a7a5b0eea670f	Chanwoo Choi <cw00.choi@samsung.com>	2020-07-29T16:52:52+09:00	mm: Change fault_around_bytes default value from 65536 to 4096
+20e8e070471cdcda01e452728c39c7eb3aae3a96	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T16:00:07+09:00	ARM64: configs: tizen_bcm2711_defconfig: enable CONFIG_LKSM_FILTER
+5c91633b43b06fdb14ee5754b453360c190b6664	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T15:58:28+09:00	mm: LKSM: new feature: use filter-based scanning to reduce scanning cost
+143f8959524ef749570d0fbdc8c68cc895dc7389	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T09:07:37+09:00	ARM64: configs: tizen_bcm2711_defconfig: enable CONFIG_LKSM
+8dcafcab586c679c50295f025d344b9cff8ccaf8	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-16T09:05:12+09:00	mm: LKSM: lightweight memory deduplication for embedded devices
+013ff8544d3e15aa9207b048e451297b05eaf52e	Sung-hun Kim <sfoon.kim@samsung.com>	2020-07-14T15:04:38+09:00	mm: LKSM: prepare to add LKSM code
+f5d2acee04e06c523f38b68e153e2832fac27326	Karol Lewandowski <k.lewandowsk@samsung.com>	2020-08-07T13:49:30+02:00	WORKAROUND: security: smack: Allow ptracing even processes in onlycap set
+01dec543ab74b3f97bfad7e8c975fde4a5d4c657	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-31T15:19:08+09:00	Revert "brd: remove support for BLKFLSBUF"
+ec2afcf6c12dbf6497c6fe5b1d3050374a1af90f	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-31T15:18:06+09:00	Revert "brd: remove discard support"
+841deb27ff33bcdffb528f7b668a498314b54fff	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-31T15:38:14+09:00	Revert "brd: remove unused brd_mutex"
+531d138f4c298a5e20d9a352b7847e0acea00cea	Jaehoon Chung <jh80.chung@samsung.com>	2020-08-03T14:45:35+09:00	Revert "brcmfmac: move configuration of probe request IEs"
+ebde36b23810ddd91aa12dbc12bb08b9d4eb3b61	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-28T18:40:06+09:00	ARM64: configs: tizen_bcm2711_defconfig: Disable unused dwcotg
+acb14053f1092d9c2d9ab24d80c71c4ea13665e8	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-28T18:38:42+09:00	ARM: configs: tizen_bcm2711_defconfig: Disable unused dwcotg
+093102320ec6230ac01b4ab19454b4b3d31c5898	Jaehoon Chung <jh80.chung@samsung.com>	2020-07-23T19:09:13+09:00	ARM: dts: bcm2711-rpi-4-b: add non-removable property about sd-card
+96854e394ed716269a3a7c3cb5ab773878b2443c	Jaehoon Chung <jh80.chung@samsung.com>	2020-07-22T17:16:16+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable Crypto extension configs
+6c42cf1728e5b9696d35b7e9a664d2cf1b21173a	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-22T17:15:09+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable FUSE_FS
+a509267be7e6e91905574b000dbbb88ab39b2919	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-10T18:02:01+09:00	ARM: dts: bcm2711-rpi-4-b: Add cts, rts pin setting for bt uart
+9b3880d228513a80ef3c75c553b804710cb070e7	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-07-10T16:56:20+09:00	Revert "ARM: dts: bcm2711-rpi-4-b: Add cts pin setting for bluetooth uart"
+34853e78b6725b9816e1e35e59261ccc4c99bc95	Jaehoon Chung <jh80.chung@samsung.com>	2020-07-09T19:04:51+09:00	ASoC: ac108: fix build warning about '-Wimplict-fallthrough'
+cb491e3a195ec2c4a17a54abc7b1e7ba7b7baed6	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-07-03T14:27:18+09:00	packaging: Change the kernel version of the spec file
+3096fc53bc905fc2b99d9974f625048641a5f015	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-07-03T14:18:53+09:00	rpi4: boot: Update the firmwares for kernel v5.4.50
+4abeb19370e85a991e5ddd8e423906f55debdb55	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-06T10:54:06+09:00	rpi4: boot: Update the firmwares for kernel v5.4.40
+eeba0feee14b9ea0ece3efab9eb4124f3596196a	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-08-03T14:44:43+09:00	mm: memcontrol: Add force_reclaim to reclaim tasks' memory in memcg
+56a88ee6b22b5a6a374ff4afad7c291fc4b15c13	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-07-10T12:53:26+09:00	configs: tizen_bcm2711: Enable memory cgroup swap controller
+39a3cb91158704e15fd33ce5b83b29a39821d763	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-07-10T11:23:19+09:00	configs: tizen_bcm2711: Sync up missing defconfig
+8a9cbbe498ffa2037b7c1542608d5ff5d0bc1283	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-06-29T18:21:05+09:00	ARM64: tizen_bcm2711_defconfig: Enable lz4 and zstd cryptos
+5e1197c81a7c625fb3b2554620ae9c3c49219ec3	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-06-03T11:07:09+09:00	ARM: tizen_bcm2711_defconfig: Enable lz4 and zstd cryptos
+df3f86e29d9bba2256ac783506f4041a47e5a53a	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-06-04T13:54:44+09:00	lib: zstd: Improve decode performance
+7c1cb24db1a63fac518759419269421b27807c99	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-30T14:32:02+09:00	drm/vc4: add extcon hdmi connection uevent
+decdddf4d27a0d81257829f2d2199845f6949131	Jaehoon Chung <jh80.chung@samsung.com>	2020-06-22T16:03:28+09:00	ARM64: configs: tizen_bcm2711: change BLK_DEV_RAM_SIZE to 32MB
+edfaa1035c51616137e9c3951ac335a7bf42d78b	Jaehoon Chung <jh80.chung@samsung.com>	2020-06-22T15:58:23+09:00	ARM: configs: tizen_bcm2711: change BLK_DEV_RAM_SIZE to 32MB
+be571fcfce7e9784edf090c113f5539b3ac725e9	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-06-15T16:20:33+09:00	scripts: mkbootimg_rpi4.sh: Fix how to check 64bit
+2512df6422a532e9dc19d7d30030697c80374182	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-06-10T19:50:21+09:00	tools: Add support build for arm64
+0747bf412db3f9162a26755e9fe3a25d80f947fa	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-06-10T20:04:00+09:00	scripts: mkbootimg_rpi4.sh: Add support make boot image for arm64
+4aa8674672628abd47c9f511c7506c9337cd8d1e	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-09T19:34:27+09:00	usb: dwc2: gadget: do not reset during core phy init
+fb6d7d50bb7a728141a3f7b12ada5f8ba1a5c8bb	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-05T19:37:35+09:00	packaging: add 64-bit kernel build
+a3c6e0e97f680158beaff5bf9ca09896c8696e5b	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-05T19:37:00+09:00	rpi4: boot: Add 64-bit config.txt
+2e6fb05a6e2d7e11b01d612b204d435fe4863431	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-05T19:08:27+09:00	ARM64: configs: tizen_bcm2711_defconfig: Enable tizen configs
+9887e8d1222e828dea6e3a60b7f4ec0fd393338b	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-06-08T11:02:43+09:00	ARM64: configs: tizen_bcm2711_defconfig: create tizen config from rpi os config
+eeafd4f8821000b82475f6001fe9f953d95ae8f3	Junghoon Kim <jhoon20.kim@samsung.com>	2020-01-20T15:06:40+09:00	ARM: tizen_bcm2711_defconfig: Disable RAID6_PQ_BENCHMARK
+67aea2147145d743eff7aaf75cf5cafded0f16c4	Jaehoon Chung <jh80.chung@samsung.com>	2020-06-09T20:15:33+09:00	ARM: tizen_bcm2711_defconfig: Enable btrfs filesystem
+06d83202447658dbe5741c2dfb622f7ec428a581	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-06-04T18:04:31+09:00	drm/vc4: Add gem_info node via debugfs
+5176349a06d4a4702d186416be014b99181aef0c	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2021-01-19T18:40:10+09:00	LOCAL / Revert "drm/vc4: Allocate binner bo when starting to use the V3D"
+fb56887855c9bd144c94a2d2e440cecdbbb4f91e	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-20T16:23:37+09:00	ARM: dts: bcm2711: Remove audio-rx
+0d55609b32ba95cb16c46ffa5802a82038798cdf	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-20T16:41:06+09:00	ASoC: dmaengine: Add check to dma_dev
+e4682ad7327e3c71438c4e342428af4b06694c4d	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-18T16:59:35+09:00	ASoC: seeed-voicecard: Fix init and parse func
+87b3a1c585cebf6f7fdce953e748f21c2fa285c7	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-14T16:51:59+09:00	packaging: Add rsync build requires
+bda4beb1a88c683fc39619e6e5dbc8b337736a6d	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-06T16:52:20+09:00	packaging: Change the kernel version of the spec file
+3424860d5ba064d8c1e2d1c8afd87639bb175f76	Marek Szyprowski <m.szyprowski@samsung.com>	2020-04-24T12:21:52+02:00	ARM: dts: bcm2711-rpi-4-b: Fix increase default CMA to 256M
+5f0874aa5dffd0dca1890ae4dd86b36cfa910ab9	Marek Szyprowski <m.szyprowski@samsung.com>	2020-04-24T12:21:34+02:00	drm: Fix let vc4 drm register before v3d.
+bfc9e1950e455e4137e037d28516e1357937c78a	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-05-14T14:48:03+09:00	ARM: tizen_bcm2711_defconfig: Sync due to kernel version update
+6cec656bd6b34f7cefcbda48c265a3ab4a493a61	Chanwoo Choi <cw00.choi@samsung.com>	2020-04-27T10:35:06+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable CONFIG_CPUFREQ_DT config
+b3be42af5c0cc7ff0d1bf356b2a4f2e9d6f9d53f	Chanwoo Choi <cw00.choi@samsung.com>	2020-04-22T12:29:02+09:00	ARM: configs tizen_bcm2711_defconfig: Enable CONFIG_SENSORS_RASPBERRYPI_HWMON
+8012a340f165f41e2ebc9743ef26a2d4ba885714	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-04-02T18:56:01+09:00	ARM: tizen_bcm2711_defconfig: Enable CLK_RASPBERRYPI
+cb89af6c075f90881880c575b0e5b76f0c44c947	Junghoon Kim <jhoon20.kim@samsung.com>	2020-04-02T14:49:13+09:00	packaging: Change the kernel version of the spec file
+61acb5bb95d496807bda7147df6375ce3db8f1b3	Junghoon Kim <jhoon20.kim@samsung.com>	2020-04-02T13:56:26+09:00	configs: tizen_bcm2711_defconfig: Enable REGULATOR_FIXED_VOLTAGE option
+c75f74e24a273397e4fd076bf413e627cffe2e05	Junghoon Kim <jhoon20.kim@samsung.com>	2020-04-02T13:48:35+09:00	rpi4: boot: Update the firmware with the latest version
+fe1930b3f80e576efa6090fe0fdc7f2aa2198544	Jaehoon Chung <jh80.chung@samsung.com>	2020-03-27T18:15:53+09:00	ARM: dts: bcm2711-rpi-4-b: add a brcmf wifi node
+723db76afab42ed15f578430848c44d21bdc127f	Jaehoon Chung <jh80.chung@samsung.com>	2020-03-27T18:07:28+09:00	brcmfamc: add the feature-disable property
+d987ad86a093a8977c035a9e5ea0a24b14690624	Junghoon Kim <jhoon20.kim@samsung.com>	2020-03-27T15:49:54+09:00	packaging: Remove bootcode.bin from the boot image
+3b1e7c8464f1554a721990f29af4334316f7f106	Jaehoon Chung <jh80.chung@samsung.com>	2020-03-24T12:16:40+09:00	ARM: configs: tizen_bcm2711: disable BCM2835_SDHOST
+18244ae53b48b73b17d24418c515ef6c7ca24eed	Junghoon Kim <jhoon20.kim@samsung.com>	2020-03-12T12:28:26+09:00	scripts: Make the kernel build and image creation in one step
+1d8c40a3ffbe30037942a680dd9fefbf17c5967b	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-03-06T14:04:13+09:00	usb: dwc2: gadget: Expand buffer size of control endpoint
+8c405395c026dd1b14437e425afc6b310187db56	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-02-26T19:39:04+09:00	usb: dwc2: Defer forcing peripheral mode
+480a802c4c739578e2d333037cdc478a3f38ecf9	Łukasz Stelmach <l.stelmach@samsung.com>	2020-02-26T13:00:08+01:00	ARM: configs: tizen_bcm2711_boot_defconfig: config for RPi4 bootloader
+4a20c8854f5df452f1014271ce22eed23c54c36a	Dongwoo Lee <dwoo08.lee@samsung.com>	2018-10-26T10:41:41+09:00	usb: gadget: f_fs: Give chance to retry malloc for large size buffer
+7f994ce484048d07eaaf93010542b7012760619b	Jaehoon Chung <jh80.chung@samsung.com>	2018-10-22T13:44:11+09:00	usb: dwc2: gadget: set the quirk_ep_out_alinged_size as true
+47e873baa5083e2ed8938535761460009181112d	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-02-18T14:23:00+09:00	ARM: dts: bcm2711-rpi-4-b: Set extcon state for dwc2 cable as always true
+75b4bb220d58b3170486bf88aa25fe02f633c648	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-02-18T17:11:43+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable extcon feature
+ed9b2a6f546bd78ecaac8a549c966dd08ef71360	Dongwoo Lee <dwoo08.lee@samsung.com>	2020-02-18T13:36:40+09:00	usb: dwc2: gadget: Set extcon state for usb cable as always true
+7567f9ed9e2f36291c2ea639445232bcc1a116d1	Chanwoo Choi <cw00.choi@samsung.com>	2020-02-14T16:15:38+09:00	ARM: configs: tizen_bcm2711_defconfig: Disable CONFIG_CFG80211_CRDA_SUPPORT
+f3e1b98f61d2c04beea89014f46a193f9fa087c8	Chanwoo Choi <cw00.choi@samsung.com>	2020-02-06T11:03:57+09:00	ARM: configs: tizen_bcm2711_defconfig: Use schedutil as default governor
+8bd491d9694161fae93c7a834b4f6011849e6e5f	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2020-02-06T14:28:11+09:00	ARM: dts: bcm2711-rpi-4-b: Add support backlight
+65c2feefa7513b14eb66a91b3efdec799d05aad2	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-02-06T10:36:50+09:00	packaging: Add kernel-headers package
+44d7a587c94e0b68045fced216fd19031ca795fb	Junghoon Kim <jhoon20.kim@samsung.com>	2020-01-20T15:06:40+09:00	ARM: tizen_bcm2711_defconfig: Disable RAID6_PQ_BENCHMARK
+fce77dedde5bb0721d9bd15865ad635b3843fce5	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-01-06T17:10:27+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable missing NETFILTER options for nether
+c6fa77eeb17b318702e7f96b1dba6fc19df64403	Seung-Woo Kim <sw0312.kim@samsung.com>	2020-01-06T10:39:15+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable USB SERIAL drivers for modem
+5a1a892b553d4a69ba2306d25f731d375c78def3	Dongwoo Lee <dwoo08.lee@samsung.com>	2019-12-18T12:59:21+09:00	ARM: tizen_bcm2711_defconfig: Make USB configfs as built-in
+67d9e1e8551acc7ada3500cc4a00c3c47c3c0009	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-12-20T15:30:13+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable tethering config options
+80ebe3b0daf904b17a4b60d9922eaafbbf7547f5	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-12-20T16:13:36+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable NETFILTER_XT_MATCH_LIMIT
+9d2492a58630c05cb9b2bcf968cef7e3b7ce273a	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-12-20T16:08:28+09:00	ARM: configs: tizen_bcm2711_defconfig: Enable HID_MULTITOUCH
+2ab5ed79a0bf8e6dcc2608aa6dd01ce59923489c	Jaehoon Chung <jh80.chung@samsung.com>	2019-12-19T08:42:11+09:00	ARM: config: tizen_bcm2711: Enable config relevant to DM-verity
+fcdce20c63f373871aeae483f3ae92ed82f01060	Junghoon Kim <jhoon20.kim@samsung.com>	2019-12-09T16:22:54+09:00	scripts: mkbootimg_rpi4.sh: Create boot tarball for the lthor flashing
+54d663855af8ba43634f990507659b97975ae991	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-12-02T09:50:36+09:00	scripts: mkbootimg_rpi4.sh: Remove cmdline.txt
+0e4a3c2f90732ab74242277bf0b7868834fe3e9d	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-12-02T09:46:43+09:00	scripts: mkbootimg_rpi4.sh: Add u-boot-rpi4 package to boot image
+980e88a9a61481b34d8f0ffb645427158cb4b26a	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-11-27T16:41:21+09:00	ARM: dts: bcm2711-rpi-4-b: Add support for touchscreen touch
+f5fa066a53f77bad4cd96a1d8fde57713040f74a	Jaehoon Chung <jh80.chung@samsung.com>	2019-11-26T17:06:28+09:00	ARM: dts: bcm2711-rpi-4-b: Add cts pin setting for bluetooth uart
+49540aaed67f99857d2ba3ef8120c53217dea0ce	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-11-08T10:53:40+09:00	rpi4: boot: Enable u-boot booting
+a3cb62c50855c2b3176d8c78ddae65f5d19eaf4d	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-11-04T18:19:38+09:00	rpi4: boot: Update the firmwares for kernel v4.19.81
+e0be252d081f35c331b50f3cf09a56f2fb871427	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-11-04T18:10:59+09:00	packaging: Change the kernel version of the spec file
+177fa2c2af23db2f1da2b49b78b0312688beed34	Jaechul Lee <jcsing.lee@samsung.com>	2019-11-04T16:16:17+09:00	arm: dts: bcm2711-rpi-4-b: Adds buttons for speaker profile
+8035a0faecc781f20be9b914475ccdea902003ef	Jaechul Lee <jcsing.lee@samsung.com>	2019-11-04T16:09:25+09:00	arm: dts: bcm2711-rpi-4-b: Adds respeaker 4mic nodes
+b46ee85b5fe67fb177d5093ecb29d3d3a65d2f02	Jaechul Lee <jcsing.lee@samsung.com>	2019-10-29T11:29:27+09:00	ARM: dts: bcm2711-rpi-4-b: Enable dt nodes for audio, i2c1, spi0
+e308a0e131cd7026671b85e7e76bab006cab44a7	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-10-29T12:25:24+09:00	rpi4: boot: Fix hdmi group to DMT
+d31538901e8390344a30e916b0e3c207b8d6a836	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-10-28T17:18:09+09:00	scripts: mkbootimg_rpi4.sh: Fix to install modules on non sudo
+0a6c2603631eb2c13ef1aa456ae04c6e74d28afa	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-10-28T15:14:49+09:00	rpi4: boot: Add to support mipi-csi camera module
+ee6e3776c423e6ecdfba001c420d882d240cff58	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-09-17T17:54:39+09:00	scripts: mkbootimg_rpi4.sh: Remove rename for kernel7l.img.
+0be0e827aac4da4817b149455508f0ae7dae4374	Jaehoon Chung <jh80.chung@samsung.com>	2019-09-11T09:13:18+09:00	rpi4: boot: add kernel name in config.txt
+9aa2eb51a33fb916691a7cd64bbdb05940c4a7f9	Jaehoon Chung <jh80.chung@samsung.com>	2019-09-03T10:48:57+09:00	packaging: remove unnecessary requirement
+2765d75a42e7607e381db43011322b13ae42378f	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-09-02T11:24:41+09:00	rpi4: Remove unused files
+0f13c895b41e895c27cd509ee22af99cbacc0db7	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-09-02T08:53:48+09:00	scripts: Add mkbootimg_rpi4.sh
+94f6d7c5c18b6598b69303eaf6feb22c075b9939	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-09-02T08:50:45+09:00	rpi4: Add cmdline.txt file
+0562d70eb2a3a1c862064a638f0c4e9265b33446	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-29T16:59:28+09:00	packaging: Add spec file for rpi4
+14b53d6c82faf75101f4f711b48a770962617ec4	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-29T15:50:07+09:00	ARM: tizen_bcm2711_defconfig: Fix modules cleanup
+e4f8891e1783d4cd5be578eb7257f5ee088344e2	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-20T14:35:10+09:00	ARM: tizen_bcm2711_defconfig: Fix I2C config to built-in
+9809de54dc8a725ea87abd227fb88fe817a90a5f	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-20T11:17:43+09:00	ARM: tizen_bcm2711_defconfig: Fix drm-vc4 to built-in
+db143f254c7d067c1d60ee48757ccf6a70e18c78	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:58:44+09:00	tools: Add build script for ARM kernel of rpi4
+988a2fa3e23ed022d8059f7547d7881208a6b379	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:51:47+09:00	ARM: tizen_bcm2711_defconfig: Disable bcm2708_fb
+03550c887eb0293228ad4fa6a4bb73d1b7480f89	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:44:09+09:00	ARM: tizen_bcm2711_defconfig: Enable SMACK
+cc9b0a6df76886312f433ee3408bc1470654d49b	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:36:30+09:00	ARM: tizen_bcm2711_defconfig: Remove unused module
+f9df881a836c7e57e6996d43a17a97b33fae2729	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T11:28:15+09:00	ARM: defconfig: Add tizen_bcm2711_defconfig
+dcab8e83eea13aa0dadf9ec913d6eb905c6d1e72	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:58:24+09:00	rpi4: config: Enable serial
+d4662e0c3a07599bc8ac7552ee3ac8e6e4fa2866	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:58:03+09:00	rpi4: Add config.txt extracted from raspbian full binary
+7f6a0f101cf1ec8f1a74b75bc3a4185cc1f1c3cc	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-08-14T18:55:53+09:00	rpi4: Add boot files from github
+f5d2ed907ea27d9fdb5ec47839e24e2f124378f0	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-07-25T16:34:59+09:00	ARM: dts: bcm2710-rpi-3-b-plus: remove duplicated uart0_ctsrts_gpio30 node
+0bf981450f6bb0aa2a781bb48f0d64fe721405f9	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-07-23T18:31:05+09:00	ARM: dts: bcm2710-rpi-3-b-plus: Add cts pin setting for bluetooth uart
+30ea7be38ce75cb4b40409533f37ec168808824f	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-07-17T10:56:16+09:00	Bluetooth: fix wrong indent in __hci_req_update_{scan/adv}_rsp_data()
+1bbfa7d245f051a7319f9a7e1e405eb6756655c2	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-07-04T17:42:52+09:00	ARM: dts: bcm27xx: Fix to of_graph from bridge node for touchscreen
+32c2e9f6c4310f0d486c3f43f646a78915db390b	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-07-04T17:40:58+09:00	drm/vc4: Fix change to find_panel in the dsi_attach func
+72a37f50759d00ad2be2204804687271b0288109	DoHyun Pyun <dh79.pyun@samsung.com>	2019-07-04T09:18:21+09:00	Bluetooth: Fix the potential crash issue
+ca270011766c925b4fd5c003c8dae324783e30c9	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-16T15:37:22+05:30	Bluetooth: Set le data length command and event
+6f5c966cbd13849cb923fad989abc143d54e9f5d	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-16T12:54:31+05:30	Bluetooth: Read host suggested default le data length
+c71d4928a059d7ffc219fbd0424f081ffff32e1d	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-16T12:09:57+05:30	Bluetooth: Write host suggested default le data length
+897d9fe19de60c665e5aef8905144e7211f5e1fe	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-16T10:38:30+05:30	Bluetooth: Read LE Max data length command
+9d694d5120a115743733d3b82dbf9b10d0991592	h.sandeep <h.sandeep@samsung.com>	2016-09-16T14:45:24+05:30	Bluetooth: Fix IPSP connection callback event issue.
+8f04a5000d98bac7620cf8cbc7bbab73c01cd178	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-15T12:53:03+05:30	Bluetooth: IPSP Connect/Disconnect apis
+25114f6d6d5ce7f5aaf37eadb81e7c1c271edc40	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-15T10:12:09+05:30	Bluetooth: Add support to enable/disable IPSP
+e040da32d86b66ddc0c5f580306eed950d447b13	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T16:21:01+05:30	Bluetooth: Fix issue in the Set LE privacy function.
+4f0338e863864c26b18a7f5a00ba2db6702f5c68	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-12T12:46:44+05:30	Bluetooth: Store the key if auth type is P192
+c53bb866b2b7e3d6242be1d2e4ef15cacafce249	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T17:01:39+05:30	Bluetooth: Cancel the Sniff timer
+9d78c19715dc190072a7e607851f0c7404ec6d60	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T16:40:50+05:30	Bluetooth: Enable sniff mode for incoming connection
+eb495617ee5238106ef43f5977016d50cc7d2b9f	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T16:01:23+05:30	Bluetooth: Modify fast connectable type.
+0f1d63c85f95190eb92b3baa6ebdb8d0775dca3e	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T15:11:28+05:30	Bluetooth: Send Authentication Request command on pairing failure
+fdf5a647a89804177c770a5009acac6c000c5f15	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T14:54:54+05:30	Bluetooth: Enable inquiry and page scan
+d7e39f9c9d1fdfca8fdccc84177993d4358bdb23	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T13:04:11+05:30	Bluetooth: Change authentication requirement.
+a1b873e39e06566559cc67c3c4b4ccae3331bd66	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T12:24:43+05:30	Bluetooth: Set link Supervision timeout for a connection
+70117581a0115e2d5f1d176796266bab73a2376b	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T11:21:06+05:30	Bluetooth: Set filter policy for LE connection
+0c9fcb2593d79c9d26d2f8d9b43f92e77a6178d2	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-07T15:22:08+05:30	Bluetooth: Get Advertising TX power
+a4930ea6ff4ac609b0dfaa6d8efcbc01a00b7078	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T12:37:45+05:30	Bluetooth: Set the link for SCO connection
+277ce5ec022a45432280b3b25097dda658c3829a	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-06T16:38:36+05:30	Bluetooth: Add MGMT command to set SCO settings
+b53adbb9fcdadd582e2882fa118d728d0c4b64ea	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T10:31:17+05:30	Bluetooth: Add multiple LE advertise state change event
+7bce812c75957c7d79c5680c0f89a844709702ea	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T10:10:03+05:30	Bluetooth: Add LE device found MGMT event
+74ffeddd0919a0baa6d9fb37f6430dfe4080ee97	Seung-Woo Kim <sw0312.kim@samsung.com>	2016-09-29T01:59:05+09:00	Bluetooth: fix vendor ext rssi link alert event
+995fe6717c85643dfa723313218acfc4f2b42962	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-07T16:47:58+05:30	Bluetooth: Add H/W TX timeout error MGMT event
+a33327ff15a410207e6cb2de1aa4f895f53e51ba	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-07T15:42:22+05:30	Bluetooth: Add hardware error MGMT event
+335a1dd32b983d7c0706de434dd05f786643251c	Sudha Bheemanna <b.sudha@samsung.com>	2016-09-08T10:56:15+05:30	Bluetooth: Add LE vendor specific event handler
+5bf17299f8045491a69cdf6db4d7e6ac9ac9f590	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T12:46:07+05:30	Bluetooth: Add set LE scan parameter feature
+52f4b6c3451f88776a6b54a9f20e0e1e032332b8	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T12:13:09+05:30	Bluetooth: Set Manufacturer data feature
+5f42b09a309cdd44caef49b3a9e7a7701e4cdada	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T11:58:22+05:30	Bluetooth: Add LE connection parameter update procedure
+06600c3ba10eb0a066f6fbbe0deb979940e3cb0e	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T11:41:34+05:30	Bluetooth: Add stop LE auto connection feature
+fd8cdb2475cc4243031d1069353efbedf12fbbc6	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T11:23:02+05:30	Bluetooth: Add BT LE discovery feature
+ccb2e8297ffa201f6220ef64cadc9e5e8f046d70	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-25T10:17:19+05:30	Bluetooth: Update device name on remote_name_event
+2be80325271d58a22ee990a9033a4fc7aafbf4e9	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-24T17:21:15+05:30	Bluetooth: Add RSSI Monitor feature
+c8876dd51cf1e9184e32eb60a102031cf1aba385	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-24T15:02:56+05:30	Bluetooth: Functions to modify WhiteList
+e1f305a63cfcf833369f429d949d9131ffaa93c5	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-24T12:17:16+05:30	Bluetooth: Add Advertising Packet Configuration
+883dea98fd9bb34169210d9fcb6f321fa5a1cdc6	h.sandeep <h.sandeep@samsung.com>	2016-09-01T12:00:57+05:30	Bluetooth: Add MGMT tizen_handlers and TIZEN_OP_BASE_CODE.
+bfb810b321bce57aae1968eca72eef3d9a95021c	Sudha Bheemanna <b.sudha@samsung.com>	2016-08-23T17:07:10+05:30	Bluetooth: Add "TIZEN_BT" flag
+48c1e7a249735bfc06477b326ca22252baf5c359	Jaechul Lee <jcsing.lee@samsung.com>	2019-05-09T09:26:53+09:00	ASoC: ac108: Fixes kernel bug message when starting to capture
+f3d4573bff46783c58429504ed3efbb46d347dbb	Junghoon Kim <jhoon20.kim@samsung.com>	2019-04-30T07:43:58+09:00	misc: tizen-inform-reboot: Use ksys_open() and ksys_close() wrappers
+3e165262b37209c91bfd9b72c349b32d3b9e28c3	Jaechul Lee <jcsing.lee@samsung.com>	2019-04-18T15:02:37+09:00	ASoC: ac108: Adds default 4channels mic volume
+12f1fba9e8b0b5cf50d8664d49a4837e8c64f1d1	Jaechul Lee <jcsing.lee@samsung.com>	2019-04-02T10:30:46+09:00	ARM64: dts: bcm2710-rpi-3-b: Adds respeaker 4mic nodes
+9bee780fb7bb69778cfb927810d39880e05432b8	Jaechul Lee <jcsing.lee@samsung.com>	2019-04-01T11:08:55+09:00	ASoC: ac108: Adds ac108 codec and machine code
+d8f86672f923ab66719176f862a555336de7f576	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-03-22T16:00:27+09:00	drm/vc4: Fix with pm_runtime synchronization on DSI
+6d29f2777f2ec8279f514f833aeb401588f2f404	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-03-07T11:18:21+09:00	LOCAL / mm, page_alloc: Add print page allocation failure reason
+8bd25162b4b215b44ababd0a9aa67e86e0d4d56a	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-03-07T11:02:10+09:00	sound: bcm: allo: Fix duplicate-decl-specifier build warnings
+9a45de12300155874ea3bc833697c7d702d4e1a8	Seung-Woo Kim <sw0312.kim@samsung.com>	2019-03-06T17:53:48+09:00	misc: bcm2835_smi: use proper enum in dma_map_single
+76697f9dc1db4c38dbeba3485a0484b2ec8de5e8	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-02-14T11:22:19+09:00	drm/vc4: Fix reduce interrupt timeout 'workaround'
+5aa19c08b7b702d693922c59750e0f6528caed65	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2019-02-18T14:40:49+09:00	drm/panel: Add error handling for write of dsi
+a7f49cf8001ff47bdef0d356ec94c7925c38ab4b	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2018-12-05T19:23:05+09:00	ARM: dts: bcm283x: Fix the priority of pixelvalve0 to the lowest value
+394dd80411578261d5a8af6bfcffef151e980551	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2018-10-19T15:23:42+09:00	ARM: dts: bcm2710-rpi-3-b-plus: Add DT support for DRM relevant devices
+9a2c589877cc4a7b4da4e665814dae6835a2766b	Seung-Woo Kim <sw0312.kim@samsung.com>	2018-10-19T10:46:53+09:00	ARM: dts: bcm2710-rpi-3-b-plus: Enable dt nodes for audio, i2c1, spi0
+316342fb6b0b506e8de4f8939392e3e84baab08f	Seung-Woo Kim <sw0312.kim@samsung.com>	2018-10-19T10:44:27+09:00	ARM: dts: bcm2710-rpi-3-b-plus: Add reserved memory for secure os
+40c5eed5cd707259e7d5d059555c945c3ea83715	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2018-10-18T16:49:04+09:00	ARM: dts: Add support for drm vc4 on RPI3 b plus
+24bb989fe5586d8d8cc67186fc77a782b2ad7856	Jaehoon Chung <jh80.chung@samsung.com>	2018-09-18T18:43:43+09:00	net: rtl8192cu: change config name as vendor driver
+eb45e2e07608cdc44b058cde13e9e236400ab98b	Seung-Woo Kim <sw0312.kim@samsung.com>	2018-08-20T13:07:05+09:00	staging: bcm2835-camera: fix overflow warnings
+499ab0c6c7e7a50ec0bdab144189e7b22cdfd8bb	Dongwoo Lee <dwoo08.lee@samsung.com>	2018-04-05T10:57:43+09:00	misc: tizen-inform-reboot: Add support for download mode
+35034f19b5772bea6a71ee074d5e496ebd6e1de5	Seung-Woo Kim <sw0312.kim@samsung.com>	2018-01-17T18:35:52+09:00	ARM: dts: bcm2809-rpi-2-b: enable display, touch, audio, spi and i2c
+c9ba1fb4474ed338f794c01209a9b9e3199c625b	Seung-Woo Kim <sw0312.kim@samsung.com>	2018-01-17T10:29:01+09:00	usb: dwc_otg: remove wrong memory accesses found by kasan
+265e9ed83eaad9ac3fa80bf36b2beee625c09627	egukim <egukim@dignsys.com>	2017-07-04T13:53:36+09:00	ARM64: dts: bcm2710-rpi-3-b : add memory reserve
+efca4b852b22bb89d9a1aa3ce2d75c92fba1936c	egukim <egukim@dignsys.com>	2017-07-03T14:06:47+09:00	ARM64: dts: bcm2710: add psci device node
+9cd8da9bc5f214469de8b66217733373d230781e	egukim <egukim@dignsys.com>	2017-07-03T13:55:37+09:00	ARM64: dts: rpi3: Add optee node
+292efccf765e048ebe4f282bd87ba3e46de3b4ed	Junghoon Kim <jhoon20.kim@samsung.com>	2017-10-17T14:43:04+09:00	misc: tizen-inform-reboot: resolve sync failure about reboot parameter
+5321ce49391880d6487b0666383d834101c4f71f	Łukasz Stelmach <l.stelmach@samsung.com>	2017-09-29T15:24:05+02:00	misc: make sure Tizen notifier is executed before reset
+f9674a669fadc44d3967d8c2b30c9c11f5de6540	Junghoon Kim <jhoon20.kim@samsung.com>	2017-08-21T11:04:32+09:00	misc: add Tizen reboot notifier for passing reboot parameter
+05cd10575b438938085635651f06ae2195d697d8	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2017-09-07T16:24:56+09:00	drm/vc4: Workaround for crtc scanout device problem
+85797de167e725b07e0cefb8af35775d9b153815	KwangCheol Lee <kclee@dignsys.com>	2017-08-07T16:33:36+09:00	ARM64: dts: bcm2710-rpi-3-b: add DT support for DRM relevant devices
+fdb3951d3ece26a199f56e6b695226b10f34fa89	Eric Anholt <eric@anholt.net>	2016-06-02T15:09:35-07:00	BCM270X: Enable the DSI panel node in the VC4 overlay.
+0cd945add9a82fc8101ffac0e25e8e0ddd34e317	Inki Dae <inki.dae@samsung.com>	2017-09-05T12:09:36+09:00	ARM: dts: bcm2710-rpi-3-b: enable spi0 device node
+5b5641136a84ee3d00b0423143461a7bfc31385d	Lee Hackseung <lhs@dignsys.com>	2017-08-10T15:48:39+09:00	ARM: dts: bcm2710-rpi-3-b : Change audio node status as "okay"
+091eaed439a15d3d16cb9e27e5b4b55ecca1f5cf	Inki Dae <inki.dae@samsung.com>	2016-07-04T17:28:46+09:00	staging: logger: fix build error due to removed ki_nbytes
+e8b13ca875dd4b32aa73ff5395f23807e2387817	Jaehoon Chung <jh80.chung@samsung.com>	2018-01-05T09:40:02+09:00	staging: android: logger: fix the compiler error
+77c243a9ae35cbb1aefdf504eaaedbd3a48083a2	Karol Lewandowski <k.lewandowsk@samsung.com>	2017-07-03T14:01:57+02:00	Revert "staging: Remove logger and alarm-dev from android Makefile"
+7301e30b5a7452b0c9e9a38de9cc79c04788a902	Karol Lewandowski <k.lewandowsk@samsung.com>	2017-07-03T14:00:55+02:00	Revert "staging: Remove the Android logger driver"
+051af50289114eed442ce80159e2d9cd388dd1d2	Andi Shyti <andi.shyti@samsung.com>	2017-03-31T15:20:27+09:00	ARM64: dts: bcm2710-rpi-3-b: enable i2c1
+faf11852fce0ca021c25cfdb08a27724f228080a	Hoegeun Kwon <hoegeun.kwon@samsung.com>	2017-01-19T13:49:54+09:00	arm: dts: Add support for drm vc4 on RPI3
+9278f029cec253bb36e9c07f0a318ccdd272418d	Jaechul Lee <jcsing.lee@samsung.com>	2017-01-31T08:58:22+09:00	packaging: Added '.gbs.conf' for partial build

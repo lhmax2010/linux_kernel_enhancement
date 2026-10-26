@@ -1,0 +1,48 @@
+branch=sandbox/lstelmach/arm-kexec-file
+tip=1669e94ae93dbc4ab275e3b40c78f93a761a11ff
+merge_base_tizen=84df9525b0c27f3ebc2ebb1864fa62a97fdedb7d
+full_ahead=14064 full_behind=545612
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/lstelmach/arm-kexec-file --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=36
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__lstelmach__arm-kexec-file_ahead_01.txt: bytes=849886 sha256=29b0e579fd1a238fb590d6a66067d1f4d4547fa915d1a01864e05704f4411123
+sandbox__lstelmach__arm-kexec-file_ahead_02.txt: bytes=849863 sha256=36562ec55d718949c0ab337978e8390c3f39f382609c9a83419db15876d58be1
+sandbox__lstelmach__arm-kexec-file_ahead_03.txt: bytes=553984 sha256=12b199ed2abe3f9043405798fa66df9728cf8bd4ccaeac2aab5166f9cfb94f27
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+1669e94ae93dbc4ab275e3b40c78f93a761a11ff	Łukasz Stelmach <l.stelmach@samsung.com>	2020-03-26T19:42:24+01:00	arm: kexec_file: load zImage, initrd and dtb
+edb1162a3bd10d2f2fbf58f110edee04349ad1b2	Łukasz Stelmach <l.stelmach@samsung.com>	2020-03-24T17:56:26+01:00	arm: enable KEXEC_FILE config
+416a511c168d32d24c41145e29103a4f05b230aa	Łukasz Stelmach <l.stelmach@samsung.com>	2020-04-30T00:14:43+02:00	arm: decompressor: define a new zImage tag
+df16a5181e74ffdc83601c0908528158f2eeba71	Łukasz Stelmach <l.stelmach@samsung.com>	2020-04-16T17:01:33+02:00	arm: move magic numbers to asm/image.h
+0241921df3d0732e5f65f5e927c5195863c9f21b	Łukasz Stelmach <l.stelmach@samsung.com>	2020-03-26T19:43:33+01:00	arm: add image header definitions
+9d194a88e03b48d214a0695df9d56535d9c81793	Łukasz Stelmach <l.stelmach@samsung.com>	2020-04-29T01:49:11+02:00	arm: decompressor: set malloc pool size for the decompressor
+ce82d1bd43deb0a5607d2cce68d5e8705f6cd32e	Łukasz Stelmach <l.stelmach@samsung.com>	2020-05-07T17:16:52+02:00	arm: decompressor: add debug messages indicating zImage relocation
+0fabf57be52523d890a0a7f1507d82a0811250ee	Łukasz Stelmach <l.stelmach@samsung.com>	2020-04-30T00:01:29+02:00	arm64: kexec_file: print appropriate variable
+f32c666d8fbc8f709f5c6cfc8d742722a24d7c31	Arnd Bergmann <arnd@arndb.de>	2018-12-30T22:01:52+01:00	ARM: add kexec_file_load system call number
+317413fb4519459cdc2d3d5058065423ec7eec39	Arnd Bergmann <arnd@arndb.de>	2018-12-30T21:43:07+01:00	ARM: add migrate_pages() system call
+fc99b7145111c27a0a119cadb4de8c0b2d43309c	Will Deacon <will.deacon@arm.com>	2019-01-03T17:55:12+00:00	arm64: compat: Hook up io_pgetevents() for 32-bit tasks
+a33dec79fd76fc5ed756f8807018c08a9ce773cf	Łukasz Stelmach <l.stelmach@samsung.com>	2020-04-27T13:21:21+02:00	ARM: 8970/1: decompressor: increase tag size
+65adac0623bbd89c055b495dca327eaf28932cba	Geert Uytterhoeven <geert@linux-m68k.org>	2020-04-29T12:24:32+01:00	ARM: 8972/1: boot: Obtain start of physical memory from DTB
+a07c436fd3d9226044d264d40a93cecbae754184	Masahiro Yamada <masahiroy@kernel.org>	2020-04-22T14:08:53+01:00	ARM: 8969/1: decompressor: simplify libfdt builds
+8fc22098c2ba94c7e11deaef291f533e2dbbf7e3	Masahiro Yamada <masahiroy@kernel.org>	2019-12-04T05:28:12+01:00	ARM: 8945/1: decompressor: use CONFIG option instead of cc-option
+4379a91ece4e34544e7c65fb38283c388144ef30	Bhupesh Sharma <bhsharma@redhat.com>	2019-07-11T17:27:32+05:30	arm64/kexec: Use consistent convention of initializing 'kxec_buf.mem' with KEXEC_BUF_MEM_UNKNOWN
+aab7e23cf501d31032ae33771472bdc6f872e234	Thiago Jung Bauermann <bauerman@linux.ibm.com>	2019-05-22T19:01:58-03:00	powerpc/kexec: Fix loading of kernel + initramfs with kexec_file_load()
+9ecf593713efd9fca29ef79d0509310a258147a0	Jean-Philippe Brucker <jean-philippe.brucker@arm.com>	2019-02-01T16:26:08+00:00	arm64: kexec_file: handle empty command-line
+2d4260d86e7786ed1e0d06ff9aa5d84b2818db8e	AKASHI Takahiro <takahiro.akashi@linaro.org>	2019-01-11T16:40:21+09:00	arm64: kexec_file: return successfully even if kaslr-seed doesn't exist
+fc124d53d1fff45efa74bef0339f31c206dc5e0d	Will Deacon <will.deacon@arm.com>	2018-12-06T15:02:45+00:00	arm64: kexec_file: Refactor setup_dtb() to consolidate error checking
+b90c59764e9199cff9daa2e5949610670d1860de	Dave Young <dyoung@redhat.com>	2018-12-28T09:12:47+08:00	x86/kexec: Fix a kexec_file_load() failure
+146f7afb662ec63021bb4bf236211f20609f09a8	Arnd Bergmann <arnd@arndb.de>	2018-12-11T11:05:46+01:00	arm64: kexec_file: include linux/vmalloc.h
+e1593b2b045d455c783a932bcebf893ad1de3af2	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:55+09:00	arm64: kexec_file: add kaslr support
+f2b4e0703fc63d6f755248b2b535816b05cb24c3	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:54+09:00	arm64: kexec_file: add kernel signature verification support
+9a1530ac51721f9c8de93bebeedffb6c3332290b	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:53+09:00	include: pe.h: remove message[] from mz header definition
+a07affdd244d4508b264e451cdfca0bca2be00ed	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:52+09:00	arm64: kexec_file: invoke the kernel without purgatory
+9827774d992aeef6660e1c61beff7785397d1bfc	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:50+09:00	arm64: kexec_file: allow for loading Image-format kernel
+212f39d22a50a1c0ce40163b55421c2f466932bc	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:49+09:00	arm64: kexec_file: load initrd and device-tree
+98c741c6199452fb949570ab63cbda4b66a9ec7d	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:48+09:00	arm64: enable KEXEC_FILE config
+99a2489d316ec8f4f7a516668e02e8b4b987c251	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:47+09:00	arm64: cpufeature: add MMFR0 helper functions
+28a392bc5c67455cd47e217428d06fc05e970bac	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:46+09:00	arm64: add image head flag definitions
+f7a6c3d98f966dc39da9a35dd5c55ea86d4c1cd0	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:44+09:00	kexec_file: kexec_walk_memblock() only walks a dedicated region at kdump
+1a991ee9c3e2345bbd7e9c317454d359a57e69cc	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:43+09:00	powerpc, kexec_file: factor out memblock-based arch_kexec_walk_mem()
+08ba6587f5944029ee55d2c76b6b7ada103847ba	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:42+09:00	s390, kexec_file: drop arch_kexec_mem_walk()
+c483b82f91712f3d71175765779654e142772846	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:41+09:00	kexec_file: make kexec_image_post_load_cleanup_default() global
+5648c77cc564b41ba3cdbf0ec768b182a3384f61	AKASHI Takahiro <takahiro.akashi@linaro.org>	2018-11-15T14:52:40+09:00	asm-generic: add kexec_file_load system call to unistd.h

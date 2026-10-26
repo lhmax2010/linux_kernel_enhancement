@@ -1,0 +1,414 @@
+     1	# Ignore double dash in version for rpmbuild
+     2	%define _wrong_version_format_terminate_build 0
+     3	
+     4	%define config_name tizen_bcm2711_defconfig
+     5	%ifarch aarch64
+     6	%define buildarch arm64
+     7	%else
+     8	%define buildarch arm
+     9	%endif
+    10	%define target_board rpi4
+    11	%define variant %{buildarch}-%{target_board}
+    12	
+    13	Name: rpi4-linux-kernel
+    14	Summary: The Linux Kernel for Raspberry Pi4
+    15	Version: 6.12.80
+    16	Release: 0
+    17	License: GPL-2.0
+    18	ExclusiveArch: %{arm} aarch64
+    19	Group: System/Kernel
+    20	Vendor: The Linux Community
+    21	URL: https://www.kernel.org
+    22	Source0:   linux-kernel-%{version}.tar.xz
+    23	Source1001: linux-rpi.manifest
+    24	BuildRoot: %{_tmppath}/%{name}-%{PACKAGE_VERSION}-root
+    25	
+    26	%define fullVersion %{version}_%{buildarch}_%{target_board}
+    27	
+    28	BuildRequires: bc
+    29	BuildRequires: module-init-tools
+    30	BuildRequires: bison
+    31	BuildRequires: flex
+    32	BuildRequires: pkgconfig(openssl3)
+    33	BuildRequires: libunwind-devel
+    34	BuildRequires: libdw-devel
+    35	BuildRequires: libelf-devel
+    36	BuildRequires: elfutils
+    37	BuildRequires: xz-devel
+    38	BuildRequires: binutils-devel
+    39	BuildRequires: python3
+    40	BuildRequires: rsync
+    41	BuildRequires: dwarves
+    42	
+    43	%description
+    44	The Linux Kernel, the operating system core itself
+    45	
+    46	# kernel
+    47	%package -n %{variant}-linux-kernel
+    48	License: GPL-2.0
+    49	Summary: Tizen kernel for %{target_board}
+    50	Group: System/Kernel
+    51	Provides: %{variant}-kernel-uname-r = %{fullVersion}
+    52	Provides: linux-kernel = %{version}_%{release}
+    53	
+    54	%description -n %{variant}-linux-kernel
+    55	This package contains the Linux kernel for Tizen (arch %{buildarch}, target board %{target_board})
+    56	
+    57	%package -n %{variant}-rt-linux-kernel
+    58	License: GPL-2.0
+    59	Summary: Tizen kernel for %{target_board}
+    60	Group: System/Kernel
+    61	Provides: %{variant}-kernel-uname-r = %{fullVersion}_rt
+    62	Provides: linux-kernel = %{version}_%{release}_rt
+    63	
+    64	%description -n %{variant}-rt-linux-kernel
+    65	This package contains the Linux kernel for Tizen (arch %{buildarch}, target board %{target_board})
+    66	
+    67	# modules
+    68	
+    69	%package -n %{variant}-linux-kernel-modules
+    70	Summary: Kernel modules for %{target_board}
+    71	Group: System/Kernel
+    72	Provides: %{variant}-kernel-modules = %{fullVersion}
+    73	Provides: %{variant}-kernel-modules-uname-r = %{fullVersion}
+    74	
+    75	%description -n %{variant}-linux-kernel-modules
+    76	Kernel-modules includes the loadable kernel modules(.ko files) for %{target_board}
+    77	
+    78	%package -n %{variant}-rt-linux-kernel-modules
+    79	Summary: Kernel modules for %{target_board}
+    80	Group: System/Kernel
+    81	Provides: %{variant}-kernel-modules = %{fullVersion}_rt
+    82	Provides: %{variant}-kernel-modules-uname-r = %{fullVersion}_rt
+    83	
+    84	%description -n %{variant}-rt-linux-kernel-modules
+    85	Kernel-modules includes the loadable kernel modules(.ko files) for %{target_board}
+    86	with the PREEMPT_RT patch
+    87	
+    88	# devel
+    89	
+    90	%package -n %{variant}-linux-kernel-devel
+    91	License: GPL-2.0
+    92	Summary: Linux support kernel map and etc for other packages
+    93	Group: System/Kernel
+    94	Provides: %{variant}-kernel-devel = %{fullVersion}
+    95	Provides: %{variant}-kernel-devel-uname-r = %{fullVersion}
+    96	
+    97	%description -n %{variant}-linux-kernel-devel
+    98	This package provides kernel map and etc information.
+    99	
+   100	%package -n %{variant}-rt-linux-kernel-devel
+   101	License: GPL-2.0
+   102	Summary: Linux support kernel map and etc for other packages
+   103	Group: System/Kernel
+   104	Provides: %{variant}-kernel-devel = %{fullVersion}_rt
+   105	Provides: %{variant}-kernel-devel-uname-r = %{fullVersion}_rt
+   106	
+   107	%description -n %{variant}-rt-linux-kernel-devel
+   108	This package provides kernel map and etc information.
+   109	
+   110	%package -n %{variant}-linux-kernel-btf-devel
+   111	License: GPL-2.0
+   112	Summary: Linux kernel BTF header for eBPF development
+   113	Group: System/Kernel
+   114	Provides: %{variant}-kernel-btf-devel = %{fullVersion}
+   115	Provides: %{variant}-kernel-btf-devel-uname-r = %{fullVersion}
+   116	Provides: kernel-btf-devel
+   117	
+   118	%description -n %{variant}-linux-kernel-btf-devel
+   119	This package provides the vmlinux.h header file generated from the
+   120	Linux kernel for eBPF program development. This header contains all the
+   121	type definitions needed for BPF CO-RE (Compile Once - Run Everywhere).
+   122	
+   123	#headers
+   124	%package -n %{variant}-linux-kernel-headers
+   125	License: GPL-2.0
+   126	Summary: Linux support headers for userspace development
+   127	Group: System/Kernel
+   128	Provides: kernel-headers-tizen-dev
+   129	
+   130	%description -n %{variant}-linux-kernel-headers
+   131	This package provides userspaces headers from the Linux kernel. These
+   132	headers are used by the installed headers for GNU glibc and other system
+   133	 libraries.
+   134	
+   135	%package -n linux-kernel-perf
+   136	Summary: The perf performance counter tool
+   137	Group: System/Kernel
+   138	Provides: perf = %{version}
+   139	
+   140	%description -n linux-kernel-perf
+   141	This package provides the "perf" tool that can be used to monitor performance
+   142	counter events as well as various kernel internal events.
+   143	
+   144	%package -n linux-kernel-bpftool
+   145	Summary: The bpftool utility
+   146	Group: System/Kernel
+   147	Provides: bpftool = %{version}
+   148	
+   149	%description -n linux-kernel-bpftool
+   150	This package provides bpftool. Bpftool is a command-line utility designed
+   151	for managing, inspecting, debugging, and generating skeletons for eBPF
+   152	programs within the Linux kernel. Its skeleton generation feature
+   153	("bpftool gen skeleton") enables easier integration of compiled BPF
+   154	objects with user-space applications, making bpftool a critical component
+   155	for building and running eBPF-based monitoring and instrumentation.
+   156	
+   157	%prep
+   158	%setup -q
+   159	cp %{SOURCE1001} .
+   160	
+   161	%build
+   162	%{?asan:/usr/bin/gcc-unforce-options}
+   163	%{?ubsan:/usr/bin/gcc-unforce-options}
+   164	
+   165	%{?_toolchain:
+   166	%if %{toolchain_is clang}
+   167	export LLVM=1
+   168	%endif
+   169	}
+   170	
+   171	# LSM configuration fragment selection
+   172	%if "%{?dev_sel}" == "1"
+   173	%define lsm_fragment kernel/configs/selinux.config
+   174	%else
+   175	%if "%{?dev_wos}" == "1"
+   176	%define lsm_fragment kernel/configs/nosmack.config
+   177	%endif
+   178	%endif
+   179	
+   180	for target in %{variant} %{variant}-rt; do
+   181	    echo "-${target}" > localversion-tizen
+   182	
+   183	    # extract uapi headers
+   184	    make O=build/${target} headers_install %{?_smp_mflags}
+   185	
+   186	    # Set config file
+   187	    BASE_CONFIG="arch/%{buildarch}/configs/%{config_name}"
+   188	    EXTRA_FRAGMENTS=""
+   189	
+   190	    case $target in
+   191		%{variant})
+   192		    EXTRA_FRAGMENTS="%{?lsm_fragment}"
+   193		;;
+   194		%{variant}-rt)
+   195		    EXTRA_FRAGMENTS="kernel/configs/rt.config %{?lsm_fragment}"
+   196		;;
+   197	    esac
+   198	
+   199	    mkdir -p build/${target}
+   200	    ./scripts/kconfig/merge_config.sh -m -O build/${target} ${BASE_CONFIG} ${EXTRA_FRAGMENTS}
+   201	    make O=build/${target} olddefconfig %{?_smp_mflags}
+   202	
+   203	    if [ "${target}" = "%{variant}" ]; then
+   204	        # Build perf
+   205	        # WERROR=0 make O=build/${target} -s -C tools/lib/traceevent %{?_smp_mflags}
+   206	        WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" %{?_smp_mflags} NO_LIBTRACEEVENT=1 NO_JEVENTS=1
+   207	
+   208	        # Build bpftool
+   209	        WERROR=0 make O=build/${target} -s -C tools/bpf/bpftool %{?_smp_mflags}
+   210	    fi
+   211	
+   212	    # Build Image/Image.gz
+   213	    make O=build/${target} %{?_smp_mflags}
+   214	
+   215	    # Build dtbs
+   216	    make O=build/${target} dtbs %{?_smp_mflags}
+   217	
+   218	    # Build modules
+   219	    make O=build/${target} modules %{?_smp_mflags}
+   220	
+   221	    if [ "${target}" = "%{variant}" ]; then
+   222	       # Create directory for BTF data
+   223	       mkdir -p build/${target}/btf
+   224	
+   225	       # Generate vmlinux.h from vmlinux binary
+   226	       ./build/${target}/bpftool btf dump file build/${target}/vmlinux format c > build/${target}/btf/vmlinux.h
+   227	    fi
+   228	
+   229	done
+   230	
+   231	%install
+   232	QA_SKIP_BUILD_ROOT="DO_NOT_WANT"; export QA_SKIP_BUILD_ROOT
+   233	
+   234	%{?_toolchain:
+   235	%if %{toolchain_is clang}
+   236	export LLVM=1
+   237	%endif
+   238	}
+   239	
+   240	# Destination directories
+   241	mkdir -p %{buildroot}/boot
+   242	mkdir -p %{buildroot}/lib/modules
+   243	
+   244	# Install boot binary files
+   245	%ifarch aarch64
+   246	install -m 644 rpi/boot/config_64bit.txt %{buildroot}/boot/config.txt
+   247	%else
+   248	install -m 644 rpi/boot/config.txt %{buildroot}/boot/
+   249	%endif
+   250	install -m 644 rpi/boot/LICENCE.broadcom %{buildroot}/boot/
+   251	install -m 644 rpi/boot/start*.elf %{buildroot}/boot/
+   252	install -m 644 rpi/boot/fixup*.dat %{buildroot}/boot/
+   253	
+   254	# Install kernel DTB
+   255	install -m 644 build/%{variant}/arch/%{buildarch}/boot/dts/broadcom/bcm*.dtb %{buildroot}/boot/
+   256	mkdir -p %{buildroot}/boot/overlays
+   257	install -m 644 build/%{variant}/arch/%{buildarch}/boot/dts/overlays/*.dtb* %{buildroot}/boot/overlays/
+   258	
+   259	# Install kernel headers
+   260	make O=build/%{variant} headers_install %{?_smp_mflags} INSTALL_HDR_PATH=%{buildroot}/usr
+   261	
+   262	for target in %{variant} %{variant}-rt; do
+   263	    # Install kernel binary
+   264	    case $target in
+   265		%{variant})
+   266	%ifarch aarch64
+   267	            install -m 644 build/${target}/arch/%{buildarch}/boot/Image %{buildroot}/boot/Image
+   268	%else
+   269	            install -m 644 build/${target}/arch/%{buildarch}/boot/zImage %{buildroot}/boot/zImage
+   270	%endif
+   271	
+   272	            # Install perf
+   273	            WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" DESTDIR=%{buildroot}/usr install NO_LIBTRACEEVENT=1 NO_JEVENTS=1
+   274	
+   275		    # Install bpftool
+   276	            mkdir -p %{buildroot}/usr/sbin
+   277	            install -m 755 build/${target}/bpftool %{buildroot}/usr/sbin/
+   278	
+   279		    # Install vmlinux.h header
+   280	            mkdir -p %{buildroot}/usr/include/bpf
+   281	            install -m 644 build/${target}/btf/vmlinux.h %{buildroot}/usr/include/bpf/vmlinux.h
+   282	
+   283		    rm -rf %{buildroot}/usr/etc
+   284	            rm -rf %{buildroot}/usr/lib/debug
+   285	            rm -rf %{buildroot}/usr/lib/perf
+   286	            rm -rf %{buildroot}/usr/share
+   287	            find %{buildroot}/usr/libexec/ -type f -exec grep -ql '^#!/bin/bash' {} \; -exec rm -f {} \;
+   288	
+   289		;;
+   290		%{variant}-rt)
+   291	%ifarch aarch64
+   292	            install -m 644 build/${target}/arch/%{buildarch}/boot/Image %{buildroot}/boot/Image_rt
+   293	%else
+   294	            install -m 644 build/${target}/arch/%{buildarch}/boot/zImage %{buildroot}/boot/zImage_rt
+   295	%endif
+   296		;;
+   297	    esac
+   298	
+   299	    # Install modules
+   300	    make O=build/${target} INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%{buildroot} modules_install
+   301	
+   302	    # Copy files for devel package
+   303	    mkdir -p %{buildroot}/boot/kernel/devel/kernel-devel-${target}
+   304	    rsync -r \
+   305		  --include "/scripts/**.c" \
+   306		  --exclude "/debug*.list" \
+   307		  --exclude "/documentation.list" \
+   308		  --exclude "/*.manifest" \
+   309		  --exclude "/packaging/" \
+   310		  --exclude "/.gbs.conf" \
+   311		  --exclude "/.git**" \
+   312		  --exclude ".gitignore" \
+   313		  --exclude "*\.c" \
+   314		  --exclude ".tmp_vmlinux*" \
+   315		  --exclude ".*dtb*tmp" \
+   316		  --exclude ".*dtb" \
+   317		  --exclude "*.*tmp" \
+   318		  --exclude "Image" \
+   319		  --exclude "zImage" \
+   320		  --exclude "Image.gz" \
+   321		  --exclude "*.cmd" \
+   322		  --exclude "*.ko" \
+   323		  --exclude "*.o" \
+   324		  --exclude "*.S" \
+   325		  --exclude "*.HEX" \
+   326		  --exclude "/build/" \
+   327		  ./ build/${target}/ %{buildroot}/boot/kernel/devel/kernel-devel-${target}
+   328	
+   329	    # Replace #!/bin/bash and #! /bin/bash with #!/bin/sh for dash compatibility
+   330	    find %{buildroot}/boot/kernel/devel/kernel-devel-${target} -type f \
+   331	      -exec grep -qlE '^#! ?/bin/bash' {} \; -exec sed -i -E 's|^#! ?/bin/bash|#!/bin/sh|g' {} \;
+   332	done
+   333	
+   334	%clean
+   335	rm -rf %{buildroot}
+   336	
+   337	%post -n %{variant}-rt-linux-kernel
+   338	%ifarch aarch64
+   339	mv /boot/Image_rt /boot/Image
+   340	%else
+   341	mv /boot/zImage_rt /boot/zImage
+   342	%endif
+   343	
+   344	%preun -n %{variant}-rt-linux-kernel
+   345	%ifarch aarch64
+   346	mv /boot/Image /boot/Image_rt
+   347	%else
+   348	mv /boot/zImage /boot/zImage_rt
+   349	%endif
+   350	
+   351	%files -n %{variant}-linux-kernel-modules
+   352	%ifarch aarch64
+   353	/lib/modules/*%{variant}-v8/
+   354	%else
+   355	/lib/modules/*%{variant}-v7l/
+   356	%endif
+   357	
+   358	%files -n %{variant}-rt-linux-kernel-modules
+   359	%ifarch aarch64
+   360	/lib/modules/*%{variant}-rt-v8/
+   361	%else
+   362	/lib/modules/*%{variant}-rt-v7l/
+   363	%endif
+   364	
+   365	%files -n %{variant}-linux-kernel-devel
+   366	/boot/kernel/devel/*%{variant}/
+   367	
+   368	%files -n %{variant}-rt-linux-kernel-devel
+   369	/boot/kernel/devel/*%{variant}-rt/
+   370	
+   371	%files -n %{variant}-linux-kernel-btf-devel
+   372	/usr/include/bpf/vmlinux.h
+   373	
+   374	%files -n %{variant}-linux-kernel
+   375	%license COPYING
+   376	%ifarch aarch64
+   377	/boot/Image
+   378	%else
+   379	/boot/zImage
+   380	%endif
+   381	/boot/bcm*.dtb
+   382	/boot/overlays/*.dtb*
+   383	/boot/config.txt
+   384	/boot/LICENCE.broadcom
+   385	/boot/start*.elf
+   386	/boot/fixup*.dat
+   387	
+   388	%files -n %{variant}-rt-linux-kernel
+   389	%license COPYING
+   390	%ifarch aarch64
+   391	/boot/Image_rt
+   392	%else
+   393	/boot/zImage_rt
+   394	%endif
+   395	/boot/bcm*.dtb
+   396	/boot/overlays/*.dtb*
+   397	/boot/config.txt
+   398	/boot/LICENCE.broadcom
+   399	/boot/start*.elf
+   400	/boot/fixup*.dat
+   401	
+   402	%files -n %{variant}-linux-kernel-headers
+   403	/usr/include/*
+   404	
+   405	%files -n linux-kernel-perf
+   406	%manifest linux-rpi.manifest
+   407	%license COPYING
+   408	/usr/bin/*
+   409	/usr/libexec/*
+   410	
+   411	%files -n linux-kernel-bpftool
+   412	%manifest linux-rpi.manifest
+   413	%license COPYING
+   414	/usr/sbin/bpftool

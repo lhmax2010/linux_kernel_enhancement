@@ -1,0 +1,30 @@
+branch=sandbox/dwlee08/v5.4-erofs-deflate
+tip=46f0811bf6a4b9ab2eab0a5c11c0b3c674003efa
+merge_base_tizen=219d54332a09e8d8741c1e1982f5eae56099de85
+full_ahead=7890 full_behind=455938
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/dwlee08/v5.4-erofs-deflate --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=19
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__dwlee08__v5.4-erofs-deflate_ahead_01.txt: bytes=849865 sha256=d5d3e513b5121600d31be5355ff3a20bdf4efe2399726e85536fb36044bc2499
+sandbox__dwlee08__v5.4-erofs-deflate_ahead_02.txt: bytes=415520 sha256=9a0679d6adfac55fab602649ba35a0fcfc053891922c36732eb99a9663222982
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+46f0811bf6a4b9ab2eab0a5c11c0b3c674003efa	Dongwoo Lee <dwoo08.lee@samsung.com>	2024-10-16T18:39:14+09:00	fix for script
+4c9df0c4f37e82494803bacb419952ac5df3d346	Dongwoo Lee <dwoo08.lee@samsung.com>	2024-10-16T18:38:58+09:00	fixup
+f23b58c119eab864545190c910d22347bceea3ce	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-08-10T23:48:59+08:00	erofs: DEFLATE compression support
+687e4bc987281b4298a0ccb9c01cee55ad54d74c	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-10-11T05:31:45+08:00	erofs: lzma compression support
+18f6bc472f877bf45c2e56428bf061298a222edb	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-10-11T05:31:44+08:00	erofs: rename some generic methods in decompressor
+756f089910739a6261fd507debed4f560071febb	Gao Xiang <hsiangkao@redhat.com>	2021-03-29T18:00:12+08:00	erofs: add on-disk compression configurations
+43ab38ddd4b05024748cb24f0f0d2e6834ea0206	Gao Xiang <hsiangkao@redhat.com>	2021-03-29T09:23:07+08:00	erofs: introduce on-disk lz4 fs configurations
+7eae923a6ade2a4c6557281f67a91522d5dc7902	Huang Jianan <huangjianan@oppo.com>	2021-03-29T09:23:06+08:00	erofs: support adjust lz4 history window size
+9380c7c56b7472fc13950a7c3305a2e8bfc74396	Gao Xiang <hsiangkao@redhat.com>	2021-03-29T09:23:05+08:00	erofs: introduce erofs_sb_has_xxx() helpers
+31956225685c847197c099a4dc10bbe7d63d49cf	Gao Xiang <hsiangkao@redhat.com>	2020-12-08T17:58:32+08:00	erofs: get rid of magical Z_EROFS_MAPPING_STAGING
+d07904a89c97faa5935c17a25aafbfde29228771	Gao Xiang <hsiangkao@redhat.com>	2020-10-22T22:57:21+08:00	erofs: fix setting up pcluster for temporary pages
+fd5dd8d6685d10efc66b16a3edc1e907aad58939	Gao Xiang <gaoxiang25@huawei.com>	2019-10-08T20:56:15+08:00	erofs: clean up decompress queue stuffs
+9e4dfceb8ebc07dd8f3b7cbdc69d2ee5f7572764	Gao Xiang <gaoxiang25@huawei.com>	2019-11-21T21:59:54+08:00	erofs: get rid of __stagingpage_alloc helper
+f8a42b84d099b2dd564753ee27dcb01eb40f9e49	Guoqing Jiang <guoqing.jiang@cloud.ionos.com>	2020-06-01T21:47:38-07:00	include/linux/pagemap.h: introduce attach/detach_page_private
+31e7ed821ab6e35a430b947827e5bba9b2723290	Gao Xiang <gaoxiang25@huawei.com>	2019-10-08T20:56:13+08:00	erofs: remove dead code since managed cache is now built-in
+8da3e0f42335e4372d65ef737c0d79d67c6d2ca2	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-08-31T19:29:58+08:00	erofs: ensure that the post-EOF tails are all zeroed
+b841af3c317419ecba383f858ea7a76c50e01194	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-06-01T19:23:41+08:00	erofs: fix compact 4B support for 16k block size
+9eb8370f8bc4705d8eae8d167c67448994db8d4f	Chunhai Guo <guochunhai@vivo.com>	2023-07-10T17:34:10+08:00	erofs: avoid infinite loop in z_erofs_do_read_page() when reading beyond EOF
+a8b4b51abde3967055452ad0199ac238a221a105	Dongwoo Lee <dwoo08.lee@samsung.com>	2024-04-30T12:11:01+09:00	changed

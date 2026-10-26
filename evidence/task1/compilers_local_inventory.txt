@@ -1,0 +1,67 @@
+/home/linhao/Toolchain/mlgo-verify-rpmbuild/SOURCES/payload-aarch64/emul/usr/bin/clang-21.real: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, stripped
+
+/home/linhao/Toolchain/mlgo-verify-rpmbuild/SOURCES/payload-aarch64/emul/usr/bin/aarch64-tizen-linux-gnu-clang: POSIX shell script, ASCII text executable
+/home/linhao/Toolchain/mlgo-verify-rpmbuild/SOURCES/payload-aarch64/emul/usr/bin/clang-21: POSIX shell script, ASCII text executable
+/home/linhao/Toolchain/mlgo-verify-rpmbuild/SOURCES/payload-aarch64/emul/usr/bin/clang: POSIX shell script, ASCII text executable
+/home/linhao/Toolchain/mlgo-verify-rpmbuild/SOURCES/payload-armv7l/emul/usr/bin/clang-21.real: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, stripped
+
+/home/linhao/Toolchain/mlgo-verify-rpmbuild/SOURCES/payload-armv7l/emul/usr/bin/clang-21: POSIX shell script, ASCII text executable
+/home/linhao/Toolchain/mlgo-verify-rpmbuild/SOURCES/payload-armv7l/emul/usr/bin/armv7l-tizen-linux-gnueabi-clang: POSIX shell script, ASCII text executable
+/home/linhao/Toolchain/mlgo-verify-rpmbuild/SOURCES/payload-armv7l/emul/usr/bin/clang: POSIX shell script, ASCII text executable
+/home/linhao/Toolchain/mlgo-verify-rpmbuild/stage-x86/usr/bin/clang-21: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, stripped
+
+/home/linhao/Toolchain/LLVM_Upgrade/llvm/clang-tools-extra/test/clang-tidy/infrastructure/Inputs/mock-libcxx/bin/clang: ASCII text
+/home/linhao/Toolchain/development/MLGO/llvm_mlgo/clang-tools-extra/test/clang-tidy/infrastructure/Inputs/mock-libcxx/bin/clang: ASCII text
+/home/linhao/Toolchain/glibc/tmp/GBS-ROOT-TOOLCHAIN-GCC-PATCHES2/local/BUILD-ROOTS/scratch.armv7l.0/emul/usr/bin/gcc: ELF 64-bit LSB executable, x86-64, version 1 (GNU/Linux), dynamically linked, interpreter /emul/usr/lib64/ld-linux-x86-64.so.2, BuildID[sha1]=99a433348648c768bcf90497d37d3833f18cb529, for GNU/Linux 3.2.0, stripped
+[Errno 2] No such file or directory: '/home/linhao/Toolchain/glibc/tmp/GBS-ROOT-TOOLCHAIN-GCC-PATCHES2/local/BUILD-ROOTS/scratch.armv7l.0/emul/usr/bin/gcc'
+/home/linhao/Toolchain/glibc/tmp/GBS-ROOT-TOOLCHAIN-GCC-PATCHES2/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/gcc: ELF 32-bit LSB executable, ARM, EABI5 version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux.so.3, BuildID[sha1]=70fd38856671041bfb3e9ed4161c282ae541826b, for GNU/Linux 3.2.0, stripped
+/home/linhao/Toolchain/glibc/tmp/GBS-ROOT-TOOLCHAIN-GCC-PATCHES2/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/armv7l-tizen-linux-gnueabi-gcc: ELF 32-bit LSB executable, ARM, EABI5 version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux.so.3, BuildID[sha1]=70fd38856671041bfb3e9ed4161c282ae541826b, for GNU/Linux 3.2.0, stripped
+/home/linhao/Toolchain/LLVM_Upgrade/llvm/clang/test/Tooling/Inputs/mock-libcxx/bin/clang: ASCII text
+/home/linhao/Toolchain/development/llvm_inline_development_second/codes/llvm/clang-tools-extra/test/clang-tidy/infrastructure/Inputs/mock-libcxx/bin/clang: ASCII text
+/home/linhao/Toolchain/glibc/tmp/lldb_runtime_22.1.8/extract/usr/bin/clang-22: ELF 32-bit LSB pie executable, ARM, EABI5 version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux.so.3, for GNU/Linux 3.2.0, stripped
+/home/linhao/Toolchain/glibc/tmp/GBS-ROOT-RECON3-OS/local/BUILD-ROOTS/scratch.armv7l.0/emul/usr/bin/gcc: ELF 64-bit LSB executable, x86-64, version 1 (GNU/Linux), dynamically linked, interpreter /emul/usr/lib64/ld-linux-x86-64.so.2, BuildID[sha1]=99a433348648c768bcf90497d37d3833f18cb529, for GNU/Linux 3.2.0, stripped
+[Errno 2] No such file or directory: '/home/linhao/Toolchain/glibc/tmp/GBS-ROOT-RECON3-OS/local/BUILD-ROOTS/scratch.armv7l.0/emul/usr/bin/gcc'
+/home/linhao/Toolchain/development/MLGO/llvm_mlgo/clang/test/Tooling/Inputs/mock-libcxx/bin/clang: ASCII text
+/home/linhao/Toolchain/development/llvm_inline_development/codes/llvm-release-upstream-base/clang-tools-extra/test/clang-tidy/infrastructure/Inputs/mock-libcxx/bin/clang: ASCII text
+/home/linhao/Toolchain/development/MLGO/llvm/clang-tools-extra/test/clang-tidy/infrastructure/Inputs/mock-libcxx/bin/clang: ASCII text
+/home/linhao/Toolchain/development/llvm_inline_development/docs/llvm_optimize_docs/verification/port22/artifacts/m1-pr4-board-runtime/build/rpmroot/usr/bin/clang-22: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, stripped
+
+/home/linhao/Toolchain/glibc/tmp/GBS-ROOT-RECON3-OS/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/gcc: ELF 32-bit LSB executable, ARM, EABI5 version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux.so.3, BuildID[sha1]=70fd38856671041bfb3e9ed4161c282ae541826b, for GNU/Linux 3.2.0, stripped
+/home/linhao/Toolchain/glibc/tmp/GBS-ROOT-RECON3-OS/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/armv7l-tizen-linux-gnueabi-gcc: ELF 32-bit LSB executable, ARM, EABI5 version 1 (GNU/Linux), dynamically linked, interpreter /lib/ld-linux.so.3, BuildID[sha1]=70fd38856671041bfb3e9ed4161c282ae541826b, for GNU/Linux 3.2.0, stripped
+/home/linhao/Toolchain/development/llvm/clang-tools-extra/test/clang-tidy/infrastructure/Inputs/mock-libcxx/bin/clang: ASCII text
+/home/linhao/Toolchain/development/llvm_inline_development/docs/llvm_optimize_docs/verification/port22/artifacts/m1-pr4-b-prime-closeout/x86-rebuild/extracted/usr/bin/clang-22: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, stripped
+
+/home/linhao/Toolchain/development/llvm_inline_development/docs/llvm_optimize_docs/verification/port22/artifacts/m1-pr4-b-prime-closeout/accel-rebuild/extracted/emul/usr/bin/clang-22: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /emul/usr/lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, stripped
+[Errno 2] No such file or directory: '/home/linhao/Toolchain/development/llvm_inline_development/docs/llvm_optimize_docs/verification/port22/artifacts/m1-pr4-b-prime-closeout/accel-rebuild/extracted/emul/usr/bin/clang-22'
+/home/linhao/Toolchain/development/llvm_inline_development/tmp/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.x86_64.0/usr/bin/gcc: ELF 64-bit LSB executable, x86-64, version 1 (GNU/Linux), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=c349c0d5604418699f5b4eda78b779904d43efde, for GNU/Linux 3.2.0, stripped
+gcc (Tizen GCC 14.2.0 20240801 1.12) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+/home/linhao/Toolchain/development/llvm_inline_development/tmp/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.x86_64.0/usr/bin/x86_64-tizen-linux-gnu-gcc: ELF 64-bit LSB executable, x86-64, version 1 (GNU/Linux), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=c349c0d5604418699f5b4eda78b779904d43efde, for GNU/Linux 3.2.0, stripped
+x86_64-tizen-linux-gnu-gcc (Tizen GCC 14.2.0 20240801 1.12) 14.2.0
+Copyright (C) 2024 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+/home/linhao/Toolchain/development/llvm_inline_development/tmp/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.x86_64.0/usr/bin/clang-22: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, stripped
+Command '['/home/linhao/Toolchain/development/llvm_inline_development/tmp/GBS-ROOT-TIZEN-UNIFIED-LLVM/local/BUILD-ROOTS/scratch.x86_64.0/usr/bin/clang-22', '--version']' timed out after 5 seconds
+/home/linhao/Toolchain/development/llvm_inline_development/tmp/pr4-b-prime-rpm-root-20260828/usr/bin/clang-22: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, stripped
+
+/home/linhao/Toolchain/development/llvm_inline_development/codes/llvm-release-upstream-base/clang/test/Tooling/Inputs/mock-libcxx/bin/clang: ASCII text
+/home/linhao/Toolchain/development/MLGO/llvm/clang/test/Tooling/Inputs/mock-libcxx/bin/clang: ASCII text
+/home/linhao/Toolchain/development/llvm_inline_development/docs/llvm_optimize_docs/verification/port22/artifacts/m1-t30-behavior-20260929T021838Z/build/bin/clang-22: ELF 64-bit LSB pie executable, x86-64, version 1 (GNU/Linux), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=a6050effd508d1beb8512a5cf7a048149ebc40f7, not stripped
+clang version 22.1.8 (/home/linhao/Toolchain/development/llvm_inline_development/docs/llvm_optimize_docs/verification/port22/artifacts/m1-snapshot-20260928T105826Z/head.bundle 7586bb7814388a228ec4e3a3589a43119ff3fe29)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /home/linhao/Toolchain/development/llvm_inline_development/docs/llvm_optimize_docs/verification/port22/artifacts/m1-t30-behavior-20260929T021838Z/build/bin
+
+/home/linhao/Toolchain/development/llvm_inline_development/tmp/llvm-release-upstream-base-build/bin/clang-22: ELF 64-bit LSB pie executable, x86-64, version 1 (GNU/Linux), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=9f532a8db72f738ac3ca84c4a1d42219b7f1b3b8, for GNU/Linux 3.2.0, not stripped
+clang version 22.1.8 (ssh://lhmax2025@review.tizen.org:29418/platform/upstream/llvm fd7a4929c0e424d564cdd1f0c55af9153dcea321)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /home/linhao/Toolchain/development/llvm_inline_development/tmp/llvm-release-upstream-base-build/bin
+

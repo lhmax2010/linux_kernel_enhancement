@@ -1,0 +1,534 @@
+commit 85fcc6edce0b0df05e5d630027f37634bde078bb
+Author: Jaehoon Chung <jh80.chung@samsung.com>
+Date:   Wed Apr 29 23:22:40 2026 +0900
+
+    zram: Enable zstd dictionary compression support for BCM2711
+    
+    - Enable ZRAM_BACKEND_ZSTD and set zstd as default compressor
+    - Enable ZRAM_MULTI_COMP for secondary compression stream support
+    - Enable ZRAM_TRACK_ENTRY_ACTIME for idle page recompression
+    - Keep ZRAM_BACKEND_LZO as fallback backend
+    - Add zram-dict-setup.sh: boot-time zram init script with zstd dict
+    - Add zram-dict-init.rc: Android/Tizen init.rc and systemd unit examples
+    
+    Change-Id: Ib9f5954eb145c73631bdac2fd149ff59328d5062
+    Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+diff --git a/arch/arm/configs/tizen_bcm2711_defconfig b/arch/arm/configs/tizen_bcm2711_defconfig
+index 24116dd278b2..74ff3632f1b5 100644
+--- a/arch/arm/configs/tizen_bcm2711_defconfig
++++ b/arch/arm/configs/tizen_bcm2711_defconfig
+@@ -205,6 +205,11 @@ CONFIG_CONNECTOR=y
+ CONFIG_RASPBERRYPI_FIRMWARE=y
+ CONFIG_OF_CONFIGFS=y
+ CONFIG_ZRAM=y
++CONFIG_ZRAM_BACKEND_ZSTD=y
++CONFIG_ZRAM_BACKEND_LZO=y
++CONFIG_ZRAM_DEF_COMP_ZSTD=y
++CONFIG_ZRAM_TRACK_ENTRY_ACTIME=y
++CONFIG_ZRAM_MULTI_COMP=y
+ CONFIG_BLK_DEV_LOOP=y
+ CONFIG_BLK_DEV_NBD=m
+ CONFIG_BLK_DEV_RAM=y
+@@ -525,7 +530,6 @@ CONFIG_PRINTK_TIME=y
+ CONFIG_CONSOLE_LOGLEVEL_QUIET=3
+ CONFIG_BOOT_PRINTK_DELAY=y
+ CONFIG_DEBUG_INFO_DWARF4=y
+-CONFIG_DEBUG_INFO_BTF=y
+ CONFIG_KGDB=y
+ CONFIG_KGDB_KDB=y
+ CONFIG_KDB_KEYBOARD=y
+diff --git a/scripts/zram-dict-init.rc b/scripts/zram-dict-init.rc
+new file mode 100644
+index 000000000000..2bb21a138742
+--- /dev/null
++++ b/scripts/zram-dict-init.rc
+@@ -0,0 +1,94 @@
++# zram-dict-init.rc — Android/Tizen init.rc 방식 zstd dictionary zram 설정 예제
++#
++# 대상: Tizen on BCM2711 (ARMv7, RAM 1.5GB)
++# 포함 위치: /vendor/etc/init/ 또는 /system/etc/init/
++#
++# 전제:
++#   - /etc/zram/zstd.dict 가 rootfs에 포함됨
++#   - CONFIG_ZRAM_BACKEND_ZSTD=y 빌드됨
++#   - zram 모듈 또는 built-in
++#
++# 실행 순서 강제:
++#   comp_algorithm → algorithm_params → disksize → mkswap → swapon
++#
++# ===========================================================================
++# systemd 방식 (Tizen Linux on RPi 권장)
++# 파일: /etc/systemd/system/zram-swap.service
++# ===========================================================================
++#
++# [Unit]
++# Description=zram swap with zstd dictionary
++# DefaultDependencies=no
++# After=local-fs.target
++# Before=swap.target
++#
++# [Service]
++# Type=oneshot
++# RemainAfterExit=yes
++# ExecStart=/bin/sh /usr/lib/zram/zram-dict-setup.sh
++#
++# [Install]
++# WantedBy=swap.target
++#
++# ===========================================================================
++# Android init.rc 방식 (Tizen Mobile / Tizen IoT Android 기반)
++# ===========================================================================
++
++on early-fs
++    # rootfs 마운트 직후, /data 마운트 전 실행
++    # dict 파일은 /system 또는 /etc (rootfs) 에 있어야 함
++    mkdir /etc/zram 0755 root root
++
++on fs
++    # Step 1: 압축 알고리즘 선택 (disksize 전 필수)
++    write /sys/block/zram0/comp_algorithm zstd
++
++    # Step 2: 딕셔너리 + 레벨 설정 (disksize 전 필수)
++    # 파일 경로는 이 시점에 마운트되어 있어야 함
++    write /sys/block/zram0/algorithm_params "algo=zstd level=3 dict=/etc/zram/zstd.dict"
++
++    # Step 3: 크기 설정 — 이후 알고리즘 변경 불가
++    # 1.5GB RAM 기준 1GB: zstd+dict 압축률 3.5:1 → 실점유 ~286MB
++    write /sys/block/zram0/disksize 1073741824
++
++on post-fs
++    # Step 4: 스왑 포맷 및 활성화
++    exec - root root -- /sbin/mkswap /dev/zram0
++    exec - root root -- /sbin/swapon -p 100 /dev/zram0
++
++# ===========================================================================
++# 딕셔너리 없는 폴백 (dict 파일 부재 시 대체)
++# ===========================================================================
++
++on property:zram.dict.missing=1
++    write /sys/block/zram0/comp_algorithm zstd
++    write /sys/block/zram0/algorithm_params "algo=zstd level=3"
++    write /sys/block/zram0/disksize 1073741824
++    exec - root root -- /sbin/mkswap /dev/zram0
++    exec - root root -- /sbin/swapon -p 100 /dev/zram0
++
++# ===========================================================================
++# 메모리 절약 검증용 (디버그, 부팅 완료 후)
++# 결과는 dmesg 또는 logcat에 남김
++# ===========================================================================
++
++on property:sys.boot_completed=1
++    exec - root root -- /bin/sh -c \
++        "echo 'zram mm_stat:'; cat /sys/block/zram0/mm_stat"
++
++# ===========================================================================
++# 메모리 계산 참고 (ARMv7, RAM=1.5GB, ZRAM_SIZE=1GB)
++# ---------------------------------------------------------------------------
++#
++#  알고리즘           압축률(typ)  실점유    절감(vs lzo-rle)
++#  lzo-rle (기존)     2.5:1        ~400MB    기준
++#  zstd lv3           3.0:1        ~333MB    +67MB
++#  zstd lv3 + dict    3.5:1        ~286MB    +114MB
++#  zstd lv5 + dict    4.0:1        ~250MB    +150MB  ← ARMv7 레이턴시 주의
++#
++#  목표(200~250MB 절감)에 도달하려면:
++#    - ZRAM_SIZE=1G + zstd lv3 + dict → +114MB  (추가 튜닝 필요)
++#    - ZRAM_SIZE=1.2G + zstd lv3 + dict → +137MB
++#    - 멀티 comp (ZRAM_MULTI_COMP) 활성화 시 추가 절감 가능
++#
++# ===========================================================================
+diff --git a/scripts/zram-dict-setup.sh b/scripts/zram-dict-setup.sh
+new file mode 100755
+index 000000000000..b98ff96d5d8b
+--- /dev/null
++++ b/scripts/zram-dict-setup.sh
+@@ -0,0 +1,147 @@
++#!/bin/sh
++# SPDX-License-Identifier: GPL-2.0-or-later
++#
++# zram-dict-setup.sh — zstd dictionary를 사용하는 zram 스왑 초기화 예제
++#
++# 대상: Tizen on BCM2711 (ARMv7 32bit, RAM 1.5GB)
++# 커널: 6.12+ (algorithm_params sysfs 지원 필요)
++#
++# 의존성:
++#   - CONFIG_ZRAM=y
++#   - CONFIG_ZRAM_BACKEND_ZSTD=y
++#   - CONFIG_ZRAM_DEF_COMP_ZSTD=y (or set comp_algorithm manually)
++#
++# 실행 순서 (중요):
++#   comp_algorithm → algorithm_params → disksize → mkswap → swapon
++#   disksize 설정 후에는 comp_algorithm, algorithm_params 변경 불가 (EBUSY)
++#
++# ===========================================================================
++
++set -e
++
++ZRAM_DEV="/dev/zram0"
++ZRAM_SYS="/sys/block/zram0"
++
++# ARMv7 1.5GB RAM 기준: 스왑 크기 = RAM의 50~67%
++# zstd+dict 압축률 ~3.5:1 가정 시 실제 점유 메모리 ≈ 286MB
++ZRAM_SIZE="1G"
++
++# 딕셔너리 파일 경로 (rootfs에 포함, 부팅 초기 접근 가능해야 함)
++DICT_PATH="/etc/zram/zstd.dict"
++
++# zstd 압축 레벨 (1~22, zram 기본=3)
++# ARMv7에서 레벨 1: ~압축률 3.0:1, 지연 ~10us
++# ARMv7에서 레벨 3: ~압축률 3.5:1, 지연 ~25us  ← 권장
++# 레벨 5 이상은 스왑 I/O 레이턴시 증가로 비권장
++ZSTD_LEVEL=3
++
++# ===========================================================================
++# 사전 조건 확인
++# ===========================================================================
++
++if [ ! -b "$ZRAM_DEV" ]; then
++    echo "zram: $ZRAM_DEV not found, loading module..."
++    modprobe zram num_devices=1 || { echo "zram: modprobe failed"; exit 1; }
++fi
++
++if [ ! -f "$DICT_PATH" ]; then
++    echo "zram: dictionary not found at $DICT_PATH, using no-dict mode"
++    DICT_PATH=""
++fi
++
++# ===========================================================================
++# Step 1: 압축 알고리즘 설정
++# 반드시 disksize 설정 전에 해야 함
++# ===========================================================================
++
++echo "zstd" > "${ZRAM_SYS}/comp_algorithm"
++echo "zram: comp_algorithm set to zstd"
++
++# ===========================================================================
++# Step 2: algorithm_params — 딕셔너리 + 레벨 설정
++# 반드시 disksize 설정 전에 해야 함
++#
++# 파라미터 형식: "key=value key=value ..."
++#   algo=NAME      : 알고리즘 이름으로 우선순위 자동 선택
++#   priority=N     : 우선순위 직접 지정 (0=primary, 1~3=secondary)
++#   level=N        : 압축 레벨
++#   dict=/path     : 딕셔너리 파일 경로 (커널이 직접 읽음, GFP_KERNEL)
++#
++# 주의(ARMv7): kernel_read_file_from_path()는 vmalloc으로 dict 버퍼를
++#   할당하므로 HIGHMEM 영역 주의. 4K 정렬 보장됨.
++# ===========================================================================
++
++if [ -n "$DICT_PATH" ]; then
++    printf "algo=zstd level=%d dict=%s" "$ZSTD_LEVEL" "$DICT_PATH" \
++        > "${ZRAM_SYS}/algorithm_params"
++    echo "zram: algorithm_params set (level=${ZSTD_LEVEL}, dict=${DICT_PATH})"
++else
++    printf "algo=zstd level=%d" "$ZSTD_LEVEL" \
++        > "${ZRAM_SYS}/algorithm_params"
++    echo "zram: algorithm_params set (level=${ZSTD_LEVEL}, no dict)"
++fi
++
++# ===========================================================================
++# Step 3: 디스크 크기 설정 — 이 시점부터 알고리즘 변경 불가
++# ===========================================================================
++
++echo "$ZRAM_SIZE" > "${ZRAM_SYS}/disksize"
++echo "zram: disksize set to ${ZRAM_SIZE}"
++
++# ===========================================================================
++# Step 4: 스왑 초기화 및 활성화
++# ARMv7 note: mkswap은 userspace, swapd는 커널 kswapd 스레드 사용
++# ===========================================================================
++
++mkswap "$ZRAM_DEV"
++# 우선순위 100: 일반 디스크 스왑(-1~0)보다 높게, 항상 먼저 사용
++swapon -p 100 "$ZRAM_DEV"
++echo "zram: swap activated on ${ZRAM_DEV} (priority=100)"
++
++# ===========================================================================
++# 검증 (선택)
++# ===========================================================================
++
++echo "=== zram status ==="
++cat "${ZRAM_SYS}/mm_stat"
++# 출력 형식:
++# orig_data_size compr_data_size mem_used_total mem_limit mem_used_max \
++#   same_pages pages_compacted huge_pages huge_pages_since
++# compr / orig 비율로 실제 압축률 확인 가능
++
++# ===========================================================================
++# 딕셔너리 학습 방법 (오프라인, 별도 실행)
++# ===========================================================================
++#
++# 1. 타겟 시스템에서 대표 페이지 샘플 수집:
++#
++#    mkdir -p /tmp/zram-samples
++#    # zram이 swap으로 활성화된 상태에서 충분히 사용 후:
++#    # /dev/zram0에서 raw 압축 데이터 직접 학습은 불가 (압축 포맷)
++#    # 대신 /proc/$pid/mem에서 실제 익명 페이지를 샘플링:
++#    for pid in $(ls /proc | grep -E '^[0-9]+$' | head -50); do
++#        dd if=/proc/$pid/mem bs=4096 count=4 skip=128 \
++#           of=/tmp/zram-samples/${pid}.bin 2>/dev/null || true
++#    done
++#
++# 2. 샘플을 4K 단위 청크로 분리:
++#
++#    cd /tmp/zram-samples
++#    for f in *.bin; do
++#        split -b 4096 "$f" "chunk_${f%.bin}_"
++#    done
++#    ls chunk_* | wc -l   # 최소 500개 이상 권장
++#
++# 3. zstd 딕셔너리 학습 (호스트에서, zstd 1.4+ 필요):
++#
++#    zstd --train /tmp/zram-samples/chunk_* \
++#         --maxdict=112640 \
++#         -o /tmp/zstd.dict
++#    # --maxdict=110KB: zstd 내부 최적 크기 (112640 = 110*1024)
++#    # 결과 파일 크기는 보통 64~112KB
++#
++# 4. 딕셔너리를 타겟 rootfs에 포함:
++#
++#    install -D -m 644 /tmp/zstd.dict ${ROOTFS}/etc/zram/zstd.dict
++#
++# ===========================================================================
+commit 0eb2748f5d698124d24a6368936992af889ac9de
+Author: lhmax2025 <hao.lin@samsung.com>
+Date:   Fri Jul 3 11:32:38 2026 +0800
+
+    packaging: enable MLGO for clang kernel builds
+
+diff --git a/packaging/linux-rpi.spec b/packaging/linux-rpi.spec
+index 5d0a708049a6..58bf73d1c16b 100644
+--- a/packaging/linux-rpi.spec
++++ b/packaging/linux-rpi.spec
+@@ -10,6 +10,12 @@
+ %endif
+ %define target_board rpi4
+ %define variant %{buildarch}-%{target_board}
++%define mlgo_kernel_release_flags -mllvm=-regalloc-enable-advisor=release -mllvm=-enable-ml-inliner=release
++%ifarch armv7l aarch64
++%define mlgo_kernel_kcflags %{mlgo_kernel_release_flags}
++%else
++%define mlgo_kernel_kcflags %{?_with_mlgo:%{mlgo_kernel_release_flags}}
++%endif
+ 
+ Name: rpi4-linux-kernel
+ Summary: The Linux Kernel for Raspberry Pi4
+@@ -163,12 +169,25 @@ cp %{SOURCE1001} .
+ %{?asan:/usr/bin/gcc-unforce-options}
+ %{?ubsan:/usr/bin/gcc-unforce-options}
+ 
++KERNEL_KCFLAGS=
+ %{?_toolchain:
+ %if %{toolchain_is clang}
+ export LLVM=1
++KERNEL_KCFLAGS="%{mlgo_kernel_kcflags}"
++if [ -n "${KERNEL_KCFLAGS}" ]; then
++    echo "Using MLGO kernel KCFLAGS: ${KERNEL_KCFLAGS}"
++fi
+ %endif
+ }
+ 
++kernel_make() {
++    if [ -n "${KERNEL_KCFLAGS}" ]; then
++        make "$@" KCFLAGS="${KERNEL_KCFLAGS}"
++    else
++        make "$@"
++    fi
++}
++
+ %if "%{dev_wos}" == "1"
+ # build as permissive mode
+ ./scripts/config --file arch/%{buildarch}/configs/%{config_name} -u CONFIG_SECURITY_SMACK -u CONFIG_SECURITY_SMACK_APPEND_SIGNALS -e CONFIG_NETLABEL -e CONFIG_SECURITY_NETWORK
+@@ -179,12 +198,12 @@ for target in %{variant} %{variant}-rt; do
+     echo "-${target}" > localversion-tizen
+ 
+     # extract uapi headers
+-    make O=build/${target} headers_install %{?_smp_mflags}
++    kernel_make O=build/${target} headers_install %{?_smp_mflags}
+ 
+     # Set config file
+     case $target in
+ 	%{variant})
+-	    make O=build/${target} %{config_name} %{?_smp_mflags}
++	    kernel_make O=build/${target} %{config_name} %{?_smp_mflags}
+ 
+             # Build perf
+ 	    # WERROR=0 make O=build/${target} -s -C tools/lib/traceevent %{?_smp_mflags}
+@@ -195,18 +214,18 @@ for target in %{variant} %{variant}-rt; do
+ 
+ 	;;
+ 	%{variant}-rt)
+-	    make O=build/${target} %{config_name_rt} %{?_smp_mflags}
++	    kernel_make O=build/${target} %{config_name_rt} %{?_smp_mflags}
+ 	;;
+     esac
+ 
+     # Build Image/Image.gz
+-    make O=build/${target} %{?_smp_mflags}
++    kernel_make O=build/${target} %{?_smp_mflags}
+ 
+     # Build dtbs
+-    make O=build/${target} dtbs %{?_smp_mflags}
++    kernel_make O=build/${target} dtbs %{?_smp_mflags}
+ 
+     # Build modules
+-    make O=build/${target} modules %{?_smp_mflags}
++    kernel_make O=build/${target} modules %{?_smp_mflags}
+ 
+     if [ "${target}" = "%{variant}" ]; then
+        # Create directory for BTF data
+@@ -221,12 +240,22 @@ done
+ %install
+ QA_SKIP_BUILD_ROOT="DO_NOT_WANT"; export QA_SKIP_BUILD_ROOT
+ 
++KERNEL_KCFLAGS=
+ %{?_toolchain:
+ %if %{toolchain_is clang}
+ export LLVM=1
++KERNEL_KCFLAGS="%{mlgo_kernel_kcflags}"
+ %endif
+ }
+ 
++kernel_make() {
++    if [ -n "${KERNEL_KCFLAGS}" ]; then
++        make "$@" KCFLAGS="${KERNEL_KCFLAGS}"
++    else
++        make "$@"
++    fi
++}
++
+ # Destination directories
+ mkdir -p %{buildroot}/boot
+ mkdir -p %{buildroot}/lib/modules
+@@ -247,7 +276,7 @@ mkdir -p %{buildroot}/boot/overlays
+ install -m 644 build/%{variant}/arch/%{buildarch}/boot/dts/overlays/*.dtb* %{buildroot}/boot/overlays/
+ 
+ # Install kernel headers
+-make O=build/%{variant} headers_install %{?_smp_mflags} INSTALL_HDR_PATH=%{buildroot}/usr
++kernel_make O=build/%{variant} headers_install %{?_smp_mflags} INSTALL_HDR_PATH=%{buildroot}/usr
+ 
+ for target in %{variant} %{variant}-rt; do
+     # Install kernel binary
+@@ -286,7 +315,7 @@ for target in %{variant} %{variant}-rt; do
+     esac
+ 
+     # Install modules
+-    make O=build/${target} INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%{buildroot} modules_install
++    kernel_make O=build/${target} INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%{buildroot} modules_install
+ 
+     # Copy files for devel package
+     mkdir -p %{buildroot}/boot/kernel/devel/kernel-devel-${target}
+commit 7459b2911b5224bba424b8fc47905437240f8fe3
+Author:     Jaehoon Chung <jh80.chung@samsung.com>
+AuthorDate: Thu Aug 20 13:59:06 2026 +0900
+Commit:     Jaehoon Chung <jh80.chung@samsung.com>
+CommitDate: Thu Aug 20 13:59:06 2026 +0900
+
+    lib/lz4: Allow the fast decode loop on armv7
+    
+    The in-kernel LZ4 decompressor picks LZ4_FAST_DEC_LOOP the way upstream
+    v1.10.0 does, i.e. on x86/x86_64 and on arm64 with a non-clang compiler.
+    armv7 is not on that list, so on ARCH=arm the whole fast loop is compiled
+    out even though it measures faster there.
+    
+    The fast loop copies a fixed 32 bytes per sequence instead of taking an
+    unpredictable branch, and only engages while at least
+    FASTLOOP_SAFE_DISTANCE (64) bytes of output space remain, so the overwrite
+    is always in bounds.
+    
+    Add CONFIG_LZ4_DECOMPRESS_FAST_LOOP as an additional way to select it,
+    defaulting to y on armv7 (CPU_V7) unless the kernel is size-optimised.
+    The existing architecture tests are left in front of it, so x86 and arm64
+    keep using the fast loop unconditionally and nothing changes for them.
+    
+    This only affects the LZ4_decompress_safe*() family, which goes through
+    LZ4_decompress_generic() and is what erofs, squashfs, f2fs, zram, the
+    crypto API and initramfs decompression use. LZ4_decompress_fast() has its
+    own LZ4_decompress_unsafe_generic() implementation since the v1.10.0
+    rebase, so lib/decompress_unlz4.c, used for self-decompressing kernel
+    images, is unaffected.
+    
+    Measured on armv7-a (gcc 13.3.0 -O2 -march=armv7-a), decoding a 5.6 MB
+    kernel-source payload split into independent LZ4 blocks:
+    
+      chunk    CONFIG=n     CONFIG=y
+      4 KiB    732 MB/s     779 (+6.4%)
+      64 KiB   644 MB/s     687 (+6.1%)
+    
+    .text of lib/lz4/lz4_decompress.o in a tizen_bcm2711_defconfig build:
+    
+      CONFIG=n     10344
+      CONFIG=y     18260 (+7916, +77%)
+    
+    That is why size-optimised builds are excluded. With the option off the
+    generated code is unchanged, so builds that do not opt in are unaffected.
+    
+    Change-Id: I5585272677a3c1816c1b3b36e5c654e8ea1564a2
+    Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+M	lib/Kconfig
+M	lib/lz4/lz4_decompress.c
+
+commit 7b64cf4f10651b0419cdd3f9e6a5ae2653222b06
+Author:     Jaehoon Chung <jh80.chung@samsung.com>
+AuthorDate: Thu Aug 20 13:39:58 2026 +0900
+Commit:     Jaehoon Chung <jh80.chung@samsung.com>
+CommitDate: Thu Aug 20 13:39:58 2026 +0900
+
+    lib: lz4: Sync LZ4HC_CCtx_internal with lz4 v1.10.0
+    
+    Commit 1051099cb8da ("lib: lz4: Update lz4 version to v1.10.0 from
+    v1.8.3") updated lib/lz4/lz4hc_compress.c to the v1.10.0 implementation
+    and updated LZ4_stream_t_internal in include/linux/lz4.h, but left
+    LZ4HC_CCtx_internal at the old v1.8.3 layout. As a result the HC
+    compressor fails to build:
+    
+      lib/lz4/lz4hc_compress.c:152:58: error: 'LZ4HC_CCtx_internal' has no
+          member named 'prefixStart'
+      lib/lz4/lz4hc_compress.c:164:12: error: 'LZ4HC_CCtx_internal' has no
+          member named 'dictStart'
+      lib/lz4/lz4hc_compress.c:988:20: error: 'LZ4HC_CCtx_internal' has no
+          member named 'dirty'
+      lib/lz4/lz4hc_compress.c:1117:15: error: 'LZ4HC_CCtx_internal' has no
+          member named 'dictCtx'
+      make[4]: *** [scripts/Makefile.build:244: lib/lz4/lz4hc_compress.o] Error 1
+    
+    Bring the structure in line with upstream v1.10.0:
+    
+      - rename base to prefixStart and dictBase to dictStart
+      - change compressionLevel to short, matching the (short) cast in
+        LZ4_setCompressionLevel()
+      - add the favorDecSpeed and dirty flags
+      - add the dictCtx back-pointer, which requires a named struct so that
+        it can refer to its own type
+    
+    The resulting size is 131072 + 131072 + 24 + 12 + 4 + 8 = 262192 bytes on
+    64-bit, exactly LZ4_STREAMHCSIZE, so LZ4_streamHC_t is unchanged and
+    users that treat it as opaque (e.g. drivers/block/zram/backend_lz4hc.c)
+    are not affected.
+    
+    Fixes: 1051099cb8da ("lib: lz4: Update lz4 version to v1.10.0 from v1.8.3")
+    Change-Id: I9b7e23e571c2553eb1cb64fe3d1f099ec1ea6517
+    Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+M	include/linux/lz4.h
+
+commit 1051099cb8da4e750cb4b21ebdad2e77b709b83c
+Author:     Jaehoon Chung <jh80.chung@samsung.com>
+AuthorDate: Thu Aug 20 11:46:33 2026 +0900
+Commit:     Jaehoon Chung <jh80.chung@samsung.com>
+CommitDate: Thu Aug 20 13:31:03 2026 +0900
+
+    lib: lz4: Update lz4 version to v1.10.0 from v1.8.3
+    
+    This patch is provided by VD.
+    
+    Change-Id: Ifedc3fb99c003aa2da659b60cc1a7eb35d941c32
+    Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+M	include/linux/lz4.h
+M	lib/lz4/lz4_compress.c
+M	lib/lz4/lz4_decompress.c
+M	lib/lz4/lz4defs.h
+M	lib/lz4/lz4hc_compress.c

@@ -1,0 +1,85 @@
+commit 478d7fd169c2d7489bad1d52d69f037e4e830286
+Author: Dongwoo Lee <dwoo08.lee@samsung.com>
+Date:   Mon Aug 3 14:44:43 2020 +0900
+
+    mm: memcontrol: Add force_reclaim to reclaim tasks' memory in memcg
+    
+    These days, platforms tend to manage memory on low memory state
+    like andloid's lowmemory killer. These platforms might want to
+    reclaim memory from background tasks as well as kill victims
+    to guarantee free memory at use space level. This patch provides
+    an interface to reclaim a given memcg. After platform's low memory
+    handler moves tasks that the platform wants to reclaim to
+    a memcg and decides how many pages should be reclaimed, it can
+    reclaim the pages from the tasks by writing the number of pages
+    at memory.force_reclaim.
+    
+    Signed-off-by: Hyunhee Kim <hyunhee.kim@samsung.com>
+    Signed-off-by: Kyungmin Park <kyungmin.park@samsung.com>
+    [dwoo08.lee: ported from mailing list https://www.spinics.net/lists/cgroups/msg07874.html]
+    Signed-off-by: Dongwoo Lee <dwoo08.lee@samsung.com>
+    [mszyprow: adapted for the changes from e55b9f96860f ("mm: memcontrol: drop
+     dead CONFIG_MEMCG_SWAP config symbol") in Linux v6.1]
+    Signed-off-by: Marek Szyprowski <m.szyprowski@samsung.com>
+    
+    [Hoegeun: adapted for the changes from v6.12 kernel,
+     from v6.6 kernel:
+     9c173b44f924 mm: memcontrol: Add force_reclaim to reclaim tasks' memory in memc]
+    Signed-off-by: Hoegeun Kwon <hoegeun.kwon@samsung.com>
+    
+    Change-Id: Ie012e49a7e6bd9e2e00b201f1c8ec0a161d8a6ae
+
+diff --git a/mm/memcontrol-v1.c b/mm/memcontrol-v1.c
+index f8744f5630bb..51b996c24819 100644
+--- a/mm/memcontrol-v1.c
++++ b/mm/memcontrol-v1.c
+@@ -2421,6 +2421,36 @@ static ssize_t mem_cgroup_force_empty_write(struct kernfs_open_file *of,
+ 	return mem_cgroup_force_empty(memcg) ?: nbytes;
+ }
+ 
++#if defined(CONFIG_MEMCG_V1) && defined(CONFIG_SWAP)
++static int mem_cgroup_force_reclaim(struct cgroup_subsys_state *css,
++				struct cftype *cft, u64 val)
++{
++	struct mem_cgroup *memcg = mem_cgroup_from_css(css);
++	unsigned long nr_to_reclaim = val;
++	unsigned long total = 0;
++	int loop;
++
++	for (loop = 0; loop < MEM_CGROUP_MAX_RECLAIM_LOOPS; loop++) {
++		total += try_to_free_mem_cgroup_pages(memcg, nr_to_reclaim,
++						GFP_KERNEL, true, NULL);
++
++		/*
++		 * If nothing was reclaimed after two attempts, there
++		 * may be no reclaimable pages in this hierarchy.
++		 * If more than nr_to_reclaim pages were already reclaimed,
++		 * finish force reclaim.
++		 */
++		if (loop && (!total || total > nr_to_reclaim))
++			break;
++	}
++
++	pr_info("%s: [Mem_reclaim] Loop: %d - Total_reclaimed: %lu - nr_to_reclaim: %lu\n",
++		__func__, loop, total, nr_to_reclaim);
++
++	return total;
++}
++#endif
++
+ static u64 mem_cgroup_hierarchy_read(struct cgroup_subsys_state *css,
+ 				     struct cftype *cft)
+ {
+@@ -3050,6 +3080,12 @@ struct cftype memsw_files[] = {
+ 		.write = mem_cgroup_reset,
+ 		.read_u64 = mem_cgroup_read_u64,
+ 	},
++#if defined(CONFIG_MEMCG_V1) && defined(CONFIG_SWAP)
++	{
++		.name = "force_reclaim",
++		.write_u64 = mem_cgroup_force_reclaim,
++	},
++#endif
+ 	{ },	/* terminate */
+ };
+ 

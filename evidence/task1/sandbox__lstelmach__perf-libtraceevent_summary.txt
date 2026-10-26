@@ -1,0 +1,14 @@
+branch=sandbox/lstelmach/perf-libtraceevent
+tip=513cc7e74e7809f4feda06372a82202b88924086
+merge_base_tizen=ffc253263a1375a65fa6c9f62a893e9767fbebfa
+full_ahead=13784 full_behind=112095
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/lstelmach/perf-libtraceevent --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=2
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__lstelmach__perf-libtraceevent_ahead_01.txt: bytes=849978 sha256=e85f78c9e16adc4928ae39dc18bc733f0a6b4817997f1bc04c38bdc43681a28c
+sandbox__lstelmach__perf-libtraceevent_ahead_02.txt: bytes=849924 sha256=09f0ccd7f821c070923791381d4b28152bc514513e5088b78997657051ed81d5
+sandbox__lstelmach__perf-libtraceevent_ahead_03.txt: bytes=540591 sha256=e7efe2e44344e6211b30c1b852211a11f644c1234e6a7f213ab59ebf71526cdd
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+513cc7e74e7809f4feda06372a82202b88924086	Łukasz Stelmach <l.stelmach@samsung.com>	2024-11-20T13:56:02+01:00	tizen: Link perf against libtraceevent
+b4db5c6872b5a36f21093fdeaa4779ca9931b81f	Łukasz Stelmach <l.stelmach@samsung.com>	2024-11-20T19:59:58+01:00	packaging: Do not build perf twice

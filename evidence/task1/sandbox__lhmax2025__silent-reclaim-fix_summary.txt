@@ -1,0 +1,11 @@
+branch=sandbox/lhmax2025/silent-reclaim-fix
+tip=a9cc39b8dd1deaa8c9cb5ae45cb815526f3dd87a
+merge_base_tizen=42aeefac58edeb081aff440f0b60be71cbe49755
+full_ahead=1 full_behind=0
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/lhmax2025/silent-reclaim-fix --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=1
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__lhmax2025__silent-reclaim-fix_ahead_01.txt: bytes=163 sha256=5ee2d7859788d468344994f4e9764aba1386792f6a379035099ea56b836202be
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+a9cc39b8dd1deaa8c9cb5ae45cb815526f3dd87a	He Fangyu <fangyu.he@samsung.com>	2026-10-19T10:13:06+08:00	mm: restore vendor reclaim semantics and enable zram backends

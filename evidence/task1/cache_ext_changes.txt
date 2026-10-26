@@ -1,0 +1,629 @@
+commit c9bf4b7ea8f543a53949d86818075057ae5f4154
+Author:     Mateusz Majewski <m.majewski2@samsung.com>
+AuthorDate: Wed Jul 29 16:51:57 2026 +0200
+Commit:     Mateusz Majewski <m.majewski2@samsung.com>
+CommitDate: Wed Jul 29 16:52:40 2026 +0200
+
+    Reduce the debugging stuff for now
+    
+    Works fine without it, including the NULL checks.
+
+M	mm/memcontrol.c
+
+commit c44209156abc23243dfaca4c60c4987b6da15cf2
+Author:     Mateusz Majewski <m.majewski2@samsung.com>
+AuthorDate: Wed Jul 8 16:55:32 2026 +0200
+Commit:     Mateusz Majewski <m.majewski2@samsung.com>
+CommitDate: Wed Jul 8 16:55:32 2026 +0200
+
+    AAAAAAAAAAAAAAAAAAAAAAAAA
+
+M	arch/arm64/configs/tizen_bcm2711_defconfig
+M	mm/memcontrol.c
+M	mm/vmscan.c
+
+commit 412b0e335086510b87d5a744f73f526e0cebd16b
+Author:     Mateusz Majewski <m.majewski2@samsung.com>
+AuthorDate: Mon Jun 22 16:09:42 2026 +0200
+Commit:     Mateusz Majewski <m.majewski2@samsung.com>
+CommitDate: Mon Jun 22 16:13:15 2026 +0200
+
+    debug -> DYNAMIC_DEBUG
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	arch/arm64/configs/tizen_bcm2711_defconfig
+M	mm/filemap.c
+M	mm/swap.c
+M	mm/vmscan.c
+
+commit 385ed10fb744f46329bfad3bdce648bac25426a8
+Author:     Mateusz Majewski <m.majewski2@samsung.com>
+AuthorDate: Fri Jun 19 15:29:04 2026 +0200
+Commit:     Mateusz Majewski <m.majewski2@samsung.com>
+CommitDate: Fri Jun 19 15:29:04 2026 +0200
+
+    AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+M	arch/arm64/configs/tizen_bcm2711_defconfig
+
+commit ea27ca2bc1cd540b2aa05ed8f8601680c1ff10f9
+Author:     Mateusz Majewski <m.majewski2@samsung.com>
+AuthorDate: Wed Jun 17 16:48:07 2026 +0200
+Commit:     Mateusz Majewski <m.majewski2@samsung.com>
+CommitDate: Wed Jun 17 16:48:07 2026 +0200
+
+    debug
+
+M	mm/filemap.c
+M	mm/swap.c
+M	mm/vmscan.c
+
+commit 81aabdb62a6d2ffe8d37206630446797b6338a3c
+Author:     Mateusz Majewski <m.majewski2@samsung.com>
+AuthorDate: Mon Jun 15 15:55:29 2026 +0200
+Commit:     Mateusz Majewski <m.majewski2@samsung.com>
+CommitDate: Mon Jun 15 15:55:29 2026 +0200
+
+    v1
+
+M	kernel/bpf/bpf_struct_ops.c
+
+commit f4f0e7824be423b8c8d1eb0b7b58a2adc27eba00
+Author:     Mateusz Majewski <m.majewski2@samsung.com>
+AuthorDate: Wed Jun 3 14:52:47 2026 +0200
+Commit:     Mateusz Majewski <m.majewski2@samsung.com>
+CommitDate: Fri Jun 5 16:05:10 2026 +0200
+
+    wip
+
+M	kernel/bpf/bpf_struct_ops.c
+M	mm/cache_ext.c
+M	mm/cache_ext_ds.c
+
+commit cd5e642ebeee9630a1ae608606326a4600de694b
+Author:     Yannis Zarkadas <yanniszark@gmail.com>
+AuthorDate: Mon Mar 11 17:12:18 2024 -0400
+Commit:     Mateusz Majewski <m.majewski2@samsung.com>
+CommitDate: Mon Jun 1 17:05:48 2026 +0200
+
+    page_cache_ext
+
+M	arch/arm/configs/tizen_bcm2711_defconfig
+M	include/linux/bpf-cgroup-defs.h
+M	include/linux/bpf.h
+M	include/linux/bpf_types.h
+M	include/linux/btf_ids.h
+A	include/linux/cache_ext.h
+M	include/linux/hashtable.h
+M	include/linux/memcontrol.h
+M	include/linux/mm_types.h
+M	include/trace/events/filemap.h
+M	include/uapi/linux/bpf.h
+M	kernel/bpf/bpf_struct_ops.c
+M	kernel/bpf/cgroup.c
+M	kernel/bpf/syscall.c
+M	kernel/bpf/verifier.c
+M	kernel/trace/bpf_trace.c
+A	mglru_notes.md
+M	mm/Makefile
+A	mm/cache_ext.c
+A	mm/cache_ext_ds.c
+M	mm/filemap.c
+M	mm/memcontrol-v1.c
+M	mm/memcontrol-v1.h
+M	mm/memcontrol.c
+A	mm/page_cache_ext_ds.h
+M	mm/readahead.c
+M	mm/swap.c
+M	mm/vmscan.c
+M	net/bpf/bpf_dummy_struct_ops.c
+M	net/ipv4/bpf_tcp_ca.c
+M	tools/include/uapi/linux/bpf.h
+M	tools/lib/bpf/libbpf.c
+M	tools/lib/bpf/libbpf.h
+M	tools/lib/bpf/libbpf.map
+diff --git a/mm/filemap.c b/mm/filemap.c
+index d8d9c0f0beb6..c04d79aca4bf 100644
+--- a/mm/filemap.c
++++ b/mm/filemap.c
+@@ -227,7 +227,14 @@ static void filemap_unaccount_folio(struct address_space *mapping,
+ void __filemap_remove_folio(struct folio *folio, void *shadow)
+ {
+ 	struct address_space *mapping = folio->mapping;
+-
++	/* cache_ext: folio_evicted hook */
++	struct mem_cgroup *memcg = folio_memcg(folio);
++	struct cache_ext_ops *pcext_ops = get_cache_ext_ops(memcg);
++	if (pcext_ops != NULL && pcext_ops->folio_evicted != NULL)
++		pcext_ops->folio_evicted(folio);
++
++	if (memcg->cache_ext_valid)
++		valid_folios_del(folio);
+ 	trace_mm_filemap_delete_from_page_cache(folio);
+ 	filemap_unaccount_folio(mapping, folio);
+ 	page_cache_delete(mapping, folio, shadow);
+@@ -337,7 +344,14 @@ void delete_from_page_cache_batch(struct address_space *mapping,
+ 	xa_lock_irq(&mapping->i_pages);
+ 	for (i = 0; i < folio_batch_count(fbatch); i++) {
+ 		struct folio *folio = fbatch->folios[i];
+-
++		/* cache_ext: folio_evicted hook */
++		struct mem_cgroup *memcg = folio_memcg(folio);
++		struct cache_ext_ops *pcext_ops = get_cache_ext_ops(memcg);
++		if (pcext_ops != NULL && pcext_ops->folio_evicted != NULL)
++			pcext_ops->folio_evicted(folio);
++
++		if (memcg->cache_ext_valid)
++			valid_folios_del(folio);
+ 		trace_mm_filemap_delete_from_page_cache(folio);
+ 		filemap_unaccount_folio(mapping, folio);
+ 	}
+@@ -948,6 +962,15 @@ noinline int __filemap_add_folio(struct address_space *mapping,
+ 	if (xas_error(&xas))
+ 		goto error;
+ 
++	struct mem_cgroup *memcg = folio_memcg(folio);
++	/* cache_ext: Maintain the valid folios hashtable */
++	if (memcg->cache_ext_valid)
++		valid_folios_add(folio);
++	/* cache_ext: folio_added hook */
++	struct cache_ext_ops *pcext_ops = get_cache_ext_ops(memcg);
++	if (pcext_ops != NULL && pcext_ops->folio_added != NULL)
++		pcext_ops->folio_added(folio);
++
+ 	trace_mm_filemap_add_to_page_cache(folio);
+ 	return 0;
+ error:
+@@ -2393,6 +2416,28 @@ static int filemap_read_folio(struct file *file, filler_t filler,
+ 	return -EIO;
+ }
+ 
++static int filemap_read_folio_cache_ext(struct file *file, filler_t filler,
++		struct folio *folio)
++{
++	bool workingset = folio_test_workingset(folio);
++	unsigned long pflags;
++	int error;
++
++	/* Start the actual read. The read will unlock the page. */
++	if (unlikely(workingset))
++		psi_memstall_enter(&pflags);
++	error = filler(file, folio);
++	if (unlikely(workingset))
++		psi_memstall_leave(&pflags);
++	if (error)
++		return error;
++
++	error = folio_wait_locked_killable(folio);
++	if (error)
++		return error;
++	return 0;
++}
++
+ static bool filemap_range_uptodate(struct address_space *mapping,
+ 		loff_t pos, size_t count, struct folio *folio,
+ 		bool need_uptodate)
+@@ -2533,6 +2578,47 @@ static int filemap_readahead(struct kiocb *iocb, struct file *file,
+ 	return 0;
+ }
+ 
++static int __cache_ext_dio(struct file *file, struct address_space *mapping,
++			     struct kiocb *iocb, size_t count,
++			     struct folio_batch *fbatch)
++{
++	struct folio *folio;
++	pgoff_t index = (iocb->ki_pos >> PAGE_SHIFT);
++	pgoff_t last_index = DIV_ROUND_UP(iocb->ki_pos + count, PAGE_SIZE);
++	int error;
++	for (size_t i = index; i < last_index; ++i) {
++		folio = filemap_alloc_folio(mapping_gfp_mask(mapping), 0);
++		if (!folio) {
++			if (i == index)
++				return -ENOMEM;
++			// We added some folios that we want to copy and then
++			// free, so this could fix our OOM
++			return 1;
++		}
++
++		filemap_invalidate_lock_shared(mapping);
++		__folio_set_locked(folio);
++
++		folio_ref_add(folio, folio_nr_pages(folio));
++		folio->mapping = mapping;
++		folio->index = i;
++		error = filemap_read_folio_cache_ext(
++			file, mapping->a_ops->read_folio, folio);
++		filemap_invalidate_unlock_shared(mapping);
++		if (error) {
++			if (i == index)
++				return error;
++			return 1;
++		}
++
++		// Don't overflow fbatch
++		if (!folio_batch_add(fbatch, folio))
++			break;
++	}
++	// Return 1 to signify cache_ext approach
++	return 1;
++}
++
+ static int filemap_get_pages(struct kiocb *iocb, size_t count,
+ 		struct folio_batch *fbatch, bool need_uptodate)
+ {
+@@ -2544,6 +2630,7 @@ static int filemap_get_pages(struct kiocb *iocb, size_t count,
+ 	struct folio *folio;
+ 	unsigned int flags;
+ 	int err = 0;
++	bool ret = false;
+ 
+ 	/* "last_index" is the index of the page beyond the end of the read */
+ 	last_index = DIV_ROUND_UP(iocb->ki_pos + count, PAGE_SIZE);
+@@ -2553,6 +2640,29 @@ static int filemap_get_pages(struct kiocb *iocb, size_t count,
+ 
+ 	filemap_get_read_batch(mapping, index, last_index - 1, fbatch);
+ 	if (!folio_batch_count(fbatch)) {
++		struct mem_cgroup *memcg;
++		struct cache_ext_ops *cache_ext_ops;
++
++		/* Run cache_ext admission hook */
++		rcu_read_lock();
++
++		memcg = mem_cgroup_from_task(current);
++		cache_ext_ops = get_cache_ext_ops(memcg);
++		if (cache_ext_ops && cache_ext_ops->admit_folio) {
++			struct cache_ext_admission_ctx ctx = {
++				.ino = filp->f_inode->i_ino,
++				.offset = iocb->ki_pos,
++				.size = count,
++			};
++			ret = cache_ext_ops->admit_folio(&ctx);
++		}
++
++		rcu_read_unlock();
++
++		/* Admission hook decided not to add to page cache */
++		if (ret)
++			return __cache_ext_dio(filp, mapping, iocb, count, fbatch);
++
+ 		if (iocb->ki_flags & IOCB_NOIO)
+ 			return -EAGAIN;
+ 		if (iocb->ki_flags & IOCB_NOWAIT)
+@@ -2628,7 +2738,7 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
+ 	struct address_space *mapping = filp->f_mapping;
+ 	struct inode *inode = mapping->host;
+ 	struct folio_batch fbatch;
+-	int i, error = 0;
++	int i, error = 0, cache_ext_flag = 0;
+ 	bool writably_mapped;
+ 	loff_t isize, end_offset;
+ 	loff_t last_pos = ra->prev_pos;
+@@ -2658,6 +2768,8 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
+ 		error = filemap_get_pages(iocb, iter->count, &fbatch, false);
+ 		if (error < 0)
+ 			break;
++		else if (error == 1)
++			cache_ext_flag = 1;
+ 
+ 		/*
+ 		 * i_size must be checked after we know the pages are Uptodate.
+@@ -2696,13 +2808,15 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
+ 
+ 			if (end_offset < folio_pos(folio))
+ 				break;
+-			if (i > 0)
++			if (i > 0 && !cache_ext_flag)
+ 				folio_mark_accessed(folio);
+ 			/*
+ 			 * If users can be writing to this folio using arbitrary
+ 			 * virtual addresses, take care of potential aliasing
+ 			 * before reading the folio on the kernel side.
+ 			 */
++
++			// TODO: investigate
+ 			if (writably_mapped)
+ 				flush_dcache_folio(folio);
+ 
+@@ -2716,10 +2830,17 @@ ssize_t filemap_read(struct kiocb *iocb, struct iov_iter *iter,
+ 				error = -EFAULT;
+ 				break;
+ 			}
++
++			// TODO: drop reference count before freeing?
++			if (cache_ext_flag)
++				filemap_free_folio(mapping, folio);
+ 		}
+ put_folios:
+-		for (i = 0; i < folio_batch_count(&fbatch); i++)
+-			folio_put(fbatch.folios[i]);
++		if (!cache_ext_flag)
++			for (i = 0; i < folio_batch_count(&fbatch); i++)
++				folio_put(fbatch.folios[i]);
++
++		cache_ext_flag = 0;
+ 		folio_batch_init(&fbatch);
+ 	} while (iov_iter_count(iter) && iocb->ki_pos < isize && !error);
+ 
+diff --git a/mm/swap.c b/mm/swap.c
+index ff846915db45..3a6e896adfb3 100644
+--- a/mm/swap.c
++++ b/mm/swap.c
+@@ -459,6 +459,13 @@ static void folio_inc_refs(struct folio *folio)
+  */
+ void folio_mark_accessed(struct folio *folio)
+ {
++	/* cache_ext: folio_accessed hook */
++	struct mem_cgroup *memcg;
++	memcg = folio_memcg(folio);
++	struct cache_ext_ops *pcext_ops = get_cache_ext_ops(memcg);
++	if (pcext_ops != NULL && pcext_ops->folio_accessed != NULL)
++		pcext_ops->folio_accessed(folio);
++
+ 	if (lru_gen_enabled()) {
+ 		folio_inc_refs(folio);
+ 		return;
+diff --git a/mm/vmscan.c b/mm/vmscan.c
+index 4bf027f0bade..044499a1a671 100644
+--- a/mm/vmscan.c
++++ b/mm/vmscan.c
+@@ -10,8 +10,10 @@
+  *  Multiqueue VM started 5.8.00, Rik van Riel.
+  */
+ 
++
+ #define pr_fmt(fmt) KBUILD_MODNAME ": " fmt
+ 
++#include <linux/mm_types.h>
+ #include <linux/mm.h>
+ #include <linux/sched/mm.h>
+ #include <linux/module.h>
+@@ -57,6 +59,7 @@
+ #include <linux/rculist_nulls.h>
+ #include <linux/random.h>
+ #include <linux/mmu_notifier.h>
++#include <linux/hashtable.h>
+ 
+ #include <asm/tlbflush.h>
+ #include <asm/div64.h>
+@@ -70,6 +73,7 @@
+ 
+ #define CREATE_TRACE_POINTS
+ #include <trace/events/vmscan.h>
++#include <linux/bpf.h>
+ 
+ struct scan_control {
+ 	/* How many pages shrink_list() should reclaim */
+@@ -755,6 +759,8 @@ static int __remove_mapping(struct address_space *mapping, struct folio *folio,
+ 	 * and thus under the i_pages lock, then this ordering is not required.
+ 	 */
+ 	refcount = 1 + folio_nr_pages(folio);
++	// TODO: Maybe we need to be getting a refcount in valid_folios_set and
++	// be dropping it here.
+ 	if (!folio_ref_freeze(folio, refcount))
+ 		goto cannot_free;
+ 	/* note: atomic_cmpxchg in folio_ref_freeze provides the smp_rmb */
+@@ -1934,7 +1940,7 @@ static int current_may_throttle(void)
+  * shrink_inactive_list() is a helper for shrink_node().  It returns the number
+  * of reclaimed pages
+  */
+-static unsigned long shrink_inactive_list(unsigned long nr_to_scan,
++static noinline unsigned long shrink_inactive_list(unsigned long nr_to_scan,
+ 		struct lruvec *lruvec, struct scan_control *sc,
+ 		enum lru_list lru)
+ {
+@@ -2206,7 +2212,7 @@ unsigned long reclaim_pages(struct list_head *folio_list)
+ 	return nr_reclaimed;
+ }
+ 
+-static unsigned long shrink_list(enum lru_list lru, unsigned long nr_to_scan,
++static noinline unsigned long shrink_list(enum lru_list lru, unsigned long nr_to_scan,
+ 				 struct lruvec *lruvec, struct scan_control *sc)
+ {
+ 	if (is_active_lru(lru)) {
+@@ -2644,7 +2650,7 @@ static bool should_clear_pmd_young(void)
+ #define get_memcg_gen(seq)	((seq) % MEMCG_NR_GENS)
+ #define get_memcg_bin(bin)	((bin) % MEMCG_NR_BINS)
+ 
+-static struct lruvec *get_lruvec(struct mem_cgroup *memcg, int nid)
++static noinline struct lruvec *get_lruvec(struct mem_cgroup *memcg, int nid)
+ {
+ 	struct pglist_data *pgdat = NODE_DATA(nid);
+ 
+@@ -4358,7 +4364,6 @@ static bool sort_folio(struct lruvec *lruvec, struct folio *folio, struct scan_c
+ 		return true;
+ 	}
+ 
+-	/* waiting for writeback */
+ 	if (folio_test_locked(folio) || folio_test_writeback(folio) ||
+ 	    (type == LRU_GEN_FILE && folio_test_dirty(folio))) {
+ 		gen = folio_inc_gen(lruvec, folio, true);
+@@ -5692,6 +5697,138 @@ static void lru_gen_shrink_node(struct pglist_data *pgdat, struct scan_control *
+ 
+ #endif /* CONFIG_LRU_GEN */
+ 
++/******************************************************************************
++ * cache_ext *************************************************************
++ *****************************************************************************/
++
++static bool cache_ext_isolate_folio(struct folio *folio) {
++	struct lruvec *lruvec;
++	enum lru_list lru;
++
++	if (folio_test_unevictable(folio)) {
++		pr_debug("cache_ext: Failed to isolate because unevictable\n");
++		return false;
++	}
++
++	/* raced with release_pages() */
++	if (!folio_try_get(folio)){
++		pr_debug("cache_ext: Failed to isolate because try_get failed\n");
++		return false;
++	}
++
++	/* raced with another isolation */
++	if (!folio_test_clear_lru(folio)) {
++		pr_debug("cache_ext: Failed to isolate because clear_lru failed\n");
++		folio_put(folio);
++		return false;
++	}
++
++	lruvec = folio_lruvec_lock_irq(folio);
++
++	// What list was this folio in? Find out from the page flags.
++	if (folio_test_anon(folio)) {
++		if (folio_test_active(folio)) {
++			lru = LRU_ACTIVE_ANON;
++		} else {
++			lru = LRU_INACTIVE_ANON;
++		}
++	} else {
++		if (folio_test_active(folio)) {
++			lru = LRU_ACTIVE_FILE;
++		} else {
++			lru = LRU_INACTIVE_FILE;
++		}
++	}
++
++	/* remove from list */
++	list_del(&folio->lru);
++	// TODO: Update lru size
++	long nr_pages = folio_nr_pages(folio);
++	update_lru_size(lruvec, lru, folio_zonenum(folio), -nr_pages);
++	unlock_page_lruvec_irq(lruvec);
++	return true;
++}
++
++static unsigned long __cache_ext_isolate_and_reclaim(struct lruvec *lruvec,
++	long request_nr_to_evict, struct cache_ext_ops *pcext_ops) {
++
++	int ret = 0;
++	LIST_HEAD(free_folios);
++	unsigned long nr_reclaimed = 0, nr_reclaimed_for_batch = 0;
++	struct cache_ext_eviction_ctx ctx;
++	struct valid_folios_set *valid_folios_set = lruvec_to_valid_folios_set(lruvec);
++	pr_debug("cache_ext: Trying to evict %lu pages\n", request_nr_to_evict);
++	for (long request_nr_to_evict_batch = min((long)32, request_nr_to_evict);
++	     request_nr_to_evict > 0;
++		 request_nr_to_evict -= 32) {
++
++		memset(&ctx, 0, sizeof(ctx));
++		ctx.request_nr_folios_to_evict = request_nr_to_evict_batch;
++		pcext_ops->evict_folios(&ctx, lruvec_memcg(lruvec));
++		if (ctx.nr_folios_to_evict > ARRAY_SIZE(ctx.folios_to_evict)) {
++			pr_debug("cache_ext: nr_folios_evicted bigger than array size!\n");
++			ret = 0;
++			goto free;
++		}
++		if (ctx.nr_folios_to_evict == 0) {
++			pr_debug_ratelimited("cache_ext: No pages to evict, nr_folios_to_evict == 0!\n");
++		}
++		if (ctx.nr_folios_to_evict != request_nr_to_evict_batch) {
++			pr_debug("cache_ext: nr_folios_returned_for_eviction(%lu) != nr_folios_requested_for_eviction(%lu)!\n",
++				ctx.nr_folios_to_evict, request_nr_to_evict_batch);
++		}
++		for (int i = 0; i < ctx.nr_folios_to_evict; i++) {
++			struct folio *untrusted_folio_ptr = ctx.folios_to_evict[i];
++			spinlock_t *bucket_lock = valid_folios_set_get_bucket_lock(valid_folios_set, untrusted_folio_ptr);
++
++			spin_lock(bucket_lock);
++			if (!valid_folios_exists_unlocked(valid_folios_set, untrusted_folio_ptr)) {
++				pr_debug("cache_ext: Folio not in valid_folios_set: %p!\n", untrusted_folio_ptr);
++				spin_unlock(bucket_lock);
++				continue;
++			}
++			if (!folio_try_get(untrusted_folio_ptr)) {
++				pr_debug("cache_ext: Failed to get folio ref: %p\n", untrusted_folio_ptr);
++				spin_unlock(bucket_lock);
++				continue;
++			}
++			spin_unlock(bucket_lock);
++			if (!folio_isolate_lru(untrusted_folio_ptr)) {
++				pr_debug("cache_ext: Failed to isolate folio: %p\n", untrusted_folio_ptr);
++				folio_put(untrusted_folio_ptr);
++				continue;
++			}
++			// Free isolated folios
++			list_add(&untrusted_folio_ptr->lru, &free_folios);
++			folio_put(untrusted_folio_ptr);
++		}
++		// TODO: Repurposing this damon function for now. Is it enough?
++		nr_reclaimed_for_batch = reclaim_pages(&free_folios);
++		if (nr_reclaimed_for_batch != ctx.nr_folios_to_evict) {
++			pr_debug("cache_ext: nr_reclaimed(%lu) != request_nr_to_evict(%lu)!\n", nr_reclaimed_for_batch, ctx.nr_folios_to_evict);
++		}
++		nr_reclaimed += nr_reclaimed_for_batch;
++	}
++
++	pr_debug("cache_ext: Reclaimed %lu pages\n", nr_reclaimed);
++	// TODO: Add some watchdog mechanism. If the hook is not performing adequetely, skip it.
++free:
++	return nr_reclaimed;
++}
++
++static noinline unsigned long cache_ext_isolate_and_reclaim(struct lruvec *lruvec, unsigned long nr_to_evict) {
++	struct mem_cgroup *memcg = lruvec_memcg(lruvec);
++	struct cache_ext_ops *pcext_ops = get_cache_ext_ops(memcg);
++	if (pcext_ops != NULL && pcext_ops->evict_folios != NULL) {
++		return __cache_ext_isolate_and_reclaim(lruvec, nr_to_evict, pcext_ops);
++	}
++	return 0;
++}
++
++
++/*****************************************************************************/
++
++
+ static void shrink_lruvec(struct lruvec *lruvec, struct scan_control *sc)
+ {
+ 	unsigned long nr[NR_LRU_LISTS];
+@@ -5728,6 +5865,50 @@ static void shrink_lruvec(struct lruvec *lruvec, struct scan_control *sc)
+ 				sc->priority == DEF_PRIORITY);
+ 
+ 	blk_start_plug(&plug);
++
++	/*
++	 * Page cache extension
++	 */
++	unsigned long nr_to_evict = nr[LRU_INACTIVE_FILE];
++			nr_reclaimed += cache_ext_isolate_and_reclaim(lruvec, nr_to_evict);
++	if (nr_reclaimed > nr[LRU_INACTIVE_FILE]) {
++		nr[LRU_INACTIVE_FILE] = 0;
++	} else {
++		nr[LRU_INACTIVE_FILE] -= nr_reclaimed;
++	}
++
++	// TODO: nr[LRU_INACTIVE_FILE] is actually the number of pages to scan, not
++	// the number of pages to evict. Might need to fix this in the future.
++	if (nr[LRU_INACTIVE_FILE] > 1500) {
++		pr_debug("cache_ext: Got a lot of pages to evict: %lu. Is that normal?\n",
++			nr[LRU_INACTIVE_FILE]);
++	}
++	// If we more or less evicted all the pages we wanted, exit.
++	// Assumptions:
++	// - No swap.
++	// - Unmaintained active list is ok.
++
++	unsigned long long threshold_pct = 80;
++	unsigned long long reclaim_pct = 0;
++	if (nr_to_evict > 0) {
++		reclaim_pct = 100 * nr_reclaimed / nr_to_evict;
++	} else {
++		pr_debug("cache_ext: nr_to_evict is 0. Setting reclaim_pct to 100\n");
++		reclaim_pct = 100;
++	};
++	// TODO: Check the nr_reclaimed is less than nr_to_evict
++	sc->nr_reclaimed += nr_reclaimed;
++	sc->nr_scanned += nr_reclaimed;
++	if (reclaim_pct > threshold_pct) {
++		// pr_debug("Reclaimed more than %llu%% of the pages we wanted to evict. Finishing reclaim.\n", threshold_pct);
++		blk_finish_plug(&plug);
++		return;
++	}
++	else {
++		pr_debug("Reclaimed less than %llu%% (%llu) of the pages we wanted to evict. Reclaiming more.\n", threshold_pct, reclaim_pct);
++	}
++	/***********************************************************************/
++
+ 	while (nr[LRU_INACTIVE_ANON] || nr[LRU_ACTIVE_FILE] ||
+ 					nr[LRU_INACTIVE_FILE]) {
+ 		unsigned long nr_anon, nr_file, percentage;

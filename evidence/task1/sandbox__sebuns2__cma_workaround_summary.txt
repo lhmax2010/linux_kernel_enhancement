@@ -1,0 +1,13 @@
+branch=sandbox/sebuns2/cma_workaround
+tip=445b27645e82a92361765b5ed10cc33f21cd52e8
+merge_base_tizen=219d54332a09e8d8741c1e1982f5eae56099de85
+full_ahead=7803 full_behind=455938
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/sebuns2/cma_workaround --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=2
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__sebuns2__cma_workaround_ahead_01.txt: bytes=849855 sha256=dd30a7e7439562869f1dc2d8ed5e73a26b33e1ea996dc18b593b3aec58abd298
+sandbox__sebuns2__cma_workaround_ahead_02.txt: bytes=402064 sha256=09702982e15a519a8280fa94feec52d385a2bb35d8a90fde1a240e49fd17b191
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+445b27645e82a92361765b5ed10cc33f21cd52e8	Sung-hun Kim <sfoon.kim@samsung.com>	2020-09-08T21:57:59+09:00	tizen_bcm2711_defconfig: enable CMA_EXCLUDEd allocation and free memory calculation
+48f25ce00a8ded160de613d78259822e0d6aef73	Sung-hun Kim <sfoon.kim@samsung.com>	2020-09-08T21:44:30+09:00	mm: avoid memory thrashing caused by mismatched free memory calculation

@@ -1,0 +1,35 @@
+commit 49b3f941b664864583064c2ea84b8e3df86ab005
+Author:     Jeongjun Park <aha310510@gmail.com>
+AuthorDate: Thu Apr 9 19:11:29 2026 +0900
+Commit:     Phil Elwell <8911409+pelwell@users.noreply.github.com>
+CommitDate: Fri Apr 10 14:11:18 2026 +0100
+
+    drm/vc4: txp: add implementation of the missing connector reset custom function
+    
+    In the previous commit, we added a rotation parameter to be used in the
+    connector, but because we are still using the default reset function
+    without implementing a custom reset function to properly initialize it,
+    the rotation variable remains NULL until it is initialized directly
+    in userspace.
+    
+    To prevent this, we must implement a custom reset function that properly
+    initializes the rotation parameter.
+    
+    Fixes: 30c7044e03f4 ("drm: Add a rotation parameter to connectors.")
+    Signed-off-by: Jeongjun Park <aha310510@gmail.com>
+478d7fd169c2 mm: memcontrol: Add force_reclaim to reclaim tasks' memory in memcg
+5b793e7c2b34 kdbus: export needed symbols for out-of-tree support
+d1fe5674dd43 mm/hugetlb: unshare page tables during VMA split, not before
+77665996850a mm: close theoretical race where stale TLB entries could linger
+477c28cd22ac mm/hugetlb: fix huge_pmd_unshare() vs GUP-fast race
+0eff933ef9d1 mm: fix ratelimit_pages update error in dirty_ratio_handler()
+82ea1311dc38 Show process name in set_mempolicy() ignored message
+550a46ee2e5b mm/mempolicy: Ignore runtime policy changes when set through cmdline
+b3c4a07fdd65 mm/mempolicy: Add MPOL_RANDOM
+b3578eb7cd04 iommu/dma: Add ability to configure NUMA allocation policy for remapped allocations
+532fc50f78c3 mm/vmscan: Maintain TLB coherency in LRU code
+92719518d633 numa/emulation: Check emulated zones around the CMA window
+73f851d09df2 mm/numa: Allow override of kernel's default NUMA policy
+e640262c2f69 mm,page_alloc,cma: introduce a customisable threshold for allocating pages in cma
+478d7fd169c2d7489bad1d52d69f037e4e830286 mm: memcontrol: Add force_reclaim to reclaim tasks' memory in memcg
+5b793e7c2b346d01edfb675d44a5b3ba3aca8c71 kdbus: export needed symbols for out-of-tree support

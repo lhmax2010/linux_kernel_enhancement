@@ -1,0 +1,13 @@
+branch=sandbox/sebuns2/kernel_compression
+tip=624d6479ab03377b8b792b5605d3ecf27e0e6aa8
+merge_base_tizen=8bb7eca972ad531c9b149c0a51ab43a417385813
+full_ahead=13464 full_behind=284426
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/sebuns2/kernel_compression --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=1
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__sebuns2__kernel_compression_ahead_01.txt: bytes=849821 sha256=4bf8d2b2f5da08603c6d555f94f12b7fb595b0ff0bd0c2b5dd3614894c292057
+sandbox__sebuns2__kernel_compression_ahead_02.txt: bytes=849929 sha256=cb6c9f59f767159c9ea1fd17a38ba5ceeab3feb19b4ff7f155f0ae8d6b8d94ae
+sandbox__sebuns2__kernel_compression_ahead_03.txt: bytes=474821 sha256=39de2e26b9793f0159d41d2e5ada8920a8e47c38de72a473f8161c3723d4af7b
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+624d6479ab03377b8b792b5605d3ecf27e0e6aa8	Sung-hun Kim <sfoon.kim@samsung.com>	2023-02-20T11:06:42+09:00	boot: arm64: Enable lz4-compressed kernel image

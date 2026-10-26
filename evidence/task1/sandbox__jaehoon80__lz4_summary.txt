@@ -1,0 +1,13 @@
+branch=sandbox/jaehoon80/lz4
+tip=7459b2911b5224bba424b8fc47905437240f8fe3
+merge_base_tizen=d2e59dfd2830321c006d84fa0864f35cfa441504
+full_ahead=3 full_behind=6
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/jaehoon80/lz4 --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=3
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__jaehoon80__lz4_ahead_01.txt: bytes=467 sha256=f223f39bdd42915018c7e35cc1f430f5ea41c00b03eede6a4897a0e5a06ed449
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+7459b2911b5224bba424b8fc47905437240f8fe3	Jaehoon Chung <jh80.chung@samsung.com>	2026-08-20T13:59:06+09:00	lib/lz4: Allow the fast decode loop on armv7
+7b64cf4f10651b0419cdd3f9e6a5ae2653222b06	Jaehoon Chung <jh80.chung@samsung.com>	2026-08-20T13:39:58+09:00	lib: lz4: Sync LZ4HC_CCtx_internal with lz4 v1.10.0
+1051099cb8da4e750cb4b21ebdad2e77b709b83c	Jaehoon Chung <jh80.chung@samsung.com>	2026-08-20T11:46:33+09:00	lib: lz4: Update lz4 version to v1.10.0 from v1.8.3

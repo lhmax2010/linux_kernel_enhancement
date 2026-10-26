@@ -1,0 +1,14 @@
+branch=sandbox/hoegeun/next-btf
+tip=46287f81b53a8606434124649fcf9d101feac0fc
+merge_base_tizen=11d5d0d30abe08fddc8a0e856d0e333ca6e22114
+full_ahead=38 full_behind=7600
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/hoegeun/next-btf --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=4
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__hoegeun__next-btf_ahead_01.txt: bytes=6155 sha256=f482baed01cb97929c35c8132139bdd2a921b4056bef06eae6c6301303e37dfe
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+46287f81b53a8606434124649fcf9d101feac0fc	Michal Wilczynski <m.wilczynski@samsung.com>	2025-03-17T10:23:00+01:00	packaging: Introduce BTF subpackage for eBPF development
+92ec5d9e60dfd81175688432d03bd8b17d86da77	Michal Wilczynski <m.wilczynski@samsung.com>	2025-03-14T13:30:42+01:00	kbuild: Remove unsupported dd option “status=none”
+1aeaa3a05835cad04a53007d8f5410bc780158c0	Michal Wilczynski <m.wilczynski@samsung.com>	2025-03-17T09:31:27+01:00	ARM/ARM64: configs: tizen: Enable BTF and DWARF4 debug options
+c99dd06e3922ee7f5d24c39456123715163a78db	Michal Wilczynski <m.wilczynski@samsung.com>	2025-03-17T10:22:34+01:00	packaging: Add dwarves BuildRequires

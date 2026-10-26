@@ -1,0 +1,25 @@
+branch=sandbox/jhoon20kim/iotrace
+tip=734af7d599d2d0eee0fdb6917763393dd4f6b0f6
+merge_base_tizen=219d54332a09e8d8741c1e1982f5eae56099de85
+full_ahead=7769 full_behind=455938
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/jhoon20kim/iotrace --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=14
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__jhoon20kim__iotrace_ahead_01.txt: bytes=849872 sha256=941b2c54f720e0e5054d5efc6f7aed60d12d97a8b0a4e12ecd9efef2bf7cf7d3
+sandbox__jhoon20kim__iotrace_ahead_02.txt: bytes=396251 sha256=a224b6635d26a148364e9484ea8a3f64c90ac65e2c32d32b97bda75e03cc4271
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+734af7d599d2d0eee0fdb6917763393dd4f6b0f6	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-22T16:57:52+09:00	IOtrace: Change the locking mechanism of trace buffer
+97ff8674f3bc0f3e41e6be966fc85b439812b4a3	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-22T14:31:20+09:00	iotrace: Change the log_ws memset position
+ae9aaab8a1d99001dbcee484fcc2d5bad755f3b8	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-22T14:30:41+09:00	iotrace: Fix the read bytes handling
+1a364f11e6cf31686a4a19beb8eacd19c3052dec	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-22T14:29:41+09:00	IOtrace: Add the filesystem journal info to the trace log
+4cd0fb96d6518aa6a202d23efea0805911f1be19	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-22T14:28:10+09:00	IOtrace: Add the fsync tag to the filesystem journal
+a1861c19cc022636bf7cd9cf009e9ad9cd09ca90	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-22T11:18:26+09:00	IOtrace: Add the fsync information to the trace log
+5a41a553b213212f53ee1dec910befc4487e695a	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-21T16:17:33+09:00	IOtrace: Eliminate the use of time_to_tm
+fbbe414f56cb3517b668036c9e83e5cfac0e2c6e	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-21T15:57:51+09:00	IOtrace: Add the process name issued IO to the trace log
+ff63ecbddb3fe59ea68bb7b7cb938fed3afebfc8	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-16T20:35:06+09:00	IOtrace: Add the debug messages of IOtrace
+789dbce61f3010c9277cecf3025e9a77041c69cc	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-16T19:54:36+09:00	block: Insert the tracepoints of IOtrace
+0688f8ef9ff6d543d79587295fc17fa93cab567f	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-16T19:25:10+09:00	IOtrace: Add IOtrace core codes
+a2ac2962960620196e758c220e6a01e771e65d95	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-16T19:25:01+09:00	IOtrace: Define IOtrace log structures
+a68cb2e0aeff705dd87656392d3130f103b41831	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-16T19:24:49+09:00	tracing: Add IOtrace infrastructure
+94ccc1b94f65c0c375bf1d7bed7c098d294df52c	Junghoon Kim <jhoon20.kim@samsung.com>	2020-07-16T19:22:39+09:00	IOtrace: Add IOtrace base driver codes

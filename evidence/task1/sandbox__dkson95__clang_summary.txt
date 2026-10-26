@@ -1,0 +1,13 @@
+branch=sandbox/dkson95/clang
+tip=f2c3d799708c87ccbf50e912684db822222987cf
+merge_base_tizen=ffc253263a1375a65fa6c9f62a893e9767fbebfa
+full_ahead=13796 full_behind=112095
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/dkson95/clang --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=1
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__dkson95__clang_ahead_01.txt: bytes=849944 sha256=4f5a3e28a3d35810a08f5cb1d3c98b8ac8de62d729a3e414086dbbaed697b207
+sandbox__dkson95__clang_ahead_02.txt: bytes=849883 sha256=54e5d1741628e29040c66cabc261465333d3ffa9714aaa1c721a7e9f08cabd39
+sandbox__dkson95__clang_ahead_03.txt: bytes=542632 sha256=498ac8350a1f8e2870d6acf621988b1bd98d06f14cb1a57c51676941e30bb87d
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+f2c3d799708c87ccbf50e912684db822222987cf	Dongkyun Son <dongkyun.s@samsung.com>	2025-03-17T19:58:17+09:00	packaging: support LLVM/Clang build

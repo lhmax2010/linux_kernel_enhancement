@@ -1,0 +1,29 @@
+Corpus: all 46 sandbox background-filtered commit messages; unique commits=2084
+Full messages retained in temp/focus_commit_messages.txt. This is keyword evidence, not proof of absence of unnamed implementations.
+
+TOPIC MGLRU-FG; regex=MGLRU.FG|frequency.guided|frequency.based.*generation; matched_commits=0
+
+TOPIC zram streams/parallel/global buffer; regex=zram.*(?:parallel|stream|global)|(?:parallel|split|global).*(?:zram|zcomp)|recompress; matched_commits=1
+85fcc6edce0b0df05e5d630027f37634bde078bb | Jaehoon Chung <jh80.chung@samsung.com> | 2026-04-29T23:22:40+09:00 | zram: Enable zstd dictionary compression support for BCM2711
+
+TOPIC CRAM; regex=\bCRAM\b|cold.hot.*compress|hot.cold.*compress; matched_commits=0
+
+TOPIC refcount-free cache; regex=(?:page.cache|filemap).*(?:refcount|reference.count)|(?:refcount.free|reference.free); matched_commits=0
+
+TOPIC Kbuild stages; regex=kallsyms|modpost|pahole|link.vmlinux; matched_commits=2
+92ec5d9e60dfd81175688432d03bd8b17d86da77 | Michal Wilczynski <m.wilczynski@samsung.com> | 2025-03-14T13:30:42+01:00 | kbuild: Remove unsupported dd option “status=none”
+8fca2b243afee9e1e70c8c12a7e5458eb9a88fab | popcornmix <popcornmix@gmail.com> | 2013-05-01T19:46:17+01:00 | Add dwc_otg driver
+
+TOPIC compiler; regex=AutoFDO|MLGO|\bLTO\b|\bPGO\b|clang; matched_commits=9
+7459b2911b5224bba424b8fc47905437240f8fe3 | Jaehoon Chung <jh80.chung@samsung.com> | 2026-08-20T13:59:06+09:00 | lib/lz4: Allow the fast decode loop on armv7
+0eb2748f5d698124d24a6368936992af889ac9de | lhmax2025 <hao.lin@samsung.com> | 2026-07-03T11:32:38+08:00 | packaging: enable MLGO for clang kernel builds
+bad2bc694730599aef6777fa6d6b1439b6357f46 | Nathan Chancellor <nathan@kernel.org> | 2022-06-23T12:54:22-07:00 | ANDROID: Incremental fs: Use ERR_CAST in handle_mapped_file()
+f2c3d799708c87ccbf50e912684db822222987cf | Dongkyun Son <dongkyun.s@samsung.com> | 2025-03-17T19:58:17+09:00 | packaging: support LLVM/Clang build
+8423391fa02bbd4132ba86f16de5f52e3d225bcd | Sung-hun Kim <sfoon.kim@samsung.com> | 2023-11-14T12:22:42+09:00 | scripts: add an option for building profiling kernel and PGO kernel
+df3f86e29d9bba2256ac783506f4041a47e5a53a | Dongwoo Lee <dwoo08.lee@samsung.com> | 2020-06-04T13:54:44+09:00 | lib: zstd: Improve decode performance
+9a45de12300155874ea3bc833697c7d702d4e1a8 | Seung-Woo Kim <sw0312.kim@samsung.com> | 2019-03-06T17:53:48+09:00 | misc: bcm2835_smi: use proper enum in dma_map_single
+c0a73d65ec0cefd6cfb5f97dbebbb7a64d8adfb6 | Dongwoo Lee <dwoo08.lee@samsung.com> | 2020-06-04T13:54:44+09:00 | lib: zstd: Improve decode performance
+a44fb9469585544c7a15713da579c6fcbc3078d7 | Seung-Woo Kim <sw0312.kim@samsung.com> | 2019-03-06T17:53:48+09:00 | misc: bcm2835_smi: use proper enum in dma_map_single
+
+TOPIC ML reclaim; regex=machine.learning|page_cache_ext|cache.ext|neural|reinforcement; matched_commits=1
+cd5e642ebeee9630a1ae608606326a4600de694b | Yannis Zarkadas <yanniszark@gmail.com> | 2024-03-11T17:12:18-04:00 | page_cache_ext

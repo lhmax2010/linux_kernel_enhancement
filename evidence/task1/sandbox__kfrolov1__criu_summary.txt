@@ -1,0 +1,11 @@
+branch=sandbox/kfrolov1/criu
+tip=6cacd00e9713b1982131d00483ba2d35ac144555
+merge_base_tizen=11d5d0d30abe08fddc8a0e856d0e333ca6e22114
+full_ahead=115 full_behind=7600
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/kfrolov1/criu --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=1
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__kfrolov1__criu_ahead_01.txt: bytes=18436 sha256=f7f19cf40796a5633ffba568d135f28828d979ef11ba086cbfa0cb2c5864a480
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+6cacd00e9713b1982131d00483ba2d35ac144555	Kirill Frolov <k.frolov+1@samsung.com>	2026-03-03T23:31:23+03:00	fix

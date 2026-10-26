@@ -1,0 +1,15 @@
+branch=sandbox/sebuns2/pgo_applied_kernel
+tip=8423391fa02bbd4132ba86f16de5f52e3d225bcd
+merge_base_tizen=8bb7eca972ad531c9b149c0a51ab43a417385813
+full_ahead=15709 full_behind=284426
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/sebuns2/pgo_applied_kernel --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=3
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__sebuns2__pgo_applied_kernel_ahead_01.txt: bytes=849961 sha256=fd0835e3bb3b2d4228893aa7dd46c6e4afe6f53ffae68e4695e22b999e2f6424
+sandbox__sebuns2__pgo_applied_kernel_ahead_02.txt: bytes=849869 sha256=7ded40afca86cb3d3818fffe8e670f7b2daf0879aee16dabe984be681f512739
+sandbox__sebuns2__pgo_applied_kernel_ahead_03.txt: bytes=839608 sha256=e8b38929b94633aa2eb4ffca5984fc9e02ec292b727ed35c7340bed4fa412971
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+8423391fa02bbd4132ba86f16de5f52e3d225bcd	Sung-hun Kim <sfoon.kim@samsung.com>	2023-11-14T12:22:42+09:00	scripts: add an option for building profiling kernel and PGO kernel
+e9f30bc2d0fa107cf0e5713243c5ccdb159504bb	Sung-hun Kim <sfoon.kim@samsung.com>	2023-11-14T12:22:08+09:00	scripts: increase partition size for profiling kernel image
+4087e3da3f81ff9bab16d5a1675b8146e1f3766e	Sung-hun Kim <sfoon.kim@samsung.com>	2023-11-14T12:20:39+09:00	arm64: defconfig: add a defconfig for enabling gcov

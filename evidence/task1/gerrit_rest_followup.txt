@@ -1,0 +1,17 @@
+https://review.tizen.org/gerrit/changes/?q=I4e3cd32cf76abb9d9f147680cddbd48aadbe9207
+HTTP 200 final_url=https://review.tizen.org/gerrit/changes/?q=I4e3cd32cf76abb9d9f147680cddbd48aadbe9207
+)]}'
+[]
+
+https://review.tizen.org/gerrit/projects/?p=platform%2Fkernel%2Flinux-rpi
+HTTP 200 final_url=https://review.tizen.org/gerrit/projects/?p=platform%2Fkernel%2Flinux-rpi
+)]}'
+{}
+
+https://review.tizen.org/gerrit/changes/?q=status:open&n=1
+HTTP 200 final_url=https://review.tizen.org/gerrit/changes/?q=status:open&n=1
+)]}'
+[]
+
+https://review.tizen.org/changes/?q=project:platform/kernel/linux-rpi&n=1
+<HTTPError 404: 'Not Found'>

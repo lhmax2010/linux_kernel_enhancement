@@ -1,0 +1,11 @@
+branch=sandbox/jkryszyn/dm-snapshot
+tip=6bc8f6fd11a8afa5a7f64b418e397c283040cd3f
+merge_base_tizen=ffc253263a1375a65fa6c9f62a893e9767fbebfa
+full_ahead=4677 full_behind=112095
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/jkryszyn/dm-snapshot --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=1
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__jkryszyn__dm-snapshot_ahead_01.txt: bytes=757520 sha256=05d8a16c3db0dcc020cdbb663942b94eb872b85f6140ea332cd6c72807e7bd5e
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+6bc8f6fd11a8afa5a7f64b418e397c283040cd3f	Jacek Kryszyn <j.kryszyn@samsung.com>	2024-08-28T21:37:00+02:00	Add dm-snapshot

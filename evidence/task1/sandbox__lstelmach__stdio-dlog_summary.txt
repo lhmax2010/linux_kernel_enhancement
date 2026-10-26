@@ -1,0 +1,20 @@
+branch=sandbox/lstelmach/stdio-dlog
+tip=f19c6559602064e6368695cce8d3fef86959d0aa
+merge_base_tizen=2c85ebc57b3e1817b6ce1a6b703928e113a90442
+full_ahead=4110 full_behind=360601
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/lstelmach/stdio-dlog --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=10
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__lstelmach__stdio-dlog_ahead_01.txt: bytes=660839 sha256=ceb3ea725d7c56cf6d7fbfe27e2dfbaa79c46f2896df78cef671a0213d2c8085
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+f19c6559602064e6368695cce8d3fef86959d0aa	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-12T12:11:54+02:00	WIP: introduce LOGGER_MUTE_ALL
+a41996183927150cfd01e77bdf4b33c0dd11bbf8	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-12T07:53:09+02:00	WIP: logger: secure mute operations
+5d99f47a91c7f9ba7b4750be54b57185213bf51e	Łukasz Stelmach <l.stelmach@samsung.com>	2021-03-19T15:17:07+01:00	WIP: logger-test: test muting
+c615af089d5d4584e3beb738b252aa9c601511d5	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-09T18:16:39+02:00	WIP: logger: mute writers by PID or by tag
+131517c687740b2720c9eaef334b19896d1afc86	Łukasz Stelmach <l.stelmach@samsung.com>	2021-02-12T18:41:09+01:00	WIP: logger: use spinlocks to protect lists
+26ac55a682d93926687deb84e58f6dc31cf10d00	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-08T15:36:04+02:00	logger-test: more intensive tests
+1d7636ae888cc5bfa37b608f591f8f4ba2aacc05	Łukasz Stelmach <l.stelmach@samsung.com>	2021-03-19T15:20:06+01:00	logger: move logger.h to uapi
+d26549797c8a4608de41431aca3f36c252642231	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-13T12:24:38+02:00	logger: return amount of data written to stdio
+f6779ee492e124aeeb43c56e054fc2133cd93e5b	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-09T17:20:07+02:00	logger: add missing pointer initialization
+d03ecfb33fdd43c5699cf40bc586d4139d882dc6	Łukasz Stelmach <l.stelmach@samsung.com>	2021-04-09T16:59:56+02:00	logger: adapt access mode checks

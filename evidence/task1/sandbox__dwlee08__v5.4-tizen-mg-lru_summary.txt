@@ -1,0 +1,53 @@
+branch=sandbox/dwlee08/v5.4-tizen-mg-lru
+tip=6953fba32d63c8d105694ec7174ae28fcee711d7
+merge_base_tizen=219d54332a09e8d8741c1e1982f5eae56099de85
+full_ahead=7913 full_behind=455938
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/dwlee08/v5.4-tizen-mg-lru --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=42
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__dwlee08__v5.4-tizen-mg-lru_ahead_01.txt: bytes=849872 sha256=f433ee66dad82e0b2f1fc00bfe39ca99f6697781f355c54a44d00f2ade4ea52a
+sandbox__dwlee08__v5.4-tizen-mg-lru_ahead_02.txt: bytes=419187 sha256=5a20d8d88feb93ffb47062dff527b0e686ec1147d2b50d981b2fcfc80367ddee
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+6953fba32d63c8d105694ec7174ae28fcee711d7	Marek Szyprowski <m.szyprowski@samsung.com>	2024-01-18T15:41:31+01:00	pgtable: add pmd_index() fallback
+dc0d3da2f9edad2bea40d1f6cb576fddc229d6ed	Marek Szyprowski <m.szyprowski@samsung.com>	2023-12-06T13:25:55+01:00	tizen: enable MG-LRU in tizen_bcm2711_defconfig
+268c1f46b2aaf95fa8501716864366b9796f0e7b	Kalesh Singh <kaleshsingh@google.com>	2023-02-14T14:17:57-08:00	ANDROID: MGLRU: Avoid reactivation of anon pages on swap full
+3f3e1a95461f51b61d6c394670ca5fac4c955add	Kalesh Singh <kaleshsingh@google.com>	2023-04-13T14:43:26-07:00	BACKPORT: mm: Multi-gen LRU: remove wait_event_killable()
+da7988723345ed5081ee978a740965dc6f87bada	Sebastian Andrzej Siewior <bigeasy@linutronix.de>	2022-10-26T15:48:30+02:00	BACKPORT: mm: multi-gen LRU: move lru_gen_add_mm() out of IRQ-off region
+18a7b6a8d4ac87b7830a26c8463106f7a5a1d4b0	Yu Zhao <yuzhao@google.com>	2022-09-18T02:00:11-06:00	BACKPORT: mm: multi-gen LRU: design doc
+8c984dbeb042650e993be9e7e08b244e18201f1b	Yu Zhao <yuzhao@google.com>	2022-09-18T02:00:10-06:00	UPSTREAM: mm: multi-gen LRU: admin guide
+33dd2b6966fee3d443d1fb6bf51d8ca8ef432f9d	Yu Zhao <yuzhao@google.com>	2022-09-18T02:00:09-06:00	BACKPORT: mm: multi-gen LRU: debugfs interface
+2ad657802244d3ff515b4040ac1d9b41faf8d239	Yu Zhao <yuzhao@google.com>	2022-09-18T02:00:08-06:00	UPSTREAM: mm: multi-gen LRU: thrashing prevention
+341b942b249cbb6af5a0d721bec2103070d80828	Yu Zhao <yuzhao@google.com>	2022-09-18T02:00:07-06:00	BACKPORT: mm: multi-gen LRU: kill switch
+c0150c9edc32988eadfae9746a68249f022e3a10	Yu Zhao <yuzhao@google.com>	2022-09-18T02:00:06-06:00	BACKPORT: mm: multi-gen LRU: optimize multiple memcgs
+b3b93737bf3274f3de61fd422f46a6aff6635bd5	Yu Zhao <yuzhao@google.com>	2022-09-18T02:00:05-06:00	BACKPORT: mm: multi-gen LRU: support page table walks
+a51ae112c10412aa3171c7169a344d7c2551dd3f	Yu Zhao <yuzhao@google.com>	2022-09-18T02:00:04-06:00	BACKPORT: mm: multi-gen LRU: exploit locality in rmap
+5245728bbcf9672ba8d1b81f291cb73ef0946b3b	Yu Zhao <yuzhao@google.com>	2022-09-18T02:00:03-06:00	BACKPORT: mm: multi-gen LRU: minimal implementation
+45ed9972705becfcaff8c063dd23008ec5ce8aed	Yu Zhao <yuzhao@google.com>	2022-09-18T02:00:02-06:00	BACKPORT: mm: multi-gen LRU: groundwork
+abf790906786a23235fc9dc801adbbb035571d97	Yu Zhao <yuzhao@google.com>	2020-09-27T20:49:08-06:00	FROMLIST: mm/vmscan.c: refactor shrink_node()
+f002ba070982016a804e0d7d54d91134d94dc190	Yu Zhao <yuzhao@google.com>	2021-08-04T01:31:34-06:00	pgtable: add arch_has_hw_pte_young() fallback
+fe2054e7782eb2f62d63ca64ccd909a1d5338c58	Marek Szyprowski <m.szyprowski@samsung.com>	2024-01-09T14:10:48+01:00	pgtable: add pud_index() fallback
+d0055f3efd6843b81072af1c0922de89cf13352a	Marek Szyprowski <m.szyprowski@samsung.com>	2023-12-19T14:42:36+01:00	atomic: add try_cmpxchg() fallback
+3180c4ab6c0c5185c313ce826783d9761e6dab34	Chris Down <chris@chrisdown.name>	2020-08-06T23:22:05-07:00	mm, memcg: decouple e{low,min} state mutations from protection checks
+f6dd95e09eaa0db23a7c02aa839caf0b0d9b615c	Hugh Dickins <hughd@google.com>	2021-06-15T18:23:49-07:00	mm/thp: make is_huge_zero_pmd() safe and quicker
+2f14c8312b01bd17ae92c3e27779531d6f1a0cc6	Yu Zhao <yuzhao@google.com>	2021-02-24T12:08:13-08:00	include/linux/mm_inline.h: shuffle lru list addition and deletion functions
+c85cc85fbef05ea8327028408743533ee04ba2ab	Shakeel Butt <shakeelb@google.com>	2020-12-14T19:06:39-08:00	mm/rmap: always do TTU_IGNORE_ACCESS
+917e8c5937eb9d550c9ad125e8272b34f9511994	Alex Shi <alex.shi@linux.alibaba.com>	2020-12-15T12:34:16-08:00	mm/lru: introduce TestClearPageLRU()
+1308b562a66cb5c689d201d7ab396b818d13a329	Alex Shi <alex.shi@linux.alibaba.com>	2020-12-18T14:01:31-08:00	mm/memcg: warning on !memcg after readahead page charged
+9468cddf2638b22dc3f0bf9a146331113fe20b12	Yu Zhao <yuzhao@google.com>	2020-10-15T20:09:55-07:00	mm: use self-explanatory macros rather than "2"
+7c66973d4c82f1fdd3b4e21d993b5883db13b57e	Anshuman Khandual <anshuman.khandual@arm.com>	2020-04-06T20:03:47-07:00	mm/vma: make vma_is_accessible() available for general use
+41ac1862bbffa7a0737b88c4f7beafb30e3b9669	Mateusz Nosek <mateusznosek0@gmail.com>	2020-04-01T21:10:15-07:00	mm/vmscan.c: clean code by removing unnecessary assignment
+e3c439b47303e03d79ab1818894b2243aa52a58a	Steven Price <steven.price@arm.com>	2020-02-03T17:35:45-08:00	mm: pagewalk: add p4d_entry() and pgd_entry()
+64348f427cf25a1cb3bf5f447f9925f0aa20f9d1	Steven Price <steven.price@arm.com>	2020-02-03T17:35:01-08:00	mm: add generic p?d_leaf() macros
+6cc8d4a8136bc57161e345749bf7976c9fb22872	Johannes Weiner <hannes@cmpxchg.org>	2019-11-30T17:56:02-08:00	mm: vmscan: enforce inactive:active ratio at the reclaim root
+da14eb357eed6ed0ea4c5ed8be0425adf6ce0ad4	Johannes Weiner <hannes@cmpxchg.org>	2019-11-30T17:55:59-08:00	mm: vmscan: detect file thrashing at the reclaim root
+8915765bdff34a0bc4636b13d1e103f05508d56a	Johannes Weiner <hannes@cmpxchg.org>	2019-11-30T17:55:56-08:00	mm: vmscan: move file exhaustion detection to the node level
+e1b0e4a40d287624d14f997250423f17a55f8e38	Johannes Weiner <hannes@cmpxchg.org>	2019-11-30T17:55:52-08:00	mm: vmscan: harmonize writeback congestion tracking for nodes & memcgs
+c5036f9302a472af2c05415b0950305c177c3d89	Johannes Weiner <hannes@cmpxchg.org>	2019-11-30T17:55:49-08:00	mm: vmscan: split shrink_node() into node part and memcgs part
+39d2d2542a3535356f5003136f575ca1ac7f09f4	Johannes Weiner <hannes@cmpxchg.org>	2019-11-30T17:55:46-08:00	mm: vmscan: turn shrink_node_memcg() into shrink_lruvec()
+256a80cc1316be0cde696bd42c183698e4f6ad8e	Johannes Weiner <hannes@cmpxchg.org>	2019-11-30T17:55:43-08:00	mm: vmscan: replace shrink_node() loop with a retry jump
+b9eeb5067bbbe6574bb313f49ab43be060d7bd94	Johannes Weiner <hannes@cmpxchg.org>	2019-11-30T17:55:40-08:00	mm: vmscan: naming fixes: global_reclaim() and sane_reclaim()
+7fdc110b27e78de1a3b7ce38d1bfe276dab0fe4a	Johannes Weiner <hannes@cmpxchg.org>	2019-11-30T17:55:37-08:00	mm: vmscan: move inactive_list_is_low() swap check to the caller
+54171bdfd60124b32c4766da2d50a787b134a9e1	Johannes Weiner <hannes@cmpxchg.org>	2019-11-30T17:55:34-08:00	mm: clean up and clarify lruvec lookup procedure
+849589bbbd30600b79124aba4298d122f99843bb	Johannes Weiner <hannes@cmpxchg.org>	2019-11-30T17:55:31-08:00	mm: vmscan: simplify lruvec_lru_size()
+5bb230aa94f79d302a2c46ba3911f099ede626ec	Andrey Ryabinin <aryabinin@virtuozzo.com>	2019-11-30T17:55:24-08:00	mm/vmscan: remove unused lru_pages argument

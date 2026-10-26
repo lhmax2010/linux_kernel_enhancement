@@ -1,0 +1,2 @@
+git diff --numstat 8cdc66794c4281f47cc90efe8b218add97303274 refs/remotes/origin/sandbox/lhmax2025/mlgo; grouped first two path components
+packaging/linux-rpi.spec	files=1	+37	-8

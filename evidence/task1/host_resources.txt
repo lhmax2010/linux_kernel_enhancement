@@ -1,0 +1,9 @@
+20
+               total        used        free      shared  buff/cache   available
+Mem:            30Gi        16Gi       1.5Gi       728Mi        14Gi        14Gi
+Swap:          4.0Gi       2.0Gi       2.0Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sda1       1.8T  1.2T  539G  70% /home
+/usr/bin/gbs
+gbs 2.1.0
+/home/linhao/.local/bin/sdb

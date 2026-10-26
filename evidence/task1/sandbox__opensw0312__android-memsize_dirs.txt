@@ -1,0 +1,7 @@
+git diff --numstat d2e59dfd2830321c006d84fa0864f35cfa441504 refs/remotes/origin/sandbox/opensw0312/android-memsize; grouped first two path components
+drivers/of	files=2	+12	-0
+include/linux	files=1	+10	-1
+kernel/dma	files=1	+7	-2
+mm/memblock.c	files=1	+478	-2
+mm/mm_init.c	files=1	+5	-1
+mm/page_alloc.c	files=1	+9	-1

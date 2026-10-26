@@ -1,0 +1,280 @@
+branch=sandbox/dwlee08/erofs-backports-v5.4
+tip=eb2786e233dc779cb0920f0ffd94f6be1951a5b1
+merge_base_tizen=219d54332a09e8d8741c1e1982f5eae56099de85
+full_ahead=8140 full_behind=455938
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/dwlee08/erofs-backports-v5.4 --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=269
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__dwlee08__erofs-backports-v5.4_ahead_01.txt: bytes=849986 sha256=92064426e26cd6985422559291b52a487e34bbb1789f035dad4da20d01ff5ca5
+sandbox__dwlee08__erofs-backports-v5.4_ahead_02.txt: bytes=453914 sha256=6d2cc999e2f90a83ad680c0bc8d83e9e2d02fd19420ab604aeeb80d5bc2189a5
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+eb2786e233dc779cb0920f0ffd94f6be1951a5b1	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-11-29T02:04:31+08:00	erofs: fix memory leak on short-lived bounced pages
+ce04c2dd00ee5607404a860acc8f5a5e17566ffc	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-09-15T16:27:28+08:00	erofs: allow empty device tags in flatdev mode
+ba272f34c63f742ed498d38fdb1879d95c032cd2	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-09-07T13:05:42+08:00	erofs: fix memory leak of LZMA global compressed deduplication
+2ef14841ceeef2838e9fbfab35c3a1a32afbaa5c	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-08-22T19:05:30+08:00	erofs: release ztailpacking pclusters properly
+89e3cf015712408b17291a3c36816ca30139fed1	sunshijie <sunshijie@xiaomi.com>	2023-08-21T23:21:16+08:00	erofs: don't warn dedupe and fragments features anymore
+098b274a15583b42a2708cee06624c9533fa78e1	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-08-17T16:28:11+08:00	erofs: get rid of fe->backmost for cache decompression
+0849ebd975d4d8ff4bb0303800f166ccf076bcb7	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-08-17T16:28:10+08:00	erofs: drop z_erofs_page_mark_eio()
+a61db82ae8a479f0a10884deef1d59c6ab9eb794	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-08-17T16:28:09+08:00	erofs: tidy up z_erofs_do_read_page()
+4212f1455f6438f9dc84575bc18117910e393346	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-08-17T16:28:08+08:00	erofs: move preparation logic into z_erofs_pcluster_begin()
+750f3428003030c43f2dcdbffded6a31b6e2773a	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-08-17T16:28:07+08:00	erofs: avoid obsolete {collector,collection} terms
+20691d09961f0bbbd7b30be37957f7094e95c5f1	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-08-17T16:28:06+08:00	erofs: simplify z_erofs_read_fragment()
+aee5aa6b0961852ab03a850cbf6df4666539ab23	Ferry Meng <mengferry@linux.alibaba.com>	2023-08-15T17:48:48+08:00	erofs: add necessary kmem_cache_create flags for erofs inode cache
+8aba536838b09a5a65f8247fd2dbb9edc69efe0b	Ferry Meng <mengferry@linux.alibaba.com>	2023-08-15T17:48:47+08:00	erofs: clean up redundant comment and adjust code alignment
+ed5063249ae88f51f43d639f2ca59507ed4b6ddb	Ferry Meng <mengferry@linux.alibaba.com>	2023-08-09T14:06:37+08:00	erofs: refine warning messages for zdata I/Os
+def431484ac9dc8fc116fc378565bd2c04c62b24	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-07-22T17:45:38+08:00	erofs: boost negative xattr lookup with bloom filter
+3c411ff6fde5224dacbc862173d97fb187661fc8	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-07-22T17:45:37+08:00	erofs: update on-disk format for xattr name filter
+bd07ac1cd478a8b568668853c3e76edd3f19fedb	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-08-10T23:48:59+08:00	erofs: DEFLATE compression support
+b20674c74e5da99537c451b9530948e2a95bdc09	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-08-01T09:47:37+08:00	erofs: drop unnecessary WARN_ON() in erofs_kill_sb()
+7a4fe095a120a9e0f53a12975e88a11cbe90062a	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-07-19T14:54:59+08:00	erofs: fix wrong primary bvec selection on deduplicated extents
+2fd64714b2c5900edb6f9417b3a74a0cacfeabe1	Jeff Layton <jlayton@kernel.org>	2023-07-05T15:01:04-04:00	erofs: convert to ctime accessor functions
+706c4518af03da58ca968f7002bc94f7a5789450	Xin Yin <yinxin.x@bytedance.com>	2023-07-11T14:21:30+08:00	erofs: fix fsdax unavailability for chunk-based regular files
+a55ba503f9c7d672ec6f8e1c360f0e15d9a5da26	Chunhai Guo <guochunhai@vivo.com>	2023-07-10T17:34:10+08:00	erofs: avoid infinite loop in z_erofs_do_read_page() when reading beyond EOF
+85ececadc453aa8b99d0483d0ccd1f5b7aa33f0f	Chunhai Guo <guochunhai@vivo.com>	2023-07-10T12:25:31+08:00	erofs: avoid useless loops in z_erofs_pcluster_readmore() when reading beyond EOF
+35ba6675c5f9d4d528284c097e56066c4a60f729	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-06-28T00:12:40+08:00	erofs: simplify z_erofs_transform_plain()
+4a3c3041bebdc507cf3b3544cdcd8dbbb290677c	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-06-15T14:44:21+08:00	erofs: clean up zmap.c
+1d90bab278697c88399d7fa45e45dabe9df1bb27	Yangtao Li <frank.li@vivo.com>	2023-06-15T11:45:38+08:00	erofs: remove unnecessary goto
+bbd8bb79b20d3dd8ab5b983cae2e23da54ff0151	Sandeep Dhavale <dhavale@google.com>	2023-06-21T15:08:47-07:00	erofs: Fix detection of atomic context
+146c9786b3bc095be35b3e8302d043a9912af75b	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-06-13T15:41:14+08:00	erofs: use separate xattr parsers for listxattr/getxattr
+176c832a309e890ef2c9c029405023ae46001cba	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-06-13T15:41:13+08:00	erofs: unify inline/shared xattr iterators for listxattr/getxattr
+891ff27554e47047e536ee047b15fce0bc2c8e0e	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-06-13T15:41:12+08:00	erofs: make the size of read data stored in buffer_ofs
+90192f974291a5529462b29404bcde5bc97a90ea	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-06-13T15:41:11+08:00	erofs: unify xattr_iter structures
+1df7f97d141c84b5b9ae472c323d0df2ea210ab3	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-06-13T15:41:10+08:00	erofs: use absolute position in xattr iterator
+37684193290fbf7cc10002fc22ac34180c5029e9	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-06-01T19:23:41+08:00	erofs: fix compact 4B support for 16k block size
+9317e79d81ad379ec0d056a7296fda9fdcd57276	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-06-01T10:43:42+08:00	erofs: convert erofs_read_metabuf() to erofs_bread() for xattr
+141c5e4b0eb38126a32711f650638622deeb80ab	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-05-27T04:14:59+08:00	erofs: use poison pointer to replace the hard-coded address
+83a2c746524f60ea6c1ea202edd5a6c9a53c43e3	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-05-27T04:14:56+08:00	erofs: kill hooked chains to avoid loops on deduplicated compressed images
+a1418fe74576ab26abb5eb35df2eafc244786f36	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-05-27T04:14:55+08:00	erofs: avoid on-stack pagepool directly passed by arguments
+3c4b281746e47851ef42ecf7aff71db7c948df74	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-05-27T04:14:54+08:00	erofs: allocate extra bvec pages directly instead of retrying
+eb774c31ed07f707b357d6c4ade539f5b2f38657	Yue Hu <huyue2@coolpad.com>	2023-05-25T15:26:05+08:00	erofs: clean up z_erofs_pcluster_readmore()
+449749670828251597fcddced5853c944fc13b3c	Yue Hu <huyue2@coolpad.com>	2023-05-24T14:39:44+08:00	erofs: remove the member readahead from struct z_erofs_decompress_frontend
+7655afdbc0a8c175626e1954e4b0576a8afdebd6	Yue Hu <huyue2@coolpad.com>	2023-04-26T16:44:49+08:00	erofs: fold in z_erofs_decompress()
+5db5fb8536b05ae9b0d8f143eab7545d16ce3c59	David Howells <dhowells@redhat.com>	2023-05-22T14:50:15+01:00	splice: Use filemap_splice_read() instead of generic_file_splice_read()
+7a3f37b838281e9db162a4df92d1bddb25204ea9	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-05-22T17:21:41+08:00	erofs: use HIPRI by default if per-cpu kthreads are enabled
+8bf79cfe1c4f9ab771e9a06054b488b2477262c4	Yue Hu <huyue2@coolpad.com>	2023-05-15T17:57:58+08:00	erofs: avoid pcpubuf.c inclusion if CONFIG_EROFS_FS_ZIP is off
+92bcbcbec1fbfeb35468f674de8420063aae8826	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-05-15T18:39:41+08:00	erofs: fix null-ptr-deref caused by erofs_xattr_prefixes_init
+90cd58bfe6c4c25e4ea03532cd8ca4432fb32eb8	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-04-14T16:30:27+08:00	erofs: cleanup i_format-related stuffs
+1044f2ab6d46fef426d5cbf094ed41384a533c7d	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-04-14T16:30:26+08:00	erofs: sunset erofs_dbg()
+de609dfc59a4c6571414e79ff9dace290e705ab6	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-04-14T14:18:10+08:00	erofs: fix potential overflow calculating xattr_isize
+2dea7efdcf6cfe64d707e8d372ffea5ef97e5bbf	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-04-13T17:22:41+08:00	erofs: get rid of z_erofs_fill_inode()
+3fc8e6b0c8fb9e2b8f6cd087060569de6d37fec6	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-04-08T06:28:08+08:00	erofs: enable long extended attribute name prefixes
+64f6ddc7ea580aceafafc50bd84389eac11c1628	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-04-11T17:35:37+08:00	erofs: handle long xattr name prefixes properly
+fe9a693a5a6330406540cc6bcf8d09c296c1cafd	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-04-07T22:17:08+08:00	erofs: add helpers to load long xattr name prefixes
+6dddc25f8ca8bca9493b6f53eb67bb42e0d9627b	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-04-07T22:17:07+08:00	erofs: introduce on-disk format for long xattr name prefixes
+68cf70c2881ea2d59799ebfd94a2341cee5287a9	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-04-07T22:17:06+08:00	erofs: move packed inode out of the compression part
+ed06566a57ff73c8e6fc9ce2867c18de42cf935f	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-04-07T22:17:04+08:00	erofs: keep meta inode into erofs_buf
+54ff071d803e94d5faf6853c70b955987dfe08a1	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-04-07T22:17:05+08:00	erofs: initialize packed inode after root inode is assigned
+a71232020086faa413a2ad339432dbf3f0661e45	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-04-11T01:37:14+08:00	erofs: stop parsing non-compact HEAD index if clusterofs is invalid
+0ee4f1f8c38176cc591762d12619348f7ca3c3c3	Yue Hu <huyue2@coolpad.com>	2023-02-27T16:44:57+08:00	erofs: don't warn ztailpacking feature anymore
+86bb56e61acc98f0e15402eb5c3db957bb21ebf6	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-03-30T16:29:05+08:00	erofs: simplify erofs_xattr_generic_get()
+ae3bb239bd7f115e865578237825622c5124ebb8	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-03-30T16:29:04+08:00	erofs: rename init_inode_xattrs with erofs_ prefix
+e6412f4d6a385cf855cb54c078fa4b5b10b51494	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-03-30T16:29:03+08:00	erofs: move several xattr helpers into xattr.c
+363c257d247155d1b7777421ca3bb9a24dfc51b5	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-03-31T14:31:49+08:00	erofs: tidy up EROFS on-disk naming
+3cd62451a56d143c1c1dfb1e5e250c495a3a3a2f	Jia Zhu <zhujia.zj@bytedance.com>	2023-03-02T15:17:51+08:00	erofs: support flattened block device for multi-blob images
+f62c029713e41288bd8c512a48c5bfe0fc3d8edd	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-03-13T21:53:09+08:00	erofs: set block size to the on-disk block size
+2b5364b5939edf00d050fb451526019edff68902	Jingbo Xu <jefflexu@linux.alibaba.com>	2023-03-13T21:53:08+08:00	erofs: avoid hardcoded blocksize for subpage block support
+82cab422976548c5032825608c4642054b9113b8	Yue Hu <huyue2@coolpad.com>	2023-03-06T15:55:27+08:00	erofs: use wrapper i_blocksize() in erofs_file_read_iter()
+96b1ba671805871183cba1253bb6c7e2525b2861	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-03-09T13:31:48+08:00	erofs: get rid of a useless DBG_BUGON
+6604d3ff4aec8b6c013aa331d6f883b9894856fb	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-03-09T13:31:47+08:00	erofs: Revert "erofs: fix kvcalloc() misuse with __GFP_NOFAIL"
+045c76d94db227cbc35e9d8dc3898dcfa0d96336	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-03-05T21:44:55+08:00	erofs: fix wrong kunmap when using LZMA on HIGHMEM platforms
+d88aca97cf7102adde94f8dcbb04f85ad25bb062	Yangtao Li <frank.li@vivo.com>	2023-03-03T14:37:31+08:00	erofs: mark z_erofs_lzma_init/erofs_pcpubuf_init w/ __init
+6b84c6170bfb96c12ceaa975426ad22a5b78857a	Christian Brauner <brauner@kernel.org>	2023-02-01T14:14:58+01:00	fs: rename generic posix acl handlers
+4dbd3109a1e8444e3f98e4d991b8ed88041fe29c	Christian Brauner <brauner@kernel.org>	2023-02-01T14:14:56+01:00	fs: simplify ->listxattr() implementation
+4c265c07449ec2e0700363ee54ac7d9150825e33	Christian Brauner <brauner@kernel.org>	2023-02-01T14:14:55+01:00	fs: drop unused posix acl handlers
+0100ed118ee6778ed08089584a4f3edf4b1e8aa8	Dan Carpenter <error27@gmail.com>	2023-02-16T15:13:04+03:00	erofs: fix an error code in z_erofs_init_zip_subsystem()
+9c7c7675a777bb786e00648eb3848c57a978c1d6	Sandeep Dhavale <dhavale@google.com>	2023-02-08T17:33:22+08:00	erofs: add per-cpu threads for decompression as an option
+cd19ee0873442722fbdeb9a6055a7d004def6f29	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-02-04T17:30:40+08:00	erofs: tidy up internal.h
+81a59149909e5fd4a068a1c555298be91ba00df5	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-02-04T17:30:39+08:00	erofs: get rid of z_erofs_do_map_blocks() forward declaration
+d7593f5455e1e218e2cc627ca970c3f264660cc0	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-02-04T17:30:38+08:00	erofs: move zdata.h into zdata.c
+8befc6f7d84106062b0d6c8cd61946307f462a46	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-02-04T17:30:37+08:00	erofs: remove tagged pointer helpers
+8c636e25f0c5dcd47462b9adadf34e64c26c1651	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-02-04T17:30:36+08:00	erofs: avoid tagged pointers to mark sync decompression
+0b47a5f10b42f787472f4b048ee200abec070f55	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-02-04T17:30:35+08:00	erofs: get rid of erofs_inode_datablocks()
+3f51568021b8c8ea1445cc4cb9fab396c94b03f7	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-01-14T23:08:23+08:00	erofs: simplify iloc()
+fd34402f18892f1c9c99d8a7505a4cfdd9f92e03	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-01-14T20:57:45+08:00	erofs: get rid of debug_one_dentry()
+af884c08302c51ac2daf8195ff2805f5b8372749	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-01-13T14:52:26+08:00	erofs: remove linux/buffer_head.h dependency
+8d7a2140e9be95910580564b237e1c4a2f033144	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-01-13T14:52:25+08:00	erofs: clean up erofs_iget()
+a6dfbdcd369d14a1bfb2813dd19d73a0d9030a9d	Gao Xiang <hsiangkao@linux.alibaba.com>	2023-01-10T15:49:27+08:00	erofs: fix kvcalloc() misuse with __GFP_NOFAIL
+bbe3fb9c3c102e75615fc2a6808e4939e9bc9682	Siddh Raman Pant <code@siddh.me>	2022-12-09T15:51:51+05:30	erofs/zmap.c: Fix incorrect offset calculation
+c8a144fae8aad8a32cd7f930073797e01937ba5a	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-12-05T23:00:50+08:00	erofs: validate the extent length for uncompressed pclusters
+79ac9fc2928d55ad2d449ec1f8986cffc190446b	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-12-05T23:00:49+08:00	erofs: fix missing unmap if z_erofs_get_extent_compressedlen() fails
+6048e8d5284577b544533f4e870972edf49189ba	Chen Zhongjin <chenzhongjin@huawei.com>	2022-12-05T11:49:57+08:00	erofs: Fix pcluster memleak when its block address is zero
+49b73066e2a38d9f9d36aa2118b167b0fa5ca497	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-12-06T14:03:52+08:00	erofs: clean up cached I/O strategies
+ccac763e7e9ab6c83d4d7c056bf76e0c055bac70	Yue Hu <huyue2@coolpad.com>	2022-10-21T16:53:25+08:00	erofs: fix general protection fault when reading fragment
+27b63085d5654b7dcbbc8c78940156af892d26e8	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-10-14T14:49:15+08:00	erofs: fix up inplace decompression success rate
+09afa56581780a6898bb6f5f1600fc8a2d2d397c	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-10-12T12:50:56+08:00	erofs: shouldn't churn the mapping page for duplicated copies
+a300b270fa9f7951cc0639311b1e593be334a97c	Yue Hu <huyue2@coolpad.com>	2022-10-05T09:35:28+08:00	erofs: fix illegal unmapped accesses in z_erofs_fill_inode_lazy()
+906504dea5ffe59bd907239070ec86dd744c1528	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-09-27T14:36:07+08:00	erofs: clean up erofs_iget()
+a3d90e0480152ebbd59fd9b93e507f31c7b1c18d	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-09-27T14:36:06+08:00	erofs: clean up unnecessary code and comments
+2144a53d88ba9b6d56754e3e6f947feb78b6633e	Yue Hu <huyue2@coolpad.com>	2022-09-27T11:25:18+08:00	erofs: fold in z_erofs_reload_indexes()
+b2dd51dd03c4d3fc48dc19283acda75674e01dd8	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-09-23T09:49:15+08:00	erofs: introduce partial-referenced pclusters
+f70ba9e1c4cd0bd1e939474984f9ca5f6fa8a8cc	Yue Hu <huyue2@coolpad.com>	2022-09-23T10:11:22+08:00	erofs: support on-disk compressed fragments data
+6d6e82d6d13f37c68dbe8a763a1676f5e86abbe1	Yue Hu <huyue2@coolpad.com>	2022-09-23T10:11:21+08:00	erofs: support interlaced uncompressed data for compressed files
+6fdb7678ce61f8a960db70810e5a13683f665f56	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-09-09T10:39:48+08:00	erofs: fix order >= MAX_ORDER warning due to crafted negative i_size
+0800525a9019a8ac2b7217004d120fb14c9bc126	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-09-02T12:57:10+08:00	erofs: fix pcluster use-after-free on UP platforms
+8c7b5a3b2b58233e3100e2cd713b8ecfa42cc8a1	Yue Hu <huyue2@coolpad.com>	2022-08-12T14:01:50+08:00	erofs: avoid the potentially wrong m_plen for big pcluster
+a643b1b20574ed6e4dc986a38c61aba8d7626177	Hongnan Li <hongnan.li@linux.alibaba.com>	2022-07-22T16:27:32+08:00	erofs: update ctx->pos for every emitted dirent
+96e9492fbf0c0122cb765430a7cfb4f3e08b2667	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-06-19T23:09:40+08:00	erofs: get rid of the leftover PAGE_SIZE in dir.c
+acfbc41ca986e082bd5b66fd00bac51cd7f9f2b5	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-20T16:22:29+08:00	erofs: get rid of erofs_prepare_dio() helper
+3b969cf3b1f9a6dd0633669d5dd10f9de8d0137a	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:42:03+08:00	erofs: introduce multi-reference pclusters (fully-referenced)
+78a482d9d705e3e099d1d57e393c17464d3f2e13	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:42:02+08:00	erofs: record the longest decompressed size in this round
+1474e4320093cf3769d65470045e768df3cd87f2	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:42:01+08:00	erofs: introduce z_erofs_do_decompressed_bvec()
+0a86269b48e55218157b1cb2fced98d71339598e	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:42:00+08:00	erofs: try to leave (de)compressed_pages on stack if possible
+ae5ffc3f601c511b14b23150ea27c877b92659e3	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:59+08:00	erofs: introduce struct z_erofs_decompress_backend
+f1ce6c7ff6d390621f581992a3c2afc59bd5e645	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:58+08:00	erofs: get rid of `z_pagemap_global'
+c26eac987ac14f8c5aeb49a0b0ea5a64647032c6	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:57+08:00	erofs: clean up `enum z_erofs_collectmode'
+9b866af22070ecef72e418a3f399bce072dc7516	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:56+08:00	erofs: get rid of `enum z_erofs_page_type'
+14f24479884e401e80ee36ef497e1f9f2aebeea4	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:55+08:00	erofs: rework online page handling
+5ea11536af4da0eb74e4269d0491afa6be7454e2	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:54+08:00	erofs: switch compressed_pages[] to bufvec
+61b948b1ae020700e6b20062268d0fc9d9d4365f	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:53+08:00	erofs: introduce `z_erofs_parse_in_bvecs'
+61d24a19c683ebf658e635953dbfe232c4b1f8a8	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:52+08:00	erofs: drop the old pagevec approach
+963863fd9c5eb131653c1fb8de1c386a5c064398	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:51+08:00	erofs: introduce bufvec to store decompressed buffers
+3fc36b1807096428d54ff37cd4b4e8c4b2325e4f	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:50+08:00	erofs: introduce `z_erofs_parse_out_bvecs()'
+6525ce3dd22dff9fb8189a8c6618d0dfdde667b6	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:49+08:00	erofs: clean up z_erofs_collector_begin()
+284324a7dfdfc78ef12096923ec25fd76be857f4	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-15T23:41:48+08:00	erofs: get rid of unneeded `inode', `map' and `sb'
+e19769682e2a948f8bcd303131e92ea623ccf50a	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-07-08T18:10:01+08:00	erofs: avoid consecutive detection for Highmem memory
+51a3acf8e83c04839b00c11b670b26e85b9ff4cf	Yuwen Chen <chenyuwen1@meizu.com>	2022-06-27T06:40:41+08:00	erofs: wake up all waiters after z_erofs_lzma_head ready
+4970f8d46ad744b3dfd210c2a26ee1ffdd228e96	Weizhao Ouyang <o451686892@gmail.com>	2022-05-30T15:51:14+08:00	erofs: fix 'backmost' member of z_erofs_decompress_frontend
+5365f07bbd4c135958eee1c265b06258f606e33b	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-05-29T13:54:25+08:00	erofs: simplify z_erofs_pcluster_readmore()
+f869648583af8da894c75b5e3c4af0aa04516f17	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-05-29T13:54:24+08:00	erofs: get rid of label `restart_now'
+f1a0fab2846ff1cf0ff2c8996c9c3c8f62f78f3a	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-05-29T13:54:23+08:00	erofs: get rid of `struct z_erofs_collection'
+2b04426dab53fb8be06c951601ec18bf16d94eb9	Jeffle Xu <jefflexu@linux.alibaba.com>	2022-05-12T13:56:01+08:00	erofs: scan devices from device table
+e8932df7718c699d899494bafa88fc158ecbeeca	Jeffle Xu <jefflexu@linux.alibaba.com>	2022-04-25T20:21:31+08:00	erofs: make erofs_map_blocks() generally available
+d5a2ad6fd9fa60eab6e50c269252c55cae74a195	Hongnan Li <hongnan.li@linux.alibaba.com>	2022-04-25T12:07:12+08:00	erofs: make filesystem exportable
+085702880ba1fcf78830266184dacedf5272e2cb	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-05-12T19:58:33+08:00	erofs: fix buffer copy overflow of ztailpacking feature
+046eb1e7b07675aacbe5dfa84d56f38e73d887c0	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-05-07T03:46:12+08:00	erofs: refine on-disk definition comments
+ca5970fb850ca4619d54b013fd04531f81de6dc1	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-05-07T03:46:11+08:00	erofs: remove obsoleted comments
+aab3ff175eebfe8ed0bb6ffc13653a9747ea5524	Yue Hu <huyue2@coolpad.com>	2022-04-07T13:05:43+08:00	erofs: do not prompt for risk any more when using big pcluster
+0f5fcc966a5e7d12ddfe8f12d4006ac30a86123e	Hongyu Jin <hongyu.jin@unisoc.com>	2022-04-01T19:55:27+08:00	erofs: fix use-after-free of on-stack io[]
+cfc7aa649f58385460281eef867deda4f0f3550b	Muchun Song <songmuchun@bytedance.com>	2022-03-22T14:41:03-07:00	fs: allocate inode by using alloc_inode_sb()
+ca8fdb70f0c48c52eabe03119c4ce6def8e3ad63	David Anderson <dvander@google.com>	2022-03-17T19:49:59+08:00	erofs: rename ctime to mtime
+b393f2f62b00c468de6e37dd167ff8f25632c134	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-03-16T09:22:46+08:00	erofs: use meta buffers for inode lookup
+08c2e6588bf98a43d1e3e6c01304eafc87bae648	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-03-16T09:22:45+08:00	erofs: use meta buffers for reading directories
+a61211a4585c1688c784179f5071c3a9c1a712ab	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-03-11T02:27:43+08:00	erofs: refine managed inode stuffs
+33a9367dc412bc37f99376d3bdf1c32bf9bbe9d4	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-03-11T02:27:42+08:00	erofs: clean up z_erofs_extent_lookback
+329a118199f170b977349fc5a7ccc4b71b5f9249	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-03-11T01:34:48+08:00	erofs: silence warnings related to impossible m_plen
+656fab1ff27a24046884b91449ec85e0c1714cd9	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-03-02T03:49:51+08:00	erofs: clean up preload_compressed_pages()
+65946d20034680f5e54ae83176dde3e6fe9d6c49	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-03-02T03:49:50+08:00	erofs: get rid of `struct z_erofs_collector'
+5ee15a38ce4b9dc3296638285a70fdb7c8d6ea9b	Jeffle Xu <jefflexu@linux.alibaba.com>	2022-02-09T14:00:52+08:00	erofs: use meta buffers for erofs_read_superblock()
+a55adba657c9b1d5d204b7f4ba4a0feb389fe75f	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-02-22T11:31:18+08:00	erofs: fix ztailpacking on > 4GiB filesystems
+3e4dea56c13dfff4059e302d51d4adb4c1d533b0	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-02-04T03:02:03+08:00	erofs: fix small compressed files inlining
+96765641f277f53a49407089f5a18d37a8ff3e6b	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-01-21T17:14:12+08:00	erofs: avoid unnecessary z_erofs_decompressqueue_work() declaration
+2dcbae45f6010a5d24acfd1f694aeb7d39b95443	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-01-13T13:18:45+08:00	erofs: fix fsdax partition offset handling
+1efdd50a069d6bbd8e964a3b12e22d82f69f56df	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-01-02T12:00:17+08:00	erofs: use meta buffers for zmap operations
+0f3c44740d7cfb22a2f897696e5d37c672de4fdc	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-01-02T12:00:16+08:00	erofs: use meta buffers for xattr operations
+bd842e3e2577136cc331d48667e15cb018aa4de3	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-01-02T16:13:17+08:00	erofs: use meta buffers for super operations
+cc7f286c2bbbf6e6b7d036fe3af098f2dfa4bf57	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-01-02T12:00:14+08:00	erofs: use meta buffers for inode operations
+498892f60f2af54d9573207a9547b57c631404a9	Gao Xiang <hsiangkao@linux.alibaba.com>	2022-01-02T12:00:13+08:00	erofs: introduce meta buffer operations
+3c9f2a3738337fb3183ed137188926cbf687fa66	Yue Hu <huyue2@yulong.com>	2021-12-28T13:46:04+08:00	erofs: add on-disk compressed tail-packing inline support
+4e357cb76fd8083f6c57da944d8d79250c90b94a	Yue Hu <huyue2@yulong.com>	2021-12-29T07:29:19+08:00	erofs: support inline data decompression
+e606c6d02e14b104645e2b34617acc9070dd9cee	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-12-28T13:46:02+08:00	erofs: support unaligned data decompression
+aaa5ac0493b28f36c8236cf321678696905b80b6	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-12-28T13:46:01+08:00	erofs: introduce z_erofs_fixup_insize
+0ab6e892d78436b5b8227569947ca1525352623e	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-12-28T13:46:00+08:00	erofs: tidy up z_erofs_lz4_decompress
+c9bb6839ada1c22b4085b3eb4fb830d49414fd44	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-12-09T09:29:18+08:00	erofs: clean up erofs_map_blocks tracepoints
+b28f6a6f96bb1e26cd21d43374f2a20bc8642501	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-12-06T20:17:02+08:00	erofs: Replace zero-length array with flexible-array member
+3f541759daf37aca40737154e60b387e47181301	Christoph Hellwig <hch@lst.de>	2021-11-29T11:22:00+01:00	fsdax: shift partition offset handling into the file systems
+7dd47a6eb528140657534e04d94e74e8c960442e	Christoph Hellwig <hch@lst.de>	2021-11-29T11:21:59+01:00	dax: return the partition offset from fs_dax_get_by_bdev
+1b3901655242462384632332561c0f7e026247bc	Christoph Hellwig <hch@lst.de>	2021-11-29T11:21:42+01:00	dax: remove dax_capable
+b20d21fd69299700668978c219f43391db4b1570	Huang Jianan <huangjianan@oppo.com>	2021-11-13T00:09:33+08:00	erofs: rename lz4_0pading to zero_padding
+4a53ce62bb469436cb584dc57463579ff0c33652	Huang Jianan <huangjianan@oppo.com>	2021-11-18T21:58:44+08:00	erofs: fix deadlock when shrink erofs slab
+5a8078adfb2c1b10dcb1872a2765cae9b956ceac	Yue Hu <huyue2@yulong.com>	2021-11-06T16:23:15+08:00	erofs: remove useless cache strategy of DELAYEDALLOC
+9526b1095e179f25aa6f8f2686cad802873bbc3e	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-11-04T02:20:06+08:00	erofs: fix unsafe pagevec reuse of hooked pclusters
+9f6cb46690460ec580891d2ba8190e9404899205	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-10-25T15:43:11+08:00	erofs: don't trigger WARN() when decompression fails
+61a4efe16a9231f6470c40d4542949487305593c	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-10-22T17:01:20+08:00	erofs: get rid of ->lru usage
+851dce878e6102ae294d08dd0515ec2740d8d64f	Andreas Gruenbacher <agruenba@redhat.com>	2021-07-24T12:26:41+02:00	iomap: Add done_before argument to iomap_dio_rw
+d4acc85fd3649edbd1933c296770f79d22fdeea2	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-10-11T05:31:45+08:00	erofs: lzma compression support
+98cbe9612cb0dedebda57fb0efeb43dfba139826	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-10-11T05:31:44+08:00	erofs: rename some generic methods in decompressor
+fb5b55be48302b437a75778f92f5d6bef745f03d	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-10-09T04:08:39+08:00	erofs: introduce readmore decompression strategy
+6fb9f17054706dc25b1e9112012098ebe7701cde	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-10-18T00:57:21+08:00	erofs: introduce the secondary compression head
+450d2bda3255b53f8d0dafab621596cc8f9cdf8b	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-10-09T04:08:37+08:00	erofs: get compression algorithms directly on mapping
+a20a3d6dc580e0d1ffb9bb8b2593fe2c69225138	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-10-14T16:10:10+08:00	erofs: add multiple device support
+b16f11397384c1a71f5302852f95e45982b85b90	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-10-07T15:02:23+08:00	erofs: decouple basic mount options from fs_context
+8baa8bf44241b53b105ea0bc6e330241648b761f	Yue Hu <huyue2@yulong.com>	2021-10-14T14:57:44+08:00	erofs: remove the fast path of per-CPU buffer decompression
+072cc80538c29a170c7bed98fe720e9aecd0ee03	Yue Hu <huyue2@yulong.com>	2021-09-14T11:59:15+08:00	erofs: clear compacted_2b if compacted_4b_initial > totalidx
+fdd5135ca885f33e41c97bd522192f5b24b30649	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-09-22T17:51:41+08:00	erofs: fix misbehavior of unsupported chunk format check
+f9ba27a2ac2bf21530ebc3f2da16e39443cd6d3b	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-08-25T20:07:57+08:00	erofs: fix double free of 'copied'
+6884bcb48d351fc4620953262bd00b4837c79c98	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-08-20T18:00:19+08:00	erofs: support reading chunk-based uncompressed files
+9816da5e87b6518de75f35a392006a856c79dce8	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-08-20T18:00:18+08:00	erofs: introduce chunk-based file on-disk format
+f0065d3af41d3b3dab7cbfd3b74412819117ebe8	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-08-13T13:29:31+08:00	erofs: add fiemap support with iomap
+35a706be3705bae534fe9e7159c6449778030653	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-08-18T23:22:31+08:00	erofs: add support for the full decompressed length
+d89ad67135bbe3f0f6f6a167677bb068f91cdf73	Yue Hu <huyue2@yulong.com>	2021-08-10T15:24:16+08:00	erofs: remove the mapping parameter from erofs_try_to_free_cached_page()
+f1e931fbd017127824d6298f9d6a6d0dc327edcb	Yue Hu <huyue2@yulong.com>	2021-08-10T14:54:50+08:00	erofs: directly use wrapper erofs_page_is_managed() when shrinking
+eaa5b1765e213c6c0a8a1a9df796daa81a979a18	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-08-05T08:36:01+08:00	erofs: convert all uncompressed cases to iomap
+e5b5ddf8e12c68cc8ce7d545d563adc83af712f0	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-08-05T08:36:00+08:00	erofs: dax support for non-tailpacking regular file
+f6cfe6f6e00f4c7c94ff84ed726594241c79af23	Huang Jianan <huangjianan@oppo.com>	2021-08-05T08:35:59+08:00	erofs: iomap support for non-tailpacking DIO
+8dc9d2a8e77bc89a0192ef3e626e666c129f829c	Gao Xiang <hsiangkao@linux.alibaba.com>	2021-06-03T00:06:34+08:00	erofs: clean up file headers & footers
+b1c434087b0f6dfb4c5e6980fe63ce05db9d430f	Yue Hu <huyue2@yulong.com>	2021-04-19T18:26:23+08:00	erofs: remove the occupied parameter from z_erofs_pagevec_enqueue()
+1aff97f5b7ec03819b851d0a325c928c4f70f136	Wei Yongjun <weiyongjun1@huawei.com>	2021-05-19T14:16:57+00:00	erofs: fix error return code in erofs_read_superblock()
+3df51bfb562a7039cbe557ea971585f36ea534c8	Gao Xiang <xiang@kernel.org>	2021-05-10T14:47:15+08:00	erofs: fix 1 lcluster-sized pcluster for big pcluster
+ef4346a83f358c698a9e0dc9f22254709c889ebe	Gao Xiang <hsiangkao@redhat.com>	2021-04-07T12:39:27+08:00	erofs: enable big pcluster feature
+244a42b46f2ad66b5925b713ebced3c58e07233a	Gao Xiang <hsiangkao@redhat.com>	2021-04-07T12:39:26+08:00	erofs: support decompress big pcluster for lz4 backend
+fe4b0492c1215780a799f8dcc44bed33da50e9d1	Gao Xiang <hsiangkao@redhat.com>	2021-04-07T12:39:25+08:00	erofs: support parsing big pcluster compact indexes
+93d17d8603e0e06acfcb44b322867627a19d49af	Gao Xiang <hsiangkao@redhat.com>	2021-04-07T12:39:24+08:00	erofs: support parsing big pcluster compress indexes
+c434e0a49edc22c9bf57300fec7d10d19eea1dac	Gao Xiang <hsiangkao@redhat.com>	2021-04-07T12:39:23+08:00	erofs: adjust per-CPU buffers according to max_pclusterblks
+ff73181c00c366a6a890a9d8b8170950be42defe	Gao Xiang <hsiangkao@redhat.com>	2021-04-07T12:39:22+08:00	erofs: add big physical cluster definition
+f82779081e1d39d9c8b99c1c76255bc3f12b19ed	Gao Xiang <hsiangkao@redhat.com>	2021-04-07T12:39:21+08:00	erofs: fix up inplace I/O pointer for big pcluster
+e0141b1dd8c3af510039edcdc1484e2bf3a18c2b	Gao Xiang <hsiangkao@redhat.com>	2021-04-07T12:39:20+08:00	erofs: introduce physical cluster slab pools
+cc54c36857c5c0faaa788baf0d5ddbe082b0acfe	Gao Xiang <hsiangkao@redhat.com>	2021-04-10T03:06:30+08:00	erofs: introduce multipage per-CPU buffers
+5eb4316b517203a7d3e5331f4d4c8ca73d74fe17	Gao Xiang <hsiangkao@redhat.com>	2021-04-07T12:39:18+08:00	erofs: reserve physical_clusterbits[]
+5bb53aa552c9ad5eed703b6a2700b6118448ffbb	Ruiqi Gong <gongruiqi1@huawei.com>	2021-03-31T05:39:20-04:00	erofs: Clean up spelling mistakes found in fs/erofs
+29373fb8d48814f9ba0c47b50f06accf07e1af75	Gao Xiang <hsiangkao@redhat.com>	2021-03-29T18:00:12+08:00	erofs: add on-disk compression configurations
+79a53998a33aeff1260c512f6571b346915fff21	Gao Xiang <hsiangkao@redhat.com>	2021-03-29T09:23:07+08:00	erofs: introduce on-disk lz4 fs configurations
+148c448d93ef3a84ee9a55ef93d71818a886e726	Huang Jianan <huangjianan@oppo.com>	2021-03-29T09:23:06+08:00	erofs: support adjust lz4 history window size
+60066267156e32a94125b36a94d0f4942f0ef488	Gao Xiang <hsiangkao@redhat.com>	2021-03-29T09:23:05+08:00	erofs: introduce erofs_sb_has_xxx() helpers
+1ce92c0f700491ec10766687fe9efc0b803c8c23	Gao Xiang <hsiangkao@redhat.com>	2021-03-29T08:36:14+08:00	erofs: add unsupported inode i_format check
+137e00789dec6fc87a6a74c0663b170e92445783	Yue Hu <huyue2@yulong.com>	2021-03-25T15:10:08+08:00	erofs: don't use erofs_map_blocks() any more
+4b18ef8d455edada5291a505e44c6370e3e0db18	Gao Xiang <hsiangkao@redhat.com>	2021-03-22T02:32:27+08:00	erofs: complete a missing case for inplace I/O
+5419219ad23d56109c0435f75bb29f062472891f	Huang Jianan <huangjianan@oppo.com>	2021-03-17T11:54:48+08:00	erofs: use sync decompression for atomic contexts only
+5f2fd20c882bf6eb497ba93ef6c9eec87a80a2bb	Huang Jianan <huangjianan@oppo.com>	2021-03-17T11:54:47+08:00	erofs: use workqueue decompression for atomic contexts only
+045c8d4f02995c3b0b057b62766c5395bca9e998	Huang Jianan <huangjianan@oppo.com>	2021-03-16T11:15:14+08:00	erofs: avoid memory allocation failure during rolling decompression
+07f7adf33b156afab4757868eba6b1c15113f822	Gao Xiang <hsiangkao@redhat.com>	2021-02-09T21:06:18+08:00	erofs: initialized fields can only be observed after bit is set
+9a62e8cac876ff29e34a2c879a38538c4acbdf23	Gao Xiang <hsiangkao@redhat.com>	2021-01-20T09:30:16+08:00	erofs: fix shift-out-of-bounds of blkszbits
+9442e39ec7d4951373081168b3217a83ed53db5a	Al Viro <viro@zeniv.linux.org.uk>	2021-01-05T23:03:16-05:00	erofs: use %pd instead of messing with ->d_name
+cd7caa6fecde641709c5925c1a82c451a3203957	Huang Jianan <huangjianan@oppo.com>	2020-12-09T19:57:40+08:00	erofs: avoid using generic_block_bmap
+92aa1e01115fe5e2f6790d48d83fe74b8115bf60	Gao Xiang <hsiangkao@redhat.com>	2020-12-09T20:37:17+08:00	erofs: force inplace I/O under low memory scenario
+a86339126e5d92161adea2806d67fbf734cdb75a	Gao Xiang <hsiangkao@redhat.com>	2020-12-08T17:58:34+08:00	erofs: simplify try_to_claim_pcluster()
+42d9376e74dd8348bb9f22d380427d5fa82989f4	Gao Xiang <hsiangkao@redhat.com>	2020-12-08T17:58:33+08:00	erofs: insert to managed cache after adding to pcl
+47247f2aa18e2ce124251e24831a888b51feff27	Gao Xiang <hsiangkao@redhat.com>	2020-12-08T17:58:32+08:00	erofs: get rid of magical Z_EROFS_MAPPING_STAGING
+8c6b10c62dd5aa9fc497add3932eb12fbf47325f	Vladimir Zapolskiy <vladimir@tuxera.com>	2020-10-30T14:28:39+02:00	erofs: remove a void EROFS_VERSION macro set in Makefile
+e5df5a11242a1f184f386a1ac982df7b93e8ccbf	Gao Xiang <hsiangkao@redhat.com>	2020-10-22T22:57:21+08:00	erofs: fix setting up pcluster for temporary pages
+bac06a39f6509b37eafc2e2f91c5b9e9962a4e3d	Gao Xiang <hsiangkao@redhat.com>	2020-11-01T03:51:02+08:00	erofs: derive atime instead of leaving it empty
+e2c26dcb7f0e5a59594e3afa592c134bce7ff3dd	Chengguang Xu <cgxu519@mykernel.net>	2020-10-05T15:15:50+08:00	erofs: remove unnecessary enum entries
+7eb407f63f89f8a3e5b42627d22b22d09cf2388c	Gao Xiang <hsiangkao@redhat.com>	2020-09-19T15:27:30+08:00	erofs: add REQ_RAHEAD flag to readahead requests
+58c9e63ee8159c5bdb1c9bdf540e3ccaab9e23da	Gao Xiang <hsiangkao@redhat.com>	2020-09-19T15:27:29+08:00	erofs: fold in should_decompress_synchronously()
+1310c0052fc718b687fab1335a71e1adbd3ea51e	Gao Xiang <hsiangkao@redhat.com>	2020-09-19T15:27:28+08:00	erofs: avoid unnecessary variable `err'
+d9fd0c362299b2a01c0532c891f5d7bc3b464652	Al Viro <viro@zeniv.linux.org.uk>	2020-09-18T16:45:50-04:00	reduce boilerplate in fsid handling
+476673778c494f3642d96d67815a3ba0e0992328	Chao Yu <yuchao0@huawei.com>	2020-09-17T09:18:21+08:00	erofs: remove unneeded parameter
+087232085f1b2198c96ac6eb5159bd85c13943af	Gao Xiang <hsiangkao@redhat.com>	2020-08-11T15:00:20+08:00	erofs: avoid duplicated permission check for "trusted." xattrs
+ddb3da7fe0955d2cfa6b59feb8ecba04fee04854	Gao Xiang <hsiangkao@redhat.com>	2020-07-31T10:40:49+08:00	erofs: remove WQ_CPU_INTENSIVE flag from unbound wq's
+85f73f49d4a2769f895de8f4b8baa22865f59090	Gao Xiang <hsiangkao@redhat.com>	2020-07-30T02:02:35+08:00	erofs: fold in used-once helper erofs_workgroup_unfreeze_final()
+9c2487f1d448eab3ad98bd0948216570db0c1924	Gao Xiang <hsiangkao@redhat.com>	2020-07-30T01:58:01+08:00	erofs: fix extended inode could cross boundary
+d407342f37ab442bde0795e34c63f45b93ca7c1d	Alexander A. Klimov <grandmaster@al2klimov.de>	2020-07-13T15:09:44+02:00	erofs: Replace HTTP links with HTTPS ones
+34b32980c62029597bbfae941fe4298baf8d9bd3	Gao Xiang <hsiangkao@redhat.com>	2020-06-19T07:43:49+08:00	erofs: fix partially uninitialized misuse in z_erofs_onlinepage_fixup
+064b33595290d381406484194d9956507c175dbb	Gao Xiang <hsiangkao@redhat.com>	2020-05-28T04:48:44-04:00	erofs: suppress false positive last_block warning
+88c28a37807361e64e304aef2db77feffc898d41	Chao Yu <yuchao0@huawei.com>	2020-05-29T18:48:36+08:00	erofs: convert to use the new mount fs_context api
+44ac72c68dc77a39c99fbd121a7d58beccfddd88	Chengguang Xu <cgxu519@mykernel.net>	2020-05-26T17:03:43+08:00	erofs: code cleanup by removing ifdef macro surrounding
+7caa2fc9de56a444ad3fdf7aea1e06f24919708c	Gao Xiang <gaoxiang25@huawei.com>	2020-02-26T16:10:08+08:00	erofs: handle corrupted images whose decompressed size less than it'd be
+b10304e6fcf49c415003fda98333c2e2c53c0b0d	Gao Xiang <gaoxiang25@huawei.com>	2020-02-26T16:10:07+08:00	erofs: use LZ4_decompress_safe() for full decoding
+7b45fae56d17e9bbfafc06d00b6e4dc21fe6c208	Gao Xiang <gaoxiang25@huawei.com>	2020-02-26T16:10:06+08:00	erofs: correct the remaining shrink objects
+0051a683d463b656bfe07a1ee7cc868e348c9250	Gao Xiang <gaoxiang25@huawei.com>	2020-02-20T10:46:42+08:00	erofs: convert workstn to XArray
+b2d6e43ef59fc7f8376a1e2d1de1bd47d57edf24	Gao Xiang <gaoxiang25@huawei.com>	2020-01-21T14:48:19+08:00	erofs: clean up z_erofs_submit_queue()
+8599ac7704d9fd877eef3b1ba5911fbe937ddb17	Gao Xiang <gaoxiang25@huawei.com>	2020-01-21T14:47:47+08:00	erofs: fold in postsubmit_is_all_bypassed()
+5e27d01007188b72908c053fd457e3a92cde38a8	Gao Xiang <gaoxiang25@huawei.com>	2020-01-07T10:25:46+08:00	erofs: fix out-of-bound read for shifted uncompressed block
+93d8fb82c390b8bbedcde8a39674419b6f6b67a6	Vladimir Zapolskiy <vladimir@tuxera.com>	2020-01-02T14:01:18+02:00	erofs: remove void tagging/untagging of workgroup pointers
+8b5f393824dc64e8ee63a5d0234204b2e640c793	Vladimir Zapolskiy <vladimir@tuxera.com>	2020-01-02T14:01:17+02:00	erofs: remove unused tag argument while registering a workgroup
+2305a6de2e41ace448729dfee77efa3997c1e924	Vladimir Zapolskiy <vladimir@tuxera.com>	2020-01-02T14:01:16+02:00	erofs: remove unused tag argument while finding a workgroup
+09ba766d463e79f4573e970643bbbeaca4d4f092	Vladimir Zapolskiy <vladimir@tuxera.com>	2020-01-02T14:02:32+02:00	erofs: correct indentation of an assigned structure inside a function
+ec5349823a276244b132fe08712ef9ec3e217750	Gao Xiang <gaoxiang25@huawei.com>	2019-12-01T16:01:09+08:00	erofs: zero out when listxattr is called with no xattr
+262bdd38f77ee61780275200232a0d9ddabdd5a1	Chengguang Xu <cgxu519@mykernel.net>	2019-11-19T19:50:49+08:00	erofs: remove unnecessary output in erofs_show_options()
+4862d0c8b1a2c65a163b92e7d451656921701128	Gao Xiang <gaoxiang25@huawei.com>	2019-11-08T11:37:33+08:00	erofs: drop all vle annotations for runtime names
+d3ed0e47db4618957b0ac85771940ad49ccdb586	Pratik Shinde <pratikshinde320@gmail.com>	2019-11-04T10:49:37+08:00	erofs: support superblock checksum
+03afe475c1c062a11acd7a6bb7bb4509f079732f	Gao Xiang <gaoxiang25@huawei.com>	2019-10-08T20:56:16+08:00	erofs: set iowait for sync decompression
+8b715d2328e48d7e8bcd57bfb534f678ab898901	Gao Xiang <gaoxiang25@huawei.com>	2019-10-08T20:56:15+08:00	erofs: clean up decompress queue stuffs
+0b004718f096559c6f9993d0da82b1e90c1fea9e	Gao Xiang <gaoxiang25@huawei.com>	2019-11-21T21:59:54+08:00	erofs: get rid of __stagingpage_alloc helper
+85c955601120e3cfeb998eaa42fb04d1e0a773f3	Gao Xiang <gaoxiang25@huawei.com>	2019-10-08T20:56:13+08:00	erofs: remove dead code since managed cache is now built-in
+a503803fbcb1c9a0e051cd0ac0d5cb902bf42e65	Gao Xiang <gaoxiang25@huawei.com>	2019-10-08T20:56:12+08:00	erofs: clean up collection handling routines
+2a04ace1385dba0c6c93306caa8f7d19a9beff06	Dongwoo Lee <dwoo08.lee@samsung.com>	2024-12-16T20:01:35+09:00	Revert "erofs: zero out when listxattr is called with no xattr"
+061f71687f5d8827ed7bdbf7cce5fa1384026c62	Dongwoo Lee <dwoo08.lee@samsung.com>	2024-12-16T20:01:12+09:00	Revert "erofs: fix out-of-bound read for shifted uncompressed block"
+18a69cde6eeef303c79affd11b3a9ddda745cdfe	Dongwoo Lee <dwoo08.lee@samsung.com>	2024-12-16T20:00:49+09:00	Revert "erofs: correct the remaining shrink objects"
+739a861865046c1e91a656c500a962af24b2e0aa	Dongwoo Lee <dwoo08.lee@samsung.com>	2024-12-16T20:00:19+09:00	Revert "erofs: fix partially uninitialized misuse in z_erofs_onlinepage_fixup"
+a8b4b51abde3967055452ad0199ac238a221a105	Dongwoo Lee <dwoo08.lee@samsung.com>	2024-04-30T12:11:01+09:00	changed

@@ -1,0 +1,805 @@
+
+FILE Makefile
+1: # SPDX-License-Identifier: GPL-2.0
+2: VERSION = 6
+3: PATCHLEVEL = 12
+4: SUBLEVEL = 80
+5: EXTRAVERSION =
+6: NAME = Baby Opossum Posse
+
+FILE Makefile
+420: HOST_LFS_LDFLAGS := $(shell getconf LFS_LDFLAGS 2>/dev/null)
+421: HOST_LFS_LIBS := $(shell getconf LFS_LIBS 2>/dev/null)
+422: 
+423: ifneq ($(LLVM),)
+424: ifneq ($(filter %/,$(LLVM)),)
+425: LLVM_PREFIX := $(LLVM)
+426: else ifneq ($(filter -%,$(LLVM)),)
+427: LLVM_SUFFIX := $(LLVM)
+428: endif
+429: 
+430: HOSTCC	= $(LLVM_PREFIX)clang$(LLVM_SUFFIX)
+431: HOSTCXX	= $(LLVM_PREFIX)clang++$(LLVM_SUFFIX)
+432: else
+433: HOSTCC	= gcc
+434: HOSTCXX	= g++
+435: endif
+436: HOSTRUSTC = rustc
+
+FILE Makefile
+475: 
+476: # Make variables (CC, etc...)
+477: CPP		= $(CC) -E
+478: ifneq ($(LLVM),)
+479: CC		= $(LLVM_PREFIX)clang$(LLVM_SUFFIX)
+480: LD		= $(LLVM_PREFIX)ld.lld$(LLVM_SUFFIX)
+481: AR		= $(LLVM_PREFIX)llvm-ar$(LLVM_SUFFIX)
+482: NM		= $(LLVM_PREFIX)llvm-nm$(LLVM_SUFFIX)
+483: OBJCOPY		= $(LLVM_PREFIX)llvm-objcopy$(LLVM_SUFFIX)
+484: OBJDUMP		= $(LLVM_PREFIX)llvm-objdump$(LLVM_SUFFIX)
+485: READELF		= $(LLVM_PREFIX)llvm-readelf$(LLVM_SUFFIX)
+486: STRIP		= $(LLVM_PREFIX)llvm-strip$(LLVM_SUFFIX)
+487: else
+488: CC		= $(CROSS_COMPILE)gcc
+489: LD		= $(CROSS_COMPILE)ld
+490: AR		= $(CROSS_COMPILE)ar
+491: NM		= $(CROSS_COMPILE)nm
+492: OBJCOPY		= $(CROSS_COMPILE)objcopy
+493: OBJDUMP		= $(CROSS_COMPILE)objdump
+494: READELF		= $(CROSS_COMPILE)readelf
+495: STRIP		= $(CROSS_COMPILE)strip
+496: endif
+
+FILE Makefile
+806: 
+807: KBUILD_CFLAGS	+= -fno-delete-null-pointer-checks
+808: 
+809: ifdef CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+810: KBUILD_CFLAGS += -O2
+811: KBUILD_RUSTFLAGS += -Copt-level=2
+812: else ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
+813: KBUILD_CFLAGS += -Os
+814: KBUILD_RUSTFLAGS += -Copt-level=s
+815: endif
+
+FILE arch/arm/Kconfig
+1025: 
+1026: choice
+1027: 	prompt "Memory split"
+1028: 	depends on MMU
+1029: 	default VMSPLIT_3G
+1030: 	help
+1031: 	  Select the desired split between kernel and user memory.
+1032: 
+1033: 	  If you are not absolutely sure what you are doing, leave this
+1034: 	  option alone!
+1035: 
+1036: 	config VMSPLIT_3G
+1037: 		bool "3G/1G user/kernel split"
+1038: 	config VMSPLIT_3G_OPT
+1039: 		depends on !ARM_LPAE
+1040: 		bool "3G/1G user/kernel split (for full 1G low memory)"
+1041: 	config VMSPLIT_2G
+1042: 		bool "2G/2G user/kernel split"
+1043: 	config VMSPLIT_1G
+1044: 		bool "1G/3G user/kernel split"
+1045: endchoice
+1046: 
+1047: config PAGE_OFFSET
+1048: 	hex
+
+FILE arch/arm/Kconfig
+1095: config HZ_FIXED
+1096: 	int
+1097: 	default 128 if SOC_AT91RM9200
+1098: 	default 0
+1099: 
+1100: choice
+1101: 	depends on HZ_FIXED = 0
+1102: 	prompt "Timer frequency"
+1103: 
+1104: config HZ_100
+1105: 	bool "100 Hz"
+1106: 
+1107: config HZ_200
+1108: 	bool "200 Hz"
+1109: 
+1110: config HZ_250
+1111: 	bool "250 Hz"
+1112: 
+1113: config HZ_300
+1114: 	bool "300 Hz"
+1115: 
+1116: config HZ_500
+1117: 	bool "500 Hz"
+1118: 
+1119: config HZ_1000
+1120: 	bool "1000 Hz"
+1121: 
+1122: endchoice
+1123: 
+1124: config HZ
+1125: 	int
+1126: 	default HZ_FIXED if HZ_FIXED != 0
+1127: 	default 100 if HZ_100
+1128: 	default 200 if HZ_200
+1129: 	default 250 if HZ_250
+1130: 	default 300 if HZ_300
+1131: 	default 500 if HZ_500
+1132: 	default 1000
+1133: 
+
+FILE arch/arm/Kconfig
+1376: config CC_HAVE_STACKPROTECTOR_TLS
+1377: 	def_bool $(cc-option,-mtp=cp15 -mstack-protector-guard=tls -mstack-protector-guard-offset=0)
+1378: 
+1379: config STACKPROTECTOR_PER_TASK
+1380: 	bool "Use a unique stack canary value for each task"
+1381: 	depends on STACKPROTECTOR && CURRENT_POINTER_IN_TPIDRURO && !XIP_DEFLATED_DATA
+1382: 	depends on GCC_PLUGINS || CC_HAVE_STACKPROTECTOR_TLS
+1383: 	select GCC_PLUGIN_ARM_SSP_PER_TASK if !CC_HAVE_STACKPROTECTOR_TLS
+1384: 	default y
+1385: 	help
+
+FILE arch/Kconfig
+640: config HAVE_STACKPROTECTOR
+641: 	bool
+642: 	help
+643: 	  An arch should select this symbol if:
+644: 	  - it has implemented a stack canary (e.g. __stack_chk_guard)
+645: 
+646: config STACKPROTECTOR
+647: 	bool "Stack Protector buffer overflow detection"
+648: 	depends on HAVE_STACKPROTECTOR
+649: 	depends on $(cc-option,-fstack-protector)
+650: 	default y
+651: 	help
+652: 	  This option turns on the "stack-protector" GCC feature. This
+653: 	  feature puts, at the beginning of functions, a canary value on
+654: 	  the stack just before the return address, and validates
+655: 	  the value just before actually returning.  Stack based buffer
+656: 	  overflows (that need to overwrite this return address) now also
+657: 	  overwrite the canary, which gets detected and the attack is then
+658: 	  neutralized via a kernel panic.
+659: 
+660: 	  Functions will have the stack-protector canary logic added if they
+661: 	  have an 8-byte or larger character array on the stack.
+662: 
+663: 	  This feature requires gcc version 4.2 or above, or a distribution
+664: 	  gcc with the feature backported ("-fstack-protector").
+665: 
+666: 	  On an x86 "defconfig" build, this feature adds canary checks to
+667: 	  about 3% of all kernel functions, which increases kernel code size
+668: 	  by about 0.3%.
+669: 
+670: config STACKPROTECTOR_STRONG
+671: 	bool "Strong Stack Protector"
+672: 	depends on STACKPROTECTOR
+673: 	depends on $(cc-option,-fstack-protector-strong)
+674: 	default y
+675: 	help
+676: 	  Functions will have the stack-protector canary logic added in any
+677: 	  of the following conditions:
+678: 
+679: 	  - local variable's address used as part of the right hand side of an
+680: 	    assignment or function argument
+
+FILE arch/Kconfig
+760: 	depends on (!KCOV || CLANG_VERSION >= 170000) || !DEBUG_INFO
+761: 	depends on !GCOV_KERNEL
+762: 	help
+763: 	  The compiler and Kconfig options support building with Clang's
+764: 	  LTO.
+765: 
+766: choice
+767: 	prompt "Link Time Optimization (LTO)"
+768: 	default LTO_NONE
+769: 	help
+770: 	  This option enables Link Time Optimization (LTO), which allows the
+771: 	  compiler to optimize binaries globally.
+772: 
+773: 	  If unsure, select LTO_NONE. Note that LTO is very resource-intensive
+774: 	  so it's disabled by default.
+775: 
+776: config LTO_NONE
+777: 	bool "None"
+778: 	help
+779: 	  Build the kernel normally, without Link Time Optimization (LTO).
+780: 
+781: config LTO_CLANG_FULL
+782: 	bool "Clang Full LTO (EXPERIMENTAL)"
+783: 	depends on HAS_LTO_CLANG
+784: 	depends on !COMPILE_TEST
+785: 	select LTO_CLANG
+786: 	help
+787: 	  This option enables Clang's full Link Time Optimization (LTO), which
+788: 	  allows the compiler to optimize the kernel globally. If you enable
+789: 	  this option, the compiler generates LLVM bitcode instead of ELF
+790: 	  object files, and the actual compilation from bitcode happens at
+791: 	  the LTO link step, which may take several minutes depending on the
+792: 	  kernel configuration. More information can be found from LLVM's
+793: 	  documentation:
+794: 
+795: 	    https://llvm.org/docs/LinkTimeOptimization.html
+796: 
+797: 	  During link time, this option can use a large amount of RAM, and
+798: 	  may take much longer than the ThinLTO option.
+799: 
+800: config LTO_CLANG_THIN
+801: 	bool "Clang ThinLTO (EXPERIMENTAL)"
+802: 	depends on HAS_LTO_CLANG && ARCH_SUPPORTS_LTO_CLANG_THIN
+803: 	select LTO_CLANG
+804: 	help
+805: 	  This option enables Clang's ThinLTO, which allows for parallel
+
+FILE arch/Kconfig
+1620: 	bool
+1621: 
+1622: config ARCH_HAS_HW_PTE_YOUNG
+1623: 	bool
+1624: 	help
+1625: 	  Architectures that select this option are capable of setting the
+1626: 	  accessed bit in PTE entries when using them as part of linear address
+1627: 	  translations. Architectures that require runtime check should select
+1628: 	  this option and override arch_has_hw_pte_young().
+1629: 
+1630: config ARCH_HAS_NONLEAF_PMD_YOUNG
+
+FILE init/Kconfig
+1452: 
+1453: 	  If unsure, say Y.
+1454: 
+1455: choice
+1456: 	prompt "Compiler optimization level"
+1457: 	default CC_OPTIMIZE_FOR_PERFORMANCE
+1458: 
+1459: config CC_OPTIMIZE_FOR_PERFORMANCE
+1460: 	bool "Optimize for performance (-O2)"
+1461: 	help
+1462: 	  This is the default optimization level for the kernel, building
+1463: 	  with the "-O2" compiler flag for best performance and most
+1464: 	  helpful compile-time warnings.
+1465: 
+1466: config CC_OPTIMIZE_FOR_SIZE
+1467: 	bool "Optimize for size (-Os)"
+1468: 	help
+1469: 	  Choosing this option will pass "-Os" to your compiler resulting
+1470: 	  in a smaller kernel.
+1471: 
+1472: endchoice
+1473: 
+1474: config HAVE_LD_DEAD_CODE_DATA_ELIMINATION
+1475: 	bool
+
+FILE init/Kconfig
+1542: 
+1543: menuconfig EXPERT
+1544: 	bool "Configure standard kernel features (expert users)"
+1545: 	# Unhide debug options, to make the on-by-default options visible
+1546: 	select DEBUG_KERNEL
+1547: 	help
+
+FILE drivers/cpufreq/Kconfig
+32: 	help
+33: 	  Export CPU frequency statistics information through sysfs.
+34: 
+35: 	  If in doubt, say N.
+36: 
+37: choice
+38: 	prompt "Default CPUFreq governor"
+39: 	default CPU_FREQ_DEFAULT_GOV_USERSPACE if ARM_SA1110_CPUFREQ
+40: 	default CPU_FREQ_DEFAULT_GOV_SCHEDUTIL if ARM64 || ARM
+41: 	default CPU_FREQ_DEFAULT_GOV_SCHEDUTIL if (X86_INTEL_PSTATE || X86_AMD_PSTATE) && SMP
+42: 	default CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+43: 	help
+44: 	  This option sets which CPUFreq governor shall be loaded at
+45: 	  startup. If in doubt, use the default setting.
+
+FILE drivers/block/zram/Kconfig
+1: # SPDX-License-Identifier: GPL-2.0
+2: config ZRAM
+3: 	tristate "Compressed RAM block device support"
+4: 	depends on BLOCK && SYSFS && MMU
+5: 	select ZSMALLOC
+6: 	help
+7: 	  Creates virtual block devices called /dev/zramX (X = 0, 1, ...).
+8: 	  Pages written to these disks are compressed and stored in memory
+9: 	  itself. These disks allow very fast I/O and compression provides
+10: 	  good amounts of memory savings.
+11: 
+12: 	  It has several use cases, for example: /tmp storage, use as swap
+13: 	  disks and maybe many more.
+14: 
+15: 	  See Documentation/admin-guide/blockdev/zram.rst for more information.
+16: 
+17: config ZRAM_BACKEND_LZ4
+18: 	bool "lz4 compression support"
+19: 	depends on ZRAM
+20: 	select LZ4_COMPRESS
+21: 	select LZ4_DECOMPRESS
+22: 
+23: config ZRAM_BACKEND_LZ4HC
+24: 	bool "lz4hc compression support"
+25: 	depends on ZRAM
+26: 	select LZ4HC_COMPRESS
+27: 	select LZ4_DECOMPRESS
+28: 
+29: config ZRAM_BACKEND_ZSTD
+30: 	bool "zstd compression support"
+31: 	depends on ZRAM
+32: 	select ZSTD_COMPRESS
+33: 	select ZSTD_DECOMPRESS
+34: 
+35: config ZRAM_BACKEND_DEFLATE
+36: 	bool "deflate compression support"
+37: 	depends on ZRAM
+38: 	select ZLIB_DEFLATE
+39: 	select ZLIB_INFLATE
+40: 
+41: config ZRAM_BACKEND_842
+42: 	bool "842 compression support"
+43: 	depends on ZRAM
+44: 	select 842_COMPRESS
+45: 	select 842_DECOMPRESS
+46: 
+47: config ZRAM_BACKEND_FORCE_LZO
+48: 	depends on ZRAM
+49: 	def_bool !ZRAM_BACKEND_LZ4 && !ZRAM_BACKEND_LZ4HC && \
+50: 		!ZRAM_BACKEND_ZSTD && !ZRAM_BACKEND_DEFLATE && \
+51: 		!ZRAM_BACKEND_842
+52: 
+53: config ZRAM_BACKEND_LZO
+54: 	bool "lzo and lzo-rle compression support" if !ZRAM_BACKEND_FORCE_LZO
+55: 	depends on ZRAM
+56: 	default ZRAM_BACKEND_FORCE_LZO
+57: 	select LZO_COMPRESS
+58: 	select LZO_DECOMPRESS
+59: 
+60: choice
+61: 	prompt "Default zram compressor"
+62: 	default ZRAM_DEF_COMP_LZORLE
+63: 	depends on ZRAM
+64: 
+65: config ZRAM_DEF_COMP_LZORLE
+66: 	bool "lzo-rle"
+67: 	depends on ZRAM_BACKEND_LZO
+68: 
+69: config ZRAM_DEF_COMP_LZO
+70: 	bool "lzo"
+71: 	depends on ZRAM_BACKEND_LZO
+72: 
+73: config ZRAM_DEF_COMP_LZ4
+74: 	bool "lz4"
+75: 	depends on ZRAM_BACKEND_LZ4
+76: 
+77: config ZRAM_DEF_COMP_LZ4HC
+78: 	bool "lz4hc"
+79: 	depends on ZRAM_BACKEND_LZ4HC
+80: 
+81: config ZRAM_DEF_COMP_ZSTD
+82: 	bool "zstd"
+83: 	depends on ZRAM_BACKEND_ZSTD
+84: 
+85: config ZRAM_DEF_COMP_DEFLATE
+86: 	bool "deflate"
+87: 	depends on ZRAM_BACKEND_DEFLATE
+88: 
+89: config ZRAM_DEF_COMP_842
+90: 	bool "842"
+91: 	depends on ZRAM_BACKEND_842
+92: 
+93: endchoice
+94: 
+95: config ZRAM_DEF_COMP
+96: 	string
+97: 	depends on ZRAM
+98: 	default "lzo-rle" if ZRAM_DEF_COMP_LZORLE
+99: 	default "lzo" if ZRAM_DEF_COMP_LZO
+100: 	default "lz4" if ZRAM_DEF_COMP_LZ4
+101: 	default "lz4hc" if ZRAM_DEF_COMP_LZ4HC
+102: 	default "zstd" if ZRAM_DEF_COMP_ZSTD
+103: 	default "deflate" if ZRAM_DEF_COMP_DEFLATE
+104: 	default "842" if ZRAM_DEF_COMP_842
+105: 	default "unset-value"
+106: 
+107: config ZRAM_WRITEBACK
+108:        bool "Write back incompressible or idle page to backing device"
+109:        depends on ZRAM
+110:        help
+111: 	 This lets zram entries (incompressible or idle pages) be written
+112: 	 back to a backing device, helping save memory.
+113: 	 For this feature, admin should set up backing device via
+114: 	 /sys/block/zramX/backing_dev.
+115: 
+116: 	 With /sys/block/zramX/{idle,writeback}, application could ask
+117: 	 idle page's writeback to the backing device to save in memory.
+118: 
+119: 	 See Documentation/admin-guide/blockdev/zram.rst for more information.
+120: 
+121: config ZRAM_TRACK_ENTRY_ACTIME
+122: 	bool "Track access time of zram entries"
+123: 	depends on ZRAM
+124: 	help
+125: 	  With this feature zram tracks access time of every stored
+126: 	  entry (page), which can be used for a more fine grained IDLE
+127: 	  pages writeback.
+128: 
+129: config ZRAM_MEMORY_TRACKING
+130: 	bool "Track zRam block status"
+131: 	depends on ZRAM && DEBUG_FS
+132: 	select ZRAM_TRACK_ENTRY_ACTIME
+133: 	help
+134: 	  With this feature, admin can track the state of allocated blocks
+135: 	  of zRAM. Admin could see the information via
+136: 	  /sys/kernel/debug/zram/zramX/block_state.
+137: 
+138: 	  See Documentation/admin-guide/blockdev/zram.rst for more information.
+139: 
+140: config ZRAM_MULTI_COMP
+141: 	bool "Enable multiple compression streams"
+142: 	depends on ZRAM
+143: 	help
+144: 	  This will enable multi-compression streams, so that ZRAM can
+145: 	  re-compress pages using a potentially slower but more effective
+146: 	  compression algorithm. Note, that IDLE page recompression
+147: 	  requires ZRAM_TRACK_ENTRY_ACTIME.
+
+FILE kernel/time/Kconfig
+94: config NO_HZ_COMMON
+95: 	bool
+96: 	select TICK_ONESHOT
+97: 
+98: choice
+99: 	prompt "Timer tick handling"
+100: 	default NO_HZ_IDLE if NO_HZ
+101: 
+102: config HZ_PERIODIC
+103: 	bool "Periodic timer ticks (constant rate, no dynticks)"
+104: 	help
+105: 	  This option keeps the tick running periodically at a constant
+106: 	  rate, even when the CPU doesn't need it.
+107: 
+108: config NO_HZ_IDLE
+109: 	bool "Idle dynticks system (tickless idle)"
+110: 	select NO_HZ_COMMON
+111: 	help
+112: 	  This option enables a tickless idle system: timer interrupts
+113: 	  will only trigger on an as-needed basis when the system is idle.
+114: 	  This is usually interesting for energy saving.
+115: 
+
+FILE kernel/trace/Kconfig
+180: 	default y
+181: 
+182: menuconfig FTRACE
+183: 	bool "Tracers"
+184: 	depends on TRACING_SUPPORT
+185: 	default y if DEBUG_KERNEL
+186: 	help
+187: 	  Enable the kernel tracing infrastructure.
+188: 
+189: if FTRACE
+190: 
+191: config BOOTTIME_TRACING
+192: 	bool "Boot-time Tracing support"
+193: 	depends on TRACING
+194: 	select BOOT_CONFIG
+195: 	help
+196: 	  Enable developer to setup ftrace subsystem via supplemental
+197: 	  kernel cmdline at boot time for debugging (tracing) driver
+198: 	  initialization and boot process.
+199: 
+200: config FUNCTION_TRACER
+201: 	bool "Kernel Function Tracer"
+202: 	depends on HAVE_FUNCTION_TRACER
+203: 	select KALLSYMS
+204: 	select GENERIC_TRACER
+205: 	select CONTEXT_SWITCH_TRACER
+206: 	select GLOB
+207: 	select NEED_TASKS_RCU
+208: 	select TASKS_RUDE_RCU
+
+FILE kernel/trace/Kconfig
+316: config STACK_TRACER
+317: 	bool "Trace max stack"
+318: 	depends on HAVE_FUNCTION_TRACER
+319: 	select FUNCTION_TRACER
+320: 	select STACKTRACE
+321: 	select KALLSYMS
+
+FILE kernel/trace/Kconfig
+346: config IRQSOFF_TRACER
+347: 	bool "Interrupts-off Latency Tracer"
+348: 	default n
+349: 	depends on TRACE_IRQFLAGS_SUPPORT
+350: 	select TRACE_IRQFLAGS
+351: 	select GENERIC_TRACER
+
+FILE kernel/trace/Kconfig
+642: 
+643: config BLK_DEV_IO_TRACE
+644: 	bool "Support for tracing block IO actions"
+645: 	depends on SYSFS
+646: 	depends on BLOCK
+647: 	select RELAY
+648: 	select DEBUG_FS
+649: 	select TRACEPOINTS
+
+FILE mm/memcontrol-v1.c
+2420: 		return -EINVAL;
+2421: 	return mem_cgroup_force_empty(memcg) ?: nbytes;
+2422: }
+2423: 
+2424: #if defined(CONFIG_MEMCG_V1) && defined(CONFIG_SWAP)
+2425: static int mem_cgroup_force_reclaim(struct cgroup_subsys_state *css,
+2426: 				struct cftype *cft, u64 val)
+2427: {
+2428: 	struct mem_cgroup *memcg = mem_cgroup_from_css(css);
+2429: 	unsigned long nr_to_reclaim = val;
+2430: 	unsigned long total = 0;
+2431: 	int loop;
+2432: 
+2433: 	for (loop = 0; loop < MEM_CGROUP_MAX_RECLAIM_LOOPS; loop++) {
+2434: 		total += try_to_free_mem_cgroup_pages(memcg, nr_to_reclaim,
+2435: 						GFP_KERNEL, true, NULL);
+2436: 
+2437: 		/*
+2438: 		 * If nothing was reclaimed after two attempts, there
+2439: 		 * may be no reclaimable pages in this hierarchy.
+2440: 		 * If more than nr_to_reclaim pages were already reclaimed,
+2441: 		 * finish force reclaim.
+2442: 		 */
+2443: 		if (loop && (!total || total > nr_to_reclaim))
+2444: 			break;
+2445: 	}
+2446: 
+2447: 	pr_info("%s: [Mem_reclaim] Loop: %d - Total_reclaimed: %lu - nr_to_reclaim: %lu\n",
+2448: 		__func__, loop, total, nr_to_reclaim);
+2449: 
+2450: 	return total;
+2451: }
+2452: #endif
+2453: 
+2454: static u64 mem_cgroup_hierarchy_read(struct cgroup_subsys_state *css,
+2455: 				     struct cftype *cft)
+2456: {
+2457: 	return 1;
+2458: }
+
+FILE mm/memcontrol-v1.c
+3079: 		.private = MEMFILE_PRIVATE(_MEMSWAP, RES_FAILCNT),
+3080: 		.write = mem_cgroup_reset,
+3081: 		.read_u64 = mem_cgroup_read_u64,
+3082: 	},
+3083: #if defined(CONFIG_MEMCG_V1) && defined(CONFIG_SWAP)
+3084: 	{
+3085: 		.name = "force_reclaim",
+3086: 		.write_u64 = mem_cgroup_force_reclaim,
+3087: 	},
+3088: #endif
+3089: 	{ },	/* terminate */
+3090: };
+3091: 
+
+FILE mm/vmscan.c
+6589: unsigned long try_to_free_mem_cgroup_pages(struct mem_cgroup *memcg,
+6590: 					   unsigned long nr_pages,
+6591: 					   gfp_t gfp_mask,
+6592: 					   unsigned int reclaim_options,
+6593: 					   int *swappiness)
+6594: {
+6595: 	unsigned long nr_reclaimed;
+6596: 	unsigned int noreclaim_flag;
+6597: 	struct scan_control sc = {
+6598: 		.nr_to_reclaim = max(nr_pages, SWAP_CLUSTER_MAX),
+6599: 		.proactive_swappiness = swappiness,
+6600: 		.gfp_mask = (current_gfp_context(gfp_mask) & GFP_RECLAIM_MASK) |
+6601: 				(GFP_HIGHUSER_MOVABLE & ~GFP_RECLAIM_MASK),
+6602: 		.reclaim_idx = MAX_NR_ZONES - 1,
+6603: 		.target_mem_cgroup = memcg,
+6604: 		.priority = DEF_PRIORITY,
+6605: 		.may_writepage = !laptop_mode,
+6606: 		.may_unmap = 1,
+6607: 		.may_swap = !!(reclaim_options & MEMCG_RECLAIM_MAY_SWAP),
+6608: 		.proactive = !!(reclaim_options & MEMCG_RECLAIM_PROACTIVE),
+6609: 	};
+6610: 	/*
+6611: 	 * Traverse the ZONELIST_FALLBACK zonelist of the current node to put
+
+FILE include/linux/swap.h
+419: 					gfp_t gfp_mask, nodemask_t *mask);
+420: 
+421: #define MEMCG_RECLAIM_MAY_SWAP (1 << 1)
+422: #define MEMCG_RECLAIM_PROACTIVE (1 << 2)
+423: #define MIN_SWAPPINESS 0
+424: #define MAX_SWAPPINESS 200
+425: extern unsigned long try_to_free_mem_cgroup_pages(struct mem_cgroup *memcg,
+
+FILE mm/page_alloc.c
+236: 
+237: #define ALLOC_IN_CMA_THRESHOLD_MAX 16
+238: #define ALLOC_IN_CMA_THRESHOLD_DEFAULT 12
+239: 
+240: static unsigned long _alloc_in_cma_threshold __read_mostly
+241: 				= ALLOC_IN_CMA_THRESHOLD_DEFAULT;
+242: 
+243: static int __init alloc_in_cma_threshold_setup(char *buf)
+244: {
+245: 	unsigned long res;
+246: 
+247: 	if (kstrtoul(buf, 10, &res) < 0 ||
+248: 	    res > ALLOC_IN_CMA_THRESHOLD_MAX) {
+249: 		pr_err("Bad alloc_cma_threshold value\n");
+250: 		return 0;
+251: 	}
+252: 	_alloc_in_cma_threshold = res;
+253: 	pr_info("Setting alloc_in_cma_threshold to %lu\n", res);
+254: 	return 0;
+255: }
+256: early_param("alloc_in_cma_threshold", alloc_in_cma_threshold_setup);
+257: 
+
+FILE lib/Kconfig.debug
+200: config DEBUG_BUGVERBOSE
+201: 	bool "Verbose BUG() reporting (adds 70K)" if DEBUG_KERNEL && EXPERT
+202: 	depends on BUG && (GENERIC_BUG || HAVE_DEBUG_BUGVERBOSE)
+203: 	default y
+204: 	help
+205: 	  Say Y here to make BUG() panics output the file name and line number
+206: 	  of the BUG call as well as the EIP and oops trace.  This aids
+207: 	  debugging but costs about 70-100K of memory.
+208: 
+209: endmenu # "printk and dmesg options"
+210: 
+211: config DEBUG_KERNEL
+212: 	bool "Kernel debugging"
+213: 	help
+214: 	  Say Y here if you are developing drivers or trying to debug and
+215: 	  identify kernel problems.
+216: 
+217: config DEBUG_MISC
+218: 	bool "Miscellaneous debug code"
+219: 	default DEBUG_KERNEL
+220: 	depends on DEBUG_KERNEL
+221: 	help
+222: 	  Say Y here if you need to enable miscellaneous debug code that should
+223: 	  be under a more specific debug option but isn't.
+224: 
+225: menu "Compile-time checks and compiler options"
+226: 
+227: config DEBUG_INFO
+228: 	bool
+229: 	help
+230: 	  A kernel debug info option other than "None" has been selected
+
+FILE lib/Kconfig.debug
+316: 
+317: choice
+318: 	prompt "Compressed Debug information"
+319: 	help
+320: 	  Compress the resulting debug info. Results in smaller debug info sections,
+321: 	  but requires that consumers are able to decompress the results.
+322: 
+323: 	  If unsure, choose DEBUG_INFO_COMPRESSED_NONE.
+324: 
+325: config DEBUG_INFO_COMPRESSED_NONE
+326: 	bool "Don't compress debug information"
+327: 	help
+328: 	  Don't compress debug info sections.
+
+FILE lib/Kconfig.debug
+377: config DEBUG_INFO_BTF
+378: 	bool "Generate BTF type information"
+379: 	depends on !DEBUG_INFO_SPLIT && !DEBUG_INFO_REDUCED
+380: 	depends on !GCC_PLUGIN_RANDSTRUCT || COMPILE_TEST
+381: 	depends on BPF_SYSCALL
+382: 	depends on PAHOLE_VERSION >= 116
+383: 	depends on DEBUG_INFO_DWARF4 || PAHOLE_VERSION >= 121
+384: 	# pahole uses elfutils, which does not have support for Hexagon relocations
+385: 	depends on !HEXAGON
+386: 	help
+387: 	  Generate deduplicated BTF type information from DWARF debug info.
+388: 	  Turning this on requires pahole v1.16 or later (v1.21 or later to
+389: 	  support DWARF 5), which will convert DWARF type info into equivalent
+390: 	  deduplicated BTF type info.
+391: 
+392: config PAHOLE_HAS_SPLIT_BTF
+393: 	def_bool PAHOLE_VERSION >= 119
+394: 
+395: config PAHOLE_HAS_BTF_TAG
+396: 	def_bool PAHOLE_VERSION >= 123
+397: 	depends on CC_IS_CLANG
+398: 	help
+399: 	  Decide whether pahole emits btf_tag attributes (btf_type_tag and
+400: 	  btf_decl_tag) or not. Currently only clang compiler implements
+401: 	  these attributes, so make the config depend on CC_IS_CLANG.
+402: 
+403: config PAHOLE_HAS_LANG_EXCLUDE
+404: 	def_bool PAHOLE_VERSION >= 124
+405: 	help
+406: 	  Support for the --lang_exclude flag which makes pahole exclude
+407: 	  compilation units from the supplied language. Used in Kbuild to
+408: 	  omit Rust CUs which are not supported in version 1.24 of pahole,
+409: 	  otherwise it would emit malformed kernel and module binaries when
+410: 	  using DEBUG_INFO_BTF_MODULES.
+411: 
+412: config DEBUG_INFO_BTF_MODULES
+413: 	bool "Generate BTF type information for kernel modules"
+414: 	default y
+415: 	depends on DEBUG_INFO_BTF && MODULES && PAHOLE_HAS_SPLIT_BTF
+416: 	help
+417: 	  Generate compact split BTF type information for kernel modules.
+418: 
+419: config MODULE_ALLOW_BTF_MISMATCH
+420: 	bool "Allow loading modules with non-matching BTF type info"
+421: 	depends on DEBUG_INFO_BTF_MODULES
+422: 	help
+
+FILE lib/Kconfig.debug
+653: config DEBUG_FS
+654: 	bool "Debug Filesystem"
+655: 	help
+656: 	  debugfs is a virtual file system that kernel developers use to put
+657: 	  debugging files into.  Enable this option to be able to read and
+658: 	  write to these files.
+659: 
+660: 	  For detailed documentation on the debugfs API, see
+661: 	  Documentation/filesystems/.
+662: 
+663: 	  If unsure, say N.
+664: 
+665: choice
+666: 	prompt "Debugfs default access"
+667: 	depends on DEBUG_FS
+668: 	default DEBUG_FS_ALLOW_ALL
+669: 	help
+670: 	  This selects the default access restrictions for debugfs.
+671: 	  It can be overridden with kernel command line option
+672: 	  debugfs=[on,no-mount,off]. The restrictions apply for API access
+673: 	  and filesystem registration.
+674: 
+675: config DEBUG_FS_ALLOW_ALL
+676: 	bool "Access normal"
+677: 	help
+678: 	  No restrictions apply. Both API and filesystem registration
+679: 	  is on. This is the normal default operation.
+680: 
+681: config DEBUG_FS_DISALLOW_MOUNT
+
+FILE lib/Kconfig.debug
+1804: config LATENCYTOP
+1805: 	bool "Latency measuring infrastructure"
+1806: 	depends on DEBUG_KERNEL
+1807: 	depends on STACKTRACE_SUPPORT
+1808: 	depends on PROC_FS
+1809: 	depends on FRAME_POINTER || MIPS || PPC || S390 || MICROBLAZE || ARM || ARC || X86
+1810: 	select KALLSYMS
+1811: 	select KALLSYMS_ALL
+1812: 	select STACKTRACE
+1813: 	select SCHEDSTATS
+1814: 	help
+
+FILE kernel/dma/Kconfig
+183: 	  You can set the size of pernuma CMA by specifying "cma_pernuma=size"
+184: 	  or set the node id and its size of CMA by specifying "numa_cma=
+185: 	  <node>:size[,<node>:size]" on the kernel's command line.
+186: 
+187: comment "Default contiguous memory area size:"
+188: 
+189: config CMA_SIZE_MBYTES
+190: 	int "Size in Mega Bytes"
+191: 	depends on !CMA_SIZE_SEL_PERCENTAGE
+192: 	default 0 if X86
+193: 	default 16
+194: 	help
+195: 	  Defines the size (in MiB) of the default memory area for Contiguous
+196: 	  Memory Allocator.  If the size of 0 is selected, CMA is disabled by
+197: 	  default, but it can be enabled by passing cma=size[MG] to the kernel.
+198: 
+199: 
+200: config CMA_SIZE_PERCENTAGE
+201: 	int "Percentage of total memory"
+202: 	depends on !CMA_SIZE_SEL_MBYTES
+203: 	default 0 if X86
+204: 	default 10
+205: 	help

@@ -1,0 +1,10 @@
+commit 5bd564aaa8dc4b1b8ed11733c19ec8ece63a72cc
+Merge: 58b28eeef87a 85d82e0d7c2d
+Author:     Dom Cobley <popcornmix@gmail.com>
+AuthorDate: Wed Oct 21 14:26:40 2026 +0100
+Commit:     Dom Cobley <popcornmix@gmail.com>
+CommitDate: Wed Oct 21 14:26:40 2026 +0100
+
+    Merge remote-tracking branch 'stable/linux-6.12.y' into rpi-6.12.y
+49b3f941b664864583064c2ea84b8e3df86ab005
+119

@@ -1,0 +1,3 @@
+linux-rpi/kernel/rcu/Kconfig.debug:160:	select PREEMPT_COUNT if PREEMPT=n
+linux-rpi/kernel/Kconfig.preempt:94:       select PREEMPT_COUNT
+linux-rpi/drivers/gpu/drm/i915/Kconfig.debug:42:	select PREEMPT_COUNT

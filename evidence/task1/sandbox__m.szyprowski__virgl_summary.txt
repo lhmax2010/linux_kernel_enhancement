@@ -1,0 +1,16 @@
+branch=sandbox/m.szyprowski/virgl
+tip=0dc49ee335dbd0f4fcd49922011e186459b8e4ba
+merge_base_tizen=8bb7eca972ad531c9b149c0a51ab43a417385813
+full_ahead=15710 full_behind=284426
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/m.szyprowski/virgl --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=4
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__m.szyprowski__virgl_ahead_01.txt: bytes=849992 sha256=91405ec5959881ac3a883cb1cd3c588f24c7a43c5e34d48d1f225c44917f45a1
+sandbox__m.szyprowski__virgl_ahead_02.txt: bytes=849878 sha256=8b044b20e2209c61934532c430d77d1200bc6701bfa6a1ef7e41acbf586f70f3
+sandbox__m.szyprowski__virgl_ahead_03.txt: bytes=839759 sha256=df004c725c3422c9f9249e0febfe25100c34d1e11d7d4052f26ffb62150b54bd
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+0dc49ee335dbd0f4fcd49922011e186459b8e4ba	Marek Szyprowski <m.szyprowski@samsung.com>	2023-11-21T14:20:17+01:00	x86: add tizen_qemu_x86_defconfig & tizen_qemu_x86_64_defconfig
+45e29982e7e3def78836d08f61f8b829f80a8980	Marek Szyprowski <m.szyprowski@samsung.com>	2023-11-17T09:12:19+01:00	arm64/defconfigs: add defconfig for QEmu's 'virt' aarch64 machine
+47431c295f19913937fdd9b8cfd521e29bf6ca9c	Marek Szyprowski <m.szyprowski@samsung.com>	2023-11-17T14:42:23+01:00	drm: virtio_gpu: add support for ARGB8888 primary plane
+3647a0d7ca208ec6af2f4d416b475d1223305cf8	Marek Szyprowski <m.szyprowski@samsung.com>	2023-11-16T10:36:32+01:00	drm: virtio_gpu: add fake timer based vblank handler

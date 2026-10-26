@@ -1,0 +1,46 @@
+42aeefac58ed drivers: media: pci: hailo: Port Hailo accelerator driver to v4.22.0
+d5ef43b342dc configs: packaging: modularize defconfig with RT and LSM fragments
+21645b17c0d9 USB: serial: cp210x: Fix driver name collision for cp210x-stlink
+38b904efc2b7 USB: serial: cp210x: Add cp210x-stlink driver for SmartThings devices
+5d4cbf20584e script: build: support non-sudo image creation and mounting
+b78585126c31 ARM/ARM64: configs: tizen_bcm2711: Enable F2FS compression configs
+d2e59dfd2830 packaging: Replace #!/bin/bash with #!/bin/sh in devel package for dash compat
+705e54d6d8c7 packaging: Remove bash shebang scripts from perf package for dash compat
+3b75ac30e2bf perf build: Add make check-headers target
+b3c2c75beb11 drm/vc4,v3d: Fix wrong lock protecting filelist in gem_info debugfs
+8cdc66794c42 script: build: add clean step before building tizen modules
+80351212d379 script: build: support LLVM/CLANG build including tizen modules
+529e83fbf904 ARM: 9441/1: rust: Enable Rust support for ARMv7
+c0b66bcd342c ARM: configs: tizen_bcm2711: Enable MG-LRU configuration
+b9a6e80323a0 packaging: Update kernel version from 6.12.41 to 6.12.80
+e0c54d1cd07d net: bluetooth: Fix the build error
+d64d389cebe0 packaging: Add support llvm build
+b431fb7a73ff script: build: support THREAD_GROUP_CPUTIME_SUPPORT for tizen module
+4079759cc86f cputime: Export symbol of thread_group_cputime_adjusted for the kernel module
+2856f8ccad10 packaging: remove -rdynamic cflags from perf build
+v6.12.80
+42aeefac58ed drivers: media: pci: hailo: Port Hailo accelerator driver to v4.22.0
+d5ef43b342dc configs: packaging: modularize defconfig with RT and LSM fragments
+21645b17c0d9 USB: serial: cp210x: Fix driver name collision for cp210x-stlink
+38b904efc2b7 USB: serial: cp210x: Add cp210x-stlink driver for SmartThings devices
+5d4cbf20584e script: build: support non-sudo image creation and mounting
+b78585126c31 ARM/ARM64: configs: tizen_bcm2711: Enable F2FS compression configs
+d2e59dfd2830 packaging: Replace #!/bin/bash with #!/bin/sh in devel package for dash compat
+705e54d6d8c7 packaging: Remove bash shebang scripts from perf package for dash compat
+3b75ac30e2bf perf build: Add make check-headers target
+b3c2c75beb11 drm/vc4,v3d: Fix wrong lock protecting filelist in gem_info debugfs
+8cdc66794c42 script: build: add clean step before building tizen modules
+80351212d379 script: build: support LLVM/CLANG build including tizen modules
+529e83fbf904 ARM: 9441/1: rust: Enable Rust support for ARMv7
+c0b66bcd342c ARM: configs: tizen_bcm2711: Enable MG-LRU configuration
+b9a6e80323a0 packaging: Update kernel version from 6.12.41 to 6.12.80
+e0c54d1cd07d net: bluetooth: Fix the build error
+d64d389cebe0 packaging: Add support llvm build
+b431fb7a73ff script: build: support THREAD_GROUP_CPUTIME_SUPPORT for tizen module
+4079759cc86f cputime: Export symbol of thread_group_cputime_adjusted for the kernel module
+2856f8ccad10 packaging: remove -rdynamic cflags from perf build
+0afe4c06fc70 drm/edid/firmware: Add built-in edid/1280x720.bin firmware
+f3ec20e144b7 drm/edid/firmware: Revert built-in EDID
+2d60021198ab Bluetooth: hci_event: Fix an issue where MGMT_EV_DEVICE_CONNECTED event was not delivered
+ed6fa275c11b drm/vc4: hvs: Change to use drm_warn_once instead of WARN_ON_ONCE
+952e05b77038 ARM/ARM64: configs: tizen_bcm2711: Enable CGROUP_BPF config

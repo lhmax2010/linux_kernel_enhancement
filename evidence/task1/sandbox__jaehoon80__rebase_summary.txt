@@ -1,0 +1,10 @@
+branch=sandbox/jaehoon80/rebase
+tip=b9a6e80323a03e0a0670425f0b889f333aec51a8
+merge_base_tizen=b9a6e80323a03e0a0670425f0b889f333aec51a8
+full_ahead=0 full_behind=14
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/jaehoon80/rebase --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=0
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__jaehoon80__rebase_ahead_01.txt: bytes=19 sha256=aaab378474bb0ee48afe96dabefce7cdf684222b04d69822c80d9ce35f0c4824
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):

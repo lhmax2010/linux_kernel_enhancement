@@ -1,0 +1,17 @@
+branch=sandbox/lstelmach/rt
+tip=ea9488c6134cb8a1cd352a897106e5339918b9b1
+merge_base_tizen=2c85ebc57b3e1817b6ce1a6b703928e113a90442
+full_ahead=13380 full_behind=360601
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/lstelmach/rt --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=5
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__lstelmach__rt_ahead_01.txt: bytes=849907 sha256=48040c511aa7c16edd090c0c4a65615b4281330d2903618f63828a18da799e30
+sandbox__lstelmach__rt_ahead_02.txt: bytes=849957 sha256=32fc5682a6218c6e9728b0e483302e31a879464592d475b3dc1dfaf6b216f91c
+sandbox__lstelmach__rt_ahead_03.txt: bytes=454953 sha256=cf0b9dce98a19d1c51f6e534555572d602b2cee84386e46cdd84a2f98548de70
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+ea9488c6134cb8a1cd352a897106e5339918b9b1	Łukasz Stelmach <l.stelmach@samsung.com>	2022-03-03T13:51:19+01:00	spec: Build rt packages
+6ed5442134e7ee088c4a9cc91096a1c8f3bc8579	Łukasz Stelmach <l.stelmach@samsung.com>	2022-02-02T21:34:57+01:00	Add tizen_bcm2711_rt_defconfig for arm and arm64
+deefe9642562faf09b3a8dcde1b35a8263dccb3b	Luis Claudio R. Goncalves <lclaudio@uudg.org>	2022-02-18T14:33:21+01:00	patch-5.10.100-rt62.patch
+fdb10580235e144b3024dc2fe70360f4edb693ed	Randy Dunlap <rdunlap@infradead.org>	2021-02-25T17:21:10-08:00	kernel: delete repeated words in comments
+5b00d57f6e569714cbd04fbbe76cc25b9f0d6778	Tianchen Ding <dtcccc@linux.alibaba.com>	2022-01-18T18:05:18+08:00	cpuset: Fix the bug that subpart_cpus updated wrongly in update_cpumask()

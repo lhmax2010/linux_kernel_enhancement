@@ -1,0 +1,151 @@
+#include <linux/bpf_verifier.h>
+#include <linux/bpf.h>
+#include <linux/btf.h>
+#include <linux/kernel.h>
+#include <linux/memcontrol.h>
+#include <linux/mm_types.h>
+#include <linux/types.h>
+
+static const struct btf_type *cache_ext_eviction_ctx_type;
+static const struct btf_type *cache_ext_admission_ctx_type;
+
+static int bpf_cache_ext_init(struct btf *btf)
+{
+	u32 eviction_type_id, admission_type_id;
+
+	eviction_type_id = btf_find_by_name_kind(btf, "cache_ext_eviction_ctx",
+					BTF_KIND_STRUCT);
+	if (eviction_type_id < 0) {
+		pr_err("cache_ext: failed to find struct cache_ext_eviction_ctx\n");
+		return -EINVAL;
+	}
+
+	admission_type_id = btf_find_by_name_kind(btf, "cache_ext_admission_ctx",
+					BTF_KIND_STRUCT);
+	if (admission_type_id < 0) {
+		pr_err("cache_ext: failed to find struct cache_ext_admission_ctx\n");
+		return -EINVAL;
+	}
+	
+	cache_ext_eviction_ctx_type = btf_type_by_id(btf, eviction_type_id);
+	cache_ext_admission_ctx_type = btf_type_by_id(btf, admission_type_id);
+	return 0;
+}
+
+// What helpers are available?
+static const struct bpf_func_proto *
+bpf_cache_ext_get_func_proto(enum bpf_func_id func_id,
+				  const struct bpf_prog *prog)
+{
+	switch (func_id) {
+	case BPF_FUNC_get_current_pid_tgid:
+		return &bpf_get_current_pid_tgid_proto;
+	default:
+		return bpf_base_func_proto(func_id, prog);
+	}
+}
+
+// This is the verifier's check for context access. Context is always R1.
+static bool bpf_cache_ext_is_valid_access(int off, int size,
+					       enum bpf_access_type type,
+					       const struct bpf_prog *prog,
+					       struct bpf_insn_access_aux *info)
+{
+	// 	return false;
+	// if (type != BPF_READ)
+	// 	return false;
+	if (off % size != 0)
+		return false;
+
+	return btf_ctx_access(off, size, type, prog, info);
+}
+
+static int bpf_cache_ext_btf_struct_access(struct bpf_verifier_log *log,
+						const struct bpf_reg_state *reg,
+						int off, int size)
+{
+	// For each of the allowed types, allow read access.
+	const struct btf_type *t;
+
+	t = btf_type_by_id(reg->btf, reg->btf_id);
+	if (t == cache_ext_eviction_ctx_type) {
+		if (off + size > sizeof(struct cache_ext_eviction_ctx)) {
+			bpf_log(log,
+				"out of bounds access at off %d with size %d\n",
+				off, size);
+			return -EACCES;
+		}
+		return SCALAR_VALUE;
+	} else if (t == cache_ext_admission_ctx_type) {
+		if (off + size > sizeof(struct cache_ext_admission_ctx)) {
+			bpf_log(log,
+				"out of bounds access at off %d with size %d\n",
+				off, size);
+			return -EACCES;
+		}
+		return SCALAR_VALUE;
+	}
+
+	return -EACCES;
+}
+
+static int bpf_cache_ext_reg(void *kdata, void *more_data, struct bpf_link *link)
+{
+	struct cache_ext_ops *ops = kdata;
+	struct cgroup *cgrp = more_data;
+	struct mem_cgroup *memcg;
+	int ret = 0;
+
+	if (!cgrp) {
+		pr_err("cache_ext: cgroup is NULL\n");
+# MGLRU
+
+- Multiple generations. Each generation is a collection of pages with similar
+  access recency.
+- Gen counter stored in `folio->flags` (from `MIN_NR_GENS` to `MAX_NR_GENS`).
+- Each generation has multiple tiers. Tier counter stores order_base_2(accesses).
+- Moving across tiers is just an atomic op to `folio->flags`.
+- PID controller monitors refault over all tiers and decides which ones to evict.
+- Desired effect: Balance refault pct between file/anon and proportional to swappiness.
+- Per-list state:
+  - `max_seq`: Youngest generation
+  - `min_seq`: Oldest generation
+- Per-folio state:
+  - `gen_counter`: Which generation is this page in? Young pages get `(max_seq % MAX_NR_GENS) + 1`
+
+Aging:
+- Increase `max_seq` (why???)
+
+Eviction:
+- Consume old generations.
+- Increment `min_seq` when `lrugen->folios[ min_seq % MAX_NR_GENS ]` becomes empty.
+
+
+
+order_base_2(N): Highest power of 2 less or equal to N.
+
+
+## Code Notes
+
+Eviction:
+1. `try_to_shrink_lruvec`
+2. `evict_folios` (gets lruvec lock)
+3. `isolate_folios`: Decide tier and type (anon/file). Uses the PID controller to decide.
+4. `scan_folios`: Scans the lowest gen (`lru_gen_from_seq(lrugen->min_seq[type])`).
+    1. `sort_folio`: Check if we need to promote / handle edge cases.
+       This also promotes to the next gen any folios with tier bigger than the
+       tier decided by step 3 above.
+    2. `isolate_folio`: Actual eviction if the previous step failed.
+    3. If both of the above fail, just skip these folios and add them back in the end.
+
+Aging:
+(happens during eviction)
+1. `try_to_shrink_lruvec`
+2. `get_nr_to_scan`
+3. `should_run_aging` / `try_to_inc_max_seq`
+
+Tiers:
+- The max number of tiers is currently set to 4 (`MAX_NR_TIERS`)
+- Each page keeps track of refs through a file descriptor (`folio_lru_refs()`).
+    - This info is stored in the page flags and updated with a CAS instruction.
+- The tier of a page is given by its refs (`lru_tier_from_refs()`).

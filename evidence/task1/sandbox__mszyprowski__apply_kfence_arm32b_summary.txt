@@ -1,0 +1,40 @@
+branch=sandbox/mszyprowski/apply_kfence_arm32b
+tip=d8150042a9c093053519043202d6eb09ae859a1d
+merge_base_tizen=2c85ebc57b3e1817b6ce1a6b703928e113a90442
+full_ahead=4184 full_behind=360601
+COMMAND: git log --format='%H %an <%ae> %aI %s' refs/remotes/origin/sandbox/mszyprowski/apply_kfence_arm32b --not <refs listed in sandbox_background_exclusions.txt> --glob=refs/tags/v*
+background_filtered_count=30
+Full ahead files retained under temp/sandbox_raw (not uploaded):
+sandbox__mszyprowski__apply_kfence_arm32b_ahead_01.txt: bytes=672424 sha256=1f9f0eee1217eda5bfe3530c24b8130dbb94abd06d3c2d92a49b26a045c89b10
+
+BACKGROUND-FILTERED AHEAD COMMITS (not a replacement for full count):
+d8150042a9c093053519043202d6eb09ae859a1d	Marek Szyprowski <m.szyprowski@samsung.com>	2021-11-18T12:31:37+01:00	arm: tizen_bcm2711_defconfig: enable KFENCE feature
+5eb0a944b016893557412c20ac9316ce0bdbee97	Kefeng Wang <wangkefeng.wang@huawei.com>	2021-11-15T21:48:48+08:00	ARM: Support KFENCE for ARM
+f3cfa87188f8d92b14327514ad8488df8557f81b	Kefeng Wang <wangkefeng.wang@huawei.com>	2021-11-15T21:48:46+08:00	ARM: mm: Provide set_memory_valid()
+386b41fb71878fcd5f8c9ba87a6df121a72f05b5	Kefeng Wang <wangkefeng.wang@huawei.com>	2021-11-15T21:48:47+08:00	ARM: mm: Provide is_write_fault()
+4a390d91052ca1fe66e797cdfa0504598bc1ec7c	Wang Kefeng <wangkefeng.wang@huawei.com>	2021-09-22T14:56:31+01:00	ARM: 9130/1: mm: Provide die_kernel_fault() helper
+cbd6cab1c2fb13602de563991a82161b6b454d5b	Wang Kefeng <wangkefeng.wang@huawei.com>	2021-09-22T14:56:29+01:00	ARM: 9127/1: mm: Cleanup access_error()
+a1e79d3a7fc232cf4fc1e70031ae7ae8f599f5b8	Wang Kefeng <wangkefeng.wang@huawei.com>	2021-09-22T14:56:28+01:00	ARM: 9129/1: mm: Kill task_struct argument for __do_page_fault()
+16cd808551e6ef27bcba8846e13af91b08afde01	Wang Kefeng <wangkefeng.wang@huawei.com>	2021-09-22T14:56:27+01:00	ARM: 9128/1: mm: Refactor the __do_page_fault()
+41142ee570cccf94b769396302332126c1fea636	Marco Elver <elver@google.com>	2021-03-17T09:47:40+01:00	kfence: make compatible with kmemleak
+87fb6fc308451ff914dcd925e81d829699d2920e	Marco Elver <elver@google.com>	2021-03-04T21:52:56+01:00	kfence, slab: fix cache_alloc_debugcheck_after() for bulk allocations
+4baf8480e12d877b35105535042d6f3ff7fab5a9	Marco Elver <elver@google.com>	2021-03-04T15:40:00+01:00	kfence: fix reports if constant function prefixes exist
+fb5dea68c4a85ba83fbbe2e7d2a798ff07dc1c5f	Marco Elver <elver@google.com>	2021-03-03T13:11:57+01:00	kfence: fix printk format for ptrdiff_t
+8a6ceee1ac7ddc15ab672df3ca51f637c0b807bc	Marco Elver <elver@google.com>	2021-02-23T09:20:43+01:00	kfence: report sensitive information based on no_hash_pointers
+bc754692b3b37f0b05ac6ed4f59f6567d59dab2c	Linus Torvalds <torvalds@linux-foundation.org>	2021-02-22T11:04:36-08:00	Merge tag 'printk-for-5.12' of git://git.kernel.org/pub/scm/linux/kernel/git/printk/linux
+16dae2283c858be9d21f484f9e9f434441f7ef85	Marco Elver <elver@google.com>	2021-01-11T10:15:44+01:00	kfence: show access type in report
+90b04b3736c4b679ab3a9a99d8b48a77ceef8435	Marco Elver <elver@google.com>	2020-12-16T00:31:12+01:00	kfence: fix typo in test
+d31a4970676acd047605629f829323753d95bc54	Marco Elver <elver@google.com>	2020-11-10T14:53:20+01:00	kfence: Avoid stalling work queue task without allocations
+b658030088f4066ac9bee32d40aa97bd8eb17ec0	Marco Elver <elver@google.com>	2020-11-06T10:21:49+01:00	kfence: Fix parameter description for kfence_object_start()
+115031b83388a75e43bf70d9da51a1392d758cca	Sung-hun Kim <sfoon.kim@samsung.com>	2021-10-19T10:24:15+09:00	kfence, arm64, defconfig: enable KFENCE for tizen defconfig
+06ba872bfa92e4dcfb31c6982e15160ae5f3253e	Marco Elver <elver@google.com>	2020-11-05T10:21:33+01:00	kfence: Use pt_regs to generate stack trace on faults
+1cb2bc281a8029efc24d5bff6b746117408bbf6a	Marco Elver <elver@google.com>	2020-11-03T18:58:41+01:00	MAINTAINERS: add entry for KFENCE
+f73d1b8fa5dbdc4f09805dd7691fbe8965a6b800	Marco Elver <elver@google.com>	2020-11-03T18:58:40+01:00	kfence: add test suite
+93c0d0e06234ce68dd7dc7f8e60406a94f1e4b44	Marco Elver <elver@google.com>	2020-11-03T18:58:39+01:00	kfence, Documentation: add KFENCE documentation
+976b604988c63f22ef21fb42fb366cc9fc950f7b	Alexander Potapenko <glider@google.com>	2020-11-03T18:58:38+01:00	kfence, kasan: make KFENCE compatible with KASAN
+91da60fa42b0a78afe17b6a35cf1777cc9f9eeb6	Alexander Potapenko <glider@google.com>	2020-11-03T18:58:37+01:00	mm, kfence: insert KFENCE hooks for SLUB
+88c5d5a4cc08f43fe739934ee4255c7b9b38a43c	Alexander Potapenko <glider@google.com>	2020-11-03T18:58:36+01:00	mm, kfence: insert KFENCE hooks for SLAB
+ef9b7247ce5f512cec71b9d7bf2f8ca9152fcbfd	Marco Elver <elver@google.com>	2020-11-03T18:58:35+01:00	arm64, kfence: enable KFENCE for ARM64
+2f7fd9553d0e264d1839f76866c54be2a173042d	Alexander Potapenko <glider@google.com>	2020-11-03T18:58:34+01:00	x86, kfence: enable KFENCE for x86
+f6d21bf19c241be504bec2dc25b5dac6ea2c67a1	Alexander Potapenko <glider@google.com>	2020-11-03T18:58:33+01:00	mm: add Kernel Electric-Fence infrastructure
+e83c09479f82c10f79b67227a7f8c22a943de398	Anshuman Khandual <anshuman.khandual@arm.com>	2021-02-25T17:17:37-08:00	arm64/mm: define arch_get_mappable_range()

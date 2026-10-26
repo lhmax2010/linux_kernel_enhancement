@@ -1,0 +1,18 @@
+2026-10-26 Asia/Shanghai, task1 pre-publication checks
+Initial workspace: not a git repository; GitHub ls-remote --symref exit=0 and empty output.
+Initial GitHub fetch exit=0; precommit fetch and ls-remote exit=0, still no remote refs.
+Kernel initial/final HEAD: 42aeefac58edeb081aff440f0b60be71cbe49755
+Kernel initial/final branch: tizen; git status --porcelain worktree entries: none.
+Kernel git diff --exit-code and git diff --cached --exit-code: exit=0.
+46 sandbox tips match initial ls-remote; 46 merge-bases recorded.
+Background-filtered per-branch metadata count=2236; unique message corpus=2084.
+105 selected downstream non-merge commits; 19 Tizen-only; 86 RPi/inherited.
+All inline commit IDs in inventory/overlap resolve in linux-rpi object database.
+Two GBS configuration files reviewed: no credentials found.
+All evidence files are UTF-8 text and individually less than 1,000,000 bytes.
+No kernel or GBS build, no board shell, no kernel worktree modification.
+Publication target: GitHub origin main; normal git push only.
+Final push output and resulting SHA are kept locally in temp/github_push.txt and temp/final_publication.txt;
+they cannot be included in the commit they verify. The delivery response reports the verified SHA.
+Staged verify_publish.py passed: 150 files at validation time, all expected text/size/path/link checks.
+git diff --cached --check excluding evidence/: exit=0. Raw evidence intentionally retains source/diff whitespace; full-tree whitespace diagnostics are not edited away.

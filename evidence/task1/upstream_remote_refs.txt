@@ -1,0 +1,3 @@
+fa1f9d71610c58ec2d00ad142472a65aa7647a7e	refs/tags/v6.12.80
+00d7934ffcc35e65b113ba4991c8a3338bd85fc1	refs/tags/v6.12.80^{}
+5bd564aaa8dc4b1b8ed11733c19ec8ece63a72cc	refs/heads/rpi-6.12.y
