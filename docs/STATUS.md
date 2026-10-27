@@ -45,3 +45,5 @@ B停止条件要求不自行选择替代方案。[审计第5节](../evidence/tas
 - 上述未知值不写成0或通过；历史任务1静态表不替代最终.config。
 
 交付索引：[evidence/task2/README.md](../evidence/task2/README.md)。本次产出与STATUS同一提交，普通git push至GitHub main。
+
+发布复核：证据索引的raw链接已逐项按仓库相对路径校验，文件大小及SHA-256全部匹配；本轮所有上传文件为小于1 MB的文本。
