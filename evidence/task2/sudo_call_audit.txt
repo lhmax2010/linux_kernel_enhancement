@@ -1,0 +1,80 @@
+Installed /usr/bin/depanneur; read-only excerpts. No sudo command executed by agent.
+
+/usr/bin/depanneur:83-84
+83: # "sudo -v" period
+84: use constant SUDOV_PERIOD => 3*60;
+
+/usr/bin/depanneur:397-422
+397: sub my_system {
+398:     my $cmd = shift;
+399:     debug("my_system: $cmd");
+400:     my $ret;
+401:     my $pid;
+402:     my @out = ();
+403:     if (wantarray) {
+404:         defined($pid=open(PIPE, "-|")) or die "Can not fork: $!\n";
+405:     } else {
+406:         defined($pid=fork) or die "Can not fork: $!\n";
+407:     }
+408: 
+409:     unless ($pid) {  # Child
+410:         open(STDERR, ">&STDOUT");
+411:         exec ($cmd);
+412:         exit -1;
+413:     } else {  # Parent
+414:         if (wantarray) {
+415:             while (my $line = <PIPE>) {
+416:                 print $line;
+417:                 push @out, $line;
+418:             }
+419:         }
+420:         waitpid ($pid,0);
+421:         $ret = $?;
+422:         close(PIPE) if wantarray;
+
+/usr/bin/depanneur:2043-2049
+2043:     my @args = ();
+2044:     my @args_inc = ();
+2045:     if ($TERM == 1) {
+2046:         return -1;
+2047:     }
+2048:     push @args, "sudo /usr/bin/build";
+2049:     push @args, "--uid $zuid:$zgid" if ($zuid != 0 && $zgid != 0);
+
+/usr/bin/depanneur:2245-2260
+2245: 
+2246:     # Save build config to build root for --noinit use
+2247:     my_system("sudo /bin/cp '$dist_configs/$dist.conf' '$scratch'/$dist.conf") if ($noinit == 0);
+2248: 
+2249:     if ($ret == 0) {
+2250:         # Set the real path of RPMS and SRPMS
+2251:         my $rpmdirpath;
+2252:         my $srcrpmdirpath;
+2253:         # Set the real path of RPMS and SRPMS
+2254:         if ($vmtype eq "kvm") {
+2255:             $rpmdirpath = "/.build.packages/RPMS";
+2256:             $srcrpmdirpath = "/.build.packages/SRPMS";
+2257:         } else {
+2258:             $rpmdirpath = `sudo chroot '$scratch' su -c "rpm --eval %{_rpmdir} 2>/dev/null" - abuild`;
+2259:             $srcrpmdirpath = `sudo chroot '$scratch' su -c "rpm --eval %{_srcrpmdir} 2>/dev/null" - abuild`;
+2260:         }
+
+/usr/bin/depanneur:3158-3175
+3158: # Signal handling
+3159: $SIG{'INT'} = $SIG{'TERM'} = sub {
+3160:         print("^C captured\n");
+3161:         $TERM=1;
+3162: };
+3163: 
+3164: # avoid inputing passwd while runnig build
+3165: $SIG{'ALRM'} = sub {
+3166:     if (my_system("sudo /bin/echo -n") != 0) {
+3167:         error("sudo: failed to request passwd")
+3168:     } else {
+3169:         alarm(SUDOV_PERIOD);
+3170:     }
+3171: };
+3172: 
+3173: # trigger 'ALRM' immediately
+3174: kill 'ALRM', $$;
+3175: 

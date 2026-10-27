@@ -1,0 +1,7 @@
+Command: /usr/bin/bash -n /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_baseline_build.sh
+exit=0
+stdout=
+stderr=
+Script SHA-256: 04b32d19ddba705229b5e657349cd4ca9f6a157d41faf4de92cc0272b07c9990
+Static review: one direct sudo invocation (-v), no signal-sending/cleanup command, GBS-scoped env, independent process groups, five-minute residual wait, strict export path audit, serial phases, terminal markers/traps.
+Not executed, not sourced, no sudo/export/build run; runtime correctness unverified.

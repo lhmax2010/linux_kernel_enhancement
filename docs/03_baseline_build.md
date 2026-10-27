@@ -2,6 +2,61 @@
 
 日期：2026-10-27（Asia/Shanghai）。本报告只记录本任务实际执行的结果；未获得的构建产物指标不以源码推导替代。所有体积与构建开销数字均为构建产物/开发机数据，不代表板上运行时内存。
 
+## 最新任务2续三：用户执行脚本（仅编写，未运行）
+
+脚本：[scripts/run_baseline_build.sh](../scripts/run_baseline_build.sh)。本轮只做源码阅读、静态检查和 `bash -n`，没有执行脚本、sudo、导出、GBS构建或板上操作。正常环境推送已成功补发b33992f0及规则修订，见[publication_r3_initial.txt](../evidence/task2/publication_r3_initial.txt)。旧文中的认证失败是历史记录，不是当前发布状态。
+
+用户在自己的终端执行这一整行：
+
+```bash
+cd /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi && /usr/bin/bash /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_baseline_build.sh
+```
+
+所有工作区路径已写死。脚本是Bash，使用已安装系统工具，不依赖工作区外的辅助脚本。HOME和GIT_CONFIG_NOSYSTEM仅由env传给strace/gbs及其后代，脚本不会修改调用者的HOME或Git配置；结果仓库commit/push使用正常环境与已有GitHub认证。
+
+### 前台与sudo依据
+
+预检必须从linux-rpi运行，确认lko/base@f240c28093027707f5e09f8a9cbbed16a43ebb1a、干净工作树、tizen保持42aeefac；检查两行普通temp/gbs-home/.gbs.conf、/etc/gbs.conf不存在、所需系统工具、-j10不超过nproc一半。拒绝未经核验的Git/XDG/buildroot环境覆盖；打印现有gbs/depanneur/build进程但不操作。独占文件锁防止重复启动；已有r2日志或status时失败退出，保留现场，不自动覆盖、重试或清理buildroot。
+
+sudo源码证据见[sudo_call_audit.txt](../evidence/task2/sudo_call_audit.txt)：
+
+- /usr/bin/depanneur:2048拼出 `sudo /usr/bin/build`，没有-n/-S/-A；397–422的my_system用fork/exec调用并等待。
+- :3164–3174启动认证维持逻辑，执行 `sudo /bin/echo -n`；:84的周期是3*60秒。这里是GBS工具自身的行为，不是本脚本额外sudo保活。
+- :2247等还存在工具自身的复制/挂载/chroot调用；不能把本脚本“只有sudo -v”误读成整套GBS只会调用一次sudo。
+
+因为工具使用普通sudo，非root用户在后台前执行**一次 `/usr/bin/sudo -v`**：缓存有效或策略免密时不提示；需要认证时由用户在前台输入密码。root跳过。脚本不另用sudo -n/-l等探测、不强制重新输入、不索要/记录密码，也没有其他sudo命令。缓存是否有效无法在“不调用其他sudo”的约束下提前可靠判定，交由这一次-v按本机策略决定是否需要交互。
+
+后台采用Bash job control创建独立进程组，保留前台sudo验证所在的登录session/控制终端，没有使用setsid。建议保留原终端会话。认证缓存的时效、sudo策略和导出耗时仍可能影响后续调用；没有通过修改sudoers、askpass或凭据文件保证后台认证。如果后台进程进入停止态（例如需要读终端），脚本只记录并等待5分钟，仍未退出则失败报告，不发信号。
+
+### 后台阶段及判定
+
+| 阶段 | 动作 | 失败/停止条件 |
+| --- | --- | --- |
+| export | 指定HOME环境执行gbs export，用strace保存open/openat/mkdir/mkdirat；附加-yy、长字符串以及chdir/fchdir/fork/clone跟踪，供解析FD真实路径、相对mkdir的cwd继承 | 命令非零、残留不退出、直接观察到越界输出，或a/b/c审计不通过，跳过两个构建 |
+| export审计 | temp/export_check_home.txt逐项列a配置路径、b其他外部成功打开路径、c成功创建目录，均去重；原始调用留在export_check.strace | a全部在WS；c全部在WS；b只允许脚本明确列举的系统运行时文件（加载器、NSS、locale、时区、主机解析、TLS证书、PAM/sudo运行时等）。无法解析、截断/转义不明、缺少覆盖证据均失败，不猜路径 |
+| export清理 | 仅在导出和审计通过、路径验证后删除本次temp/export_check | 不删除/移动任何工作区外文件；不清理其他任务的产物 |
+| gcc | touch标记；指定HOME环境、time -v、GCC conf、armv7l、threads1、-j10 | 构建非零、已证实越界、残留超过5分钟或脚本收到中断，跳过LLVM |
+| llvm | GCC阶段完全通过后，使用LLVM conf执行相同流程 | 同上；完成构建不等于已确认内核确实由Clang编译 |
+| 收尾 | 汇总每阶段结果/退出码/起止时间；EXIT/INT/TERM/HUP trap尽力维护状态 | 最后一行ALL-END带OK或FAILED at阶段；未开始阶段标SKIPPED，时间/退出码为- |
+
+导出审计只统计成功open和成功mkdir；失败的访问尝试仍留在原始strace。配置分类包含文件名中的gbs.conf/gitconfig/rpmmacros；真实FD路径靠-yy解析，包含设备附加信息时取路径部分。新增进程/cwd系统调用仅用于准确归属路径，不改变GBS参数或源码。审计通过仅覆盖此次导出，不能外推后续sudo/chroot内所有文件访问。
+
+每个受管命令启动前记录进程表，启动后记录独立PGID，结束后只查同一组；有残留先等待最多300秒，仍存在则停止报告。脚本没有kill/pkill或sudo清理。运行中每15秒尽力读取该组stdout/stderr的/proc FD路径；已观察到的工作区外普通文件输出路径只记录，不中断当前命令，自然结束后判失败。无权限读取的root FD不能据此证明没有越界。
+
+两次构建结束后均运行PM指定find命令（真实/home/linhao、maxdepth3、当前用户、newer标记），原始路径写入 `<gcc|llvm>_r2.external_paths.txt`，分类写入external_review.txt。并行任务无法只凭名字与时间区分，名称类似gbs/depanneur/GBS-ROOT的也标“疑似构建相关，无法归属”；不会把它们武断归为本任务或删除。只有本进程组直接输出路径证据才作为已证实越界判失败。find的退出码也记录；权限过滤、扫描深度及已删除文件限制意味着空结果不是全机无越界证明。
+
+### 日志、状态与中断
+
+- 总日志：temp/run_baseline_build.log；状态：temp/run_baseline_build.status。前台预检失败通常写正式status；重复启动/已有日志的失败另写preflight.<PID>.status，避免覆盖既有任务。temp不可写等极早失败会把ALL-END打印到终端，无法保证写文件。
+- 实时子进程输出：temp/export_check.log.raw、temp/build_gcc_r2.log.raw、temp/build_llvm_r2.log.raw。正式export_check.log/build_*_r2.log在阶段收尾时汇入raw内容；正常完成时是完整命令输出及time -v。用户应tail实时raw文件，脚本末尾给出完整命令。
+- 正式build_*_r2.log末行为 `BUILD-END <gcc|llvm> <时间> exit=<退出码>`。若仍有残留，先注明INCOMPLETE，此码是监督程序失败码（125），不是伪造的命令退出码；raw保留给残留继续输出，正式日志仍以BUILD-END结束。此时不能声称原始输出已经封存。
+- 状态采用同目录临时文件+mv更新；末行 `ALL-END <时间> <OK|FAILED at 阶段名>`，表示监督流程结束。若有残留，另外标ACTIVE-OR-RESIDUAL PGID，ALL-END不是全部后代进程退出的证明。
+- 收到可捕获中断时不向子进程转发信号，等待在跑命令自然结束，再失败收尾并跳过后续阶段；停止态/残留按5分钟规则处理。SIGKILL、断电或磁盘不可写无法由trap保证落盘。脚本本轮仅通过bash -n与静态检查，运行效果尚未实测。
+
+预计总耗时**粗估2–8小时**：两轮依赖初始化按上次约4分钟/轮，另加源码导出，以及GCC/LLVM各普通版和RT版共4次内核构建。没有成功完整构建的实测基线，这不是承诺或测量值；其他编译任务、网络与缓存会改变耗时。
+
+用户执行完成并告知后，再核验编译器、四份.config、体积/开销，复核04的布局条件，并补齐05的平台llvm-bolt支持架构。当前不填写这些未取得结果。
+
 ## 最新任务2续二：源码核对、准备与静态成果
 
 PM已明确采用工作区HOME方案，并排除修改源码.gbs.conf/exclude、独立工具副本及专属隔离环境；这些旧方案不再是待决事项。裁决已原文写入RULES两条硬要求之后。

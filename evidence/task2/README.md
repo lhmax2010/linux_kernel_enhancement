@@ -1,14 +1,12 @@
 # 任务2交付证据
 
-**发布未完成：本轮git push认证失败，以下raw链接当前仍是旧版本或尚不存在；请使用本地文件。**
+最新任务2续三：已用正常环境补发此前本地成果，准备好用户执行的构建脚本，仅做bash -n与静态核对，没有执行导出/构建。用户运行并告知后再核对产物。
 
-最新：任务2续二已完成HOME源码审计、工作区配置准备和不依赖构建产物的静态部分；因当前代理不能重设HOME，未运行导出/构建，不是构建成功报告。此前阶段证据保持原样。
-
-- [HOME审计及执行限制](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/home_source_audit.md)
-- [LZ4合入检查](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/lz4_merge_check.txt)
-- [ARM32元数据计算](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/zram_metadata_calculation.txt)
-- [DTS扫描](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/bcm2711_dts_scan.txt)
-- 旧build_gcc_log.txt仍是先前exit143的完整日志，不能当成本轮结果；旧配置隔离替代方案已被PM否决。
+- [用户执行脚本](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/scripts/run_baseline_build.sh)
+- [正常环境补发结果](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/publication_r3_initial.txt)
+- [sudo源码核对](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/sudo_call_audit.txt)
+- [静态语法验证](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/script_static_validation.txt)
+- 旧认证失败、旧GCC中断、之前未构建记录保留作历史证据，不代表本轮构建结果。
 
 ## 文档与快照raw链接
 
@@ -60,8 +58,11 @@
 | [lz4_merge_check.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/lz4_merge_check.txt) | 7089 | `79940499f5915ebb558b5824e0b9e05fa2bdf2a65b937ae3623259aa2901f6c3` |
 | [platform_tools_pending.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/platform_tools_pending.txt) | 219 | `aa4b91efec868d97751b3920b6754124ac472013c3c1be614f38e2f8350611fc` |
 | [publication_home_attempt.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/publication_home_attempt.txt) | 420 | `45dc619aa3b254229aa405f57360ccb756a07dfb86289b89bc81516c1dec5d85` |
+| [publication_r3_initial.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/publication_r3_initial.txt) | 95 | `08aea3a962e7feab7f35ab6464ae1431b714e01273f4ccbaa1ee08f27cb29cd7` |
 | [residual_state.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/residual_state.txt) | 462 | `c6df5f38d5127af7d1ba2484d0c6b9f65f0cf3f5bb143054b5df588438fd5bcf` |
+| [script_static_validation.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/script_static_validation.txt) | 525 | `d7aa834198120900ed5c168c141d2a6b39254f631b0859f7e3704d1911ef3ff7` |
 | [static_source_lines.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/static_source_lines.txt) | 42156 | `3d59342f258144ab1c4a3a5a3040d5829725a30d11a161380a465a96a7870646` |
+| [sudo_call_audit.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/sudo_call_audit.txt) | 2553 | `aab5f012f9c4d7e67551378914dd1e86b1d0c844f70c9a0e8d4341383ed13c29` |
 | [validation.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/validation.txt) | 608 | `650b7deecef20b2419a568497e27999b318fac5f2ab808749590f58d499956cb` |
 | [validation_home_static.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/validation_home_static.txt) | 395 | `35ef2af6a2f314a4ca650839dc6a1c996c7ef873c981e2ce03d1eb6e76064a37` |
 | [validation_r2.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/validation_r2.txt) | 711 | `380f036d7a477d71884aee17ea510d8dec08b8bddf55b233e0499e410fc576cd` |

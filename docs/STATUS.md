@@ -2,7 +2,14 @@
 
 更新：2026-10-27（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**任务2续三进行中：已记录正常环境发布裁决，准备推送旧本地成果并编写用户执行脚本。此前任务2续二部分完成：步骤1源码核对、步骤2准备、步骤6不依赖产物的静态部分已完成；步骤3–5未执行。不是成功构建基线。**
+**任务2续三：规则修正、旧成果正常环境推送、用户执行脚本编写及bash -n已完成；等待用户运行并告知结果。本轮没有运行脚本、sudo、导出或构建。**
+
+## 当前交付
+
+- 正常环境git push已补发b33992f0和规则提交38984f1，未修改认证配置，未索要密码。证据：[publication_r3_initial.txt](../evidence/task2/publication_r3_initial.txt)。
+- [run_baseline_build.sh](../scripts/run_baseline_build.sh)由用户在终端运行：前台预检/一次sudo -v，后台导出审计→GCC→LLVM，进程组及外部写入记录，失败跳过后续，trap/ALL-END收尾。详见[03最新章节](03_baseline_build.md)。
+- /usr/bin/depanneur:2048用普通sudo /usr/bin/build，3164–3174使用sudo /bin/echo -n维持认证；脚本本身只有一次前台sudo -v，不执行其他sudo或发送信号。缓存有效时无密码提示，否则由用户直接输入。见[sudo_call_audit.txt](../evidence/task2/sudo_call_audit.txt)。
+- 当前验证仅bash -n和静态核对，没有运行脚本或制造构建结果。目录/模板、基线SHA和工作树保持不变，未改内核或开发板。
 
 ## 计划
 
@@ -34,7 +41,7 @@ PM指定顺序：源码核对 → 工作区用户目录配置 → 指定HOME/GIT
 
 ## 需要人工裁决的前提
 
-PM关于HOME方案及保留源码配置的裁决已闭合，不再重复请求许可。恢复步骤3–5需要能够执行PM所指定HOME环境的执行端；当前代理受执行限制，不能通过用户重复批准解除，也不会另选已排除方案。对平台工具/硬件能力的缺口按05列项供后续设计评审，本任务未自行实施优化。
+PM已指定由用户在自己的终端运行脚本，执行端问题已闭合，不再要求另选方案。等待用户运行结束并告知结果后继续任务2续二步骤5/6的产物核对，尤其补齐05中llvm-bolt支持架构。静态脚本尚未实跑，实际认证缓存、导出审计和构建结果以用户日志为准。
 
 ## 挂账事项
 
@@ -49,6 +56,6 @@ PM关于HOME方案及保留源码配置的裁决已闭合，不再重复请求�
 
 ## 发布状态
 
-本次文件与STATUS已在本地同一提交；普通git push origin main失败，退出128：禁用系统及工作区外全局Git配置后，无可用GitHub认证（交互提示已禁用）。未索要密码、未恢复外部配置、未绕过认证或force push，见[发布记录](../evidence/task2/publication_home_attempt.txt)。远端main/raw链接尚未更新，本轮交付以工作区文件及本地commit为准。该记录是上一轮结果。PM现已明确授权结果仓库在正常环境使用本机已有GitHub认证，本轮按此重新推送，不修改认证配置。
+前轮禁用外部Git配置导致的认证失败已由PM裁决解除：隔离变量仅用于GBS及其后代，成果仓库commit/push使用正常环境的已有GitHub认证。普通push已成功补发旧成果。本轮脚本、03、RULES、STATUS及证据同一提交普通推送main；最终commit见交付回复。旧publication_home_attempt.txt保留作历史证据。
 
 交付索引：[evidence/task2/README.md](../evidence/task2/README.md)。
