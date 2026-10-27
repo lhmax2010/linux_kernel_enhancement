@@ -1,0 +1,18 @@
+number	status	branch	owner	subject	updated(Asia/Shanghai)	directories
+357090	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	drivers: media: pci: hailo: Port Hailo accelerator driver to v4.22.0	2026-10-22T14:08:39+08:00	drivers/media/pci,drivers/media/pci/hailo,drivers/media/pci/hailo/common,drivers/media/pci/hailo/src,drivers/media/pci/hailo/utils,drivers/media/pci/hailo/vdma
+356569	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	configs: packaging: modularize defconfig with RT and LSM fragments	2026-10-21T10:19:44+08:00	arch/arm/configs,arch/arm64/configs,build-rpi.sh,kernel/configs,packaging
+353101	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	USB: serial: cp210x: Fix driver name collision for cp210x-stlink	2026-10-12T07:56:13+08:00	drivers/usb/serial
+353102	MERGED	tizen_10.1	Seung-Woo Kim <sw0312.kim@samsung.com>	USB: serial: cp210x: Fix driver name collision for cp210x-stlink	2026-09-04T11:01:17+08:00	drivers/usb/serial
+352824	MERGED	tizen_10.1	Seung-Woo Kim <sw0312.kim@samsung.com>	USB: serial: cp210x: Add cp210x-stlink driver for SmartThings devices	2026-09-03T17:50:38+08:00	drivers/usb/serial
+352816	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	USB: serial: cp210x: Add cp210x-stlink driver for SmartThings devices	2026-09-03T17:50:18+08:00	drivers/usb/serial
+352864	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	script: build: support non-sudo image creation and mounting	2026-09-03T12:29:58+08:00	build-rpi.sh
+351450	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	ARM/ARM64: configs: tizen_bcm2711: Enable F2FS compression configs	2026-08-26T19:21:31+08:00	arch/arm/configs,arch/arm64/configs
+349146	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	perf build: Add make check-headers target	2026-08-20T14:20:43+08:00	tools/perf
+349148	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	packaging: Replace #!/bin/bash with #!/bin/sh in devel package for dash compat	2026-08-10T21:32:50+08:00	packaging
+349147	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	packaging: Remove bash shebang scripts from perf package for dash compat	2026-08-06T09:32:27+08:00	packaging
+347136	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	drm/vc4,v3d: Fix wrong lock protecting filelist in gem_info debugfs	2026-07-25T17:00:13+08:00	drivers/gpu/drm/v3d,drivers/gpu/drm/vc4
+334935	MERGED	tizen	Unsung Lee <unsung.lee@samsung.com>	cputime: Export symbol of thread_group_cputime_adjusted for the kernel module	2026-07-14T16:26:52+08:00	kernel/sched
+343424	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	script: build: support LLVM/CLANG build including tizen modules	2026-05-28T09:29:34+08:00	build-rpi.sh
+343680	MERGED	tizen	Hoegeun Kwon <hoegeun.kwon@samsung.com>	script: build: add clean step before building tizen modules	2026-05-18T12:46:21+08:00	build-rpi.sh
+343176	MERGED	tizen	Jaehoon Chung <jh80.chung@samsung.com>	ARM: configs: tizen_bcm2711: Enable MG-LRU configuration	2026-05-13T09:00:08+08:00	arch/arm/configs,arch/arm64/configs
+343423	MERGED	tizen	Seung-Woo Kim <sw0312.kim@samsung.com>	ARM: 9441/1: rust: Enable Rust support for ARMv7	2026-05-12T19:36:26+08:00	Documentation/rust,arch/arm,rust,scripts

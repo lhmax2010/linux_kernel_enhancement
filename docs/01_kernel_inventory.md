@@ -1,5 +1,8 @@
 # 任务1：内核树与打包现状
 
+> 任务2更新（2026-10-27）：本文第3节仍是 **tizen@42aeefac58ed 的任务1静态表**，源码行号也对应该commit；尚未与GCC最终.config逐项对照。任务2在源码导出/依赖初始化阶段中止，不能把“未改正符号”解释为推导全部正确。本地 lko/base@563c53c427bf 已仅拆入memcontrol修复，当前工作树的该函数与本文历史基线不同。详见 [03_baseline_build.md](03_baseline_build.md)。
+
+
 采样日期：2026-10-26（Asia/Shanghai）。源码路径为 `$WS/linux-rpi`，本文源码 `文件:行号` 均相对该目录；证据链接相对本报告。只读分析，未运行 make/GBS、未切换内核分支、未访问开发板 shell。配置表是源码/依赖的静态推导，不是板上 `.config` 或运行时 sysfs 实测；工具链探测项明确保留条件。
 
 ## 1. 仓库与版本
@@ -31,7 +34,7 @@ Tizen RPM spec 为 `packaging/linux-rpi.spec`；`scripts/package/kernel.spec` �
 
 ### 两个 GBS 配置的实际可证差别
 
-`config/gbs_gcc.conf:9` / `:16` 使用 Tizen-Base、Tizen-Unified 的 reference 软件仓库；`config/gbs_llvm.conf:9` / `:14` 使用 Tizen-Base-Toolchain、Tizen-Unified-Toolchain。两者 general buildroot 也不同且均在 `$WS/temp/`。二者只指定仓库和 buildroot，**文件名并不强制编译器**，文件本身没有 LLVM=1、CC 或 _toolchain 赋值。
+`config/gbs_gcc.conf:11` / `:18` 使用 Tizen-Base、Tizen-Unified 的 reference 软件仓库；`config/gbs_llvm.conf:11` / `:16` 使用 Tizen-Base-Toolchain、Tizen-Unified-Toolchain。两者 general buildroot 也不同且均在 `$WS/temp/`。二者只指定仓库和 buildroot，**文件名并不强制编译器**，文件本身没有 LLVM=1、CC 或 _toolchain 赋值。
 
 因此可确定的执行差别是仓库/依赖来源、隔离 buildroot；当 LLVM 仓库提供的 RPM 宏将 `_toolchain` 判定为 clang 时，spec 才走 LLVM=1，并切换完整 LLVM 工具集。否则仍可能走 GCC。实际 GBS 宏展开、compiler RPM 版本与最终参数需要目标构建环境或已有 build log；本任务没有该证据，也未为此运行 GBS。**不能宣称仅更换 conf 已经实测为 Clang 对 GCC。** 同样，BTF/pahole 与 stack protector 的有效值有工具版本前提。
 
@@ -402,10 +405,10 @@ zram 配置启用提交不修改 drivers/block/zram/，因此不计入驱动补�
 
 证据：[host_resources.txt](../evidence/task1/host_resources.txt)、[compilers_path.txt](../evidence/task1/compilers_path.txt)、[compilers_local_inventory.txt](../evidence/task1/compilers_local_inventory.txt)、[sdb_devices.txt](../evidence/task1/sdb_devices.txt)。
 
-## 6. 仍待人工裁决或后续任务验证
+## 6. 后续任务状态（任务2更新）
 
-- PM 固定普通/RT、LSM、最终工具链来源；此处普通 arm 基准不代表板上运行内核的最终配置。
-- 确认 silent-reclaim-fix 的负责人/采用计划；当前主线仍未合入，不能把其 zram 后端配置作为现状。
-- 由负责同事确认 cache-ext 与机器学习回收项目的关系；本项目不承接该方向。
-- 匿名 Gerrit REST 不暴露项目/变更，无法完成 open/最近六个月 merged 的可靠全量清单；详情与尝试命令见第二份报告。
-- 无板上 swappiness、zram disksize/实际 comp_algorithm、内核命令行、MGLRU sysfs 或 benchmark 数据；这些均未授权在本任务采集，不推测运行值。
+- 普通/RT最终配置、实际工具链、板上运行值仍未验证；任务2构建已中止，见03，不用静态推导替代产物数据。
+- PM已明确silent-reclaim-fix在用户账号下，作者He Fangyu，由另一条工作线负责；本项目已仅拆入memcontrol到lko/base，zram配置由本项目另评估。
+- PM明确MLGO是用户本人的编译器分支，与本项目不重叠；cache-ext不重叠、不再跟踪。
+- 任务2认证SSH已查到open 0、merged 17，其中内存/性能观测/构建相关12条；任务1匿名REST记录保留为历史，相关挂账已解除，见02第2节。
+- 本任务没有板上swappiness、zram disksize/实际comp_algorithm、命令行、MGLRU sysfs或benchmark数据。

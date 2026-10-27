@@ -1,0 +1,55 @@
+diff --git a/mm/memcontrol-v1.c b/mm/memcontrol-v1.c
+index 51b996c24819..ee7dbbdc2719 100644
+--- a/mm/memcontrol-v1.c
++++ b/mm/memcontrol-v1.c
+@@ -2426,28 +2426,43 @@ static int mem_cgroup_force_reclaim(struct cgroup_subsys_state *css,
+ 				struct cftype *cft, u64 val)
+ {
+ 	struct mem_cgroup *memcg = mem_cgroup_from_css(css);
+-	unsigned long nr_to_reclaim = val;
++	unsigned long nr_to_reclaim;
+ 	unsigned long total = 0;
++	unsigned int no_progress = 0;
+ 	int loop;
+ 
++	if (val > ULONG_MAX)
++		return -ERANGE;
++	nr_to_reclaim = val;
++
++	if (!nr_to_reclaim)
++		return 0;
++
+ 	for (loop = 0; loop < MEM_CGROUP_MAX_RECLAIM_LOOPS; loop++) {
+-		total += try_to_free_mem_cgroup_pages(memcg, nr_to_reclaim,
+-						GFP_KERNEL, true, NULL);
++		unsigned long reclaimed;
++
++		reclaimed = try_to_free_mem_cgroup_pages(memcg, nr_to_reclaim - total,
++						GFP_KERNEL, MEMCG_RECLAIM_MAY_SWAP, NULL);
++		total += reclaimed;
++		if (reclaimed)
++			no_progress = 0;
++		else
++			no_progress++;
+ 
+ 		/*
+-		 * If nothing was reclaimed after two attempts, there
++		 * If two consecutive attempts reclaimed nothing, there
+ 		 * may be no reclaimable pages in this hierarchy.
+-		 * If more than nr_to_reclaim pages were already reclaimed,
++		 * If at least nr_to_reclaim pages were already reclaimed,
+ 		 * finish force reclaim.
+ 		 */
+-		if (loop && (!total || total > nr_to_reclaim))
++		if (total >= nr_to_reclaim || no_progress >= 2)
+ 			break;
+ 	}
+ 
+ 	pr_info("%s: [Mem_reclaim] Loop: %d - Total_reclaimed: %lu - nr_to_reclaim: %lu\n",
+ 		__func__, loop, total, nr_to_reclaim);
+ 
+-	return total;
++	return 0;
+ }
+ #endif
+ 

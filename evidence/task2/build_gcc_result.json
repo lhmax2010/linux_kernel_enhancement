@@ -1,0 +1,24 @@
+{
+  "kind": "gcc",
+  "head": "563c53c427bff4d685d18544a8f4f6db14be9368",
+  "command": [
+    "/usr/bin/time",
+    "-v",
+    "gbs",
+    "-c",
+    "/home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_gcc.conf",
+    "build",
+    "-A",
+    "armv7l",
+    "--threads",
+    "1",
+    "--define",
+    "_smp_mflags -j10"
+  ],
+  "start": "2026-10-27T14:14:17+08:00",
+  "end": "2026-10-27T14:19:54+08:00",
+  "elapsed_runner_seconds": 337.230186681998,
+  "exit": 143,
+  "credential_stop": false,
+  "log": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/build_gcc.log"
+}

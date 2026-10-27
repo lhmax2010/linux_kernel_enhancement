@@ -1,0 +1,8 @@
+$ ssh -p 29418 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=20 lhmax2025@review.tizen.org gerrit query --format=JSON --current-patch-set --files 'project:platform/kernel/linux-rpi status:open' limit:500
+exit=0
+
+rows=0 stats=[{"type": "stats", "rowCount": 0, "runTimeMilliseconds": 1, "moreChanges": false}]
+$ ssh -p 29418 -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=20 lhmax2025@review.tizen.org gerrit query --format=JSON --current-patch-set --files 'project:platform/kernel/linux-rpi status:merged -age:6mon' limit:500
+exit=0
+
+rows=17 stats=[{"type": "stats", "rowCount": 17, "runTimeMilliseconds": 236, "moreChanges": false}]

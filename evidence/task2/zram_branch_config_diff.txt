@@ -1,0 +1,40 @@
+commit 85fcc6edce0b0df05e5d630027f37634bde078bb
+Author: Jaehoon Chung <jh80.chung@samsung.com>
+Date:   Wed Apr 29 23:22:40 2026 +0900
+
+    zram: Enable zstd dictionary compression support for BCM2711
+    
+    - Enable ZRAM_BACKEND_ZSTD and set zstd as default compressor
+    - Enable ZRAM_MULTI_COMP for secondary compression stream support
+    - Enable ZRAM_TRACK_ENTRY_ACTIME for idle page recompression
+    - Keep ZRAM_BACKEND_LZO as fallback backend
+    - Add zram-dict-setup.sh: boot-time zram init script with zstd dict
+    - Add zram-dict-init.rc: Android/Tizen init.rc and systemd unit examples
+    
+    Change-Id: Ib9f5954eb145c73631bdac2fd149ff59328d5062
+    Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+diff --git a/arch/arm/configs/tizen_bcm2711_defconfig b/arch/arm/configs/tizen_bcm2711_defconfig
+index 24116dd278b2..74ff3632f1b5 100644
+--- a/arch/arm/configs/tizen_bcm2711_defconfig
++++ b/arch/arm/configs/tizen_bcm2711_defconfig
+@@ -205,6 +205,11 @@ CONFIG_CONNECTOR=y
+ CONFIG_RASPBERRYPI_FIRMWARE=y
+ CONFIG_OF_CONFIGFS=y
+ CONFIG_ZRAM=y
++CONFIG_ZRAM_BACKEND_ZSTD=y
++CONFIG_ZRAM_BACKEND_LZO=y
++CONFIG_ZRAM_DEF_COMP_ZSTD=y
++CONFIG_ZRAM_TRACK_ENTRY_ACTIME=y
++CONFIG_ZRAM_MULTI_COMP=y
+ CONFIG_BLK_DEV_LOOP=y
+ CONFIG_BLK_DEV_NBD=m
+ CONFIG_BLK_DEV_RAM=y
+@@ -525,7 +530,6 @@ CONFIG_PRINTK_TIME=y
+ CONFIG_CONSOLE_LOGLEVEL_QUIET=3
+ CONFIG_BOOT_PRINTK_DELAY=y
+ CONFIG_DEBUG_INFO_DWARF4=y
+-CONFIG_DEBUG_INFO_BTF=y
+ CONFIG_KGDB=y
+ CONFIG_KGDB_KDB=y
+ CONFIG_KDB_KEYBOARD=y

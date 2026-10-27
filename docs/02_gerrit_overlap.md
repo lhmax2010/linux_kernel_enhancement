@@ -1,6 +1,6 @@
 # 任务1：Gerrit 与 sandbox 重叠盘点
 
-采样：2026-10-26（Asia/Shanghai）。内核主线固定为 `tizen@42aeefac58edeb081aff440f0b60be71cbe49755`。此报告只读；没有 checkout sandbox、没有向 Gerrit 推送、没有联系同事。
+初始采样：2026-10-26；任务2更新：2026-10-27（Asia/Shanghai）。内核主线固定为 `tizen@42aeefac58edeb081aff440f0b60be71cbe49755`。任务1盘点只读。任务2已按 PM 指令将 memcontrol 修复拆入本地 lko/base；未向 Gerrit 推送、未联系同事。
 
 ## 1. 查询范围、方法与限制
 
@@ -27,7 +27,9 @@ git diff --numstat <merge-base> refs/remotes/origin/sandbox/<name>
 
 辅助去背景集合为**全部非 sandbox 的 origin 远端分支、官方 rpi-6.12.y、本地 v* tag** 的祖先合集，名单见 [sandbox_background_exclusions.txt](../evidence/task1/sandbox_background_exclusions.txt)。它只用来缩短背景，不替代相对 tizen 的 ahead 定义，也没有按 patch-id 消除等价重放；例如 fine_grained_thp 仍剩 733 条。全部 46 个分支共保留 2236 条辅助集合元数据（分支间可重复）。目录统计始终是各分支相对**与 tizen 的 merge-base**的净 diff，包含历史背景；不是把旧版本差异认作该同事独自改动。
 
-## 2. 匿名 Gerrit REST
+## 2. Gerrit 查询：任务1匿名 REST 与任务2认证 SSH
+
+### 2.1 任务1匿名 REST（历史记录）
 
 查询日期窗口按用户当前日期设为 **2026-04-26 至 2026-10-26**（before:2026-10-27），open 不限日期。匿名 HTTPS，无 cookie/认证，查询参数含 CURRENT_REVISION、CURRENT_COMMIT、CURRENT_FILES、DETAILED_ACCOUNTS，每页 n=100；设计为有 `_more_changes` 时继续 S 偏移。实际第一页为空，没有后续页。
 
@@ -49,28 +51,53 @@ git diff --numstat <merge-base> refs/remotes/origin/sandbox/<name>
 
 因此“其中与内存、性能、构建有关的 open/merged 变更”无可列出的匿名结果；下面只列可验证的 Git 分支与 commit，不声称其 Gerrit 审核状态。
 
+### 2.2 任务2 SSH 查询（2026-10-27）
+
+按 PM 指定的 SSH 命令查询，仅增加 StrictHostKeyChecking=yes 和 ConnectTimeout=20，避免修改 known_hosts 或无限等待；BatchMode=yes，不交互输入凭据。两条命令均 exit=0：open **0**，`status:merged -age:6mon` **17**。stats.moreChanges=false，未达到500条，不需要 --start 翻页。原始 JSONL 留在 `$WS/temp/task2_gerrit_<open|merged_6mon>_0.jsonl`。
+
+`-age:6mon` 是 Gerrit 服务端按更新年龄过滤；报告“更新时间”来自 lastUpdated，不冒称确切合入时间。此 SSH 可见性结果替代任务1“无法获得列表”的当前挂账，但任务1原始匿名失败证据仍保留。仅在当前账号可见范围内，open=0；不扩展为所有私人工作都不存在。
+
+[完整命令/退出码/分页统计](../evidence/task2/gerrit_ssh_queries.txt)；[全部17条摘要](../evidence/task2/gerrit_ssh_summary.txt)。以下 **12 条**与内存、性能/观测或构建直接相关；排除完整 Hailo 驱动移植1条和 USB cp210x 驱动4条，不把所有驱动功能更新都算性能优化。
+
+| number | branch | owner | subject | 更新时间（Asia/Shanghai） | 相关内容 |
+| --- | --- | --- | --- | --- | --- |
+| 356569 | tizen | Seung-Woo Kim &lt;sw0312.kim@samsung.com&gt; | configs: packaging: modularize defconfig with RT and LSM fragments | 2026-10-21T10:19:44+08:00 | 统一普通/RT及LSM片段，影响最终配置与构建基线。 |
+| 352864 | tizen | Seung-Woo Kim &lt;sw0312.kim@samsung.com&gt; | script: build: support non-sudo image creation and mounting | 2026-09-03T12:29:58+08:00 | 构建脚本的无sudo镜像创建/挂载支持；不改变GBS的sudo要求。 |
+| 351450 | tizen | Seung-Woo Kim &lt;sw0312.kim@samsung.com&gt; | ARM/ARM64: configs: tizen_bcm2711: Enable F2FS compression configs | 2026-08-26T19:21:31+08:00 | 启用F2FS压缩，涉及压缩存储/页缓存。 |
+| 349146 | tizen | Seung-Woo Kim &lt;sw0312.kim@samsung.com&gt; | perf build: Add make check-headers target | 2026-08-20T14:20:43+08:00 | perf构建新增头文件检查目标。 |
+| 349148 | tizen | Seung-Woo Kim &lt;sw0312.kim@samsung.com&gt; | packaging: Replace #!/bin/bash with #!/bin/sh in devel package for dash compat | 2026-08-10T21:32:50+08:00 | devel包脚本改用/bin/sh，适配dash。 |
+| 349147 | tizen | Seung-Woo Kim &lt;sw0312.kim@samsung.com&gt; | packaging: Remove bash shebang scripts from perf package for dash compat | 2026-08-06T09:32:27+08:00 | 从perf包删除bash shebang脚本，修复打包兼容。 |
+| 347136 | tizen | Seung-Woo Kim &lt;sw0312.kim@samsung.com&gt; | drm/vc4,v3d: Fix wrong lock protecting filelist in gem_info debugfs | 2026-07-25T17:00:13+08:00 | vc4/v3d gem_info调试接口锁修正，关系图形内存观测正确性。 |
+| 334935 | tizen | Unsung Lee &lt;unsung.lee@samsung.com&gt; | cputime: Export symbol of thread_group_cputime_adjusted for the kernel module | 2026-07-14T16:26:52+08:00 | 导出线程组CPU时间函数给模块，支持性能统计。 |
+| 343424 | tizen | Seung-Woo Kim &lt;sw0312.kim@samsung.com&gt; | script: build: support LLVM/CLANG build including tizen modules | 2026-05-28T09:29:34+08:00 | build-rpi.sh支持LLVM/Clang及Tizen模块。 |
+| 343680 | tizen | Hoegeun Kwon &lt;hoegeun.kwon@samsung.com&gt; | script: build: add clean step before building tizen modules | 2026-05-18T12:46:21+08:00 | 构建Tizen模块前清理旧产物，避免陈旧构建结果。 |
+| 343176 | tizen | Jaehoon Chung &lt;jh80.chung@samsung.com&gt; | ARM: configs: tizen_bcm2711: Enable MG-LRU configuration | 2026-05-13T09:00:08+08:00 | 默认启用MGLRU；已经合入主线，不是待实施的新开关。 |
+| 343423 | tizen | Seung-Woo Kim &lt;sw0312.kim@samsung.com&gt; | ARM: 9441/1: rust: Enable Rust support for ARMv7 | 2026-05-12T19:36:26+08:00 | 回移ARMv7 Rust支持，改变工具链能力前提。 |
+
+SSH 返回的17条中没有发现本矩阵所列 zram stream/并行解压、MGLRU-FG、免引用计数读取、kallsyms/modpost并行化、AutoFDO 的新增变更；已有sandbox仍按下文证据和PM划界处理。
+
 ## 3. 候选方向重叠矩阵
 
 用语边界：“已有人在做”表示存在实质相关分支/提交证据，**不保证作者仍在推进**；“无人涉及”只表示当前可见分支差异及提交检索中未发现，不覆盖不可见 Gerrit、个人未推送分支。旧版本回移也标明年代，不能作为独占 6.12 方向的依据。
 
 | 候选方向 | 标注 | 证据与边界 |
 | --- | --- | --- |
-| MGLRU 启用与调参 | **已有人在做**（启用已入主线；旧回移存在） | 主线 c0b66bcd342c 已默认启用；dwlee08/v5.4-mg-lru、v5.4-tizen-mg-lru 有 56/42 条去背景提交。未查到当前 6.12 的运行参数实验，调参需另确认。 |
-| MGLRU-FG：访问次数驱动的代龄提升 | **相关但不重叠**（未发现完全同定义实现） | cache-ext 的 cd5e642ebeee 及其 mglru_notes.md 描述访问次数 tier，并添加可编程 eviction/admission；普通 MGLRU tiers 不等于本候选的按次数升 generation。已读 mm/swap.c、mm/vmscan.c diff，未找到明确 MGLRU-FG 命名/完整实现；需要与该同事划界。 |
+| MGLRU 启用与调参 | **已合入主线；调参尚无本次新证据** | SSH merged #343176（c0b66bcd342c）确认默认启用；旧 dwlee08 两条5.4回移分支仍属历史工作。 |
+| MGLRU-FG：访问次数驱动的代龄提升 | **无人涉及**（本次可见范围） | PM明确 cache-ext 没有实现按访问次数提升MGLRU代龄，标为“不重叠，不再跟踪”；普通MGLRU tiers不等于该候选。SSH相关变更中未出现该实现。 |
 | zram 读写压缩流拆分 | **无人涉及**（可见范围未发现） | jaehoon80/zram 仅改 ARM defconfig 与启动脚本，silent-reclaim-fix 改 defconfig 与 memcontrol-v1.c；未改 zcomp stream 实现。其他去背景元数据检索未命中该机制。 |
 | zram 并行解压 | **相关但不重叠** | jaehoon80/lz4 的 7459b2911b52 是 ARMv7 fast decode loop；旧 EROFS 分支有 per-CPU 解压线程，但对象不是 zram 并行解压。未发现 zram 并行队列实现。 |
 | zram 重压缩全局缓冲 | **无人涉及**（可见范围未发现） | zram sandbox 未改驱动分配/缓冲路径；检索 recompress/global buffer 未发现对应提交。 |
-| zram 算法、二次压缩配置 | **已有人在做** | jaehoon80/zram：85fcc6edce0b，默认 zstd、ZRAM_MULTI_COMP、访问时间、字典初始化；lhmax2025/silent-reclaim-fix：a9cc39b8dd1d，启用 LZ4/ZSTD backend、保留 LZO/lzo-rle 默认且 multi-comp 关闭；两者方案不同，不能直接都叠加。 |
+| zram 算法、二次压缩配置 | **已有相关方案；本项目评估** | 85fcc6edce0b选择zstd、multi-comp、actime和字典脚本，同时**删除CONFIG_DEBUG_INFO_BTF=y**；a9cc39b8dd1d由另一条工作线负责，本项目仅拆入memcontrol修复，zram配置单独评估。证据：[配置diff](../evidence/task2/zram_branch_config_diff.txt)。 |
 | zram 写回 | **无人涉及**（可见范围未发现） | 当前 D 未启用 ZRAM_WRITEBACK；85fcc6edce0b 启用 idle 重压缩不等于写回，未添加 backing_dev/writeback 策略。 |
-| 冷热分层压缩 / CRAM 类软件实现 | **相关但不重叠** | zram 字典/二次压缩配置、cache-ext 可编程替换有相邻基础，但未发现完整冷热分类、不同压缩层迁移实现；不能把 MULTI_COMP 开关称作 CRAM。 |
-| 页缓存读取免引用计数 | **相关但不重叠** | cache-ext 改 mm/filemap.c、mm/readahead.c、mm/swap.c，属于同路径冲突风险；其已读差异是 BPF 回调/策略接入，未证明实现读取免 refcount。 |
+| 冷热分层压缩 / CRAM 类软件实现 | **相关但不重叠** | zram字典/二次压缩配置可作相邻基础，但未发现完整冷热分类及跨层迁移实现；cache-ext按PM决定不重叠、不再跟踪。 |
+| 页缓存读取免引用计数 | **无人涉及**（本次可见范围） | PM确认 cache-ext 没有实现读取时免引用计数，仅移植BPF页缓存策略框架；不重叠，不再跟踪。SSH相关变更中未出现该实现。 |
 | Kbuild 并行化（kallsyms、modpost） | **相关但不重叠** | 主线 91730e1655f5 将 make jobs 传给 pahole；devel 的 c042b147b853 仅 linker 调试，旧 use_lto 改构建流程。未发现 kallsyms/modpost 并行化方案。 |
-| 编译器层 Clang/GCC、优化级别、LTO、AutoFDO | **已有人在做**（部分子方向） | dkson95/clang 的 f2c3d799708c；lhmax2025/mlgo 的 0eb2748f5d69；sebuns2/use_lto 的 a4fe97e13a49；pgo_applied_kernel 的 8423391fa02b 等 3 条。MLGO、PGO 不等于 AutoFDO；未找到明确 AutoFDO 或全局 -O3 试验。 |
-| 内核配置裁剪（debug 等） | **已有人在做**（部分已入主线） | 主线 6f9c2a59325b 裁掉未用驱动、b7a217f07695 去 NFSD；btf-test 有 DWARF 调整。未见当前整套 debug 裁剪实验，仍需保留 BPF/BTF/同事观测需求。 |
+| 编译器层 Clang/GCC、优化级别、LTO、AutoFDO | **部分已有历史工作** | SSH #343424确认build-rpi.sh的LLVM支持；dkson95/clang、sebuns2/use_lto、pgo_applied_kernel仍为相关历史。**lhmax2025/mlgo为用户本人的编译器MLGO分支，与本项目不重叠**；未发现明确AutoFDO新变更。 |
+| 内核配置裁剪（debug 等） | **已有相关改动** | 主线已裁掉部分无用驱动/NFSD；85fcc6edce0b还删除DEBUG_INFO_BTF，不能当纯zram开关直接照搬。SSH #356569统一配置片段，#351450加入F2FS压缩；未查到完整debug裁剪试验。 |
 | 调度参数调优 | **已有人在做** | jaehoon80/eevdf：5 条去背景提交；f08ff9bbd937 cache affinity、b516ce5fa5a5 wakeup granularity、ab0bba206cfd 最小粒度/rb-tree 等。是旧主线上的 EEVDF backport/修正，不能直接套到当前 6.12。 |
 | sched_ext | **相关但不重叠** | 当前 Kconfig 有 SCHED_CLASS_EXT 但未启用；EEVDF 分支不是 sched_ext；cache-ext 是页缓存扩展，不是调度扩展。可见 sandbox 中未发现专用 sched_ext 实验。 |
-| 机器学习页面置换/回收（另一同事负责，本项目不做） | **相关但不重叠**（具体归属待确认；按 PM 要求排除本项目实施） | mmajewski2/cache-ext 是最直接相关分支：8 条，cd5e642ebeee 引入 BPF page_cache_ext，mm/cache_ext.c/.h 接入 eviction/admission，后续修正/调试。没有模型/训练代码证据，不能断言它已实现 ML 策略。lhmax2025/mlgo 是编译器 MLGO，不能误标为 ML 页面回收。 |
-| vendor force_reclaim、zram 算法回退 | **已有人在做** | silent-reclaim-fix 直接基于当前 HEAD，a9cc39b8dd1d 修复 MAY_SWAP 位、返回契约、边界与无进展停止，并明确保留 LZO fallback。当前主线 force_reclaim 仍为 478d7fd169c2 版本。 |
+| 机器学习页面置换/回收（本项目不做） | **不重叠，不再跟踪 cache-ext** | PM确认 mmajewski2/cache-ext 移植的是BPF页缓存策略框架，未实现MGLRU按次数升代龄、未实现读时免引用计数；最后提交2026-07-29。MLGO属于用户本人的编译器分支，与本项目不重叠。 |
+| vendor force_reclaim、zram 算法回退 | **memcontrol已纳入base；zram另评估** | sandbox位于用户账号下，作者He Fangyu，由另一条工作线负责。本项目将a9cc39b8dd1d的mm/memcontrol-v1.c部分拆为lko/base@563c53c427bf；两个defconfig未带入，zram配置由本项目另行评估。 |
 
 关键原文/补丁：[focused_sandbox_details.txt](../evidence/task1/focused_sandbox_details.txt)、[sandbox_silent_reclaim_patch.txt](../evidence/task1/sandbox_silent_reclaim_patch.txt)、[cache_ext_changes.txt](../evidence/task1/cache_ext_changes.txt)、[cache_ext_source_excerpt.txt](../evidence/task1/cache_ext_source_excerpt.txt)、[overlap_search.txt](../evidence/task1/overlap_search.txt)。每条分支的作者、日期和提交完整清单链接见下一节。没有从提交标题宣称实测收益。
 
@@ -263,7 +290,7 @@ tip `b9a6e80323a03e0a0670425f0b889f333aec51a8`；merge-base `b9a6e80323a03e0a067
 
 ### 12. `sandbox/jaehoon80/zram`
 
-仅一条配置/脚本提交，启用 zstd 字典、二次压缩和访问时间跟踪；驱动本身未改。
+仅一条配置/脚本提交，启用 zstd 字典、二次压缩和访问时间跟踪；驱动本身未改。该提交还删除 CONFIG_DEBUG_INFO_BTF=y（原始行528，diff见 evidence/task2/zram_branch_config_diff.txt），后续方案需单独评估其BPF/BTF影响。
 
 tip `85fcc6edce0b0df05e5d630027f37634bde078bb`；merge-base `b9a6e80323a03e0a0670425f0b889f333aec51a8`；领先 **1**、落后 **14**；去背景后 **1** 条。
 
@@ -338,7 +365,7 @@ tip `fb3cd7334c19cb8ded5f2f553f3109863859b8ad`；merge-base `ffc253263a1375a65fa
 
 ### 17. `sandbox/lhmax2025/mlgo`
 
-通过 packaging 为 clang 内核构建启用 MLGO；这是编译器机器学习优化，不是页面回收 ML。
+PM已确认：这是用户本人的编译器 MLGO 分支，与本项目不重叠。它通过 packaging 为 clang 内核构建启用 MLGO，不是页面回收 ML。
 
 tip `0eb2748f5d698124d24a6368936992af889ac9de`；merge-base `8cdc66794c4281f47cc90efe8b218add97303274`；领先 **1**、落后 **10**；去背景后 **1** 条。
 
@@ -352,7 +379,7 @@ tip `0eb2748f5d698124d24a6368936992af889ac9de`；merge-base `8cdc66794c4281f47cc
 
 ### 18. `sandbox/lhmax2025/silent-reclaim-fix`
 
-修复 vendor force_reclaim 的参数位和接口契约，启用 LZ4/ZSTD zram 后端并保留 lzo-rle 默认；直接基于当前 HEAD。
+PM已确认：分支在用户账号下，作者He Fangyu，由另一条工作线负责。本项目已将其memcontrol修复拆入 lko/base@563c53c427bf；zram defconfig部分未带入，由本项目另行评估。原sandbox同时启用LZ4/ZSTD后端并保留lzo-rle默认。
 
 tip `a9cc39b8dd1deaa8c9cb5ae45cb815526f3dd87a`；merge-base `42aeefac58edeb081aff440f0b60be71cbe49755`；领先 **1**、落后 **0**；去背景后 **1** 条。
 
@@ -468,7 +495,7 @@ tip `fab22ef8f5f69b5460782e7f919441b98cf38d16`；merge-base `8bb7eca972ad531c9b1
 
 ### 25. `sandbox/mmajewski2/cache-ext`
 
-BPF page_cache_ext 可编程 admission/eviction 与回收路径接入，8 条提交；与 PM 指定另一同事负责方向密切相关，具体 ML 项目归属待确认。
+**PM划界：不重叠，不再跟踪。** 该分支移植BPF页缓存策略框架，没有实现按访问次数提升MGLRU代龄，也没有实现读取时免引用计数；最后一次提交为2026-07-29（c9bf4b7ea8f5）。保留以下历史元数据供审计。
 
 tip `c9bf4b7ea8f543a53949d86818075057ae5f4154`；merge-base `8cdc66794c4281f47cc90efe8b218add97303274`；领先 **8**、落后 **10**；去背景后 **8** 条。
 
@@ -856,9 +883,11 @@ tip `271f7d7add415f98fc0a182ee8cb19afaf61d3ac`；merge-base `8cdc66794c4281f47cc
 | --- | --- | --- | --- |
 | `271f7d7add41` | Stanislaw Wadas &lt;s.wadas@samsung.com&gt; | 2026-07-09T12:50:09+02:00 | Add SELinux as a main lsm instead of SMACK |
 
-## 5. PM 需要裁决的前提
+## 5. 任务2划界与后续前提
 
-- 优先核对 silent-reclaim-fix 与 jaehoon80/zram：前者保留 lzo-rle、关闭 multi-comp，后者默认 zstd 并打开 multi-comp；由 PM 确定后续基线，本次未合并。
-- 询问 cache-ext 负责人是否就是指定的机器学习回收项目，以及其页缓存/BPF 接口变更边界；本次未擅自联系，后续不实施该方向。
-- 旧 MGLRU、EEVDF、THP、LTO/PGO 分支的存在不证明其仍在维护；作者当前计划需 PM 确认。
-- 如需完整 Gerrit open/merged 避重清单，需要 PM 提供可见性信息或在后续任务安排具备权限的查询。此次匿名失败不影响本次可读 Git 证据交付，但“无人涉及”结论仅为有限范围判断。
+- silent-reclaim-fix的归属已明确；memcontrol修复已拆入base，zram配置由本项目另评估。
+- 用户本人的MLGO分支与本项目不重叠。
+- cache-ext不重叠，不再跟踪，不再要求确认负责人或机器学习项目归属。
+- jaehoon80/zram删除BTF与启用二次压缩是两个需要单独评估的行为，尚未合入base。
+- SSH查询已获得17条merged/0条open，其中相关12条；不再把匿名REST限制列为未取得此次变更清单的阻塞。
+- 历史sandbox的存在不代表当前仍在维护；具体优化方案以PM后续任务为准。

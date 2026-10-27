@@ -1,0 +1,3 @@
+temp/task2_gerrit_merged_6mon_0.jsonl: bytes=36637 sha256=4ed7427d69e259040613b8b026aa9d68d7b3f4c7aa4fee0187cb87db6409fa1d
+temp/task2_gerrit_open_0.jsonl: bytes=74 sha256=41240737cd1c72fac5fe7cd7ea1d5933362df86077411fc0a7e55947a6316c8b
+Raw JSONL kept locally, not uploaded per PM request.

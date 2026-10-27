@@ -1,0 +1,7 @@
+## lko/base
+42aeefac58edeb081aff440f0b60be71cbe49755
+563c53c427bff4d685d18544a8f4f6db14be9368
+* lko/base
+  tizen
+ mm/memcontrol-v1.c | 29 ++++++++++++++++++++++-------
+ 1 file changed, 22 insertions(+), 7 deletions(-)

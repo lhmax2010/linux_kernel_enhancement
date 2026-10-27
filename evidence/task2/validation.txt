@@ -1,0 +1,8 @@
+PASS: lko/base diff exactly equals original a9cc39b8dd1d mm/memcontrol-v1.c diff.
+PASS: only mm/memcontrol-v1.c differs from tizen baseline.
+PASS: author preserved in base_commit.txt; tizen SHA unchanged; lko/base worktree clean.
+PASS: snapshot exactly matches base lines 2405-2486 (function plus 20 lines before/after).
+PASS: one GCC BUILD-START, final BUILD-END exit=143, no LLVM log.
+PASS: uploaded full GCC log equals local sealed log.
+PASS: task2 evidence UTF-8 text, each under 1,000,000 bytes.
+NOT RUN: kernel tests, successful baseline builds, artifact toolchain/config/size checks, task2 steps 5-9.

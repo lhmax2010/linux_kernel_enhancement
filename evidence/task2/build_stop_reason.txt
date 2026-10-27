@@ -1,0 +1,10 @@
+STOP 2026-10-27T14:18:55.095327+08:00
+Observed xz stdout: /var/tmp/.gbs_export_4d01tubn/linux-kernel-6.12.80.tar.xz
+Hard rule: temporary/intermediate files only under $WS/temp.
+Action: immediately SIGINT build process group 116650; no retry, no spec/code change, no modification of external file.
+SIGINT did not promptly stop background descendants. SIGTERM attempts (kept /usr/bin/time alive for accounting):
+[('118292', 'root', 'download', 'SIGTERM denied; no privilege escalation'), ('117363', 'root', 'init_buildsyste', 'SIGTERM denied; no privilege escalation'), ('117345', 'root', 'perl', 'SIGTERM denied; no privilege escalation'), ('117313', 'root', 'build', 'SIGTERM denied; no privilege escalation'), ('117312', 'root', 'sudo', 'SIGTERM sent'), ('117311', 'linhao', 'sh', 'SIGTERM sent'), ('116679', 'linhao', 'depanneur', 'SIGTERM sent'), ('116678', 'linhao', 'sh', 'SIGTERM sent'), ('116651', 'linhao', 'gbs', 'SIGTERM sent')]
+Cleanup only: stop residual processes of this build group using existing sudo authorization, non-interactive; no credential input/retry.
+Command: sudo -n /bin/kill -KILL -- 117345 117363 118635
+exit=1
+sudo: a password is required

@@ -1,0 +1,38 @@
+Task2, 2026-10-27 Asia/Shanghai; cwd=$WS
+export TMPDIR=$WS/temp GIT_OPTIONAL_LOCKS=0 PYTHONDONTWRITEBYTECODE=1
+Read docs/RULES.md, docs/STATUS.md, PM attachment.
+
+git -C linux-rpi switch -c lko/base 42aeefac58edeb081aff440f0b60be71cbe49755
+git -C linux-rpi cherry-pick -n a9cc39b8dd1d
+git -C linux-rpi restore --staged --worktree arch/arm/configs/tizen_bcm2711_defconfig arch/arm64/configs/tizen_bcm2711_defconfig
+git -C linux-rpi -c user.name='Hao Lin' -c user.email='hao.lin@samsung.com' commit --author='He Fangyu <fangyu.he@samsung.com>' --date='2026-10-19T10:13:06+08:00' -F $WS/temp/task2_base_message.txt
+Commit also disabled hooks/GPG per-command; no global config edits.
+
+git -C linux-rpi diff 42aeefac lko/base --stat
+git -C linux-rpi diff 42aeefac lko/base
+Snapshot from git show <base>:mm/memcontrol-v1.c, original lines 2405-2486.
+
+SSH commands and pagination results are preserved verbatim in gerrit_ssh_queries.txt.
+Raw JSONL only in temp/task2_gerrit_*_0.jsonl; hashes in gerrit_raw_integrity.txt.
+No alternate query method was used in task2.
+
+Two project configs gained general.tmpdir=$WS/temp before build.
+The actual single GCC invocation was run in linux-rpi on clean lko/base:
+/usr/bin/time -v gbs -c $WS/config/gbs_gcc.conf build -A armv7l --threads 1 --define '_smp_mflags -j10'
+No --include-all; no spec/code modification for build; no build retry.
+Background runner logs stdout/stderr and time to temp/build_gcc.log, metadata to temp/build_gcc_result.json.
+
+Observed process FD:
+readlink /proc/116876/fd/1
+/var/tmp/.gbs_export_4d01tubn/linux-kernel-6.12.80.tar.xz
+This violated the workspace-only intermediate-output rule; build was interrupted.
+Signal/permission diagnostics, including the one failed noninteractive sudo cleanup,
+are in build_stop_reason.txt. No credential input or further sudo attempts followed.
+Residual-state read-only checks found no live build group processes at 14:24:16.
+Root initialization appended output after the first BUILD-END; preserved all output,
+then appended sealing note and final original main-process BUILD-END marker.
+
+NOT EXECUTED: LLVM build, step5 compiler attribution, step6 .config comparison,
+step7 artifact size tools, step8 zram/lz4 experiments, step9 AutoFDO/BOLT inspection.
+No board command, no aarch64 build, no Gerrit push.
+Final kernel branch lko/base; tizen unchanged.

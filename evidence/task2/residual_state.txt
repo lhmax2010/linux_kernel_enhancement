@@ -1,0 +1,8 @@
+/var/tmp/.gbs_export_4d01tubn: no longer exists at read-only check
+/var/tmp/.gbs_export_4d01tubn/linux-kernel-6.12.80.tar.xz: no longer exists at read-only check
+Residual process snapshot 2026-10-27T14:21:36.271196+08:00
+ 117345    2725  116650 root     S    perl
+ 117363    2725  116650 root     S    init_buildsyste
+ 119563  117363  116650 root     S    download
+Read-only residual check 2026-10-27T14:24:16.353666+08:00
+No live processes in build PGID 116650

@@ -1,0 +1,42 @@
+   191	
+   192	class ConfigMgr(object):
+   193	    '''Support multi-levels of gbs.conf. Use this class to get and set
+   194	    item value without caring about concrete ini format'''
+   195	
+   196	    DEFAULTS = {'general': {'tmpdir': '/var/tmp',
+   197	                            'editor': '',
+   198	                            'packaging_branch': 'master',
+   199	                            'upstream_branch': 'upstream',
+   200	                            'upstream_tag': 'upstream/${upstreamversion}',
+   201	                            'squash_patches_until': '',
+   202	                            'buildroot':    '~/GBS-ROOT/',
+   203	                            'packaging_dir': 'packaging',
+   810	
+   811	def main(args):
+   812	    """gbs build entry point."""
+   813	    global TMPDIR
+   814	    TMPDIR = os.path.join(configmgr.get('tmpdir', 'general'), '%s-gbs' % USERID)
+   815	
+   816	    if args.commit and args.include_all:
+diff --git a/config/gbs_gcc.conf b/config/gbs_gcc.conf
+index b1f010f..4dd9483 100644
+--- a/config/gbs_gcc.conf
++++ b/config/gbs_gcc.conf
+@@ -1,4 +1,6 @@
+ [general]
++# GBS uses its own tmpdir setting; TMPDIR alone does not override /var/tmp.
++tmpdir = /home/linhao/Toolchain/development/linux_kernel_optimization/temp
+ profile = profile.tizen_unified_standard
+ buildroot = /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES
+ 
+diff --git a/config/gbs_llvm.conf b/config/gbs_llvm.conf
+index f22dd1b..65a12fc 100644
+--- a/config/gbs_llvm.conf
++++ b/config/gbs_llvm.conf
+@@ -1,4 +1,6 @@
+ [general]
++# GBS uses its own tmpdir setting; TMPDIR alone does not override /var/tmp.
++tmpdir = /home/linhao/Toolchain/development/linux_kernel_optimization/temp
+ profile = profile.tizen_unified_standard
+ buildroot = /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES
+ 

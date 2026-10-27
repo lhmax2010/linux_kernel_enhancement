@@ -1,48 +1,54 @@
 # 项目状态
 
-更新：2026-10-26（Asia/Shanghai）。新 Session **先读本文件与 [RULES.md](RULES.md)**。
+更新：2026-10-27（Asia/Shanghai）。新Session先读本文件和 [RULES.md](RULES.md)。
+
+**任务2未完成：步骤4已中止，未启动LLVM；本次提交是阶段性交付，不是成功构建基线。**
 
 ## 计划
 
-- 任务1只读摸底：建独立成果仓库；核对内核/打包/配置/下游边界；盘点所有 sandbox 和匿名 Gerrit；保留小体积文本证据；同一提交提交本文件和全部产出，git push 到 GitHub main。
-- 后续实现、编译、板测须等待 PM 给出新任务及范围。不要把本任务报告视为已批准优化方案。
+PM任务2顺序：建立lko/base → SSH查询与02修订 → 串行armv7l GCC/LLVM构建 → 实际编译器及最终.config → 体积/开销 → zram静态准备与LZ4合入检查 → AutoFDO/BOLT静态前提。遇构建失败或凭据要求停止，保留证据；本次触发停止条件，后续执行待PM决定。
 
 ## 进度
 
-- 已完成四份要求文档、两份无凭据 GBS 配置的检查、文本证据与索引，以及上传前校验脚本。
-- GitHub 原为空仓库，工作区原非 Git 仓库；独立 main/origin 已建立。发布采用 main 单次普通 push，不开 PR、不 force push；最终提交号以本次交付回复及 `git log -1` 为准。
-- 46 条 sandbox 已 fetch/核对；全部保存相对当前 tizen 的 merge-base、ahead/behind、目录统计和去背景提交元数据。过大全量输出仅留 temp/sandbox_raw，不上传。
-- 匿名 REST 的 open 和最近六个月 merged 均返回空，并且项目查询/已知 Change-Id 也不可见；已完成限定的匿名尝试与原因记录，**并未获得完整审核变更清单**。
-- 未修改 linux-rpi 工作树/分支/HEAD，未向 Gerrit 推送，未运行 make 或 GBS 构建。仅运行 sdb devices（设备为空，自动启动本机 server），未进入开发板 shell。
+- 步骤1完成：lko/base@563c53c427bff4d685d18544a8f4f6db14be9368，来自tizen@42aeefac58ed；只拆入a9cc39b8dd1d的mm/memcontrol-v1.c（+22/-7），保留He Fangyu作者、Hao Lin提交者；完整diff与函数前后各20行快照已保存。
+- 步骤2完成：SSH open=0、merged -age:6mon=17，其中相关12条；moreChanges=false，无需翻页。完整JSONL在temp/，文本摘要在evidence/task2/。
+- 步骤3完成：silent-reclaim-fix归属明确、memcontrol已拆入、zram由本项目另评估；MLGO是用户本人分支、不重叠；cache-ext不重叠、不再跟踪；补充85fcc6edce0b删除DEBUG_INFO_BTF。
+- 步骤4中止：GCC主命令2026-10-27 14:14:17开始、14:19:54退出143；time墙钟5:37.12，是失败尝试耗时，不是完整内核编译耗时。LLVM未启动。
+- 步骤5–9未执行：未取得vmlinux/zImage/最终.config，无编译器、体积差、符号修正数、actime开销、LZ4合入、AutoFDO/BOLT能力结论。03记录失败；04/05只记录未完成范围。
+- linux-rpi当前在lko/base且干净，tizen保持原SHA；没有向Gerrit推送，未建lko/tmp-lz4，未构建aarch64，未触碰开发板。
 
-## 已闭合结论及证据
+## 中止原因与当前残留状态
+
+1. 虽已export TMPDIR且在两个项目conf显式配置tmpdir=$WS/temp，depanneur嵌套调用gbs export没有传递-c；源码导出仍写到 `/var/tmp/.gbs_export_4d01tubn/linux-kernel-6.12.80.tar.xz`。**本次发生过目录越界，不声称全程合规。** 检测后立即发送SIGINT；后台进程未及时退出，随后以SIGTERM终止主命令与可控子进程。未修改spec、内核代码或已安装GBS工具进行重试。
+2. 在终止期间GBS进入root依赖初始化。残留root进程普通kill无权限；仅一次非交互清理sudo -n返回“a password is required”，此后停止全部sudo尝试，不索要密码、不绕过凭据。
+3. 后续只读复查：2026-10-27 14:24:16，PGID116650已无活跃进程；残留进程自行结束初始化，无需PM再终止。工具正常导出结束时已自行移除上述/var/tmp目录，本任务没有清理工作区外文件。
+4. `$WS/temp/build_gcc.log`保留主命令与残留子进程全部输出，并已封存；最终末行BUILD-END的时间/退出码对应原主命令。LLVM无日志，因为未启动。GBS buildroot与下载依赖全部留在temp，不上传。
+
+## 已闭合结论（附证据）
 
 | 结论 | 证据 |
 | --- | --- |
-| 内核 HEAD 42aeefac58edeb081aff440f0b60be71cbe49755，tizen，6.12.80；前后工作树干净 | [kernel_initial.txt](../evidence/task1/kernel_initial.txt)、[kernel_final_readonly_check.txt](../evidence/task1/kernel_final_readonly_check.txt) |
-| ARM RPi4 使用 tizen_bcm2711_defconfig；普通/RT 同源片段；支持 aarch64 和条件 LLVM=1 | [spec_numbered.txt](../evidence/task1/spec_numbered.txt)、[01_kernel_inventory.md](01_kernel_inventory.md) |
-| MGLRU=y，默认启用；完整统计 n，ARM32 的 MMU walk 条件未满足 | [defconfig_arm_numbered.txt](../evidence/task1/defconfig_arm_numbered.txt)、[kconfig_selected_definitions.txt](../evidence/task1/kconfig_selected_definitions.txt) |
-| zram=y；当前静态默认 lzo-rle/LZO backend；多压缩、写回、访问时间跟踪 n；crypto LZ4/ZSTD 不等于 zram 后端 | [source_contexts.txt](../evidence/task1/source_contexts.txt)、[01_kernel_inventory.md](01_kernel_inventory.md) |
-| stable 官方 tag 00d7934ffcc3；与 RPi rpi-6.12.y 的 merge-base 49b3f941b664；Tizen 独有 mm 2 条、zram 驱动 0 条；相对 stable 则 mm 14、zram 0 | [upstream_remote_refs.txt](../evidence/task1/upstream_remote_refs.txt)、[rpi_boundary.txt](../evidence/task1/rpi_boundary.txt)、[mm_zram_counts.txt](../evidence/task1/mm_zram_counts.txt) |
-| force_reclaim 仍传 true 而 MAY_SWAP 为 1<<1，存在静态可证的参数位失配；已有修复 sandbox | [force_reclaim_patch.txt](../evidence/task1/force_reclaim_patch.txt)、[sandbox_silent_reclaim_patch.txt](../evidence/task1/sandbox_silent_reclaim_patch.txt) |
-| 重叠工作包含 zram、LZ4、MLGO、历史 LTO/PGO/EEVDF；cache-ext 与另一同事方向相关，不能直接称作已实现 ML 策略 | [02_gerrit_overlap.md](02_gerrit_overlap.md)、[focused_sandbox_details.txt](../evidence/task1/focused_sandbox_details.txt)、[cache_ext_changes.txt](../evidence/task1/cache_ext_changes.txt) |
-| 两个 conf 无账号密码；只改变仓库/buildroot，实际 Clang 分支依赖目标环境 RPM 宏 | [config_credentials_audit.txt](../evidence/task1/config_credentials_audit.txt)、[01_kernel_inventory.md](01_kernel_inventory.md) |
-| nproc=20、并行上限10；内存约30 GiB、磁盘剩余539 GiB；GBS2.1.0；sdb为空 | [host_resources.txt](../evidence/task1/host_resources.txt)、[sdb_devices.txt](../evidence/task1/sdb_devices.txt) |
+| base仅改memcontrol；作者/提交者符合PM指定 | [base_diff.txt](../evidence/task2/base_diff.txt)、[base_commit.txt](../evidence/task2/base_commit.txt)、[快照索引](../code_snapshots/INDEX.md) |
+| tizen未变，lko/base干净；没有额外实验分支 | [final_kernel_state.txt](../evidence/task2/final_kernel_state.txt) |
+| SSH成功取得0条open/17条merged，相关12条 | [gerrit_ssh_queries.txt](../evidence/task2/gerrit_ssh_queries.txt)、[gerrit_ssh_summary.txt](../evidence/task2/gerrit_ssh_summary.txt)、[02第2节](02_gerrit_overlap.md) |
+| 85fcc6edce0b还删除DEBUG_INFO_BTF=y | [zram_branch_config_diff.txt](../evidence/task2/zram_branch_config_diff.txt) |
+| GBS导出子进程未继承-c，独立采用/var/tmp默认值 | [gbs_export_root_cause.txt](../evidence/task2/gbs_export_root_cause.txt)、[build_stop_reason.txt](../evidence/task2/build_stop_reason.txt) |
+| GCC主命令143；无完整内核构建结果；残留已无活跃进程 | [build_gcc_result.json](../evidence/task2/build_gcc_result.json)、[build_gcc_log.txt](../evidence/task2/build_gcc_log.txt)、[residual_state.txt](../evidence/task2/residual_state.txt) |
+| 日志未伪装成功；time输出Exit status:0不覆盖实际SIGTERM/143 | [03_baseline_build.md](03_baseline_build.md)、[log_integrity.txt](../evidence/task2/log_integrity.txt) |
 
 ## 需要人工裁决的前提
 
-1. 普通/RT、LSM 和工具链基线；板上最终配置与 GBS RPM 宏没有实测，BTF/pahole、stack protector 的工具版本条件未闭合。
-2. silent-reclaim-fix 与 jaehoon80/zram 的采用顺序/负责人：一个保留 lzo-rle 且不启用二次压缩，另一个选择 zstd 并启用二次压缩；本次未合并任何方案。
-3. cache-ext 是否属于指定同事的机器学习回收项目，以及文件修改边界。该方向本项目不做；本次没有联系同事。
-4. 是否需要后续具备可见性的 Gerrit 查询。当前匿名空结果不能证明无人提交变更，也不能证明某分支仍在维护。
+- 下次如何向嵌套gbs export可靠传递工作区内tmpdir配置，且不违反“基线代码不改”“不写工作区外”的限制。本次只定位根因，没有自动修改工具或放宽规则。
+- 下次如何保证后台构建的root子进程树可在触发停止条件时安全终止；本次sudo清理曾要求密码，后续不得直接假定可无凭据清理。
+- 是否安排恢复任务2。获得新指令前，不重试GCC、不启动LLVM、不补做步骤5–9。
 
 ## 挂账事项
 
-- Gerrit open/2026-04-26 至 2026-10-26 merged 全量与审批状态不可得；完整匿名尝试和返回见 [gerrit_rest_requests.txt](../evidence/task1/gerrit_rest_requests.txt)、[gerrit_rest_followup.txt](../evidence/task1/gerrit_rest_followup.txt)。
-- 未核验板上 /proc/config.gz、MGLRU sysfs、zram 实际算法/容量、swappiness、命令行及性能指标；任务1明确不做板测。
-- 未构建/展开最终 GBS `.config`，未测编译耗时/峰值内存/镜像大小；conf 名字不保证实际 compiler。
-- 部分本地 Clang 文件执行 --version 因 libxml2.so.16 缺失失败；GBS 加速工具另依赖 /emul loader。存在文件不等于宿主可用。见 [compiler_version_attempts.txt](../evidence/task1/compiler_version_attempts.txt)。
-- 旧 sandbox 的拓扑领先包含历史背景；去背景摘要仍可能包含重放，未全量 patch-id 去重。不得把 raw ahead 数称为作者原创补丁数。
-- 任务1不修 force_reclaim、不改 zram 后端、不裁 debug 项。实现任务另开内核分支，按 PM 后续说明执行。
+- GCC/LLVM两个成功构建；实际LINUX_COMPILER、CC/LD/LLVM日志、vmlinux.comment及平台编译器RPM版本。
+- 四份最终.config和diffconfig；01逐符号对照及关键项实测。01表仍为tizen@42aeefac的任务1静态推导；**符号改正数未得，不解释成0错误**。
+- zImage/vmlinux/模块/符号表/追踪段体积、bloat-o-meter前30项、正常wall/RSS/buildroot/RPM比较。不得用失败初始化产物或宿主工具冒充。
+- 04所有能力接口、armv7l结构元数据计算、每GB actime增量、LZ4三提交合入、两个字典脚本和zram相关源码片段。
+- 05的Kconfig、DTS/PMU/CoreSight、perf/OpenCSD、平台create_llvm_prof/llvm-profgen/llvm-bolt版本与架构证据。
+- 板上所有参数和实测均未采集；本任务不碰板。cache-ext和用户MLGO不再作为重叠待确认项。
 
-所有上传证据、命令口径及 raw URL 清单：[evidence/task1/README.md](../evidence/task1/README.md)。
+交付索引：[evidence/task2/README.md](../evidence/task2/README.md)。STATUS与全部本次产出同一提交，普通git push至GitHub main；最终成果仓库commit以交付回复为准，勿与本地内核base commit混淆。

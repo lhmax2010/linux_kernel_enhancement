@@ -1,0 +1,141 @@
+   780	
+   781	#---------------------------------------------------------------------
+   782	# Call gbs export
+   783	#---------------------------------------------------------------------
+   784	sub gbs_export {
+   785	    my ($base, $spec, $packaging_dir, $upstream_branch, $upstream_tag, $out_dir) = @_;
+   786	    my @args = ();
+   787	    my $cmd;
+   788	    push @args, "gbs";
+   789	    push @args, "--debug" if ($debug);
+   790	    push @args, "export";
+   791	    push @args, "'$base'";
+   792	    push @args, "-o '$out_dir'";
+   793	    push @args, "--outdir-directly";
+   794	    push @args, "--spec $spec";
+   795	    if ($includeall == 1) {
+   796	        push @args, "--include-all";
+   797	    } else {
+   798	        push @args, "--commit=$commit";
+   799	    }
+   800	    if (! $upstream_branch eq "") {
+   801	        push @args, "--upstream-branch='$upstream_branch'";
+   802	    }
+   803	    if (! $upstream_tag eq "") {
+   804	        push @args, "--upstream-tag='$upstream_tag'";
+   805	    }
+   806	    if ($fallback_to_native == 1) {
+   807	        push @args, "--fallback-to-native";
+   808	    }
+   809	    if (! $squash_patches_until eq "") {
+   810	        push @args, "--squash-patches-until=$squash_patches_until";
+   811	    }
+   812	    if (! $packaging_dir eq "") {
+   813	        push @args, "--packaging-dir=$packaging_dir";
+   814	    }
+   815	    if ($no_patch_export == 1) {
+   816	        push @args, "--no-patch-export";
+   817	    }
+   818	    # print only error messages cause info message appear confused when to use thread
+   819	    if ($thread_export == 1){
+   820	        push @args, " 2>&1 | grep -v warning | grep -v Creating";
+   821	    }
+   822	    if ($with_submodules == 1) {
+   823	       push @args, "--with-submodules";
+   824	    }
+   825	
+   826	    $cmd = join(" ", @args);
+   827	    return my_system($cmd);
+   828	}
+   829	
+   830	#---------------------------------------------------------------------
+   831	# If the package has been exported before, gbs
+   832	# would save the commit id in a cache key file
+   833	# like:
+   834	# cat ~/GBS-ROOT/local/sources/tizen/cache/fake-1.0-1
+   835	# e52e517ea1ea56ea35c865fb474c6bf1076652fa
+   836	# So we need it to compare with current one to
+   837	# skip export
+   838	#---------------------------------------------------------------------
+   839	sub read_cache {
+   840	    my ($cache_key) = @_;
+   841	    my $cache_fname = "$cache_path/$cache_key";
+   842	
+   843	    my $cache = '';
+   844	    if (-e $cache_fname) {
+   845	        open(my $rev, '<', $cache_fname) ||
+   846	            die "read reversion cache($cache_fname) failed: $!";
+   847	        $cache = readline($rev);
+   848	        close($rev);
+   849	        chomp $cache;
+   850	    }
+   851	    return $cache;
+   852	}
+   853	
+   854	#---------------------------------------------------------------------
+   855	# After gbs export, save the commit id to cache
+   278	    else:
+   279	        commit = 'HEAD'
+   280	    orphan_packaging = configmgr.get('packaging_branch', 'orphan-devel')
+   281	    spec_commit_id = orphan_packaging if orphan_packaging else commit
+   282	    log.debug("check packaging_dir")
+   283	    packaging_dir = get_packaging_dir(args)
+   284	    main_spec, rest_specs = utils.guess_spec(workdir, packaging_dir,
+   285	                                             args.spec, spec_commit_id)
+   286	    log.debug("check outdir")
+   287	    if args.outdir:
+   288	        outdir = args.outdir
+   289	    else:
+   290	        outdir = os.path.join(workdir, packaging_dir)
+   291	    outdir = os.path.abspath(outdir)
+   292	    if os.path.exists(outdir):
+   293	        if not os.access(outdir, os.W_OK|os.X_OK):
+   294	            raise GbsError('no write permission to outdir: %s' % outdir)
+   295	    else:
+   296	        mkdir_p(outdir)
+   297	    log.debug("check tmpdir")
+   298	    tmpdir = configmgr.get('tmpdir', 'general')
+   299	    tempd = utils.Temp(prefix=os.path.join(tmpdir, '.gbs_export_'),
+   300	                       directory=True)
+   301	    export_dir = tempd.path
+   302	
+   303	    tracked_branches = track_export_branches(repo, args)
+   304	
+   305	    with utils.Workdir(workdir):
+   306	        export_sources(repo, commit, export_dir, main_spec, args)
+   307	
+   308	        if rest_specs:
+   309	            # backup updated spec file
+   310	            specbakd = utils.Temp(prefix=os.path.join(tmpdir, '.gbs_export_'),
+   311	                                  directory=True)
+   312	            shutil.copy(os.path.join(export_dir, os.path.basename(main_spec)),
+   191	
+   192	class ConfigMgr(object):
+   193	    '''Support multi-levels of gbs.conf. Use this class to get and set
+   194	    item value without caring about concrete ini format'''
+   195	
+   196	    DEFAULTS = {'general': {'tmpdir': '/var/tmp',
+   197	                            'editor': '',
+   198	                            'packaging_branch': 'master',
+   199	                            'upstream_branch': 'upstream',
+   200	                            'upstream_tag': 'upstream/${upstreamversion}',
+   201	                            'squash_patches_until': '',
+   202	                            'buildroot':    '~/GBS-ROOT/',
+   203	                            'packaging_dir': 'packaging',
+   204	                            'work_dir': '.',
+   205	                            'fallback_to_native': '',
+   206	                           },
+   207	                'orphan-devel': {'packaging_branch': '',
+   654	
+   655	    if args.upstream_branch:
+   656	        cmd += ['--upstream-branch=%s' % args.upstream_branch]
+   657	    if args.upstream_tag:
+   658	        cmd += ['--upstream-tag=%s' % args.upstream_tag]
+   659	
+   660	    if args.conf and args.conf != '.gbs.conf':
+   661	        fallback = configmgr.get('fallback_to_native')
+   662	    elif args.full_build or args.deps_build:
+   663	        fallback = configmgr.get('fallback_to_native')
+   664	    else:
+   665	        fallback = ''
+   666	    if args.fallback_to_native or config_is_true(fallback):
