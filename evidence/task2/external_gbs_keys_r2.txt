@@ -1,0 +1,7 @@
+/etc/gbs.conf: exists=False
+/home/linhao/.gbs.conf: exists=True
+[general]: profile, buildroot
+[profile.tizen]: repos
+[repo.tizen_base]: url
+[repo.tizen_unified]: url
+[repo.my_local]: 

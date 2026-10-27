@@ -2,6 +2,16 @@
 
 日期：2026-10-27（Asia/Shanghai）。本报告只记录本任务实际执行的结果；未获得的构建产物指标不以源码推导替代。所有体积与构建开销数字均为构建产物/开发机数据，不代表板上运行时内存。
 
+## 本轮续任务：步骤A完成，步骤B停止（2026-10-27）
+
+- 已按要求仅修改base标题为 `mm: restore vendor reclaim semantics for force_reclaim`；新SHA `f240c28093027707f5e09f8a9cbbed16a43ebb1a`。原tree、parent、作者/日期、提交者/日期、正文均逐字验证相同，`git diff 563c53c4 f240c2809302`为空，tizen未变且工作树干净。证据：[base_amend_r2.txt](../evidence/task2/base_amend_r2.txt)。初次amend被已有hook追加Change-Id，验证发现后用命令级工作区空hooks目录重新amend，最终正文严格保持原样；没有改全局配置或原hook。
+- **项目.gbs.conf静态可见，但原GBS不能仅通过-c/项目键禁用外部配置文件加载。** `/etc/gbs.conf`不存在，`~/.gbs.conf`存在；只有5个键，无凭据键。当前build使用的profile/buildroot已有本项目覆盖，外部仓库节不选用；export不使用这些构建键。两个项目conf本轮新增覆盖0个键。
+- `conf.py:318–321`仍逐个读取自动发现的文件，`add_conf`只插入更高优先层。按最前面的“不使用工作目录以外的文件”要求，不能把“当前外部值未影响构建”视为“没有使用外部配置文件”。因此停在B，未执行C/D/E；这是文件级隔离问题，不是未覆盖键或tmpdir不可见问题。
+- 完整查找顺序、合并规则、depanneur的cwd和根目录补读、逐键影响与替代方案均见[配置审计](../evidence/task2/gbs_config_audit_r2.md)，原始工具行号见[源码证据](../evidence/task2/gbs_config_source_r2.txt)。替代方案只列供PM裁决，未自行采用。
+- 未改写既有受跟踪linux-rpi/.gbs.conf或添加exclude项，未运行独立导出或strace，未生成export_check.txt，未开始r2 GCC/LLVM。因此没有本轮外部写入监测、编译器、体积、耗时、最终.config或符号修正数，不将这些写成0或通过。
+- 步骤C另有前提：linux-rpi/.gbs.conf已受Git跟踪，包含3个导出键；改成两行后无法靠exclude保持干净。本轮保持原样，未使用assume-unchanged/skip-worktree掩盖差异。见[existing_project_gbs_r2.txt](../evidence/task2/existing_project_gbs_r2.txt)。
+- 前轮日志/结果原样保留。以下第1–5节为原 `563c53c4` 的历史执行记录，不代表新SHA已构建。新增处置规则已写到RULES最前及末尾：越界写入发现后等待自然结束，不发信号；残留先等5分钟，不sudo、不操作其他任务。
+
 ## 1. lko/base
 
 - 起点：tizen@42aeefac58edeb081aff440f0b60be71cbe49755。

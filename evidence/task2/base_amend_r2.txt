@@ -1,0 +1,26 @@
+Old: 563c53c427bff4d685d18544a8f4f6db14be9368
+New: f240c28093027707f5e09f8a9cbbed16a43ebb1a
+Verified: identical tree, parent, author/date, committer/date and body; only subject changed.
+git diff old new: empty
+tizen unchanged; worktree clean.
+First amend auto-added Change-Id via existing Git hook; validation caught it. Re-amended with command-local core.hooksPath=$WS/temp/empty-git-hooks to preserve exact original body. No global config or installed hook modified.
+commit f240c28093027707f5e09f8a9cbbed16a43ebb1a
+Author:     He Fangyu <fangyu.he@samsung.com>
+AuthorDate: Mon Oct 19 10:13:06 2026 +0800
+Commit:     Hao Lin <hao.lin@samsung.com>
+CommitDate: Tue Oct 27 14:10:08 2026 +0800
+
+    mm: restore vendor reclaim semantics for force_reclaim
+    
+    The vendor memory.force_reclaim interface retained a boolean true after
+    the reclaim API changed to option bits. Pass MEMCG_RECLAIM_MAY_SWAP so
+    anonymous pages can be swapped out again, without adding proactive
+    reclaim semantics.
+    
+    Honor the write_u64 callback contract by returning zero on success.
+    Reject requests larger than ULONG_MAX, skip zero requests, request only
+    the remaining target on each pass, and stop after two consecutive passes
+    without progress. Keep the existing reclaim diagnostic. Reclaim batching
+    may still overshoot the target; this is not a strict page cap.
+    
+    [lko: split from a9cc39b8dd1d; zram defconfig part evaluated separately]

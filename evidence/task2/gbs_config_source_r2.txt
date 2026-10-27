@@ -1,0 +1,617 @@
+Installed tool source excerpts; read-only audit. No external user configuration values included.
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:49-65
+49:     """Standard ConfigParser derived class which can reserve most of the
+50:     comments, indents, and other user customized stuff inside the ini file.
+51:     """
+52: 
+53:     def read_one(self, filename):
+54:         """only support one input file"""
+55:         return ConfigParser.read(self, filename)
+56: 
+57:     def _read(self, fptr, fname):
+58:         """Parse a sectioned setup file.
+59: 
+60:         Override the same method of parent class.
+61: 
+62:         Customization: save filename and file contents
+63:         """
+64: 
+65:         # save the original filepath and contents
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:287-346
+287:     def __init__(self, fpath=None):
+288:         self._cfgfiles = []
+289:         self._cfgparsers = []
+290:         if fpath:
+291:             if not os.path.exists(fpath):
+292:                 raise errors.ConfigError('Configuration file %s does not '\
+293:                                          'exist' % fpath)
+294:             self._cfgfiles.append(fpath)
+295: 
+296:         # find the default path
+297:         fpaths = self._lookfor_confs()
+298:         if not fpaths:
+299:             self._new_conf()
+300:             fpaths = self._lookfor_confs()
+301:         self._cfgfiles.extend(fpaths)
+302: 
+303:         self.load_confs()
+304: 
+305:     def _create_default_parser(self):
+306:         'create a default parser that handle DEFAULTS values'
+307:         parser = BrainConfigParser()
+308:         for sec, options in list(self.DEFAULTS.items()):
+309:             parser.add_section(sec)
+310:             for key, val in list(options.items()):
+311:                 parser.set(sec, key, val)
+312:         return parser
+313: 
+314:     def load_confs(self):
+315:         'reset all config values by files passed in'
+316: 
+317:         self._cfgparsers = []
+318:         for fpath in self._cfgfiles:
+319:             cfgparser = BrainConfigParser(strict=False)
+320:             try:
+321:                 cfgparser.read_one(fpath)
+322:                 if cfgparser.has_section('general') and \
+323:                    cfgparser.has_option('general', 'work_dir') and \
+324:                    cfgparser.get('general', 'work_dir') == '.':
+325:                     cfgparser.set('general', 'work_dir',
+326:                                   os.path.abspath(os.path.dirname(fpath)))
+327:             except Error as err:
+328:                 raise errors.ConfigError('config file error:%s' % err)
+329:             self._cfgparsers.append(cfgparser)
+330:         self._cfgparsers.append(self._create_default_parser())
+331: 
+332:         self._check_passwd()
+333: 
+334:     def add_conf(self, fpath):
+335:         """ Add new config to configmgr, and new added config file has
+336:             highest priority
+337:         """
+338:         if not fpath:
+339:             return
+340:         if not os.path.exists(fpath):
+341:             raise errors.ConfigError('Configuration file %s does not '\
+342:                                      'exist' % fpath)
+343:         # new added conf has highest priority
+344:         self._cfgfiles.insert(0, fpath)
+345:         # reload config files
+346:         self.load_confs()
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:348-390
+348:     @staticmethod
+349:     def _lookfor_confs():
+350:         """Look for available config files following the order:
+351:             > Current project
+352:             > User
+353:             > System
+354:         """
+355: 
+356:         paths = []
+357: 
+358:         def lookfor_tizen_conf(start_dir):
+359:             """ Search topdir of tizen source code cloned using repo tool,
+360:             if .gbs.conf exists under that dir, then return it
+361:             """
+362:             cur_dir = os.path.abspath(start_dir)
+363:             while True:
+364:                 if os.path.exists(os.path.join(cur_dir, '.repo')) and \
+365:                    os.path.exists(os.path.join(cur_dir, '.gbs.conf')):
+366:                     return os.path.join(cur_dir, '.gbs.conf')
+367:                 if cur_dir == '/':
+368:                     break
+369:                 cur_dir = os.path.dirname(cur_dir)
+370: 
+371:             return None
+372: 
+373:         tizen_conf = lookfor_tizen_conf(os.getcwd())
+374:         if tizen_conf:
+375:             paths.append(tizen_conf)
+376:         for path in (os.path.abspath('.gbs.conf'),
+377:                      os.path.expanduser('~/.gbs.conf'),
+378:                      '/etc/gbs.conf'):
+379:             if os.path.exists(path) and path not in paths:
+380:                 paths.append(path)
+381: 
+382:         return paths
+383: 
+384:     def _new_conf(self):
+385:         'generate a default conf file in home dir'
+386:         fpath = os.path.expanduser('~/.gbs.conf')
+387: 
+388:         with open(fpath, 'w') as wfile:
+389:             wfile.write(self.DEFAULT_CONF_TEMPLATE)
+390:         os.chmod(fpath, 0o600)
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:395-469
+395:     def _check_passwd(self):
+396:         'convert passwd item to passwdx and then update origin conf files'
+397:         #For python3.x set() to call add(), it will show error: TypeError: unhashable type: 'BrainConfigParser'
+398:         #This is because for set() in python3.x it can only add which can be hashed, such as int, float, tuple, str
+399:         dirty = []
+400:         comment = "# WARNING: passwordx can be decoded, don't expose gbs.conf to the outside"
+401: 
+402:         all_sections = set()
+403:         for layer in self._cfgparsers:
+404:             for sec in layer.sections():
+405:                 all_sections.add(sec)
+406: 
+407:         for sec in all_sections:
+408:             for key in self.options(sec):
+409:                 if key.endswith('passwd'):
+410:                     for cfgparser in self._cfgparsers:
+411:                         if cfgparser.has_option(sec, key):
+412:                             plainpass = cfgparser.get(sec, key)
+413:                             if plainpass is None:
+414:                                 # empty string password is acceptable here
+415:                                 continue
+416:                             if plainpass.startswith('${passwd}'):
+417:                                 continue
+418:                             cfgparser.set_into_file(sec,
+419:                                                     key + 'x',
+420:                                                     encode_passwd(plainpass),
+421:                                                     key,
+422:                                                     comment)
+423:                             if (cfgparser not in dirty):
+424:                                 dirty.append(cfgparser)
+425: 
+426:         if dirty:
+427:             log.warning('plaintext password in config files will '
+428:                         'be replaced by encoded ones')
+429:             self.update(dirty)
+430: 
+431:     def _get(self, opt, section='general'):
+432:         'get value from multi-levels of config file'
+433:         sect_found = True
+434:         gerr = None
+435:         for cfgparser in self._cfgparsers:
+436:             try:
+437:                 return cfgparser.get(section, opt)
+438:             except Error as err:
+439:                 sect_found = False
+440:                 gerr = err
+441:                 pass
+442: 
+443:         if not sect_found:
+444:             raise errors.ConfigError(gerr)
+445: 
+446:     def options(self, section='general'):
+447:         'merge and return options of certain section from multi-levels'
+448:         sect_found = False
+449:         gerr = None
+450:         options = set()
+451:         for cfgparser in self._cfgparsers:
+452:             try:
+453:                 options.update(cfgparser.options(section))
+454:                 sect_found = True
+455:             except Error as err:
+456:                 gerr = err
+457:                 pass
+458: 
+459:         if not sect_found:
+460:             raise errors.ConfigError(gerr)
+461: 
+462:         return options
+463: 
+464:     def has_section(self, section):
+465:         'indicate whether a section exists'
+466:         for parser in self._cfgparsers:
+467:             if parser.has_section(section):
+468:                 return True
+469:         return False
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:509-517
+509:     def get_arg_conf(self, args, opt, section='general'):
+510:         """get value from command line arguments if found there, otherwise fall
+511:            back to config
+512:         """
+513:         if hasattr(args, opt):
+514:             value = getattr(args, opt)
+515:             if value is not None:
+516:                 return value
+517:         return self.get(opt, section)
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:642-679
+642: class BizConfigManager(ConfigMgr):
+643:     '''config manager which handles high level conception, such as profile info
+644:     '''
+645: 
+646: 
+647:     def _interpolate(self, value):
+648:         '''do string interpolation'''
+649: 
+650:         general_keys = {}
+651: 
+652:         for opt in self.DEFAULTS['general']:
+653:             if opt == 'work_dir' and self.get(opt, 'general') == '.':
+654:                 general_keys[opt] = os.getcwd()
+655:             else:
+656:                 general_keys[opt] = self.get(opt, 'general')
+657: 
+658:         value = re.sub(r'\$\{([^}]+)\}', r'%(\1)s', value)
+659:         try:
+660:             value = value % general_keys
+661:         except KeyError as err:
+662:             raise errors.ConfigError('unknown key: %s. Supportted '\
+663:                     'keys are %s' % (str(err), ' '.join( \
+664:                     list(self.DEFAULTS['general'].keys()))))
+665:         return value
+666: 
+667:     def is_profile_oriented(self):
+668:         '''return True if config file is profile oriented'''
+669:         return self.get_optional_item('general', 'profile') is not None
+670: 
+671:     def get_current_profile(self):
+672:         '''get profile current used'''
+673:         if self.is_profile_oriented():
+674:             return self.build_profile_by_name(self.get('profile'))
+675: 
+676:         profile = self._build_profile_by_subcommand()
+677:         self.convert_to_new_style(profile)
+678:         return profile
+679: 
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:708-713
+708:     def _get_url_options(self, section_id):
+709:         '''get url/user/passwd from a section'''
+710:         url = os.path.expanduser(self._interpolate(self.get('url', section_id)))
+711:         user = self.get_optional_item(section_id, 'user')
+712:         password = self.get_optional_item(section_id, 'passwd')
+713:         return URL(url, user, password)
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:715-721
+715:     def build_profile_by_name(self, name):
+716:         '''return profile object by a given section'''
+717:         if not name.startswith('profile.'):
+718:             raise errors.ConfigError('section name specified by '
+719:                                      ' general.profile must start with string'
+720:                                      ' "profile.": %s' % name)
+721:         if not self.has_section(name):
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:754-765
+754:         repos = self.get_optional_item(name, 'repos')
+755:         if repos:
+756:             for repo in repos.split(','):
+757:                 repo = repo.strip()
+758:                 if not repo.startswith('repo.'):
+759:                     log.warning('ignore %s, repo section name should start '
+760:                                 'with string "repo."' % repo)
+761:                     continue
+762: 
+763:                 repoconf = SectionConf(profile, repo,
+764:                                        self._get_url_options(repo))
+765:                 profile.add_repo(repoconf)
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:913-913
+913: configmgr = BizConfigManager()
+
+/usr/lib/python3/dist-packages/gitbuildsys/utils.py:674-701
+674: def read_localconf(workdir):
+675:     """Read local configuration file from project directory."""
+676:     from gitbuildsys.conf import configmgr
+677:     prj_conf = os.path.join(workdir, '.gbs.conf')
+678:     if os.path.exists(prj_conf) and workdir != os.getcwd():
+679:         configmgr.add_conf(prj_conf)
+680: 
+681: 
+682: class SearchConfAction(argparse.Action):
+683:     """
+684:     Action for gitdir position argument to find project special
+685:     gbs.conf
+686:     """
+687:     def __call__(self, parser, namespace, value, option_string=None):
+688:         workdir = value
+689: 
+690:         if not os.path.exists(workdir):
+691:             raise GbsError("specified package dir %s does not exist" \
+692:                            % workdir)
+693: 
+694:         try:
+695:             repo = RpmGitRepository(value)
+696:             workdir = repo.path
+697:         except GitRepositoryError:
+698:             pass
+699: 
+700:         read_localconf(workdir)
+701:         setattr(namespace, self.dest, value)
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_export.py:255-305
+255: def main(args):
+256:     """gbs export entry point."""
+257: 
+258:     if args.commit and args.include_all:
+259:         raise Usage("--commit can't be specified together with --include-all")
+260:     log.debug("export begin")
+261:     workdir = args.gitdir
+262:     try:
+263:         repo = RpmGitRepository(workdir)
+264:     except GitRepositoryError as err:
+265:         raise GbsError(str(err))
+266:     log.debug("read repo path")
+267:     utils.read_localconf(repo.path)
+268:     utils.git_status_checker(repo, args)
+269:     workdir = repo.path
+270: 
+271: 
+272:     # Only guess spec filename here, parse later when we have the correct
+273:     # spec file at hand
+274:     if args.commit:
+275:         commit = args.commit
+276:     elif args.include_all:
+277:         commit = 'WC.UNTRACKED'
+278:     else:
+279:         commit = 'HEAD'
+280:     orphan_packaging = configmgr.get('packaging_branch', 'orphan-devel')
+281:     spec_commit_id = orphan_packaging if orphan_packaging else commit
+282:     log.debug("check packaging_dir")
+283:     packaging_dir = get_packaging_dir(args)
+284:     main_spec, rest_specs = utils.guess_spec(workdir, packaging_dir,
+285:                                              args.spec, spec_commit_id)
+286:     log.debug("check outdir")
+287:     if args.outdir:
+288:         outdir = args.outdir
+289:     else:
+290:         outdir = os.path.join(workdir, packaging_dir)
+291:     outdir = os.path.abspath(outdir)
+292:     if os.path.exists(outdir):
+293:         if not os.access(outdir, os.W_OK|os.X_OK):
+294:             raise GbsError('no write permission to outdir: %s' % outdir)
+295:     else:
+296:         mkdir_p(outdir)
+297:     log.debug("check tmpdir")
+298:     tmpdir = configmgr.get('tmpdir', 'general')
+299:     tempd = utils.Temp(prefix=os.path.join(tmpdir, '.gbs_export_'),
+300:                        directory=True)
+301:     export_dir = tempd.path
+302: 
+303:     tracked_branches = track_export_branches(repo, args)
+304: 
+305:     with utils.Workdir(workdir):
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:329-343
+329: 
+330:     return cmd_opts
+331: 
+332: def get_profile(args):
+333:     """
+334:     Get the build profile to be used
+335:     """
+336:     if args.profile:
+337:         profile_name = args.profile if args.profile.startswith("profile.") \
+338:                                     else "profile." + args.profile
+339:         profile = configmgr.build_profile_by_name(profile_name)
+340:     else:
+341:         profile = configmgr.get_current_profile()
+342:     return profile
+343: 
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:612-631
+612: def prepare_depanneur_cmd(args, buildarch, profile, workdir):
+613:     '''Prepare depanneur commond'''
+614:     # get virtual env from system env first
+615:     if 'VIRTUAL_ENV' in os.environ:
+616:         cmd = ['%s/usr/bin/depanneur' % os.environ['VIRTUAL_ENV']]
+617:     else:
+618:         cmd = ['depanneur']
+619: 
+620:     cmd += ['--arch=%s' % buildarch]
+621: 
+622:     if args.clean:
+623:         cmd += ['--clean']
+624: 
+625:     # check & prepare repos and build conf
+626:     if not args.noinit:
+627:         cmd += prepare_repos_and_build_conf(args, buildarch, profile)
+628:     else:
+629:         cmd += ['--noinit']
+630: 
+631:     cmd += ['--path=%s' % "'"+str(workdir)+"'"]
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:689-700
+689:         build_root = args.buildroot
+690:     elif 'TIZEN_BUILD_ROOT' in os.environ:
+691:         build_root = os.environ['TIZEN_BUILD_ROOT']
+692:     elif profile.buildroot:
+693:         build_root = profile.buildroot
+694:     else:
+695:         build_root = configmgr.get('buildroot', 'general')
+696:     build_root = os.path.expanduser(build_root)
+697: 
+698:     return build_root
+699: 
+700: def _build_one(args, workdir, build_root, buildarch, profile):
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:724-731
+724:     os.environ['TIZEN_BUILD_ROOT'] = os.path.abspath(build_root)
+725: 
+726:     #prepare depanneur commond
+727:     cmd = prepare_depanneur_cmd(args, buildarch, profile, workdir)
+728: 
+729:     log.debug("running command: %s" % ' '.join(cmd))
+730:     retcode = os.system(' '.join(cmd))
+731:     return retcode
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:811-839
+811: def main(args):
+812:     """gbs build entry point."""
+813:     global TMPDIR
+814:     TMPDIR = os.path.join(configmgr.get('tmpdir', 'general'), '%s-gbs' % USERID)
+815: 
+816:     if args.commit and args.include_all:
+817:         raise Usage('--commit can\'t be specified together with '\
+818:                     '--include-all')
+819:     if args.noinit and (args.clean or args.clean_once):
+820:         raise Usage('--noinit can\'t be specified together with '\
+821:                     '--clean or --clean-once')
+822: 
+823:     workdir = args.gitdir
+824: 
+825:     try:
+826:         repo = RpmGitRepository(workdir)
+827:         workdir = repo.path
+828:     except GitRepositoryError:
+829:         if args.spec:
+830:             raise GbsError("git project can't be found for --spec, "
+831:                            "give it in argument or cd into it")
+832: 
+833:     repos_map = {}
+834:     if not args.conf:
+835:         if args.full_build or args.deps_build:
+836:             repos_map = create_autoconf(args.arch, args.snapshot, args.full_build)
+837:             log.info("Create ~/.gbs.conf.auto using reference binary id")
+838: 
+839:     read_localconf(workdir)
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:923-942
+923:         workdir = download_path.path
+924:         curdir = os.getcwd()
+925:         os.chdir(workdir)
+926: 
+927:     # Resolve build targets: main repo + worktrees
+928:     build_targets = _resolve_build_targets(args, workdir, profile)
+929: 
+930:     if not build_targets:
+931:         raise GbsError('no build targets specified')
+932: 
+933:     # When --worktree is NOT specified, build current directory directly
+934:     # (keep original behavior, no extra log output)
+935:     if not args.worktree:
+936:         wt_dir, wt_build_root, wt_branch, is_main = build_targets[0]
+937:         retcode = _build_one(args, wt_dir, wt_build_root, buildarch, profile)
+938:         if args.full_build or args.deps_build:
+939:             os.chdir(curdir)
+940:         if retcode != 0:
+941:             raise GbsError('some packages failed to be built')
+942:         return
+
+/usr/bin/gbs:108-111
+108:     parser.add_argument('gitdir', nargs='?', type=os.path.abspath,
+109:                         default=os.getcwd(),
+110:                         action=SearchConfAction,
+111:                         help='path to git repository')
+
+/usr/bin/gbs:790-802
+790:     # Parse arguments
+791:     args = parser.parse_args(argv[1:])
+792: 
+793:     log.setup(verbose=args.verbose, debug=args.debug)
+794: 
+795:     # Process configuration file if --conf is used
+796:     if args.conf:
+797:         from gitbuildsys.conf import configmgr
+798:         configmgr.add_conf(args.conf)
+799: 
+800:     # Import target module and call 'main' from it
+801:     module = __import__("gitbuildsys.%s" % args.module, fromlist=[args.module])
+802:     return module.main(args)
+
+/usr/bin/depanneur:397-422
+397: sub my_system {
+398:     my $cmd = shift;
+399:     debug("my_system: $cmd");
+400:     my $ret;
+401:     my $pid;
+402:     my @out = ();
+403:     if (wantarray) {
+404:         defined($pid=open(PIPE, "-|")) or die "Can not fork: $!\n";
+405:     } else {
+406:         defined($pid=fork) or die "Can not fork: $!\n";
+407:     }
+408: 
+409:     unless ($pid) {  # Child
+410:         open(STDERR, ">&STDOUT");
+411:         exec ($cmd);
+412:         exit -1;
+413:     } else {  # Parent
+414:         if (wantarray) {
+415:             while (my $line = <PIPE>) {
+416:                 print $line;
+417:                 push @out, $line;
+418:             }
+419:         }
+420:         waitpid ($pid,0);
+421:         $ret = $?;
+422:         close(PIPE) if wantarray;
+
+/usr/bin/depanneur:621-629
+621: if ( -d "$packaging_dir" && -e ".git" ) {
+622:     $package_path = cwd();
+623: } else {
+624:     if ( $path eq "" ) {
+625:         $package_path = "$build_root/packages";
+626:     } else {
+627:         $package_path = abs_path($path);
+628:     }
+629: }
+
+/usr/bin/depanneur:784-827
+784: sub gbs_export {
+785:     my ($base, $spec, $packaging_dir, $upstream_branch, $upstream_tag, $out_dir) = @_;
+786:     my @args = ();
+787:     my $cmd;
+788:     push @args, "gbs";
+789:     push @args, "--debug" if ($debug);
+790:     push @args, "export";
+791:     push @args, "'$base'";
+792:     push @args, "-o '$out_dir'";
+793:     push @args, "--outdir-directly";
+794:     push @args, "--spec $spec";
+795:     if ($includeall == 1) {
+796:         push @args, "--include-all";
+797:     } else {
+798:         push @args, "--commit=$commit";
+799:     }
+800:     if (! $upstream_branch eq "") {
+801:         push @args, "--upstream-branch='$upstream_branch'";
+802:     }
+803:     if (! $upstream_tag eq "") {
+804:         push @args, "--upstream-tag='$upstream_tag'";
+805:     }
+806:     if ($fallback_to_native == 1) {
+807:         push @args, "--fallback-to-native";
+808:     }
+809:     if (! $squash_patches_until eq "") {
+810:         push @args, "--squash-patches-until=$squash_patches_until";
+811:     }
+812:     if (! $packaging_dir eq "") {
+813:         push @args, "--packaging-dir=$packaging_dir";
+814:     }
+815:     if ($no_patch_export == 1) {
+816:         push @args, "--no-patch-export";
+817:     }
+818:     # print only error messages cause info message appear confused when to use thread
+819:     if ($thread_export == 1){
+820:         push @args, " 2>&1 | grep -v warning | grep -v Creating";
+821:     }
+822:     if ($with_submodules == 1) {
+823:        push @args, "--with-submodules";
+824:     }
+825: 
+826:     $cmd = join(" ", @args);
+827:     return my_system($cmd);
+
+/usr/bin/depanneur:858-870
+858: sub write_cache {
+859:     my ($cache_key, $cache_val, $base, $spec, $packaging_dir, $upstream_branch, $upstream_tag) = @_;
+860:     my $cache_fname = "$cache_path/$cache_key";
+861:     my @export_out;
+862:     my $out_dir = "$pkg_path/$cache_key";
+863: 
+864:     @export_out = gbs_export($base, $spec, $packaging_dir, $upstream_branch, $upstream_tag, $out_dir);
+865:     if (shift @export_out) {
+866:         # if export failed, collect export error to report
+867:         push(@export_errors, {package_name => $cache_key,
+868:                               package_path => $base,
+869:                               error_info   => \@export_out});
+870:         return;
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:65-70
+65:         # save the original filepath and contents
+66:         self._fpname = fname
+67:         self._flines = fptr.readlines()
+68:         fptr.seek(0)
+69: 
+70:         return ConfigParser._read(self, fptr, fname)

@@ -1,0 +1,12 @@
+Existing project file (inside WS), unchanged this round.
+100644 f744dbaac48eacff6f1c4c55d00e550f24c69daf 0	.gbs.conf
+7117a47a52b585b0d5a3d302bdb27098ba9cd761 packaging: Add the intial linux-rpi spec file
+Content:
+[general]
+upstream_branch = upstream
+upstream_tag = v${upstreamversion}
+squash_patches_until = HEAD~10
+
+git check-ignore -v .gbs.conf: no match (tracked file).
+git status --porcelain: empty.
+A .git/info/exclude rule does not hide modifications to a tracked file.

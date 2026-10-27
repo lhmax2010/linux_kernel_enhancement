@@ -1,8 +1,10 @@
 # 任务2：zram静态准备（未执行，停止条件触发）
 
-更新：2026-10-27（Asia/Shanghai）。任务2在步骤4的GCC构建准备阶段因临时输出越界中止，随后残留root进程清理要求sudo密码。按PM“失败后停止”及“不索要/绕过凭据”的要求，未继续步骤8。详情见 [03_baseline_build.md](03_baseline_build.md)。本文件是待办记录，不是已完成的静态核对报告。
+更新：2026-10-27（Asia/Shanghai）。任务2续在步骤B因原GBS仍加载外部配置文件而停止，未到步骤8；[配置审计](../evidence/task2/gbs_config_audit_r2.md)已列替代方案，未自行选择。以下原任务待办继续保留。
 
-当前基线为 lko/base@563c53c427bff4d685d18544a8f4f6db14be9368，仅拆入memcontrol修复；没有启用zram后端或二次压缩。
+历史记录：任务2在步骤4的GCC构建准备阶段因临时输出越界中止，随后残留root进程清理要求sudo密码。按PM“失败后停止”及“不索要/绕过凭据”的要求，未继续步骤8。详情见 [03_baseline_build.md](03_baseline_build.md)。本文件是待办记录，不是已完成的静态核对报告。
+
+当前基线为 lko/base@f240c28093027707f5e09f8a9cbbed16a43ebb1a（只修正标题，代码与563c53c427bf相同），仅拆入memcontrol修复；没有启用zram后端或二次压缩。
 
 待恢复后逐项执行：
 

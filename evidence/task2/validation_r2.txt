@@ -1,0 +1,11 @@
+Read-only validation after task2 continuation stopped at B.
+PASS: base amend changed only subject; identical tree/parent/author/date/committer/date/body.
+PASS: git diff 563c53c4 f240c2809302 empty; lko/base worktree clean.
+PASS: existing tracked project .gbs.conf unchanged; no r2 GCC/LLVM logs; C/D/E not executed.
+PASS: both project gbs conf files unchanged this round; zero new overrides.
+PASS: historical GCC log untouched and identical to local sealed copy.
+SHA-256: 3157116b9e9b5f8d6822103ff5adf4d4e1b6f2f8fa13ff2dae277bc82bfc401a
+TIZEN_BUILD_ROOT environment variable absent during audit.
+Current branches:
+lko/base f240c28093027707f5e09f8a9cbbed16a43ebb1a
+tizen 42aeefac58edeb081aff440f0b60be71cbe49755
