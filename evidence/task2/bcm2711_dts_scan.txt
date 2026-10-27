@@ -1,0 +1,30 @@
+Commit f240c28093027707f5e09f8a9cbbed16a43ebb1a; recursive literal includes; not DT compiler output.
+Included paths:
+arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
+arch/arm/boot/dts/broadcom/bcm2711.dtsi
+arch/arm/boot/dts/broadcom/bcm283x.dtsi
+include/dt-bindings/pinctrl/bcm2835.h
+include/dt-bindings/clock/bcm2835.h
+include/dt-bindings/clock/bcm2835-aux.h
+include/dt-bindings/gpio/gpio.h
+include/dt-bindings/interrupt-controller/irq.h
+include/dt-bindings/soc/bcm2835-pm.h
+include/dt-bindings/interrupt-controller/arm-gic.h
+arch/arm/boot/dts/broadcom/bcm2711-rpi.dtsi
+arch/arm/boot/dts/broadcom/bcm2835-rpi.dtsi
+include/dt-bindings/power/raspberrypi-power.h
+include/dt-bindings/reset/raspberrypi,firmware-reset.h
+arch/arm/boot/dts/broadcom/bcm283x-rpi-led-deprecated.dtsi
+arch/arm/boot/dts/broadcom/bcm283x-rpi-wifi-bt.dtsi
+include/dt-bindings/leds/common.h
+arch/arm/boot/dts/broadcom/bcm270x.dtsi
+arch/arm/boot/dts/broadcom/bcm271x-rpi-bt.dtsi
+arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi
+arch/arm/boot/dts/broadcom/bcm270x-rpi.dtsi
+arch/arm/boot/dts/broadcom/bcm283x-rpi-csi1-2lane.dtsi
+arch/arm/boot/dts/broadcom/bcm283x-rpi-i2c0mux_0_44.dtsi
+Unresolved:
+none
+Matching PMU/CoreSight lines:
+arch/arm/boot/dts/broadcom/bcm2711.dtsi:435: 	pmu {
+arch/arm/boot/dts/broadcom/bcm2711.dtsi:436: 		compatible = "arm,cortex-a72-pmu";

@@ -1,0 +1,1406 @@
+Kernel commit: f240c28093027707f5e09f8a9cbbed16a43ebb1a; numbered excerpts; no kernel compilation.
+
+drivers/block/zram/zram_drv.h:60-75
+60: 
+61: /*-- Data structures */
+62: 
+63: /* Allocated for each disk page */
+64: struct zram_table_entry {
+65: 	union {
+66: 		unsigned long handle;
+67: 		unsigned long element;
+68: 	};
+69: 	unsigned int flags;
+70: 	spinlock_t lock;
+71: #ifdef CONFIG_ZRAM_TRACK_ENTRY_ACTIME
+72: 	ktime_t ac_time;
+73: #endif
+74: };
+75: 
+
+drivers/block/zram/zram_drv.h:94-103
+94: 
+95: #ifdef CONFIG_ZRAM_MULTI_COMP
+96: #define ZRAM_PRIMARY_COMP	0U
+97: #define ZRAM_SECONDARY_COMP	1U
+98: #define ZRAM_MAX_COMPS	4U
+99: #else
+100: #define ZRAM_PRIMARY_COMP	0U
+101: #define ZRAM_SECONDARY_COMP	0U
+102: #define ZRAM_MAX_COMPS	1U
+103: #endif
+
+drivers/block/zram/zram_drv.c:294-366
+294: 	unsigned long nr_pages = zram->disksize >> PAGE_SHIFT;
+295: 	int index;
+296: 
+297: 	for (index = 0; index < nr_pages; index++) {
+298: 		/*
+299: 		 * Do not mark ZRAM_UNDER_WB slot as ZRAM_IDLE to close race.
+300: 		 * See the comment in writeback_store.
+301: 		 *
+302: 		 * Also do not mark ZRAM_SAME slots as ZRAM_IDLE, because no
+303: 		 * post-processing (recompress, writeback) happens to the
+304: 		 * ZRAM_SAME slot.
+305: 		 *
+306: 		 * And ZRAM_WB slots simply cannot be ZRAM_IDLE.
+307: 		 */
+308: 		zram_slot_lock(zram, index);
+309: 		if (!zram_allocated(zram, index) ||
+310: 		    zram_test_flag(zram, index, ZRAM_WB) ||
+311: 		    zram_test_flag(zram, index, ZRAM_UNDER_WB) ||
+312: 		    zram_test_flag(zram, index, ZRAM_SAME)) {
+313: 			zram_slot_unlock(zram, index);
+314: 			continue;
+315: 		}
+316: 
+317: #ifdef CONFIG_ZRAM_TRACK_ENTRY_ACTIME
+318: 		is_idle = !cutoff ||
+319: 			ktime_after(cutoff, zram->table[index].ac_time);
+320: #endif
+321: 		if (is_idle)
+322: 			zram_set_flag(zram, index, ZRAM_IDLE);
+323: 		else
+324: 			zram_clear_flag(zram, index, ZRAM_IDLE);
+325: 		zram_slot_unlock(zram, index);
+326: 	}
+327: }
+328: 
+329: static ssize_t idle_store(struct device *dev,
+330: 		struct device_attribute *attr, const char *buf, size_t len)
+331: {
+332: 	struct zram *zram = dev_to_zram(dev);
+333: 	ktime_t cutoff_time = 0;
+334: 	ssize_t rv = -EINVAL;
+335: 
+336: 	if (!sysfs_streq(buf, "all")) {
+337: 		/*
+338: 		 * If it did not parse as 'all' try to treat it as an integer
+339: 		 * when we have memory tracking enabled.
+340: 		 */
+341: 		u64 age_sec;
+342: 
+343: 		if (IS_ENABLED(CONFIG_ZRAM_TRACK_ENTRY_ACTIME) && !kstrtoull(buf, 0, &age_sec))
+344: 			cutoff_time = ktime_sub(ktime_get_boottime(),
+345: 					ns_to_ktime(age_sec * NSEC_PER_SEC));
+346: 		else
+347: 			goto out;
+348: 	}
+349: 
+350: 	down_read(&zram->init_lock);
+351: 	if (!init_done(zram))
+352: 		goto out_unlock;
+353: 
+354: 	/*
+355: 	 * A cutoff_time of 0 marks everything as idle, this is the
+356: 	 * "all" behavior.
+357: 	 */
+358: 	mark_idle(zram, cutoff_time);
+359: 	rv = len;
+360: 
+361: out_unlock:
+362: 	up_read(&zram->init_lock);
+363: out:
+364: 	return rv;
+365: }
+366: 
+
+drivers/block/zram/zram_drv.c:602-664
+602: #define PAGE_WB_SIG "page_index="
+603: 
+604: #define PAGE_WRITEBACK			0
+605: #define HUGE_WRITEBACK			(1<<0)
+606: #define IDLE_WRITEBACK			(1<<1)
+607: #define INCOMPRESSIBLE_WRITEBACK	(1<<2)
+608: 
+609: static ssize_t writeback_store(struct device *dev,
+610: 		struct device_attribute *attr, const char *buf, size_t len)
+611: {
+612: 	struct zram *zram = dev_to_zram(dev);
+613: 	unsigned long nr_pages = zram->disksize >> PAGE_SHIFT;
+614: 	unsigned long index = 0;
+615: 	struct bio bio;
+616: 	struct bio_vec bio_vec;
+617: 	struct page *page;
+618: 	ssize_t ret = len;
+619: 	int mode, err;
+620: 	unsigned long blk_idx = 0;
+621: 
+622: 	if (sysfs_streq(buf, "idle"))
+623: 		mode = IDLE_WRITEBACK;
+624: 	else if (sysfs_streq(buf, "huge"))
+625: 		mode = HUGE_WRITEBACK;
+626: 	else if (sysfs_streq(buf, "huge_idle"))
+627: 		mode = IDLE_WRITEBACK | HUGE_WRITEBACK;
+628: 	else if (sysfs_streq(buf, "incompressible"))
+629: 		mode = INCOMPRESSIBLE_WRITEBACK;
+630: 	else {
+631: 		if (strncmp(buf, PAGE_WB_SIG, sizeof(PAGE_WB_SIG) - 1))
+632: 			return -EINVAL;
+633: 
+634: 		if (kstrtol(buf + sizeof(PAGE_WB_SIG) - 1, 10, &index) ||
+635: 				index >= nr_pages)
+636: 			return -EINVAL;
+637: 
+638: 		nr_pages = 1;
+639: 		mode = PAGE_WRITEBACK;
+640: 	}
+641: 
+642: 	down_read(&zram->init_lock);
+643: 	if (!init_done(zram)) {
+644: 		ret = -EINVAL;
+645: 		goto release_init_lock;
+646: 	}
+647: 
+648: 	/* Do not permit concurrent post-processing actions. */
+649: 	if (atomic_xchg(&zram->pp_in_progress, 1)) {
+650: 		up_read(&zram->init_lock);
+651: 		return -EAGAIN;
+652: 	}
+653: 
+654: 	if (!zram->backing_dev) {
+655: 		ret = -ENODEV;
+656: 		goto release_init_lock;
+657: 	}
+658: 
+659: 	page = alloc_page(GFP_KERNEL);
+660: 	if (!page) {
+661: 		ret = -ENOMEM;
+662: 		goto release_init_lock;
+663: 	}
+664: 
+
+drivers/block/zram/zram_drv.c:1007-1123
+1007: 	if (sz > 0 && compressor[sz - 1] == '\n')
+1008: 		compressor[sz - 1] = 0x00;
+1009: 
+1010: 	if (!zcomp_available_algorithm(compressor)) {
+1011: 		kfree(compressor);
+1012: 		return -EINVAL;
+1013: 	}
+1014: 
+1015: 	down_write(&zram->init_lock);
+1016: 	if (init_done(zram)) {
+1017: 		up_write(&zram->init_lock);
+1018: 		kfree(compressor);
+1019: 		pr_info("Can't change algorithm for initialized device\n");
+1020: 		return -EBUSY;
+1021: 	}
+1022: 
+1023: 	comp_algorithm_set(zram, prio, compressor);
+1024: 	up_write(&zram->init_lock);
+1025: 	return 0;
+1026: }
+1027: 
+1028: static void comp_params_reset(struct zram *zram, u32 prio)
+1029: {
+1030: 	struct zcomp_params *params = &zram->params[prio];
+1031: 
+1032: 	vfree(params->dict);
+1033: 	params->level = ZCOMP_PARAM_NO_LEVEL;
+1034: 	params->dict_sz = 0;
+1035: 	params->dict = NULL;
+1036: }
+1037: 
+1038: static int comp_params_store(struct zram *zram, u32 prio, s32 level,
+1039: 			     const char *dict_path)
+1040: {
+1041: 	ssize_t sz = 0;
+1042: 
+1043: 	comp_params_reset(zram, prio);
+1044: 
+1045: 	if (dict_path) {
+1046: 		sz = kernel_read_file_from_path(dict_path, 0,
+1047: 						&zram->params[prio].dict,
+1048: 						INT_MAX,
+1049: 						NULL,
+1050: 						READING_POLICY);
+1051: 		if (sz < 0)
+1052: 			return -EINVAL;
+1053: 	}
+1054: 
+1055: 	zram->params[prio].dict_sz = sz;
+1056: 	zram->params[prio].level = level;
+1057: 	return 0;
+1058: }
+1059: 
+1060: static ssize_t algorithm_params_store(struct device *dev,
+1061: 				      struct device_attribute *attr,
+1062: 				      const char *buf,
+1063: 				      size_t len)
+1064: {
+1065: 	s32 prio = ZRAM_PRIMARY_COMP, level = ZCOMP_PARAM_NO_LEVEL;
+1066: 	char *args, *param, *val, *algo = NULL, *dict_path = NULL;
+1067: 	struct zram *zram = dev_to_zram(dev);
+1068: 	int ret;
+1069: 
+1070: 	args = skip_spaces(buf);
+1071: 	while (*args) {
+1072: 		args = next_arg(args, &param, &val);
+1073: 
+1074: 		if (!val || !*val)
+1075: 			return -EINVAL;
+1076: 
+1077: 		if (!strcmp(param, "priority")) {
+1078: 			ret = kstrtoint(val, 10, &prio);
+1079: 			if (ret)
+1080: 				return ret;
+1081: 			continue;
+1082: 		}
+1083: 
+1084: 		if (!strcmp(param, "level")) {
+1085: 			ret = kstrtoint(val, 10, &level);
+1086: 			if (ret)
+1087: 				return ret;
+1088: 			continue;
+1089: 		}
+1090: 
+1091: 		if (!strcmp(param, "algo")) {
+1092: 			algo = val;
+1093: 			continue;
+1094: 		}
+1095: 
+1096: 		if (!strcmp(param, "dict")) {
+1097: 			dict_path = val;
+1098: 			continue;
+1099: 		}
+1100: 	}
+1101: 
+1102: 	/* Lookup priority by algorithm name */
+1103: 	if (algo) {
+1104: 		s32 p;
+1105: 
+1106: 		prio = -EINVAL;
+1107: 		for (p = ZRAM_PRIMARY_COMP; p < ZRAM_MAX_COMPS; p++) {
+1108: 			if (!zram->comp_algs[p])
+1109: 				continue;
+1110: 
+1111: 			if (!strcmp(zram->comp_algs[p], algo)) {
+1112: 				prio = p;
+1113: 				break;
+1114: 			}
+1115: 		}
+1116: 	}
+1117: 
+1118: 	if (prio < ZRAM_PRIMARY_COMP || prio >= ZRAM_MAX_COMPS)
+1119: 		return -EINVAL;
+1120: 
+1121: 	ret = comp_params_store(zram, prio, level, dict_path);
+1122: 	return ret ? ret : len;
+1123: }
+
+drivers/block/zram/zram_drv.c:1147-1207
+1147: static ssize_t recomp_algorithm_show(struct device *dev,
+1148: 				     struct device_attribute *attr,
+1149: 				     char *buf)
+1150: {
+1151: 	struct zram *zram = dev_to_zram(dev);
+1152: 	ssize_t sz = 0;
+1153: 	u32 prio;
+1154: 
+1155: 	for (prio = ZRAM_SECONDARY_COMP; prio < ZRAM_MAX_COMPS; prio++) {
+1156: 		if (!zram->comp_algs[prio])
+1157: 			continue;
+1158: 
+1159: 		sz += scnprintf(buf + sz, PAGE_SIZE - sz - 2, "#%d: ", prio);
+1160: 		sz += __comp_algorithm_show(zram, prio, buf + sz);
+1161: 	}
+1162: 
+1163: 	return sz;
+1164: }
+1165: 
+1166: static ssize_t recomp_algorithm_store(struct device *dev,
+1167: 				      struct device_attribute *attr,
+1168: 				      const char *buf,
+1169: 				      size_t len)
+1170: {
+1171: 	struct zram *zram = dev_to_zram(dev);
+1172: 	int prio = ZRAM_SECONDARY_COMP;
+1173: 	char *args, *param, *val;
+1174: 	char *alg = NULL;
+1175: 	int ret;
+1176: 
+1177: 	args = skip_spaces(buf);
+1178: 	while (*args) {
+1179: 		args = next_arg(args, &param, &val);
+1180: 
+1181: 		if (!val || !*val)
+1182: 			return -EINVAL;
+1183: 
+1184: 		if (!strcmp(param, "algo")) {
+1185: 			alg = val;
+1186: 			continue;
+1187: 		}
+1188: 
+1189: 		if (!strcmp(param, "priority")) {
+1190: 			ret = kstrtoint(val, 10, &prio);
+1191: 			if (ret)
+1192: 				return ret;
+1193: 			continue;
+1194: 		}
+1195: 	}
+1196: 
+1197: 	if (!alg)
+1198: 		return -EINVAL;
+1199: 
+1200: 	if (prio < ZRAM_SECONDARY_COMP || prio >= ZRAM_MAX_COMPS)
+1201: 		return -EINVAL;
+1202: 
+1203: 	ret = __comp_algorithm_store(zram, prio, alg);
+1204: 	return ret ? ret : len;
+1205: }
+1206: #endif
+1207: 
+
+drivers/block/zram/zram_drv.c:1680-2000
+1680: 
+1681: #ifdef CONFIG_ZRAM_MULTI_COMP
+1682: /*
+1683:  * This function will decompress (unless it's ZRAM_HUGE) the page and then
+1684:  * attempt to compress it using provided compression algorithm priority
+1685:  * (which is potentially more effective).
+1686:  *
+1687:  * Corresponding ZRAM slot should be locked.
+1688:  */
+1689: static int zram_recompress(struct zram *zram, u32 index, struct page *page,
+1690: 			   u64 *num_recomp_pages, u32 threshold, u32 prio,
+1691: 			   u32 prio_max)
+1692: {
+1693: 	struct zcomp_strm *zstrm = NULL;
+1694: 	unsigned long handle_old;
+1695: 	unsigned long handle_new;
+1696: 	unsigned int comp_len_old;
+1697: 	unsigned int comp_len_new;
+1698: 	unsigned int class_index_old;
+1699: 	unsigned int class_index_new;
+1700: 	u32 num_recomps = 0;
+1701: 	void *src, *dst;
+1702: 	int ret;
+1703: 
+1704: 	handle_old = zram_get_handle(zram, index);
+1705: 	if (!handle_old)
+1706: 		return -EINVAL;
+1707: 
+1708: 	comp_len_old = zram_get_obj_size(zram, index);
+1709: 	/*
+1710: 	 * Do not recompress objects that are already "small enough".
+1711: 	 */
+1712: 	if (comp_len_old < threshold)
+1713: 		return 0;
+1714: 
+1715: 	ret = zram_read_from_zspool(zram, page, index);
+1716: 	if (ret)
+1717: 		return ret;
+1718: 
+1719: 	/*
+1720: 	 * We touched this entry so mark it as non-IDLE. This makes sure that
+1721: 	 * we don't preserve IDLE flag and don't incorrectly pick this entry
+1722: 	 * for different post-processing type (e.g. writeback).
+1723: 	 */
+1724: 	zram_clear_flag(zram, index, ZRAM_IDLE);
+1725: 
+1726: 	class_index_old = zs_lookup_class_index(zram->mem_pool, comp_len_old);
+1727: 	/*
+1728: 	 * Iterate the secondary comp algorithms list (in order of priority)
+1729: 	 * and try to recompress the page.
+1730: 	 */
+1731: 	for (; prio < prio_max; prio++) {
+1732: 		if (!zram->comps[prio])
+1733: 			continue;
+1734: 
+1735: 		/*
+1736: 		 * Skip if the object is already re-compressed with a higher
+1737: 		 * priority algorithm (or same algorithm).
+1738: 		 */
+1739: 		if (prio <= zram_get_priority(zram, index))
+1740: 			continue;
+1741: 
+1742: 		num_recomps++;
+1743: 		zstrm = zcomp_stream_get(zram->comps[prio]);
+1744: 		src = kmap_local_page(page);
+1745: 		ret = zcomp_compress(zram->comps[prio], zstrm,
+1746: 				     src, &comp_len_new);
+1747: 		kunmap_local(src);
+1748: 
+1749: 		if (ret) {
+1750: 			zcomp_stream_put(zram->comps[prio]);
+1751: 			return ret;
+1752: 		}
+1753: 
+1754: 		class_index_new = zs_lookup_class_index(zram->mem_pool,
+1755: 							comp_len_new);
+1756: 
+1757: 		/* Continue until we make progress */
+1758: 		if (class_index_new >= class_index_old ||
+1759: 		    (threshold && comp_len_new >= threshold)) {
+1760: 			zcomp_stream_put(zram->comps[prio]);
+1761: 			continue;
+1762: 		}
+1763: 
+1764: 		/* Recompression was successful so break out */
+1765: 		break;
+1766: 	}
+1767: 
+1768: 	/*
+1769: 	 * We did not try to recompress, e.g. when we have only one
+1770: 	 * secondary algorithm and the page is already recompressed
+1771: 	 * using that algorithm
+1772: 	 */
+1773: 	if (!zstrm)
+1774: 		return 0;
+1775: 
+1776: 	/*
+1777: 	 * Decrement the limit (if set) on pages we can recompress, even
+1778: 	 * when current recompression was unsuccessful or did not compress
+1779: 	 * the page below the threshold, because we still spent resources
+1780: 	 * on it.
+1781: 	 */
+1782: 	if (*num_recomp_pages)
+1783: 		*num_recomp_pages -= 1;
+1784: 
+1785: 	if (class_index_new >= class_index_old) {
+1786: 		/*
+1787: 		 * Secondary algorithms failed to re-compress the page
+1788: 		 * in a way that would save memory, mark the object as
+1789: 		 * incompressible so that we will not try to compress
+1790: 		 * it again.
+1791: 		 *
+1792: 		 * We need to make sure that all secondary algorithms have
+1793: 		 * failed, so we test if the number of recompressions matches
+1794: 		 * the number of active secondary algorithms.
+1795: 		 */
+1796: 		if (num_recomps == zram->num_active_comps - 1)
+1797: 			zram_set_flag(zram, index, ZRAM_INCOMPRESSIBLE);
+1798: 		return 0;
+1799: 	}
+1800: 
+1801: 	/* Successful recompression but above threshold */
+1802: 	if (threshold && comp_len_new >= threshold)
+1803: 		return 0;
+1804: 
+1805: 	/*
+1806: 	 * No direct reclaim (slow path) for handle allocation and no
+1807: 	 * re-compression attempt (unlike in zram_write_bvec()) since
+1808: 	 * we already have stored that object in zsmalloc. If we cannot
+1809: 	 * alloc memory for recompressed object then we bail out and
+1810: 	 * simply keep the old (existing) object in zsmalloc.
+1811: 	 */
+1812: 	handle_new = zs_malloc(zram->mem_pool, comp_len_new,
+1813: 			       __GFP_KSWAPD_RECLAIM |
+1814: 			       __GFP_NOWARN |
+1815: 			       __GFP_HIGHMEM |
+1816: 			       __GFP_MOVABLE);
+1817: 	if (IS_ERR_VALUE(handle_new)) {
+1818: 		zcomp_stream_put(zram->comps[prio]);
+1819: 		return PTR_ERR((void *)handle_new);
+1820: 	}
+1821: 
+1822: 	dst = zs_map_object(zram->mem_pool, handle_new, ZS_MM_WO);
+1823: 	memcpy(dst, zstrm->buffer, comp_len_new);
+1824: 	zcomp_stream_put(zram->comps[prio]);
+1825: 
+1826: 	zs_unmap_object(zram->mem_pool, handle_new);
+1827: 
+1828: 	zram_free_page(zram, index);
+1829: 	zram_set_handle(zram, index, handle_new);
+1830: 	zram_set_obj_size(zram, index, comp_len_new);
+1831: 	zram_set_priority(zram, index, prio);
+1832: 
+1833: 	atomic64_add(comp_len_new, &zram->stats.compr_data_size);
+1834: 	atomic64_inc(&zram->stats.pages_stored);
+1835: 
+1836: 	return 0;
+1837: }
+1838: 
+1839: #define RECOMPRESS_IDLE		(1 << 0)
+1840: #define RECOMPRESS_HUGE		(1 << 1)
+1841: 
+1842: static ssize_t recompress_store(struct device *dev,
+1843: 				struct device_attribute *attr,
+1844: 				const char *buf, size_t len)
+1845: {
+1846: 	u32 prio = ZRAM_SECONDARY_COMP, prio_max = ZRAM_MAX_COMPS;
+1847: 	struct zram *zram = dev_to_zram(dev);
+1848: 	unsigned long nr_pages = zram->disksize >> PAGE_SHIFT;
+1849: 	char *args, *param, *val, *algo = NULL;
+1850: 	u64 num_recomp_pages = ULLONG_MAX;
+1851: 	u32 mode = 0, threshold = 0;
+1852: 	unsigned long index;
+1853: 	struct page *page;
+1854: 	ssize_t ret;
+1855: 
+1856: 	args = skip_spaces(buf);
+1857: 	while (*args) {
+1858: 		args = next_arg(args, &param, &val);
+1859: 
+1860: 		if (!val || !*val)
+1861: 			return -EINVAL;
+1862: 
+1863: 		if (!strcmp(param, "type")) {
+1864: 			if (!strcmp(val, "idle"))
+1865: 				mode = RECOMPRESS_IDLE;
+1866: 			if (!strcmp(val, "huge"))
+1867: 				mode = RECOMPRESS_HUGE;
+1868: 			if (!strcmp(val, "huge_idle"))
+1869: 				mode = RECOMPRESS_IDLE | RECOMPRESS_HUGE;
+1870: 			continue;
+1871: 		}
+1872: 
+1873: 		if (!strcmp(param, "max_pages")) {
+1874: 			/*
+1875: 			 * Limit the number of entries (pages) we attempt to
+1876: 			 * recompress.
+1877: 			 */
+1878: 			ret = kstrtoull(val, 10, &num_recomp_pages);
+1879: 			if (ret)
+1880: 				return ret;
+1881: 			continue;
+1882: 		}
+1883: 
+1884: 		if (!strcmp(param, "threshold")) {
+1885: 			/*
+1886: 			 * We will re-compress only idle objects equal or
+1887: 			 * greater in size than watermark.
+1888: 			 */
+1889: 			ret = kstrtouint(val, 10, &threshold);
+1890: 			if (ret)
+1891: 				return ret;
+1892: 			continue;
+1893: 		}
+1894: 
+1895: 		if (!strcmp(param, "algo")) {
+1896: 			algo = val;
+1897: 			continue;
+1898: 		}
+1899: 
+1900: 		if (!strcmp(param, "priority")) {
+1901: 			ret = kstrtouint(val, 10, &prio);
+1902: 			if (ret)
+1903: 				return ret;
+1904: 
+1905: 			if (prio == ZRAM_PRIMARY_COMP)
+1906: 				prio = ZRAM_SECONDARY_COMP;
+1907: 
+1908: 			prio_max = min(prio + 1, ZRAM_MAX_COMPS);
+1909: 			continue;
+1910: 		}
+1911: 	}
+1912: 
+1913: 	if (threshold >= huge_class_size)
+1914: 		return -EINVAL;
+1915: 
+1916: 	down_read(&zram->init_lock);
+1917: 	if (!init_done(zram)) {
+1918: 		ret = -EINVAL;
+1919: 		goto release_init_lock;
+1920: 	}
+1921: 
+1922: 	/* Do not permit concurrent post-processing actions. */
+1923: 	if (atomic_xchg(&zram->pp_in_progress, 1)) {
+1924: 		up_read(&zram->init_lock);
+1925: 		return -EAGAIN;
+1926: 	}
+1927: 
+1928: 	if (algo) {
+1929: 		bool found = false;
+1930: 
+1931: 		for (; prio < ZRAM_MAX_COMPS; prio++) {
+1932: 			if (!zram->comp_algs[prio])
+1933: 				continue;
+1934: 
+1935: 			if (!strcmp(zram->comp_algs[prio], algo)) {
+1936: 				prio_max = min(prio + 1, ZRAM_MAX_COMPS);
+1937: 				found = true;
+1938: 				break;
+1939: 			}
+1940: 		}
+1941: 
+1942: 		if (!found) {
+1943: 			ret = -EINVAL;
+1944: 			goto release_init_lock;
+1945: 		}
+1946: 	}
+1947: 
+1948: 	page = alloc_page(GFP_KERNEL);
+1949: 	if (!page) {
+1950: 		ret = -ENOMEM;
+1951: 		goto release_init_lock;
+1952: 	}
+1953: 
+1954: 	ret = len;
+1955: 	for (index = 0; index < nr_pages; index++) {
+1956: 		int err = 0;
+1957: 
+1958: 		if (!num_recomp_pages)
+1959: 			break;
+1960: 
+1961: 		zram_slot_lock(zram, index);
+1962: 
+1963: 		if (!zram_allocated(zram, index))
+1964: 			goto next;
+1965: 
+1966: 		if (mode & RECOMPRESS_IDLE &&
+1967: 		    !zram_test_flag(zram, index, ZRAM_IDLE))
+1968: 			goto next;
+1969: 
+1970: 		if (mode & RECOMPRESS_HUGE &&
+1971: 		    !zram_test_flag(zram, index, ZRAM_HUGE))
+1972: 			goto next;
+1973: 
+1974: 		if (zram_test_flag(zram, index, ZRAM_WB) ||
+1975: 		    zram_test_flag(zram, index, ZRAM_UNDER_WB) ||
+1976: 		    zram_test_flag(zram, index, ZRAM_SAME) ||
+1977: 		    zram_test_flag(zram, index, ZRAM_INCOMPRESSIBLE))
+1978: 			goto next;
+1979: 
+1980: 		err = zram_recompress(zram, index, page, &num_recomp_pages,
+1981: 				      threshold, prio, prio_max);
+1982: next:
+1983: 		zram_slot_unlock(zram, index);
+1984: 		if (err) {
+1985: 			ret = err;
+1986: 			break;
+1987: 		}
+1988: 
+1989: 		cond_resched();
+1990: 	}
+1991: 
+1992: 	__free_page(page);
+1993: 
+1994: release_init_lock:
+1995: 	atomic_set(&zram->pp_in_progress, 0);
+1996: 	up_read(&zram->init_lock);
+1997: 	return ret;
+1998: }
+1999: #endif
+2000: 
+
+drivers/block/zram/zram_drv.c:2310-2360
+2310: static DEVICE_ATTR_RW(disksize);
+2311: static DEVICE_ATTR_RO(initstate);
+2312: static DEVICE_ATTR_WO(reset);
+2313: static DEVICE_ATTR_WO(mem_limit);
+2314: static DEVICE_ATTR_WO(mem_used_max);
+2315: static DEVICE_ATTR_WO(idle);
+2316: static DEVICE_ATTR_RW(max_comp_streams);
+2317: static DEVICE_ATTR_RW(comp_algorithm);
+2318: #ifdef CONFIG_ZRAM_WRITEBACK
+2319: static DEVICE_ATTR_RW(backing_dev);
+2320: static DEVICE_ATTR_WO(writeback);
+2321: static DEVICE_ATTR_RW(writeback_limit);
+2322: static DEVICE_ATTR_RW(writeback_limit_enable);
+2323: #endif
+2324: #ifdef CONFIG_ZRAM_MULTI_COMP
+2325: static DEVICE_ATTR_RW(recomp_algorithm);
+2326: static DEVICE_ATTR_WO(recompress);
+2327: #endif
+2328: static DEVICE_ATTR_WO(algorithm_params);
+2329: 
+2330: static struct attribute *zram_disk_attrs[] = {
+2331: 	&dev_attr_disksize.attr,
+2332: 	&dev_attr_initstate.attr,
+2333: 	&dev_attr_reset.attr,
+2334: 	&dev_attr_compact.attr,
+2335: 	&dev_attr_mem_limit.attr,
+2336: 	&dev_attr_mem_used_max.attr,
+2337: 	&dev_attr_idle.attr,
+2338: 	&dev_attr_max_comp_streams.attr,
+2339: 	&dev_attr_comp_algorithm.attr,
+2340: #ifdef CONFIG_ZRAM_WRITEBACK
+2341: 	&dev_attr_backing_dev.attr,
+2342: 	&dev_attr_writeback.attr,
+2343: 	&dev_attr_writeback_limit.attr,
+2344: 	&dev_attr_writeback_limit_enable.attr,
+2345: #endif
+2346: 	&dev_attr_io_stat.attr,
+2347: 	&dev_attr_mm_stat.attr,
+2348: #ifdef CONFIG_ZRAM_WRITEBACK
+2349: 	&dev_attr_bd_stat.attr,
+2350: #endif
+2351: 	&dev_attr_debug_stat.attr,
+2352: #ifdef CONFIG_ZRAM_MULTI_COMP
+2353: 	&dev_attr_recomp_algorithm.attr,
+2354: 	&dev_attr_recompress.attr,
+2355: #endif
+2356: 	&dev_attr_algorithm_params.attr,
+2357: 	NULL,
+2358: };
+2359: 
+2360: ATTRIBUTE_GROUPS(zram_disk);
+
+drivers/block/zram/zcomp.c:110-120
+110: struct zcomp_strm *zcomp_stream_get(struct zcomp *comp)
+111: {
+112: 	local_lock(&comp->stream->lock);
+113: 	return this_cpu_ptr(comp->stream);
+114: }
+115: 
+116: void zcomp_stream_put(struct zcomp *comp)
+117: {
+118: 	local_unlock(&comp->stream->lock);
+119: }
+120: 
+
+drivers/block/zram/backend_zstd.c:60-94
+60: static int zstd_setup_params(struct zcomp_params *params)
+61: {
+62: 	zstd_compression_parameters prm;
+63: 	struct zstd_params *zp;
+64: 
+65: 	zp = kzalloc(sizeof(*zp), GFP_KERNEL);
+66: 	if (!zp)
+67: 		return -ENOMEM;
+68: 
+69: 	params->drv_data = zp;
+70: 	if (params->level == ZCOMP_PARAM_NO_LEVEL)
+71: 		params->level = zstd_default_clevel();
+72: 
+73: 	zp->cprm = zstd_get_params(params->level, PAGE_SIZE);
+74: 
+75: 	zp->custom_mem.customAlloc = zstd_custom_alloc;
+76: 	zp->custom_mem.customFree = zstd_custom_free;
+77: 
+78: 	prm = zstd_get_cparams(params->level, PAGE_SIZE,
+79: 			       params->dict_sz);
+80: 
+81: 	zp->cdict = zstd_create_cdict_byreference(params->dict,
+82: 						  params->dict_sz,
+83: 						  prm,
+84: 						  zp->custom_mem);
+85: 	if (!zp->cdict)
+86: 		goto error;
+87: 
+88: 	zp->ddict = zstd_create_ddict_byreference(params->dict,
+89: 						  params->dict_sz,
+90: 						  zp->custom_mem);
+91: 	if (!zp->ddict)
+92: 		goto error;
+93: 
+94: 	return 0;
+
+drivers/block/zram/backend_zstd.c:178-215
+178: static int zstd_compress(struct zcomp_params *params, struct zcomp_ctx *ctx,
+179: 			 struct zcomp_req *req)
+180: {
+181: 	struct zstd_params *zp = params->drv_data;
+182: 	struct zstd_ctx *zctx = ctx->context;
+183: 	size_t ret;
+184: 
+185: 	if (params->dict_sz == 0)
+186: 		ret = zstd_compress_cctx(zctx->cctx, req->dst, req->dst_len,
+187: 					 req->src, req->src_len, &zp->cprm);
+188: 	else
+189: 		ret = zstd_compress_using_cdict(zctx->cctx, req->dst,
+190: 						req->dst_len, req->src,
+191: 						req->src_len,
+192: 						zp->cdict);
+193: 	if (zstd_is_error(ret))
+194: 		return -EINVAL;
+195: 	req->dst_len = ret;
+196: 	return 0;
+197: }
+198: 
+199: static int zstd_decompress(struct zcomp_params *params, struct zcomp_ctx *ctx,
+200: 			   struct zcomp_req *req)
+201: {
+202: 	struct zstd_params *zp = params->drv_data;
+203: 	struct zstd_ctx *zctx = ctx->context;
+204: 	size_t ret;
+205: 
+206: 	if (params->dict_sz == 0)
+207: 		ret = zstd_decompress_dctx(zctx->dctx, req->dst, req->dst_len,
+208: 					   req->src, req->src_len);
+209: 	else
+210: 		ret = zstd_decompress_using_ddict(zctx->dctx, req->dst,
+211: 						  req->dst_len, req->src,
+212: 						  req->src_len, zp->ddict);
+213: 	if (zstd_is_error(ret))
+214: 		return -EINVAL;
+215: 	return 0;
+
+include/linux/types.h:120-127
+120: #define aligned_s64		__aligned_s64
+121: #define aligned_be64		__aligned_be64
+122: #define aligned_le64		__aligned_le64
+123: 
+124: /* Nanosecond scalar representation for kernel time values */
+125: typedef s64	ktime_t;
+126: 
+127: /**
+
+include/linux/spinlock_types.h:13-29
+13: 
+14: #ifndef CONFIG_PREEMPT_RT
+15: 
+16: /* Non PREEMPT_RT kernels map spinlock to raw_spinlock */
+17: typedef struct spinlock {
+18: 	union {
+19: 		struct raw_spinlock rlock;
+20: 
+21: #ifdef CONFIG_DEBUG_LOCK_ALLOC
+22: # define LOCK_PADSIZE (offsetof(struct raw_spinlock, dep_map))
+23: 		struct {
+24: 			u8 __padding[LOCK_PADSIZE];
+25: 			struct lockdep_map dep_map;
+26: 		};
+27: #endif
+28: 	};
+29: } spinlock_t;
+
+include/linux/spinlock_types.h:48-60
+48: #include <linux/rtmutex.h>
+49: 
+50: typedef struct spinlock {
+51: 	struct rt_mutex_base	lock;
+52: #ifdef CONFIG_DEBUG_LOCK_ALLOC
+53: 	struct lockdep_map	dep_map;
+54: #endif
+55: } spinlock_t;
+56: 
+57: #define __SPIN_LOCK_UNLOCKED(name)				\
+58: 	{							\
+59: 		.lock = __RT_MUTEX_BASE_INITIALIZER(name.lock),	\
+60: 		SPIN_DEP_MAP_INIT(name)				\
+
+include/linux/spinlock_types_raw.h:5-23
+5: 
+6: #if defined(CONFIG_SMP)
+7: # include <asm/spinlock_types.h>
+8: #else
+9: # include <linux/spinlock_types_up.h>
+10: #endif
+11: 
+12: #include <linux/lockdep_types.h>
+13: 
+14: typedef struct raw_spinlock {
+15: 	arch_spinlock_t raw_lock;
+16: #ifdef CONFIG_DEBUG_SPINLOCK
+17: 	unsigned int magic, owner_cpu;
+18: 	void *owner;
+19: #endif
+20: #ifdef CONFIG_DEBUG_LOCK_ALLOC
+21: 	struct lockdep_map dep_map;
+22: #endif
+23: } raw_spinlock_t;
+
+arch/arm/include/asm/spinlock_types.h:9-24
+9: #define TICKET_SHIFT	16
+10: 
+11: typedef struct {
+12: 	union {
+13: 		u32 slock;
+14: 		struct __raw_tickets {
+15: #ifdef __ARMEB__
+16: 			u16 next;
+17: 			u16 owner;
+18: #else
+19: 			u16 owner;
+20: 			u16 next;
+21: #endif
+22: 		} tickets;
+23: 	};
+24: } arch_spinlock_t;
+
+include/linux/rtmutex.h:23-27
+23: struct rt_mutex_base {
+24: 	raw_spinlock_t		wait_lock;
+25: 	struct rb_root_cached   waiters;
+26: 	struct task_struct	*owner;
+27: };
+
+include/linux/rbtree_types.h:15-29
+15: 
+16: /*
+17:  * Leftmost-cached rbtrees.
+18:  *
+19:  * We do not cache the rightmost node based on footprint
+20:  * size vs number of potential users that could benefit
+21:  * from O(1) rb_last(). Just not worth it, users that want
+22:  * this feature can always implement the logic explicitly.
+23:  * Furthermore, users that want to cache both pointers may
+24:  * find it a bit asymmetric, but that's ok.
+25:  */
+26: struct rb_root_cached {
+27: 	struct rb_root rb_root;
+28: 	struct rb_node *rb_leftmost;
+29: };
+
+arch/arm/Kconfig:1095-1133
+1095: config HZ_FIXED
+1096: 	int
+1097: 	default 128 if SOC_AT91RM9200
+1098: 	default 0
+1099: 
+1100: choice
+1101: 	depends on HZ_FIXED = 0
+1102: 	prompt "Timer frequency"
+1103: 
+1104: config HZ_100
+1105: 	bool "100 Hz"
+1106: 
+1107: config HZ_200
+1108: 	bool "200 Hz"
+1109: 
+1110: config HZ_250
+1111: 	bool "250 Hz"
+1112: 
+1113: config HZ_300
+1114: 	bool "300 Hz"
+1115: 
+1116: config HZ_500
+1117: 	bool "500 Hz"
+1118: 
+1119: config HZ_1000
+1120: 	bool "1000 Hz"
+1121: 
+1122: endchoice
+1123: 
+1124: config HZ
+1125: 	int
+1126: 	default HZ_FIXED if HZ_FIXED != 0
+1127: 	default 100 if HZ_100
+1128: 	default 200 if HZ_200
+1129: 	default 250 if HZ_250
+1130: 	default 300 if HZ_300
+1131: 	default 500 if HZ_500
+1132: 	default 1000
+1133: 
+
+arch/arm/Kconfig:1166-1180
+1166: config AEABI
+1167: 	bool "Use the ARM EABI to compile the kernel" if !CPU_V7 && \
+1168: 		!CPU_V7M && !CPU_V6 && !CPU_V6K && !CC_IS_CLANG
+1169: 	default CPU_V7 || CPU_V7M || CPU_V6 || CPU_V6K || CC_IS_CLANG
+1170: 	help
+1171: 	  This option allows for the kernel to be compiled using the latest
+1172: 	  ARM ABI (aka EABI).  This is only useful if you are using a user
+1173: 	  space environment that is also compiled with EABI.
+1174: 
+1175: 	  Since there are major incompatibilities between the legacy ABI and
+1176: 	  EABI, especially with regard to structure member alignment, this
+1177: 	  option also changes the kernel syscall calling convention to
+1178: 	  disambiguate both ABIs and allow for backward compatibility support
+1179: 	  (selected with CONFIG_OABI_COMPAT).
+1180: 
+
+arch/arm/Makefile:110-116
+110: tune-$(CONFIG_CPU_V6K)		:=-mtune=arm1136j-s
+111: 
+112: ifeq ($(CONFIG_AEABI),y)
+113: CFLAGS_ABI	:=-mabi=aapcs-linux -mfpu=vfp
+114: else
+115: CFLAGS_ABI	:=$(call cc-option,-mapcs-32,-mabi=apcs-gnu) $(call cc-option,-mno-thumb-interwork,)
+116: endif
+
+arch/Kconfig:731-810
+731: config LTO_CLANG
+732: 	bool
+733: 	select LTO
+734: 	help
+735: 	  Selected if the kernel will be built using Clang's LTO feature.
+736: 
+737: config ARCH_SUPPORTS_LTO_CLANG
+738: 	bool
+739: 	help
+740: 	  An architecture should select this option if it supports:
+741: 	  - compiling with Clang,
+742: 	  - compiling inline assembly with Clang's integrated assembler,
+743: 	  - and linking with LLD.
+744: 
+745: config ARCH_SUPPORTS_LTO_CLANG_THIN
+746: 	bool
+747: 	help
+748: 	  An architecture should select this option if it can support Clang's
+749: 	  ThinLTO mode.
+750: 
+751: config HAS_LTO_CLANG
+752: 	def_bool y
+753: 	depends on CC_IS_CLANG && LD_IS_LLD && AS_IS_LLVM
+754: 	depends on $(success,$(NM) --help | head -n 1 | grep -qi llvm)
+755: 	depends on $(success,$(AR) --help | head -n 1 | grep -qi llvm)
+756: 	depends on ARCH_SUPPORTS_LTO_CLANG
+757: 	depends on !FTRACE_MCOUNT_USE_RECORDMCOUNT
+758: 	# https://github.com/ClangBuiltLinux/linux/issues/1721
+759: 	depends on (!KASAN || KASAN_HW_TAGS || CLANG_VERSION >= 170000) || !DEBUG_INFO
+760: 	depends on (!KCOV || CLANG_VERSION >= 170000) || !DEBUG_INFO
+761: 	depends on !GCOV_KERNEL
+762: 	help
+763: 	  The compiler and Kconfig options support building with Clang's
+764: 	  LTO.
+765: 
+766: choice
+767: 	prompt "Link Time Optimization (LTO)"
+768: 	default LTO_NONE
+769: 	help
+770: 	  This option enables Link Time Optimization (LTO), which allows the
+771: 	  compiler to optimize binaries globally.
+772: 
+773: 	  If unsure, select LTO_NONE. Note that LTO is very resource-intensive
+774: 	  so it's disabled by default.
+775: 
+776: config LTO_NONE
+777: 	bool "None"
+778: 	help
+779: 	  Build the kernel normally, without Link Time Optimization (LTO).
+780: 
+781: config LTO_CLANG_FULL
+782: 	bool "Clang Full LTO (EXPERIMENTAL)"
+783: 	depends on HAS_LTO_CLANG
+784: 	depends on !COMPILE_TEST
+785: 	select LTO_CLANG
+786: 	help
+787: 	  This option enables Clang's full Link Time Optimization (LTO), which
+788: 	  allows the compiler to optimize the kernel globally. If you enable
+789: 	  this option, the compiler generates LLVM bitcode instead of ELF
+790: 	  object files, and the actual compilation from bitcode happens at
+791: 	  the LTO link step, which may take several minutes depending on the
+792: 	  kernel configuration. More information can be found from LLVM's
+793: 	  documentation:
+794: 
+795: 	    https://llvm.org/docs/LinkTimeOptimization.html
+796: 
+797: 	  During link time, this option can use a large amount of RAM, and
+798: 	  may take much longer than the ThinLTO option.
+799: 
+800: config LTO_CLANG_THIN
+801: 	bool "Clang ThinLTO (EXPERIMENTAL)"
+802: 	depends on HAS_LTO_CLANG && ARCH_SUPPORTS_LTO_CLANG_THIN
+803: 	select LTO_CLANG
+804: 	help
+805: 	  This option enables Clang's ThinLTO, which allows for parallel
+806: 	  optimization and faster incremental compiles compared to the
+807: 	  CONFIG_LTO_CLANG_FULL option. More information can be found
+808: 	  from Clang's documentation:
+809: 
+810: 	    https://clang.llvm.org/docs/ThinLTO.html
+
+arch/Kconfig:1160-1183
+1160: 	bool
+1161: 
+1162: config HAVE_PAGE_SIZE_256KB
+1163: 	bool
+1164: 
+1165: choice
+1166: 	prompt "MMU page size"
+1167: 
+1168: config PAGE_SIZE_4KB
+1169: 	bool "4KiB pages"
+1170: 	depends on HAVE_PAGE_SIZE_4KB
+1171: 	help
+1172: 	  This option select the standard 4KiB Linux page size and the only
+1173: 	  available option on many architectures. Using 4KiB page size will
+1174: 	  minimize memory consumption and is therefore recommended for low
+1175: 	  memory systems.
+1176: 	  Some software that is written for x86 systems makes incorrect
+1177: 	  assumptions about the page size and only runs on 4KiB pages.
+1178: 
+1179: config PAGE_SIZE_8KB
+1180: 	bool "8KiB pages"
+1181: 	depends on HAVE_PAGE_SIZE_8KB
+1182: 	help
+1183: 	  This option is the only supported page size on a few older
+
+arch/Kconfig:1239-1246
+1239: config PAGE_SHIFT
+1240: 	int
+1241: 	default	12 if PAGE_SIZE_4KB
+1242: 	default	13 if PAGE_SIZE_8KB
+1243: 	default	14 if PAGE_SIZE_16KB
+1244: 	default	15 if PAGE_SIZE_32KB
+1245: 	default	16 if PAGE_SIZE_64KB
+1246: 	default	18 if PAGE_SIZE_256KB
+
+arch/Kconfig:1544-1577
+1544: config HAVE_PREEMPT_DYNAMIC
+1545: 	bool
+1546: 
+1547: config HAVE_PREEMPT_DYNAMIC_CALL
+1548: 	bool
+1549: 	depends on HAVE_STATIC_CALL
+1550: 	select HAVE_PREEMPT_DYNAMIC
+1551: 	help
+1552: 	  An architecture should select this if it can handle the preemption
+1553: 	  model being selected at boot time using static calls.
+1554: 
+1555: 	  Where an architecture selects HAVE_STATIC_CALL_INLINE, any call to a
+1556: 	  preemption function will be patched directly.
+1557: 
+1558: 	  Where an architecture does not select HAVE_STATIC_CALL_INLINE, any
+1559: 	  call to a preemption function will go through a trampoline, and the
+1560: 	  trampoline will be patched.
+1561: 
+1562: 	  It is strongly advised to support inline static call to avoid any
+1563: 	  overhead.
+1564: 
+1565: config HAVE_PREEMPT_DYNAMIC_KEY
+1566: 	bool
+1567: 	depends on HAVE_ARCH_JUMP_LABEL
+1568: 	select HAVE_PREEMPT_DYNAMIC
+1569: 	help
+1570: 	  An architecture should select this if it can handle the preemption
+1571: 	  model being selected at boot time using static keys.
+1572: 
+1573: 	  Each preemption function will be given an early return based on a
+1574: 	  static key. This should have slightly lower overhead than non-inline
+1575: 	  static calls, as this effectively inlines each trampoline into the
+1576: 	  start of its callee. This may avoid redundant work, and may
+1577: 	  integrate better with CFI schemes.
+
+arch/Kconfig:1622-1629
+1622: config ARCH_HAS_HW_PTE_YOUNG
+1623: 	bool
+1624: 	help
+1625: 	  Architectures that select this option are capable of setting the
+1626: 	  accessed bit in PTE entries when using them as part of linear address
+1627: 	  translations. Architectures that require runtime check should select
+1628: 	  this option and override arch_has_hw_pte_young().
+1629: 
+
+arch/arm64/Kconfig:40-45
+40: 	select ARCH_HAS_NON_OVERLAPPING_ADDRESS_SPACE
+41: 	select ARCH_HAS_PTE_DEVMAP
+42: 	select ARCH_HAS_PTE_SPECIAL
+43: 	select ARCH_HAS_HW_PTE_YOUNG
+44: 	select ARCH_HAS_SETUP_DMA_OPS
+45: 	select ARCH_HAS_SET_DIRECT_MAP
+
+arch/arm64/Kconfig:92-100
+92: 	select ARCH_SUPPORTS_DEBUG_PAGEALLOC
+93: 	select ARCH_SUPPORTS_HUGETLBFS
+94: 	select ARCH_SUPPORTS_MEMORY_FAILURE
+95: 	select ARCH_SUPPORTS_SHADOW_CALL_STACK if CC_HAVE_SHADOW_CALL_STACK
+96: 	select ARCH_SUPPORTS_LTO_CLANG if CPU_LITTLE_ENDIAN
+97: 	select ARCH_SUPPORTS_LTO_CLANG_THIN
+98: 	select ARCH_SUPPORTS_CFI_CLANG
+99: 	select ARCH_SUPPORTS_ATOMIC_RMW
+100: 	select ARCH_SUPPORTS_INT128 if CC_HAS_INT128
+
+arch/arm64/Kconfig:231-240
+231: 	select HAVE_NMI
+232: 	select HAVE_PERF_EVENTS
+233: 	select HAVE_PERF_EVENTS_NMI if ARM64_PSEUDO_NMI
+234: 	select HAVE_PERF_REGS
+235: 	select HAVE_PERF_USER_STACK_DUMP
+236: 	select HAVE_PREEMPT_DYNAMIC_KEY
+237: 	select HAVE_REGS_AND_STACK_ACCESS_API
+238: 	select HAVE_POSIX_CPU_TIMERS_TASK_WORK
+239: 	select HAVE_FUNCTION_ARG_ACCESS_API
+240: 	select MMU_GATHER_RCU_TABLE_FREE
+
+packaging/linux-rpi.spec:175-210
+175: %if "%{?dev_wos}" == "1"
+176: %define lsm_fragment kernel/configs/nosmack.config
+177: %endif
+178: %endif
+179: 
+180: for target in %{variant} %{variant}-rt; do
+181:     echo "-${target}" > localversion-tizen
+182: 
+183:     # extract uapi headers
+184:     make O=build/${target} headers_install %{?_smp_mflags}
+185: 
+186:     # Set config file
+187:     BASE_CONFIG="arch/%{buildarch}/configs/%{config_name}"
+188:     EXTRA_FRAGMENTS=""
+189: 
+190:     case $target in
+191: 	%{variant})
+192: 	    EXTRA_FRAGMENTS="%{?lsm_fragment}"
+193: 	;;
+194: 	%{variant}-rt)
+195: 	    EXTRA_FRAGMENTS="kernel/configs/rt.config %{?lsm_fragment}"
+196: 	;;
+197:     esac
+198: 
+199:     mkdir -p build/${target}
+200:     ./scripts/kconfig/merge_config.sh -m -O build/${target} ${BASE_CONFIG} ${EXTRA_FRAGMENTS}
+201:     make O=build/${target} olddefconfig %{?_smp_mflags}
+202: 
+203:     if [ "${target}" = "%{variant}" ]; then
+204:         # Build perf
+205:         # WERROR=0 make O=build/${target} -s -C tools/lib/traceevent %{?_smp_mflags}
+206:         WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" %{?_smp_mflags} NO_LIBTRACEEVENT=1 NO_JEVENTS=1
+207: 
+208:         # Build bpftool
+209:         WERROR=0 make O=build/${target} -s -C tools/bpf/bpftool %{?_smp_mflags}
+210:     fi
+
+packaging/linux-rpi.spec:267-276
+267:             install -m 644 build/${target}/arch/%{buildarch}/boot/Image %{buildroot}/boot/Image
+268: %else
+269:             install -m 644 build/${target}/arch/%{buildarch}/boot/zImage %{buildroot}/boot/zImage
+270: %endif
+271: 
+272:             # Install perf
+273:             WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" DESTDIR=%{buildroot}/usr install NO_LIBTRACEEVENT=1 NO_JEVENTS=1
+274: 
+275: 	    # Install bpftool
+276:             mkdir -p %{buildroot}/usr/sbin
+
+tools/perf/Makefile.config:520-536
+520: ifdef CORESIGHT
+521:   $(call feature_check,libopencsd)
+522:   ifeq ($(feature-libopencsd), 1)
+523:     CFLAGS += -DHAVE_CSTRACE_SUPPORT $(LIBOPENCSD_CFLAGS)
+524:     LDFLAGS += $(LIBOPENCSD_LDFLAGS)
+525:     EXTLIBS += $(OPENCSDLIBS)
+526:     $(call detected,CONFIG_LIBOPENCSD)
+527:     ifdef CSTRACE_RAW
+528:       CFLAGS += -DCS_DEBUG_RAW
+529:       ifeq (${CSTRACE_RAW}, packed)
+530:         CFLAGS += -DCS_RAW_PACKED
+531:       endif
+532:     endif
+533:   else
+534:     $(error Error: No libopencsd library found or the version is not up-to-date. Please install recent libopencsd to build with CORESIGHT=1)
+535:   endif
+536: endif
+
+drivers/block/zram/Kconfig:1-154
+1: # SPDX-License-Identifier: GPL-2.0
+2: config ZRAM
+3: 	tristate "Compressed RAM block device support"
+4: 	depends on BLOCK && SYSFS && MMU
+5: 	select ZSMALLOC
+6: 	help
+7: 	  Creates virtual block devices called /dev/zramX (X = 0, 1, ...).
+8: 	  Pages written to these disks are compressed and stored in memory
+9: 	  itself. These disks allow very fast I/O and compression provides
+10: 	  good amounts of memory savings.
+11: 
+12: 	  It has several use cases, for example: /tmp storage, use as swap
+13: 	  disks and maybe many more.
+14: 
+15: 	  See Documentation/admin-guide/blockdev/zram.rst for more information.
+16: 
+17: config ZRAM_BACKEND_LZ4
+18: 	bool "lz4 compression support"
+19: 	depends on ZRAM
+20: 	select LZ4_COMPRESS
+21: 	select LZ4_DECOMPRESS
+22: 
+23: config ZRAM_BACKEND_LZ4HC
+24: 	bool "lz4hc compression support"
+25: 	depends on ZRAM
+26: 	select LZ4HC_COMPRESS
+27: 	select LZ4_DECOMPRESS
+28: 
+29: config ZRAM_BACKEND_ZSTD
+30: 	bool "zstd compression support"
+31: 	depends on ZRAM
+32: 	select ZSTD_COMPRESS
+33: 	select ZSTD_DECOMPRESS
+34: 
+35: config ZRAM_BACKEND_DEFLATE
+36: 	bool "deflate compression support"
+37: 	depends on ZRAM
+38: 	select ZLIB_DEFLATE
+39: 	select ZLIB_INFLATE
+40: 
+41: config ZRAM_BACKEND_842
+42: 	bool "842 compression support"
+43: 	depends on ZRAM
+44: 	select 842_COMPRESS
+45: 	select 842_DECOMPRESS
+46: 
+47: config ZRAM_BACKEND_FORCE_LZO
+48: 	depends on ZRAM
+49: 	def_bool !ZRAM_BACKEND_LZ4 && !ZRAM_BACKEND_LZ4HC && \
+50: 		!ZRAM_BACKEND_ZSTD && !ZRAM_BACKEND_DEFLATE && \
+51: 		!ZRAM_BACKEND_842
+52: 
+53: config ZRAM_BACKEND_LZO
+54: 	bool "lzo and lzo-rle compression support" if !ZRAM_BACKEND_FORCE_LZO
+55: 	depends on ZRAM
+56: 	default ZRAM_BACKEND_FORCE_LZO
+57: 	select LZO_COMPRESS
+58: 	select LZO_DECOMPRESS
+59: 
+60: choice
+61: 	prompt "Default zram compressor"
+62: 	default ZRAM_DEF_COMP_LZORLE
+63: 	depends on ZRAM
+64: 
+65: config ZRAM_DEF_COMP_LZORLE
+66: 	bool "lzo-rle"
+67: 	depends on ZRAM_BACKEND_LZO
+68: 
+69: config ZRAM_DEF_COMP_LZO
+70: 	bool "lzo"
+71: 	depends on ZRAM_BACKEND_LZO
+72: 
+73: config ZRAM_DEF_COMP_LZ4
+74: 	bool "lz4"
+75: 	depends on ZRAM_BACKEND_LZ4
+76: 
+77: config ZRAM_DEF_COMP_LZ4HC
+78: 	bool "lz4hc"
+79: 	depends on ZRAM_BACKEND_LZ4HC
+80: 
+81: config ZRAM_DEF_COMP_ZSTD
+82: 	bool "zstd"
+83: 	depends on ZRAM_BACKEND_ZSTD
+84: 
+85: config ZRAM_DEF_COMP_DEFLATE
+86: 	bool "deflate"
+87: 	depends on ZRAM_BACKEND_DEFLATE
+88: 
+89: config ZRAM_DEF_COMP_842
+90: 	bool "842"
+91: 	depends on ZRAM_BACKEND_842
+92: 
+93: endchoice
+94: 
+95: config ZRAM_DEF_COMP
+96: 	string
+97: 	depends on ZRAM
+98: 	default "lzo-rle" if ZRAM_DEF_COMP_LZORLE
+99: 	default "lzo" if ZRAM_DEF_COMP_LZO
+100: 	default "lz4" if ZRAM_DEF_COMP_LZ4
+101: 	default "lz4hc" if ZRAM_DEF_COMP_LZ4HC
+102: 	default "zstd" if ZRAM_DEF_COMP_ZSTD
+103: 	default "deflate" if ZRAM_DEF_COMP_DEFLATE
+104: 	default "842" if ZRAM_DEF_COMP_842
+105: 	default "unset-value"
+106: 
+107: config ZRAM_WRITEBACK
+108:        bool "Write back incompressible or idle page to backing device"
+109:        depends on ZRAM
+110:        help
+111: 	 This lets zram entries (incompressible or idle pages) be written
+112: 	 back to a backing device, helping save memory.
+113: 	 For this feature, admin should set up backing device via
+114: 	 /sys/block/zramX/backing_dev.
+115: 
+116: 	 With /sys/block/zramX/{idle,writeback}, application could ask
+117: 	 idle page's writeback to the backing device to save in memory.
+118: 
+119: 	 See Documentation/admin-guide/blockdev/zram.rst for more information.
+120: 
+121: config ZRAM_TRACK_ENTRY_ACTIME
+122: 	bool "Track access time of zram entries"
+123: 	depends on ZRAM
+124: 	help
+125: 	  With this feature zram tracks access time of every stored
+126: 	  entry (page), which can be used for a more fine grained IDLE
+127: 	  pages writeback.
+128: 
+129: config ZRAM_MEMORY_TRACKING
+130: 	bool "Track zRam block status"
+131: 	depends on ZRAM && DEBUG_FS
+132: 	select ZRAM_TRACK_ENTRY_ACTIME
+133: 	help
+134: 	  With this feature, admin can track the state of allocated blocks
+135: 	  of zRAM. Admin could see the information via
+136: 	  /sys/kernel/debug/zram/zramX/block_state.
+137: 
+138: 	  See Documentation/admin-guide/blockdev/zram.rst for more information.
+139: 
+140: config ZRAM_MULTI_COMP
+141: 	bool "Enable multiple compression streams"
+142: 	depends on ZRAM
+143: 	help
+144: 	  This will enable multi-compression streams, so that ZRAM can
+145: 	  re-compress pages using a potentially slower but more effective
+146: 	  compression algorithm. Note, that IDLE page recompression
+147: 	  requires ZRAM_TRACK_ENTRY_ACTIME.

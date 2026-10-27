@@ -2,48 +2,53 @@
 
 更新：2026-10-27（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**任务2续未完成：步骤A完成；步骤B审计已完成并因文件级配置隔离限制停止；C/D/E未执行。** 本次是阶段性交付，不是成功构建基线。
+**任务2续二部分完成：步骤1源码核对、步骤2准备、步骤6不依赖产物的静态部分已完成；步骤3–5未执行。不是成功构建基线。**
 
 ## 计划
 
-按PM续任务：A修正标题 → B配置来源审计 → C两行项目配置与独立strace导出 → D构建前后工作区外写入监测 → E恢复原步骤4–9。最前面的两条硬要求优先；B发现外部配置文件加载无法通过项目键覆盖禁用，已停止并列替代方案，不自行实施。
+PM指定顺序：源码核对 → 工作区用户目录配置 → 指定HOME/GIT_CONFIG_NOSYSTEM的strace导出 → 串行GCC/LLVM与外部写入监测 → 产物核对；静态部分允许独立开展。PM已排除修改源码.gbs.conf/exclude及上轮两个替代工具/隔离方案，不再请求这些方案裁决。
 
 ## 进度
 
-- A完成：lko/base@f240c28093027707f5e09f8a9cbbed16a43ebb1a；标题 `mm: restore vendor reclaim semantics for force_reclaim`。与563c53c427bf代码、tree、parent、作者/日期、提交者/日期和正文完全相同，tizen仍是42aeefac58edeb081aff440f0b60be71cbe49755。初次amend的hook追加Change-Id已在最终amend中去除，未修改原hook。
-- B完成审计：/etc/gbs.conf不存在，~/.gbs.conf存在，5节5键；只有section/键名入证据，不上传外部键值。没有凭据键。两个项目conf本轮新增覆盖0键：build的profile/buildroot已覆盖，其余外部仓库节未选用；export不消费这些键。
-- B阻点：项目.gbs.conf可被export读取（源码证据），但-c和项目文件不能禁止ConfigMgr解析~/.gbs.conf；这违反“不使用工作目录以外的文件”的文件级要求。不是发现未覆盖的当前构建键，也不是项目配置不可读。
-- C/D/E未执行：未改写既有受跟踪项目.gbs.conf或添加exclude项，未运行export/strace或r2构建，未创建构建marker、未执行外部写入find；无r2日志、耗时或外部写入监测结论。
-- 历史任务2：只拆入mm/memcontrol-v1.c（+22/-7）；SSH open=0、merged=17/相关12；02归属修订已完成。前轮GCC人为中断exit143（5:37.12），LLVM未启动，完整日志保留；PGID116650此前已自行退出、用户未kill。详见03及历史证据。
-- RULES已把PM两条硬要求原文置顶，并加入不改共享工具/外部conf、越界等自然结束不发信号、残留等5分钟后报告不sudo不碰其他进程。
-- 本轮没有改内核代码/spec、没有编译或碰开发板、没有向Gerrit推送。
+- PM裁决已原文置于RULES最前两条硬要求后，明确系统运行时例外和所有GBS必带两个环境变量。
+- 源码核对：expanduser遵循HOME；无配置自动生成路径也遵循HOME；导出fork/exec链未发现重设两项环境；其他HOME路径逐项列出。该结论不替代strace文件访问证据，也不扩大到sudo/chroot全部后代。
+- 步骤2完成：temp/gbs-home/.gbs.conf为指定两行普通文件。没有重设实际HOME，没有运行GBS。已受跟踪linux-rpi/.gbs.conf和exclude保持原样。
+- 步骤3–5未执行：**当前代理执行环境禁止重设HOME**，不能执行PM命令，也不运行缺少该变量的GBS或变通绕过。这是执行限制，不是源码方案冲突或构建失败。
+- 步骤6：zram接口已核对；ARM32普通无锁调试/4KiB页条件下ACTIME使表项12→24 B，每GiB增3 MiB；RT相同锁调试前提下24→32 B，每GiB增2 MiB。均为静态推导，非最终配置sizeof实测。
+- LZ4三提交1051099cb8da、7b64cf4f1065、7459b2911b52依次cherry-pick均无冲突；lko/tmp-lz4已删除，未改base。两份字典脚本原文及zram源码片段已归档，未执行脚本。
+- ARM32本树无LTO架构选择路径；AUTOFDO/PROPELLER及对应ARCH_SUPPORTS符号在Kconfig/Makefile无匹配；BCM2711有cortex-a72-pmu节点，主板递归include链未找到CoreSight组件节点；perf spec未显式传CORESIGHT=1/OpenCSD。
+- 平台LLVM版本/BOLT后端、最终CORESIGHT*值未取得；未使用宿主工具替代。没有构建日志、外部写入监测结果或板上数据。
+- 当前内核lko/base@f240c28093027707f5e09f8a9cbbed16a43ebb1a，tizen@42aeefac58edeb081aff440f0b60be71cbe49755，工作树干净。未向Gerrit推送，未构建aarch64，未碰板或其他任务进程。
 
 ## 已闭合结论（附证据）
 
 | 结论 | 证据 |
 | --- | --- |
-| base只修标题、内容和提交身份不变 | [base_amend_r2.txt](../evidence/task2/base_amend_r2.txt) |
-| 自动发现顺序、逐键合并、-c/项目配置加载时序 | [gbs_config_audit_r2.md](../evidence/task2/gbs_config_audit_r2.md)、[带行号源码](../evidence/task2/gbs_config_source_r2.txt) |
-| 外部配置存在性、所有节/键及逐项影响 | [external_gbs_keys_r2.txt](../evidence/task2/external_gbs_keys_r2.txt)、[审计第3节](../evidence/task2/gbs_config_audit_r2.md#3-外部配置逐键审计) |
-| 项目tmpdir理论可生效，但不能禁止外部文件解析 | [审计第2/4节](../evidence/task2/gbs_config_audit_r2.md)、[03](03_baseline_build.md) |
-| 新SHA与现有memcontrol快照内容一致 | [快照索引](../code_snapshots/INDEX.md) |
-| 旧失败日志完整、末行143，残留自行退出 | [build_gcc_log.txt](../evidence/task2/build_gcc_log.txt)、[build_closure_recheck.txt](../evidence/task2/build_closure_recheck.txt) |
+| HOME配置定位/环境继承及其他用户路径 | [home_source_audit.md](../evidence/task2/home_source_audit.md)、[源码行号](../evidence/task2/home_source_lines.txt)、[检索命令输出](../evidence/task2/home_source_search.txt) |
+| 两行工作区配置已准备，源码配置保持原样 | [home_preparation.txt](../evidence/task2/home_preparation.txt) |
+| zram接口、普通/RT布局条件及计算 | [04](04_zram_static.md)、[源码证据](../evidence/task2/static_source_lines.txt) |
+| LZ4三提交干净合入，检查后删除临时分支 | [lz4_merge_check.txt](../evidence/task2/lz4_merge_check.txt) |
+| 字典脚本全文与相关源码片段 | [快照索引](../code_snapshots/INDEX.md) |
+| FDO符号缺失、PMU/CoreSight/perf静态状态 | [05](05_kernel_fdo_static.md)、[符号检索](../evidence/task2/fdo_symbol_search.txt)、[DTS扫描](../evidence/task2/bcm2711_dts_scan.txt) |
+| 无平台LLVM工具版本证据 | [platform_tools_pending.txt](../evidence/task2/platform_tools_pending.txt) |
 
 ## 需要人工裁决的前提
 
-B停止条件要求不自行选择替代方案。[审计第5节](../evidence/task2/gbs_config_audit_r2.md#5-可行的替代设计及影响面未选择未实施)列出：工作区独立GBS副本并限制配置来源；本任务专属文件系统隔离环境；或PM明确放宽为允许解析外部文件但不采纳行为值（该选项不满足当前硬规则）。前两项需评审工具差异或隔离/权限影响，均未实施。
-
-步骤C另需裁决：现有linux-rpi/.gbs.conf已受跟踪，不能既改成两行又仅靠exclude保持干净。是否允许独立配置提交，或改用不改该文件的注入方案，见[现有项目配置证据](../evidence/task2/existing_project_gbs_r2.txt)。本轮保持原样，未隐藏修改。
+PM关于HOME方案及保留源码配置的裁决已闭合，不再重复请求许可。恢复步骤3–5需要能够执行PM所指定HOME环境的执行端；当前代理受执行限制，不能通过用户重复批准解除，也不会另选已排除方案。对平台工具/硬件能力的缺口按05列项供后续设计评审，本任务未自行实施优化。
 
 ## 挂账事项
 
-- C导出strace目录核验、D前后监测与归属分析、E两次成功构建；当前没有“未检测到越界”结论。
-- LLVM是否确实Clang、四份最终.config、01逐符号核对和改正数、平台编译器RPM与工具版本。
-- vmlinux/zImage差值、模块/符号/追踪段、bloat-o-meter、两轮耗时/RSS/buildroot/RPM大小。
-- 04能力接口、armv7l entry/ACTIME每GB元数据增量、LZ4三补丁合入检查、两个字典脚本和zram源码片段。
-- 05的AutoFDO/PMU/CoreSight/perf/OpenCSD/create_llvm_prof/llvm-profgen/llvm-bolt核验；aarch64只做Kconfig，板测另发任务。
-- 上述未知值不写成0或通过；历史任务1静态表不替代最终.config。
+- 指定环境下strace的a/b/c全部路径及通过判定；当前没有运行，不填写虚构成功摘要。
+- 两轮GCC/LLVM成功构建、进程组前后与残留等待、marker/find外部写入及无法归属项；无r2耗时/大小/监测结果。
+- 实际编译器四类证据、是否确为Clang；四份最终.config和diffconfig；01改正符号数未知，不记为0。
+- vmlinux/zImage差值、模块/符号/追踪段、bloat-o-meter、wall/RSS/buildroot/RPM大小。
+- 元数据布局需用最终普通/RT配置核验；无锁调试前提变更则重新计算。
+- 平台create_llvm_prof/llvm-profgen版本、llvm-bolt支持架构、最终CORESIGHT*配置；板上采样与性能另发任务。
 
-交付索引：[evidence/task2/README.md](../evidence/task2/README.md)。本次产出与STATUS同一提交，普通git push至GitHub main。
+历史结果保留：最初GCC尝试人为中断exit143、5:37.12，不是本轮构建耗时；残留已自行退出。SSH open0、近6个月merged17/相关12及重叠修订见02。base只改memcontrol，后仅改标题，历史证据不重写。
 
-发布复核：证据索引的raw链接已逐项按仓库相对路径校验，文件大小及SHA-256全部匹配；本轮所有上传文件为小于1 MB的文本。
+## 发布状态
+
+本次文件与STATUS已在本地同一提交；普通git push origin main失败，退出128：禁用系统及工作区外全局Git配置后，无可用GitHub认证（交互提示已禁用）。未索要密码、未恢复外部配置、未绕过认证或force push，见[发布记录](../evidence/task2/publication_home_attempt.txt)。远端main/raw链接尚未更新，本轮交付以工作区文件及本地commit为准。发布还需要工作区规则允许的认证来源；当前没有该来源的证据。
+
+交付索引：[evidence/task2/README.md](../evidence/task2/README.md)。

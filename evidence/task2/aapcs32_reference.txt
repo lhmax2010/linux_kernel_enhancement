@@ -1,0 +1,4 @@
+Primary source checked 2026-10-27:
+https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst
+Fundamental data types and C/C++ type mapping: word types are 4-byte size/alignment, double-word types are 8-byte size/alignment; C int/long map to word and long long to double-word.
+Used only as ABI input to the conditional kernel-structure calculation; not evidence of actual final config or compiled sizeof.

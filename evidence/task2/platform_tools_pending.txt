@@ -1,0 +1,3 @@
+Only previous interrupted GCC buildroot exists; not a successful r2 buildroot.
+usr/bin: no matching tool names
+No LLVM buildroot produced. Tool versions and supported architectures unverified; no host tool substituted.

@@ -1,0 +1,6 @@
+PASS: all zram snapshot excerpts exactly match base source line ranges.
+PASS: both dictionary script snapshots exactly match 85fcc6edce0b.
+PASS: lko/base unchanged and clean; lko/tmp-lz4 removed.
+PASS: no r2 build logs or export strace exist; no GBS command run this round.
+PASS: prepared workspace user configuration is regular two-line text.
+Only static checks; no compile/runtime validation.

@@ -2,6 +2,19 @@
 
 日期：2026-10-27（Asia/Shanghai）。本报告只记录本任务实际执行的结果；未获得的构建产物指标不以源码推导替代。所有体积与构建开销数字均为构建产物/开发机数据，不代表板上运行时内存。
 
+## 最新任务2续二：源码核对、准备与静态成果
+
+PM已明确采用工作区HOME方案，并排除修改源码.gbs.conf/exclude、独立工具副本及专属隔离环境；这些旧方案不再是待决事项。裁决已原文写入RULES两条硬要求之后。
+
+- 源码核对确认用户配置由expanduser定位；已安装Python有HOME时优先使用HOME。gbs build→os.system→depanneur fork/exec→gbs export链未发现清空或重设HOME/GIT_CONFIG_NOSYSTEM。新方案能修正此前的用户配置来源，但这只是源码判断，尚无strace通过结果。完整路径清单与行号见[home_source_audit.md](../evidence/task2/home_source_audit.md)。
+- 步骤2已完成：temp/gbs-home/.gbs.conf为两行普通文件；linux-rpi/.gbs.conf未改，base仍为f240c280、tizen仍42aeefac，工作树干净。见[准备记录](../evidence/task2/home_preparation.txt)。
+- **导出/构建未执行：当前代理执行环境禁止重设HOME，无法执行PM规定命令。** 没有运行不带指定变量的GBS，也没有用替代方式绕过。此限制不是GBS或源码方案失败，不向PM重复请求已完成的方案裁决。
+- 没有export_check_home.txt或r2日志、没有marker/find监测，没有实际打开配置路径清单；未发生本轮构建中断，未发送信号或调用sudo。不能声称“未检测到工作区外写入”或“导出通过”。
+- 已继续独立步骤6：zram接口与ARM32布局推导、三条LZ4无冲突合入检查及临时分支删除、字典脚本全文与源码片段、Kconfig/DTS/perf静态核对。详见[04](04_zram_static.md)、[05](05_kernel_fdo_static.md)。
+- LLVM是否确为Clang、四份最终.config、01修正符号数、两次完整耗时及vmlinux/zImage差值仍未取得。旧GCC的5:37.12/exit143是前轮人为中断尝试，不移用为本轮数据。平台LLVM工具版本和BOLT支持架构未确认。
+
+以下保留上一轮与最初任务的历史记录，不能据此启动已被PM排除的方案。
+
 ## 本轮续任务：步骤A完成，步骤B停止（2026-10-27）
 
 - 已按要求仅修改base标题为 `mm: restore vendor reclaim semantics for force_reclaim`；新SHA `f240c28093027707f5e09f8a9cbbed16a43ebb1a`。原tree、parent、作者/日期、提交者/日期、正文均逐字验证相同，`git diff 563c53c4 f240c2809302`为空，tizen未变且工作树干净。证据：[base_amend_r2.txt](../evidence/task2/base_amend_r2.txt)。初次amend被已有hook追加Change-Id，验证发现后用命令级工作区空hooks目录重新amend，最终正文严格保持原样；没有改全局配置或原hook。

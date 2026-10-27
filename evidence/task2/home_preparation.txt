@@ -1,0 +1,8 @@
+Prepared workspace directory: /home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home
+.gbs.conf is a regular file; exact two-line content:
+[general]
+tmpdir = /home/linhao/Toolchain/development/linux_kernel_optimization/temp
+No HOME variable changed; no GBS command executed.
+Kernel lko/base f240c28093027707f5e09f8a9cbbed16a43ebb1a, clean.
+tizen 42aeefac58edeb081aff440f0b60be71cbe49755, unchanged.
+Tracked linux-rpi/.gbs.conf matches HEAD; exclude not changed.

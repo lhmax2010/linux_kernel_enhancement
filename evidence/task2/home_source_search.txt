@@ -1,0 +1,86 @@
+Command: ['rg', '-n', 'HOME|expanduser|getpwuid|getpwnam|\\.rpmmacros|\\.gitconfig|\\.cache|\\.config|~/|%ENV|unsetenv|clearenv|putenv|os\\.environ', '/usr/bin/gbs', '/usr/bin/depanneur', '/usr/lib/python3/dist-packages/gitbuildsys']
+exit=0
+/usr/bin/gbs:206:                        'By default, ~/GBS-ROOT/ will be used. User can specify'
+/usr/bin/gbs:477:    ~/GBS-ROOT/local/scratch.{arch}.*, which will be different
+/usr/bin/gbs:626:    Configuration can be set in ~/.gbs.conf:
+/usr/bin/gbs:705:                        'By default, ~/GBS-ROOT/ will be used. User can specify'
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_depends.py:47:USERID = pwd.getpwuid(os.getuid())[0]
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_depends.py:86:                        repo = os.path.abspath(os.path.expanduser(repo))
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_depends.py:133:                       '~/.gbs.conf or command line using -D')
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_depends.py:182:    elif 'TIZEN_BUILD_ROOT' in os.environ:
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_depends.py:183:        build_root = os.environ['TIZEN_BUILD_ROOT']
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_depends.py:188:    build_root = os.path.expanduser(build_root)
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_depends.py:194:    os.environ['TIZEN_BUILD_ROOT'] = os.path.abspath(build_root)
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_depends.py:197:    if 'VIRTUAL_ENV' in os.environ:
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_depends.py:198:        cmd = ['%s/usr/bin/depanneur' % os.environ['VIRTUAL_ENV']]
+/usr/lib/python3/dist-packages/gitbuildsys/utils.py:253:                env = os.environ
+/usr/lib/python3/dist-packages/gitbuildsys/utils.py:292:        self.cachedir = cachedir
+/usr/lib/python3/dist-packages/gitbuildsys/utils.py:367:        fname = os.path.join(self.cachedir, os.path.basename(url))
+/usr/lib/python3/dist-packages/gitbuildsys/utils.py:546:        workdir = os.path.expanduser('~/.ref-gbs/git-ref-mapping/')
+/usr/lib/python3/dist-packages/gitbuildsys/utils.py:547:        refxml = os.path.expanduser('~/.ref-gbs/git-ref-mapping/git-ref-mapping.xml')
+/usr/lib/python3/dist-packages/gitbuildsys/worktree.py:218:        base_buildroot = ~/GBS-ROOT/
+/usr/lib/python3/dist-packages/gitbuildsys/worktree.py:220:        result = ~/GBS-ROOT-feature-x/
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_submit.py:39:                    '~/.gbs/templates/submit_message',
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_submit.py:44:        abs_path = os.path.abspath(os.path.expanduser(path))
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_qbbuild.py:145:    config['user'] = os.environ.get('QB_USER')
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_qbbuild.py:146:    config['passwd'] = os.environ.get('QB_PASSWORD')
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_qbbuild.py:147:    config['url'] = os.environ.get('QB_URL')
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_qbbuild.py:148:    config['conf_path'] = os.environ.get('QB_CONF_PATH')
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_qbbuild.py:149:    config['template'] = os.environ.get('QB_TEMPLATE')
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_qbbuild.py:153:        env_val = os.environ.get('QB_VAR_%s' % key.upper())
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_import.py:102:        os.environ["GIT_AUTHOR_NAME"] = args.author_name
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_import.py:104:        os.environ["GIT_AUTHOR_EMAIL"] = args.author_email
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:80:USERID = pwd.getpwuid(os.getuid())[0]
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:151:                        repo = os.path.abspath(os.path.expanduser(repo))
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:198:                       '~/.gbs.conf or command line using -D')
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:413:    Create ~/.gbs.conf.auto for user
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:501:    fpath = os.path.expanduser('~/.gbs.conf.auto')
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:615:    if 'VIRTUAL_ENV' in os.environ:
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:616:        cmd = ['%s/usr/bin/depanneur' % os.environ['VIRTUAL_ENV']]
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:690:    elif 'TIZEN_BUILD_ROOT' in os.environ:
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:691:        build_root = os.environ['TIZEN_BUILD_ROOT']
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:696:    build_root = os.path.expanduser(build_root)
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:724:    os.environ['TIZEN_BUILD_ROOT'] = os.path.abspath(build_root)
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:782:            wt_path = os.path.abspath(os.path.expanduser(wt_path))
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:837:            log.info("Create ~/.gbs.conf.auto using reference binary id")
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:857:        download_path = Temp(prefix=os.path.expanduser('~/gbs-build'),
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:202:                            'buildroot':    '~/GBS-ROOT/',
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:377:                     os.path.expanduser('~/.gbs.conf'),
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:386:        fpath = os.path.expanduser('~/.gbs.conf')
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:681:        'convert ~/.gbs.conf to new style'
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:694:        fname = '~/.gbs.conf.template'
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:700:            shutil.move(tmp.path, os.path.expanduser(fname))
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:710:        url = os.path.expanduser(self._interpolate(self.get('url', section_id)))
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:787:            profile.buildconf = os.path.expanduser(self._interpolate(
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_chroot.py:83:        build_env = os.environ
+/usr/lib/python3/dist-packages/gitbuildsys/oscapi.py:72:            self.apiurl = conf.config['apiurl']
+/usr/bin/depanneur:66:     ($zuid, $zgid) = (getpwnam(getlogin()))[2,3];
+/usr/bin/depanneur:68:     ($zuid, $zgid) = (getpwuid($<))[2,3];
+/usr/bin/depanneur:119:$build_root = expand_filename($build_root);# expand ~/, ~<user> etc.
+/usr/bin/depanneur:430:#  ~/abc/d       ==>   /home/xxx/abc/d
+/usr/bin/depanneur:438:    $path =~ s{^~(?=/|$)}{ $ENV{HOME} ? "$ENV{HOME}" : $home_dir->( $< ) }e
+/usr/bin/depanneur:834:# cat ~/GBS-ROOT/local/sources/tizen/cache/fake-1.0-1
+/usr/bin/depanneur:1143:    my $rpmdeps = "$order_dir/.repo.cache.local";
+/usr/bin/depanneur:1166:# Re-read .repo.cache and update information of
+/usr/bin/depanneur:1170:    my $rpmdeps = "$order_dir/.repo.cache";
+/usr/bin/depanneur:1185:    # .repo.cache like:
+/usr/bin/depanneur:2004:# create repo.cache.local
+/usr/bin/depanneur:2007:    my_system("'$build_dir'/createdirdeps '$rpm_repo_path' > '$order_dir'/.repo.cache.local ");
+/usr/bin/depanneur:2008:    my_system("echo D: >> '$order_dir'/.repo.cache.local");
+/usr/bin/depanneur:2009:    my_system("cat '$order_dir'/.repo.cache.local '$order_dir'/.repo.cache.remote >'$order_dir'/.repo.cache");
+/usr/bin/depanneur:2703:    my_system("> '$order_dir'/.repo.cache.local");
+/usr/bin/depanneur:2705:        my_system("$build_dir/createdirdeps '$rpm_repo_path' >> '$order_dir'/.repo.cache.local");
+/usr/bin/depanneur:2706:        my_system("echo D: >> '$order_dir'/.repo.cache.local");
+/usr/bin/depanneur:2708:    my_system("> '$order_dir'/.repo.cache.remote");
+/usr/bin/depanneur:2712:            $cmd = "$build_dir/createdirdeps '$repo' >> '$order_dir'/.repo.cache.remote ";
+/usr/bin/depanneur:2714:            $cmd = "$build_dir/createrepomddeps --cachedir='$cache_dir' '$repo' >> '$order_dir'/.repo.cache.remote ";
+/usr/bin/depanneur:2718:            my_system("echo D: >> '$order_dir'/.repo.cache.remote");
+/usr/bin/depanneur:2724:    my_system("cat '$order_dir'/.repo.cache.local '$order_dir'/.repo.cache.remote >'$order_dir'/.repo.cache");
+/usr/bin/depanneur:3049:my_system("> '$order_dir'/.repo.cache.local");
+/usr/bin/depanneur:3051:    my_system("$build_dir/createdirdeps '$rpm_repo_path' >> '$order_dir'/.repo.cache.local");
+/usr/bin/depanneur:3052:    my_system("echo D: >> '$order_dir'/.repo.cache.local");
+/usr/bin/depanneur:3054:my_system("> '$order_dir'/.repo.cache.remote");
+/usr/bin/depanneur:3058:        $cmd = "$build_dir/createdirdeps '$repo' >> '$order_dir'/.repo.cache.remote ";
+/usr/bin/depanneur:3060:        $cmd = "$build_dir/createrepomddeps --cachedir='$cache_dir' '$repo' >> '$order_dir'/.repo.cache.remote ";
+/usr/bin/depanneur:3064:        my_system("echo D: >> '$order_dir'/.repo.cache.remote");
+/usr/bin/depanneur:3070:my_system("cat '$order_dir'/.repo.cache.local '$order_dir'/.repo.cache.remote >'$order_dir'/.repo.cache");

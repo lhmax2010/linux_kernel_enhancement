@@ -1,0 +1,6 @@
+Command environment: GIT_CONFIG_NOSYSTEM=1 GIT_CONFIG_GLOBAL=/dev/null GIT_TERMINAL_PROMPT=0; HOME unchanged.
+Command: git push origin main
+Exit: 128
+fatal: could not read Username for 'https://github.com': terminal prompts disabled
+No credential requested from user, no external gitconfig restored, no force push, no connector write used.
+Local deliverable commit retained; remote main was not updated by this attempt.

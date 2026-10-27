@@ -1,0 +1,183 @@
+$ git status --porcelain
+exit=0
+
+$ git rev-parse HEAD
+exit=0
+f240c28093027707f5e09f8a9cbbed16a43ebb1a
+
+$ git switch -c lko/tmp-lz4
+exit=0
+Switched to a new branch 'lko/tmp-lz4'
+
+$ git cherry-pick 1051099cb8da
+exit=0
+[lko/tmp-lz4 8b2b01215510] lib: lz4: Update lz4 version to v1.10.0 from v1.8.3
+ Author: Jaehoon Chung <jh80.chung@samsung.com>
+ Date: Thu Aug 20 11:46:33 2026 +0900
+ 5 files changed, 2454 insertions(+), 1465 deletions(-)
+
+$ git show --format=fuller --stat HEAD
+exit=0
+commit 8b2b01215510ec4229e4a0556682b336e097c298
+Author:     Jaehoon Chung <jh80.chung@samsung.com>
+AuthorDate: Thu Aug 20 11:46:33 2026 +0900
+Commit:     Hao Lin <hao.lin@samsung.com>
+CommitDate: Tue Oct 27 16:26:14 2026 +0800
+
+    lib: lz4: Update lz4 version to v1.10.0 from v1.8.3
+    
+    This patch is provided by VD.
+    
+    Change-Id: Ifedc3fb99c003aa2da659b60cc1a7eb35d941c32
+    Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+ include/linux/lz4.h      |   30 +-
+ lib/lz4/lz4_compress.c   | 1266 ++++++++++++++++++++++-------------------
+ lib/lz4/lz4_decompress.c | 1152 ++++++++++++++++++++++++--------------
+ lib/lz4/lz4defs.h        |   75 ++-
+ lib/lz4/lz4hc_compress.c | 1396 ++++++++++++++++++++++++++++++----------------
+ 5 files changed, 2454 insertions(+), 1465 deletions(-)
+
+$ git cherry-pick 7b64cf4f1065
+exit=0
+[lko/tmp-lz4 f873d5efad15] lib: lz4: Sync LZ4HC_CCtx_internal with lz4 v1.10.0
+ Author: Jaehoon Chung <jh80.chung@samsung.com>
+ Date: Thu Aug 20 13:39:58 2026 +0900
+ 1 file changed, 21 insertions(+), 6 deletions(-)
+
+$ git show --format=fuller --stat HEAD
+exit=0
+commit f873d5efad1556dd36647afbe8765a964cc67cdf
+Author:     Jaehoon Chung <jh80.chung@samsung.com>
+AuthorDate: Thu Aug 20 13:39:58 2026 +0900
+Commit:     Hao Lin <hao.lin@samsung.com>
+CommitDate: Tue Oct 27 16:26:14 2026 +0800
+
+    lib: lz4: Sync LZ4HC_CCtx_internal with lz4 v1.10.0
+    
+    Commit 1051099cb8da ("lib: lz4: Update lz4 version to v1.10.0 from
+    v1.8.3") updated lib/lz4/lz4hc_compress.c to the v1.10.0 implementation
+    and updated LZ4_stream_t_internal in include/linux/lz4.h, but left
+    LZ4HC_CCtx_internal at the old v1.8.3 layout. As a result the HC
+    compressor fails to build:
+    
+      lib/lz4/lz4hc_compress.c:152:58: error: 'LZ4HC_CCtx_internal' has no
+          member named 'prefixStart'
+      lib/lz4/lz4hc_compress.c:164:12: error: 'LZ4HC_CCtx_internal' has no
+          member named 'dictStart'
+      lib/lz4/lz4hc_compress.c:988:20: error: 'LZ4HC_CCtx_internal' has no
+          member named 'dirty'
+      lib/lz4/lz4hc_compress.c:1117:15: error: 'LZ4HC_CCtx_internal' has no
+          member named 'dictCtx'
+      make[4]: *** [scripts/Makefile.build:244: lib/lz4/lz4hc_compress.o] Error 1
+    
+    Bring the structure in line with upstream v1.10.0:
+    
+      - rename base to prefixStart and dictBase to dictStart
+      - change compressionLevel to short, matching the (short) cast in
+        LZ4_setCompressionLevel()
+      - add the favorDecSpeed and dirty flags
+      - add the dictCtx back-pointer, which requires a named struct so that
+        it can refer to its own type
+    
+    The resulting size is 131072 + 131072 + 24 + 12 + 4 + 8 = 262192 bytes on
+    64-bit, exactly LZ4_STREAMHCSIZE, so LZ4_streamHC_t is unchanged and
+    users that treat it as opaque (e.g. drivers/block/zram/backend_lz4hc.c)
+    are not affected.
+    
+    Fixes: 1051099cb8da ("lib: lz4: Update lz4 version to v1.10.0 from v1.8.3")
+    Change-Id: I9b7e23e571c2553eb1cb64fe3d1f099ec1ea6517
+    Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+ include/linux/lz4.h | 27 +++++++++++++++++++++------
+ 1 file changed, 21 insertions(+), 6 deletions(-)
+
+$ git cherry-pick 7459b2911b52
+exit=0
+[lko/tmp-lz4 ec91e7a5e204] lib/lz4: Allow the fast decode loop on armv7
+ Author: Jaehoon Chung <jh80.chung@samsung.com>
+ Date: Thu Aug 20 13:59:06 2026 +0900
+ 2 files changed, 27 insertions(+), 1 deletion(-)
+
+$ git show --format=fuller --stat HEAD
+exit=0
+commit ec91e7a5e2047854656b0eccc7d1832c40ae6d4d
+Author:     Jaehoon Chung <jh80.chung@samsung.com>
+AuthorDate: Thu Aug 20 13:59:06 2026 +0900
+Commit:     Hao Lin <hao.lin@samsung.com>
+CommitDate: Tue Oct 27 16:26:14 2026 +0800
+
+    lib/lz4: Allow the fast decode loop on armv7
+    
+    The in-kernel LZ4 decompressor picks LZ4_FAST_DEC_LOOP the way upstream
+    v1.10.0 does, i.e. on x86/x86_64 and on arm64 with a non-clang compiler.
+    armv7 is not on that list, so on ARCH=arm the whole fast loop is compiled
+    out even though it measures faster there.
+    
+    The fast loop copies a fixed 32 bytes per sequence instead of taking an
+    unpredictable branch, and only engages while at least
+    FASTLOOP_SAFE_DISTANCE (64) bytes of output space remain, so the overwrite
+    is always in bounds.
+    
+    Add CONFIG_LZ4_DECOMPRESS_FAST_LOOP as an additional way to select it,
+    defaulting to y on armv7 (CPU_V7) unless the kernel is size-optimised.
+    The existing architecture tests are left in front of it, so x86 and arm64
+    keep using the fast loop unconditionally and nothing changes for them.
+    
+    This only affects the LZ4_decompress_safe*() family, which goes through
+    LZ4_decompress_generic() and is what erofs, squashfs, f2fs, zram, the
+    crypto API and initramfs decompression use. LZ4_decompress_fast() has its
+    own LZ4_decompress_unsafe_generic() implementation since the v1.10.0
+    rebase, so lib/decompress_unlz4.c, used for self-decompressing kernel
+    images, is unaffected.
+    
+    Measured on armv7-a (gcc 13.3.0 -O2 -march=armv7-a), decoding a 5.6 MB
+    kernel-source payload split into independent LZ4 blocks:
+    
+      chunk    CONFIG=n     CONFIG=y
+      4 KiB    732 MB/s     779 (+6.4%)
+      64 KiB   644 MB/s     687 (+6.1%)
+    
+    .text of lib/lz4/lz4_decompress.o in a tizen_bcm2711_defconfig build:
+    
+      CONFIG=n     10344
+      CONFIG=y     18260 (+7916, +77%)
+    
+    That is why size-optimised builds are excluded. With the option off the
+    generated code is unchanged, so builds that do not opt in are unaffected.
+    
+    Change-Id: I5585272677a3c1816c1b3b36e5c654e8ea1564a2
+    Signed-off-by: Jaehoon Chung <jh80.chung@samsung.com>
+
+ lib/Kconfig              | 22 ++++++++++++++++++++++
+ lib/lz4/lz4_decompress.c |  6 +++++-
+ 2 files changed, 27 insertions(+), 1 deletion(-)
+
+$ git diff --stat f240c28093027707f5e09f8a9cbbed16a43ebb1a HEAD
+exit=0
+ include/linux/lz4.h      |   57 +-
+ lib/Kconfig              |   22 +
+ lib/lz4/lz4_compress.c   | 1266 ++++++++++++++++++++++-------------------
+ lib/lz4/lz4_decompress.c | 1156 ++++++++++++++++++++++++--------------
+ lib/lz4/lz4defs.h        |   75 ++-
+ lib/lz4/lz4hc_compress.c | 1396 ++++++++++++++++++++++++++++++----------------
+ 6 files changed, 2501 insertions(+), 1471 deletions(-)
+
+$ git switch lko/base
+exit=0
+Switched to branch 'lko/base'
+
+$ git branch -D lko/tmp-lz4
+exit=0
+Deleted branch lko/tmp-lz4 (was ec91e7a5e204).
+
+$ git rev-parse HEAD
+exit=0
+f240c28093027707f5e09f8a9cbbed16a43ebb1a
+
+$ git status --porcelain
+exit=0
+
+$ git rev-parse tizen
+exit=0
+42aeefac58edeb081aff440f0b60be71cbe49755

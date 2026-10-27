@@ -1,17 +1,61 @@
-# 任务2：zram静态准备（未执行，停止条件触发）
+# 任务2：zram静态核对
 
-更新：2026-10-27（Asia/Shanghai）。任务2续在步骤B因原GBS仍加载外部配置文件而停止，未到步骤8；[配置审计](../evidence/task2/gbs_config_audit_r2.md)已列替代方案，未自行选择。以下原任务待办继续保留。
+更新：2026-10-27。基线 `f240c28093027707f5e09f8a9cbbed16a43ebb1a`。本轮完成源码接口、结构布局推导、三补丁合入检查和快照；未编译、未上板。所有源码行号相对linux-rpi；[带行号证据](../evidence/task2/static_source_lines.txt)、[快照索引](../code_snapshots/INDEX.md)。
 
-历史记录：任务2在步骤4的GCC构建准备阶段因临时输出越界中止，随后残留root进程清理要求sudo密码。按PM“失败后停止”及“不索要/绕过凭据”的要求，未继续步骤8。详情见 [03_baseline_build.md](03_baseline_build.md)。本文件是待办记录，不是已完成的静态核对报告。
+## 1. 能力接口
 
-当前基线为 lko/base@f240c28093027707f5e09f8a9cbbed16a43ebb1a（只修正标题，代码与563c53c427bf相同），仅拆入memcontrol修复；没有启用zram后端或二次压缩。
+本节表内短文件名均位于drivers/block/zram/。
 
-待恢复后逐项执行：
+| 接口 | 实现与参数 | 条件/关系 |
+| --- | --- | --- |
+| recomp_algorithm | zram_drv.c:1166–1206，algo=名称、priority=N；默认次级优先级1，必须提供algo，合法次级范围1–3（zram_drv.h:94–102） | CONFIG_ZRAM_MULTI_COMP；只是配置次级算法，不等于已经执行重压缩 |
+| recompress | zram_drv.c:1842–1999，type=idle/huge/huge_idle，max_pages、threshold、algo、priority；priority=0调整成1；未指定type时mode=0，无冷热筛选；未指定priority默认遍历次级优先级 | MULTI_COMP；初始化后使用；pp_in_progress阻止并发后处理。threshold必须小于huge_class_size（1913）；max_pages限制尝试次数，不等于成功页数（1776–1784） |
+| idle按秒标记 | zram_drv.c:329–365；all或非负整数秒；计算boottime减age_sec截止时间；294–327逐页判定 | 秒数需要ZRAM_TRACK_ENTRY_ACTIME，否则返回EINVAL；all不要求ACTIME。访问更新时间见181–182 |
+| algorithm_params | zram_drv.c:1060–1123；priority、algo、level、dict；algo可用于查找优先级 | comp_params_store在1007–1058；初始化后EBUSY。dict由kernel_read_file_from_path读取（1046），并非sysfs传入字典字节 |
+| zstd dict/level | backend_zstd.c:70–91、139–140、185–212：缺省level用zstd_default_clevel；准备cdict/ddict，压缩和解压分别使用 | 源码有能力不等于defconfig已启用ZSTD后端；字典需从工作负载离线生成，运行效果未测 |
+| writeback | zram_drv.c:609–655；idle、huge、huge_idle、incompressible或page_index=N；backing_dev见499–526，writeback_limit/enable见368–430 | CONFIG_ZRAM_WRITEBACK（2318–2323/2340–2351）；需已配置后端块设备，不能以静态支持代替板上介质与寿命评估 |
+| 压缩流获取/释放 | zcomp.c:110–119：local_lock、本CPU stream、local_unlock | 当前获取/释放函数没有区分读流/写流，接口本身不是并行解压实现 |
 
-1. 以源码行号核对recomp_algorithm/recompress支持参数、按秒idle、algorithm_params及zstd dict/level、writeback。
-2. 核对armv7l字段大小/对齐，从struct zram_table_entry计算基础与ACTIME配置的每槽位字节数，以及512 MiB/1 GiB/2 GiB元数据总量。**本轮没有计算“每GB增加多少”，不从未核实的结构/ABI猜数。**
-3. 从base建立lko/tmp-lz4，依次检查1051099cb8da、7b64cf4f1065、7459b2911b52的合入，再删除临时分支。本轮未建该分支、未cherry-pick这三条、未测试冲突。
-4. 上传85fcc6edce0b中的zram-dict-setup.sh和zram-dict-init.rc全文，并解释执行时机、sysfs和字典来源；本轮未执行此步骤。
-5. 上传zram_table_entry、recompress、zcomp stream获取/释放函数片段及原行号；本轮未执行此步骤。
+属性注册证据：zram_drv.c:2324–2356。未知key在部分解析循环会被跳过，不应把上述解析器视为严格拒绝未知参数的接口。
 
-步骤3要求的既有方案修订已完成：85fcc6edce0b会删除CONFIG_DEBUG_INFO_BTF=y，见 [zram_branch_config_diff.txt](../evidence/task2/zram_branch_config_diff.txt)；这不代表该方案已合入本项目。
+任务1的defconfig静态判断仍是仅LZO后端、lzo-rle默认，MULTI_COMP/ACTIME/WRITEBACK未启用；没有最终.config，本轮不将源码能力写成运行中启用状态。
+
+## 2. armv7l元数据计算
+
+这是基于源码和AAPCS32自然对齐的**静态推导**，不是最终构建的sizeof实测。普通版前提：SMP=y，AEABI，PREEMPT_RT=n，DEBUG_SPINLOCK=n，DEBUG_LOCK_ALLOC=n，4 KiB页；最终.config尚未验证这些前提。不能把数值无条件用于RT或锁调试配置。
+
+- zram_drv.h:64–74含union(unsigned long handle/element)、unsigned int flags、spinlock_t lock，以及可选ktime_t ac_time。
+- ARM32 unsigned long/unsigned int/指针为4字节；union占4字节。普通spinlock映射raw_spinlock（include/linux/spinlock_types.h:13–29）；无锁调试时raw只有arch_spinlock（spinlock_types_raw.h:14–23），ARM票据锁为u32 union（arch/arm/include/asm/spinlock_types.h:11–24），占4字节。
+- 无ACTIME：offset 0/4/8分别放handle/flags/lock，共12字节、4字节对齐。
+- ktime_t是s64（include/linux/types.h:125）；AAPCS32的64位成员按8字节自然对齐，依据[Arm官方AAPCS32基本类型表](https://github.com/ARM-software/abi-aa/blob/main/aapcs32/aapcs32.rst#fundamental-data-types)。加ACTIME后offset12补4字节padding，ac_time位于16–23，共24字节。**每槽增加12字节，而不只是时间戳的8字节。** AEABI选择见arch/arm/Kconfig:1166–1169，编译ABI参数见arch/arm/Makefile:112–115。
+- 页大小由arch/arm/include/asm/page.h:11–12和arch/Kconfig:1239–1246决定；按4 KiB计，槽数=disksize/4096；表分配见zram_drv.c:1344附近。仅计算table，不含zsmalloc、压缩流、字典、对象载荷及分配器额外开销。
+
+下表把用户的512MB/1GB/2GB明确按512 MiB/1 GiB/2 GiB（二进制单位）计算：
+
+| disksize | 槽数 | 普通无ACTIME，12 B/槽 | 普通含ACTIME，24 B/槽 | 增量 |
+| --- | ---: | ---: | ---: | ---: |
+| 512 MiB | 131072 | 1572864 B = 1.5 MiB | 3145728 B = 3 MiB | 1.5 MiB |
+| 1 GiB | 262144 | 3145728 B = 3 MiB | 6291456 B = 6 MiB | **3 MiB** |
+| 2 GiB | 524288 | 6291456 B = 6 MiB | 12582912 B = 12 MiB | 6 MiB |
+
+RT版应另算：spinlock_t为rt_mutex_base（spinlock_types.h:48–60），在相同无锁调试前提下raw锁4 + rb_root_cached两个指针8 + owner指针4 =16字节（rtmutex.h:23–27、rbtree_types.h:15–29）。因此table entry无ACTIME为24 B，含ACTIME为32 B，每槽增加8 B；512 MiB/1 GiB/2 GiB分别从3/6/12 MiB增到4/8/16 MiB，增量1/2/4 MiB。最终两版必须用实际配置和平台产物复核。这里没有使用宿主sizeof代替ARM32。
+
+## 3. LZ4三补丁合入检查
+
+已从f240c280建立lko/tmp-lz4，依次执行以下cherry-pick，三次退出码均0、无冲突。检查后返回lko/base并删除临时分支；base与tizen未变。详见[原始命令输出](../evidence/task2/lz4_merge_check.txt)。仅验证文本合入，不代表可编译、通过测试或性能改善。
+
+| 原提交 | 修改文件 | 作用 |
+| --- | --- | --- |
+| 1051099cb8da | include/linux/lz4.h，lib/lz4/lz4_compress.c、lz4_decompress.c、lz4defs.h、lz4hc_compress.c | 从1.8.3更新到1.10.0，涉及压缩/解压实现 |
+| 7b64cf4f1065 | include/linux/lz4.h | 同步LZ4HC上下文布局 |
+| 7459b2911b52 | lib/Kconfig、lib/lz4/lz4_decompress.c | 加入armv7 fast decode loop选择能力 |
+
+## 4. 字典脚本与源码快照
+
+85fcc6edce0b原始全文：[zram-dict-setup.sh](../code_snapshots/85fcc6edce0b/scripts/zram-dict-setup.sh)、[zram-dict-init.rc](../code_snapshots/85fcc6edce0b/scripts/zram-dict-init.rc)。仅上传核对，未执行、未安装、未部署。
+
+setup.sh依次写comp_algorithm=zstd、algorithm_params（level=3，可带dict）、disksize=1G，再mkswap/swapon优先级100；字典预期由rootfs提供/etc/zram/zstd.dict，缺失时脚本退回无字典模式。文件后半的采样/训练/install只是注释中的离线示例，不会自动生成字典。
+
+init.rc含systemd服务示例（注释：After=local-fs.target、Before=swap.target），及Android风格early-fs/fs/post-fs触发器；后者在fs配置sysfs，post-fs格式化启用swap。不能把该文件存在视为Tizen RPi已经集成这些触发器。脚本注释中的压缩比、时延和节省内存均是原作者假设，**不是本项目测量结论**；property回退触发器也不等于具备自动缺字典检测。
+
+struct、recompress处理函数及zcomp流函数片段已上传到[code_snapshots/f240c2809302](../code_snapshots/INDEX.md)，注明原始行号。所有快照与源commit核对；没有改动内核代码。

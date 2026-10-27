@@ -1,0 +1,376 @@
+Read-only installed-tool source audit. No HOME assignment, ConfigMgr execution or GBS invocation.
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:196-206
+196:     DEFAULTS = {'general': {'tmpdir': '/var/tmp',
+197:                             'editor': '',
+198:                             'packaging_branch': 'master',
+199:                             'upstream_branch': 'upstream',
+200:                             'upstream_tag': 'upstream/${upstreamversion}',
+201:                             'squash_patches_until': '',
+202:                             'buildroot':    '~/GBS-ROOT/',
+203:                             'packaging_dir': 'packaging',
+204:                             'work_dir': '.',
+205:                             'fallback_to_native': '',
+206:                            },
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:287-303
+287:     def __init__(self, fpath=None):
+288:         self._cfgfiles = []
+289:         self._cfgparsers = []
+290:         if fpath:
+291:             if not os.path.exists(fpath):
+292:                 raise errors.ConfigError('Configuration file %s does not '\
+293:                                          'exist' % fpath)
+294:             self._cfgfiles.append(fpath)
+295: 
+296:         # find the default path
+297:         fpaths = self._lookfor_confs()
+298:         if not fpaths:
+299:             self._new_conf()
+300:             fpaths = self._lookfor_confs()
+301:         self._cfgfiles.extend(fpaths)
+302: 
+303:         self.load_confs()
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:348-390
+348:     @staticmethod
+349:     def _lookfor_confs():
+350:         """Look for available config files following the order:
+351:             > Current project
+352:             > User
+353:             > System
+354:         """
+355: 
+356:         paths = []
+357: 
+358:         def lookfor_tizen_conf(start_dir):
+359:             """ Search topdir of tizen source code cloned using repo tool,
+360:             if .gbs.conf exists under that dir, then return it
+361:             """
+362:             cur_dir = os.path.abspath(start_dir)
+363:             while True:
+364:                 if os.path.exists(os.path.join(cur_dir, '.repo')) and \
+365:                    os.path.exists(os.path.join(cur_dir, '.gbs.conf')):
+366:                     return os.path.join(cur_dir, '.gbs.conf')
+367:                 if cur_dir == '/':
+368:                     break
+369:                 cur_dir = os.path.dirname(cur_dir)
+370: 
+371:             return None
+372: 
+373:         tizen_conf = lookfor_tizen_conf(os.getcwd())
+374:         if tizen_conf:
+375:             paths.append(tizen_conf)
+376:         for path in (os.path.abspath('.gbs.conf'),
+377:                      os.path.expanduser('~/.gbs.conf'),
+378:                      '/etc/gbs.conf'):
+379:             if os.path.exists(path) and path not in paths:
+380:                 paths.append(path)
+381: 
+382:         return paths
+383: 
+384:     def _new_conf(self):
+385:         'generate a default conf file in home dir'
+386:         fpath = os.path.expanduser('~/.gbs.conf')
+387: 
+388:         with open(fpath, 'w') as wfile:
+389:             wfile.write(self.DEFAULT_CONF_TEMPLATE)
+390:         os.chmod(fpath, 0o600)
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:680-706
+680:     def convert_to_new_style(self, profile):
+681:         'convert ~/.gbs.conf to new style'
+682:         def dump_general(fhandler):
+683:             'dump options in general section'
+684:             parser = BrainConfigParser()
+685:             parser.add_section('general')
+686:             parser.set('general', 'profile', profile.name)
+687: 
+688:             for opt in self.options('general'):
+689:                 val = self.get(opt)
+690:                 if val != self.DEFAULTS['general'].get(opt):
+691:                     parser.set('general', opt, val)
+692:             parser.write(fhandler)
+693: 
+694:         fname = '~/.gbs.conf.template'
+695:         try:
+696:             tmp = Temp()
+697:             with open(tmp.path, 'w') as fhandler:
+698:                 dump_general(fhandler)
+699:                 profile.dump(fhandler)
+700:             shutil.move(tmp.path, os.path.expanduser(fname))
+701:         except IOError as err:
+702:             raise errors.ConfigError(err)
+703: 
+704:         log.warning('subcommand oriented style of config is deprecated. '
+705:                     'Please check %s, a new profile oriented style of config '
+706:                     ' which was converted from your current settings.' % fname)
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:708-713
+708:     def _get_url_options(self, section_id):
+709:         '''get url/user/passwd from a section'''
+710:         url = os.path.expanduser(self._interpolate(self.get('url', section_id)))
+711:         user = self.get_optional_item(section_id, 'user')
+712:         password = self.get_optional_item(section_id, 'passwd')
+713:         return URL(url, user, password)
+
+/usr/lib/python3/dist-packages/gitbuildsys/conf.py:785-790
+785:         profile.buildroot = self.get_optional_item(name, 'buildroot')
+786:         if self.get_optional_item(name, 'buildconf'):
+787:             profile.buildconf = os.path.expanduser(self._interpolate(
+788:                 self.get_optional_item(name, 'buildconf')))
+789:         if self.get_optional_item(name, 'exclude_packages'):
+790:             exclude_val = self.get_optional_item(name, 'exclude_packages')
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:78-81
+78:     ]
+79: 
+80: USERID = pwd.getpwuid(os.getuid())[0]
+81: TMPDIR = None
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:148-153
+148:             try:
+149:                 if not urllib.parse.urlsplit(repo).scheme:
+150:                     if os.path.exists(repo):
+151:                         repo = os.path.abspath(os.path.expanduser(repo))
+152:                     else:
+153:                         log.warning('local repo: %s does not exist' % repo)
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:501-505
+501:     fpath = os.path.expanduser('~/.gbs.conf.auto')
+502:     with open(fpath, 'w') as wfile:
+503:         wfile.write(content)
+504: 
+505:     configmgr.add_conf(fpath)
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:612-618
+612: def prepare_depanneur_cmd(args, buildarch, profile, workdir):
+613:     '''Prepare depanneur commond'''
+614:     # get virtual env from system env first
+615:     if 'VIRTUAL_ENV' in os.environ:
+616:         cmd = ['%s/usr/bin/depanneur' % os.environ['VIRTUAL_ENV']]
+617:     else:
+618:         cmd = ['depanneur']
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:686-698
+686: def init_buildroot(args, profile):
+687:     '''init build root'''
+688:     if args.buildroot:
+689:         build_root = args.buildroot
+690:     elif 'TIZEN_BUILD_ROOT' in os.environ:
+691:         build_root = os.environ['TIZEN_BUILD_ROOT']
+692:     elif profile.buildroot:
+693:         build_root = profile.buildroot
+694:     else:
+695:         build_root = configmgr.get('buildroot', 'general')
+696:     build_root = os.path.expanduser(build_root)
+697: 
+698:     return build_root
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:724-731
+724:     os.environ['TIZEN_BUILD_ROOT'] = os.path.abspath(build_root)
+725: 
+726:     #prepare depanneur commond
+727:     cmd = prepare_depanneur_cmd(args, buildarch, profile, workdir)
+728: 
+729:     log.debug("running command: %s" % ' '.join(cmd))
+730:     retcode = os.system(' '.join(cmd))
+731:     return retcode
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:833-839
+833:     repos_map = {}
+834:     if not args.conf:
+835:         if args.full_build or args.deps_build:
+836:             repos_map = create_autoconf(args.arch, args.snapshot, args.full_build)
+837:             log.info("Create ~/.gbs.conf.auto using reference binary id")
+838: 
+839:     read_localconf(workdir)
+
+/usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py:851-858
+851: 
+852:     profile = get_profile(args)
+853:     if args.full_build or args.deps_build:
+854:         if profile.source == None:
+855:             raise GbsError('full build/deps build option must specify source repo in gbs.conf')
+856: 
+857:         download_path = Temp(prefix=os.path.expanduser('~/gbs-build'),
+858:                      directory=True)
+
+/usr/lib/python3/dist-packages/gitbuildsys/utils.py:544-563
+544:     def parse(self):
+545:         cmd = []
+546:         workdir = os.path.expanduser('~/.ref-gbs/git-ref-mapping/')
+547:         refxml = os.path.expanduser('~/.ref-gbs/git-ref-mapping/git-ref-mapping.xml')
+548:         if os.path.exists(refxml):
+549:             cmd = ['git', 'pull']
+550:         else:
+551:             if not os.path.exists(workdir):
+552:                     os.makedirs(workdir)
+553: 
+554:             cmd = ['git', 'clone', self._giturl, workdir]
+555:         try:
+556:             with Workdir(workdir):
+557:                 output = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+558:                 output.wait()
+559:         except (subprocess.CalledProcessError, OSError):
+560:             raise GbsError("failed to run %s in %s" % (' '.join(cmd), workdir))
+561: 
+562:         try:
+563:             etree = ET.parse(refxml)
+
+/usr/bin/depanneur:62-70
+62: 
+63: my ($zuid, $zgid);
+64: # Get UID/GID for source code manipulates
+65: if (getlogin()) {
+66:      ($zuid, $zgid) = (getpwnam(getlogin()))[2,3];
+67: } else {
+68:      ($zuid, $zgid) = (getpwuid($<))[2,3];
+69: }
+70: 
+
+/usr/bin/depanneur:115-131
+115: my $skip_srcrpm = 0;            # don't generate source rpm package if $skip_srcrpm == 1
+116: 
+117: my $virtualenv = "$ENV{'VIRTUAL_ENV'}";    # virtual env dir, default is '/'
+118: my $build_root = $ENV{TIZEN_BUILD_ROOT};   # depanneur output dir
+119: $build_root = expand_filename($build_root);# expand ~/, ~<user> etc.
+120: my $localrepo = "$build_root/local/repos"; # generated local repo dir
+121: my $order_dir = "$build_root/local/order"; # intermediate repo data file, which
+122:                                            # contains all information, including
+123:                                            # dependency,provides,filepath
+124: my $depends_dir = "$build_root/local/depends"; # package's reverse dependency dir
+125: 
+126: my $cache_dir = "$build_root/local/cache"; # cache binary rpms downloaded from remote repos
+127: my $groupfile="$build_root/meta/group.xml";# group information for yum
+128: my $patternfile="$build_root/meta/patterns.xml"; # group information for zypp
+129: my $build_dir = canonpath("$virtualenv/usr/lib/build"); # build script directory
+130: $ENV{'BUILD_DIR'} = $build_dir; # must change env variable in main thread
+131: my $config_filename = "$build_root/meta/local.yaml";
+
+/usr/bin/depanneur:397-422
+397: sub my_system {
+398:     my $cmd = shift;
+399:     debug("my_system: $cmd");
+400:     my $ret;
+401:     my $pid;
+402:     my @out = ();
+403:     if (wantarray) {
+404:         defined($pid=open(PIPE, "-|")) or die "Can not fork: $!\n";
+405:     } else {
+406:         defined($pid=fork) or die "Can not fork: $!\n";
+407:     }
+408: 
+409:     unless ($pid) {  # Child
+410:         open(STDERR, ">&STDOUT");
+411:         exec ($cmd);
+412:         exit -1;
+413:     } else {  # Parent
+414:         if (wantarray) {
+415:             while (my $line = <PIPE>) {
+416:                 print $line;
+417:                 push @out, $line;
+418:             }
+419:         }
+420:         waitpid ($pid,0);
+421:         $ret = $?;
+422:         close(PIPE) if wantarray;
+
+/usr/bin/depanneur:433-440
+433: sub expand_filename {
+434:     my $path = shift;
+435:     my $home_dir = sub { my $p = getpw($_[0]) or die "$_[0] is not a valid username\n";
+436:                          return $p->dir();
+437:                        };
+438:     $path =~ s{^~(?=/|$)}{ $ENV{HOME} ? "$ENV{HOME}" : $home_dir->( $< ) }e
+439:           or $path =~ s{^~(.+?)(?=/|$)}{ $home_dir->( $1 ) }e;
+440:     return $path;
+
+/usr/bin/depanneur:784-799
+784: sub gbs_export {
+785:     my ($base, $spec, $packaging_dir, $upstream_branch, $upstream_tag, $out_dir) = @_;
+786:     my @args = ();
+787:     my $cmd;
+788:     push @args, "gbs";
+789:     push @args, "--debug" if ($debug);
+790:     push @args, "export";
+791:     push @args, "'$base'";
+792:     push @args, "-o '$out_dir'";
+793:     push @args, "--outdir-directly";
+794:     push @args, "--spec $spec";
+795:     if ($includeall == 1) {
+796:         push @args, "--include-all";
+797:     } else {
+798:         push @args, "--commit=$commit";
+799:     }
+
+/usr/bin/depanneur:818-827
+818:     # print only error messages cause info message appear confused when to use thread
+819:     if ($thread_export == 1){
+820:         push @args, " 2>&1 | grep -v warning | grep -v Creating";
+821:     }
+822:     if ($with_submodules == 1) {
+823:        push @args, "--with-submodules";
+824:     }
+825: 
+826:     $cmd = join(" ", @args);
+827:     return my_system($cmd);
+
+/usr/bin/depanneur:2045-2052
+2045:     if ($TERM == 1) {
+2046:         return -1;
+2047:     }
+2048:     push @args, "sudo /usr/bin/build";
+2049:     push @args, "--uid $zuid:$zgid" if ($zuid != 0 && $zgid != 0);
+2050:     my $nprocessors = 2;
+2051:     if ($^O eq "linux") {
+2052:         $nprocessors = int(int(sysconf(SC_NPROCESSORS_ONLN))/int($MAX_THREADS));
+
+/usr/lib/python3.12/posixpath.py:256-302
+256: def expanduser(path):
+257:     """Expand ~ and ~user constructions.  If user or $HOME is unknown,
+258:     do nothing."""
+259:     path = os.fspath(path)
+260:     if isinstance(path, bytes):
+261:         tilde = b'~'
+262:     else:
+263:         tilde = '~'
+264:     if not path.startswith(tilde):
+265:         return path
+266:     sep = _get_sep(path)
+267:     i = path.find(sep, 1)
+268:     if i < 0:
+269:         i = len(path)
+270:     if i == 1:
+271:         if 'HOME' not in os.environ:
+272:             try:
+273:                 import pwd
+274:             except ImportError:
+275:                 # pwd module unavailable, return path unchanged
+276:                 return path
+277:             try:
+278:                 userhome = pwd.getpwuid(os.getuid()).pw_dir
+279:             except KeyError:
+280:                 # bpo-10496: if the current user identifier doesn't exist in the
+281:                 # password database, return the path unchanged
+282:                 return path
+283:         else:
+284:             userhome = os.environ['HOME']
+285:     else:
+286:         try:
+287:             import pwd
+288:         except ImportError:
+289:             # pwd module unavailable, return path unchanged
+290:             return path
+291:         name = path[1:i]
+292:         if isinstance(name, bytes):
+293:             name = str(name, 'ASCII')
+294:         try:
+295:             pwent = pwd.getpwnam(name)
+296:         except KeyError:
+297:             # bpo-10496: if the user name from the path doesn't exist in the
+298:             # password database, return the path unchanged
+299:             return path
+300:         userhome = pwent.pw_dir
+301:     # if no user home, return the path unchanged on VxWorks
+302:     if userhome is None and sys.platform == "vxworks":

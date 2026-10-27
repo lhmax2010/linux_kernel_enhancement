@@ -1,0 +1,94 @@
+# zram-dict-init.rc — Android/Tizen init.rc 방식 zstd dictionary zram 설정 예제
+#
+# 대상: Tizen on BCM2711 (ARMv7, RAM 1.5GB)
+# 포함 위치: /vendor/etc/init/ 또는 /system/etc/init/
+#
+# 전제:
+#   - /etc/zram/zstd.dict 가 rootfs에 포함됨
+#   - CONFIG_ZRAM_BACKEND_ZSTD=y 빌드됨
+#   - zram 모듈 또는 built-in
+#
+# 실행 순서 강제:
+#   comp_algorithm → algorithm_params → disksize → mkswap → swapon
+#
+# ===========================================================================
+# systemd 방식 (Tizen Linux on RPi 권장)
+# 파일: /etc/systemd/system/zram-swap.service
+# ===========================================================================
+#
+# [Unit]
+# Description=zram swap with zstd dictionary
+# DefaultDependencies=no
+# After=local-fs.target
+# Before=swap.target
+#
+# [Service]
+# Type=oneshot
+# RemainAfterExit=yes
+# ExecStart=/bin/sh /usr/lib/zram/zram-dict-setup.sh
+#
+# [Install]
+# WantedBy=swap.target
+#
+# ===========================================================================
+# Android init.rc 방식 (Tizen Mobile / Tizen IoT Android 기반)
+# ===========================================================================
+
+on early-fs
+    # rootfs 마운트 직후, /data 마운트 전 실행
+    # dict 파일은 /system 또는 /etc (rootfs) 에 있어야 함
+    mkdir /etc/zram 0755 root root
+
+on fs
+    # Step 1: 압축 알고리즘 선택 (disksize 전 필수)
+    write /sys/block/zram0/comp_algorithm zstd
+
+    # Step 2: 딕셔너리 + 레벨 설정 (disksize 전 필수)
+    # 파일 경로는 이 시점에 마운트되어 있어야 함
+    write /sys/block/zram0/algorithm_params "algo=zstd level=3 dict=/etc/zram/zstd.dict"
+
+    # Step 3: 크기 설정 — 이후 알고리즘 변경 불가
+    # 1.5GB RAM 기준 1GB: zstd+dict 압축률 3.5:1 → 실점유 ~286MB
+    write /sys/block/zram0/disksize 1073741824
+
+on post-fs
+    # Step 4: 스왑 포맷 및 활성화
+    exec - root root -- /sbin/mkswap /dev/zram0
+    exec - root root -- /sbin/swapon -p 100 /dev/zram0
+
+# ===========================================================================
+# 딕셔너리 없는 폴백 (dict 파일 부재 시 대체)
+# ===========================================================================
+
+on property:zram.dict.missing=1
+    write /sys/block/zram0/comp_algorithm zstd
+    write /sys/block/zram0/algorithm_params "algo=zstd level=3"
+    write /sys/block/zram0/disksize 1073741824
+    exec - root root -- /sbin/mkswap /dev/zram0
+    exec - root root -- /sbin/swapon -p 100 /dev/zram0
+
+# ===========================================================================
+# 메모리 절약 검증용 (디버그, 부팅 완료 후)
+# 결과는 dmesg 또는 logcat에 남김
+# ===========================================================================
+
+on property:sys.boot_completed=1
+    exec - root root -- /bin/sh -c \
+        "echo 'zram mm_stat:'; cat /sys/block/zram0/mm_stat"
+
+# ===========================================================================
+# 메모리 계산 참고 (ARMv7, RAM=1.5GB, ZRAM_SIZE=1GB)
+# ---------------------------------------------------------------------------
+#
+#  알고리즘           압축률(typ)  실점유    절감(vs lzo-rle)
+#  lzo-rle (기존)     2.5:1        ~400MB    기준
+#  zstd lv3           3.0:1        ~333MB    +67MB
+#  zstd lv3 + dict    3.5:1        ~286MB    +114MB
+#  zstd lv5 + dict    4.0:1        ~250MB    +150MB  ← ARMv7 레이턴시 주의
+#
+#  목표(200~250MB 절감)에 도달하려면:
+#    - ZRAM_SIZE=1G + zstd lv3 + dict → +114MB  (추가 튜닝 필요)
+#    - ZRAM_SIZE=1.2G + zstd lv3 + dict → +137MB
+#    - 멀티 comp (ZRAM_MULTI_COMP) 활성화 시 추가 절감 가능
+#
+# ===========================================================================
