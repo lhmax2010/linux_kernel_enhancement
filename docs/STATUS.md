@@ -6,7 +6,7 @@
 
 ## 计划
 
-PM任务2顺序：建立lko/base → SSH查询与02修订 → 串行armv7l GCC/LLVM构建 → 实际编译器及最终.config → 体积/开销 → zram静态准备与LZ4合入检查 → AutoFDO/BOLT静态前提。遇构建失败或凭据要求停止，保留证据；本次触发停止条件，后续执行待PM决定。
+PM任务2顺序：建立lko/base → SSH查询与02修订 → 串行armv7l GCC/LLVM构建 → 实际编译器及最终.config → 体积/开销 → zram静态准备与LZ4合入检查 → AutoFDO/BOLT静态前提。遇构建失败或凭据要求停止，保留证据；本次触发停止条件，后续执行待PM决定。PM后续要求的日志封存、退出归因和进程组规则更新已完成；此次主命令被主动中断、未成功，因此不继续构建。
 
 ## 进度
 
@@ -22,7 +22,8 @@ PM任务2顺序：建立lko/base → SSH查询与02修订 → 串行armv7l GCC/L
 1. 虽已export TMPDIR且在两个项目conf显式配置tmpdir=$WS/temp，depanneur嵌套调用gbs export没有传递-c；源码导出仍写到 `/var/tmp/.gbs_export_4d01tubn/linux-kernel-6.12.80.tar.xz`。**本次发生过目录越界，不声称全程合规。** 检测后立即发送SIGINT；后台进程未及时退出，随后以SIGTERM终止主命令与可控子进程。未修改spec、内核代码或已安装GBS工具进行重试。
 2. 在终止期间GBS进入root依赖初始化。残留root进程普通kill无权限；仅一次非交互清理sudo -n返回“a password is required”，此后停止全部sudo尝试，不索要密码、不绕过凭据。
 3. 后续只读复查：2026-10-27 14:24:16，PGID116650已无活跃进程；残留进程自行结束初始化，无需PM再终止。工具正常导出结束时已自行移除上述/var/tmp目录，本任务没有清理工作区外文件。
-4. `$WS/temp/build_gcc.log`保留主命令与残留子进程全部输出，并已封存；最终末行BUILD-END的时间/退出码对应原主命令。LLVM无日志，因为未启动。GBS buildroot与下载依赖全部留在temp，不上传。
+4. PM后续确认用户未执行kill，残留已自行退出，temp下无残留挂载；2026-10-27 14:44:40只读复查同样未发现PGID116650进程或当前挂载命名空间内temp下的挂载。见[build_closure_recheck.txt](../evidence/task2/build_closure_recheck.txt)。
+5. `$WS/temp/build_gcc.log`保留主命令与残留子进程全部输出，并已封存；最终末行BUILD-END的时间/退出码对应原主命令。LLVM无日志，因为未启动。GBS buildroot与下载依赖全部留在temp，不上传。
 
 ## 已闭合结论（附证据）
 
@@ -34,12 +35,13 @@ PM任务2顺序：建立lko/base → SSH查询与02修订 → 串行armv7l GCC/L
 | 85fcc6edce0b还删除DEBUG_INFO_BTF=y | [zram_branch_config_diff.txt](../evidence/task2/zram_branch_config_diff.txt) |
 | GBS导出子进程未继承-c，独立采用/var/tmp默认值 | [gbs_export_root_cause.txt](../evidence/task2/gbs_export_root_cause.txt)、[build_stop_reason.txt](../evidence/task2/build_stop_reason.txt) |
 | GCC主命令143；无完整内核构建结果；残留已无活跃进程 | [build_gcc_result.json](../evidence/task2/build_gcc_result.json)、[build_gcc_log.txt](../evidence/task2/build_gcc_log.txt)、[residual_state.txt](../evidence/task2/residual_state.txt) |
+| 主命令被执行者SIGTERM中断，残留随后自行退出；末50行完整引用，日志末行143 | [03第3.3节](03_baseline_build.md#33-pm后续确认退出归因与完整日志封存)、[build_gcc_last50.txt](../evidence/task2/build_gcc_last50.txt)、[封存复核](../evidence/task2/build_closure_recheck.txt) |
 | 日志未伪装成功；time输出Exit status:0不覆盖实际SIGTERM/143 | [03_baseline_build.md](03_baseline_build.md)、[log_integrity.txt](../evidence/task2/log_integrity.txt) |
 
 ## 需要人工裁决的前提
 
 - 下次如何向嵌套gbs export可靠传递工作区内tmpdir配置，且不违反“基线代码不改”“不写工作区外”的限制。本次只定位根因，没有自动修改工具或放宽规则。
-- 下次如何保证后台构建的root子进程树可在触发停止条件时安全终止；本次sudo清理曾要求密码，后续不得直接假定可无凭据清理。
+- 进程组残留处置已由PM裁决：每次构建前后检查本任务进程组；残留先等5分钟，仍存在就停止报告，不尝试sudo、不操作其他任务进程。见RULES.md新增条款。该项已闭合，不再请求清理权限。
 - 是否安排恢复任务2。获得新指令前，不重试GCC、不启动LLVM、不补做步骤5–9。
 
 ## 挂账事项

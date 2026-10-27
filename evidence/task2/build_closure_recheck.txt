@@ -1,0 +1,12 @@
+Rechecked: 2026-10-27T14:44:40+08:00
+Command: ps -eo pid=,ppid=,pgid=,user=,stat=,comm= ; filter PGID == 116650
+No process in PGID 116650.
+Read: /proc/self/mountinfo ; filter mountpoint == $WS/temp or under $WS/temp/
+No matching mount in the current mount namespace.
+PM confirmation: residual processes exited themselves; user sent no kill; no residual mount under workspace temp.
+No signal, sudo, build or board command executed during this follow-up.
+Local/uploaded complete log identical: 48259 bytes; SHA-256 3157116b9e9b5f8d6822103ff5adf4d4e1b6f2f8fa13ff2dae277bc82bfc401a
+Log has 532 lines; build_gcc_last50.txt is exact lines 483-532.
+Final line: BUILD-END gcc 2026-10-27T14:19:54+08:00 exit=143
+Main-command termination: log line 63 says Command terminated by signal 15; line 91 already records exit=143.
+Later initialization output does not change that exit status.

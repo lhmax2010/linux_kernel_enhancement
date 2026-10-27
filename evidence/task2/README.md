@@ -29,6 +29,8 @@
 | [base_commit.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/base_commit.txt) | 995 | `a51d2f03f8799984aaa29864a2d9bcdb02f6f409b9d0c3272d628991c2ea51ac` |
 | [base_diff.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/base_diff.txt) | 1601 | `f616a14626c1bb8030fab784f330f307b36a739d3f51f606265c2ead6b2d17b3` |
 | [base_diff_stat.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/base_diff_stat.txt) | 105 | `9321a9d6061b3ca2a2fa0d0f470beb80c8f22a7f8e72d782f2933ff0523ae363` |
+| [build_closure_recheck.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/build_closure_recheck.txt) | 875 | `edbc2e0925b1029393ca9106dc7a49c8c8a62e65d18bd02dae1589b416b14500` |
+| [build_gcc_last50.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/build_gcc_last50.txt) | 4433 | `72c5809ecd256a0340dfb34a76d56d39b06f87136d3f679dabfdc7a158b4ee9e` |
 | [build_gcc_log.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/build_gcc_log.txt) | 48259 | `3157116b9e9b5f8d6822103ff5adf4d4e1b6f2f8fa13ff2dae277bc82bfc401a` |
 | [build_gcc_result.json](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/build_gcc_result.json) | 595 | `4f6572af261ef1993d476f1b2135ae795fcc967677ce898f9c52e9e942b2f95e` |
 | [build_stop_reason.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/build_stop_reason.txt) | 1169 | `9f739c517e92e332ac21c7a4d659a7425c57d7123b5ad8a10191b5d0382f5c08` |
