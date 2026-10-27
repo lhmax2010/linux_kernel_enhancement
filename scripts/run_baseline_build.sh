@@ -2,7 +2,6 @@
 # User-run only. Do not source. The agent validates this file with bash -n only.
 # External commands below are installed system tools; no external helper scripts.
 set -uo pipefail
-umask 077
 readonly WS=/home/linhao/Toolchain/development/linux_kernel_optimization
 readonly KERNEL=/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi
 readonly WORK=/home/linhao/Toolchain/development/linux_kernel_optimization/temp
@@ -12,7 +11,7 @@ readonly EXPECTED=f240c28093027707f5e09f8a9cbbed16a43ebb1a
 readonly TIZEN=42aeefac58edeb081aff440f0b60be71cbe49755
 export TMPDIR="$WORK" PYTHONDONTWRITEBYTECODE=1
 # Deliberately do not export HOME or GIT_CONFIG_NOSYSTEM in this shell.
-export PATH=/usr/bin:/bin
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 stamp() { /usr/bin/date --iso-8601=seconds; }
 declare -A result=([preflight]=PENDING [export]=PENDING [gcc]=PENDING [llvm]=PENDING)

@@ -6,6 +6,8 @@
 
 ## 当前交付
 
+- PM运行前修订已完成：删除umask设置，沿用终端默认值；PATH补全为/usr/bin:/bin:/usr/sbin:/sbin；03补充depanneur三分钟sudo认证维持对控制终端的依赖及tmux/screen建议。本次只做bash -n语法检查，未运行脚本。证据：[script_static_validation.txt](../evidence/task2/script_static_validation.txt)。
+
 - 正常环境git push已补发b33992f0和规则提交38984f1，未修改认证配置，未索要密码。证据：[publication_r3_initial.txt](../evidence/task2/publication_r3_initial.txt)。
 - [run_baseline_build.sh](../scripts/run_baseline_build.sh)由用户在终端运行：前台预检/一次sudo -v，后台导出审计→GCC→LLVM，进程组及外部写入记录，失败跳过后续，trap/ALL-END收尾。详见[03最新章节](03_baseline_build.md)。
 - /usr/bin/depanneur:2048用普通sudo /usr/bin/build，3164–3174使用sudo /bin/echo -n维持认证；脚本本身只有一次前台sudo -v，不执行其他sudo或发送信号。缓存有效时无密码提示，否则由用户直接输入。见[sudo_call_audit.txt](../evidence/task2/sudo_call_audit.txt)。

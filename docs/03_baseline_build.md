@@ -12,7 +12,7 @@
 cd /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi && /usr/bin/bash /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_baseline_build.sh
 ```
 
-所有工作区路径已写死。脚本是Bash，使用已安装系统工具，不依赖工作区外的辅助脚本。HOME和GIT_CONFIG_NOSYSTEM仅由env传给strace/gbs及其后代，脚本不会修改调用者的HOME或Git配置；结果仓库commit/push使用正常环境与已有GitHub认证。
+所有工作区路径已写死。脚本是Bash，使用已安装系统工具，不依赖工作区外的辅助脚本。PATH固定为 `/usr/bin:/bin:/usr/sbin:/sbin`。脚本不设置umask，沿用用户终端默认值，避免额外收紧经sudo生成的RPM和仓库文件权限，并保持与用户平时运行GBS的条件一致。HOME和GIT_CONFIG_NOSYSTEM仅由env传给strace/gbs及其后代，脚本不会修改调用者的HOME或Git配置；结果仓库commit/push使用正常环境与已有GitHub认证。
 
 ### 前台与sudo依据
 
@@ -26,7 +26,7 @@ sudo源码证据见[sudo_call_audit.txt](../evidence/task2/sudo_call_audit.txt)�
 
 因为工具使用普通sudo，非root用户在后台前执行**一次 `/usr/bin/sudo -v`**：缓存有效或策略免密时不提示；需要认证时由用户在前台输入密码。root跳过。脚本不另用sudo -n/-l等探测、不强制重新输入、不索要/记录密码，也没有其他sudo命令。缓存是否有效无法在“不调用其他sudo”的约束下提前可靠判定，交由这一次-v按本机策略决定是否需要交互。
 
-后台采用Bash job control创建独立进程组，保留前台sudo验证所在的登录session/控制终端，没有使用setsid。建议保留原终端会话。认证缓存的时效、sudo策略和导出耗时仍可能影响后续调用；没有通过修改sudoers、askpass或凭据文件保证后台认证。如果后台进程进入停止态（例如需要读终端），脚本只记录并等待5分钟，仍未退出则失败报告，不发信号。
+后台采用Bash job control创建独立进程组，保留前台sudo验证所在的登录session/控制终端，没有使用setsid。depanneur自带的sudo认证维持（3分钟周期，/usr/bin/depanneur:3164–3174，周期常量见:84）依赖启动时的控制终端；建议用户在 **tmux或screen** 中运行，避免SSH断开导致后续sudo失败。认证缓存的时效、sudo策略和导出耗时仍可能影响后续调用；没有通过修改sudoers、askpass或凭据文件保证后台认证。如果后台进程进入停止态（例如需要读终端），脚本只记录并等待5分钟，仍未退出则失败报告，不发信号。
 
 ### 后台阶段及判定
 

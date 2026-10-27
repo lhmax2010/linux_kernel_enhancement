@@ -60,7 +60,7 @@
 | [publication_home_attempt.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/publication_home_attempt.txt) | 420 | `45dc619aa3b254229aa405f57360ccb756a07dfb86289b89bc81516c1dec5d85` |
 | [publication_r3_initial.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/publication_r3_initial.txt) | 95 | `08aea3a962e7feab7f35ab6464ae1431b714e01273f4ccbaa1ee08f27cb29cd7` |
 | [residual_state.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/residual_state.txt) | 462 | `c6df5f38d5127af7d1ba2484d0c6b9f65f0cf3f5bb143054b5df588438fd5bcf` |
-| [script_static_validation.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/script_static_validation.txt) | 525 | `d7aa834198120900ed5c168c141d2a6b39254f631b0859f7e3704d1911ef3ff7` |
+| [script_static_validation.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/script_static_validation.txt) | 735 | `bbc77c3d8e9d46fec4ff9d2e5a65d3f4311ee56445b6204ef5840e2659e0c884` |
 | [static_source_lines.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/static_source_lines.txt) | 42156 | `3d59342f258144ab1c4a3a5a3040d5829725a30d11a161380a465a96a7870646` |
 | [sudo_call_audit.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/sudo_call_audit.txt) | 2553 | `aab5f012f9c4d7e67551378914dd1e86b1d0c844f70c9a0e8d4341383ed13c29` |
 | [validation.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/validation.txt) | 608 | `650b7deecef20b2419a568497e27999b318fac5f2ab808749590f58d499956cb` |

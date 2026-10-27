@@ -2,6 +2,9 @@ Command: /usr/bin/bash -n /home/linhao/Toolchain/development/linux_kernel_optimi
 exit=0
 stdout=
 stderr=
-Script SHA-256: 04b32d19ddba705229b5e657349cd4ca9f6a157d41faf4de92cc0272b07c9990
+Script SHA-256: e30126a34e639c291fcead25a6ebeb2f2f005c2b5e3afccf2a013d24d251aab7
 Static review: one direct sudo invocation (-v), no signal-sending/cleanup command, GBS-scoped env, independent process groups, five-minute residual wait, strict export path audit, serial phases, terminal markers/traps.
 Not executed, not sourced, no sudo/export/build run; runtime correctness unverified.
+
+PM pre-run revision: inherit terminal umask; PATH=/usr/bin:/bin:/usr/sbin:/sbin; document tmux/screen recommendation.
+This revision validation: bash -n only, exit=0, no output. Script not executed or sourced.
