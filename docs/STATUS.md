@@ -2,7 +2,7 @@
 
 更新：2026-10-27（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**任务2续二部分完成：步骤1源码核对、步骤2准备、步骤6不依赖产物的静态部分已完成；步骤3–5未执行。不是成功构建基线。**
+**任务2续三进行中：已记录正常环境发布裁决，准备推送旧本地成果并编写用户执行脚本。此前任务2续二部分完成：步骤1源码核对、步骤2准备、步骤6不依赖产物的静态部分已完成；步骤3–5未执行。不是成功构建基线。**
 
 ## 计划
 
@@ -49,6 +49,6 @@ PM关于HOME方案及保留源码配置的裁决已闭合，不再重复请求�
 
 ## 发布状态
 
-本次文件与STATUS已在本地同一提交；普通git push origin main失败，退出128：禁用系统及工作区外全局Git配置后，无可用GitHub认证（交互提示已禁用）。未索要密码、未恢复外部配置、未绕过认证或force push，见[发布记录](../evidence/task2/publication_home_attempt.txt)。远端main/raw链接尚未更新，本轮交付以工作区文件及本地commit为准。发布还需要工作区规则允许的认证来源；当前没有该来源的证据。
+本次文件与STATUS已在本地同一提交；普通git push origin main失败，退出128：禁用系统及工作区外全局Git配置后，无可用GitHub认证（交互提示已禁用）。未索要密码、未恢复外部配置、未绕过认证或force push，见[发布记录](../evidence/task2/publication_home_attempt.txt)。远端main/raw链接尚未更新，本轮交付以工作区文件及本地commit为准。该记录是上一轮结果。PM现已明确授权结果仓库在正常环境使用本机已有GitHub认证，本轮按此重新推送，不修改认证配置。
 
 交付索引：[evidence/task2/README.md](../evidence/task2/README.md)。
