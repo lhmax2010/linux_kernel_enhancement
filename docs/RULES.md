@@ -2,9 +2,19 @@
 2. 生成的所有东西都必须在工作目录内。
 
 
+## PM裁决：任务2续五（优先于后文历史记录）
+
+- 只读核对并修改用户执行脚本；代理不运行脚本、gbs、导出、构建或sudo，只对脚本做bash -n。用户重跑后按任务2续四每10分钟只读监控；异常即停止报告，不自动重试。
+- 所有gbs命令（export/build）及后代必须使用：`HOME=$WS/temp/gbs-home GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES=$WS/temp/gbs-home/.gbp.conf`。这三个变量不用于成果仓库git commit/push；Git继续使用正常环境的现有GitHub认证。
+- `$WS/temp/gbs-home/.gbp.conf`是仅含注释的普通文件；GBP_CONF_FILES非空值完全替换git-buildpackage默认查找列表，不修改系统工具或系统配置。
+- 系统运行时白名单新增：`/etc/gnutls/config`（TLS库自身运行时配置）、`/etc/gss/mech.d`（GSSAPI库自身运行时目录）、`/etc/ldap/ldap.conf`（LDAP库自身运行时配置）、`/run/systemd/resolve/stub-resolv.conf`（/etc/resolv.conf指向的实际文件）。
+- 以只读、目录方式打开`/tmp`、`/var/tmp`允许；脚本要求O_RDONLY、目录检查通过且不含写入/创建标志，不扩大到目录内文件。
+- 工作区外任何带O_WRONLY、O_RDWR或O_CREAT的成功打开，或任何mkdir/mkdirat调用（包括失败的尝试），都判为失败；脚本同时拒绝O_TRUNC。运行时路径白名单不自动豁免写入标志。发现问题不向进程发信号，等当前命令自然结束再报告。
+- 上次用户运行产物只在WS/temp内整体归档，不删除；保留run_baseline_build.lock原位。新日志不得覆盖历史运行记录。
+
 ## PM裁决：任务2续三（优先于后文历史规则）
 
-HOME=$WS/temp/gbs-home 和 GIT_CONFIG_NOSYSTEM=1 这两个环境变量只用于 gbs 命令（export 和 build）以及它派生的进程。本项目结果仓库的 git commit、git push 一律在正常环境下执行，使用本机已有的 GitHub 认证。不修改认证配置，不索要密码。
+HOME=$WS/temp/gbs-home、GIT_CONFIG_NOSYSTEM=1 和 GBP_CONF_FILES=$WS/temp/gbs-home/.gbp.conf 这三个环境变量只用于 gbs 命令（export 和 build）以及它派生的进程。本项目结果仓库的 git commit、git push 一律在正常环境下执行，使用本机已有的 GitHub 认证。不修改认证配置，不索要密码。
 
 本轮仅编写由用户在自己的终端运行的构建脚本；代理不运行脚本、导出或构建，只做静态核对与bash -n。脚本仅允许在前台执行一次sudo -v供用户完成必要认证，不执行其他sudo命令、不向进程发送信号；GBS工具自身的sudo调用须如实说明。用户运行结束并告知后再恢复产物核对。
 
@@ -13,9 +23,9 @@ HOME=$WS/temp/gbs-home 和 GIT_CONFIG_NOSYSTEM=1 这两个环境变量只用于 
 1. 对"不使用工作目录以外的文件"的界定：
    - 凡是会影响本项目行为的配置、脚本、数据，只能来自工作区。具体包括 gbs.conf、gitconfig、rpm 宏、构建脚本、仓库定义。
    - 系统已安装工具运行所需的程序文件和系统运行时文件（/usr、/lib*、/proc、/sys、/dev，以及 /etc 下的 passwd、nsswitch、ld.so、locale、sudoers 等）不在此限。
-2. 在本机上，本项目所有 gbs 命令都必须带下面两个环境变量运行：
-   HOME=$WS/temp/gbs-home GIT_CONFIG_NOSYSTEM=1
-   不加这两个变量，就不许运行 gbs。
+2. 在本机上，本项目所有 gbs 命令都必须带下面三个环境变量运行：
+   HOME=$WS/temp/gbs-home GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES=$WS/temp/gbs-home/.gbp.conf
+   不加这三个变量，就不许运行 gbs。
 3. 不再采用修改 linux-rpi/.gbs.conf 或 .git/info/exclude 的方案：该文件已被 git 跟踪，保持原样。上一轮报告中列出的"独立工具副本"和"专属隔离环境"两个方案，同样不采用。
 
 本裁决覆盖后文历史任务中的相冲突方案；历史审计保留作证据，不再视为待选择方案。

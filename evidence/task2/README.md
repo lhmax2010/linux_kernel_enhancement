@@ -27,6 +27,7 @@
 | raw文件 | bytes | SHA-256 |
 | --- | ---: | --- |
 | [aapcs32_reference.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/aapcs32_reference.txt) | 415 | `b0a3b345565db376b5f48c336fb6cb78bfdbfcd8977db5643e554f5da5bc31b5` |
+| [attempt_1801_archive.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/attempt_1801_archive.txt) | 3961 | `f3ecf3e9d89df7250225379af9663698c5c22e178df5b08de4867d7490b0e611` |
 | [base_amend_r2.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/base_amend_r2.txt) | 1457 | `ec79fd4d20857b5f36e7d9d89c08902157cd33966a16a5358c6aacb3f4ec621e` |
 | [base_commit.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/base_commit.txt) | 995 | `a51d2f03f8799984aaa29864a2d9bcdb02f6f409b9d0c3272d628991c2ea51ac` |
 | [base_diff.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/base_diff.txt) | 1601 | `f616a14626c1bb8030fab784f330f307b36a739d3f51f606265c2ead6b2d17b3` |
@@ -39,9 +40,14 @@
 | [build_stop_reason.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/build_stop_reason.txt) | 1169 | `9f739c517e92e332ac21c7a4d659a7425c57d7123b5ad8a10191b5d0382f5c08` |
 | [commands.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/commands.txt) | 2350 | `5ee71377d1916acabc30ddcbaf2b52ccf314415ef493cf0ef5d8d9593d6e2c18` |
 | [existing_project_gbs_r2.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/existing_project_gbs_r2.txt) | 476 | `320e39b4399778cc7940c05b990a7a6ad0e081ad9e165c3af501f13bdc4c73aa` |
+| [export_attempt_1801_summary.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/export_attempt_1801_summary.txt) | 3888 | `16ff78bf3ebc27500f5bee22e044e4276dbff29cee70c25d803ed67635dfade0` |
+| [export_trace_open_analysis.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/export_trace_open_analysis.txt) | 17306 | `225e31fa5f305075e50d4305cd73955ddb150d776b446ed3a49f12ef7414f2d1` |
 | [external_gbs_keys_r2.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/external_gbs_keys_r2.txt) | 184 | `c6aafcab4dee2b2888e50da9a45799537c1f33a1c4ea692fbfe78cb3e36ca003` |
 | [fdo_symbol_search.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/fdo_symbol_search.txt) | 343 | `bf58b41fd67a716d088e2eab5d15a777235393553ed54f2ce57cec13863dc877` |
 | [final_kernel_state.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/final_kernel_state.txt) | 218 | `a92ad3e3e8d582a584e4430f224911f18e47368d805b429cd9abfa56c42e7730` |
+| [gbp_audit.md](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/gbp_audit.md) | 3657 | `904a24c8c7f23a13efc076f26ae90422a01f45a60edcfd8e4839b14fa2dd311f` |
+| [gbp_source_lines.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/gbp_source_lines.txt) | 19945 | `134c11e13bc151039b087bd43a194d007a26bad493f5401c3c04398c7f71dd44` |
+| [gbp_system_config.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/gbp_system_config.txt) | 396 | `544d115eb21ad6640e453bebbee49914bec139a8dd980929562b2b434ddb0900` |
 | [gbs_config_audit_r2.md](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/gbs_config_audit_r2.md) | 9582 | `bbe261daf18f9b3492ece278ce1db91632a4e1aa5ad31c5cdd1d961515b8c352` |
 | [gbs_config_source_r2.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/gbs_config_source_r2.txt) | 24097 | `895680385a2a7f0802bec1064937edf0b154fa995b1fb8a48ada39566dd82af4` |
 | [gbs_export_root_cause.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/gbs_export_root_cause.txt) | 6077 | `040ccc1cc5997ae1365f17c45cb0ac14acca11c5c454b442a67e0097b24c0b37` |
@@ -61,8 +67,10 @@
 | [publication_r3_initial.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/publication_r3_initial.txt) | 95 | `08aea3a962e7feab7f35ab6464ae1431b714e01273f4ccbaa1ee08f27cb29cd7` |
 | [residual_state.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/residual_state.txt) | 462 | `c6df5f38d5127af7d1ba2484d0c6b9f65f0cf3f5bb143054b5df588438fd5bcf` |
 | [script_static_validation.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/script_static_validation.txt) | 735 | `bbc77c3d8e9d46fec4ff9d2e5a65d3f4311ee56445b6204ef5840e2659e0c884` |
+| [script_static_validation_r5.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/script_static_validation_r5.txt) | 717 | `2d9c3e0323826e3e1e5a4216434190d1560cd62cb338acea103cea086e3206e6` |
 | [static_source_lines.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/static_source_lines.txt) | 42156 | `3d59342f258144ab1c4a3a5a3040d5829725a30d11a161380a465a96a7870646` |
 | [sudo_call_audit.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/sudo_call_audit.txt) | 2553 | `aab5f012f9c4d7e67551378914dd1e86b1d0c844f70c9a0e8d4341383ed13c29` |
+| [tmp_directory_library_analysis.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/tmp_directory_library_analysis.txt) | 7052 | `02cf8f32b47940a89ab30dbb46c73eb2e8a84a98f238132636ed598c7512dfcf` |
 | [validation.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/validation.txt) | 608 | `650b7deecef20b2419a568497e27999b318fac5f2ab808749590f58d499956cb` |
 | [validation_home_static.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/validation_home_static.txt) | 395 | `35ef2af6a2f314a4ca650839dc6a1c996c7ef873c981e2ce03d1eb6e76064a37` |
 | [validation_r2.txt](https://raw.githubusercontent.com/lhmax2010/linux_kernel_enhancement/main/evidence/task2/validation_r2.txt) | 711 | `380f036d7a477d71884aee17ea510d8dec08b8bddf55b233e0499e410fc576cd` |

@@ -1,0 +1,15 @@
+Validation: /usr/bin/bash -n /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_baseline_build.sh
+exit=0
+No invocation, sourcing, trace_audit replay, gbs/export/build or sudo execution.
+Script SHA256=38936c701df1c654d0bebc3f07131101eec4129b639918aceffcb54e69b0e003
+Workspace GBP config: regular file, non-symlink; one comment line only.
+Content: # Restrict git-buildpackage to workspace configuration only.
+Original attempt archived by rename; lock retained.
+git -C linux-rpi rev-parse HEAD
+f240c28093027707f5e09f8a9cbbed16a43ebb1a
+git -C linux-rpi rev-parse tizen
+42aeefac58edeb081aff440f0b60be71cbe49755
+git -C linux-rpi symbolic-ref --short HEAD
+lko/base
+git -C linux-rpi status --porcelain
+

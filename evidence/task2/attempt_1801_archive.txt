@@ -1,0 +1,29 @@
+Archived completed attempt; no live members of PGID 148694 or 148705 before move.
+Destination: temp/attempt_20261027_1801/
+Retained in place: temp/run_baseline_build.lock; temp/gbs-home/; earlier unrelated task files/buildroot.
+No files deleted. Each source moved by rename within WS.
+run_baseline_build.status -> attempt_20261027_1801/run_baseline_build.status | bytes=416 sha256=13abffdfba9e510be40dde95d867ff3bb8cb0ba1aef493dbdf4b4f154332dc84
+run_baseline_build.log -> attempt_20261027_1801/run_baseline_build.log | bytes=62 sha256=2b0f21a3e9e12b6b8a0da0b4cd95778239f1608c6380c9ab1fa207d5a9f3dda3
+run_baseline_build.existing_processes.txt -> attempt_20261027_1801/run_baseline_build.existing_processes.txt | bytes=0 sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+export_check/ -> attempt_20261027_1801/export_check/ | complete directory tree
+  export_check/0002-perf-build-Add-make-check-headers-target.patch bytes=1837 sha256=d6c2d011615ddb451fcd177e9ef2e3607ef5c6206cb5655178ba58fec4d916e2
+  export_check/0003-ARM-ARM64-configs-tizen_bcm2711-Enable-F2FS-compress.patch bytes=2411 sha256=aebe3a09efa30a5717ed257cbb0c2bcb3a6edf243b5c1f2252a5bea7cc40f529
+  export_check/0004-script-build-support-non-sudo-image-creation-and-mou.patch bytes=4531 sha256=f31edc1dbed443cc7b861ad887a5c4b8f6e57e7fa57ac5f9f845c39698ecb6ef
+  export_check/0005-USB-serial-cp210x-Add-cp210x-stlink-driver-for-Smart.patch bytes=40204 sha256=dcda344d7790e134aaa1064af172b70caec310f553beb9098f5ecd570bca1e07
+  export_check/0006-USB-serial-cp210x-Fix-driver-name-collision-for-cp21.patch bytes=1395 sha256=f3b852f060cdaee3a1fc3b48ee348ec7a7b8b39d123cec6cb490e959a6413d81
+  export_check/0007-configs-packaging-modularize-defconfig-with-RT-and-L.patch bytes=37352 sha256=f282f36186525706f6c53f13bc1e60a65588602a8f57bcbde84255901ac6cb9f
+  export_check/0008-drivers-media-pci-hailo-Port-Hailo-accelerator-drive.patch.gz bytes=68645 sha256=8234af0684584ee369406a7272f5650c30411e7e3cbcfb0f354eeb5b4630d787
+  export_check/0009-mm-restore-vendor-reclaim-semantics-for-force_reclai.patch bytes=2507 sha256=01b939f2d3b6063c74416133bac36a8b9f3ca56f180a6b7c19ca0c3284d1c274
+  export_check/00d7934-to-b3c2c75.diff.gz bytes=7516560 sha256=fa4d0a579435e14ff65a99e0e42a982be7b888e346e9d8369bbed19b00596fc8
+  export_check/baselibs.conf bytes=689 sha256=364efccdc698cf2acb0707c0542a533119f8b0c290b28d43c63cc8ab3ad6847a
+  export_check/linux-kernel-6.12.80.tar.xz bytes=148723216 sha256=30c9438383f6b6763139c550e4f44f12812de2be99c107a1e3fbad30394d2628
+  export_check/linux-rpi.manifest bytes=69 sha256=fb0fb6cb1bb1797b22de7824aacb4e577b0dfd7da460dfe4875d1bd61e3f688d
+  export_check/linux-rpi.spec bytes=13426 sha256=7f312233d9b8b1cd091a7dd36ceecb05a754bad5764ff9056ed2b49d44d4a3a9
+export_check.log -> attempt_20261027_1801/export_check.log | bytes=567 sha256=fef6917d40708278dd21291e10e873fd9cee4a2ca5c52c572864d37b0827faf3
+export_check.log.raw -> attempt_20261027_1801/export_check.log.raw | bytes=370 sha256=a01e350c1baa9463019de2a943e682d59d3e2627d7d03f21016dbf406030125f
+export_check.strace -> attempt_20261027_1801/export_check.strace | bytes=43995939 sha256=cd9e9509eddcc7d36fbaff3d1370f0f0f70b3ba417e714170a311b2ca6799762
+export_check_home.txt -> attempt_20261027_1801/export_check_home.txt | bytes=888432 sha256=364c6ec928d489d3e1fe53c15e14f5805d0bb74a979da9503d37ded8e2c0d126
+export_r2.observed_outside.txt -> attempt_20261027_1801/export_r2.observed_outside.txt | bytes=0 sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+export_r2.pgid -> attempt_20261027_1801/export_r2.pgid | bytes=7 sha256=ecf79e963aeafce11c18171039001716d9f9d8d550dd54a5da7044ec30d8a974
+export_r2.processes.log -> attempt_20261027_1801/export_r2.processes.log | bytes=81137 sha256=f7a93e50da788268ac21fe7730acc6b4de95476431c809897d18e388c7c97231
+monitor.log -> attempt_20261027_1801/monitor.log | bytes=469 sha256=1a5e33f5fad00b908fc105f7a1090a7c4d6384b5f51ffdf58e971a034bee14b6

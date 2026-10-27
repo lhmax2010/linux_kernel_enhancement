@@ -2,7 +2,60 @@
 
 日期：2026-10-27（Asia/Shanghai）。本报告只记录本任务实际执行的结果；未获得的构建产物指标不以源码推导替代。所有体积与构建开销数字均为构建产物/开发机数据，不代表板上运行时内存。
 
-## 最新任务2续三：用户执行脚本（仅编写，未运行）
+## 最新任务2续五：GBP隔离与导出审计修正（/dev/null规则待裁决）
+
+用户在commit `24707cadc26a322bbee18545617064c21dd50c49`启动的流程，export命令于2026-10-27 18:01:13返回0，审计于18:01:43以91失败；status已含ALL-END，GCC/LLVM均SKIPPED。监督组148694及导出组148705均已退出。代理没有重试、发信号或调用sudo。完整状态、日志、摘要统计及SHA-256见[上次审计摘要](../evidence/task2/export_attempt_1801_summary.txt)。
+
+### 三类审计结论
+
+1. **配置读取**：旧a段只列3个工作区内.gbs.conf，却漏分了`/etc/git-buildpackage/gbp.conf`。它在trace:15132、15252确实被只读打开。该系统文件的9个空section及remote-config pkg-libvirt下两个远端模板设置完整列入[配置证据](../evidence/task2/gbp_system_config.txt)；这两个设置不参与本次导出解析器的section合并，未改变此次导出参数。仅凭当前文件不能证明更早历史时刻内容相同。[GBP来源核对](../evidence/task2/gbp_audit.md)逐项给出源码位置、查找顺序、缺失文件处理及环境传递依据。
+2. **运行时读取**：旧b段共15个外部路径，其中7项被拒绝。除gbp.conf外的6项是PM本轮明确允许的TLS/GSSAPI/LDAP运行时配置、DNS解析实际文件和两个只读目录。`/etc/resolv.conf`在trace:119、14859解析到`/run/systemd/resolve/stub-resolv.conf`，旧白名单只认符号链接名，因此拒绝真实目标。
+3. **目录创建/写入标志**：旧c段5798个成功创建目录全部在WS。完整trace扫描107229个成功open/openat、4027个失败打开，unfinished/resumed按PID合并后无未解析项；工作区外带O_WRONLY/O_RDWR/O_CREAT的成功打开有101次，**全部是/dev/null的O_RDWR**，不能写成“任何工作区外写标志都不存在”。除此之外没有此类打开；不等于覆盖write/rename/unlink或继承FD上的写入。[全部命中与trace行号](../evidence/task2/export_trace_open_analysis.txt)。
+
+`/tmp`、`/var/tmp`的调用者均为PID148710（进程日志:453，`/usr/bin/python3 /usr/bin/gbs export ...`），trace:280–281分别为`openat(AT_FDCWD<WS/linux-rpi>, "/tmp", O_RDONLY)`及`"/var/tmp", O_RDONLY`，返回FD3。没有O_DIRECTORY，不能伪写成带此标志；当前stat确认两者均为目录。trace未跟踪调用栈/read/fstat，不能恢复精确C源码行或证明当时读取了目录内容。
+
+来源进一步核对：`gbp/rpm/lib_rpm.py:26`按policy.py:28导入rpm_tizen，后者`__init__.py:39`加载原生RPM扩展；trace:236–265记录RPM与NSS/freebl库加载。已安装`/usr/lib/x86_64-linux-gnu/libfreeblpriv3.so`的只读反汇编中，0xc9620路径表依次包含/etc/passwd、/etc/utmp、/tmp、/var/tmp、/usr/tmp；0x9f93–0x9fbc循环送入0x9d20，0x9d7b取stat、0x9d9f以`"r"`调用fopen，再尝试read。**推测**这是RPM初始化触发NSS随机数初始化、采集文件状态等系统噪声；路径顺序和调用方式与trace一致，但没有调用栈不能把该函数确定为本次调用点，也没有该库原始C源码行号。保留[反汇编、只读标志与目录类型证据](../evidence/task2/tmp_directory_library_analysis.txt)，不为定位它重跑导出。
+
+### 本轮脚本变更与判定
+
+- 导出、GCC、LLVM均通过命令级env传入`HOME=$WS/temp/gbs-home GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES=$WS/temp/gbs-home/.gbp.conf`；不修改用户shell环境，成果仓库Git仍使用正常环境认证。
+- GBP_CONF_FILES支持冒号分隔的非空列表并完全替换默认列表；GBS库调用GBP、depanneur fork/exec链继承变量。已创建普通文件temp/gbs-home/.gbp.conf，仅含一行注释：`# Restrict git-buildpackage to workspace configuration only.`。预检要求普通非符号链接、非空可读、每行仅注释。
+- 配置分类新增gbp.conf；每个外部成功打开都记录flags与命中的白名单条目/理由或拒绝原因。新增四条运行时路径；/tmp和/var/tmp仅允许O_RDONLY且目录检查通过，不允许其子路径自动继承豁免。
+- 外部成功打开先检查O_WRONLY/O_RDWR/O_CREAT/O_TRUNC，再检查运行时白名单；外部mkdir/mkdirat包括失败的尝试也拒绝。审计在当前导出自然结束后运行，不发信号。读取目录的类型检查在审计时进行，不能替代原trace没有记录的fstat历史证据。
+- 保留原umask、完整系统PATH、一次前台sudo -v、进程组残留等待、ALL-END与失败跳过后续逻辑。建议在tmux/screen中运行，保持控制终端以供depanneur每3分钟的sudo认证维持（depanneur:3164–3174）。
+
+**待PM裁决**：本轮“任何工作区外O_RDWR成功打开都失败”包含旧trace的101次/dev/null调用。已询问是否仅豁免该字符设备，尚未收到答复，因此当前脚本严格拒绝，没有自行扩充例外；相同调用再次发生会使新审计失败。建议先裁决再运行。
+
+本轮只做源码/trace读取、文本改动、文件归档及`bash -n`（[验证记录](../evidence/task2/script_static_validation_r5.txt)），未运行新脚本、未导出或构建。新隔离及审计是否实际通过，必须以用户重跑结果为准。
+
+### 归档移动清单
+
+归档目录`$WS/temp/attempt_20261027_1801/`；下列12项保持名称整体移动，没有删除。移动前确认两个旧进程组无存活进程，保留`temp/run_baseline_build.lock`原inode、gbs-home和更早任务的文件/buildroot。逐项字节数/SHA-256（含export_check目录中文件）见[归档清单](../evidence/task2/attempt_1801_archive.txt)。
+
+| 原temp/条目 | 归档后位置（相对temp/） |
+| --- | --- |
+| run_baseline_build.status | attempt_20261027_1801/run_baseline_build.status |
+| run_baseline_build.log | attempt_20261027_1801/run_baseline_build.log |
+| run_baseline_build.existing_processes.txt | attempt_20261027_1801/run_baseline_build.existing_processes.txt |
+| export_check/ | attempt_20261027_1801/export_check/ |
+| export_check.log | attempt_20261027_1801/export_check.log |
+| export_check.log.raw | attempt_20261027_1801/export_check.log.raw |
+| export_check.strace | attempt_20261027_1801/export_check.strace |
+| export_check_home.txt | attempt_20261027_1801/export_check_home.txt |
+| export_r2.observed_outside.txt | attempt_20261027_1801/export_r2.observed_outside.txt |
+| export_r2.pgid | attempt_20261027_1801/export_r2.pgid |
+| export_r2.processes.log | attempt_20261027_1801/export_r2.processes.log |
+| monitor.log | attempt_20261027_1801/monitor.log |
+
+用户执行命令不变（代理不执行）：
+
+```bash
+cd /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi && /usr/bin/bash /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_baseline_build.sh
+```
+
+用户重跑后，按任务2续四每10分钟只读检查status、两类日志尾部和本次实际PGID，只追加monitor.log；export通过时报a/b/c，异常即停，ALL-END OK后才做编译器、最终配置、体积、ACTIME布局与LLVM平台工具核对。
+
+## 历史任务2续三：用户执行脚本（仅编写，未运行）
 
 脚本：[scripts/run_baseline_build.sh](../scripts/run_baseline_build.sh)。本轮只做源码阅读、静态检查和 `bash -n`，没有执行脚本、sudo、导出、GBS构建或板上操作。正常环境推送已成功补发b33992f0及规则修订，见[publication_r3_initial.txt](../evidence/task2/publication_r3_initial.txt)。旧文中的认证失败是历史记录，不是当前发布状态。
 

@@ -1,0 +1,437 @@
+Read-only installed source excerpts; no imports of gbs/gbp or execution of build script.
+
+
+FILE /usr/lib/python3/dist-packages/gbp/config.py SHA256 e182ae80f23da34d8b61d3afa0c5961db4b57f0cc1965cfff987effddc70b547
+323:     def_config_files = [ '/etc/git-buildpackage/gbp.conf',
+324:                          '~/.gbp.conf',
+325:                          '%(top_dir)s/.gbp.conf',
+326:                          '%(top_dir)s/debian/gbp.conf',
+327:                          '%(git_dir)s/gbp.conf' ]
+328: 
+329:     @classmethod
+330:     def get_config_files(klass, no_local=False):
+331:         """
+332:         Get list of config files from the I{GBP_CONF_FILES} environment
+333:         variable.
+334: 
+335:         @param no_local: don't return the per-repo configuration files
+336:         @type no_local: C{str}
+337:         @return: list of config files we need to parse
+338:         @rtype: C{list}
+339: 
+340:         >>> conf_backup = os.getenv('GBP_CONF_FILES')
+341:         >>> if conf_backup is not None: del os.environ['GBP_CONF_FILES']
+342:         >>> homedir = os.path.expanduser("~")
+343:         >>> files = GbpOptionParser.get_config_files()
+344:         >>> files_mangled = [file.replace(homedir, 'HOME') for file in files]
+345:         >>> files_mangled
+346:         ['/etc/git-buildpackage/gbp.conf', 'HOME/.gbp.conf', '%(top_dir)s/.gbp.conf', '%(top_dir)s/debian/gbp.conf', '%(git_dir)s/gbp.conf']
+347:         >>> files = GbpOptionParser.get_config_files(no_local=True)
+348:         >>> files_mangled = [file.replace(homedir, 'HOME') for file in files]
+349:         >>> files_mangled
+350:         ['/etc/git-buildpackage/gbp.conf', 'HOME/.gbp.conf']
+351:         >>> os.environ['GBP_CONF_FILES'] = 'test1:test2'
+352:         >>> GbpOptionParser.get_config_files()
+353:         ['test1', 'test2']
+354:         >>> del os.environ['GBP_CONF_FILES']
+355:         >>> if conf_backup is not None: os.environ['GBP_CONF_FILES'] = conf_backup
+356:         """
+357:         envvar = os.environ.get('GBP_CONF_FILES')
+358:         files = envvar.split(':') if envvar else klass.def_config_files
+359:         files = [os.path.expanduser(fname) for fname in files]
+360:         if no_local:
+361:             files = [fname for fname in files if fname.startswith('/')]
+362:         return files
+363: 
+364:     def _read_config_file(self, parser, repo, filename, git_treeish):
+365:         """Read config file"""
+366:         str_fields = {}
+367:         if repo:
+368:             str_fields['git_dir'] = repo.git_dir
+369:             if not repo.bare:
+370:                 str_fields['top_dir'] = repo.path
+371: 
+372:         # Read per-tree config file
+373:         if repo and git_treeish and filename.startswith('%(top_dir)s/'):
+374:             with tempfile.NamedTemporaryFile() as tmp:
+375:                 relpath = filename.replace('%(top_dir)s/', '')
+376:                 try:
+377:                     config = repo.show('%s:%s' % (git_treeish, relpath))
+378:                     tmp.write(config)
+379:                 except GitRepositoryError:
+380:                     pass
+381:                 tmp.seek(0)
+382:                 parser.read(tmp.name)
+383:                 return
+384:         try:
+385:             filename = filename % str_fields
+386:         except KeyError:
+387:             # Skip if filename wasn't expanded, i.e. we're not in git repo
+388:             return
+389:         parser.read(filename)
+390: 
+391:     def parse_config_files(self, git_treeish=None):
+392:         """
+393:         Parse the possible config files and set appropriate values
+394:         default values
+395:         """
+396:         parser = ConfigParser()
+397:         # Fill in the built in values
+398:         self.config = dict(self.__class__.defaults)
+399:         # Update with the values from the defaults section. This is needed
+400:         # in case the config file doesn't have a [<command>] section at all
+401:         config_files = self.get_config_files()
+402:         try:
+403:             repo = GitRepository(".")
+404:         except GitRepositoryError:
+405:             repo = None
+406:         # Read all config files
+407:         for filename in config_files:
+408:             self._read_config_file(parser, repo, filename, git_treeish)
+409:         self.config.update(dict(parser.defaults()))
+410: 
+411:         # Make sure we read any legacy sections prior to the real subcommands
+412:         # section i.e. read [gbp-pull] prior to [pull]
+413:         if (self.command.startswith('gbp-') or
+414:             self.command.startswith('git-')):
+415:             oldcmd = self.command
+416:             if parser.has_section(oldcmd):
+417:                 self.config.update(dict(parser.items(oldcmd, raw=True)))
+418:             cmd = self.command[4:]
+419:         else:
+420:             for prefix in ['gbp', 'git']:
+421:                 oldcmd = '%s-%s' % (prefix, self.command)
+422:                 if parser.has_section(oldcmd):
+423:                     self.config.update(dict(parser.items(oldcmd, raw=True)))
+424:             cmd = self.command
+425: 
+426:         # Update with command specific settings
+427:         if parser.has_section(cmd):
+428:             # Don't use items() until we got rid of the compat sections
+429:             # since this pulls in the defaults again
+430:             self.config.update(dict(list(parser._sections[cmd].items())))
+431: 
+432:         for section in self.sections:
+433:             if parser.has_section(section):
+434:                 self.config.update(dict(list(parser._sections[section].items())))
+435:             else:
+436:                 raise NoSectionError("Mandatory section [%s] does not exist."
+437:                                      % section)
+438: 
+448:     def __init__(self, command, prefix='', usage=None, sections=[],
+449:                  git_treeish=None):
+450:         """
+451:         @param command: the command to build the config parser for
+452:         @type command: C{str}
+453:         @param prefix: A prefix to add to all command line options
+454:         @type prefix: C{str}
+455:         @param usage: a usage description
+456:         @type usage: C{str}
+457:         @param sections: additional (non optional) config file sections
+458:             to parse
+459:         @type sections: C{list} of C{str}
+460:         """
+461:         self.command = command
+462:         self.sections = sections
+463:         self.prefix = prefix
+464:         self.config = {}
+465:         self.parse_config_files(git_treeish)
+587: class GbpOptionParserRpm(GbpOptionParser):
+588:     """
+589:     Handles commandline options and parsing of config files for rpm tools
+590:     """
+591:     defaults = dict(GbpOptionParser.defaults)
+592:     defaults.update({
+593:             'tmp-dir'                   : '/var/tmp/gbp/',
+594:             'vendor'                    : 'vendor',
+595: 			'native'                    : 'auto',
+596: 			'builder'                   : 'rpmbuild',
+597:             'cleaner'                   : '/bin/true',
+598: 			'merge'                     : 'False',
+599: 			'packaging-dir'             : '',
+600:             'packaging-branch'          : 'master',		
+601:             'packaging-tag'             : '%(vendor)s/%(version)s',
+602:             'upstream-tag'              : 'upstream/%(upstreamversion)s',
+603:             'pq-branch'                 : 'development/%(branch)s',
+604:             'import-files'              : ['.gbp.conf',
+605:                                            'debian/gbp.conf'],
+
+FILE /usr/lib/python3.12/configparser.py SHA256 8d822edd41d1085e0c697f1926f3f98e5c7889b4072361ae88726464b37f6460
+665:     def read(self, filenames, encoding=None):
+666:         """Read and parse a filename or an iterable of filenames.
+667: 
+668:         Files that cannot be opened are silently ignored; this is
+669:         designed so that you can specify an iterable of potential
+670:         configuration file locations (e.g. current directory, user's
+671:         home directory, systemwide directory), and all existing
+672:         configuration files in the iterable will be read.  A single
+673:         filename may also be given.
+674: 
+675:         Return list of successfully read files.
+676:         """
+677:         if isinstance(filenames, (str, bytes, os.PathLike)):
+678:             filenames = [filenames]
+679:         encoding = io.text_encoding(encoding)
+680:         read_ok = []
+681:         for filename in filenames:
+682:             try:
+683:                 with open(filename, encoding=encoding) as fp:
+684:                     self._read(fp, filename)
+685:             except OSError:
+686:                 continue
+687:             if isinstance(filename, os.PathLike):
+688:                 filename = os.fspath(filename)
+689:             read_ok.append(filename)
+690:         return read_ok
+1047:                         if sectname in self._sections:
+1048:                             if self._strict and sectname in elements_added:
+1049:                                 raise DuplicateSectionError(sectname, fpname,
+1050:                                                             lineno)
+1051:                             cursect = self._sections[sectname]
+1052:                             elements_added.add(sectname)
+1053:                         elif sectname == self.default_section:
+1054:                             cursect = self._defaults
+1055:                         else:
+1056:                             cursect = self._dict()
+1057:                             self._sections[sectname] = cursect
+1058:                             self._proxies[sectname] = SectionProxy(self, sectname)
+1059:                             elements_added.add(sectname)
+1060:                         # So sections can't start with a continuation line
+1061:                         optname = None
+1062:                     # no section header in the file?
+1063:                     elif cursect is None:
+1064:                         raise MissingSectionHeaderError(fpname, lineno, line)
+1065:                     # an option line?
+1066:                     else:
+1067:                         mo = self._optcre.match(value)
+1068:                         if mo:
+1069:                             optname, vi, optval = mo.group('option', 'vi', 'value')
+1070:                             if not optname:
+1071:                                 e = self._handle_error(e, fpname, lineno, line)
+1072:                             optname = self.optionxform(optname.rstrip())
+1073:                             if (self._strict and
+1074:                                 (sectname, optname) in elements_added):
+1075:                                 raise DuplicateOptionError(sectname, optname,
+1076:                                                            fpname, lineno)
+1077:                             elements_added.add((sectname, optname))
+1078:                             # This check is fine because the OPTCRE cannot
+1079:                             # match if it would set optval to None
+1080:                             if optval is not None:
+1081:                                 optval = optval.strip()
+1082:                                 cursect[optname] = [optval]
+1083:                             else:
+1084:                                 # valueless option handling
+1085:                                 cursect[optname] = None
+
+FILE /usr/lib/python3/dist-packages/gitbuildsys/cmd_export.py SHA256 1011e10ef71700bdb3cb0e250787e8afca1ca43a416809337dedf0b0552251cc
+30: from gitbuildsys.conf import configmgr
+31: from gitbuildsys.errors import GbsError, Usage
+32: from gitbuildsys.log import LOGGER as log
+33: 
+34: from gbp.scripts.buildpackage_rpm import main as gbp_build
+35: from gbp.rpm.git import GitRepositoryError, RpmGitRepository
+36: import gbp.rpm as rpm
+37: from gbp.errors import GbpError
+140:     packaging_dir = get_packaging_dir(args)
+141:     # Now, start constructing the argument list
+142:     export_rev = commit
+143:     argv = ["argv[0] placeholder",
+144:             "--git-color-scheme=magenta:green:yellow:red",
+145:             "--git-notify=off",
+146:             "--git-ignore-new",
+147:             "--git-compression-level=6",
+148:             "--git-export-dir=%s" % export_dir,
+149:             "--git-tmp-dir=%s" % tmp_dir,
+150:             "--git-packaging-dir=%s" % packaging_dir,
+151:             "--git-spec-file=%s" % spec,
+152:             "--git-pq-branch=development/%(branch)s/%(upstreamversion)s",
+153:             "--git-upstream-branch=%s" % upstream_branch,
+154:             "--git-upstream-tag=%s" % upstream_tag,
+155:             "--git-spec-vcs-tag=%s#%%(commit)s" % reponame]
+156: 
+214: def export_sources(repo, commit, export_dir, spec, args, create_tarball=True):
+215:     """
+216:     Export packaging files using git-buildpackage
+217:     """
+218:     tmp = utils.Temp(prefix='gbp_', dirn=configmgr.get('tmpdir', 'general'),
+219:                      directory=True)
+220: 
+221:     gbp_args = create_gbp_export_args(repo, commit, export_dir, tmp.path,
+222:                                       spec, args, force_native=False,
+223:                                       create_tarball=create_tarball)
+224:     try:
+225:         ret = gbp_build(gbp_args)
+226:         if ret == 2 and not is_native_pkg(repo, args):
+227:             errmsg = ("Generating upstream tarball and/or generating patches "
+
+FILE /usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py SHA256 7a9e01a903ceedc1afd5663c60fcea1d5122136bc3aa6b90ac3dcf8799a36309
+724:     os.environ['TIZEN_BUILD_ROOT'] = os.path.abspath(build_root)
+725: 
+726:     #prepare depanneur commond
+727:     cmd = prepare_depanneur_cmd(args, buildarch, profile, workdir)
+728: 
+729:     log.debug("running command: %s" % ' '.join(cmd))
+730:     retcode = os.system(' '.join(cmd))
+731:     return retcode
+
+FILE /usr/bin/depanneur SHA256 2ed084439b84bf223acadc1cf5b22677d6c81a3cb65942de43422a0525a91878
+397: sub my_system {
+398:     my $cmd = shift;
+399:     debug("my_system: $cmd");
+400:     my $ret;
+401:     my $pid;
+402:     my @out = ();
+403:     if (wantarray) {
+404:         defined($pid=open(PIPE, "-|")) or die "Can not fork: $!\n";
+405:     } else {
+406:         defined($pid=fork) or die "Can not fork: $!\n";
+407:     }
+408: 
+409:     unless ($pid) {  # Child
+410:         open(STDERR, ">&STDOUT");
+411:         exec ($cmd);
+412:         exit -1;
+413:     } else {  # Parent
+414:         if (wantarray) {
+415:             while (my $line = <PIPE>) {
+416:                 print $line;
+417:                 push @out, $line;
+418:             }
+419:         }
+420:         waitpid ($pid,0);
+421:         $ret = $?;
+422:         close(PIPE) if wantarray;
+423: 
+424:         return wantarray ? ($ret, @out): $ret;
+425:     }
+784: sub gbs_export {
+785:     my ($base, $spec, $packaging_dir, $upstream_branch, $upstream_tag, $out_dir) = @_;
+786:     my @args = ();
+787:     my $cmd;
+788:     push @args, "gbs";
+789:     push @args, "--debug" if ($debug);
+790:     push @args, "export";
+791:     push @args, "'$base'";
+792:     push @args, "-o '$out_dir'";
+793:     push @args, "--outdir-directly";
+794:     push @args, "--spec $spec";
+795:     if ($includeall == 1) {
+796:         push @args, "--include-all";
+797:     } else {
+798:         push @args, "--commit=$commit";
+799:     }
+800:     if (! $upstream_branch eq "") {
+801:         push @args, "--upstream-branch='$upstream_branch'";
+802:     }
+803:     if (! $upstream_tag eq "") {
+804:         push @args, "--upstream-tag='$upstream_tag'";
+805:     }
+806:     if ($fallback_to_native == 1) {
+807:         push @args, "--fallback-to-native";
+808:     }
+809:     if (! $squash_patches_until eq "") {
+810:         push @args, "--squash-patches-until=$squash_patches_until";
+811:     }
+812:     if (! $packaging_dir eq "") {
+813:         push @args, "--packaging-dir=$packaging_dir";
+814:     }
+815:     if ($no_patch_export == 1) {
+816:         push @args, "--no-patch-export";
+817:     }
+818:     # print only error messages cause info message appear confused when to use thread
+819:     if ($thread_export == 1){
+820:         push @args, " 2>&1 | grep -v warning | grep -v Creating";
+821:     }
+822:     if ($with_submodules == 1) {
+823:        push @args, "--with-submodules";
+824:     }
+825: 
+826:     $cmd = join(" ", @args);
+827:     return my_system($cmd);
+
+FILE /usr/lib/python3/dist-packages/gbp/scripts/buildpackage_rpm.py SHA256 34882b1580c6010e6e327ebb06ffbef236758f86e82ad085c9b71d717835bd22
+380: def parse_args(argv, prefix, git_treeish=None):
+381:     """Parse config and command line arguments"""
+382:     args = [ arg for arg in argv[1:] if arg.find('--%s' % prefix) == 0 ]
+383:     builder_args = [ arg for arg in argv[1:] if arg.find('--%s' % prefix) == -1 ]
+384: 
+385:     # We handle these although they don't have a --git- prefix
+386:     for arg in [ "--help", "-h", "--version" ]:
+387:         if arg in builder_args:
+388:             args.append(arg)
+389: 
+390:     try:
+391:         parser = GbpOptionParserRpm(command=os.path.basename(argv[0]),
+392:                                     prefix=prefix, git_treeish=git_treeish)
+393:     except configparser.ParsingError as err:
+394:         gbp.log.err(err)
+395:         return None, None, None
+396: 
+518:     """Entry point for git-buildpackage-rpm"""
+519:     retval = 0
+520:     prefix = "git-"
+521:     spec = None
+522: 
+523:     options, gbp_args, builder_args = parse_args(argv, prefix)
+524:     if not options:
+525:         return 1
+526: 
+527:     try:
+528:         repo = RpmGitRepository(os.path.curdir)
+529:     except GitRepositoryError:
+530:         gbp.log.err("%s is not a git repository" % (os.path.abspath('.')))
+531:         return 1
+532: 
+533:     # Determine tree-ish to be exported
+534:     try:
+535:         tree = get_tree(repo, options.export)
+536:     except GbpError as err:
+537:         gbp.log.err('Failed to determine export treeish: %s' % err)
+538:         return 1
+539:     # Re-parse config options with using the per-tree config file(s) from the
+540:     # exported tree-ish
+541:     options, gbp_args, builder_args = parse_args(argv, prefix, tree)
+542: 
+543:     try:
+544:         # Create base temporary directory for this run
+545:         options.tmp_dir = tempfile.mkdtemp(dir=options.tmp_dir,
+546:                                            prefix='buildpackage-rpm_')
+
+FILE /usr/lib/python3/dist-packages/gbp/rpm/lib_rpm.py SHA256 3ead7438dce6a701babe2d52e6e2d05c6f664be440df7a9ab2e09eeb01d40377
+19: import tempfile
+20: 
+21: import gbp.log
+22: from gbp.rpm.policy import RpmPkgPolicy
+23: 
+24: try:
+25:     # Try to load special RPM lib to be used for GBP (only)
+26:     librpm = __import__(RpmPkgPolicy.python_rpmlib_module_name)
+27: except ImportError:
+28:     gbp.log.getLogger("gbp")
+29:     gbp.log.warn("Failed to import '%s' as rpm python module, using host's "
+30:                     "default rpm library instead" %
+31:                     RpmPkgPolicy.python_rpmlib_module_name)
+32:     import rpm as librpm
+33: 
+34: # Module initialization
+35: _rpmlog = tempfile.NamedTemporaryFile(prefix='gbp_rpmlog')
+36: _rpmlogfd = _rpmlog.file
+37: librpm.setVerbosity(librpm.RPMLOG_INFO)
+38: librpm.setLogFile(_rpmlogfd)
+
+FILE /usr/lib/python3/dist-packages/gbp/rpm/policy.py SHA256 f9d5fc58212d2409df13f7ef84233585dac32800667506864782b91db2ed6b7e
+24: class RpmPkgPolicy(PkgPolicy):
+25:     """Packaging policy for RPM"""
+26: 
+27:     # Special rpmlib python module for GBP (only)
+28:     python_rpmlib_module_name = "rpm_tizen"
+29: 
+30:     alnum = 'a-zA-Z0-9'
+
+FILE /usr/lib/python3/dist-packages/rpm_tizen/__init__.py SHA256 150b51f62be846e8a2623922cd11071245755b455da7c6a7274ef33d88e73996
+37: import warnings
+38: from rpm_tizen._rpm import *
+39: from rpm_tizen.transaction import *
+40: import rpm_tizen._rpm as _rpm
+41: _RPMVSF_NODIGESTS = _rpm._RPMVSF_NODIGESTS
+42: _RPMVSF_NOHEADER = _rpm._RPMVSF_NOHEADER

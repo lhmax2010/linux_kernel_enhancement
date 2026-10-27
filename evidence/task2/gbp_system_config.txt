@@ -1,0 +1,13 @@
+All nonempty, noncomment lines from /etc/git-buildpackage/gbp.conf
+3: [DEFAULT]
+24: [buildpackage]
+58: [import-orig]
+77: [import-dsc]
+88: [dch]
+107: [pq]
+113: [clone]
+117: [pull]
+121: [create-remote-repo]
+126: [remote-config pkg-libvirt]
+128: remote-url-pattern = ssh://git.debian.org/git/pkg-libvirt/%(pkg)s
+130: template-dir = /srv/alioth.debian.org/chroot/home/groups/pkg-libvirt/git-template

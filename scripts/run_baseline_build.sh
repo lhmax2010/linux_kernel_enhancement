@@ -10,7 +10,7 @@ readonly SCRIPT=/home/linhao/Toolchain/development/linux_kernel_optimization/scr
 readonly EXPECTED=f240c28093027707f5e09f8a9cbbed16a43ebb1a
 readonly TIZEN=42aeefac58edeb081aff440f0b60be71cbe49755
 export TMPDIR="$WORK" PYTHONDONTWRITEBYTECODE=1
-# Deliberately do not export HOME or GIT_CONFIG_NOSYSTEM in this shell.
+# Isolation variables are passed only to gbs commands and their descendants.
 export PATH=/usr/bin:/bin:/usr/sbin:/sbin
 
 stamp() { /usr/bin/date --iso-8601=seconds; }
@@ -199,12 +199,29 @@ run_managed() {
 }
 
 runtime_path() {
+    # Caller first rejects write/create flags, even for these runtime paths.
     case "$1" in
+        /usr|/usr/*|/lib|/lib/*|/lib32|/lib32/*|/lib64|/lib64/*|/libx32|/libx32/*)
+            allow_reason='installed tool/library tree (/usr or /lib*)' ;;
+        /proc|/proc/*|/sys|/sys/*|/dev|/dev/*)
+            allow_reason='system runtime tree (/proc, /sys or /dev), read-only' ;;
+        /etc/gnutls/config) allow_reason='explicit /etc/gnutls/config: TLS library runtime configuration' ;;
+        /etc/gss/mech.d) allow_reason='explicit /etc/gss/mech.d: GSSAPI library runtime directory' ;;
+        /etc/ldap/ldap.conf) allow_reason='explicit /etc/ldap/ldap.conf: LDAP library runtime configuration' ;;
+        /run/systemd/resolve/stub-resolv.conf)
+            allow_reason='explicit /run/systemd/resolve/stub-resolv.conf: resolved /etc/resolv.conf target' ;;
+        /tmp|/var/tmp)
+            if [[ "|$2|" == *'|O_RDONLY|'* && -d $1 && ! -L $1 ]]; then
+                allow_reason='explicit /tmp or /var/tmp: O_RDONLY on a directory; no write/create flags'
+            else
+                return 1
+            fi ;;
         /|/etc|/etc/ld.so.cache|/etc/ld.so.preload|/etc/passwd|/etc/group|/etc/nsswitch.conf|\
         /etc/localtime|/etc/locale.alias|/etc/locale.conf|/etc/locale.gen|/etc/default/locale|\
         /etc/hosts|/etc/hostname|/etc/host.conf|/etc/resolv.conf|/etc/gai.conf|\
         /etc/ssl/openssl.cnf|/etc/ssl/certs|/etc/ssl/certs/*|/etc/pam.d/*|\
-        /etc/sudoers|/etc/sudoers.d/*) return 0 ;;
+        /etc/sudoers|/etc/sudoers.d/*)
+            allow_reason="explicit system-runtime allowlist: $1 (loader/NSS/locale/DNS/TLS/PAM/sudo)" ;;
         *) return 1 ;;
     esac
 }
@@ -213,11 +230,13 @@ runtime_path() {
 # fail closed, rather than guessing that they were inside the workspace.
 trace_audit() {
     local trace="$WORK/export_check.strace" summary="$WORK/export_check_home.txt"
-    local line pid body call path parent target child returned n=0 bad=0 first_pid=
+    local line pid body call path parent target child returned flags allow_reason n=0 bad=0 first_pid=
     local re_line='^([0-9]+)[[:space:]]+(.*)$'
     local re_open='^[[:space:]]*(open|openat)\('
     # -yy may show e.g. 3</dev/null<char 1:3>>; stop at the next angle bracket.
     local re_fd='=[[:space:]]*[0-9]+<([^<>]+)'
+    local re_flags='"([^"\\]|\\.)*",[[:space:]]*([A-Z0-9_|]+)(,|\))'
+    local re_write='(^|\|)(O_WRONLY|O_RDWR|O_CREAT|O_TRUNC)(\||$)'
     local re_ok='=[[:space:]]*0[[:space:]]*$'
     local re_child='=[[:space:]]*([0-9]+)[[:space:]]*$'
     local re_mkdir='^mkdir\("([^"]*)"'
@@ -258,16 +277,27 @@ trace_audit() {
             if [[ ! $body =~ $re_fd ]]; then issues["Unresolved successful open: $line"]=1; bad=1; continue; fi
             path=${BASH_REMATCH[1]}; path=${path% (deleted)}
             if [[ $path != /* || $path == *'\'* ]]; then issues["Unresolved open path: $line"]=1; bad=1; continue; fi
-            case "${path##*/}" in *gbs.conf*|*gitconfig*|*rpmmacros*)
+            if [[ ! $body =~ $re_flags ]]; then
+                issues["Unresolved open flags: $line"]=1; bad=1; continue
+            fi
+            flags=${BASH_REMATCH[2]}
+            case "${path##*/}" in *gbs.conf*|*gbp.conf*|*gitconfig*|*rpmmacros*)
                 a[$path]=1; within_ws "$path" || { issues["External config: $path"]=1; bad=1; } ;;
             esac
-            case "$path" in
-                "$WS"|"$WS/"*|/usr|/usr/*|/lib|/lib/*|/lib32|/lib32/*|/lib64|/lib64/*|/libx32|/libx32/*|/proc|/proc/*|/sys|/sys/*|/dev|/dev/*) ;;
-                *) b[$path]=1; runtime_path "$path" || { issues["Unapproved external open: $path"]=1; bad=1; } ;;
-            esac
+            if ! within_ws "$path"; then
+                if [[ $flags =~ $re_write ]]; then
+                    b["$path | flags=$flags"]='DENIED: external successful write/create open'
+                    issues["External write/create open: $path flags=$flags"]=1; bad=1
+                elif runtime_path "$path" "$flags"; then
+                    b["$path | flags=$flags"]=$allow_reason
+                else
+                    b["$path | flags=$flags"]='DENIED: no matching runtime allowlist entry'
+                    issues["Unapproved external open: $path flags=$flags"]=1; bad=1
+                fi
+            fi
             ((n+=1))
         elif [[ $body == mkdir\(* || $body == mkdirat\(* ]]; then
-            [[ $body =~ $re_ok ]] || continue
+            # Any outside mkdir attempt is forbidden, including EEXIST/failure.
             path=; parent=
             if [[ $body =~ $re_mkdir ]]; then
                 path=${BASH_REMATCH[1]}; parent=${cwd[$pid]:-UNKNOWN}
@@ -280,15 +310,16 @@ trace_audit() {
             [[ $path == /* ]] || path=$parent/$path
             if [[ $path != /* || $path == *'\'* ]]; then issues["Unresolved mkdir: $line"]=1; bad=1; continue; fi
             path=$(/usr/bin/realpath -m -- "$path") || { bad=1; continue; }
-            c[$path]=1; within_ws "$path" || { issues["External mkdir: $path"]=1; bad=1; }
+            if [[ $body =~ $re_ok ]]; then c[$path]=1; fi
+            within_ws "$path" || { issues["External mkdir attempt: $path"]=1; bad=1; }
         fi
     done < "$trace"
     (( ${#pending[@]} == 0 )) || { issues['Unfinished syscalls at trace EOF']=1; bad=1; }
     (( n > 0 && ${#a[@]} > 0 && ${#c[@]} > 0 )) || { issues['Missing open/config/mkdir coverage']=1; bad=1; }
     {
-        printf 'Export audit %s; successful opens only; successful mkdir only.\n' "$(stamp)"
+        printf 'Export audit %s; successful opens checked by flags; all mkdir attempts checked; c lists successful mkdir only.\n' "$(stamp)"
         printf '\na. Configuration paths:\n'; for path in "${!a[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
-        printf '\nb. Other external opened paths (explicit runtime allowlist):\n'; for path in "${!b[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
+        printf '\nb. External opened paths, flags and allowlist reason (or denial):\n'; for path in "${!b[@]}"; do printf '%s | %s\n' "$path" "${b[$path]}"; done | /usr/bin/sort
         printf '\nc. Created directories:\n'; for path in "${!c[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
         printf '\nIssues:\n'; for path in "${!issues[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
         printf 'AUDIT-EXIT %s\n' "$bad"
@@ -333,7 +364,7 @@ run_build() {
     [[ -z $clean_status ]] || fail 92 'kernel worktree no longer clean'
     /usr/bin/touch "$WORK/build_marker_$phase" || fail 93 'cannot create build marker'
     printf 'BUILD-START %s %s\nBASE=%s\n' "$phase" "$(stamp)" "$EXPECTED" > "$log"
-    run_managed "$phase" "$log" /usr/bin/env HOME="$GBS_HOME" GIT_CONFIG_NOSYSTEM=1 \
+    run_managed "$phase" "$log" /usr/bin/env HOME="$GBS_HOME" GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES="$GBS_HOME/.gbp.conf" \
         /usr/bin/time -v /usr/bin/gbs -c "$conf" build -A armv7l --threads 1 --define '_smp_mflags -j10'
     rc=$?
     scan_external "$phase"
@@ -357,7 +388,7 @@ worker() {
     trap 'on_interrupt worker' INT TERM HUP
     cd "$KERNEL" || fail 94 'cannot enter kernel directory'
     start_phase export
-    run_managed export "$WORK/export_check.log" /usr/bin/env HOME="$GBS_HOME" GIT_CONFIG_NOSYSTEM=1 \
+    run_managed export "$WORK/export_check.log" /usr/bin/env HOME="$GBS_HOME" GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES="$GBS_HOME/.gbp.conf" \
         /usr/bin/strace -f -yy -s 65535 \
         -e trace=openat,open,mkdir,mkdirat,chdir,fchdir,clone,clone3,fork,vfork \
         -o "$WORK/export_check.strace" /usr/bin/gbs export . -o "$WORK/export_check" \
@@ -414,6 +445,10 @@ clean_status=$(/usr/bin/git -C "$KERNEL" status --porcelain) || fail 2 'cannot i
 [[ -z $clean_status ]] || fail 2 'kernel worktree is not clean'
 [[ -f $GBS_HOME/.gbs.conf && ! -L $GBS_HOME/.gbs.conf ]] || fail 2 'workspace user config must be a regular file'
 /usr/bin/cmp -s "$GBS_HOME/.gbs.conf" <(printf '[general]\ntmpdir = /home/linhao/Toolchain/development/linux_kernel_optimization/temp\n') || fail 2 'workspace user config is not the exact two-line configuration'
+[[ -f $GBS_HOME/.gbp.conf && ! -L $GBS_HOME/.gbp.conf && -r $GBS_HOME/.gbp.conf && -s $GBS_HOME/.gbp.conf ]] || fail 2 'workspace GBP config must be a readable nonempty regular file'
+while IFS= read -r config_line || [[ -n $config_line ]]; do
+    [[ $config_line =~ ^[[:space:]]*# ]] || fail 2 'workspace GBP config must contain comment lines only'
+done < "$GBS_HOME/.gbp.conf"
 [[ ! -e /etc/gbs.conf && ! -L /etc/gbs.conf ]] || fail 2 '/etc/gbs.conf exists'
 (( $(/usr/bin/nproc) / 2 >= 10 )) || fail 2 'requested -j10 exceeds half of nproc'
 for var in GIT_CONFIG_GLOBAL GIT_CONFIG_SYSTEM GIT_CONFIG GIT_CONFIG_COUNT GIT_CONFIG_PARAMETERS XDG_CONFIG_HOME XDG_CACHE_HOME TIZEN_BUILD_ROOT VIRTUAL_ENV; do

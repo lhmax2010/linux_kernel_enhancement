@@ -1,0 +1,73 @@
+Original script commit: 24707cadc26a322bbee18545617064c21dd50c49
+a count=3
+/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi/.gbs.conf
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbp_4ruaddeg/buildpackage-rpm_fv1t92l_/dump_tree_xdvas2r6/.gbs.conf
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbs.conf
+b count=15
+/etc/git-buildpackage/gbp.conf
+/etc/gnutls/config
+/etc/group
+/etc/gss/mech.d
+/etc/host.conf
+/etc/hosts
+/etc/ldap/ldap.conf
+/etc/ld.so.cache
+/etc/locale.alias
+/etc/nsswitch.conf
+/etc/passwd
+/etc/ssl/openssl.cnf
+/run/systemd/resolve/stub-resolv.conf
+/tmp
+/var/tmp
+c count=5798
+c outside WS=0
+Original Issues at lines 5825-5833:
+Issues:
+Unapproved external open: /etc/git-buildpackage/gbp.conf
+Unapproved external open: /etc/gnutls/config
+Unapproved external open: /etc/gss/mech.d
+Unapproved external open: /etc/ldap/ldap.conf
+Unapproved external open: /run/systemd/resolve/stub-resolv.conf
+Unapproved external open: /tmp
+Unapproved external open: /var/tmp
+AUDIT-EXIT 1
+
+FILE run_baseline_build.status
+1: BASE f240c28093027707f5e09f8a9cbbed16a43ebb1a
+2: UPDATED 2026-10-27T18:01:43+08:00
+3: STAGE preflight result=OK exit=0 start=2026-10-27T17:55:42+08:00 end=2026-10-27T17:55:46+08:00
+4: STAGE export result=FAILED exit=91 start=2026-10-27T17:55:46+08:00 end=2026-10-27T18:01:43+08:00
+5: STAGE gcc result=SKIPPED exit=- start=- end=-
+6: STAGE llvm result=SKIPPED exit=- start=- end=-
+7: ALL-END 2026-10-27T18:01:43+08:00 FAILED at export
+
+FILE run_baseline_build.log
+1: FAILED export: export path audit failed; later stages skipped
+
+FILE export_check.log
+1: EXPORT-START export 2026-10-27T17:55:46+08:00
+2: LIVE-OUTPUT /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_check.log.raw
+3: info: tracking branch: origin/upstream -> upstream
+4: info: Generating patches from git (v6.12.80..HEAD)
+5: info: Squashing commits 00d7934..b3c2c75 into one monolithic diff
+6: info: linux-kernel-6.12.80.tar.xz does not exist, creating from 'v6.12.80'
+7: info: package files have been exported to:
+8:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_check
+9: COMMAND-END export 2026-10-27T18:01:13+08:00 exit=0
+
+FILE export_check.log.raw
+1: info: tracking branch: origin/upstream -> upstream
+2: info: Generating patches from git (v6.12.80..HEAD)
+3: info: Squashing commits 00d7934..b3c2c75 into one monolithic diff
+4: info: linux-kernel-6.12.80.tar.xz does not exist, creating from 'v6.12.80'
+5: info: package files have been exported to:
+6:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_check
+
+FILE monitor.log
+1: 2026-10-27T18:10:02+08:00 | STAGE preflight result=OK exit=0 start=2026-10-27T17:55:42+08:00 end=2026-10-27T17:55:46+08:00 | STAGE export result=FAILED exit=91 start=2026-10-27T17:55:46+08:00 end=2026-10-27T18:01:43+08:00 | STAGE gcc result=SKIPPED exit=- start=- end=- | STAGE llvm result=SKIPPED exit=- start=- end=- | ALL-END 2026-10-27T18:01:43+08:00 FAILED at export | raw-last='     /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_check'
+INTEGRITY export_check.strace bytes=43995939 lines=117667 SHA256=cd9e9509eddcc7d36fbaff3d1370f0f0f70b3ba417e714170a311b2ca6799762
+INTEGRITY export_check_home.txt bytes=888432 lines=5833 SHA256=364c6ec928d489d3e1fe53c15e14f5805d0bb74a979da9503d37ded8e2c0d126
+INTEGRITY export_check.log bytes=567 lines=9 SHA256=fef6917d40708278dd21291e10e873fd9cee4a2ca5c52c572864d37b0827faf3
+INTEGRITY export_check.log.raw bytes=370 lines=6 SHA256=a01e350c1baa9463019de2a943e682d59d3e2627d7d03f21016dbf406030125f
+INTEGRITY run_baseline_build.status bytes=416 lines=7 SHA256=13abffdfba9e510be40dde95d867ff3bb8cb0ba1aef493dbdf4b4f154332dc84
+INTEGRITY export_r2.processes.log bytes=81137 lines=454 SHA256=f7a93e50da788268ac21fe7730acc6b4de95476431c809897d18e388c7c97231
