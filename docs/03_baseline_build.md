@@ -2,7 +2,7 @@
 
 日期：2026-10-27（Asia/Shanghai）。本报告只记录本任务实际执行的结果；未获得的构建产物指标不以源码推导替代。所有体积与构建开销数字均为构建产物/开发机数据，不代表板上运行时内存。
 
-## 最新任务2续五：GBP隔离与导出审计修正（/dev/null规则待裁决）
+## 最新任务2续五：GBP隔离与导出审计修正（裁决已落实，等待用户重跑）
 
 用户在commit `24707cadc26a322bbee18545617064c21dd50c49`启动的流程，export命令于2026-10-27 18:01:13返回0，审计于18:01:43以91失败；status已含ALL-END，GCC/LLVM均SKIPPED。监督组148694及导出组148705均已退出。代理没有重试、发信号或调用sudo。完整状态、日志、摘要统计及SHA-256见[上次审计摘要](../evidence/task2/export_attempt_1801_summary.txt)。
 
@@ -21,12 +21,12 @@
 - 导出、GCC、LLVM均通过命令级env传入`HOME=$WS/temp/gbs-home GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES=$WS/temp/gbs-home/.gbp.conf`；不修改用户shell环境，成果仓库Git仍使用正常环境认证。
 - GBP_CONF_FILES支持冒号分隔的非空列表并完全替换默认列表；GBS库调用GBP、depanneur fork/exec链继承变量。已创建普通文件temp/gbs-home/.gbp.conf，仅含一行注释：`# Restrict git-buildpackage to workspace configuration only.`。预检要求普通非符号链接、非空可读、每行仅注释。
 - 配置分类新增gbp.conf；每个外部成功打开都记录flags与命中的白名单条目/理由或拒绝原因。新增四条运行时路径；/tmp和/var/tmp仅允许O_RDONLY且目录检查通过，不允许其子路径自动继承豁免。
-- 外部成功打开先检查O_WRONLY/O_RDWR/O_CREAT/O_TRUNC，再检查运行时白名单；外部mkdir/mkdirat包括失败的尝试也拒绝。审计在当前导出自然结束后运行，不发信号。读取目录的类型检查在审计时进行，不能替代原trace没有记录的fstat历史证据。
+- 外部成功打开先检查O_WRONLY/O_RDWR/O_CREAT/O_TRUNC（仅下述精确/dev/null例外），再检查运行时白名单；外部mkdir/mkdirat包括失败的尝试也拒绝。审计在当前导出自然结束后运行，不发信号。读取目录的类型检查在审计时进行，不能替代原trace没有记录的fstat历史证据。
 - 保留原umask、完整系统PATH、一次前台sudo -v、进程组残留等待、ALL-END与失败跳过后续逻辑。建议在tmux/screen中运行，保持控制终端以供depanneur每3分钟的sudo认证维持（depanneur:3164–3174）。
 
-**待PM裁决**：本轮“任何工作区外O_RDWR成功打开都失败”包含旧trace的101次/dev/null调用。已询问是否仅豁免该字符设备，尚未收到答复，因此当前脚本严格拒绝，没有自行扩充例外；相同调用再次发生会使新审计失败。建议先裁决再运行。
+**PM裁决已落实**：只对返回路径精确为`/dev/null`、且strace -yy返回FD完整标注为`</dev/null<char 1:3>>`的成功打开豁免写标志。路径不同、设备号不同、不是字符设备或缺少设备标注均不豁免，包括/dev下其他设备；不使用调用参数名或事后stat代替设备证明。b段逐路径记录“按 PM 裁决放行”，另单列放行次数和首次原始trace行号。unfinished/resumed调用只计一次，行号取调用开始行；并发恢复顺序不同取最小起始行。零次显示count=0、first_trace_line=none。历史101次/首次323行只是上次trace记录，新一轮统计由脚本重新计算。
 
-本轮只做源码/trace读取、文本改动、文件归档及`bash -n`（[验证记录](../evidence/task2/script_static_validation_r5.txt)），未运行新脚本、未导出或构建。新隔离及审计是否实际通过，必须以用户重跑结果为准。
+本轮只做源码/trace读取、文本改动、文件归档及`bash -n`（[本次验证记录](../evidence/task2/script_static_validation_null_exception.txt)），未运行新脚本、未导出或构建。新隔离及审计是否实际通过，必须以用户重跑结果为准。
 
 ### 归档移动清单
 

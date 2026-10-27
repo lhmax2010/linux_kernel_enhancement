@@ -1,0 +1,105 @@
+PM decision: permit write-flag opens ONLY when strace -yy returned FD path is exactly /dev/null and its annotation proves character device 1:3.
+Other external paths, including other /dev devices, remain denied for successful write/create opens.
+Validation command: /usr/bin/bash -n /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_baseline_build.sh
+exit=0
+Script SHA256=c9b62e2db17e834ee7c3c0f7ef808c75fa37c15fbef0cb65688fd607f099c1b6
+No script execution, sourcing, audit-function replay, gbs/export/build or sudo invocation.
+Summary: count permitted successful opens, earliest original trace start line; unfinished/resumed joined and counted once; no hits => count=0 first_trace_line=none.
+Old attempt evidence remains unchanged: 101 /dev/null O_RDWR opens, first trace line 323. These are not results from a rerun.
+
+Changed script excerpts (source line numbers):
+230: # fail closed, rather than guessing that they were inside the workspace.
+231: trace_audit() {
+232:     local trace="$WORK/export_check.strace" summary="$WORK/export_check_home.txt"
+233:     local line pid body call path parent target child returned flags allow_reason n=0 bad=0 first_pid=
+234:     local line_no=0 syscall_line=0 null_count=0 null_first=
+235:     local re_null_device='=([[:space:]]*)[0-9]+</dev/null<char 1:3>>[[:space:]]*$'
+236:     local re_line='^([0-9]+)[[:space:]]+(.*)$'
+237:     local re_open='^[[:space:]]*(open|openat)\('
+238:     # -yy may show e.g. 3</dev/null<char 1:3>>; stop at the next angle bracket.
+239:     local re_fd='=[[:space:]]*[0-9]+<([^<>]+)'
+240:     local re_flags='"([^"\\]|\\.)*",[[:space:]]*([A-Z0-9_|]+)(,|\))'
+241:     local re_write='(^|\|)(O_WRONLY|O_RDWR|O_CREAT|O_TRUNC)(\||$)'
+242:     local re_ok='=[[:space:]]*0[[:space:]]*$'
+243:     local re_child='=[[:space:]]*([0-9]+)[[:space:]]*$'
+244:     local re_mkdir='^mkdir\("([^"]*)"'
+245:     local re_mkdirat='^mkdirat\(([^,]*),[[:space:]]*"([^"]*)"'
+246:     local re_chdir='^chdir\("([^"]*)"'
+247:     local re_angle='<([^>]+)>'
+248:     declare -A cwd=() pending=() pending_line=() a=() b=() c=() issues=()
+249:     [[ -s $trace ]] || return 91
+250:     while IFS= read -r line; do
+251:         ((line_no+=1)); syscall_line=$line_no
+252:         [[ $line =~ $re_line ]] || { issues["Unparsed trace line: $line"]=1; bad=1; continue; }
+253:         pid=${BASH_REMATCH[1]}; body=${BASH_REMATCH[2]}
+254:         if [[ -z $first_pid ]]; then first_pid=$pid; cwd[$pid]=$KERNEL; fi
+255:         if [[ $body == *'<unfinished ...>'* ]]; then
+256:             pending[$pid]=${body%'<unfinished ...>'*}; pending_line[$pid]=$line_no; continue
+257:         fi
+258:         if [[ $body == '<... '* ]]; then
+259:             if [[ -z ${pending[$pid]+yes} ]]; then
+260:                 issues["Unmatched resumed syscall: $line"]=1; bad=1; continue
+261:             fi
+262:             body=${pending[$pid]}${body#*resumed>}
+263:             syscall_line=${pending_line[$pid]}
+264:             unset 'pending[$pid]' 'pending_line[$pid]'
+265:         fi
+266:         case "$body" in
+267:             '+++ '*|'--- '*) continue ;;
+268:         esac
+269:         if [[ $body =~ ^(clone|clone3|fork|vfork)\( && $body =~ $re_child ]]; then
+270:             child=${BASH_REMATCH[1]}
+271:             [[ -z ${cwd[$pid]+yes} ]] || cwd[$child]=${cwd[$pid]}
+272:         elif [[ $body =~ $re_chdir && $body =~ $re_ok ]]; then
+273:             [[ $body =~ $re_chdir ]]; target=${BASH_REMATCH[1]}
+274:             if [[ $target != /* ]]; then target=${cwd[$pid]:-UNKNOWN}/$target; fi
+275:             if [[ $target == /* && $target != *'\'* ]]; then cwd[$pid]=$(/usr/bin/realpath -m -- "$target"); else unset 'cwd[$pid]'; fi
+276:         elif [[ $body == fchdir\(* && $body =~ $re_ok ]]; then
+290:                 a[$path]=1; within_ws "$path" || { issues["External config: $path"]=1; bad=1; } ;;
+291:             esac
+292:             if ! within_ws "$path"; then
+293:                 if [[ $flags =~ $re_write ]]; then
+294:                     # Exact returned FD path AND strace -yy device identity are
+295:                     # mandatory. Never infer this exception from the syscall's
+296:                     # input name, a wildcard, or a later filesystem lookup.
+297:                     if [[ $path == /dev/null && $body =~ $re_null_device ]]; then
+298:                         ((null_count+=1))
+299:                         if [[ -z $null_first ]] || (( syscall_line < null_first )); then
+300:                             null_first=$syscall_line
+301:                         fi
+302:                         b["$path | flags=$flags"]='按 PM 裁决放行：精确路径 /dev/null，strace -yy 字符设备 1:3'
+303:                     else
+304:                         b["$path | flags=$flags"]='DENIED: external successful write/create open'
+305:                         issues["External write/create open: $path flags=$flags"]=1; bad=1
+306:                     fi
+307:                 elif runtime_path "$path" "$flags"; then
+308:                     b["$path | flags=$flags"]=$allow_reason
+309:                 else
+310:                     b["$path | flags=$flags"]='DENIED: no matching runtime allowlist entry'
+311:                     issues["Unapproved external open: $path flags=$flags"]=1; bad=1
+312:                 fi
+313:             fi
+314:             ((n+=1))
+315:         elif [[ $body == mkdir\(* || $body == mkdirat\(* ]]; then
+316:             # Any outside mkdir attempt is forbidden, including EEXIST/failure.
+317:             path=; parent=
+318:             if [[ $body =~ $re_mkdir ]]; then
+319:                 path=${BASH_REMATCH[1]}; parent=${cwd[$pid]:-UNKNOWN}
+320:             elif [[ $body =~ $re_mkdirat ]]; then
+321:                 parent=${BASH_REMATCH[1]}; path=${BASH_REMATCH[2]}
+322:                 if [[ $parent =~ $re_angle ]]; then parent=${BASH_REMATCH[1]}
+323:                 elif [[ $parent == AT_FDCWD ]]; then parent=${cwd[$pid]:-UNKNOWN}
+324:                 else parent=UNKNOWN; fi
+338:         printf '\nb. External opened paths, flags and allowlist reason (or denial):\n'; for path in "${!b[@]}"; do printf '%s | %s\n' "$path" "${b[$path]}"; done | /usr/bin/sort
+339:         printf '\n/dev/null 带写标志成功打开：count=%s first_trace_line=%s；按 PM 裁决放行（精确返回路径及字符设备 1:3；0次时首次行号为none）。\n' \
+340:             "$null_count" "${null_first:-none}"
+341:         printf '\nc. Created directories:\n'; for path in "${!c[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
+342:         printf '\nIssues:\n'; for path in "${!issues[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
+343:         printf 'AUDIT-EXIT %s\n' "$bad"
+344:     } > "$summary"
+345:     (( bad == 0 ))
+346: }
+347: 
+348: scan_external() {
+349:     local phase=$1 rc path base_name
+350:     /usr/bin/find /var/tmp /tmp /home/linhao -maxdepth 3 -user "$(/usr/bin/id -un)" \

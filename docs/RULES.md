@@ -9,7 +9,8 @@
 - `$WS/temp/gbs-home/.gbp.conf`是仅含注释的普通文件；GBP_CONF_FILES非空值完全替换git-buildpackage默认查找列表，不修改系统工具或系统配置。
 - 系统运行时白名单新增：`/etc/gnutls/config`（TLS库自身运行时配置）、`/etc/gss/mech.d`（GSSAPI库自身运行时目录）、`/etc/ldap/ldap.conf`（LDAP库自身运行时配置）、`/run/systemd/resolve/stub-resolv.conf`（/etc/resolv.conf指向的实际文件）。
 - 以只读、目录方式打开`/tmp`、`/var/tmp`允许；脚本要求O_RDONLY、目录检查通过且不含写入/创建标志，不扩大到目录内文件。
-- 工作区外任何带O_WRONLY、O_RDWR或O_CREAT的成功打开，或任何mkdir/mkdirat调用（包括失败的尝试），都判为失败；脚本同时拒绝O_TRUNC。运行时路径白名单不自动豁免写入标志。发现问题不向进程发信号，等当前命令自然结束再报告。
+- 除下一条PM明确裁决的/dev/null外，工作区外任何带O_WRONLY、O_RDWR或O_CREAT的成功打开，或任何mkdir/mkdirat调用（包括失败的尝试），都判为失败；脚本同时拒绝O_TRUNC。运行时路径白名单不自动豁免写入标志。发现问题不向进程发信号，等当前命令自然结束再报告。
+- PM补充裁决：只对`/dev/null`这一个字符设备放行带写标志的成功打开。必须精确匹配strace -yy返回FD的路径`/dev/null`，且完整设备标注为`<char 1:3>`；不按调用参数里的名字、事后stat或`/dev/*`通配放行。其他工作区外路径（包括/dev下的其他设备）仍一律拒绝带O_WRONLY/O_RDWR/O_CREAT的成功打开。审计摘要单列放行次数、首次原始trace行号并注明“按 PM 裁决放行”；未完成/恢复的调用按起始行计，计数为0时首次行号为none。
 - 上次用户运行产物只在WS/temp内整体归档，不删除；保留run_baseline_build.lock原位。新日志不得覆盖历史运行记录。
 
 ## PM裁决：任务2续三（优先于后文历史规则）

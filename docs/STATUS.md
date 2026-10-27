@@ -2,9 +2,11 @@
 
 更新：2026-10-27（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**任务2续五：已核对GBP配置来源、归档上次export审计失败现场并修正用户脚本；等待/dev/null例外裁决后再安排用户重跑。新脚本仅做bash -n，不由代理运行。**
+**任务2续五：已核对GBP配置来源、归档上次export审计失败现场并修正用户脚本；/dev/null例外裁决已落实，等待用户重跑。新脚本仅做bash -n，不由代理运行。**
 
 ## 当前交付
+
+- /dev/null精确例外已按PM裁决加入RULES与脚本；单列次数/首次行号并标注“按 PM 裁决放行”。本轮仅bash -n，未运行脚本或重放审计函数。
 
 - 上次用户启动脚本commit 24707cad，export命令exit=0，但路径审计exit=91，2026-10-27 18:01:43 ALL-END FAILED at export；GCC/LLVM均未启动。旧进程组148694/148705已无存活进程；未重试、未发信号。
 - GBP_CONF_FILES非空列表完全替换系统/用户/项目默认列表，静态确认通过GBS→depanneur→export→GBP库继承。[来源与有效设置](../evidence/task2/gbp_audit.md)、[源码行号](../evidence/task2/gbp_source_lines.txt)。系统gbp.conf的两个远端模板设置不进入此次导出配置。
@@ -43,7 +45,7 @@ PM指定顺序：源码核对 → 工作区用户目录配置 → 指定HOME/GIT
 
 ## 需要人工裁决的前提
 
-本轮原文要求任何外部O_RDWR成功打开失败，旧trace却有101次/dev/null O_RDWR。已向PM询问是否仅豁免该字符设备，尚未收到答复；没有自行放行，当前脚本严格拒绝。相同调用在新运行中出现将再次失败，因此建议先裁决再运行。该问题不影响GBP_CONF_FILES的支持/继承结论。
+无新增待裁决规则。PM已明确仅放行strace -yy返回路径精确为/dev/null且设备标注为字符设备1:3的带写标志成功打开；已落实精确匹配、计数和首次trace起始行号摘要，其他工作区外路径仍拒绝。[脚本与bash -n证据](../evidence/task2/script_static_validation_null_exception.txt)。
 
 用户重跑后继续任务2续四只读监控，成功后完成产物核对；发生异常停下报告。当前新脚本只有静态语法检查，不能宣称新导出审计已通过。
 

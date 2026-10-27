@@ -231,6 +231,8 @@ runtime_path() {
 trace_audit() {
     local trace="$WORK/export_check.strace" summary="$WORK/export_check_home.txt"
     local line pid body call path parent target child returned flags allow_reason n=0 bad=0 first_pid=
+    local line_no=0 syscall_line=0 null_count=0 null_first=
+    local re_null_device='=([[:space:]]*)[0-9]+</dev/null<char 1:3>>[[:space:]]*$'
     local re_line='^([0-9]+)[[:space:]]+(.*)$'
     local re_open='^[[:space:]]*(open|openat)\('
     # -yy may show e.g. 3</dev/null<char 1:3>>; stop at the next angle bracket.
@@ -243,20 +245,23 @@ trace_audit() {
     local re_mkdirat='^mkdirat\(([^,]*),[[:space:]]*"([^"]*)"'
     local re_chdir='^chdir\("([^"]*)"'
     local re_angle='<([^>]+)>'
-    declare -A cwd=() pending=() a=() b=() c=() issues=()
+    declare -A cwd=() pending=() pending_line=() a=() b=() c=() issues=()
     [[ -s $trace ]] || return 91
     while IFS= read -r line; do
+        ((line_no+=1)); syscall_line=$line_no
         [[ $line =~ $re_line ]] || { issues["Unparsed trace line: $line"]=1; bad=1; continue; }
         pid=${BASH_REMATCH[1]}; body=${BASH_REMATCH[2]}
         if [[ -z $first_pid ]]; then first_pid=$pid; cwd[$pid]=$KERNEL; fi
         if [[ $body == *'<unfinished ...>'* ]]; then
-            pending[$pid]=${body%'<unfinished ...>'*}; continue
+            pending[$pid]=${body%'<unfinished ...>'*}; pending_line[$pid]=$line_no; continue
         fi
         if [[ $body == '<... '* ]]; then
             if [[ -z ${pending[$pid]+yes} ]]; then
                 issues["Unmatched resumed syscall: $line"]=1; bad=1; continue
             fi
-            body=${pending[$pid]}${body#*resumed>}; unset 'pending[$pid]'
+            body=${pending[$pid]}${body#*resumed>}
+            syscall_line=${pending_line[$pid]}
+            unset 'pending[$pid]' 'pending_line[$pid]'
         fi
         case "$body" in
             '+++ '*|'--- '*) continue ;;
@@ -286,8 +291,19 @@ trace_audit() {
             esac
             if ! within_ws "$path"; then
                 if [[ $flags =~ $re_write ]]; then
-                    b["$path | flags=$flags"]='DENIED: external successful write/create open'
-                    issues["External write/create open: $path flags=$flags"]=1; bad=1
+                    # Exact returned FD path AND strace -yy device identity are
+                    # mandatory. Never infer this exception from the syscall's
+                    # input name, a wildcard, or a later filesystem lookup.
+                    if [[ $path == /dev/null && $body =~ $re_null_device ]]; then
+                        ((null_count+=1))
+                        if [[ -z $null_first ]] || (( syscall_line < null_first )); then
+                            null_first=$syscall_line
+                        fi
+                        b["$path | flags=$flags"]='按 PM 裁决放行：精确路径 /dev/null，strace -yy 字符设备 1:3'
+                    else
+                        b["$path | flags=$flags"]='DENIED: external successful write/create open'
+                        issues["External write/create open: $path flags=$flags"]=1; bad=1
+                    fi
                 elif runtime_path "$path" "$flags"; then
                     b["$path | flags=$flags"]=$allow_reason
                 else
@@ -320,6 +336,8 @@ trace_audit() {
         printf 'Export audit %s; successful opens checked by flags; all mkdir attempts checked; c lists successful mkdir only.\n' "$(stamp)"
         printf '\na. Configuration paths:\n'; for path in "${!a[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
         printf '\nb. External opened paths, flags and allowlist reason (or denial):\n'; for path in "${!b[@]}"; do printf '%s | %s\n' "$path" "${b[$path]}"; done | /usr/bin/sort
+        printf '\n/dev/null 带写标志成功打开：count=%s first_trace_line=%s；按 PM 裁决放行（精确返回路径及字符设备 1:3；0次时首次行号为none）。\n' \
+            "$null_count" "${null_first:-none}"
         printf '\nc. Created directories:\n'; for path in "${!c[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
         printf '\nIssues:\n'; for path in "${!issues[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
         printf 'AUDIT-EXIT %s\n' "$bad"
