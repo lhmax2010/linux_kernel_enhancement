@@ -1,0 +1,31 @@
+FIND-END 2026-10-28T14:18:01+08:00 exit=1 (permission errors suppressed by requested command)
+Names and time window alone cannot separate concurrent builds. No file was removed.
+无法归属	/tmp/google-chrome-local.log
+无法归属	/tmp/xxxtmp.log
+无法归属	/home/linhao/Downloads
+无法归属	/home/linhao/Downloads/temp.txt
+无法归属	/home/linhao/.rpmdb/rpmdb.sqlite-shm
+无法归属	/home/linhao/.sogouinput
+无法归属	/home/linhao/.sogouinput/SogouImebsUIEnvMutex
+无法归属	/home/linhao/.sogouinput/ImeKernel_DictLocker
+无法归属	/home/linhao/.sogouinput/SogouIme_VersionManagerSharedTable_V2_Lock
+无法归属	/home/linhao/.sogouinput/SogouIme_FuncManager_1__Lock
+无法归属	/home/linhao/.sogouinput/DictManager_DictSaveLocker
+无法归属	/home/linhao/.cache/tracker3/files
+无法归属	/home/linhao/.cache/mesa_shader_cache/index
+无法归属	/home/linhao/.cache/mesa_shader_cache/2c
+无法归属	/home/linhao/.cache/mesa_shader_cache/24
+无法归属	/home/linhao/.cache/mesa_shader_cache/64
+无法归属	/home/linhao/.cache/mesa_shader_cache/83
+无法归属	/home/linhao/.config/dconf
+无法归属	/home/linhao/.config/dconf/user
+无法归属	/home/linhao/.config/google-chrome-local
+无法归属	/home/linhao/.config/google-chrome-local/Safe Browsing
+无法归属	/home/linhao/.config/google-chrome-local/Default
+无法归属	/home/linhao/.config/google-chrome-local/Local State
+无法归属	/home/linhao/.config/fcitx/config
+无法归属	/home/linhao/.local/share
+无法归属	/home/linhao/.local/share/recently-used.xbel
+无法归属	/home/linhao/.local/share/gnome-shell
+
+Direct observations for this process group (if any):

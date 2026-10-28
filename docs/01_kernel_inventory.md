@@ -1,9 +1,9 @@
 # 任务1：内核树与打包现状
 
-> 任务2更新（2026-10-27）：本文第3节仍是 **tizen@42aeefac58ed 的任务1静态表**，源码行号也对应该commit；尚未与GCC最终.config逐项对照。任务2在源码导出/依赖初始化阶段中止，不能把“未改正符号”解释为推导全部正确。本地 lko/base@f240c2809302 已仅拆入memcontrol修复（任务2续仅amend标题，代码与563c53c427bf相同；续二已准备工作区用户配置并完成部分独立静态核对；因当前代理无法重设HOME，仍未运行导出/构建，未产生最终.config），当前工作树的该函数与本文历史基线不同。详见 [03_baseline_build.md](03_baseline_build.md)。
+> 任务2产物核对更新（2026-10-28）：lko/base@f240c28093027707f5e09f8a9cbbed16a43ebb1a的GCC/Clang普通版及RT版已成功构建。第3节原有178个符号已逐项对照GCC普通版最终.config：确定取值反转0项，4个条件项闭合、2个字符串项改标“未输出”，并补入原表遗漏的DEBUG_ALIGN_RODATA，共补全/澄清7个符号。逐项值、存在性和.config行号见[完整对照表](../evidence/task2/config_inventory_comparison.md)，四配置重点项见[实测配置表](../evidence/task2/config_key_actual.md)。其他节仍保留任务1基线tizen@42aeefac58ed的历史盘点；本轮只增加产物核对，没有改内核源码或上板。
 
 
-采样日期：2026-10-26（Asia/Shanghai）。源码路径为 `$WS/linux-rpi`，本文源码 `文件:行号` 均相对该目录；证据链接相对本报告。只读分析，未运行 make/GBS、未切换内核分支、未访问开发板 shell。配置表是源码/依赖的静态推导，不是板上 `.config` 或运行时 sysfs 实测；工具链探测项明确保留条件。
+采样日期：2026-10-26（Asia/Shanghai）。源码路径为 `$WS/linux-rpi`，本文源码 `文件:行号` 均相对该目录；证据链接相对本报告。只读分析，未运行 make/GBS、未切换内核分支、未访问开发板 shell。第3节现有最终构建配置对照，仍不代表板上运行配置或运行时sysfs。
 
 ## 1. 仓库与版本
 
@@ -32,17 +32,19 @@ Tizen RPM spec 为 `packaging/linux-rpi.spec`；`scripts/package/kernel.spec` �
 | 优化/调试 | 默认 `CC_OPTIMIZE_FOR_PERFORMANCE=y`，Makefile:810 为 -O2；-Os 仅在 SIZE 选中时（:813）。本 defconfig 未启用 LTO；DWARF4/BTF 与 tracing 会影响体积和构建成本；未发现 spec 自行启用 AutoFDO/PGO/MLGO。 |
 | 并发 | spec 用 RPM `%{?_smp_mflags}`；未来构建必须额外确保不超过 10（本机 nproc/2），本任务没有构建。 |
 
-### 两个 GBS 配置的实际可证差别
+### 两个 GBS 配置的实际可证差别（后经任务2产物确认）
 
 `config/gbs_gcc.conf:11` / `:18` 使用 Tizen-Base、Tizen-Unified 的 reference 软件仓库；`config/gbs_llvm.conf:11` / `:16` 使用 Tizen-Base-Toolchain、Tizen-Unified-Toolchain。两者 general buildroot 也不同且均在 `$WS/temp/`。二者只指定仓库和 buildroot，**文件名并不强制编译器**，文件本身没有 LLVM=1、CC 或 _toolchain 赋值。
 
-因此可确定的执行差别是仓库/依赖来源、隔离 buildroot；当 LLVM 仓库提供的 RPM 宏将 `_toolchain` 判定为 clang 时，spec 才走 LLVM=1，并切换完整 LLVM 工具集。否则仍可能走 GCC。实际 GBS 宏展开、compiler RPM 版本与最终参数需要目标构建环境或已有 build log；本任务没有该证据，也未为此运行 GBS。**不能宣称仅更换 conf 已经实测为 Clang 对 GCC。** 同样，BTF/pahole 与 stack protector 的有效值有工具版本前提。
+任务1只能确认仓库/依赖来源和隔离buildroot不同：LLVM仓库的RPM宏将`_toolchain`判为clang时，spec才走LLVM=1。不能从配置文件名直接推断编译器；本轮已取得构建日志和产物交叉验证。BTF/pahole和stack protector条件也已用最终配置核对。
+
+本轮产物确认：GCC仓库构建为GCC 14.2.0/GNU ld 2.43；LLVM仓库触发spec的LLVM=1，产物为Clang 22.1.8/LLD 22.1.8，见[编译器证据](../evidence/task2/compiler_actual.txt)。
 
 ## 3. 关键配置逐项盘点
 
 基准：普通 armv7l，`arch/arm/configs/tizen_bcm2711_defconfig`，简称 D。原始配置：[defconfig_arm_numbered.txt](../evidence/task1/defconfig_arm_numbered.txt)。Kconfig 定义、反向 select：[kconfig_selected_definitions.txt](../evidence/task1/kconfig_selected_definitions.txt)。
 
-表中“走 Kconfig 默认”表示 D 未写此符号；同时处理 choice 和 select，不能一律视为 n。无显式 default 的 bool/tristate 默认 n，但可被 select 拉起；未启用父项的子 choice 也为 n。`HZ_*` 采用 ARM 的 arch/arm/Kconfig，而非其他架构的通用 kernel/Kconfig.hz。下面的推导不是调用配置器所得；依赖编译器/pahole 的项目保留条件。
+表中“走 Kconfig 默认”表示 D 未写此符号；同时处理 choice 和 select，不能一律视为 n。无显式 default 的 bool/tristate 默认 n，但可被 select 拉起；未启用父项的子 choice 也为 n。`HZ_*` 采用 ARM 的 arch/arm/Kconfig，而非其他架构的通用 kernel/Kconfig.hz。历史推导现已与GCC最终.config逐项对照；不可见布尔项未输出时按未启用解释，但不冒充显式“is not set”；字符串未输出单独注明。
 
 关键结论：MGLRU 编译并默认启用，完整调试统计关闭；ARM32 未选择 ARCH_HAS_HW_PTE_YOUNG，因此 `LRU_GEN_WALKS_MMU=n`，不能把启用 MGLRU 理解为拥有全部硬件 PTE aging 优化。zram 内建、默认 lzo-rle，仅 LZO 后端，二次压缩/写回/访问时间跟踪均未启用。CRYPTO_LZ4/ZSTD=y 不等于 ZRAM_BACKEND_LZ4/ZSTD=y。
 
@@ -132,7 +134,7 @@ Tizen RPM spec 为 `packaging/linux-rpi.spec`；`scripts/package/kernel.spec` �
 | `ZSMALLOC_CHAIN_SIZE` | 走 Kconfig 默认：`8` | mm/Kconfig:221；8；mm/Kconfig:223 |
 | `ZSMALLOC_STAT` | 走 Kconfig 默认：`n` | mm/Kconfig:211；无显式 default；bool/tristate 默认 n（choice/依赖按上述规则） |
 | `ZSWAP` | 走 Kconfig 默认：`n` | mm/Kconfig:25；无显式 default；bool/tristate 默认 n（choice/依赖按上述规则） |
-| `ZSWAP_COMPRESSOR_DEFAULT` | 走 Kconfig 默认：`""` | mm/Kconfig:117；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
+| `ZSWAP_COMPRESSOR_DEFAULT` | 最终.config未输出（ZSWAP未启用）；历史字符串默认空值 | mm/Kconfig:117；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
 | `ZSWAP_COMPRESSOR_DEFAULT_842` | 走 Kconfig 默认：`n` | mm/Kconfig:92；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
 | `ZSWAP_COMPRESSOR_DEFAULT_DEFLATE` | 走 Kconfig 默认：`n` | mm/Kconfig:80；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
 | `ZSWAP_COMPRESSOR_DEFAULT_LZ4` | 走 Kconfig 默认：`n` | mm/Kconfig:98；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
@@ -141,7 +143,7 @@ Tizen RPM spec 为 `packaging/linux-rpi.spec`；`scripts/package/kernel.spec` �
 | `ZSWAP_COMPRESSOR_DEFAULT_ZSTD` | 走 Kconfig 默认：`n` | mm/Kconfig:110；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
 | `ZSWAP_DEFAULT_ON` | 走 Kconfig 默认：`n` | mm/Kconfig:38；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
 | `ZSWAP_SHRINKER_DEFAULT_ON` | 走 Kconfig 默认：`n` | mm/Kconfig:48；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
-| `ZSWAP_ZPOOL_DEFAULT` | 走 Kconfig 默认：`""` | mm/Kconfig:165；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
+| `ZSWAP_ZPOOL_DEFAULT` | 最终.config未输出（ZSWAP未启用）；历史字符串默认空值 | mm/Kconfig:165；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
 | `ZSWAP_ZPOOL_DEFAULT_Z3FOLD_DEPRECATED` | 走 Kconfig 默认：`n` | mm/Kconfig:149；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
 | `ZSWAP_ZPOOL_DEFAULT_ZBUD` | 走 Kconfig 默认：`n` | mm/Kconfig:143；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
 | `ZSWAP_ZPOOL_DEFAULT_ZSMALLOC` | 走 Kconfig 默认：`n` | mm/Kconfig:158；父项 ZSWAP=n，子项不生效；choice 受 mm/Kconfig:65、134 约束 |
@@ -200,13 +202,14 @@ Tizen RPM spec 为 `packaging/linux-rpi.spec`；`scripts/package/kernel.spec` �
 | --- | --- | --- |
 | `CC_OPTIMIZE_FOR_PERFORMANCE` | 走 Kconfig 默认：`y` | init/Kconfig:1459；choice 默认，init/Kconfig:1457 |
 | `CC_OPTIMIZE_FOR_SIZE` | 走 Kconfig 默认：`n` | init/Kconfig:1466；同一 choice 未选；init/Kconfig:1457 |
+| `DEBUG_ALIGN_RODATA` | 最终GCC：`y` | arch/arm/mm/Kconfig:1125–1128；STRICT_KERNEL_RWX条件下default y；最终.config:435；本轮补齐遗漏项 |
 | `DEBUG_ATOMIC_SLEEP` | 走 Kconfig 默认：`n` | lib/Kconfig.debug:1560；无显式 default；bool/tristate 默认 n（choice/依赖按上述规则） |
 | `DEBUG_BUGVERBOSE` | 走 Kconfig 默认：`y` | lib/Kconfig.debug:200；default y |
 | `DEBUG_FS` | 走 Kconfig 默认：`y` | lib/Kconfig.debug:653；本项 default n；BLK_DEV_IO_TRACE=y select，kernel/trace/Kconfig:648 |
 | `DEBUG_FS_ALLOW_ALL` | 走 Kconfig 默认：`y` | lib/Kconfig.debug:675；choice 默认，lib/Kconfig.debug:668 |
 | `DEBUG_INFO` | 走 Kconfig 默认：`y` | lib/Kconfig.debug:227；由 DEBUG_INFO_DWARF4 select；lib/Kconfig.debug:273 |
-| `DEBUG_INFO_BTF` | D:531：`y` | lib/Kconfig.debug:377；D 写 y；有效值还需 PAHOLE_VERSION>=116 等条件，lib/Kconfig.debug:379–385 |
-| `DEBUG_INFO_BTF_MODULES` | 走 Kconfig 默认：`y（有条件）` | lib/Kconfig.debug:412；default y，需 DEBUG_INFO_BTF && MODULES && PAHOLE_HAS_SPLIT_BTF；未核验 pahole，不能确定实际值 |
+| `DEBUG_INFO_BTF` | D:531：`y` | lib/Kconfig.debug:377；D 写 y；最终GCC/LLVM均为y；依赖 PAHOLE_VERSION>=116 等条件，lib/Kconfig.debug:379–385 |
+| `DEBUG_INFO_BTF_MODULES` | 最终GCC：`y` | lib/Kconfig.debug:412；default y，需 DEBUG_INFO_BTF && MODULES && PAHOLE_HAS_SPLIT_BTF；实际pahole 1.29，最终BTF_MODULES=y；工具链条件已由最终.config确认，见逐项对照表 |
 | `DEBUG_INFO_COMPRESSED_NONE` | 走 Kconfig 默认：`y` | lib/Kconfig.debug:325；压缩 choice 首个可见项；lib/Kconfig.debug:320、325 |
 | `DEBUG_INFO_COMPRESSED_ZLIB` | 走 Kconfig 默认：`n` | lib/Kconfig.debug:330；无显式 default；bool/tristate 默认 n（choice/依赖按上述规则） |
 | `DEBUG_INFO_COMPRESSED_ZSTD` | 走 Kconfig 默认：`n` | lib/Kconfig.debug:345；无显式 default；bool/tristate 默认 n（choice/依赖按上述规则） |
@@ -239,17 +242,17 @@ Tizen RPM spec 为 `packaging/linux-rpi.spec`；`scripts/package/kernel.spec` �
 | `MODULE_COMPRESS_XZ` | 走 Kconfig 默认：`n` | kernel/module/Kconfig:310；父项 MODULE_COMPRESS=n，子 choice/默认不生效 |
 | `MODULE_COMPRESS_ZSTD` | 走 Kconfig 默认：`n` | kernel/module/Kconfig:316；父项 MODULE_COMPRESS=n，子 choice/默认不生效 |
 | `PROVE_LOCKING` | 走 Kconfig 默认：`n` | lib/Kconfig.debug:1351；default n |
-| `STACKPROTECTOR` | 走 Kconfig 默认：`y（有条件）` | arch/Kconfig:646；default y；依赖 ARM 支持和编译器 -fstack-protector 探测，未运行探测 |
-| `STACKPROTECTOR_PER_TASK` | 走 Kconfig 默认：`y（有条件）` | arch/arm/Kconfig:1379；default y；还需 CURRENT_POINTER_IN_TPIDRURO、GCC_PLUGINS 或 CC_HAVE_STACKPROTECTOR_TLS，保留工具链条件 |
-| `STACKPROTECTOR_STRONG` | 走 Kconfig 默认：`y（有条件）` | arch/Kconfig:670；default y；依赖 STACKPROTECTOR 和 -fstack-protector-strong 探测 |
+| `STACKPROTECTOR` | 最终GCC：`y` | arch/Kconfig:646；default y；依赖 ARM 支持和编译器 -fstack-protector 探测；工具链条件已由最终.config确认，见逐项对照表 |
+| `STACKPROTECTOR_PER_TASK` | 最终GCC：`y` | arch/arm/Kconfig:1379；default y；还需 CURRENT_POINTER_IN_TPIDRURO、GCC_PLUGINS 或 CC_HAVE_STACKPROTECTOR_TLS，GCC=y；LLVM最终未输出此项，工具链差异见03；工具链条件已由最终.config确认，见逐项对照表 |
+| `STACKPROTECTOR_STRONG` | 最终GCC：`y` | arch/Kconfig:670；default y；依赖 STACKPROTECTOR 和 -fstack-protector-strong 探测；工具链条件已由最终.config确认，见逐项对照表 |
 | `THUMB2_KERNEL` | 走 Kconfig 默认：`n` | arch/arm/Kconfig:1137；default y if CPU_THUMBONLY |
 
 
 ### 调试项与 vendor 机制补充
 
-D 中所有显式 `DEBUG_*=y` **只有三项**：DEBUG_INFO_DWARF4（D:530）、DEBUG_INFO_BTF（D:531）、DEBUG_MEMORY_INIT（D:535）。这不等于完整配置只有三个 DEBUG 项：EXPERT 会 select DEBUG_KERNEL，后者使 DEBUG_MISC 默认 y；BLK_DEV_IO_TRACE 会 select DEBUG_FS，DEBUG_INFO_DWARF4 会 select DEBUG_INFO。相关默认/派生项已在表中列出；BTF_MODULES 依赖 pahole，未生成最终 .config，不能将其认定为实测值。
+D 中所有显式 `DEBUG_*=y` **只有三项**：DEBUG_INFO_DWARF4（D:530）、DEBUG_INFO_BTF（D:531）、DEBUG_MEMORY_INIT（D:535）。这不等于完整配置只有三个 DEBUG 项：EXPERT 会 select DEBUG_KERNEL，后者使 DEBUG_MISC 默认 y；BLK_DEV_IO_TRACE 会 select DEBUG_FS，DEBUG_INFO_DWARF4 会 select DEBUG_INFO。最终GCC普通版共有12个DEBUG_*=y，全部及行号见[重点配置证据](../evidence/task2/config_key_actual.md)；原表漏列的DEBUG_ALIGN_RODATA本轮已补齐，BTF_MODULES已确认为y。
 
-D:532–544 另显式启用 KGDB、KGDB_KDB、KDB_KEYBOARD、DETECT_HUNG_TASK、LATENCYTOP、FUNCTION_PROFILER、STACK_TRACER、IRQSOFF_TRACER、SCHED_TRACER、BLK_DEV_IO_TRACE；这是未来裁剪的具体待评审范围，而不是本任务已禁用的内容。FTRACE 与 FUNCTION_TRACER 静态推导为 y；运行时 tracer 是否启动未查。
+D:532–544 另显式启用 KGDB、KGDB_KDB、KDB_KEYBOARD、DETECT_HUNG_TASK、LATENCYTOP、FUNCTION_PROFILER、STACK_TRACER、IRQSOFF_TRACER、SCHED_TRACER、BLK_DEV_IO_TRACE；这是未来裁剪的具体待评审范围，而不是本任务已禁用的内容。FTRACE 与 FUNCTION_TRACER 最终GCC/LLVM普通版均为 y；运行时 tracer 是否启动未查。
 
 没有独立的 CONFIG_FORCE_RECLAIM。`mm/memcontrol-v1.c:2424`、`:3083` 的条件是 `CONFIG_MEMCG_V1 && CONFIG_SWAP`；本基准二者为 y，所以 vendor 接口被编入。原始补丁 `478d7fd169c2d7489bad1d52d69f037e4e830286`，见 [force_reclaim_patch.txt](../evidence/task1/force_reclaim_patch.txt)。
 
@@ -407,7 +410,7 @@ zram 配置启用提交不修改 drivers/block/zram/，因此不计入驱动补�
 
 ## 6. 后续任务状态（任务2更新）
 
-- 普通/RT最终配置、实际工具链、板上运行值仍未验证；任务2构建已中止，见03，不用静态推导替代产物数据。
+- 普通/RT最终配置与实际工具链已核验，见03；没有板上运行数据。
 - PM已明确silent-reclaim-fix在用户账号下，作者He Fangyu，由另一条工作线负责；本项目已仅拆入memcontrol到lko/base，zram配置由本项目另评估。
 - PM明确MLGO是用户本人的编译器分支，与本项目不重叠；cache-ext不重叠、不再跟踪。
 - 任务2认证SSH已查到open 0、merged 17，其中内存/性能观测/构建相关12条；任务1匿名REST记录保留为历史，相关挂账已解除，见02第2节。

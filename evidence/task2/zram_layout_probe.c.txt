@@ -1,0 +1,10 @@
+#include <linux/blkdev.h>
+#include <linux/ktime.h>
+#include <linux/spinlock.h>
+#include "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/drivers/block/zram/zram_drv.h"
+struct zram_table_entry lko_layout_probe;
+const unsigned long lko_layout_values[] = {sizeof(struct zram_table_entry), __alignof__(struct zram_table_entry), __builtin_offsetof(struct zram_table_entry, handle), __builtin_offsetof(struct zram_table_entry, flags), __builtin_offsetof(struct zram_table_entry, lock), sizeof(spinlock_t),
+#ifdef CONFIG_ZRAM_TRACK_ENTRY_ACTIME
+__builtin_offsetof(struct zram_table_entry, ac_time), sizeof(ktime_t),
+#endif
+};

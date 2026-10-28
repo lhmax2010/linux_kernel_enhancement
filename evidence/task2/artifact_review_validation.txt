@@ -1,0 +1,32 @@
+$ python3 scripts/verify_publish.py
+files=275 bytes=4167649
+largest: 928601 evidence/task2/completed_export_check_home.txt
+largest: 226104 evidence/task1/gerrit_remote_refs.txt
+largest: 195191 evidence/task2/config_gcc_arm-rpi4.txt
+largest: 194991 evidence/task2/config_llvm_arm-rpi4.txt
+largest: 194971 evidence/task2/config_gcc_arm-rpi4-rt.txt
+PASS: required docs, staged UTF-8 text, <1 MB per file, forbidden paths, doc links
+
+
+EXIT=0
+$ git diff --cached --check -- docs
+
+
+EXIT=0
+$ git diff --exit-code -- scripts/run_baseline_build.sh docs/RULES.md
+
+
+EXIT=0
+$ git -C linux-rpi status --porcelain
+
+
+EXIT=0
+Original log hashes rechecked against completed_log_integrity.txt: PASS (14 files).
+Original .config copies byte-identical to source paths: verified below.
+All 12 GCC ordinary DEBUG_*=y symbols covered by 01: PASS.
+Full git diff --cached --check reports trailing whitespace in verbatim tool/log excerpts only; these are deliberately preserved. Docs whitespace check passes.
+No gbs/sudo/signals/kernel rebuild/board access performed during monitoring or artifact analysis. Minimal ARM layout probes are authorized artifact verification, under temp.
+config_gcc_arm-rpi4.txt PASS
+config_gcc_arm-rpi4-rt.txt PASS
+config_llvm_arm-rpi4.txt PASS
+config_llvm_arm-rpi4-rt.txt PASS

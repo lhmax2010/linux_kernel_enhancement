@@ -1,6 +1,6 @@
 # 任务2：zram静态核对
 
-更新：2026-10-27。基线 `f240c28093027707f5e09f8a9cbbed16a43ebb1a`。本轮完成源码接口、结构布局推导、三补丁合入检查和快照；未编译、未上板。所有源码行号相对linux-rpi；[带行号证据](../evidence/task2/static_source_lines.txt)、[快照索引](../code_snapshots/INDEX.md)。
+更新：2026-10-28。基线 `f240c28093027707f5e09f8a9cbbed16a43ebb1a`。已完成源码接口、三补丁合入检查和快照；本轮用成功产物和最小平台编译探针核实结构布局，没有重编内核或上板。所有源码行号相对linux-rpi；[带行号证据](../evidence/task2/static_source_lines.txt)、[快照索引](../code_snapshots/INDEX.md)。
 
 ## 1. 能力接口
 
@@ -18,11 +18,11 @@
 
 属性注册证据：zram_drv.c:2324–2356。未知key在部分解析循环会被跳过，不应把上述解析器视为严格拒绝未知参数的接口。
 
-任务1的defconfig静态判断仍是仅LZO后端、lzo-rle默认，MULTI_COMP/ACTIME/WRITEBACK未启用；没有最终.config，本轮不将源码能力写成运行中启用状态。
+四份最终.config均确认仅LZO后端、lzo-rle默认，MULTI_COMP/ACTIME/WRITEBACK=n，ZRAM=y；[各符号与行号](../evidence/task2/config_key_actual.md)。这是构建配置，不是板上sysfs实测。
 
 ## 2. armv7l元数据计算
 
-这是基于源码和AAPCS32自然对齐的**静态推导**，不是最终构建的sizeof实测。普通版前提：SMP=y，AEABI，PREEMPT_RT=n，DEBUG_SPINLOCK=n，DEBUG_LOCK_ALLOC=n，4 KiB页；最终.config尚未验证这些前提。不能把数值无条件用于RT或锁调试配置。
+这些布局现已用**最终产物DWARF和平台编译器sizeof/offsetof**验证。四配置均SMP=y、AEABI=y、DEBUG_SPINLOCK=n、DEBUG_LOCK_ALLOC=n；普通版PREEMPT_RT未启用、RT版为y，页大小4 KiB。不能无条件推广到其他页大小或锁调试配置。
 
 - zram_drv.h:64–74含union(unsigned long handle/element)、unsigned int flags、spinlock_t lock，以及可选ktime_t ac_time。
 - ARM32 unsigned long/unsigned int/指针为4字节；union占4字节。普通spinlock映射raw_spinlock（include/linux/spinlock_types.h:13–29）；无锁调试时raw只有arch_spinlock（spinlock_types_raw.h:14–23），ARM票据锁为u32 union（arch/arm/include/asm/spinlock_types.h:11–24），占4字节。
@@ -38,7 +38,23 @@
 | 1 GiB | 262144 | 3145728 B = 3 MiB | 6291456 B = 6 MiB | **3 MiB** |
 | 2 GiB | 524288 | 6291456 B = 6 MiB | 12582912 B = 12 MiB | 6 MiB |
 
-RT版应另算：spinlock_t为rt_mutex_base（spinlock_types.h:48–60），在相同无锁调试前提下raw锁4 + rb_root_cached两个指针8 + owner指针4 =16字节（rtmutex.h:23–27、rbtree_types.h:15–29）。因此table entry无ACTIME为24 B，含ACTIME为32 B，每槽增加8 B；512 MiB/1 GiB/2 GiB分别从3/6/12 MiB增到4/8/16 MiB，增量1/2/4 MiB。最终两版必须用实际配置和平台产物复核。这里没有使用宿主sizeof代替ARM32。
+RT版应另算：spinlock_t为rt_mutex_base（spinlock_types.h:48–60），在相同无锁调试前提下raw锁4 + rb_root_cached两个指针8 + owner指针4 =16字节（rtmutex.h:23–27、rbtree_types.h:15–29）。因此table entry无ACTIME为24 B，含ACTIME为32 B，每槽增加8 B；512 MiB/1 GiB/2 GiB分别从3/6/12 MiB增到4/8/16 MiB，增量1/2/4 MiB。两版现已完成实际布局核验。这里没有使用宿主sizeof代替ARM32。
+
+
+### 实际布局证据与方法（2026-10-28）
+
+先用各自buildroot的pahole读取GCC/LLVM普通/RT的drivers/block/zram/zram_drv.o DWARF，四者均与关闭ACTIME布局一致：[原产物布局](../evidence/task2/zram_layout_baseline.txt)。再用LLVM buildroot Clang 22.1.8，将本次实际zram .o.cmd的架构/ABI/头文件/配置参数用于最小探针；移除依赖文件与原目标输出，所有新产物写temp/artifact_review_20261028，保留原config/generated headers，分别不定义/额外定义CONFIG_ZRAM_TRACK_ENTRY_ACTIME。探针包含真实zram_drv.h，未手写替代结构体，未修改源码或最终.config。
+
+[探针全文](../evidence/task2/zram_layout_probe.c.txt)、[全部编译命令、pahole及readelf输出](../evidence/task2/zram_layout_probe.txt)。const数组记录sizeof、alignof、handle/flags/lock偏移、spinlock_t大小，开启时另记ac_time偏移/ktime_t大小；平台readelf读取ARM小端.rodata，与pahole一致。
+
+| 变体 | ACTIME | sizeof | 对齐 | handle / flags / lock偏移 | spinlock_t | ac_time偏移/大小 |
+| --- | --- | ---: | ---: | --- | ---: | --- |
+| 普通 | 关 | 12 | 4 | 0 / 4 / 8 | 4 | 不存在 |
+| 普通 | 开 | 24 | 8 | 0 / 4 / 8 | 4 | 16 / 8 |
+| RT | 关 | 24 | 4 | 0 / 4 / 8 | 16 | 不存在 |
+| RT | 开 | 32 | 8 | 0 / 4 / 8 | 16 | 24 / 8 |
+
+每GiB disksize有1,073,741,824/4096=262,144槽；普通增加262,144×12=3,145,728 B=**3 MiB**，RT增加262,144×8=2,097,152 B=**2 MiB**。开启ACTIME的两份对象仅作布局探针，实际四份内核均未开启ACTIME，不声称已测量板上分配/回收开销。
 
 ## 3. LZ4三补丁合入检查
 

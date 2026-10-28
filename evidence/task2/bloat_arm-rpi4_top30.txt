@@ -1,0 +1,40 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/python3.14 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/scripts/bloat-o-meter -p /home/linhao/Toolchain/development/linux_kernel_optimization/temp/artifact_review_20261028/platform- /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux
+Tool: buildroot scripts/bloat-o-meter, interpreter buildroot python3.14, nm buildroot (wrapper below)
+#!/bin/bash
+exec /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/nm "$@"
+
+Ranking: absolute delta descending, old=GCC new=LLVM; all symbols default bloat-o-meter filters.
+add/remove: 8656/5005 grow/shrink: 45035/12601 up/down: 4881127/-2815017 (2066110)
+Function                                     old     new   delta
+rt2800_init_rfcsr                              -   92444  +92444
+rt2800_init_rfcsr_6352                         -   71360  +71360
+rt2800_config_channel                          -   56300  +56300
+symbols                                    50544       -  -50544
+__msg                                      39711       -  -39711
+__func__                                   36256       -  -36256
+.compoundliteral                               -   25060  +25060
+__compound_literal                         25060       -  -25060
+rt2800_calibration_rt6352                      -   21972  +21972
+rt2800_config_channel_rf55xx                   -   21092  +21092
+blake2b_compress_generic                     112   21060  +20948
+rt2800_init_bbp                            10832   30440  +19608
+blake2b_compress_one_generic               19404       -  -19404
+binder_ioctl_write_read                        -   16852  +16852
+ftrace_dump_one.iter                           -   16504  +16504
+iter                                       33008   16504  -16504
+ZSTD_compressBlock_doubleFast_dictMatchState   12600   28524  +15924
+__f2fs_ioctl                                   -   14424  +14424
+hidinput_connect                           17564    3348  -14216
+__flags                                    13984       -  -13984
+r8156b_hw_phy_cfg                           4852   18704  +13852
+rt2800_loft_iq_calibration                  7720   20784  +13064
+rt2800_rxiq_calibration                     4292   17156  +12864
+rt2800_init_rfcsr_3883                      1624   14284  +12660
+do_check                                       -   12480  +12480
+__dev_ethtool                              11288       -  -11288
+f2fs_ioctl                                 11232     128  -11104
+check_leaf_item                                -   10984  +10984
+ZSTD_decompressSequencesLong_default       10848       -  -10848
+vli_mmod_fast                               4388   15076  +10688
+Total: Before=21968311, After=24034421, chg +9.40%
+EXIT=0

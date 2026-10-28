@@ -1,0 +1,48 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi status --porcelain
+
+
+EXIT=0
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi rev-parse --abbrev-ref HEAD
+lko/base
+
+
+EXIT=0
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi rev-parse HEAD tizen
+f240c28093027707f5e09f8a9cbbed16a43ebb1a
+42aeefac58edeb081aff440f0b60be71cbe49755
+
+
+EXIT=0
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization rev-parse HEAD
+e028a07227c87ea2a395f04964fe5579a9a2687a
+
+
+EXIT=0
+d3a72c62ee73d50ca53b021b9e72af478b3db463206cb5e246773ad5521ea244	195191	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/.config
+a244ba88bef49a7d8db6519f174285831c7b1b51e4ed76dd84bc8b514f293c69	412486440	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux
+d26e49902c81939a5ed0346e12f8e4f5ea25dd80c3f956efce5ea6a03696cc3a	14323400	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/arch/arm/boot/zImage
+e8d1cd79093b184ef62a2bce14ceb59683bace69ea15acfab7b9f70e10f27131	313632	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/drivers/block/zram/zram_drv.o
+87623c5e041a5420b6be82642d46ccf4852bdf22edecb89b329079960ae151c3	194971	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/.config
+231496cd16796c4adb50cf952e1a622c95e5e4cd9c21fbda8e8695809562d561	421759136	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/vmlinux
+e33df978bd1920cced9acac1dd5f01fdbe5836ed8ddc3b92ffec0cba31d614a5	14470728	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/arch/arm/boot/zImage
+ec0b86d77fd6a4b1eb5f206aa68ed28f772ae8048c1e15d5913dcade1f034c3a	310660	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/drivers/block/zram/zram_drv.o
+8ee43bc800f9d708a8606310fa9cce476ce4fb02d31cfd910fd9b50cdbba470a	4662672	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm
+13a5ded6879ab5714ea991078090e0f6a520b6101f3ed39661e1ebcd724ca281	26428	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/size
+4a00907610981a76bc1713b9f787d2f2175cacc72975724d4eb505be8fa04359	592712	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/readelf
+3a7c5226b04cc69d3173c40b421fa564efef6991de31c061194cca71855f099c	39292	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/nm
+ecc75338668690e0dab02e66f415e04ff158901eaac2a2cd73d90215739642ec	297424	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/objdump
+dd237cfcdfb9eb62f4b5ceb07e6c9251a51f3cd777dd46bf6d08c6af579f853e	47260	temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/pahole
+688e66c3d0c2e31c09fb563d9905420475319787c4d6764cd7b7e210a4f6d33c	194991	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/.config
+75195a1dd58ae77ab1bedfb9ab77c54a312af41d1d07b298a541a1d6f91c3df7	338481420	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux
+d86af2b2a3559fa98f7809fdfbf4e57d19245772898f28332de2d1bb9377d4cb	14896384	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/arch/arm/boot/zImage
+033c7dd774156dd19cb4f7f8957702522f3cb4af26057bc39cdc4e08cc4f3dfa	246280	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/drivers/block/zram/zram_drv.o
+df7b9388a4e1b5cc40fef81e7da3259ffb0591e8d0b52e003deecf617b8b88b8	194771	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/.config
+23dc61ce4a39e8539eebbf2a0d1e82a1e41c90a385dc42017791aea52f0a5271	345620612	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/vmlinux
+717c5c623f3959bf75d1a17cb4a01e49e2d8464635f0d0ee5212a65a2817ad2b	14945240	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/arch/arm/boot/zImage
+b8e4b481e1b1d2a554af53a821680bcd585955d910cfba24cbac8b4928d507e7	242888	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/drivers/block/zram/zram_drv.o
+8ee43bc800f9d708a8606310fa9cce476ce4fb02d31cfd910fd9b50cdbba470a	4662672	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm
+78f6d74df2927048b6250b45b43e3050b9cd77d0e4b08a5e9a2c840b256df5aa	22252	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/size
+63cec96fcd7178516d63aee5d7d6e307c891b9ee827d5c1ba377a34202f4af12	559264	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/readelf
+ce5f93072afd4eb902e7a0770498f3e2da2eb6443d7ce0b78b544ee8039508ca	35160	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/nm
+6647899a4f66225de16e81699a3ee1539b83b354fb4d6ddb9138204fe656dbc4	272864	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/objdump
+f85ae285de6fc967e007a690f095d91f88a82a01625721c4f7b85070fb24c0cd	47224	temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/pahole

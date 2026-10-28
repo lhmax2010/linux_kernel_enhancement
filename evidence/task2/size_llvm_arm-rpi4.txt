@@ -1,0 +1,54 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/size -A /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux  :
+section                    size         addr
+.head.text                  704   3221258240
+.text                  19862536   3223322624
+.rodata                 5144813   3244294144
+.rodata1                      0   3249438957
+.pci_fixup                11024   3249438960
+.builtin_fw                   0   3249449984
+__ksymtab                 78564   3249449984
+__ksymtab_gpl             85992   3249528548
+__kcrctab                 26188   3249614540
+__kcrctab_gpl             28664   3249640728
+__ksymtab_strings        287458   3249669392
+__init_rodata                 0   3249956850
+__param                    7860   3249956852
+__modver                    792   3249964712
+.notes                       84   3249965504
+.BTF                    6475431   3249965588
+.BTF_ids                   1876   3256441020
+__ex_table                 1736   3256446976
+.ARM.unwind_idx          515568   3256448712
+.ARM.unwind_tab          522312   3256964280
+.vectors                     32   4294901760
+.vectors.bhb.loop8           32   4294901760
+.vectors.bhb.bpiall          32   4294901760
+.stubs                      848   4294905856
+.init.text               345192   3258975168
+.exit.text                20368   3259320360
+.init.proc.info             572   3259340728
+.init.arch.info             448   3259341304
+.init.tagtable               16   3259341752
+.init.smpalt             138936   3259341768
+.init.pv_table             1376   3259480704
+.init.data               347100   3259482112
+.data..percpu             46092   3259830272
+.data                   1870640   3261071360
+__bug_table               38220   3262942000
+.sbss                         0   3262980220
+.bss                     592912   3262980224
+.debug_aranges             2240            0
+.debug_info           214990211            0
+.debug_abbrev           4001818            0
+.debug_line            28674838            0
+.debug_frame            2397276            0
+.debug_str              5942700            0
+.debug_loc             33616145            0
+.debug_ranges           4434496            0
+.comment                     41            0
+.ARM.attributes              26            0
+Total                 330514209
+
+
+EXIT=0

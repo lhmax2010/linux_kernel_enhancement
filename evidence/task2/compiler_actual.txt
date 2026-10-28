@@ -1,0 +1,138 @@
+BUILD gcc
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/rpm --rcfile /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/rpm/rpmrc --macros /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/rpm/macros --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/var/lib/rpm -q gcc clang llvm binutils dwarves --qf '%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\n'
+gcc-14.2.0-4.30.armv7l
+package clang is not installed
+package llvm is not installed
+binutils-2.43-3.29.armv7l
+dwarves-1.29-1.armv7l
+EXIT=2
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/readelf --version
+GNU readelf (GNU Binutils) 2.43
+Copyright (C) 2024 Free Software Foundation, Inc.
+This program is free software; you may redistribute it under the terms of
+the GNU General Public License version 3 or (at your option) any later version.
+This program has absolutely no warranty.
+EXIT=0
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/size --version
+GNU size (GNU Binutils) 2.43
+Copyright (C) 2024 Free Software Foundation, Inc.
+This program is free software; you may redistribute it under the terms of
+the GNU General Public License version 3 or (at your option) any later version.
+This program has absolutely no warranty.
+EXIT=0
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/pahole --version
+v1.29
+EXIT=0
+
+log: /home/linhao/Toolchain/development/linux_kernel_optimization/temp/build_gcc_r2.log
+No LLVM=1 / CC= / LD= / export CC / export LD matches
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/include/generated/compile.h
+#define UTS_MACHINE		"arm"
+#define LINUX_COMPILE_BY	"abuild"
+#define LINUX_COMPILE_HOST	"linhao-linux"
+#define LINUX_COMPILER		"gcc (Tizen GCC 14.2.0 20240801 4.7) 14.2.0, GNU ld (GNU Binutils) 2.43"
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux
+
+String dump of section '.comment':
+  [     0]  GCC: (Tizen GCC 14.2.0 20240801 4.7) 14.2.0
+
+EXIT=0
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/drivers/block/zram/.zram_drv.o.cmd:1
+savedcmd_drivers/block/zram/zram_drv.o := gcc -Wp,-MMD,drivers/block/zram/.zram_drv.o.d -nostdinc -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/arch/arm/include -I./arch/arm/include/generated -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include -I./include -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/uapi -I./include/generated/uapi -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/compiler-version.h -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/kconfig.h -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/compiler_types.h -D__KERNEL__ -mlittle-endian -D__LINUX_ARM_ARCH__=7 -fmacro-prefix-map=/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/= -std=gnu11 -fshort-wchar -funsigned-char -fno-common -fno-PIE -fno-strict-aliasing -fno-dwarf2-cfi-asm -mno-fdpic -fno-ipa-sra -mtp=cp15 -mabi=aapcs-linux -mfpu=vfp -funwind-tables -marm -Wa,-mno-warn-deprecated -march=armv7-a -msoft-float -Uarm -fno-delete-null-pointer-checks -O2 -fno-allow-store-data-races -fstack-protector-strong -ftrivial-auto-var-init=zero -fno-stack-clash-protection -pg -fstrict-flex-arrays=3 -fno-strict-overflow -fno-stack-check -fconserve-stack -fno-builtin-wcslen -fno-builtin-wcslen -Wall -Wextra -Wundef -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Werror=strict-prototypes -Wno-format-security -Wno-trigraphs -Wno-frame-address -Wno-address-of-packed-member -Wmissing-declarations -Wmissing-prototypes -Wframe-larger-than=1024 -Wno-main -Wno-dangling-pointer -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-array-bounds -Wno-stringop-overflow -Wno-alloc-size-larger-than -Wimplicit-fallthrough=5 -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wenum-conversion -Wunused -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-packed-not-aligned -Wno-format-overflow -Wno-format-truncation -Wno-stringop-truncation -Wno-override-init -Wno-missing-field-initializers -Wno-type-limits -Wno-shift-negative-value -Wno-maybe-uninitialized -Wno-sign-compare -Wno-unused-parameter -g -gdwarf-4 -mstack-protector-guard=tls -mstack-protector-guard-offset=1648 -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/drivers/block/zram -Idrivers/block/zram    -DKBUILD_MODFILE='"drivers/block/zram/zram"' -DKBUILD_BASENAME='"zram_drv"' -DKBUILD_MODNAME='"zram"' -D__KBUILD_MODNAME=kmod_zram -c -o drivers/block/zram/zram_drv.o /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/drivers/block/zram/zram_drv.c  
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/include/generated/compile.h
+#define UTS_MACHINE		"arm"
+#define LINUX_COMPILE_BY	"abuild"
+#define LINUX_COMPILE_HOST	"linhao-linux"
+#define LINUX_COMPILER		"gcc (Tizen GCC 14.2.0 20240801 4.7) 14.2.0, GNU ld (GNU Binutils) 2.43"
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/vmlinux
+
+String dump of section '.comment':
+  [     0]  GCC: (Tizen GCC 14.2.0 20240801 4.7) 14.2.0
+
+EXIT=0
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/drivers/block/zram/.zram_drv.o.cmd:1
+savedcmd_drivers/block/zram/zram_drv.o := gcc -Wp,-MMD,drivers/block/zram/.zram_drv.o.d -nostdinc -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/arch/arm/include -I./arch/arm/include/generated -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include -I./include -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/uapi -I./include/generated/uapi -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/compiler-version.h -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/kconfig.h -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/compiler_types.h -D__KERNEL__ -mlittle-endian -D__LINUX_ARM_ARCH__=7 -fmacro-prefix-map=/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/= -std=gnu11 -fshort-wchar -funsigned-char -fno-common -fno-PIE -fno-strict-aliasing -fno-dwarf2-cfi-asm -mno-fdpic -fno-ipa-sra -mtp=cp15 -mabi=aapcs-linux -mfpu=vfp -funwind-tables -marm -Wa,-mno-warn-deprecated -march=armv7-a -msoft-float -Uarm -fno-delete-null-pointer-checks -O2 -fno-allow-store-data-races -fstack-protector-strong -ftrivial-auto-var-init=zero -fno-stack-clash-protection -pg -fstrict-flex-arrays=3 -fno-strict-overflow -fno-stack-check -fconserve-stack -fno-builtin-wcslen -fno-builtin-wcslen -Wall -Wextra -Wundef -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Werror=strict-prototypes -Wno-format-security -Wno-trigraphs -Wno-frame-address -Wno-address-of-packed-member -Wmissing-declarations -Wmissing-prototypes -Wframe-larger-than=1024 -Wno-main -Wno-dangling-pointer -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-array-bounds -Wno-stringop-overflow -Wno-alloc-size-larger-than -Wimplicit-fallthrough=5 -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wenum-conversion -Wunused -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-packed-not-aligned -Wno-format-overflow -Wno-format-truncation -Wno-stringop-truncation -Wno-override-init -Wno-missing-field-initializers -Wno-type-limits -Wno-shift-negative-value -Wno-maybe-uninitialized -Wno-sign-compare -Wno-unused-parameter -g -gdwarf-4 -mstack-protector-guard=tls -mstack-protector-guard-offset=1704 -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/drivers/block/zram -Idrivers/block/zram    -DKBUILD_MODFILE='"drivers/block/zram/zram"' -DKBUILD_BASENAME='"zram_drv"' -DKBUILD_MODNAME='"zram"' -D__KBUILD_MODNAME=kmod_zram -c -o drivers/block/zram/zram_drv.o /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/drivers/block/zram/zram_drv.c  
+
+BUILD llvm
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/rpm --rcfile /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/rpm/rpmrc --macros /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/rpm/macros --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/var/lib/rpm -q gcc clang llvm binutils dwarves --qf '%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\n'
+gcc-14.2.0-1.13.armv7l
+clang-22.1.8-3.1.armv7l
+llvm-22.1.8-3.1.armv7l
+binutils-2.43-1.13.armv7l
+dwarves-1.29-1.armv7l
+EXIT=0
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/readelf --version
+GNU readelf (GNU Binutils) 2.43
+Copyright (C) 2024 Free Software Foundation, Inc.
+This program is free software; you may redistribute it under the terms of
+the GNU General Public License version 3 or (at your option) any later version.
+This program has absolutely no warranty.
+EXIT=0
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/size --version
+GNU size (GNU Binutils) 2.43
+Copyright (C) 2024 Free Software Foundation, Inc.
+This program is free software; you may redistribute it under the terms of
+the GNU General Public License version 3 or (at your option) any later version.
+This program has absolutely no warranty.
+EXIT=0
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/pahole --version
+v1.29
+EXIT=0
+
+log: /home/linhao/Toolchain/development/linux_kernel_optimization/temp/build_llvm_r2.log
+1988: [  393s] + export CC=armv7l-tizen-linux-gnueabi-clang CXX=armv7l-tizen-linux-gnueabi-clang++
+1989: [  393s] + CC=armv7l-tizen-linux-gnueabi-clang
+1993: [  393s] + export LLVM=1
+1994: [  393s] + LLVM=1
+14290: [ 1052s] + export CC=armv7l-tizen-linux-gnueabi-clang CXX=armv7l-tizen-linux-gnueabi-clang++
+14291: [ 1052s] + CC=armv7l-tizen-linux-gnueabi-clang
+14295: [ 1052s] + export LLVM=1
+14296: [ 1052s] + LLVM=1
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/include/generated/compile.h
+#define UTS_MACHINE		"arm"
+#define LINUX_COMPILE_BY	"abuild"
+#define LINUX_COMPILE_HOST	"linhao-linux"
+#define LINUX_COMPILER		"clang version 22.1.8, LLD 22.1.8"
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux
+
+String dump of section '.comment':
+  [     1]  clang version 22.1.8
+  [    16]  Linker: LLD 22.1.8
+
+EXIT=0
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/drivers/block/zram/.zram_drv.o.cmd:1
+savedcmd_drivers/block/zram/zram_drv.o := clang -Wp,-MMD,drivers/block/zram/.zram_drv.o.d -nostdinc -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/arch/arm/include -I./arch/arm/include/generated -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include -I./include -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/uapi -I./include/generated/uapi -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/compiler-version.h -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/kconfig.h -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/compiler_types.h -D__KERNEL__ --target=arm-linux-gnueabi -fintegrated-as -Werror=unknown-warning-option -Werror=ignored-optimization-argument -Werror=option-ignored -Werror=unused-command-line-argument -mlittle-endian -D__LINUX_ARM_ARCH__=7 -fmacro-prefix-map=/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/= -std=gnu11 -fshort-wchar -funsigned-char -fno-common -fno-PIE -fno-strict-aliasing -fno-dwarf2-cfi-asm -mtp=cp15 -mabi=aapcs-linux -mfpu=vfp -funwind-tables -meabi gnu -Wa,-W -march=armv7-a -msoft-float -Uarm -fno-delete-null-pointer-checks -O2 -fstack-protector-strong -ftrivial-auto-var-init=zero -pg -fstrict-flex-arrays=3 -fno-strict-overflow -fno-stack-check -fno-builtin-wcslen -fno-builtin-wcslen -Wall -Wextra -Wundef -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Werror=strict-prototypes -Wno-format-security -Wno-trigraphs -Wno-frame-address -Wno-address-of-packed-member -Wmissing-declarations -Wmissing-prototypes -Wframe-larger-than=1024 -Wno-gnu -Wno-format-overflow-non-kprintf -Wno-format-truncation-non-kprintf -Wno-default-const-init-unsafe -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-unterminated-string-initialization -Wimplicit-fallthrough -Werror=date-time -Werror=incompatible-pointer-types -Wenum-conversion -Wunused -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-format-overflow -Wno-override-init -Wno-pointer-to-enum-cast -Wno-tautological-constant-out-of-range-compare -Wno-unaligned-access -Wno-enum-compare-conditional -Wno-missing-field-initializers -Wno-type-limits -Wno-shift-negative-value -Wno-enum-enum-conversion -Wno-sign-compare -Wno-unused-parameter -g -gdwarf-4 -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/drivers/block/zram -Idrivers/block/zram    -DKBUILD_MODFILE='"drivers/block/zram/zram"' -DKBUILD_BASENAME='"zram_drv"' -DKBUILD_MODNAME='"zram"' -D__KBUILD_MODNAME=kmod_zram -c -o drivers/block/zram/zram_drv.o /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/drivers/block/zram/zram_drv.c  
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/include/generated/compile.h
+#define UTS_MACHINE		"arm"
+#define LINUX_COMPILE_BY	"abuild"
+#define LINUX_COMPILE_HOST	"linhao-linux"
+#define LINUX_COMPILER		"clang version 22.1.8, LLD 22.1.8"
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/vmlinux
+
+String dump of section '.comment':
+  [     1]  clang version 22.1.8
+  [    16]  Linker: LLD 22.1.8
+
+EXIT=0
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/drivers/block/zram/.zram_drv.o.cmd:1
+savedcmd_drivers/block/zram/zram_drv.o := clang -Wp,-MMD,drivers/block/zram/.zram_drv.o.d -nostdinc -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/arch/arm/include -I./arch/arm/include/generated -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include -I./include -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/arch/arm/include/uapi -I./arch/arm/include/generated/uapi -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/uapi -I./include/generated/uapi -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/compiler-version.h -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/kconfig.h -include /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/include/linux/compiler_types.h -D__KERNEL__ --target=arm-linux-gnueabi -fintegrated-as -Werror=unknown-warning-option -Werror=ignored-optimization-argument -Werror=option-ignored -Werror=unused-command-line-argument -mlittle-endian -D__LINUX_ARM_ARCH__=7 -fmacro-prefix-map=/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/= -std=gnu11 -fshort-wchar -funsigned-char -fno-common -fno-PIE -fno-strict-aliasing -fno-dwarf2-cfi-asm -mtp=cp15 -mabi=aapcs-linux -mfpu=vfp -funwind-tables -meabi gnu -Wa,-W -march=armv7-a -msoft-float -Uarm -fno-delete-null-pointer-checks -O2 -fstack-protector-strong -ftrivial-auto-var-init=zero -pg -fstrict-flex-arrays=3 -fno-strict-overflow -fno-stack-check -fno-builtin-wcslen -fno-builtin-wcslen -Wall -Wextra -Wundef -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Werror=strict-prototypes -Wno-format-security -Wno-trigraphs -Wno-frame-address -Wno-address-of-packed-member -Wmissing-declarations -Wmissing-prototypes -Wframe-larger-than=1024 -Wno-gnu -Wno-format-overflow-non-kprintf -Wno-format-truncation-non-kprintf -Wno-default-const-init-unsafe -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-unterminated-string-initialization -Wimplicit-fallthrough -Werror=date-time -Werror=incompatible-pointer-types -Wenum-conversion -Wunused -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-format-overflow -Wno-override-init -Wno-pointer-to-enum-cast -Wno-tautological-constant-out-of-range-compare -Wno-unaligned-access -Wno-enum-compare-conditional -Wno-missing-field-initializers -Wno-type-limits -Wno-shift-negative-value -Wno-enum-enum-conversion -Wno-sign-compare -Wno-unused-parameter -g -gdwarf-4 -I/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/drivers/block/zram -Idrivers/block/zram    -DKBUILD_MODFILE='"drivers/block/zram/zram"' -DKBUILD_BASENAME='"zram_drv"' -DKBUILD_MODNAME='"zram"' -D__KBUILD_MODNAME=kmod_zram -c -o drivers/block/zram/zram_drv.o /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/drivers/block/zram/zram_drv.c  

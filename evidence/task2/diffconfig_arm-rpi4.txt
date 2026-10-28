@@ -1,0 +1,34 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/python3.14 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/scripts/diffconfig /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/.config /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/.config
+-AS_IS_GNU y
+-CC_CAN_LINK y
+-CC_HAS_MIN_FUNCTION_ALIGNMENT y
+-CC_HAS_ZERO_CALL_USED_REGS y
+-CC_HAVE_STACKPROTECTOR_TLS y
+-CC_IS_GCC y
+-CC_NO_ARRAY_BOUNDS y
+-CC_NO_STRINGOP_OVERFLOW y
+-CPU_BIG_ENDIAN n
+-DEBUG_SECTION_MISMATCH n
+-HAVE_KCSAN_COMPILER y
+-LD_IS_BFD y
+-READABLE_ASM n
+-STACKPROTECTOR_PER_TASK y
+-ZERO_CALL_USED_REGS n
+ AS_VERSION 24300 -> 220108
+ CC_IMPLICIT_FALLTHROUGH "-Wimplicit-fallthrough=5" -> "-Wimplicit-fallthrough"
+ CC_VERSION_TEXT "gcc (Tizen GCC 14.2.0 20240801 4.7) 14.2.0" -> "clang version 22.1.8"
+ CLANG_VERSION 0 -> 220108
+ GCC_VERSION 140200 -> 0
+ LD_VERSION 24300 -> 0
+ LLD_VERSION 0 -> 220108
++AS_IS_LLVM y
++CC_HAS_COUNTED_BY y
++CC_HAS_RANDSTRUCT y
++CC_IS_CLANG y
++CFI_CLANG n
++HAVE_CFI_ICALL_NORMALIZE_INTEGERS_CLANG y
++LD_IS_LLD y
++PAHOLE_HAS_BTF_TAG y
++RANDSTRUCT_FULL n
++TOOLS_SUPPORT_RELR y
+EXIT=0

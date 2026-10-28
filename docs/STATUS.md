@@ -2,64 +2,51 @@
 
 更新：2026-10-28（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**任务2续六完成：解析修复、完整trace离线审计、8个负对照与2个正对照全部通过，可以由用户重跑。代理未运行gbs、sudo、构建或发送信号。**
-
-## 当前交付
-
-- 20:41尝试的export命令exit=0，审计exit=91来自5条unfinished/resumed的标志空白解析；GCC/LLVM未启动。[原失败记录](../evidence/task2/export_attempt_2041_failure.txt)。
-- 原始12项产物整体移至temp/attempt_20261027_2041/，保留锁及较早归档，不删除；原始trace校验值不变。[移动清单](../evidence/task2/attempt_2041_archive.txt)。
-- 修复re_flags尾随空白及拼接前半段的末尾空白；新增--audit-only直接使用正式trace_audit函数，独立退出不进入构建。[03说明与逐条正则核对](03_baseline_build.md)。
-- 完整trace AUDIT-EXIT 0、Issues为空；a=4个工作区配置路径，b=307个允许的外部路径+标志组合，c=5798个工作区目录；/dev/null=99次、首次323行。[离线摘要](../evidence/task2/offline_audit_r6_summary.txt)。
-- 8个负对照均exit1并指明对应违规；要求的正对照及附加正则重建正对照均exit0；bash -n通过。[结果表](../evidence/task2/audit_fixture_results_r6.md)、[验证记录](../evidence/task2/audit_validation_r6.txt)。
-- GBP_CONF_FILES配置隔离、精确/dev/null字符设备1:3例外及其余外部写入拒绝规则保持。没有为通过用例增加白名单。
+**用户以e028a072启动的基线构建成功，GCC/LLVM均exit=0，ALL-END 2026-10-28T14:55:09+08:00 OK。已完成可用产物核对及ACTIME实际布局验证；平台缺少llvm-bolt/create_llvm_prof，BOLT支持架构无法实测，明确挂账。**
 
 ## 计划
 
-PM指定顺序：源码核对 → 工作区用户目录配置 → 指定HOME/GIT_CONFIG_NOSYSTEM/GBP_CONF_FILES的strace导出 → 串行GCC/LLVM与外部写入监测 → 产物核对；静态部分允许独立开展。PM已排除修改源码.gbs.conf/exclude及上轮两个替代工具/隔离方案，不再请求这些方案裁决。
+本轮按任务2续四：每10分钟只读监控 → 正常结束后封存日志 → 实际编译器/四配置/体积与开销 → ACTIME实际布局 → 05平台前提 → 同commit发布。以上可执行核对已完成；没有重跑gbs、sudo、向进程发信号、改内核或碰开发板。下一阶段优化/上板由PM另发任务。
 
 ## 进度
 
-- PM裁决已原文置于RULES最前两条硬要求后，明确系统运行时例外和所有GBS必带三个环境变量。
-- 源码核对：expanduser遵循HOME；无配置自动生成路径也遵循HOME；导出fork/exec链未发现重设两项环境；其他HOME路径逐项列出。该结论不替代strace文件访问证据，也不扩大到sudo/chroot全部后代。
-- 步骤2完成：temp/gbs-home/.gbs.conf为指定两行普通文件。没有重设实际HOME，没有运行GBS。已受跟踪linux-rpi/.gbs.conf和exclude保持原样。
-- 步骤3两次由用户运行，export命令均成功但后置审计失败；本轮共用函数离线回放已修复并验证20:41的失败。步骤4–5构建/产物核对未开展，正式启动仍只由用户执行。
-- 步骤6：zram接口已核对；ARM32普通无锁调试/4KiB页条件下ACTIME使表项12→24 B，每GiB增3 MiB；RT相同锁调试前提下24→32 B，每GiB增2 MiB。均为静态推导，非最终配置sizeof实测。
-- LZ4三提交1051099cb8da、7b64cf4f1065、7459b2911b52依次cherry-pick均无冲突；lko/tmp-lz4已删除，未改base。两份字典脚本原文及zram源码片段已归档，未执行脚本。
-- ARM32本树无LTO架构选择路径；AUTOFDO/PROPELLER及对应ARCH_SUPPORTS符号在Kconfig/Makefile无匹配；BCM2711有cortex-a72-pmu节点，主板递归include链未找到CoreSight组件节点；perf spec未显式传CORESIGHT=1/OpenCSD。
-- 平台LLVM版本/BOLT后端、最终CORESIGHT*值未取得；未使用宿主工具替代。本次尚无GCC/LLVM构建日志、构建前后find结果或板上数据；已有导出trace证据。
-- 当前内核lko/base@f240c28093027707f5e09f8a9cbbed16a43ebb1a，tizen@42aeefac58edeb081aff440f0b60be71cbe49755，工作树干净。未向Gerrit推送，未构建aarch64，未碰板或其他任务进程。
+- 本次supervisor PGID518408；export/GCC/LLVM组518419/525954/1214867；最终检查全已退出。12次监控记录原样封存，没有沿用旧PID。
+- export a=4工作区配置、b=307允许的外部路径+标志组合、c=5798工作区目录；AUDIT-EXIT0、Issues为空；/dev/null99次，首次trace:323，设备1:3按PM裁决放行。
+- GCC/LLVM完整日志各14840/15621行；最后均BUILD-END exit=0，日志尾、SHA-256及流程状态已封存。GCC time墙钟58:44.70、LLVM36:50.38。
+- 两轮分别由GCC14.2.0/GNU ld2.43和Clang22.1.8/LLD22.1.8编译；四份compile.h、.comment、日志/命令及RPM版本互相印证。
+- 四份最终.config、两组diffconfig各32条差异、01原表178符号全量核对完成。原明确值反转0；4条件项闭合、2字符串改标未输出、补1遗漏DEBUG_ALIGN_RODATA，01共补全/澄清7个符号。Clang未启用STACKPROTECTOR_PER_TASK，GCC为y，不能视为完全同配置实验。
+- 大小、模块、kallsyms、追踪数据、bloat-o-meter前30、wall/RSS/buildroot/RPM已记录。buildroot磁盘为普通权限可读部分下界（3目录拒读）。所有数字是构建产物指标，不是板上运行内存。
+- 四份原zram对象均用平台pahole验证；真实头文件+最终LLVM普通/RT配置的最小探针证明ACTIME 12→24 / 24→32 B，每GiB增3/2 MiB。没有修改.config或重编内核。
+- 05已更新llvm-profgen22.1.8、四配置CORESIGHT=n、perf实际libopencsd OFF；llvm-bolt/create_llvm_prof缺失，架构/版本无法实测，保留尝试命令及权限边界。
+- 内核保持lko/base@f240c28093027707f5e09f8a9cbbed16a43ebb1a，tizen@42aeefac58edeb081aff440f0b60be71cbe49755。LZ4三补丁之前干净合入后临时分支已删除；未对Gerrit推送。
 
 ## 已闭合结论（附证据）
 
 | 结论 | 证据 |
 | --- | --- |
-| 解析修复、完整trace和10个对照符合预期 | [离线摘要](../evidence/task2/offline_audit_r6_summary.txt)、[对照表](../evidence/task2/audit_fixture_results_r6.md)、[03](03_baseline_build.md) |
-| GBP配置隔离、上次导出失败归因及归档 | [GBP核对](../evidence/task2/gbp_audit.md)、[上次摘要](../evidence/task2/export_attempt_1801_summary.txt)、[移动清单](../evidence/task2/attempt_1801_archive.txt) |
-| HOME配置定位/环境继承及其他用户路径 | [home_source_audit.md](../evidence/task2/home_source_audit.md)、[源码行号](../evidence/task2/home_source_lines.txt)、[检索命令输出](../evidence/task2/home_source_search.txt) |
-| 两行工作区配置已准备，源码配置保持原样 | [home_preparation.txt](../evidence/task2/home_preparation.txt) |
-| zram接口、普通/RT布局条件及计算 | [04](04_zram_static.md)、[源码证据](../evidence/task2/static_source_lines.txt) |
-| LZ4三提交干净合入，检查后删除临时分支 | [lz4_merge_check.txt](../evidence/task2/lz4_merge_check.txt) |
-| 字典脚本全文与相关源码片段 | [快照索引](../code_snapshots/INDEX.md) |
-| FDO符号缺失、PMU/CoreSight/perf静态状态 | [05](05_kernel_fdo_static.md)、[符号检索](../evidence/task2/fdo_symbol_search.txt)、[DTS扫描](../evidence/task2/bcm2711_dts_scan.txt) |
-| 无平台LLVM工具版本证据 | [platform_tools_pending.txt](../evidence/task2/platform_tools_pending.txt) |
+| 导出a/b/c通过、两构建成功、进程退出 | [状态](../evidence/task2/completed_run_baseline_build.status)、[导出审计](../evidence/task2/completed_export_check_home.txt)、[监控](../evidence/task2/completed_monitor.log)、[03](03_baseline_build.md) |
+| 日志行数/SHA和BUILD-END封存 | [完整性清单](../evidence/task2/completed_log_integrity.txt)、[GCC尾](../evidence/task2/completed_build_gcc_last100.txt)、[LLVM尾](../evidence/task2/completed_build_llvm_last100.txt) |
+| 实际Clang、四配置及01更正口径 | [编译器](../evidence/task2/compiler_actual.txt)、[178符号核对](../evidence/task2/config_inventory_comparison.md)、[重点符号](../evidence/task2/config_key_actual.md)、[01](01_kernel_inventory.md) |
+| 产物大小/符号/模块/追踪及成本 | [汇总](../evidence/task2/artifact_measurements.txt)、[符号区间](../evidence/task2/kallsyms_ftrace_measurements.txt)、[03](03_baseline_build.md) |
+| ACTIME每GiB增3/2 MiB的真实布局 | [原产物](../evidence/task2/zram_layout_baseline.txt)、[探针输出](../evidence/task2/zram_layout_probe.txt)、[04](04_zram_static.md) |
+| FDO平台工具、CoreSight/perf能力与缺项 | [工具输出](../evidence/task2/fdo_platform_actual.txt)、[05](05_kernel_fdo_static.md) |
+| 两轮外部路径更新不能归属 | [GCC](../evidence/task2/completed_gcc_r2.external_review.txt)、[LLVM](../evidence/task2/completed_llvm_r2.external_review.txt) |
+| LZ4三提交干净合入及字典脚本 | [合入检查](../evidence/task2/lz4_merge_check.txt)、[快照索引](../code_snapshots/INDEX.md) |
 
 ## 需要人工裁决的前提
 
-无新增待裁决规则。离线审计及全部对照已通过，可由用户在自己的终端重跑。等待用户告知本次启动信息后，按续四每10分钟只读监控；异常即停，ALL-END OK后完成产物核对。离线通过不等于新一轮导出/构建已成功。
+- 没有新增执行许可请求，本轮不安装软件、不改认证或配置。若后续仍要求平台llvm-bolt支持架构/create_llvm_prof版本实测，需要PM指定平台工具包或可核对源码范围；当前root没有这两个工具，不能猜架构列表。
+- 两套仓库、依赖release、探测配置和缓存不同，耗时与体积是本次基线；若要把差异归因于编译器，需另行设计受控实验。
 
 ## 挂账事项
 
-- 新一轮运行时导出a/b/c审计、进程组和ALL-END结果；已有trace的离线审计通过，但新运行尚未开始。
-- 两轮GCC/LLVM成功构建、进程组前后与残留等待、marker/find外部写入及无法归属项；无r2耗时/大小/监测结果。
-- 实际编译器四类证据、是否确为Clang；四份最终.config和diffconfig；01改正符号数未知，不记为0。
-- vmlinux/zImage差值、模块/符号/追踪段、bloat-o-meter、wall/RSS/buildroot/RPM大小。
-- 元数据布局需用最终普通/RT配置核验；无锁调试前提变更则重新计算。
-- 平台create_llvm_prof/llvm-profgen版本、llvm-bolt支持架构、最终CORESIGHT*配置；板上采样与性能另发任务。
-
-历史结果保留：最初GCC尝试人为中断exit143、5:37.12，不是本轮构建耗时；残留已自行退出。SSH open0、近6个月merged17/相关12及重叠修订见02。base只改memcontrol，后仅改标题，历史证据不重写。
+- 外部更新GCC27项/LLVM48项均无法归属，包含.rpmdb/rpmdb.sqlite-shm；未取得属于本次构建的外部写入证据，也不能证明零外部写入。find权限/深度/所有者限制见03。未删除、移动或打开这些外部文件内容。
+- buildroot磁盘精确总量因3目录权限不足未取得，仅报告下界；不sudo补读。
+- llvm-bolt支持架构、create_llvm_prof版本缺少平台可执行工具；未使用宿主LLVM或通用targets冒充BOLT支持。
+- ARM32内核AutoFDO缺Kconfig/Kbuild profile接入和采样转换消费链验证；CoreSight最终关闭且perf无OpenCSD。PMU/ETM及性能、内存数据需另发上板任务；未构建aarch64。
 
 ## 发布状态
 
-前轮禁用外部Git配置导致的认证失败已由PM裁决解除：隔离变量仅用于GBS及其后代，成果仓库commit/push使用正常环境的已有GitHub认证。普通push已成功补发旧成果。本轮续六脚本、03、RULES、STATUS及离线证据/用例同一提交普通推送main；最终commit见交付回复。旧publication_home_attempt.txt保留作历史证据。
+本轮01、03、04、05、STATUS及evidence/task2同一提交，使用正常Git环境、Hao Lin <hao.lin@samsung.com>署名，普通push main；最终commit见交付回复。RULES及构建脚本保持e028a072规则/内容，不重跑脚本。历史失败尝试在03及temp/attempt_*中保留，不与本次成功耗时混用。
 
 交付索引：[evidence/task2/README.md](../evidence/task2/README.md)。

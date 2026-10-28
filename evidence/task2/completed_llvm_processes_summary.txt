@@ -1,0 +1,6 @@
+Only recorded phase group and observation markers; unrelated pre-build process table omitted.
+1: BEFORE 2026-10-28T14:18:01+08:00
+462: PROCESS-GROUP 2026-10-28T14:18:01+08:00 PGID=1214867
+463: 1214867  518408 1214867 linhao   S    /usr/bin/time -v /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -A armv7l --threads 1 --define _smp_mflags -j10
+464: 1214870 1214867 1214867 linhao   R    /usr/bin/python3 /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -A armv7l --threads 1 --define _smp_mflags -j10
+465: PROCESS-GROUP 2026-10-28T14:54:54+08:00 PGID=1214867

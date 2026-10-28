@@ -1,0 +1,61 @@
+arch/arm/mm/Kconfig
+1125: config DEBUG_ALIGN_RODATA
+1126: 	bool "Make rodata strictly non-executable"
+1127: 	depends on STRICT_KERNEL_RWX
+1128: 	default y
+1129: 	help
+1130: 	  If this is set, rodata will be made explicitly non-executable. This
+1131: 	  provides protection on the rare chance that attackers might find and
+1132: 	  use ROP gadgets that exist in the rodata section. This adds an
+1133: 	  additional section-aligned split of rodata from kernel text so it
+1134: 	  can be made explicitly non-executable. This padding may waste memory
+1135: 	  space to gain the additional protection.
+
+arch/arm/Kconfig
+1376: config CC_HAVE_STACKPROTECTOR_TLS
+1377: 	def_bool $(cc-option,-mtp=cp15 -mstack-protector-guard=tls -mstack-protector-guard-offset=0)
+1378: 
+1379: config STACKPROTECTOR_PER_TASK
+1380: 	bool "Use a unique stack canary value for each task"
+1381: 	depends on STACKPROTECTOR && CURRENT_POINTER_IN_TPIDRURO && !XIP_DEFLATED_DATA
+1382: 	depends on GCC_PLUGINS || CC_HAVE_STACKPROTECTOR_TLS
+1383: 	select GCC_PLUGIN_ARM_SSP_PER_TASK if !CC_HAVE_STACKPROTECTOR_TLS
+1384: 	default y
+1385: 	help
+1386: 	  Due to the fact that GCC uses an ordinary symbol reference from
+
+include/asm-generic/vmlinux.lds.h
+165:  * The ftrace call sites are logged to a section whose name depends on the
+166:  * compiler option used. A given kernel image will only use one, AKA
+167:  * FTRACE_CALLSITE_SECTION. We capture all of them here to avoid header
+168:  * dependencies for FTRACE_CALLSITE_SECTION's definition.
+169:  *
+170:  * ftrace_ops_list_func will be defined as arch_ftrace_ops_list_func
+171:  * as some archs will have a different prototype for that function
+172:  * but ftrace_ops_list_func() will have a single prototype.
+173:  */
+174: #define MCOUNT_REC()	. = ALIGN(8);				\
+175: 			__start_mcount_loc = .;			\
+176: 			KEEP(*(__mcount_loc))			\
+177: 			KEEP_PATCHABLE				\
+178: 			__stop_mcount_loc = .;			\
+179: 			FTRACE_STUB_HACK			\
+180: 			ftrace_ops_list_func = arch_ftrace_ops_list_func;
+
+include/asm-generic/vmlinux.lds.h
+249: 
+250: #ifdef CONFIG_EVENT_TRACING
+251: #define FTRACE_EVENTS()							\
+252: 	. = ALIGN(8);							\
+253: 	BOUNDED_SECTION(_ftrace_events)					\
+254: 	BOUNDED_SECTION_BY(_ftrace_eval_map, _ftrace_eval_maps)
+255: #else
+256: #define FTRACE_EVENTS()
+
+arch/arm/include/asm/page.h
+9: 
+10: /* PAGE_SHIFT determines the page size */
+11: #define PAGE_SHIFT		CONFIG_PAGE_SHIFT
+12: #define PAGE_SIZE		(_AC(1,UL) << PAGE_SHIFT)
+13: #define PAGE_MASK		(~((1 << PAGE_SHIFT) - 1))
+14: 

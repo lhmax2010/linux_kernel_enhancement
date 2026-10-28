@@ -1,0 +1,91 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/objdump -s --start-address=3243421424 --stop-address=3243421428 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux:     file format elf32-littlearm
+
+Contents of section .rodata:
+ c152aef0 05f80100                             ....            
+EXIT=0
+
+gcc arm-rpi4 kallsyms_num_syms=129029; .rodata kallsyms bytes incl inter-label padding=2707303
+{
+  "kallsyms_num_syms": 4,
+  "kallsyms_names": 1800628,
+  "kallsyms_markers": 2020,
+  "kallsyms_token_table": 932,
+  "kallsyms_token_index": 512,
+  "kallsyms_offsets": 516116,
+  "kallsyms_relative_base": 4,
+  "kallsyms_seqs_of_names": 387087,
+  "mcount_loc": 228600,
+  "ftrace_events": 7256,
+  "ftrace_eval_maps": 6200
+}
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/objdump -s --start-address=3243423760 --stop-address=3243423764 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/vmlinux
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/vmlinux:     file format elf32-littlearm
+
+Contents of section .rodata:
+ c152b810 2cf80100                             ,...            
+EXIT=0
+
+gcc arm-rpi4-rt kallsyms_num_syms=129068; .rodata kallsyms bytes incl inter-label padding=2707132
+{
+  "kallsyms_num_syms": 4,
+  "kallsyms_names": 1800184,
+  "kallsyms_markers": 2020,
+  "kallsyms_token_table": 932,
+  "kallsyms_token_index": 512,
+  "kallsyms_offsets": 516272,
+  "kallsyms_relative_base": 4,
+  "kallsyms_seqs_of_names": 387204,
+  "mcount_loc": 228208,
+  "ftrace_events": 7256,
+  "ftrace_eval_maps": 6200
+}
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/objdump -s --start-address=3245438400 --stop-address=3245438404 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux:     file format elf32-littlearm
+
+Contents of section .rodata:
+ c17175c0 30ef0100                             0...            
+EXIT=0
+
+llvm arm-rpi4 kallsyms_num_syms=126768; .rodata kallsyms bytes incl inter-label padding=2732692
+{
+  "kallsyms_num_syms": 4,
+  "kallsyms_names": 1841884,
+  "kallsyms_markers": 1984,
+  "kallsyms_token_table": 928,
+  "kallsyms_token_index": 512,
+  "kallsyms_offsets": 507072,
+  "kallsyms_relative_base": 4,
+  "kallsyms_seqs_of_names": 380304,
+  "mcount_loc": 223760,
+  "ftrace_events": 7256,
+  "ftrace_eval_maps": 6200
+}
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/objdump -s --start-address=3245438780 --stop-address=3245438784 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/vmlinux
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/vmlinux:     file format elf32-littlearm
+
+Contents of section .rodata:
+ c171773c 58f10100                             X...            
+EXIT=0
+
+llvm arm-rpi4-rt kallsyms_num_syms=127320; .rodata kallsyms bytes incl inter-label padding=2741344
+{
+  "kallsyms_num_syms": 4,
+  "kallsyms_names": 1846664,
+  "kallsyms_markers": 1992,
+  "kallsyms_token_table": 928,
+  "kallsyms_token_index": 512,
+  "kallsyms_offsets": 509280,
+  "kallsyms_relative_base": 4,
+  "kallsyms_seqs_of_names": 381960,
+  "mcount_loc": 223980,
+  "ftrace_events": 7256,
+  "ftrace_eval_maps": 6200
+}

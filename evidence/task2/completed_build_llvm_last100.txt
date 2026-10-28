@@ -1,0 +1,100 @@
+15522: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/boot/kernel/devel/kernel-devel-arm-rpi4-rt/scripts/recordmcount.debug
+15523: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/boot/kernel/devel/kernel-devel-arm-rpi4-rt/scripts/sorttable.debug
+15524: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/boot/kernel/devel/kernel-devel-arm-rpi4-rt/scripts/unifdef.debug
+15525: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/boot/kernel/devel/kernel-devel-arm-rpi4-rt/tools/bpf/resolve_btfids/fixdep.debug
+15526: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/boot/kernel/devel/kernel-devel-arm-rpi4-rt/tools/bpf/resolve_btfids/libbpf/staticobjs/fixdep.debug
+15527: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/boot/kernel/devel/kernel-devel-arm-rpi4-rt/tools/bpf/resolve_btfids/libsubcmd/fixdep.debug
+15528: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/boot/kernel/devel/kernel-devel-arm-rpi4-rt/tools/bpf/resolve_btfids/resolve_btfids.debug
+15529: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/boot/kernel/devel/kernel-devel-arm-rpi4-rt/usr/gen_init_cpio.debug
+15530: [ 1766s] warning: Duplicate build-ids /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/boot/kernel/devel/kernel-devel-arm-rpi4-rt/arch/arm/vdso/vdso.so.dbg.debug and /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/boot/kernel/devel/kernel-devel-arm-rpi4-rt/arch/arm/vdso/vdso.so.raw.debug
+15531: [ 1766s] warning: Duplicate build-ids /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/kernel/devel/kernel-devel-arm-rpi4-rt/arch/arm/vdso/vdso.so.dbg and /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/kernel/devel/kernel-devel-arm-rpi4-rt/arch/arm/vdso/vdso.so.raw
+15532: [ 1766s] Provides: arm-rpi4-rt-linux-kernel-devel-debuginfo = 6.12.80-0 arm-rpi4-rt-linux-kernel-devel-debuginfo(armv7l-32) = 6.12.80-0
+15533: [ 1766s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+15534: [ 1766s] Recommends: rpi4-linux-kernel-debugsource(armv7l-32) = 6.12.80-0
+15535: [ 1766s] Processing files: linux-kernel-perf-debuginfo-6.12.80-0.armv7l
+15536: [ 1766s] Aptk: PG1hbmlmZXN0PgogPHJlcXVlc3Q+CiAgICA8ZG9tYWluIG5hbWU9Il8iLz4KIDwv
+15537: [ 1766s] cmVxdWVzdD4KPC9tYW5pZmVzdD4K
+15538: [ 1766s] 
+15539: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/usr/bin/perf.debug
+15540: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/usr/bin/trace.debug
+15541: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/usr/libexec/perf-core/dlfilters/dlfilter-show-cycles.so.debug
+15542: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/usr/libexec/perf-core/dlfilters/dlfilter-test-api-v0.so.debug
+15543: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/usr/libexec/perf-core/dlfilters/dlfilter-test-api-v2.so.debug
+15544: [ 1766s] Provides: linux-kernel-perf-debuginfo = 6.12.80-0 linux-kernel-perf-debuginfo(armv7l-32) = 6.12.80-0
+15545: [ 1766s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PartialHardlinkSets) <= 4.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+15546: [ 1766s] Recommends: rpi4-linux-kernel-debugsource(armv7l-32) = 6.12.80-0
+15547: [ 1766s] Processing files: linux-kernel-bpftool-debuginfo-6.12.80-0.armv7l
+15548: [ 1766s] Aptk: PG1hbmlmZXN0PgogPHJlcXVlc3Q+CiAgICA8ZG9tYWluIG5hbWU9Il8iLz4KIDwv
+15549: [ 1766s] cmVxdWVzdD4KPC9tYW5pZmVzdD4K
+15550: [ 1766s] 
+15551: [ 1766s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/usr/sbin/bpftool.debug
+15552: [ 1766s] Provides: linux-kernel-bpftool-debuginfo = 6.12.80-0 linux-kernel-bpftool-debuginfo(armv7l-32) = 6.12.80-0
+15553: [ 1766s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+15554: [ 1766s] Recommends: rpi4-linux-kernel-debugsource(armv7l-32) = 6.12.80-0
+15555: [ 1766s] Checking for unpackaged file(s): /usr/lib/rpm/check-files /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm
+15556: [ 1770s] Wrote: /home/abuild/rpmbuild/SRPMS/rpi4-linux-kernel-6.12.80-0.src.rpm
+15557: [ 1777s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/rpi4-linux-kernel-debugsource-6.12.80-0.armv7l.rpm
+15558: [ 1783s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-6.12.80-0.armv7l.rpm
+15559: [ 1790s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-rt-linux-kernel-6.12.80-0.armv7l.rpm
+15560: [ 1790s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-modules-6.12.80-0.armv7l.rpm
+15561: [ 1791s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-rt-linux-kernel-modules-6.12.80-0.armv7l.rpm
+15562: [ 1805s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm
+15563: [ 1821s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-rt-linux-kernel-devel-6.12.80-0.armv7l.rpm
+15564: [ 1822s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-btf-devel-6.12.80-0.armv7l.rpm
+15565: [ 1824s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-headers-6.12.80-0.armv7l.rpm
+15566: [ 1825s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-kernel-perf-6.12.80-0.armv7l.rpm
+15567: [ 1825s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-kernel-bpftool-6.12.80-0.armv7l.rpm
+15568: [ 1836s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-devel-debuginfo-6.12.80-0.armv7l.rpm
+15569: [ 1846s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-rt-linux-kernel-devel-debuginfo-6.12.80-0.armv7l.rpm
+15570: [ 1846s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-kernel-perf-debuginfo-6.12.80-0.armv7l.rpm
+15571: [ 1846s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-kernel-bpftool-debuginfo-6.12.80-0.armv7l.rpm
+15572: [ 1846s] Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.5FbBac
+15573: [ 1846s] + umask 022
+15574: [ 1846s] + cd /home/abuild/rpmbuild/BUILD
+15575: [ 1846s] + /bin/rm -rf /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm
+15576: [ 1847s] + cd rpi4-linux-kernel-6.12.80
+15577: [ 1847s] + rm -rf /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm
+15578: [ 1847s] + exit 0
+15579: [ 1847s] ... checking for files with abuild user/group
+15580: [ 1849s] 
+15581: [ 1849s] linhao-linux finished "build linux-rpi.spec" at Wed Oct 28 06:54:49 UTC 2026.
+15582: [ 1849s] 
+15583: [32minfo: [0mfinished building rpi4-linux-kernel
+15584: [32minfo: [0mupdating local repo
+15585: [32minfo: [0m*** Build Status Summary ***
+15586: === Total succeeded built packages: (1) ===
+15587: [32minfo: [0mgenerated html format report:
+15588:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/repos/tizen_unified_standard/armv7l/index.html
+15589: [32minfo: [0mgenerated RPM packages can be found from local repo:
+15590:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/repos/tizen_unified_standard/armv7l/RPMS
+15591: [32minfo: [0mgenerated source RPM packages can be found from local repo:
+15592:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/repos/tizen_unified_standard/armv7l/SRPMS
+15593: [32minfo: [0mbuild logs can be found in:
+15594:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/repos/tizen_unified_standard/armv7l/logs
+15595: [32minfo: [0mbuild roots located in:
+15596:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.*
+15597: 	Command being timed: "/usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -A armv7l --threads 1 --define _smp_mflags -j10"
+15598: 	User time (seconds): 6680.81
+15599: 	System time (seconds): 723.23
+15600: 	Percent of CPU this job got: 334%
+15601: 	Elapsed (wall clock) time (h:mm:ss or m:ss): 36:50.38
+15602: 	Average shared text size (kbytes): 0
+15603: 	Average unshared data size (kbytes): 0
+15604: 	Average stack size (kbytes): 0
+15605: 	Average total size (kbytes): 0
+15606: 	Maximum resident set size (kbytes): 2607380
+15607: 	Average resident set size (kbytes): 0
+15608: 	Major (requiring I/O) page faults: 41198
+15609: 	Minor (reclaiming a frame) page faults: 259912886
+15610: 	Voluntary context switches: 20917061
+15611: 	Involuntary context switches: 646536
+15612: 	Swaps: 0
+15613: 	File system inputs: 1898752
+15614: 	File system outputs: 48130896
+15615: 	Socket messages sent: 0
+15616: 	Socket messages received: 0
+15617: 	Signals delivered: 0
+15618: 	Page size (bytes): 4096
+15619: 	Exit status: 0
+15620: COMMAND-END llvm 2026-10-28T14:54:54+08:00 exit=0
+15621: BUILD-END llvm 2026-10-28T14:55:09+08:00 exit=0

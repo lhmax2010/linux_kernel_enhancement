@@ -1,0 +1,49 @@
+buildroot nm -n -S /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux
+c026a0f4 00000078 T kallsyms_show_value
+c02ecc10 00000320 T add_kallsyms
+c02ecfe4 00000180 t find_kallsyms_symbol
+c02ed3b0 00000140 T module_kallsyms_lookup_name
+c02ed4f0 00000078 T find_kallsyms_symbol_value
+c02ed568 0000010c T module_kallsyms_on_each_symbol
+c0319f14 00000034 T kallsyms_sym_address
+c0319f48 000000e4 T kallsyms_lookup_name
+c031a02c 000005b0 t kallsyms_lookup_names
+c031a5dc 000001f4 T kallsyms_on_each_symbol
+c031a7d0 000000e8 T kallsyms_on_each_match_symbol
+c031a8b8 000001f8 T kallsyms_lookup_size_offset
+c031aab0 00000054 T kallsyms_lookup
+c031ab04 000003a8 t kallsyms_lookup_buildid
+c031b3c0 000000ac T kdb_walk_kallsyms
+c031ba8c 0000008c t kallsyms_open
+c035a8e8 00000170 T kallsyms_symbol_complete
+c035aa58 00000090 T kallsyms_symbol_next
+c036c7ec 000000c4 t kallsyms_callback
+c03bccf8 00000054 T bpf_prog_kallsyms_del_all
+c03bcd4c 000000bc T bpf_prog_kallsyms_del
+c03bd02c 00000184 T bpf_prog_kallsyms_add
+c03caa00 000000a0 T bpf_kallsyms_lookup_name
+c16039cc 0000002c d kallsyms_proc_ops
+c16039f8 00000010 d kallsyms_op
+c160ad70 0000003c d bpf_kallsyms_lookup_name_proto
+c17175c0 D kallsyms_num_syms
+c17175c4 D kallsyms_names
+c18d90a0 D kallsyms_markers
+c18d9860 D kallsyms_token_table
+c18d9c00 D kallsyms_token_index
+c18d9e00 D kallsyms_offsets
+c1955ac0 D kallsyms_relative_base
+c1955ac4 D kallsyms_seqs_of_names
+c24142e0 00000034 t kallsyms_init
+c2488bd0 D __start_mcount_loc
+c24bf5e0 D __stop_mcount_loc
+c24c9f20 D __start_ftrace_events
+c24cbb78 D __start_ftrace_eval_maps
+c24cbb78 D __stop_ftrace_events
+c24cd3b0 D __stop_ftrace_eval_maps
+c24d0048 00000004 d __initcall__kmod_kallsyms__514_909_kallsyms_init6
+c24d08b0 00000004 d __initcall__kmod_kallsyms__513_852_bpf_ksym_iter_register7
+c2606ad4 00000004 D bpf_jit_kallsyms
+c268c860 00000008 D ftrace_events
+c268fd80 00000008 d bpf_kallsyms
+c27f9410 00000270 b kdb_walk_kallsyms.kdb_walk_kallsyms_iter
+c28010d8 00000008 b kallsyms_symbol_next.pos

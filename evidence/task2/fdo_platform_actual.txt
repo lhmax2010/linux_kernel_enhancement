@@ -1,0 +1,184 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/llvm-profgen --version
+LLVM (http://llvm.org/):
+  LLVM version 22.1.8
+  Optimized build.
+EXIT=0
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/llvm-bolt --version
+EXIT=1
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/create_llvm_prof --version
+EXIT=1
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/rpm --rcfile /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/rpm/rpmrc --macros /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/rpm/macros --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/var/lib/rpm -q llvm clang autofdo bolt libopencsd --qf '%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}\n'
+llvm-22.1.8-3.1.armv7l
+clang-22.1.8-3.1.armv7l
+package autofdo is not installed
+package bolt is not installed
+package libopencsd is not installed
+EXIT=3
+
+Whole buildroot filename scan (os.walk, no symlink traversal):
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/llvm-profgen
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/tools/build/feature/test-libopencsd.c
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/emul/usr/bin/llvm-profgen
+Permission errors:
+[Errno 13] Permission denied: '/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/share/upgrade'
+[Errno 13] Permission denied: '/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/var/cache/ldconfig'
+[Errno 13] Permission denied: '/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/root'
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/perf version --build-options
+perf version 6.12.80
+                   aio: [ on  ]  # HAVE_AIO_SUPPORT
+                   bpf: [ on  ]  # HAVE_LIBBPF_SUPPORT
+         bpf_skeletons: [ OFF ]  # HAVE_BPF_SKEL
+            debuginfod: [ OFF ]  # HAVE_DEBUGINFOD_SUPPORT
+                 dwarf: [ on  ]  # HAVE_DWARF_SUPPORT
+    dwarf_getlocations: [ on  ]  # HAVE_DWARF_GETLOCATIONS_SUPPORT
+          dwarf-unwind: [ on  ]  # HAVE_DWARF_UNWIND_SUPPORT
+              auxtrace: [ on  ]  # HAVE_AUXTRACE_SUPPORT
+              libaudit: [ OFF ]  # HAVE_LIBAUDIT_SUPPORT
+                libbfd: [ OFF ]  # HAVE_LIBBFD_SUPPORT
+           libcapstone: [ OFF ]  # HAVE_LIBCAPSTONE_SUPPORT
+             libcrypto: [ on  ]  # HAVE_LIBCRYPTO_SUPPORT
+    libdw-dwarf-unwind: [ on  ]  # HAVE_DWARF_SUPPORT
+                libelf: [ on  ]  # HAVE_LIBELF_SUPPORT
+               libnuma: [ OFF ]  # HAVE_LIBNUMA_SUPPORT
+            libopencsd: [ OFF ]  # HAVE_CSTRACE_SUPPORT
+               libperl: [ OFF ]  # HAVE_LIBPERL_SUPPORT
+               libpfm4: [ OFF ]  # HAVE_LIBPFM
+             libpython: [ OFF ]  # HAVE_LIBPYTHON_SUPPORT
+              libslang: [ OFF ]  # HAVE_SLANG_SUPPORT
+         libtraceevent: [ OFF ]  # HAVE_LIBTRACEEVENT
+             libunwind: [ on  ]  # HAVE_LIBUNWIND_SUPPORT
+                  lzma: [ on  ]  # HAVE_LZMA_SUPPORT
+numa_num_possible_cpus: [ OFF ]  # HAVE_LIBNUMA_SUPPORT
+         syscall_table: [ OFF ]  # HAVE_SYSCALL_TABLE_SUPPORT
+                  zlib: [ on  ]  # HAVE_ZLIB_SUPPORT
+                  zstd: [ OFF ]  # HAVE_ZSTD_SUPPORT
+EXIT=0
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/FEATURE-DUMP
+feature-backtrace=1
+feature-dwarf=1
+feature-dwarf_getlocations=1
+feature-dwarf_getcfi=1
+feature-eventfd=1
+feature-fortify-source=1
+feature-get_current_dir_name=1
+feature-gettid=1
+feature-glibc=1
+feature-libbfd=1
+feature-libbfd-buildid=1
+feature-libcap=0
+feature-libelf=1
+feature-libelf-getphdrnum=1
+feature-libelf-gelf_getnote=1
+feature-libelf-getshdrstrndx=1
+feature-libnuma=0
+feature-numa_num_possible_cpus=0
+feature-libperl=0
+feature-libpython=0
+feature-libslang=0
+feature-libslang-include-subdir=0
+feature-libtraceevent=0
+feature-libtracefs=0
+feature-libcrypto=1
+feature-libunwind=1
+feature-pthread-attr-setaffinity-np=1
+feature-pthread-barrier=1
+feature-reallocarray=1
+feature-stackprotector-all=1
+feature-timerfd=1
+feature-libdw-dwarf-unwind=1
+feature-zlib=1
+feature-lzma=1
+feature-get_cpuid=0
+feature-bpf=1
+feature-scandirat=1
+feature-sched_getcpu=1
+feature-sdt=0
+feature-setns=1
+feature-libaio=1
+feature-libzstd=0
+feature-disassembler-four-args=1
+feature-disassembler-init-styled=1
+feature-file-handle=1
+
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/perf version --build-options
+perf version 6.12.80
+                   aio: [ on  ]  # HAVE_AIO_SUPPORT
+                   bpf: [ on  ]  # HAVE_LIBBPF_SUPPORT
+         bpf_skeletons: [ on  ]  # HAVE_BPF_SKEL
+            debuginfod: [ OFF ]  # HAVE_DEBUGINFOD_SUPPORT
+                 dwarf: [ on  ]  # HAVE_DWARF_SUPPORT
+    dwarf_getlocations: [ on  ]  # HAVE_DWARF_GETLOCATIONS_SUPPORT
+          dwarf-unwind: [ on  ]  # HAVE_DWARF_UNWIND_SUPPORT
+              auxtrace: [ on  ]  # HAVE_AUXTRACE_SUPPORT
+              libaudit: [ OFF ]  # HAVE_LIBAUDIT_SUPPORT
+                libbfd: [ OFF ]  # HAVE_LIBBFD_SUPPORT
+           libcapstone: [ OFF ]  # HAVE_LIBCAPSTONE_SUPPORT
+             libcrypto: [ on  ]  # HAVE_LIBCRYPTO_SUPPORT
+    libdw-dwarf-unwind: [ on  ]  # HAVE_DWARF_SUPPORT
+                libelf: [ on  ]  # HAVE_LIBELF_SUPPORT
+               libnuma: [ OFF ]  # HAVE_LIBNUMA_SUPPORT
+            libopencsd: [ OFF ]  # HAVE_CSTRACE_SUPPORT
+               libperl: [ OFF ]  # HAVE_LIBPERL_SUPPORT
+               libpfm4: [ OFF ]  # HAVE_LIBPFM
+             libpython: [ OFF ]  # HAVE_LIBPYTHON_SUPPORT
+              libslang: [ OFF ]  # HAVE_SLANG_SUPPORT
+         libtraceevent: [ OFF ]  # HAVE_LIBTRACEEVENT
+             libunwind: [ on  ]  # HAVE_LIBUNWIND_SUPPORT
+                  lzma: [ on  ]  # HAVE_LZMA_SUPPORT
+numa_num_possible_cpus: [ OFF ]  # HAVE_LIBNUMA_SUPPORT
+         syscall_table: [ OFF ]  # HAVE_SYSCALL_TABLE_SUPPORT
+                  zlib: [ on  ]  # HAVE_ZLIB_SUPPORT
+                  zstd: [ OFF ]  # HAVE_ZSTD_SUPPORT
+EXIT=0
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/FEATURE-DUMP
+feature-backtrace=1
+feature-dwarf=1
+feature-dwarf_getlocations=1
+feature-dwarf_getcfi=1
+feature-eventfd=1
+feature-fortify-source=1
+feature-get_current_dir_name=1
+feature-gettid=1
+feature-glibc=1
+feature-libbfd=1
+feature-libbfd-buildid=1
+feature-libcap=0
+feature-libelf=1
+feature-libelf-getphdrnum=1
+feature-libelf-gelf_getnote=1
+feature-libelf-getshdrstrndx=1
+feature-libnuma=0
+feature-numa_num_possible_cpus=0
+feature-libperl=0
+feature-libpython=0
+feature-libslang=0
+feature-libslang-include-subdir=0
+feature-libtraceevent=0
+feature-libtracefs=0
+feature-libcrypto=1
+feature-libunwind=1
+feature-pthread-attr-setaffinity-np=1
+feature-pthread-barrier=1
+feature-reallocarray=1
+feature-stackprotector-all=1
+feature-timerfd=0
+feature-libdw-dwarf-unwind=1
+feature-zlib=1
+feature-lzma=1
+feature-get_cpuid=0
+feature-bpf=1
+feature-scandirat=1
+feature-sched_getcpu=1
+feature-sdt=0
+feature-setns=1
+feature-libaio=1
+feature-libzstd=0
+feature-disassembler-four-args=1
+feature-disassembler-init-styled=1
+feature-file-handle=1

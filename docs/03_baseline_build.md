@@ -2,7 +2,115 @@
 
 日期：2026-10-28（Asia/Shanghai）。本报告只记录本任务实际执行的结果；未获得的构建产物指标不以源码推导替代。所有体积与构建开销数字均为构建产物/开发机数据，不代表板上运行时内存。
 
-## 最新任务2续六：解析修复与离线验证通过（2026-10-28）
+## 最新：用户启动的e028a072构建完成，产物核对（2026-10-28）
+
+**两轮构建均exit=0，LLVM产物确由Clang编译。** 用户启动脚本；代理仅每10分钟只读监控并追加monitor.log，结束后分析产物，没有运行gbs、sudo、发送信号、修改内核或操作开发板。平台缺失的llvm-bolt/create_llvm_prof，以及不可读目录导致的磁盘统计下界，保留为明确限制，不用宿主工具补成“实测”。
+
+### 完成状态与导出审计
+
+[状态原文](../evidence/task2/completed_run_baseline_build.status)记录ALL-END 2026-10-28T14:55:09+08:00 OK。本次supervisor为518408，export/GCC/LLVM PGID依次518419/525954/1214867；15:04:08检查均已退出，没有沿用旧尝试PID。12次监控见[monitor.log](../evidence/task2/completed_monitor.log)。本次run_baseline_build.log为空，原样保留并记空文件SHA；PID核验结合本次pgid文件及进程快照，不以空日志推断失败。
+
+| 阶段 | 开始（+08:00） | 结束（+08:00） | 结果 |
+| --- | --- | --- | --- |
+| export | 13:13:07 | 13:18:57 | OK / exit=0 |
+| GCC | 13:18:57 | 14:18:01 | OK / exit=0 |
+| LLVM | 14:18:01 | 14:55:09 | OK / exit=0 |
+
+导出审计a：4个配置路径均在WS，含隔离.gbs.conf/.gbp.conf；b：307个外部路径+标志组合均命中运行时白名单或PM裁决例外，拒绝0；c：5798个成功创建目录均在WS。/dev/null带写标志99次，首次trace:323，均精确返回字符设备1:3，按PM裁决放行。AUDIT-EXIT=0、Issues为空。完整小于1 MB的[导出摘要](../evidence/task2/completed_export_check_home.txt)已封存；本次成功解析opens=107173，与旧离线trace总数不同，不能混用旧计数。
+
+构建后find检查：GCC有27条、LLVM有48条工作区外更新路径，**全部无法归属**，包括两轮都出现的/home/linhao/.rpmdb/rpmdb.sqlite-shm；名称和时间不能证明来自本次GBS。直接观察文件为空，没有能够归因到本次构建的外部写入记录；不能据此声称“没有任何外部写入”。两次find exit=1、权限错误按用户命令抑制，且maxdepth=3、按普通用户归属过滤，不覆盖更深目录或root所有文件。没有删除或移动任何外部文件。[GCC检查](../evidence/task2/completed_gcc_r2.external_review.txt)、[LLVM检查](../evidence/task2/completed_llvm_r2.external_review.txt)。
+
+完整日志留在temp，封存最后100行及本次进程组摘要：[GCC日志](../evidence/task2/completed_build_gcc_last100.txt)、[LLVM日志](../evidence/task2/completed_build_llvm_last100.txt)、[export进程](../evidence/task2/completed_export_processes_summary.txt)、[GCC进程](../evidence/task2/completed_gcc_processes_summary.txt)、[LLVM进程](../evidence/task2/completed_llvm_processes_summary.txt)。完整日志行数/SHA-256见[完整性清单](../evidence/task2/completed_log_integrity.txt)。两份正式日志末行分别为BUILD-END gcc/llvm，exit均0。
+
+### 编译器与方法
+
+[产物与工具SHA-256、源码状态](../evidence/task2/artifact_identity_and_source_state.txt)记录本轮分析对象；[补充Kconfig/链接脚本证据](../evidence/task2/actual_config_source_lines.txt)支撑下文条件与区间解释。所有产物分析使用各自GBS buildroot的qemu-arm、readelf、size、nm、objdump、rpm、pahole；diffconfig和bloat-o-meter来自LLVM buildroot中的本次内核源码，并由该root的Python 3.14运行，nm wrapper也只调用该root的nm。未使用宿主size/readelf/nm等替代。首次宿主qemu-arm-static运行平台Python发生SIGILL，随后改用**buildroot自带qemu-arm**成功；正式证据的命令均记录绝对路径。RPM命令显式指定root内rpmrc/macros/dbpath，未用宿主RPM配置或数据库。
+
+| 证据 | GCC构建 | LLVM构建 |
+| --- | --- | --- |
+| 构建日志 | 无LLVM=1/CC=/LD=字面赋值；实际zram .o.cmd以gcc开头 | 日志1988–1994、14290–14296有CC=armv7l-tizen-linux-gnueabi-clang和LLVM=1；没有LD=字面赋值 |
+| 普通/RT compile.h | GCC 14.2.0，GNU ld 2.43 | Clang 22.1.8，LLD 22.1.8 |
+| 两版vmlinux .comment | GCC 14.2.0 | clang version 22.1.8；Linker: LLD 22.1.8 |
+| root中的RPM | gcc-14.2.0-4.30.armv7l；binutils-2.43-3.29.armv7l；clang/llvm未安装 | gcc-14.2.0-1.13.armv7l；clang和llvm均22.1.8-3.1.armv7l；binutils-2.43-1.13.armv7l |
+
+[四类编译器原始证据](../evidence/task2/compiler_actual.txt)同时包括两版实际zram编译命令（-O2、-g、-gdwarf-4等）。LLVM root有gcc不代表内核用了gcc；compile.h、ELF .comment、.o.cmd和最终CC_IS_CLANG相互印证。两套仓库还有依赖/工具release差异，因此本对照是两条GBS构建基线，不能当作只改变编译器这一变量的实验。
+
+### 最终配置与01修订
+
+四份原始配置：[GCC普通](../evidence/task2/config_gcc_arm-rpi4.txt)、[GCC RT](../evidence/task2/config_gcc_arm-rpi4-rt.txt)、[LLVM普通](../evidence/task2/config_llvm_arm-rpi4.txt)、[LLVM RT](../evidence/task2/config_llvm_arm-rpi4-rt.txt)。平台diffconfig：[普通](../evidence/task2/diffconfig_arm-rpi4.txt)、[RT](../evidence/task2/diffconfig_arm-rpi4-rt.txt)。两组各32条符号差异（含删除/新增、工具版本字符串和探测能力），无静默丢弃。
+
+最需要注意：GCC STACKPROTECTOR_PER_TASK=y，LLVM未输出（不启用）；STACKPROTECTOR/STRONG两者均y。arch/arm/Kconfig:1376–1383要求GCC_PLUGINS或CC_HAVE_STACKPROTECTOR_TLS；LLVM最终没有两项可用条件。其余差异以diffconfig原文为准，不能说四份配置完全一致。
+
+01原表178符号逐项核对：[完整对照](../evidence/task2/config_inventory_comparison.md)。没有发现原先明确数值发生反转；修订/澄清6个已列符号，另补1个漏列符号，合计7个符号：
+
+| 符号 | 原推导 | 最终GCC普通版 | 修订原因 |
+| --- | --- | --- | --- |
+| ZSWAP_COMPRESSOR_DEFAULT | 空字符串 | 未输出 | ZSWAP关闭，不能将Kconfig字符串默认值写成最终.config实际记录 |
+| ZSWAP_ZPOOL_DEFAULT | 空字符串 | 未输出 | 同上 |
+| DEBUG_INFO_BTF_MODULES | y（有条件） | y，.config:6772 | pahole 1.29满足条件，条件闭合 |
+| STACKPROTECTOR | y（有条件） | y，:652 | 实际GCC探测通过 |
+| STACKPROTECTOR_STRONG | y（有条件） | y，:653 | 实际GCC探测通过 |
+| STACKPROTECTOR_PER_TASK | y（有条件） | y，:511 | GCC TLS guard支持；LLVM不同，见上文 |
+| DEBUG_ALIGN_RODATA | 原表漏列 | y，:435 | arch/arm/mm/Kconfig:1125–1128默认y；补齐所有DEBUG_*=y要求 |
+
+[单独重点核对表](../evidence/task2/config_key_actual.md)逐项列出四配置值和行号：HZ=100；普通PREEMPT_VOLUNTARY=y/RT为PREEMPT_RT=y；KALLSYMS_ALL、DEBUG_INFO_BTF、BTF_MODULES、TRACE_IRQFLAGS、PREEMPTIRQ_TRACEPOINTS均y；LRU_GEN_WALKS_MMU未输出（依赖不满足，未启用）；CORESIGHT显式n、所有CORESIGHT子项未输出；PERF_EVENTS/HW_PERF_EVENTS均y。MGLRU仍y且默认启用，ZRAM仍内建lzo-rle，仅LZO后端，MULTI_COMP/ACTIME/WRITEBACK均n。
+
+### 大小与开销
+
+单位为字节；vmlinux为含DWARF/BTF的完整文件，四个核心section取size -A精确名称，不把.init.text等静默合并进.text。完整section、模块RPM清单及口径见[产物汇总](../evidence/task2/artifact_measurements.txt)、[模块清单](../evidence/task2/modules_rpm_contents.txt)。
+
+| 指标（字节，除数量外） | GCC普通 | LLVM普通 | LLVM−GCC | GCC RT | LLVM RT | LLVM−GCC |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| vmlinux完整文件 | 412,486,440 | 338,481,420 | -74,005,020 | 421,759,136 | 345,620,612 | -76,138,524 |
+| zImage | 14,323,400 | 14,896,384 | +572,984 | 14,470,728 | 14,945,240 | +474,512 |
+| .text | 17,808,156 | 19,862,536 | +2,054,380 | 18,128,580 | 20,005,868 | +1,877,288 |
+| .rodata | 5,217,374 | 5,144,813 | -72,561 | 5,159,246 | 5,095,013 | -64,233 |
+| .data | 1,874,192 | 1,870,640 | -3,552 | 1,886,416 | 1,882,896 | -3,520 |
+| .bss | 589,008 | 592,912 | +3,904 | 610,768 | 614,224 | +3,456 |
+| 构建目录模块数 | 52 | 52 | +0 | 52 | 52 | +0 |
+| 构建目录.ko总字节（含调试） | 39,028,264 | 29,325,668 | -9,702,596 | 39,126,596 | 29,348,752 | -9,777,844 |
+| RPM内模块数 | 52 | 52 | +0 | 52 | 52 | +0 |
+| RPM内.ko逻辑总字节 | 2,641,484 | 2,821,812 | +180,328 | 2,648,528 | 2,821,912 | +173,384 |
+| kallsyms符号数 | 129,029 | 126,768 | -2,261 | 129,068 | 127,320 | -1,748 |
+
+LLVM完整vmlinux普通/RT分别小74,005,020 / 76,138,524 B，但zImage分别大572,984 / 474,512 B，.text也更大；完整ELF调试体积减少不能解释为内核运行占用减少。模块同时列出构建目录含调试.ko与RPM中处理后的.ko逻辑字节；RPM自身压缩大小另列，不混为一个数字。
+
+平台size原文：[GCC普通](../evidence/task2/size_gcc_arm-rpi4.txt)、[GCC RT](../evidence/task2/size_gcc_arm-rpi4-rt.txt)、[LLVM普通](../evidence/task2/size_llvm_arm-rpi4.txt)、[LLVM RT](../evidence/task2/size_llvm_arm-rpi4-rt.txt)。
+
+bloat-o-meter默认符号过滤后按**绝对差值**降序前30项：[普通](../evidence/task2/bloat_arm-rpi4_top30.txt)、[RT](../evidence/task2/bloat_arm-rpi4-rt_top30.txt)。GCC→LLVM的内联、局部符号命名和合并会使函数在一侧消失/出现，这些行不是逐函数因果归因或性能测量。
+
+kallsyms位于.rodata内部；__mcount_loc及ftrace事件/映射表合入.init.data，并非独立ELF section。由平台nm边界差、objdump读取最终kallsyms_num_syms得到下表；最后seqs数组为3×符号数，其他kallsyms子区间包含到下一label的对齐。原始命令和计算见[符号/追踪区间](../evidence/task2/kallsyms_ftrace_measurements.txt)；不要再把这些字节重复加到.rodata/.init.data总量。
+
+| 数据区间（字节） | GCC普通 | LLVM普通 | GCC RT | LLVM RT |
+| --- | ---: | ---: | ---: | ---: |
+| kallsyms_num_syms | 4 | 4 | 4 | 4 |
+| kallsyms_names | 1,800,628 | 1,841,884 | 1,800,184 | 1,846,664 |
+| kallsyms_markers | 2,020 | 1,984 | 2,020 | 1,992 |
+| kallsyms_token_table | 932 | 928 | 932 | 928 |
+| kallsyms_token_index | 512 | 512 | 512 | 512 |
+| kallsyms_offsets | 516,116 | 507,072 | 516,272 | 509,280 |
+| kallsyms_relative_base | 4 | 4 | 4 | 4 |
+| kallsyms_seqs_of_names | 387,087 | 380,304 | 387,204 | 381,960 |
+| mcount_loc | 228,600 | 223,760 | 228,208 | 223,980 |
+| ftrace_events | 7,256 | 7,256 | 7,256 | 7,256 |
+| ftrace_eval_maps | 6,200 | 6,200 | 6,200 | 6,200 |
+
+| 每轮整条GBS命令（含普通+RT、perf、打包等） | GCC | LLVM |
+| --- | ---: | ---: |
+| time -v墙钟 | 58:44.70 | 36:50.38 |
+| time -v最大单进程RSS（kbytes） | 2,604,804 | 2,607,380 |
+| buildroot已可读部分磁盘分配字节，下界 | 9,583,403,008 | 11,364,896,768 |
+| 15个二进制RPM+1个SRPM总字节 | 633,584,749 | 594,775,808 |
+
+墙钟取time -v，不含脚本前后检查；stage起止包含检查，故略长。RSS为time报告的最大驻留集，不是并行编译进程总RSS峰值。GBS缓存/仓库差异、其他并发任务及一次观测使耗时不能作编译器纯性能结论。buildroot的usr/share/upgrade、var/cache/ldconfig、root三个目录不可读，du exit=1，数值是下界；没有sudo补读。[GCC磁盘输出](../evidence/task2/disk_gcc.txt)、[LLVM磁盘输出](../evidence/task2/disk_llvm.txt)。**全部数字是构建产物/开发机指标，不代表板上运行时内存或收益。**
+
+### 静态核对闭合与剩余项
+
+[04](04_zram_static.md)以真实最终配置、真实zram头文件和平台Clang/pahole证明ACTIME普通12→24 B、RT24→32 B；每GiB增3/2 MiB。没有重编内核或改变任何.config，只在temp编译最小布局探针。[05](05_kernel_fdo_static.md)更新实际CoreSight/perf和llvm-profgen；平台llvm-bolt/create_llvm_prof缺失，BOLT支持架构无法实测，保留查找命令与失败原因。没有用LLVM通用targets列表代替BOLT能力。
+
+下面为历史尝试及规则演进，出现“未构建”“停止”等描述均属于对应日期，现状以本节和STATUS为准。
+
+## 历史任务2续六：解析修复与离线验证通过（2026-10-28）
 
 结论：完整归档trace离线审计`AUDIT-EXIT 0`、Issues为空；8个负对照及2个正对照全部符合预期，`bash -n`通过，**可以由用户重跑**。本轮没有运行gbs、sudo、构建或向任何进程发信号。原始导出成功不等于原始流程成功：用户以3ef50850启动的2026-10-27 20:41尝试，export命令exit=0，后置审计因5条拆分openat的标志解析失败而exit=91，GCC/LLVM均SKIPPED，见[原失败记录](../evidence/task2/export_attempt_2041_failure.txt)。
 

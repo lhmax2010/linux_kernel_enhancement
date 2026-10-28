@@ -1,0 +1,6 @@
+Only recorded phase group and observation markers; unrelated pre-build process table omitted.
+1: BEFORE 2026-10-28T13:13:07+08:00
+456: PROCESS-GROUP 2026-10-28T13:13:07+08:00 PGID=518419
+457:  518419  518408  518419 linhao   S    /usr/bin/strace -f -yy -s 65535 -e trace=openat,open,mkdir,mkdirat,chdir,fchdir,clone,clone3,fork,vfork -o /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_check.strace /usr/bin/gbs export . -o /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_check --outdir-directly --spec linux-rpi.spec --commit=HEAD
+458:  518424  518419  518419 linhao   R    /usr/bin/python3 /usr/bin/gbs export . -o /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_check --outdir-directly --spec linux-rpi.spec --commit=HEAD
+459: PROCESS-GROUP 2026-10-28T13:18:23+08:00 PGID=518419
