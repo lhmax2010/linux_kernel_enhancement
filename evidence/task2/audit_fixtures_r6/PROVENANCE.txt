@@ -1,0 +1,8 @@
+Source: /home/linhao/Toolchain/development/linux_kernel_optimization/temp/attempt_20261027_2041/export_check.strace
+SHA256: fecfff9fb2277305509e4a158e2cb841fbde10dc1e202ee3072aff179719a311
+Common harmless config read copied from original line 15135: 184094 openat(AT_FDCWD</home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi>, "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf", O_RDONLY|O_CLOEXEC) = 4</home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf>
+Negative open fixtures mutate paths, flags or device ID in the real openat form (original line 323); no listed syscall is executed.
+09 copies real unfinished/resumed pairs 470/472 and 15487/15489 exactly (no config/mkdir padding).
+08 splits the external-write mutation at flags, with extra whitespace.
+05/06 mutate the real mkdir form to external success/EEXIST.
+10 uses the observed clone/chdir/mkdir/mkdirat/openat syntax to cover split regex and inherited cwd; relative chdir verifies fork-inherited cwd; virtual paths are trace text only.

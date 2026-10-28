@@ -1,0 +1,37 @@
+Attempt script commit: 3ef508507d8bf87579ccd1d48acead781b701e99
+
+FILE run_baseline_build.status
+1: BASE f240c28093027707f5e09f8a9cbbed16a43ebb1a
+2: UPDATED 2026-10-27T20:41:26+08:00
+3: STAGE preflight result=OK exit=0 start=2026-10-27T20:31:55+08:00 end=2026-10-27T20:32:02+08:00
+4: STAGE export result=FAILED exit=91 start=2026-10-27T20:32:02+08:00 end=2026-10-27T20:41:26+08:00
+5: STAGE gcc result=SKIPPED exit=- start=- end=-
+6: STAGE llvm result=SKIPPED exit=- start=- end=-
+7: ALL-END 2026-10-27T20:41:26+08:00 FAILED at export
+
+FILE run_baseline_build.log
+1: FAILED export: export path audit failed; later stages skipped
+
+FILE export_check.log
+1: EXPORT-START export 2026-10-27T20:32:03+08:00
+2: LIVE-OUTPUT /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_check.log.raw
+3: info: tracking branch: origin/upstream -> upstream
+4: info: Generating patches from git (v6.12.80..HEAD)
+5: info: Squashing commits 00d7934..b3c2c75 into one monolithic diff
+6: info: linux-kernel-6.12.80.tar.xz does not exist, creating from 'v6.12.80'
+7: info: package files have been exported to:
+8:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_check
+9: COMMAND-END export 2026-10-27T20:40:46+08:00 exit=0
+
+FILE monitor.log
+1: 2026-10-27T20:33:13+08:00 | supervisor=184075 | STAGE preflight result=OK exit=0 start=2026-10-27T20:31:55+08:00 end=2026-10-27T20:32:02+08:00 | STAGE export result=RUNNING exit=- start=2026-10-27T20:32:02+08:00 end=- | STAGE gcc result=PENDING exit=- start=- end=- | STAGE llvm result=PENDING exit=- start=- end=- | raw-last='info: tracking branch: origin/upstream -> upstream'
+2: 2026-10-27T20:43:13+08:00 | supervisor=184075 | STAGE preflight result=OK exit=0 start=2026-10-27T20:31:55+08:00 end=2026-10-27T20:32:02+08:00 | STAGE export result=FAILED exit=91 start=2026-10-27T20:32:02+08:00 end=2026-10-27T20:41:26+08:00 | STAGE gcc result=SKIPPED exit=- start=- end=- | STAGE llvm result=SKIPPED exit=- start=- end=- | ALL-END 2026-10-27T20:41:26+08:00 FAILED at export | groups={'export': 184089} | raw-last='     /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_check'
+
+Original failed audit Issues:
+6120: Issues:
+6121: Unresolved open flags: 184115 <... openat resumed>)            = 3</sys/devices/system/cpu/online>
+6122: Unresolved open flags: 184120 <... openat resumed>)            = 4</sys/devices/system/cpu/online>
+6123: Unresolved open flags: 184210 <... openat resumed>)            = 3</etc/locale.alias>
+6124: Unresolved open flags: 184211 <... openat resumed>)            = 3</dev/null<char 1:3>>
+6125: Unresolved open flags: 184971 <... openat resumed>)            = 3</usr/lib/x86_64-linux-gnu/liblzma.so.5.4.5>
+6126: AUDIT-EXIT 1

@@ -1,0 +1,4 @@
+184115 openat(AT_FDCWD</home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi>, "/sys/devices/system/cpu/online", O_RDONLY|O_CLOEXEC <unfinished ...>
+184115 <... openat resumed>)            = 3</sys/devices/system/cpu/online>
+184211 openat(AT_FDCWD</home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi>, "/dev/null", O_RDWR <unfinished ...>
+184211 <... openat resumed>)            = 3</dev/null<char 1:3>>

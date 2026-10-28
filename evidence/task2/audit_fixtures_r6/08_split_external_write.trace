@@ -1,0 +1,3 @@
+184094 openat(AT_FDCWD</home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi>, "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf", O_RDONLY|O_CLOEXEC) = 4</home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf>
+184094 openat(AT_FDCWD</home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi>, "/tmp/lko-audit-negative.txt", O_WRONLY   <unfinished ...>
+184094 <... openat resumed>) = 3</tmp/lko-audit-negative.txt>

@@ -1,0 +1,45 @@
+Offline replay of the unmodified 2026-10-27 20:41 attempt trace.
+Command:
+/usr/bin/bash /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_baseline_build.sh --audit-only /home/linhao/Toolchain/development/linux_kernel_optimization/temp/attempt_20261027_2041/export_check.strace /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_audit_offline_r6.txt
+process_exit=0
+Full a/b/c and resumed-call listing retained locally in /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_audit_offline_r6.txt
+a config paths=4; outside WS=0
+/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi/.gbs.conf
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbp_qgg3d7ib/buildpackage-rpm_gdszi5qx/dump_tree_55c5my8t/.gbs.conf
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbs.conf
+
+b external unique path+flags pairs=307; rejected pairs=0
+Allow reasons (unique path+flags pairs per reason):
+1: explicit /etc/gnutls/config: TLS library runtime configuration
+1: explicit /etc/gss/mech.d: GSSAPI library runtime directory
+1: explicit /etc/ldap/ldap.conf: LDAP library runtime configuration
+1: explicit /run/systemd/resolve/stub-resolv.conf: resolved /etc/resolv.conf target
+2: explicit /tmp or /var/tmp: O_RDONLY on a directory; no write/create flags
+1: explicit system-runtime allowlist: /etc/group (loader/NSS/locale/DNS/TLS/PAM/sudo)
+1: explicit system-runtime allowlist: /etc/host.conf (loader/NSS/locale/DNS/TLS/PAM/sudo)
+1: explicit system-runtime allowlist: /etc/hosts (loader/NSS/locale/DNS/TLS/PAM/sudo)
+1: explicit system-runtime allowlist: /etc/ld.so.cache (loader/NSS/locale/DNS/TLS/PAM/sudo)
+1: explicit system-runtime allowlist: /etc/locale.alias (loader/NSS/locale/DNS/TLS/PAM/sudo)
+1: explicit system-runtime allowlist: /etc/nsswitch.conf (loader/NSS/locale/DNS/TLS/PAM/sudo)
+2: explicit system-runtime allowlist: /etc/passwd (loader/NSS/locale/DNS/TLS/PAM/sudo)
+1: explicit system-runtime allowlist: /etc/ssl/openssl.cnf (loader/NSS/locale/DNS/TLS/PAM/sudo)
+288: installed tool/library tree (/usr or /lib*)
+3: system runtime tree (/proc, /sys or /dev), read-only
+1: 按 PM 裁决放行：精确路径 /dev/null，strace -yy 字符设备 1:3
+/dev/null 带写标志成功打开：count=99 first_trace_line=323；按 PM 裁决放行（精确返回路径及字符设备 1:3；0次时首次行号为none）。
+
+c created directories=5798; outside WS=0
+Full directory list omitted from published evidence.
+
+d successfully parsed resumed opens:
+lines=470/472 PID=184115 path=/sys/devices/system/cpu/online flags=O_RDONLY|O_CLOEXEC
+lines=471/473 PID=184120 path=/sys/devices/system/cpu/online flags=O_RDONLY|O_CLOEXEC
+lines=15487/15489 PID=184211 path=/dev/null flags=O_RDWR
+lines=15488/15490 PID=184210 path=/etc/locale.alias flags=O_RDONLY|O_CLOEXEC
+lines=111556/111561 PID=184971 path=/usr/lib/x86_64-linux-gnu/liblzma.so.5.4.5 flags=O_RDONLY|O_CLOEXEC
+COVERAGE mode=calls opens=107174 configs=4 created_dirs=5798
+Issues:
+AUDIT-EXIT 0
+INTEGRITY attempt_20261027_2041/export_check.strace bytes=43978445 lines=117587 sha256=fecfff9fb2277305509e4a158e2cb841fbde10dc1e202ee3072aff179719a311
+INTEGRITY export_audit_offline_r6.txt bytes=928467 lines=6130 sha256=873556b7b64c1c1ea5fe425bdac1746c61d97b2d933a4ab0bfee58e8466730f0

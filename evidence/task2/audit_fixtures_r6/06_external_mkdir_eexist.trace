@@ -1,0 +1,2 @@
+184094 openat(AT_FDCWD</home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi>, "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf", O_RDONLY|O_CLOEXEC) = 4</home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf>
+184094 mkdir("/tmp/lko-audit-negative-dir", 0700) = -1 EEXIST (File exists)

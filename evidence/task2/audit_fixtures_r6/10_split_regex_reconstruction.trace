@@ -1,0 +1,11 @@
+184094 openat(AT_FDCWD</home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi>, "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf", O_RDONLY|O_CLOEXEC) = 4</home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf>
+184094 clone(child_stack=NULL, flags=SIGCHLD   <unfinished ...>
+184094 <... clone resumed>) = 184095
+184095 chdir("../temp/audit_fixtures/virtual"   <unfinished ...>
+184095 <... chdir resumed>) = 0
+184095 mkdir("child"   <unfinished ...>
+184095 <... mkdir resumed>, 0700) = 0
+184095 mkdirat(AT_FDCWD</home/linhao/Toolchain/development/linux_kernel_optimization/temp/audit_fixtures/virtual>, "at-child"   <unfinished ...>
+184095 <... mkdirat resumed>, 0700) = 0
+184095 openat(AT_FDCWD</home/linhao/Toolchain/development/linux_kernel_optimization/temp/audit_fixtures/virtual>, "/dev/null", O_RDWR) <unfinished ...>
+184095 <... openat resumed> = 3</dev/null<char 1:3>>

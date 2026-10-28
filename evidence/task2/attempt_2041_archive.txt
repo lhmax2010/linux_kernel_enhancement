@@ -1,0 +1,39 @@
+2026-10-28 Asia/Shanghai: archive completed 2026-10-27 20:41 attempt.
+No live members of supervisor PGID 184075 or export PGID 184089, and no live baseline --worker, before moving.
+All 12 entries renamed into temp/attempt_20261027_2041/. No deletion. Lock inode and older attempts retained.
+run_baseline_build.status -> attempt_20261027_2041/run_baseline_build.status
+  run_baseline_build.status bytes=416 sha256=49386656610885b869d613a4c520e384eb3b445ff25a0620ca9fe720f0b65918 lines=7
+run_baseline_build.log -> attempt_20261027_2041/run_baseline_build.log
+  run_baseline_build.log bytes=62 sha256=2b0f21a3e9e12b6b8a0da0b4cd95778239f1608c6380c9ab1fa207d5a9f3dda3 lines=1
+run_baseline_build.existing_processes.txt -> attempt_20261027_2041/run_baseline_build.existing_processes.txt
+  run_baseline_build.existing_processes.txt bytes=5447 sha256=0313839ba875fe35def50bb734d071dfe3c6a9df41f12fa7bbdb40debb69a28f lines=6
+export_check -> attempt_20261027_2041/export_check
+  export_check/0002-perf-build-Add-make-check-headers-target.patch bytes=1837 sha256=d6c2d011615ddb451fcd177e9ef2e3607ef5c6206cb5655178ba58fec4d916e2
+  export_check/0003-ARM-ARM64-configs-tizen_bcm2711-Enable-F2FS-compress.patch bytes=2411 sha256=aebe3a09efa30a5717ed257cbb0c2bcb3a6edf243b5c1f2252a5bea7cc40f529
+  export_check/0004-script-build-support-non-sudo-image-creation-and-mou.patch bytes=4531 sha256=f31edc1dbed443cc7b861ad887a5c4b8f6e57e7fa57ac5f9f845c39698ecb6ef
+  export_check/0005-USB-serial-cp210x-Add-cp210x-stlink-driver-for-Smart.patch bytes=40204 sha256=dcda344d7790e134aaa1064af172b70caec310f553beb9098f5ecd570bca1e07
+  export_check/0006-USB-serial-cp210x-Fix-driver-name-collision-for-cp21.patch bytes=1395 sha256=f3b852f060cdaee3a1fc3b48ee348ec7a7b8b39d123cec6cb490e959a6413d81
+  export_check/0007-configs-packaging-modularize-defconfig-with-RT-and-L.patch bytes=37352 sha256=f282f36186525706f6c53f13bc1e60a65588602a8f57bcbde84255901ac6cb9f
+  export_check/0008-drivers-media-pci-hailo-Port-Hailo-accelerator-drive.patch.gz bytes=68645 sha256=8234af0684584ee369406a7272f5650c30411e7e3cbcfb0f354eeb5b4630d787
+  export_check/0009-mm-restore-vendor-reclaim-semantics-for-force_reclai.patch bytes=2507 sha256=01b939f2d3b6063c74416133bac36a8b9f3ca56f180a6b7c19ca0c3284d1c274
+  export_check/00d7934-to-b3c2c75.diff.gz bytes=7516575 sha256=597837feae27f69034f20d7bd21a000f9fc5a03abfc6ce9d0fba09421e847706
+  export_check/baselibs.conf bytes=689 sha256=364efccdc698cf2acb0707c0542a533119f8b0c290b28d43c63cc8ab3ad6847a
+  export_check/linux-kernel-6.12.80.tar.xz bytes=148723216 sha256=30c9438383f6b6763139c550e4f44f12812de2be99c107a1e3fbad30394d2628
+  export_check/linux-rpi.manifest bytes=69 sha256=fb0fb6cb1bb1797b22de7824aacb4e577b0dfd7da460dfe4875d1bd61e3f688d
+  export_check/linux-rpi.spec bytes=13426 sha256=7f312233d9b8b1cd091a7dd36ceecb05a754bad5764ff9056ed2b49d44d4a3a9
+export_check.log -> attempt_20261027_2041/export_check.log
+  export_check.log bytes=567 sha256=9f58fc97918acca29a2f2cf669384090387a120f0bf97cdfccb5e6e50989a264 lines=9
+export_check.log.raw -> attempt_20261027_2041/export_check.log.raw
+  export_check.log.raw bytes=370 sha256=a01e350c1baa9463019de2a943e682d59d3e2627d7d03f21016dbf406030125f lines=6
+export_check.strace -> attempt_20261027_2041/export_check.strace
+  export_check.strace bytes=43978445 sha256=fecfff9fb2277305509e4a158e2cb841fbde10dc1e202ee3072aff179719a311 lines=117587
+export_check_home.txt -> attempt_20261027_2041/export_check_home.txt
+  export_check_home.txt bytes=928416 sha256=3fde3947372772ef6cc3e8ac2c04a080e0af1a7ce70f8e9f13a748a591cae80b lines=6126
+export_r2.observed_outside.txt -> attempt_20261027_2041/export_r2.observed_outside.txt
+  export_r2.observed_outside.txt bytes=0 sha256=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 lines=0
+export_r2.pgid -> attempt_20261027_2041/export_r2.pgid
+  export_r2.pgid bytes=7 sha256=a25211106e31ce1a8e7bb550e0d156b40e33924ad59390d7201ffb90acfec0e4 lines=1
+export_r2.processes.log -> attempt_20261027_2041/export_r2.processes.log
+  export_r2.processes.log bytes=107427 sha256=88987faa11b474d543137b13bad16cf3ff561e05bc13af293d681c476ffbf27f lines=479
+monitor.log -> attempt_20261027_2041/monitor.log
+  monitor.log bytes=896 sha256=2a2e1b22eece1dcbd7eb03ace712d8a029390f4476943c4870067f783d3adf1a lines=2

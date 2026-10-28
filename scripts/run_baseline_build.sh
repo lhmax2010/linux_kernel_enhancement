@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# User-run only. Do not source. The agent validates this file with bash -n only.
+# Build launch is user-run only. --audit-only replays a saved trace without building.
 # External commands below are installed system tools; no external helper scripts.
 set -uo pipefail
 readonly WS=/home/linhao/Toolchain/development/linux_kernel_optimization
@@ -229,15 +229,15 @@ runtime_path() {
 # inheritance for successful relative mkdirs. Unknown/truncated/escaped paths
 # fail closed, rather than guessing that they were inside the workspace.
 trace_audit() {
-    local trace="$WORK/export_check.strace" summary="$WORK/export_check_home.txt"
-    local line pid body call path parent target child returned flags allow_reason n=0 bad=0 first_pid=
+    local trace=$1 summary=$2 coverage=${3:-calls}
+    local line pid body prefix call path parent target child returned flags allow_reason n=0 bad=0 first_pid=
     local line_no=0 syscall_line=0 null_count=0 null_first=
     local re_null_device='=([[:space:]]*)[0-9]+</dev/null<char 1:3>>[[:space:]]*$'
     local re_line='^([0-9]+)[[:space:]]+(.*)$'
     local re_open='^[[:space:]]*(open|openat)\('
     # -yy may show e.g. 3</dev/null<char 1:3>>; stop at the next angle bracket.
     local re_fd='=[[:space:]]*[0-9]+<([^<>]+)'
-    local re_flags='"([^"\\]|\\.)*",[[:space:]]*([A-Z0-9_|]+)(,|\))'
+    local re_flags='"([^"\\]|\\.)*",[[:space:]]*([A-Z0-9_|]+)[[:space:]]*(,|\))'
     local re_write='(^|\|)(O_WRONLY|O_RDWR|O_CREAT|O_TRUNC)(\||$)'
     local re_ok='=[[:space:]]*0[[:space:]]*$'
     local re_child='=[[:space:]]*([0-9]+)[[:space:]]*$'
@@ -246,6 +246,7 @@ trace_audit() {
     local re_chdir='^chdir\("([^"]*)"'
     local re_angle='<([^>]+)>'
     declare -A cwd=() pending=() pending_line=() a=() b=() c=() issues=()
+    local -a resumed_opens=()
     [[ -s $trace ]] || return 91
     while IFS= read -r line; do
         ((line_no+=1)); syscall_line=$line_no
@@ -259,7 +260,11 @@ trace_audit() {
             if [[ -z ${pending[$pid]+yes} ]]; then
                 issues["Unmatched resumed syscall: $line"]=1; bad=1; continue
             fi
-            body=${pending[$pid]}${body#*resumed>}
+            prefix=${pending[$pid]}
+            # strace inserts padding before <unfinished ...>. Trim only that
+            # trailing whitespace; preserve spaces inside quoted arguments.
+            prefix=${prefix%"${prefix##*[![:space:]]}"}
+            body=$prefix${body#*resumed>}
             syscall_line=${pending_line[$pid]}
             unset 'pending[$pid]' 'pending_line[$pid]'
         fi
@@ -286,6 +291,9 @@ trace_audit() {
                 issues["Unresolved open flags: $line"]=1; bad=1; continue
             fi
             flags=${BASH_REMATCH[2]}
+            if (( syscall_line != line_no )); then
+                resumed_opens+=("lines=$syscall_line/$line_no PID=$pid path=$path flags=$flags")
+            fi
             case "${path##*/}" in *gbs.conf*|*gbp.conf*|*gitconfig*|*rpmmacros*)
                 a[$path]=1; within_ws "$path" || { issues["External config: $path"]=1; bad=1; } ;;
             esac
@@ -331,7 +339,13 @@ trace_audit() {
         fi
     done < "$trace"
     (( ${#pending[@]} == 0 )) || { issues['Unfinished syscalls at trace EOF']=1; bad=1; }
-    (( n > 0 && ${#a[@]} > 0 && ${#c[@]} > 0 )) || { issues['Missing open/config/mkdir coverage']=1; bad=1; }
+    (( n > 0 )) || { issues['Missing successful open coverage']=1; bad=1; }
+    # A complete export must exercise config reads and directory creation.
+    # Small offline syscall fixtures need not contain either event; their path,
+    # flag, device and reconstruction decisions are otherwise identical.
+    if [[ $coverage == export ]]; then
+        (( ${#a[@]} > 0 && ${#c[@]} > 0 )) || { issues['Missing export config/mkdir coverage']=1; bad=1; }
+    fi
     {
         printf 'Export audit %s; successful opens checked by flags; all mkdir attempts checked; c lists successful mkdir only.\n' "$(stamp)"
         printf '\na. Configuration paths:\n'; for path in "${!a[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
@@ -339,6 +353,9 @@ trace_audit() {
         printf '\n/dev/null 带写标志成功打开：count=%s first_trace_line=%s；按 PM 裁决放行（精确返回路径及字符设备 1:3；0次时首次行号为none）。\n' \
             "$null_count" "${null_first:-none}"
         printf '\nc. Created directories:\n'; for path in "${!c[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
+        printf '\nd. Successfully parsed resumed opens (original trace lines):\n'
+        if (( ${#resumed_opens[@]} )); then printf '%s\n' "${resumed_opens[@]}"; fi
+        printf '\nCOVERAGE mode=%s opens=%s configs=%s created_dirs=%s\n' "$coverage" "$n" "${#a[@]}" "${#c[@]}"
         printf '\nIssues:\n'; for path in "${!issues[@]}"; do printf '%s\n' "$path"; done | /usr/bin/sort
         printf 'AUDIT-EXIT %s\n' "$bad"
     } > "$summary"
@@ -412,7 +429,7 @@ worker() {
         -o "$WORK/export_check.strace" /usr/bin/gbs export . -o "$WORK/export_check" \
         --outdir-directly --spec linux-rpi.spec --commit=HEAD
     local rc=$? audit_rc=0
-    trace_audit || audit_rc=91
+    trace_audit "$WORK/export_check.strace" "$WORK/export_check_home.txt" export || audit_rc=91
     (( rc == 0 )) || fail "$rc" 'export command/group/outside-output failure'
     (( audit_rc == 0 )) || fail "$audit_rc" 'export path audit failed; later stages skipped'
     # Only the exact export output directory created by this run is removed.
@@ -426,6 +443,18 @@ worker() {
     final_label=OK
     exit 0
 }
+
+# This dispatch precedes all preflight writes, traps, locks and sudo/build
+# paths. It runs the same audit function used by worker(), then exits.
+if [[ ${1:-} == --audit-only ]]; then
+    [[ $# == 3 ]] || { printf 'Usage: %s --audit-only <trace> <new-summary>\n' "$SCRIPT" >&2; exit 2; }
+    audit_trace=$(/usr/bin/realpath -e -- "$2") || exit 2
+    audit_summary=$(/usr/bin/realpath -m -- "$3") || exit 2
+    within_ws "$audit_trace" && [[ -f $audit_trace && -r $audit_trace ]] || { printf 'Audit input must be a readable workspace file\n' >&2; exit 2; }
+    [[ $audit_summary == "$WORK/"* && -d ${audit_summary%/*} && ! -e $audit_summary && ! -L $audit_summary ]] || { printf 'Audit output must be a new file below workspace temp, with an existing parent\n' >&2; exit 2; }
+    trace_audit "$audit_trace" "$audit_summary" calls
+    exit $?
+fi
 
 # Only this launch path can inherit the exclusive lock on descriptor 9.
 if [[ ${1:-} == --worker ]]; then

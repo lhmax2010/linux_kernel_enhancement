@@ -1,0 +1,8 @@
+2026-10-28 Asia/Shanghai
+bash -n scripts/run_baseline_build.sh: exit=0
+No gbs, sudo, signal, compile or board operation.
+Full real-trace replay: exit=0 / AUDIT-EXIT 0 / no Issues.
+Controls: 8 negative + 2 positive, all expected.
+Script SHA256=7a47b58cea0bf9d8dba3b97045a53559d37ddf644c70814790b264f17066ecba
+Same trace_audit function in worker and audit-only; formal export retains nonempty config+mkdir coverage requirement.
+Audit-only executed before preflight/traps/lock/sudo dispatch; it writes only the explicitly selected new summary under workspace temp.

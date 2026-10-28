@@ -1,8 +1,105 @@
 # 任务2：armv7l 构建基线与实际配置核对
 
-日期：2026-10-27（Asia/Shanghai）。本报告只记录本任务实际执行的结果；未获得的构建产物指标不以源码推导替代。所有体积与构建开销数字均为构建产物/开发机数据，不代表板上运行时内存。
+日期：2026-10-28（Asia/Shanghai）。本报告只记录本任务实际执行的结果；未获得的构建产物指标不以源码推导替代。所有体积与构建开销数字均为构建产物/开发机数据，不代表板上运行时内存。
 
-## 最新任务2续五：GBP隔离与导出审计修正（裁决已落实，等待用户重跑）
+## 最新任务2续六：解析修复与离线验证通过（2026-10-28）
+
+结论：完整归档trace离线审计`AUDIT-EXIT 0`、Issues为空；8个负对照及2个正对照全部符合预期，`bash -n`通过，**可以由用户重跑**。本轮没有运行gbs、sudo、构建或向任何进程发信号。原始导出成功不等于原始流程成功：用户以3ef50850启动的2026-10-27 20:41尝试，export命令exit=0，后置审计因5条拆分openat的标志解析失败而exit=91，GCC/LLVM均SKIPPED，见[原失败记录](../evidence/task2/export_attempt_2041_failure.txt)。
+
+### 归档
+
+确认旧监督组184075、导出组184089及本项目worker均无存活进程后，将下列12项原样移动到`$WS/temp/attempt_20261027_2041/`；没有删除，保留run_baseline_build.lock原位以及较早归档/buildroot。原始trace未修改，仍在归档目录中；每项的大小/SHA-256见[移动清单](../evidence/task2/attempt_2041_archive.txt)。
+
+| 原temp/条目 | 归档后位置（相对temp/） |
+| --- | --- |
+| run_baseline_build.status | attempt_20261027_2041/run_baseline_build.status |
+| run_baseline_build.log | attempt_20261027_2041/run_baseline_build.log |
+| run_baseline_build.existing_processes.txt | attempt_20261027_2041/run_baseline_build.existing_processes.txt |
+| export_check/ | attempt_20261027_2041/export_check/ |
+| export_check.log | attempt_20261027_2041/export_check.log |
+| export_check.log.raw | attempt_20261027_2041/export_check.log.raw |
+| export_check.strace | attempt_20261027_2041/export_check.strace |
+| export_check_home.txt | attempt_20261027_2041/export_check_home.txt |
+| export_r2.observed_outside.txt | attempt_20261027_2041/export_r2.observed_outside.txt |
+| export_r2.pgid | attempt_20261027_2041/export_r2.pgid |
+| export_r2.processes.log | attempt_20261027_2041/export_r2.processes.log |
+| monitor.log | attempt_20261027_2041/monitor.log |
+
+### 同一份解析代码与入口
+
+`run_baseline_build.sh:240`的标志表达式改为`([A-Z0-9_|]+)[[:space:]]*(,|\))`；:263–267在拼接前只删除unfinished前半段末尾的空白，不删除引号内空格，也不改写原始trace。PID配对、起始行号及设备1:3校验保留。
+
+新增`--audit-only <trace路径> <新摘要路径>`，在脚本:449起分派，位于worker/前台预检、状态文件、锁和sudo逻辑之前，调用同一个`trace_audit`后立即退出。输入必须是WS内可读普通文件；输出必须是temp内的新文件，父目录已存在，不覆盖旧证据。正式worker也调用:231同一函数，没有另一套解析器。离线片段的覆盖要求是至少一个成功打开；正式export还保留配置读取和成功mkdir的非空覆盖要求（:341–348），以容纳PM指定的“仅含只读打开与/dev/null打开”的正对照。两种入口的所有路径、标志、设备、mkdir及无法解析判定相同；本次完整trace有4条配置路径和5798个创建目录，满足正式export额外覆盖要求。
+
+离线执行命令（已执行，不调用gbs）：
+
+```bash
+/usr/bin/bash /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_baseline_build.sh --audit-only /home/linhao/Toolchain/development/linux_kernel_optimization/temp/attempt_20261027_2041/export_check.strace /home/linhao/Toolchain/development/linux_kernel_optimization/temp/export_audit_offline_r6.txt
+```
+
+完整a/b/c、恢复调用与Issues保存在temp/export_audit_offline_r6.txt；[上传摘要](../evidence/task2/offline_audit_r6_summary.txt)保留统计、五条恢复调用和校验值，不上传完整目录清单。
+
+### 各正则的核对
+
+源码位置为本次脚本；附加正对照10实际执行了拆分clone/chdir/mkdir/mkdirat及返回FD的重建，见[用例](../evidence/task2/audit_fixtures_r6/10_split_regex_reconstruction.trace)及[结果表](../evidence/task2/audit_fixture_results_r6.md)。
+
+| 正则 | 拼接后的匹配行为及证据 |
+| --- | --- |
+| re_flags (:240) | 标志后允许任意空白再遇逗号/右括号；真实5条恢复openat全部解析，拆分外部写入负对照08仍拒绝 |
+| re_fd (:239) | 在返回值部分匹配`= 空白 FD<路径`；=后的空白已允许，FD与<是strace -yy格式；真实5条及用例10拆开返回值均通过；设备例外另用完整1:3标注校验 |
+| re_ok (:242) | 匹配`= 空白 0 行尾空白`，与参数分隔符不相邻；用例10的chdir/mkdir/mkdirat返回0均识别 |
+| re_child (:243) | 匹配`= 空白 子PID 行尾空白`；用例10的拆分clone得到184095；随后相对chdir与relative mkdir的正确定位证明继承父进程cwd |
+| re_mkdir (:244) | 只提取mkdir起始引号中的路径，不要求闭引号紧邻逗号；用例10闭引号后拆分的relative child正确定位在WS |
+| re_mkdirat (:245) | 提取dirfd及其后路径，逗号后本就允许空白；用例10使用AT_FDCWD真实路径标注并在路径后拆分，at-child正确定位 |
+| re_chdir (:246) | 只提取chdir起始引号中的路径，不要求闭引号后紧邻右括号；用例10拆分的相对chdir后cwd更新，后续relative mkdir证明更新生效 |
+
+### 完整trace离线结果
+
+| 项目 | 实测结果 |
+| --- | --- |
+| 审计与进程退出码 | AUDIT-EXIT 0，进程exit=0，Issues为空 |
+| a 配置 | 4个路径全部位于WS；包括工作区.gbp.conf，没有成功读取外部gbp.conf |
+| b 外部打开 | 307个去重的“路径+标志”组合全部按现有运行时白名单或精确/dev/null例外放行；拒绝组合0个 |
+| c 成功mkdir | 5798个去重目录全部位于WS |
+| /dev/null带写标志 | 99次，首次原始trace第323行，按PM裁决放行；旧审计的98次漏掉15487/15489这一对 |
+| 成功解析打开总数 | 107174次；恢复打开5次，均列于摘要d段 |
+
+| 原始trace行号 | 返回路径 | 标志 |
+| --- | --- | --- |
+| 470/472 | /sys/devices/system/cpu/online | O_RDONLY\|O_CLOEXEC |
+| 471/473 | /sys/devices/system/cpu/online | O_RDONLY\|O_CLOEXEC |
+| 15487/15489 | /dev/null（char 1:3） | O_RDWR |
+| 15488/15490 | /etc/locale.alias | O_RDONLY\|O_CLOEXEC |
+| 111556/111561 | /usr/lib/x86_64-linux-gnu/liblzma.so.5.4.5 | O_RDONLY\|O_CLOEXEC |
+
+### 对照验证
+
+用例由真实trace片段复制或定向修改得到，全部存于temp/audit_fixtures/，上传同内容文本到evidence/task2/audit_fixtures_r6/；没有实际创建用例中的外部文件/目录，没有打开那些设备或配置。[来源说明](../evidence/task2/audit_fixtures_r6/PROVENANCE.txt)、[每例完整Issues](../evidence/task2/audit_fixture_results_r6.md)。
+
+| 用例文件 | 场景 | 预期AUDIT-EXIT | 实际AUDIT-EXIT / 进程exit | 结果 |
+| --- | --- | ---: | --- | --- |
+| [01_external_file_write.trace](../evidence/task2/audit_fixtures_r6/01_external_file_write.trace) | 外部普通文件O_WRONLY\|O_CREAT | 1 | 1 / 1 | 符合 |
+| [02_dev_zero_write.trace](../evidence/task2/audit_fixtures_r6/02_dev_zero_write.trace) | /dev/zero O_RDWR | 1 | 1 / 1 | 符合 |
+| [03_dev_null_wrong_device.trace](../evidence/task2/audit_fixtures_r6/03_dev_null_wrong_device.trace) | /dev/null但char 1:5 | 1 | 1 / 1 | 符合 |
+| [04_external_gbp_config.trace](../evidence/task2/audit_fixtures_r6/04_external_gbp_config.trace) | 读取外部gbp.conf | 1 | 1 / 1 | 符合 |
+| [05_external_mkdir_success.trace](../evidence/task2/audit_fixtures_r6/05_external_mkdir_success.trace) | 外部mkdir成功 | 1 | 1 / 1 | 符合 |
+| [06_external_mkdir_eexist.trace](../evidence/task2/audit_fixtures_r6/06_external_mkdir_eexist.trace) | 外部mkdir返回EEXIST | 1 | 1 / 1 | 符合 |
+| [07_tmp_readwrite.trace](../evidence/task2/audit_fixtures_r6/07_tmp_readwrite.trace) | /tmp O_RDWR | 1 | 1 / 1 | 符合 |
+| [08_split_external_write.trace](../evidence/task2/audit_fixtures_r6/08_split_external_write.trace) | 拆分的外部O_WRONLY | 1 | 1 / 1 | 符合 |
+| [09_split_allowed.trace](../evidence/task2/audit_fixtures_r6/09_split_allowed.trace) | 仅拆分合法只读调用与/dev/null读写 | 0 | 0 / 0 | 符合 |
+| [10_split_regex_reconstruction.trace](../evidence/task2/audit_fixtures_r6/10_split_regex_reconstruction.trace) | 附加：拆分clone/chdir/mkdir/mkdirat与FD | 0 | 0 / 0 | 符合 |
+
+未改变路径白名单来使测试通过。脚本修改结束后的`bash -n`退出0，[验证记录](../evidence/task2/audit_validation_r6.txt)。这些结果证明本次保存trace与对照片段的解析和判定符合要求，不代表下一次运行已经成功，也不是构建产物验证。
+
+建议用户在tmux/screen中执行原命令（代理不执行）：
+
+```bash
+cd /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi && /usr/bin/bash /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_baseline_build.sh
+```
+
+启动后按任务2续四用本次实际PID/PGID只读监控；异常即停，ALL-END OK后再做编译器、配置、体积、05及ACTIME布局核对。
+
+## 历史任务2续五：GBP隔离与导出审计修正（裁决已落实，等待用户重跑）
 
 用户在commit `24707cadc26a322bbee18545617064c21dd50c49`启动的流程，export命令于2026-10-27 18:01:13返回0，审计于18:01:43以91失败；status已含ALL-END，GCC/LLVM均SKIPPED。监督组148694及导出组148705均已退出。代理没有重试、发信号或调用sudo。完整状态、日志、摘要统计及SHA-256见[上次审计摘要](../evidence/task2/export_attempt_1801_summary.txt)。
 
