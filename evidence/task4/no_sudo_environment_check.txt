@@ -1,0 +1,19 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 / --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi /task4-source --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check /task4-output --proc /proc --dev /dev --chdir /task4-output --setenv TMPDIR /task4-output -- /usr/bin/qemu-arm -L / /bin/bash --noprofile --norc -c 'printf "PLATFORM-SHELL-OK\n"'
+bwrap: Can't mkdir /task4-source: Read-only file system
+EXIT=1
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 / --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check /tmp --proc /proc --dev /dev --chdir /tmp --setenv TMPDIR /tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin -- /usr/bin/qemu-arm -L / /bin/bash --noprofile --norc -c 'printf "PLATFORM-SHELL-OK\n"; /usr/bin/make --version; /usr/bin/qemu-arm -L / /usr/bin/make --version'
+PLATFORM-SHELL-OK
+GNU Make 4.4.1
+Built for x86_64-tizen-linux-gnu
+Copyright (C) 1988-2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+GNU Make 4.4.1
+Built for armv7l-tizen-linux-gnueabi
+Copyright (C) 1988-2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+EXIT=0

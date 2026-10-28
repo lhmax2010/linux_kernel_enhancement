@@ -1,0 +1,28 @@
+gcc_arm-rpi4: generation_exit=0; diffconfig_exit=0; only ARM_PMUV3 n -> y; independent config parser agrees
+BASELINE_SHA256=d3a72c62ee73d50ca53b021b9e72af478b3db463206cb5e246773ad5521ea244 matches evidence/task2/config_gcc_arm-rpi4.txt
+NEW_CONFIG_SHA256=ee1ffa9c201666a088979f0a131a87b71d93b0c91dd460b1aa305fd9ca2805aa
+No HOSTCC/HOSTLD/CC/LD/AR command in generation output; reused platform config helpers.
+
+evidence/task2/config_gcc_arm-rpi4.txt:5960: # CONFIG_ARM_PMUV3 is not set
+temp/pmu_config_check/gcc/arm-rpi4/.config:5960: CONFIG_ARM_PMUV3=y
+gcc_arm-rpi4-rt: generation_exit=0; diffconfig_exit=0; only ARM_PMUV3 n -> y; independent config parser agrees
+BASELINE_SHA256=87623c5e041a5420b6be82642d46ccf4852bdf22edecb89b329079960ae151c3 matches evidence/task2/config_gcc_arm-rpi4-rt.txt
+NEW_CONFIG_SHA256=fdc9a5edb5320b50fd8e630b45903158a0ac49cd79a81a83bbfb9c2e55afa72c
+No HOSTCC/HOSTLD/CC/LD/AR command in generation output; reused platform config helpers.
+
+evidence/task2/config_gcc_arm-rpi4-rt.txt:5954: # CONFIG_ARM_PMUV3 is not set
+temp/pmu_config_check/gcc/arm-rpi4-rt/.config:5954: CONFIG_ARM_PMUV3=y
+llvm_arm-rpi4: generation_exit=0; diffconfig_exit=0; only ARM_PMUV3 n -> y; independent config parser agrees
+BASELINE_SHA256=688e66c3d0c2e31c09fb563d9905420475319787c4d6764cd7b7e210a4f6d33c matches evidence/task2/config_llvm_arm-rpi4.txt
+NEW_CONFIG_SHA256=62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5
+No HOSTCC/HOSTLD/CC/LD/AR command in generation output; reused platform config helpers.
+
+evidence/task2/config_llvm_arm-rpi4.txt:5957: # CONFIG_ARM_PMUV3 is not set
+temp/pmu_config_check/llvm/arm-rpi4/.config:5957: CONFIG_ARM_PMUV3=y
+llvm_arm-rpi4-rt: generation_exit=0; diffconfig_exit=0; only ARM_PMUV3 n -> y; independent config parser agrees
+BASELINE_SHA256=df7b9388a4e1b5cc40fef81e7da3259ffb0591e8d0b52e003deecf617b8b88b8 matches evidence/task2/config_llvm_arm-rpi4-rt.txt
+NEW_CONFIG_SHA256=fe2d86397727e714f0eac24feadc48f6ad0c0a71b348f0f956e029d9e0bfee53
+No HOSTCC/HOSTLD/CC/LD/AR command in generation output; reused platform config helpers.
+
+evidence/task2/config_llvm_arm-rpi4-rt.txt:5951: # CONFIG_ARM_PMUV3 is not set
+temp/pmu_config_check/llvm/arm-rpi4-rt/.config:5951: CONFIG_ARM_PMUV3=y

@@ -1,0 +1,26 @@
+Commit message exactly equals git-am message minus the PM-specified wrapped sentence.
+Author: Hao Lin <hao.lin@samsung.com>
+AuthorDate: 2026-10-28T16:13:43+08:00
+Committer: Hao Lin <hao.lin@samsung.com>
+ARM: configs: tizen_bcm2711: enable ARM_PMUV3
+
+The BCM2711 Cortex-A72 PMU is matched by arm_pmuv3 through the
+arm,cortex-a72-pmu entry in drivers/perf/arm_pmuv3.c. The arm_v7_pmu
+match table has no Cortex-A72 entry. ARM_PMUV3 defaults to ARM64 in
+drivers/perf/Kconfig, leaving the driver disabled in the 32-bit build.
+The current armv7l image consequently has no hardware perf events
+and its device-tree PMU node has no bound driver.
+
+Enable ARM_PMUV3 in the 32-bit BCM2711 defconfig. The RT variant is
+generated from the same defconfig plus kernel/configs/rt.config, so
+it inherits this option. Leave the arm64 configuration unchanged.
+
+An ordinary kernel was previously built from the running image's
+source baseline, 21645b17c0d913e2ba7e10fbc9c993d286b3f57d. Comparing
+all 5649 configuration values with that image's devel RPM found only
+CONFIG_ARM_PMUV3 changing from disabled to y.
+This patch on the latest tizen baseline has not been built or booted.
+
+Change-Id: I2f00e4cca847dae70fb9e99f3948ed3df699f05f
+Signed-off-by: Hao Lin <hao.lin@samsung.com>
+

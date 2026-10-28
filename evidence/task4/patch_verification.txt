@@ -1,0 +1,6 @@
+URL https://raw.githubusercontent.com/lhmax2010/autofdo_bolt_agent/0dff5b0fcdc52720a286ee9efd3d2360e38728db/patches/0001-ARM-configs-tizen_bcm2711-enable-ARM_PMUV3.patch
+SHA256 620c35409023bfcf881cafb8a91c20d84a26d625e6d14dc8aba644a32a4ca55e
+bytes 1834
+branch lko/base
+pre_HEAD f240c28093027707f5e09f8a9cbbed16a43ebb1a
+worktree clean

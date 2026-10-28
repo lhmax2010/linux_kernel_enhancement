@@ -1,0 +1,66 @@
+from pathlib import Path
+import os,subprocess,shlex,shutil,json,hashlib,datetime
+W=Path('/home/linhao/Toolchain/development/linux_kernel_optimization');O=W/'temp/pmu_config_check';E=W/'evidence/task4';S=Path('/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80')
+ROOT={k:W/'temp'/n/'local/BUILD-ROOTS/scratch.armv7l.0' for k,n in [('gcc','GBS-ROOT-TOOLCHAIN-GCC-CODES'),('llvm','GBS-ROOT-TIZEN-LLVM-CODES')]}
+# All namespace directory scaffolding is physically under WS/temp, never host /home.
+ns=O/'namespace_home'
+(ns/S.relative_to('/home')).mkdir(parents=True,exist_ok=True)
+(ns/(W/'temp').relative_to('/home')).mkdir(parents=True,exist_ok=True)
+reports=[]
+for k,r in ROOT.items():
+ for v in ['arm-rpi4','arm-rpi4-rt']:
+  out=O/k/v;out.mkdir(parents=True,exist_ok=True)
+  if (out/'.config').exists():
+   assert k=='gcc' and v=='arm-rpi4',f'Refuse to overwrite {out}'
+   assert '# CONFIG_ARM_PMUV3 is not set\n' in (out/'task2.config').read_text()
+   assert ' ARM_PMUV3 n -> y\nDIFFCONFIG-EXIT=0\n' in (out/'diffconfig.txt').read_text()
+   assert 'GENERATION-EXIT=0\n' in (out/'generation.log').read_text()
+   row=dict(variant=k+'_'+v,generation_exit=0,diffconfig_exit=0,diff=' ARM_PMUV3 n -> y\n',pass_only_arm_pmuv3=True,config_sha256=hashlib.sha256((out/'.config').read_bytes()).hexdigest(),note='Existing successful generation reused; baseline explicitly records n, not absent.')
+   reports.append(row);print(row,flush=True)
+   continue
+  # Reuse the existing platform Kconfig helpers; no kernel object is copied or rebuilt.
+  old=r/S.relative_to('/')/'build'/v
+  for rel in ['scripts/basic','scripts/kconfig']:
+   shutil.copytree(old/rel,out/rel,copy_function=shutil.copy2)
+  log=(W/f'temp/build_{k}_r2.log').read_text();envdata={}
+  for var in ['CFLAGS','CXXFLAGS','LDFLAGS']:
+   import re
+   m=re.search(r'\+ '+var+r'=(.*)',log);assert m,var
+   vals=shlex.split(m[1]);envdata[var]=vals[0] if vals else ''
+  envlines='\n'.join('export '+var+'='+shlex.quote(value) for var,value in envdata.items())
+  if k=='llvm':envlines+='\nexport AR=llvm-ar RANLIB=llvm-ranlib CC=armv7l-tizen-linux-gnueabi-clang CXX=armv7l-tizen-linux-gnueabi-clang++ LLVM=1\nexport MAKEFLAGS="-k"'
+  else:envlines+='\nunset LLVM LLVM_IAS CC CXX AR RANLIB LD CROSS_COMPILE HOSTCC HOSTCXX MAKEFLAGS'
+  frag=' '+shlex.quote(str(S/'kernel/configs/rt.config')) if v.endswith('-rt') else ''
+  script=out/'config_only.sh'
+  body=f'''set -eu
+export TMPDIR={shlex.quote(str(W/'temp'))}
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+{envlines}
+printf 'CONFIG-CHECK-START {k} {v}\\n'
+/usr/bin/qemu-arm -L / /usr/bin/uname -m
+/usr/bin/qemu-arm -L / /usr/bin/make --version
+cd {shlex.quote(str(out))}
+/usr/bin/qemu-arm -L / /bin/bash {shlex.quote(str(S/'scripts/kconfig/merge_config.sh'))} -m -O {shlex.quote(str(out))} {shlex.quote(str(S/'arch/arm/configs/tizen_bcm2711_defconfig'))}{frag}
+/usr/bin/qemu-arm -L / /usr/bin/make -C {shlex.quote(str(S))} O={shlex.quote(str(out))} ARCH=arm olddefconfig -j1 MAKE='/usr/bin/qemu-arm -L / /usr/bin/make'
+printf 'CONFIG-CHECK-END {k} {v} exit=0\\n'
+'''
+  script.write_text(body)
+  cmd=['/usr/bin/bwrap','--unshare-user','--unshare-pid','--ro-bind',str(r),'/','--bind',str(ns),'/home','--bind',str(W/'temp'),str(W/'temp'),'--ro-bind',str(W/'linux-rpi'),str(S),'--proc','/proc','--dev','/dev','--chdir',str(out),'--setenv','TMPDIR',str(W/'temp'),'--setenv','PATH','/usr/bin:/bin:/usr/sbin:/sbin','--','/usr/bin/qemu-arm','-L','/','/bin/bash','--noprofile','--norc',str(script)]
+  with (out/'generation.log').open('w') as f:
+   f.write('$ '+shlex.join(cmd)+'\n'+body+'\n');f.flush();p=subprocess.run(cmd,stdout=f,stderr=subprocess.STDOUT)
+   f.write('\nGENERATION-EXIT='+str(p.returncode)+'\n')
+  print(k,v,'GENERATION-EXIT',p.returncode,flush=True)
+  if p.returncode:raise SystemExit(p.returncode)
+  # Use that buildroot's platform Python and the exact kernel diffconfig script.
+  dcmd=cmd[:cmd.index('--')+1]+['/usr/bin/qemu-arm','-L','/','/usr/bin/python3',str(S/'scripts/diffconfig'),str(old/'.config'),str(out/'.config')]
+  # old build tree is masked by read-only source bind; compare to a verified copy of task2 config in output.
+  baseline=out/'task2.config';shutil.copy2(old/'.config',baseline);dcmd[-2]=str(baseline)
+  p=subprocess.run(dcmd,capture_output=True,text=True);diff=p.stdout
+  (out/'diffconfig.txt').write_text('$ '+shlex.join(dcmd)+'\n'+diff+p.stderr+'DIFFCONFIG-EXIT='+str(p.returncode)+'\n')
+  (E/f'diffconfig_{k}_{v}.txt').write_text((out/'diffconfig.txt').read_text())
+  expected=' ARM_PMUV3 n -> y\n'
+  row=dict(variant=k+'_'+v,generation_exit=0,diffconfig_exit=p.returncode,diff=diff,pass_only_arm_pmuv3=p.returncode==0 and diff==expected,config_sha256=hashlib.sha256((out/'.config').read_bytes()).hexdigest());reports.append(row)
+  (O/'results.json').write_text(json.dumps(reports,indent=2))
+  print(row,flush=True)
+  if not row['pass_only_arm_pmuv3']:raise SystemExit(20)
+print('ALL-FOUR-PASS')

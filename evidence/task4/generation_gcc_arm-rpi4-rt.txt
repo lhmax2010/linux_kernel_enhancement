@@ -1,0 +1,44 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check/namespace_home /home --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp /home/linhao/Toolchain/development/linux_kernel_optimization/temp --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check/gcc/arm-rpi4-rt --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin -- /usr/bin/qemu-arm -L / /bin/bash --noprofile --norc /home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check/gcc/arm-rpi4-rt/config_only.sh
+set -eu
+export TMPDIR=/home/linhao/Toolchain/development/linux_kernel_optimization/temp
+export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+export CFLAGS='-O2 -fno-inline-functions -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -Wformat-security -fmessage-length=0 -frecord-gcc-switches -Wl,-z,relro,--as-needed --param=ssp-buffer-size=4 -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -Wl,-O1 -Wl,--hash-style=gnu -Wa,-mimplicit-it=thumb -D_FILE_OFFSET_BITS=64 -g'
+export CXXFLAGS='-O2 -fno-inline-functions -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong -Wformat-security -fmessage-length=0 -frecord-gcc-switches -Wl,-z,relro,--as-needed --param=ssp-buffer-size=4 -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -Wl,-O1 -Wl,--hash-style=gnu -Wa,-mimplicit-it=thumb -D_FILE_OFFSET_BITS=64 -g'
+export LDFLAGS=''
+unset LLVM LLVM_IAS CC CXX AR RANLIB LD CROSS_COMPILE HOSTCC HOSTCXX MAKEFLAGS
+printf 'CONFIG-CHECK-START gcc arm-rpi4-rt\n'
+/usr/bin/qemu-arm -L / /usr/bin/uname -m
+/usr/bin/qemu-arm -L / /usr/bin/make --version
+cd /home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check/gcc/arm-rpi4-rt
+/usr/bin/qemu-arm -L / /bin/bash /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/scripts/kconfig/merge_config.sh -m -O /home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check/gcc/arm-rpi4-rt /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/arch/arm/configs/tizen_bcm2711_defconfig /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/kernel/configs/rt.config
+/usr/bin/qemu-arm -L / /usr/bin/make -C /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80 O=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check/gcc/arm-rpi4-rt ARCH=arm olddefconfig -j1 MAKE='/usr/bin/qemu-arm -L / /usr/bin/make'
+printf 'CONFIG-CHECK-END gcc arm-rpi4-rt exit=0\n'
+
+CONFIG-CHECK-START gcc arm-rpi4-rt
+armv7l
+GNU Make 4.4.1
+Built for armv7l-tizen-linux-gnueabi
+Copyright (C) 1988-2023 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <https://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Using /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/arch/arm/configs/tizen_bcm2711_defconfig as base
+Merging /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/kernel/configs/rt.config
+Value of CONFIG_RT_GROUP_SCHED is redefined by fragment /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/kernel/configs/rt.config:
+Previous value: CONFIG_RT_GROUP_SCHED=y
+New value: # CONFIG_RT_GROUP_SCHED is not set
+
+#
+# merged configuration written to /home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check/gcc/arm-rpi4-rt/.config (needs make)
+#
+make: Entering directory '/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80'
+make[1]: Entering directory '/home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check/gcc/arm-rpi4-rt'
+  GEN     Makefile
+#
+# configuration written to .config
+#
+make[1]: Leaving directory '/home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check/gcc/arm-rpi4-rt'
+make: Leaving directory '/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80'
+CONFIG-CHECK-END gcc arm-rpi4-rt exit=0
+
+GENERATION-EXIT=0

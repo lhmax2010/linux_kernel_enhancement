@@ -1,0 +1,61 @@
+commit 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+Author:     Hao Lin <hao.lin@samsung.com>
+AuthorDate: Wed Oct 28 16:13:43 2026 +0800
+Commit:     Hao Lin <hao.lin@samsung.com>
+CommitDate: Wed Oct 28 17:56:15 2026 +0800
+
+    ARM: configs: tizen_bcm2711: enable ARM_PMUV3
+    
+    The BCM2711 Cortex-A72 PMU is matched by arm_pmuv3 through the
+    arm,cortex-a72-pmu entry in drivers/perf/arm_pmuv3.c. The arm_v7_pmu
+    match table has no Cortex-A72 entry. ARM_PMUV3 defaults to ARM64 in
+    drivers/perf/Kconfig, leaving the driver disabled in the 32-bit build.
+    The current armv7l image consequently has no hardware perf events
+    and its device-tree PMU node has no bound driver.
+    
+    Enable ARM_PMUV3 in the 32-bit BCM2711 defconfig. The RT variant is
+    generated from the same defconfig plus kernel/configs/rt.config, so
+    it inherits this option. Leave the arm64 configuration unchanged.
+    
+    An ordinary kernel was previously built from the running image's
+    source baseline, 21645b17c0d913e2ba7e10fbc9c993d286b3f57d. Comparing
+    all 5649 configuration values with that image's devel RPM found only
+    CONFIG_ARM_PMUV3 changing from disabled to y.
+    This patch on the latest tizen baseline has not been built or booted.
+    
+    Change-Id: I2f00e4cca847dae70fb9e99f3948ed3df699f05f
+    Signed-off-by: Hao Lin <hao.lin@samsung.com>
+
+commit f240c28093027707f5e09f8a9cbbed16a43ebb1a
+Author:     He Fangyu <fangyu.he@samsung.com>
+AuthorDate: Mon Oct 19 10:13:06 2026 +0800
+Commit:     Hao Lin <hao.lin@samsung.com>
+CommitDate: Tue Oct 27 14:10:08 2026 +0800
+
+    mm: restore vendor reclaim semantics for force_reclaim
+    
+    The vendor memory.force_reclaim interface retained a boolean true after
+    the reclaim API changed to option bits. Pass MEMCG_RECLAIM_MAY_SWAP so
+    anonymous pages can be swapped out again, without adding proactive
+    reclaim semantics.
+    
+    Honor the write_u64 callback contract by returning zero on success.
+    Reject requests larger than ULONG_MAX, skip zero requests, request only
+    the remaining target on each pass, and stop after two consecutive passes
+    without progress. Keep the existing reclaim diagnostic. Reclaim batching
+    may still overshoot the target; this is not a strict page cap.
+    
+    [lko: split from a9cc39b8dd1d; zram defconfig part evaluated separately]
+
+diff --git a/arch/arm/configs/tizen_bcm2711_defconfig b/arch/arm/configs/tizen_bcm2711_defconfig
+index bf97a71b2c3d..e8bb00b4a8b3 100644
+--- a/arch/arm/configs/tizen_bcm2711_defconfig
++++ b/arch/arm/configs/tizen_bcm2711_defconfig
+@@ -466,6 +466,7 @@ CONFIG_RASPBERRYPI_POWER=y
+ CONFIG_PWM=y
+ CONFIG_PWM_BCM2835=y
+ CONFIG_GENERIC_PHY=y
++CONFIG_ARM_PMUV3=y
+ CONFIG_ANDROID_BINDER_IPC=y
+ CONFIG_ANDROID_BINDERFS=y
+ CONFIG_DAX=y

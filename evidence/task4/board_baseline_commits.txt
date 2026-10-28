@@ -1,0 +1,17 @@
+$ git rev-parse 21645b17
+21645b17c0d913e2ba7e10fbc9c993d286b3f57d
+EXIT=0
+
+$ git merge-base --is-ancestor 21645b17 lko/base
+EXIT=0
+
+$ git rev-list --count 21645b17..lko/base
+4
+EXIT=0
+
+$ git log --oneline 21645b17..lko/base
+0fac5de6a630 ARM: configs: tizen_bcm2711: enable ARM_PMUV3
+f240c2809302 mm: restore vendor reclaim semantics for force_reclaim
+42aeefac58ed drivers: media: pci: hailo: Port Hailo accelerator driver to v4.22.0
+d5ef43b342dc configs: packaging: modularize defconfig with RT and LSM fragments
+EXIT=0

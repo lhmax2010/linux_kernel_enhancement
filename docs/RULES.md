@@ -2,6 +2,13 @@
 2. 生成的所有东西都必须在工作目录内。
 
 
+## PM裁决：任务4（2026-10-28，优先于历史任务限制）
+
+- 授权在lko/base@f240c280上应用经SHA-256核对的ARM_PMUV3补丁，提交说明只删除PM指定的跨项目报告引用句，保持其余正文、Signed-off-by、Change-Id及作者。
+- 仅用对应GBS buildroot的平台工具经qemu-arm执行merge_config.sh与make olddefconfig，四组合输出放WS/temp/pmu_config_check；不完整编译、不sudo、不改宿主工具链。
+- 四配置相对任务2必须仅新增ARM_PMUV3=y；任何其他差异或无法在无sudo条件下核对时停止，不推Gerrit。
+- 经ls-remote确认授权sandbox不存在才普通推送；已存在或推送拒绝均停下，记录原始错误，不改用其他方式。推后核对远端SHA等于lko/base。
+
 ## PM裁决：任务2续六（2026-10-28）
 
 - 允许代理运行脚本的`--audit-only <trace路径> <摘要输出路径>`离线入口，读取已有trace或WS/temp/audit_fixtures/内的文本用例，输出只放WS/temp；正式构建与离线审计必须共用同一份trace_audit函数，不另写判定器。
@@ -47,7 +54,8 @@ HOME=$WS/temp/gbs-home、GIT_CONFIG_NOSYSTEM=1 和 GBP_CONF_FILES=$WS/temp/gbs-h
 2. GitHub 只用 git push 推到 main，不开 PR，不 force push。只上传必要、重要的文件（文档、补丁、脚本、小体积文本证据）。linux-rpi 源码树、temp/、构建产物、RPM、二进制、大于 1 MB 的文件一律不上传，留在工作目录。
 3. 提交署名一律用 Hao Lin <hao.lin@samsung.com>，用 git -c user.name=... -c user.email=... 指定，不改全局配置。
 4. linux-rpi 本任务只读：不 checkout 其他分支、不改工作树、不提交。可以把远端分支 fetch 到 refs/remotes 下做只读比对。后续需要改代码时另开分支，届时另行说明。
-5. 不向 Gerrit 推送任何东西。
+5. 本项目在 Gerrit 上唯一允许的推送目标是 sandbox/lhmax2025/kernel_optimization，由用户授权。不许推送到其他任何分支或 refs/for/*；不许 force push、删除或改写已推送的提交；以后本项目所有内核改动都只推到这个 sandbox。
+   本地分支 lko/base 与该 sandbox 保持一致，作为后续所有实验分支的基线。
 6. 控制机器负载：并行度不超过 nproc 的一半。本任务不跑内核编译，也不跑 GBS 构建。
 7. 每个任务收尾时更新 $WS/docs/STATUS.md，内容包括：计划、进度、已闭合结论（附证据路径）、需要人工裁决的前提、挂账事项。STATUS.md 与本次产出放在同一个 commit 推送。新 Session 开场先读 STATUS.md 和 RULES.md。
 8. 结论必须有证据：给出 文件:行号、commit id 或命令输出。推测要明确标注"推测"。拿不到的信息如实写明原因和尝试过的命令，不要猜。
@@ -56,7 +64,7 @@ HOME=$WS/temp/gbs-home、GIT_CONFIG_NOSYSTEM=1 和 GBP_CONF_FILES=$WS/temp/gbs-h
 
 以下规则覆盖上文任务1限定的第4条“源码只读”和第6条“不构建”；其余原规则继续有效。任务2授权在 lko/base 上串行执行 armv7l GCC/LLVM 基线构建，每次 --threads 1、_smp_mflags=-j10，且不超过 nproc 的一半。拆分 a9cc39b8dd1d 时按 PM 明确要求保留原作者 He Fangyu，提交者仍用 Hao Lin <hao.lin@samsung.com>，使用 git -c 指定，不改全局配置。
 
-1. linux-rpi 允许建本地分支，分支名统一用 lko/ 前缀。不许修改 tizen 分支，不许删除或改写任何远端分支，不许向 Gerrit 推送。
+1. linux-rpi 允许建本地分支，分支名统一用 lko/ 前缀。不许修改 tizen 分支，不许删除或改写任何远端分支；Gerrit推送范围以任务4授权的唯一sandbox为准。
 2. PM 需要核对源码时，只上传相关文件，不上传整棵树。路径为 code_snapshots/<内核commit短id>/<源码原路径>，并在 code_snapshots/INDEX.md 中记录：文件、commit、上传原因。单个文件超过 1 MB 时，只上传相关片段，并注明行号范围。
 3. 构建产物（RPM、vmlinux、buildroot）全部留在 $WS/temp/，不上传。
 4. 分析构建产物（size、readelf、nm、bloat-o-meter、objdump、llvm-bolt 等）时，用 GBS buildroot 里平台自带的工具，不用本机工具链。

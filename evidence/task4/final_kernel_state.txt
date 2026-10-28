@@ -1,0 +1,12 @@
+$ git status --porcelain
+EXIT=0
+
+$ git rev-parse HEAD tizen @{upstream}
+0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+42aeefac58edeb081aff440f0b60be71cbe49755
+0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+EXIT=0
+
+$ git rev-list --left-right --count lko/base...origin/sandbox/lhmax2025/kernel_optimization
+0	0
+EXIT=0

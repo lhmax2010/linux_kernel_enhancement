@@ -1,0 +1,4 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi ls-remote origin refs/heads/sandbox/lhmax2025/kernel_optimization
+0fac5de6a63091d141ad1cd3ed9d9e92b8dde708	refs/heads/sandbox/lhmax2025/kernel_optimization
+EXIT=0
+LOCAL_LKO_BASE=0fac5de6a63091d141ad1cd3ed9d9e92b8dde708

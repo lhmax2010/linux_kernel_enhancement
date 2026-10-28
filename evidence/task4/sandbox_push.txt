@@ -1,0 +1,8 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi push origin lko/base:refs/heads/sandbox/lhmax2025/kernel_optimization
+remote: 
+remote: Processing changes: refs: 1        
+remote: Processing changes: refs: 1, done            
+remote: commit f240c28: warning: subject >50 characters; use shorter first paragraph        
+To ssh://review.tizen.org:29418/platform/kernel/linux-rpi
+ * [new branch]                lko/base -> sandbox/lhmax2025/kernel_optimization
+EXIT=0
