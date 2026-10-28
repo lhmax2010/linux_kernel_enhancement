@@ -1,0 +1,82 @@
+objdump -dr /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/drivers/net/usb/r8152.o
+Selected actual object excerpts (full output stays in temp/task3).
+FUNCTION r8156b_hw_phy_cfg
+instructions=1213; relocatable direct calls={'__gnu_mcount_nc': 1, 'warn_slowpath_fmt': 1, '__stack_chk_fail': 1}
+First 24 instructions:
+0000fad0 <r8156b_hw_phy_cfg>:
+    fad0:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+    fad4:	e24dd010 	sub	sp, sp, #16
+    fad8:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+    fadc:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			fadc: R_ARM_CALL	__gnu_mcount_nc
+    fae0:	e5d0231c 	ldrb	r2, [r0, #796]	@ 0x31c
+    fae4:	ee1d3f70 	mrc	15, 0, r3, cr13, cr0, {3}
+    fae8:	e5931670 	ldr	r1, [r3, #1648]	@ 0x670
+    faec:	e58d100c 	str	r1, [sp, #12]
+    faf0:	e3a01000 	mov	r1, #0
+    faf4:	e242300e 	sub	r3, r2, #14
+    faf8:	e1a04000 	mov	r4, r0
+    fafc:	e31300fd 	tst	r3, #253	@ 0xfd
+    fb00:	0a00048c 	beq	10d38 <r8156b_hw_phy_cfg+0x1268>
+    fb04:	e352000d 	cmp	r2, #13
+    fb08:	0a000156 	beq	10068 <r8156b_hw_phy_cfg+0x598>
+    fb0c:	e28d5008 	add	r5, sp, #8
+    fb10:	e3a070cc 	mov	r7, #204	@ 0xcc
+    fb14:	e3a02004 	mov	r2, #4
+    fb18:	e30d1818 	movw	r1, #55320	@ 0xd818
+    fb1c:	e1a03005 	mov	r3, r5
+    fb20:	e1a00004 	mov	r0, r4
+    fb24:	e58d7000 	str	r7, [sp]
+    fb28:	e3a06000 	mov	r6, #0
+    fb2c:	e58d6008 	str	r6, [sp, #8]
+    fb30:	ebffc651 	bl	147c <generic_ocp_read>
+    fb34:	e59d3008 	ldr	r3, [sp, #8]
+			10db8: R_ARM_CALL	warn_slowpath_fmt
+   10dbc:	eafffb77 	b	fba0 <r8156b_hw_phy_cfg+0xd0>
+   10dc0:	ebfffffe 	bl	0 <__stack_chk_fail>
+			10dc0: R_ARM_CALL	__stack_chk_fail
+   10dbc:	eafffb77 	b	fba0 <r8156b_hw_phy_cfg+0xd0>
+   10dc0:	ebfffffe 	bl	0 <__stack_chk_fail>
+			10dc0: R_ARM_CALL	__stack_chk_fail
+
+
+FUNCTION r8156_hw_phy_cfg
+instructions=847; relocatable direct calls={'__gnu_mcount_nc': 1, 'warn_slowpath_fmt': 1, '__stack_chk_fail': 1}
+First 24 instructions:
+00011500 <r8156_hw_phy_cfg>:
+   11500:	e92d43f0 	push	{r4, r5, r6, r7, r8, r9, lr}
+   11504:	e24dd014 	sub	sp, sp, #20
+   11508:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+   1150c:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			1150c: R_ARM_CALL	__gnu_mcount_nc
+   11510:	ee1d3f70 	mrc	15, 0, r3, cr13, cr0, {3}
+   11514:	e28d5008 	add	r5, sp, #8
+   11518:	e5932670 	ldr	r2, [r3, #1648]	@ 0x670
+   1151c:	e58d200c 	str	r2, [sp, #12]
+   11520:	e3a02000 	mov	r2, #0
+   11524:	e3a070cc 	mov	r7, #204	@ 0xcc
+   11528:	e58d2008 	str	r2, [sp, #8]
+   1152c:	e1a03005 	mov	r3, r5
+   11530:	e1a06002 	mov	r6, r2
+   11534:	e30d1818 	movw	r1, #55320	@ 0xd818
+   11538:	e3a02004 	mov	r2, #4
+   1153c:	e58d7000 	str	r7, [sp]
+   11540:	e1a04000 	mov	r4, r0
+   11544:	ebffbfcc 	bl	147c <generic_ocp_read>
+   11548:	e59d3008 	ldr	r3, [sp, #8]
+   1154c:	e3130801 	tst	r3, #65536	@ 0x10000
+   11550:	1a000208 	bne	11d78 <r8156_hw_phy_cfg+0x878>
+   11554:	e3a01000 	mov	r1, #0
+   11558:	e1a00004 	mov	r0, r4
+   1155c:	ebffc989 	bl	3b88 <r8153_phy_status>
+   11560:	e3500002 	cmp	r0, #2
+   11564:	0a000121 	beq	119f0 <r8156_hw_phy_cfg+0x4f0>
+   12230:	ebffcbbc 	bl	5128 <ocp_reg_write>
+   12234:	eaffff5a 	b	11fa4 <r8156_hw_phy_cfg+0xaa4>
+   12238:	ebfffffe 	bl	0 <__stack_chk_fail>
+			12238: R_ARM_CALL	__stack_chk_fail
+   12234:	eaffff5a 	b	11fa4 <r8156_hw_phy_cfg+0xaa4>
+   12238:	ebfffffe 	bl	0 <__stack_chk_fail>
+			12238: R_ARM_CALL	__stack_chk_fail
+
+

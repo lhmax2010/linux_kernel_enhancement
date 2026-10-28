@@ -1,0 +1,23 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/size -A /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/lib/zstd/compress/zstd_double_fast.o
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/lib/zstd/compress/zstd_double_fast.o  :
+section             size   addr
+.text              52048      0
+.ARM.exidx            40      0
+.ARM.extab            12      0
+.debug_loc        100997      0
+.debug_abbrev        859      0
+.debug_info        78035      0
+.debug_ranges      19352      0
+.debug_str          4346      0
+.comment              22      0
+.note.GNU-stack        0      0
+.ARM.attributes       54      0
+.debug_frame         232      0
+.debug_line        38682      0
+.llvm_addrsig          0      0
+__mcount_loc          20      0
+Total             294699
+
+
+
+EXIT=0

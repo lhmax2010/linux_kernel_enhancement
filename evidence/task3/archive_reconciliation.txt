@@ -1,0 +1,15 @@
+gcc_arm-rpi4 objects=2957
+{'.text': 17755780, '.data': 1703979, '.bss': 586419, '.rodata': 2545318}
+{'.text': {'input': 17755780, 'final': 17808156, 'final_minus_input': 52376}, '.rodata': {'input': 2545318, 'final': 5217374, 'final_minus_input': 2672056}, '.data': {'input': 1703979, 'final': 1874192, 'final_minus_input': 170213}, '.bss': {'input': 586419, 'final': 589008, 'final_minus_input': 2589}}
+
+gcc_arm-rpi4-rt objects=2956
+{'.text': 18055136, '.data': 1723427, '.bss': 608405, '.rodata': 2553626}
+{'.text': {'input': 18055136, 'final': 18128580, 'final_minus_input': 73444}, '.rodata': {'input': 2553626, 'final': 5159246, 'final_minus_input': 2605620}, '.data': {'input': 1723427, 'final': 1886416, 'final_minus_input': 162989}, '.bss': {'input': 608405, 'final': 610768, 'final_minus_input': 2363}}
+
+llvm_arm-rpi4 objects=2957
+{'.text': 19809388, '.data': 1700435, '.rodata': 2445637, '.bss': 587516}
+{'.text': {'input': 19809388, 'final': 19862536, 'final_minus_input': 53148}, '.rodata': {'input': 2445637, 'final': 5144813, 'final_minus_input': 2699176}, '.data': {'input': 1700435, 'final': 1870640, 'final_minus_input': 170205}, '.bss': {'input': 587516, 'final': 592912, 'final_minus_input': 5396}}
+
+llvm_arm-rpi4-rt objects=2956
+{'.text': 19938716, '.data': 1719874, '.rodata': 2454683, '.bss': 609555}
+{'.text': {'input': 19938716, 'final': 20005868, 'final_minus_input': 67152}, '.rodata': {'input': 2454683, 'final': 5095013, 'final_minus_input': 2640330}, '.data': {'input': 1719874, 'final': 1882896, 'final_minus_input': 163022}, '.bss': {'input': 609555, 'final': 614224, 'final_minus_input': 4669}}

@@ -1,0 +1,7 @@
+https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-22.1.8/llvm/lib/Target/ARM/MCTargetDesc/ARMELFStreamer.cpp
+local=temp/task3/llvm_ARMELFStreamer.cpp bytes=51240 SHA256=67ca6eb7034faca9890b6c680c81c869fc0d6bb7cd3025ef18eabb9d48f42182
+line ranges=1314-1336,1352-1373
+https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-22.1.8/llvm/lib/Target/ARM/MCTargetDesc/ARMUnwindOpAsm.cpp
+local=temp/task3/llvm_ARMUnwindOpcode.cpp bytes=7116 SHA256=82e65880adaee0398ca3238c2e011b082b8b33e3cc9ca66a0fc117667c28970b
+line ranges=158-188
+Note: temp/task3/llvm_ARMUnwindOpAsm.cpp is an unused initial misnamed MCWin64EH download; not evidence for ARM EHABI.

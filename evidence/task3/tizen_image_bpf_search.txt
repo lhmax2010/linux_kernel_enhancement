@@ -1,0 +1,84 @@
+URL https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified/reference/images/standard/tizen-headed-armv7l/tizen-unified_20261027.231956_tizen-headed-armv7l.files
+bytes=1062859 SHA256=9b1f89d81c20485375b12bdaf4af87c607552bc8f4739ca30592c76f6726a3d8
+1828: building-blocks-sub2-domain_Feature-ISU-System_Resourced.armv7l 11.0.0-0
+4890:     /etc/resourced/vip-process.d/dbus.conf
+6154:     /etc/resourced/vip-process.d/enlightenment.conf
+8440:     /usr/etc/iproute2/bpf_pinning
+8543:     /usr/lib/xtables/libxt_bpf.so
+10406: libbpf.armv7l 1.6.2-1.15
+10407:     /usr/lib/libbpf.so.1
+10408:     /usr/lib/libbpf.so.1.6.2
+10409:     /usr/share/licenses/libbpf
+10410:     /usr/share/licenses/libbpf/LICENSE
+10411:     /usr/share/licenses/libbpf/LICENSE.BSD-2-Clause
+10412:     /usr/share/licenses/libbpf/LICENSE.LGPL-2.1
+11702: libsyscommon-plugin-api-resourced.armv7l 0.1.0-0
+11703:     /usr/lib/libsyscommon-plugin-api-resourced.so.0
+11704:     /usr/lib/libsyscommon-plugin-api-resourced.so.0.1.0
+11705:     /usr/share/licenses/libsyscommon-plugin-api-resourced
+11706:     /usr/share/licenses/libsyscommon-plugin-api-resourced/LICENSE.MIT
+14981: resourced-bin.armv7l 10.0.0-1
+14983:     /usr/bin/resourced
+14984:     /usr/lib/libresourced-private-api.so.10.0.0
+14985:     /usr/lib/resourced/plugins
+14986:     /usr/share/licenses/resourced-bin
+14987:     /usr/share/licenses/resourced-bin/LICENSE
+14988:     /usr/share/licenses/resourced-bin/LICENSE.BSD-3-Clause
+14990: resourced-config.armv7l 10.0.0-1
+14991:     /etc/dbus-1/system.d/org.tizen.resourced.conf
+14992:     /etc/resourced/limiter.conf
+14993:     /etc/resourced/monitor.conf
+14994:     /etc/resourced/optimizer.conf
+14995:     /etc/resourced/process.conf
+14996:     /usr/lib/systemd/system/multi-user.target.wants/resourced.service
+14997:     /usr/lib/systemd/system/resourced.service
+14998:     /usr/lib/systemd/system/resourced.socket
+14999:     /usr/lib/systemd/system/sockets.target.wants/resourced.socket
+15001: resourced-isu.armv7l 10.0.0-1
+15002:     /etc/isu/resourced/isu.cfg
+15003:     /etc/isu/resourced/system-services
+15004:     /etc/isu/resourced/system-services/etc-resourced.mount
+15005:     /etc/isu/resourced/system-services/resourced.service
+15006:     /etc/isu/resourced/system-services/usr-lib-resourced-plugins.mount
+15008: resourced-watchdog-handler.armv7l 10.0.0-1
+15009:     /usr/bin/resourced-watchdog-handler
+15010:     /usr/bin/resourced-watchdog-handler.sh
+15011:     /usr/share/licenses/resourced-watchdog-handler
+15012:     /usr/share/licenses/resourced-watchdog-handler/LICENSE
+15014: resourced.armv7l 10.0.0-1
+15016:     /usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so
+15017:     /usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so
+15018:     /usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so
+15019:     /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so
+15020:     /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so
+15021:     /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so
+15022:     /usr/lib/resourced/plugins/libplugin-resourced-process-block.so
+15023:     /usr/share/licenses/resourced
+15024:     /usr/share/licenses/resourced/LICENSE
+17037: system-plugin-backend-resourced-generic.armv7l 0.1.0-0
+17038:     /usr/lib/system/plugin/libplugin-backend-resourced-cpu-boosting.so
+17039:     /usr/lib/system/plugin/libplugin-backend-resourced-memory-lmk.so
+17040:     /usr/share/licenses/system-plugin-backend-resourced-generic
+17041:     /usr/share/licenses/system-plugin-backend-resourced-generic/LICENSE.Apache-2.0
+URL https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified/reference/images/standard/tizen-headed-armv7l/tizen-unified_20261027.231956_tizen-headed-armv7l.ks
+bytes=11955 SHA256=21ba9880bf01f7d051fc3e47110833727e8d610e87fad15383891d80f799ac13
+no selected matches
+URL https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified/reference/images/standard/tizen-headed-armv7l/tizen-unified_20261027.231956_tizen-headed-armv7l.packages
+bytes=135873 SHA256=a28b006917bb7a31a4ee30525e41c94fe829bdbc41406a4eb96706c9a1214496
+365: building-blocks-sub2-domain_Feature-ISU-System_Resourced.armv7l 11.0.0-0 tools/building-blocks#accc4d698a4d001379f81c124f1538263f22d6d4
+737: libbpf.armv7l 1.6.2-1.15 platform/upstream/libbpf#5298db5450d72850fbf7c63d4245a126cb483356
+863: libpaho-mqtt-c.armv7l 1.3.15-0 platform/upstream/paho-mqtt-c#83a20fcc27dc9c8de308c19aef7a16bcc9046036
+900: libsyscommon-plugin-api-resourced.armv7l 0.1.0-0 platform/core/system/libsyscommon#c3fbc52acca13ea8b7e14d832d6aaad4f4b0e44f
+957: memps.armv7l 0.2.0-0 platform/core/system/memps#dd28371a426bf75c7cb307acc571fbcc1aa3331f
+1081: resourced-bin.armv7l 10.0.0-1 platform/core/system/resourced#82e79c09ea80c1977dfb27d3752577c74340f9bc
+1082: resourced-config.armv7l 10.0.0-1 platform/core/system/resourced#82e79c09ea80c1977dfb27d3752577c74340f9bc
+1083: resourced-isu.armv7l 10.0.0-1 platform/core/system/resourced#82e79c09ea80c1977dfb27d3752577c74340f9bc
+1084: resourced-watchdog-handler.armv7l 10.0.0-1 platform/core/system/resourced#82e79c09ea80c1977dfb27d3752577c74340f9bc
+1085: resourced.armv7l 10.0.0-1 platform/core/system/resourced#82e79c09ea80c1977dfb27d3752577c74340f9bc
+1137: system-plugin-backend-resourced-generic.armv7l 0.1.0-0 platform/core/system/plugin/resourced-generic#d8ca36372116779a1a7d171198fdc20be8cd1858
+URL https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified/reference/images/standard/tizen-boot-armv7l-rpi/tizen-unified_20261027.231956_tizen-boot-armv7l-rpi.ks
+bytes=7623 SHA256=b7eec53c556d4ef3f471278f0ec038f914b2c2ec913323c69ca5689563cc03e4
+no selected matches
+URL https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified/reference/images/standard/tizen-boot-armv7l-rpi/tizen-unified_20261027.231956_tizen-boot-armv7l-rpi.packages
+bytes=19359 SHA256=b9e0f57d8c4a3de3498da05f0640fc29abbf91434e4a06d895e8a88329581135
+no selected matches

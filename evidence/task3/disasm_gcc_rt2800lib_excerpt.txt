@@ -1,0 +1,888 @@
+objdump -dr /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/drivers/net/wireless/ralink/rt2x00/rt2800lib.o
+Selected actual object excerpts (full output stays in temp/task3).
+FUNCTION rt2800_init_rfcsr_3883
+instructions=406; relocatable direct calls={'__gnu_mcount_nc': 1, 'msleep': 2}
+First 24 instructions:
+0000195c <rt2800_init_rfcsr_3883>:
+    195c:	e92d4070 	push	{r4, r5, r6, lr}
+    1960:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+    1964:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			1964: R_ARM_CALL	__gnu_mcount_nc
+    1968:	e3a01002 	mov	r1, #2
+    196c:	e1a04000 	mov	r4, r0
+    1970:	ebfffe7f 	bl	1374 <rt2800_rfcsr_read>
+    1974:	e3a01002 	mov	r1, #2
+    1978:	e1e02c80 	mvn	r2, r0, lsl #25
+    197c:	e1a05000 	mov	r5, r0
+    1980:	e1e02ca2 	mvn	r2, r2, lsr #25
+    1984:	e1a00004 	mov	r0, r4
+    1988:	e6ef2072 	uxtb	r2, r2
+    198c:	ebfffd98 	bl	ff4 <rt2800_rfcsr_write>
+    1990:	e3a00001 	mov	r0, #1
+    1994:	ebfffffe 	bl	0 <msleep>
+			1994: R_ARM_CALL	msleep
+    1998:	e205207f 	and	r2, r5, #127	@ 0x7f
+    199c:	e1a00004 	mov	r0, r4
+    19a0:	e3a01002 	mov	r1, #2
+    19a4:	ebfffd92 	bl	ff4 <rt2800_rfcsr_write>
+    19a8:	e1a00004 	mov	r0, r4
+    19ac:	e3a020e0 	mov	r2, #224	@ 0xe0
+    19b0:	e3a01000 	mov	r1, #0
+    19b4:	ebfffd8e 	bl	ff4 <rt2800_rfcsr_write>
+    19b8:	e1a00004 	mov	r0, r4
+    19bc:	e3a02003 	mov	r2, #3
+    1968:	e3a01002 	mov	r1, #2
+    196c:	e1a04000 	mov	r4, r0
+    1970:	ebfffe7f 	bl	1374 <rt2800_rfcsr_read>
+    1974:	e3a01002 	mov	r1, #2
+    1984:	e1a00004 	mov	r0, r4
+    1988:	e6ef2072 	uxtb	r2, r2
+    198c:	ebfffd98 	bl	ff4 <rt2800_rfcsr_write>
+    1990:	e3a00001 	mov	r0, #1
+    199c:	e1a00004 	mov	r0, r4
+    19a0:	e3a01002 	mov	r1, #2
+    19a4:	ebfffd92 	bl	ff4 <rt2800_rfcsr_write>
+    19a8:	e1a00004 	mov	r0, r4
+    19ac:	e3a020e0 	mov	r2, #224	@ 0xe0
+    19b0:	e3a01000 	mov	r1, #0
+    19b4:	ebfffd8e 	bl	ff4 <rt2800_rfcsr_write>
+    19b8:	e1a00004 	mov	r0, r4
+    19bc:	e3a02003 	mov	r2, #3
+    19c0:	e3a01001 	mov	r1, #1
+    19c4:	ebfffd8a 	bl	ff4 <rt2800_rfcsr_write>
+    19c8:	e1a00004 	mov	r0, r4
+    19cc:	e3a02050 	mov	r2, #80	@ 0x50
+    19d0:	e3a01002 	mov	r1, #2
+    19d4:	ebfffd86 	bl	ff4 <rt2800_rfcsr_write>
+    19d8:	e1a00004 	mov	r0, r4
+    19dc:	e3a02020 	mov	r2, #32
+    19e0:	e3a01003 	mov	r1, #3
+    19e4:	ebfffd82 	bl	ff4 <rt2800_rfcsr_write>
+    19e8:	e1a00004 	mov	r0, r4
+    19ec:	e3a02000 	mov	r2, #0
+    19f0:	e3a01004 	mov	r1, #4
+    19f4:	ebfffd7e 	bl	ff4 <rt2800_rfcsr_write>
+    19f8:	e1a00004 	mov	r0, r4
+    19fc:	e3a02000 	mov	r2, #0
+    1a00:	e3a01005 	mov	r1, #5
+    1a04:	ebfffd7a 	bl	ff4 <rt2800_rfcsr_write>
+    1a08:	e1a00004 	mov	r0, r4
+    1a0c:	e3a02040 	mov	r2, #64	@ 0x40
+    1a10:	e3a01006 	mov	r1, #6
+    1a14:	ebfffd76 	bl	ff4 <rt2800_rfcsr_write>
+    1a18:	e1a00004 	mov	r0, r4
+    1a1c:	e3a02000 	mov	r2, #0
+    1a20:	e3a01007 	mov	r1, #7
+    1a24:	ebfffd72 	bl	ff4 <rt2800_rfcsr_write>
+    1a28:	e1a00004 	mov	r0, r4
+    1a2c:	e3a0205b 	mov	r2, #91	@ 0x5b
+    1a30:	e3a01008 	mov	r1, #8
+    1a34:	ebfffd6e 	bl	ff4 <rt2800_rfcsr_write>
+    1a38:	e1a00004 	mov	r0, r4
+    1a3c:	e3a02008 	mov	r2, #8
+    1a40:	e3a01009 	mov	r1, #9
+    1a44:	ebfffd6a 	bl	ff4 <rt2800_rfcsr_write>
+    1a48:	e1a00004 	mov	r0, r4
+    1a4c:	e3a020d3 	mov	r2, #211	@ 0xd3
+    1a50:	e3a0100a 	mov	r1, #10
+    1a54:	ebfffd66 	bl	ff4 <rt2800_rfcsr_write>
+    1a58:	e1a00004 	mov	r0, r4
+    1a5c:	e3a02048 	mov	r2, #72	@ 0x48
+    1a60:	e3a0100b 	mov	r1, #11
+    1a64:	ebfffd62 	bl	ff4 <rt2800_rfcsr_write>
+    1a68:	e1a00004 	mov	r0, r4
+    1a6c:	e3a0201a 	mov	r2, #26
+    1a70:	e3a0100c 	mov	r1, #12
+    1a74:	ebfffd5e 	bl	ff4 <rt2800_rfcsr_write>
+    1a78:	e1a00004 	mov	r0, r4
+    1a7c:	e3a02012 	mov	r2, #18
+    1a80:	e3a0100d 	mov	r1, #13
+    1a84:	ebfffd5a 	bl	ff4 <rt2800_rfcsr_write>
+    1a88:	e1a00004 	mov	r0, r4
+    1a8c:	e3a02000 	mov	r2, #0
+    1a90:	e3a0100e 	mov	r1, #14
+    1a94:	ebfffd56 	bl	ff4 <rt2800_rfcsr_write>
+    1a98:	e1a00004 	mov	r0, r4
+    1a9c:	e3a02000 	mov	r2, #0
+    1aa0:	e3a0100f 	mov	r1, #15
+    1aa4:	ebfffd52 	bl	ff4 <rt2800_rfcsr_write>
+    1aa8:	e1a00004 	mov	r0, r4
+    1aac:	e3a02000 	mov	r2, #0
+    1ab0:	e3a01010 	mov	r1, #16
+    1ab4:	ebfffd4e 	bl	ff4 <rt2800_rfcsr_write>
+    1ab8:	e1a00004 	mov	r0, r4
+    1abc:	e3a02040 	mov	r2, #64	@ 0x40
+    1ac0:	e3a01012 	mov	r1, #18
+    1ac4:	ebfffd4a 	bl	ff4 <rt2800_rfcsr_write>
+    1ac8:	e1a00004 	mov	r0, r4
+    1acc:	e3a02000 	mov	r2, #0
+    1ad0:	e3a01013 	mov	r1, #19
+    1ad4:	ebfffd46 	bl	ff4 <rt2800_rfcsr_write>
+    1ad8:	e1a00004 	mov	r0, r4
+    1adc:	e3a02000 	mov	r2, #0
+    1ae0:	e3a01014 	mov	r1, #20
+    1ae4:	ebfffd42 	bl	ff4 <rt2800_rfcsr_write>
+    1ae8:	e1a00004 	mov	r0, r4
+    1aec:	e3a02000 	mov	r2, #0
+    1af0:	e3a01015 	mov	r1, #21
+    1af4:	ebfffd3e 	bl	ff4 <rt2800_rfcsr_write>
+    1af8:	e1a00004 	mov	r0, r4
+    1afc:	e3a02020 	mov	r2, #32
+    1b00:	e3a01016 	mov	r1, #22
+    1b04:	ebfffd3a 	bl	ff4 <rt2800_rfcsr_write>
+    1b08:	e1a00004 	mov	r0, r4
+    1b0c:	e3a020c0 	mov	r2, #192	@ 0xc0
+    1b10:	e3a01017 	mov	r1, #23
+    1b14:	ebfffd36 	bl	ff4 <rt2800_rfcsr_write>
+    1b18:	e1a00004 	mov	r0, r4
+    1b1c:	e3a02000 	mov	r2, #0
+    1b20:	e3a01018 	mov	r1, #24
+    1b24:	ebfffd32 	bl	ff4 <rt2800_rfcsr_write>
+    1b28:	e1a00004 	mov	r0, r4
+    1b2c:	e3a02000 	mov	r2, #0
+    1b30:	e3a01019 	mov	r1, #25
+    1b34:	ebfffd2e 	bl	ff4 <rt2800_rfcsr_write>
+    1b38:	e1a00004 	mov	r0, r4
+    1b3c:	e3a02000 	mov	r2, #0
+    1b40:	e3a0101a 	mov	r1, #26
+    1b44:	ebfffd2a 	bl	ff4 <rt2800_rfcsr_write>
+    1b48:	e1a00004 	mov	r0, r4
+    1b4c:	e3a02000 	mov	r2, #0
+    1b50:	e3a0101b 	mov	r1, #27
+    1b54:	ebfffd26 	bl	ff4 <rt2800_rfcsr_write>
+    1b58:	e1a00004 	mov	r0, r4
+    1b5c:	e3a02000 	mov	r2, #0
+    1b60:	e3a0101c 	mov	r1, #28
+    1b64:	ebfffd22 	bl	ff4 <rt2800_rfcsr_write>
+    1b68:	e1a00004 	mov	r0, r4
+    1b6c:	e3a02000 	mov	r2, #0
+    1b70:	e3a0101d 	mov	r1, #29
+    1b74:	ebfffd1e 	bl	ff4 <rt2800_rfcsr_write>
+    1b78:	e1a00004 	mov	r0, r4
+    1b7c:	e3a02010 	mov	r2, #16
+    1b80:	e3a0101e 	mov	r1, #30
+    1b84:	ebfffd1a 	bl	ff4 <rt2800_rfcsr_write>
+    1b88:	e1a00004 	mov	r0, r4
+    1b8c:	e3a02080 	mov	r2, #128	@ 0x80
+    1b90:	e3a0101f 	mov	r1, #31
+    1b94:	ebfffd16 	bl	ff4 <rt2800_rfcsr_write>
+    1b98:	e1a00004 	mov	r0, r4
+    1b9c:	e3a02080 	mov	r2, #128	@ 0x80
+    1ba0:	e3a01020 	mov	r1, #32
+    1ba4:	ebfffd12 	bl	ff4 <rt2800_rfcsr_write>
+    1ba8:	e1a00004 	mov	r0, r4
+
+FUNCTION rt2800_bw_filter_calibration
+instructions=770; relocatable direct calls={'__gnu_mcount_nc': 1, 'usleep_range_state': 5}
+First 24 instructions:
+0000802c <rt2800_bw_filter_calibration>:
+    802c:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    8030:	e24dd084 	sub	sp, sp, #132	@ 0x84
+    8034:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+    8038:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			8038: R_ARM_CALL	__gnu_mcount_nc
+    803c:	e5903004 	ldr	r3, [r0, #4]
+    8040:	e5902008 	ldr	r2, [r0, #8]
+    8044:	e1a08001 	mov	r8, r1
+    8048:	e3001518 	movw	r1, #1304	@ 0x518
+    804c:	e1a04000 	mov	r4, r0
+    8050:	e5933020 	ldr	r3, [r3, #32]
+    8054:	e3a05028 	mov	r5, #40	@ 0x28
+    8058:	e58d2004 	str	r2, [sp, #4]
+    805c:	e5933000 	ldr	r3, [r3]
+    8060:	e12fff33 	blx	r3
+    8064:	e5943004 	ldr	r3, [r4, #4]
+    8068:	e300151c 	movw	r1, #1308	@ 0x51c
+    806c:	e5933020 	ldr	r3, [r3, #32]
+    8070:	e5933000 	ldr	r3, [r3]
+    8074:	e58d0074 	str	r0, [sp, #116]	@ 0x74
+    8078:	e1a00004 	mov	r0, r4
+    807c:	e12fff33 	blx	r3
+    8080:	e3a01017 	mov	r1, #23
+    8084:	e58d0070 	str	r0, [sp, #112]	@ 0x70
+    8088:	e1a00004 	mov	r0, r4
+    808c:	ebffe2f9 	bl	c78 <rt2800_bbp_read>
+    8090:	e3a02000 	mov	r2, #0
+    8084:	e58d0070 	str	r0, [sp, #112]	@ 0x70
+    8088:	e1a00004 	mov	r0, r4
+    808c:	ebffe2f9 	bl	c78 <rt2800_bbp_read>
+    8090:	e3a02000 	mov	r2, #0
+    8098:	e58d000c 	str	r0, [sp, #12]
+    809c:	e1a00004 	mov	r0, r4
+    80a0:	ebffe333 	bl	d74 <rt2800_bbp_write>
+    80a4:	e3a0109f 	mov	r1, #159	@ 0x9f
+    80a4:	e3a0109f 	mov	r1, #159	@ 0x9f
+    80a8:	e1a00004 	mov	r0, r4
+    80ac:	ebffe2f1 	bl	c78 <rt2800_bbp_read>
+    80b0:	e3a02002 	mov	r2, #2
+    80b8:	e58d007c 	str	r0, [sp, #124]	@ 0x7c
+    80bc:	e1a00004 	mov	r0, r4
+    80c0:	ebffe32b 	bl	d74 <rt2800_bbp_write>
+    80c4:	e3a0109f 	mov	r1, #159	@ 0x9f
+    80c4:	e3a0109f 	mov	r1, #159	@ 0x9f
+    80c8:	e1a00004 	mov	r0, r4
+    80cc:	ebffe2e9 	bl	c78 <rt2800_bbp_read>
+    80d0:	e3a01d05 	mov	r1, #320	@ 0x140
+    80d4:	e58d0078 	str	r0, [sp, #120]	@ 0x78
+    80d8:	e1a00004 	mov	r0, r4
+    80dc:	ebffe4a4 	bl	1374 <rt2800_rfcsr_read>
+    80e0:	e3001141 	movw	r1, #321	@ 0x141
+    80e4:	e58d006c 	str	r0, [sp, #108]	@ 0x6c
+    80e8:	e1a00004 	mov	r0, r4
+    80ec:	ebffe4a0 	bl	1374 <rt2800_rfcsr_read>
+    80f0:	e3001143 	movw	r1, #323	@ 0x143
+    80f4:	e58d0068 	str	r0, [sp, #104]	@ 0x68
+    80f8:	e1a00004 	mov	r0, r4
+    80fc:	ebffe49c 	bl	1374 <rt2800_rfcsr_read>
+    8100:	e3a01f51 	mov	r1, #324	@ 0x144
+    8104:	e58d0064 	str	r0, [sp, #100]	@ 0x64
+    8108:	e1a00004 	mov	r0, r4
+    810c:	ebffe498 	bl	1374 <rt2800_rfcsr_read>
+    8110:	e3001145 	movw	r1, #325	@ 0x145
+    8114:	e58d0060 	str	r0, [sp, #96]	@ 0x60
+    8118:	e1a00004 	mov	r0, r4
+    811c:	ebffe494 	bl	1374 <rt2800_rfcsr_read>
+    8120:	e3001146 	movw	r1, #326	@ 0x146
+    8124:	e58d005c 	str	r0, [sp, #92]	@ 0x5c
+    8128:	e1a00004 	mov	r0, r4
+    812c:	ebffe490 	bl	1374 <rt2800_rfcsr_read>
+    8130:	e3001147 	movw	r1, #327	@ 0x147
+    8134:	e58d0058 	str	r0, [sp, #88]	@ 0x58
+    8138:	e1a00004 	mov	r0, r4
+    813c:	ebffe48c 	bl	1374 <rt2800_rfcsr_read>
+    8140:	e3a01f52 	mov	r1, #328	@ 0x148
+    8144:	e58d0054 	str	r0, [sp, #84]	@ 0x54
+    8148:	e1a00004 	mov	r0, r4
+    814c:	ebffe488 	bl	1374 <rt2800_rfcsr_read>
+    8150:	e3001151 	movw	r1, #337	@ 0x151
+    8154:	e58d0050 	str	r0, [sp, #80]	@ 0x50
+    8158:	e1a00004 	mov	r0, r4
+    815c:	ebffe484 	bl	1374 <rt2800_rfcsr_read>
+    8160:	e3001152 	movw	r1, #338	@ 0x152
+    8164:	e58d004c 	str	r0, [sp, #76]	@ 0x4c
+    8168:	e1a00004 	mov	r0, r4
+    816c:	ebffe480 	bl	1374 <rt2800_rfcsr_read>
+    8170:	e3001153 	movw	r1, #339	@ 0x153
+    8174:	e58d0048 	str	r0, [sp, #72]	@ 0x48
+    8178:	e1a00004 	mov	r0, r4
+    817c:	ebffe47c 	bl	1374 <rt2800_rfcsr_read>
+    8180:	e3a01f55 	mov	r1, #340	@ 0x154
+    8184:	e58d0044 	str	r0, [sp, #68]	@ 0x44
+    8188:	e1a00004 	mov	r0, r4
+    818c:	ebffe478 	bl	1374 <rt2800_rfcsr_read>
+    8190:	e3001165 	movw	r1, #357	@ 0x165
+    8194:	e58d0040 	str	r0, [sp, #64]	@ 0x40
+    8198:	e1a00004 	mov	r0, r4
+    819c:	ebffe474 	bl	1374 <rt2800_rfcsr_read>
+    81a0:	e3001166 	movw	r1, #358	@ 0x166
+    81a4:	e58d003c 	str	r0, [sp, #60]	@ 0x3c
+    81a8:	e1a00004 	mov	r0, r4
+    81ac:	ebffe470 	bl	1374 <rt2800_rfcsr_read>
+    81b0:	e3001167 	movw	r1, #359	@ 0x167
+    81b4:	e58d0038 	str	r0, [sp, #56]	@ 0x38
+    81b8:	e1a00004 	mov	r0, r4
+    81bc:	ebffe46c 	bl	1374 <rt2800_rfcsr_read>
+    81c0:	e3a01f5a 	mov	r1, #360	@ 0x168
+    81c4:	e58d0034 	str	r0, [sp, #52]	@ 0x34
+    81c8:	e1a00004 	mov	r0, r4
+    81cc:	ebffe468 	bl	1374 <rt2800_rfcsr_read>
+    81d0:	e3001169 	movw	r1, #361	@ 0x169
+    81d4:	e58d0030 	str	r0, [sp, #48]	@ 0x30
+    81d8:	e1a00004 	mov	r0, r4
+    81dc:	ebffe464 	bl	1374 <rt2800_rfcsr_read>
+    81e0:	e300116a 	movw	r1, #362	@ 0x16a
+    81e4:	e58d002c 	str	r0, [sp, #44]	@ 0x2c
+    81e8:	e1a00004 	mov	r0, r4
+    81ec:	ebffe460 	bl	1374 <rt2800_rfcsr_read>
+    81f0:	e300116b 	movw	r1, #363	@ 0x16b
+    81f4:	e58d0028 	str	r0, [sp, #40]	@ 0x28
+    81f8:	e1a00004 	mov	r0, r4
+    81fc:	ebffe45c 	bl	1374 <rt2800_rfcsr_read>
+    8200:	e3a01f5b 	mov	r1, #364	@ 0x16c
+    8204:	e58d0024 	str	r0, [sp, #36]	@ 0x24
+    8208:	e1a00004 	mov	r0, r4
+    820c:	ebffe458 	bl	1374 <rt2800_rfcsr_read>
+    8210:	e300116d 	movw	r1, #365	@ 0x16d
+    8214:	e58d0020 	str	r0, [sp, #32]
+    8218:	e1a00004 	mov	r0, r4
+    821c:	ebffe454 	bl	1374 <rt2800_rfcsr_read>
+    8220:	e300116e 	movw	r1, #366	@ 0x16e
+    8224:	e58d001c 	str	r0, [sp, #28]
+    8228:	e1a00004 	mov	r0, r4
+    822c:	ebffe450 	bl	1374 <rt2800_rfcsr_read>
+    8230:	e300117a 	movw	r1, #378	@ 0x17a
+    8234:	e58d0018 	str	r0, [sp, #24]
+    8238:	e1a00004 	mov	r0, r4
+    823c:	ebffe44c 	bl	1374 <rt2800_rfcsr_read>
+    8240:	e300117b 	movw	r1, #379	@ 0x17b
+    8244:	e58d0014 	str	r0, [sp, #20]
+    8248:	e1a00004 	mov	r0, r4
+    824c:	ebffe448 	bl	1374 <rt2800_rfcsr_read>
+    8250:	e3a01d05 	mov	r1, #320	@ 0x140
+    8254:	e58d0010 	str	r0, [sp, #16]
+    8258:	e1a00004 	mov	r0, r4
+    825c:	ebffe444 	bl	1374 <rt2800_rfcsr_read>
+    8260:	e3a01d05 	mov	r1, #320	@ 0x140
+    8268:	e1a00004 	mov	r0, r4
+    826c:	e6ef2072 	uxtb	r2, r2
+    8270:	ebffe35f 	bl	ff4 <rt2800_rfcsr_write>
+    8274:	e3001141 	movw	r1, #321	@ 0x141
+    8274:	e3001141 	movw	r1, #321	@ 0x141
+    8278:	e1a00004 	mov	r0, r4
+    827c:	ebffe43c 	bl	1374 <rt2800_rfcsr_read>
+    8280:	e3001141 	movw	r1, #321	@ 0x141
+    8288:	e1a00004 	mov	r0, r4
+    828c:	e6ef2072 	uxtb	r2, r2
+    8290:	ebffe357 	bl	ff4 <rt2800_rfcsr_write>
+    8294:	ea000001 	b	82a0 <rt2800_bw_filter_calibration+0x274>
+    82b0:	e3001141 	movw	r1, #321	@ 0x141
+    82b4:	e1a00004 	mov	r0, r4
+    82b8:	ebffe42d 	bl	1374 <rt2800_rfcsr_read>
+    82bc:	e3100001 	tst	r0, #1
+    82c4:	e3a01d05 	mov	r1, #320	@ 0x140
+    82c8:	e1a00004 	mov	r0, r4
+    82cc:	ebffe428 	bl	1374 <rt2800_rfcsr_read>
+    82d0:	e3a01d05 	mov	r1, #320	@ 0x140
+
+FUNCTION rt2800_config_txpower
+instructions=19; relocatable direct calls={'__gnu_mcount_nc': 1}
+First 24 instructions:
+0000c678 <rt2800_config_txpower>:
+    c678:	e92d4010 	push	{r4, lr}
+    c67c:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+    c680:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			c680: R_ARM_CALL	__gnu_mcount_nc
+    c684:	e300351c 	movw	r3, #1308	@ 0x51c
+    c688:	e19030b3 	ldrh	r3, [r0, r3]
+    c68c:	e303e883 	movw	lr, #14467	@ 0x3883
+    c690:	e303c593 	movw	ip, #13715	@ 0x3593
+    c694:	e153000c 	cmp	r3, ip
+    c698:	1153000e 	cmpne	r3, lr
+    c69c:	0a000004 	beq	c6b4 <rt2800_config_txpower+0x3c>
+    c6a0:	e306c352 	movw	ip, #25426	@ 0x6352
+    c6a4:	e153000c 	cmp	r3, ip
+    c6a8:	0a000003 	beq	c6bc <rt2800_config_txpower+0x44>
+    c6ac:	e8bd4010 	pop	{r4, lr}
+    c6b0:	eafff876 	b	a890 <rt2800_config_txpower_rt28xx>
+    c6b4:	e8bd4010 	pop	{r4, lr}
+    c6b8:	eafff5d1 	b	9e04 <rt2800_config_txpower_rt3593>
+    c6bc:	e8bd4010 	pop	{r4, lr}
+    c6c0:	eafffea3 	b	c154 <rt2800_config_txpower_rt6352>
+
+
+FUNCTION rt2800_rxiq_calibration
+instructions=1073; relocatable direct calls={'__gnu_mcount_nc': 1, 'usleep_range_state': 4, '___ratelimit': 5, '_dev_warn': 5, '__aeabi_idiv': 3}
+First 24 instructions:
+0000d978 <rt2800_rxiq_calibration>:
+    d978:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    d97c:	e24dd09c 	sub	sp, sp, #156	@ 0x9c
+    d980:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+    d984:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			d984: R_ARM_CALL	__gnu_mcount_nc
+    d988:	e5903004 	ldr	r3, [r0, #4]
+    d98c:	e3011004 	movw	r1, #4100	@ 0x1004
+    d990:	e1a04000 	mov	r4, r0
+    d994:	e5933020 	ldr	r3, [r3, #32]
+    d998:	e5933000 	ldr	r3, [r3]
+    d99c:	e12fff33 	blx	r3
+    d9a0:	e5943004 	ldr	r3, [r4, #4]
+    d9a4:	e3001518 	movw	r1, #1304	@ 0x518
+    d9a8:	e5933020 	ldr	r3, [r3, #32]
+    d9ac:	e5933000 	ldr	r3, [r3]
+    d9b0:	e58d0044 	str	r0, [sp, #68]	@ 0x44
+    d9b4:	e1a00004 	mov	r0, r4
+    d9b8:	e12fff33 	blx	r3
+    d9bc:	e5943004 	ldr	r3, [r4, #4]
+    d9c0:	e300151c 	movw	r1, #1308	@ 0x51c
+    d9c4:	e5933020 	ldr	r3, [r3, #32]
+    d9c8:	e5933000 	ldr	r3, [r3]
+    d9cc:	e58d0040 	str	r0, [sp, #64]	@ 0x40
+    d9d0:	e1a00004 	mov	r0, r4
+    d9d4:	e12fff33 	blx	r3
+    d9d8:	e5943004 	ldr	r3, [r4, #4]
+    d9dc:	e3a01e52 	mov	r1, #1312	@ 0x520
+    da4c:	e58d002c 	str	r0, [sp, #44]	@ 0x2c
+    da50:	e1a00004 	mov	r0, r4
+    da54:	ebffcc87 	bl	c78 <rt2800_bbp_read>
+    da58:	e3a01004 	mov	r1, #4
+    da5c:	e1a0b000 	mov	fp, r0
+    da60:	e1a00004 	mov	r0, r4
+    da64:	ebffcc83 	bl	c78 <rt2800_bbp_read>
+    da68:	e5943004 	ldr	r3, [r4, #4]
+    dab0:	e3a01004 	mov	r1, #4
+    dab4:	e1a00004 	mov	r0, r4
+    dab8:	ebffccad 	bl	d74 <rt2800_bbp_write>
+    dabc:	e3a01015 	mov	r1, #21
+    dabc:	e3a01015 	mov	r1, #21
+    dac0:	e1a00004 	mov	r0, r4
+    dac4:	ebffcc6b 	bl	c78 <rt2800_bbp_read>
+    dac8:	e3a01015 	mov	r1, #21
+    dad4:	e1a00004 	mov	r0, r4
+    dad8:	e6ef2072 	uxtb	r2, r2
+    dadc:	ebffcca4 	bl	d74 <rt2800_bbp_write>
+    dae0:	e20520fe 	and	r2, r5, #254	@ 0xfe
+    dae4:	e3a01015 	mov	r1, #21
+    dae8:	e1a00004 	mov	r0, r4
+    daec:	ebffcca0 	bl	d74 <rt2800_bbp_write>
+    daf0:	e5943004 	ldr	r3, [r4, #4]
+    db6c:	e3a01001 	mov	r1, #1
+    db70:	e1a00004 	mov	r0, r4
+    db74:	ebffcdfe 	bl	1374 <rt2800_rfcsr_read>
+    db78:	e3a01002 	mov	r1, #2
+    db7c:	e58d0010 	str	r0, [sp, #16]
+    db80:	e1a00004 	mov	r0, r4
+    db84:	ebffcdfa 	bl	1374 <rt2800_rfcsr_read>
+    db88:	e3a0102a 	mov	r1, #42	@ 0x2a
+    db8c:	e58d000c 	str	r0, [sp, #12]
+    db90:	e1a00004 	mov	r0, r4
+    db94:	ebffcdf6 	bl	1374 <rt2800_rfcsr_read>
+    db98:	e3a01c01 	mov	r1, #256	@ 0x100
+    db9c:	e58d0008 	str	r0, [sp, #8]
+    dba0:	e1a00004 	mov	r0, r4
+    dba4:	ebffcdf2 	bl	1374 <rt2800_rfcsr_read>
+    dba8:	e3001113 	movw	r1, #275	@ 0x113
+    dbac:	e58d0084 	str	r0, [sp, #132]	@ 0x84
+    dbb0:	e1a00004 	mov	r0, r4
+    dbb4:	ebffcdee 	bl	1374 <rt2800_rfcsr_read>
+    dbb8:	e3001143 	movw	r1, #323	@ 0x143
+    dbbc:	e58d0080 	str	r0, [sp, #128]	@ 0x80
+    dbc0:	e1a00004 	mov	r0, r4
+    dbc4:	ebffcdea 	bl	1374 <rt2800_rfcsr_read>
+    dbc8:	e3a01f51 	mov	r1, #324	@ 0x144
+    dbcc:	e58d007c 	str	r0, [sp, #124]	@ 0x7c
+    dbd0:	e1a00004 	mov	r0, r4
+    dbd4:	ebffcde6 	bl	1374 <rt2800_rfcsr_read>
+    dbd8:	e3001151 	movw	r1, #337	@ 0x151
+    dbdc:	e58d0078 	str	r0, [sp, #120]	@ 0x78
+    dbe0:	e1a00004 	mov	r0, r4
+    dbe4:	ebffcde2 	bl	1374 <rt2800_rfcsr_read>
+    dbe8:	e3001152 	movw	r1, #338	@ 0x152
+    dbec:	e58d0074 	str	r0, [sp, #116]	@ 0x74
+    dbf0:	e1a00004 	mov	r0, r4
+    dbf4:	ebffcdde 	bl	1374 <rt2800_rfcsr_read>
+    dbf8:	e3001153 	movw	r1, #339	@ 0x153
+    dbfc:	e58d0070 	str	r0, [sp, #112]	@ 0x70
+    dc00:	e1a00004 	mov	r0, r4
+    dc04:	ebffcdda 	bl	1374 <rt2800_rfcsr_read>
+    dc08:	e3a01f55 	mov	r1, #340	@ 0x154
+    dc0c:	e58d006c 	str	r0, [sp, #108]	@ 0x6c
+    dc10:	e1a00004 	mov	r0, r4
+    dc14:	ebffcdd6 	bl	1374 <rt2800_rfcsr_read>
+    dc18:	e3a01d06 	mov	r1, #384	@ 0x180
+    dc1c:	e58d0068 	str	r0, [sp, #104]	@ 0x68
+    dc20:	e1a00004 	mov	r0, r4
+    dc24:	ebffcdd2 	bl	1374 <rt2800_rfcsr_read>
+    dc28:	e3001193 	movw	r1, #403	@ 0x193
+    dc2c:	e58d0064 	str	r0, [sp, #100]	@ 0x64
+    dc30:	e1a00004 	mov	r0, r4
+    dc34:	ebffcdce 	bl	1374 <rt2800_rfcsr_read>
+    dc38:	e30011c3 	movw	r1, #451	@ 0x1c3
+    dc3c:	e58d0060 	str	r0, [sp, #96]	@ 0x60
+    dc40:	e1a00004 	mov	r0, r4
+    dc44:	ebffcdca 	bl	1374 <rt2800_rfcsr_read>
+    dc48:	e3a01f71 	mov	r1, #452	@ 0x1c4
+    dc4c:	e58d005c 	str	r0, [sp, #92]	@ 0x5c
+    dc50:	e1a00004 	mov	r0, r4
+    dc54:	ebffcdc6 	bl	1374 <rt2800_rfcsr_read>
+    dc58:	e30011d1 	movw	r1, #465	@ 0x1d1
+    dc5c:	e58d0058 	str	r0, [sp, #88]	@ 0x58
+    dc60:	e1a00004 	mov	r0, r4
+    dc64:	ebffcdc2 	bl	1374 <rt2800_rfcsr_read>
+    dc68:	e30011d2 	movw	r1, #466	@ 0x1d2
+    dc6c:	e58d0054 	str	r0, [sp, #84]	@ 0x54
+    dc70:	e1a00004 	mov	r0, r4
+    dc74:	ebffcdbe 	bl	1374 <rt2800_rfcsr_read>
+    dc78:	e30011d3 	movw	r1, #467	@ 0x1d3
+    dc7c:	e58d0050 	str	r0, [sp, #80]	@ 0x50
+    dc80:	e1a00004 	mov	r0, r4
+    dc84:	ebffcdba 	bl	1374 <rt2800_rfcsr_read>
+    dc88:	e3a01f75 	mov	r1, #468	@ 0x1d4
+    dc8c:	e58d004c 	str	r0, [sp, #76]	@ 0x4c
+    dc90:	e1a00004 	mov	r0, r4
+    dc94:	ebffcdb6 	bl	1374 <rt2800_rfcsr_read>
+    dc98:	e3a02087 	mov	r2, #135	@ 0x87
+    dca0:	e58d0048 	str	r0, [sp, #72]	@ 0x48
+    dca4:	e1a00004 	mov	r0, r4
+    dca8:	ebffccd1 	bl	ff4 <rt2800_rfcsr_write>
+    dcac:	e3a02087 	mov	r2, #135	@ 0x87
+    dcb0:	e3a01d06 	mov	r1, #384	@ 0x180
+    dcb4:	e1a00004 	mov	r0, r4
+    dcb8:	ebffcccd 	bl	ff4 <rt2800_rfcsr_write>
+    dcbc:	e3a02027 	mov	r2, #39	@ 0x27
+    dcc0:	e3001113 	movw	r1, #275	@ 0x113
+    dcc4:	e1a00004 	mov	r0, r4
+    dcc8:	ebffccc9 	bl	ff4 <rt2800_rfcsr_write>
+    dccc:	e3a02027 	mov	r2, #39	@ 0x27
+    dcd0:	e3001193 	movw	r1, #403	@ 0x193
+    dcd4:	e1a00004 	mov	r0, r4
+    dcd8:	ebffccc5 	bl	ff4 <rt2800_rfcsr_write>
+    dcdc:	e3a02038 	mov	r2, #56	@ 0x38
+    dce0:	e3001143 	movw	r1, #323	@ 0x143
+    dce4:	e1a00004 	mov	r0, r4
+    dce8:	ebffccc1 	bl	ff4 <rt2800_rfcsr_write>
+    dcec:	e3a02038 	mov	r2, #56	@ 0x38
+    dcf0:	e30011c3 	movw	r1, #451	@ 0x1c3
+    dcf4:	e1a00004 	mov	r0, r4
+    dcf8:	ebffccbd 	bl	ff4 <rt2800_rfcsr_write>
+    dcfc:	e3a02038 	mov	r2, #56	@ 0x38
+    dd00:	e3a01f51 	mov	r1, #324	@ 0x144
+    dd04:	e1a00004 	mov	r0, r4
+    dd08:	ebffccb9 	bl	ff4 <rt2800_rfcsr_write>
+    dd0c:	e3a02038 	mov	r2, #56	@ 0x38
+    dd10:	e3a01f71 	mov	r1, #452	@ 0x1c4
+    dd14:	e1a00004 	mov	r0, r4
+    dd18:	ebffccb5 	bl	ff4 <rt2800_rfcsr_write>
+    dd1c:	e3a02080 	mov	r2, #128	@ 0x80
+    dd20:	e3001151 	movw	r1, #337	@ 0x151
+    dd24:	e1a00004 	mov	r0, r4
+    dd28:	ebffccb1 	bl	ff4 <rt2800_rfcsr_write>
+    dd2c:	e3a02080 	mov	r2, #128	@ 0x80
+    dd30:	e30011d1 	movw	r1, #465	@ 0x1d1
+    dd34:	e1a00004 	mov	r0, r4
+    dd38:	ebffccad 	bl	ff4 <rt2800_rfcsr_write>
+    dd3c:	e3a020c1 	mov	r2, #193	@ 0xc1
+
+FUNCTION rt2800_init_bbp
+instructions=2708; relocatable direct calls={'__gnu_mcount_nc': 1, '___ratelimit': 1, '_dev_warn': 1, 'warn_slowpath_fmt': 2}
+First 24 instructions:
+0000ea3c <rt2800_init_bbp>:
+    ea3c:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+    ea40:	e24dd008 	sub	sp, sp, #8
+    ea44:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+    ea48:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			ea48: R_ARM_CALL	__gnu_mcount_nc
+    ea4c:	e5903524 	ldr	r3, [r0, #1316]	@ 0x524
+    ea50:	e300551c 	movw	r5, #1308	@ 0x51c
+    ea54:	e1a04000 	mov	r4, r0
+    ea58:	e3530003 	cmp	r3, #3
+    ea5c:	e19060b5 	ldrh	r6, [r0, r5]
+    ea60:	1a000002 	bne	ea70 <rt2800_init_bbp+0x34>
+    ea64:	e3023872 	movw	r3, #10354	@ 0x2872
+    ea68:	e1560003 	cmp	r6, r3
+    ea6c:	0a0000d7 	beq	edd0 <rt2800_init_bbp+0x394>
+    ea70:	e3033593 	movw	r3, #13715	@ 0x3593
+    ea74:	e1560003 	cmp	r6, r3
+    ea78:	0a0009e8 	beq	11220 <rt2800_init_bbp+0x27e4>
+    ea7c:	8a000056 	bhi	ebdc <rt2800_init_bbp+0x1a0>
+    ea80:	e3033290 	movw	r3, #12944	@ 0x3290
+    ea84:	e1560003 	cmp	r6, r3
+    ea88:	0a00093b 	beq	10f7c <rt2800_init_bbp+0x2540>
+    ea8c:	9a000615 	bls	102e8 <rt2800_init_bbp+0x18ac>
+    ea90:	e3033390 	movw	r3, #13200	@ 0x3390
+    ea94:	e1560003 	cmp	r6, r3
+    ea98:	0a0005cb 	beq	101cc <rt2800_init_bbp+0x1790>
+    ea9c:	e3033572 	movw	r3, #13682	@ 0x3572
+    eaa0:	e1560003 	cmp	r6, r3
+    eaac:	e3a0101f 	mov	r1, #31
+    eab0:	e1a00004 	mov	r0, r4
+    eab4:	ebffc8ae 	bl	d74 <rt2800_bbp_write>
+    eab8:	e3a0202c 	mov	r2, #44	@ 0x2c
+    eabc:	e3a01041 	mov	r1, #65	@ 0x41
+    eac0:	e1a00004 	mov	r0, r4
+    eac4:	ebffc8aa 	bl	d74 <rt2800_bbp_write>
+    eac8:	e3a02038 	mov	r2, #56	@ 0x38
+    eacc:	e3a01042 	mov	r1, #66	@ 0x42
+    ead0:	e1a00004 	mov	r0, r4
+    ead4:	ebffc8a6 	bl	d74 <rt2800_bbp_write>
+    ead8:	e3a02012 	mov	r2, #18
+    eadc:	e3a01045 	mov	r1, #69	@ 0x45
+    eae0:	e1a00004 	mov	r0, r4
+    eae4:	ebffc8a2 	bl	d74 <rt2800_bbp_write>
+    eae8:	e3a02010 	mov	r2, #16
+    eaec:	e3a01049 	mov	r1, #73	@ 0x49
+    eaf0:	e1a00004 	mov	r0, r4
+    eaf4:	ebffc89e 	bl	d74 <rt2800_bbp_write>
+    eaf8:	e3a0200a 	mov	r2, #10
+    eafc:	e3a01046 	mov	r1, #70	@ 0x46
+    eb00:	e1a00004 	mov	r0, r4
+    eb04:	ebffc89a 	bl	d74 <rt2800_bbp_write>
+    eb08:	e3a02013 	mov	r2, #19
+    eb0c:	e3a0104f 	mov	r1, #79	@ 0x4f
+    eb10:	e1a00004 	mov	r0, r4
+    eb14:	ebffc896 	bl	d74 <rt2800_bbp_write>
+    eb18:	e3a02005 	mov	r2, #5
+    eb1c:	e3a01050 	mov	r1, #80	@ 0x50
+    eb20:	e1a00004 	mov	r0, r4
+    eb24:	ebffc892 	bl	d74 <rt2800_bbp_write>
+    eb28:	e3a02033 	mov	r2, #51	@ 0x33
+    eb2c:	e3a01051 	mov	r1, #81	@ 0x51
+    eb30:	e1a00004 	mov	r0, r4
+    eb34:	ebffc88e 	bl	d74 <rt2800_bbp_write>
+    eb38:	e3a02062 	mov	r2, #98	@ 0x62
+    eb3c:	e3a01052 	mov	r1, #82	@ 0x52
+    eb40:	e1a00004 	mov	r0, r4
+    eb44:	ebffc88a 	bl	d74 <rt2800_bbp_write>
+    eb48:	e3a0206a 	mov	r2, #106	@ 0x6a
+    eb4c:	e3a01053 	mov	r1, #83	@ 0x53
+    eb50:	e1a00004 	mov	r0, r4
+    eb54:	ebffc886 	bl	d74 <rt2800_bbp_write>
+    eb58:	e3a02099 	mov	r2, #153	@ 0x99
+    eb5c:	e3a01054 	mov	r1, #84	@ 0x54
+    eb60:	e1a00004 	mov	r0, r4
+    eb64:	ebffc882 	bl	d74 <rt2800_bbp_write>
+    eb68:	e3a02000 	mov	r2, #0
+    eb6c:	e3a01056 	mov	r1, #86	@ 0x56
+    eb70:	e1a00004 	mov	r0, r4
+    eb74:	ebffc87e 	bl	d74 <rt2800_bbp_write>
+    eb78:	e3a02004 	mov	r2, #4
+    eb7c:	e3a0105b 	mov	r1, #91	@ 0x5b
+    eb80:	e1a00004 	mov	r0, r4
+    eb84:	ebffc87a 	bl	d74 <rt2800_bbp_write>
+    eb88:	e3a02000 	mov	r2, #0
+    eb8c:	e3a0105c 	mov	r1, #92	@ 0x5c
+    eb90:	e1a00004 	mov	r0, r4
+    eb94:	ebffc876 	bl	d74 <rt2800_bbp_write>
+    eb98:	e3a020c0 	mov	r2, #192	@ 0xc0
+    eb9c:	e3a01067 	mov	r1, #103	@ 0x67
+    eba0:	e1a00004 	mov	r0, r4
+    eba4:	ebffc872 	bl	d74 <rt2800_bbp_write>
+    eba8:	e3a02005 	mov	r2, #5
+    ebac:	e3a01069 	mov	r1, #105	@ 0x69
+    ebb0:	e1a00004 	mov	r0, r4
+    ebb4:	ebffc86e 	bl	d74 <rt2800_bbp_write>
+    ebb8:	e3a02035 	mov	r2, #53	@ 0x35
+    ebbc:	e3a0106a 	mov	r1, #106	@ 0x6a
+    ebc0:	e1a00004 	mov	r0, r4
+    ebc4:	ebffc86a 	bl	d74 <rt2800_bbp_write>
+    ebc8:	e1a00004 	mov	r0, r4
+    ec1c:	e3a01004 	mov	r1, #4
+    ec20:	e1a00004 	mov	r0, r4
+    ec24:	ebffc852 	bl	d74 <rt2800_bbp_write>
+    ec28:	e3a02048 	mov	r2, #72	@ 0x48
+    ec2c:	e3a0102f 	mov	r1, #47	@ 0x2f
+    ec30:	e1a00004 	mov	r0, r4
+    ec34:	ebffc84e 	bl	d74 <rt2800_bbp_write>
+    ec38:	e3a02046 	mov	r2, #70	@ 0x46
+    ec3c:	e3a01056 	mov	r1, #86	@ 0x56
+    ec40:	e1a00004 	mov	r0, r4
+    ec44:	ebffc84a 	bl	d74 <rt2800_bbp_write>
+    ec48:	e3a02090 	mov	r2, #144	@ 0x90
+    ec4c:	e3a01058 	mov	r1, #88	@ 0x58
+    ec50:	e1a00004 	mov	r0, r4
+    ec54:	ebffc846 	bl	d74 <rt2800_bbp_write>
+    ec58:	e3a02002 	mov	r2, #2
+    ec5c:	e3a0105c 	mov	r1, #92	@ 0x5c
+    ec60:	e1a00004 	mov	r0, r4
+    ec64:	ebffc842 	bl	d74 <rt2800_bbp_write>
+    ec68:	e3a020c0 	mov	r2, #192	@ 0xc0
+    ec6c:	e3a01067 	mov	r1, #103	@ 0x67
+    ec70:	e1a00004 	mov	r0, r4
+    ec74:	ebffc83e 	bl	d74 <rt2800_bbp_write>
+    ec78:	e3a02092 	mov	r2, #146	@ 0x92
+    ec7c:	e3a01068 	mov	r1, #104	@ 0x68
+    ec80:	e1a00004 	mov	r0, r4
+    ec84:	ebffc83a 	bl	d74 <rt2800_bbp_write>
+    ec88:	e3a02034 	mov	r2, #52	@ 0x34
+    ec8c:	e3a01069 	mov	r1, #105	@ 0x69
+    ec90:	e1a00004 	mov	r0, r4
+    ec94:	ebffc836 	bl	d74 <rt2800_bbp_write>
+    ec98:	e3a02012 	mov	r2, #18
+    ec9c:	e3a0106a 	mov	r1, #106	@ 0x6a
+    eca0:	e1a00004 	mov	r0, r4
+    eca4:	ebffc832 	bl	d74 <rt2800_bbp_write>
+    eca8:	e3a02050 	mov	r2, #80	@ 0x50
+    ecac:	e3a01078 	mov	r1, #120	@ 0x78
+    ecb0:	e1a00004 	mov	r0, r4
+    ecb4:	ebffc82e 	bl	d74 <rt2800_bbp_write>
+    ecb8:	e3a0200f 	mov	r2, #15
+    ecbc:	e3a01089 	mov	r1, #137	@ 0x89
+    ecc0:	e1a00004 	mov	r0, r4
+    ecc4:	ebffc82a 	bl	d74 <rt2800_bbp_write>
+    ecc8:	e3a0209d 	mov	r2, #157	@ 0x9d
+    eccc:	e3a010a3 	mov	r1, #163	@ 0xa3
+    ecd0:	e1a00004 	mov	r0, r4
+    ecd4:	ebffc826 	bl	d74 <rt2800_bbp_write>
+    ecd8:	e3a02002 	mov	r2, #2
+    ecdc:	e3a010b3 	mov	r1, #179	@ 0xb3
+    ece0:	e1a00004 	mov	r0, r4
+    ece4:	ebffc822 	bl	d74 <rt2800_bbp_write>
+    ece8:	e3a02000 	mov	r2, #0
+    ecec:	e3a010b4 	mov	r1, #180	@ 0xb4
+    ecf0:	e1a00004 	mov	r0, r4
+    ecf4:	ebffc81e 	bl	d74 <rt2800_bbp_write>
+    ecf8:	e3a02040 	mov	r2, #64	@ 0x40
+    ecfc:	e3a010b6 	mov	r1, #182	@ 0xb6
+    ed00:	e1a00004 	mov	r0, r4
+    ed04:	ebffc81a 	bl	d74 <rt2800_bbp_write>
+    ed08:	e3a02001 	mov	r2, #1
+    ed0c:	e3a010b4 	mov	r1, #180	@ 0xb4
+    ed10:	e1a00004 	mov	r0, r4
+    ed14:	ebffc816 	bl	d74 <rt2800_bbp_write>
+    ed18:	e3a0209c 	mov	r2, #156	@ 0x9c
+    ed1c:	e3a010b6 	mov	r1, #182	@ 0xb6
+    ed20:	e1a00004 	mov	r0, r4
+    ed24:	ebffc812 	bl	d74 <rt2800_bbp_write>
+    ed28:	e3a02000 	mov	r2, #0
+
+FUNCTION rt2800_loft_iq_calibration
+instructions=1930; relocatable direct calls={'__gnu_mcount_nc': 1, 'memset': 1, '___ratelimit': 4, '_dev_warn': 4, '__stack_chk_fail': 1}
+First 24 instructions:
+000117e8 <rt2800_loft_iq_calibration>:
+   117e8:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   117ec:	e24ddf49 	sub	sp, sp, #292	@ 0x124
+   117f0:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+   117f4:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			117f4: R_ARM_CALL	__gnu_mcount_nc
+   117f8:	ee1d3f70 	mrc	15, 0, r3, cr13, cr0, {3}
+   117fc:	e1a0b000 	mov	fp, r0
+   11800:	e3a0204e 	mov	r2, #78	@ 0x4e
+   11804:	e5930670 	ldr	r0, [r3, #1648]	@ 0x670
+   11808:	e58d011c 	str	r0, [sp, #284]	@ 0x11c
+   1180c:	e3a00000 	mov	r0, #0
+   11810:	e3a01000 	mov	r1, #0
+   11814:	e28d00c6 	add	r0, sp, #198	@ 0xc6
+   11818:	ebfffffe 	bl	0 <memset>
+			11818: R_ARM_CALL	memset
+   1181c:	e3002e0e 	movw	r2, #3598	@ 0xe0e
+   11820:	e3a03000 	mov	r3, #0
+   11824:	e3011004 	movw	r1, #4100	@ 0x1004
+   11828:	e28d0f46 	add	r0, sp, #280	@ 0x118
+   1182c:	e58d30ae 	str	r3, [sp, #174]	@ 0xae
+   11830:	e58d30b2 	str	r3, [sp, #178]	@ 0xb2
+   11834:	e1c020b0 	strh	r2, [r0]
+   11838:	e28d2f45 	add	r2, sp, #276	@ 0x114
+   1183c:	e58d30b6 	str	r3, [sp, #182]	@ 0xb6
+   11840:	e1a0000b 	mov	r0, fp
+   11844:	e1c230b0 	strh	r3, [r2]
+   11848:	e28d2f45 	add	r2, sp, #276	@ 0x114
+   11810:	e3a01000 	mov	r1, #0
+   11814:	e28d00c6 	add	r0, sp, #198	@ 0xc6
+   11818:	ebfffffe 	bl	0 <memset>
+			11818: R_ARM_CALL	memset
+   11814:	e28d00c6 	add	r0, sp, #198	@ 0xc6
+   11818:	ebfffffe 	bl	0 <memset>
+			11818: R_ARM_CALL	memset
+   1181c:	e3002e0e 	movw	r2, #3598	@ 0xe0e
+   11a30:	e3a0101e 	mov	r1, #30
+   11a34:	e1a0000b 	mov	r0, fp
+   11a38:	ebffbc8e 	bl	c78 <rt2800_bbp_read>
+   11a3c:	e3a01027 	mov	r1, #39	@ 0x27
+   11a40:	e58d004c 	str	r0, [sp, #76]	@ 0x4c
+   11a44:	e1a0000b 	mov	r0, fp
+   11a48:	ebffbe49 	bl	1374 <rt2800_rfcsr_read>
+   11a4c:	e3a0102a 	mov	r1, #42	@ 0x2a
+   11a50:	e58d0054 	str	r0, [sp, #84]	@ 0x54
+   11a54:	e1a0000b 	mov	r0, fp
+   11a58:	ebffbe45 	bl	1374 <rt2800_rfcsr_read>
+   11a5c:	e3a0201f 	mov	r2, #31
+   11a64:	e58d0050 	str	r0, [sp, #80]	@ 0x50
+   11a68:	e1a0000b 	mov	r0, fp
+   11a6c:	ebffbcc0 	bl	d74 <rt2800_bbp_write>
+   11a70:	e3a02080 	mov	r2, #128	@ 0x80
+   11a74:	e3a01027 	mov	r1, #39	@ 0x27
+   11a78:	e1a0000b 	mov	r0, fp
+   11a7c:	ebffbd5c 	bl	ff4 <rt2800_rfcsr_write>
+   11a80:	e3a0205b 	mov	r2, #91	@ 0x5b
+   11a84:	e3a0102a 	mov	r1, #42	@ 0x2a
+   11a88:	e1a0000b 	mov	r0, fp
+   11a8c:	ebffbd58 	bl	ff4 <rt2800_rfcsr_write>
+   11a90:	e3a02000 	mov	r2, #0
+   11a94:	e3a01017 	mov	r1, #23
+   11a98:	e1a0000b 	mov	r0, fp
+   11a9c:	ebffbcb4 	bl	d74 <rt2800_bbp_write>
+   11aa0:	e3a01018 	mov	r1, #24
+   11aa4:	e3a02000 	mov	r2, #0
+   11aa8:	e1a0000b 	mov	r0, fp
+   11aac:	ebffbcb0 	bl	d74 <rt2800_bbp_write>
+   11ab0:	e1a0000b 	mov	r0, fp
+   11afc:	e6ef3079 	uxtb	r3, r9
+   11b00:	e58d3004 	str	r3, [sp, #4]
+   11b04:	ebffbc9a 	bl	d74 <rt2800_bbp_write>
+   11b08:	e3a02000 	mov	r2, #0
+   11b0c:	e3a01018 	mov	r1, #24
+   11b10:	e1a0000b 	mov	r0, fp
+   11b14:	ebffbc96 	bl	d74 <rt2800_bbp_write>
+   11b18:	e59b3004 	ldr	r3, [fp, #4]
+   11bf4:	e3a0109e 	mov	r1, #158	@ 0x9e
+   11bf8:	e1a0000b 	mov	r0, fp
+   11bfc:	ebffbc5c 	bl	d74 <rt2800_bbp_write>
+   11c00:	e3a02000 	mov	r2, #0
+   11c04:	e3a0109f 	mov	r1, #159	@ 0x9f
+   11c08:	e1a0000b 	mov	r0, fp
+   11c0c:	ebffbc58 	bl	d74 <rt2800_bbp_write>
+   11c10:	e3a02001 	mov	r2, #1
+   11c14:	e3a0109e 	mov	r1, #158	@ 0x9e
+   11c18:	e1a0000b 	mov	r0, fp
+   11c1c:	ebffbc54 	bl	d74 <rt2800_bbp_write>
+   11c20:	e3a02001 	mov	r2, #1
+   11c24:	e3a0109f 	mov	r1, #159	@ 0x9f
+   11c28:	e1a0000b 	mov	r0, fp
+   11c2c:	ebffbc50 	bl	d74 <rt2800_bbp_write>
+   11c30:	e59f1f58 	ldr	r1, [pc, #3928]	@ 12b90 <rt2800_loft_iq_calibration+0x13a8>
+   11c6c:	e1a0000b 	mov	r0, fp
+   11c70:	e1a02004 	mov	r2, r4
+   11c74:	ebffbc3e 	bl	d74 <rt2800_bbp_write>
+   11c78:	e1a02004 	mov	r2, r4
+   11c7c:	e3a01018 	mov	r1, #24
+   11c80:	e1a0000b 	mov	r0, fp
+   11c84:	ebffbc3a 	bl	d74 <rt2800_bbp_write>
+   11c88:	e59b3004 	ldr	r3, [fp, #4]
+   11d14:	e5534388 	ldrb	r4, [r3, #-904]	@ 0xfffffc78
+   11d18:	e1a02004 	mov	r2, r4
+   11d1c:	ebffbcb4 	bl	ff4 <rt2800_rfcsr_write>
+   11d20:	e1a02004 	mov	r2, r4
+   11d24:	e30011c3 	movw	r1, #451	@ 0x1c3
+   11d28:	e1a0000b 	mov	r0, fp
+   11d2c:	ebffbcb0 	bl	ff4 <rt2800_rfcsr_write>
+   11d30:	e1a02004 	mov	r2, r4
+   11d34:	e3a01f51 	mov	r1, #324	@ 0x144
+   11d38:	e1a0000b 	mov	r0, fp
+   11d3c:	ebffbcac 	bl	ff4 <rt2800_rfcsr_write>
+   11d40:	e1a02004 	mov	r2, r4
+   11d44:	e3a01f71 	mov	r1, #452	@ 0x1c4
+   11d48:	e1a0000b 	mov	r0, fp
+   11d4c:	ebffbca8 	bl	ff4 <rt2800_rfcsr_write>
+   11d50:	e3a03000 	mov	r3, #0
+   11d6c:	e1c030b0 	strh	r3, [r0]
+   11d70:	e1a0000b 	mov	r0, fp
+   11d74:	ebffbbfe 	bl	d74 <rt2800_bbp_write>
+   11d78:	e3a02080 	mov	r2, #128	@ 0x80
+   11d7c:	e3a0109f 	mov	r1, #159	@ 0x9f
+   11d80:	e1a0000b 	mov	r0, fp
+   11d84:	ebffbbfa 	bl	d74 <rt2800_bbp_write>
+   11d88:	e58d601c 	str	r6, [sp, #28]
+   11f54:	e3a0109e 	mov	r1, #158	@ 0x9e
+   11f58:	e1a0000b 	mov	r0, fp
+   11f5c:	ebffbb84 	bl	d74 <rt2800_bbp_write>
+   11f60:	e1a02004 	mov	r2, r4
+   11f64:	e3a0109f 	mov	r1, #159	@ 0x9f
+   11f68:	e1a0000b 	mov	r0, fp
+   11f6c:	ebffbb80 	bl	d74 <rt2800_bbp_write>
+   11f70:	e3a020b1 	mov	r2, #177	@ 0xb1
+   11f74:	e3a0109e 	mov	r1, #158	@ 0x9e
+   11f78:	e1a0000b 	mov	r0, fp
+   11f7c:	ebffbb7c 	bl	d74 <rt2800_bbp_write>
+   11f80:	e5d92000 	ldrb	r2, [r9]
+   11f8c:	e202203f 	and	r2, r2, #63	@ 0x3f
+   11f90:	e2844004 	add	r4, r4, #4
+   11f94:	ebffbb76 	bl	d74 <rt2800_bbp_write>
+   11f98:	e3a020b2 	mov	r2, #178	@ 0xb2
+   11f9c:	e3a0109e 	mov	r1, #158	@ 0x9e
+   11fa0:	e1a0000b 	mov	r0, fp
+   11fa4:	ebffbb72 	bl	d74 <rt2800_bbp_write>
+   11fa8:	e5d92001 	ldrb	r2, [r9, #1]
+   11fb4:	e202203f 	and	r2, r2, #63	@ 0x3f
+   11fb8:	e6ef4074 	uxtb	r4, r4
+   11fbc:	ebffbb6c 	bl	d74 <rt2800_bbp_write>
+   11fc0:	e3a020b8 	mov	r2, #184	@ 0xb8
+   11fc4:	e3a0109e 	mov	r1, #158	@ 0x9e
+   11fc8:	e1a0000b 	mov	r0, fp
+   11fcc:	ebffbb68 	bl	d74 <rt2800_bbp_write>
+   11fd0:	e5d9200c 	ldrb	r2, [r9, #12]
+   11fd8:	e1a0000b 	mov	r0, fp
+   11fdc:	e202203f 	and	r2, r2, #63	@ 0x3f
+   11fe0:	ebffbb63 	bl	d74 <rt2800_bbp_write>
+   11fe4:	e3a020b9 	mov	r2, #185	@ 0xb9
+   11fe8:	e3a0109e 	mov	r1, #158	@ 0x9e
+   11fec:	e1a0000b 	mov	r0, fp
+   11ff0:	ebffbb5f 	bl	d74 <rt2800_bbp_write>
+   11ff4:	e5d9200d 	ldrb	r2, [r9, #13]
+   11ffc:	e1a0000b 	mov	r0, fp
+   12000:	e202203f 	and	r2, r2, #63	@ 0x3f
+   12004:	ebffbb5a 	bl	d74 <rt2800_bbp_write>
+   12008:	e1540006 	cmp	r4, r6
+   12034:	e1a0000b 	mov	r0, fp
+   12038:	e99d0060 	ldmib	sp, {r5, r6}
+   1203c:	ebffbb4c 	bl	d74 <rt2800_bbp_write>
+   12040:	e3a02000 	mov	r2, #0
+

@@ -1,0 +1,33 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/size -A /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task3/rt2800lib_remarks.o
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task3/rt2800lib_remarks.o  :
+section                   size   addr
+.text                   437668      0
+.export_symbol             528      0
+.ARM.extab                 564      0
+.ARM.exidx                 728      0
+.rodata.str                528      0
+__bug_table                144      0
+.rodata                   6957      0
+.data                      844      0
+__param                     20      0
+.modinfo                   387      0
+.discard.addressable       176      0
+.rodata.str1.1            1920      0
+.data..once                  3      0
+__modver                    36      0
+.debug_loc              313572      0
+.debug_abbrev             1976      0
+.debug_info             845910      0
+.debug_ranges            88528      0
+.debug_str              120324      0
+.comment                    22      0
+.note.GNU-stack              0      0
+.ARM.attributes             54      0
+.debug_frame              3700      0
+.debug_line             356640      0
+.llvm_addrsig              268      0
+Total                  2181497
+
+
+
+EXIT=0

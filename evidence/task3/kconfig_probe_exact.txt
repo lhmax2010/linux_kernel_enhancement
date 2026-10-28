@@ -1,0 +1,5 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/clang-22 -Werror --target=arm-linux-gnueabi -fintegrated-as -Werror=unknown-warning-option -Werror=ignored-optimization-argument -Werror=option-ignored -Werror=unused-command-line-argument -mtp=cp15 -mstack-protector-guard=tls -mstack-protector-guard-offset=0 -c -x c /dev/null -o /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task3/kconfig_probe_exact.o
+clang-22: error: hardware TLS register is not supported for the armv4t sub-architecture
+clang-22: error: hardware TLS register is not supported for the armv4t sub-architecture
+
+EXIT=1

@@ -1,0 +1,114 @@
+objdump -dr /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/drivers/net/usb/r8152.o
+Selected actual object excerpts (full output stays in temp/task3).
+FUNCTION r8156_hw_phy_cfg
+instructions=3112; relocatable direct calls={'__gnu_mcount_nc': 1, 'generic_ocp_read': 52, 'generic_ocp_write': 176, 'r8153_phy_status': 1, 'rtl8152_apply_firmware': 2, 'r8153_aldps_en': 2, 'rtl_eee_enable': 2, 'msleep': 1, 'sram_read': 15, 'sram_write': 18, 'rtl_phy_patch_request': 2, 'r8152b_enable_fc': 1, '_set_bit': 1, '__stack_chk_fail': 1, 'warn_slowpath_fmt': 1}
+First 24 instructions:
+0000a304 <r8156_hw_phy_cfg>:
+    a304:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    a308:	e28db01c 	add	fp, sp, #28
+    a30c:	e24dd024 	sub	sp, sp, #36	@ 0x24
+    a310:	e1a04000 	mov	r4, r0
+    a314:	e3000000 	movw	r0, #0
+			a314: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    a318:	e3400000 	movt	r0, #0
+			a318: R_ARM_MOVT_ABS	__stack_chk_guard
+    a31c:	e5900000 	ldr	r0, [r0]
+    a320:	e58d0020 	str	r0, [sp, #32]
+    a324:	e92d4000 	stmfd	sp!, {lr}
+    a328:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			a328: R_ARM_CALL	__gnu_mcount_nc
+    a32c:	e28d801c 	add	r8, sp, #28
+    a330:	e3a000cc 	mov	r0, #204	@ 0xcc
+    a334:	e3a09000 	mov	r9, #0
+    a338:	e58d0000 	str	r0, [sp]
+    a33c:	e1a00004 	mov	r0, r4
+    a340:	e30d1818 	movw	r1, #55320	@ 0xd818
+    a344:	e3a02004 	mov	r2, #4
+    a348:	e1a03008 	mov	r3, r8
+    a34c:	e58d901c 	str	r9, [sp, #28]
+    a350:	ebfffffe 	bl	1401c <generic_ocp_read>
+			a350: R_ARM_CALL	generic_ocp_read
+    a354:	e59d001c 	ldr	r0, [sp, #28]
+    a358:	e3001000 	movw	r1, #0
+    a35c:	e34f1ffe 	movt	r1, #65534	@ 0xfffe
+    a310:	e1a04000 	mov	r4, r0
+    a314:	e3000000 	movw	r0, #0
+			a314: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    a318:	e3400000 	movt	r0, #0
+			a314: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    a318:	e3400000 	movt	r0, #0
+			a318: R_ARM_MOVT_ABS	__stack_chk_guard
+    a31c:	e5900000 	ldr	r0, [r0]
+			d35c: R_ARM_CALL	_set_bit
+    d360:	e3001000 	movw	r1, #0
+			d360: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    d364:	e59d0020 	ldr	r0, [sp, #32]
+    d364:	e59d0020 	ldr	r0, [sp, #32]
+    d368:	e3401000 	movt	r1, #0
+			d368: R_ARM_MOVT_ABS	__stack_chk_guard
+    d36c:	e5911000 	ldr	r1, [r1]
+    d374:	024bd01c 	subeq	sp, fp, #28
+    d378:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    d37c:	ebfffffe 	bl	0 <__stack_chk_fail>
+			d37c: R_ARM_CALL	__stack_chk_fail
+    d378:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    d37c:	ebfffffe 	bl	0 <__stack_chk_fail>
+			d37c: R_ARM_CALL	__stack_chk_fail
+    d380:	e3a01001 	mov	r1, #1
+
+FUNCTION r8156b_hw_phy_cfg
+instructions=4676; relocatable direct calls={'__gnu_mcount_nc': 1, 'r8156b_wait_loading_flash': 1, 'generic_ocp_read': 35, 'generic_ocp_write': 345, 'r8153_phy_status': 1, 'rtl8152_apply_firmware': 2, 'r8153_aldps_en': 2, 'rtl_eee_enable': 2, 'msleep': 1, 'sram_read': 12, 'sram_write': 41, 'rtl_phy_patch_request': 4, 'r8152b_enable_fc': 1, '_set_bit': 1, '__stack_chk_fail': 1, 'warn_slowpath_fmt': 1}
+First 24 instructions:
+0000e628 <r8156b_hw_phy_cfg>:
+    e628:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    e62c:	e28db01c 	add	fp, sp, #28
+    e630:	e24dd01c 	sub	sp, sp, #28
+    e634:	e1a08000 	mov	r8, r0
+    e638:	e3000000 	movw	r0, #0
+			e638: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    e63c:	e3400000 	movt	r0, #0
+			e63c: R_ARM_MOVT_ABS	__stack_chk_guard
+    e640:	e5900000 	ldr	r0, [r0]
+    e644:	e58d0018 	str	r0, [sp, #24]
+    e648:	e92d4000 	stmfd	sp!, {lr}
+    e64c:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			e64c: R_ARM_CALL	__gnu_mcount_nc
+    e650:	e5d8031c 	ldrb	r0, [r8, #796]	@ 0x31c
+    e654:	e30b7f44 	movw	r7, #48964	@ 0xbf44
+    e658:	e3500010 	cmp	r0, #16
+    e65c:	1350000e 	cmpne	r0, #14
+    e660:	1a000dfb 	bne	11e54 <r8156b_hw_phy_cfg+0x382c>
+    e664:	e1a00008 	mov	r0, r8
+    e668:	ebfffffe 	bl	18ed0 <r8156b_wait_loading_flash>
+			e668: R_ARM_CALL	r8156b_wait_loading_flash
+    e66c:	e28d9014 	add	r9, sp, #20
+    e670:	e3a000cc 	mov	r0, #204	@ 0xcc
+    e674:	e3a07000 	mov	r7, #0
+    e678:	e58d0000 	str	r0, [sp]
+    e67c:	e1a00008 	mov	r0, r8
+    e680:	e30d1818 	movw	r1, #55320	@ 0xd818
+    e634:	e1a08000 	mov	r8, r0
+    e638:	e3000000 	movw	r0, #0
+			e638: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    e63c:	e3400000 	movt	r0, #0
+			e638: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    e63c:	e3400000 	movt	r0, #0
+			e63c: R_ARM_MOVT_ABS	__stack_chk_guard
+    e640:	e5900000 	ldr	r0, [r0]
+			12ef0: R_ARM_CALL	_set_bit
+   12ef4:	e3001000 	movw	r1, #0
+			12ef4: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   12ef8:	e59d0018 	ldr	r0, [sp, #24]
+   12ef8:	e59d0018 	ldr	r0, [sp, #24]
+   12efc:	e3401000 	movt	r1, #0
+			12efc: R_ARM_MOVT_ABS	__stack_chk_guard
+   12f00:	e5911000 	ldr	r1, [r1]
+   12f08:	024bd01c 	subeq	sp, fp, #28
+   12f0c:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   12f10:	ebfffffe 	bl	0 <__stack_chk_fail>
+			12f10: R_ARM_CALL	__stack_chk_fail
+   12f0c:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   12f10:	ebfffffe 	bl	0 <__stack_chk_fail>
+			12f10: R_ARM_CALL	__stack_chk_fail
+   12f14:	e3a01001 	mov	r1, #1
+

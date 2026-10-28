@@ -1,0 +1,91 @@
+arm-rpi4
+{
+  "matched_grow": {
+    "count": 43406,
+    "delta": 2870508
+  },
+  "matched_shrink": {
+    "count": 12579,
+    "delta": -1086444
+  },
+  "new": {
+    "count": 2755,
+    "delta": 1362740
+  },
+  "removed": {
+    "count": 3440,
+    "delta": -1080472
+  },
+  "unchanged": {
+    "count": 3668,
+    "delta": 0
+  },
+  "positive_1_64": {
+    "count": 34791,
+    "bytes": 549232
+  },
+  "positive_65_256": {
+    "count": 8141,
+    "bytes": 1132252
+  },
+  "positive_257_1024": {
+    "count": 2804,
+    "bytes": 1245728
+  },
+  "positive_1025_4096": {
+    "count": 376,
+    "bytes": 667160
+  },
+  "positive_4097_1000000000": {
+    "count": 49,
+    "bytes": 638876
+  },
+  "total_symbol_delta": 2066332,
+  "final_text_delta": 2054380
+}
+
+arm-rpi4-rt
+{
+  "matched_grow": {
+    "count": 42526,
+    "delta": 2766544
+  },
+  "matched_shrink": {
+    "count": 13497,
+    "delta": -1214444
+  },
+  "new": {
+    "count": 2851,
+    "delta": 1413908
+  },
+  "removed": {
+    "count": 3334,
+    "delta": -1077892
+  },
+  "unchanged": {
+    "count": 3661,
+    "delta": 0
+  },
+  "positive_1_64": {
+    "count": 34410,
+    "bytes": 546136
+  },
+  "positive_65_256": {
+    "count": 7793,
+    "bytes": 1089268
+  },
+  "positive_257_1024": {
+    "count": 2743,
+    "bytes": 1222820
+  },
+  "positive_1025_4096": {
+    "count": 379,
+    "bytes": 670204
+  },
+  "positive_4097_1000000000": {
+    "count": 52,
+    "bytes": 652024
+  },
+  "total_symbol_delta": 1888116,
+  "final_text_delta": 1877288
+}

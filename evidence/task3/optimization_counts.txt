@@ -1,0 +1,270 @@
+rt2800lib COUNTS
+{
+  "rt2800_rxiq_calibration": {
+    "Passed/inline/AlwaysInline": 4,
+    "Missed/inline/NoDefinition": 10,
+    "Passed/inline/Inlined": 185,
+    "Missed/inline/TooCostly": 25,
+    "Missed/licm/LoadWithLoopInvariantAddressInvalidated": 344,
+    "Passed/licm/Hoisted": 45,
+    "Missed/gvn/LoadClobbered": 1640,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 96,
+    "Analysis/hardware-loops/HWLoopNotProfitable": 5,
+    "Passed/stack-protector/StackProtectorAddressTaken": 96,
+    "Missed/regalloc/LoopSpillReloadCopies": 5,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 411,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "rt2800_loft_iq_calibration": {
+    "Passed/inline/AlwaysInline": 22,
+    "Missed/inline/NoDefinition": 8,
+    "Passed/inline/Inlined": 197,
+    "Missed/inline/TooCostly": 37,
+    "Missed/licm/LoadWithLoopInvariantAddressInvalidated": 693,
+    "Missed/licm/LoadWithLoopInvariantAddressCondExecuted": 4,
+    "Passed/licm/Hoisted": 22,
+    "Passed/licm/PromoteLoopAccessesToScalar": 1,
+    "Passed/loop-unroll/FullyUnrolled": 2,
+    "Missed/gvn/LoadClobbered": 3117,
+    "Passed/gvn/LoadElim": 3,
+    "Passed/licm/InstSunk": 1,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 122,
+    "Missed/annotation-remarks/AutoInitIntrinsicCall": 2,
+    "Analysis/hardware-loops/HWLoopNotProfitable": 16,
+    "Passed/stack-protector/StackProtectorAddressTaken": 122,
+    "Passed/stack-protector/StackProtectorBuffer": 2,
+    "Missed/regalloc/LoopSpillReloadCopies": 16,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 431,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "rt2800_bw_filter_calibration": {
+    "Passed/inline/AlwaysInline": 2,
+    "Passed/inline/Inlined": 123,
+    "Missed/inline/TooCostly": 55,
+    "Missed/licm/LoadWithLoopInvariantAddressInvalidated": 260,
+    "Passed/licm/Hoisted": 11,
+    "Missed/gvn/LoadClobbered": 902,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 54,
+    "Analysis/hardware-loops/HWLoopNotProfitable": 3,
+    "Passed/stack-protector/StackProtectorAddressTaken": 54,
+    "Missed/regalloc/LoopSpillReloadCopies": 3,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 324,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "rt2800_config_txpower": {
+    "Passed/inline/Inlined": 6,
+    "Missed/inline/TooCostly": 5,
+    "Missed/licm/LoadWithLoopInvariantAddressInvalidated": 44,
+    "Missed/gvn/LoadClobbered": 498,
+    "Passed/gvn/LoadElim": 8,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 12,
+    "Analysis/hardware-loops/HWLoopNotProfitable": 3,
+    "Passed/stack-protector/StackProtectorAddressTaken": 12,
+    "Missed/regalloc/LoopSpillReloadCopies": 3,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 213,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "rt2800_config_channel_rf55xx": {
+    "Passed/inline/Inlined": 132,
+    "Missed/inline/TooCostly": 7,
+    "Missed/gvn/LoadClobbered": 2068,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 128,
+    "Passed/stack-protector/StackProtectorAddressTaken": 128,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 688,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "rt2800_config_channel": {
+    "Passed/inline/Inlined": 146,
+    "Missed/inline/TooCostly": 98,
+    "Missed/gvn/LoadClobbered": 6060,
+    "Passed/gvn/LoadPRE": 4,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 325,
+    "Passed/stack-protector/StackProtectorAddressTaken": 325,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 1725,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "rt2800_init_bbp_6352": {
+    "Passed/inline/Inlined": 77,
+    "Missed/inline/TooCostly": 105,
+    "Missed/gvn/LoadClobbered": 473,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 77,
+    "Passed/stack-protector/StackProtectorAddressTaken": 77,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 156,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "rt2800_init_bbp": {
+    "Passed/inline/Inlined": 14,
+    "Missed/inline/TooCostly": 14,
+    "Missed/licm/LoadWithLoopInvariantAddressInvalidated": 36,
+    "Passed/licm/Hoisted": 4,
+    "Missed/gvn/LoadClobbered": 1843,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 286,
+    "Analysis/hardware-loops/HWLoopNotProfitable": 2,
+    "Passed/stack-protector/StackProtectorAddressTaken": 286,
+    "Missed/regalloc/LoopSpillReloadCopies": 2,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 661,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "rt2800_init_rfcsr_3883": {
+    "Missed/inline/NoDefinition": 1,
+    "Passed/inline/Inlined": 93,
+    "Missed/inline/TooCostly": 7,
+    "Missed/gvn/LoadClobbered": 700,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 92,
+    "Passed/stack-protector/StackProtectorAddressTaken": 92,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 441,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "rt2800_calibration_rt6352": {
+    "Passed/inline/Inlined": 82,
+    "Missed/inline/TooCostly": 18,
+    "Missed/licm/LoadWithLoopInvariantAddressInvalidated": 16,
+    "Passed/gvn/LoadElim": 4,
+    "Missed/gvn/LoadClobbered": 2238,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 124,
+    "Analysis/hardware-loops/HWLoopNotProfitable": 4,
+    "Passed/stack-protector/StackProtectorAddressTaken": 124,
+    "Missed/regalloc/LoopSpillReloadCopies": 4,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 632,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "rt2800_init_rfcsr_6352": {
+    "Passed/inline/Inlined": 596,
+    "Missed/inline/TooCostly": 1,
+    "Missed/gvn/LoadClobbered": 3338,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 417,
+    "Passed/stack-protector/StackProtectorAddressTaken": 417,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 2235,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "rt2800_init_rfcsr": {
+    "Passed/inline/Inlined": 12,
+    "Missed/inline/TooCostly": 37,
+    "Missed/gvn/LoadClobbered": 8542,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 520,
+    "Passed/stack-protector/StackProtectorAddressTaken": 520,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 2967,
+    "Analysis/asm-printer/InstructionCount": 1
+  }
+}
+
+blake2b_generic COUNTS
+{
+  "blake2b_compress_generic": {
+    "Passed/inline/Inlined": 2,
+    "Passed/licm/Hoisted": 20,
+    "Missed/licm/LoadWithLoopInvariantAddressInvalidated": 48,
+    "Missed/gvn/LoadClobbered": 28,
+    "Analysis/hardware-loops/HWLoopNotProfitable": 2,
+    "Passed/stack-protector/StackProtectorBuffer": 1,
+    "Missed/regalloc/LoopSpillReloadCopies": 2,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 6,
+    "Analysis/asm-printer/InstructionCount": 1
+  }
+}
+
+zstd_double_fast COUNTS
+{
+  "ZSTD_compressBlock_doubleFast": {
+    "Passed/inline/Inlined": 4,
+    "Missed/licm/LoadWithLoopInvariantAddressInvalidated": 384,
+    "Missed/gvn/LoadClobbered": 822,
+    "Analysis/hardware-loops/HWLoopNotProfitable": 68,
+    "Missed/regalloc/LoopSpillReloadCopies": 45,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 661,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "ZSTD_compressBlock_doubleFast_dictMatchState": {
+    "Passed/inline/Inlined": 4,
+    "Missed/licm/LoadWithLoopInvariantAddressInvalidated": 464,
+    "Missed/gvn/LoadClobbered": 1192,
+    "Analysis/hardware-loops/HWLoopNotProfitable": 108,
+    "Missed/regalloc/LoopSpillReloadCopies": 64,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 1251,
+    "Analysis/asm-printer/InstructionCount": 1
+  }
+}
+
+r8152 COUNTS
+{
+  "r8156b_hw_phy_cfg": {
+    "Passed/inline/AlwaysInline": 2,
+    "Missed/inline/NoDefinition": 2,
+    "Passed/inline/Inlined": 195,
+    "Missed/inline/TooCostly": 444,
+    "Missed/inline-cost/NeverInline": 2,
+    "Missed/inline/NeverInline": 2,
+    "Missed/licm/LoadWithLoopInvariantAddressInvalidated": 11,
+    "Missed/gvn/LoadClobbered": 466,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 35,
+    "Analysis/hardware-loops/HWLoopNotProfitable": 1,
+    "Passed/stack-protector/StackProtectorAddressTaken": 380,
+    "Missed/regalloc/LoopSpillReloadCopies": 1,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 400,
+    "Analysis/asm-printer/InstructionCount": 1
+  },
+  "r8156_hw_phy_cfg": {
+    "Passed/inline/AlwaysInline": 2,
+    "Missed/inline/NoDefinition": 2,
+    "Passed/inline/Inlined": 120,
+    "Missed/inline/TooCostly": 270,
+    "Missed/inline-cost/NeverInline": 1,
+    "Missed/inline/NeverInline": 1,
+    "Missed/licm/LoadWithLoopInvariantAddressInvalidated": 11,
+    "Missed/gvn/LoadClobbered": 175,
+    "Analysis/annotation-remarks/AnnotationSummary": 1,
+    "Missed/annotation-remarks/AutoInitStore": 52,
+    "Analysis/hardware-loops/HWLoopNotProfitable": 1,
+    "Passed/stack-protector/StackProtectorAddressTaken": 228,
+    "Missed/regalloc/LoopSpillReloadCopies": 1,
+    "Missed/regalloc/SpillReloadCopies": 1,
+    "Analysis/prologepilog/StackSize": 1,
+    "Analysis/asm-printer/InstructionMix": 241,
+    "Analysis/asm-printer/InstructionCount": 1
+  }
+}

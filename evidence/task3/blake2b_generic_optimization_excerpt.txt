@@ -1,0 +1,57 @@
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'crypto/blake2b_generic.c', Line: 118, Column: 3 }
+Function:        blake2b_compress_generic
+Args:
+  - String:          ''''
+  - Callee:          blake2b_increment_counter
+    DebugLoc:        { File: 'crypto/blake2b_generic.c', Line: 41, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          blake2b_compress_generic
+    DebugLoc:        { File: 'crypto/blake2b_generic.c', Line: 116, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-15000'
+  - String:          ', threshold='
+  - Threshold:       '337'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          blake2b_compress_generic
+  - String:          ':'
+  - Line:            '4'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'crypto/blake2b_generic.c', Line: 119, Column: 3 }
+Function:        blake2b_compress_generic
+Args:
+  - String:          ''''
+  - Callee:          blake2b_compress_one_generic
+    DebugLoc:        { File: 'crypto/blake2b_generic.c', Line: 72, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          blake2b_compress_generic
+    DebugLoc:        { File: 'crypto/blake2b_generic.c', Line: 116, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-7315'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          blake2b_compress_generic
+  - String:          ':'
+  - Line:            '5'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+

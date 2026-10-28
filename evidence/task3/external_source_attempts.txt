@@ -1,0 +1,14 @@
+https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-22.1.8/llvm/lib/Target/ARM/MCTargetDesc/ARMELFStreamer.cpp
+HTTP 200; bytes=51240 sha256=67ca6eb7034faca9890b6c680c81c869fc0d6bb7cd3025ef18eabb9d48f42182 local=temp/task3/llvm_ARMELFStreamer.cpp
+
+https://raw.githubusercontent.com/llvm/llvm-project/llvmorg-22.1.8/llvm/lib/MC/MCWin64EH.cpp
+HTTP 200; bytes=100244 sha256=fd262ec3d0d16687da742c1b809fb997298df6eaebd1351da1a05a956663c233 local=temp/task3/llvm_ARMUnwindOpAsm.cpp
+
+https://git.tizen.org/cgit/?q=bpf
+FAILED <urlopen error [SSL: UNEXPECTED_MESSAGE] unexpected message (_ssl.c:1000)>
+
+https://git.tizen.org/cgit/platform/core/system/resourced/tree/
+FAILED <urlopen error [SSL: UNEXPECTED_MESSAGE] unexpected message (_ssl.c:1000)>
+
+https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified/reference/images/standard/
+HTTP 200; bytes=2064 sha256=dae04e7a4c95e41a9572703325f1fbf85b0bbd01711737989868b77f1ce46880 local=temp/task3/tizen_images.html

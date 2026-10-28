@@ -1,0 +1,40 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/size -A /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task3/r8152_remarks.o
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task3/r8152_remarks.o  :
+section                   size   addr
+.text                   118416      0
+.export_symbol              12      0
+.ARM.extab                1212      0
+.ARM.exidx                1232      0
+.exit.text                  36      0
+.ARM.exidx.exit.text         8      0
+.init.text                 100      0
+.ARM.extab.init.text        12      0
+.ARM.exidx.init.text         8      0
+.alt.smp.init              168      0
+.modinfo                   469      0
+.discard.addressable         4      0
+.initcall6.init              4      0
+.exitcall.exit               4      0
+.rodata.str1.1            2875      0
+__modver                    36      0
+.data                      256      0
+.bss                         1      0
+.rodata                   2168      0
+.data..once                  9      0
+.rodata.cst16               16      0
+.debug_loc              302938      0
+.debug_abbrev             2416      0
+.debug_info             411215      0
+.debug_ranges            17160      0
+.debug_str              113509      0
+.comment                    22      0
+.note.GNU-stack              0      0
+.ARM.attributes             52      0
+.debug_frame              6124      0
+.debug_line              83156      0
+.llvm_addrsig              191      0
+Total                  1063829
+
+
+
+EXIT=0

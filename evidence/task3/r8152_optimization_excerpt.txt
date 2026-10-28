@@ -1,0 +1,575 @@
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 8146, Column: 19 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156b_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          r8156b_hw_phy_cfg
+  - String:          ':'
+  - Line:            '397'
+  - String:          ':'
+  - Column:          '19'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7729, Column: 19 }
+Function:        r8156_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7400, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          r8156_hw_phy_cfg
+  - String:          ':'
+  - Line:            '330'
+  - String:          ':'
+  - Column:          '19'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 8146, Column: 19 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          generic_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 122, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156b_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          r8156b_hw_phy_cfg
+  - String:          ':'
+  - Line:            '397'
+  - String:          ':'
+  - Column:          '19'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7729, Column: 19 }
+Function:        r8156_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          generic_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 122, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7400, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          r8156_hw_phy_cfg
+  - String:          ':'
+  - Line:            '330'
+  - String:          ':'
+  - Column:          '19'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7756, Column: 3 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_reg_write
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1596, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156b_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '115'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156b_hw_phy_cfg
+  - String:          ':'
+  - Line:            '7'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7757, Column: 10 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_reg_read
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1582, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156b_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156b_hw_phy_cfg
+  - String:          ':'
+  - Line:            '8'
+  - String:          ':'
+  - Column:          '10'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7759, Column: 3 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_reg_write
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1596, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156b_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156b_hw_phy_cfg
+  - String:          ':'
+  - Line:            '10'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7761, Column: 3 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_reg_write
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1596, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156b_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156b_hw_phy_cfg
+  - String:          ':'
+  - Line:            '12'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7762, Column: 3 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_reg_write
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1596, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156b_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '115'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156b_hw_phy_cfg
+  - String:          ':'
+  - Line:            '13'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7763, Column: 3 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_reg_write
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1596, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156b_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '115'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156b_hw_phy_cfg
+  - String:          ':'
+  - Line:            '14'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7764, Column: 10 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_reg_read
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1582, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156b_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156b_hw_phy_cfg
+  - String:          ':'
+  - Line:            '15'
+  - String:          ':'
+  - Column:          '10'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7767, Column: 3 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_reg_write
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1596, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156b_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156b_hw_phy_cfg
+  - String:          ':'
+  - Line:            '18'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7404, Column: 13 }
+Function:        r8156_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_read_word
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1504, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7400, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '30'
+  - String:          ', threshold='
+  - Threshold:       '337'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156_hw_phy_cfg
+  - String:          ':'
+  - Line:            '5'
+  - String:          ':'
+  - Column:          '13'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7407, Column: 3 }
+Function:        r8156_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_write_word
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1523, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7400, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '30'
+  - String:          ', threshold='
+  - Threshold:       '337'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156_hw_phy_cfg
+  - String:          ':'
+  - Line:            '8'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7415, Column: 10 }
+Function:        r8156_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_reg_read
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1582, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7400, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '120'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156_hw_phy_cfg
+  - String:          ':'
+  - Line:            '16'
+  - String:          ':'
+  - Column:          '10'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7417, Column: 3 }
+Function:        r8156_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_reg_write
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1596, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7400, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156_hw_phy_cfg
+  - String:          ':'
+  - Line:            '18'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7432, Column: 9 }
+Function:        r8156_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          r8153_phy_status
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 3764, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7400, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '215'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156_hw_phy_cfg
+  - String:          ':'
+  - Line:            '33'
+  - String:          ':'
+  - Column:          '9'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7435, Column: 13 }
+Function:        r8156_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_read_word
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1504, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7400, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '25'
+  - String:          ', threshold='
+  - Threshold:       '337'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156_hw_phy_cfg
+  - String:          ':'
+  - Line:            '36'
+  - String:          ':'
+  - Column:          '13'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7437, Column: 2 }
+Function:        r8156_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_write_word
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1523, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7400, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '30'
+  - String:          ', threshold='
+  - Threshold:       '337'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156_hw_phy_cfg
+  - String:          ':'
+  - Line:            '38'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7441, Column: 10 }
+Function:        r8156_hw_phy_cfg
+Args:
+  - String:          ''''
+  - Callee:          ocp_reg_read
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1582, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          r8156_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7400, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '120'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          r8156_hw_phy_cfg
+  - String:          ':'
+  - Line:            '42'
+  - String:          ':'
+  - Column:          '10'
+  - String:          ';'
+...
+

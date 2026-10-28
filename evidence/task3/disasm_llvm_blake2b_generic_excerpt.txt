@@ -1,0 +1,58 @@
+objdump -dr /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/crypto/blake2b_generic.o
+Selected actual object excerpts (full output stays in temp/task3).
+FUNCTION blake2b_compress_generic
+instructions=5265; relocatable direct calls={'__gnu_mcount_nc': 1, '__stack_chk_fail': 1}
+First 24 instructions:
+00000000 <blake2b_compress_generic>:
+       0:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+       4:	e28db01c 	add	fp, sp, #28
+       8:	e24ddf81 	sub	sp, sp, #516	@ 0x204
+       c:	e1a09000 	mov	r9, r0
+      10:	e3000000 	movw	r0, #0
+			10: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+      14:	e3400000 	movt	r0, #0
+			14: R_ARM_MOVT_ABS	__stack_chk_guard
+      18:	e1a04002 	mov	r4, r2
+      1c:	e1a07001 	mov	r7, r1
+      20:	e5900000 	ldr	r0, [r0]
+      24:	e58d3034 	str	r3, [sp, #52]	@ 0x34
+      28:	e50b0024 	str	r0, [fp, #-36]	@ 0xffffffdc
+      2c:	e92d4000 	stmfd	sp!, {lr}
+      30:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			30: R_ARM_CALL	__gnu_mcount_nc
+      34:	e24b60a8 	sub	r6, fp, #168	@ 0xa8
+      38:	e58d90ec 	str	r9, [sp, #236]	@ 0xec
+      3c:	e2860038 	add	r0, r6, #56	@ 0x38
+      40:	e58d00e8 	str	r0, [sp, #232]	@ 0xe8
+      44:	e2860018 	add	r0, r6, #24
+      48:	e58d00e4 	str	r0, [sp, #228]	@ 0xe4
+      4c:	e2860030 	add	r0, r6, #48	@ 0x30
+      50:	e58d00e0 	str	r0, [sp, #224]	@ 0xe0
+      54:	e2860010 	add	r0, r6, #16
+      58:	e58d00dc 	str	r0, [sp, #220]	@ 0xdc
+      5c:	e2860028 	add	r0, r6, #40	@ 0x28
+       c:	e1a09000 	mov	r9, r0
+      10:	e3000000 	movw	r0, #0
+			10: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+      14:	e3400000 	movt	r0, #0
+			10: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+      14:	e3400000 	movt	r0, #0
+			14: R_ARM_MOVT_ABS	__stack_chk_guard
+      18:	e1a04002 	mov	r4, r2
+    5220:	1affebab 	bne	d4 <blake2b_compress_generic+0xd4>
+    5224:	e3001000 	movw	r1, #0
+			5224: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    5228:	e51b0024 	ldr	r0, [fp, #-36]	@ 0xffffffdc
+    5228:	e51b0024 	ldr	r0, [fp, #-36]	@ 0xffffffdc
+    522c:	e3401000 	movt	r1, #0
+			522c: R_ARM_MOVT_ABS	__stack_chk_guard
+    5230:	e5911000 	ldr	r1, [r1]
+    5238:	024bd01c 	subeq	sp, fp, #28
+    523c:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    5240:	ebfffffe 	bl	0 <__stack_chk_fail>
+			5240: R_ARM_CALL	__stack_chk_fail
+    523c:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    5240:	ebfffffe 	bl	0 <__stack_chk_fail>
+			5240: R_ARM_CALL	__stack_chk_fail
+
+

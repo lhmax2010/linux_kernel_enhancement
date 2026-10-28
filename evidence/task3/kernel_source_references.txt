@@ -1,0 +1,2170 @@
+Source commit f240c28093027707f5e09f8a9cbbed16a43ebb1a. Line numbers refer to original files.
+
+init/Kconfig:1852
+1852: config KALLSYMS_ALL
+1853: 	bool "Include all symbols in kallsyms"
+1854: 	depends on DEBUG_KERNEL && KALLSYMS
+1855: 	help
+1856: 	  Normally kallsyms only contains the symbols of functions for nicer
+1857: 	  OOPS messages and backtraces (i.e., symbols from the text and inittext
+1858: 	  sections). This is sufficient for most cases. And only if you want to
+1859: 	  enable kernel live patching, or other less common use cases (e.g.,
+1860: 	  when a debugger is used) all symbols are required (i.e., names of
+1861: 	  variables from the data sections, etc).
+1862: 
+1863: 	  This option makes sure that all symbols are loaded into the kernel
+1864: 	  image (i.e., symbols from all sections) in cost of increased kernel
+1865: 	  size (depending on the kernel configuration, it may be 300KiB or
+1866: 	  something like this).
+1867: 
+1868: 	  Say N unless you really need all symbols, or kernel live patching.
+1869: 
+
+lib/Kconfig.debug:377
+377: config DEBUG_INFO_BTF
+378: 	bool "Generate BTF type information"
+379: 	depends on !DEBUG_INFO_SPLIT && !DEBUG_INFO_REDUCED
+380: 	depends on !GCC_PLUGIN_RANDSTRUCT || COMPILE_TEST
+381: 	depends on BPF_SYSCALL
+382: 	depends on PAHOLE_VERSION >= 116
+383: 	depends on DEBUG_INFO_DWARF4 || PAHOLE_VERSION >= 121
+384: 	# pahole uses elfutils, which does not have support for Hexagon relocations
+385: 	depends on !HEXAGON
+386: 	help
+387: 	  Generate deduplicated BTF type information from DWARF debug info.
+388: 	  Turning this on requires pahole v1.16 or later (v1.21 or later to
+389: 	  support DWARF 5), which will convert DWARF type info into equivalent
+390: 	  deduplicated BTF type info.
+391: 
+
+lib/Kconfig.debug:412
+412: config DEBUG_INFO_BTF_MODULES
+413: 	bool "Generate BTF type information for kernel modules"
+414: 	default y
+415: 	depends on DEBUG_INFO_BTF && MODULES && PAHOLE_HAS_SPLIT_BTF
+416: 	help
+417: 	  Generate compact split BTF type information for kernel modules.
+418: 
+
+lib/Kconfig.debug:893
+893: config DEBUG_MEMORY_INIT
+894: 	bool "Debug memory initialisation" if EXPERT
+895: 	default !EXPERT
+896: 	help
+897: 	  Enable this for additional checks during memory initialisation.
+898: 	  The sanity checks verify aspects of the VM such as the memory model
+899: 	  and other information provided by the architecture. Verbose
+900: 	  information will be printed at KERN_DEBUG loglevel depending
+901: 	  on the mminit_loglevel= command-line option.
+902: 
+903: 	  If unsure, say Y
+904: 
+
+lib/Kconfig.debug:1215
+1215: config DETECT_HUNG_TASK
+1216: 	bool "Detect Hung Tasks"
+1217: 	depends on DEBUG_KERNEL
+1218: 	default SOFTLOCKUP_DETECTOR
+1219: 	help
+1220: 	  Say Y here to enable the kernel to detect "hung tasks",
+1221: 	  which are bugs that cause the task to be stuck in
+1222: 	  uninterruptible "D" state indefinitely.
+1223: 
+1224: 	  When a hung task is detected, the kernel will print the
+1225: 	  current stack trace (which you should report), but the
+1226: 	  task will stay in uninterruptible state. If lockdep is
+1227: 	  enabled then all held locks will also be reported. This
+1228: 	  feature has negligible overhead.
+1229: 
+
+lib/Kconfig.debug:1501
+1501: config LOCKDEP
+1502: 	bool
+1503: 	depends on DEBUG_KERNEL && LOCK_DEBUGGING_SUPPORT
+1504: 	select STACKTRACE
+1505: 	select KALLSYMS
+1506: 	select KALLSYMS_ALL
+1507: 
+
+lib/Kconfig.debug:1804
+1804: config LATENCYTOP
+1805: 	bool "Latency measuring infrastructure"
+1806: 	depends on DEBUG_KERNEL
+1807: 	depends on STACKTRACE_SUPPORT
+1808: 	depends on PROC_FS
+1809: 	depends on FRAME_POINTER || MIPS || PPC || S390 || MICROBLAZE || ARM || ARC || X86
+1810: 	select KALLSYMS
+1811: 	select KALLSYMS_ALL
+1812: 	select STACKTRACE
+1813: 	select SCHEDSTATS
+1814: 	help
+1815: 	  Enable this option if you want to use the LatencyTOP tool
+1816: 	  to find out which userspace is blocking on what kernel operations.
+1817: 
+
+lib/Kconfig.kgdb:11
+11: menuconfig KGDB
+12: 	bool "KGDB: kernel debugger"
+13: 	depends on HAVE_ARCH_KGDB
+14: 	depends on DEBUG_KERNEL
+15: 	help
+16: 	  If you say Y here, it will be possible to remotely debug the
+17: 	  kernel using gdb.  It is recommended but not required, that
+18: 	  you also turn on the kernel config option
+19: 	  CONFIG_FRAME_POINTER to aid in producing more reliable stack
+20: 	  backtraces in the external debugger.  Documentation of
+21: 	  kernel debugger is available at http://kgdb.sourceforge.net
+22: 	  as well as in Documentation/dev-tools/kgdb.rst.  If
+23: 	  unsure, say N.
+24: 
+25: if KGDB
+26: 
+
+lib/Kconfig.kgdb:91
+91: config KGDB_KDB
+92: 	bool "KGDB_KDB: include kdb frontend for kgdb"
+93: 	default n
+94: 	help
+95: 	  KDB frontend for kernel
+96: 
+
+kernel/trace/Kconfig:182
+182: menuconfig FTRACE
+183: 	bool "Tracers"
+184: 	depends on TRACING_SUPPORT
+185: 	default y if DEBUG_KERNEL
+186: 	help
+187: 	  Enable the kernel tracing infrastructure.
+188: 
+189: if FTRACE
+190: 
+
+kernel/trace/Kconfig:200
+200: config FUNCTION_TRACER
+201: 	bool "Kernel Function Tracer"
+202: 	depends on HAVE_FUNCTION_TRACER
+203: 	select KALLSYMS
+204: 	select GENERIC_TRACER
+205: 	select CONTEXT_SWITCH_TRACER
+206: 	select GLOB
+207: 	select NEED_TASKS_RCU
+208: 	select TASKS_RUDE_RCU
+209: 	help
+210: 	  Enable the kernel to trace every kernel function. This is done
+211: 	  by using a compiler feature to insert a small, 5-byte No-Operation
+212: 	  instruction at the beginning of every kernel function, which NOP
+213: 	  sequence is then dynamically patched into a tracer call when
+214: 	  tracing is enabled by the administrator. If it's runtime disabled
+215: 	  (the bootup default), then the overhead of the instructions is very
+216: 	  small and not measurable even in micro-benchmarks (at least on
+217: 	  x86, but may have impact on other architectures).
+218: 
+
+kernel/trace/Kconfig:302
+302: config FUNCTION_PROFILER
+303: 	bool "Kernel function profiler"
+304: 	depends on FUNCTION_TRACER
+305: 	default n
+306: 	help
+307: 	  This option enables the kernel function profiler. A file is created
+308: 	  in debugfs called function_profile_enabled which defaults to zero.
+309: 	  When a 1 is echoed into this file profiling begins, and when a
+310: 	  zero is entered, profiling stops. A "functions" file is created in
+311: 	  the trace_stat directory; this file shows the list of functions that
+312: 	  have been hit and their counters.
+313: 
+314: 	  If in doubt, say N.
+315: 
+
+kernel/trace/Kconfig:316
+316: config STACK_TRACER
+317: 	bool "Trace max stack"
+318: 	depends on HAVE_FUNCTION_TRACER
+319: 	select FUNCTION_TRACER
+320: 	select STACKTRACE
+321: 	select KALLSYMS
+322: 	help
+323: 	  This special tracer records the maximum stack footprint of the
+324: 	  kernel and displays it in /sys/kernel/tracing/stack_trace.
+325: 
+326: 	  This tracer works by hooking into every function call that the
+327: 	  kernel executes, and keeping a maximum stack depth value and
+328: 	  stack-trace saved.  If this is configured with DYNAMIC_FTRACE
+329: 	  then it will not have any overhead while the stack tracer
+330: 	  is disabled.
+331: 
+332: 	  To enable the stack tracer on bootup, pass in 'stacktrace'
+333: 	  on the kernel command line.
+334: 
+335: 	  The stack tracer can also be enabled or disabled via the
+336: 	  sysctl kernel.stack_tracer_enabled
+337: 
+338: 	  Say N if unsure.
+339: 
+
+kernel/trace/Kconfig:346
+346: config IRQSOFF_TRACER
+347: 	bool "Interrupts-off Latency Tracer"
+348: 	default n
+349: 	depends on TRACE_IRQFLAGS_SUPPORT
+350: 	select TRACE_IRQFLAGS
+351: 	select GENERIC_TRACER
+352: 	select TRACER_MAX_TRACE
+353: 	select RING_BUFFER_ALLOW_SWAP
+354: 	select TRACER_SNAPSHOT
+355: 	select TRACER_SNAPSHOT_PER_CPU_SWAP
+356: 	help
+357: 	  This option measures the time spent in irqs-off critical
+358: 	  sections, with microsecond accuracy.
+359: 
+360: 	  The default measurement method is a maximum search, which is
+361: 	  disabled by default and can be runtime (re-)started
+362: 	  via:
+363: 
+364: 	      echo 0 > /sys/kernel/tracing/tracing_max_latency
+365: 
+366: 	  (Note that kernel size and overhead increase with this option
+367: 	  enabled. This option and the preempt-off timing option can be
+368: 	  used together or separately.)
+369: 
+
+kernel/trace/Kconfig:394
+394: config SCHED_TRACER
+395: 	bool "Scheduling Latency Tracer"
+396: 	select GENERIC_TRACER
+397: 	select CONTEXT_SWITCH_TRACER
+398: 	select TRACER_MAX_TRACE
+399: 	select TRACER_SNAPSHOT
+400: 	help
+401: 	  This tracer tracks the latency of the highest priority task
+402: 	  to be scheduled in, starting from the point it has woken up.
+403: 
+
+kernel/trace/Kconfig:643
+643: config BLK_DEV_IO_TRACE
+644: 	bool "Support for tracing block IO actions"
+645: 	depends on SYSFS
+646: 	depends on BLOCK
+647: 	select RELAY
+648: 	select DEBUG_FS
+649: 	select TRACEPOINTS
+650: 	select GENERIC_TRACER
+651: 	select STACKTRACE
+652: 	help
+653: 	  Say Y here if you want to be able to trace the block layer actions
+654: 	  on a given queue. Tracing allows you to see any traffic happening
+655: 	  on a block device queue. For more information (and the userspace
+656: 	  support tools needed), fetch the blktrace tools from:
+657: 
+658: 	  git://git.kernel.dk/blktrace.git
+659: 
+660: 	  Tracing also is possible using the ftrace interface, e.g.:
+661: 
+662: 	    echo 1 > /sys/block/sda/sda1/trace/enable
+663: 	    echo blk > /sys/kernel/tracing/current_tracer
+664: 	    cat /sys/kernel/tracing/trace_pipe
+665: 
+666: 	  If unsure, say N.
+667: 
+
+net/sunrpc/Kconfig:2
+2: config SUNRPC
+3: 	tristate
+4: 	depends on MULTIUSER
+5: 
+
+arch/arm/Kconfig:1376
+1376: config CC_HAVE_STACKPROTECTOR_TLS
+1377: 	def_bool $(cc-option,-mtp=cp15 -mstack-protector-guard=tls -mstack-protector-guard-offset=0)
+1378: 
+
+arch/arm/Kconfig:1379
+1379: config STACKPROTECTOR_PER_TASK
+1380: 	bool "Use a unique stack canary value for each task"
+1381: 	depends on STACKPROTECTOR && CURRENT_POINTER_IN_TPIDRURO && !XIP_DEFLATED_DATA
+1382: 	depends on GCC_PLUGINS || CC_HAVE_STACKPROTECTOR_TLS
+1383: 	select GCC_PLUGIN_ARM_SSP_PER_TASK if !CC_HAVE_STACKPROTECTOR_TLS
+1384: 	default y
+1385: 	help
+1386: 	  Due to the fact that GCC uses an ordinary symbol reference from
+1387: 	  which to load the value of the stack canary, this value can only
+1388: 	  change at reboot time on SMP systems, and all tasks running in the
+1389: 	  kernel's address space are forced to use the same canary value for
+1390: 	  the entire duration that the system is up.
+1391: 
+1392: 	  Enable this option to switch to a different method that uses a
+1393: 	  different canary value for each task.
+1394: 
+
+arch/arm/Kconfig.debug:57
+57: config UNWINDER_FRAME_POINTER
+58: 	bool "Frame pointer unwinder"
+59: 	depends on !THUMB2_KERNEL
+60: 	select ARCH_WANT_FRAME_POINTERS
+61: 	select FRAME_POINTER
+62: 	help
+63: 	  This option enables the frame pointer unwinder for unwinding
+64: 	  kernel stack traces.
+65: 
+
+arch/arm/Kconfig.debug:79
+79: config ARM_UNWIND
+80: 	bool
+81: 
+
+arch/arm64/Kconfig:2319
+2319: config STACKPROTECTOR_PER_TASK
+2320: 	def_bool y
+2321: 	depends on STACKPROTECTOR && CC_HAVE_STACKPROTECTOR_SYSREG
+2322: 
+
+arch/riscv/Kconfig:1053
+1053: config CC_HAVE_STACKPROTECTOR_TLS
+1054: 	def_bool $(cc-option,-mstack-protector-guard=tls -mstack-protector-guard-reg=tp -mstack-protector-guard-offset=0)
+1055: 
+
+arch/riscv/Kconfig:1056
+1056: config STACKPROTECTOR_PER_TASK
+1057: 	def_bool y
+1058: 	depends on !RANDSTRUCT
+1059: 	depends on STACKPROTECTOR && CC_HAVE_STACKPROTECTOR_TLS
+1060: 
+
+arch/x86/Kconfig.debug:249
+249: config UNWINDER_FRAME_POINTER
+250: 	bool "Frame pointer unwinder"
+251: 	select ARCH_WANT_FRAME_POINTERS
+252: 	select FRAME_POINTER
+253: 	help
+254: 	  This option enables the frame pointer unwinder for unwinding kernel
+255: 	  stack traces.
+256: 
+257: 	  The unwinder itself is fast and it uses less RAM than the ORC
+258: 	  unwinder, but the kernel text size will grow by ~3% and the kernel's
+259: 	  overall performance will degrade by roughly 5-10%.
+260: 
+
+fs/nfs/Kconfig:2
+2: config NFS_FS
+3: 	tristate "NFS client support"
+4: 	depends on INET && FILE_LOCKING && MULTIUSER
+5: 	select CRC32
+6: 	select LOCKD
+7: 	select SUNRPC
+8: 	select NFS_COMMON
+9: 	select NFS_ACL_SUPPORT if NFS_V3_ACL
+10: 	help
+11: 	  Choose Y here if you want to access files residing on other
+12: 	  computers using Sun's Network File System protocol.  To compile
+13: 	  this file system support as a module, choose M here: the module
+14: 	  will be called nfs.
+15: 
+16: 	  To mount file systems exported by NFS servers, you also need to
+17: 	  install the user space mount.nfs command which can be found in
+18: 	  the Linux nfs-utils package, available from http://linux-nfs.org/.
+19: 	  Information about using the mount command is available in the
+20: 	  mount(8) man page.  More detail about the Linux NFS client
+21: 	  implementation is available via the nfs(5) man page.
+22: 
+23: 	  Below you can choose which versions of the NFS protocol are
+24: 	  available in the kernel to mount NFS servers.  Support for NFS
+25: 	  version 2 (RFC 1094) is always available when NFS_FS is selected.
+26: 
+27: 	  To configure a system which mounts its root file system via NFS
+28: 	  at boot time, say Y here, select "Kernel level IP
+29: 	  autoconfiguration" in the NETWORK menu, and select "Root file
+30: 	  system on NFS" below.  You cannot compile this file system as a
+31: 	  module in this case.
+32: 
+33: 	  If unsure, say N.
+34: 
+
+fs/nfs/Kconfig:161
+161: config ROOT_NFS
+162: 	bool "Root file system on NFS"
+163: 	depends on NFS_FS=y && IP_PNP
+164: 	help
+165: 	  If you want your system to mount its root file system via NFS,
+166: 	  choose Y here.  This is common practice for managing systems
+167: 	  without local permanent storage.  For details, read
+168: 	  <file:Documentation/admin-guide/nfs/nfsroot.rst>.
+169: 
+170: 	  Most people say N here.
+171: 
+
+fs/btrfs/Kconfig:3
+3: config BTRFS_FS
+4: 	tristate "Btrfs filesystem support"
+5: 	select BLK_CGROUP_PUNT_BIO
+6: 	select CRYPTO
+7: 	select CRYPTO_CRC32C
+8: 	select LIBCRC32C
+9: 	select CRYPTO_XXHASH
+10: 	select CRYPTO_SHA256
+11: 	select CRYPTO_BLAKE2B
+12: 	select ZLIB_INFLATE
+13: 	select ZLIB_DEFLATE
+14: 	select LZO_COMPRESS
+15: 	select LZO_DECOMPRESS
+16: 	select ZSTD_COMPRESS
+17: 	select ZSTD_DECOMPRESS
+18: 	select FS_IOMAP
+19: 	select RAID6_PQ
+20: 	select XOR_BLOCKS
+21: 	depends on PAGE_SIZE_LESS_THAN_256KB
+22: 
+23: 	help
+24: 	  Btrfs is a general purpose copy-on-write filesystem with extents,
+25: 	  writable snapshotting, support for multiple devices and many more
+26: 	  features focused on fault tolerance, repair and easy administration.
+27: 
+28: 	  The filesystem disk format is no longer unstable, and it's not
+29: 	  expected to change unless there are strong reasons to do so. If there
+30: 	  is a format change, file systems with a unchanged format will
+31: 	  continue to be mountable and usable by newer kernels.
+32: 
+33: 	  For more information, please see the web pages at
+34: 	  https://btrfs.readthedocs.io
+35: 
+36: 	  To compile this file system support as a module, choose M here. The
+37: 	  module will be called btrfs.
+38: 
+39: 	  If unsure, say N.
+40: 
+
+fs/f2fs/Kconfig:2
+2: config F2FS_FS
+3: 	tristate "F2FS filesystem support"
+4: 	depends on BLOCK
+5: 	select BUFFER_HEAD
+6: 	select NLS
+7: 	select CRYPTO
+8: 	select CRYPTO_CRC32
+9: 	select F2FS_FS_XATTR if FS_ENCRYPTION
+10: 	select FS_ENCRYPTION_ALGS if FS_ENCRYPTION
+11: 	select FS_IOMAP
+12: 	select LZ4_COMPRESS if F2FS_FS_LZ4
+13: 	select LZ4_DECOMPRESS if F2FS_FS_LZ4
+14: 	select LZ4HC_COMPRESS if F2FS_FS_LZ4HC
+15: 	select LZO_COMPRESS if F2FS_FS_LZO
+16: 	select LZO_DECOMPRESS if F2FS_FS_LZO
+17: 	select ZSTD_COMPRESS if F2FS_FS_ZSTD
+18: 	select ZSTD_DECOMPRESS if F2FS_FS_ZSTD
+19: 	help
+20: 	  F2FS is based on Log-structured File System (LFS), which supports
+21: 	  versatile "flash-friendly" features. The design has been focused on
+22: 	  addressing the fundamental issues in LFS, which are snowball effect
+23: 	  of wandering tree and high cleaning overhead.
+24: 
+25: 	  Since flash-based storages show different characteristics according to
+26: 	  the internal geometry or flash memory management schemes aka FTL, F2FS
+27: 	  and tools support various parameters not only for configuring on-disk
+28: 	  layout, but also for selecting allocation and cleaning algorithms.
+29: 
+30: 	  If unsure, say N.
+31: 
+
+drivers/net/usb/Kconfig:99
+99: config USB_RTL8152
+100: 	tristate "Realtek RTL8152/RTL8153 Based USB Ethernet Adapters"
+101: 	select MII
+102: 	select PHYLIB
+103: 	select CRC32
+104: 	select CRYPTO
+105: 	select CRYPTO_HASH
+106: 	select CRYPTO_SHA256
+107: 	help
+108: 	  This option adds support for Realtek RTL8152 based USB 2.0
+109: 	  10/100 Ethernet adapters and RTL8153 based USB 3.0 10/100/1000
+110: 	  Ethernet adapters.
+111: 
+112: 	  To compile this driver as a module, choose M here: the
+113: 	  module will be called r8152.
+114: 
+
+drivers/net/usb/Kconfig:115
+115: config USB_LAN78XX
+116: 	tristate "Microchip LAN78XX Based USB Ethernet Adapters"
+117: 	select MII
+118: 	select PHYLIB
+119: 	select MICROCHIP_PHY
+120: 	select FIXED_PHY
+121: 	select CRC32
+122: 	help
+123: 	  This option adds support for Microchip LAN78XX based USB 2
+124: 	  & USB 3 10/100/1000 Ethernet adapters.
+125: 	  LAN7800 : USB 3 to 10/100/1000 Ethernet adapter
+126: 	  LAN7850 : USB 2 to 10/100/1000 Ethernet adapter
+127: 	  LAN7801 : USB 3 to 10/100/1000 Ethernet adapter (MAC only)
+128: 
+129: 	  Proper PHY driver is required for LAN7801.
+130: 
+131: 	  To compile this driver as a module, choose M here: the
+132: 	  module will be called lan78xx.
+133: 
+
+drivers/net/usb/Kconfig:353
+353: config USB_NET_SMSC95XX
+354: 	tristate "SMSC LAN95XX based USB 2.0 10/100 ethernet devices"
+355: 	depends on USB_USBNET
+356: 	select PHYLIB
+357: 	select SMSC_PHY
+358: 	select BITREVERSE
+359: 	select CRC16
+360: 	select CRC32
+361: 	imply NET_SELFTESTS
+362: 	help
+363: 	  This option adds support for SMSC LAN95XX based USB 2.0
+364: 	  10/100 Ethernet adapters.
+365: 
+
+drivers/net/usb/Kconfig:375
+375: config USB_NET_NET1080
+376: 	tristate "NetChip 1080 based cables (Laplink, ...)"
+377: 	default y
+378: 	depends on USB_USBNET
+379: 	help
+380: 	  Choose this option if you're using a host-to-host cable based
+381: 	  on this design:  one NetChip 1080 chip and supporting logic,
+382: 	  optionally with LEDs that indicate traffic
+383: 
+
+drivers/net/wireless/ralink/rt2x00/Kconfig:138
+138: config RT2800USB
+139: 	tristate "Ralink rt27xx/rt28xx/rt30xx (USB) support"
+140: 	depends on USB
+141: 	select RT2800_LIB
+142: 	select RT2X00_LIB_USB
+143: 	select RT2X00_LIB_FIRMWARE
+144: 	select RT2X00_LIB_CRYPTO
+145: 	select CRC_CCITT
+146: 	help
+147: 	  This adds support for rt27xx/rt28xx/rt30xx wireless chipset family.
+148: 	  Supported chips: RT2770, RT2870 & RT3070, RT3071 & RT3072
+149: 
+150: 	  When compiled as a module, this driver will be called "rt2800usb.ko".
+151: 
+152: if RT2800USB
+153: 
+
+drivers/net/wireless/ralink/rt2x00/Kconfig:219
+219: config RT2800_LIB
+220: 	tristate
+221: 
+
+drivers/net/wireless/ralink/rt2x00/Kconfig:238
+238: config RT2X00_LIB_USB
+239: 	tristate
+240: 	select RT2X00_LIB
+241: 
+
+drivers/net/wireless/ralink/rt2x00/Kconfig:242
+242: config RT2X00_LIB
+243: 	tristate
+244: 
+
+drivers/input/touchscreen/Kconfig:771
+771: config TOUCHSCREEN_EDT_FT5X06
+772: 	tristate "EDT FocalTech FT5x06 I2C Touchscreen support"
+773: 	depends on I2C
+774: 	select REGMAP_I2C
+775: 	help
+776: 	  Say Y here if you have an EDT "Polytouch" touchscreen based
+777: 	  on the FocalTech FT5x06 family of controllers connected to
+778: 	  your system.
+779: 
+780: 	  If unsure, say N.
+781: 
+782: 	  To compile this driver as a module, choose M here: the
+783: 	  module will be called edt-ft5x06.
+784: 
+
+drivers/media/i2c/Kconfig:173
+173: config VIDEO_IMX219
+174: 	tristate "Sony IMX219 sensor support"
+175: 	select V4L2_CCI_I2C
+176: 	help
+177: 	  This is a Video4Linux2 sensor driver for the Sony
+178: 	  IMX219 camera.
+179: 
+180: 	  To compile this driver as a module, choose M here: the
+181: 	  module will be called imx219.
+182: 
+
+drivers/media/i2c/Kconfig:327
+327: config VIDEO_IMX708
+328: 	tristate "Sony IMX708 sensor support"
+329: 	depends on I2C && VIDEO_DEV
+330: 	select MEDIA_CONTROLLER
+331: 	select VIDEO_V4L2_SUBDEV_API
+332: 	select V4L2_FWNODE
+333: 	help
+334: 	  This is a Video4Linux2 sensor driver for the Sony
+335: 	  IMX708 camera.
+336: 
+337: 	  To compile this driver as a module, choose M here: the
+338: 	  module will be called imx708.
+339: 
+
+drivers/media/i2c/Kconfig:563
+563: config VIDEO_OV5647
+564: 	tristate "OmniVision OV5647 sensor support"
+565: 	help
+566: 	  This is a Video4Linux2 sensor driver for the OmniVision
+567: 	  OV5647 camera.
+568: 
+569: 	  To compile this driver as a module, choose M here: the
+570: 	  module will be called ov5647.
+571: 
+
+drivers/media/i2c/Kconfig:901
+901: config VIDEO_DW9807_VCM
+902: 	tristate "DW9807 lens voice coil support"
+903: 	depends on I2C && VIDEO_DEV
+904: 	select MEDIA_CONTROLLER
+905: 	select VIDEO_V4L2_SUBDEV_API
+906: 	select V4L2_ASYNC
+907: 	help
+908: 	  This is a driver for the DW9807 camera lens voice coil.
+909: 	  DW9807 is a 10 bit DAC with 100mA output current sink
+910: 	  capability. This is designed for linear control of
+911: 	  voice coil motors, controlled via I2C serial interface.
+912: 
+
+sound/usb/Kconfig:13
+13: config SND_USB_AUDIO
+14: 	tristate "USB Audio/MIDI driver"
+15: 	select SND_HWDEP
+16: 	select SND_RAWMIDI
+17: 	select SND_PCM
+18: 	select SND_UMP if SND_USB_AUDIO_MIDI_V2
+19: 	select BITREVERSE
+20: 	select SND_USB_AUDIO_USE_MEDIA_CONTROLLER if MEDIA_CONTROLLER && (MEDIA_SUPPORT=y || MEDIA_SUPPORT=SND_USB_AUDIO)
+21: 	help
+22: 	  Say Y here to include support for USB audio and USB MIDI
+23: 	  devices.
+24: 
+25: 	  To compile this driver as a module, choose M here: the module
+26: 	  will be called snd-usb-audio.
+27: 
+
+arch/arm/configs/tizen_bcm2711_defconfig:230
+230: CONFIG_PPP_BSDCOMP=y
+231: CONFIG_PPP_DEFLATE=y
+232: CONFIG_PPP_FILTER=y
+233: CONFIG_PPP_MULTILINK=y
+234: CONFIG_PPP_ASYNC=y
+235: CONFIG_PPP_SYNC_TTY=y
+236: CONFIG_USB_RTL8152=y
+237: CONFIG_USB_LAN78XX=y
+238: CONFIG_USB_USBNET=y
+239: CONFIG_USB_NET_SMSC95XX=y
+240: CONFIG_USB_ALI_M5632=y
+241: CONFIG_USB_AN2720=y
+242: CONFIG_USB_EPSON2888=y
+243: CONFIG_USB_KC2190=y
+244: CONFIG_BRCMFMAC=m
+245: CONFIG_BRCMDBG=y
+246: CONFIG_MT7921U=m
+247: CONFIG_RT2X00=y
+248: CONFIG_RT2800USB=y
+249: CONFIG_RT2800USB_RT3573=y
+250: CONFIG_RT2800USB_RT53XX=y
+251: CONFIG_RT2800USB_RT55XX=y
+252: CONFIG_INPUT_MOUSEDEV=y
+253: CONFIG_INPUT_JOYDEV=m
+254: CONFIG_INPUT_EVDEV=y
+255: # CONFIG_KEYBOARD_ATKBD is not set
+256: CONFIG_KEYBOARD_GPIO=y
+257: # CONFIG_INPUT_MOUSE is not set
+258: CONFIG_INPUT_JOYSTICK=y
+259: CONFIG_INPUT_TOUCHSCREEN=y
+260: CONFIG_TOUCHSCREEN_EDT_FT5X06=y
+261: CONFIG_INPUT_MISC=y
+262: CONFIG_INPUT_UINPUT=y
+263: CONFIG_BRCM_CHAR_DRIVERS=y
+264: CONFIG_BCM_VCIO=y
+265: # CONFIG_LEGACY_PTYS is not set
+
+arch/arm/configs/tizen_bcm2711_defconfig:329
+329: CONFIG_V4L_PLATFORM_DRIVERS=y
+330: CONFIG_VIDEO_MUX=y
+331: CONFIG_VIDEO_BCM2835_UNICAM=y
+332: CONFIG_VIDEO_IMX219=y
+333: CONFIG_VIDEO_IMX708=y
+334: CONFIG_VIDEO_OV5647=y
+335: CONFIG_VIDEO_DW9807_VCM=y
+336: # CONFIG_MEDIA_TUNER_E4000 is not set
+337: # CONFIG_MEDIA_TUNER_FC0011 is not set
+
+arch/arm/configs/tizen_bcm2711_defconfig:388
+388: CONFIG_SND=y
+389: CONFIG_SND_SEQUENCER=y
+390: CONFIG_SND_USB_AUDIO=y
+391: CONFIG_SND_SOC=y
+392: CONFIG_SND_BCM2835_SOC_I2S=y
+
+arch/arm/configs/tizen_bcm2711_defconfig:474
+474: CONFIG_EXT4_FS=y
+475: CONFIG_EXT4_FS_POSIX_ACL=y
+476: CONFIG_EXT4_FS_SECURITY=y
+477: CONFIG_BTRFS_FS=y
+478: CONFIG_BTRFS_FS_POSIX_ACL=y
+479: CONFIG_F2FS_FS=y
+480: CONFIG_F2FS_FS_SECURITY=y
+481: CONFIG_F2FS_FS_COMPRESSION=y
+482: CONFIG_FANOTIFY=y
+483: CONFIG_AUTOFS_FS=y
+484: CONFIG_FUSE_FS=y
+485: CONFIG_OVERLAY_FS=y
+486: CONFIG_FSCACHE_STATS=y
+487: CONFIG_CACHEFILES=y
+488: CONFIG_MSDOS_FS=y
+489: CONFIG_VFAT_FS=y
+490: CONFIG_FAT_DEFAULT_IOCHARSET="ascii"
+491: CONFIG_TMPFS=y
+492: CONFIG_TMPFS_POSIX_ACL=y
+493: CONFIG_ECRYPT_FS=m
+494: CONFIG_SQUASHFS=y
+495: CONFIG_SQUASHFS_XATTR=y
+496: CONFIG_SQUASHFS_4K_DEVBLK_SIZE=y
+497: CONFIG_EROFS_FS=y
+498: CONFIG_EROFS_FS_ZIP_LZMA=y
+499: CONFIG_EROFS_FS_ZIP_DEFLATE=y
+500: CONFIG_NFS_FS=y
+501: CONFIG_NFS_V3_ACL=y
+502: CONFIG_NFS_V4=y
+503: CONFIG_NFS_SWAP=y
+504: CONFIG_ROOT_NFS=y
+505: CONFIG_NFS_FSCACHE=y
+
+arch/arm/configs/tizen_bcm2711_defconfig:523
+523: CONFIG_CRC_ITU_T=y
+524: CONFIG_CRC7=m
+525: CONFIG_DMA_CMA=y
+526: CONFIG_CMA_SIZE_MBYTES=256
+527: CONFIG_PRINTK_TIME=y
+528: CONFIG_CONSOLE_LOGLEVEL_QUIET=3
+529: CONFIG_BOOT_PRINTK_DELAY=y
+530: CONFIG_DEBUG_INFO_DWARF4=y
+531: CONFIG_DEBUG_INFO_BTF=y
+532: CONFIG_KGDB=y
+533: CONFIG_KGDB_KDB=y
+534: CONFIG_KDB_KEYBOARD=y
+535: CONFIG_DEBUG_MEMORY_INIT=y
+536: CONFIG_DETECT_HUNG_TASK=y
+537: # CONFIG_RCU_TRACE is not set
+538: CONFIG_LATENCYTOP=y
+539: CONFIG_FUNCTION_PROFILER=y
+540: CONFIG_STACK_TRACER=y
+541: CONFIG_IRQSOFF_TRACER=y
+542: CONFIG_SCHED_TRACER=y
+543: CONFIG_BLK_DEV_IO_TRACE=y
+
+include/linux/irqflags.h:190
+190:  * if !TRACE_IRQFLAGS.
+191:  */
+192: #ifdef CONFIG_TRACE_IRQFLAGS
+193: 
+194: #define local_irq_enable()				\
+195: 	do {						\
+196: 		trace_hardirqs_on();			\
+197: 		raw_local_irq_enable();			\
+198: 	} while (0)
+199: 
+200: #define local_irq_disable()				\
+201: 	do {						\
+202: 		bool was_disabled = raw_irqs_disabled();\
+203: 		raw_local_irq_disable();		\
+204: 		if (!was_disabled)			\
+205: 			trace_hardirqs_off();		\
+206: 	} while (0)
+207: 
+208: #define local_irq_save(flags)				\
+209: 	do {						\
+210: 		raw_local_irq_save(flags);		\
+211: 		if (!raw_irqs_disabled_flags(flags))	\
+212: 			trace_hardirqs_off();		\
+213: 	} while (0)
+214: 
+215: #define local_irq_restore(flags)			\
+216: 	do {						\
+217: 		if (!raw_irqs_disabled_flags(flags))	\
+218: 			trace_hardirqs_on();		\
+219: 		raw_local_irq_restore(flags);		\
+220: 	} while (0)
+221: 
+222: #define safe_halt()				\
+223: 	do {					\
+224: 		trace_hardirqs_on();		\
+225: 		raw_safe_halt();		\
+226: 	} while (0)
+227: 
+228: 
+229: #else /* !CONFIG_TRACE_IRQFLAGS */
+230: 
+
+kernel/trace/trace_preemptirq.c:30
+30: #endif
+31: 
+32: #ifdef CONFIG_TRACE_IRQFLAGS
+33: /* Per-cpu variable to prevent redundant calls when IRQs already off */
+34: static DEFINE_PER_CPU(int, tracing_irq_cpu);
+35: 
+36: /*
+37:  * Like trace_hardirqs_on() but without the lockdep invocation. This is
+38:  * used in the low level entry code where the ordering vs. RCU is important
+39:  * and lockdep uses a staged approach which splits the lockdep hardirq
+40:  * tracking into a RCU on and a RCU off section.
+41:  */
+42: void trace_hardirqs_on_prepare(void)
+43: {
+44: 	if (this_cpu_read(tracing_irq_cpu)) {
+45: 		trace(irq_enable)(CALLER_ADDR0, CALLER_ADDR1);
+46: 		tracer_hardirqs_on(CALLER_ADDR0, CALLER_ADDR1);
+47: 		this_cpu_write(tracing_irq_cpu, 0);
+48: 	}
+49: }
+50: EXPORT_SYMBOL(trace_hardirqs_on_prepare);
+51: NOKPROBE_SYMBOL(trace_hardirqs_on_prepare);
+52: 
+53: void trace_hardirqs_on(void)
+54: {
+55: 	if (this_cpu_read(tracing_irq_cpu)) {
+56: 		trace(irq_enable)(CALLER_ADDR0, CALLER_ADDR1);
+57: 		tracer_hardirqs_on(CALLER_ADDR0, CALLER_ADDR1);
+58: 		this_cpu_write(tracing_irq_cpu, 0);
+59: 	}
+60: 
+61: 	lockdep_hardirqs_on_prepare();
+62: 	lockdep_hardirqs_on(CALLER_ADDR0);
+63: }
+64: EXPORT_SYMBOL(trace_hardirqs_on);
+65: NOKPROBE_SYMBOL(trace_hardirqs_on);
+66: 
+67: /*
+68:  * Like trace_hardirqs_off() but without the lockdep invocation. This is
+69:  * used in the low level entry code where the ordering vs. RCU is important
+70:  * and lockdep uses a staged approach which splits the lockdep hardirq
+71:  * tracking into a RCU on and a RCU off section.
+72:  */
+73: void trace_hardirqs_off_finish(void)
+74: {
+75: 	if (!this_cpu_read(tracing_irq_cpu)) {
+76: 		this_cpu_write(tracing_irq_cpu, 1);
+77: 		tracer_hardirqs_off(CALLER_ADDR0, CALLER_ADDR1);
+78: 		trace(irq_disable)(CALLER_ADDR0, CALLER_ADDR1);
+79: 	}
+80: 
+81: }
+82: EXPORT_SYMBOL(trace_hardirqs_off_finish);
+83: NOKPROBE_SYMBOL(trace_hardirqs_off_finish);
+84: 
+85: void trace_hardirqs_off(void)
+86: {
+87: 	lockdep_hardirqs_off(CALLER_ADDR0);
+88: 
+89: 	if (!this_cpu_read(tracing_irq_cpu)) {
+90: 		this_cpu_write(tracing_irq_cpu, 1);
+91: 		tracer_hardirqs_off(CALLER_ADDR0, CALLER_ADDR1);
+92: 		trace(irq_disable)(CALLER_ADDR0, CALLER_ADDR1);
+93: 	}
+94: }
+95: EXPORT_SYMBOL(trace_hardirqs_off);
+96: NOKPROBE_SYMBOL(trace_hardirqs_off);
+97: #endif /* CONFIG_TRACE_IRQFLAGS */
+98: 
+99: #ifdef CONFIG_TRACE_PREEMPT_TOGGLE
+100: 
+
+arch/arm/kernel/ftrace.c:22
+22: #include <asm/ftrace.h>
+23: #include <asm/insn.h>
+24: #include <asm/set_memory.h>
+25: #include <asm/stacktrace.h>
+26: #include <asm/patch.h>
+27: 
+28: /*
+29:  * The compiler emitted profiling hook consists of
+30:  *
+31:  *   PUSH    {LR}
+32:  *   BL	     __gnu_mcount_nc
+33:  *
+34:  * To turn this combined sequence into a NOP, we need to restore the value of
+35:  * SP before the PUSH. Let's use an ADD rather than a POP into LR, as LR is not
+36:  * modified anyway, and reloading LR from memory is highly likely to be less
+37:  * efficient.
+38:  */
+39: #ifdef CONFIG_THUMB2_KERNEL
+40: #define	NOP		0xf10d0d04	/* add.w sp, sp, #4 */
+41: #else
+42: #define	NOP		0xe28dd004	/* add   sp, sp, #4 */
+43: #endif
+44: 
+45: #ifdef CONFIG_DYNAMIC_FTRACE
+
+arch/arm/kernel/ftrace.c:174
+174: 	unsigned long new, old;
+175: 	unsigned long ip = rec->ip;
+176: 
+177: 	old = ftrace_call_replace(ip, adjust_address(rec, old_addr), true);
+178: 
+179: 	new = ftrace_call_replace(ip, adjust_address(rec, addr), true);
+180: 
+181: 	return ftrace_modify_code(rec->ip, old, new, true);
+182: }
+183: 
+184: #endif
+185: 
+186: int ftrace_make_nop(struct module *mod,
+187: 		    struct dyn_ftrace *rec, unsigned long addr)
+188: {
+189: 	unsigned long aaddr = adjust_address(rec, addr);
+190: 	unsigned long ip = rec->ip;
+191: 	unsigned long old;
+192: 	unsigned long new;
+193: 	int ret;
+194: 
+195: #ifdef CONFIG_ARM_MODULE_PLTS
+196: 	/* mod is only supplied during module loading */
+197: 	if (!mod)
+198: 		mod = rec->arch.mod;
+199: 	else
+200: 		rec->arch.mod = mod;
+201: #endif
+202: 
+203: 	old = ftrace_call_replace(ip, aaddr,
+204: 				  !IS_ENABLED(CONFIG_ARM_MODULE_PLTS) || !mod);
+205: #ifdef CONFIG_ARM_MODULE_PLTS
+206: 	if (!old && mod) {
+
+arch/arm/kernel/entry-ftrace.S:1
+1: /* SPDX-License-Identifier: GPL-2.0-only */
+2: 
+3: #include <asm/assembler.h>
+4: #include <asm/ftrace.h>
+5: #include <asm/unwind.h>
+6: 
+7: #include "entry-header.S"
+8: 
+9: /*
+10:  * When compiling with -pg, gcc inserts a call to the mcount routine at the
+11:  * start of every function.  In mcount, apart from the function's address (in
+12:  * lr), we need to get hold of the function's caller's address.
+13:  *
+14:  * Newer GCCs (4.4+) solve this problem by using a version of mcount with call
+15:  * sites like:
+16:  *
+17:  *	push	{lr}
+18:  *	bl	__gnu_mcount_nc
+19:  *
+20:  * With these compilers, frame pointers are not necessary.
+21:  *
+22:  * mcount can be thought of as a function called in the middle of a subroutine
+23:  * call.  As such, it needs to be transparent for both the caller and the
+24:  * callee: the original lr needs to be restored when leaving mcount, and no
+25:  * registers should be clobbered.
+26:  *
+27:  * When using dynamic ftrace, we patch out the mcount call by a "add sp, #4"
+28:  * instead of the __gnu_mcount_nc call (see arch/arm/kernel/ftrace.c).
+29:  */
+30: 
+31: .macro mcount_adjust_addr rd, rn
+32: 	bic	\rd, \rn, #1		@ clear the Thumb bit if present
+33: 	sub	\rd, \rd, #MCOUNT_INSN_SIZE
+34: .endm
+35: 
+36: .macro __mcount suffix
+37: 	mcount_enter
+38: 	ldr_va	r2, ftrace_trace_function
+39: 	badr	r0, .Lftrace_stub
+40: 	cmp	r0, r2
+41: 	bne	1f
+42: 
+43: #ifdef CONFIG_FUNCTION_GRAPH_TRACER
+44: 	ldr_va	r2, ftrace_graph_return
+45: 	cmp	r0, r2
+46: 	bne	ftrace_graph_caller\suffix
+47: 
+48: 	ldr_va	r2, ftrace_graph_entry
+49: 	mov_l	r0, ftrace_graph_entry_stub
+50: 	cmp	r0, r2
+51: 	bne	ftrace_graph_caller\suffix
+52: #endif
+53: 
+54: 	mcount_exit
+55: 
+56: 1: 	mcount_get_lr	r1			@ lr of instrumented func
+57: 	mcount_adjust_addr	r0, lr		@ instrumented function
+58: 	badr	lr, 2f
+59: 	mov	pc, r2
+60: 2:	mcount_exit
+
+kernel/trace/Makefile:24
+24: # If unlikely tracing is enabled, do not trace these files
+25: ifdef CONFIG_TRACING_BRANCHES
+26: KBUILD_CFLAGS += -DDISABLE_BRANCH_PROFILING
+27: endif
+28: 
+29: # for GCOV coverage profiling
+30: ifdef CONFIG_GCOV_PROFILE_FTRACE
+31: GCOV_PROFILE := y
+32: endif
+33: 
+34: # Functions in this file could be invoked from early interrupt
+35: # code and produce random code coverage.
+36: KCOV_INSTRUMENT_trace_preemptirq.o := n
+37: 
+38: CFLAGS_bpf_trace.o := -I$(src)
+39: 
+40: CFLAGS_trace_benchmark.o := -I$(src)
+41: CFLAGS_trace_events_filter.o := -I$(src)
+42: 
+43: obj-$(CONFIG_TRACE_CLOCK) += trace_clock.o
+44: 
+45: obj-$(CONFIG_FUNCTION_TRACER) += libftrace.o
+46: obj-$(CONFIG_RING_BUFFER) += ring_buffer.o
+47: obj-$(CONFIG_RING_BUFFER_BENCHMARK) += ring_buffer_benchmark.o
+48: 
+49: obj-$(CONFIG_TRACING) += trace.o
+50: obj-$(CONFIG_TRACING) += trace_output.o
+51: obj-$(CONFIG_TRACING) += trace_seq.o
+52: obj-$(CONFIG_TRACING) += trace_stat.o
+53: obj-$(CONFIG_TRACING) += trace_printk.o
+54: obj-$(CONFIG_TRACING) += 	pid_list.o
+55: obj-$(CONFIG_TRACING_MAP) += tracing_map.o
+56: obj-$(CONFIG_PREEMPTIRQ_DELAY_TEST) += preemptirq_delay_test.o
+57: obj-$(CONFIG_SYNTH_EVENT_GEN_TEST) += synth_event_gen_test.o
+58: obj-$(CONFIG_KPROBE_EVENT_GEN_TEST) += kprobe_event_gen_test.o
+59: obj-$(CONFIG_CONTEXT_SWITCH_TRACER) += trace_sched_switch.o
+60: obj-$(CONFIG_FUNCTION_TRACER) += trace_functions.o
+61: obj-$(CONFIG_PREEMPTIRQ_TRACEPOINTS) += trace_preemptirq.o
+62: obj-$(CONFIG_IRQSOFF_TRACER) += trace_irqsoff.o
+63: obj-$(CONFIG_PREEMPT_TRACER) += trace_irqsoff.o
+64: obj-$(CONFIG_SCHED_TRACER) += trace_sched_wakeup.o
+65: obj-$(CONFIG_HWLAT_TRACER) += trace_hwlat.o
+66: obj-$(CONFIG_OSNOISE_TRACER) += trace_osnoise.o
+67: obj-$(CONFIG_NOP_TRACER) += trace_nop.o
+68: obj-$(CONFIG_STACK_TRACER) += trace_stack.o
+69: obj-$(CONFIG_MMIOTRACE) += trace_mmiotrace.o
+70: obj-$(CONFIG_FUNCTION_GRAPH_TRACER) += trace_functions_graph.o
+71: obj-$(CONFIG_TRACE_BRANCH_PROFILING) += trace_branch.o
+72: obj-$(CONFIG_BLK_DEV_IO_TRACE) += blktrace.o
+73: obj-$(CONFIG_FUNCTION_GRAPH_TRACER) += fgraph.o
+74: ifeq ($(CONFIG_BLOCK),y)
+75: obj-$(CONFIG_EVENT_TRACING) += blktrace.o
+76: endif
+
+kernel/trace/Makefile:90
+90: obj-$(CONFIG_BPF_EVENTS) += bpf_trace.o
+91: obj-$(CONFIG_KPROBE_EVENTS) += trace_kprobe.o
+92: obj-$(CONFIG_TRACEPOINTS) += error_report-traces.o
+93: obj-$(CONFIG_TRACEPOINTS) += power-traces.o
+94: ifeq ($(CONFIG_PM),y)
+95: obj-$(CONFIG_TRACEPOINTS) += rpm-traces.o
+96: endif
+97: ifeq ($(CONFIG_TRACING),y)
+98: obj-$(CONFIG_KGDB_KDB) += trace_kdb.o
+99: endif
+100: obj-$(CONFIG_DYNAMIC_EVENTS) += trace_dynevent.o
+101: obj-$(CONFIG_PROBE_EVENTS) += trace_probe.o
+102: obj-$(CONFIG_PROBE_EVENTS_BTF_ARGS) += trace_btf.o
+103: obj-$(CONFIG_UPROBE_EVENTS) += trace_uprobe.o
+
+kernel/trace/ftrace.c:415
+415: #ifdef CONFIG_FUNCTION_PROFILER
+416: struct ftrace_profile {
+417: 	struct hlist_node		node;
+418: 	unsigned long			ip;
+419: 	unsigned long			counter;
+420: #ifdef CONFIG_FUNCTION_GRAPH_TRACER
+421: 	unsigned long long		time;
+422: 	unsigned long long		time_squared;
+423: #endif
+424: };
+425: 
+426: struct ftrace_profile_page {
+427: 	struct ftrace_profile_page	*next;
+428: 	unsigned long			index;
+429: 	struct ftrace_profile		records[];
+430: };
+431: 
+432: struct ftrace_profile_stat {
+433: 	atomic_t			disabled;
+434: 	struct hlist_head		*hash;
+435: 	struct ftrace_profile_page	*pages;
+436: 	struct ftrace_profile_page	*start;
+437: 	struct tracer_stat		stat;
+438: };
+439: 
+440: #define PROFILE_RECORDS_SIZE						\
+441: 	(PAGE_SIZE - offsetof(struct ftrace_profile_page, records))
+442: 
+
+kernel/trace/ftrace.c:672
+672: 
+673: 	stat = &per_cpu(ftrace_profile_stats, cpu);
+674: 
+675: 	if (stat->hash) {
+676: 		/* If the profile is already created, simply reset it */
+677: 		ftrace_profile_reset(stat);
+678: 		return 0;
+679: 	}
+680: 
+681: 	/*
+682: 	 * We are profiling all functions, but usually only a few thousand
+683: 	 * functions are hit. We'll make a hash of 1024 items.
+684: 	 */
+685: 	size = FTRACE_PROFILE_HASH_SIZE;
+686: 
+687: 	stat->hash = kcalloc(size, sizeof(struct hlist_head), GFP_KERNEL);
+688: 
+689: 	if (!stat->hash)
+690: 		return -ENOMEM;
+691: 
+692: 	/* Preallocate the function profiling pages */
+693: 	if (ftrace_profile_pages_init(stat) < 0) {
+694: 		kfree(stat->hash);
+695: 		stat->hash = NULL;
+696: 		return -ENOMEM;
+697: 	}
+698: 
+699: 	return 0;
+700: }
+701: 
+702: static int ftrace_profile_init(void)
+703: {
+704: 	int cpu;
+705: 	int ret = 0;
+706: 
+707: 	for_each_possible_cpu(cpu) {
+708: 		ret = ftrace_profile_init_cpu(cpu);
+709: 		if (ret)
+710: 			break;
+711: 	}
+712: 
+713: 	return ret;
+714: }
+
+kernel/trace/ftrace.c:970
+970: static const struct file_operations ftrace_profile_fops = {
+971: 	.open		= tracing_open_generic,
+972: 	.read		= ftrace_profile_read,
+973: 	.write		= ftrace_profile_write,
+974: 	.llseek		= default_llseek,
+975: };
+976: 
+977: /* used to initialize the real stat files */
+978: static struct tracer_stat function_stats __initdata = {
+979: 	.name		= "functions",
+980: 	.stat_start	= function_stat_start,
+981: 	.stat_next	= function_stat_next,
+982: 	.stat_cmp	= function_stat_cmp,
+983: 	.stat_headers	= function_stat_headers,
+984: 	.stat_show	= function_stat_show
+985: };
+986: 
+987: static __init void ftrace_profile_tracefs(struct dentry *d_tracer)
+988: {
+989: 	struct ftrace_profile_stat *stat;
+990: 	char *name;
+991: 	int ret;
+992: 	int cpu;
+993: 
+994: 	for_each_possible_cpu(cpu) {
+995: 		stat = &per_cpu(ftrace_profile_stats, cpu);
+996: 
+997: 		name = kasprintf(GFP_KERNEL, "function%d", cpu);
+998: 		if (!name) {
+999: 			/*
+1000: 			 * The files created are permanent, if something happens
+1001: 			 * we still do not free memory.
+1002: 			 */
+1003: 			WARN(1,
+1004: 			     "Could not allocate stat file for cpu %d\n",
+1005: 			     cpu);
+1006: 			return;
+1007: 		}
+1008: 		stat->stat = function_stats;
+1009: 		stat->stat.name = name;
+1010: 		ret = register_stat_tracer(&stat->stat);
+1011: 		if (ret) {
+1012: 			WARN(1,
+1013: 			     "Could not register function stat for cpu %d\n",
+1014: 			     cpu);
+1015: 			kfree(name);
+1016: 			return;
+1017: 		}
+1018: 	}
+1019: 
+1020: 	trace_create_file("function_profile_enabled",
+1021: 			  TRACE_MODE_WRITE, d_tracer, NULL,
+1022: 			  &ftrace_profile_fops);
+1023: }
+1024: 
+1025: #else /* CONFIG_FUNCTION_PROFILER */
+1026: static __init void ftrace_profile_tracefs(struct dentry *d_tracer)
+1027: {
+1028: }
+1029: #endif /* CONFIG_FUNCTION_PROFILER */
+1030: 
+1031: #ifdef CONFIG_DYNAMIC_FTRACE
+1032: 
+1033: static struct ftrace_ops *removed_ops;
+1034: 
+
+kernel/Makefile:90
+90: obj-$(CONFIG_KCOV) += kcov.o
+91: obj-$(CONFIG_KPROBES) += kprobes.o
+92: obj-$(CONFIG_FAIL_FUNCTION) += fail_function.o
+93: obj-$(CONFIG_KGDB) += debug/
+94: obj-$(CONFIG_DETECT_HUNG_TASK) += hung_task.o
+95: obj-$(CONFIG_LOCKUP_DETECTOR) += watchdog.o
+96: obj-$(CONFIG_HARDLOCKUP_DETECTOR_BUDDY) += watchdog_buddy.o
+97: obj-$(CONFIG_HARDLOCKUP_DETECTOR_PERF) += watchdog_perf.o
+98: obj-$(CONFIG_SECCOMP) += seccomp.o
+99: obj-$(CONFIG_RELAY) += relay.o
+100: obj-$(CONFIG_SYSCTL) += utsname_sysctl.o
+101: obj-$(CONFIG_TASK_DELAY_ACCT) += delayacct.o
+102: obj-$(CONFIG_TASKSTATS) += taskstats.o tsacct.o
+103: obj-$(CONFIG_TRACEPOINTS) += tracepoint.o
+104: obj-$(CONFIG_LATENCYTOP) += latencytop.o
+105: obj-$(CONFIG_FUNCTION_TRACER) += trace/
+106: obj-$(CONFIG_TRACING) += trace/
+107: obj-$(CONFIG_TRACE_CLOCK) += trace/
+108: obj-$(CONFIG_RING_BUFFER) += trace/
+
+mm/mm_init.c:34
+34: #include "slab.h"
+35: #include "shuffle.h"
+36: 
+37: #include <asm/setup.h>
+38: 
+39: #ifdef CONFIG_DEBUG_MEMORY_INIT
+40: int __meminitdata mminit_loglevel;
+41: 
+42: /* The zonelists are simply reported, validation is manual. */
+43: void __init mminit_verify_zonelist(void)
+44: {
+45: 	int nid;
+46: 
+47: 	if (mminit_loglevel < MMINIT_VERIFY)
+48: 		return;
+49: 
+50: 	for_each_online_node(nid) {
+51: 		pg_data_t *pgdat = NODE_DATA(nid);
+52: 		struct zone *zone;
+53: 		struct zoneref *z;
+54: 		struct zonelist *zonelist;
+55: 		int i, listid, zoneid;
+56: 
+57: 		for (i = 0; i < MAX_ZONELISTS * MAX_NR_ZONES; i++) {
+58: 
+59: 			/* Identify the zone and nodelist */
+60: 			zoneid = i % MAX_NR_ZONES;
+
+mm/mm_init.c:78
+78: }
+79: 
+80: void __init mminit_verify_pageflags_layout(void)
+81: {
+82: 	int shift, width;
+83: 	unsigned long or_mask, add_mask;
+84: 
+85: 	shift = BITS_PER_LONG;
+86: 	width = shift - SECTIONS_WIDTH - NODES_WIDTH - ZONES_WIDTH
+87: 		- LAST_CPUPID_SHIFT - KASAN_TAG_WIDTH - LRU_GEN_WIDTH - LRU_REFS_WIDTH;
+88: 	mminit_dprintk(MMINIT_TRACE, "pageflags_layout_widths",
+89: 		"Section %d Node %d Zone %d Lastcpupid %d Kasantag %d Gen %d Tier %d Flags %d\n",
+90: 		SECTIONS_WIDTH,
+
+mm/mm_init.c:143
+143: 			(NODES_MASK << NODES_PGSHIFT) |
+144: 			(SECTIONS_MASK << SECTIONS_PGSHIFT);
+145: 	add_mask = (ZONES_MASK << ZONES_PGSHIFT) +
+146: 			(NODES_MASK << NODES_PGSHIFT) +
+147: 			(SECTIONS_MASK << SECTIONS_PGSHIFT);
+148: 	BUG_ON(or_mask != add_mask);
+149: }
+150: 
+151: static __init int set_mminit_loglevel(char *str)
+152: {
+153: 	get_option(&str, &mminit_loglevel);
+154: 	return 0;
+155: }
+156: early_param("mminit_loglevel", set_mminit_loglevel);
+157: #endif /* CONFIG_DEBUG_MEMORY_INIT */
+158: 
+159: struct kobject *mm_kobj;
+160: 
+161: #ifdef CONFIG_SMP
+162: s32 vm_committed_as_batch = 32;
+163: 
+164: void mm_compute_batch(int overcommit_policy)
+165: {
+
+packaging/linux-rpi.spec:106
+106: 
+107: %description -n %{variant}-rt-linux-kernel-devel
+108: This package provides kernel map and etc information.
+109: 
+110: %package -n %{variant}-linux-kernel-btf-devel
+111: License: GPL-2.0
+112: Summary: Linux kernel BTF header for eBPF development
+113: Group: System/Kernel
+114: Provides: %{variant}-kernel-btf-devel = %{fullVersion}
+115: Provides: %{variant}-kernel-btf-devel-uname-r = %{fullVersion}
+116: Provides: kernel-btf-devel
+117: 
+118: %description -n %{variant}-linux-kernel-btf-devel
+119: This package provides the vmlinux.h header file generated from the
+120: Linux kernel for eBPF program development. This header contains all the
+121: type definitions needed for BPF CO-RE (Compile Once - Run Everywhere).
+122: 
+123: #headers
+
+packaging/linux-rpi.spec:199
+199:     mkdir -p build/${target}
+200:     ./scripts/kconfig/merge_config.sh -m -O build/${target} ${BASE_CONFIG} ${EXTRA_FRAGMENTS}
+201:     make O=build/${target} olddefconfig %{?_smp_mflags}
+202: 
+203:     if [ "${target}" = "%{variant}" ]; then
+204:         # Build perf
+205:         # WERROR=0 make O=build/${target} -s -C tools/lib/traceevent %{?_smp_mflags}
+206:         WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" %{?_smp_mflags} NO_LIBTRACEEVENT=1 NO_JEVENTS=1
+207: 
+208:         # Build bpftool
+209:         WERROR=0 make O=build/${target} -s -C tools/bpf/bpftool %{?_smp_mflags}
+210:     fi
+211: 
+212:     # Build Image/Image.gz
+213:     make O=build/${target} %{?_smp_mflags}
+214: 
+215:     # Build dtbs
+216:     make O=build/${target} dtbs %{?_smp_mflags}
+217: 
+218:     # Build modules
+219:     make O=build/${target} modules %{?_smp_mflags}
+220: 
+221:     if [ "${target}" = "%{variant}" ]; then
+222:        # Create directory for BTF data
+223:        mkdir -p build/${target}/btf
+224: 
+225:        # Generate vmlinux.h from vmlinux binary
+226:        ./build/${target}/bpftool btf dump file build/${target}/vmlinux format c > build/${target}/btf/vmlinux.h
+227:     fi
+228: 
+229: done
+
+packaging/linux-rpi.spec:273
+273:             WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" DESTDIR=%{buildroot}/usr install NO_LIBTRACEEVENT=1 NO_JEVENTS=1
+274: 
+275: 	    # Install bpftool
+276:             mkdir -p %{buildroot}/usr/sbin
+277:             install -m 755 build/${target}/bpftool %{buildroot}/usr/sbin/
+278: 
+279: 	    # Install vmlinux.h header
+280:             mkdir -p %{buildroot}/usr/include/bpf
+281:             install -m 644 build/${target}/btf/vmlinux.h %{buildroot}/usr/include/bpf/vmlinux.h
+282: 
+283: 	    rm -rf %{buildroot}/usr/etc
+284:             rm -rf %{buildroot}/usr/lib/debug
+285:             rm -rf %{buildroot}/usr/lib/perf
+
+packaging/linux-rpi.spec:366
+366: /boot/kernel/devel/*%{variant}/
+367: 
+368: %files -n %{variant}-rt-linux-kernel-devel
+369: /boot/kernel/devel/*%{variant}-rt/
+370: 
+371: %files -n %{variant}-linux-kernel-btf-devel
+372: /usr/include/bpf/vmlinux.h
+373: 
+374: %files -n %{variant}-linux-kernel
+375: %license COPYING
+376: %ifarch aarch64
+377: /boot/Image
+378: %else
+379: /boot/zImage
+
+kernel/bpf/sysfs_btf.c:8
+8: #include <linux/init.h>
+9: #include <linux/sysfs.h>
+10: 
+11: /* See scripts/link-vmlinux.sh, gen_btf() func for details */
+12: extern char __start_BTF[];
+13: extern char __stop_BTF[];
+14: 
+15: static ssize_t
+16: btf_vmlinux_read(struct file *file, struct kobject *kobj,
+17: 		 struct bin_attribute *bin_attr,
+18: 		 char *buf, loff_t off, size_t len)
+19: {
+20: 	memcpy(buf, __start_BTF + off, len);
+21: 	return len;
+22: }
+23: 
+24: static struct bin_attribute bin_attr_btf_vmlinux __ro_after_init = {
+25: 	.attr = { .name = "vmlinux", .mode = 0444, },
+26: 	.read = btf_vmlinux_read,
+27: };
+28: 
+29: struct kobject *btf_kobj;
+30: 
+31: static int __init btf_vmlinux_init(void)
+32: {
+33: 	bin_attr_btf_vmlinux.size = __stop_BTF - __start_BTF;
+34: 
+35: 	if (bin_attr_btf_vmlinux.size == 0)
+36: 		return 0;
+37: 
+38: 	btf_kobj = kobject_create_and_add("btf", kernel_kobj);
+39: 	if (!btf_kobj)
+40: 		return -ENOMEM;
+41: 
+42: 	return sysfs_create_bin_file(btf_kobj, &bin_attr_btf_vmlinux);
+43: }
+44: 
+45: subsys_initcall(btf_vmlinux_init);
+
+tools/lib/bpf/btf.c:5040
+5040: 	if (r)
+5041: 		return r;
+5042: 
+5043: 	return 0;
+5044: }
+5045: 
+5046: /*
+5047:  * Probe few well-known locations for vmlinux kernel image and try to load BTF
+5048:  * data out of it to use for target BTF.
+5049:  */
+5050: struct btf *btf__load_vmlinux_btf(void)
+5051: {
+5052: 	const char *sysfs_btf_path = "/sys/kernel/btf/vmlinux";
+5053: 	/* fall back locations, trying to find vmlinux on disk */
+5054: 	const char *locations[] = {
+5055: 		"/boot/vmlinux-%1$s",
+5056: 		"/lib/modules/%1$s/vmlinux-%1$s",
+5057: 		"/lib/modules/%1$s/build/vmlinux",
+5058: 		"/usr/lib/modules/%1$s/kernel/vmlinux",
+5059: 		"/usr/lib/debug/boot/vmlinux-%1$s",
+5060: 		"/usr/lib/debug/boot/vmlinux-%1$s.debug",
+5061: 		"/usr/lib/debug/lib/modules/%1$s/vmlinux",
+5062: 	};
+5063: 	char path[PATH_MAX + 1];
+5064: 	struct utsname buf;
+5065: 	struct btf *btf;
+5066: 	int i, err;
+5067: 
+5068: 	/* is canonical sysfs location accessible? */
+5069: 	if (faccessat(AT_FDCWD, sysfs_btf_path, F_OK, AT_EACCESS) < 0) {
+5070: 		pr_warn("kernel BTF is missing at '%s', was CONFIG_DEBUG_INFO_BTF enabled?\n",
+5071: 			sysfs_btf_path);
+5072: 	} else {
+5073: 		btf = btf__parse(sysfs_btf_path, NULL);
+5074: 		if (!btf) {
+5075: 			err = -errno;
+5076: 			pr_warn("failed to read kernel BTF from '%s': %d\n", sysfs_btf_path, err);
+5077: 			return libbpf_err_ptr(err);
+5078: 		}
+5079: 		pr_debug("loaded kernel BTF from '%s'\n", sysfs_btf_path);
+5080: 		return btf;
+5081: 	}
+5082: 
+5083: 	/* try fallback locations */
+5084: 	uname(&buf);
+5085: 	for (i = 0; i < ARRAY_SIZE(locations); i++) {
+5086: 		snprintf(path, PATH_MAX, locations[i], buf.release);
+5087: 
+5088: 		if (faccessat(AT_FDCWD, path, R_OK, AT_EACCESS))
+5089: 			continue;
+5090: 
+
+tools/lib/bpf/libbpf.h:130
+130: 	 */
+131: 	const char *pin_root_path;
+132: 
+133: 	__u32 :32; /* stub out now removed attach_prog_fd */
+134: 
+135: 	/* Additional kernel config content that augments and overrides
+136: 	 * system Kconfig for CONFIG_xxx externs.
+137: 	 */
+138: 	const char *kconfig;
+139: 	/* Path to the custom BTF to be used for BPF CO-RE relocations.
+140: 	 * This custom BTF completely replaces the use of vmlinux BTF
+141: 	 * for the purpose of CO-RE relocations.
+142: 	 * NOTE: any other BPF feature (e.g., fentry/fexit programs,
+143: 	 * struct_ops, etc) will need actual kernel BTF at /sys/kernel/btf/vmlinux.
+144: 	 */
+145: 	const char *btf_custom_path;
+146: 	/* Pointer to a buffer for storing kernel logs for applicable BPF
+147: 	 * commands. Valid kernel_log_size has to be specified as well and are
+148: 	 * passed-through to bpf() syscall. Keep in mind that kernel might
+149: 	 * fail operation with -ENOSPC error if provided buffer is too small
+150: 	 * to contain entire log output.
+151: 	 * See the comment below for kernel_log_level for interaction between
+152: 	 * log_buf and log_level settings.
+153: 	 *
+154: 	 * If specified, this log buffer will be passed for:
+155: 	 *   - each BPF progral load (BPF_PROG_LOAD) attempt, unless overridden
+156: 	 *     with bpf_program__set_log() on per-program level, to get
+157: 	 *     BPF verifier log output.
+
+scripts/Kconfig.include:16
+16: if-success = $(shell,{ $(1); } >/dev/null 2>&1 && echo "$(2)" || echo "$(3)")
+17: 
+18: # $(success,<command>)
+19: # Return y if <command> exits with 0, n otherwise
+20: success = $(if-success,$(1),y,n)
+21: 
+22: # $(failure,<command>)
+23: # Return n if <command> exits with 0, y otherwise
+24: failure = $(if-success,$(1),n,y)
+25: 
+26: # $(cc-option,<flag>)
+27: # Return y if the compiler supports <flag>, n otherwise
+28: cc-option = $(success,trap "rm -rf .tmp_$$" EXIT; mkdir .tmp_$$; $(CC) -Werror $(CLANG_FLAGS) $(1) -c -x c /dev/null -o .tmp_$$/tmp.o)
+29: 
+30: # $(ld-option,<flag>)
+31: # Return y if the linker supports <flag>, n otherwise
+32: ld-option = $(success,$(LD) -v $(1))
+33: 
+34: # $(as-instr,<instr>)
+
+scripts/Makefile.clang:1
+1: # Individual arch/{arch}/Makefiles should use -EL/-EB to set intended
+2: # endianness and -m32/-m64 to set word size based on Kconfigs instead of
+3: # relying on the target triple.
+4: CLANG_TARGET_FLAGS_arm		:= arm-linux-gnueabi
+5: CLANG_TARGET_FLAGS_arm64	:= aarch64-linux-gnu
+6: CLANG_TARGET_FLAGS_hexagon	:= hexagon-linux-musl
+7: CLANG_TARGET_FLAGS_loongarch	:= loongarch64-linux-gnusf
+8: CLANG_TARGET_FLAGS_m68k		:= m68k-linux-gnu
+9: CLANG_TARGET_FLAGS_mips		:= mipsel-linux-gnu
+10: CLANG_TARGET_FLAGS_powerpc	:= powerpc64le-linux-gnu
+11: CLANG_TARGET_FLAGS_riscv	:= riscv64-linux-gnu
+12: CLANG_TARGET_FLAGS_s390		:= s390x-linux-gnu
+13: CLANG_TARGET_FLAGS_x86		:= x86_64-linux-gnu
+14: CLANG_TARGET_FLAGS_um		:= $(CLANG_TARGET_FLAGS_$(SUBARCH))
+15: CLANG_TARGET_FLAGS		:= $(CLANG_TARGET_FLAGS_$(SRCARCH))
+16: 
+17: ifeq ($(CLANG_TARGET_FLAGS),)
+18: $(error add '--target=' option to scripts/Makefile.clang)
+19: else
+20: CLANG_FLAGS	+= --target=$(CLANG_TARGET_FLAGS)
+21: endif
+22: 
+23: ifeq ($(LLVM_IAS),0)
+24: CLANG_FLAGS	+= -fno-integrated-as
+25: GCC_TOOLCHAIN_DIR := $(dir $(shell which $(CROSS_COMPILE)elfedit))
+
+arch/arm/Makefile:120
+120: endif
+121: 
+122: ifeq ($(CONFIG_CC_IS_CLANG),y)
+123: CFLAGS_ABI	+= -meabi gnu
+124: endif
+125: 
+126: ifeq ($(CONFIG_CURRENT_POINTER_IN_TPIDRURO),y)
+127: KBUILD_CFLAGS	+= -mtp=cp15
+128: endif
+129: 
+130: # Accept old syntax despite ".syntax unified"
+131: AFLAGS_NOWARN	:=$(call as-option,-Wa$(comma)-mno-warn-deprecated,-Wa$(comma)-W)
+132: 
+133: # The GCC option -ffreestanding is required in order to compile code containing
+134: # ARM/NEON intrinsics in a non C99-compliant environment (such as the kernel)
+135: CC_FLAGS_FPU	:= -ffreestanding
+136: # Enable <arm_neon.h>
+137: CC_FLAGS_FPU	+= -isystem $(shell $(CC) -print-file-name=include)
+138: CC_FLAGS_FPU	+= -march=armv7-a -mfloat-abi=softfp -mfpu=neon
+139: 
+140: ifeq ($(CONFIG_THUMB2_KERNEL),y)
+141: CFLAGS_ISA	:=-Wa,-mimplicit-it=always $(AFLAGS_NOWARN)
+142: AFLAGS_ISA	:=$(CFLAGS_ISA) -Wa$(comma)-mthumb
+143: CFLAGS_ISA	+=-mthumb
+144: else
+145: CFLAGS_ISA	:=$(call cc-option,-marm,) $(AFLAGS_NOWARN)
+146: AFLAGS_ISA	:=$(CFLAGS_ISA)
+147: endif
+148: 
+149: # Need -Uarm for gcc < 3.x
+150: KBUILD_CPPFLAGS	+=$(cpp-y)
+151: KBUILD_CFLAGS	+=$(CFLAGS_ABI) $(CFLAGS_ISA) $(arch-y) $(tune-y) $(call cc-option,-mshort-load-bytes,$(call cc-option,-malignment-traps,)) -msoft-float -Uarm
+152: KBUILD_AFLAGS	+=$(CFLAGS_ABI) $(AFLAGS_ISA) -Wa,$(arch-y) $(tune-y) -include $(srctree)/arch/arm/include/asm/unified.h -msoft-float
+153: KBUILD_RUSTFLAGS += --target=arm-unknown-linux-gnueabi
+154: 
+155: CHECKFLAGS	+= -D__arm__
+
+arch/arm/Makefile:330
+330:   echo  '                  install to $$(INSTALL_PATH) and run lilo'
+331:   echo
+332:   echo  '  multi_v7_lpae_defconfig     - multi_v7_defconfig with CONFIG_ARM_LPAE enabled'
+333: endef
+
+arch/arm/boot/dts/broadcom/bcm283x.dtsi:7
+7: 
+8: /* firmware-provided startup stubs live here, where the secondary CPUs are
+9:  * spinning.
+10:  */
+11: /memreserve/ 0x00000000 0x00001000;
+12: 
+13: /* This include file covers the common peripherals and configuration between
+14:  * bcm2835 and bcm2836 implementations, leaving the CPU configuration to
+15:  * bcm2835.dtsi and bcm2836.dtsi.
+16:  */
+17: 
+18: / {
+19: 	compatible = "brcm,bcm2835";
+20: 	model = "BCM2835";
+21: 	#address-cells = <1>;
+22: 	#size-cells = <1>;
+23: 
+24: 	aliases {
+25: 		serial0 = &uart0;
+26: 		serial1 = &uart1;
+27: 	};
+28: 
+29: 	chosen {
+30: 		stdout-path = "serial0:115200n8";
+31: 	};
+32: 
+33: 	rmem: reserved-memory {
+34: 		#address-cells = <1>;
+35: 		#size-cells = <1>;
+36: 		ranges;
+37: 
+38: 		cma: linux,cma {
+39: 			compatible = "shared-dma-pool";
+40: 			size = <0x4000000>; /* 64MB */
+41: 			reusable;
+42: 			linux,cma-default;
+43: 		};
+44: 	};
+45: 
+46: 	thermal-zones {
+
+arch/arm/boot/dts/broadcom/bcm2711.dtsi:1115
+1115: 	interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
+1116: };
+1117: 
+1118: &cma {
+1119: 	/*
+1120: 	 * arm64 reserves the CMA by default somewhere in ZONE_DMA32,
+1121: 	 * that's not good enough for the BCM2711 as some devices can
+1122: 	 * only address the lower 1G of memory (ZONE_DMA).
+1123: 	 */
+1124: 	alloc-ranges = <0x0 0x00000000 0x40000000>;
+1125: };
+1126: 
+1127: &i2c0 {
+
+arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi:1
+1: // SPDX-License-Identifier: GPL-2.0
+2: #include "bcm270x-rpi.dtsi"
+3: 
+4: / {
+5: 	chosen {
+6: 		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0 cgroup_disable=memory numa_policy=interleave nvme.max_host_mem_size_mb=0";
+7: 	};
+8: 
+9: 	__overrides__ {
+10: 		arm_freq;
+
+arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi:76
+76: &vc4 {
+77: 	raspberrypi,firmware = <&firmware>;
+78: };
+79: 
+80: &cma {
+81: 	/* Limit cma to the lower 768MB to allow room for HIGHMEM on 32-bit */
+82: 	alloc-ranges = <0x0 0x00000000 0x30000000>;
+83: };
+84: 
+85: &soc {
+86: 	/* Add the physical <-> DMA mapping for the I/O space */
+
+FINAL /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/.config
+255: CONFIG_KALLSYMS_ALL=y
+510: CONFIG_CC_HAVE_STACKPROTECTOR_TLS=y
+511: CONFIG_STACKPROTECTOR_PER_TASK=y
+523: CONFIG_CMDLINE="console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait"
+524: CONFIG_CMDLINE_FROM_BOOTLOADER=y
+525: # CONFIG_CMDLINE_EXTEND is not set
+526: # CONFIG_CMDLINE_FORCE is not set
+761: # CONFIG_CMDLINE_PARTITION is not set
+2275: CONFIG_USB_RTL8152=y
+2276: CONFIG_USB_LAN78XX=y
+2289: CONFIG_USB_NET_SMSC95XX=y
+2291: CONFIG_USB_NET_NET1080=y
+2396: CONFIG_RT2800USB=y
+2403: CONFIG_RT2800_LIB=y
+2404: CONFIG_RT2X00_LIB_USB=y
+2405: CONFIG_RT2X00_LIB=y
+2589: CONFIG_TOUCHSCREEN_EDT_FT5X06=y
+3896: CONFIG_VIDEO_IMX219=y
+3911: CONFIG_VIDEO_IMX708=y
+3936: CONFIG_VIDEO_OV5647=y
+3981: CONFIG_VIDEO_DW9807_VCM=y
+4639: CONFIG_SND_USB_AUDIO=y
+6050: CONFIG_BTRFS_FS=y
+6057: CONFIG_F2FS_FS=y
+6202: CONFIG_NFS_FS=y
+6209: CONFIG_ROOT_NFS=y
+6220: CONFIG_SUNRPC=y
+6696: CONFIG_CMA_SIZE_MBYTES=256
+6769: CONFIG_DEBUG_INFO_BTF=y
+6772: CONFIG_DEBUG_INFO_BTF_MODULES=y
+6797: CONFIG_KGDB=y
+6801: CONFIG_KGDB_KDB=y
+6839: CONFIG_DEBUG_MEMORY_INIT=y
+6864: CONFIG_DETECT_HUNG_TASK=y
+6928: CONFIG_LATENCYTOP=y
+6950: CONFIG_FTRACE=y
+6952: CONFIG_FUNCTION_TRACER=y
+6954: CONFIG_DYNAMIC_FTRACE=y
+6956: CONFIG_FUNCTION_PROFILER=y
+6957: CONFIG_STACK_TRACER=y
+6958: CONFIG_IRQSOFF_TRACER=y
+6959: CONFIG_SCHED_TRACER=y
+6969: CONFIG_BLK_DEV_IO_TRACE=y
+7001: # CONFIG_UNWINDER_FRAME_POINTER is not set
+7003: CONFIG_ARM_UNWIND=y
+
+FINAL /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/.config
+260: CONFIG_KALLSYMS_ALL=y
+514: CONFIG_CC_HAVE_STACKPROTECTOR_TLS=y
+515: CONFIG_STACKPROTECTOR_PER_TASK=y
+527: CONFIG_CMDLINE="console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait"
+528: CONFIG_CMDLINE_FROM_BOOTLOADER=y
+529: # CONFIG_CMDLINE_EXTEND is not set
+530: # CONFIG_CMDLINE_FORCE is not set
+761: # CONFIG_CMDLINE_PARTITION is not set
+2269: CONFIG_USB_RTL8152=y
+2270: CONFIG_USB_LAN78XX=y
+2283: CONFIG_USB_NET_SMSC95XX=y
+2285: CONFIG_USB_NET_NET1080=y
+2390: CONFIG_RT2800USB=y
+2397: CONFIG_RT2800_LIB=y
+2398: CONFIG_RT2X00_LIB_USB=y
+2399: CONFIG_RT2X00_LIB=y
+2583: CONFIG_TOUCHSCREEN_EDT_FT5X06=y
+3891: CONFIG_VIDEO_IMX219=y
+3906: CONFIG_VIDEO_IMX708=y
+3931: CONFIG_VIDEO_OV5647=y
+3976: CONFIG_VIDEO_DW9807_VCM=y
+4634: CONFIG_SND_USB_AUDIO=y
+6044: CONFIG_BTRFS_FS=y
+6051: CONFIG_F2FS_FS=y
+6196: CONFIG_NFS_FS=y
+6203: CONFIG_ROOT_NFS=y
+6214: CONFIG_SUNRPC=y
+6690: CONFIG_CMA_SIZE_MBYTES=256
+6763: CONFIG_DEBUG_INFO_BTF=y
+6766: CONFIG_DEBUG_INFO_BTF_MODULES=y
+6791: CONFIG_KGDB=y
+6795: CONFIG_KGDB_KDB=y
+6833: CONFIG_DEBUG_MEMORY_INIT=y
+6858: CONFIG_DETECT_HUNG_TASK=y
+6922: CONFIG_LATENCYTOP=y
+6944: CONFIG_FTRACE=y
+6946: CONFIG_FUNCTION_TRACER=y
+6948: CONFIG_DYNAMIC_FTRACE=y
+6950: CONFIG_FUNCTION_PROFILER=y
+6951: CONFIG_STACK_TRACER=y
+6952: CONFIG_IRQSOFF_TRACER=y
+6954: CONFIG_SCHED_TRACER=y
+6964: CONFIG_BLK_DEV_IO_TRACE=y
+6996: # CONFIG_UNWINDER_FRAME_POINTER is not set
+6998: CONFIG_ARM_UNWIND=y
+
+FINAL /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/.config
+254: CONFIG_KALLSYMS_ALL=y
+519: CONFIG_CMDLINE="console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait"
+520: CONFIG_CMDLINE_FROM_BOOTLOADER=y
+521: # CONFIG_CMDLINE_EXTEND is not set
+522: # CONFIG_CMDLINE_FORCE is not set
+758: # CONFIG_CMDLINE_PARTITION is not set
+2272: CONFIG_USB_RTL8152=y
+2273: CONFIG_USB_LAN78XX=y
+2286: CONFIG_USB_NET_SMSC95XX=y
+2288: CONFIG_USB_NET_NET1080=y
+2393: CONFIG_RT2800USB=y
+2400: CONFIG_RT2800_LIB=y
+2401: CONFIG_RT2X00_LIB_USB=y
+2402: CONFIG_RT2X00_LIB=y
+2586: CONFIG_TOUCHSCREEN_EDT_FT5X06=y
+3893: CONFIG_VIDEO_IMX219=y
+3908: CONFIG_VIDEO_IMX708=y
+3933: CONFIG_VIDEO_OV5647=y
+3978: CONFIG_VIDEO_DW9807_VCM=y
+4636: CONFIG_SND_USB_AUDIO=y
+6047: CONFIG_BTRFS_FS=y
+6054: CONFIG_F2FS_FS=y
+6199: CONFIG_NFS_FS=y
+6206: CONFIG_ROOT_NFS=y
+6217: CONFIG_SUNRPC=y
+6693: CONFIG_CMA_SIZE_MBYTES=256
+6766: CONFIG_DEBUG_INFO_BTF=y
+6770: CONFIG_DEBUG_INFO_BTF_MODULES=y
+6793: CONFIG_KGDB=y
+6797: CONFIG_KGDB_KDB=y
+6834: CONFIG_DEBUG_MEMORY_INIT=y
+6859: CONFIG_DETECT_HUNG_TASK=y
+6923: CONFIG_LATENCYTOP=y
+6945: CONFIG_FTRACE=y
+6947: CONFIG_FUNCTION_TRACER=y
+6949: CONFIG_DYNAMIC_FTRACE=y
+6951: CONFIG_FUNCTION_PROFILER=y
+6952: CONFIG_STACK_TRACER=y
+6953: CONFIG_IRQSOFF_TRACER=y
+6954: CONFIG_SCHED_TRACER=y
+6964: CONFIG_BLK_DEV_IO_TRACE=y
+6996: # CONFIG_UNWINDER_FRAME_POINTER is not set
+6998: CONFIG_ARM_UNWIND=y
+
+FINAL /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/.config
+259: CONFIG_KALLSYMS_ALL=y
+523: CONFIG_CMDLINE="console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 root=/dev/mmcblk0p2 rootfstype=ext4 rootwait"
+524: CONFIG_CMDLINE_FROM_BOOTLOADER=y
+525: # CONFIG_CMDLINE_EXTEND is not set
+526: # CONFIG_CMDLINE_FORCE is not set
+758: # CONFIG_CMDLINE_PARTITION is not set
+2266: CONFIG_USB_RTL8152=y
+2267: CONFIG_USB_LAN78XX=y
+2280: CONFIG_USB_NET_SMSC95XX=y
+2282: CONFIG_USB_NET_NET1080=y
+2387: CONFIG_RT2800USB=y
+2394: CONFIG_RT2800_LIB=y
+2395: CONFIG_RT2X00_LIB_USB=y
+2396: CONFIG_RT2X00_LIB=y
+2580: CONFIG_TOUCHSCREEN_EDT_FT5X06=y
+3888: CONFIG_VIDEO_IMX219=y
+3903: CONFIG_VIDEO_IMX708=y
+3928: CONFIG_VIDEO_OV5647=y
+3973: CONFIG_VIDEO_DW9807_VCM=y
+4631: CONFIG_SND_USB_AUDIO=y
+6041: CONFIG_BTRFS_FS=y
+6048: CONFIG_F2FS_FS=y
+6193: CONFIG_NFS_FS=y
+6200: CONFIG_ROOT_NFS=y
+6211: CONFIG_SUNRPC=y
+6687: CONFIG_CMA_SIZE_MBYTES=256
+6760: CONFIG_DEBUG_INFO_BTF=y
+6764: CONFIG_DEBUG_INFO_BTF_MODULES=y
+6787: CONFIG_KGDB=y
+6791: CONFIG_KGDB_KDB=y
+6828: CONFIG_DEBUG_MEMORY_INIT=y
+6853: CONFIG_DETECT_HUNG_TASK=y
+6917: CONFIG_LATENCYTOP=y
+6939: CONFIG_FTRACE=y
+6941: CONFIG_FUNCTION_TRACER=y
+6943: CONFIG_DYNAMIC_FTRACE=y
+6945: CONFIG_FUNCTION_PROFILER=y
+6946: CONFIG_STACK_TRACER=y
+6947: CONFIG_IRQSOFF_TRACER=y
+6949: CONFIG_SCHED_TRACER=y
+6959: CONFIG_BLK_DEV_IO_TRACE=y
+6991: # CONFIG_UNWINDER_FRAME_POINTER is not set
+6993: CONFIG_ARM_UNWIND=y
+
+Makefile:840
+840: stackp-flags-$(CONFIG_STACKPROTECTOR_STRONG)      := -fstack-protector-strong
+841: 
+842: KBUILD_CFLAGS += $(stackp-flags-y)
+843: 
+844: KBUILD_RUSTFLAGS-$(CONFIG_WERROR) += -Dwarnings
+845: KBUILD_RUSTFLAGS += $(KBUILD_RUSTFLAGS-y)
+846: 
+847: ifdef CONFIG_FRAME_POINTER
+848: KBUILD_CFLAGS	+= -fno-omit-frame-pointer -fno-optimize-sibling-calls
+849: KBUILD_RUSTFLAGS += -Cforce-frame-pointers=y
+850: else
+851: # Some targets (ARM with Thumb2, for example), can't be built with frame
+852: # pointers.  For those, we don't have FUNCTION_TRACER automatically
+853: # select FRAME_POINTER.  However, FUNCTION_TRACER adds -pg, and this is
+854: # incompatible with -fomit-frame-pointer with current GCC, so we don't use
+855: # -fomit-frame-pointer with FUNCTION_TRACER.
+856: # In the Rust target specification, "frame-pointer" is set explicitly
+857: # to "may-omit".
+858: ifndef CONFIG_FUNCTION_TRACER
+859: KBUILD_CFLAGS	+= -fomit-frame-pointer
+860: endif
+861: endif
+862: 
+863: # Initialize all stack variables with a 0xAA pattern.
+864: ifdef CONFIG_INIT_STACK_ALL_PATTERN
+
+scripts/Makefile.clang:1
+1: # Individual arch/{arch}/Makefiles should use -EL/-EB to set intended
+2: # endianness and -m32/-m64 to set word size based on Kconfigs instead of
+3: # relying on the target triple.
+4: CLANG_TARGET_FLAGS_arm		:= arm-linux-gnueabi
+5: CLANG_TARGET_FLAGS_arm64	:= aarch64-linux-gnu
+6: CLANG_TARGET_FLAGS_hexagon	:= hexagon-linux-musl
+7: CLANG_TARGET_FLAGS_loongarch	:= loongarch64-linux-gnusf
+8: CLANG_TARGET_FLAGS_m68k		:= m68k-linux-gnu
+9: CLANG_TARGET_FLAGS_mips		:= mipsel-linux-gnu
+10: CLANG_TARGET_FLAGS_powerpc	:= powerpc64le-linux-gnu
+11: CLANG_TARGET_FLAGS_riscv	:= riscv64-linux-gnu
+12: CLANG_TARGET_FLAGS_s390		:= s390x-linux-gnu
+13: CLANG_TARGET_FLAGS_x86		:= x86_64-linux-gnu
+14: CLANG_TARGET_FLAGS_um		:= $(CLANG_TARGET_FLAGS_$(SUBARCH))
+15: CLANG_TARGET_FLAGS		:= $(CLANG_TARGET_FLAGS_$(SRCARCH))
+16: 
+17: ifeq ($(CLANG_TARGET_FLAGS),)
+18: $(error add '--target=' option to scripts/Makefile.clang)
+19: else
+20: CLANG_FLAGS	+= --target=$(CLANG_TARGET_FLAGS)
+21: endif
+22: 
+23: ifeq ($(LLVM_IAS),0)
+24: CLANG_FLAGS	+= -fno-integrated-as
+25: GCC_TOOLCHAIN_DIR := $(dir $(shell which $(CROSS_COMPILE)elfedit))
+26: CLANG_FLAGS	+= --prefix=$(GCC_TOOLCHAIN_DIR)$(notdir $(CROSS_COMPILE))
+27: else
+28: CLANG_FLAGS	+= -fintegrated-as
+29: endif
+30: # By default, clang only warns when it encounters an unknown warning flag or
+31: # certain optimization flags it knows it has not implemented.
+32: # Make it behave more like gcc by erroring when these flags are encountered
+33: # so they can be implemented or wrapped in cc-option.
+34: CLANG_FLAGS	+= -Werror=unknown-warning-option
+35: CLANG_FLAGS	+= -Werror=ignored-optimization-argument
+36: CLANG_FLAGS	+= -Werror=option-ignored
+37: CLANG_FLAGS	+= -Werror=unused-command-line-argument
+38: KBUILD_CPPFLAGS	+= $(CLANG_FLAGS)
+39: export CLANG_FLAGS
+
+arch/arm/include/asm/stackprotector.h:1
+1: /* SPDX-License-Identifier: GPL-2.0 */
+2: /*
+3:  * GCC stack protector support.
+4:  *
+5:  * Stack protector works by putting predefined pattern at the start of
+6:  * the stack frame and verifying that it hasn't been overwritten when
+7:  * returning from the function.  The pattern is called stack canary
+8:  * and gcc expects it to be defined by a global variable called
+9:  * "__stack_chk_guard" on ARM.  This prevents SMP systems from using a
+10:  * different value for each task unless we enable a GCC plugin that
+11:  * replaces these symbol references with references to each task's own
+12:  * value.
+13:  */
+14: 
+15: #ifndef _ASM_STACKPROTECTOR_H
+16: #define _ASM_STACKPROTECTOR_H 1
+17: 
+18: #include <asm/thread_info.h>
+19: 
+20: extern unsigned long __stack_chk_guard;
+21: 
+22: /*
+23:  * Initialize the stackprotector canary value.
+24:  *
+25:  * NOTE: this must only be called from functions that never return,
+26:  * and it must always be inlined.
+27:  */
+28: static __always_inline void boot_init_stack_canary(void)
+29: {
+30: 	unsigned long canary = get_random_canary();
+31: 
+32: 	current->stack_canary = canary;
+33: #ifndef CONFIG_STACKPROTECTOR_PER_TASK
+34: 	__stack_chk_guard = current->stack_canary;
+35: #endif
+36: }
+37: 
+38: #endif	/* _ASM_STACKPROTECTOR_H */
+
+arch/arm/Kconfig:1372
+1372: 	select PARAVIRT
+1373: 	help
+1374: 	  Say Y if you want to run Linux in a Virtual Machine on Xen on ARM.
+1375: 
+1376: config CC_HAVE_STACKPROTECTOR_TLS
+1377: 	def_bool $(cc-option,-mtp=cp15 -mstack-protector-guard=tls -mstack-protector-guard-offset=0)
+1378: 
+1379: config STACKPROTECTOR_PER_TASK
+1380: 	bool "Use a unique stack canary value for each task"
+1381: 	depends on STACKPROTECTOR && CURRENT_POINTER_IN_TPIDRURO && !XIP_DEFLATED_DATA
+1382: 	depends on GCC_PLUGINS || CC_HAVE_STACKPROTECTOR_TLS
+1383: 	select GCC_PLUGIN_ARM_SSP_PER_TASK if !CC_HAVE_STACKPROTECTOR_TLS
+1384: 	default y
+1385: 	help
+1386: 	  Due to the fact that GCC uses an ordinary symbol reference from
+1387: 	  which to load the value of the stack canary, this value can only
+1388: 	  change at reboot time on SMP systems, and all tasks running in the
+1389: 	  kernel's address space are forced to use the same canary value for
+1390: 	  the entire duration that the system is up.
+
+kernel/sched/Makefile:1
+1: # SPDX-License-Identifier: GPL-2.0
+2: 
+3: # The compilers are complaining about unused variables inside an if(0) scope
+4: # block. This is daft, shut them up.
+5: ccflags-y += $(call cc-disable-warning, unused-but-set-variable)
+6: 
+7: # These files are disabled because they produce non-interesting flaky coverage
+8: # that is not a function of syscall inputs. E.g. involuntary context switches.
+9: KCOV_INSTRUMENT := n
+10: 
+11: # Disable KCSAN to avoid excessive noise and performance degradation. To avoid
+12: # false positives ensure barriers implied by sched functions are instrumented.
+13: KCSAN_SANITIZE := n
+14: KCSAN_INSTRUMENT_BARRIERS := y
+15: 
+16: ifneq ($(CONFIG_SCHED_OMIT_FRAME_POINTER),y)
+17: # According to Alan Modra <alan@linuxcare.com.au>, the -fno-omit-frame-pointer is
+18: # needed for x86 only.  Why this used to be enabled for all architectures is beyond
+19: # me.  I suspect most platforms don't need this, but until we know that for sure
+20: # I turn this off for IA-64 only.  Andreas Schwab says it's also needed on m68k
+21: # to get a correct value for the wait-channel (WCHAN in ps). --davidm
+22: CFLAGS_core.o := $(PROFILING) -fno-omit-frame-pointer
+23: endif
+24: 
+25: #
+26: # Build efficiency:
+27: #
+28: # These compilation units have roughly the same size and complexity - so their
+29: # build parallelizes well and finishes roughly at once:
+30: #
+31: obj-y += core.o
+32: obj-y += fair.o
+33: obj-y += build_policy.o
+34: obj-y += build_utility.o
+
+kernel/latencytop.c:70
+70: {
+71: 	int err;
+72: 
+73: 	err = proc_dointvec(table, write, buffer, lenp, ppos);
+74: 	if (latencytop_enabled)
+75: 		force_schedstat_enabled();
+76: 
+77: 	return err;
+78: }
+79: 
+80: static struct ctl_table latencytop_sysctl[] = {
+81: 	{
+82: 		.procname   = "latencytop",
+83: 		.data       = &latencytop_enabled,
+84: 		.maxlen     = sizeof(int),
+85: 		.mode       = 0644,
+86: 		.proc_handler   = sysctl_latencytop,
+87: 	},
+88: };
+89: #endif
+90: 
+91: void clear_tsk_latency_tracing(struct task_struct *p)
+92: {
+93: 	unsigned long flags;
+94: 
+95: 	raw_spin_lock_irqsave(&latency_lock, flags);
+96: 	memset(&p->latency_record, 0, sizeof(p->latency_record));
+97: 	p->latency_record_count = 0;
+98: 	raw_spin_unlock_irqrestore(&latency_lock, flags);
+99: }
+100: 
+101: static void clear_global_latency_tracing(void)
+102: {
+103: 	unsigned long flags;
+104: 
+105: 	raw_spin_lock_irqsave(&latency_lock, flags);
+106: 	memset(&latency_record, 0, sizeof(latency_record));
+107: 	raw_spin_unlock_irqrestore(&latency_lock, flags);
+108: }
+109: 
+110: static void __sched
+111: account_global_scheduler_latency(struct task_struct *tsk,
+112: 				 struct latency_record *lat)
+113: {
+114: 	int firstnonnull = MAXLR;
+115: 	int i;
+116: 
+117: 	/* skip kernel threads for now */
+118: 	if (!tsk->mm)
+119: 		return;
+120: 
+121: 	for (i = 0; i < MAXLR; i++) {
+122: 		int q, same = 1;
+123: 
+124: 		/* Nothing stored: */
+125: 		if (!latency_record[i].backtrace[0]) {
+126: 			if (firstnonnull > i)
+127: 				firstnonnull = i;
+128: 			continue;
+129: 		}
+130: 		for (q = 0; q < LT_BACKTRACEDEPTH; q++) {
+131: 			unsigned long record = lat->backtrace[q];
+132: 
+133: 			if (latency_record[i].backtrace[q] != record) {
+134: 				same = 0;
+135: 				break;
+136: 			}
+137: 
+138: 			/* 0 entry marks end of backtrace: */
+139: 			if (!record)
+140: 				break;
+141: 		}
+142: 		if (same) {
+143: 			latency_record[i].count++;
+144: 			latency_record[i].time += lat->time;
+145: 			if (lat->time > latency_record[i].max)
+
+kernel/hung_task.c:380
+380: 			hung_last_checked = jiffies;
+381: 			continue;
+382: 		}
+383: 		schedule_timeout_interruptible(t);
+384: 	}
+385: 
+386: 	return 0;
+387: }
+388: 
+389: static int __init hung_task_init(void)
+390: {
+391: 	atomic_notifier_chain_register(&panic_notifier_list, &panic_block);
+392: 
+393: 	/* Disable hung task detector on suspend */
+394: 	pm_notifier(hungtask_pm_notify, 0);
+395: 
+396: 	watchdog_task = kthread_run(watchdog, NULL, "khungtaskd");
+397: 	hung_task_sysctl_init();
+398: 
+399: 	return 0;
+400: }
+401: subsys_initcall(hung_task_init);
+
+arch/arm/kernel/entry-armv.S:523
+523: 	mrc	p15, 0, r6, c3, c0, 0		@ Get domain register
+524: 	str	r6, [r1, #TI_CPU_DOMAIN]	@ Save old domain register
+525: 	ldr	r6, [r2, #TI_CPU_DOMAIN]
+526: #endif
+527: 	switch_tls r1, r4, r5, r3, r7
+528: #if defined(CONFIG_STACKPROTECTOR) && !defined(CONFIG_SMP) && \
+529:     !defined(CONFIG_STACKPROTECTOR_PER_TASK)
+530: 	ldr	r8, =__stack_chk_guard
+531: 	.if (TSK_STACK_CANARY > IMM12_MASK)
+532: 	add	r9, r2, #TSK_STACK_CANARY & ~IMM12_MASK
+533: 	ldr	r9, [r9, #TSK_STACK_CANARY & IMM12_MASK]
+534: 	.else
+535: 	ldr	r9, [r2, #TSK_STACK_CANARY & IMM12_MASK]
+536: 	.endif
+537: #endif
+538: 	mov	r7, r2				@ Preserve 'next'
+539: #ifdef CONFIG_CPU_USE_DOMAINS
+540: 	mcr	p15, 0, r6, c3, c0, 0		@ Set domain register
+541: #endif
+
+kernel/fork.c:1145
+1145: 	setup_thread_stack(tsk, orig);
+1146: 	clear_user_return_notifier(tsk);
+1147: 	clear_tsk_need_resched(tsk);
+1148: 	set_task_stack_end_magic(tsk);
+1149: 	clear_syscall_work_syscall_user_dispatch(tsk);
+1150: 
+1151: #ifdef CONFIG_STACKPROTECTOR
+1152: 	tsk->stack_canary = get_random_canary();
+1153: #endif
+1154: 	if (orig->cpus_ptr == &orig->cpus_mask)
+1155: 		tsk->cpus_ptr = &tsk->cpus_mask;

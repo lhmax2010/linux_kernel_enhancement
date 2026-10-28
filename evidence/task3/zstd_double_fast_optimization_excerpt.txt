@@ -1,0 +1,255 @@
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 499, 
+                   Column: 16 }
+Function:        ZSTD_compressBlock_doubleFast
+Args:
+  - String:          ''''
+  - Callee:          ZSTD_compressBlock_doubleFast_noDict_4
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 479, 
+                       Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          ZSTD_compressBlock_doubleFast
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 493, 
+                       Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-12695'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          ZSTD_compressBlock_doubleFast
+  - String:          ':'
+  - Line:            '9'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 501, 
+                   Column: 16 }
+Function:        ZSTD_compressBlock_doubleFast
+Args:
+  - String:          ''''
+  - Callee:          ZSTD_compressBlock_doubleFast_noDict_5
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 480, 
+                       Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          ZSTD_compressBlock_doubleFast
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 493, 
+                       Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-12685'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          ZSTD_compressBlock_doubleFast
+  - String:          ':'
+  - Line:            '11'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 503, 
+                   Column: 16 }
+Function:        ZSTD_compressBlock_doubleFast
+Args:
+  - String:          ''''
+  - Callee:          ZSTD_compressBlock_doubleFast_noDict_6
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 481, 
+                       Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          ZSTD_compressBlock_doubleFast
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 493, 
+                       Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-12685'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          ZSTD_compressBlock_doubleFast
+  - String:          ':'
+  - Line:            '13'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 505, 
+                   Column: 16 }
+Function:        ZSTD_compressBlock_doubleFast
+Args:
+  - String:          ''''
+  - Callee:          ZSTD_compressBlock_doubleFast_noDict_7
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 482, 
+                       Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          ZSTD_compressBlock_doubleFast
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 493, 
+                       Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-12685'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          ZSTD_compressBlock_doubleFast
+  - String:          ':'
+  - Line:            '15'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 519, 
+                   Column: 16 }
+Function:        ZSTD_compressBlock_doubleFast_dictMatchState
+Args:
+  - String:          ''''
+  - Callee:          ZSTD_compressBlock_doubleFast_dictMatchState_4
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 484, 
+                       Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          ZSTD_compressBlock_doubleFast_dictMatchState
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 513, 
+                       Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10895'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          ZSTD_compressBlock_doubleFast_dictMatchState
+  - String:          ':'
+  - Line:            '9'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 521, 
+                   Column: 16 }
+Function:        ZSTD_compressBlock_doubleFast_dictMatchState
+Args:
+  - String:          ''''
+  - Callee:          ZSTD_compressBlock_doubleFast_dictMatchState_5
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 485, 
+                       Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          ZSTD_compressBlock_doubleFast_dictMatchState
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 513, 
+                       Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10885'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          ZSTD_compressBlock_doubleFast_dictMatchState
+  - String:          ':'
+  - Line:            '11'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 523, 
+                   Column: 16 }
+Function:        ZSTD_compressBlock_doubleFast_dictMatchState
+Args:
+  - String:          ''''
+  - Callee:          ZSTD_compressBlock_doubleFast_dictMatchState_6
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 486, 
+                       Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          ZSTD_compressBlock_doubleFast_dictMatchState
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 513, 
+                       Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10885'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          ZSTD_compressBlock_doubleFast_dictMatchState
+  - String:          ':'
+  - Line:            '13'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 525, 
+                   Column: 16 }
+Function:        ZSTD_compressBlock_doubleFast_dictMatchState
+Args:
+  - String:          ''''
+  - Callee:          ZSTD_compressBlock_doubleFast_dictMatchState_7
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 487, 
+                       Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          ZSTD_compressBlock_doubleFast_dictMatchState
+    DebugLoc:        { File: 'lib/zstd/compress/zstd_double_fast.c', Line: 513, 
+                       Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10885'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          ZSTD_compressBlock_doubleFast_dictMatchState
+  - String:          ':'
+  - Line:            '15'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+

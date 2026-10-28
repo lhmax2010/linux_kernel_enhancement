@@ -1,0 +1,1250 @@
+objdump -dr /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/drivers/net/wireless/ralink/rt2x00/rt2800lib.o
+Selected actual object excerpts (full output stays in temp/task3).
+FUNCTION rt2800_config_txpower
+instructions=2644; relocatable direct calls={'__gnu_mcount_nc': 1, 'rt2800_get_gain_calibration_delta': 2, 'rt2800_get_txpower_bw_comp': 2, '___ratelimit': 3, 'warn_slowpath_fmt': 1, 'mutex_lock': 12, 'mutex_unlock': 9, 'rt2800_vco_calibration': 1, '__stack_chk_fail': 1, '_dev_warn': 2, '_dev_err': 1}
+First 24 instructions:
+000032a4 <rt2800_config_txpower>:
+    32a4:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    32a8:	e28db01c 	add	fp, sp, #28
+    32ac:	e24dd094 	sub	sp, sp, #148	@ 0x94
+    32b0:	e1a05000 	mov	r5, r0
+    32b4:	e3000000 	movw	r0, #0
+			32b4: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    32b8:	e3400000 	movt	r0, #0
+			32b8: R_ARM_MOVT_ABS	__stack_chk_guard
+    32bc:	e1a07001 	mov	r7, r1
+    32c0:	e5900000 	ldr	r0, [r0]
+    32c4:	e50b2030 	str	r2, [fp, #-48]	@ 0xffffffd0
+    32c8:	e50b0020 	str	r0, [fp, #-32]	@ 0xffffffe0
+    32cc:	e92d4000 	stmfd	sp!, {lr}
+    32d0:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			32d0: R_ARM_CALL	__gnu_mcount_nc
+    32d4:	e300051c 	movw	r0, #1308	@ 0x51c
+    32d8:	e1a06005 	mov	r6, r5
+    32dc:	e1b600b0 	ldrh	r0, [r6, r0]!	@ <UNPREDICTABLE>
+    32e0:	e3038593 	movw	r8, #13715	@ 0x3593
+    32e4:	e5971000 	ldr	r1, [r7]
+    32e8:	e1a0a005 	mov	sl, r5
+    32ec:	e1500008 	cmp	r0, r8
+    32f0:	e50b5028 	str	r5, [fp, #-40]	@ 0xffffffd8
+    32f4:	e50b1038 	str	r1, [fp, #-56]	@ 0xffffffc8
+    32f8:	0a000006 	beq	3318 <rt2800_config_txpower+0x74>
+    32fc:	e3062352 	movw	r2, #25426	@ 0x6352
+    3300:	e1500002 	cmp	r0, r2
+    32b0:	e1a05000 	mov	r5, r0
+    32b4:	e3000000 	movw	r0, #0
+			32b4: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    32b8:	e3400000 	movt	r0, #0
+			32b4: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    32b8:	e3400000 	movt	r0, #0
+			32b8: R_ARM_MOVT_ABS	__stack_chk_guard
+    32bc:	e1a07001 	mov	r7, r1
+    59e0:	e5950004 	ldr	r0, [r5, #4]
+    59e4:	e3001000 	movw	r1, #0
+			59e4: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    59e8:	e3401000 	movt	r1, #0
+			59e4: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    59e8:	e3401000 	movt	r1, #0
+			59e8: R_ARM_MOVT_ABS	__stack_chk_guard
+    59ec:	e5911000 	ldr	r1, [r1]
+			5b28: R_ARM_CALL	rt2800_vco_calibration
+    5b2c:	e3001000 	movw	r1, #0
+			5b2c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    5b30:	e51b0020 	ldr	r0, [fp, #-32]	@ 0xffffffe0
+    5b30:	e51b0020 	ldr	r0, [fp, #-32]	@ 0xffffffe0
+    5b34:	e3401000 	movt	r1, #0
+			5b34: R_ARM_MOVT_ABS	__stack_chk_guard
+    5b38:	e5911000 	ldr	r1, [r1]
+    5b40:	024bd01c 	subeq	sp, fp, #28
+    5b44:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    5b48:	ebfffffe 	bl	0 <__stack_chk_fail>
+			5b48: R_ARM_CALL	__stack_chk_fail
+    5b44:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+    5b48:	ebfffffe 	bl	0 <__stack_chk_fail>
+			5b48: R_ARM_CALL	__stack_chk_fail
+    5b4c:	e59a000c 	ldr	r0, [sl, #12]
+    5bb8:	eafffa5d 	b	4534 <rt2800_config_txpower+0x1290>
+    5bbc:	e3001000 	movw	r1, #0
+			5bbc: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    5bc0:	e51b0020 	ldr	r0, [fp, #-32]	@ 0xffffffe0
+    5bc0:	e51b0020 	ldr	r0, [fp, #-32]	@ 0xffffffe0
+    5bc4:	e3401000 	movt	r1, #0
+			5bc4: R_ARM_MOVT_ABS	__stack_chk_guard
+    5bc8:	e5911000 	ldr	r1, [r1]
+
+FUNCTION rt2800_config_channel
+instructions=14075; relocatable direct calls={'__gnu_mcount_nc': 1, 'rt2800_bbp_write_with_rx_chain': 6, 'mutex_lock': 321, 'mutex_unlock': 270, 'rt2800_rfcsr_read': 75, 'usleep_range_state': 5, 'rt2800_freq_cal_mode1': 5, 'clk_get_rate': 1, 'rt2800_config_channel_rf55xx': 1, 'rt2800_bbp_write': 1, 'rt2800_bbp_glrt_write': 6, '__stack_chk_fail': 1}
+First 24 instructions:
+0000696c <rt2800_config_channel>:
+    696c:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    6970:	e28db01c 	add	fp, sp, #28
+    6974:	e24dd024 	sub	sp, sp, #36	@ 0x24
+    6978:	e1a08000 	mov	r8, r0
+    697c:	e3000000 	movw	r0, #0
+			697c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    6980:	e3400000 	movt	r0, #0
+			6980: R_ARM_MOVT_ABS	__stack_chk_guard
+    6984:	e1a05003 	mov	r5, r3
+    6988:	e5900000 	ldr	r0, [r0]
+    698c:	e1a09001 	mov	r9, r1
+    6990:	e1a04002 	mov	r4, r2
+    6994:	e58d0020 	str	r0, [sp, #32]
+    6998:	e92d4000 	stmfd	sp!, {lr}
+    699c:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			699c: R_ARM_CALL	__gnu_mcount_nc
+    69a0:	e300051c 	movw	r0, #1308	@ 0x51c
+    69a4:	e1a0a008 	mov	sl, r8
+    69a8:	e1ba20b0 	ldrh	r2, [sl, r0]!
+    69ac:	e3033883 	movw	r3, #14467	@ 0x3883
+    69b0:	e1d500b6 	ldrh	r0, [r5, #6]
+    69b4:	e5941000 	ldr	r1, [r4]
+    69b8:	e1520003 	cmp	r2, r3
+    69bc:	13033593 	movwne	r3, #13715	@ 0x3593
+    69c0:	11520003 	cmpne	r2, r3
+    69c4:	e58d4014 	str	r4, [sp, #20]
+    69c8:	1a000003 	bne	69dc <rt2800_config_channel+0x70>
+    6978:	e1a08000 	mov	r8, r0
+    697c:	e3000000 	movw	r0, #0
+			697c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    6980:	e3400000 	movt	r0, #0
+			697c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+    6980:	e3400000 	movt	r0, #0
+			6980: R_ARM_MOVT_ABS	__stack_chk_guard
+    6984:	e1a05003 	mov	r5, r3
+    6b08:	e1a00008 	mov	r0, r8
+    6b0c:	c3001048 	movwgt	r1, #72	@ 0x48
+    6b10:	ebfffffe 	bl	3c058 <rt2800_bbp_write_with_rx_chain>
+			6b10: R_ARM_CALL	rt2800_bbp_write_with_rx_chain
+    6b0c:	c3001048 	movwgt	r1, #72	@ 0x48
+    6b10:	ebfffffe 	bl	3c058 <rt2800_bbp_write_with_rx_chain>
+			6b10: R_ARM_CALL	rt2800_bbp_write_with_rx_chain
+    6b14:	e3a00000 	mov	r0, #0
+    72b4:	e1a00008 	mov	r0, r8
+    72b8:	e3a0100b 	mov	r1, #11
+    72bc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			72bc: R_ARM_CALL	rt2800_rfcsr_read
+    72b8:	e3a0100b 	mov	r1, #11
+    72bc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			72bc: R_ARM_CALL	rt2800_rfcsr_read
+    72c0:	e1a06000 	mov	r6, r0
+    7390:	e1a00008 	mov	r0, r8
+    7394:	e3a01031 	mov	r1, #49	@ 0x31
+    7398:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7398: R_ARM_CALL	rt2800_rfcsr_read
+    7394:	e3a01031 	mov	r1, #49	@ 0x31
+    7398:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7398: R_ARM_CALL	rt2800_rfcsr_read
+    739c:	e1a06000 	mov	r6, r0
+    7480:	e1a00008 	mov	r0, r8
+    7484:	e3a01032 	mov	r1, #50	@ 0x32
+    7488:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7488: R_ARM_CALL	rt2800_rfcsr_read
+    7484:	e3a01032 	mov	r1, #50	@ 0x32
+    7488:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7488: R_ARM_CALL	rt2800_rfcsr_read
+    748c:	e1a06000 	mov	r6, r0
+    7558:	e1a00008 	mov	r0, r8
+    755c:	e3a01003 	mov	r1, #3
+    7560:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7560: R_ARM_CALL	rt2800_rfcsr_read
+    755c:	e3a01003 	mov	r1, #3
+    7560:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7560: R_ARM_CALL	rt2800_rfcsr_read
+    7564:	e1a06000 	mov	r6, r0
+    7630:	e1a00008 	mov	r0, r8
+    7634:	e3a01006 	mov	r1, #6
+    7638:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7638: R_ARM_CALL	rt2800_rfcsr_read
+    7634:	e3a01006 	mov	r1, #6
+    7638:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7638: R_ARM_CALL	rt2800_rfcsr_read
+    763c:	e1a06000 	mov	r6, r0
+    770c:	e1a00008 	mov	r0, r8
+    7710:	e3a0100c 	mov	r1, #12
+    7714:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7714: R_ARM_CALL	rt2800_rfcsr_read
+    7710:	e3a0100c 	mov	r1, #12
+    7714:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7714: R_ARM_CALL	rt2800_rfcsr_read
+    7718:	e1a06000 	mov	r6, r0
+    77e0:	e1a00008 	mov	r0, r8
+    77e4:	e3a0100d 	mov	r1, #13
+    77e8:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			77e8: R_ARM_CALL	rt2800_rfcsr_read
+    77e4:	e3a0100d 	mov	r1, #13
+    77e8:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			77e8: R_ARM_CALL	rt2800_rfcsr_read
+    77ec:	e1a06000 	mov	r6, r0
+    78b8:	e1a00008 	mov	r0, r8
+    78bc:	e3a01001 	mov	r1, #1
+    78c0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			78c0: R_ARM_CALL	rt2800_rfcsr_read
+    78bc:	e3a01001 	mov	r1, #1
+    78c0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			78c0: R_ARM_CALL	rt2800_rfcsr_read
+    78c4:	e1a06000 	mov	r6, r0
+    79b4:	e1a00008 	mov	r0, r8
+    79b8:	e3a01017 	mov	r1, #23
+    79bc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			79bc: R_ARM_CALL	rt2800_rfcsr_read
+    79b8:	e3a01017 	mov	r1, #23
+    79bc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			79bc: R_ARM_CALL	rt2800_rfcsr_read
+    79c0:	e1a06000 	mov	r6, r0
+    7acc:	e1a00008 	mov	r0, r8
+    7ad0:	e3a01018 	mov	r1, #24
+    7ad4:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7ad4: R_ARM_CALL	rt2800_rfcsr_read
+    7ad0:	e3a01018 	mov	r1, #24
+    7ad4:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7ad4: R_ARM_CALL	rt2800_rfcsr_read
+    7ad8:	e1a06000 	mov	r6, r0
+    7b98:	e1a00008 	mov	r0, r8
+    7b9c:	e3a0101f 	mov	r1, #31
+    7ba0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7ba0: R_ARM_CALL	rt2800_rfcsr_read
+    7b9c:	e3a0101f 	mov	r1, #31
+    7ba0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7ba0: R_ARM_CALL	rt2800_rfcsr_read
+    7ba4:	e1a06000 	mov	r6, r0
+    7c68:	e1a00008 	mov	r0, r8
+    7c6c:	e3a01007 	mov	r1, #7
+    7c70:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7c70: R_ARM_CALL	rt2800_rfcsr_read
+    7c6c:	e3a01007 	mov	r1, #7
+    7c70:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7c70: R_ARM_CALL	rt2800_rfcsr_read
+    7c74:	e1a06000 	mov	r6, r0
+    7d38:	e1a00008 	mov	r0, r8
+    7d3c:	e3a0101e 	mov	r1, #30
+    7d40:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7d40: R_ARM_CALL	rt2800_rfcsr_read
+    7d3c:	e3a0101e 	mov	r1, #30
+    7d40:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7d40: R_ARM_CALL	rt2800_rfcsr_read
+    7d44:	e1a06000 	mov	r6, r0
+    7f5c:	e1a00008 	mov	r0, r8
+    7f60:	e3a01001 	mov	r1, #1
+    7f64:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7f64: R_ARM_CALL	rt2800_rfcsr_read
+    7f60:	e3a01001 	mov	r1, #1
+    7f64:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			7f64: R_ARM_CALL	rt2800_rfcsr_read
+    7f68:	e1a06000 	mov	r6, r0
+    820c:	e58d000c 	str	r0, [sp, #12]
+    8210:	e1a00008 	mov	r0, r8
+    8214:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			8214: R_ARM_CALL	rt2800_rfcsr_read
+    8210:	e1a00008 	mov	r0, r8
+    8214:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			8214: R_ARM_CALL	rt2800_rfcsr_read
+    8218:	e1a05000 	mov	r5, r0
+    8a90:	e1a00008 	mov	r0, r8
+    8a94:	e3a0100b 	mov	r1, #11
+    8a98:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			8a98: R_ARM_CALL	rt2800_rfcsr_read
+
+FUNCTION rt2800_init_bbp
+instructions=7610; relocatable direct calls={'__gnu_mcount_nc': 1, 'mutex_lock': 283, 'mutex_unlock': 272, '___ratelimit': 1, 'rt2800_init_bbp_early': 3, 'rt2800_bbp4_mac_if_ctrl': 4, 'rt2800_disable_unused_dac_adc': 3, 'rt2800_init_freq_calibration': 2, 'warn_slowpath_fmt': 2, '__stack_chk_fail': 1, '_dev_warn': 1}
+First 24 instructions:
+00016884 <rt2800_init_bbp>:
+   16884:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   16888:	e28db01c 	add	fp, sp, #28
+   1688c:	e24dd01c 	sub	sp, sp, #28
+   16890:	e1a0a000 	mov	sl, r0
+   16894:	e3000000 	movw	r0, #0
+			16894: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   16898:	e3400000 	movt	r0, #0
+			16898: R_ARM_MOVT_ABS	__stack_chk_guard
+   1689c:	e5900000 	ldr	r0, [r0]
+   168a0:	e58d0018 	str	r0, [sp, #24]
+   168a4:	e92d4000 	stmfd	sp!, {lr}
+   168a8:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			168a8: R_ARM_CALL	__gnu_mcount_nc
+   168ac:	e300051c 	movw	r0, #1308	@ 0x51c
+   168b0:	e08a5000 	add	r5, sl, r0
+   168b4:	e3059b04 	movw	r9, #23300	@ 0x5b04
+   168b8:	e59a0524 	ldr	r0, [sl, #1316]	@ 0x524
+   168bc:	e340900a 	movt	r9, #10
+   168c0:	e58d500c 	str	r5, [sp, #12]
+   168c4:	e3500003 	cmp	r0, #3
+   168c8:	1a0001c3 	bne	16fdc <rt2800_init_bbp+0x758>
+   168cc:	e1d500b0 	ldrh	r0, [r5]
+   168d0:	e3021872 	movw	r1, #10354	@ 0x2872
+   168d4:	e1500001 	cmp	r0, r1
+   168d8:	1a0001bf 	bne	16fdc <rt2800_init_bbp+0x758>
+   168dc:	e1d500b2 	ldrh	r0, [r5, #2]
+   168e0:	e3500008 	cmp	r0, #8
+   16890:	e1a0a000 	mov	sl, r0
+   16894:	e3000000 	movw	r0, #0
+			16894: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   16898:	e3400000 	movt	r0, #0
+			16894: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   16898:	e3400000 	movt	r0, #0
+			16898: R_ARM_MOVT_ABS	__stack_chk_guard
+   1689c:	e5900000 	ldr	r0, [r0]
+   174c0:	1a001a45 	bne	1dddc <rt2800_init_bbp+0x7558>
+   174c4:	e1a0000a 	mov	r0, sl
+   174c8:	ebfffffe 	bl	3ece4 <rt2800_bbp4_mac_if_ctrl>
+			174c8: R_ARM_CALL	rt2800_bbp4_mac_if_ctrl
+   174c4:	e1a0000a 	mov	r0, sl
+   174c8:	ebfffffe 	bl	3ece4 <rt2800_bbp4_mac_if_ctrl>
+			174c8: R_ARM_CALL	rt2800_bbp4_mac_if_ctrl
+   174cc:	e3000564 	movw	r0, #1380	@ 0x564
+   184a4:	1a00164c 	bne	1dddc <rt2800_init_bbp+0x7558>
+   184a8:	e1a0000a 	mov	r0, sl
+   184ac:	ebfffffe 	bl	3ece4 <rt2800_bbp4_mac_if_ctrl>
+			184ac: R_ARM_CALL	rt2800_bbp4_mac_if_ctrl
+   184a8:	e1a0000a 	mov	r0, sl
+   184ac:	ebfffffe 	bl	3ece4 <rt2800_bbp4_mac_if_ctrl>
+			184ac: R_ARM_CALL	rt2800_bbp4_mac_if_ctrl
+   184b0:	e3000564 	movw	r0, #1380	@ 0x564
+			1c904: R_ARM_CALL	mutex_unlock
+   1c908:	e1a00006 	mov	r0, r6
+   1c90c:	ebfffffe 	bl	3ece4 <rt2800_bbp4_mac_if_ctrl>
+			1c90c: R_ARM_CALL	rt2800_bbp4_mac_if_ctrl
+   1c908:	e1a00006 	mov	r0, r6
+   1c90c:	ebfffffe 	bl	3ece4 <rt2800_bbp4_mac_if_ctrl>
+			1c90c: R_ARM_CALL	rt2800_bbp4_mac_if_ctrl
+   1c910:	e3a04000 	mov	r4, #0
+   1d47c:	e59d4010 	ldr	r4, [sp, #16]
+   1d480:	e1a00004 	mov	r0, r4
+   1d484:	ebfffffe 	bl	3ece4 <rt2800_bbp4_mac_if_ctrl>
+			1d484: R_ARM_CALL	rt2800_bbp4_mac_if_ctrl
+   1d480:	e1a00004 	mov	r0, r4
+   1d484:	ebfffffe 	bl	3ece4 <rt2800_bbp4_mac_if_ctrl>
+			1d484: R_ARM_CALL	rt2800_bbp4_mac_if_ctrl
+   1d488:	e5940654 	ldr	r0, [r4, #1620]	@ 0x654
+   1df24:	eaffffc8 	b	1de4c <rt2800_init_bbp+0x75c8>
+   1df28:	e3001000 	movw	r1, #0
+			1df28: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   1df2c:	e59d0018 	ldr	r0, [sp, #24]
+   1df2c:	e59d0018 	ldr	r0, [sp, #24]
+   1df30:	e3401000 	movt	r1, #0
+			1df30: R_ARM_MOVT_ABS	__stack_chk_guard
+   1df34:	e5911000 	ldr	r1, [r1]
+   1df3c:	024bd01c 	subeq	sp, fp, #28
+   1df40:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   1df44:	ebfffffe 	bl	0 <__stack_chk_fail>
+			1df44: R_ARM_CALL	__stack_chk_fail
+   1df40:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   1df44:	ebfffffe 	bl	0 <__stack_chk_fail>
+			1df44: R_ARM_CALL	__stack_chk_fail
+   1df48:	e59a000c 	ldr	r0, [sl, #12]
+
+FUNCTION rt2800_init_rfcsr
+instructions=23111; relocatable direct calls={'__gnu_mcount_nc': 1, 'rt2800_rfcsr_read': 20, 'mutex_lock': 520, 'mutex_unlock': 506, 'msleep': 11, '___ratelimit': 1, 'rt2800_rx_filter_calibration': 3, 'rt2800_freq_cal_mode1': 2, 'rt2800_normal_mode_setup_5xxx': 2, 'usleep_range_state': 1, 'rt2800_bbp4_mac_if_ctrl': 1, 'clk_get_rate': 1, 'rt2800_normal_mode_setup_3xxx': 1, '_dev_warn': 1, '__stack_chk_fail': 1}
+First 24 instructions:
+0001df6c <rt2800_init_rfcsr>:
+   1df6c:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   1df70:	e28db01c 	add	fp, sp, #28
+   1df74:	e24dd014 	sub	sp, sp, #20
+   1df78:	e1a08000 	mov	r8, r0
+   1df7c:	e3000000 	movw	r0, #0
+			1df7c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   1df80:	e3400000 	movt	r0, #0
+			1df80: R_ARM_MOVT_ABS	__stack_chk_guard
+   1df84:	e5900000 	ldr	r0, [r0]
+   1df88:	e58d0010 	str	r0, [sp, #16]
+   1df8c:	e92d4000 	stmfd	sp!, {lr}
+   1df90:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			1df90: R_ARM_CALL	__gnu_mcount_nc
+   1df94:	e300051c 	movw	r0, #1308	@ 0x51c
+   1df98:	e0884000 	add	r4, r8, r0
+   1df9c:	e5980524 	ldr	r0, [r8, #1316]	@ 0x524
+   1dfa0:	e58d4008 	str	r4, [sp, #8]
+   1dfa4:	e3500003 	cmp	r0, #3
+   1dfa8:	1a0005f8 	bne	1f790 <rt2800_init_rfcsr+0x1824>
+   1dfac:	e1d400b0 	ldrh	r0, [r4]
+   1dfb0:	e3021872 	movw	r1, #10354	@ 0x2872
+   1dfb4:	e1500001 	cmp	r0, r1
+   1dfb8:	1a0005f4 	bne	1f790 <rt2800_init_rfcsr+0x1824>
+   1dfbc:	e1d400b2 	ldrh	r0, [r4, #2]
+   1dfc0:	e3500008 	cmp	r0, #8
+   1dfc4:	8a0005ea 	bhi	1f774 <rt2800_init_rfcsr+0x1808>
+   1dfc8:	e3a01001 	mov	r1, #1
+   1df78:	e1a08000 	mov	r8, r0
+   1df7c:	e3000000 	movw	r0, #0
+			1df7c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   1df80:	e3400000 	movt	r0, #0
+			1df7c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   1df80:	e3400000 	movt	r0, #0
+			1df80: R_ARM_MOVT_ABS	__stack_chk_guard
+   1df84:	e5900000 	ldr	r0, [r0]
+   1dfd8:	e1a00008 	mov	r0, r8
+   1dfdc:	e3a0101e 	mov	r1, #30
+   1dfe0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			1dfe0: R_ARM_CALL	rt2800_rfcsr_read
+   1dfdc:	e3a0101e 	mov	r1, #30
+   1dfe0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			1dfe0: R_ARM_CALL	rt2800_rfcsr_read
+   1dfe4:	e1a07000 	mov	r7, r0
+   1f7d4:	e1a00008 	mov	r0, r8
+   1f7d8:	e3a01002 	mov	r1, #2
+   1f7dc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			1f7dc: R_ARM_CALL	rt2800_rfcsr_read
+   1f7d8:	e3a01002 	mov	r1, #2
+   1f7dc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			1f7dc: R_ARM_CALL	rt2800_rfcsr_read
+   1f7e0:	e1a06000 	mov	r6, r0
+   1f898:	e1a00008 	mov	r0, r8
+   1f89c:	e3a01002 	mov	r1, #2
+   1f8a0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			1f8a0: R_ARM_CALL	rt2800_rfcsr_read
+   1f89c:	e3a01002 	mov	r1, #2
+   1f8a0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			1f8a0: R_ARM_CALL	rt2800_rfcsr_read
+   1f8a4:	e1a06000 	mov	r6, r0
+   1f948:	e1a00008 	mov	r0, r8
+   1f94c:	e3a0101e 	mov	r1, #30
+   1f950:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			1f950: R_ARM_CALL	rt2800_rfcsr_read
+   1f94c:	e3a0101e 	mov	r1, #30
+   1f950:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			1f950: R_ARM_CALL	rt2800_rfcsr_read
+   1f954:	e1a06000 	mov	r6, r0
+   1fa68:	e1a00008 	mov	r0, r8
+   1fa6c:	e3a0101e 	mov	r1, #30
+   1fa70:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			1fa70: R_ARM_CALL	rt2800_rfcsr_read
+   1fa6c:	e3a0101e 	mov	r1, #30
+   1fa70:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			1fa70: R_ARM_CALL	rt2800_rfcsr_read
+   1fa74:	e1a06000 	mov	r6, r0
+   1fb10:	1a005354 	bne	34868 <rt2800_init_rfcsr+0x168fc>
+   1fb14:	e3001000 	movw	r1, #0
+			1fb14: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   1fb18:	e59d0010 	ldr	r0, [sp, #16]
+   1fb18:	e59d0010 	ldr	r0, [sp, #16]
+   1fb1c:	e3401000 	movt	r1, #0
+			1fb1c: R_ARM_MOVT_ABS	__stack_chk_guard
+   1fb20:	e5911000 	ldr	r1, [r1]
+   20a34:	e1a00008 	mov	r0, r8
+   20a38:	e3a01002 	mov	r1, #2
+   20a3c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			20a3c: R_ARM_CALL	rt2800_rfcsr_read
+   20a38:	e3a01002 	mov	r1, #2
+   20a3c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			20a3c: R_ARM_CALL	rt2800_rfcsr_read
+   20a40:	e1a06000 	mov	r6, r0
+   20ac8:	e1a00008 	mov	r0, r8
+   20acc:	e3a0101e 	mov	r1, #30
+   20ad0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			20ad0: R_ARM_CALL	rt2800_rfcsr_read
+   20acc:	e3a0101e 	mov	r1, #30
+   20ad0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			20ad0: R_ARM_CALL	rt2800_rfcsr_read
+   20ad4:	e1a06000 	mov	r6, r0
+   20ba8:	e1a00008 	mov	r0, r8
+   20bac:	e3a01006 	mov	r1, #6
+   20bb0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			20bb0: R_ARM_CALL	rt2800_rfcsr_read
+   20bac:	e3a01006 	mov	r1, #6
+   20bb0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			20bb0: R_ARM_CALL	rt2800_rfcsr_read
+   20bb4:	e1a06000 	mov	r6, r0
+   20dc8:	e1a00008 	mov	r0, r8
+   20dcc:	e5989510 	ldr	r9, [r8, #1296]	@ 0x510
+   20dd0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			20dd0: R_ARM_CALL	rt2800_rfcsr_read
+   20dcc:	e5989510 	ldr	r9, [r8, #1296]	@ 0x510
+   20dd0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			20dd0: R_ARM_CALL	rt2800_rfcsr_read
+   20dd4:	e1a06000 	mov	r6, r0
+   20ef4:	e1a00008 	mov	r0, r8
+   20ef8:	e3a0101e 	mov	r1, #30
+   20efc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			20efc: R_ARM_CALL	rt2800_rfcsr_read
+   20ef8:	e3a0101e 	mov	r1, #30
+   20efc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			20efc: R_ARM_CALL	rt2800_rfcsr_read
+   20f00:	e1a06000 	mov	r6, r0
+   20f84:	ea002cf7 	b	2c368 <rt2800_init_rfcsr+0xe3fc>
+   20f88:	e3001000 	movw	r1, #0
+			20f88: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   20f8c:	e59d0010 	ldr	r0, [sp, #16]
+   20f8c:	e59d0010 	ldr	r0, [sp, #16]
+   20f90:	e3401000 	movt	r1, #0
+			20f90: R_ARM_MOVT_ABS	__stack_chk_guard
+   20f94:	e5911000 	ldr	r1, [r1]
+   25100:	e1a00008 	mov	r0, r8
+   25104:	e3a01002 	mov	r1, #2
+   25108:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			25108: R_ARM_CALL	rt2800_rfcsr_read
+   25104:	e3a01002 	mov	r1, #2
+   25108:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			25108: R_ARM_CALL	rt2800_rfcsr_read
+   2510c:	e1a06000 	mov	r6, r0
+   25278:	e1a00008 	mov	r0, r8
+   2527c:	e3a01012 	mov	r1, #18
+   25280:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			25280: R_ARM_CALL	rt2800_rfcsr_read
+   2527c:	e3a01012 	mov	r1, #18
+   25280:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			25280: R_ARM_CALL	rt2800_rfcsr_read
+   25284:	e1a06000 	mov	r6, r0
+   255d8:	e3a01032 	mov	r1, #50	@ 0x32
+   255dc:	e5987008 	ldr	r7, [r8, #8]
+   255e0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			255e0: R_ARM_CALL	rt2800_rfcsr_read
+   255dc:	e5987008 	ldr	r7, [r8, #8]
+   255e0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			255e0: R_ARM_CALL	rt2800_rfcsr_read
+   255e4:	e1a06000 	mov	r6, r0
+   2576c:	e1a00008 	mov	r0, r8
+   25770:	e3a01033 	mov	r1, #51	@ 0x33
+   25774:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			25774: R_ARM_CALL	rt2800_rfcsr_read
+   25770:	e3a01033 	mov	r1, #51	@ 0x33
+   25774:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			25774: R_ARM_CALL	rt2800_rfcsr_read
+   25778:	e1a06000 	mov	r6, r0
+   258ec:	e1a00008 	mov	r0, r8
+   258f0:	e3a01026 	mov	r1, #38	@ 0x26
+   258f4:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			258f4: R_ARM_CALL	rt2800_rfcsr_read
+
+FUNCTION rt2800_init_rfcsr_3883
+instructions=3571; relocatable direct calls={'__gnu_mcount_nc': 1, 'rt2800_rfcsr_read': 7, 'mutex_lock': 92, 'mutex_unlock': 92, 'msleep': 2, '__stack_chk_fail': 1}
+First 24 instructions:
+0003f744 <rt2800_init_rfcsr_3883>:
+   3f744:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   3f748:	e28db01c 	add	fp, sp, #28
+   3f74c:	e24dd00c 	sub	sp, sp, #12
+   3f750:	e1a04000 	mov	r4, r0
+   3f754:	e3000000 	movw	r0, #0
+			3f754: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   3f758:	e3400000 	movt	r0, #0
+			3f758: R_ARM_MOVT_ABS	__stack_chk_guard
+   3f75c:	e5900000 	ldr	r0, [r0]
+   3f760:	e58d0008 	str	r0, [sp, #8]
+   3f764:	e92d4000 	stmfd	sp!, {lr}
+   3f768:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			3f768: R_ARM_CALL	__gnu_mcount_nc
+   3f76c:	e1a00004 	mov	r0, r4
+   3f770:	e3a01002 	mov	r1, #2
+   3f774:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			3f774: R_ARM_CALL	rt2800_rfcsr_read
+   3f778:	e1a06000 	mov	r6, r0
+   3f77c:	e3a00000 	mov	r0, #0
+   3f780:	e58d0004 	str	r0, [sp, #4]
+   3f784:	e3000564 	movw	r0, #1380	@ 0x564
+   3f788:	e0845000 	add	r5, r4, r0
+   3f78c:	e1a00005 	mov	r0, r5
+   3f790:	ebfffffe 	bl	0 <mutex_lock>
+			3f790: R_ARM_CALL	mutex_lock
+   3f794:	e3e0007f 	mvn	r0, #127	@ 0x7f
+   3f798:	e1868000 	orr	r8, r6, r0
+   3f750:	e1a04000 	mov	r4, r0
+   3f754:	e3000000 	movw	r0, #0
+			3f754: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   3f758:	e3400000 	movt	r0, #0
+			3f754: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   3f758:	e3400000 	movt	r0, #0
+			3f758: R_ARM_MOVT_ABS	__stack_chk_guard
+   3f75c:	e5900000 	ldr	r0, [r0]
+   3f76c:	e1a00004 	mov	r0, r4
+   3f770:	e3a01002 	mov	r1, #2
+   3f774:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			3f774: R_ARM_CALL	rt2800_rfcsr_read
+   3f770:	e3a01002 	mov	r1, #2
+   3f774:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			3f774: R_ARM_CALL	rt2800_rfcsr_read
+   3f778:	e1a06000 	mov	r6, r0
+   429a0:	e1a00004 	mov	r0, r4
+   429a4:	e3a01002 	mov	r1, #2
+   429a8:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			429a8: R_ARM_CALL	rt2800_rfcsr_read
+   429a4:	e3a01002 	mov	r1, #2
+   429a8:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			429a8: R_ARM_CALL	rt2800_rfcsr_read
+   429ac:	e1a06000 	mov	r6, r0
+   42b24:	e1a00004 	mov	r0, r4
+   42b28:	e3a01001 	mov	r1, #1
+   42b2c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			42b2c: R_ARM_CALL	rt2800_rfcsr_read
+   42b28:	e3a01001 	mov	r1, #1
+   42b2c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			42b2c: R_ARM_CALL	rt2800_rfcsr_read
+   42b30:	e1a06000 	mov	r6, r0
+   42be8:	e1a00004 	mov	r0, r4
+   42bec:	e3a01006 	mov	r1, #6
+   42bf0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			42bf0: R_ARM_CALL	rt2800_rfcsr_read
+   42bec:	e3a01006 	mov	r1, #6
+   42bf0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			42bf0: R_ARM_CALL	rt2800_rfcsr_read
+   42bf4:	e1a06000 	mov	r6, r0
+   42cb0:	e1a00004 	mov	r0, r4
+   42cb4:	e3a01016 	mov	r1, #22
+   42cb8:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			42cb8: R_ARM_CALL	rt2800_rfcsr_read
+   42cb4:	e3a01016 	mov	r1, #22
+   42cb8:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			42cb8: R_ARM_CALL	rt2800_rfcsr_read
+   42cbc:	e1a06000 	mov	r6, r0
+   42d80:	e1a00004 	mov	r0, r4
+   42d84:	e3a0102e 	mov	r1, #46	@ 0x2e
+   42d88:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			42d88: R_ARM_CALL	rt2800_rfcsr_read
+   42d84:	e3a0102e 	mov	r1, #46	@ 0x2e
+   42d88:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			42d88: R_ARM_CALL	rt2800_rfcsr_read
+   42d8c:	e1a06000 	mov	r6, r0
+   42e40:	e1a00004 	mov	r0, r4
+   42e44:	e3a01014 	mov	r1, #20
+   42e48:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			42e48: R_ARM_CALL	rt2800_rfcsr_read
+   42e44:	e3a01014 	mov	r1, #20
+   42e48:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			42e48: R_ARM_CALL	rt2800_rfcsr_read
+   42e4c:	e1a06000 	mov	r6, r0
+			42eec: R_ARM_CALL	mutex_unlock
+   42ef0:	e3001000 	movw	r1, #0
+			42ef0: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   42ef4:	e59d0008 	ldr	r0, [sp, #8]
+   42ef4:	e59d0008 	ldr	r0, [sp, #8]
+   42ef8:	e3401000 	movt	r1, #0
+			42ef8: R_ARM_MOVT_ABS	__stack_chk_guard
+   42efc:	e5911000 	ldr	r1, [r1]
+   42f04:	024bd01c 	subeq	sp, fp, #28
+   42f08:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   42f0c:	ebfffffe 	bl	0 <__stack_chk_fail>
+			42f0c: R_ARM_CALL	__stack_chk_fail
+   42f08:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   42f0c:	ebfffffe 	bl	0 <__stack_chk_fail>
+			42f0c: R_ARM_CALL	__stack_chk_fail
+
+
+FUNCTION rt2800_init_rfcsr_6352
+instructions=17840; relocatable direct calls={'__gnu_mcount_nc': 1, 'mutex_lock': 417, 'mutex_unlock': 416, 'clk_get_rate': 1, 'rt2800_calibration_rt6352': 1, '__stack_chk_fail': 1}
+First 24 instructions:
+00042f10 <rt2800_init_rfcsr_6352>:
+   42f10:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   42f14:	e28db01c 	add	fp, sp, #28
+   42f18:	e24dd044 	sub	sp, sp, #68	@ 0x44
+   42f1c:	e1a04000 	mov	r4, r0
+   42f20:	e3000000 	movw	r0, #0
+			42f20: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   42f24:	e3400000 	movt	r0, #0
+			42f24: R_ARM_MOVT_ABS	__stack_chk_guard
+   42f28:	e5900000 	ldr	r0, [r0]
+   42f2c:	e50b0020 	str	r0, [fp, #-32]	@ 0xffffffe0
+   42f30:	e92d4000 	stmfd	sp!, {lr}
+   42f34:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			42f34: R_ARM_CALL	__gnu_mcount_nc
+   42f38:	e3a00000 	mov	r0, #0
+   42f3c:	e50b0024 	str	r0, [fp, #-36]	@ 0xffffffdc
+   42f40:	e3000564 	movw	r0, #1380	@ 0x564
+   42f44:	e0845000 	add	r5, r4, r0
+   42f48:	e1a00005 	mov	r0, r5
+   42f4c:	ebfffffe 	bl	0 <mutex_lock>
+			42f4c: R_ARM_CALL	mutex_lock
+   42f50:	e1a09004 	mov	r9, r4
+   42f54:	e3001518 	movw	r1, #1304	@ 0x518
+   42f58:	e5b90004 	ldr	r0, [r9, #4]!
+   42f5c:	e50b902c 	str	r9, [fp, #-44]	@ 0xffffffd4
+   42f60:	e1b910b1 	ldrh	r1, [r9, r1]!	@ <UNPREDICTABLE>
+   42f64:	e5900020 	ldr	r0, [r0, #32]
+   42f68:	e5907018 	ldr	r7, [r0, #24]
+   42f1c:	e1a04000 	mov	r4, r0
+   42f20:	e3000000 	movw	r0, #0
+			42f20: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   42f24:	e3400000 	movt	r0, #0
+			42f20: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   42f24:	e3400000 	movt	r0, #0
+			42f24: R_ARM_MOVT_ABS	__stack_chk_guard
+   42f28:	e5900000 	ldr	r0, [r0]
+			545ac: R_ARM_CALL	rt2800_calibration_rt6352
+   545b0:	e3001000 	movw	r1, #0
+			545b0: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   545b4:	e51b0020 	ldr	r0, [fp, #-32]	@ 0xffffffe0
+   545b4:	e51b0020 	ldr	r0, [fp, #-32]	@ 0xffffffe0
+   545b8:	e3401000 	movt	r1, #0
+			545b8: R_ARM_MOVT_ABS	__stack_chk_guard
+   545bc:	e5911000 	ldr	r1, [r1]
+   545c4:	024bd01c 	subeq	sp, fp, #28
+   545c8:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   545cc:	ebfffffe 	bl	0 <__stack_chk_fail>
+			545cc: R_ARM_CALL	__stack_chk_fail
+   545c8:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   545cc:	ebfffffe 	bl	0 <__stack_chk_fail>
+			545cc: R_ARM_CALL	__stack_chk_fail
+
+
+FUNCTION rt2800_calibration_rt6352
+instructions=5493; relocatable direct calls={'__gnu_mcount_nc': 1, 'mutex_lock': 124, 'mutex_unlock': 124, 'rt2800_rfcsr_read': 12, '___ratelimit': 4, 'usleep_range_state': 4, 'rt2800_rxdcoc_calibration': 2, 'rt2800_bw_filter_calibration': 2, 'rt2800_loft_iq_calibration': 1, 'rt2800_rxiq_calibration': 1, '__stack_chk_fail': 1, '_dev_err': 2, '_dev_warn': 2}
+First 24 instructions:
+00055cec <rt2800_calibration_rt6352>:
+   55cec:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   55cf0:	e28db01c 	add	fp, sp, #28
+   55cf4:	e24dd054 	sub	sp, sp, #84	@ 0x54
+   55cf8:	e1a04000 	mov	r4, r0
+   55cfc:	e3000000 	movw	r0, #0
+			55cfc: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   55d00:	e3400000 	movt	r0, #0
+			55d00: R_ARM_MOVT_ABS	__stack_chk_guard
+   55d04:	e5900000 	ldr	r0, [r0]
+   55d08:	e50b0020 	str	r0, [fp, #-32]	@ 0xffffffe0
+   55d0c:	e92d4000 	stmfd	sp!, {lr}
+   55d10:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			55d10: R_ARM_CALL	__gnu_mcount_nc
+   55d14:	e3011120 	movw	r1, #4384	@ 0x1120
+   55d18:	e5940510 	ldr	r0, [r4, #1296]	@ 0x510
+   55d1c:	e3401003 	movt	r1, #3
+   55d20:	e58d1008 	str	r1, [sp, #8]
+   55d24:	e3100301 	tst	r0, #67108864	@ 0x4000000
+   55d28:	05940510 	ldreq	r0, [r4, #1296]	@ 0x510
+   55d2c:	03100501 	tsteq	r0, #4194304	@ 0x400000
+   55d30:	0a0006c1 	beq	5783c <rt2800_calibration_rt6352+0x1b50>
+   55d34:	e5940510 	ldr	r0, [r4, #1296]	@ 0x510
+   55d38:	e3100301 	tst	r0, #67108864	@ 0x4000000
+   55d3c:	0a00000d 	beq	55d78 <rt2800_calibration_rt6352+0x8c>
+   55d40:	e5940004 	ldr	r0, [r4, #4]
+   55d44:	e3a01e53 	mov	r1, #1328	@ 0x530
+   55d48:	e3a02000 	mov	r2, #0
+   55cf8:	e1a04000 	mov	r4, r0
+   55cfc:	e3000000 	movw	r0, #0
+			55cfc: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   55d00:	e3400000 	movt	r0, #0
+			55cfc: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   55d00:	e3400000 	movt	r0, #0
+			55d00: R_ARM_MOVT_ABS	__stack_chk_guard
+   55d04:	e5900000 	ldr	r0, [r0]
+   5783c:	e1a00004 	mov	r0, r4
+   57840:	e3a01001 	mov	r1, #1
+   57844:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57844: R_ARM_CALL	rt2800_rfcsr_read
+   57840:	e3a01001 	mov	r1, #1
+   57844:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57844: R_ARM_CALL	rt2800_rfcsr_read
+   57848:	e58d000c 	str	r0, [sp, #12]
+   5784c:	e1a00004 	mov	r0, r4
+   57850:	e3a01022 	mov	r1, #34	@ 0x22
+   57854:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57854: R_ARM_CALL	rt2800_rfcsr_read
+   57850:	e3a01022 	mov	r1, #34	@ 0x22
+   57854:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57854: R_ARM_CALL	rt2800_rfcsr_read
+   57858:	e58d0010 	str	r0, [sp, #16]
+   5785c:	e1a00004 	mov	r0, r4
+   57860:	e3a01023 	mov	r1, #35	@ 0x23
+   57864:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57864: R_ARM_CALL	rt2800_rfcsr_read
+   57860:	e3a01023 	mov	r1, #35	@ 0x23
+   57864:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57864: R_ARM_CALL	rt2800_rfcsr_read
+   57868:	e58d0014 	str	r0, [sp, #20]
+   5786c:	e1a00004 	mov	r0, r4
+   57870:	e3a01f51 	mov	r1, #324	@ 0x144
+   57874:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57874: R_ARM_CALL	rt2800_rfcsr_read
+   57870:	e3a01f51 	mov	r1, #324	@ 0x144
+   57874:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57874: R_ARM_CALL	rt2800_rfcsr_read
+   57878:	e58d0018 	str	r0, [sp, #24]
+   5787c:	e1a00004 	mov	r0, r4
+   57880:	e3001151 	movw	r1, #337	@ 0x151
+   57884:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57884: R_ARM_CALL	rt2800_rfcsr_read
+   57880:	e3001151 	movw	r1, #337	@ 0x151
+   57884:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57884: R_ARM_CALL	rt2800_rfcsr_read
+   57888:	e58d001c 	str	r0, [sp, #28]
+   5788c:	e1a00004 	mov	r0, r4
+   57890:	e3001152 	movw	r1, #338	@ 0x152
+   57894:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57894: R_ARM_CALL	rt2800_rfcsr_read
+   57890:	e3001152 	movw	r1, #338	@ 0x152
+   57894:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			57894: R_ARM_CALL	rt2800_rfcsr_read
+   57898:	e58d0020 	str	r0, [sp, #32]
+   5789c:	e1a00004 	mov	r0, r4
+   578a0:	e3001153 	movw	r1, #339	@ 0x153
+   578a4:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			578a4: R_ARM_CALL	rt2800_rfcsr_read
+   578a0:	e3001153 	movw	r1, #339	@ 0x153
+   578a4:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			578a4: R_ARM_CALL	rt2800_rfcsr_read
+   578a8:	e58d0024 	str	r0, [sp, #36]	@ 0x24
+   578ac:	e1a00004 	mov	r0, r4
+   578b0:	e3a01f55 	mov	r1, #340	@ 0x154
+   578b4:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			578b4: R_ARM_CALL	rt2800_rfcsr_read
+   578b0:	e3a01f55 	mov	r1, #340	@ 0x154
+   578b4:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			578b4: R_ARM_CALL	rt2800_rfcsr_read
+   578b8:	e58d0034 	str	r0, [sp, #52]	@ 0x34
+   591d8:	e1a00004 	mov	r0, r4
+   591dc:	e3001141 	movw	r1, #321	@ 0x141
+   591e0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			591e0: R_ARM_CALL	rt2800_rfcsr_read
+   591dc:	e3001141 	movw	r1, #321	@ 0x141
+   591e0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			591e0: R_ARM_CALL	rt2800_rfcsr_read
+   591e4:	e1a08000 	mov	r8, r0
+   591e8:	e1a00004 	mov	r0, r4
+   591ec:	e30011c1 	movw	r1, #449	@ 0x1c1
+   591f0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			591f0: R_ARM_CALL	rt2800_rfcsr_read
+   591ec:	e30011c1 	movw	r1, #449	@ 0x1c1
+   591f0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			591f0: R_ARM_CALL	rt2800_rfcsr_read
+   591f4:	e1a07000 	mov	r7, r0
+   592b8:	e1a00004 	mov	r0, r4
+   592bc:	e3001141 	movw	r1, #321	@ 0x141
+   592c0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			592c0: R_ARM_CALL	rt2800_rfcsr_read
+   592bc:	e3001141 	movw	r1, #321	@ 0x141
+   592c0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			592c0: R_ARM_CALL	rt2800_rfcsr_read
+   592c4:	e3100004 	tst	r0, #4
+   59454:	e1a00004 	mov	r0, r4
+   59458:	e30011c1 	movw	r1, #449	@ 0x1c1
+   5945c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5945c: R_ARM_CALL	rt2800_rfcsr_read
+   59458:	e30011c1 	movw	r1, #449	@ 0x1c1
+   5945c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5945c: R_ARM_CALL	rt2800_rfcsr_read
+   59460:	e3100004 	tst	r0, #4
+   5b20c:	e12fff33 	blx	r3
+   5b210:	e3001000 	movw	r1, #0
+			5b210: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   5b214:	e51b0020 	ldr	r0, [fp, #-32]	@ 0xffffffe0
+   5b214:	e51b0020 	ldr	r0, [fp, #-32]	@ 0xffffffe0
+   5b218:	e3401000 	movt	r1, #0
+			5b218: R_ARM_MOVT_ABS	__stack_chk_guard
+   5b21c:	e5911000 	ldr	r1, [r1]
+   5b224:	024bd01c 	subeq	sp, fp, #28
+   5b228:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   5b22c:	ebfffffe 	bl	0 <__stack_chk_fail>
+			5b22c: R_ARM_CALL	__stack_chk_fail
+   5b228:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   5b22c:	ebfffffe 	bl	0 <__stack_chk_fail>
+			5b22c: R_ARM_CALL	__stack_chk_fail
+   5b230:	e594000c 	ldr	r0, [r4, #12]
+
+FUNCTION rt2800_bw_filter_calibration
+instructions=2914; relocatable direct calls={'__gnu_mcount_nc': 1, 'mutex_lock': 54, 'mutex_unlock': 54, 'rt2800_bbp_dcoc_read': 4, 'rt2800_rfcsr_read': 42, 'usleep_range_state': 3, 'rt2800_bbp_core_soft_reset': 3, 'rt2800_bbp_dcoc_write': 4, 'rt2800_lp_tx_filter_bw_cal': 2, '__stack_chk_fail': 1}
+First 24 instructions:
+0005bed4 <rt2800_bw_filter_calibration>:
+   5bed4:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   5bed8:	e28db01c 	add	fp, sp, #28
+   5bedc:	e24dd0ac 	sub	sp, sp, #172	@ 0xac
+   5bee0:	e1a04000 	mov	r4, r0
+   5bee4:	e3000000 	movw	r0, #0
+			5bee4: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   5bee8:	e3400000 	movt	r0, #0
+			5bee8: R_ARM_MOVT_ABS	__stack_chk_guard
+   5beec:	e50b1030 	str	r1, [fp, #-48]	@ 0xffffffd0
+   5bef0:	e5900000 	ldr	r0, [r0]
+   5bef4:	e50b0020 	str	r0, [fp, #-32]	@ 0xffffffe0
+   5bef8:	e92d4000 	stmfd	sp!, {lr}
+   5befc:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			5befc: R_ARM_CALL	__gnu_mcount_nc
+   5bf00:	e1c400d4 	ldrd	r0, [r4, #4]
+   5bf04:	e50b1040 	str	r1, [fp, #-64]	@ 0xffffffc0
+   5bf08:	e3001518 	movw	r1, #1304	@ 0x518
+   5bf0c:	e5900020 	ldr	r0, [r0, #32]
+   5bf10:	e5902000 	ldr	r2, [r0]
+   5bf14:	e1a00004 	mov	r0, r4
+   5bf18:	e12fff32 	blx	r2
+   5bf1c:	e1a09000 	mov	r9, r0
+   5bf20:	e5940004 	ldr	r0, [r4, #4]
+   5bf24:	e300151c 	movw	r1, #1308	@ 0x51c
+   5bf28:	e300851c 	movw	r8, #1308	@ 0x51c
+   5bf2c:	e5900020 	ldr	r0, [r0, #32]
+   5bf30:	e5902000 	ldr	r2, [r0]
+   5bee0:	e1a04000 	mov	r4, r0
+   5bee4:	e3000000 	movw	r0, #0
+			5bee4: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   5bee8:	e3400000 	movt	r0, #0
+			5bee4: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   5bee8:	e3400000 	movt	r0, #0
+			5bee8: R_ARM_MOVT_ABS	__stack_chk_guard
+   5beec:	e50b1030 	str	r1, [fp, #-48]	@ 0xffffffd0
+   5bfe4:	e1a00004 	mov	r0, r4
+   5bfe8:	e3a01000 	mov	r1, #0
+   5bfec:	ebfffffe 	bl	68090 <rt2800_bbp_dcoc_read>
+			5bfec: R_ARM_CALL	rt2800_bbp_dcoc_read
+   5bfe8:	e3a01000 	mov	r1, #0
+   5bfec:	ebfffffe 	bl	68090 <rt2800_bbp_dcoc_read>
+			5bfec: R_ARM_CALL	rt2800_bbp_dcoc_read
+   5bff0:	e50b0058 	str	r0, [fp, #-88]	@ 0xffffffa8
+   5bff4:	e1a00004 	mov	r0, r4
+   5bff8:	e3a01002 	mov	r1, #2
+   5bffc:	ebfffffe 	bl	68090 <rt2800_bbp_dcoc_read>
+			5bffc: R_ARM_CALL	rt2800_bbp_dcoc_read
+   5bff8:	e3a01002 	mov	r1, #2
+   5bffc:	ebfffffe 	bl	68090 <rt2800_bbp_dcoc_read>
+			5bffc: R_ARM_CALL	rt2800_bbp_dcoc_read
+   5c000:	e50b005c 	str	r0, [fp, #-92]	@ 0xffffffa4
+   5c004:	e1a00004 	mov	r0, r4
+   5c008:	e3a01d05 	mov	r1, #320	@ 0x140
+   5c00c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c00c: R_ARM_CALL	rt2800_rfcsr_read
+   5c008:	e3a01d05 	mov	r1, #320	@ 0x140
+   5c00c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c00c: R_ARM_CALL	rt2800_rfcsr_read
+   5c010:	e58d0008 	str	r0, [sp, #8]
+   5c014:	e1a00004 	mov	r0, r4
+   5c018:	e3001141 	movw	r1, #321	@ 0x141
+   5c01c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c01c: R_ARM_CALL	rt2800_rfcsr_read
+   5c018:	e3001141 	movw	r1, #321	@ 0x141
+   5c01c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c01c: R_ARM_CALL	rt2800_rfcsr_read
+   5c020:	e58d000c 	str	r0, [sp, #12]
+   5c024:	e1a00004 	mov	r0, r4
+   5c028:	e3001143 	movw	r1, #323	@ 0x143
+   5c02c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c02c: R_ARM_CALL	rt2800_rfcsr_read
+   5c028:	e3001143 	movw	r1, #323	@ 0x143
+   5c02c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c02c: R_ARM_CALL	rt2800_rfcsr_read
+   5c030:	e58d0010 	str	r0, [sp, #16]
+   5c034:	e1a00004 	mov	r0, r4
+   5c038:	e3a01f51 	mov	r1, #324	@ 0x144
+   5c03c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c03c: R_ARM_CALL	rt2800_rfcsr_read
+   5c038:	e3a01f51 	mov	r1, #324	@ 0x144
+   5c03c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c03c: R_ARM_CALL	rt2800_rfcsr_read
+   5c040:	e58d0014 	str	r0, [sp, #20]
+   5c044:	e1a00004 	mov	r0, r4
+   5c048:	e3001145 	movw	r1, #325	@ 0x145
+   5c04c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c04c: R_ARM_CALL	rt2800_rfcsr_read
+   5c048:	e3001145 	movw	r1, #325	@ 0x145
+   5c04c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c04c: R_ARM_CALL	rt2800_rfcsr_read
+   5c050:	e58d0018 	str	r0, [sp, #24]
+   5c054:	e1a00004 	mov	r0, r4
+   5c058:	e3001146 	movw	r1, #326	@ 0x146
+   5c05c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c05c: R_ARM_CALL	rt2800_rfcsr_read
+   5c058:	e3001146 	movw	r1, #326	@ 0x146
+   5c05c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c05c: R_ARM_CALL	rt2800_rfcsr_read
+   5c060:	e58d001c 	str	r0, [sp, #28]
+   5c064:	e1a00004 	mov	r0, r4
+   5c068:	e3001147 	movw	r1, #327	@ 0x147
+   5c06c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c06c: R_ARM_CALL	rt2800_rfcsr_read
+   5c068:	e3001147 	movw	r1, #327	@ 0x147
+   5c06c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c06c: R_ARM_CALL	rt2800_rfcsr_read
+   5c070:	e58d0020 	str	r0, [sp, #32]
+   5c074:	e1a00004 	mov	r0, r4
+   5c078:	e3a01f52 	mov	r1, #328	@ 0x148
+   5c07c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c07c: R_ARM_CALL	rt2800_rfcsr_read
+   5c078:	e3a01f52 	mov	r1, #328	@ 0x148
+   5c07c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c07c: R_ARM_CALL	rt2800_rfcsr_read
+   5c080:	e58d0024 	str	r0, [sp, #36]	@ 0x24
+   5c084:	e1a00004 	mov	r0, r4
+   5c088:	e3001151 	movw	r1, #337	@ 0x151
+   5c08c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c08c: R_ARM_CALL	rt2800_rfcsr_read
+   5c088:	e3001151 	movw	r1, #337	@ 0x151
+   5c08c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c08c: R_ARM_CALL	rt2800_rfcsr_read
+   5c090:	e58d0028 	str	r0, [sp, #40]	@ 0x28
+   5c094:	e1a00004 	mov	r0, r4
+   5c098:	e3001152 	movw	r1, #338	@ 0x152
+   5c09c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c09c: R_ARM_CALL	rt2800_rfcsr_read
+   5c098:	e3001152 	movw	r1, #338	@ 0x152
+   5c09c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c09c: R_ARM_CALL	rt2800_rfcsr_read
+   5c0a0:	e58d002c 	str	r0, [sp, #44]	@ 0x2c
+   5c0a4:	e1a00004 	mov	r0, r4
+   5c0a8:	e3001153 	movw	r1, #339	@ 0x153
+   5c0ac:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c0ac: R_ARM_CALL	rt2800_rfcsr_read
+   5c0a8:	e3001153 	movw	r1, #339	@ 0x153
+   5c0ac:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c0ac: R_ARM_CALL	rt2800_rfcsr_read
+   5c0b0:	e58d0030 	str	r0, [sp, #48]	@ 0x30
+   5c0b4:	e1a00004 	mov	r0, r4
+   5c0b8:	e3a01f55 	mov	r1, #340	@ 0x154
+   5c0bc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c0bc: R_ARM_CALL	rt2800_rfcsr_read
+   5c0b8:	e3a01f55 	mov	r1, #340	@ 0x154
+   5c0bc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c0bc: R_ARM_CALL	rt2800_rfcsr_read
+   5c0c0:	e58d0034 	str	r0, [sp, #52]	@ 0x34
+   5c0c4:	e1a00004 	mov	r0, r4
+   5c0c8:	e3001165 	movw	r1, #357	@ 0x165
+   5c0cc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c0cc: R_ARM_CALL	rt2800_rfcsr_read
+   5c0c8:	e3001165 	movw	r1, #357	@ 0x165
+   5c0cc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c0cc: R_ARM_CALL	rt2800_rfcsr_read
+   5c0d0:	e58d0038 	str	r0, [sp, #56]	@ 0x38
+   5c0d4:	e1a00004 	mov	r0, r4
+   5c0d8:	e3001166 	movw	r1, #358	@ 0x166
+   5c0dc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c0dc: R_ARM_CALL	rt2800_rfcsr_read
+   5c0d8:	e3001166 	movw	r1, #358	@ 0x166
+   5c0dc:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c0dc: R_ARM_CALL	rt2800_rfcsr_read
+   5c0e0:	e58d003c 	str	r0, [sp, #60]	@ 0x3c
+   5c0e4:	e1a00004 	mov	r0, r4
+   5c0e8:	e3001167 	movw	r1, #359	@ 0x167
+   5c0ec:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5c0ec: R_ARM_CALL	rt2800_rfcsr_read
+
+FUNCTION rt2800_loft_iq_calibration
+instructions=5196; relocatable direct calls={'__gnu_mcount_nc': 1, 'memset': 1, '___ratelimit': 8, 'rt2800_rf_configstore': 4, 'mutex_lock': 122, 'mutex_unlock': 121, 'rt2800_rfcsr_read': 2, 'rt2800_setbbptonegenerator': 2, 'rt2800_rf_aux_tx0_loopback': 2, 'rt2800_rf_aux_tx1_loopback': 2, 'rt2800_write_dc': 12, 'rt2800_do_fft_accumulation': 11, 'rt2800_rf_configrecover': 2, 'rt2800_read_fft_accumulation': 2, '__stack_chk_fail': 1, '_dev_err': 4, '_dev_warn': 4}
+First 24 instructions:
+0005ec5c <rt2800_loft_iq_calibration>:
+   5ec5c:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   5ec60:	e28db01c 	add	fp, sp, #28
+   5ec64:	e24ddf45 	sub	sp, sp, #276	@ 0x114
+   5ec68:	e1a05000 	mov	r5, r0
+   5ec6c:	e3000000 	movw	r0, #0
+			5ec6c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   5ec70:	e3400000 	movt	r0, #0
+			5ec70: R_ARM_MOVT_ABS	__stack_chk_guard
+   5ec74:	e5900000 	ldr	r0, [r0]
+   5ec78:	e50b0024 	str	r0, [fp, #-36]	@ 0xffffffdc
+   5ec7c:	e92d4000 	stmfd	sp!, {lr}
+   5ec80:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			5ec80: R_ARM_CALL	__gnu_mcount_nc
+   5ec84:	e24b0078 	sub	r0, fp, #120	@ 0x78
+   5ec88:	e3a01000 	mov	r1, #0
+   5ec8c:	e3a0204e 	mov	r2, #78	@ 0x4e
+   5ec90:	e3a04000 	mov	r4, #0
+   5ec94:	ebfffffe 	bl	0 <memset>
+			5ec94: R_ARM_CALL	memset
+   5ec98:	e3a0000e 	mov	r0, #14
+   5ec9c:	e3011004 	movw	r1, #4100	@ 0x1004
+   5eca0:	e5cd0096 	strb	r0, [sp, #150]	@ 0x96
+   5eca4:	e5cd0095 	strb	r0, [sp, #149]	@ 0x95
+   5eca8:	e5950004 	ldr	r0, [r5, #4]
+   5ecac:	e50b407c 	str	r4, [fp, #-124]	@ 0xffffff84
+   5ecb0:	e50b4080 	str	r4, [fp, #-128]	@ 0xffffff80
+   5ecb4:	e5900020 	ldr	r0, [r0, #32]
+   5ec68:	e1a05000 	mov	r5, r0
+   5ec6c:	e3000000 	movw	r0, #0
+			5ec6c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   5ec70:	e3400000 	movt	r0, #0
+			5ec6c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   5ec70:	e3400000 	movt	r0, #0
+			5ec70: R_ARM_MOVT_ABS	__stack_chk_guard
+   5ec74:	e5900000 	ldr	r0, [r0]
+   5ec8c:	e3a0204e 	mov	r2, #78	@ 0x4e
+   5ec90:	e3a04000 	mov	r4, #0
+   5ec94:	ebfffffe 	bl	0 <memset>
+			5ec94: R_ARM_CALL	memset
+   5ec90:	e3a04000 	mov	r4, #0
+   5ec94:	ebfffffe 	bl	0 <memset>
+			5ec94: R_ARM_CALL	memset
+   5ec98:	e3a0000e 	mov	r0, #14
+   5f004:	e1a00006 	mov	r0, r6
+   5f008:	e3a01027 	mov	r1, #39	@ 0x27
+   5f00c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5f00c: R_ARM_CALL	rt2800_rfcsr_read
+   5f008:	e3a01027 	mov	r1, #39	@ 0x27
+   5f00c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5f00c: R_ARM_CALL	rt2800_rfcsr_read
+   5f010:	e58d0018 	str	r0, [sp, #24]
+   5f014:	e1a00006 	mov	r0, r6
+   5f018:	e3a0102a 	mov	r1, #42	@ 0x2a
+   5f01c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5f01c: R_ARM_CALL	rt2800_rfcsr_read
+   5f018:	e3a0102a 	mov	r1, #42	@ 0x2a
+   5f01c:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			5f01c: R_ARM_CALL	rt2800_rfcsr_read
+   5f020:	e58d001c 	str	r0, [sp, #28]
+   63c28:	e12fff33 	blx	r3
+   63c2c:	e3001000 	movw	r1, #0
+			63c2c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   63c30:	e51b0024 	ldr	r0, [fp, #-36]	@ 0xffffffdc
+   63c30:	e51b0024 	ldr	r0, [fp, #-36]	@ 0xffffffdc
+   63c34:	e3401000 	movt	r1, #0
+			63c34: R_ARM_MOVT_ABS	__stack_chk_guard
+   63c38:	e5911000 	ldr	r1, [r1]
+   63c40:	024bd01c 	subeq	sp, fp, #28
+   63c44:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   63c48:	ebfffffe 	bl	0 <__stack_chk_fail>
+			63c48: R_ARM_CALL	__stack_chk_fail
+   63c44:	08bd8ff0 	popeq	{r4, r5, r6, r7, r8, r9, sl, fp, pc}
+   63c48:	ebfffffe 	bl	0 <__stack_chk_fail>
+			63c48: R_ARM_CALL	__stack_chk_fail
+   63c4c:	e59d0080 	ldr	r0, [sp, #128]	@ 0x80
+
+FUNCTION rt2800_rxiq_calibration
+instructions=4289; relocatable direct calls={'__gnu_mcount_nc': 1, 'mutex_lock': 96, 'mutex_unlock': 95, '___ratelimit': 6, 'rt2800_rfcsr_read': 19, 'rt2800_bbp_dcoc_write': 4, 'rt2800_bbp_dcoc_read': 1, 'usleep_range_state': 4, '__aeabi_uidiv': 1, '__aeabi_idiv': 2, '_dev_warn': 4, '__stack_chk_fail': 1, '_dev_err': 1}
+First 24 instructions:
+00063d8c <rt2800_rxiq_calibration>:
+   63d8c:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+   63d90:	e28db01c 	add	fp, sp, #28
+   63d94:	e24dd0f4 	sub	sp, sp, #244	@ 0xf4
+   63d98:	e1a09000 	mov	r9, r0
+   63d9c:	e3000000 	movw	r0, #0
+			63d9c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   63da0:	e3400000 	movt	r0, #0
+			63da0: R_ARM_MOVT_ABS	__stack_chk_guard
+   63da4:	e5900000 	ldr	r0, [r0]
+   63da8:	e50b0024 	str	r0, [fp, #-36]	@ 0xffffffdc
+   63dac:	e92d4000 	stmfd	sp!, {lr}
+   63db0:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			63db0: R_ARM_CALL	__gnu_mcount_nc
+   63db4:	e5990004 	ldr	r0, [r9, #4]
+   63db8:	e3011004 	movw	r1, #4100	@ 0x1004
+   63dbc:	e5900020 	ldr	r0, [r0, #32]
+   63dc0:	e5902000 	ldr	r2, [r0]
+   63dc4:	e1a00009 	mov	r0, r9
+   63dc8:	e12fff32 	blx	r2
+   63dcc:	e50b0068 	str	r0, [fp, #-104]	@ 0xffffff98
+   63dd0:	e3001518 	movw	r1, #1304	@ 0x518
+   63dd4:	e5990004 	ldr	r0, [r9, #4]
+   63dd8:	e5900020 	ldr	r0, [r0, #32]
+   63ddc:	e5902000 	ldr	r2, [r0]
+   63de0:	e1a00009 	mov	r0, r9
+   63de4:	e12fff32 	blx	r2
+   63de8:	e50b0080 	str	r0, [fp, #-128]	@ 0xffffff80
+   63d98:	e1a09000 	mov	r9, r0
+   63d9c:	e3000000 	movw	r0, #0
+			63d9c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   63da0:	e3400000 	movt	r0, #0
+			63d9c: R_ARM_MOVW_ABS_NC	__stack_chk_guard
+   63da0:	e3400000 	movt	r0, #0
+			63da0: R_ARM_MOVT_ABS	__stack_chk_guard
+   63da4:	e5900000 	ldr	r0, [r0]
+   642a8:	e1a00009 	mov	r0, r9
+   642ac:	e3a01001 	mov	r1, #1
+   642b0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			642b0: R_ARM_CALL	rt2800_rfcsr_read
+   642ac:	e3a01001 	mov	r1, #1
+   642b0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			642b0: R_ARM_CALL	rt2800_rfcsr_read
+   642b4:	e50b0064 	str	r0, [fp, #-100]	@ 0xffffff9c
+   642b8:	e1a00009 	mov	r0, r9
+   642bc:	e3a01002 	mov	r1, #2
+   642c0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			642c0: R_ARM_CALL	rt2800_rfcsr_read
+   642bc:	e3a01002 	mov	r1, #2
+   642c0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			642c0: R_ARM_CALL	rt2800_rfcsr_read
+   642c4:	e50b005c 	str	r0, [fp, #-92]	@ 0xffffffa4
+   642c8:	e1a00009 	mov	r0, r9
+   642cc:	e3a0102a 	mov	r1, #42	@ 0x2a
+   642d0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			642d0: R_ARM_CALL	rt2800_rfcsr_read
+   642cc:	e3a0102a 	mov	r1, #42	@ 0x2a
+   642d0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			642d0: R_ARM_CALL	rt2800_rfcsr_read
+   642d4:	e50b0058 	str	r0, [fp, #-88]	@ 0xffffffa8
+   642d8:	e1a00009 	mov	r0, r9
+   642dc:	e3a01c01 	mov	r1, #256	@ 0x100
+   642e0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			642e0: R_ARM_CALL	rt2800_rfcsr_read
+   642dc:	e3a01c01 	mov	r1, #256	@ 0x100
+   642e0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			642e0: R_ARM_CALL	rt2800_rfcsr_read
+   642e4:	e58d0050 	str	r0, [sp, #80]	@ 0x50
+   642e8:	e1a00009 	mov	r0, r9
+   642ec:	e3001113 	movw	r1, #275	@ 0x113
+   642f0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			642f0: R_ARM_CALL	rt2800_rfcsr_read
+   642ec:	e3001113 	movw	r1, #275	@ 0x113
+   642f0:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			642f0: R_ARM_CALL	rt2800_rfcsr_read
+   642f4:	e1a06005 	mov	r6, r5
+   642fc:	e1a00009 	mov	r0, r9
+   64300:	e3001143 	movw	r1, #323	@ 0x143
+   64304:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64304: R_ARM_CALL	rt2800_rfcsr_read
+   64300:	e3001143 	movw	r1, #323	@ 0x143
+   64304:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64304: R_ARM_CALL	rt2800_rfcsr_read
+   64308:	e58d0058 	str	r0, [sp, #88]	@ 0x58
+   6430c:	e1a00009 	mov	r0, r9
+   64310:	e3a01f51 	mov	r1, #324	@ 0x144
+   64314:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64314: R_ARM_CALL	rt2800_rfcsr_read
+   64310:	e3a01f51 	mov	r1, #324	@ 0x144
+   64314:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64314: R_ARM_CALL	rt2800_rfcsr_read
+   64318:	e58d005c 	str	r0, [sp, #92]	@ 0x5c
+   6431c:	e1a00009 	mov	r0, r9
+   64320:	e3001151 	movw	r1, #337	@ 0x151
+   64324:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64324: R_ARM_CALL	rt2800_rfcsr_read
+   64320:	e3001151 	movw	r1, #337	@ 0x151
+   64324:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64324: R_ARM_CALL	rt2800_rfcsr_read
+   64328:	e58d0060 	str	r0, [sp, #96]	@ 0x60
+   6432c:	e1a00009 	mov	r0, r9
+   64330:	e3001152 	movw	r1, #338	@ 0x152
+   64334:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64334: R_ARM_CALL	rt2800_rfcsr_read
+   64330:	e3001152 	movw	r1, #338	@ 0x152
+   64334:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64334: R_ARM_CALL	rt2800_rfcsr_read
+   64338:	e58d0064 	str	r0, [sp, #100]	@ 0x64
+   6433c:	e1a00009 	mov	r0, r9
+   64340:	e3001153 	movw	r1, #339	@ 0x153
+   64344:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64344: R_ARM_CALL	rt2800_rfcsr_read
+   64340:	e3001153 	movw	r1, #339	@ 0x153
+   64344:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64344: R_ARM_CALL	rt2800_rfcsr_read
+   64348:	e58d0068 	str	r0, [sp, #104]	@ 0x68
+   6434c:	e1a00009 	mov	r0, r9
+   64350:	e3a01f55 	mov	r1, #340	@ 0x154
+   64354:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64354: R_ARM_CALL	rt2800_rfcsr_read
+   64350:	e3a01f55 	mov	r1, #340	@ 0x154
+   64354:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64354: R_ARM_CALL	rt2800_rfcsr_read
+   64358:	e58d006c 	str	r0, [sp, #108]	@ 0x6c
+   6435c:	e1a00009 	mov	r0, r9
+   64360:	e3a01d06 	mov	r1, #384	@ 0x180
+   64364:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64364: R_ARM_CALL	rt2800_rfcsr_read
+   64360:	e3a01d06 	mov	r1, #384	@ 0x180
+   64364:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64364: R_ARM_CALL	rt2800_rfcsr_read
+   64368:	e58d0070 	str	r0, [sp, #112]	@ 0x70
+   6436c:	e1a00009 	mov	r0, r9
+   64370:	e3001193 	movw	r1, #403	@ 0x193
+   64374:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64374: R_ARM_CALL	rt2800_rfcsr_read
+   64370:	e3001193 	movw	r1, #403	@ 0x193
+   64374:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64374: R_ARM_CALL	rt2800_rfcsr_read
+   64378:	e58d0074 	str	r0, [sp, #116]	@ 0x74
+   6437c:	e1a00009 	mov	r0, r9
+   64380:	e30011c3 	movw	r1, #451	@ 0x1c3
+   64384:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64384: R_ARM_CALL	rt2800_rfcsr_read
+   64380:	e30011c3 	movw	r1, #451	@ 0x1c3
+   64384:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64384: R_ARM_CALL	rt2800_rfcsr_read
+   64388:	e58d0078 	str	r0, [sp, #120]	@ 0x78
+   6438c:	e1a00009 	mov	r0, r9
+   64390:	e3a01f71 	mov	r1, #452	@ 0x1c4
+   64394:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64394: R_ARM_CALL	rt2800_rfcsr_read
+   64390:	e3a01f71 	mov	r1, #452	@ 0x1c4
+   64394:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			64394: R_ARM_CALL	rt2800_rfcsr_read
+   64398:	e58d007c 	str	r0, [sp, #124]	@ 0x7c
+   6439c:	e1a00009 	mov	r0, r9
+   643a0:	e30011d1 	movw	r1, #465	@ 0x1d1
+   643a4:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			643a4: R_ARM_CALL	rt2800_rfcsr_read
+   643a0:	e30011d1 	movw	r1, #465	@ 0x1d1
+   643a4:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			643a4: R_ARM_CALL	rt2800_rfcsr_read
+   643a8:	e58d0080 	str	r0, [sp, #128]	@ 0x80
+   643ac:	e1a00009 	mov	r0, r9
+   643b0:	e30011d2 	movw	r1, #466	@ 0x1d2
+   643b4:	ebfffffe 	bl	62d0 <rt2800_rfcsr_read>
+			643b4: R_ARM_CALL	rt2800_rfcsr_read
+

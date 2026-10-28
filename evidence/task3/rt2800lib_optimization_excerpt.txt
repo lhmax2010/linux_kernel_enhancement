@@ -1,0 +1,3678 @@
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8875, Column: 6 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_rxiq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8760, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_rxiq_calibration
+  - String:          ':'
+  - Line:            '116'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8815, Column: 6 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_rxiq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8760, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_rxiq_calibration
+  - String:          ':'
+  - Line:            '56'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9991, Column: 6 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_loft_iq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 9580, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_loft_iq_calibration
+  - String:          ':'
+  - Line:            '412'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9975, Column: 6 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_loft_iq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 9580, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_loft_iq_calibration
+  - String:          ':'
+  - Line:            '396'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9930, Column: 8 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_loft_iq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 9580, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_loft_iq_calibration
+  - String:          ':'
+  - Line:            '351'
+  - String:          ':'
+  - Column:          '8'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9925, Column: 8 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_loft_iq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 9580, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_loft_iq_calibration
+  - String:          ':'
+  - Line:            '346'
+  - String:          ':'
+  - Column:          '8'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9918, Column: 8 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_loft_iq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 9580, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_loft_iq_calibration
+  - String:          ':'
+  - Line:            '339'
+  - String:          ':'
+  - Column:          '8'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9899, Column: 7 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_loft_iq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 9580, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_loft_iq_calibration
+  - String:          ':'
+  - Line:            '320'
+  - String:          ':'
+  - Column:          '7'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9883, Column: 8 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_loft_iq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 9580, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_loft_iq_calibration
+  - String:          ':'
+  - Line:            '304'
+  - String:          ':'
+  - Column:          '8'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9873, Column: 8 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_loft_iq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 9580, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_loft_iq_calibration
+  - String:          ':'
+  - Line:            '294'
+  - String:          ':'
+  - Column:          '8'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9848, Column: 7 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_loft_iq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 9580, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_loft_iq_calibration
+  - String:          ':'
+  - Line:            '269'
+  - String:          ':'
+  - Column:          '7'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9829, Column: 6 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_loft_iq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 9580, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_loft_iq_calibration
+  - String:          ':'
+  - Line:            '250'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10348, Column: 10 }
+Function:        rt2800_bw_filter_calibration
+Args:
+  - String:          ''''
+  - Callee:          const_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 167, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_bw_filter_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10108, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_bw_filter_calibration
+  - String:          ':'
+  - Line:            '242'
+  - String:          ':'
+  - Column:          '10'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8875, Column: 6 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          ''''
+  - Callee:          generic_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 122, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_rxiq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8760, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_rxiq_calibration
+  - String:          ':'
+  - Line:            '116'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8815, Column: 6 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          ''''
+  - Callee:          generic_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 122, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_rxiq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8760, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_rxiq_calibration
+  - String:          ':'
+  - Line:            '56'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            AlwaysInline
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10348, Column: 10 }
+Function:        rt2800_bw_filter_calibration
+Args:
+  - String:          ''''
+  - Callee:          generic_test_bit
+    DebugLoc:        { File: 'include/asm-generic/bitops/generic-non-atomic.h', 
+                       Line: 122, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_bw_filter_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10108, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost=always)'
+  - String:          ': '
+  - Reason:          always inline attribute
+  - String:          ' at callsite '
+  - String:          rt2800_bw_filter_calibration
+  - String:          ':'
+  - Line:            '242'
+  - String:          ':'
+  - Column:          '10'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 5524, Column: 6 }
+Function:        rt2800_config_txpower
+Args:
+  - String:          ''''
+  - Callee:          rt2x00_rt
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2x00.h', 
+                       Line: 1124, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_txpower
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 5523, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_txpower
+  - String:          ':'
+  - Line:            '4'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 5525, Column: 6 }
+Function:        rt2800_config_txpower
+Args:
+  - String:          ''''
+  - Callee:          rt2x00_rt
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2x00.h', 
+                       Line: 1124, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_txpower
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 5523, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_txpower
+  - String:          ':'
+  - Line:            '5'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 5526, Column: 3 }
+Function:        rt2800_config_txpower
+Args:
+  - String:          ''''
+  - Callee:          rt2800_config_txpower_rt3593
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4821, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_txpower
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 5523, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-8280'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_txpower
+  - String:          ':'
+  - Line:            '6'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 5527, Column: 11 }
+Function:        rt2800_config_txpower
+Args:
+  - String:          ''''
+  - Callee:          rt2x00_rt
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2x00.h', 
+                       Line: 1124, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_txpower
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 5523, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-30'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_txpower
+  - String:          ':'
+  - Line:            '7'
+  - String:          ':'
+  - Column:          '11'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 5528, Column: 3 }
+Function:        rt2800_config_txpower
+Args:
+  - String:          ''''
+  - Callee:          rt2800_config_txpower_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 5207, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_txpower
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 5523, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-11160'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_txpower
+  - String:          ':'
+  - Line:            '8'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 5530, Column: 3 }
+Function:        rt2800_config_txpower
+Args:
+  - String:          ''''
+  - Callee:          rt2800_config_txpower_rt28xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 5340, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_txpower
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 5523, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-12715'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_txpower
+  - String:          ':'
+  - Line:            '10'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 3497, Column: 8 }
+Function:        rt2800_config_channel_rf55xx
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 83, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel_rf55xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3488, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel_rf55xx
+  - String:          ':'
+  - Line:            '13'
+  - String:          ':'
+  - Column:          '8'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 3499, Column: 28 }
+Function:        rt2800_config_channel_rf55xx
+Args:
+  - String:          ''''
+  - Callee:          conf_is_ht40
+    DebugLoc:        { File: 'include/net/mac80211.h', Line: 7081, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel_rf55xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3488, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-25'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel_rf55xx
+  - String:          ':'
+  - Line:            '15'
+  - String:          ':'
+  - Column:          '28'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 3500, Column: 2 }
+Function:        rt2800_config_channel_rf55xx
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 100, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel_rf55xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3488, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel_rf55xx
+  - String:          ':'
+  - Line:            '16'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 3503, Column: 2 }
+Function:        rt2800_config_channel_rf55xx
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel_rf55xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3488, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '210'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel_rf55xx
+  - String:          ':'
+  - Line:            '19'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 3509, Column: 2 }
+Function:        rt2800_config_channel_rf55xx
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel_rf55xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3488, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '210'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel_rf55xx
+  - String:          ':'
+  - Line:            '25'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 3514, Column: 2 }
+Function:        rt2800_config_channel_rf55xx
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel_rf55xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3488, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '210'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel_rf55xx
+  - String:          ':'
+  - Line:            '30'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 3517, Column: 3 }
+Function:        rt2800_config_channel_rf55xx
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel_rf55xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3488, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel_rf55xx
+  - String:          ':'
+  - Line:            '33'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 3519, Column: 3 }
+Function:        rt2800_config_channel_rf55xx
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel_rf55xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3488, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel_rf55xx
+  - String:          ':'
+  - Line:            '35'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 3520, Column: 3 }
+Function:        rt2800_config_channel_rf55xx
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel_rf55xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3488, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel_rf55xx
+  - String:          ':'
+  - Line:            '36'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 3521, Column: 3 }
+Function:        rt2800_config_channel_rf55xx
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel_rf55xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3488, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel_rf55xx
+  - String:          ':'
+  - Line:            '37'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 4169, Column: 25 }
+Function:        rt2800_config_channel
+Args:
+  - String:          ''''
+  - Callee:          rt2800_txpower_to_dev
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4114, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4164, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '45'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel
+  - String:          ':'
+  - Line:            '9'
+  - String:          ':'
+  - Column:          '25'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 4171, Column: 25 }
+Function:        rt2800_config_channel
+Args:
+  - String:          ''''
+  - Callee:          rt2800_txpower_to_dev
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4114, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4164, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '45'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel
+  - String:          ':'
+  - Line:            '11'
+  - String:          ':'
+  - Column:          '25'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 4175, Column: 4 }
+Function:        rt2800_config_channel
+Args:
+  - String:          ''''
+  - Callee:          rt2800_txpower_to_dev
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4114, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4164, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-14955'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel
+  - String:          ':'
+  - Line:            '15'
+  - String:          ':'
+  - Column:          '4'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 4180, Column: 3 }
+Function:        rt2800_config_channel
+Args:
+  - String:          ''''
+  - Callee:          rt3883_bbp_adjust
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4132, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4164, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-13250'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel
+  - String:          ':'
+  - Line:            '20'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 4190, Column: 3 }
+Function:        rt2800_config_channel
+Args:
+  - String:          ''''
+  - Callee:          rt2800_config_channel_rf3xxx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 2550, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4164, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-11385'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel
+  - String:          ':'
+  - Line:            '30'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 4193, Column: 3 }
+Function:        rt2800_config_channel
+Args:
+  - String:          ''''
+  - Callee:          rt2800_config_channel_rf3052
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 2628, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4164, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-3200'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel
+  - String:          ':'
+  - Line:            '33'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 4196, Column: 3 }
+Function:        rt2800_config_channel
+Args:
+  - String:          ''''
+  - Callee:          rt2800_config_channel_rf3053
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 2800, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4164, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-3085'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel
+  - String:          ':'
+  - Line:            '36'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 4199, Column: 3 }
+Function:        rt2800_config_channel
+Args:
+  - String:          ''''
+  - Callee:          rt2800_config_channel_rf3290
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3305, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4164, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-12970'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel
+  - String:          ':'
+  - Line:            '39'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 4202, Column: 3 }
+Function:        rt2800_config_channel
+Args:
+  - String:          ''''
+  - Callee:          rt2800_config_channel_rf3322
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3342, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4164, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-12355'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel
+  - String:          ':'
+  - Line:            '42'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 4205, Column: 3 }
+Function:        rt2800_config_channel
+Args:
+  - String:          ''''
+  - Callee:          rt2800_config_channel_rf3853
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 3097, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_config_channel
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 4164, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-4995'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_config_channel
+  - String:          ':'
+  - Line:            '45'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7045, Column: 8 }
+Function:        rt2800_init_bbp_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_bbp_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 108, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7041, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp_6352
+  - String:          ':'
+  - Line:            '5'
+  - String:          ':'
+  - Column:          '8'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7048, Column: 2 }
+Function:        rt2800_init_bbp_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_bbp_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 84, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7041, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '140'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp_6352
+  - String:          ':'
+  - Line:            '8'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7054, Column: 8 }
+Function:        rt2800_init_bbp_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_bbp_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 108, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7041, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp_6352
+  - String:          ':'
+  - Line:            '14'
+  - String:          ':'
+  - Column:          '8'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7056, Column: 2 }
+Function:        rt2800_init_bbp_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_bbp_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 84, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7041, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '140'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp_6352
+  - String:          ':'
+  - Line:            '16'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7059, Column: 2 }
+Function:        rt2800_init_bbp_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_bbp_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 84, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7041, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp_6352
+  - String:          ':'
+  - Line:            '19'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7060, Column: 2 }
+Function:        rt2800_init_bbp_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_bbp_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 84, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7041, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp_6352
+  - String:          ':'
+  - Line:            '20'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7061, Column: 2 }
+Function:        rt2800_init_bbp_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_bbp_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 84, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7041, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp_6352
+  - String:          ':'
+  - Line:            '21'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7062, Column: 2 }
+Function:        rt2800_init_bbp_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_bbp_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 84, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7041, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp_6352
+  - String:          ':'
+  - Line:            '22'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7063, Column: 2 }
+Function:        rt2800_init_bbp_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_bbp_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 84, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7041, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp_6352
+  - String:          ':'
+  - Line:            '23'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7064, Column: 2 }
+Function:        rt2800_init_bbp_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_bbp_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 84, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7041, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '125'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp_6352
+  - String:          ':'
+  - Line:            '24'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7253, Column: 6 }
+Function:        rt2800_init_bbp
+Args:
+  - String:          ''''
+  - Callee:          rt2800_is_305x_soc
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 66, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7247, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '120'
+  - String:          ', threshold='
+  - Threshold:       '325'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp
+  - String:          ':'
+  - Line:            '7'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7254, Column: 3 }
+Function:        rt2800_init_bbp
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_bbp_305x_soc
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 6448, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7247, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-12145'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp
+  - String:          ':'
+  - Line:            '8'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7260, Column: 3 }
+Function:        rt2800_init_bbp
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_bbp_28xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 6482, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7247, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-11915'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp
+  - String:          ':'
+  - Line:            '14'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7265, Column: 3 }
+Function:        rt2800_init_bbp
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_bbp_30xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 6521, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7247, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-11825'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp
+  - String:          ':'
+  - Line:            '19'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7268, Column: 3 }
+Function:        rt2800_init_bbp
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_bbp_3290
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 6563, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7247, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-8260'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp
+  - String:          ':'
+  - Line:            '22'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7272, Column: 3 }
+Function:        rt2800_init_bbp
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_bbp_3352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 6634, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7247, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-5980'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp
+  - String:          ':'
+  - Line:            '26'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7275, Column: 3 }
+Function:        rt2800_init_bbp
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_bbp_3390
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 6726, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7247, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-11910'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp
+  - String:          ':'
+  - Line:            '29'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7278, Column: 3 }
+Function:        rt2800_init_bbp
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_bbp_3572
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 6764, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7247, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-11940'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp
+  - String:          ':'
+  - Line:            '32'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7281, Column: 3 }
+Function:        rt2800_init_bbp
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_bbp_3593
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 6801, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7247, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-13950'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp
+  - String:          ':'
+  - Line:            '35'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 7284, Column: 3 }
+Function:        rt2800_init_bbp
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_bbp_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 6817, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_bbp
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7247, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10410'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_bbp
+  - String:          ':'
+  - Line:            '38'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8164, Column: 2 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rf_init_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7386, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8158, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '135'
+  - String:          ', threshold='
+  - Threshold:       '337'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_3883
+  - String:          ':'
+  - Line:            '7'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8166, Column: 2 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8158, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_3883
+  - String:          ':'
+  - Line:            '9'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8167, Column: 2 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8158, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_3883
+  - String:          ':'
+  - Line:            '10'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8168, Column: 2 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8158, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_3883
+  - String:          ':'
+  - Line:            '11'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8169, Column: 2 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8158, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_3883
+  - String:          ':'
+  - Line:            '12'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8170, Column: 2 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8158, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_3883
+  - String:          ':'
+  - Line:            '13'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8171, Column: 2 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8158, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_3883
+  - String:          ':'
+  - Line:            '14'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8172, Column: 2 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8158, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_3883
+  - String:          ':'
+  - Line:            '15'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8173, Column: 2 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8158, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_3883
+  - String:          ':'
+  - Line:            '16'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8174, Column: 2 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8158, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_3883
+  - String:          ':'
+  - Line:            '17'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10127, Column: 20 }
+Function:        rt2800_bw_filter_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 83, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_bw_filter_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10108, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_bw_filter_calibration
+  - String:          ':'
+  - Line:            '21'
+  - String:          ':'
+  - Column:          '20'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10128, Column: 19 }
+Function:        rt2800_bw_filter_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 83, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_bw_filter_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10108, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_bw_filter_calibration
+  - String:          ':'
+  - Line:            '22'
+  - String:          ':'
+  - Column:          '19'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10131, Column: 15 }
+Function:        rt2800_bw_filter_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_bbp_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 108, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_bw_filter_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10108, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_bw_filter_calibration
+  - String:          ':'
+  - Line:            '25'
+  - String:          ':'
+  - Column:          '15'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10137, Column: 16 }
+Function:        rt2800_bw_filter_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_read_bank
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 278, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_bw_filter_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10108, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-5'
+  - String:          ', threshold='
+  - Threshold:       '337'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_bw_filter_calibration
+  - String:          ':'
+  - Line:            '31'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10138, Column: 16 }
+Function:        rt2800_bw_filter_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_read_bank
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 278, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_bw_filter_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10108, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-5'
+  - String:          ', threshold='
+  - Threshold:       '337'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_bw_filter_calibration
+  - String:          ':'
+  - Line:            '32'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10139, Column: 16 }
+Function:        rt2800_bw_filter_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_read_bank
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 278, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_bw_filter_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10108, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-5'
+  - String:          ', threshold='
+  - Threshold:       '337'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_bw_filter_calibration
+  - String:          ':'
+  - Line:            '33'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10140, Column: 16 }
+Function:        rt2800_bw_filter_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_read_bank
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 278, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_bw_filter_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10108, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-5'
+  - String:          ', threshold='
+  - Threshold:       '337'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_bw_filter_calibration
+  - String:          ':'
+  - Line:            '34'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10141, Column: 16 }
+Function:        rt2800_bw_filter_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_read_bank
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 278, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_bw_filter_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10108, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-5'
+  - String:          ', threshold='
+  - Threshold:       '337'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_bw_filter_calibration
+  - String:          ':'
+  - Line:            '35'
+  - String:          ':'
+  - Column:          '16'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8787, Column: 19 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 83, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_rxiq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8760, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_rxiq_calibration
+  - String:          ':'
+  - Line:            '28'
+  - String:          ':'
+  - Column:          '19'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8788, Column: 21 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 83, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_rxiq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8760, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_rxiq_calibration
+  - String:          ':'
+  - Line:            '29'
+  - String:          ':'
+  - Column:          '21'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8789, Column: 20 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 83, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_rxiq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8760, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_rxiq_calibration
+  - String:          ':'
+  - Line:            '30'
+  - String:          ':'
+  - Column:          '20'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8790, Column: 21 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 83, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_rxiq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8760, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_rxiq_calibration
+  - String:          ':'
+  - Line:            '31'
+  - String:          ':'
+  - Column:          '21'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8791, Column: 20 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 83, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_rxiq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8760, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_rxiq_calibration
+  - String:          ':'
+  - Line:            '32'
+  - String:          ':'
+  - Column:          '20'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8792, Column: 21 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 83, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_rxiq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8760, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_rxiq_calibration
+  - String:          ':'
+  - Line:            '33'
+  - String:          ':'
+  - Column:          '21'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10405, Column: 6 }
+Function:        rt2800_calibration_rt6352
+Args:
+  - String:          ''''
+  - Callee:          rt2x00_has_cap_external_pa
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2x00.h', 
+                       Line: 1260, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_calibration_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10402, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_calibration_rt6352
+  - String:          ':'
+  - Line:            '4'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10406, Column: 6 }
+Function:        rt2800_calibration_rt6352
+Args:
+  - String:          ''''
+  - Callee:          rt2x00_has_cap_external_lna_bg
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2x00.h', 
+                       Line: 1254, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_calibration_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10402, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_calibration_rt6352
+  - String:          ':'
+  - Line:            '5'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10407, Column: 3 }
+Function:        rt2800_calibration_rt6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_restore_rf_bbp_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10356, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_calibration_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10402, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-5980'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_calibration_rt6352
+  - String:          ':'
+  - Line:            '6'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10409, Column: 2 }
+Function:        rt2800_calibration_rt6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_r_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8563, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_calibration_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10402, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-5865'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_calibration_rt6352
+  - String:          ':'
+  - Line:            '8'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10410, Column: 2 }
+Function:        rt2800_calibration_rt6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rf_self_txdc_cal
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8505, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_calibration_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10402, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-13255'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_calibration_rt6352
+  - String:          ':'
+  - Line:            '9'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10421, Column: 7 }
+Function:        rt2800_calibration_rt6352
+Args:
+  - String:          ''''
+  - Callee:          rt2x00_has_cap_external_pa
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2x00.h', 
+                       Line: 1260, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_calibration_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10402, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_calibration_rt6352
+  - String:          ':'
+  - Line:            '20'
+  - String:          ':'
+  - Column:          '7'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10422, Column: 7 }
+Function:        rt2800_calibration_rt6352
+Args:
+  - String:          ''''
+  - Callee:          rt2x00_has_cap_external_lna_bg
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2x00.h', 
+                       Line: 1254, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_calibration_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10402, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_calibration_rt6352
+  - String:          ':'
+  - Line:            '21'
+  - String:          ':'
+  - Column:          '7'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10425, Column: 6 }
+Function:        rt2800_calibration_rt6352
+Args:
+  - String:          ''''
+  - Callee:          rt2x00_has_cap_external_pa
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2x00.h', 
+                       Line: 1260, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_calibration_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10402, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_calibration_rt6352
+  - String:          ':'
+  - Line:            '24'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10426, Column: 9 }
+Function:        rt2800_calibration_rt6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_read
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 83, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_calibration_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10402, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_calibration_rt6352
+  - String:          ':'
+  - Line:            '25'
+  - String:          ':'
+  - Column:          '9'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10428, Column: 3 }
+Function:        rt2800_calibration_rt6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_register_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.h', 
+                       Line: 100, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_calibration_rt6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10402, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-10'
+  - String:          ', threshold='
+  - Threshold:       '487'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_calibration_rt6352
+  - String:          ':'
+  - Line:            '27'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10480, Column: 2 }
+Function:        rt2800_init_rfcsr_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10478, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_6352
+  - String:          ':'
+  - Line:            '3'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10481, Column: 2 }
+Function:        rt2800_init_rfcsr_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10478, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_6352
+  - String:          ':'
+  - Line:            '4'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10482, Column: 2 }
+Function:        rt2800_init_rfcsr_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10478, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_6352
+  - String:          ':'
+  - Line:            '5'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10483, Column: 2 }
+Function:        rt2800_init_rfcsr_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10478, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_6352
+  - String:          ':'
+  - Line:            '6'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10484, Column: 2 }
+Function:        rt2800_init_rfcsr_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10478, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_6352
+  - String:          ':'
+  - Line:            '7'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10485, Column: 2 }
+Function:        rt2800_init_rfcsr_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10478, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_6352
+  - String:          ':'
+  - Line:            '8'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10486, Column: 2 }
+Function:        rt2800_init_rfcsr_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10478, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_6352
+  - String:          ':'
+  - Line:            '9'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10487, Column: 2 }
+Function:        rt2800_init_rfcsr_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10478, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_6352
+  - String:          ':'
+  - Line:            '10'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10488, Column: 2 }
+Function:        rt2800_init_rfcsr_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10478, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_6352
+  - String:          ':'
+  - Line:            '11'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10489, Column: 2 }
+Function:        rt2800_init_rfcsr_6352
+Args:
+  - String:          ''''
+  - Callee:          rt2800_rfcsr_write
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 143, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr_6352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10478, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '175'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr_6352
+  - String:          ':'
+  - Line:            '12'
+  - String:          ':'
+  - Column:          '2'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10747, Column: 6 }
+Function:        rt2800_init_rfcsr
+Args:
+  - String:          ''''
+  - Callee:          rt2800_is_305x_soc
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 66, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10746, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '120'
+  - String:          ', threshold='
+  - Threshold:       '325'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr
+  - String:          ':'
+  - Line:            '2'
+  - String:          ':'
+  - Column:          '6'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10748, Column: 3 }
+Function:        rt2800_init_rfcsr
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_rfcsr_305x_soc
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7580, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10746, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-7420'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr
+  - String:          ':'
+  - Line:            '3'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10756, Column: 3 }
+Function:        rt2800_init_rfcsr
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_rfcsr_30xx
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7618, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10746, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-8960'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr
+  - String:          ':'
+  - Line:            '11'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10759, Column: 3 }
+Function:        rt2800_init_rfcsr
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_rfcsr_3290
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7688, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10746, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-3945'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr
+  - String:          ':'
+  - Line:            '14'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10762, Column: 3 }
+Function:        rt2800_init_rfcsr
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_rfcsr_3352
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7749, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10746, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-85'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr
+  - String:          ':'
+  - Line:            '17'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10765, Column: 3 }
+Function:        rt2800_init_rfcsr
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_rfcsr_3390
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7848, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10746, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-6960'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr
+  - String:          ':'
+  - Line:            '20'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10771, Column: 3 }
+Function:        rt2800_init_rfcsr
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_rfcsr_3572
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 7900, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10746, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-7025'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr
+  - String:          ':'
+  - Line:            '26'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10774, Column: 3 }
+Function:        rt2800_init_rfcsr
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_rfcsr_3593
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8005, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10746, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-1315'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr
+  - String:          ':'
+  - Line:            '29'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10777, Column: 3 }
+Function:        rt2800_init_rfcsr
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_rfcsr_5350
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8088, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10746, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '-905'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr
+  - String:          ':'
+  - Line:            '32'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+
+
+--- !Passed
+Pass:            inline
+Name:            Inlined
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 10780, Column: 3 }
+Function:        rt2800_init_rfcsr
+Args:
+  - String:          ''''
+  - Callee:          rt2800_init_rfcsr_5390
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8296, Column: 0 }
+  - String:          ''' inlined into '''
+  - Caller:          rt2800_init_rfcsr
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 10746, Column: 0 }
+  - String:          ''''
+  - String:          ' with '
+  - String:          '(cost='
+  - Cost:            '170'
+  - String:          ', threshold='
+  - Threshold:       '225'
+  - String:          ')'
+  - String:          ' at callsite '
+  - String:          rt2800_init_rfcsr
+  - String:          ':'
+  - Line:            '35'
+  - String:          ':'
+  - Column:          '3'
+  - String:          ';'
+...
+

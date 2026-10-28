@@ -1,0 +1,3 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/clang-22 --target=arm-linux-gnueabi -Werror -march=armv7-a -mtp=cp15 -mstack-protector-guard=tls -mstack-protector-guard-offset=0 -c -x c /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task3/empty.c -o /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task3/tls_armv7_control.o
+
+EXIT=0

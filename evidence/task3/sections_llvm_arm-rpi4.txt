@@ -1,0 +1,63 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/readelf -SW /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/vmlinux
+There are 51 section headers, starting at offset 0x142cc914:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .head.text        PROGBITS        c0008000 008000 0002c0 00  AX  0   0  4
+  [ 2] .text             PROGBITS        c0200000 010000 12f1408 00 WAX  0   0 64
+  [ 3] .rodata           PROGBITS        c1600000 1310000 4e80ed 00 WAMS  0   0 4096
+  [ 4] .rodata1          PROGBITS        c1ae80ed 17f80ed 000000 00  WA  0   0  1
+  [ 5] .pci_fixup        PROGBITS        c1ae80f0 17f80f0 002b10 00   A  0   0  4
+  [ 6] .builtin_fw       PROGBITS        c1aeac00 17fac00 000000 00   A  0   0  8
+  [ 7] __ksymtab         PROGBITS        c1aeac00 17fac00 0132e4 00   A  0   0  4
+  [ 8] __ksymtab_gpl     PROGBITS        c1afdee4 180dee4 014fe8 00   A  0   0  4
+  [ 9] __kcrctab         PROGBITS        c1b12ecc 1822ecc 00664c 00   A  0   0  4
+  [10] __kcrctab_gpl     PROGBITS        c1b19518 1829518 006ff8 00   A  0   0  4
+  [11] __ksymtab_strings PROGBITS        c1b20510 1830510 0462e2 01 AMS  0   0  1
+  [12] __init_rodata     PROGBITS        c1b667f2 18767f2 000000 00   A  0   0  1
+  [13] __param           PROGBITS        c1b667f4 18767f4 001eb4 00   A  0   0  4
+  [14] __modver          PROGBITS        c1b686a8 18786a8 000318 00  WA  0   0  4
+  [15] .notes            NOTE            c1b689c0 18789c0 000054 00   A  0   0  4
+  [16] .BTF              PROGBITS        c1b68a14 1878a14 62cea7 00   A  0   0  1
+  [17] .BTF_ids          PROGBITS        c21958bc 1ea58bc 000754 00   A  0   0  1
+  [18] __ex_table        PROGBITS        c2197000 1ea7000 0006c8 00   A  0   0  8
+  [19] .ARM.unwind_idx   ARM_EXIDX       c21976c8 1ea76c8 07ddf0 00  AL  1   0  4
+  [20] .ARM.unwind_tab   PROGBITS        c22154b8 1f254b8 07f848 00   A  0   0  4
+  [21] .vectors          PROGBITS        ffff0000 1fb0000 000020 00  AX  0   0  1
+  [22] .vectors.bhb.loop8 PROGBITS        ffff0000 1fc0000 000020 00  AX  0   0  1
+  [23] .vectors.bhb.bpiall PROGBITS        ffff0000 1fd0000 000020 00  AX  0   0  1
+  [24] .stubs            PROGBITS        ffff1000 1fd1000 000350 00  AX  0   0 32
+  [25] .init.text        PROGBITS        c24003c0 1fe03c0 054468 00  AX  0   0 32
+  [26] .exit.text        PROGBITS        c2454828 2034828 004f90 00  AX  0   0  4
+  [27] .init.proc.info   PROGBITS        c24597b8 20397b8 00023c 00   A  0   0  1
+  [28] .init.arch.info   PROGBITS        c24599f8 20399f8 0001c0 00   A  0   0  8
+  [29] .init.tagtable    PROGBITS        c2459bb8 2039bb8 000010 00   A  0   0  4
+  [30] .init.smpalt      PROGBITS        c2459bc8 2039bc8 021eb8 00   A  0   0  4
+  [31] .init.pv_table    PROGBITS        c247ba80 205ba80 000560 00   A  0   0  1
+  [32] .init.data        PROGBITS        c247c000 205c000 054bdc 00  WA  0   0 4096
+  [33] .data..percpu     PROGBITS        c24d1000 20b1000 00b40c 00  WA  0   0 64
+  [34] .data             PROGBITS        c2600000 20c0000 1c8b30 00  WA  0   0 4096
+  [35] __bug_table       PROGBITS        c27c8b30 2288b30 00954c 00  WA  0   0  4
+  [36] .sbss             PROGBITS        c27d207c 229207c 000000 00  WA  0   0  1
+  [37] .bss              NOBITS          c27d2080 2292080 090c10 00  WA  0   0 64
+  [38] .debug_aranges    PROGBITS        00000000 2292080 0008c0 00      0   0  1
+  [39] .debug_info       PROGBITS        00000000 2292940 cd07d83 00      0   0  1
+  [40] .debug_abbrev     PROGBITS        00000000 ef9a6c3 3d101a 00      0   0  1
+  [41] .debug_line       PROGBITS        00000000 f36b6dd 1b58b16 00      0   0  1
+  [42] .debug_frame      PROGBITS        00000000 10ec41f4 24945c 00      0   0  4
+  [43] .debug_str        PROGBITS        00000000 1110d650 5aadac 01  MS  0   0  1
+  [44] .debug_loc        PROGBITS        00000000 116b83fc 200f111 00      0   0  1
+  [45] .debug_ranges     PROGBITS        00000000 136c750d 43aa40 00      0   0  1
+  [46] .comment          PROGBITS        00000000 13b01f4d 000029 01  MS  0   0  1
+  [47] .symtab           SYMTAB          00000000 13b01f78 356e40 10     48 180142  4
+  [48] .strtab           STRTAB          00000000 13e58db8 4738fe 00      0   0  1
+  [49] .shstrtab         STRTAB          00000000 142cc6b6 000242 00      0   0  1
+  [50] .ARM.attributes   ARM_ATTRIBUTES  00000000 142cc8f8 00001a 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)
+
+EXIT=0

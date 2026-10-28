@@ -2,51 +2,66 @@
 
 更新：2026-10-28（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**用户以e028a072启动的基线构建成功，GCC/LLVM均exit=0，ALL-END 2026-10-28T14:55:09+08:00 OK。已完成可用产物核对及ACTIME实际布局验证；平台缺少llvm-bolt/create_llvm_prof，BOLT支持架构无法实测，明确挂账。**
+**任务3已完成现有四产物的静态分析。普通版LLVM常驻已分配段增加2,669,604 B（+8.11%），RT增加2,516,690 B（+7.58%）；完整vmlinux的文件缩小不能称为内存减少。** 独立因果占比、实际产品BTF依赖及rpmdb写入者仍有明确证据边界，见挂账。
 
 ## 计划
 
-本轮按任务2续四：每10分钟只读监控 → 正常结束后封存日志 → 实际编译器/四配置/体积与开销 → ACTIME实际布局 → 05平台前提 → 同commit发布。以上可执行核对已完成；没有重跑gbs、sudo、向进程发信号、改内核或碰开发板。下一阶段优化/上板由PM另发任务。
+本轮：按段改正03结论 → 目录/功能静态占用 → 5个.cmd与目录/函数增长 → 至少10函数反汇编/remarks → unwind与TLS探测 → rpmdb只读归属 → 同commit发布。已取得并整理所有可用证据；所有配置节省量标“估算”，未据此改配置或代码。优化实验、产品用途裁决与上板验证由PM另发任务。
 
 ## 进度
 
-- 本次supervisor PGID518408；export/GCC/LLVM组518419/525954/1214867；最终检查全已退出。12次监控记录原样封存，没有沿用旧PID。
-- export a=4工作区配置、b=307允许的外部路径+标志组合、c=5798工作区目录；AUDIT-EXIT0、Issues为空；/dev/null99次，首次trace:323，设备1:3按PM裁决放行。
-- GCC/LLVM完整日志各14840/15621行；最后均BUILD-END exit=0，日志尾、SHA-256及流程状态已封存。GCC time墙钟58:44.70、LLVM36:50.38。
-- 两轮分别由GCC14.2.0/GNU ld2.43和Clang22.1.8/LLD22.1.8编译；四份compile.h、.comment、日志/命令及RPM版本互相印证。
-- 四份最终.config、两组diffconfig各32条差异、01原表178符号全量核对完成。原明确值反转0；4条件项闭合、2字符串改标未输出、补1遗漏DEBUG_ALIGN_RODATA，01共补全/澄清7个符号。Clang未启用STACKPROTECTOR_PER_TASK，GCC为y，不能视为完全同配置实验。
-- 大小、模块、kallsyms、追踪数据、bloat-o-meter前30、wall/RSS/buildroot/RPM已记录。buildroot磁盘为普通权限可读部分下界（3目录拒读）。所有数字是构建产物指标，不是板上运行内存。
-- 四份原zram对象均用平台pahole验证；真实头文件+最终LLVM普通/RT配置的最小探针证明ACTIME 12→24 / 24→32 B，每GiB增3/2 MiB。没有修改.config或重编内核。
-- 05已更新llvm-profgen22.1.8、四配置CORESIGHT=n、perf实际libopencsd OFF；llvm-bolt/create_llvm_prof缺失，架构/版本无法实测，保留尝试命令及权限边界。
-- 内核保持lko/base@f240c28093027707f5e09f8a9cbbed16a43ebb1a，tizen@42aeefac58edeb081aff440f0b60be71cbe49755。LZ4三补丁之前干净合入后临时分支已删除；未对Gerrit推送。
+- 新增[06](06_static_footprint.md)、[07](07_llvm_text_growth.md)，03按debug/常驻/init/模块分类更正；未改01/04/05既有任务2实测结论。
+- 四产物readelf SHF_ALLOC逐段加总；vmlinux.a唯一输入对象按顶层/子目录统计，显式列链接残差，不重复求和built-in.a。
+- 5目标.cmd逐token差异、目录.text前30、普通/RT函数前50与增减分布完成；17个前50函数有平台反汇编/优化记录核对。
+- 只按任务3授权，在LLVM root内单文件重编4个目标以获取remarks；输出全在temp，.text SHA256与原对象4组全部相同，未替换产物。没有运行gbs、内核构建、sudo、发送信号或碰开发板。
+- 用完整CLANG_FLAGS实际复现TLS探测：默认armv4t+cp15失败，补-march=armv7-a通过；不把原因写成Clang不支持ARM32 TLS。
+- 四个原vmlinux/.config/zImage/zram对象及平台工具与任务2SHA-256复核一致；内核工作树干净，lko/base与tizen SHA不变。
 
 ## 已闭合结论（附证据）
 
+| 类别/字节 | GCC普通 | LLVM普通 | Δ普通 | GCC RT | LLVM RT | ΔRT |
+| --- | --- | --- | --- | --- | --- | --- |
+| 调试 .debug_*（非分配） | 371,084,669 | 294,059,724 | -77,024,945 | 380,296,444 | 301,358,541 | -78,937,903 |
+| 常驻：其余 SHF_ALLOC | 32,930,806 | 35,600,410 | +2,669,604 | 33,222,614 | 35,739,304 | +2,516,690 |
+| 启动后释放 .init* / .exit.text | 781,896 | 854,008 | +72,112 | 738,496 | 802,148 | +63,652 |
+| 构建 .ko（含调试，52个/版） | 39,028,264 | 29,325,668 | -9,702,596 | 39,126,596 | 29,348,752 | -9,777,844 |
+| 打包 .ko（52个/版，RPM内逻辑字节） | 2,641,484 | 2,821,812 | +180,328 | 2,648,528 | 2,821,912 | +173,384 |
+
+
+上述单位B；模块为文件逻辑大小，.BTF有SHF_ALLOC计常驻，.debug_*不加载；段逻辑字节不等于板上物理内存。附注：完整vmlinux普通LLVM−GCC −74,005,020 B，RT −76,138,524 B，主要是DWARF缩小，不能代替常驻指标。
+
 | 结论 | 证据 |
 | --- | --- |
-| 导出a/b/c通过、两构建成功、进程退出 | [状态](../evidence/task2/completed_run_baseline_build.status)、[导出审计](../evidence/task2/completed_export_check_home.txt)、[监控](../evidence/task2/completed_monitor.log)、[03](03_baseline_build.md) |
-| 日志行数/SHA和BUILD-END封存 | [完整性清单](../evidence/task2/completed_log_integrity.txt)、[GCC尾](../evidence/task2/completed_build_gcc_last100.txt)、[LLVM尾](../evidence/task2/completed_build_llvm_last100.txt) |
-| 实际Clang、四配置及01更正口径 | [编译器](../evidence/task2/compiler_actual.txt)、[178符号核对](../evidence/task2/config_inventory_comparison.md)、[重点符号](../evidence/task2/config_key_actual.md)、[01](01_kernel_inventory.md) |
-| 产物大小/符号/模块/追踪及成本 | [汇总](../evidence/task2/artifact_measurements.txt)、[符号区间](../evidence/task2/kallsyms_ftrace_measurements.txt)、[03](03_baseline_build.md) |
-| ACTIME每GiB增3/2 MiB的真实布局 | [原产物](../evidence/task2/zram_layout_baseline.txt)、[探针输出](../evidence/task2/zram_layout_probe.txt)、[04](04_zram_static.md) |
-| FDO平台工具、CoreSight/perf能力与缺项 | [工具输出](../evidence/task2/fdo_platform_actual.txt)、[05](05_kernel_fdo_static.md) |
-| 两轮外部路径更新不能归属 | [GCC](../evidence/task2/completed_gcc_r2.external_review.txt)、[LLVM](../evidence/task2/completed_llvm_r2.external_review.txt) |
-| LZ4三提交干净合入及字典脚本 | [合入检查](../evidence/task2/lz4_merge_check.txt)、[快照索引](../code_snapshots/INDEX.md) |
+| 常驻增量与PM普通版计算完全一致 | [06](06_static_footprint.md)、[四类汇总](../evidence/task3/section_categories.tsv)、[逐段原文索引](../evidence/task3/README.md) |
+| 目录输入与最终四核心段通过显式残差核对 | [链接加总](../evidence/task3/archive_reconciliation.txt)、[目录分量](../evidence/task3/directory_components.tsv) |
+| 条件裁剪候选：BTF、ALL符号、Btrfs、NFS/RPC、追踪；全为估算 | [06](06_static_footprint.md)、[对象估算](../evidence/task3/configuration_object_estimates.tsv)、[KALLSYMS估算](../evidence/task3/kallsyms_all_estimate.txt) |
+| .text普通+11.54%、RT+10.36%；已审计对象净增19.01%，外部帧指针指令11.34%，其余未分因果 | [07](07_llvm_text_growth.md)、[范围记账](../evidence/task3/cause_quantification.txt)、[remarks代码相同性](../evidence/task3/remarks_code_identity.txt) |
+| unwind_tab普通13,152→522,312 B：外部compact model1 1,096→43,526条，均12 B | [解码](../evidence/task3/unwind_summary.txt)、[LLVM来源](../evidence/task3/llvm_ehabi_source_identity.txt) |
+| TLS失败是探测缺ARMv7目标参数，优先修内核探测一致性 | [精确探测](../evidence/task3/kconfig_probe_exact.txt)、[ARMv7对照](../evidence/task3/kconfig_probe_armv7.txt) |
+| 隔离HOME内无.rpmdb；真实shm写入者仍不能归属 | [只读审计](../evidence/task3/rpmdb_readonly_audit.txt) |
+| 原产物与源码未变化 | [SHA与状态](../evidence/task3/original_artifact_integrity.txt) |
 
 ## 需要人工裁决的前提
 
-- 没有新增执行许可请求，本轮不安装软件、不改认证或配置。若后续仍要求平台llvm-bolt支持架构/create_llvm_prof版本实测，需要PM指定平台工具包或可核对源码范围；当前root没有这两个工具，不能猜架构列表。
-- 两套仓库、依赖release、探测配置和缓存不同，耗时与体积是本次基线；若要把差异归因于编译器，需另行设计受控实验。
+- BTF关闭前需明确TV镜像/用户态CO-RE及内核typed BPF使用；公开Tizen镜像只有libbpf等存在性证据，cgit TLS失败，不能据此判定无依赖。spec的btf-devel/vmlinux.h生成也需配套设计；本树BTF是bool，不能改m。
+- 驱动/文件系统候选需BOM、附件支持、分区、NFS根/挂载与现场诊断需求；未直接认定所有TV都无此用途。追踪整组估算与单项有重叠，不承诺相加收益。
+- 如开展受控GCC/Clang对比，应先处理TLS探测/配置差异、工具依赖差异；修复代码和任何候选优化实验均未在本任务执行。
 
 ## 挂账事项
 
-- 外部更新GCC27项/LLVM48项均无法归属，包含.rpmdb/rpmdb.sqlite-shm；未取得属于本次构建的外部写入证据，也不能证明零外部写入。find权限/深度/所有者限制见03。未删除、移动或打开这些外部文件内容。
-- buildroot磁盘精确总量因3目录权限不足未取得，仅报告下界；不sudo补读。
-- llvm-bolt支持架构、create_llvm_prof版本缺少平台可执行工具；未使用宿主LLVM或通用targets冒充BOLT支持。
-- ARM32内核AutoFDO缺Kconfig/Kbuild profile接入和采样转换消费链验证；CoreSight最终关闭且perf无OpenCSD。PMU/ETM及性能、内存数据需另发上板任务；未构建aarch64。
+- 补充分析进程：早先为备选DWARF归属启动的只读nm -S -l扫描PID1636046（GCC）/1636318（LLVM）在收尾快照时仍自然运行，各约1 CPU；已采用完成的vmlinux.a方法，所有发布数字不依赖这两个未完成输出。没有发送信号；输出仅在temp/task3，见[进程快照](../evidence/task3/optional_nm_scan_state.txt)。下次Session先核对是否已自然结束，不把它们误认作GBS构建或其他任务。
 
-## 发布状态
+- 六类代码增长的独立净贡献不能仅由已有产物/remarks唯一分解；19.01%是已审计对象范围（内联/初始化/guard等混合），11.34%是排除这些对象的帧指针建立指令记账，余69.65%未因果分离。需要另行消融实验才能给可靠独立占比。
+- rpmdb两轮find更新仍无法归属；事后15:49:40 mtime晚于构建，日志不含写调用PID，不能可靠归给其他任务。没有删除/移动/查询宿主rpm数据库内容。
+- 静态段/对象节省不是板上运行收益；实际CMA、固件/DT覆盖、每CPU分配、运行追踪开销等待上板任务。
+- 任务2遗留：平台缺llvm-bolt/create_llvm_prof；ARM32内核AutoFDO缺Kconfig/Kbuild profile接入及采样转换消费链；CoreSight最终n、perf OpenCSD OFF。buildroot磁盘精确总量仍因3目录不可读只有下界，不sudo补读。
 
-本轮01、03、04、05、STATUS及evidence/task2同一提交，使用正常Git环境、Hao Lin <hao.lin@samsung.com>署名，普通push main；最终commit见交付回复。RULES及构建脚本保持e028a072规则/内容，不重跑脚本。历史失败尝试在03及temp/attempt_*中保留，不与本次成功耗时混用。
+## 保留的任务2基线
 
-交付索引：[evidence/task2/README.md](../evidence/task2/README.md)。
+用户以e028a072启动；ALL-END 2026-10-28T14:55:09+08:00 OK。GCC/LLVM time墙钟58:44.70/36:50.38，实际GCC14.2.0/Clang22.1.8。四.config已核对，01补全/澄清7符号；MGLRU启用，zram内建lzo-rle，MULTI_COMP/WRITEBACK/ACTIME=n。ACTIME真实头文件探针证明普通12→24 B、RT24→32 B，每GiB增3/2 MiB；见[04](04_zram_static.md)。LZ4三补丁此前干净合入后临时分支已删。导出a/b/c通过，外部find更新GCC27/LLVM48项不能归属；见[03](03_baseline_build.md)、[任务2证据](../evidence/task2/README.md)。
+
+内核：lko/base@f240c28093027707f5e09f8a9cbbed16a43ebb1a；tizen@42aeefac58edeb081aff440f0b60be71cbe49755。
+
+## 发布
+
+06、07、更新后的03/STATUS及evidence/task3在同一提交，以Hao Lin <hao.lin@samsung.com>、正常Git环境普通push main；最终SHA见交付回复。未修改RULES或构建脚本，未开PR/force push/推Gerrit。证据索引：[task3 README](../evidence/task3/README.md)。

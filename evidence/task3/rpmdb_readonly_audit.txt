@@ -1,0 +1,92 @@
+Collected 2026-10-28T16:09:27.959258+08:00
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.rpmdb [Errno 2] No such file or directory: '/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.rpmdb'
+/home/linhao/.rpmdb size=4096 uid=1000 mtime=2026-06-10T11:11:49.244312+08:00
+/home/linhao/.rpmdb/rpmdb.sqlite-shm size=32768 uid=1000 mtime=2026-10-28T15:49:40.122885+08:00
+/home/linhao/.rpmdb/rpmdb.sqlite size=217088 uid=1000 mtime=2026-06-10T11:11:49.350312+08:00
+/home/linhao/.rpmdb/rpmdb.sqlite-wal size=0 uid=1000 mtime=2026-06-10T11:11:49.350312+08:00
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/build_marker_gcc size=0 uid=1000 mtime=2026-10-28T13:18:57.453134+08:00
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/build_marker_llvm size=0 uid=1000 mtime=2026-10-28T14:18:01.539275+08:00
+$ rpm --eval %{_dbpath}
+/home/linhao/.rpmdb
+
+EXIT=0
+/usr/lib/rpm/macros:124 %_dbpath		%(bash -c 'echo ~/.rpmdb')
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/build_gcc_r2.log explicit rpm invocation/DB matches:
+178: [    7s] + exec rpmbuild --define '_smp_mflags -j10' --define '_srcdefattr (-,root,root)' --nosignature --target=armv7l-tizen-linux --define '_build_create_debug 1' -ba /home/abuild/rpmbuild/SOURCES/linux-rpi.spec
+Beginning 35 lines:
+1: BUILD-START gcc 2026-10-28T13:18:57+08:00
+2: BASE=f240c28093027707f5e09f8a9cbbed16a43ebb1a
+3: GCC-START gcc 2026-10-28T13:18:57+08:00
+4: LIVE-OUTPUT /home/linhao/Toolchain/development/linux_kernel_optimization/temp/build_gcc_r2.log.raw
+5: info: generate repositories ...
+6: warning: No local package repository for arch armv7l
+7: info: build conf has been downloaded at:
+8:       /home/linhao/Toolchain/development/linux_kernel_optimization/temp/linhao-gbs/tizen_unified_standard.conf
+9: [32minfo: [0mstart building packages from: /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi (git)
+10: 2026-10-28 13:19 +0800
+11: gbs 2.1.0
+12: [32minfo: [0mprepare sources...
+13: [32minfo: [0mstart export source from: /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi ...
+14: info: tracking branch: origin/upstream -> upstream
+15: info: Generating patches from git (v6.12.80..HEAD)
+16: info: Squashing commits 00d7934..b3c2c75 into one monolithic diff
+17: info: linux-kernel-6.12.80.tar.xz does not exist, creating from 'v6.12.80'
+18: info: package files have been exported to:
+19:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/sources/tizen_unified_standard/rpi4-linux-kernel-6.12.80-0
+20: [32minfo: [0mretrieving repo metadata...
+21: [32minfo: [0mparsing package data...
+22: [32minfo: [0mbuilding repo metadata ...
+23: [32minfo: [0mresolving skipped packages ...
+24: [32minfo: [0mpackage dependency resolving ...
+25: [32minfo: [0mthere is no circle in 1 packages
+26: [32minfo: [0m*** [1/1] building rpi4-linux-kernel-6.12.80-0 armv7l tizen_unified_standard (worker: 0) ***
+27: logging output to /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/.build.log...
+28: [    0s] on X86_64, no limit mem size
+29: [    0s] Using BUILD_ROOT=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0
+30: [    0s] Using BUILD_ARCH=armv7l:armv7el:armv6l:armv5tejl:armv5tel:armv5l:armv4tl:armv4l:armv3l:noarch
+31: [    0s] 
+32: [    0s] 
+33: [    0s] linhao-linux started "build linux-rpi.spec" at Wed Oct 28 05:23:51 UTC 2026.
+34: [    0s] 
+35: [    0s] 
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/build_llvm_r2.log explicit rpm invocation/DB matches:
+234: [  322s] initializing rpm db...
+516: [  387s] + exec rpmbuild --define '_smp_mflags -j10' --define '_srcdefattr (-,root,root)' --nosignature --target=armv7l-tizen-linux --define '_build_create_debug 1' -ba /home/abuild/rpmbuild/SOURCES/linux-rpi.spec
+Beginning 35 lines:
+1: BUILD-START llvm 2026-10-28T14:18:01+08:00
+2: BASE=f240c28093027707f5e09f8a9cbbed16a43ebb1a
+3: LLVM-START llvm 2026-10-28T14:18:01+08:00
+4: LIVE-OUTPUT /home/linhao/Toolchain/development/linux_kernel_optimization/temp/build_llvm_r2.log.raw
+5: info: generate repositories ...
+6: warning: No local package repository for arch armv7l
+7: info: build conf has been downloaded at:
+8:       /home/linhao/Toolchain/development/linux_kernel_optimization/temp/linhao-gbs/tizen_unified_standard.conf
+9: [32minfo: [0mstart building packages from: /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi (git)
+10: 2026-10-28 14:18 +0800
+11: gbs 2.1.0
+12: [32minfo: [0mprepare sources...
+13: [32minfo: [0mstart export source from: /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi ...
+14: info: tracking branch: origin/upstream -> upstream
+15: info: Generating patches from git (v6.12.80..HEAD)
+16: info: Squashing commits 00d7934..b3c2c75 into one monolithic diff
+17: info: linux-kernel-6.12.80.tar.xz does not exist, creating from 'v6.12.80'
+18: info: package files have been exported to:
+19:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/sources/tizen_unified_standard/rpi4-linux-kernel-6.12.80-0
+20: [32minfo: [0mretrieving repo metadata...
+21: [32minfo: [0mparsing package data...
+22: [32minfo: [0mbuilding repo metadata ...
+23: [32minfo: [0mresolving skipped packages ...
+24: [32minfo: [0mpackage dependency resolving ...
+25: [32minfo: [0mthere is no circle in 1 packages
+26: [32minfo: [0m*** [1/1] building rpi4-linux-kernel-6.12.80-0 armv7l tizen_unified_standard (worker: 0) ***
+27: logging output to /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/.build.log...
+28: [    0s] on X86_64, no limit mem size
+29: [    0s] Using BUILD_ROOT=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0
+30: [    0s] Using BUILD_ARCH=armv7l:armv7el:armv6l:armv5tejl:armv5tel:armv5l:armv4tl:armv4l:armv3l:noarch
+31: [    0s] 
+32: [    0s] 
+33: [    0s] linhao-linux started "build linux-rpi.spec" at Wed Oct 28 06:24:00 UTC 2026.
+34: [    0s] 
+35: [    0s] 
+Original other build process snapshot: /home/linhao/Toolchain/development/linux_kernel_optimization/temp/run_baseline_build.existing_processes.txt
+Current installed gbs/depanneur rows (excluding this inspection command):

@@ -1,0 +1,77 @@
+gcc_arm-rpi4 profiler_known_resident_symbol_bytes=2856; debug_memory_init_known_freed_symbol_bytes=556
+c0342234 00000050 t function_stat_next section=.text class=resident
+c03422e4 0000003c t function_stat_cmp section=.text class=resident
+c0342c6c 0000001c t function_stat_headers section=.text class=resident
+c03431ec 00000090 t ftrace_profile_read section=.text class=resident
+c03432c0 000001f0 t function_stat_show section=.text class=resident
+c0343d5c 000001e8 t profile_graph_return section=.text class=resident
+c0343f60 00000234 t profile_graph_entry section=.text class=resident
+c034437c 0000030c t ftrace_profile_write section=.text class=resident
+c03450c0 00000010 T ftrace_graph_graph_time_control section=.text class=resident
+c14055f4 00000084 d ftrace_profile_fops section=.rodata class=resident
+c2217548 00000030 t set_mminit_loglevel section=.init.text class=free
+c2217978 000000e8 T mminit_verify_zonelist section=.init.text class=free
+c2217a60 00000110 T mminit_verify_pageflags_layout section=.init.text class=free
+c2270538 00000004 D mminit_loglevel section=.init.data class=free
+c22c2800 0000002c d ftrace_profile_stats section=.data..percpu class=resident
+c24065a4 00000004 d ftrace_profile_enabled section=.data class=resident
+c248be84 00000014 d ftrace_profile_lock section=.data class=resident
+
+gcc_arm-rpi4-rt profiler_known_resident_symbol_bytes=2832; debug_memory_init_known_freed_symbol_bytes=556
+c034b948 00000050 t function_stat_next section=.text class=resident
+c034b9f8 0000003c t function_stat_cmp section=.text class=resident
+c034c410 0000001c t function_stat_headers section=.text class=resident
+c034ca04 00000090 t ftrace_profile_read section=.text class=resident
+c034cad8 000001f0 t function_stat_show section=.text class=resident
+c034d5a0 000001e8 t profile_graph_return section=.text class=resident
+c034d7a4 00000234 t profile_graph_entry section=.text class=resident
+c034dbf4 000002f8 t ftrace_profile_write section=.text class=resident
+c034e930 00000010 T ftrace_graph_graph_time_control section=.text class=resident
+c1405874 00000084 d ftrace_profile_fops section=.rodata class=resident
+c201797c 00000030 t set_mminit_loglevel section=.init.text class=free
+c2017dac 000000e8 T mminit_verify_zonelist section=.init.text class=free
+c2017e94 00000110 T mminit_verify_pageflags_layout section=.init.text class=free
+c2065538 00000004 D mminit_loglevel section=.init.data class=free
+c20b78c0 0000002c d ftrace_profile_stats section=.data..percpu class=resident
+c220b99c 00000004 d ftrace_profile_enabled section=.data class=resident
+c240420c 00000010 b ftrace_profile_lock section=.bss class=resident
+
+llvm_arm-rpi4 profiler_known_resident_symbol_bytes=2677; debug_memory_init_known_freed_symbol_bytes=640
+c0366540 00000010 T ftrace_graph_graph_time_control section=.text class=resident
+c0370390 00000050 t function_stat_next section=.text class=resident
+c03703e0 00000038 t function_stat_cmp section=.text class=resident
+c0370418 00000230 t function_stat_show section=.text class=resident
+c0370648 0000001c t function_stat_headers section=.text class=resident
+c0370664 0000008c t ftrace_profile_read section=.text class=resident
+c03706f0 000002f4 t ftrace_profile_write section=.text class=resident
+c03709e4 000001c8 t profile_graph_entry section=.text class=resident
+c0370bac 00000184 t profile_graph_return section=.text class=resident
+c16049f8 00000084 d ftrace_profile_fops section=.rodata class=resident
+c2416bdc 00000138 t ftrace_profile_tracefs section=.init.text class=free
+c241b2d0 000000f8 T mminit_verify_zonelist section=.init.text class=free
+c241b3c8 00000124 T mminit_verify_pageflags_layout section=.init.text class=free
+c241b4ec 00000060 t set_mminit_loglevel section=.init.text class=free
+c24825f8 00000004 D mminit_loglevel section=.init.data class=free
+c24d37c0 0000002c d ftrace_profile_stats section=.data..percpu class=resident
+c26065b0 00000001 d ftrace_profile_enabled section=.data class=resident
+c268bba0 00000014 d ftrace_profile_lock section=.data class=resident
+
+llvm_arm-rpi4-rt profiler_known_resident_symbol_bytes=2685; debug_memory_init_known_freed_symbol_bytes=640
+c036ac88 00000010 T ftrace_graph_graph_time_control section=.text class=resident
+c0374ccc 00000050 t function_stat_next section=.text class=resident
+c0374d1c 00000038 t function_stat_cmp section=.text class=resident
+c0374d54 00000230 t function_stat_show section=.text class=resident
+c0374f84 0000001c t function_stat_headers section=.text class=resident
+c0374fa0 0000008c t ftrace_profile_read section=.text class=resident
+c037502c 00000300 t ftrace_profile_write section=.text class=resident
+c037532c 000001c8 t profile_graph_entry section=.text class=resident
+c03754f4 00000184 t profile_graph_return section=.text class=resident
+c1604a00 00000084 d ftrace_profile_fops section=.rodata class=resident
+c241725c 00000138 t ftrace_profile_tracefs section=.init.text class=free
+c241b970 000000f8 T mminit_verify_zonelist section=.init.text class=free
+c241ba68 00000124 T mminit_verify_pageflags_layout section=.init.text class=free
+c241bb8c 00000060 t set_mminit_loglevel section=.init.text class=free
+c24765f8 00000004 D mminit_loglevel section=.init.data class=free
+c24c7900 0000002c d ftrace_profile_stats section=.data..percpu class=resident
+c260b9a8 00000001 d ftrace_profile_enabled section=.data class=resident
+c2808340 00000010 b ftrace_profile_lock section=.bss class=resident

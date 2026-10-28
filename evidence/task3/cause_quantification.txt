@@ -1,0 +1,3 @@
+Four audited objects net .text delta=390532 B = 19.009725% of final .text delta 2054380 B; inline plus intertwined initialization/loop/guard effects, not isolated causal shares.
+Frame setup outside those objects: GCC=1741 LLVM=59969; exact instruction word net delta=232912 B. This counts only add/mov fp,sp, not all prologue/epilogue changes.
+Remainder=1430936 B; not causally separated.

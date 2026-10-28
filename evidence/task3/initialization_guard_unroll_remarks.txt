@@ -1,0 +1,222 @@
+rt2800lib
+--- !Passed
+Pass:            loop-unroll
+Name:            FullyUnrolled
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9637, Column: 2 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          'completely unrolled loop with '
+  - UnrollCount:     '2'
+  - String:          ' iterations'
+...
+
+rt2800lib
+--- !Missed
+Pass:            annotation-remarks
+Name:            AutoInitStore
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 144, Column: 6 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          Store inserted by -ftrivial-auto-var-init.
+  - String:          "\nStore size: "
+  - StoreSize:       '4'
+  - String:          ' bytes.'
+  - String:          "\n Written Variables: "
+  - WVarName:        '<unknown>'
+  - String:          ' ('
+  - WVarSize:        '4'
+  - String:          ' bytes)'
+  - String:          .
+  - String:          ' Volatile: '
+  - StoreVolatile:   'false'
+  - String:          .
+  - String:          ' Atomic: '
+  - StoreAtomic:     'false'
+  - String:          .
+...
+
+rt2800lib
+--- !Missed
+Pass:            annotation-remarks
+Name:            AutoInitStore
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 85, Column: 6 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          Store inserted by -ftrivial-auto-var-init.
+  - String:          "\nStore size: "
+  - StoreSize:       '4'
+  - String:          ' bytes.'
+  - String:          "\n Written Variables: "
+  - WVarName:        '<unknown>'
+  - String:          ' ('
+  - WVarSize:        '4'
+  - String:          ' bytes)'
+  - String:          .
+  - String:          ' Volatile: '
+  - StoreVolatile:   'false'
+  - String:          .
+  - String:          ' Atomic: '
+  - StoreAtomic:     'false'
+  - String:          .
+...
+
+rt2800lib
+--- !Missed
+Pass:            annotation-remarks
+Name:            AutoInitStore
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 144, Column: 6 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          Store inserted by -ftrivial-auto-var-init.
+  - String:          "\nStore size: "
+  - StoreSize:       '4'
+  - String:          ' bytes.'
+  - String:          "\n Written Variables: "
+  - WVarName:        '<unknown>'
+  - String:          ' ('
+  - WVarSize:        '4'
+  - String:          ' bytes)'
+  - String:          .
+  - String:          ' Volatile: '
+  - StoreVolatile:   'false'
+  - String:          .
+  - String:          ' Atomic: '
+  - StoreAtomic:     'false'
+  - String:          .
+...
+
+rt2800lib
+--- !Passed
+Pass:            stack-protector
+Name:            StackProtectorAddressTaken
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - String:          'Stack protection applied to function '
+  - Function:        rt2800_init_rfcsr_3883
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8158, Column: 0 }
+  - String:          ' due to the address of a local variable being taken'
+...
+
+rt2800lib
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8158, Column: 0 }
+Function:        rt2800_init_rfcsr_3883
+Args:
+  - NumStackBytes:   '48'
+  - String:          ' stack bytes in function '''
+  - Function:        rt2800_init_rfcsr_3883
+  - String:          ''''
+...
+
+rt2800lib
+--- !Passed
+Pass:            stack-protector
+Name:            StackProtectorAddressTaken
+Function:        rt2800_loft_iq_calibration
+Args:
+  - String:          'Stack protection applied to function '
+  - Function:        rt2800_loft_iq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 9580, Column: 0 }
+  - String:          ' due to the address of a local variable being taken'
+...
+
+rt2800lib
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 9580, Column: 0 }
+Function:        rt2800_loft_iq_calibration
+Args:
+  - NumStackBytes:   '312'
+  - String:          ' stack bytes in function '''
+  - Function:        rt2800_loft_iq_calibration
+  - String:          ''''
+...
+
+rt2800lib
+--- !Passed
+Pass:            stack-protector
+Name:            StackProtectorAddressTaken
+Function:        rt2800_rxiq_calibration
+Args:
+  - String:          'Stack protection applied to function '
+  - Function:        rt2800_rxiq_calibration
+    DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                       Line: 8760, Column: 0 }
+  - String:          ' due to the address of a local variable being taken'
+...
+
+rt2800lib
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: 'drivers/net/wireless/ralink/rt2x00/rt2800lib.c', 
+                   Line: 8760, Column: 0 }
+Function:        rt2800_rxiq_calibration
+Args:
+  - NumStackBytes:   '280'
+  - String:          ' stack bytes in function '''
+  - Function:        rt2800_rxiq_calibration
+  - String:          ''''
+...
+
+r8152
+--- !Missed
+Pass:            annotation-remarks
+Name:            AutoInitStore
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 1546, Column: 9 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          Store inserted by -ftrivial-auto-var-init.
+  - String:          "\nStore size: "
+  - StoreSize:       '4'
+  - String:          ' bytes.'
+  - String:          "\n Written Variables: "
+  - WVarName:        '<unknown>'
+  - String:          ' ('
+  - WVarSize:        '4'
+  - String:          ' bytes)'
+  - String:          .
+  - String:          ' Volatile: '
+  - StoreVolatile:   'false'
+  - String:          .
+  - String:          ' Atomic: '
+  - StoreAtomic:     'false'
+  - String:          .
+...
+
+r8152
+--- !Passed
+Pass:            stack-protector
+Name:            StackProtectorAddressTaken
+Function:        r8156b_hw_phy_cfg
+Args:
+  - String:          'Stack protection applied to function '
+  - Function:        r8156b_hw_phy_cfg
+    DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+  - String:          ' due to the address of a local variable being taken'
+...
+
+r8152
+--- !Analysis
+Pass:            prologepilog
+Name:            StackSize
+DebugLoc:        { File: 'drivers/net/usb/r8152.c', Line: 7750, Column: 0 }
+Function:        r8156b_hw_phy_cfg
+Args:
+  - NumStackBytes:   '64'
+  - String:          ' stack bytes in function '''
+  - Function:        r8156b_hw_phy_cfg
+  - String:          ''''
+...
+

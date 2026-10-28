@@ -1,0 +1,32 @@
+$ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/size -A /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task3/blake2b_generic_remarks.o
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task3/blake2b_generic_remarks.o  :
+section                  size   addr
+.text                   21780      0
+.export_symbol              8      0
+.ARM.exidx                 40      0
+.exit.text                 28      0
+.ARM.exidx.exit.text        8      0
+.init.text                 36      0
+.ARM.exidx.init.text        8      0
+.ARM.extab                 36      0
+.discard.addressable        4      0
+.data                    2048      0
+.initcall4.init             4      0
+.exitcall.exit              4      0
+.modinfo                  850      0
+.debug_loc             602086      0
+.debug_abbrev            1136      0
+.debug_info             32163      0
+.debug_ranges            3176      0
+.debug_str              15484      0
+.comment                   22      0
+.note.GNU-stack             0      0
+.ARM.attributes            52      0
+.debug_frame              272      0
+.debug_line             17000      0
+.llvm_addrsig              31      0
+Total                  696276
+
+
+
+EXIT=0

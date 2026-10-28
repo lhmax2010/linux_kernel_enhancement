@@ -18,7 +18,7 @@
 
 导出审计a：4个配置路径均在WS，含隔离.gbs.conf/.gbp.conf；b：307个外部路径+标志组合均命中运行时白名单或PM裁决例外，拒绝0；c：5798个成功创建目录均在WS。/dev/null带写标志99次，首次trace:323，均精确返回字符设备1:3，按PM裁决放行。AUDIT-EXIT=0、Issues为空。完整小于1 MB的[导出摘要](../evidence/task2/completed_export_check_home.txt)已封存；本次成功解析opens=107173，与旧离线trace总数不同，不能混用旧计数。
 
-构建后find检查：GCC有27条、LLVM有48条工作区外更新路径，**全部无法归属**，包括两轮都出现的/home/linhao/.rpmdb/rpmdb.sqlite-shm；名称和时间不能证明来自本次GBS。直接观察文件为空，没有能够归因到本次构建的外部写入记录；不能据此声称“没有任何外部写入”。两次find exit=1、权限错误按用户命令抑制，且maxdepth=3、按普通用户归属过滤，不覆盖更深目录或root所有文件。没有删除或移动任何外部文件。[GCC检查](../evidence/task2/completed_gcc_r2.external_review.txt)、[LLVM检查](../evidence/task2/completed_llvm_r2.external_review.txt)。
+构建后find检查：GCC有27条、LLVM有48条工作区外更新路径，**全部无法归属**，包括两轮都出现的/home/linhao/.rpmdb/rpmdb.sqlite-shm；名称和时间不能证明来自本次GBS。直接观察文件为空，没有能够归因到本次构建的外部写入记录；不能据此声称“没有任何外部写入”。任务3只读追查仍不能归属：隔离HOME内.rpmdb不存在，宿主_dbpath受HOME影响，真实shm最新mtime在构建结束后，日志没有写入PID证据，详见[07的rpmdb核对](07_llvm_text_growth.md#7-rpmdb只读归属核对)。两次find exit=1、权限错误按用户命令抑制，且maxdepth=3、按普通用户归属过滤，不覆盖更深目录或root所有文件。没有删除或移动任何外部文件。[GCC检查](../evidence/task2/completed_gcc_r2.external_review.txt)、[LLVM检查](../evidence/task2/completed_llvm_r2.external_review.txt)。
 
 完整日志留在temp，封存最后100行及本次进程组摘要：[GCC日志](../evidence/task2/completed_build_gcc_last100.txt)、[LLVM日志](../evidence/task2/completed_build_llvm_last100.txt)、[export进程](../evidence/task2/completed_export_processes_summary.txt)、[GCC进程](../evidence/task2/completed_gcc_processes_summary.txt)、[LLVM进程](../evidence/task2/completed_llvm_processes_summary.txt)。完整日志行数/SHA-256见[完整性清单](../evidence/task2/completed_log_integrity.txt)。两份正式日志末行分别为BUILD-END gcc/llvm，exit均0。
 
@@ -39,7 +39,7 @@
 
 四份原始配置：[GCC普通](../evidence/task2/config_gcc_arm-rpi4.txt)、[GCC RT](../evidence/task2/config_gcc_arm-rpi4-rt.txt)、[LLVM普通](../evidence/task2/config_llvm_arm-rpi4.txt)、[LLVM RT](../evidence/task2/config_llvm_arm-rpi4-rt.txt)。平台diffconfig：[普通](../evidence/task2/diffconfig_arm-rpi4.txt)、[RT](../evidence/task2/diffconfig_arm-rpi4-rt.txt)。两组各32条符号差异（含删除/新增、工具版本字符串和探测能力），无静默丢弃。
 
-最需要注意：GCC STACKPROTECTOR_PER_TASK=y，LLVM未输出（不启用）；STACKPROTECTOR/STRONG两者均y。arch/arm/Kconfig:1376–1383要求GCC_PLUGINS或CC_HAVE_STACKPROTECTOR_TLS；LLVM最终没有两项可用条件。其余差异以diffconfig原文为准，不能说四份配置完全一致。
+最需要注意：GCC STACKPROTECTOR_PER_TASK=y，LLVM未输出（不启用）；STACKPROTECTOR/STRONG两者均y。arch/arm/Kconfig:1376–1383要求GCC_PLUGINS或CC_HAVE_STACKPROTECTOR_TLS；LLVM最终没有两项可用条件。其余差异以diffconfig原文为准，不能说四份配置完全一致。任务3已实测：Clang探测默认armv4t而-mtp=cp15不支持，补-march=armv7-a的对照通过，详见[07](07_llvm_text_growth.md)。
 
 01原表178符号逐项核对：[完整对照](../evidence/task2/config_inventory_comparison.md)。没有发现原先明确数值发生反转；修订/澄清6个已列符号，另补1个漏列符号，合计7个符号：
 
@@ -61,7 +61,7 @@
 
 | 指标（字节，除数量外） | GCC普通 | LLVM普通 | LLVM−GCC | GCC RT | LLVM RT | LLVM−GCC |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| vmlinux完整文件 | 412,486,440 | 338,481,420 | -74,005,020 | 421,759,136 | 345,620,612 | -76,138,524 |
+| 附注：vmlinux完整文件 | 412,486,440 | 338,481,420 | -74,005,020 | 421,759,136 | 345,620,612 | -76,138,524 |
 | zImage | 14,323,400 | 14,896,384 | +572,984 | 14,470,728 | 14,945,240 | +474,512 |
 | .text | 17,808,156 | 19,862,536 | +2,054,380 | 18,128,580 | 20,005,868 | +1,877,288 |
 | .rodata | 5,217,374 | 5,144,813 | -72,561 | 5,159,246 | 5,095,013 | -64,233 |
@@ -73,7 +73,17 @@
 | RPM内.ko逻辑总字节 | 2,641,484 | 2,821,812 | +180,328 | 2,648,528 | 2,821,912 | +173,384 |
 | kallsyms符号数 | 129,029 | 126,768 | -2,261 | 129,068 | 127,320 | -1,748 |
 
-LLVM完整vmlinux普通/RT分别小74,005,020 / 76,138,524 B，但zImage分别大572,984 / 474,512 B，.text也更大；完整ELF调试体积减少不能解释为内核运行占用减少。模块同时列出构建目录含调试.ko与RPM中处理后的.ko逻辑字节；RPM自身压缩大小另列，不混为一个数字。
+**任务3按段复核：LLVM普通版常驻已分配段增加2,669,604 B（+8.11%），RT增加2,516,690 B（+7.58%）。** 常驻指SHF_ALLOC中排除.init*和.exit.text；.BTF仍计常驻，.debug_*不加载。模块分构建.ko与RPM内.ko统计。完整vmlinux文件差−74,005,020 / −76,138,524 B仅作文件体积附注，不能解释为内存下降；zImage仍分别大572,984 / 474,512 B。
+
+| 类别/字节 | GCC普通 | LLVM普通 | Δ普通 | GCC RT | LLVM RT | ΔRT |
+| --- | --- | --- | --- | --- | --- | --- |
+| 调试 .debug_*（非分配） | 371,084,669 | 294,059,724 | -77,024,945 | 380,296,444 | 301,358,541 | -78,937,903 |
+| 常驻：其余 SHF_ALLOC | 32,930,806 | 35,600,410 | +2,669,604 | 33,222,614 | 35,739,304 | +2,516,690 |
+| 启动后释放 .init* / .exit.text | 781,896 | 854,008 | +72,112 | 738,496 | 802,148 | +63,652 |
+| 构建 .ko（含调试，52个/版） | 39,028,264 | 29,325,668 | -9,702,596 | 39,126,596 | 29,348,752 | -9,777,844 |
+| 打包 .ko（52个/版，RPM内逻辑字节） | 2,641,484 | 2,821,812 | +180,328 | 2,648,528 | 2,821,912 | +173,384 |
+
+逐段、目录、裁剪条件与统计限制见[06](06_static_footprint.md)；代码与unwind增长证据见[07](07_llvm_text_growth.md)。
 
 平台size原文：[GCC普通](../evidence/task2/size_gcc_arm-rpi4.txt)、[GCC RT](../evidence/task2/size_gcc_arm-rpi4-rt.txt)、[LLVM普通](../evidence/task2/size_llvm_arm-rpi4.txt)、[LLVM RT](../evidence/task2/size_llvm_arm-rpi4-rt.txt)。
 

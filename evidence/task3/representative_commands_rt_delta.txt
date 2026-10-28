@@ -1,0 +1,49 @@
+gcc drivers/block/zram/zram_drv.o
+RT_CMD=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/drivers/block/zram/.zram_drv.o.cmd:1
+normal_only=['-mstack-protector-guard-offset=1648']
+rt_only=['-mstack-protector-guard-offset=1704']
+
+llvm drivers/block/zram/zram_drv.o
+RT_CMD=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/drivers/block/zram/.zram_drv.o.cmd:1
+normal_only=[]
+rt_only=[]
+
+gcc drivers/net/wireless/ralink/rt2x00/rt2800lib.o
+RT_CMD=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/drivers/net/wireless/ralink/rt2x00/.rt2800lib.o.cmd:1
+normal_only=['-mstack-protector-guard-offset=1648']
+rt_only=['-mstack-protector-guard-offset=1704']
+
+llvm drivers/net/wireless/ralink/rt2x00/rt2800lib.o
+RT_CMD=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/drivers/net/wireless/ralink/rt2x00/.rt2800lib.o.cmd:1
+normal_only=[]
+rt_only=[]
+
+gcc crypto/blake2b_generic.o
+RT_CMD=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/crypto/.blake2b_generic.o.cmd:1
+normal_only=['-mstack-protector-guard-offset=1648']
+rt_only=['-mstack-protector-guard-offset=1704']
+
+llvm crypto/blake2b_generic.o
+RT_CMD=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/crypto/.blake2b_generic.o.cmd:1
+normal_only=[]
+rt_only=[]
+
+gcc lib/zstd/compress/zstd_double_fast.o
+RT_CMD=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/lib/zstd/compress/.zstd_double_fast.o.cmd:1
+normal_only=['-mstack-protector-guard-offset=1648']
+rt_only=['-mstack-protector-guard-offset=1704']
+
+llvm lib/zstd/compress/zstd_double_fast.o
+RT_CMD=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/lib/zstd/compress/.zstd_double_fast.o.cmd:1
+normal_only=[]
+rt_only=[]
+
+gcc kernel/sched/core.o
+RT_CMD=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/kernel/sched/.core.o.cmd:1
+normal_only=['-mstack-protector-guard-offset=1648']
+rt_only=['-mstack-protector-guard-offset=1704']
+
+llvm kernel/sched/core.o
+RT_CMD=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/kernel/sched/.core.o.cmd:1
+normal_only=[]
+rt_only=[]

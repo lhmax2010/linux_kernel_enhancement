@@ -1,0 +1,83 @@
+gcc rt2800lib rt2800_init_rfcsr_3883
+{"instructions": 406, "calls": {"__gnu_mcount_nc": 1, "msleep": 2}, "fp_setup": 0, "sp_adjusts": 0, "all_calls": {"__gnu_mcount_nc": 1, "rt2800_rfcsr_read": 7, "rt2800_rfcsr_write": 73, "msleep": 2, "rt2800_bbp_write": 18}}
+
+gcc rt2800lib rt2800_bw_filter_calibration
+{"instructions": 770, "calls": {"__gnu_mcount_nc": 1, "usleep_range_state": 5}, "fp_setup": 0, "sp_adjusts": 2, "all_calls": {"__gnu_mcount_nc": 1, "rt2800_bbp_read": 9, "rt2800_bbp_write": 21, "rt2800_rfcsr_read": 46, "rt2800_rfcsr_write": 52, "usleep_range_state": 5, "rt2800_bbp_core_soft_reset": 8, "rt2800_lp_tx_filter_bw_cal": 4}}
+
+gcc rt2800lib rt2800_config_txpower
+{"instructions": 19, "calls": {"__gnu_mcount_nc": 1}, "fp_setup": 0, "sp_adjusts": 0, "all_calls": {"__gnu_mcount_nc": 1}}
+
+gcc rt2800lib rt2800_rxiq_calibration
+{"instructions": 1073, "calls": {"__gnu_mcount_nc": 1, "usleep_range_state": 4, "___ratelimit": 5, "_dev_warn": 5, "__aeabi_idiv": 3}, "fp_setup": 0, "sp_adjusts": 2, "all_calls": {"__gnu_mcount_nc": 1, "rt2800_bbp_read": 13, "rt2800_wait_bbp_rf_ready": 1, "rt2800_bbp_write": 50, "rt2800_rfcsr_read": 19, "rt2800_rfcsr_write": 45, "usleep_range_state": 4, "___ratelimit": 5, "_dev_warn": 5, "__aeabi_idiv": 3}}
+
+gcc rt2800lib rt2800_init_bbp
+{"instructions": 2708, "calls": {"__gnu_mcount_nc": 1, "___ratelimit": 1, "_dev_warn": 1, "warn_slowpath_fmt": 2}, "fp_setup": 0, "sp_adjusts": 3, "all_calls": {"__gnu_mcount_nc": 1, "rt2800_bbp_write": 565, "rt2800_disable_unused_dac_adc": 3, "rt2800_init_bbp_early": 3, "rt2800_bbp_read": 14, "___ratelimit": 1, "_dev_warn": 1, "warn_slowpath_fmt": 2, "rt2800_eeprom_word_index": 2}}
+
+gcc rt2800lib rt2800_loft_iq_calibration
+{"instructions": 1930, "calls": {"__gnu_mcount_nc": 1, "memset": 1, "___ratelimit": 4, "_dev_warn": 4, "__stack_chk_fail": 1}, "fp_setup": 0, "sp_adjusts": 2, "all_calls": {"__gnu_mcount_nc": 1, "memset": 1, "rt2800_wait_bbp_rf_ready": 4, "rt2800_rf_configstore": 4, "rt2800_bbp_read": 5, "rt2800_rfcsr_read": 2, "rt2800_bbp_write": 134, "rt2800_rfcsr_write": 20, "rt2800_setbbptonegenerator": 2, "rt2800_rf_aux_tx1_loopback": 2, "rt2800_write_dc.constprop.0": 4, "rt2800_do_fft_accumulation": 11, "rt2800_rf_configrecover": 2, "rt2800_read_fft_accumulation.constprop.0": 2, "rt2800_rf_aux_tx0_loopback": 2, "___ratelimit": 4, "_dev_warn": 4, "__stack_chk_fail": 1}}
+
+llvm rt2800lib rt2800_config_txpower
+{"instructions": 2644, "calls": {"__gnu_mcount_nc": 1, "rt2800_get_gain_calibration_delta": 2, "rt2800_get_txpower_bw_comp": 2, "___ratelimit": 3, "warn_slowpath_fmt": 1, "mutex_lock": 12, "mutex_unlock": 9, "rt2800_vco_calibration": 1, "__stack_chk_fail": 1, "_dev_warn": 2, "_dev_err": 1}, "fp_setup": 1, "sp_adjusts": 3, "all_calls": {"__gnu_mcount_nc": 1, "rt2800_get_gain_calibration_delta": 2, "rt2800_get_txpower_bw_comp": 2, "___ratelimit": 3, "warn_slowpath_fmt": 1, "mutex_lock": 12, "mutex_unlock": 9, "rt2800_vco_calibration": 1, "__stack_chk_fail": 1, "_dev_warn": 2, "_dev_err": 1}}
+
+llvm rt2800lib rt2800_config_channel
+{"instructions": 14075, "calls": {"__gnu_mcount_nc": 1, "rt2800_bbp_write_with_rx_chain": 6, "mutex_lock": 321, "mutex_unlock": 270, "rt2800_rfcsr_read": 75, "usleep_range_state": 5, "rt2800_freq_cal_mode1": 5, "clk_get_rate": 1, "rt2800_config_channel_rf55xx": 1, "rt2800_bbp_write": 1, "rt2800_bbp_glrt_write": 6, "__stack_chk_fail": 1}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "rt2800_bbp_write_with_rx_chain": 6, "mutex_lock": 321, "mutex_unlock": 270, "rt2800_rfcsr_read": 75, "usleep_range_state": 5, "rt2800_freq_cal_mode1": 5, "clk_get_rate": 1, "rt2800_config_channel_rf55xx": 1, "rt2800_bbp_write": 1, "rt2800_bbp_glrt_write": 6, "__stack_chk_fail": 1}}
+
+llvm rt2800lib rt2800_init_bbp
+{"instructions": 7610, "calls": {"__gnu_mcount_nc": 1, "mutex_lock": 283, "mutex_unlock": 272, "___ratelimit": 1, "rt2800_init_bbp_early": 3, "rt2800_bbp4_mac_if_ctrl": 4, "rt2800_disable_unused_dac_adc": 3, "rt2800_init_freq_calibration": 2, "warn_slowpath_fmt": 2, "__stack_chk_fail": 1, "_dev_warn": 1}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "mutex_lock": 283, "mutex_unlock": 272, "___ratelimit": 1, "rt2800_init_bbp_early": 3, "rt2800_bbp4_mac_if_ctrl": 4, "rt2800_disable_unused_dac_adc": 3, "rt2800_init_freq_calibration": 2, "warn_slowpath_fmt": 2, "__stack_chk_fail": 1, "_dev_warn": 1}}
+
+llvm rt2800lib rt2800_init_rfcsr
+{"instructions": 23111, "calls": {"__gnu_mcount_nc": 1, "rt2800_rfcsr_read": 20, "mutex_lock": 520, "mutex_unlock": 506, "msleep": 11, "___ratelimit": 1, "rt2800_rx_filter_calibration": 3, "rt2800_freq_cal_mode1": 2, "rt2800_normal_mode_setup_5xxx": 2, "usleep_range_state": 1, "rt2800_bbp4_mac_if_ctrl": 1, "clk_get_rate": 1, "rt2800_normal_mode_setup_3xxx": 1, "_dev_warn": 1, "__stack_chk_fail": 1}, "fp_setup": 1, "sp_adjusts": 3, "all_calls": {"__gnu_mcount_nc": 1, "rt2800_rfcsr_read": 20, "mutex_lock": 520, "mutex_unlock": 506, "msleep": 11, "___ratelimit": 1, "rt2800_rx_filter_calibration": 3, "rt2800_freq_cal_mode1": 2, "rt2800_normal_mode_setup_5xxx": 2, "usleep_range_state": 1, "rt2800_bbp4_mac_if_ctrl": 1, "clk_get_rate": 1, "rt2800_normal_mode_setup_3xxx": 1, "_dev_warn": 1, "__stack_chk_fail": 1}}
+
+llvm rt2800lib rt2800_config_channel_rf55xx
+{"instructions": 5273, "calls": {"__gnu_mcount_nc": 1, "mutex_lock": 127, "mutex_unlock": 116, "rt2800_rfcsr_read": 6, "rt2800_freq_cal_mode1": 1, "__stack_chk_fail": 1}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "mutex_lock": 127, "mutex_unlock": 116, "rt2800_rfcsr_read": 6, "rt2800_freq_cal_mode1": 1, "__stack_chk_fail": 1}}
+
+llvm rt2800lib rt2800_init_bbp_6352
+{"instructions": 2412, "calls": {"__gnu_mcount_nc": 1, "mutex_lock": 77, "mutex_unlock": 77, "rt2800_bbp4_mac_if_ctrl": 2, "rt2800_bbp_glrt_write": 83, "rt2800_bbp_dcoc_write": 20, "__stack_chk_fail": 1}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "mutex_lock": 77, "mutex_unlock": 77, "rt2800_bbp4_mac_if_ctrl": 2, "rt2800_bbp_glrt_write": 83, "rt2800_bbp_dcoc_write": 20, "__stack_chk_fail": 1}}
+
+llvm rt2800lib rt2800_init_rfcsr_3883
+{"instructions": 3571, "calls": {"__gnu_mcount_nc": 1, "rt2800_rfcsr_read": 7, "mutex_lock": 92, "mutex_unlock": 92, "msleep": 2, "__stack_chk_fail": 1}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "rt2800_rfcsr_read": 7, "mutex_lock": 92, "mutex_unlock": 92, "msleep": 2, "__stack_chk_fail": 1}}
+
+llvm rt2800lib rt2800_init_rfcsr_6352
+{"instructions": 17840, "calls": {"__gnu_mcount_nc": 1, "mutex_lock": 417, "mutex_unlock": 416, "clk_get_rate": 1, "rt2800_calibration_rt6352": 1, "__stack_chk_fail": 1}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "mutex_lock": 417, "mutex_unlock": 416, "clk_get_rate": 1, "rt2800_calibration_rt6352": 1, "__stack_chk_fail": 1}}
+
+llvm rt2800lib rt2800_calibration_rt6352
+{"instructions": 5493, "calls": {"__gnu_mcount_nc": 1, "mutex_lock": 124, "mutex_unlock": 124, "rt2800_rfcsr_read": 12, "___ratelimit": 4, "usleep_range_state": 4, "rt2800_rxdcoc_calibration": 2, "rt2800_bw_filter_calibration": 2, "rt2800_loft_iq_calibration": 1, "rt2800_rxiq_calibration": 1, "__stack_chk_fail": 1, "_dev_err": 2, "_dev_warn": 2}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "mutex_lock": 124, "mutex_unlock": 124, "rt2800_rfcsr_read": 12, "___ratelimit": 4, "usleep_range_state": 4, "rt2800_rxdcoc_calibration": 2, "rt2800_bw_filter_calibration": 2, "rt2800_loft_iq_calibration": 1, "rt2800_rxiq_calibration": 1, "__stack_chk_fail": 1, "_dev_err": 2, "_dev_warn": 2}}
+
+llvm rt2800lib rt2800_bw_filter_calibration
+{"instructions": 2914, "calls": {"__gnu_mcount_nc": 1, "mutex_lock": 54, "mutex_unlock": 54, "rt2800_bbp_dcoc_read": 4, "rt2800_rfcsr_read": 42, "usleep_range_state": 3, "rt2800_bbp_core_soft_reset": 3, "rt2800_bbp_dcoc_write": 4, "rt2800_lp_tx_filter_bw_cal": 2, "__stack_chk_fail": 1}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "mutex_lock": 54, "mutex_unlock": 54, "rt2800_bbp_dcoc_read": 4, "rt2800_rfcsr_read": 42, "usleep_range_state": 3, "rt2800_bbp_core_soft_reset": 3, "rt2800_bbp_dcoc_write": 4, "rt2800_lp_tx_filter_bw_cal": 2, "__stack_chk_fail": 1}}
+
+llvm rt2800lib rt2800_loft_iq_calibration
+{"instructions": 5196, "calls": {"__gnu_mcount_nc": 1, "memset": 1, "___ratelimit": 8, "rt2800_rf_configstore": 4, "mutex_lock": 122, "mutex_unlock": 121, "rt2800_rfcsr_read": 2, "rt2800_setbbptonegenerator": 2, "rt2800_rf_aux_tx0_loopback": 2, "rt2800_rf_aux_tx1_loopback": 2, "rt2800_write_dc": 12, "rt2800_do_fft_accumulation": 11, "rt2800_rf_configrecover": 2, "rt2800_read_fft_accumulation": 2, "__stack_chk_fail": 1, "_dev_err": 4, "_dev_warn": 4}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "memset": 1, "___ratelimit": 8, "rt2800_rf_configstore": 4, "mutex_lock": 122, "mutex_unlock": 121, "rt2800_rfcsr_read": 2, "rt2800_setbbptonegenerator": 2, "rt2800_rf_aux_tx0_loopback": 2, "rt2800_rf_aux_tx1_loopback": 2, "rt2800_write_dc": 12, "rt2800_do_fft_accumulation": 11, "rt2800_rf_configrecover": 2, "rt2800_read_fft_accumulation": 2, "__stack_chk_fail": 1, "_dev_err": 4, "_dev_warn": 4}}
+
+llvm rt2800lib rt2800_rxiq_calibration
+{"instructions": 4289, "calls": {"__gnu_mcount_nc": 1, "mutex_lock": 96, "mutex_unlock": 95, "___ratelimit": 6, "rt2800_rfcsr_read": 19, "rt2800_bbp_dcoc_write": 4, "rt2800_bbp_dcoc_read": 1, "usleep_range_state": 4, "__aeabi_uidiv": 1, "__aeabi_idiv": 2, "_dev_warn": 4, "__stack_chk_fail": 1, "_dev_err": 1}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "mutex_lock": 96, "mutex_unlock": 95, "___ratelimit": 6, "rt2800_rfcsr_read": 19, "rt2800_bbp_dcoc_write": 4, "rt2800_bbp_dcoc_read": 1, "usleep_range_state": 4, "__aeabi_uidiv": 1, "__aeabi_idiv": 2, "_dev_warn": 4, "__stack_chk_fail": 1, "_dev_err": 1}}
+
+gcc blake2b_generic blake2b_compress_generic
+{"instructions": 28, "calls": {"__gnu_mcount_nc": 1}, "fp_setup": 0, "sp_adjusts": 0, "all_calls": {"__gnu_mcount_nc": 1, "blake2b_compress_one_generic": 1}}
+
+llvm blake2b_generic blake2b_compress_generic
+{"instructions": 5265, "calls": {"__gnu_mcount_nc": 1, "__stack_chk_fail": 1}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "__stack_chk_fail": 1}}
+
+gcc zstd_double_fast ZSTD_compressBlock_doubleFast
+{"instructions": 3019, "calls": {"__gnu_mcount_nc": 1, "__stack_chk_fail": 1}, "fp_setup": 0, "sp_adjusts": 3, "all_calls": {"__gnu_mcount_nc": 1, "ZSTD_safecopyLiterals": 9, "__stack_chk_fail": 1}}
+
+gcc zstd_double_fast ZSTD_compressBlock_doubleFast_dictMatchState
+{"instructions": 3150, "calls": {"__gnu_mcount_nc": 1, "__stack_chk_fail": 1}, "fp_setup": 0, "sp_adjusts": 3, "all_calls": {"__gnu_mcount_nc": 1, "ZSTD_count_2segments": 15, "ZSTD_safecopyLiterals": 9, "__stack_chk_fail": 1}}
+
+llvm zstd_double_fast ZSTD_compressBlock_doubleFast
+{"instructions": 4042, "calls": {"__gnu_mcount_nc": 1}, "fp_setup": 1, "sp_adjusts": 2, "all_calls": {"__gnu_mcount_nc": 1}}
+
+llvm zstd_double_fast ZSTD_compressBlock_doubleFast_dictMatchState
+{"instructions": 7131, "calls": {"__gnu_mcount_nc": 1}, "fp_setup": 1, "sp_adjusts": 2, "all_calls": {"__gnu_mcount_nc": 1}}
+
+gcc r8152 r8156b_hw_phy_cfg
+{"instructions": 1213, "calls": {"__gnu_mcount_nc": 1, "warn_slowpath_fmt": 1, "__stack_chk_fail": 1}, "fp_setup": 0, "sp_adjusts": 3, "all_calls": {"__gnu_mcount_nc": 1, "generic_ocp_read": 5, "r8153_phy_status": 2, "rtl8152_apply_firmware": 2, "ocp_reg_read": 31, "r8153_aldps_en": 1, "rtl_eee_enable": 2, "generic_ocp_write": 5, "ocp_reg_write": 158, "rtl_phy_patch_request": 4, "sram_write": 41, "r8153_u2p3en": 1, "sram_read": 11, "r8156b_wait_loading_flash": 1, "warn_slowpath_fmt": 1, "__stack_chk_fail": 1}}
+
+gcc r8152 r8156_hw_phy_cfg
+{"instructions": 847, "calls": {"__gnu_mcount_nc": 1, "warn_slowpath_fmt": 1, "__stack_chk_fail": 1}, "fp_setup": 0, "sp_adjusts": 3, "all_calls": {"__gnu_mcount_nc": 1, "generic_ocp_read": 5, "r8153_phy_status": 2, "rtl8152_apply_firmware": 2, "r8153_aldps_en": 1, "rtl_eee_enable": 2, "generic_ocp_write": 5, "ocp_reg_write": 65, "ocp_reg_read": 48, "sram_write": 18, "r8153_u2p3en": 1, "rtl_phy_patch_request": 2, "sram_read": 14, "warn_slowpath_fmt": 1, "__stack_chk_fail": 1}}
+
+llvm r8152 r8156_hw_phy_cfg
+{"instructions": 3112, "calls": {"__gnu_mcount_nc": 1, "generic_ocp_read": 52, "generic_ocp_write": 176, "r8153_phy_status": 1, "rtl8152_apply_firmware": 2, "r8153_aldps_en": 2, "rtl_eee_enable": 2, "msleep": 1, "sram_read": 15, "sram_write": 18, "rtl_phy_patch_request": 2, "r8152b_enable_fc": 1, "_set_bit": 1, "__stack_chk_fail": 1, "warn_slowpath_fmt": 1}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "generic_ocp_read": 52, "generic_ocp_write": 176, "r8153_phy_status": 1, "rtl8152_apply_firmware": 2, "r8153_aldps_en": 2, "rtl_eee_enable": 2, "msleep": 1, "sram_read": 15, "sram_write": 18, "rtl_phy_patch_request": 2, "r8152b_enable_fc": 1, "_set_bit": 1, "__stack_chk_fail": 1, "warn_slowpath_fmt": 1}}
+
+llvm r8152 r8156b_hw_phy_cfg
+{"instructions": 4676, "calls": {"__gnu_mcount_nc": 1, "r8156b_wait_loading_flash": 1, "generic_ocp_read": 35, "generic_ocp_write": 345, "r8153_phy_status": 1, "rtl8152_apply_firmware": 2, "r8153_aldps_en": 2, "rtl_eee_enable": 2, "msleep": 1, "sram_read": 12, "sram_write": 41, "rtl_phy_patch_request": 4, "r8152b_enable_fc": 1, "_set_bit": 1, "__stack_chk_fail": 1, "warn_slowpath_fmt": 1}, "fp_setup": 1, "sp_adjusts": 1, "all_calls": {"__gnu_mcount_nc": 1, "r8156b_wait_loading_flash": 1, "generic_ocp_read": 35, "generic_ocp_write": 345, "r8153_phy_status": 1, "rtl8152_apply_firmware": 2, "r8153_aldps_en": 2, "rtl_eee_enable": 2, "msleep": 1, "sram_read": 12, "sram_write": 41, "rtl_phy_patch_request": 4, "r8152b_enable_fc": 1, "_set_bit": 1, "__stack_chk_fail": 1, "warn_slowpath_fmt": 1}}

@@ -1,0 +1,163 @@
+arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dts
+504: 
+505: / {
+506: 	__overrides__ {
+507: 		audio = <&chosen>,"bootargs{on='snd_bcm2835.enable_headphones=1 snd_bcm2835.enable_hdmi=1',off='snd_bcm2835.enable_headphones=0 snd_bcm2835.enable_hdmi=0'}";
+508: 
+509: 		act_led_gpio = <&led_act>,"gpios:4";
+510: 		act_led_activelow = <&led_act>,"gpios:8";
+511: 		act_led_trigger = <&led_act>,"linux,default-trigger";
+512: 
+513: 		pwr_led_gpio = <&led_pwr>,"gpios:4";
+514: 		pwr_led_activelow = <&led_pwr>,"gpios:8";
+515: 		pwr_led_trigger = <&led_pwr>,"linux,default-trigger";
+516: 
+517: 		eth_led0 = <&phy1>,"led-modes:0";
+518: 		eth_led1 = <&phy1>,"led-modes:4";
+
+arch/arm/boot/dts/broadcom/bcm2711.dtsi
+1115: 	interrupts = <GIC_SPI 103 IRQ_TYPE_LEVEL_HIGH>;
+1116: };
+1117: 
+1118: &cma {
+1119: 	/*
+1120: 	 * arm64 reserves the CMA by default somewhere in ZONE_DMA32,
+1121: 	 * that's not good enough for the BCM2711 as some devices can
+1122: 	 * only address the lower 1G of memory (ZONE_DMA).
+1123: 	 */
+1124: 	alloc-ranges = <0x0 0x00000000 0x40000000>;
+1125: };
+1126: 
+1127: &i2c0 {
+1128: 	compatible = "brcm,bcm2711-i2c", "brcm,bcm2835-i2c";
+1129: 	interrupts = <GIC_SPI 117 IRQ_TYPE_LEVEL_HIGH>;
+
+arch/arm/boot/dts/broadcom/bcm283x.dtsi
+8: /* firmware-provided startup stubs live here, where the secondary CPUs are
+9:  * spinning.
+10:  */
+11: /memreserve/ 0x00000000 0x00001000;
+12: 
+13: /* This include file covers the common peripherals and configuration between
+14:  * bcm2835 and bcm2836 implementations, leaving the CPU configuration to
+15:  * bcm2835.dtsi and bcm2836.dtsi.
+16:  */
+17: 
+18: / {
+19: 	compatible = "brcm,bcm2835";
+20: 	model = "BCM2835";
+21: 	#address-cells = <1>;
+22: 	#size-cells = <1>;
+30: 		stdout-path = "serial0:115200n8";
+31: 	};
+32: 
+33: 	rmem: reserved-memory {
+34: 		#address-cells = <1>;
+35: 		#size-cells = <1>;
+36: 		ranges;
+37: 
+38: 		cma: linux,cma {
+39: 			compatible = "shared-dma-pool";
+40: 			size = <0x4000000>; /* 64MB */
+41: 			reusable;
+42: 			linux,cma-default;
+43: 		};
+44: 	};
+45: 
+46: 	thermal-zones {
+47: 		cpu_thermal: cpu-thermal {
+48: 			polling-delay-passive = <0>;
+49: 			polling-delay = <1000>;
+50: 
+51: 			trips {
+52: 				cpu-crit {
+53: 					temperature = <90000>;
+
+arch/arm/boot/dts/broadcom/bcm270x.dtsi
+4: / {
+5: 	chosen: chosen {
+6: 		// Disable audio by default
+7: 		bootargs = "coherent_pool=1M snd_bcm2835.enable_headphones=0 cgroup_disable=memory";
+8: 		stdout-path = "serial0:115200n8";
+9: 	};
+10: 
+11: 	soc: soc {
+12: 		watchdog: watchdog@7e100000 {
+13: 			/* Add label */
+14: 		};
+15: 
+16: 		random: rng@7e104000 {
+17: 			/* Add label */
+18: 		};
+
+arch/arm/boot/dts/broadcom/bcm271x-rpi-bt.dtsi
+24: 
+25: / {
+26: 	chosen {
+27: 		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0 cgroup_disable=memory";
+28: 	};
+29: 
+30: 	aliases {
+31: 		bluetooth = &bt;
+32: 	};
+33: 
+34: 	__overrides__ {
+35: 		bdaddr = <&bt>,"local-bd-address[",
+36: 		       <&bt>,"fallback-bd-address?=0",
+37: 		       <&minibt>,"local-bd-address[",
+38: 		       <&minibt>,"fallback-bd-address?=0";
+
+arch/arm/boot/dts/broadcom/bcm2711-rpi-ds.dtsi
+3: 
+4: / {
+5: 	chosen {
+6: 		bootargs = "coherent_pool=1M 8250.nr_uarts=1 snd_bcm2835.enable_headphones=0 cgroup_disable=memory numa_policy=interleave nvme.max_host_mem_size_mb=0";
+7: 	};
+8: 
+9: 	__overrides__ {
+10: 		arm_freq;
+11: 		eee = <&chosen>,"bootargs{on='',off='genet.eee=N'}";
+12: 		hdmi = <&hdmi0>,"status",
+13: 		       <&hdmi1>,"status";
+14: 		nvmem_cust_rw = <&nvmem_cust>,"rw?";
+15: 		nvmem_priv_rw = <&nvmem_priv>,"rw?";
+16: 		pcie = <&pcie0>,"status";
+17: 		sd = <&emmc2>,"status";
+18: 
+19: 		sd_poll_once = <&emmc2>, "non-removable?";
+20: 		spi_dma4 = <&spi0>, "dmas:0=", <&dma40>,
+21: 			   <&spi0>, "dmas:8=", <&dma40>;
+22: 		i2s_dma4 = <&i2s>, "dmas:0=", <&dma40>,
+77: 	raspberrypi,firmware = <&firmware>;
+78: };
+79: 
+80: &cma {
+81: 	/* Limit cma to the lower 768MB to allow room for HIGHMEM on 32-bit */
+82: 	alloc-ranges = <0x0 0x00000000 0x30000000>;
+83: };
+84: 
+85: &soc {
+86: 	/* Add the physical <-> DMA mapping for the I/O space */
+87: 	dma-ranges = <0xc0000000  0x0 0x00000000  0x40000000>,
+88: 		     <0x7c000000  0x0 0xfc000000  0x03800000>;
+89: 	nvmem {
+90: 		compatible = "simple-bus";
+91: 		#address-cells = <1>;
+92: 		#size-cells = <1>;
+
+arch/arm/boot/dts/broadcom/bcm270x-rpi.dtsi
+118: 		cam1_reg_gpio = <&cam1_reg>,"gpio:4",
+119: 				<&cam1_reg>,"gpio:0=", <&gpio>;
+120: 
+121: 		strict_gpiod = <&chosen>, "bootargs=pinctrl_bcm2835.persist_gpio_outputs=n";
+122: 	};
+123: };
+124: 
+125: &uart0 {
+126: 	skip-init;
+127: };
+128: 
+129: &uart1 {
+130: 	skip-init;
+131: };
+132: 

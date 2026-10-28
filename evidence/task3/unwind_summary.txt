@@ -1,0 +1,194 @@
+gcc {"cantunwind": 41, "cantunwind_personality?": 41, "external": 1096, "external_personality1": 1096, "inline": 47790, "inline_personality0": 47790}
+0xc0201670 <perf_trace_initcall_start>: @0xc1ffcf88
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x44      vsp = vsp - 20
+  0x84 0x8f pop {r4, r5, r6, r7, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0201750 <perf_trace_initcall_finish>: @0xc1ffcf94
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x45      vsp = vsp - 24
+  0x84 0x9f pop {r4, r5, r6, r7, r8, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0208eb0 <perf_trace_sys_exit>: @0xc1ffcfa0
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x45      vsp = vsp - 24
+  0x84 0x9f pop {r4, r5, r6, r7, r8, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0208f94 <perf_trace_sys_enter>: @0xc1ffcfac
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x45      vsp = vsp - 24
+  0x84 0x9f pop {r4, r5, r6, r7, r8, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc020b7dc <arch_stack_walk>: @0xc1ffcfc4
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x42      vsp = vsp - 12
+  0x84 0x83 pop {r4, r5, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc020f958 <ftrace_caller>: @0xc1ffd024
+  Compact model index: 1
+  0xb1 0x0f pop {r0, r1, r2, r3}
+  0x84 0x00 pop {r14}
+  0x00      vsp = vsp + 4
+  0xb0      finish
+
+0xc022d41c <perf_trace_task_newtask>: @0xc1ffd03c
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x46      vsp = vsp - 28
+  0x84 0xbf pop {r4, r5, r6, r7, r8, r9, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc022d6e8 <perf_trace_task_rename>: @0xc1ffd048
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x46      vsp = vsp - 28
+  0x84 0xbf pop {r4, r5, r6, r7, r8, r9, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0232930 <warn_slowpath_fmt>: @0xc1ffd054
+  Compact model index: 1
+  0x0a      vsp = vsp + 44
+  0xac      pop {r4, r5, r6, r7, r8, r14}
+  0xb1 0x08 pop {r3}
+  0xb0      finish
+  0xb0      finish
+
+0xc0232ff8 <perf_trace_cpuhp_exit>: @0xc1ffd06c
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x46      vsp = vsp - 28
+  0x84 0xbf pop {r4, r5, r6, r7, r8, r9, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc02385a8 <perf_trace_irq_handler_exit>: @0xc1ffd078
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x45      vsp = vsp - 24
+  0x84 0x9f pop {r4, r5, r6, r7, r8, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc023868c <perf_trace_softirq>: @0xc1ffd084
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x44      vsp = vsp - 20
+  0x84 0x8f pop {r4, r5, r6, r7, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+
+llvm {"cantunwind": 45, "cantunwind_personality?": 45, "external": 43526, "external_personality1": 43526, "inline": 20875, "inline_personality0": 20875}
+0xc020112c <handle_fiq_as_nmi>: @0xc2216010
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x43      vsp = vsp - 16
+  0x84 0x8f pop {r4, r5, r6, r7, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc02011dc <bcm2835_handle_irq>: @0xc2248740
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x43      vsp = vsp - 16
+  0x84 0xc7 pop {r4, r5, r6, r10, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0201328 <gic_handle_irq>: @0xc224892c
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x43      vsp = vsp - 16
+  0x84 0x8f pop {r4, r5, r6, r7, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0201650 <trace_event_raw_event_initcall_level>: @0xc22154dc
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x43      vsp = vsp - 16
+  0x84 0x8f pop {r4, r5, r6, r7, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0201868 <trace_event_raw_event_initcall_start>: @0xc22154e8
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x41      vsp = vsp - 8
+  0x84 0x83 pop {r4, r5, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0201914 <perf_trace_initcall_start>: @0xc22154f4
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x45      vsp = vsp - 24
+  0x84 0xf7 pop {r4, r5, r6, r8, r9, r10, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc02019e8 <trace_event_raw_event_initcall_finish>: @0xc2215500
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x43      vsp = vsp - 16
+  0x84 0xc7 pop {r4, r5, r6, r10, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0201a9c <perf_trace_initcall_finish>: @0xc221550c
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x45      vsp = vsp - 24
+  0x84 0xdf pop {r4, r5, r6, r7, r8, r10, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0201e50 <trace_raw_output_initcall_level>: @0xc2215518
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x41      vsp = vsp - 8
+  0x84 0x83 pop {r4, r5, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0201ea4 <trace_raw_output_initcall_start>: @0xc2215524
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x41      vsp = vsp - 8
+  0x84 0x83 pop {r4, r5, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0201ef4 <trace_raw_output_initcall_finish>: @0xc2215530
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x41      vsp = vsp - 8
+  0x84 0x83 pop {r4, r5, r11, r14}
+  0xb0      finish
+  0xb0      finish
+
+0xc0201f44 <rootfs_init_fs_context>: @0xc221574c
+  Compact model index: 1
+  0x9b      vsp = r11
+  0x41      vsp = vsp - 8
+  0x84 0xc1 pop {r4, r10, r11, r14}
+  0xb0      finish
+  0xb0      finish
+

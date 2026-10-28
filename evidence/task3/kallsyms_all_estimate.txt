@@ -1,0 +1,41 @@
+Estimate only: non t/T/w/W symbols counted from final generated names stream. Removing KALLSYMS_ALL regenerates dictionary/filters; no kernel rebuild performed. Estimate = current encoded names + 4-byte offsets + 3-byte seq indices + approximate markers, excluding unchanged dictionary and all kallsyms code.
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/.tmp_vmlinux2.kallsyms.S
+{
+  "function_count": 66501,
+  "other_count": 62528,
+  "function_encoded_bytes": 921301,
+  "other_encoded_bytes": 879327,
+  "estimate_removed_bytes": 1317999,
+  "non_function_ratio": 0.48460423625696547
+}
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/.tmp_vmlinux2.kallsyms.S
+{
+  "function_count": 66411,
+  "other_count": 62657,
+  "function_encoded_bytes": 920132,
+  "other_encoded_bytes": 880051,
+  "estimate_removed_bytes": 1319626,
+  "non_function_ratio": 0.4854572783339015
+}
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/.tmp_vmlinux2.kallsyms.S
+{
+  "function_count": 66272,
+  "other_count": 60496,
+  "function_encoded_bytes": 901715,
+  "other_encoded_bytes": 940167,
+  "estimate_removed_bytes": 1364583,
+  "non_function_ratio": 0.47721822541966424
+}
+
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4-rt/.tmp_vmlinux2.kallsyms.S
+{
+  "function_count": 66786,
+  "other_count": 60534,
+  "function_encoded_bytes": 904716,
+  "other_encoded_bytes": 941946,
+  "estimate_removed_bytes": 1366628,
+  "non_function_ratio": 0.47544769085768146
+}

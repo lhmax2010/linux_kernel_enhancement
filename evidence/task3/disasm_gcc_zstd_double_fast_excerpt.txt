@@ -1,0 +1,102 @@
+objdump -dr /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TOOLCHAIN-GCC-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4/lib/zstd/compress/zstd_double_fast.o
+Selected actual object excerpts (full output stays in temp/task3).
+FUNCTION ZSTD_compressBlock_doubleFast_dictMatchState
+instructions=3150; relocatable direct calls={'__gnu_mcount_nc': 1, '__stack_chk_fail': 1}
+First 24 instructions:
+00006670 <ZSTD_compressBlock_doubleFast_dictMatchState>:
+    6670:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, sl, fp, lr}
+    6674:	e24dd0ac 	sub	sp, sp, #172	@ 0xac
+    6678:	e52de004 	push	{lr}		@ (str lr, [sp, #-4]!)
+    667c:	ebfffffe 	bl	0 <__gnu_mcount_nc>
+			667c: R_ARM_CALL	__gnu_mcount_nc
+    6680:	ee1dcf70 	mrc	15, 0, ip, cr13, cr0, {3}
+    6684:	e59c4670 	ldr	r4, [ip, #1648]	@ 0x670
+    6688:	e58d40a4 	str	r4, [sp, #164]	@ 0xa4
+    668c:	e3a04000 	mov	r4, #0
+    6690:	e59040b8 	ldr	r4, [r0, #184]	@ 0xb8
+    6694:	e59dc0d0 	ldr	ip, [sp, #208]	@ 0xd0
+    6698:	e1a0e000 	mov	lr, r0
+    669c:	e3540006 	cmp	r4, #6
+    66a0:	e1a09001 	mov	r9, r1
+    66a4:	e1a06002 	mov	r6, r2
+    66a8:	e1a07003 	mov	r7, r3
+    66ac:	0a000196 	beq	6d0c <ZSTD_compressBlock_doubleFast_dictMatchState+0x69c>
+    66b0:	e3540007 	cmp	r4, #7
+    66b4:	0a00000a 	beq	66e4 <ZSTD_compressBlock_doubleFast_dictMatchState+0x74>
+    66b8:	e3540005 	cmp	r4, #5
+    66bc:	0a000366 	beq	745c <ZSTD_compressBlock_doubleFast_dictMatchState+0xdec>
+    66c0:	ee1dcf70 	mrc	15, 0, ip, cr13, cr0, {3}
+    66c4:	e59d40a4 	ldr	r4, [sp, #164]	@ 0xa4
+    66c8:	e59ce670 	ldr	lr, [ip, #1648]	@ 0x670
+    66cc:	e03e4004 	eors	r4, lr, r4
+    66d0:	e3a0e000 	mov	lr, #0
+    66d4:	1a000c32 	bne	97a4 <ZSTD_compressBlock_doubleFast_dictMatchState+0x3134>
+    6a04:	e58d3000 	str	r3, [sp]
+    6a08:	e59d3080 	ldr	r3, [sp, #128]	@ 0x80
+    6a0c:	ebffe57b 	bl	0 <ZSTD_count_2segments>
+    6a10:	e59d3060 	ldr	r3, [sp, #96]	@ 0x60
+    6c64:	e58d3000 	str	r3, [sp]
+    6c68:	e59d3080 	ldr	r3, [sp, #128]	@ 0x80
+    6c6c:	ebffe4e3 	bl	0 <ZSTD_count_2segments>
+    6c70:	e59dc044 	ldr	ip, [sp, #68]	@ 0x44
+    702c:	e58d3000 	str	r3, [sp]
+    7030:	e59d3080 	ldr	r3, [sp, #128]	@ 0x80
+    7034:	ebffe3f1 	bl	0 <ZSTD_count_2segments>
+    7038:	e59d3060 	ldr	r3, [sp, #96]	@ 0x60
+    73b4:	e58d3000 	str	r3, [sp]
+    73b8:	e59d3080 	ldr	r3, [sp, #128]	@ 0x80
+    73bc:	ebffe30f 	bl	0 <ZSTD_count_2segments>
+    73c0:	e59dc044 	ldr	ip, [sp, #68]	@ 0x44
+    7770:	e58d3000 	str	r3, [sp]
+    7774:	e59d307c 	ldr	r3, [sp, #124]	@ 0x7c
+    7778:	ebffe220 	bl	0 <ZSTD_count_2segments>
+    777c:	e59d305c 	ldr	r3, [sp, #92]	@ 0x5c
+    79a0:	e58d3000 	str	r3, [sp]
+    79a4:	e59d307c 	ldr	r3, [sp, #124]	@ 0x7c
+    79a8:	ebffe194 	bl	0 <ZSTD_count_2segments>
+    79ac:	e59dc044 	ldr	ip, [sp, #68]	@ 0x44
+    7aac:	e58d3000 	str	r3, [sp]
+    7ab0:	e59d307c 	ldr	r3, [sp, #124]	@ 0x7c
+    7ab4:	ebffe151 	bl	0 <ZSTD_count_2segments>
+    7ab8:	e59d305c 	ldr	r3, [sp, #92]	@ 0x5c
+    7b84:	e58d3000 	str	r3, [sp]
+    7b88:	e59d3080 	ldr	r3, [sp, #128]	@ 0x80
+    7b8c:	ebffe11b 	bl	0 <ZSTD_count_2segments>
+    7b90:	e59d3060 	ldr	r3, [sp, #96]	@ 0x60
+    7c5c:	e58d3000 	str	r3, [sp]
+    7c60:	e59d3080 	ldr	r3, [sp, #128]	@ 0x80
+    7c64:	ebffe0e5 	bl	0 <ZSTD_count_2segments>
+    7c68:	e59d3060 	ldr	r3, [sp, #96]	@ 0x60
+    81e0:	e58d2000 	str	r2, [sp]
+    81e4:	e1a02004 	mov	r2, r4
+    81e8:	ebffdf84 	bl	0 <ZSTD_count_2segments>
+    81ec:	e599c00c 	ldr	ip, [r9, #12]
+    82d4:	e58d2000 	str	r2, [sp]
+    82d8:	e1a02004 	mov	r2, r4
+    82dc:	ebffdf47 	bl	0 <ZSTD_count_2segments>
+    82e0:	e599c00c 	ldr	ip, [r9, #12]
+    83c8:	e58d2000 	str	r2, [sp]
+    83cc:	e1a02004 	mov	r2, r4
+    83d0:	ebffdf0a 	bl	0 <ZSTD_count_2segments>
+    83d4:	e599c00c 	ldr	ip, [r9, #12]
+    8b6c:	e58d2000 	str	r2, [sp]
+    8b70:	e1a0200c 	mov	r2, ip
+    8b74:	ebffdd21 	bl	0 <ZSTD_count_2segments>
+    8b78:	e59d306c 	ldr	r3, [sp, #108]	@ 0x6c
+    8cd8:	e58d2000 	str	r2, [sp]
+    8cdc:	e1a0200c 	mov	r2, ip
+    8ce0:	ebffdcc6 	bl	0 <ZSTD_count_2segments>
+    8ce4:	e59d3068 	ldr	r3, [sp, #104]	@ 0x68
+    8e40:	e58d2000 	str	r2, [sp]
+    8e44:	e1a0200c 	mov	r2, ip
+    8e48:	ebffdc6c 	bl	0 <ZSTD_count_2segments>
+    8e4c:	e59d306c 	ldr	r3, [sp, #108]	@ 0x6c
+    979c:	e58d5028 	str	r5, [sp, #40]	@ 0x28
+    97a0:	eafff840 	b	78a8 <ZSTD_compressBlock_doubleFast_dictMatchState+0x1238>
+    97a4:	ebfffffe 	bl	0 <__stack_chk_fail>
+			97a4: R_ARM_CALL	__stack_chk_fail
+    97a0:	eafff840 	b	78a8 <ZSTD_compressBlock_doubleFast_dictMatchState+0x1238>
+    97a4:	ebfffffe 	bl	0 <__stack_chk_fail>
+			97a4: R_ARM_CALL	__stack_chk_fail
+
+
