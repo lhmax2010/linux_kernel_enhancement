@@ -5,7 +5,7 @@
 modules build 指向不存在的 /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4。
 /boot、/usr/lib/modules、/etc maxdepth4 的指定配置文件搜索无候选；boot_a vfat 未挂载，没有执行 mount 或读裸分区。
 scripts/diffconfig 未执行：缺少运行镜像的最终.config输入。不能报告配置相同或零差异。
-PM告知镜像由QB基于上述sandbox SHA生成；运行字符串不含SHA，未取得QB构建记录，不能独立闭合来源。
+PM告知镜像由QB基于上述sandbox SHA生成，后补充 https://quickbuild.tizen.org/build/1211696；匿名访问跳转登录页，未取得详情（见QB_1211696_access.txt）。运行字符串不含SHA，不能独立闭合来源。
 运行内核构建时间：2026-10-28 12:18:25 UTC = 2026-10-28 20:18:25 +08:00。
 系统 BUILD_ID=tizen-unified-toolchain_20261028.105834_tizen-headed-armv7l；这是系统镜像标识，不当作内核SHA或QB任务号。
 

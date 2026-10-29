@@ -8,12 +8,12 @@
 
 本轮：读取规则/状态 → SDB连接及身份/root/进程记录 → 开机超过5分钟后优先取F快照 → A–H只读采集与受限perf尝试 → 拉回候选ELF，用平台工具静态核对 → 删除板上临时文件 → 09、RULES、STATUS、evidence/task5同commit普通推GitHub main。已按此完成。
 
-下一步依PM补充信息和任务安排：取得QB构建记录及最终.config后补来源/配置核对；需要采样时由PM另行决定提供perf的方式；不自行安装、挂载启动分区、加载BPF程序或更改用户态配置。
+PM已补充QB构建[1211696](https://quickbuild.tizen.org/build/1211696)，匿名访问跳转登录页，详情尚不可读；访问结果已归档，本次补充没有再次操作开发板。下一步依PM补充信息和任务安排：取得该构建详情文本/导出记录及最终.config后补来源/配置核对；需要采样时由PM另行决定提供perf的方式；不自行安装、挂载启动分区、加载BPF程序或更改用户态配置。
 
 ## 进度
 
 - 仅SDB访问192.168.108.26:26101，uname-r含rpi4、架构armv7l、Tizen11.0均通过。sdb root on成功，结束恢复owner。
-- /proc/version为Clang22.1.8/LLD22.1.8，内核构建于2026-10-28 12:18:25 UTC。PM声明来自sandbox@0fac5de6；版本不含SHA，尚未取得QB记录，独立来源核对未闭合。
+- /proc/version为Clang22.1.8/LLD22.1.8，内核构建于2026-10-28 12:18:25 UTC。PM声明来自sandbox@0fac5de6，并给出QB1211696链接；版本不含SHA，QB详情受登录保护，独立来源核对未闭合。
 - /proc/config.gz不存在；模块build链接失效，没有找到已安装配置副本；boot_a未挂载。未运行缺输入的diffconfig，未报告零差异。
 - Cortex-A72 PMU已注册，启动日志7 counters；板上perf缺失，version/stat/record/record -b均127，没有实际perf负载或perf.data。CoreSight sysfs/DT相关节点未发现。
 - BTF 6,478,350 B；当前FD/maps/pins未见BPF运行证据；网络资源监控插件存在真实静态CO-RE/BTF依赖，不再仅处于“是否安装相关程序待确认”的状态。
@@ -26,7 +26,7 @@
 | 结论 | 证据 |
 | --- | --- |
 | A–H报告，B–E产品取舍事实前置 | [09](09_board_rpi4_readonly.md)、[任务5证据索引](../evidence/task5/README.md) |
-| 当前Clang版本、构建时间，配置/SHA不能独立核对的原因 | [A身份](../evidence/task5/A_identity_memory.txt)、[A核对缺口](../evidence/task5/A_config_comparison.txt) |
+| 当前Clang版本、构建时间，配置/SHA不能独立核对的原因 | [A身份](../evidence/task5/A_identity_memory.txt)、[A核对缺口](../evidence/task5/A_config_comparison.txt)、[QB1211696访问](../evidence/task5/QB_1211696_access.txt) |
 | 有CO-RE静态依赖、当前未观测运行 | [B ELF](../evidence/task5/B_elf_btf_analysis.txt)、[B方法](../evidence/task5/B_embedded_method.txt)、[B运行](../evidence/task5/B_bpf_runtime.txt) |
 | 追踪实际状态、F2FS使用、USB六驱动未绑定 | [C](../evidence/task5/C_debug_usage.txt)、[D](../evidence/task5/D_filesystem_usage.txt)、[E](../evidence/task5/E_usb_usage.txt) |
 | MGLRU/zram及resourced不一致 | [F运行](../evidence/task5/F_memory_runtime.txt)、[F配置全文](../evidence/task5/F_resourced_config.txt) |
@@ -36,7 +36,7 @@
 
 ## 需要人工裁决的前提
 
-- 需要本次QB构建编号/记录及最终arm-rpi4.config，才能独立证明运行镜像对应0fac5de6并逐符号比较。当前只能引用PM声明，不能猜测配置一致。
+- QB构建编号/链接1211696已取得；仍需页面中的源码SHA、分支、构建时间文本或导出记录及最终arm-rpi4.config，才能独立证明运行镜像对应0fac5de6并逐符号比较。当前访问跳转登录页，没有索要凭据或尝试登录；不能猜测配置一致。
 - 若继续验证cycles/instructions/branch-misses、硬件采样或分支采样，需要PM决定如何提供板上perf；本任务禁止安装和推二进制，已遵守。
 - resource-monitor-plugin-network内嵌fentry/CO-RE程序存在，但当前没有运行证据。BTF是否可裁剪仍需该功能产品需求、触发条件及外部BTF替代路径核对；静态依赖已是实际ELF事实。
 - F2FS当前在用；其余文件系统/外设的当前未用不能替代产品BOM。调试能力保留策略由PM决定。
@@ -59,4 +59,4 @@
 
 ## 发布状态
 
-本轮09、RULES、STATUS及evidence/task5在同一GitHub提交，以Hao Lin <hao.lin@samsung.com>署名、正常Git环境普通push main；具体commit见本轮回复。发布的仅小于1MB的文本，原始日志/候选ELF仅留temp/task5。没有向其他人或外部服务发送采集消息。
+任务5首次交付commit为34fccb5713bac3a3bbe61cd9aa1a788d6a9f1dce。此次QB补充的09、STATUS和相关证据在同一后续GitHub提交，以Hao Lin <hao.lin@samsung.com>署名、正常Git环境普通push main；具体commit见本轮回复。发布的仅小于1MB的文本，原始日志/候选ELF仅留temp/task5。没有向其他人或外部服务发送采集消息。

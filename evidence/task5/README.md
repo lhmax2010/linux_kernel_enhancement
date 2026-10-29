@@ -7,6 +7,7 @@
 | [commands.txt](commands.txt) | 全部44个记录的SDB调用及此前connect/devices；shell命令包含完整循环和条件分支，没有推送脚本 |
 | [session_and_cleanup.txt](session_and_cleanup.txt) | 身份/root、前后uptime与精简进程表、临时目录删除及owner恢复 |
 | [A_identity_memory.txt](A_identity_memory.txt) | uname/compiler、OS、cmdline、meminfo、zone、dmesg及iomem |
+| [QB_1211696_access.txt](QB_1211696_access.txt) | PM补充构建号/链接；匿名访问302到登录页，源码SHA、构建时间及配置仍未核实 |
 | [A_config_comparison.txt](A_config_comparison.txt) | 配置核对未完成的确切原因、失败输出、应比较的LLVM基准哈希；没有执行diffconfig |
 | [B_bpf_runtime.txt](B_bpf_runtime.txt) | BTF大小、bpffs、FD与maps快照、resourced搜索 |
 | [B_elf_btf_analysis.txt](B_elf_btf_analysis.txt) | RPM依赖、平台readelf的父ARM及内嵌BPF ELF结果，CO-RE静态依赖 |

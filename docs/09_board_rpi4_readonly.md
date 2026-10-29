@@ -25,11 +25,12 @@
 | 内核构建时间 | 2026-10-28 12:18:25 UTC，即20:18:25（Asia/Shanghai） |
 | OS BUILD_ID | `tizen-unified-toolchain_20261028.105834_tizen-headed-armv7l`；这是系统镜像标识，不能替代内核commit/QB构建号 |
 | PM提供的源码来源 | `sandbox/lhmax2025/kernel_optimization`，`0fac5de6a63091d141ad1cd3ed9d9e92b8dde708` |
-| 是否独立证实运行的就是该SHA | **尚未闭合**：版本字符串未嵌入SHA；尚未取得本次QB构建记录。Clang版本、内核版本及PMU驱动存在与PM说明相符，但不是SHA证明 |
+| QB构建记录 | PM补充提供[构建1211696](https://quickbuild.tizen.org/build/1211696)；匿名HTTPS访问返回302并跳转signin，最终HTTP 200是登录页，未能读取构建详情 |
+| 是否独立证实运行的就是该SHA | **尚未闭合**：版本字符串未嵌入SHA；已取得QB编号/链接，但其源码SHA、分支和构建时间字段受登录保护，未读到。Clang版本、内核版本及PMU驱动存在与PM说明相符，但不是SHA证明 |
 | `.config`比较对象 | 明确使用任务4 `temp/pmu_config_check/llvm/arm-rpi4/.config`；SHA256 `62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5` |
 | 逐项配置比较 | **未能执行diffconfig**：`/proc/config.gz`不存在，模块`build`链接失效，已检查路径没有配置副本。不能报告“配置一致”或“无差异”。任务4基准本身为`CONFIG_IKCONFIG=n`，但不能据此代填板上最终配置 |
 
-缺失项、实际尝试的命令和原始报错见[A配置核对](../evidence/task5/A_config_comparison.txt#L1)。需要本次QB的源码记录、构建时间及最终arm-rpi4 `.config`，才能补上来源和逐符号核对。没有为了取得配置而挂载启动分区、重编或换镜像。
+缺失项、实际尝试的命令和原始报错见[A配置核对](../evidence/task5/A_config_comparison.txt#L1)。已记录PM提供的QB构建1211696，访问经过与原始响应摘要见[QB访问证据](../evidence/task5/QB_1211696_access.txt)。仍需要该记录中的源码SHA/分支、构建时间及最终arm-rpi4 `.config`，才能补上来源和逐符号核对；不需要登录凭据。没有为了取得配置而挂载启动分区、重编或换镜像。
 
 ### 内存、保留区域和启动参数
 
@@ -207,4 +208,4 @@ cpufreq policy0覆盖CPU0–3，driver=`cpufreq-dt`，governor=`schedutil`；可
 
 板上只新建`/tmp/lko_task5/`，收尾只删除其中本任务创建的17个普通文本文件并rmdir；最后在恢复owner后再次确认 **`TASK5-TEMP-ABSENT-FINAL`**。最大一次板上文本输出为包清单54,126 B，结束前du记录临时目录188KiB，均远低于50MB；两份ELF直接sdb pull到工作区，没有在板上另存。见[清理原文](../evidence/task5/session_and_cleanup.txt#L424)。
 
-待PM后续提供/决定：QB构建记录与最终.config用于来源/配置闭合；需要实际计数时另行安排带perf的镜像或授权方案；资源监控网络插件是否属于产品必需功能、何时触发、外部BTF替代是否存在；未挂载boot分区的固件CMA配置。本轮只记录这些边界，不自行补装、挂载或触发服务。
+待PM后续提供/决定：QB构建1211696的详情文本或导出记录与最终.config用于来源/配置闭合（编号/链接已收到，当前访问需登录）；需要实际计数时另行安排带perf的镜像或授权方案；资源监控网络插件是否属于产品必需功能、何时触发、外部BTF替代是否存在；未挂载boot分区的固件CMA配置。本轮只记录这些边界，不自行补装、挂载或触发服务。
