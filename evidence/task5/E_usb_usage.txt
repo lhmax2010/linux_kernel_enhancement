@@ -1,0 +1,110 @@
+原始文件 temp/task5/E_usb_drivers.txt，原始行 3–109
+3: [USB tools]
+4: 
+5: [USB inventory]
+6: /sys/bus/usb/devices/1-0:1.0
+7: ../../../../../../../../../bus/usb/drivers/hub
+8: /sys/bus/usb/devices/1-1
+9: idVendor=2109
+10: idProduct=3431
+11: product=USB2.0 Hub
+12: ../../../../../../../../../bus/usb/drivers/usb
+13: /sys/bus/usb/devices/1-1:1.0
+14: ../../../../../../../../../../bus/usb/drivers/hub
+15: /sys/bus/usb/devices/2-0:1.0
+16: ../../../../../../../../../bus/usb/drivers/hub
+17: /sys/bus/usb/devices/usb1
+18: idVendor=1d6b
+19: idProduct=0002
+20: product=xHCI Host Controller
+21: manufacturer=Linux 6.12.80-arm-rpi4-v7l xhci-hcd
+22: ../../../../../../../../bus/usb/drivers/usb
+23: /sys/bus/usb/devices/usb2
+24: idVendor=1d6b
+25: idProduct=0003
+26: product=xHCI Host Controller
+27: manufacturer=Linux 6.12.80-arm-rpi4-v7l xhci-hcd
+28: ../../../../../../../../bus/usb/drivers/usb
+29: 
+30: [USB driver bindings]
+31: /sys/bus/usb/drivers/asix
+32: module -> ../../../../module/asix
+33: /sys/bus/usb/drivers/ax88179_178a
+34: module -> ../../../../module/ax88179_178a
+35: /sys/bus/usb/drivers/cdc_ether
+36: module -> ../../../../module/cdc_ether
+37: /sys/bus/usb/drivers/cdc_ncm
+38: module -> ../../../../module/cdc_ncm
+39: /sys/bus/usb/drivers/cdc_subset
+40: module -> ../../../../module/cdc_subset
+41: /sys/bus/usb/drivers/hub
+42: 1-0:1.0 -> ../../../../devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb1/1-0:1.0
+43: module -> ../../../../module/usbcore
+44: 1-1:1.0 -> ../../../../devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb1/1-1/1-1:1.0
+45: 2-0:1.0 -> ../../../../devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb2/2-0:1.0
+46: /sys/bus/usb/drivers/lan78xx
+47: module -> ../../../../module/lan78xx
+48: /sys/bus/usb/drivers/net1080
+49: module -> ../../../../module/net1080
+50: /sys/bus/usb/drivers/r8152
+51: module -> ../../../../module/r8152
+52: /sys/bus/usb/drivers/r8152-cfgselector
+53: /sys/bus/usb/drivers/r8153_ecm
+54: module -> ../../../../module/r8153_ecm
+55: /sys/bus/usb/drivers/rt2800usb
+56: module -> ../../../../module/rt2800usb
+57: /sys/bus/usb/drivers/smsc95xx
+58: module -> ../../../../module/smsc95xx
+59: /sys/bus/usb/drivers/snd-usb-audio
+60: module -> ../../../../module/snd_usb_audio
+61: /sys/bus/usb/drivers/uas
+62: module -> ../../../../module/uas
+63: /sys/bus/usb/drivers/usb
+64: usb1 -> ../../../../devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb1
+65: 1-1 -> ../../../../devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb1/1-1
+66: usb2 -> ../../../../devices/platform/scb/fd500000.pcie/pci0000:00/0000:00:00.0/0000:01:00.0/usb2
+67: /sys/bus/usb/drivers/usb-storage
+68: module -> ../../../../module/usb_storage
+69: /sys/bus/usb/drivers/usbfs
+70: module -> ../../../../module/usbcore
+71: /sys/bus/usb/drivers/usbhid
+72: module -> ../../../../module/usbhid
+73: /sys/bus/usb/drivers/usblp
+74: module -> ../../../../module/usblp
+75: /sys/bus/usb/drivers/usbserial_generic
+76: module -> ../../../../module/usbserial
+77: /sys/bus/usb/drivers/uvcvideo
+78: module -> ../../../../module/uvcvideo
+79: /sys/bus/usb/drivers/zaurus
+80: module -> ../../../../module/zaurus
+81: 
+82: [modules]
+83: /usr/sbin/lsmod
+84: Module                  Size  Used by
+85: proc_tsm               12288  0
+86: brcmfmac              352256  0
+87: brcmutil               16384  1 brcmfmac
+88: hci_uart               32768  0
+89: btbcm                  20480  1 hci_uart
+90: kdbus                  98304  103
+91: dm_bow                 20480  0
+92: logger                 16384  244
+93: inform_reboot          12288  0
+94: extcon_usb_fixed       12288  0
+95: 
+96: [network driver links]
+97: /sys/class/net/eth0
+98: ../../../../bus/platform/drivers/bcmgenet
+99: /sys/class/net/lo
+100: /sys/class/net/sit0
+101: 
+102: [sound cards]
+103:  0 [Headphones     ]: bcm2835_headpho - bcm2835 Headphones
+104:                       bcm2835 Headphones
+105:  1 [vc4hdmi0       ]: vc4-hdmi - vc4-hdmi-0
+106:                       vc4-hdmi-0
+107:  2 [vc4hdmi1       ]: vc4-hdmi - vc4-hdmi-1
+108:                       vc4-hdmi-1
+109: 
+
+结论：六个指定driver目录均存在，只有module链接，无设备接口链接；完整ls -la原文留在temp/task5/E_usb_drivers.txt。

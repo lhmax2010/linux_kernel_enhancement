@@ -1,0 +1,72 @@
+原始文件 temp/task5/C_tracing.txt，原始行 1–45
+1: 2026-10-29T21:36:45+0900
+2: 
+3: [cmdline tracing switches]
+4: cgroup_enable=memory vc_mem.mem_base=0x3ec00000 vc_mem.mem_size=0x40000000 swiotlb=8192 8250.nr_uarts=1 dma.dmachans=0x7f35 bcm2709.serial=0xed6687d3 snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1 bcm2709.uart_clock=48000000 dwc_otg.lpm_enable=0  bootmode=normal partition_ab=a console=ttyS0,115200n8 earlycon=uart8250,mmio32,0xfe215040 loglevel=4 
+5: 
+6: [trace roots]
+7: drwxr-xr-x 7 root users 0 Jan  1  1970 /sys/kernel/debug/tracing
+8: dr-xr-xr-x 2 root root  0 Oct 29 21:36 /sys/kernel/tracing
+9: /sys/kernel/debug/tracing
+10: tracing_on
+11: 1
+12: current_tracer
+13: nop
+14: events/enable
+15: 0
+16: buffer_size_kb
+17: 7 (expanded: 1408)
+18: available_tracers
+19: blk function_graph wakeup_dl wakeup_rt wakeup irqsoff function nop
+20: set_ftrace_filter lines: 1 /sys/kernel/debug/tracing/set_ftrace_filter
+21: #### all functions enabled ####
+22: 
+23: [instances]
+24: total 0
+25: drwxr-x--- 2 root users 0 Jan  1  1970 .
+26: drwxr-xr-x 7 root users 0 Jan  1  1970 ..
+27: 
+28: [latencytop]
+29: 0
+30: Latency Top version : v0.1
+31: 
+32: [tracing packages]
+33: 
+34: [startup and unit configuration search]
+35: grep: /usr/lib/systemd/system/sockets.target.wants/tizen-watcherd.socket: No such file or directory
+36: grep: /usr/lib/systemd/system/sockets.target.wants/amd-tizen-action-service.socket: No such file or directory
+37: grep: /usr/lib/systemd/system/basic.target.wants/privilege-checker-integrity.service: No such file or directory
+38: /usr/lib/systemd/system/sys-kernel-debug-tracing.mount:11:ConditionPathExists=!/sys/kernel/debug/tracing/trace
+39: /usr/lib/systemd/system/sys-kernel-debug-tracing.mount:17:Where=/sys/kernel/debug/tracing
+40: /usr/lib/systemd/system/sysinit.target.wants/sys-kernel-debug-tracing.mount:11:ConditionPathExists=!/sys/kernel/debug/tracing/trace
+41: /usr/lib/systemd/system/sysinit.target.wants/sys-kernel-debug-tracing.mount:17:Where=/sys/kernel/debug/tracing
+42: grep: /usr/lib/systemd/system/sysinit.target.wants/systemd-boot-system-token.service: No such file or directory
+43: /etc/mtab:31:tracefs /sys/kernel/debug/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+44: 
+45: COLLECT-END exit=2
+
+原始文件 temp/task5/C_debug_switches.txt，原始行 1–24
+1: 2026-10-29T21:40:46+0900
+2: /sys/kernel/debug/tracing/function_profile_enabled
+3: 0
+4: /proc/sys/kernel/ftrace_enabled
+5: 1
+6: /proc/sys/kernel/stack_tracer_enabled
+7: 0
+8: /sys/module/kgdboc/parameters/kgdboc
+9: 
+10: /sys/module/kgdboc/parameters/kgdboc_use_kms
+11: ABSENT
+12: /sys/module/kgdb/parameters/kdb_cmd_enable
+13: ABSENT
+14: /proc/sys/kernel/hung_task_timeout_secs
+15: 120
+16: 
+17: [dynamic probe event definitions]
+18: /sys/kernel/debug/tracing/kprobe_events
+19: /sys/kernel/debug/tracing/uprobe_events
+20: 
+21: [perf paranoid]
+22: 2
+23: 
+24: COLLECT-END exit=0

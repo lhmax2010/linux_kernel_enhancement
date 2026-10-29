@@ -1,0 +1,103 @@
+原始文件 temp/task5/F_memcg.txt，原始行 3–33
+3: [cgroup mounts]
+4: cgroup /sys/fs/cgroup/systemd cgroup rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd 0 0
+5: cgroup /sys/fs/cgroup/cpu,cpuacct cgroup rw,nosuid,nodev,noexec,relatime,cpu,cpuacct 0 0
+6: cgroup /sys/fs/cgroup/net_cls cgroup rw,nosuid,nodev,noexec,relatime,net_cls,release_agent=/usr/bin/net-cls-release 0 0
+7: cgroup /sys/fs/cgroup/devices cgroup rw,nosuid,nodev,noexec,relatime,devices 0 0
+8: cgroup /sys/fs/cgroup/freezer cgroup rw,nosuid,nodev,noexec,relatime,freezer 0 0
+9: cgroup /sys/fs/cgroup/cpuset cgroup rw,nosuid,nodev,noexec,relatime,cpuset 0 0
+10: cgroup /sys/fs/cgroup/memory cgroup rw,nosuid,nodev,noexec,relatime,memory 0 0
+11: cgroup /sys/fs/cgroup/blkio cgroup rw,nosuid,nodev,noexec,relatime,blkio 0 0
+12: cgroup /sys/fs/cgroup/watchdog cgroup rw,nosuid,nodev,noexec,relatime,release_agent=/usr/bin/resourced-watchdog-handler.sh,name=watchdog 0 0
+13: 
+14: [cgroups]
+15: #subsys_name	hierarchy	num_cgroups	enabled
+16: cpuset	6	1	1
+17: cpu	2	10	1
+18: cpuacct	2	10	1
+19: blkio	8	1	1
+20: memory	7	80	1
+21: devices	4	53	1
+22: freezer	5	2	1
+23: net_cls	3	1	1
+24: 9:name=watchdog:/
+25: 8:blkio:/
+26: 7:memory:/
+27: 6:cpuset:/
+28: 5:freezer:/
+29: 4:devices:/
+30: 3:net_cls:/
+31: 2:cpu,cpuacct:/
+32: 1:name=systemd:/init.scope
+33: 
+
+顺序读取到67个目录及各自limit/usage、force_reclaim存在；/proc/cgroups的80包含其自身时刻/生命周期状态，不强行等同可遍历目录数。无cgroup2挂载。
+单位B；大值8796093018112为所读上限，未标为物理内存大小；未写force_reclaim。
+path	limit_B	usage_B	force_reclaim_exists
+/sys/fs/cgroup/memory	8796093018112	671232000	True
+/sys/fs/cgroup/memory/BackgroundLru	3257528320	0	True
+/sys/fs/cgroup/memory/BackgroundMru	8796093018112	19824640	True
+/sys/fs/cgroup/memory/Private	8796093018112	5627904	True
+/sys/fs/cgroup/memory/Private/org.tizen.multi-assistant-service	134217728	5619712	True
+/sys/fs/cgroup/memory/malort	8796093018112	0	True
+/sys/fs/cgroup/memory/system.slice	8796093018112	276021248	True
+/sys/fs/cgroup/memory/system.slice/ac.service	104857600	6012928	True
+/sys/fs/cgroup/memory/system.slice/buxton2.service	52428800	2899968	True
+/sys/fs/cgroup/memory/system.slice/central-key-manager.service	4071911424	4919296	True
+/sys/fs/cgroup/memory/system.slice/connman.service	4071911424	2965504	True
+/sys/fs/cgroup/memory/system.slice/contextd.service	31457280	2940928	True
+/sys/fs/cgroup/memory/system.slice/cynara-agent.socket	4071911424	4096	True
+/sys/fs/cgroup/memory/system.slice/cynara-monitor-get.socket	4071911424	4096	True
+/sys/fs/cgroup/memory/system.slice/cynara.service	4071911424	2076672	True
+/sys/fs/cgroup/memory/system.slice/dev-mqueue.mount	4071911424	61440	True
+/sys/fs/cgroup/memory/system.slice/deviced.service	4071911424	2813952	True
+/sys/fs/cgroup/memory/system.slice/display-manager-monitor.service	4071911424	1093632	True
+/sys/fs/cgroup/memory/system.slice/display-manager.service	4071911424	58073088	True
+/sys/fs/cgroup/memory/system.slice/dlog_logger.service	4071911424	2097152	True
+/sys/fs/cgroup/memory/system.slice/engine-loader.service	31457280	831488	True
+/sys/fs/cgroup/memory/system.slice/esd.service	104857600	8421376	True
+/sys/fs/cgroup/memory/system.slice/focus-server.service	52428800	876544	True
+/sys/fs/cgroup/memory/system.slice/hal-backend-service.service	20971520	1556480	True
+/sys/fs/cgroup/memory/system.slice/lbs-server.service	10485760	1142784	True
+/sys/fs/cgroup/memory/system.slice/license-manager-agent.service	4071911424	737280	True
+/sys/fs/cgroup/memory/system.slice/media-server.service	4071911424	5685248	True
+/sys/fs/cgroup/memory/system.slice/mediacontroller.socket	4071911424	4096	True
+/sys/fs/cgroup/memory/system.slice/mnt-inform.mount	4071911424	36864	True
+/sys/fs/cgroup/memory/system.slice/mtp-responder.service	4071911424	2002944	True
+/sys/fs/cgroup/memory/system.slice/muse-server.service	314572800	26509312	True
+/sys/fs/cgroup/memory/system.slice/net-config.service	4071911424	2015232	True
+/sys/fs/cgroup/memory/system.slice/opt-usr.mount	4071911424	217088	True
+/sys/fs/cgroup/memory/system.slice/pass.service	4071911424	1691648	True
+/sys/fs/cgroup/memory/system.slice/pipewire.service	52428800	3383296	True
+/sys/fs/cgroup/memory/system.slice/pkgmgr-info.service	104857600	1728512	True
+/sys/fs/cgroup/memory/system.slice/pushd.service	10485760	5451776	True
+/sys/fs/cgroup/memory/system.slice/resourced.service	52428800	3547136	True
+/sys/fs/cgroup/memory/system.slice/rscmgr-service.service	10485760	1515520	True
+/sys/fs/cgroup/memory/system.slice/sdbd.service	4071911424	7454720	True
+/sys/fs/cgroup/memory/system.slice/security-manager.service	4071911424	2150400	True
+/sys/fs/cgroup/memory/system.slice/sensord.service	20971520	962560	True
+/sys/fs/cgroup/memory/system.slice/sensord.socket	4071911424	4096	True
+/sys/fs/cgroup/memory/system.slice/stability-monitor.service	20971520	1863680	True
+/sys/fs/cgroup/memory/system.slice/storaged.service	20971520	1716224	True
+/sys/fs/cgroup/memory/system.slice/sys-fs-fuse-connections.mount	4071911424	4096	True
+/sys/fs/cgroup/memory/system.slice/sys-kernel-config.mount	4071911424	4096	True
+/sys/fs/cgroup/memory/system.slice/sys-kernel-debug.mount	4071911424	4096	True
+/sys/fs/cgroup/memory/system.slice/system-serial\x2dgetty.slice	4071911424	88596480	True
+/sys/fs/cgroup/memory/system.slice/system-serial\x2dgetty.slice/serial-getty@ttyS0.service	8796093018112	88588288	True
+/sys/fs/cgroup/memory/system.slice/system-wait\x2dmount.slice	4071911424	4096	True
+/sys/fs/cgroup/memory/system.slice/systemd-journald.service	4071911424	2428928	True
+/sys/fs/cgroup/memory/system.slice/systemd-logind.service	4071911424	626688	True
+/sys/fs/cgroup/memory/system.slice/systemd-udevd.service	4071911424	3723264	True
+/sys/fs/cgroup/memory/system.slice/tizen-theme-manager.service	4071911424	1085440	True
+/sys/fs/cgroup/memory/system.slice/tlm.service	20971520	2248704	True
+/sys/fs/cgroup/memory/system.slice/tmp.mount	4071911424	4096	True
+/sys/fs/cgroup/memory/system.slice/update-manager.service	4071911424	1183744	True
+/sys/fs/cgroup/memory/user.slice	8796093018112	83714048	True
+/sys/fs/cgroup/memory/user.slice/user-5001.slice	4071911424	83705856	True
+/sys/fs/cgroup/memory/user.slice/user-5001.slice/session-c1.scope	8796093018112	512000	True
+/sys/fs/cgroup/memory/user.slice/user-5001.slice/user@5001.service	8796093018112	83173376	True
+/sys/fs/cgroup/memory/user.slice/user-5001.slice/user@5001.service/at-spi-dbus-bus.service	8796093018112	1081344	True
+/sys/fs/cgroup/memory/user.slice/user-5001.slice/user@5001.service/launchpad-process-pool.service	8796093018112	67907584	True
+/sys/fs/cgroup/memory/user.slice/user-5001.slice/user@5001.service/scim.service	8796093018112	2691072	True
+/sys/fs/cgroup/memory/user.slice/user-5001.slice/user@5001.service/starter.service	8796093018112	2170880	True
+/sys/fs/cgroup/memory/user.slice/user-5001.slice/user@5001.service/wait\x2dmount.slice	8796093018112	0	True

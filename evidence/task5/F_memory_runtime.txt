@@ -1,0 +1,157 @@
+原始文件 temp/task5/F_runtime.txt，原始行 3–124
+3: [uptime before snapshots]
+4:  21:33:28 up 11 min,  1 user,  load average: 1.02, 1.00, 0.66
+5: 705.21 2064.27
+6: 
+7: [MGLRU]
+8: /sys/kernel/mm/lru_gen/enabled
+9: 0x0001
+10: /sys/kernel/mm/lru_gen/min_ttl_ms
+11: 0
+12: 
+13: [zram]
+14: /sys/block/zram0
+15: comp_algorithm
+16: [lzo-rle] lzo 
+17: disksize
+18: 1628766208
+19: mm_stat
+20:  2514944   406018  1499136        0  1499136        0        0        2        2
+21: io_stat
+22:        0        0 0   397647
+23: bd_stat
+24: cat: /sys/block/zram0/bd_stat: No such file or directory
+25: recomp_algorithm ABSENT
+26: recompress ABSENT
+27: writeback ABSENT
+28: backing_dev ABSENT
+29: --w------- 1 root root 4096 Oct 29 21:33 /sys/block/zram0/idle
+30: --w------- 1 root root 4096 Oct 29 21:33 /sys/block/zram0/mem_limit
+31: -rw-r--r-- 1 root root 4096 Jan  1  1970 /sys/block/zram0/max_comp_streams
+32: 
+33: [swaps]
+34: Filename				Type		Size		Used		Priority
+35: /dev/zram0                              partition	1590588		3840		0
+36: 
+37: [all vm sysctls]
+38: /proc/sys/vm/admin_reserve_kbytes
+39: 8192
+40: /proc/sys/vm/compact_memory
+41: UNREADABLE
+42: /proc/sys/vm/compact_unevictable_allowed
+43: 1
+44: /proc/sys/vm/compaction_proactiveness
+45: 20
+46: /proc/sys/vm/dirty_background_bytes
+47: 0
+48: /proc/sys/vm/dirty_background_ratio
+49: 10
+50: /proc/sys/vm/dirty_bytes
+51: 0
+52: /proc/sys/vm/dirty_expire_centisecs
+53: 3000
+54: /proc/sys/vm/dirty_ratio
+55: 20
+56: /proc/sys/vm/dirty_writeback_centisecs
+57: 500
+58: /proc/sys/vm/dirtytime_expire_seconds
+59: 43200
+60: /proc/sys/vm/drop_caches
+61: UNREADABLE
+62: /proc/sys/vm/extfrag_threshold
+63: 500
+64: /proc/sys/vm/highmem_is_dirtyable
+65: 0
+66: /proc/sys/vm/laptop_mode
+67: 0
+68: /proc/sys/vm/legacy_va_layout
+69: 0
+70: /proc/sys/vm/lowmem_reserve_ratio
+71: 256	32	0	0
+72: /proc/sys/vm/max_map_count
+73: 65530
+74: /proc/sys/vm/memfd_noexec
+75: 0
+76: /proc/sys/vm/min_free_kbytes
+77: 3334
+78: /proc/sys/vm/mmap_min_addr
+79: 4096
+80: /proc/sys/vm/mmap_rnd_bits
+81: 8
+82: /proc/sys/vm/oom_dump_tasks
+83: 1
+84: /proc/sys/vm/oom_kill_allocating_task
+85: 0
+86: /proc/sys/vm/overcommit_kbytes
+87: 0
+88: /proc/sys/vm/overcommit_memory
+89: 0
+90: /proc/sys/vm/overcommit_ratio
+91: 50
+92: /proc/sys/vm/page-cluster
+93: 3
+94: /proc/sys/vm/page_lock_unfairness
+95: 5
+96: /proc/sys/vm/panic_on_oom
+97: 0
+98: /proc/sys/vm/percpu_pagelist_high_fraction
+99: 0
+100: /proc/sys/vm/stat_interval
+101: 1
+102: /proc/sys/vm/stat_refresh
+103: /proc/sys/vm/swappiness
+104: 60
+105: /proc/sys/vm/user_reserve_kbytes
+106: 123555
+107: /proc/sys/vm/vfs_cache_pressure
+108: 100
+109: /proc/sys/vm/watermark_boost_factor
+110: 15000
+111: /proc/sys/vm/watermark_scale_factor
+112: 10
+113: 
+114: [pressure]
+115: /proc/pressure/memory
+116: some avg10=0.00 avg60=0.00 avg300=0.00 total=1067505
+117: full avg10=0.00 avg60=0.00 avg300=0.00 total=1066608
+118: /proc/pressure/cpu
+119: some avg10=0.00 avg60=0.00 avg300=0.09 total=4559659
+120: full avg10=0.00 avg60=0.00 avg300=0.00 total=0
+121: /proc/pressure/io
+122: some avg10=0.00 avg60=0.00 avg300=0.48 total=14412666
+123: full avg10=0.00 avg60=0.00 avg300=0.40 total=12153621
+124: 
+
+[selected vmstat counters; full snapshot local]
+126: nr_free_pages 790090
+135: nr_zspages 366
+136: nr_free_cma 67113
+177: nr_swapcached 14
+187: pswpin 22
+188: pswpout 613
+193: allocstall_dma 0
+194: allocstall_normal 4
+195: allocstall_high 0
+196: allocstall_movable 0
+210: pgsteal_kswapd 4096
+211: pgsteal_direct 157
+212: pgsteal_khugepaged 0
+213: pgscan_kswapd 4096
+214: pgscan_direct 160
+215: pgscan_khugepaged 0
+216: pgscan_direct_throttle 0
+217: pgscan_anon 3748
+218: pgscan_file 36433
+219: pgsteal_anon 749
+220: pgsteal_file 29169
+230: oom_kill 0
+236: compact_migrate_scanned 22637
+237: compact_free_scanned 9272
+238: compact_isolated 32075
+239: compact_stall 0
+240: compact_fail 0
+241: compact_success 0
+242: compact_daemon_wake 3
+243: compact_daemon_migrate_scanned 22637
+244: compact_daemon_free_scanned 9272
+zram0 disksize=1628766208 B =1553.3125 MiB=1.51690673828125 GiB；按MemTotal*0.4向上对齐4KiB与实测一致。

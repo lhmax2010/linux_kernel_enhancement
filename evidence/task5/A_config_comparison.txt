@@ -1,0 +1,51 @@
+比较对象：task4 LLVM arm-rpi4；正在运行的 /proc/version 明确为 clang version 22.1.8, LLD 22.1.8。
+基准：temp/pmu_config_check/llvm/arm-rpi4/.config SHA256=62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5
+基准 commit：0fac5de6a63091d141ad1cd3ed9d9e92b8dde708；基准 CONFIG_IKCONFIG=n。
+板上 /proc/config.gz 不存在；sdb pull /tmp/lko_task5/config.gz 返回1（未生成该文件）。
+modules build 指向不存在的 /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4。
+/boot、/usr/lib/modules、/etc maxdepth4 的指定配置文件搜索无候选；boot_a vfat 未挂载，没有执行 mount 或读裸分区。
+scripts/diffconfig 未执行：缺少运行镜像的最终.config输入。不能报告配置相同或零差异。
+PM告知镜像由QB基于上述sandbox SHA生成；运行字符串不含SHA，未取得QB构建记录，不能独立闭合来源。
+运行内核构建时间：2026-10-28 12:18:25 UTC = 2026-10-28 20:18:25 +08:00。
+系统 BUILD_ID=tizen-unified-toolchain_20261028.105834_tizen-headed-armv7l；这是系统镜像标识，不当作内核SHA或QB任务号。
+
+原始文件 temp/task5/A_identity_memory.txt，原始行 142–161
+142: [boot root directory entries]
+143: total 8
+144: dr-xr-xr-x  2 root root 4096 Sep 12 23:16 .
+145: drwxr-xr-x 19 root root 4096 Oct 29 21:27 ..
+146: 
+147: [config.gz]
+148: ls: cannot access /proc/config.gz: No such file or directory
+149: 
+150: [kernel rpm provenance]
+151: building-blocks-sub2-domain_Feature-ISU-System_Resourced-11.0.0-0.armv7l
+152: system-plugin-backend-resourced-generic-0.1.0-0.armv7l
+153: resourced-watchdog-handler-10.0.0-1.armv7l
+154: resourced-config-10.0.0-1.armv7l
+155: libsyscommon-plugin-api-resourced-0.1.0-0.armv7l
+156: resourced-10.0.0-1.armv7l
+157: resourced-bin-10.0.0-1.armv7l
+158: resourced-isu-10.0.0-1.armv7l
+159: libbpf-1.6.2-1.1.armv7l
+160: 
+161: COLLECT-END exit=0
+
+原始文件 temp/task5/A_config_pull.transport.txt，原始行 1–1
+1: error: failed to get status of '/tmp/lko_task5/config.gz': unknown reason
+
+原始文件 temp/task5/H_scheduling.txt，原始行 94–100
+94: [module build directory config]
+95: lrwxrwxrwx 1 root root 68 Oct 28 21:35 /usr/lib/modules/6.12.80-arm-rpi4-v7l/build -> /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4
+96: ls: cannot access /usr/lib/modules/6.12.80-arm-rpi4-v7l/build/: No such file or directory
+97: find: `/usr/lib/modules/6.12.80-arm-rpi4-v7l/build/': No such file or directory
+98: 
+99: [boot partition mount check]
+100: 
+
+原始文件 temp/task5/A_iomem_config_search.txt，原始行 48–52
+48: [packaged config candidates]
+49: 
+50: [config proc absence explicit]
+51: /proc/config.gz ABSENT
+52: 

@@ -1,0 +1,235 @@
+原始文件 temp/task5/B_elf_candidates.txt，原始行 1–11
+1: 2026-10-29T21:35:24+0900
+2: 
+3: [files containing libbpf.so string; candidates only]
+4: /usr/lib/resource-monitor/plugins/libresource-monitor-plugin-network.so
+5: /usr/lib/libbpf.so.1.6.2
+6: 
+7: [libbpf direct requirements]
+8: building-blocks-sub2-domain_API-Network-WiFi_Manager-11.0.0-0.armv7l
+9: resource-monitor-plugin-network-1.0.0-1.armv7l
+10: 
+11: COLLECT-END exit=0
+
+原始文件 temp/task5/B_elf_metadata.txt，原始行 1–15
+1: 2026-10-29T21:37:51+0900
+2: /usr/lib/resource-monitor/plugins/libresource-monitor-plugin-network.so 812332 bytes
+3: resource-monitor-plugin-network-1.0.0-1.armv7l
+4: /usr/lib/libbpf.so.1.6.2 260424 bytes
+5: libbpf-1.6.2-1.1.armv7l
+6: 
+7: [resource-monitor files/services]
+8: /usr/lib/resource-monitor/plugins/libresource-monitor-plugin-network.so
+9: capi-system-resource-monitor-0.0.1-0.armv7l
+10: libpass-resource-monitor-2.0.1-1.armv7l
+11: resource-monitor-plugin-network-1.0.0-1.armv7l
+12: 
+13: [build path contents]
+14: 
+15: COLLECT-END exit=1
+
+宿主使用 LLVM GBS buildroot 的 qemu-arm/readelf/objcopy；未用宿主 readelf、未往板上推工具。
+父 ARM ELF：网络插件 DT_NEEDED=libbpf.so.1；插件与libbpf自身均无顶层.BTF/.BTF.ext。
+插件 .rodata 偏移0x90(144)处含嵌入ELF，经平台readelf确认Machine=Linux BPF；有.BTF/.BTF.ext及3个fentry程序。
+BTF.ext头：magic=0xeb9f version=1 hdr_len=32 core_relo_off=848 core_relo_len=140（非空CO-RE重定位）。
+嵌入文件只切取原字节；未加载、执行或更改程序。不能从父ELF没有.BTF就判定无CO-RE。
+当前FD与maps快照未发现插件运行证据；bpftool缺失，无法全局枚举所有可能只由内核持有的attach。
+
+原始文件 temp/task5/libresource-monitor-plugin-network.so.readelf.txt，原始行 1–110
+1: $ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/readelf -W -h -d -S --dyn-syms /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/elf/libresource-monitor-plugin-network.so
+2: ELF Header:
+3:   Magic:   7f 45 4c 46 01 01 01 00 00 00 00 00 00 00 00 00 
+4:   Class:                             ELF32
+5:   Data:                              2's complement, little endian
+6:   Version:                           1 (current)
+7:   OS/ABI:                            UNIX - System V
+8:   ABI Version:                       0
+9:   Type:                              DYN (Shared object file)
+10:   Machine:                           ARM
+11:   Version:                           0x1
+12:   Entry point address:               0x0
+13:   Start of program headers:          52 (bytes into file)
+14:   Start of section headers:          811372 (bytes into file)
+15:   Flags:                             0x5000200, Version5 EABI, soft-float ABI
+16:   Size of this header:               52 (bytes)
+17:   Size of program headers:           32 (bytes)
+18:   Number of program headers:         6
+19:   Size of section headers:           40 (bytes)
+20:   Number of section headers:         24
+21:   Section header string table index: 23
+22: 
+23: Section Headers:
+24:   [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+25:   [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+26:   [ 1] .gnu.hash         GNU_HASH        000000f4 0000f4 000020 04   A  2   0  4
+27:   [ 2] .dynsym           DYNSYM          00000114 000114 000160 10   A  3   3  4
+28:   [ 3] .dynstr           STRTAB          00000274 000274 000235 00   A  0   0  1
+29:   [ 4] .gnu.version      VERSYM          000004aa 0004aa 00002c 02   A  2   0  2
+30:   [ 5] .gnu.version_r    VERNEED         000004d8 0004d8 000070 00   A  3   3  4
+31:   [ 6] .rel.dyn          REL             00000548 000548 0000a0 08   A  2   0  4
+32:   [ 7] .rel.plt          REL             000005e8 0005e8 000078 08  AI  2  19  4
+33:   [ 8] .init             PROGBITS        00000660 000660 00000c 00  AX  0   0  4
+34:   [ 9] .plt              PROGBITS        0000066c 00066c 0000d4 04  AX  0   0  4
+35:   [10] .text             PROGBITS        00000740 000740 00029e 00  AX  0   0  4
+36:   [11] .fini             PROGBITS        000009e0 0009e0 000008 00  AX  0   0  4
+37:   [12] .rodata           PROGBITS        000009e8 0009e8 0c3601 00   A  0   0  8
+38:   [13] .ARM.exidx        ARM_EXIDX       000c3fec 0c3fec 000038 00  AL 10   0  4
+39:   [14] .eh_frame         PROGBITS        000c4024 0c4024 000004 00   A  0   0  4
+40:   [15] .init_array       INIT_ARRAY      000c5000 0c5000 000004 04  WA  0   0  4
+41:   [16] .fini_array       FINI_ARRAY      000c5004 0c5004 000004 04  WA  0   0  4
+42:   [17] .data.rel.ro      PROGBITS        000c5008 0c5008 000450 00  WA  0   0  8
+43:   [18] .dynamic          DYNAMIC         000c5458 0c5458 0000f8 08  WA  3   0  4
+44:   [19] .got              PROGBITS        000c6000 0c6000 000058 04  WA  0   0  4
+45:   [20] .data             PROGBITS        000c6058 0c6058 000014 00  WA  0   0  4
+46:   [21] .bss              NOBITS          000c606c 0c606c 000004 00  WA  0   0  1
+47:   [22] .gnu_debuglink    PROGBITS        00000000 0c606c 000030 00      0   0  4
+48:   [23] .shstrtab         STRTAB          00000000 0c609c 0000cf 00      0   0  1
+49: Key to Flags:
+50:   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+51:   L (link order), O (extra OS processing required), G (group), T (TLS),
+52:   C (compressed), x (unknown), o (OS specific), E (exclude),
+53:   D (mbind), y (purecode), p (processor specific)
+54: 
+55: Dynamic section at offset 0xc5458 contains 27 entries:
+56:   Tag        Type                         Name/Value
+57:  0x00000001 (NEEDED)                     Shared library: [libsyscommon.so.5.0.0]
+58:  0x00000001 (NEEDED)                     Shared library: [libbpf.so.1]
+59:  0x00000001 (NEEDED)                     Shared library: [libgcc_s.so.1]
+60:  0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+61:  0x0000000c (INIT)                       0x660
+62:  0x0000000d (FINI)                       0x9e0
+63:  0x00000019 (INIT_ARRAY)                 0xc5000
+64:  0x0000001b (INIT_ARRAYSZ)               4 (bytes)
+65:  0x0000001a (FINI_ARRAY)                 0xc5004
+66:  0x0000001c (FINI_ARRAYSZ)               4 (bytes)
+67:  0x6ffffef5 (GNU_HASH)                   0xf4
+68:  0x00000005 (STRTAB)                     0x274
+69:  0x00000006 (SYMTAB)                     0x114
+70:  0x0000000a (STRSZ)                      565 (bytes)
+71:  0x0000000b (SYMENT)                     16 (bytes)
+72:  0x00000003 (PLTGOT)                     0xc6000
+73:  0x00000002 (PLTRELSZ)                   120 (bytes)
+74:  0x00000014 (PLTREL)                     REL
+75:  0x00000017 (JMPREL)                     0x5e8
+76:  0x00000011 (REL)                        0x548
+77:  0x00000012 (RELSZ)                      160 (bytes)
+78:  0x00000013 (RELENT)                     8 (bytes)
+79:  0x6ffffffe (VERNEED)                    0x4d8
+80:  0x6fffffff (VERNEEDNUM)                 3
+81:  0x6ffffff0 (VERSYM)                     0x4aa
+82:  0x6ffffffa (RELCOUNT)                   16
+83:  0x00000000 (NULL)                       0x0
+84: 
+85: Symbol table '.dynsym' contains 22 entries:
+86:    Num:    Value  Size Type    Bind   Vis      Ndx Name
+87:      0: 00000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+88:      1: 00000660     0 SECTION LOCAL  DEFAULT    8 .init
+89:      2: 000c6058     0 SECTION LOCAL  DEFAULT   20 .data
+90:      3: 00000000     0 FUNC    GLOBAL DEFAULT  UND bpf_object__attach_skeleton@LIBBPF_0.0.7 (2)
+91:      4: 00000000     0 FUNC    GLOBAL DEFAULT  UND __aeabi_unwind_cpp_pr0@GCC_3.5 (3)
+92:      5: 00000000     0 FUNC    GLOBAL DEFAULT  UND syscommon_resman_remove_resource_driver
+93:      6: 00000000     0 NOTYPE  WEAK   DEFAULT  UND __gmon_start__
+94:      7: 00000000     0 FUNC    GLOBAL DEFAULT  UND syscommon_resman_get_driver_bpf_skel
+95:      8: 00000000     0 FUNC    GLOBAL DEFAULT  UND syscommon_resman_get_resource_privdata
+96:      9: 00000000     0 FUNC    GLOBAL DEFAULT  UND calloc@GLIBC_2.4 (4)
+97:     10: 00000000     0 FUNC    GLOBAL DEFAULT  UND syscommon_resman_add_resource_driver
+98:     11: 00000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_deregisterTMCloneTable
+99:     12: 00000000     0 FUNC    GLOBAL DEFAULT  UND bpf_object__destroy_skeleton@LIBBPF_0.0.7 (2)
+100:     13: 00000000     0 FUNC    GLOBAL DEFAULT  UND free@GLIBC_2.4 (4)
+101:     14: 00000000     0 NOTYPE  WEAK   DEFAULT  UND _ITM_registerTMCloneTable
+102:     15: 00000000     0 FUNC    GLOBAL DEFAULT  UND bpf_map_lookup_elem@LIBBPF_0.0.1 (5)
+103:     16: 00000000     0 FUNC    GLOBAL DEFAULT  UND bpf_object__open_skeleton@LIBBPF_0.0.7 (2)
+104:     17: 00000000     0 FUNC    GLOBAL DEFAULT  UND bpf_map__fd@LIBBPF_0.0.1 (5)
+105:     18: 00000000     0 FUNC    GLOBAL DEFAULT  UND bpf_object__load_skeleton@LIBBPF_0.0.7 (2)
+106:     19: 00000000     0 FUNC    GLOBAL DEFAULT  UND __errno_location@GLIBC_2.4 (4)
+107:     20: 00000000     0 FUNC    WEAK   DEFAULT  UND __cxa_finalize@GLIBC_2.4 (4)
+108:     21: 000c605c    16 OBJECT  GLOBAL DEFAULT   20 system_plugin_backend_pass_data
+109: 
+110: EXIT=0
+
+原始文件 temp/task5/embedded_0.readelf.txt，原始行 1–85
+1: $ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/qemu-arm -L /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/bin/readelf -W -h -S -s /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/elf/embedded_0.elf
+2: ELF Header:
+3:   Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+4:   Class:                             ELF64
+5:   Data:                              2's complement, little endian
+6:   Version:                           1 (current)
+7:   OS/ABI:                            UNIX - System V
+8:   ABI Version:                       0
+9:   Type:                              REL (Relocatable file)
+10:   Machine:                           Linux BPF
+11:   Version:                           0x1
+12:   Entry point address:               0x0
+13:   Start of program headers:          0 (bytes into file)
+14:   Start of section headers:          798064 (bytes into file)
+15:   Flags:                             0x0
+16:   Size of this header:               64 (bytes)
+17:   Size of program headers:           0 (bytes)
+18:   Number of program headers:         0
+19:   Size of section headers:           64 (bytes)
+20:   Number of section headers:         32
+21:   Section header string table index: 1
+22: 
+23: Section Headers:
+24:   [Nr] Name              Type            Address          Off    Size   ES Flg Lk Inf Al
+25:   [ 0]                   NULL            0000000000000000 000000 000000 00      0   0  0
+26:   [ 1] .strtab           STRTAB          0000000000000000 0c2bf5 00017a 00      0   0  1
+27:   [ 2] .text             PROGBITS        0000000000000000 000040 000000 00  AX  0   0  4
+28:   [ 3] fentry/tcp_v4_rcv PROGBITS        0000000000000000 000040 000160 00  AX  0   0  8
+29:   [ 4] .relfentry/tcp_v4_rcv REL             0000000000000000 08f600 000030 10   I 31   3  8
+30:   [ 5] fentry/tcp_write_xmit PROGBITS        0000000000000000 0001a0 0001b8 00  AX  0   0  8
+31:   [ 6] .relfentry/tcp_write_xmit REL             0000000000000000 08f630 000030 10   I 31   5  8
+32:   [ 7] fentry/tcp_retransmit_skb PROGBITS        0000000000000000 000358 000160 00  AX  0   0  8
+33:   [ 8] .relfentry/tcp_retransmit_skb REL             0000000000000000 08f660 000030 10   I 31   7  8
+34:   [ 9] license           PROGBITS        0000000000000000 0004b8 000004 00  WA  0   0  1
+35:   [10] .maps             PROGBITS        0000000000000000 0004c0 000020 00  WA  0   0  8
+36:   [11] .debug_loclists   PROGBITS        0000000000000000 0004e0 0000de 00      0   0  1
+37:   [12] .debug_abbrev     PROGBITS        0000000000000000 0005be 00041b 00      0   0  1
+38:   [13] .debug_info       PROGBITS        0000000000000000 0009d9 03f778 00      0   0  1
+39:   [14] .rel.debug_info   REL             0000000000000000 08f690 000060 10   I 31  13  8
+40:   [15] .debug_rnglists   PROGBITS        0000000000000000 040151 00001d 00      0   0  1
+41:   [16] .debug_str_offsets PROGBITS        0000000000000000 04016e 00cbe4 00      0   0  1
+42:   [17] .rel.debug_str_offsets REL             0000000000000000 08f6f0 032f70 10   I 31  16  8
+43:   [18] .debug_str        PROGBITS        0000000000000000 04cd52 02a40a 01  MS  0   0  1
+44:   [19] .debug_addr       PROGBITS        0000000000000000 07715c 000068 00      0   0  1
+45:   [20] .rel.debug_addr   REL             0000000000000000 0c2660 0000c0 10   I 31  19  8
+46:   [21] .BTF              PROGBITS        0000000000000000 0771c4 017b1f 00      0   0  4
+47:   [22] .rel.BTF          REL             0000000000000000 0c2720 000020 10   I 31  21  8
+48:   [23] .BTF.ext          PROGBITS        0000000000000000 08ece4 0003fc 00      0   0  4
+49:   [24] .rel.BTF.ext      REL             0000000000000000 0c2740 0003a0 10   I 31  23  8
+50:   [25] .debug_frame      PROGBITS        0000000000000000 08f0e0 000058 00      0   0  8
+51:   [26] .rel.debug_frame  REL             0000000000000000 0c2ae0 000060 10   I 31  25  8
+52:   [27] .debug_line       PROGBITS        0000000000000000 08f138 0001f7 00      0   0  1
+53:   [28] .rel.debug_line   REL             0000000000000000 0c2b40 0000b0 10   I 31  27  8
+54:   [29] .debug_line_str   PROGBITS        0000000000000000 08f32f 000108 01  MS  0   0  1
+55:   [30] .llvm_addrsig     LLVM_ADDRSIG    0000000000000000 0c2bf0 000005 00   E 31   0  1
+56:   [31] .symtab           SYMTAB          0000000000000000 08f438 0001c8 18      1  14  8
+57: Key to Flags:
+58:   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+59:   L (link order), O (extra OS processing required), G (group), T (TLS),
+60:   C (compressed), x (unknown), o (OS specific), E (exclude),
+61:   D (mbind), p (processor specific)
+62: 
+63: Symbol table '.symtab' contains 19 entries:
+64:    Num:    Value          Size Type    Bind   Vis      Ndx Name
+65:      0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
+66:      1: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS network_monitor.bpf.c
+67:      2: 0000000000000000     0 SECTION LOCAL  DEFAULT    3 fentry/tcp_v4_rcv
+68:      3: 0000000000000000     0 SECTION LOCAL  DEFAULT    5 fentry/tcp_write_xmit
+69:      4: 0000000000000000     0 SECTION LOCAL  DEFAULT    7 fentry/tcp_retransmit_skb
+70:      5: 0000000000000000     0 SECTION LOCAL  DEFAULT   11 .debug_loclists
+71:      6: 0000000000000000     0 SECTION LOCAL  DEFAULT   12 .debug_abbrev
+72:      7: 0000000000000000     0 SECTION LOCAL  DEFAULT   15 .debug_rnglists
+73:      8: 0000000000000000     0 SECTION LOCAL  DEFAULT   16 .debug_str_offsets
+74:      9: 0000000000000000     0 SECTION LOCAL  DEFAULT   18 .debug_str
+75:     10: 0000000000000000     0 SECTION LOCAL  DEFAULT   19 .debug_addr
+76:     11: 0000000000000000     0 SECTION LOCAL  DEFAULT   25 .debug_frame
+77:     12: 0000000000000000     0 SECTION LOCAL  DEFAULT   27 .debug_line
+78:     13: 0000000000000000     0 SECTION LOCAL  DEFAULT   29 .debug_line_str
+79:     14: 0000000000000000   352 FUNC    GLOBAL DEFAULT    3 tcp_v4_rcv
+80:     15: 0000000000000000    32 OBJECT  GLOBAL DEFAULT   10 net_latency_map
+81:     16: 0000000000000000   440 FUNC    GLOBAL DEFAULT    5 tcp_write_xmit_hook
+82:     17: 0000000000000000   352 FUNC    GLOBAL DEFAULT    7 tcp_retransmit_skb
+83:     18: 0000000000000000     4 OBJECT  GLOBAL DEFAULT    9 LICENSE
+84: 
+85: EXIT=0

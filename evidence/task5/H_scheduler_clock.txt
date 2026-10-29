@@ -1,0 +1,94 @@
+原始文件 temp/task5/H_scheduling.txt，原始行 3–93
+3: [cpufreq]
+4: /sys/devices/system/cpu/cpufreq/policy0
+5: affected_cpus
+6: 0 1 2 3
+7: scaling_driver
+8: cpufreq-dt
+9: scaling_governor
+10: schedutil
+11: scaling_available_governors
+12: conservative ondemand userspace powersave performance schedutil 
+13: scaling_available_frequencies
+14: 600000 700000 800000 900000 1000000 1100000 1200000 1300000 1400000 1500000 
+15: scaling_cur_freq
+16: 1500000
+17: cpuinfo_cur_freq
+18: 1500000
+19: scaling_min_freq
+20: 600000
+21: scaling_max_freq
+22: 1500000
+23: 
+24: [cpuidle]
+25: /sys/devices/system/cpu/cpu0
+26: cpuidle ABSENT
+27: /sys/devices/system/cpu/cpu1
+28: cpuidle ABSENT
+29: /sys/devices/system/cpu/cpu2
+30: cpuidle ABSENT
+31: /sys/devices/system/cpu/cpu3
+32: cpuidle ABSENT
+33: 
+34: [all scheduler sysctls]
+35: /proc/sys/kernel/sched_autogroup_enabled
+36: 1
+37: /proc/sys/kernel/sched_deadline_period_max_us
+38: 4194304
+39: /proc/sys/kernel/sched_deadline_period_min_us
+40: 100
+41: /proc/sys/kernel/sched_rr_timeslice_ms
+42: 100
+43: /proc/sys/kernel/sched_rt_period_us
+44: 1000000
+45: /proc/sys/kernel/sched_rt_runtime_us
+46: 950000
+47: /proc/sys/kernel/sched_schedstats
+48: 0
+49: 
+50: [timer_list HZ fallback sample 1]
+51: 2026-10-29T21:37:50+0900
+52: now at 966552046238 nsecs
+53:   .expires_next   : 966560000000 nsecs
+54: jiffies: 66655
+55:   .expires_next   : 966560000000 nsecs
+56: jiffies: 66655
+57:   .expires_next   : 966560000000 nsecs
+58: jiffies: 66655
+59:   .expires_next   : 966560000000 nsecs
+60: jiffies: 66655
+61: Tick Device: mode:     1
+62: Clock Event Device: bc_hrtimer
+63: Tick Device: mode:     1
+64: Clock Event Device: arch_sys_timer
+65: Tick Device: mode:     1
+66: Clock Event Device: arch_sys_timer
+67: Tick Device: mode:     1
+68: Clock Event Device: arch_sys_timer
+69: Tick Device: mode:     1
+70: Clock Event Device: arch_sys_timer
+71: 
+72: [timer_list HZ fallback sample 2]
+73: 2026-10-29T21:37:51+0900
+74: now at 967574211237 nsecs
+75:   .expires_next   : 967577330306 nsecs
+76: jiffies: 66757
+77:   .expires_next   : 967580000000 nsecs
+78: jiffies: 66757
+79:   .expires_next   : 967580000000 nsecs
+80: jiffies: 66757
+81:   .expires_next   : 967580000000 nsecs
+82: jiffies: 66757
+83: Tick Device: mode:     1
+84: Clock Event Device: bc_hrtimer
+85: Tick Device: mode:     1
+86: Clock Event Device: arch_sys_timer
+87: Tick Device: mode:     1
+88: Clock Event Device: arch_sys_timer
+89: Tick Device: mode:     1
+90: Clock Event Device: arch_sys_timer
+91: Tick Device: mode:     1
+92: Clock Event Device: arch_sys_timer
+93: 
+
+HZ运行时估算：jiffies增102，now_at增1022164999ns；102/1.022164999=99.7882Hz，与100Hz一致；不是读取到了实际.config。

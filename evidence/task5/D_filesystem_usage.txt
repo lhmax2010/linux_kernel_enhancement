@@ -1,0 +1,230 @@
+原始文件 temp/task5/D_filesystems.txt，原始行 3–87
+3: [mounts]
+4: devtmpfs /dev devtmpfs rw,nosuid,size=1815944k,nr_inodes=91845,mode=755 0 0
+5: sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+6: proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+7: /dev/mmcblk0p6 /usr/lib/modules ext4 ro,relatime 0 0
+8: /dev/mmcblk0p2 / ext4 rw,relatime,mb_optimize_scan=0 0 0
+9: /dev/mmcblk0p3 /opt ext4 rw,relatime 0 0
+10: /dev/mmcblk0p10 /hal ext4 rw,relatime 0 0
+11: overlay /apps overlay ro,relatime,lowerdir=/sysroot/product/apps:/sysroot/apps,redirect_dir=on 0 0
+12: smackfs /sys/fs/smackfs smackfs rw,nosuid,nodev,noexec,relatime 0 0
+13: tmpfs /dev/shm tmpfs rw,nosuid,nodev,noexec 0 0
+14: devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 0 0
+15: tmpfs /run tmpfs rw,nosuid,nodev,noexec,mode=755 0 0
+16: tmpfs /sys/fs/cgroup tmpfs ro,nosuid,nodev,noexec,mode=755 0 0
+17: cgroup /sys/fs/cgroup/systemd cgroup rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd 0 0
+18: kdbusfs /sys/fs/kdbus kdbusfs rw,nosuid,nodev,noexec,relatime 0 0
+19: bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+20: cgroup /sys/fs/cgroup/cpu,cpuacct cgroup rw,nosuid,nodev,noexec,relatime,cpu,cpuacct 0 0
+21: cgroup /sys/fs/cgroup/net_cls cgroup rw,nosuid,nodev,noexec,relatime,net_cls,release_agent=/usr/bin/net-cls-release 0 0
+22: cgroup /sys/fs/cgroup/devices cgroup rw,nosuid,nodev,noexec,relatime,devices 0 0
+23: cgroup /sys/fs/cgroup/freezer cgroup rw,nosuid,nodev,noexec,relatime,freezer 0 0
+24: cgroup /sys/fs/cgroup/cpuset cgroup rw,nosuid,nodev,noexec,relatime,cpuset 0 0
+25: cgroup /sys/fs/cgroup/memory cgroup rw,nosuid,nodev,noexec,relatime,memory 0 0
+26: cgroup /sys/fs/cgroup/blkio cgroup rw,nosuid,nodev,noexec,relatime,blkio 0 0
+27: systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=25,pgrp=1,timeout=0,minproto=5,maxproto=5,direct 0 0
+28: mqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0
+29: configfs /sys/kernel/config configfs rw,nosuid,nodev,noexec,relatime 0 0
+30: debugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0
+31: tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0
+32: /dev/mmcblk0p9 /mnt/inform ext4 rw,relatime 0 0
+33: /dev/mmcblk0p5 /opt/usr f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+34: tracefs /sys/kernel/debug/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+35: fusectl /sys/fs/fuse/connections fusectl rw,nosuid,nodev,noexec,relatime 0 0
+36: cgroup /sys/fs/cgroup/watchdog cgroup rw,nosuid,nodev,noexec,relatime,release_agent=/usr/bin/resourced-watchdog-handler.sh,name=watchdog 0 0
+37: tmpfs /opt/media tmpfs rw,relatime 0 0
+38: tmpfs /run/user/5001 tmpfs rw,nosuid,nodev,noexec,relatime,size=397644k,mode=700,uid=5001,gid=100 0 0
+39: sdb.default /dev/usb-funcs/sdb/default functionfs rw,relatime 0 0
+40: mtp.default /dev/usb-funcs/mtp/default functionfs rw,relatime 0 0
+41: /dev/mmcblk0p5 /opt/usr/home/owner/media f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+42: /dev/loop0 /opt/usr/home/owner/subsession/__templ_acct_fix__ ext4 rw,relatime 0 0
+43: /dev/loop1 /opt/usr/home/owner/subsession/__templ_prof_fix__ ext4 rw,relatime 0 0
+44: 
+45: [filesystems]
+46: nodev	sysfs
+47: nodev	tmpfs
+48: nodev	bdev
+49: nodev	proc
+50: nodev	cgroup
+51: nodev	cgroup2
+52: nodev	cpuset
+53: nodev	devtmpfs
+54: nodev	configfs
+55: nodev	debugfs
+56: nodev	tracefs
+57: nodev	sockfs
+58: nodev	bpf
+59: nodev	pipefs
+60: nodev	ramfs
+61: nodev	rpc_pipefs
+62: nodev	devpts
+63: 	ext3
+64: 	ext2
+65: 	ext4
+66: 	squashfs
+67: 	vfat
+68: 	msdos
+69: nodev	nfs
+70: nodev	nfs4
+71: nodev	autofs
+72: 	fuseblk
+73: nodev	fuse
+74: nodev	fusectl
+75: nodev	overlay
+76: 	f2fs
+77: 	erofs
+78: nodev	mqueue
+79: nodev	smackfs
+80: nodev	binder
+81: 	btrfs
+82: nodev	kdbusfs
+83: nodev	functionfs
+84: 
+85: [fstab]
+86: cat: /etc/fstab: No such file or directory
+87: 
+
+自动挂载核对：原始完整mount/automount单元保留在temp/task5/D_filesystems.txt；下列为决定文件系统使用的单元片段。
+原始文件 temp/task5/D_filesystems.txt，原始行 127–139
+127: FILE /usr/lib/systemd/system/opt-usr.mount
+128: [Unit]
+129: DefaultDependencies=no
+130: ConditionPathExists=!/opt/etc/.odeprogress
+131: Wants=wait-mount@opt-usr.service
+132: After=local-fs-pre.target
+133: Before=local-fs.target wait-mount@opt-usr.service
+134: 
+135: [Mount]
+136: What=LABEL=user
+137: #Type=ext4
+138: Where=/opt/usr
+139: 
+
+原始文件 temp/task5/D_filesystems.txt，原始行 115–126
+115: FILE /usr/lib/systemd/system/mnt-inform.mount
+116: [Unit]
+117: Description=Reboot Parameter Partition
+118: DefaultDependencies=no
+119: ConditionPathExists=/hal/etc/reboot/register_storage
+120: Conflicts=umount.target
+121: 
+122: [Mount]
+123: What=LABEL=inform
+124: Where=/mnt/inform
+125: Type=ext4
+126: 
+
+原始文件 temp/task5/D_filesystems.txt，原始行 338–449
+338: [partitions]
+339: major minor  #blocks  name
+340: 
+341:    1        0      32768 ram0
+342:    1        1      32768 ram1
+343:    1        2      32768 ram2
+344:    1        3      32768 ram3
+345:    1        4      32768 ram4
+346:    1        5      32768 ram5
+347:    1        6      32768 ram6
+348:    1        7      32768 ram7
+349:    1        8      32768 ram8
+350:    1        9      32768 ram9
+351:    1       10      32768 ram10
+352:    1       11      32768 ram11
+353:    1       12      32768 ram12
+354:    1       13      32768 ram13
+355:    1       14      32768 ram14
+356:    1       15      32768 ram15
+357:    7        0      10240 loop0
+358:    7        1      10240 loop1
+359:  254        0    1590592 zram0
+360:  179        0  125173760 mmcblk0
+361:  179        1      65536 mmcblk0p1
+362:  179        2    3145728 mmcblk0p2
+363:  179        3    1376256 mmcblk0p3
+364:  179        4      36864 mmcblk0p4
+365:  179        5  116406272 mmcblk0p5
+366:  179        6      32768 mmcblk0p6
+367:  179        7      32768 mmcblk0p7
+368:  179        8      32768 mmcblk0p8
+369:  179        9       8192 mmcblk0p9
+370:  179       10     262144 mmcblk0p10
+371:  179       11      65536 mmcblk0p11
+372:  179       12    3145728 mmcblk0p12
+373:  179       13      32768 mmcblk0p13
+374:  179       14      32768 mmcblk0p14
+375:  179       15      32768 mmcblk0p15
+376:  179       16     262144 mmcblk0p16
+377:  179       17       4096 mmcblk0p17
+378:  179       18      65536 mmcblk0p18
+379:  179       19     128000 mmcblk0p19
+380: 
+381: [lsblk]
+382: /usr/bin/lsblk
+383: NAME         FSTYPE   SIZE MOUNTPOINT
+384: loop0        ext4      10M /opt/usr/home/owner/subsession/__templ_acct_fix__
+385: loop1        ext4      10M /opt/usr/home/owner/subsession/__templ_prof_fix__
+386: mmcblk0             119.4G 
+387: |-mmcblk0p1  vfat      64M 
+388: |-mmcblk0p2  ext4       3G /
+389: |-mmcblk0p3  ext4     1.3G /opt
+390: |-mmcblk0p4            36M 
+391: |-mmcblk0p5  f2fs     111G /opt/usr
+392: |-mmcblk0p6  ext4      32M /usr/lib/modules
+393: |-mmcblk0p7            32M 
+394: |-mmcblk0p8            32M 
+395: |-mmcblk0p9  ext4       8M /mnt/inform
+396: |-mmcblk0p10 ext4     256M /hal
+397: |-mmcblk0p11           64M 
+398: |-mmcblk0p12            3G 
+399: |-mmcblk0p13           32M 
+400: |-mmcblk0p14           32M 
+401: |-mmcblk0p15           32M 
+402: |-mmcblk0p16          256M 
+403: |-mmcblk0p17            4M 
+404: |-mmcblk0p18           64M 
+405: `-mmcblk0p19          125M 
+406: zram0        swap     1.5G [SWAP]
+407: 
+408: [blkid read-only no cache]
+409: /usr/sbin/blkid
+410: /dev/loop1: UUID="08a32dbd-8077-4d7f-bc24-dba45e7d76ca" BLOCK_SIZE="1024" TYPE="ext4"
+411: /dev/loop0: UUID="fc4f511d-96b8-44c5-a660-abcaa267736a" BLOCK_SIZE="1024" TYPE="ext4"
+412: /dev/zram0: UUID="aeb09162-3071-4c64-b51d-0419c216423b" TYPE="swap"
+413: /dev/mmcblk0p4: PARTLABEL="none" PARTUUID="c6ce6b87-8572-0846-a7c4-69bde03d903f"
+414: /dev/mmcblk0p12: PARTLABEL="rootfs_b" PARTUUID="a5e2d013-4207-1942-84b5-a8e140c4543b"
+415: /dev/mmcblk0p2: LABEL="rootfs" UUID="51d0324b-547a-4333-8e43-6f69fea3a8e9" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="rootfs_a" PARTUUID="af5ff372-625e-4c42-957d-e8bb41ada12e"
+416: /dev/mmcblk0p10: LABEL="hal" UUID="586cdcab-b4c5-4b08-9a0c-18ad1b88a385" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="hal_a" PARTUUID="b03a3d52-5000-3842-b48e-27cd568a6270"
+417: /dev/mmcblk0p19: PARTLABEL="reserved2" PARTUUID="b7270000-660e-9847-9b08-9fe3734e4ad2"
+418: /dev/mmcblk0p9: LABEL="inform" UUID="fb4a8b89-22ea-4525-85bd-c66d7d75acd4" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="inform" PARTUUID="336ae749-e887-ae46-90f2-22266d9a8c7f"
+419: /dev/mmcblk0p17: PARTLABEL="reserved0" PARTUUID="0170f2a4-9e02-da48-a35c-5f43111a079b"
+420: /dev/mmcblk0p7: PARTLABEL="ramdisk_a" PARTUUID="0eddfaa8-c937-674a-ba48-8288ec009b04"
+421: /dev/mmcblk0p15: PARTLABEL="ramdisk-recovery_b" PARTUUID="e7b46654-7304-b44b-82e2-49460ced8b9c"
+422: /dev/mmcblk0p5: LABEL="user" UUID="fff42d46-cb5e-4946-a618-f01b43218566" BLOCK_SIZE="4096" TYPE="f2fs" PARTLABEL="user" PARTUUID="b617068d-208d-6947-9e7a-c99b778f280c"
+423: /dev/mmcblk0p13: PARTLABEL="module_b" PARTUUID="2c26051e-91dd-bb4f-8629-3d16df8dda64"
+424: /dev/mmcblk0p3: LABEL="system-data" UUID="cde9b8a5-4888-4541-8955-eec695e74930" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="system-data" PARTUUID="efb26d9f-ba19-6f4d-b667-398d8338c48e"
+425: /dev/mmcblk0p11: PARTLABEL="boot_b" PARTUUID="073891ac-b46b-2a49-b760-1b0e8cffd208"
+426: /dev/mmcblk0p1: SEC_TYPE="msdos" LABEL_FATBOOT="boot" LABEL="boot" UUID="D41A-6222" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="boot_a" PARTUUID="9260eee2-0299-b944-b3c1-346399efa1e6"
+427: /dev/mmcblk0p18: PARTLABEL="reserved1" PARTUUID="daea397b-4c16-1b4d-9eef-e28f39f3d9e3"
+428: /dev/mmcblk0p8: PARTLABEL="ramdisk-recovery_a" PARTUUID="5865afeb-3250-8046-8efb-75ae6b8a41e0"
+429: /dev/mmcblk0p16: PARTLABEL="hal_b" PARTUUID="8db5c55a-cdd9-3140-9662-04b3147895db"
+430: /dev/mmcblk0p6: LABEL="modules" UUID="de98b29f-1809-46e8-acb2-d90851b3c86c" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="module_a" PARTUUID="2443b407-33ce-c24a-a9df-8b04ca9e7f73"
+431: /dev/mmcblk0p14: PARTLABEL="ramdisk_b" PARTUUID="66236798-ec68-2c42-9b68-89ce94b3e19f"
+432: 
+433: [filesystem packages]
+434: f2fs-tools-1.16.0-0.g4f3af3a2acfe.armv7l
+435: btrfs-progs-7.0-1.armv7l
+436: libf2fs-1.16.0-0.g4f3af3a2acfe.armv7l
+437: e2fsprogs-1.46.0-1.7.armv7l
+438: 
+439: [NFS Btrfs F2FS configuration search]
+440: grep: /etc/fstab: No such file or directory
+441: grep: /etc/auto.master: No such file or directory
+442: grep: /etc/auto.master.d: No such file or directory
+443: grep: /etc/auto.misc: No such file or directory
+444: grep: /usr/lib/systemd/system/sockets.target.wants/tizen-watcherd.socket: No such file or directory
+445: grep: /usr/lib/systemd/system/sockets.target.wants/amd-tizen-action-service.socket: No such file or directory
+446: grep: /usr/lib/systemd/system/basic.target.wants/privilege-checker-integrity.service: No such file or directory
+447: grep: /usr/lib/systemd/system/sysinit.target.wants/systemd-boot-system-token.service: No such file or directory
+448: 
+449: COLLECT-END exit=2

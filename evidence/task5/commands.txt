@@ -1,0 +1,329 @@
+本任务全部 SDB 调用（含板上命令原文）；循环的完整语句保留，未推送任何脚本或可执行文件。
+宿主在正常工具环境设置 TMPDIR=$WS/temp；sdb 子进程 HOME=$WS/temp/task5/sdb-home。
+首次连接（在 commands.jsonl 建立之前）：
+sdb connect 192.168.108.26 => connected to 192.168.108.26:26101
+sdb devices => 192.168.108.26:26101 device rpi4
+SDB shell 返回的是传输退出码；具体子命令失败见对应原始文本，不能将传输0等同每个子命令成功。
+
+CALL 1 start=2026-10-29T20:32:05+08:00 end=2026-10-29T20:32:05+08:00 transport_exit=0
+output=temp/task5/00_identity_start.transport.txt bytes=10018
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'uname -r; uname -m; cat /etc/os-release; id; uptime; ps -eo pid,ppid,user,etimes,pcpu,pmem,args'
+
+CALL 2 start=2026-10-29T20:32:20+08:00 end=2026-10-29T20:32:21+08:00 transport_exit=0
+output=temp/task5/01_root_on.transport.txt bytes=32
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 root on
+
+CALL 3 start=2026-10-29T20:32:21+08:00 end=2026-10-29T20:32:21+08:00 transport_exit=0
+output=temp/task5/02_root_start_capabilities.transport.txt bytes=15547
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'id; uname -r; uname -m; cat /etc/os-release; date -Iseconds; uptime; cat /proc/uptime; ps -eo pid,ppid,user,etimes,pcpu,pmem,args --width 300; df -k /tmp; if [ -e /tmp/lko_task5 ]; then echo TASK5_DIRECTORY_ALREADY_EXISTS; else mkdir /tmp/lko_task5; fi; for c in sh bash awk grep find readlink readelf bpftool rpm perf lsusb lsblk blkid stat gzip timeout sort head wc; do command -v "$c" || :; done'
+
+CALL 4 start=2026-10-29T20:33:12+08:00 end=2026-10-29T20:33:12+08:00 transport_exit=0
+output=temp/task5/F_runtime_run.transport.txt bytes=35
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[uptime before snapshots]\n'"'"'; uptime; cat /proc/uptime
+printf '"'"'\n[MGLRU]\n'"'"'; for f in /sys/kernel/mm/lru_gen/enabled /sys/kernel/mm/lru_gen/min_ttl_ms; do echo "$f"; cat "$f"; done
+printf '"'"'\n[zram]\n'"'"'; for d in /sys/block/zram*; do [ -d "$d" ] || continue; echo "$d"; for n in comp_algorithm disksize mm_stat io_stat bd_stat; do echo "$n"; cat "$d/$n"; done; for n in recomp_algorithm recompress writeback backing_dev idle mem_limit max_comp_streams; do if [ -e "$d/$n" ]; then ls -l "$d/$n"; else echo "$n ABSENT"; fi; done; done
+printf '"'"'\n[swaps]\n'"'"'; cat /proc/swaps
+printf '"'"'\n[all vm sysctls]\n'"'"'; for f in /proc/sys/vm/*; do echo "$f"; if [ -r "$f" ]; then cat "$f"; else echo UNREADABLE; fi; done
+printf '"'"'\n[pressure]\n'"'"'; for f in /proc/pressure/memory /proc/pressure/cpu /proc/pressure/io; do echo "$f"; cat "$f"; done
+printf '"'"'\n[vmstat]\n'"'"'; cat /proc/vmstat
+printf '"'"'\n[meminfo]\n'"'"'; cat /proc/meminfo
+
+} > /tmp/lko_task5/F_runtime.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/F_runtime.txt; wc -c /tmp/lko_task5/F_runtime.txt'
+
+CALL 5 start=2026-10-29T20:33:12+08:00 end=2026-10-29T20:33:12+08:00 transport_exit=0
+output=temp/task5/F_runtime_pull.transport.txt bytes=227
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/F_runtime.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/F_runtime.txt
+
+CALL 6 start=2026-10-29T20:33:12+08:00 end=2026-10-29T20:33:13+08:00 transport_exit=0
+output=temp/task5/F_memcg_run.transport.txt bytes=34
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[cgroup mounts]\n'"'"'; awk '"'"'$3=="cgroup" || $3=="cgroup2" {print}'"'"' /proc/mounts
+printf '"'"'\n[cgroups]\n'"'"'; cat /proc/cgroups; cat /proc/1/cgroup
+printf '"'"'\n[hierarchy, usage, limits, force_reclaim existence]\n'"'"'
+for m in $(awk '"'"'$3=="cgroup2" || ($3=="cgroup" && $4 ~ /(^|,)memory(,|$)/) {print $2}'"'"' /proc/mounts); do
+ find "$m" -type d -print
+ find "$m" -type f \( -name memory.limit_in_bytes -o -name memory.usage_in_bytes -o -name memory.max -o -name memory.current \) -exec sh -c '"'"'for f do echo "$f"; cat "$f"; done'"'"' sh {} +
+ find "$m" -name memory.force_reclaim -print
+ done
+
+} > /tmp/lko_task5/F_memcg.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/F_memcg.txt; wc -c /tmp/lko_task5/F_memcg.txt'
+
+CALL 7 start=2026-10-29T20:33:13+08:00 end=2026-10-29T20:33:13+08:00 transport_exit=0
+output=temp/task5/F_memcg_pull.transport.txt bytes=229
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/F_memcg.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/F_memcg.txt
+
+CALL 8 start=2026-10-29T20:33:13+08:00 end=2026-10-29T20:33:14+08:00 transport_exit=0
+output=temp/task5/F_process_memory_run.transport.txt bytes=42
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'PID Name VmRSS_kB RssAnon_kB RssFile_kB VmSwap_kB\n'"'"'
+for f in /proc/[0-9]*/status; do [ -r "$f" ] || continue; awk '"'"'BEGIN {rss=anon=file=swap=0} /^Name:/ {name=$2} /^Pid:/ {pid=$2} /^VmRSS:/ {rss=$2} /^RssAnon:/ {anon=$2} /^RssFile:/ {file=$2} /^VmSwap:/ {swap=$2} END {printf "%s %s %d %d %d %d\n",pid,name,rss,anon,file,swap}'"'"' "$f"; done
+
+} > /tmp/lko_task5/F_process_memory.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/F_process_memory.txt; wc -c /tmp/lko_task5/F_process_memory.txt'
+
+CALL 9 start=2026-10-29T20:33:14+08:00 end=2026-10-29T20:33:14+08:00 transport_exit=0
+output=temp/task5/F_process_memory_pull.transport.txt bytes=232
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/F_process_memory.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/F_process_memory.txt
+
+CALL 10 start=2026-10-29T20:33:59+08:00 end=2026-10-29T20:34:00+08:00 transport_exit=0
+output=temp/task5/A_identity_memory_run.transport.txt bytes=43
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[uname]\n'"'"'; uname -a
+printf '"'"'\n[version]\n'"'"'; cat /proc/version
+printf '"'"'\n[cmdline]\n'"'"'; cat /proc/cmdline
+printf '"'"'\n[os-release]\n'"'"'; cat /etc/os-release
+printf '"'"'\n[meminfo]\n'"'"'; cat /proc/meminfo
+printf '"'"'\n[iomem reserved/cma]\n'"'"'; grep -inE '"'"'reserved|cma'"'"' /proc/iomem
+printf '"'"'\n[zone present/managed]\n'"'"'; awk '"'"'/^Node / || /^[[:space:]]+(present|managed) / {print}'"'"' /proc/zoneinfo
+printf '"'"'\n[dmesg filtered]\n'"'"'; dmesg | grep -inE '"'"'Memory:|cma|Reserved|zram|lru_gen|pmu|hw perfevents'"'"'
+printf '"'"'\n[mounts]\n'"'"'; cat /proc/mounts
+printf '"'"'\n[boot root directory entries]\n'"'"'; for d in /boot /boot/firmware /opt/boot; do if [ -d "$d" ]; then ls -la "$d"; fi; done
+printf '"'"'\n[config.gz]\n'"'"'; ls -l /proc/config.gz
+printf '"'"'\n[kernel rpm provenance]\n'"'"'; rpm -qa | grep -Ei '"'"'kernel|linux-rpi|perf|bpf|resourced'"'"'
+
+} > /tmp/lko_task5/A_identity_memory.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/A_identity_memory.txt; wc -c /tmp/lko_task5/A_identity_memory.txt'
+
+CALL 11 start=2026-10-29T20:34:00+08:00 end=2026-10-29T20:34:00+08:00 transport_exit=0
+output=temp/task5/A_identity_memory_pull.transport.txt bytes=233
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/A_identity_memory.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/A_identity_memory.txt
+
+CALL 12 start=2026-10-29T20:34:00+08:00 end=2026-10-29T20:34:00+08:00 transport_exit=0
+output=temp/task5/A_config_copy.transport.txt bytes=0
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'if [ -r /proc/config.gz ]; then cat /proc/config.gz > /tmp/lko_task5/config.gz; wc -c /tmp/lko_task5/config.gz; fi'
+
+CALL 13 start=2026-10-29T20:34:00+08:00 end=2026-10-29T20:34:00+08:00 transport_exit=1
+output=temp/task5/A_config_pull.transport.txt bytes=74
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/config.gz /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/config.gz
+
+CALL 14 start=2026-10-29T20:34:00+08:00 end=2026-10-29T20:34:02+08:00 transport_exit=0
+output=temp/task5/packages_run.transport.txt bytes=35
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[all installed packages]\n'"'"'; rpm -qa
+printf '"'"'\n[libbpf provides]\n'"'"'; rpm -q --provides libbpf
+printf '"'"'\n[whatrequires libbpf]\n'"'"'; rpm -q --whatrequires libbpf; rpm -q --whatrequires '"'"'libbpf.so.1'"'"'; rpm -q --whatrequires '"'"'libbpf.so.0'"'"'
+printf '"'"'\n[resourced packages and files]\n'"'"'; rpm -qa | grep -i resourced; for p in $(rpm -qa --qf '"'"'%{NAME}\n'"'"' | grep -i resourced); do rpm -ql "$p"; done
+printf '"'"'\n[perf/bpf installed file paths]\n'"'"'; for p in $(rpm -qa --qf '"'"'%{NAME}\n'"'"' | grep -Ei '"'"'perf|bpf'"'"'); do echo "$p"; rpm -ql "$p"; done
+
+} > /tmp/lko_task5/packages.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/packages.txt; wc -c /tmp/lko_task5/packages.txt'
+
+CALL 15 start=2026-10-29T20:34:02+08:00 end=2026-10-29T20:34:02+08:00 transport_exit=0
+output=temp/task5/packages_pull.transport.txt bytes=229
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/packages.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/packages.txt
+
+CALL 16 start=2026-10-29T20:34:53+08:00 end=2026-10-29T20:35:06+08:00 transport_exit=0
+output=temp/task5/B_runtime_run.transport.txt bytes=34
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[BTF vmlinux]\n'"'"'; if [ -e /sys/kernel/btf/vmlinux ]; then ls -l /sys/kernel/btf/vmlinux; wc -c /sys/kernel/btf/vmlinux; else echo ABSENT; fi
+printf '"'"'\n[BPF mounts and pins]\n'"'"'; awk '"'"'$3=="bpf" {print}'"'"' /proc/mounts; find /sys/fs/bpf -maxdepth 5 -ls
+printf '"'"'\n[bpftool]\n'"'"'; if command -v bpftool; then bpftool prog show; echo "prog_exit=$?"; bpftool map show; echo "map_exit=$?"; else echo '"'"'bpftool absent from PATH'"'"'; fi
+printf '"'"'\n[BPF file descriptors]\n'"'"'; scanned=0; hits=0
+for d in /proc/[0-9]*/fd; do [ -d "$d" ] || continue; scanned=$((scanned+1)); for f in "$d"/*; do t=$(readlink "$f" 2>/dev/null) || continue; case "$t" in *bpf-prog*|*bpf-map*|*bpf-link*) p=${d#/proc/}; p=${p%/fd}; printf '"'"'pid=%s comm='"'"' "$p"; cat "/proc/$p/comm"; printf '"'"'fd=%s target=%s\n'"'"' "$f" "$t"; cat "/proc/$p/fdinfo/${f##*/}"; hits=$((hits+1));; esac; done; done
+printf '"'"'scanned_process_fd_directories=%s bpf_fd_hits=%s\n'"'"' "$scanned" "$hits"
+printf '"'"'\n[processes mapping libbpf]\n'"'"'; grep -l '"'"'libbpf.so'"'"' /proc/[0-9]*/maps 2>/dev/null
+printf '"'"'\n[tool search]\n'"'"'; find /usr/bin /usr/sbin /usr/lib /usr/libexec /bin /sbin -name perf -o -name bpftool -o -name readelf
+printf '"'"'\n[modules/config inventory]\n'"'"'; ls -la /usr/lib/modules; find /usr/lib/modules -maxdepth 3 \( -iname '"'"'*config*'"'"' -o -name '"'"'*build*'"'"' -o -name '"'"'*version*'"'"' -o -name vmlinux -o -name perf -o -name bpftool \) -print
+
+} > /tmp/lko_task5/B_runtime.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/B_runtime.txt; wc -c /tmp/lko_task5/B_runtime.txt'
+
+CALL 17 start=2026-10-29T20:35:06+08:00 end=2026-10-29T20:35:07+08:00 transport_exit=0
+output=temp/task5/B_runtime_pull.transport.txt bytes=225
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/B_runtime.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/B_runtime.txt
+
+CALL 18 start=2026-10-29T20:35:07+08:00 end=2026-10-29T20:35:07+08:00 transport_exit=0
+output=temp/task5/F_resourced_configs_run.transport.txt bytes=45
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[versions]\n'"'"'; rpm -q resourced resourced-config resourced-bin system-plugin-backend-resourced-generic
+printf '"'"'\n[config files and services; full contents]\n'"'"'
+for d in /etc/resourced /usr/etc/resourced /usr/lib/resourced; do
+ if [ -d "$d" ]; then find "$d" -type f -name '"'"'*.conf'"'"' -exec sh -c '"'"'for f do printf "\nFILE %s\n" "$f"; cat "$f"; done'"'"' sh {} +; else echo "$d ABSENT"; fi
+done
+for f in /usr/lib/systemd/system/resourced.service /usr/lib/systemd/system/resourced.socket /etc/isu/resourced/isu.cfg; do if [ -f "$f" ]; then printf '"'"'\nFILE %s\n'"'"' "$f"; cat "$f"; fi; done
+printf '"'"'\n[bpf in resourced configuration and services]\n'"'"'; grep -RInEi '"'"'bpf'"'"' /etc/resourced /usr/etc/resourced /etc/isu/resourced /usr/lib/systemd/system/resourced.service /usr/lib/systemd/system/resourced.socket 2>&1
+
+} > /tmp/lko_task5/F_resourced_configs.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/F_resourced_configs.txt; wc -c /tmp/lko_task5/F_resourced_configs.txt'
+
+CALL 19 start=2026-10-29T20:35:07+08:00 end=2026-10-29T20:35:07+08:00 transport_exit=0
+output=temp/task5/F_resourced_configs_pull.transport.txt bytes=235
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/F_resourced_configs.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/F_resourced_configs.txt
+
+CALL 20 start=2026-10-29T20:35:07+08:00 end=2026-10-29T20:35:18+08:00 transport_exit=0
+output=temp/task5/B_elf_candidates_run.transport.txt bytes=41
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[files containing libbpf.so string; candidates only]\n'"'"'
+find /usr/bin /usr/sbin /usr/lib /usr/libexec -type f -exec grep -aFl '"'"'libbpf.so'"'"' {} +
+printf '"'"'\n[libbpf direct requirements]\n'"'"'; rpm -q --whatrequires libbpf; rpm -q --whatrequires '"'"'libbpf.so.1'"'"'
+
+} > /tmp/lko_task5/B_elf_candidates.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/B_elf_candidates.txt; wc -c /tmp/lko_task5/B_elf_candidates.txt'
+
+CALL 21 start=2026-10-29T20:35:18+08:00 end=2026-10-29T20:35:18+08:00 transport_exit=0
+output=temp/task5/B_elf_candidates_pull.transport.txt bytes=230
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/B_elf_candidates.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/B_elf_candidates.txt
+
+CALL 22 start=2026-10-29T20:36:29+08:00 end=2026-10-29T20:36:30+08:00 transport_exit=0
+output=temp/task5/C_tracing_run.transport.txt bytes=35
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[cmdline tracing switches]\n'"'"'; cat /proc/cmdline; grep -oE '"'"'(^| )(kgdboc|kgdbwait|ftrace|trace_event)(=[^ ]*)?'"'"' /proc/cmdline
+printf '"'"'\n[trace roots]\n'"'"'; ls -ld /sys/kernel/tracing /sys/kernel/debug/tracing
+for d in /sys/kernel/tracing /sys/kernel/debug/tracing; do [ -f "$d/tracing_on" ] || continue; echo "$d"; for n in tracing_on current_tracer events/enable buffer_size_kb available_tracers; do echo "$n"; cat "$d/$n"; done; printf '"'"'set_ftrace_filter lines: '"'"'; wc -l "$d/set_ftrace_filter"; head -n 10 "$d/set_ftrace_filter"; printf '"'"'\n[instances]\n'"'"'; ls -la "$d/instances"; for i in "$d"/instances/*; do [ -d "$i" ] || continue; echo "$i"; for n in tracing_on current_tracer events/enable buffer_size_kb; do echo "$n"; cat "$i/$n"; done; done; done
+printf '"'"'\n[latencytop]\n'"'"'; cat /proc/sys/kernel/latencytop; cat /proc/latency_stats
+printf '"'"'\n[tracing packages]\n'"'"'; rpm -qa | grep -Ei '"'"'trace-cmd|(^|-)perf([-.]|$)|blktrace|bpftrace|latencytop'"'"'
+printf '"'"'\n[startup and unit configuration search]\n'"'"'; grep -rInIE '"'"'tracing_on|current_tracer|/sys/kernel/(debug/)?tracing|(^|[^[:alnum:]_])(blktrace|latencytop|kgdboc|kgdbwait|trace-cmd|ftrace=|trace_event=)'"'"' /usr/lib/systemd/system /usr/lib/systemd/user /etc 2>&1
+
+} > /tmp/lko_task5/C_tracing.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/C_tracing.txt; wc -c /tmp/lko_task5/C_tracing.txt'
+
+CALL 23 start=2026-10-29T20:36:30+08:00 end=2026-10-29T20:36:30+08:00 transport_exit=0
+output=temp/task5/C_tracing_pull.transport.txt bytes=227
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/C_tracing.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/C_tracing.txt
+
+CALL 24 start=2026-10-29T20:36:30+08:00 end=2026-10-29T20:36:31+08:00 transport_exit=0
+output=temp/task5/D_filesystems_run.transport.txt bytes=40
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[mounts]\n'"'"'; cat /proc/mounts
+printf '"'"'\n[filesystems]\n'"'"'; cat /proc/filesystems
+printf '"'"'\n[fstab]\n'"'"'; cat /etc/fstab
+printf '"'"'\n[systemd mount/automount units]\n'"'"'
+for d in /usr/lib/systemd/system /etc/systemd/system /run/systemd/generator /run/systemd/generator.early /run/systemd/generator.late; do
+ [ -d "$d" ] || continue
+ find "$d" -type f \( -name '"'"'*.mount'"'"' -o -name '"'"'*.automount'"'"' \) -exec sh -c '"'"'for f do printf "\nFILE %s\n" "$f"; cat "$f"; done'"'"' sh {} +
+done
+printf '"'"'\n[partitions]\n'"'"'; cat /proc/partitions
+printf '"'"'\n[lsblk]\n'"'"'; if command -v lsblk; then lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT; fi
+printf '"'"'\n[blkid read-only no cache]\n'"'"'; if command -v blkid; then blkid -c /dev/null; fi
+printf '"'"'\n[filesystem packages]\n'"'"'; rpm -qa | grep -Ei '"'"'btrfs|f2fs|nfs-utils|e2fsprogs'"'"'
+printf '"'"'\n[NFS Btrfs F2FS configuration search]\n'"'"'; grep -rInIE '"'"'(^|[^[:alnum:]_])(nfs4?|btrfs|f2fs)([^[:alnum:]_]|$)'"'"' /etc/fstab /etc/auto.master /etc/auto.master.d /etc/auto.misc /etc/systemd/system /usr/lib/systemd/system /run/systemd/generator 2>&1
+
+} > /tmp/lko_task5/D_filesystems.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/D_filesystems.txt; wc -c /tmp/lko_task5/D_filesystems.txt'
+
+CALL 25 start=2026-10-29T20:36:31+08:00 end=2026-10-29T20:36:31+08:00 transport_exit=0
+output=temp/task5/D_filesystems_pull.transport.txt bytes=231
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/D_filesystems.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/D_filesystems.txt
+
+CALL 26 start=2026-10-29T20:36:31+08:00 end=2026-10-29T20:36:32+08:00 transport_exit=0
+output=temp/task5/E_usb_drivers_run.transport.txt bytes=39
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[USB tools]\n'"'"'; if command -v lsusb; then lsusb; fi
+printf '"'"'\n[USB inventory]\n'"'"'; for d in /sys/bus/usb/devices/*; do [ -d "$d" ] || continue; echo "$d"; for n in idVendor idProduct product manufacturer; do if [ -r "$d/$n" ]; then printf '"'"'%s='"'"' "$n"; cat "$d/$n"; fi; done; [ ! -e "$d/driver" ] || readlink "$d/driver"; done
+printf '"'"'\n[USB driver bindings]\n'"'"'; for d in /sys/bus/usb/drivers/*; do [ -d "$d" ] || continue; echo "$d"; find "$d" -maxdepth 1 -type l -printf '"'"'%f -> %l\n'"'"'; done
+printf '"'"'\n[modules]\n'"'"'; if command -v lsmod; then lsmod; else cat /proc/modules; fi
+printf '"'"'\n[network driver links]\n'"'"'; for n in /sys/class/net/*; do echo "$n"; readlink "$n/device/driver" || :; done
+printf '"'"'\n[sound cards]\n'"'"'; cat /proc/asound/cards
+printf '"'"'\n[six requested USB drivers]\n'"'"'; for n in rt2800usb r8152 lan78xx smsc95xx net1080 snd-usb-audio; do d=/sys/bus/usb/drivers/$n; echo "$d"; if [ -d "$d" ]; then ls -la "$d"; else echo ABSENT; fi; done
+
+} > /tmp/lko_task5/E_usb_drivers.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/E_usb_drivers.txt; wc -c /tmp/lko_task5/E_usb_drivers.txt'
+
+CALL 27 start=2026-10-29T20:36:32+08:00 end=2026-10-29T20:36:32+08:00 transport_exit=0
+output=temp/task5/E_usb_drivers_pull.transport.txt bytes=229
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/E_usb_drivers.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/E_usb_drivers.txt
+
+CALL 28 start=2026-10-29T20:37:31+08:00 end=2026-10-29T20:37:33+08:00 transport_exit=0
+output=temp/task5/G_pmu_perf_run.transport.txt bytes=36
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+export HOME=/tmp/lko_task5 TMPDIR=/tmp/lko_task5 PERF_BUILDID_DIR=/tmp/lko_task5/buildid
+printf '"'"'\n[event source devices]\n'"'"'; ls -la /sys/bus/event_source/devices
+for d in /sys/bus/event_source/devices/*; do echo "$d"; if [ -r "$d/type" ]; then printf '"'"'type='"'"'; cat "$d/type"; fi; done
+printf '"'"'\n[PMU dmesg]\n'"'"'; dmesg | grep -inE '"'"'pmu|hw perfevents'"'"'
+printf '"'"'\n[perf version --build-options]\n'"'"'; perf version --build-options; echo "PERF-VERSION-EXIT=$?"
+printf '"'"'\n[perf stat -e cycles,instructions,branch-misses -- sleep 1]\n'"'"'; perf stat -e cycles,instructions,branch-misses -- sleep 1; echo "PERF-STAT-EXIT=$?"
+printf '"'"'\n[perf record -e cycles -c 100000 -o /tmp/lko_task5/p.data -- sleep 2]\n'"'"'; perf record -e cycles -c 100000 -o /tmp/lko_task5/p.data -- sleep 2; echo "PERF-RECORD-EXIT=$?"
+if [ -f /tmp/lko_task5/p.data ]; then wc -c /tmp/lko_task5/p.data; perf evlist -v -i /tmp/lko_task5/p.data; echo "PERF-EVLIST-EXIT=$?"; rm /tmp/lko_task5/p.data; else echo '"'"'p.data absent; evlist not run'"'"'; fi
+printf '"'"'\n[perf record -b -e cycles -o /tmp/lko_task5/branch.data -- sleep 2]\n'"'"'; perf record -b -e cycles -o /tmp/lko_task5/branch.data -- sleep 2; echo "PERF-BRANCH-EXIT=$?"
+if [ -f /tmp/lko_task5/branch.data ]; then wc -c /tmp/lko_task5/branch.data; perf evlist -v -i /tmp/lko_task5/branch.data; echo "PERF-BRANCH-EVLIST-EXIT=$?"; rm /tmp/lko_task5/branch.data; fi
+printf '"'"'\n[CoreSight sysfs]\n'"'"'; ls -ld /sys/bus/coresight/devices
+printf '"'"'\n[DT CoreSight-compatible search]\n'"'"'; if [ -d /proc/device-tree ]; then find /proc/device-tree/ -name compatible -type f -exec sh -c '"'"'for f do t=$(tr "\000" "\n" < "$f"); if printf "%s\n" "$t" | grep -iqE "coresight|etm|ptm|funnel|tpiu|etb|etf"; then printf "%s\n%s\n" "$f" "$t"; fi; done'"'"' sh {} +; fi
+
+} > /tmp/lko_task5/G_pmu_perf.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/G_pmu_perf.txt; wc -c /tmp/lko_task5/G_pmu_perf.txt'
+
+CALL 29 start=2026-10-29T20:37:33+08:00 end=2026-10-29T20:37:33+08:00 transport_exit=0
+output=temp/task5/G_pmu_perf_pull.transport.txt bytes=227
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/G_pmu_perf.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/G_pmu_perf.txt
+
+CALL 30 start=2026-10-29T20:37:33+08:00 end=2026-10-29T20:37:34+08:00 transport_exit=0
+output=temp/task5/H_scheduling_run.transport.txt bytes=38
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[cpufreq]\n'"'"'; for d in /sys/devices/system/cpu/cpufreq/policy*; do echo "$d"; for n in affected_cpus scaling_driver scaling_governor scaling_available_governors scaling_available_frequencies scaling_cur_freq cpuinfo_cur_freq scaling_min_freq scaling_max_freq; do [ ! -e "$d/$n" ] || { echo "$n"; cat "$d/$n"; }; done; done
+printf '"'"'\n[cpuidle]\n'"'"'; for c in /sys/devices/system/cpu/cpu[0-9]*; do echo "$c"; if [ -d "$c/cpuidle" ]; then for d in "$c"/cpuidle/state*; do echo "$d"; for n in name desc latency residency disable usage time; do [ ! -e "$d/$n" ] || { echo "$n"; cat "$d/$n"; }; done; done; else echo '"'"'cpuidle ABSENT'"'"'; fi; done
+printf '"'"'\n[all scheduler sysctls]\n'"'"'; for f in /proc/sys/kernel/sched_*; do echo "$f"; cat "$f"; done
+printf '"'"'\n[timer_list HZ fallback sample 1]\n'"'"'; date -Iseconds; awk '"'"'/jiffies:|now at|Tick Device|Clock Event Device|expires_next/ {print}'"'"' /proc/timer_list; sleep 1
+printf '"'"'\n[timer_list HZ fallback sample 2]\n'"'"'; date -Iseconds; awk '"'"'/jiffies:|now at|Tick Device|Clock Event Device|expires_next/ {print}'"'"' /proc/timer_list
+printf '"'"'\n[module build directory config]\n'"'"'; ls -ld /usr/lib/modules/$(uname -r)/build; ls -la /usr/lib/modules/$(uname -r)/build/; find /usr/lib/modules/$(uname -r)/build/ -maxdepth 3 \( -name .config -o -name compile.h -o -name autoconf.h -o -name utsrelease.h -o -name '"'"'*config*'"'"' \) -print
+printf '"'"'\n[boot partition mount check]\n'"'"'; awk '"'"'$2=="/boot" || $2=="/boot/firmware" || $2=="/opt/boot" || $3=="vfat" {print}'"'"' /proc/mounts
+printf '"'"'\n[space]\n'"'"'; du -sk /tmp/lko_task5; df -k /tmp
+
+} > /tmp/lko_task5/H_scheduling.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/H_scheduling.txt; wc -c /tmp/lko_task5/H_scheduling.txt'
+
+CALL 31 start=2026-10-29T20:37:34+08:00 end=2026-10-29T20:37:34+08:00 transport_exit=0
+output=temp/task5/H_scheduling_pull.transport.txt bytes=228
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/H_scheduling.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/H_scheduling.txt
+
+CALL 32 start=2026-10-29T20:37:34+08:00 end=2026-10-29T20:37:35+08:00 transport_exit=0
+output=temp/task5/B_elf_metadata_run.transport.txt bytes=39
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+for f in /usr/lib/resource-monitor/plugins/libresource-monitor-plugin-network.so /usr/lib/libbpf.so.1.6.2; do stat -c '"'"'%n %s bytes'"'"' "$f"; rpm -qf "$f"; done
+printf '"'"'\n[resource-monitor files/services]\n'"'"'; rpm -ql resource-monitor-plugin-network; rpm -qa | grep resource-monitor
+printf '"'"'\n[build path contents]\n'"'"'; readlink -f /usr/lib/modules/$(uname -r)/build
+
+} > /tmp/lko_task5/B_elf_metadata.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/B_elf_metadata.txt; wc -c /tmp/lko_task5/B_elf_metadata.txt'
+
+CALL 33 start=2026-10-29T20:37:35+08:00 end=2026-10-29T20:37:35+08:00 transport_exit=0
+output=temp/task5/B_elf_metadata_pull.transport.txt bytes=228
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/B_elf_metadata.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/B_elf_metadata.txt
+
+CALL 34 start=2026-10-29T20:37:35+08:00 end=2026-10-29T20:37:35+08:00 transport_exit=0
+output=temp/task5/B_pull_libresource-monitor-plugin-network.so.transport.txt bytes=286
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /usr/lib/resource-monitor/plugins/libresource-monitor-plugin-network.so /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/elf/libresource-monitor-plugin-network.so
+
+CALL 35 start=2026-10-29T20:37:35+08:00 end=2026-10-29T20:37:36+08:00 transport_exit=0
+output=temp/task5/B_pull_libbpf.so.1.6.2.transport.txt bytes=231
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /usr/lib/libbpf.so.1.6.2 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/elf/libbpf.so.1.6.2
+
+CALL 36 start=2026-10-29T20:40:29+08:00 end=2026-10-29T20:40:30+08:00 transport_exit=0
+output=temp/task5/C_debug_switches_run.transport.txt bytes=41
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+for f in /sys/kernel/debug/tracing/function_profile_enabled /proc/sys/kernel/ftrace_enabled /proc/sys/kernel/stack_tracer_enabled /sys/module/kgdboc/parameters/kgdboc /sys/module/kgdboc/parameters/kgdboc_use_kms /sys/module/kgdb/parameters/kdb_cmd_enable /proc/sys/kernel/hung_task_timeout_secs; do echo "$f"; if [ -e "$f" ]; then cat "$f"; else echo ABSENT; fi; done
+printf '"'"'\n[dynamic probe event definitions]\n'"'"'; for f in /sys/kernel/debug/tracing/kprobe_events /sys/kernel/debug/tracing/uprobe_events; do [ ! -f "$f" ] || { echo "$f"; cat "$f"; }; done
+printf '"'"'\n[perf paranoid]\n'"'"'; cat /proc/sys/kernel/perf_event_paranoid
+
+} > /tmp/lko_task5/C_debug_switches.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/C_debug_switches.txt; wc -c /tmp/lko_task5/C_debug_switches.txt'
+
+CALL 37 start=2026-10-29T20:40:30+08:00 end=2026-10-29T20:40:30+08:00 transport_exit=0
+output=temp/task5/C_debug_switches_pull.transport.txt bytes=230
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/C_debug_switches.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/C_debug_switches.txt
+
+CALL 38 start=2026-10-29T20:40:30+08:00 end=2026-10-29T20:40:30+08:00 transport_exit=0
+output=temp/task5/A_iomem_config_search_run.transport.txt bytes=47
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[iomem full small snapshot]\n'"'"'; cat /proc/iomem
+printf '"'"'\n[packaged config candidates]\n'"'"'; find /boot /usr/lib/modules /etc -maxdepth 4 -type f \( -name '"'"'config-6.12*'"'"' -o -name '"'"'config.gz'"'"' -o -name '"'"'.config'"'"' -o -name '"'"'config.txt'"'"' -o -name '"'"'cmdline.txt'"'"' \) -print
+printf '"'"'\n[config proc absence explicit]\n'"'"'; if [ ! -e /proc/config.gz ]; then echo '"'"'/proc/config.gz ABSENT'"'"'; fi
+printf '"'"'\n[resourced recent startup messages]\n'"'"'; if command -v journalctl; then journalctl -b -u resourced.service -n 100 --no-pager; fi
+
+} > /tmp/lko_task5/A_iomem_config_search.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/A_iomem_config_search.txt; wc -c /tmp/lko_task5/A_iomem_config_search.txt'
+
+CALL 39 start=2026-10-29T20:40:30+08:00 end=2026-10-29T20:40:30+08:00 transport_exit=0
+output=temp/task5/A_iomem_config_search_pull.transport.txt bytes=237
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/A_iomem_config_search.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/A_iomem_config_search.txt
+
+CALL 40 start=2026-10-29T20:40:30+08:00 end=2026-10-29T20:40:30+08:00 transport_exit=0
+output=temp/task5/end_processes_run.transport.txt bytes=40
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '{ date -Iseconds; 
+printf '"'"'\n[end uptime]\n'"'"'; uptime; cat /proc/uptime
+printf '"'"'\n[end processes]\n'"'"'; ps -eo pid,ppid,user,etimes,pcpu,pmem,args --width 300
+printf '"'"'\n[created board file sizes]\n'"'"'; find /tmp/lko_task5 -maxdepth 2 -type f -printf '"'"'%p %s bytes\n'"'"'; du -sk /tmp/lko_task5
+
+} > /tmp/lko_task5/end_processes.txt 2>&1; rc=$?; printf '"'"'\nCOLLECT-END exit=%s\n'"'"' "$rc" >> /tmp/lko_task5/end_processes.txt; wc -c /tmp/lko_task5/end_processes.txt'
+
+CALL 41 start=2026-10-29T20:40:30+08:00 end=2026-10-29T20:40:30+08:00 transport_exit=0
+output=temp/task5/end_processes_pull.transport.txt bytes=231
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /tmp/lko_task5/end_processes.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5/end_processes.txt
+
+CALL 42 start=2026-10-29T20:40:30+08:00 end=2026-10-29T20:40:31+08:00 transport_exit=0
+output=temp/task5/cleanup.transport.txt bytes=679
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'find /tmp/lko_task5 -mindepth 1 -maxdepth 1 -type f -print -delete; rmdir /tmp/lko_task5; if [ ! -e /tmp/lko_task5 ]; then echo TASK5-TEMP-REMOVED; else echo TASK5-TEMP-STILL-EXISTS; fi; uptime; cat /proc/uptime'
+
+CALL 43 start=2026-10-29T20:40:31+08:00 end=2026-10-29T20:40:31+08:00 transport_exit=0
+output=temp/task5/root_restore.transport.txt bytes=36
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 root off
+
+CALL 44 start=2026-10-29T20:40:31+08:00 end=2026-10-29T20:40:31+08:00 transport_exit=0
+output=temp/task5/final_confirmation.transport.txt bytes=519
+/home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'id; if [ ! -e /tmp/lko_task5 ]; then echo TASK5-TEMP-ABSENT-FINAL; else echo TASK5-TEMP-STILL-EXISTS; fi'

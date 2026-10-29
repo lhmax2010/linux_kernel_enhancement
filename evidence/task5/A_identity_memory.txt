@@ -1,0 +1,145 @@
+原始文件 temp/task5/A_identity_memory.txt，原始行 3–99
+3: [uname]
+4: Linux localhost 6.12.80-arm-rpi4-v7l #1 SMP Wed Oct 28 12:18:25 UTC 2026 armv7l GNU/Linux
+5: 
+6: [version]
+7: Linux version 6.12.80-arm-rpi4-v7l (abuild@ip-192-168-56-168) (clang version 22.1.8, LLD 22.1.8) #1 SMP Wed Oct 28 12:18:25 UTC 2026
+8: 
+9: [cmdline]
+10: cgroup_enable=memory vc_mem.mem_base=0x3ec00000 vc_mem.mem_size=0x40000000 swiotlb=8192 8250.nr_uarts=1 dma.dmachans=0x7f35 bcm2709.serial=0xed6687d3 snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1 bcm2709.uart_clock=48000000 dwc_otg.lpm_enable=0  bootmode=normal partition_ab=a console=ttyS0,115200n8 earlycon=uart8250,mmio32,0xfe215040 loglevel=4 
+11: 
+12: [os-release]
+13: NAME=Tizen
+14: VERSION="11.0.0 (Tizen11.0/Unified)"
+15: ID=tizen
+16: VERSION_ID=11.0.0
+17: PRETTY_NAME="Tizen 11.0.0 (Tizen11.0/Unified)"
+18: ANSI_COLOR="0;36"
+19: CPE_NAME="cpe:/o:tizen:tizen:11.0.0"
+20: BUILD_ID=tizen-unified-toolchain_20261028.105834_tizen-headed-armv7l
+21: 
+22: [meminfo]
+23: MemTotal:        3976476 kB
+24: MemFree:         3175068 kB
+25: MemAvailable:    3420220 kB
+26: Buffers:            8060 kB
+27: Cached:           478356 kB
+28: SwapCached:           56 kB
+29: Active:           149156 kB
+30: Inactive:         279176 kB
+31: Active(anon):      19032 kB
+32: Inactive(anon):   137300 kB
+33: Active(file):     130124 kB
+34: Inactive(file):   141876 kB
+35: Unevictable:      212748 kB
+36: Mlocked:               8 kB
+37: HighTotal:       3264512 kB
+38: HighFree:        2598976 kB
+39: LowTotal:         711964 kB
+40: LowFree:          576092 kB
+41: SwapTotal:       1590588 kB
+42: SwapFree:        1586748 kB
+43: Dirty:                 0 kB
+44: Writeback:             0 kB
+45: AnonPages:        154716 kB
+46: Mapped:            84852 kB
+47: Shmem:            214396 kB
+48: KReclaimable:      15900 kB
+49: Slab:              55400 kB
+50: SReclaimable:      15900 kB
+51: SUnreclaim:        39500 kB
+52: KernelStack:        3424 kB
+53: PageTables:         5908 kB
+54: SecPageTables:         0 kB
+55: NFS_Unstable:          0 kB
+56: Bounce:                0 kB
+57: WritebackTmp:          0 kB
+58: CommitLimit:     3578824 kB
+59: Committed_AS:    4231700 kB
+60: VmallocTotal:     245760 kB
+61: VmallocUsed:       21208 kB
+62: VmallocChunk:          0 kB
+63: Percpu:             1104 kB
+64: CmaTotal:         327680 kB
+65: CmaFree:          268452 kB
+66: 
+67: [iomem reserved/cma]
+68: 
+69: [zone present/managed]
+70: Node 0, zone      DMA
+71:         present  196608
+72:         managed  177991
+73: Node 0, zone   Normal
+74:         present  0
+75:         managed  0
+76: Node 0, zone  HighMem
+77:         present  816128
+78:         managed  816128
+79: Node 0, zone  Movable
+80:         present  0
+81:         managed  0
+82: 
+83: [dmesg filtered]
+84: 11:[    0.000000] Reserved memory: created CMA memory pool at 0x000000001ac00000, size 320 MiB
+85: 12:[    0.000000] OF: reserved mem: initialized node linux,cma, compatible id shared-dma-pool
+86: 13:[    0.000000] OF: reserved mem: 0x000000001ac00000..0x000000002ebfffff (327680 KiB) map reusable linux,cma
+87: 23:[    0.000000] OF: reserved mem: 0x000000003ef66860..0x000000003ef66895 (0 KiB) nomap non-reusable nvram@0
+88: 24:[    0.000000] OF: reserved mem: 0x000000003ef66420..0x000000003ef6681f (1 KiB) nomap non-reusable nvram@1
+89: 74:[    0.004499] Memory: 3628300K/4050944K available (20480K kernel code, 1867K rwdata, 11884K rodata, 2048K init, 575K bss, 91372K reserved, 327680K cma-reserved, 3264512K highmem)
+90: 85:[    0.017408] hw-breakpoint: found 5 (+1 reserved) breakpoint and 4 watchpoint registers.
+91: 140:[    0.146720] Freeing initrd memory: 14856K
+92: 200:[    0.679698] zram: Added device: zram0
+93: 203:[    0.680494] wireguard: Copyright (C) 2015-2019 Jason A. Donenfeld <Jason@zx2c4.com>. All Rights Reserved.
+94: 274:[    1.162563] bcm2835_vc_sm_cma_probe: Videocore shared memory driver
+95: 304:[    1.180735] hw perfevents: enabled with armv8_cortex_a72 PMU driver, 7 (8000003f) counters available
+96: 375:[    1.311670] Freeing unused kernel image (initmem) memory: 2048K
+97: 487:[   25.648428] zram0: detected capacity change from 0 to 3181184
+98: 488:[   25.709241] Adding 1590588k swap on /dev/zram0.  Priority:0 extents:1 across:1590588k SSDsc
+99: 
+
+原始文件 temp/task5/A_iomem_config_search.txt，原始行 3–47
+3: [iomem full small snapshot]
+4: 00000000-3b3fffff : System RAM
+5:   00008000-023fffff : Kernel code
+6:   02600000-02862c8f : Kernel data
+7: 40000000-fbffffff : System RAM
+8: fd500000-fd50930f : fd500000.pcie pcie@7d500000
+9: fd580000-fd58ffff : fd580000.ethernet ethernet@7d580000
+10:   fd580e14-fd580e1c : unimac-mdio.-19
+11: fe004000-fe00401f : fe004000.txp txp@7e004000
+12: fe007000-fe007aff : fe007000.dma-controller dma-controller@7e007000
+13: fe007b00-fe007eff : fe007b00.dma dma@7e007b00
+14: fe00a000-fe00a023 : fe100000.watchdog asb
+15: fe00b840-fe00b87b : fe00b840.mailbox mailbox@7e00b840
+16: fe00b880-fe00b8bf : fe00b880.mailbox mailbox@7e00b880
+17: fe100000-fe100113 : fe100000.watchdog pm
+18: fe101000-fe102fff : fe101000.cprman cprman@7e101000
+19: fe104000-fe104027 : fe104000.rng rng@7e104000
+20: fe200000-fe2000b3 : fe200000.gpio gpio@7e200000
+21: fe201000-fe2011ff : serial@7e201000
+22:   fe201000-fe2011ff : fe201000.serial serial@7e201000
+23: fe206000-fe2060ff : fe206000.pixelvalve pixelvalve@7e206000
+24: fe207000-fe2070ff : fe207000.pixelvalve pixelvalve@7e207000
+25: fe20a000-fe20a0ff : fe20a000.pixelvalve pixelvalve@7e20a000
+26: fe215000-fe215007 : fe215000.aux aux@7e215000
+27: fe215040-fe21507f : serial
+28: fe216000-fe2160ff : fe216000.pixelvalve pixelvalve@7e216000
+29: fe300000-fe3000ff : fe300000.mmcnr mmcnr@7e300000
+30: fe340000-fe3400ff : fe340000.mmc mmc@7e340000
+31: fe400000-fe407fff : fe400000.hvs hvs@7e400000
+32: fe804000-fe804fff : fe804000.i2c i2c@7e804000
+33: fe980000-fe98ffff : fe980000.usb usb@7e980000
+34: fec00000-fec03fff : fec00000.v3d hub
+35: fec04000-fec07fff : fec00000.v3d core0
+36: fec11000-fec1101f : fe100000.watchdog rpivid_asb
+37: fec12000-fec120ff : fec12000.pixelvalve pixelvalve@7ec12000
+38: fef00000-fef0000f : fef00000.clock clock@7ef00000
+39: fef00b00-fef00dff : fef04500.i2c auto-i2c
+40: fef04500-fef045ff : fef04500.i2c bsc
+41: fef05b00-fef05dff : fef09500.i2c auto-i2c
+42: fef09500-fef095ff : fef09500.i2c bsc
+43: 600000000-63fffffff : pcie@7d500000
+44:   600000000-6000fffff : PCI Bus 0000:01
+45:     600000000-600000fff : 0000:01:00.0
+46:       600000000-600000fff : xhci-hcd
+47: 
