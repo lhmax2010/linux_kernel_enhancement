@@ -2,6 +2,15 @@
 2. 生成的所有东西都必须在工作目录内。
 
 
+## 一次性授权：任务5b（2026-10-30，PM指令）
+
+- 本次允许将`~/Downloads/10_design_v1.md`移动到`$WS/docs/10_design_v1.md`，Downloads不留副本；这是指定源文件的明确例外，其他宿主产出仍仅在WS。
+- QB1211696由用户在有界面浏览器内登录；用户数据、下载、缓存仅在`$WS/temp/task5b/browser/`。代理不读取/记录密码、Cookie或token，不在终端索要凭据；登录最多等10分钟。相关页面文本和URL先脱敏，结束关闭浏览器并删除整个会话目录后再继续。
+- QB页面SHA必须为`0fac5de6a63091d141ad1cd3ed9d9e92b8dde708`，分支为`sandbox/lhmax2025/kernel_optimization`，构建时间需对应板上版本；不一致即停止。页面找不到所需信息/产物时截图只留temp并停止，不猜测。
+- **仅本任务一次允许**：从该QB构建的perf RPM提取perf可执行文件，连同其依赖且板上确实缺少的库，仅推到`/tmp/lko_task5b/`运行；以后需要时另行确认。RPM不安装，不向根文件系统写入，不推无关程序。`LD_LIBRARY_PATH`只指向该目录，所需root仅通过sdb root on取得，不改perf_event_paranoid。
+- 本次板上临时目录改为`/tmp/lko_task5b/`，仍须三项身份断言、前后uptime/进程记录、单次产出50MB上限、只读采集以及结束删除并验证。仅执行PM列出的perf version、1秒stat、2秒cycles record+evlist、2秒branch record；不重启、不改sysctl/sysfs、不启动服务或手动加载BPF。
+- RPM与截图只留`$WS/temp/task5b/`；evidence/task5b仅上传小于1MB的文本。配置比较使用LLVM GBS buildroot的平台Python和scripts/diffconfig；出现差异逐项说明，不自行判定可接受。
+
 ## 板上操作：任务5（2026-10-29，PM授权）
 
 本轮仅通过`sdb connect 192.168.108.26`访问RPi4，不用SSH。以下板上临时目录授权是宿主工作区规则的明确例外；宿主输出仍全部留在WS。

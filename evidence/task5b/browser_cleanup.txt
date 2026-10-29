@@ -1,0 +1,17 @@
+Browser: installed /usr/bin/google-chrome, headed, DISPLAY=:0; controlled with built-in Node.js WebSocket/CDP.
+Launch UTC: 2026-10-29T16:22:12.514Z
+Login ready UTC: 2026-10-29T16:22:41.842Z
+Browser closed UTC: 2026-10-29T16:26:38.248Z
+Exit code: 0
+Login timeout reached: False
+User data: $WS/temp/task5b/browser/profile
+Downloads: $WS/temp/task5b/browser/downloads
+Cache: $WS/temp/task5b/browser/cache
+HOME and XDG directories: inside $WS/temp/task5b/browser/
+TMPDIR: $WS/temp (Chrome Unix socket path must be shorter than 108 bytes; all files remain within workspace).
+Password manager disabled; credentials entered only by user in browser.
+No cookie/password/token value APIs were called; no credential values included in evidence.
+Browser directory exists after close: false
+Screenshot: temp/task5b/qb_1211696_branch_gate.png (local only; other variable rows hidden before capture; no credential values).
+RPM downloads: none; stopped at source-branch verification.
+Board commands in task5b: none; /tmp/lko_task5b was not created by this task.

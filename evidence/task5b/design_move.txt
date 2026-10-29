@@ -1,0 +1,7 @@
+Source: /home/linhao/Downloads/10_design_v1.md
+Destination: docs/10_design_v1.md
+Operation: move (not retain source)
+Bytes: 21880
+SHA256: 80ecded8314071d8781c7329b37210613d8c788e819fba9a13c6d76c25909249
+Source exists after move: false
+Destination SHA256 equals source: true

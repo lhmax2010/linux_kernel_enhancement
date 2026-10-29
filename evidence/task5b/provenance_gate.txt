@@ -1,0 +1,16 @@
+核对日期：2026-10-30（Asia/Shanghai）
+QB页面源码SHA：0fac5de6a63091d141ad1cd3ed9d9e92b8dde708，与lko/base预期相等。
+PROJECT_BRANCH=tizen；PROJECT_NAME=Tizen-Unified-Toolchain；USE_BRANCH_POLICY=false。
+页面未明确列出linux-rpi包的sandbox分支；PROJECT_BRANCH为全局项目变量，不能据它断言实际构建了错误的内核源码。
+然而本轮PM明确要求页面分支必须为sandbox/lhmax2025/kernel_optimization；本次证据不满足，停止，不自行认可替代证据。
+
+QB Begin Date=2026-10-28 10:58:35，Duration=6 hours 15 minutes 43 seconds。
+按页面同一时区计算结束时间=2026-10-28 17:14:18；页面摘录未标时区，尚未核实。
+板上旧/proc/version时间=2026-10-28 12:18:25 UTC（task5已有证据，本轮没有重读板子）。
+仅在QB时间为UTC的条件下：内核时间比开始晚1:19:50，比计算结束早4:55:53。
+上述差值为条件计算，不能当作时间核对已通过或“打包延迟”实测。
+
+未进行：devel/perf RPM下载、最终.config比较、平台依赖核对、板上perf、BPF源码/日志核对。
+本次没有启动/重启服务、加载BPF或访问开发板。
+设计文档已移动、未改内容；Downloads原文件不存在。浏览器已关闭、browser目录已删除。
+下一步：由PM裁决是否接受“QB明确按相同SHA构建+已知sandbox SHA”作为分支证明，或提供QB包级sandbox分支字段/记录；同时仍需明确QB时区。

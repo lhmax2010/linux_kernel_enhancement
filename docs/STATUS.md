@@ -1,62 +1,54 @@
 # 项目状态
 
-更新：2026-10-29（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
+更新：2026-10-30（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**任务5只读采集与报告完成；镜像SHA/最终配置核对、perf实测仍有明确缺口。** RPi4身份断言通过，PMU驱动已绑定；未安装perf，不能把驱动注册等同硬件计数/采样成功。`/tmp/lko_task5`已删除，SDB恢复owner，未修改内核、系统参数或服务配置。
+**任务5b已按PM停止条件停在QB来源核对，未完成后续配置/perf/BPF核实。** 设计文档已移动入库；用户浏览器登录成功，QB1211696明确使用预期源码SHA且状态Successful，但页面`PROJECT_BRANCH=tizen`为项目级字段，未证明要求的包级sandbox分支。本轮不以SHA相同自行替代分支条件。浏览器已关闭、登录会话目录已删除；未下载RPM、未上板。
 
-## 计划
+## 计划与进度
 
-本轮：读取规则/状态 → SDB连接及身份/root/进程记录 → 开机超过5分钟后优先取F快照 → A–H只读采集与受限perf尝试 → 拉回候选ELF，用平台工具静态核对 → 删除板上临时文件 → 09、RULES、STATUS、evidence/task5同commit普通推GitHub main。已按此完成。
+原计划：移动10设计文档 → 隔离有界面浏览器读取QB并下载devel/perf RPM → 来源/最终.config核对 → 一次性临时perf实测 → BPF源码/板上日志只读核实 → 09/10/RULES/STATUS/证据同commit推main。
 
-PM已补充QB构建[1211696](https://quickbuild.tizen.org/build/1211696)，匿名访问跳转登录页，详情尚不可读；访问结果已归档，本次补充没有再次操作开发板。下一步依PM补充信息和任务安排：取得该构建详情文本/导出记录及最终.config后补来源/配置核对；需要采样时由PM另行决定提供perf的方式；不自行安装、挂载启动分区、加载BPF程序或更改用户态配置。
-
-## 进度
-
-- 仅SDB访问192.168.108.26:26101，uname-r含rpi4、架构armv7l、Tizen11.0均通过。sdb root on成功，结束恢复owner。
-- /proc/version为Clang22.1.8/LLD22.1.8，内核构建于2026-10-28 12:18:25 UTC。PM声明来自sandbox@0fac5de6，并给出QB1211696链接；版本不含SHA，QB详情受登录保护，独立来源核对未闭合。
-- /proc/config.gz不存在；模块build链接失效，没有找到已安装配置副本；boot_a未挂载。未运行缺输入的diffconfig，未报告零差异。
-- Cortex-A72 PMU已注册，启动日志7 counters；板上perf缺失，version/stat/record/record -b均127，没有实际perf负载或perf.data。CoreSight sysfs/DT相关节点未发现。
-- BTF 6,478,350 B；当前FD/maps/pins未见BPF运行证据；网络资源监控插件存在真实静态CO-RE/BTF依赖，不再仅处于“是否安装相关程序待确认”的状态。
-- tracefs全局开关开着，当前nop、events=0、无实例；function profiler/stack tracer/latencytop均0。F2FS正在承载用户分区；Btrfs/NFS无当前挂载。指定六个USB网卡/声卡驱动均没有设备绑定。
-- MGLRU=0x0001、min_ttl_ms=0；zram0=lzo-rle、1,628,766,208 B；resourced写zstd、ratio0.4，算法不一致；没有修改或验证回退执行链。实际CMA=320MiB。
-- HZ由timer_list两快照估算约100；memcg v1，取得67个目录的limit/usage及force_reclaim存在性。完整vmstat和原始配置保留本地。
+- 步骤1完成：`~/Downloads/10_design_v1.md`移动到`docs/10_design_v1.md`，Downloads无副本，21,880 B、SHA256不变；未修改设计文本或开始优化实现。
+- 步骤2部分完成：Google Chrome有界面窗口，用户自行登录；脚本检测到返回QB构建页，未超时。Overview与Variables均读到linux-rpi预期SHA，状态Successful，已有公开产物根链接。
+- 停止原因：`PROJECT_BRANCH=tizen`，`PROJECT_NAME=Tizen-Unified-Toolchain`，`USE_BRANCH_POLICY=false`。它不能独立证明内核实际分支错误，但不满足本轮要求页面分支为`sandbox/lhmax2025/kernel_optimization`，也没有包级分支证据；遵照PM步骤2/3停止，不自行接受替代。
+- 时间：QB页面Begin Date=2026-10-28 10:58:35，Duration=6:15:43，页面摘录未标时区；计算同一时区结束17:14:18。只有假设QB时间为UTC，才能得到内核版本时间在开始后1:19:50、结束前4:55:53；没有把条件计算当作时间闭合。
+- 截图只留temp/task5b；其他变量行在截图前隐藏，未读取或记录凭据值。浏览器/下载/缓存/用户目录已删除，正常Browser.close退出0，没有操作其他浏览器进程。
+- 未执行：RPM下载/解包、平台diffconfig、依赖库核对、板上perf、BPF trampoline及板上加载日志核实。此次没有SDB命令，未创建板上临时目录。
+- 一次性perf授权已写入RULES，尚未使用；不能当作以后任务的永久授权。
 
 ## 已闭合结论（附证据）
 
 | 结论 | 证据 |
 | --- | --- |
-| A–H报告，B–E产品取舍事实前置 | [09](09_board_rpi4_readonly.md)、[任务5证据索引](../evidence/task5/README.md) |
-| 当前Clang版本、构建时间，配置/SHA不能独立核对的原因 | [A身份](../evidence/task5/A_identity_memory.txt)、[A核对缺口](../evidence/task5/A_config_comparison.txt)、[QB1211696访问](../evidence/task5/QB_1211696_access.txt) |
-| 有CO-RE静态依赖、当前未观测运行 | [B ELF](../evidence/task5/B_elf_btf_analysis.txt)、[B方法](../evidence/task5/B_embedded_method.txt)、[B运行](../evidence/task5/B_bpf_runtime.txt) |
-| 追踪实际状态、F2FS使用、USB六驱动未绑定 | [C](../evidence/task5/C_debug_usage.txt)、[D](../evidence/task5/D_filesystem_usage.txt)、[E](../evidence/task5/E_usb_usage.txt) |
-| MGLRU/zram及resourced不一致 | [F运行](../evidence/task5/F_memory_runtime.txt)、[F配置全文](../evidence/task5/F_resourced_config.txt) |
-| PMU驱动生效；perf不存在，计数/分支测试未完成 | [G](../evidence/task5/G_pmu_perf.txt) |
-| HZ运行时估算、CPU频率状态 | [H](../evidence/task5/H_scheduler_clock.txt) |
-| 板上临时目录已删除、owner已恢复、全部执行命令 | [清理](../evidence/task5/session_and_cleanup.txt)、[命令全集](../evidence/task5/commands.txt)、[原始文件哈希](../evidence/task5/raw_manifest.tsv) |
+| PM设计文档已移动，内容未改、Downloads不留副本 | [10设计文档](10_design_v1.md)、[移动记录](../evidence/task5b/design_move.txt) |
+| QB1211696使用linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708，状态Successful | [页面选段](../evidence/task5b/qb_1211696_page.txt) |
+| 分支条件未通过，QB时间时区未核实，后续操作停止 | [停止判断](../evidence/task5b/provenance_gate.txt)、[09 A节及补充](09_board_rpi4_readonly.md) |
+| 浏览器关闭、登录会话目录删除 | [清理记录](../evidence/task5b/browser_cleanup.txt) |
+| 原始本地文本/截图哈希，截图不上传 | [清单](../evidence/task5b/local_manifest.tsv) |
 
 ## 需要人工裁决的前提
 
-- QB构建编号/链接1211696已取得；仍需页面中的源码SHA、分支、构建时间文本或导出记录及最终arm-rpi4.config，才能独立证明运行镜像对应0fac5de6并逐符号比较。当前访问跳转登录页，没有索要凭据或尝试登录；不能猜测配置一致。
-- 若继续验证cycles/instructions/branch-misses、硬件采样或分支采样，需要PM决定如何提供板上perf；本任务禁止安装和推二进制，已遵守。
-- resource-monitor-plugin-network内嵌fentry/CO-RE程序存在，但当前没有运行证据。BTF是否可裁剪仍需该功能产品需求、触发条件及外部BTF替代路径核对；静态依赖已是实际ELF事实。
-- F2FS当前在用；其余文件系统/外设的当前未用不能替代产品BOM。调试能力保留策略由PM决定。
-- resourced请求zstd与zram实际lzo-rle不一致的具体执行链、CMA320MiB的固件配置来源仍待确认。未挂载boot分区、未触发算法切换或回收。
-- 采集时已有root交互shell与高CPU的enlightenment；未识别出明确其他实验，但无法排除共用工作线。未干预，结果不是严格空闲性能基线。
+- 请PM裁决是否接受“QB明确按0fac5de6固定源码+已知sandbox该SHA”为包级来源证明，或提供QB包级sandbox分支记录。不能仅凭全局PROJECT_BRANCH=tizen就说内核源码错误，也不能忽略明确的停止条件。
+- QB时间时区尚待明确；完整来源/最终.config核对尚未完成。后续恢复时，重新登录所需流程仍应保持会话隔离与清理。
+- 硬件计数、分支采样、软件事件回退尚无任务5b结果；BPF是否实际尝试加载及失败原因也没有新证据，不猜测ENOTSUPP已经发生。
+- 设计v1本轮原样入库；设计冻结前不开始实现，其历史“待闭合/未实测”内容保留为PM提交原文。
 
-## 已建立的内核基线
+## 保留的任务5现场结论
 
-任务4完成，Gerrit唯一授权目标`sandbox/lhmax2025/kernel_optimization`与本地`lko/base`均为`0fac5de6a63091d141ad1cd3ed9d9e92b8dde708`；相对42aeefac为force_reclaim修复和PMU两提交，相对板上旧源码21645b17多4提交。四组合配置核对仅ARM_PMUV3 n→y，tizen仍为42aeefac。见[08](08_sandbox_baseline.md)。本轮未修改或推送内核仓库。
+2026-10-29三项身份断言通过，Clang22.1.8/LLD22.1.8、内核构建时间2026-10-28 12:18:25 UTC。板上没有/proc/config.gz及perf，模块build链接失效；当时的配置比较未完成。PMU驱动armv8_cortex_a72已绑定、报告7 counters，但没有实际perf硬件事件结果。[09](09_board_rpi4_readonly.md)、[任务5证据](../evidence/task5/README.md)。
 
-任务4结果GitHub commit `ff4e843d87dffb51a6d2aa68850a2328de176bf4`。后续所有内核改动仅向上述sandbox普通推送；不改写已推送提交、不推refs/for/*。
+BTF为6,478,350 B，resource-monitor-plugin-network有内嵌fentry/CO-RE静态依赖；当时FD/maps/pins未见运行证据，不能判断该插件是否曾经失败。tracefs开关开着但nop/events=0，F2FS在用，Btrfs/NFS无挂载，指定六个USB网卡/声卡驱动未绑定。MGLRU=0x0001；zram=lzo-rle、1,628,766,208 B，而resourced写zstd；实际CMA320MiB。旧板上目录/tmp/lko_task5已删、SDB已恢复owner。
 
-## 历史测量和挂账
+任务5首次交付GitHub `34fccb5713bac3a3bbe61cd9aa1a788d6a9f1dce`；匿名QB访问限制补充为`d6d2c80ecebe083e57dc7f7bd44872e56be8bb51`。后者的“无法登录访问”已由本轮用户交互登录解决，但分支/时区/配置及实际perf/BPF测试仍未闭合。
 
-- 任务2/3体积仍来自**没有PMU驱动的f240c280**，不是本次sandbox镜像的体积。任务3 commit `3f26e8d2f7806751034b4a15259edf39d9ae0a3c`；普通LLVM常驻+2,669,604 B（8.11%）、RT+2,516,690 B（7.58%），不能把完整ELF缩小称为内存下降。[06](06_static_footprint.md)、[07](07_llvm_text_growth.md)。
-- 任务3六类代码增长独立贡献未分离；19.01%为四对象混合增量、11.34%为其外帧指针建立指令、余69.65%未分离。rpmdb更新归属仍不确定；TLS探测ARMv4t/CP15问题已定位未修复。
-- 两个可选nm扫描仅在任务4收尾曾记录运行；本轮不检查或操作其他任务进程，不将旧快照当当前状态。正式任务3目录统计不依赖它们。
-- 任务2：buildroot磁盘为普通权限下界；平台缺llvm-bolt/create_llvm_prof；ARM32 AutoFDO仍缺内核配置/Kbuild与采样转换消费链。任务5补上PMU驱动实际绑定证据，但板上无perf，CoreSight路径也未暴露。
-- 任务2构建墙钟GCC58:44.70/Clang36:50.38；ACTIME布局普通12→24B、RT24→32B，每GiB增3/2MiB；LZ4三补丁合入检查干净。保留[03](03_baseline_build.md)、[04](04_zram_static.md)、[05](05_kernel_fdo_static.md)，不因现场发现而改写旧构建数据。
+## 内核基线与历史挂账
+
+- Gerrit唯一授权目标`sandbox/lhmax2025/kernel_optimization`与本地lko/base为`0fac5de6a63091d141ad1cd3ed9d9e92b8dde708`，相对tizen@42aeefac为force_reclaim与PMU两提交；相对21645b17多4提交。四组合配置只ARM_PMUV3 n→y。[08](08_sandbox_baseline.md)。本轮未改内核树或推Gerrit。
+- 任务2/3体积来自不含PMU的f240c280：普通LLVM常驻+2,669,604 B（8.11%）、RT+2,516,690 B（7.58%）。不是本次QB镜像体积。[06](06_static_footprint.md)、[07](07_llvm_text_growth.md)。
+- 代码增长的六类独立贡献未分离；rpmdb归属不明；ARMv4t/CP15 TLS探测问题未修复。可选nm扫描只保留旧状态，不将旧快照当当前运行情况。
+- 平台缺llvm-bolt/create_llvm_prof，ARM32 AutoFDO消费链未接入。任务2 GCC/LLVM墙钟58:44.70/36:50.38；ACTIME普通12→24B、RT24→32B，每GiB增3/2MiB。[03](03_baseline_build.md)、[04](04_zram_static.md)、[05](05_kernel_fdo_static.md)。
+- 产品BOM、现场调试取舍、网络监控插件需求及BTF替代、zstd回退执行链、CMA固件来源仍需后续核实；不由当前未使用直接推定可裁剪。
 
 ## 发布状态
 
-任务5首次交付commit为34fccb5713bac3a3bbe61cd9aa1a788d6a9f1dce。此次QB补充的09、STATUS和相关证据在同一后续GitHub提交，以Hao Lin <hao.lin@samsung.com>署名、正常Git环境普通push main；具体commit见本轮回复。发布的仅小于1MB的文本，原始日志/候选ELF仅留temp/task5。没有向其他人或外部服务发送采集消息。
+本次停止收尾将09、10、RULES、STATUS及evidence/task5b在同一commit普通推送GitHub main，署名Hao Lin <hao.lin@samsung.com>，不改全局Git/认证配置。没有上传RPM、截图、浏览器会话或凭据。最终commit见本轮回复。

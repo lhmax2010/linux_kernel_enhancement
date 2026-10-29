@@ -1,0 +1,40 @@
+QB1211696 authenticated page: selected text only (login user and Triggered By excluded)
+Observation date: 2026-10-30 Asia/Shanghai
+Overview URL: https://quickbuild.tizen.org/build/1211696
+Variables URL: https://quickbuild.tizen.org/build/1211696/variables
+
+[Overview / Variables / Build Package List]
+platform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+
+[Overview / Summary: selected columns]
+Id: 1211696
+Status: Successful
+Begin Date: 2026-10-28 10:58:35
+Duration: 6 hours 15 minutes 43 seconds
+The displayed Begin Date has no explicit timezone in the captured page text.
+
+[Overview / Child Build: armv7l row]
+standard-armv7l https://quickbuild.tizen.org/build/1211725 Succeeded
+
+[Overview / Target Image: armv7l rows]
+tizen-boot-armv7l-rpi https://quickbuild.tizen.org/build/1212205 SUCCESSFUL
+tizen-headed-armv7l https://quickbuild.tizen.org/build/1212207 SUCCESSFUL
+
+[Variables: selected names and values only]
+BUILD_PKG_LIST entry: platform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+PROJECT_BRANCH: tizen
+PROJECT_NAME: Tizen-Unified-Toolchain
+USE_BRANCH_POLICY: false
+
+[Overview / Artifacts: public URLs, no queries/fragments]
+Download_URL: http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834
+Manifest_URL: http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/builddata/manifest
+
+[Gate decision]
+SHA matches expected: yes
+Expected branch: sandbox/lhmax2025/kernel_optimization
+Observed PROJECT_BRANCH: tizen
+An explicit per-package sandbox branch was not established from these page fields.
+PROJECT_BRANCH is a project-level variable; this does not prove the kernel source SHA is wrong.
+Stop under PM task5b branch requirement; do not substitute matching SHA for the branch check without PM adjudication.
+No RPM download, extraction, config comparison, board access, perf execution or BPF loading was performed after this gate.
