@@ -1,6 +1,6 @@
 # Linux 内核优化设计文档 v2（RPi4 armv7l，6.12.80）
 
-版本：v2，2026-10-30。仓库：`lhmax2010/linux_kernel_enhancement`，本文件位于 `docs/10_design_v2.md`，文中证据链接均相对本目录。v1（`10_design_v1.md`）保留作历史记录，以本文为准。
+版本：v2（2026-10-30；同日修订，补入上一轮 Claude Code 完整评审中初稿遗漏的内容）。仓库：`lhmax2010/linux_kernel_enhancement`，本文件位于 `docs/10_design_v2.md`，文中证据链接均相对本目录。v1（`10_design_v1.md`）保留作历史记录，以本文为准。
 
 **相对 v1 的主要变化**：
 
@@ -36,7 +36,7 @@
 | 不回退容差 | 性能 2%，内存 3%（与年度计划一致）。指标和分母见 1.2，判定方法见 1.3 |
 | 改动粒度 | 每项单独分支、单独补丁、单独报告；组合后重新验收 |
 | 证据要求 | 每个结论附 文件:行号、命令输出或日志；估算值必须标明“估算” |
-| 板上操作 | 按 RULES.md：三项身份断言；不改根文件系统、不 remount、不安装 RPM；重启由用户执行。`/tmp` 挂载为 noexec，需要执行的临时程序放在 `/opt/usr` 下的任务专用目录，用完删除（任务 5c 的做法）。两项常规授权（用户已同意，不需要逐次申请）：一是按任务 5c 的方式临时推送 perf 及其缺少的库；二是实验中直接修改运行时参数（`/proc/sys`、`/sys` 下的可写项）。修改前记录原值，实验结束后恢复并回读确认，全部记入实验报告 |
+| 板上操作 | 按 RULES.md：三项身份断言；不改根文件系统、不 remount、不安装 RPM；重启由用户执行。`/tmp` 挂载为 noexec，需要执行的临时程序放在 `/opt/usr` 下的任务专用目录，用完删除（任务 5c 的做法）。两项常规授权（用户已同意，不需要逐次申请）：一是按任务 5c 的方式临时推送 perf 及其缺少的库；二是实验中直接修改运行时参数（`/proc/sys`、`/sys` 下的可写项）。修改前记录原值，实验结束后恢复并回读确认，全部记入实验报告。zram 的运行时重配（swapoff、reset、设算法、设 disksize、mkswap、swapon）按运行时参数处理。实验期间独占板子。resourced 和内核的改动一律通过 QB 镜像，由用户烧写。标准场景需要安装测试应用（写 /opt 分区），是否纳入常规授权待用户确认 |
 
 ### 1.2 回退判定的指标与分母
 
@@ -55,7 +55,8 @@
 ### 1.3 统计判定
 
 - **统计单元**：一次独立的场景轮次（独立启动或独立的一轮固定场景）。同一轮内的大量事件不当作独立样本；分位数按轮次计算后再求置信区间。
-- **样本量**：先做 A/A 小规模试跑，用测得的方差估算正式轮次，至少 5 轮。
+- **样本量**：先做 A/A 小规模试跑，用测得的方差估算正式轮次（目标是能分辨 1% 的差异），不少于 10 轮。置信区间按轮次做 bootstrap 求得。
+- **低噪声佐证**：代码生成和体积类变体，同时报告标准场景下内核态的 instructions 和 cycles（perf stat 计数）。它们比墙钟时间稳定得多，用来佐证墙钟指标的结论。
 - **执行顺序**：A/B 随机交错执行，避免温度、时间漂移带来的偏差。
 - **判定**：置信区间跨越容差边界时判为“证据不足”，增加轮次后再判，不按通过处理。每个关键场景单独过门槛，多个场景的平均值不能掩盖单个场景的回退。
 - **频率**：每个变体跑两组。一组锁定 CPU 频率（performance 调频策略），用于判定；一组用默认 schedutil，作为真实场景参考。调频策略按 1.1 的常规授权直接修改，实验结束后恢复。
@@ -94,13 +95,13 @@
 | MGLRU | 已启用（0x0001），`min_ttl_ms=0` |
 | 回收参数 | 全局 swappiness 60；resourced 配置中 BackgroundLruSwappiness=80（该 memcg 的 `memory.swappiness` 实际值尚未读取）；watermark_scale_factor 10；min_free_kbytes 3334；lowmem_reserve_ratio `256 32 0 0` |
 | memcg | 只有 v1；67 个 memcg 都有 `memory.force_reclaim` |
-| 调度与时钟 | PREEMPT_VOLUNTARY；HZ 实测约 100；cpufreq schedutil，600–1500 MHz；没有 cpuidle 状态 |
+| 调度与时钟 | PREEMPT_VOLUNTARY；HZ 实测约 100；cpufreq schedutil，600–1500 MHz；CONFIG_CPU_IDLE 未启用（所以没有 cpuidle 状态） |
 | PMU 与 perf | 驱动已注册（armv8_cortex_a72，7 个计数器）。镜像不带 perf；按任务 5c 方式临时推送同版本 perf 后实测：硬件计数和 cycles 采样可用，事件类型为 PERF_TYPE_HARDWARE，没有退回软件事件；分支栈采样（`record -b`）不支持；没有 CoreSight/ETM 设备。这个 perf 构建关闭了 libtraceevent，不能直接解析 tracepoint 事件 |
 | 追踪与调试 | tracefs 已挂载，current_tracer=nop，事件全关；FUNCTION_TRACER、FUNCTION_GRAPH_TRACER、KPROBES、KPROBE_EVENTS 均已编入；function profiler、stack tracer、latencytop 运行时都是 0；cmdline 没有 kgdboc |
 | 文件系统 | F2FS 在用（/opt/usr）；ext4 在用；Btrfs、NFS 没有挂载 |
 | USB 外设 | 只有 Hub；rt2800usb、r8152、lan78xx、smsc95xx、net1080、snd-usb-audio 都没有绑定设备 |
-| BTF/BPF | `resource-monitor-plugin-network` 内嵌 3 个 fentry 程序（tcp_v4_rcv 等），带 CO-RE 重定位。在本次扫描范围内（进程 FD、映射、bpffs）没有发现运行中的 BPF，没有做全内核程序枚举 |
-| 其他相关配置 | TRANSPARENT_HUGEPAGE=n（ARM_LPAE=y，架构支持）；IDLE_PAGE_TRACKING=n；HIGHPTE=y；LD_DEAD_CODE_DATA_ELIMINATION=n（架构支持）；VMSPLIT_3G；CONFIG_EXPERT=y |
+| BTF/BPF | `resource-monitor-plugin-network` 内嵌 3 个 fentry 程序（tcp_v4_rcv 等），带 CO-RE 重定位。在本次扫描范围内（进程 FD、映射、bpffs）没有发现用户态持有的 BPF；板上没有 bpftool，不能排除只由内核持有的程序。bpf_jit_enable=0，BPF 程序如果加载会走解释器 |
+| 其他相关配置 | TRANSPARENT_HUGEPAGE=n（ARM_LPAE=y，架构支持）；IDLE_PAGE_TRACKING=n；HIGHPTE=y；LD_DEAD_CODE_DATA_ELIMINATION=n（架构支持）；VMSPLIT_3G；CONFIG_EXPERT=y；TASK_DELAY_ACCT=y；HIST_TRIGGERS=n、SYNTH_EVENTS=n（不能在内核内做直方图）；KERNEL_GZIP=y；LZ4_COMPRESS、ZSTD_COMPRESS 已内建 |
 
 证据：[09 板上只读采集](09_board_rpi4_readonly.md)、[任务 5c perf 实测](../evidence/task5c/README.md)、[QB 最终配置](../evidence/task5b/qb_arm-rpi4.config)。
 
@@ -112,8 +113,8 @@
 | Normal 区 | 0 页 | 空 |
 | HighMem 区 | 816,128 页（约 3,188 MiB） | — |
 | LowTotal / LowFree | 711,964 KiB / 576,092 KiB（静置） | — |
-| CMA | 320 MiB，计入 DMA 区 | CMA 很可能整体位于低端内存，这样非 CMA 的低端内存只有约 375 MiB。具体位置需要用 `/proc/zoneinfo` 的 `nr_free_cma` 和启动日志的 CMA 地址确认 |
-| VmallocUsed | 21,208 KiB | vmalloc 地址空间位于内核虚拟地址区，32 位下总量有限 |
+| CMA | 320 MiB，物理地址 0x1ac00000–0x2ebfffff（428–748 MiB），整体位于低端内存，占低端内存约 46% | 非 CMA 的低端内存约 711,964 − 327,680 = 384,284 KiB（约 375 MiB）；静置时非 CMA 部分空闲约 576,092 − 268,452 = 307,640 KiB（约 300 MiB） |
+| Vmalloc | VmallocTotal 245,760 KiB，VmallocUsed 21,208 KiB | vmalloc 地址空间位于内核虚拟地址区，32 位下总量有限 |
 
 **低端内存保护参数实际很弱**：`lowmem_reserve_ratio` 中 DMA 档是 256、Normal 档是 32（`mm/page_alloc.c` 的默认值）。由于本板的低端内存全部在 DMA 区，实际生效的是 256：
 
@@ -122,9 +123,9 @@
 
 同时 `min_free_kbytes` 只有 3,334 KiB，它只按低端内存大小计算。
 
-**这对优先级的影响**：内核静态常驻、slab、内核栈、页表以外的内核分配都在低端内存中，非 CMA 的可用低端内存只有约 375 MiB（待确认）。因此 1 MB 的内核静态节省，比 1 MB 的 zram 载荷节省更有价值；zram 的压缩载荷带 `__GFP_HIGHMEM`，主要位于 HighMem。第 3 节的排序已经考虑了这一点。
+**这对优先级的影响**：内核静态映像、slab、内核栈、网络缓冲等内核分配都在低端内存中（HIGHPTE=y，页表可以放在 HighMem），非 CMA 的低端内存只有约 375 MiB。以 BTF 为例，它约占非 CMA 低端内存的 1.7%。因此 1 MB 的内核静态节省，比 1 MB 的 zram 载荷节省更有价值；zram 的压缩载荷带 `__GFP_HIGHMEM`，主要位于 HighMem。第 3 节的排序已经考虑了这一点。
 
-证据：[板上内存原始输出](../evidence/task5/A_identity_memory.txt)、[运行时参数](../evidence/task5/F_memory_runtime.txt)。
+证据：[板上内存原始输出](../evidence/task5/A_identity_memory.txt)（含启动日志中 CMA 池地址）、[运行时参数](../evidence/task5/F_memory_runtime.txt)。
 
 ### 2.4 采样能力边界（v2 新增）
 
@@ -176,7 +177,9 @@
    - **内核**：在 `arch/arm/Kconfig` 中新增一个探测符号，用 `-pg -fomit-frame-pointer` 一起探测编译器是否接受；只有在 CC_IS_CLANG、ARM_UNWIND=y、THUMB2_KERNEL=n、探测通过时，才在 FUNCTION_TRACER 打开的情况下追加 `-fomit-frame-pointer`。这样旧编译器、GCC 构建和其他架构都不受影响。
    - 这是平台 PoC 形态，不是可直接上游的通用修复。上游版本需要另外处理 Thumb、其他 profiling 运行时和 ABI 说明，届时再考虑与 GCC 的默认行为对齐。
 
-**预期收益**（LLVM 普通版，估算）：帧指针建立指令约 0.23 MB，unwind_tab 约 0.5 MB；实际能收回多少由消融构建决定，不承诺全部收回。关闭 FUNCTION_TRACER 的收益不能与本项直接相加。
+**先做快速实验**：改编译器之前，先用 `-Xclang -mframe-pointer=none` 构建一次实验内核（直接给编译器前端传参，绕过驱动的报错，不改 Clang），测出真实的体积和性能收益，再决定是否值得修改 Clang。
+
+**预期收益**（LLVM 普通版，估算）：帧指针建立指令约 0.23 MB，unwind_tab 约 0.5 MB；r11 释放为通用寄存器后，还可能带来额外的 .text 和性能变化，另行测量；实际能收回多少由消融构建决定，不承诺全部收回。关闭 FUNCTION_TRACER 的收益不能与本项直接相加。
 
 **风险**：展开记录错误会导致回溯失败或 function_graph 崩溃；使用独立版本的工具链做实验，不影响平台其他包。
 
@@ -213,7 +216,7 @@
 
 - GCC/Clang 两边 olddefconfig 后的配置比较；最终 STACKPROTECTOR_PER_TASK=y。
 - 反汇编确认 canary 通过 `mrc p15, 0, …, c13, c0, 3`（TPIDRURO）按 task 偏移读取，不再读 `__stack_chk_guard`。
-- 实验镜像临时启用 LKDTM 跑栈保护用例；SMP 下的任务切换压力测试。
+- 用测试模块打印两个线程的 `stack_canary`，确认值不同；实验镜像临时启用 LKDTM 跑栈保护用例；SMP 下的任务切换压力测试。
 - 体积变化记录在案，作为新基线的一部分。
 
 #### 3.1.3 局部内联膨胀
@@ -238,7 +241,11 @@
 
 #### 3.1.5 ARM32 内核 LTO（PoC，低优先级）
 
-本树 ARM32 没有 LTO 的接入路径（arch/arm 没有 select ARCH_SUPPORTS_LTO_CLANG）。本轮不实施。后续 PoC 先验证链接、启动、模块、汇编引用和 EHABI/ftrace 兼容性，这些不通过就不做收益测试。3.7 的采样驱动优化不以 LTO 为前提。
+本树 ARM32 没有 LTO 的接入路径（arch/arm 没有 select ARCH_SUPPORTS_LTO_CLANG）。本轮不实施。调研以内部分支 `sandbox/sebuns2/use_lto`（a4fe97e1，2020 年，arm64）为起点；3.1.4 的链接期死代码消除作为 LTO 体积收益的下限参照。后续 PoC 先验证链接、启动、模块、汇编引用和 EHABI/ftrace 兼容性，这些不通过就不做收益测试。3.7 的采样驱动优化不以 LTO 为前提。
+
+#### 3.1.6 内核映像改用 LZ4 压缩（开机时间，低优先级）
+
+当前 KERNEL_GZIP=y。改为 KERNEL_LZ4 可以加快开机时的解压，预计开机时间减少几十到一两百毫秒（估算），对运行时内存没有影响；代价是映像变大约 10%–20%，需要确认 boot 分区（64 MiB）的余量。内部分支 `sandbox/sebuns2/kernel_compression`（624d6479，arm64）可作参考。验证：开机到桌面时间、引导加载器读取时间和解压时间。
 
 ### 3.2 配置裁剪（常驻内存，全部是低端内存）
 
@@ -253,7 +260,7 @@
 | 未绑定的 USB 网卡/声卡驱动 | 约 0.97 MB（rt2800usb 0.50、snd-usb-audio 0.29、r8152 0.12，其余合计约 0.06） | 都没有绑定设备 | 改为模块 |
 | 追踪设施与 -pg 插桩 | 约 0.90 MB（不含 3.1.1 的帧指针和 unwind） | 运行时都处于关闭状态 | 产品取舍。注意第 4 节的换入延迟测量依赖 function_graph 或 kprobe，实验内核必须保留这些设施 |
 | KGDB/KDB | 约 0.12 MB | cmdline 没有 kgdboc | 产品取舍 |
-| IRQSOFF_TRACER | 体积很小（约 4 KB） | 当前 tracer 为 nop | 关键在运行开销：每次开关中断都多走 trace_hardirqs_on/off；需要实测 |
+| IRQSOFF_TRACER | 体积很小（约 4 KB） | 当前 tracer 为 nop | 关键在运行开销：每次开关中断都多走 trace_hardirqs_on/off。这段代码在关中断状态下执行，采样看不到，只能用关闭 IRQSOFF_TRACER 和 TRACE_IRQFLAGS 的 A/B 构建，比较内核态 instructions 和 cycles |
 | F2FS | — | **在用** | 保留 |
 
 模块化只在模块不加载时节省常驻内存；加载后可能还多出对齐和管理开销。Btrfs、NFS、USB 驱动还涉及恢复模式、升级、网络启动和热插拔，不只是当前有没有挂载。
@@ -266,7 +273,9 @@
   2. ARM32 上不依赖 trampoline、但依赖内核 BTF 的功能仍然可用，例如 tp_btf、bpf_iter；
   3. 静态链接的程序、按需加载的组件、诊断工具不一定出现在当前扫描结果中；
   4. 构建侧的 btf-devel 包和 vmlinux.h 导出。
-- **可行的替代路径**：插件改用 kprobe/tracepoint；用 BTFGen（`bpftool gen min_core_btf`）从完整 vmlinux 的 BTF 中只提取插件实际用到的类型，随插件一起发布，通过 libbpf 的 `btf_custom_path` 加载；或者用 pahole 生成独立的 BTF 文件放在文件系统中。外置 BTF 能满足用户程序的 CO-RE 重定位，但不能恢复内核自身依赖 BTF 的能力（tp_btf、bpf_iter、kfunc）。外置 BTF 必须与内核的 build-id 绑定，并测试版本不匹配时会被拒绝。
+- **可行的替代路径**：插件改用 kprobe/tracepoint；用 BTFGen（`bpftool gen min_core_btf`）从完整 vmlinux 的 BTF 中只提取插件实际用到的类型，随插件一起发布，通过 libbpf 的 `btf_custom_path` 加载；或者用 pahole 生成独立的 BTF 文件放在文件系统中。外置 BTF 能满足用户程序的 CO-RE 重定位，但不能恢复内核自身依赖 BTF 的能力（tp_btf、bpf_iter、bpftool 的类型化输出）；kfunc、struct_ops、fentry/fexit、BPF LSM 在 ARM32 上本来就不可用。外置 BTF 必须与内核的 build-id 绑定，并测试版本不匹配时会被拒绝。
+- **构建侧**：BTF 关闭后 DEBUG_INFO_BTF_MODULES 自动消失；spec 中由 vmlinux 导出 vmlinux.h 的步骤会失败，改为先用 pahole 从 DWARF 生成独立 BTF（`--btf_encode_detached`，需确认 buildroot 中 pahole 1.29 支持），再用 bpftool 导出 vmlinux.h，btf-devel 包保持不变。
+- **如果产品必须保留内核 BTF**：见 7.8 的压缩存储方案。
 - **决策**：BTF 暂时保留，其他裁剪项照常推进。阶段 2 完成产品的 BPF/CO-RE 依赖清单，并决定网络监控功能的保留方式（改写插件，或登记为功能缺口）之后，再决定是否关闭。armv7l 和 aarch64 分别按依赖清单决定，不按架构一刀切。
 
 **做法**：
@@ -277,7 +286,7 @@
 
 每次保存最终 diffconfig，核对反向 select、共享库、模块打包和加载行为。Gerrit 上按项拆成独立提交，便于产品方逐项取舍。
 
-**验证**：RPM 模块文件清单、依赖加载、自动加载、外设热插拔、恢复和升级流程、模块卸载后的内存；perf 内核函数符号解析。
+**验证**：除静态段外，还要测运行时的低端内存占用：内建的 Btrfs、NFS、SUNRPC 启动后会创建 slab cache、workqueue 和内核线程，所以对比 `/proc/slabinfo` 各 cache 大小、内核线程数和非 CMA 部分的 LowFree。另外检查 RPM 模块文件清单、依赖加载、自动加载、外设热插拔、恢复和升级流程、模块卸载后的内存；perf 内核函数符号解析。
 
 ### 3.3 低端内存（v2 新增）
 
@@ -316,7 +325,7 @@
 - `ZRAM_BACKEND_FORCE_LZO` 是自动计算的符号：只要编入任何其他后端，它就变成 n。
 - `ZRAM_BACKEND_LZO` 的默认值等于 FORCE_LZO。如果只加 LZ4/ZSTD 而不显式保留 LZO，LZO 后端会消失，默认算法 lzo-rle 也会跟着失效（`drivers/block/zram/Kconfig`）。
 
-所以实验内核的配置是：
+LZ4_COMPRESS、ZSTD_COMPRESS 已经内建（lib/zstd 约 0.54 MB 已在镜像中），增加后端只多出胶合代码，体积代价很小。实验内核的配置是：
 
 ```diff
 +CONFIG_ZRAM_BACKEND_LZO=y
@@ -329,7 +338,7 @@
 
 **基线漂移**：一旦编入 ZSTD 后端，resourced 现有的 `CompAlgorithm=zstd` 会自动生效，基线会在不知不觉中改变。所有 zram 实验都必须显式设定算法，并在每轮开始时回读 `/sys/block/zram0/comp_algorithm`，不能依赖 resourced 当前的配置。
 
-**resourced 侧**：补齐算法可用性检查、写入错误处理和设置后回读；不可用时按明确配置的回退算法处理并记录日志，不再静默回退。算法必须在设置 disksize、swapon 之前设定，不能在已有数据的设备上直接改算法或 reset。
+**resourced 侧**：补齐算法可用性检查、写入错误处理和设置后回读；不可用时按明确配置的回退算法处理并记录日志，不再静默回退。算法必须在设置 disksize、swapon 之前设定，不能在已有数据的设备上直接改算法或 reset。实验时按运行时重配处理（swapoff、reset、设算法、设 disksize、mkswap、swapon），不修改板上的 resourced 配置文件。
 
 **验证**：不可用算法、sysfs 写失败、回读不符、字典缺失或损坏、分配失败、CPU 热插拔、重复初始化；每轮做数据往返校验。
 
@@ -344,6 +353,8 @@
 | 同事 Jaehoon 的方案 | zstd（带字典） | 开，并开启访问时间跟踪（ACTIME） |
 | 新方案 | lz4（带 armv7 快速解压补丁） | 只对空闲页用 zstd 重压缩 |
 | 新方案变体 | 同上 | 用“全部标记空闲、观察一段时间后对仍然空闲的页重压缩”的方式，不开 ACTIME |
+| 现状加重压缩 | lzo-rle | 只对空闲页用 zstd 重压缩（把重压缩的收益与 lz4 补丁的收益、风险分开） |
+| zstd 低级别 | zstd level=1，无字典 | 无 |
 
 为了能解释结果，按下面的顺序逐个因素对照，不一次混入多个变化：
 
@@ -357,6 +368,8 @@
 | 同一筛选策略，ACTIME 关/开 | 访问时间跟踪的成本 |
 
 Jaehoon 的 lz4 三个补丁能干净合入，但还没有编译和验证，不能当作已验证正确。
+
+**先做离线预筛**：编内核之前，先离线转储几个后台应用的匿名页，在板上用用户态的 lz4、zstd、lzo 工具测压缩率和速度，一天之内就能排除明显较差的组合，再挑 2–3 个变体编内核。
 
 #### 3.4.3 成本账本
 
@@ -387,13 +400,27 @@ Jaehoon 的 lz4 三个补丁能干净合入，但还没有编译和验证，不�
 
 **代价**：
 
-- `mark_idle()` 的全表循环中没有 `cond_resched()`（`zram_drv.c:291` 起），而本内核是 PREEMPT_VOLUNTARY，标记一次 39.8 万个槽会连续占用 CPU。耗时需要实测（评审方估算 10–40 ms）。实验内核先在循环中加 `cond_resched()`，作为单独补丁，并在提交前查上游是否已有相同修复。
+- `mark_idle()` 的全表循环中没有 `cond_resched()`（`zram_drv.c:291` 起），而本内核是 PREEMPT_VOLUNTARY，标记一次 39.8 万个槽会连续占用 CPU，估算 10–40 ms，同一 CPU 上的 UI 线程会错过帧。补丁（单独提交，提交前查上游是否已有相同修复）：
+
+  ```diff
+  --- a/drivers/block/zram/zram_drv.c
+  +++ b/drivers/block/zram/zram_drv.c
+  @@ static void mark_idle(struct zram *zram, ktime_t cutoff)
+   	for (index = 0; index < nr_pages; index++) {
+  +		/* idle_store() runs from sysfs with only init_lock held for read */
+  +		if (!(index & 1023))
+  +			cond_resched();
+  ```
+
+  调用方只持有 init_lock 的读锁，可以睡眠，没有功能变化。验证：写满约 1.5 GiB 后执行 `echo all > idle`，用 tracefs 的调度事件比较改前改后的最大调度延迟（perf 没有 libtraceevent，不能用 perf sched）；改后执行 `recompress type=idle`，结果与改前一致。
+- 共享的换出页（引用计数大于 1，例如 launchpad 派生进程共享的匿名页）换入时会走 swap cache 预读，预读到的页也会被清掉空闲标记，冷页被当成热页。结果是少重压缩一些，方向保守，但收益偏低。
+- 重压缩在槽锁内完成解压和压缩，期间对同一槽的换入要等待；锁在两页之间释放，影响有限，但要分批执行。
 - `recompress` 每次调用都从槽 0 开始扫描（`zram_drv.c` 中 recompress_store 的循环），`max_pages` 只限制实际重压缩的次数，不限制扫描长度和墙钟时间。
 - 重压缩时原对象和新对象会短暂共存；被 zstd 压缩的冷页如果重新变热，解压长尾会变长。
 
 **调度流程**：
 
-1. resourced 是空闲标记和重压缩的唯一管理者，在屏灭或待机时触发；
+1. resourced 是空闲标记和重压缩的唯一管理者，其他组件不能写 idle。触发时机有两种，实验中都评估：屏灭或待机时；或者按应用生命周期，应用进入后台 T 分钟后标记，再过 T 分钟重压缩；
 2. 标记 `idle=all`，等待预先定义的观察窗口；
 3. 确认仍允许后台工作；
 4. 以较小的 `max_pages` 分批提交 `type=idle` 的重压缩；
@@ -409,13 +436,13 @@ Jaehoon 的 lz4 三个补丁能干净合入，但还没有编译和验证，不�
 - 压缩率和 3.4.3 的分项成本；
 - 每页压缩、解压的 CPU 时间；
 - 换入延迟分布（最慢 1% 和最大值）；
-- 应用切换耗时，包括后台停留很久之后再切回前台的场景；
+- 应用切换耗时，包括后台停留 10、30、60 分钟后再切回前台的场景（被 zstd 重压缩过的页正是这时要读回的）；
 - kswapd 的 CPU 占用；
-- `debug_stat` 中的 writestall：内存紧张时 zsmalloc 分配失败、重新压缩的次数；
+- `debug_stat` 中的 writestall（内存紧张时 zsmalloc 分配失败、重新压缩的次数）和 miss_free；
 - 一次标记和一次重压缩的 CPU 总量、耗时，以及这期间的换入延迟和切换耗时；
 - 后台应用存活数。
 
-**通过条件**：按 1.2 的容差，换入延迟最慢 1% 和应用切换耗时不回退，重压缩期间的前台指标也不回退；在此前提下，选同等负载下 zram 总成本最低的方案。
+**通过条件**：按 1.2 的容差，换入延迟最慢 1%、应用切换耗时（包括长时间后台后切回）、kswapd CPU 都不回退，writestall 不增加，重压缩期间的前台指标也不回退；在此前提下，选同等负载下 zram 总成本最低的方案。
 
 ### 3.5 MGLRU
 
@@ -425,7 +452,9 @@ Jaehoon 的 lz4 三个补丁能干净合入，但还没有编译和验证，不�
 
 **方案**：先保持 0，完成 zram 算法对比；之后单独测试 100、500、1000 ms 三档，不与算法或 swappiness 同时改变。同时覆盖全局回收和 memcg `force_reclaim` 两条路径。
 
-**验证**：后台存活数、被杀对象和杀进程的来源（内核 OOM 还是 resourced）、前台切换耗时、内存突增；读取各 memcg 实际的 `memory.swappiness`，不用 resourced 配置值代替。
+另外，ARM32 没有硬件维护的访问位（没有 ARCH_HAS_HW_PTE_YOUNG，LRU_GEN_WALKS_MMU 也关闭），老化时每清一次访问位，下次访问就要多一次缺页，老化越激进缺页越多。
+
+**验证**：后台存活数；vmstat 的 oom_kill、被杀进程及其类别（前台、后台、系统）、杀进程的来源（内核 OOM 还是 resourced）；minor fault 次数；前台切换耗时、内存突增。出现内核 OOM 杀掉前台或系统进程，就判定该档不可用。读取各 memcg 实际的 `memory.swappiness`，不用 resourced 配置值代替。
 
 #### 3.5.2 MGLRU-FG（上游在审系列，回移植评估）
 
@@ -480,7 +509,16 @@ Jaehoon 的 lz4 三个补丁能干净合入，但还没有编译和验证，不�
 3. **冷代码体积优化**：对长时间、多场景都没有样本的函数，评估用 `-Os` 或标记为冷代码以减小体积。
    - 这里必须扣除关中断区间：中断处理函数和关中断的代码采不到样本，但不一定是冷的，要先排除，不能直接判为冷。
    - 评审方估算可省 1.3–2.7 MB，这是估算，需要实测。
-4. **create_llvm_prof 可行性**：选一两个确认有样本的对象（例如 `lib/lz4` 的解压函数），验证 `create_llvm_prof --use_lbr=false` 能否生成可被 Clang 消费、并且能实际改变优化决策的 profile。不行就停止，不自研转换器。
+4. **关中断修正**：对样本落在 `local_irq_restore`、`spin_unlock_irqrestore` 等开中断点附近的函数，把它在关中断区间内直接调用的函数（沿静态调用图展开一层）一并标为热；入口代码、中断处理、调度核心、锁、hrtimer 列入强制热名单。间接调用无法用这种方法修正。
+5. **profile 生成与消费**：把函数级热度转成只含函数体计数的 sample profile，编译时用 `-fprofile-sample-use -fprofile-sample-accurate`，让 profile 中没有出现的函数按冷函数处理（按体积优化，并放入 .text.unlikely；链接脚本已经把 .text.hot 和 .text.unlikely 分别归组）。转换路径按成本从低到高依次尝试，前一条可行就不做后一条：
+   - `create_llvm_prof --use_lbr=false`（Clang 文档给出的方式，平台没有提供该工具，需要验证能否处理 ARM32 内核映像）；
+   - 把每个指令地址样本写成长度为零的区间，构造 llvm-profgen 的 unsymbolized profile 输入，只生成函数体计数；
+   - 自写转换器：用 llvm-symbolizer 把指令地址映射到函数、行偏移和内联栈，直接输出文本格式的 sample profile。
+6. **最小实验**（成本低，可放在阶段 0）：
+   - 在 2–3 分钟的标准场景上采样，统计前 N% 函数占的样本比例，以及被采到的函数占 .text 的比例（一天）；
+   - 构建一次全内核 `CONFIG_CC_OPTIMIZE_FOR_SIZE=y`，得到体积节省和性能损失的上限（一次构建加一次 A/B）；
+   - 热度高度集中、且全内核按体积优化能省 1.5 MB 以上时，才进入 profile 构建。
+7. **需要精确边信息时**：用插桩 PGO 而不是采样。GCC 路线是 `CONFIG_GCOV_KERNEL`（本配置 ARCH_HAS_GCOV_PROFILE_ALL=y）配合 `-fprofile-use`，内部有先例 `sandbox/sebuns2/pgo_applied_kernel`（8423391f，arm64）；Clang 路线需要移植 2021 年 LKML 上未合入主线的 PGO_CLANG 系列，工作量较大。
 
 **风险**：采样偏移（skid）造成边界函数被误判；场景代表性决定收益；对单一流程过拟合。训练场景和验收场景分开（1.3）。
 
@@ -492,7 +530,7 @@ Jaehoon 的 lz4 三个补丁能干净合入，但还没有编译和验证，不�
 
 ### 3.8 不做的项
 
-- **整组回移植 zram 读写流拆分、可抢占 zram 系列**：当前非 RT 的 local_lock 不存在新版可抢占 zram 所解决的可睡眠流锁优先级反转，不直接套用它的延迟收益。系列中与锁模型无关的内存优化按 3.4.3 单独评估；读写流拆分、共享解压流、单实例二次压缩上下文需要另做依赖和正确性评估，不整组 cherry-pick。上游的 24 CPU 数据不能搬到 RPi4。
+- **整组回移植 zram 读写流拆分、可抢占 zram 系列**：当前非 RT 的 local_lock 不存在新版可抢占 zram 所解决的可睡眠流锁优先级反转，不直接套用它的延迟收益。6.12 中 zsmalloc 不带直接回收的分配失败时，会释放压缩流、换用可睡眠的分配，然后重新压缩一次（`zram_drv.c:1547–1592`），可抢占系列消除了这次重复压缩；如果 zstd 主压缩下 writestall 明显，就重新评估回移植其中的“单次压缩”部分。系列中与锁模型无关的内存优化按 3.4.3 单独评估；读写流拆分、共享解压流、单实例二次压缩上下文需要另做依赖和正确性评估，不整组 cherry-pick。上游的 24 CPU 数据不能搬到 RPi4。
 - **换入预读参数 page-cluster**：zram 设备带 SWP_SYNCHRONOUS_IO 标志，引用计数为 1 的换入会跳过 swap cache 和预读（`mm/memory.c:4279–4280`），page-cluster 只影响少数共享的换出页，不作为独立方案；只在 3.4 实验中记录共享换出页的比例。
 - **CRAM**：需要硬件压缩内存。TV 产品硬件是否有同类能力，没有产品资料，无法核实，不由 RPi4 外推。只跟踪。
 - **Kbuild 并行化**：收益集中在增量构建，GBS 全量构建收益有限。不回移植。
@@ -515,7 +553,7 @@ Jaehoon 的 lz4 三个补丁能干净合入，但还没有编译和验证，不�
 
 | 类别 | 指标 | 方法要求 |
 | --- | --- | --- |
-| 内存 | 1.2 中的全机、低端指标；应用 PSS 与 SwapPss；memcg v1 的 usage、memsw、stat；3.4.3 的 zram 分项成本；DMA/HighMem/CMA 各区水位；Slab、SUnreclaim、KernelStack、PageTables、VmallocUsed；直接回收次数和 PSI | 按层级统计，不累加父子 memcg；共享页不重复计算 |
+| 内存 | 1.2 中的全机、低端指标；非 CMA 部分的 LowFree；`/proc/zoneinfo` 中 DMA 区的 nr_free_pages、nr_free_cma、protection；CmaFree 最小值；vmallocinfo；应用 PSS 与 SwapPss；memcg v1 的 usage、memsw、stat；3.4.3 的 zram 分项成本；DMA/HighMem/CMA 各区水位；Slab、SUnreclaim、KernelStack、PageTables、VmallocUsed；直接回收次数和 PSI | 按层级统计，不累加父子 memcg；共享页不重复计算 |
 | 回收 | refault（文件/匿名）、pswpin/pswpout、kswapd CPU、PSI memory、后台存活应用数、杀进程来源 | 从 /proc/vmstat、/proc/pressure 取差值 |
 | zram | mm_stat、io_stat、debug_stat（writestall）、每页压缩/解压耗时、标记和重压缩的耗时 | 测量本身的开销要先单独测出 |
 | 延迟 | 见 4.3 | — |
@@ -530,9 +568,15 @@ Jaehoon 的 lz4 三个补丁能干净合入，但还没有编译和验证，不�
 3. **zram 内部**：槽锁等待、映射、解压。
 4. **应用切换**：从切换请求到第一个满足完成条件的画面。
 
-**首选方法**：用 tracefs 的 function_graph，通过 `set_graph_function` 只跟踪 `do_swap_page` 和 `swap_read_folio`，直接得到每次调用的耗时。它不需要 BTF，也不需要 perf 解析 tracepoint，并且能在开和关之间切换。
+**换入延迟分布的主要方法：合成微基准**（确定性最好）。在一个 memcg v1 中分配 N MB 匿名内存，填入从后台应用离线转储的真实页面内容（保证压缩率有代表性），用 `memory.force_reclaim` 把它们压进 zram，再逐页访问，用 `clock_gettime` 记录每页的缺页耗时，直接得到分布。
 
-**备选方法**：在 `kprobe_events` 中定义 `do_swap_page` 的入口和返回探针，按线程配对；需要检查 `kprobe_profile` 中的 missed 次数和缓冲丢失。
+**真实应用**：用 taskstats 的 swapin 延迟（本配置 TASK_DELAY_ACCT=y，运行时打开 `kernel.task_delayacct`），得到每个任务的换入总延迟和次数（只有均值，没有分布）。
+
+**真实应用的单次调用耗时**：用 tracefs 的 function_graph，通过 `set_graph_function` 只跟踪 `do_swap_page` 和 `swap_read_folio`，直接得到每次调用的耗时。它不需要 BTF，也不需要 perf 解析 tracepoint，并且能在开和关之间切换。
+
+本内核没有 HIST_TRIGGERS 和 SYNTH_EVENTS，不能在内核内做直方图；如果确实需要，可以做一个测量专用内核，在 `swap_read_folio` 中加 log2 直方图通过 debugfs 导出，只用于测量，不进入产品。
+
+**抽查方法**：在 `kprobe_events` 中定义 `do_swap_page` 的入口和返回探针，按线程配对；需要检查 `kprobe_profile` 中的 missed 次数和缓冲丢失。
 
 **注意**：
 
@@ -558,10 +602,10 @@ Jaehoon 的 lz4 三个补丁能干净合入，但还没有编译和验证，不�
 
 | 阶段 | 内容 | 前提 | 产出 |
 | --- | --- | --- | --- |
-| 0 | 栈保护探测修复（3.1.2）并重建 LLVM 基线；标准场景脚本、测量工具和 perf 临时部署流程固化；追踪开销测量；A/A 试跑和样本量估算；补采：CMA 位置、各 memcg 实际 swappiness、所有进程的 VmPeak | 无 | 正确、可重复的基线；统计方案；测量设施报告 |
+| 0 | 栈保护探测修复（3.1.2）并重建 LLVM 基线；标准场景脚本、换入微基准、测量工具和 perf 临时部署流程固化；追踪开销测量；A/A 试跑和样本量估算；补采：各 memcg 实际 swappiness、所有进程的 VmPeak、标准场景下的 zoneinfo；函数热度集中度分析和全内核按体积优化的上限构建（3.7 的最小实验） | 无 | 正确、可重复的基线；统计方案；测量设施报告；热度分布 |
 | 1 | zram 算法可用性与配置闭环（3.4.1）；逐因素对照（3.4.2）；成本账本（3.4.3）；“全部标记空闲”变体及 `cond_resched` 补丁（3.4.4）；低端内存保护参数（3.3.1）；min_ttl_ms（3.5.1） | 阶段 0 | zram 方案结论；低端内存参数结论 |
-| 2 | 独立配置裁剪及组合变体（3.2，BTF 除外）；BTF 依赖清单；链接期死代码消除（3.1.4）；用户态主动归还（3.6.1）；zsmalloc 碎片（3.6.2）；地址空间划分评估（3.3.2，先只看数据） | 阶段 0 | 每项的实际节省和产品取舍表 |
-| 3 | -pg 不强制帧指针（3.1.1，编译器 PoC 加内核探测）；安全配置对齐之后的 GCC 与 Clang 内核运行时对比 | 阶段 0 | 补丁和对比报告 |
+| 2 | 独立配置裁剪及组合变体（3.2，BTF 除外）；BTF 依赖清单；链接期死代码消除（3.1.4）；用户态主动归还（3.6.1）；zsmalloc 碎片（3.6.2）；地址空间划分评估（3.3.2，先只看数据）；内核映像 LZ4 压缩（3.1.6，低优先级）。静态体积测量不需要等阶段 0 全部完成，可以先开始 | 阶段 0（运行时部分） | 每项的实际节省（含低端内存和 slab）和产品取舍表 |
+| 3 | -pg 不强制帧指针（3.1.1：先用 `-Xclang` 快速实验量化收益，再决定是否做编译器 PoC 加内核探测）；安全配置对齐之后的 GCC 与 Clang 内核运行时对比 | 阶段 0 | 补丁和对比报告 |
 | 4 | 局部内联膨胀（3.1.3）；函数级热度驱动的重排与冷代码优化、create_llvm_prof 可行性（3.7）；小尺寸透明大页（7.6） | 阶段 2、3 | 各项继续或停止的结论 |
 | 5（PoC） | MGLRU-FG 回移植评估（3.5.2）；ARM32 LTO 可行性（3.1.5）；第 7 章中选定的探索项 | 阶段 1 | 可行性、收益上限、退出条件 |
 
@@ -581,6 +625,8 @@ Jaehoon 的 lz4 三个补丁能干净合入，但还没有编译和验证，不�
 | 重压缩与前台竞争、TTL 提前 OOM、算法初始化顺序 | 前台卡顿、后台被杀、zram 初始化失败 | 见 3.4、3.5 的验证项 |
 | 模块打包与恢复路径 | 裁剪后恢复模式或升级失败 | 3.2 的验证项 |
 | 采样数据过拟合、组合改动的收益重叠 | 收益被高估 | 训练与验收分离；组合后重新验收 |
+| 板子与其他工作线共用 | 噪声，测试相互干扰 | 实验期间独占板子；记录其他进程（例如已有的串口 shell） |
+| 标准场景需要写 /opt 分区（安装测试应用） | 与“不改系统”的规则有冲突 | 待用户确认是否纳入常规授权；resourced 和内核的改动通过 QB 镜像 |
 | 编译器改动的影响面 | 平台上其他使用 `-pg` 的程序 | 只在显式选择时生效（3.1.1）；使用独立版本的工具链做实验 |
 | 无法核实的事项 | — | 产品 BOM 和硬件压缩能力；CMA 的实际来源；网络监控插件在产品中的触发条件；resourced 静默回退的真实执行路径。保留为待调查，不预先认定为缺陷或可裁剪 |
 
@@ -669,6 +715,14 @@ Jaehoon 的 lz4 三个补丁能干净合入，但还没有编译和验证，不�
 - **设计**：第一步只加 `-mtune=cortex-a72`，不改变指令集，兼容性不受影响；收益明确后，再评估是否值得使用 ARMv8 AArch32 指令（`-mcpu=cortex-a72`），这一步要核对 AArch32 路径上的 errata 处理和多平台兼容。
 - **粗估**：指令调度带来的改善通常在 0–3% 之间（公开编译器数据的量级），可能落在噪声内，判定门槛事先写死。
 - **最小实验**：改一行编译参数，构建、启动，做标准场景和微基准的 A/B，一天内可以出结论。
+
+### 7.8 必须保留内核 BTF 时：压缩存储、按需解压
+
+- **问题**：只有在 3.2 的依赖清单表明产品必须保留内核 BTF 时才考虑。BTF 段 6.48 MB 常驻低端内存，但只有加载 BPF 程序或读取 /sys/kernel/btf 时才用到。
+- **设计**：构建时用 zstd 压缩 .BTF 并替换原段；第一次需要时（解析 vmlinux BTF、sysfs 读取）解压到 vmalloc 区，页面可以来自 HighMem。需要修改直接引用 `__start_BTF` 的代码（kernel/bpf/btf.c、sysfs_btf.c）；上游近期为 BTF 加了 mmap 支持，要求段按页对齐，需要协调（状态无法核实）。
+- **粗估**：BTF 由类型记录和字符串表组成，压缩率估计 3–5 倍；不用 BPF 时约省 4.5–5 MB 低端内存，用 BPF 时改为占用约 6.5 MB HighMem。
+- **风险**：与上游 BTF 代码长期分叉；第一次使用时的延迟。
+- **最小实验**：用 objcopy 从现有 vmlinux 取出 .BTF，用 `zstd -19` 测压缩率；列出所有引用 `__start_BTF` 的位置。
 
 ## 8. 请评审重点关注
 

@@ -4,7 +4,7 @@
 
 **设计文档当前版本为v2：[docs/10_design_v2.md](10_design_v2.md)，待外部评审；[v1](10_design_v1.md)保留为历史记录。** 本次计划为原样移动v2与上一轮评审记录、登记两项常规授权并提交main；文件移动和授权登记已完成，未执行板上实验。
 
-- v2已从指定Downloads路径移动入库，Downloads下已无该文件；内容未改，65,232 B，移动前后SHA-256均为`7604959c04f74b1fdd52eb3e59a86057be98176bfb912d82d07197bef3eb2b81`。
+- v2为同日修订版，补入上一轮 Claude Code 完整评审中初稿遗漏的内容；已从指定Downloads路径移动覆盖现有文件，Downloads下已无该文件；移动过程未修改内容，75,639 B，移动前后SHA-256均为`4894e7c188d5fefb1c940ede06af9882d8f550487bf86987d32d2523e47c1bdc`。
 - 上一轮评审记录已找到：`docs/11_design_v1_review.md`原样移动至[docs/reviews/design_v1_review_claude_code.md](reviews/design_v1_review_claude_code.md)；69,236 B，移动前后SHA-256均为`df909afc7e4c30b8d495c280950a81abe24554f0b4766ca20ad969bbfde59392`。移动验证原文在`temp/design_v2_intake_20261030/moves_verified.json`。
 - 已登记两项常规授权，今后不再逐次申请：同一次QB构建的临时perf及缺失库按任务5c流程在/opt/usr任务专用目录运行，三个环境变量仅指向该目录，结束删除并核对df/mounts；实验可修改/proc/sys和/sys可写参数，记录原值、结束恢复并回读、写入报告，同板参数实验串行。详见[RULES板上常规授权](RULES.md#板上常规授权2026-10-30pm裁决)。其余规则不变，重启仍由用户执行、不用sudo、不碰其他任务进程。
 
