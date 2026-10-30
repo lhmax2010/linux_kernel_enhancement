@@ -1,0 +1,11 @@
+QB1211696 devel package final .config
+Extracted path: /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b/extract-devel/boot/kernel/devel/kernel-devel-arm-rpi4/.config
+Reference: /home/linhao/Toolchain/development/linux_kernel_optimization/temp/pmu_config_check/llvm/arm-rpi4/.config
+Actual bytes: 194980
+Actual SHA256: 62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5
+Reference SHA256: 62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5
+Full bytes identical: True
+Platform scripts/diffconfig stdout: empty
+Platform scripts/diffconfig exit: 0
+Tool: LLVM buildroot qemu-arm + ARM python3; readonly root/source namespace, no sudo.
+Note: RPM BUILDTIME is epoch 0 in both packages; do not use it to infer kernel build time.

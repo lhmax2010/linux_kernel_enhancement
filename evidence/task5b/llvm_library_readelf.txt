@@ -1,0 +1,43 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b/namespace_home /home --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp /home/linhao/Toolchain/development/linux_kernel_optimization/temp --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b --setenv HOME /home/abuild --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin -- /usr/bin/qemu-arm -L / /usr/bin/readelf -W -d /usr/lib/libLLVM.so.22.1
+
+Dynamic section at offset 0x1e05618 contains 37 entries:
+  Tag        Type                         Name/Value
+ 0x0000001d (RUNPATH)                    Library runpath: [$ORIGIN/../lib]
+ 0x00000001 (NEEDED)                     Shared library: [librt.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libdl.so.2]
+ 0x00000001 (NEEDED)                     Shared library: [libm.so.6]
+ 0x00000001 (NEEDED)                     Shared library: [libz.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libxml2.so.16]
+ 0x00000001 (NEEDED)                     Shared library: [libstdc++.so.6]
+ 0x00000001 (NEEDED)                     Shared library: [libgcc_s.so.1]
+ 0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+ 0x00000001 (NEEDED)                     Shared library: [ld-linux.so.3]
+ 0x0000000e (SONAME)                     Library soname: [libLLVM.so.22.1]
+ 0x6ffffffb (FLAGS_1)                    Flags: NODELETE
+ 0x00000011 (REL)                        0x3d1208
+ 0x00000012 (RELSZ)                      725904 (bytes)
+ 0x00000013 (RELENT)                     8 (bytes)
+ 0x6ffffffa (RELCOUNT)                   70158
+ 0x00000017 (JMPREL)                     0x514de8
+ 0x00000002 (PLTRELSZ)                   2992 (bytes)
+ 0x00000003 (PLTGOT)                     0x1e395e0
+ 0x00000014 (PLTREL)                     REL
+ 0x00000006 (SYMTAB)                     0x194
+ 0x0000000b (SYMENT)                     16 (bytes)
+ 0x00000005 (STRTAB)                     0xfe774
+ 0x0000000a (STRSZ)                      2960018 (bytes)
+ 0x6ffffef5 (GNU_HASH)                   0xbb190
+ 0x00000019 (INIT_ARRAY)                 0x1dab038
+ 0x0000001b (INIT_ARRAYSZ)               1776 (bytes)
+ 0x0000001a (FINI_ARRAY)                 0x1dab034
+ 0x0000001c (FINI_ARRAYSZ)               4 (bytes)
+ 0x0000000c (INIT)                       0x1d99890
+ 0x0000000d (FINI)                       0x1d9989c
+ 0x6ffffff0 (VERSYM)                     0xa6234
+ 0x6ffffffc (VERDEF)                     0xbae48
+ 0x6ffffffd (VERDEFNUM)                  2
+ 0x6ffffffe (VERNEED)                    0xbae80
+ 0x6fffffff (VERNEEDNUM)                 6
+ 0x00000000 (NULL)                       0x0
+
+EXIT=0

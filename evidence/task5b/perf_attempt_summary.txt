@@ -1,0 +1,16 @@
+Test scope: PM-authorized temporary perf executable plus missing libraries only.
+Downloaded perf: linux-kernel-perf-6.12.80-0.armv7l.rpm from the specified QB public directory.
+Platform readelf found 16 DT_NEEDED entries. Only libLLVM.so.22.1 missing on board (ls and find); all 9 dependencies of the replacement library present.
+Missing library source: existing WS LLVM GBS buildroot, libllvm-22.1.8-3.1.armv7l; 31,498,764 bytes. No alternate perf/devel RPM source used.
+Perf: 2,981,796 bytes; total two pushed files: 34,480,560 bytes. Board du: 33,676 KiB, below 50 MiB. Both copied SHA256 verified on board.
+SDB session already uid=0 at entry; no root on/off command issued. perf_event_paranoid=2 unchanged.
+HOME, TMPDIR and LD_LIBRARY_PATH set to /tmp/lko_task5b for perf; LD_LIBRARY_PATH contains only this path.
+perf version --build-options: /bin/sh: /tmp/lko_task5b/perf: Permission denied; exit 126. File mode was 0755.
+Readonly /proc/mounts confirmation: tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0.
+The noexec mount prevents the approved execution path. No remount, alternate executable location, loader bypass or security policy change was attempted.
+perf stat, cycles record/evlist and branch record: NOT RUN after executable startup failed.
+Hardware counting: unverified; no evlist type=0 evidence.
+Branch sampling: unverified, not a hardware unsupported result.
+Software event fallback: unobservable because no event was opened, not a successful no-fallback certification.
+Cleanup ran in finally: /tmp/lko_task5b deleted; TASK5B-TEMP-ABSENT and subsequent TASK5B-TEMP-ABSENT-CONFIRMED recorded.
+Initial/final process lists saved. Existing root serial shell PID3708 was left alone. Historical dmesg perf rate adjustments at uptime11755–11766s precede this task's start83729s and are not evidence of this attempt.

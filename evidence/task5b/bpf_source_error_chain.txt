@@ -1,0 +1,285 @@
+$ rg -n 'arch_prepare_bpf_trampoline|arch_bpf_trampoline_size' linux-rpi/arch/arm
+EXIT=1 (no match in ARM32 architecture subtree)
+
+Kernel source commit: 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+
+
+FILE linux-rpi/kernel/bpf/trampoline.c SHA256=a87fc6c928dd62597322feb9c3cea8a5d6b10b62da91b8dc5151504e3c281849
+linux-rpi/kernel/bpf/trampoline.c:442: 	size = arch_bpf_trampoline_size(&tr->func.model, tr->flags,
+linux-rpi/kernel/bpf/trampoline.c:443: 					tlinks, tr->func.addr);
+linux-rpi/kernel/bpf/trampoline.c:444: 	if (size < 0) {
+linux-rpi/kernel/bpf/trampoline.c:445: 		err = size;
+linux-rpi/kernel/bpf/trampoline.c:446: 		goto out;
+linux-rpi/kernel/bpf/trampoline.c:447: 	}
+linux-rpi/kernel/bpf/trampoline.c:448: 
+linux-rpi/kernel/bpf/trampoline.c:449: 	if (size > PAGE_SIZE) {
+linux-rpi/kernel/bpf/trampoline.c:450: 		err = -E2BIG;
+linux-rpi/kernel/bpf/trampoline.c:451: 		goto out;
+linux-rpi/kernel/bpf/trampoline.c:452: 	}
+linux-rpi/kernel/bpf/trampoline.c:453: 
+linux-rpi/kernel/bpf/trampoline.c:454: 	im = bpf_tramp_image_alloc(tr->key, size);
+linux-rpi/kernel/bpf/trampoline.c:455: 	if (IS_ERR(im)) {
+linux-rpi/kernel/bpf/trampoline.c:456: 		err = PTR_ERR(im);
+linux-rpi/kernel/bpf/trampoline.c:457: 		goto out;
+linux-rpi/kernel/bpf/trampoline.c:458: 	}
+linux-rpi/kernel/bpf/trampoline.c:459: 
+linux-rpi/kernel/bpf/trampoline.c:460: 	err = arch_prepare_bpf_trampoline(im, im->image, im->image + size,
+linux-rpi/kernel/bpf/trampoline.c:461: 					  &tr->func.model, tr->flags, tlinks,
+linux-rpi/kernel/bpf/trampoline.c:462: 					  tr->func.addr);
+linux-rpi/kernel/bpf/trampoline.c:463: 	if (err < 0)
+linux-rpi/kernel/bpf/trampoline.c:464: 		goto out_free;
+linux-rpi/kernel/bpf/trampoline.c:465: 
+linux-rpi/kernel/bpf/trampoline.c:466: 	err = arch_protect_bpf_trampoline(im->image, im->size);
+linux-rpi/kernel/bpf/trampoline.c:467: 	if (err)
+linux-rpi/kernel/bpf/trampoline.c:588: 	hlist_add_head(&link->tramp_hlist, &tr->progs_hlist[kind]);
+linux-rpi/kernel/bpf/trampoline.c:589: 	tr->progs_cnt[kind]++;
+linux-rpi/kernel/bpf/trampoline.c:590: 	err = bpf_trampoline_update(tr, true /* lock_direct_mutex */);
+linux-rpi/kernel/bpf/trampoline.c:591: 	if (err) {
+linux-rpi/kernel/bpf/trampoline.c:592: 		hlist_del_init(&link->tramp_hlist);
+linux-rpi/kernel/bpf/trampoline.c:593: 		tr->progs_cnt[kind]--;
+linux-rpi/kernel/bpf/trampoline.c:594: 	}
+linux-rpi/kernel/bpf/trampoline.c:595: 	return err;
+linux-rpi/kernel/bpf/trampoline.c:596: }
+linux-rpi/kernel/bpf/trampoline.c:597: 
+linux-rpi/kernel/bpf/trampoline.c:598: int bpf_trampoline_link_prog(struct bpf_tramp_link *link,
+linux-rpi/kernel/bpf/trampoline.c:599: 			     struct bpf_trampoline *tr,
+linux-rpi/kernel/bpf/trampoline.c:600: 			     struct bpf_prog *tgt_prog)
+linux-rpi/kernel/bpf/trampoline.c:601: {
+linux-rpi/kernel/bpf/trampoline.c:602: 	int err;
+linux-rpi/kernel/bpf/trampoline.c:603: 
+linux-rpi/kernel/bpf/trampoline.c:604: 	mutex_lock(&tr->mutex);
+linux-rpi/kernel/bpf/trampoline.c:605: 	err = __bpf_trampoline_link_prog(link, tr, tgt_prog);
+linux-rpi/kernel/bpf/trampoline.c:606: 	mutex_unlock(&tr->mutex);
+linux-rpi/kernel/bpf/trampoline.c:607: 	return err;
+linux-rpi/kernel/bpf/trampoline.c:1079: int __weak
+linux-rpi/kernel/bpf/trampoline.c:1080: arch_prepare_bpf_trampoline(struct bpf_tramp_image *im, void *image, void *image_end,
+linux-rpi/kernel/bpf/trampoline.c:1081: 			    const struct btf_func_model *m, u32 flags,
+linux-rpi/kernel/bpf/trampoline.c:1082: 			    struct bpf_tramp_links *tlinks,
+linux-rpi/kernel/bpf/trampoline.c:1083: 			    void *func_addr)
+linux-rpi/kernel/bpf/trampoline.c:1084: {
+linux-rpi/kernel/bpf/trampoline.c:1085: 	return -ENOTSUPP;
+linux-rpi/kernel/bpf/trampoline.c:1086: }
+linux-rpi/kernel/bpf/trampoline.c:1115: int __weak arch_bpf_trampoline_size(const struct btf_func_model *m, u32 flags,
+linux-rpi/kernel/bpf/trampoline.c:1116: 				    struct bpf_tramp_links *tlinks, void *func_addr)
+linux-rpi/kernel/bpf/trampoline.c:1117: {
+linux-rpi/kernel/bpf/trampoline.c:1118: 	return -ENOTSUPP;
+linux-rpi/kernel/bpf/trampoline.c:1119: }
+
+FILE linux-rpi/kernel/bpf/syscall.c SHA256=394deec22408f0a6a0c89390fe68da458a3ef3283bcbf3c2995a46f3638aaf88
+linux-rpi/kernel/bpf/syscall.c:2852: 	err = security_bpf_prog_load(prog, attr, token);
+linux-rpi/kernel/bpf/syscall.c:2853: 	if (err)
+linux-rpi/kernel/bpf/syscall.c:2854: 		goto free_prog_sec;
+linux-rpi/kernel/bpf/syscall.c:2855: 
+linux-rpi/kernel/bpf/syscall.c:2856: 	/* run eBPF verifier */
+linux-rpi/kernel/bpf/syscall.c:2857: 	err = bpf_check(&prog, attr, uattr, uattr_size);
+linux-rpi/kernel/bpf/syscall.c:2858: 	if (err < 0)
+linux-rpi/kernel/bpf/syscall.c:2859: 		goto free_used_maps;
+linux-rpi/kernel/bpf/syscall.c:2860: 
+linux-rpi/kernel/bpf/syscall.c:2861: 	prog = bpf_prog_select_runtime(prog, &err);
+linux-rpi/kernel/bpf/syscall.c:2862: 	if (err < 0)
+linux-rpi/kernel/bpf/syscall.c:2863: 		goto free_used_maps;
+linux-rpi/kernel/bpf/syscall.c:3456: 	err = bpf_link_prime(&link->link.link, &link_primer);
+linux-rpi/kernel/bpf/syscall.c:3457: 	if (err)
+linux-rpi/kernel/bpf/syscall.c:3458: 		goto out_unlock;
+linux-rpi/kernel/bpf/syscall.c:3459: 
+linux-rpi/kernel/bpf/syscall.c:3460: 	err = bpf_trampoline_link_prog(&link->link, tr, tgt_prog);
+linux-rpi/kernel/bpf/syscall.c:3461: 	if (err) {
+linux-rpi/kernel/bpf/syscall.c:3462: 		bpf_link_cleanup(&link_primer);
+linux-rpi/kernel/bpf/syscall.c:3463: 		link = NULL;
+linux-rpi/kernel/bpf/syscall.c:3464: 		goto out_unlock;
+linux-rpi/kernel/bpf/syscall.c:3465: 	}
+linux-rpi/kernel/bpf/syscall.c:3466: 
+linux-rpi/kernel/bpf/syscall.c:3486: 	return bpf_link_settle(&link_primer);
+linux-rpi/kernel/bpf/syscall.c:3487: out_unlock:
+linux-rpi/kernel/bpf/syscall.c:3488: 	if (tr && tr != prog->aux->dst_trampoline)
+linux-rpi/kernel/bpf/syscall.c:3489: 		bpf_trampoline_put(tr);
+linux-rpi/kernel/bpf/syscall.c:3490: 	mutex_unlock(&prog->aux->dst_mutex);
+linux-rpi/kernel/bpf/syscall.c:3491: 	kfree(link);
+linux-rpi/kernel/bpf/syscall.c:3492: out_put_prog:
+linux-rpi/kernel/bpf/syscall.c:3493: 	if (tgt_prog_fd && tgt_prog)
+linux-rpi/kernel/bpf/syscall.c:3494: 		bpf_prog_put(tgt_prog);
+linux-rpi/kernel/bpf/syscall.c:3495: 	return err;
+linux-rpi/kernel/bpf/syscall.c:3496: }
+linux-rpi/kernel/bpf/syscall.c:3497: 
+linux-rpi/kernel/bpf/syscall.c:3498: static void bpf_raw_tp_link_release(struct bpf_link *link)
+linux-rpi/kernel/bpf/syscall.c:3499: {
+linux-rpi/kernel/bpf/syscall.c:3500: 	struct bpf_raw_tp_link *raw_tp =
+linux-rpi/kernel/bpf/syscall.c:3501: 		container_of(link, struct bpf_raw_tp_link, link);
+
+FILE linux-rpi/include/linux/errno.h SHA256=e49469284a3014e6cbca27f852a75e4e540818d38b33edff7eb2c4fe8dd268c6
+linux-rpi/include/linux/errno.h:24: #define EBADHANDLE	521	/* Illegal NFS file handle */
+linux-rpi/include/linux/errno.h:25: #define ENOTSYNC	522	/* Update synchronization mismatch */
+linux-rpi/include/linux/errno.h:26: #define EBADCOOKIE	523	/* Cookie is stale */
+linux-rpi/include/linux/errno.h:27: #define ENOTSUPP	524	/* Operation is not supported */
+linux-rpi/include/linux/errno.h:28: #define ETOOSMALL	525	/* Buffer or request is too small */
+linux-rpi/include/linux/errno.h:29: #define ESERVERFAULT	526	/* An untranslatable error occurred */
+
+FILE linux-rpi/kernel/bpf/verifier.c SHA256=931ed00897462e68c3d5748644c181ce0052b350f44e19da661b3fe2e61ecd1d
+linux-rpi/kernel/bpf/verifier.c:22585: 	}
+linux-rpi/kernel/bpf/verifier.c:22586: 
+linux-rpi/kernel/bpf/verifier.c:22587: 	key = bpf_trampoline_compute_key(tgt_prog, prog->aux->attach_btf, btf_id);
+linux-rpi/kernel/bpf/verifier.c:22588: 	tr = bpf_trampoline_get(key, &tgt_info);
+linux-rpi/kernel/bpf/verifier.c:22589: 	if (!tr)
+linux-rpi/kernel/bpf/verifier.c:22590: 		return -ENOMEM;
+linux-rpi/kernel/bpf/verifier.c:22591: 
+linux-rpi/kernel/bpf/verifier.c:22592: 	if (tgt_prog && tgt_prog->aux->tail_call_reachable)
+linux-rpi/kernel/bpf/verifier.c:22593: 		tr->flags = BPF_TRAMP_F_TAIL_CALL_CTX;
+linux-rpi/kernel/bpf/verifier.c:22594: 
+linux-rpi/kernel/bpf/verifier.c:22595: 	prog->aux->dst_trampoline = tr;
+linux-rpi/kernel/bpf/verifier.c:22596: 	return 0;
+linux-rpi/kernel/bpf/verifier.c:22597: }
+linux-rpi/kernel/bpf/verifier.c:22598: 
+linux-rpi/kernel/bpf/verifier.c:22599: struct btf *bpf_get_btf_vmlinux(void)
+
+FILE linux-rpi/arch/arm/net/bpf_jit_32.c SHA256=a854bbe16b8ee8922e9fd0c9222e83fa11a6b980e5840e2f6792654e9cdda7d7
+linux-rpi/arch/arm/net/bpf_jit_32.c:2145: struct bpf_prog *bpf_int_jit_compile(struct bpf_prog *prog)
+linux-rpi/arch/arm/net/bpf_jit_32.c:2146: {
+linux-rpi/arch/arm/net/bpf_jit_32.c:2147: 	struct bpf_prog *tmp, *orig_prog = prog;
+linux-rpi/arch/arm/net/bpf_jit_32.c:2148: 	struct bpf_binary_header *header;
+linux-rpi/arch/arm/net/bpf_jit_32.c:2149: 	bool tmp_blinded = false;
+linux-rpi/arch/arm/net/bpf_jit_32.c:2150: 	struct jit_ctx ctx;
+linux-rpi/arch/arm/net/bpf_jit_32.c:2151: 	unsigned int tmp_idx;
+linux-rpi/arch/arm/net/bpf_jit_32.c:2152: 	unsigned int image_size;
+linux-rpi/arch/arm/net/bpf_jit_32.c:2153: 	u8 *image_ptr;
+linux-rpi/arch/arm/net/bpf_jit_32.c:2154: 
+linux-rpi/arch/arm/net/bpf_jit_32.c:2155: 	/* If BPF JIT was not enabled then we must fall back to
+linux-rpi/arch/arm/net/bpf_jit_32.c:2156: 	 * the interpreter.
+linux-rpi/arch/arm/net/bpf_jit_32.c:2157: 	 */
+linux-rpi/arch/arm/net/bpf_jit_32.c:2158: 	if (!prog->jit_requested)
+linux-rpi/arch/arm/net/bpf_jit_32.c:2159: 		return orig_prog;
+linux-rpi/arch/arm/net/bpf_jit_32.c:2160: 
+linux-rpi/arch/arm/net/bpf_jit_32.c:2161: 	/* If constant blinding was enabled and we failed during blinding
+linux-rpi/arch/arm/net/bpf_jit_32.c:2162: 	 * then we must fall back to the interpreter. Otherwise, we save
+
+FILE temp/task5b/libbpf-v1.6.2/libbpf.c SHA256=adffafa57d9ad286a8dbbccf7104e5f92b782f788d8e80a9fd5b0090db8f394a
+temp/task5b/libbpf-v1.6.2/libbpf.c:8678: 	bpf_object_post_load_cleanup(obj);
+temp/task5b/libbpf-v1.6.2/libbpf.c:8679: 	obj->state = OBJ_LOADED; /* doesn't matter if successfully or not */
+temp/task5b/libbpf-v1.6.2/libbpf.c:8680: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:8681: 	if (err) {
+temp/task5b/libbpf-v1.6.2/libbpf.c:8682: 		bpf_object_unpin(obj);
+temp/task5b/libbpf-v1.6.2/libbpf.c:8683: 		bpf_object_unload(obj);
+temp/task5b/libbpf-v1.6.2/libbpf.c:8684: 		pr_warn("failed to load object '%s'\n", obj->path);
+temp/task5b/libbpf-v1.6.2/libbpf.c:8685: 		return libbpf_err(err);
+temp/task5b/libbpf-v1.6.2/libbpf.c:8686: 	}
+temp/task5b/libbpf-v1.6.2/libbpf.c:8687: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:8688: 	return 0;
+temp/task5b/libbpf-v1.6.2/libbpf.c:8689: }
+temp/task5b/libbpf-v1.6.2/libbpf.c:8690: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:8691: int bpf_object__prepare(struct bpf_object *obj)
+temp/task5b/libbpf-v1.6.2/libbpf.c:8692: {
+temp/task5b/libbpf-v1.6.2/libbpf.c:8693: 	return libbpf_err(bpf_object_prepare(obj, NULL));
+temp/task5b/libbpf-v1.6.2/libbpf.c:8694: }
+temp/task5b/libbpf-v1.6.2/libbpf.c:8695: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:8696: int bpf_object__load(struct bpf_object *obj)
+temp/task5b/libbpf-v1.6.2/libbpf.c:8697: {
+temp/task5b/libbpf-v1.6.2/libbpf.c:8698: 	return bpf_object_load(obj, 0, NULL);
+temp/task5b/libbpf-v1.6.2/libbpf.c:8699: }
+temp/task5b/libbpf-v1.6.2/libbpf.c:8700: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:10714: long libbpf_get_error(const void *ptr)
+temp/task5b/libbpf-v1.6.2/libbpf.c:10715: {
+temp/task5b/libbpf-v1.6.2/libbpf.c:10716: 	if (!IS_ERR_OR_NULL(ptr))
+temp/task5b/libbpf-v1.6.2/libbpf.c:10717: 		return 0;
+temp/task5b/libbpf-v1.6.2/libbpf.c:10718: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:10719: 	if (IS_ERR(ptr))
+temp/task5b/libbpf-v1.6.2/libbpf.c:10720: 		errno = -PTR_ERR(ptr);
+temp/task5b/libbpf-v1.6.2/libbpf.c:10721: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:10722: 	/* If ptr == NULL, then errno should be already set by the failing
+temp/task5b/libbpf-v1.6.2/libbpf.c:10723: 	 * API, because libbpf never returns NULL on success and it now always
+temp/task5b/libbpf-v1.6.2/libbpf.c:10724: 	 * sets errno on error. So no extra errno handling for ptr == NULL
+temp/task5b/libbpf-v1.6.2/libbpf.c:10725: 	 * case.
+temp/task5b/libbpf-v1.6.2/libbpf.c:10726: 	 */
+temp/task5b/libbpf-v1.6.2/libbpf.c:10727: 	return -errno;
+temp/task5b/libbpf-v1.6.2/libbpf.c:10728: }
+temp/task5b/libbpf-v1.6.2/libbpf.c:12744: static struct bpf_link *bpf_program__attach_btf_id(const struct bpf_program *prog,
+temp/task5b/libbpf-v1.6.2/libbpf.c:12745: 						   const struct bpf_trace_opts *opts)
+temp/task5b/libbpf-v1.6.2/libbpf.c:12746: {
+temp/task5b/libbpf-v1.6.2/libbpf.c:12747: 	LIBBPF_OPTS(bpf_link_create_opts, link_opts);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12748: 	struct bpf_link *link;
+temp/task5b/libbpf-v1.6.2/libbpf.c:12749: 	int prog_fd, pfd;
+temp/task5b/libbpf-v1.6.2/libbpf.c:12750: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:12751: 	if (!OPTS_VALID(opts, bpf_trace_opts))
+temp/task5b/libbpf-v1.6.2/libbpf.c:12752: 		return libbpf_err_ptr(-EINVAL);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12753: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:12754: 	prog_fd = bpf_program__fd(prog);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12755: 	if (prog_fd < 0) {
+temp/task5b/libbpf-v1.6.2/libbpf.c:12756: 		pr_warn("prog '%s': can't attach before loaded\n", prog->name);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12757: 		return libbpf_err_ptr(-EINVAL);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12758: 	}
+temp/task5b/libbpf-v1.6.2/libbpf.c:12759: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:12760: 	link = calloc(1, sizeof(*link));
+temp/task5b/libbpf-v1.6.2/libbpf.c:12761: 	if (!link)
+temp/task5b/libbpf-v1.6.2/libbpf.c:12762: 		return libbpf_err_ptr(-ENOMEM);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12763: 	link->detach = &bpf_link__detach_fd;
+temp/task5b/libbpf-v1.6.2/libbpf.c:12764: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:12765: 	/* libbpf is smart enough to redirect to BPF_RAW_TRACEPOINT_OPEN on old kernels */
+temp/task5b/libbpf-v1.6.2/libbpf.c:12766: 	link_opts.tracing.cookie = OPTS_GET(opts, cookie, 0);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12767: 	pfd = bpf_link_create(prog_fd, 0, bpf_program__expected_attach_type(prog), &link_opts);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12768: 	if (pfd < 0) {
+temp/task5b/libbpf-v1.6.2/libbpf.c:12769: 		pfd = -errno;
+temp/task5b/libbpf-v1.6.2/libbpf.c:12770: 		free(link);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12771: 		pr_warn("prog '%s': failed to attach: %s\n",
+temp/task5b/libbpf-v1.6.2/libbpf.c:12772: 			prog->name, errstr(pfd));
+temp/task5b/libbpf-v1.6.2/libbpf.c:12773: 		return libbpf_err_ptr(pfd);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12774: 	}
+temp/task5b/libbpf-v1.6.2/libbpf.c:12775: 	link->fd = pfd;
+temp/task5b/libbpf-v1.6.2/libbpf.c:12776: 	return link;
+temp/task5b/libbpf-v1.6.2/libbpf.c:12777: }
+temp/task5b/libbpf-v1.6.2/libbpf.c:12778: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:12779: struct bpf_link *bpf_program__attach_trace(const struct bpf_program *prog)
+temp/task5b/libbpf-v1.6.2/libbpf.c:12780: {
+temp/task5b/libbpf-v1.6.2/libbpf.c:12781: 	return bpf_program__attach_btf_id(prog, NULL);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12782: }
+temp/task5b/libbpf-v1.6.2/libbpf.c:12795: static int attach_trace(const struct bpf_program *prog, long cookie, struct bpf_link **link)
+temp/task5b/libbpf-v1.6.2/libbpf.c:12796: {
+temp/task5b/libbpf-v1.6.2/libbpf.c:12797: 	*link = bpf_program__attach_trace(prog);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12798: 	return libbpf_get_error(*link);
+temp/task5b/libbpf-v1.6.2/libbpf.c:12799: }
+temp/task5b/libbpf-v1.6.2/libbpf.c:14075: int bpf_object__load_skeleton(struct bpf_object_skeleton *s)
+temp/task5b/libbpf-v1.6.2/libbpf.c:14076: {
+temp/task5b/libbpf-v1.6.2/libbpf.c:14077: 	int i, err;
+temp/task5b/libbpf-v1.6.2/libbpf.c:14078: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:14079: 	err = bpf_object__load(*s->obj);
+temp/task5b/libbpf-v1.6.2/libbpf.c:14080: 	if (err) {
+temp/task5b/libbpf-v1.6.2/libbpf.c:14081: 		pr_warn("failed to load BPF skeleton '%s': %s\n", s->name, errstr(err));
+temp/task5b/libbpf-v1.6.2/libbpf.c:14082: 		return libbpf_err(err);
+temp/task5b/libbpf-v1.6.2/libbpf.c:14083: 	}
+temp/task5b/libbpf-v1.6.2/libbpf.c:14084: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:14117: 
+temp/task5b/libbpf-v1.6.2/libbpf.c:14118: 		err = prog->sec_def->prog_attach_fn(prog, prog->sec_def->cookie, link);
+temp/task5b/libbpf-v1.6.2/libbpf.c:14119: 		if (err) {
+temp/task5b/libbpf-v1.6.2/libbpf.c:14120: 			pr_warn("prog '%s': failed to auto-attach: %s\n",
+temp/task5b/libbpf-v1.6.2/libbpf.c:14121: 				bpf_program__name(prog), errstr(err));
+temp/task5b/libbpf-v1.6.2/libbpf.c:14122: 			return libbpf_err(err);
+temp/task5b/libbpf-v1.6.2/libbpf.c:14123: 		}
+temp/task5b/libbpf-v1.6.2/libbpf.c:14124: 
+
+FILE temp/task5b/libbpf-v1.6.2/libbpf_internal.h SHA256=743f585345fd2ec9606b6949d2c689cfc491e2b604d58644a73329311304a9d9
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:577: static inline int libbpf_err(int ret)
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:578: {
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:579: 	if (ret < 0)
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:580: 		errno = -ret;
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:581: 	return ret;
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:582: }
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:583: 
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:584: /* handle errno-based (e.g., syscall or libc) errors according to libbpf's
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:585:  * strict mode settings
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:586:  */
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:587: static inline int libbpf_err_errno(int ret)
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:588: {
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:589: 	/* errno is already assumed to be set on error */
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:590: 	return ret < 0 ? -errno : ret;
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:591: }
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:592: 
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:593: /* handle error for pointer-returning APIs, err is assumed to be < 0 always */
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:594: static inline void *libbpf_err_ptr(int err)
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:595: {
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:596: 	/* set errno on error, this doesn't break anything */
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:597: 	errno = -err;
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:598: 	return NULL;
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:599: }
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:600: 
+temp/task5b/libbpf-v1.6.2/libbpf_internal.h:601: /* handle pointer-returning APIs' error handling */
+
+libbpf reference: https://raw.githubusercontent.com/libbpf/libbpf/v1.6.2/src/libbpf.c
+https://raw.githubusercontent.com/libbpf/libbpf/v1.6.2/src/libbpf_internal.h
+These are upstream v1.6.2 API semantics. Board package is libbpf-1.6.2-1.1.armv7l; Tizen downstream source identity was not asserted. Kernel in-tree libbpf is 1.5, so it was not mislabeled as board 1.6.2.

@@ -1,0 +1,16 @@
+$ git -C linux-rpi rev-parse HEAD
+0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+EXIT=0
+
+$ git -C linux-rpi rev-parse HEAD^{tree}
+82ac2e6598acd518d94e46bf24a826d117ef03a1
+EXIT=0
+
+$ git -C linux-rpi status --porcelain
+EXIT=0
+
+$ git -C linux-rpi branch -r --contains 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+  origin/sandbox/lhmax2025/kernel_optimization
+EXIT=0
+
+docs/10_design_v1.md bytes=21880 sha256=80ecded8314071d8781c7329b37210613d8c788e819fba9a13c6d76c25909249

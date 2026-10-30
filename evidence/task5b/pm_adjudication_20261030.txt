@@ -1,0 +1,5 @@
+PM裁决：任务5b续（2026-10-30）
+接受QB1211696的BUILD_PKG_LIST明确为platform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708作为来源证明，不再要求包级分支名。
+理由：git SHA唯一确定源码内容；PROJECT_BRANCH为Tizen-Unified-Toolchain项目级变量，USE_BRANCH_POLICY=false；产物目录tizen-unified-toolchain_20261028.105834与板上BUILD_ID一致。
+时间：按PM要求将QB开始时间10:58:35理解为UTC，这仍是推断（页面未显示时区）。内核12:18:25 UTC在开始后1:19:50、推算结束17:14:18前4:55:53，落在构建时间窗内。
+获取方式：不再登录QB，只从页面公开目录http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/定位armv7l devel/perf RPM；不可访问或缺包则停止，不换来源。

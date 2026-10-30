@@ -1,0 +1,12 @@
+[LLVM library search]
+[resource-monitor processes]
+PIDOF-EXIT=1
+
+[package versions]
+package resource-monitor is not installed
+resource-monitor-plugin-network-1.0.0-1.armv7l
+libbpf-1.6.2-1.1.armv7l
+
+[log tools]
+/usr/bin/dlogutil
+/usr/bin/journalctl

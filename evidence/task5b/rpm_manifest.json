@@ -1,0 +1,16 @@
+[
+  {
+    "filename": "arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+    "bytes": 115630580,
+    "sha256": "721e2604bc3ad01077ab84416f549da091e3133e96025a38a9ef9915d25e3a28",
+    "download_time": "2026-10-30T19:34:03.194937+08:00"
+  },
+  {
+    "filename": "linux-kernel-perf-6.12.80-0.armv7l.rpm",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/linux-kernel-perf-6.12.80-0.armv7l.rpm",
+    "bytes": 1109156,
+    "sha256": "31feef6cd233061ec67d39717c8d62620dd805661814422f7be9fc79041d7909",
+    "download_time": "2026-10-30T19:34:04.737277+08:00"
+  }
+]

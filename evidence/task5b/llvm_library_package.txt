@@ -1,0 +1,4 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b/namespace_home /home --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp /home/linhao/Toolchain/development/linux_kernel_optimization/temp --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b --setenv HOME /home/abuild --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin -- /usr/bin/qemu-arm -L / /usr/bin/rpm -qf /usr/lib/libLLVM.so.22.1
+libllvm-22.1.8-3.1.armv7l
+
+EXIT=0

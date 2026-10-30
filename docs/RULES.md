@@ -2,6 +2,12 @@
 2. 生成的所有东西都必须在工作目录内。
 
 
+## PM裁决：任务5b续（2026-10-30，覆盖下一节来源/下载的旧条件）
+
+- 接受QB1211696的BUILD_PKG_LIST中`platform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708`为源码来源证明，不再要求包级分支名。PROJECT_BRANCH为项目级字段，USE_BRANCH_POLICY=false；产物目录与板上BUILD_ID一致。QB开始时间按UTC理解，明确标为推断，以此核对内核编译时间位于构建时间窗内。
+- 不再登录QB。仅从`http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/`目录结构定位两个armv7l RPM，记录URL、大小、SHA-256。公开目录不可访问或缺少指定包时停止，不改用其他来源。
+- 追加只读`git branch -r --contains 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708`佐证；其余配置比较、板上perf一次性授权及BPF只读规则继续适用。
+
 ## 一次性授权：任务5b（2026-10-30，PM指令）
 
 - 本次允许将`~/Downloads/10_design_v1.md`移动到`$WS/docs/10_design_v1.md`，Downloads不留副本；这是指定源文件的明确例外，其他宿主产出仍仅在WS。

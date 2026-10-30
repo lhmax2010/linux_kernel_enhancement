@@ -1,0 +1,16 @@
+Observation: 2026-10-30; only read-only SDB commands, no service start/restart, no BPF load/attach.
+resource-monitor pidof exit=1; /proc/*/comm scan found no resource-monitor process.
+Global readable /proc/*/maps search for libresource-monitor-plugin-network.so: no match, grep exit=1.
+rpm -q resource-monitor: package not installed (does not assert all similarly named packages absent).
+Installed: resource-monitor-plugin-network-1.0.0-1.armv7l; libbpf-1.6.2-1.1.armv7l.
+/proc/sys/net/core/bpf_jit_enable=0; only read, unchanged.
+dlogutil -d exit=0. 18 matching SDBD_TRACE lines are this collection's own command echo, not plugin load/failure evidence; full originals retained.
+Other filtered dlog lines: no plugin load/fentry/ENOTSUPP/-524 messages.
+journalctl -b --no-pager -o short-iso exit=0: two keyword hits, below.
+419:1970-01-01T09:00:21+0900 localhost systemd[1]: system-serial\x2dgetty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+597:1970-01-01T09:00:25+0900 localhost systemd[1]: Listening on Pass resource-monitor socket.
+1321:JOURNAL-COMMAND-EXIT=0
+
+The generic systemd BPF/cgroup firewall warning and the Pass resource-monitor socket do not prove this network plugin attempted fentry loading.
+Conclusion: no running process or mapped plugin observed. Whether the network plugin has attempted BPF loading, whether that attempt failed, and its actual failure reason are UNKNOWN (无法判断).
+Static code proves the ARM32 architecture lacks the trampoline implementations and its fentry attachment path cannot complete; this is not an observed plugin failure.

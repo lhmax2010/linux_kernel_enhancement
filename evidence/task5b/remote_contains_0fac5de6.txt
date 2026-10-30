@@ -1,0 +1,4 @@
+$ git -C linux-rpi branch -r --contains 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+  origin/sandbox/lhmax2025/kernel_optimization
+EXIT=0
+说明：检查本地已获取的远端跟踪分支集合，本轮没有fetch更新或修改分支。

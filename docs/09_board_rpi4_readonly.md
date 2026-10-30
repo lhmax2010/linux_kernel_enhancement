@@ -2,7 +2,7 @@
 
 采集日期：2026-10-29。对象：`192.168.108.26:26101`，仅用 SDB。宿主操作记录时间为 **20:32:05–20:40:31（Asia/Shanghai）**；板钟显示 `+0900`，换算后另有约17秒偏差，未校时。原始输出、两份候选ELF及本地解析产物在 `temp/task5/`；本文链接均为可上传的小体积文本摘要。
 
-**任务5b补充（2026-10-30）**：用户在隔离浏览器登录后，QB1211696已确认源码SHA等于0fac5de6、构建Successful。但页面`PROJECT_BRANCH=tizen`是项目级变量，未提供包级sandbox分支证明；未满足本轮“分支必须相等”的条件，已停止。浏览器及登录会话目录已删除；没有下载RPM或再次上板。详见A节和[停止证据](../evidence/task5b/provenance_gate.txt)。
+**任务5b续（2026-10-30）**：按PM新裁决，QB1211696的固定linux-rpi SHA与产物/BUILD_ID证据已接受；公开devel包最终.config与任务4LLVM普通版**全文字节相同、平台diffconfig为空**，来源与配置闭合。临时perf已按授权推送，但`/tmp`为`noexec`，执行version即Permission denied/126，未进行计数/采样，临时文件已清理。网络插件的ARM32 fentry缺少trampoline实现；没有插件加载/失败日志，不能称其“实测加载失败”。详见A、B、G新增小节。
 
 ## 产品取舍所需的 B–E 结论
 
@@ -29,13 +29,35 @@
 | PM提供的源码来源 | `sandbox/lhmax2025/kernel_optimization`，`0fac5de6a63091d141ad1cd3ed9d9e92b8dde708` |
 | QB构建记录 | [构建1211696](https://quickbuild.tizen.org/build/1211696)：10月29日匿名访问受限；10月30日用户在隔离有界面浏览器登录后已读到详情，状态Successful |
 | QB源码SHA | Overview的Build Package List和Variables中的BUILD_PKG_LIST均明确为`platform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708`；SHA匹配已闭合 |
-| QB分支字段 | `PROJECT_BRANCH=tizen`，`PROJECT_NAME=Tizen-Unified-Toolchain`，`USE_BRANCH_POLICY=false`；这是项目级字段，不能据此断言内核源码检出错误，但没有证明本轮要求的包级sandbox分支 |
-| QB时间 | Begin Date=`2026-10-28 10:58:35`，Duration=`6 hours 15 minutes 43 seconds`；页面摘录未标时区。按同一时区计算结束17:14:18；若该时间为UTC，则内核版本时间在开始后1:19:50、结束前4:55:53。该差值只是条件计算，时区未核实 |
-| 是否完成运行镜像来源核对 | **未全部闭合**：QB构建源码SHA匹配，但分支条件未满足、QB时区未核实；按PM任务5b步骤2/3停止，不用“SHA相同”自行替代分支核对。没有下载或核验RPM，未将构建记录直接当作运行镜像配置证明 |
+| QB分支字段 | `PROJECT_BRANCH=tizen`是Tizen-Unified-Toolchain项目级变量，`USE_BRANCH_POLICY=false`；**PM已裁决不再要求包级分支名**，接受BUILD_PKG_LIST固定SHA证明 |
+| QB时间 | Begin Date=`2026-10-28 10:58:35`，Duration=`6:15:43`，推算结束17:14:18。**按PM要求将开始时间理解为UTC，这是推断，页面未显示时区**；内核12:18:25 UTC在开始后1:19:50、结束前4:55:53，位于该时间窗内 |
+| 是否完成运行镜像来源核对 | **按PM裁决闭合**：固定SHA + 产物目录与BUILD_ID一致 + 编译时间处于上述推断UTC时间窗；另有本地远端分支contains佐证。不是从内核版本字符串直接读到commit |
 | `.config`比较对象 | 明确使用任务4 `temp/pmu_config_check/llvm/arm-rpi4/.config`；SHA256 `62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5` |
-| 逐项配置比较 | **未能执行diffconfig**：`/proc/config.gz`不存在，模块`build`链接失效，已检查路径没有配置副本。不能报告“配置一致”或“无差异”。任务4基准本身为`CONFIG_IKCONFIG=n`，但不能据此代填板上最终配置 |
+| 逐项配置比较 | **闭合，差异0**：公开devel RPM中的`boot/kernel/devel/kernel-devel-arm-rpi4/.config`为194,980 B，SHA与任务4参考相同（62e3b851…）。LLVM GBS root内qemu-arm+平台Python执行scripts/diffconfig，stdout为空、exit=0；全文字节也相同 |
 
-缺失项、实际尝试的命令和原始报错见[A配置核对](../evidence/task5/A_config_comparison.txt#L1)。10月29日匿名访问经过保留在[历史QB访问证据](../evidence/task5/QB_1211696_access.txt)。10月30日的新页面选段、变量、脱敏/会话清理记录见[任务5b证据索引](../evidence/task5b/README.md)。需要PM裁决项目级tizen字段与按SHA固定linux-rpi源码的关系，或提供包级sandbox分支证据；本轮不自行接受替代证明。devel包、最终arm-rpi4 `.config`和diffconfig尚未执行，不能改写为“配置一致”。没有为了取得配置而挂载启动分区、重编或换镜像。
+10月29日缺失板上配置的原始尝试仍见[A配置核对](../evidence/task5/A_config_comparison.txt)，前轮QB分支停止经过仍保存在[历史停止证据](../evidence/task5b/provenance_gate.txt)。本次未重新登录QB，未挂载启动分区、重编或换镜像。
+
+### PM来源裁决与公开RPM（任务5b续）
+
+PM接受`BUILD_PKG_LIST=platform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708`为来源证明，不再要求包级分支名，理由为：
+
+1. git SHA唯一确定源码内容；
+2. PROJECT_BRANCH为Tizen-Unified-Toolchain项目级变量，USE_BRANCH_POLICY=false；
+3. 产物目录`tizen-unified-toolchain_20261028.105834`与板上BUILD_ID主体一致；
+4. 开始时间按UTC理解（**推断**），板上内核编译时间12:18:25 UTC落在构建时间窗内。
+
+[裁决原意与时间差](../evidence/task5b/pm_adjudication_20261030.txt)。追加只读命令`git -C linux-rpi branch -r --contains 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708`，输出唯一一行`origin/sandbox/lhmax2025/kernel_optimization`。这是本地已获取远端跟踪分支集合的结果，本轮没有fetch或改分支；[原文](../evidence/task5b/remote_contains_0fac5de6.txt)。
+
+按指定公开根依次进入`repos/standard/packages/armv7l/`，找到并下载两个RPM，未更换来源：
+
+| 文件 | 字节数 | SHA-256 |
+|---|---:|---|
+| [arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm](http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm) | 115,630,580 | `721e2604bc3ad01077ab84416f549da091e3133e96025a38a9ef9915d25e3a28` |
+| [linux-kernel-perf-6.12.80-0.armv7l.rpm](http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/linux-kernel-perf-6.12.80-0.armv7l.rpm) | 1,109,156 | `31feef6cd233061ec67d39717c8d62620dd805661814422f7be9fc79041d7909` |
+
+两包仅保存到`temp/task5b/rpms/`，未安装。用LLVM buildroot的平台rpm2cpio解出CPIO，再在WS/temp解包；最终配置由同root平台Python比较。两包RPM BUILDTIME字段都是epoch 0，**不能用它证明实际打包时间**；时间核对依据仍是QB页面和/proc/version。证据：[目录遍历](../evidence/task5b/public_download_traversal.txt)、[下载清单](../evidence/task5b/rpm_manifest.json)、[平台diffconfig原文](../evidence/task5b/final_config_diff.txt)、[配置摘要](../evidence/task5b/config_comparison_summary.txt)、[RPM最终配置全文](../evidence/task5b/qb_arm-rpi4.config)。
+
+本次SDB重新读取三项身份、BUILD_ID、/proc/version均与任务5一致；因此不是用旧板上快照配新RPM。[本次身份与起始进程](../evidence/task5b/02_identity_start.transport.txt)。
 
 ### 内存、保留区域和启动参数
 
@@ -81,6 +103,28 @@ dmesg原文：`Memory: 3628300K/4050944K available (20480K kernel code, 1867K rw
 ### 未发现
 
 在指定范围未找到其他直接链接libbpf的ELF；resourced配置及服务文件未匹配到bpf。此范围不覆盖所有可能静态链接、拼接库名、其他目录或按需下载的程序。resourced与resource-monitor网络插件是两个不同组件，不混为一谈。见[B运行快照](../evidence/task5/B_bpf_runtime.txt)、[resourced配置全文](../evidence/task5/F_resourced_config.txt)。
+
+### 任务5b：ARM32 trampoline、错误返回和实际运行核对
+
+**源码能力结论：该内核的ARM32 fentry路径缺少trampoline实现，不能正常挂载这些fentry程序；但本次无法判断网络插件是否实际尝试加载或失败。** 两者分别由源码和运行日志支持，不能混为一次实测失败。
+
+- `arch/arm/net/bpf_jit_32.c`没有`arch_prepare_bpf_trampoline`实现；对整个`arch/arm/`搜索该符号及`arch_bpf_trampoline_size`均无匹配。`kernel/bpf/trampoline.c:1079–1085`的弱prepare实现返回`-ENOTSUPP`；`:1115–1118`的弱size实现同样返回`-ENOTSUPP`，`include/linux/errno.h:27`定义ENOTSUPP=524。
+- 精确挂载路径：`kernel/bpf/syscall.c:3460`调用`bpf_trampoline_link_prog` → `trampoline.c:590`更新 → `:442–446`先取size，负值直接回传。因此正常前置条件下ARM32会**先在size弱实现返回-524**，还没有执行到prepare。不能只引用prepare而误称它一定是第一处失败。
+- 内核原始`bpf()`系统调用向用户态表现为`-1, errno=524`。libbpf整数API返回负errno；`bpf_object__load_skeleton()`透传加载错误，`bpf_object__attach_skeleton()`透传挂载错误。`bpf_program__attach_trace()`这样的指针API失败时返回`NULL`并置errno；`libbpf_get_error(NULL)`返回`-errno`。所以此挂载路径对应NULL/errno524或skeleton返回-524，不把ENOTSUPP(524)混同EOPNOTSUPP(95)。加载阶段若先遇权限、BTF、验证器或其他错误，返回对应错误，并非所有fentry加载失败都必为-524。
+- 版本边界：内核树内libbpf为1.5；板上包为1.6.2-1.1。上述libbpf语义另核对官方[v1.6.2 libbpf.c](https://github.com/libbpf/libbpf/blob/v1.6.2/src/libbpf.c#L12744)（加载/挂载skeleton见14075、14098行，get_error见10714行）及[libbpf_internal.h](https://github.com/libbpf/libbpf/blob/v1.6.2/src/libbpf_internal.h#L577)。没有声称官方tag与Tizen下游二进制逐字对应；源码URL、SHA与逐行片段见[错误链证据](../evidence/task5b/bpf_source_error_chain.txt)。
+
+板上只读结果：
+
+| 项目 | 本次结果 |
+|---|---|
+| resource-monitor进程 | pidof返回1，/proc/*/comm扫描未命中；`rpm -q resource-monitor`显示此精确包名未安装，不据此断言所有近似命名组件不存在 |
+| 网络插件映射 | 全部可读/proc/*/maps搜索`libresource-monitor-plugin-network.so`无命中；插件包本身仍已安装 |
+| dlogutil -d | 命令退出0；关键字命中仅为本次SDB命令自身的回显，无插件load/attach失败消息 |
+| journalctl -b --no-pager | 命令退出0；仅一般的systemd BPF/cgroup防火墙提示和`Listening on Pass resource-monitor socket.`，都不能证明网络插件尝试加载 |
+| bpf_jit_enable | 0，只读，未修改；不能据此断言历史加载行为 |
+| 是否尝试、是否失败、实际失败原因 | **无法判断：没有相关插件日志**；未启动/重启服务，未手动加载BPF |
+
+[进程/版本](../evidence/task5b/04_bpf_processes.transport.txt)、[dlog原文](../evidence/task5b/06_bpf_dlog.transport.txt)、[journal原文](../evidence/task5b/07_bpf_journal.transport.txt)、[运行结论及SDB回显排除说明](../evidence/task5b/bpf_runtime_summary.txt)。这项静态架构缺口不等于已经获得可删除BTF的产品授权。
 
 ## C：现场调试与追踪
 
@@ -187,6 +231,39 @@ resourced/resourced-config/resourced-bin版本均为10.0.0-1；已保存`/etc/re
 
 三项结论：**硬件计数尚未验证可用**（PMU驱动已绑定）；**分支采样尚未验证**（没有执行到perf事件申请，不能写成硬件“不支持”）；**当前镜像未暴露可用ETM追踪路径**，也没有执行ETM采样。由于perf未启动，没有可观察的`<not supported>`或软件事件回退，不能宣称三种硬件事件全部成功。未安装perf、未推送二进制或改用别的采样程序，实际上没有施加任何perf测试负载。
 
+### 任务5b：临时perf实测在执行权限处阻塞
+
+上表是任务5（10月29日）的“工具不存在”结果。本次已经取得QB的perf并按一次性授权尝试执行，停止点更新为：**`/tmp`挂载noexec，perf尚未启动**，不是PMU事件拒绝。
+
+LLVM buildroot的平台readelf列出16项DT_NEEDED；板上逐项ls并验证可读，只有`libLLVM.so.22.1`缺少。仅从工作区现有LLVM GBS root取该库（`libllvm-22.1.8-3.1.armv7l`，31,498,764 B），其9项依赖全部已在板上。没有换取其他perf/devel包，也没有推送已存在的库。perf为2,981,796 B，两个文件合计34,480,560 B；板上du为33,676 KiB，低于50 MiB。两者推送前后SHA一致，路径仅`/tmp/lko_task5b/`；[ELF依赖](../evidence/task5b/perf_readelf.txt)、[板上ls](../evidence/task5b/03_libraries_preflight.transport.txt)、[补充库来源](../evidence/task5b/llvm_library_package.txt)、[推送清单](../evidence/task5b/pushed_files.json)。
+
+SDB会话开始时已经uid=0，本轮未执行root on/off，保持原状态；paranoid=2不变。perf环境的HOME/TMPDIR/LD_LIBRARY_PATH均指向任务临时目录，LD_LIBRARY_PATH没有附加其他目录。文件chmod0755后，第一条命令仍报：
+
+```text
+/bin/sh: /tmp/lko_task5b/perf: Permission denied
+PERF-COMMAND-EXIT=126
+```
+
+随后只读 `/proc/mounts` 明确为：
+
+```text
+tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0
+```
+
+[启动原文](../evidence/task5b/11_perf_version.transport.txt)、[挂载核对](../evidence/task5b/18_exec_restriction.transport.txt)。0755和root不能取消挂载noexec约束。遵守禁止remount、仅在指定临时目录运行的边界，没有改挂载/安全策略，没有借助动态加载器绕过，也没有尝试其他执行位置。
+
+| 要求 | 本次结果 |
+|---|---|
+| perf version --build-options | 失败，126；程序未执行到版本输出 |
+| 1秒cycles/instructions/branch-misses stat | NOT RUN：前置可执行入口失败 |
+| 2秒cycles record与evlist | NOT RUN；无type=0证据，**硬件计数尚未验证** |
+| 2秒record -b | NOT RUN，**分支采样尚未验证**，不能判硬件不支持 |
+| 是否替换软件事件 | 无法观察；没有打开任何perf事件，不称为成功通过“无回退”验证 |
+
+临时目录已在finally中删除，并再次确认`TASK5B-TEMP-ABSENT-CONFIRMED`；[清理与结束进程](../evidence/task5b/17_cleanup_end.transport.txt)。只删除本轮新建目录，没有安装RPM或写根文件系统、sysctl、sysfs。起始uptime83729.49s，清理后83934.12s，权限核对时84005.07s；既有root串口shell PID3708未触碰。dmesg里uptime11755–11766s的perf采样率调整早于本次，不能归给本轮或据此宣称指定硬件事件已成功。
+
+后续需要PM裁决一个**可执行临时位置或镜像内置perf方案**；当前授权位置noexec，且禁止remount，代理不自行改边界或再试。一次性授权执行及阻塞摘要见[perf_attempt_summary.txt](../evidence/task5b/perf_attempt_summary.txt)。
+
 ## H：调度和时钟
 
 证据：[H调度/时钟](../evidence/task5/H_scheduler_clock.txt)。
@@ -213,13 +290,20 @@ cpufreq policy0覆盖CPU0–3，driver=`cpufreq-dt`，governor=`schedutil`；可
 
 板上只新建`/tmp/lko_task5/`，收尾只删除其中本任务创建的17个普通文本文件并rmdir；最后在恢复owner后再次确认 **`TASK5-TEMP-ABSENT-FINAL`**。最大一次板上文本输出为包清单54,126 B，结束前du记录临时目录188KiB，均远低于50MB；两份ELF直接sdb pull到工作区，没有在板上另存。见[清理原文](../evidence/task5/session_and_cleanup.txt#L424)。
 
-待PM后续提供/决定：任务5b已读到QB详情，需裁决分支证明方式并明确QB时区；最终.config尚未下载比较；需要实际计数时另行安排带perf的镜像或授权方案；资源监控网络插件是否属于产品必需功能、何时触发、外部BTF替代是否存在；未挂载boot分区的固件CMA配置。本轮只记录这些边界，不自行补装、挂载或触发服务。
+待PM后续提供/决定：任务5b续已按裁决闭合来源/配置，实际perf测试仍需解决获准临时位置noexec的限制；网络插件的产品需求/触发条件、BTF取舍和固件CMA来源仍待核实。不自行补装、remount或触发服务。
 
 
-## 任务5b停止位置与未执行项（2026-10-30）
+## 历史：任务5b首次停止位置（2026-10-30，已由本轮PM裁决恢复）
+
+以下为首次停止的历史记录；当前状态以本文A/B/G的任务5b续小节为准。
 
 用户设计文档已从Downloads移动到[10_design_v1.md](10_design_v1.md)，原位置无副本，SHA256保持`80ecded8314071d8781c7329b37210613d8c788e819fba9a13c6d76c25909249`，未修改PM原文。一次性perf授权已写入RULES，但本轮未使用。
 
 QB源码SHA和构建成功状态有正向证据；**并未认定QB构建了错误源码**。停止原因是页面项目分支字段不是指定sandbox，且包级sandbox分支仍未证实，触发PM的停止条件。页面已找到公开产物根URL，但未继续定位/下载两个RPM。截图只保留在`temp/task5b/qb_1211696_branch_gate.png`，截取前隐藏其他变量行，未上传截图、凭据或会话数据。浏览器目录`temp/task5b/browser/`已确认删除，证据见[浏览器清理](../evidence/task5b/browser_cleanup.txt)。
 
 因此任务5b步骤3配置比较、步骤4硬件计数/分支采样、步骤5BPF trampoline源码与板上加载日志核对均未执行。本轮没有任何SDB命令，未创建`/tmp/lko_task5b`；上文任务5的PMU/BPF结论仍是10月29日的旧快照，没有新增实测结论。尤其不能将源码中预期的ENOTSUPP路径当作这个插件实际尝试加载并失败的证据。
+
+
+## 任务5b续收尾
+
+来源和最终配置已闭合，BPF源码/只读运行核实已完成；perf功能测试因/tmp noexec未完成。没有将执行权限失败包装成硬件能力结论，也没有将无插件日志包装成ENOTSUPP实测。PM设计[10_design_v1.md](10_design_v1.md)内容未改、SHA仍为80ecded8314071d8781c7329b37210613d8c788e819fba9a13c6d76c25909249。本次只更新09、RULES、STATUS与[evidence/task5b](../evidence/task5b/README.md)，在同一GitHub main提交交付；不改内核源码、不构建、不推Gerrit。

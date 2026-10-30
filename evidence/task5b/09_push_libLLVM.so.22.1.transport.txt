@@ -1,0 +1,4 @@
+WARNING: Your data are to be sent over an unencrypted connection and could be read by others.
+pushed                libLLVM.so.22.1	  0%	      0MB	    0KB/spushed                libLLVM.so.22.1	 39%	     11MB	12156KB/spushed                libLLVM.so.22.1	 71%	     21MB	 9790KB/spushed                libLLVM.so.22.1	100%	     30MB	10550KB/s
+1 file(s) pushed. 0 file(s) skipped.
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b/push/libLLVM.so.22.1   9598KB/s (31498764 bytes in 3.204s)

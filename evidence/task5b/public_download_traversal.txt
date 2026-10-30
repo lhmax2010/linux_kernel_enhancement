@@ -1,0 +1,12 @@
+Public directory traversal, all on PM-selected artifact root. No QB login or alternate RPM source.
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b/public-index/root.html: bytes=747 sha256=c7d4ade898d03a89999a4c07fc0bce70a6467b6dfa2f060ff4a5ab3cc5971455
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b/public-index/repos.html: bytes=421 sha256=f81c836e6434dc652765e45d7231ce9dfe3f1115a8db06243bd4d2abe72e2519
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b/public-index/standard.html: bytes=662 sha256=5f20d58dcd787775fdd51c38dc472612b10adc54bbc65a7e6f184ccaa912e492
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b/public-index/packages.html: bytes=1019 sha256=b73a1511adb0118b08681ff75caa4082de492148dd608ac5577aad1b4aa72c45
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b/public-index/armv7l.html: bytes=463930 sha256=b5ae038acf47e8c71e80b51cbdc8a99c6963bc25ca9fdca358d14456c7f1d7c0
+Directory chain: root -> repos/ -> standard/ -> packages/ -> armv7l/
+Selected entries:
+http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm
+bytes=115630580 sha256=721e2604bc3ad01077ab84416f549da091e3133e96025a38a9ef9915d25e3a28
+http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/linux-kernel-perf-6.12.80-0.armv7l.rpm
+bytes=1109156 sha256=31feef6cd233061ec67d39717c8d62620dd805661814422f7be9fc79041d7909

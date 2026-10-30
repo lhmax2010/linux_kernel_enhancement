@@ -1,0 +1,3 @@
+/bin/sh: /tmp/lko_task5b/perf: Permission denied
+PERF-COMMAND-EXIT=126
+33676	/tmp/lko_task5b

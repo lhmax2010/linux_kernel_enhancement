@@ -1,0 +1,28 @@
+[tmp mount]
+tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0
+[tmp metadata]
+drwxrwxrwt 12 root root * 740 Oct 30 20:41 /tmp
+[security context]
+User::Shell
+[cleanup assertion]
+TASK5B-TEMP-ABSENT-CONFIRMED
+[recent permission evidence]
+[   44.864161] audit: type=1400 audit(44.849:2): lsm=SMACK fn=smack_inode_permission action=denied subject="User::App::Shared" object="System::Run" requested=x pid=1564 comm="gen_rm_msgq" name="/" dev="tmpfs" ino=1
+[   44.864217] audit: type=1400 audit(44.849:3): lsm=SMACK fn=smack_inode_permission action=denied subject="User::App::Shared" object="System::Run" requested=x pid=1564 comm="gen_rm_msgq" name="/" dev="tmpfs" ino=1
+[   44.864257] audit: type=1400 audit(44.849:4): lsm=SMACK fn=smack_inode_permission action=denied subject="User::App::Shared" object="System::Shared" requested=x pid=1564 comm="gen_rm_msgq" name="etc" dev="mmcblk0p3" ino=706
+[   44.864302] audit: type=1400 audit(44.849:5): lsm=SMACK fn=smack_inode_permission action=denied subject="User::App::Shared" object="System::Run" requested=x pid=1564 comm="gen_rm_msgq" name="/" dev="tmpfs" ino=1
+[  638.477427] audit: type=1400 audit(1793277142.149:95): lsm=SMACK fn=smack_inode_getattr action=denied subject="User::Shell" object="System::Privileged" requested=r pid=5645 comm="ps" path="/proc/1" dev="proc" ino=4314
+[  638.501642] audit: type=1400 audit(1793277142.169:96): lsm=SMACK fn=smack_inode_getattr action=denied subject="User::Shell" object="System" requested=r pid=5645 comm="ps" path="/proc/296" dev="proc" ino=5169
+[  638.503104] audit: type=1400 audit(1793277142.169:97): lsm=SMACK fn=smack_inode_getattr action=denied subject="User::Shell" object="System::Privileged" requested=r pid=5645 comm="ps" path="/proc/346" dev="proc" ino=5289
+[  638.504237] audit: type=1400 audit(1793277142.169:98): lsm=SMACK fn=smack_inode_getattr action=denied subject="User::Shell" object="System" requested=r pid=5645 comm="ps" path="/proc/843" dev="proc" ino=6647
+[11755.385007] perf: interrupt took too long (2533 > 2500), lowering kernel.perf_event_max_sample_rate to 78900
+[11755.427397] perf: interrupt took too long (3179 > 3166), lowering kernel.perf_event_max_sample_rate to 62900
+[11755.453651] perf: interrupt took too long (3998 > 3973), lowering kernel.perf_event_max_sample_rate to 50000
+[11755.499075] perf: interrupt took too long (5017 > 4997), lowering kernel.perf_event_max_sample_rate to 39800
+[11755.646360] perf: interrupt took too long (6321 > 6271), lowering kernel.perf_event_max_sample_rate to 31600
+[11755.779472] perf: interrupt took too long (7931 > 7901), lowering kernel.perf_event_max_sample_rate to 25200
+[11765.720378] perf: interrupt took too long (9914 > 9913), lowering kernel.perf_event_max_sample_rate to 20100
+[11766.567098] perf: interrupt took too long (12464 > 12392), lowering kernel.perf_event_max_sample_rate to 16000
+DMESG-GREP-EXIT=0
+[uptime]
+84005.07 249386.17
