@@ -4,7 +4,7 @@
 
 **设计文档当前版本为v3：[docs/10_design_v3.md](10_design_v3.md)，待外部评审；[v1](10_design_v1.md)、[v2](10_design_v2.md)保留为历史记录。** 本次计划为原样入库v3及两份v2评审记录、补充板上授权，并同commit交付main；文件整理和授权登记已完成，本任务未操作开发板。
 
-- v3已从指定Downloads路径原样移动入库，Downloads下已无该文件；107,749 B，移动前后SHA-256均为`f0c5685d47ebd4d267848ab54735086364c81a1b731e1269557775e99310b737`。
+- v3为同日修订版，补入上一轮 Claude Code 完整评审（docs/reviews/design_v2_review_claude_code.md）中此前未处理的内容；阶段 0 拆为 0a/0b。已从指定Downloads路径移动覆盖现有文件，Downloads下已无该文件；移动过程未修改内容，114,130 B，移动前后SHA-256均为`793c0762d48d9dc46a7af7ccc4c55a0aeb212b967c58184a8052f4db68d435cb`。
 - v2的Claude Code评审已找到，原文件已位于目标路径[docs/reviews/design_v2_review_claude_code.md](reviews/design_v2_review_claude_code.md)，原样入库；59,159 B，SHA-256为`126f6951cf1bb22286a991f57be0bce022482faf232538ea4eb3b5290ab03696`。
 - Codex核验记录已找到，按要求从`temp/design_v2_codex_review/verification.txt`复制到[docs/reviews/design_v2_review_codex_verification.txt](reviews/design_v2_review_codex_verification.txt)，原文件保留；3,205 B，源文件与副本SHA-256均为`9d59b823a4f7010a66636e49ef5463e06920b7afb721936be38208fc40b4fecb`。`lz4-fast-loop.patch.txt`不上传。上述文件字节核对记录在`temp/design_v3_intake_20261030/files_verified.json`。
 - v2为同日修订版，补入上一轮 Claude Code 完整评审中初稿遗漏的内容；已从指定Downloads路径移动覆盖现有文件，Downloads下已无该文件；移动过程未修改内容，75,639 B，移动前后SHA-256均为`4894e7c188d5fefb1c940ede06af9882d8f550487bf86987d32d2523e47c1bdc`。
