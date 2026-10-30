@@ -2,11 +2,17 @@
 
 更新：2026-10-30（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**设计文档当前版本为v2：[docs/10_design_v2.md](10_design_v2.md)，待外部评审；[v1](10_design_v1.md)保留为历史记录。** 本次计划为原样移动v2与上一轮评审记录、登记两项常规授权并提交main；文件移动和授权登记已完成，未执行板上实验。
+**设计文档当前版本为v3：[docs/10_design_v3.md](10_design_v3.md)，待外部评审；[v1](10_design_v1.md)、[v2](10_design_v2.md)保留为历史记录。** 本次计划为原样入库v3及两份v2评审记录、补充板上授权，并同commit交付main；文件整理和授权登记已完成，本任务未操作开发板。
 
+- v3已从指定Downloads路径原样移动入库，Downloads下已无该文件；107,749 B，移动前后SHA-256均为`f0c5685d47ebd4d267848ab54735086364c81a1b731e1269557775e99310b737`。
+- v2的Claude Code评审已找到，原文件已位于目标路径[docs/reviews/design_v2_review_claude_code.md](reviews/design_v2_review_claude_code.md)，原样入库；59,159 B，SHA-256为`126f6951cf1bb22286a991f57be0bce022482faf232538ea4eb3b5290ab03696`。
+- Codex核验记录已找到，按要求从`temp/design_v2_codex_review/verification.txt`复制到[docs/reviews/design_v2_review_codex_verification.txt](reviews/design_v2_review_codex_verification.txt)，原文件保留；3,205 B，源文件与副本SHA-256均为`9d59b823a4f7010a66636e49ef5463e06920b7afb721936be38208fc40b4fecb`。`lz4-fast-loop.patch.txt`不上传。上述文件字节核对记录在`temp/design_v3_intake_20261030/files_verified.json`。
 - v2为同日修订版，补入上一轮 Claude Code 完整评审中初稿遗漏的内容；已从指定Downloads路径移动覆盖现有文件，Downloads下已无该文件；移动过程未修改内容，75,639 B，移动前后SHA-256均为`4894e7c188d5fefb1c940ede06af9882d8f550487bf86987d32d2523e47c1bdc`。
 - 上一轮评审记录已找到：`docs/11_design_v1_review.md`原样移动至[docs/reviews/design_v1_review_claude_code.md](reviews/design_v1_review_claude_code.md)；69,236 B，移动前后SHA-256均为`df909afc7e4c30b8d495c280950a81abe24554f0b4766ca20ad969bbfde59392`。移动验证原文在`temp/design_v2_intake_20261030/moves_verified.json`。
-- 已登记两项常规授权，今后不再逐次申请：同一次QB构建的临时perf及缺失库按任务5c流程在/opt/usr任务专用目录运行，三个环境变量仅指向该目录，结束删除并核对df/mounts；实验可修改/proc/sys和/sys可写参数，记录原值、结束恢复并回读、写入报告，同板参数实验串行。详见[RULES板上常规授权](RULES.md#板上常规授权2026-10-30pm裁决)。其余规则不变，重启仍由用户执行、不用sudo、不碰其他任务进程。
+- 已登记两项常规授权，今后不再逐次申请：同一次QB构建的临时perf及缺失库按任务5c流程在/opt/usr任务专用目录运行，三个环境变量仅指向该目录，结束删除并核对df/mounts；实验可修改/proc/sys和/sys可写参数，记录原值、结束恢复并回读、写入报告，同板参数实验串行。详见[RULES板上常规授权](RULES.md#板上常规授权2026-10-30pm裁决)。本次补充授权见下文；不用sudo、不碰其他任务进程。
+- 2026-10-30授权补充已写入RULES：zram运行时重配按参数实验记录原算法/disksize/swap状态并恢复回读；实验可通过sdb重启，记录原因/编号，重连超时10分钟停止、不补救；仅为安装开机配网服务允许一次remount读写，只写登记的unit/脚本并恢复只读，镜像刷新后准备仍由用户执行；只替换内核映像/设备树/模块分区、用户态不变，首次替换须只读调研并经PM审核方案，每次备份校验、替换后核对版本/配置，启动失败且无法自动回退时交用户处理。boot cmdline仍不在常规授权内。
+- 串口分工（PM提供）：开发机无串口，开机时间的串口分段由用户在内网机器采集，不属于本仓库板上操作。
+- 下一项任务为“开机配网服务安装 + 内核替换与回退机制只读调研”；本次仅登记，未执行该任务。
 
 **任务5c已完成实测与清理：硬件计数可用，cycles采样32个样本且evlist明确type=0；分支栈采样-b在当前组合不支持（255）；未观察到软件事件替换。** 一次性授权的数据分区目录`/opt/usr/lko_task5c`已整体删除，ls确认不存在、df前后相同。未remount、写根文件系统、安装RPM或改paranoid。
 
@@ -35,11 +41,11 @@
 
 ## 需要人工裁决的前提与挂账
 
-- 临时perf和运行时参数现按上述常规授权执行，无需逐次申请；后续性能实验由PM下发。任务5c硬件能力测试不是产品工作负载基准。
+- 板上操作按上述常规授权及本次补充的各项前提执行；首次内核替换前的替换/回退方案仍须PM审核，后续性能实验由PM下发。任务5c硬件能力测试不是产品工作负载基准。
 - -b不支持已由实测确认；若后续设计需要分支样本，采样方案需另行设计。perf build-options的auxtrace=on、libopencsd=OFF也不能独立证明CoreSight可用；本次不扩展测试。
 - BPF插件历史load/attach尝试及实际失败原因仍无法判断，缺少相关日志。是否受控触发、插件产品需求/BTF取舍由PM决定，未启动服务或手动加载BPF。
 - QB开始时间按UTC理解是PM接受的推断，未独立证明页面时区，不再作为来源停止条件。
-- 设计当前版本为v2，待外部评审；v1原样保留为历史记录，其历史“待闭合/未实测”描述保留为PM原文；当前结果以09及本状态为准。
+- 设计当前版本为v3，待外部评审；v1、v2原样保留为历史记录，其历史“待闭合/未实测”描述保留为PM原文；当前结果以09及本状态为准。
 
 ## 保留的任务5/5b结论
 

@@ -1,0 +1,85 @@
+Review v2 verification. Kernel source unchanged; no board operations or kernel build.
+Base configuration: evidence/task5b/qb_arm-rpi4.config
+Kernel commit: 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+Tools: existing LLVM GBS root, qemu-arm, isolated read-only source with temporary Kconfig overlay.
+
+baseline diffconfig:
+(empty)
+
+
+features diffconfig:
+-PREEMPTIRQ_TRACEPOINTS y
+-TRACE_IRQFLAGS y
+-ZRAM_BACKEND_FORCE_LZO y
+ IRQSOFF_TRACER y -> n
+ KERNEL_GZIP y -> n
+ KERNEL_LZ4 n -> y
+ KSM n -> y
+ LD_DEAD_CODE_DATA_ELIMINATION n -> y
+ SLUB_CPU_PARTIAL y -> n
+ ZRAM_BACKEND_LZ4 n -> y
+ ZRAM_BACKEND_ZSTD n -> y
+ ZRAM_MULTI_COMP n -> y
+ ZSMALLOC_STAT n -> y
++CC_HAVE_STACKPROTECTOR_TLS y
++STACKPROTECTOR_PER_TASK y
++ZRAM_DEF_COMP_LZ4 n
++ZRAM_DEF_COMP_ZSTD n
+
+
+
+split_opt diffconfig:
+ ARCH_MMAP_RND_BITS_MAX 16 -> 15
+ PAGE_OFFSET 0xC0000000 -> 0x80000000
+ VMSPLIT_2G n -> y
+ VMSPLIT_3G y -> n
+
+
+
+split_2g diffconfig:
+ ARCH_MMAP_RND_BITS_MAX 16 -> 15
+ PAGE_OFFSET 0xC0000000 -> 0x80000000
+ VMSPLIT_2G n -> y
+ VMSPLIT_3G y -> n
+
+
+
+additional diffconfig:
+ SWIOTLB_DYNAMIC n -> y
+ TRANSPARENT_HUGEPAGE n -> y
+ TRIM_UNUSED_KSYMS n -> y
++ARCH_WANT_PMD_MKWRITE y
++DEV_DAX n
++PGTABLE_HAS_HUGE_LEAVES y
++READ_ONLY_THP_FOR_FS n
++TRANSPARENT_HUGEPAGE_ALWAYS n
++TRANSPARENT_HUGEPAGE_MADVISE n
++TRANSPARENT_HUGEPAGE_NEVER y
++UNUSED_KSYMS_WHITELIST ""
+
+
+
+default:
+
+EXIT=0
+attributes #0 = { nounwind "frame-pointer"="all" "instrument-function-entry-inlined"="\01mcount" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic" "target-features"="+armv7-a,+d32,+dsp,+fp64,+neon,+read-tp-tpidruro,+vfp2,+vfp2sp,+vfp3,+vfp3d16,+vfp3d16sp,+vfp3sp,-aes,-fp-armv8,-fp-armv8d16,-fp-armv8d16sp,-fp-armv8sp,-fp16,-fp16fml,-fullfp16,-sha2,-thumb-mode,-vfp4,-vfp4d16,-vfp4d16sp,-vfp4sp" }
+
+xclang:
+
+EXIT=0
+attributes #0 = { nounwind "instrument-function-entry-inlined"="\01mcount" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic" "target-features"="+armv7-a,+d32,+dsp,+fp64,+neon,+read-tp-tpidruro,+vfp2,+vfp2sp,+vfp3,+vfp3d16,+vfp3d16sp,+vfp3sp,-aes,-fp-armv8,-fp-armv8d16,-fp-armv8d16sp,-fp-armv8sp,-fp16,-fp16fml,-fullfp16,-sha2,-thumb-mode,-vfp4,-vfp4d16,-vfp4d16sp,-vfp4sp" }
+
+explicit:
+clang: error: invalid argument '-fomit-frame-pointer' not allowed with '-pg'
+
+EXIT=1
+
+tls:
+
+EXIT=0
+attributes #0 = { nounwind sspstrong "frame-pointer"="all" "instrument-function-entry-inlined"="\01mcount" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic" "target-features"="+armv7-a,+d32,+dsp,+fp64,+neon,+read-tp-tpidruro,+vfp2,+vfp2sp,+vfp3,+vfp3d16,+vfp3d16sp,+vfp3sp,-aes,-fp-armv8,-fp-armv8d16,-fp-armv8d16sp,-fp-armv8sp,-fp16,-fp16fml,-fullfp16,-sha2,-thumb-mode,-vfp4,-vfp4d16,-vfp4d16sp,-vfp4sp" }
+
+tune:
+
+EXIT=0
+attributes #0 = { nounwind "frame-pointer"="all" "instrument-function-entry-inlined"="\01mcount" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic" "target-features"="+armv7-a,+d32,+dsp,+fp64,+neon,+read-tp-tpidruro,+vfp2,+vfp2sp,+vfp3,+vfp3d16,+vfp3d16sp,+vfp3sp,-aes,-fp-armv8,-fp-armv8d16,-fp-armv8d16sp,-fp-armv8sp,-fp16,-fp16fml,-fullfp16,-sha2,-thumb-mode,-vfp4,-vfp4d16,-vfp4d16sp,-vfp4sp" }
