@@ -1,0 +1,5 @@
+Filesystem         1024-blocks      Used Available Capacity Mounted on
+/dev/mmcblk0p5       116404224    983204 115421020       1% /opt/usr
+drwxr-xr-x 11 0 0 _ 4096 Jan  1  1970 /opt/usr
+TASK5C-TEMP-CREATED
+drwxrwxrwx 2 0 0 User::Shell 3488 Oct 30 21:17 /opt/usr/lko_task5c

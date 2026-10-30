@@ -1,0 +1,6 @@
+TASK5C: 2026-10-30, host SDB window 20:16:01–20:17:34 Asia/Shanghai.
+1. Hardware counting available: perf stat returned cycles=3071509, instructions=1042281, branch-misses=9343, exit=0. cycles record (-c 100000, sleep 2) returned 0 and reported 32 samples; evlist explicitly type=0 (PERF_TYPE_HARDWARE), config=0 (PERF_COUNT_HW_CPU_CYCLES). p.data=7060 bytes, kept only in temp.
+2. Branch-stack sampling unavailable for this board/kernel/PMU/perf combination: record -b -e cycles returned 255: "cycles: PMU Hardware or event type doesn't support branch stack sampling." No successful branch data; do not confuse successful branch-misses counting with branch-stack sampling.
+3. No software-event substitution observed in these tests: recorded cycles explicitly remained hardware type0; stat printed all three requested hardware event names with counts, not cpu-clock/task-clock; branch test failed explicitly. No claim is made for other events or untested fallback scenarios.
+perf version=6.12.80; auxtrace on but libopencsd OFF. This does not imply usable CoreSight tracing.
+Only perf plus missing libLLVM.so.22.1 pushed, both hashes matched task5b. LD_LIBRARY_PATH, HOME, TMPDIR set solely to /opt/usr/lko_task5c. Installed libraries only read, no RPM install. Dedicated directory removed; df before/after identical.

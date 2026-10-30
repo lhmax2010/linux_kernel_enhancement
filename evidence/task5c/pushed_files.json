@@ -1,0 +1,16 @@
+[
+  {
+    "source": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b/extract-perf/usr/bin/perf",
+    "destination": "/opt/usr/lko_task5c/perf",
+    "name": "perf",
+    "bytes": 2981796,
+    "sha256": "e296d7e4eded92aab31b907c56831ed48173ae25ce5818a67b86e06b6f41bc6d"
+  },
+  {
+    "source": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libLLVM.so.22.1",
+    "destination": "/opt/usr/lko_task5c/libLLVM.so.22.1",
+    "name": "libLLVM.so.22.1",
+    "bytes": 31498764,
+    "sha256": "c4b9843002b5946bf79d264409b0e383e40bd6394f40148fef130d278e770766"
+  }
+]

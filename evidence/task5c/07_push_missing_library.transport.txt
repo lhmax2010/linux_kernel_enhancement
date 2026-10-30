@@ -1,0 +1,8 @@
+WARNING: Your data are to be sent over an unencrypted connection and could be read by others.
+
+pushed                libLLVM.so.22.1	  0%	      0MB	    0KB/s
+pushed                libLLVM.so.22.1	 39%	     11MB	12094KB/s
+pushed                libLLVM.so.22.1	 70%	     21MB	 9471KB/s
+pushed                libLLVM.so.22.1	100%	     30MB	 9987KB/s
+1 file(s) pushed. 0 file(s) skipped.
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/usr/lib/libLLVM.so.22.1   8551KB/s (31498764 bytes in 3.597s)

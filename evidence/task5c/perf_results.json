@@ -1,0 +1,27 @@
+[
+  {
+    "label": "09_perf_version",
+    "command": "/opt/usr/lko_task5c/perf version --build-options",
+    "exit": 0
+  },
+  {
+    "label": "10_perf_stat",
+    "command": "/opt/usr/lko_task5c/perf stat -e cycles,instructions,branch-misses -- sleep 1",
+    "exit": 0
+  },
+  {
+    "label": "11_perf_record",
+    "command": "/opt/usr/lko_task5c/perf record -e cycles -c 100000 -o /opt/usr/lko_task5c/p.data -- sleep 2",
+    "exit": 0
+  },
+  {
+    "label": "12_perf_evlist",
+    "command": "/opt/usr/lko_task5c/perf evlist -v -i /opt/usr/lko_task5c/p.data",
+    "exit": 0
+  },
+  {
+    "label": "13_perf_branch",
+    "command": "/opt/usr/lko_task5c/perf record -b -e cycles -o /opt/usr/lko_task5c/b.data -- sleep 2",
+    "exit": 255
+  }
+]

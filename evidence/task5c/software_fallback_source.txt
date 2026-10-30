@@ -1,0 +1,56 @@
+Kernel/tools-perf source commit: 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+Read-only excerpts; platform perf binary provenance is recorded in task5b/rpm_manifest.json and this task pushed_files.json.
+
+FILE linux-rpi/tools/perf/util/parse-events.c SHA256=96ed762d46da958d5b19dc91f3522b71d8c0d549ab8cd2feeceaffd02d03c131
+linux-rpi/tools/perf/util/parse-events.c:40: const struct event_symbol event_symbols_hw[PERF_COUNT_HW_MAX] = {
+linux-rpi/tools/perf/util/parse-events.c:41: 	[PERF_COUNT_HW_CPU_CYCLES] = {
+linux-rpi/tools/perf/util/parse-events.c:42: 		.symbol = "cpu-cycles",
+linux-rpi/tools/perf/util/parse-events.c:43: 		.alias  = "cycles",
+linux-rpi/tools/perf/util/parse-events.c:44: 	},
+linux-rpi/tools/perf/util/parse-events.c:45: 	[PERF_COUNT_HW_INSTRUCTIONS] = {
+linux-rpi/tools/perf/util/parse-events.c:46: 		.symbol = "instructions",
+linux-rpi/tools/perf/util/parse-events.c:47: 		.alias  = "",
+linux-rpi/tools/perf/util/parse-events.c:48: 	},
+linux-rpi/tools/perf/util/parse-events.c:49: 	[PERF_COUNT_HW_CACHE_REFERENCES] = {
+linux-rpi/tools/perf/util/parse-events.c:50: 		.symbol = "cache-references",
+linux-rpi/tools/perf/util/parse-events.c:51: 		.alias  = "",
+linux-rpi/tools/perf/util/parse-events.c:52: 	},
+linux-rpi/tools/perf/util/parse-events.c:53: 	[PERF_COUNT_HW_CACHE_MISSES] = {
+linux-rpi/tools/perf/util/parse-events.c:54: 		.symbol = "cache-misses",
+linux-rpi/tools/perf/util/parse-events.c:55: 		.alias  = "",
+linux-rpi/tools/perf/util/parse-events.c:56: 	},
+linux-rpi/tools/perf/util/parse-events.c:57: 	[PERF_COUNT_HW_BRANCH_INSTRUCTIONS] = {
+linux-rpi/tools/perf/util/parse-events.c:58: 		.symbol = "branch-instructions",
+linux-rpi/tools/perf/util/parse-events.c:59: 		.alias  = "branches",
+linux-rpi/tools/perf/util/parse-events.c:60: 	},
+linux-rpi/tools/perf/util/parse-events.c:61: 	[PERF_COUNT_HW_BRANCH_MISSES] = {
+linux-rpi/tools/perf/util/parse-events.c:62: 		.symbol = "branch-misses",
+linux-rpi/tools/perf/util/parse-events.c:63: 		.alias  = "",
+linux-rpi/tools/perf/util/parse-events.c:64: 	},
+
+FILE linux-rpi/tools/perf/util/evsel.c SHA256=3de345d29620465db866c046fba538778ac789fecb108a4607975ddbd4d82288
+linux-rpi/tools/perf/util/evsel.c:3207: bool evsel__fallback(struct evsel *evsel, struct target *target, int err,
+linux-rpi/tools/perf/util/evsel.c:3208: 		     char *msg, size_t msgsize)
+linux-rpi/tools/perf/util/evsel.c:3209: {
+linux-rpi/tools/perf/util/evsel.c:3210: 	int paranoid;
+linux-rpi/tools/perf/util/evsel.c:3211:
+linux-rpi/tools/perf/util/evsel.c:3212: 	if ((err == ENOENT || err == ENXIO || err == ENODEV) &&
+linux-rpi/tools/perf/util/evsel.c:3213: 	    evsel->core.attr.type   == PERF_TYPE_HARDWARE &&
+linux-rpi/tools/perf/util/evsel.c:3214: 	    evsel->core.attr.config == PERF_COUNT_HW_CPU_CYCLES) {
+linux-rpi/tools/perf/util/evsel.c:3215: 		/*
+linux-rpi/tools/perf/util/evsel.c:3216: 		 * If it's cycles then fall back to hrtimer based cpu-clock sw
+linux-rpi/tools/perf/util/evsel.c:3217: 		 * counter, which is always available even if no PMU support.
+linux-rpi/tools/perf/util/evsel.c:3218: 		 *
+linux-rpi/tools/perf/util/evsel.c:3219: 		 * PPC returns ENXIO until 2.6.37 (behavior changed with commit
+linux-rpi/tools/perf/util/evsel.c:3220: 		 * b0a873e).
+linux-rpi/tools/perf/util/evsel.c:3221: 		 */
+linux-rpi/tools/perf/util/evsel.c:3222: 		evsel->core.attr.type   = PERF_TYPE_SOFTWARE;
+linux-rpi/tools/perf/util/evsel.c:3223: 		evsel->core.attr.config = target__has_cpu(target)
+linux-rpi/tools/perf/util/evsel.c:3224: 			? PERF_COUNT_SW_CPU_CLOCK
+linux-rpi/tools/perf/util/evsel.c:3225: 			: PERF_COUNT_SW_TASK_CLOCK;
+linux-rpi/tools/perf/util/evsel.c:3226: 		scnprintf(msg, msgsize,
+linux-rpi/tools/perf/util/evsel.c:3227: 			"The cycles event is not supported, trying to fall back to %s",
+linux-rpi/tools/perf/util/evsel.c:3228: 			target__has_cpu(target) ? "cpu-clock" : "task-clock");
+linux-rpi/tools/perf/util/evsel.c:3229:
+linux-rpi/tools/perf/util/evsel.c:3230: 		zfree(&evsel->name);
+linux-rpi/tools/perf/util/evsel.c:3231: 		return true;

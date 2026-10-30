@@ -1,0 +1,4 @@
+Error:
+cycles: PMU Hardware or event type doesn't support branch stack sampling.
+PERF-COMMAND-EXIT=255
+34440	/opt/usr/lko_task5c

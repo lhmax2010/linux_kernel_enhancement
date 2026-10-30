@@ -1,0 +1,6 @@
+WARNING: Your data are to be sent over an unencrypted connection and could be read by others.
+
+pushed                           perf	  0%	      0KB	    0KB/s
+pushed                           perf	100%	   2911KB	    0KB/s
+1 file(s) pushed. 0 file(s) skipped.
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task5b/extract-perf/usr/bin/perf   5708KB/s (2981796 bytes in 0.510s)

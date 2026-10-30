@@ -1,0 +1,80 @@
+[
+  {
+    "source": "devtmpfs",
+    "mountpoint": "/dev",
+    "fstype": "devtmpfs",
+    "options": "rw,nosuid,size=1815944k,nr_inodes=91845,mode=755"
+  },
+  {
+    "source": "/dev/mmcblk0p2",
+    "mountpoint": "/",
+    "fstype": "ext4",
+    "options": "rw,relatime,mb_optimize_scan=0"
+  },
+  {
+    "source": "/dev/mmcblk0p3",
+    "mountpoint": "/opt",
+    "fstype": "ext4",
+    "options": "rw,relatime"
+  },
+  {
+    "source": "/dev/mmcblk0p10",
+    "mountpoint": "/hal",
+    "fstype": "ext4",
+    "options": "rw,relatime"
+  },
+  {
+    "source": "systemd-1",
+    "mountpoint": "/proc/sys/fs/binfmt_misc",
+    "fstype": "autofs",
+    "options": "rw,relatime,fd=25,pgrp=1,timeout=0,minproto=5,maxproto=5,direct"
+  },
+  {
+    "source": "/dev/mmcblk0p9",
+    "mountpoint": "/mnt/inform",
+    "fstype": "ext4",
+    "options": "rw,relatime"
+  },
+  {
+    "source": "/dev/mmcblk0p5",
+    "mountpoint": "/opt/usr",
+    "fstype": "f2fs",
+    "options": "rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue"
+  },
+  {
+    "source": "tmpfs",
+    "mountpoint": "/opt/media",
+    "fstype": "tmpfs",
+    "options": "rw,relatime"
+  },
+  {
+    "source": "sdb.default",
+    "mountpoint": "/dev/usb-funcs/sdb/default",
+    "fstype": "functionfs",
+    "options": "rw,relatime"
+  },
+  {
+    "source": "mtp.default",
+    "mountpoint": "/dev/usb-funcs/mtp/default",
+    "fstype": "functionfs",
+    "options": "rw,relatime"
+  },
+  {
+    "source": "/dev/mmcblk0p5",
+    "mountpoint": "/opt/usr/home/owner/media",
+    "fstype": "f2fs",
+    "options": "rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue"
+  },
+  {
+    "source": "/dev/loop0",
+    "mountpoint": "/opt/usr/home/owner/subsession/__templ_acct_fix__",
+    "fstype": "ext4",
+    "options": "rw,relatime"
+  },
+  {
+    "source": "/dev/loop1",
+    "mountpoint": "/opt/usr/home/owner/subsession/__templ_prof_fix__",
+    "fstype": "ext4",
+    "options": "rw,relatime"
+  }
+]

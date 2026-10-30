@@ -1,6 +1,14 @@
 1. 不使用工作目录以外的文件（配置、脚本、数据等）。系统已安装的工具本身（gbs、depanneur、编译器、git 等）不在此限。
 2. 生成的所有东西都必须在工作目录内。
 
+## 一次性授权：任务5c板上perf实测（2026-10-30，PM裁决）
+
+- 本次允许将板上临时可执行目录从/tmp改为一个可写、且没有noexec的非根文件系统数据分区下新建的专用目录`lko_task5c`；仅用于本次perf实测，用完删除。这是宿主工作区规则的板上路径例外，不作为后续任务的永久授权。
+- 写入前只读读取/proc/mounts，列出所有rw且不带noexec的挂载点；选择空间足够的数据分区，记录df及父目录所有者，确认专用目录原先不存在。若没有合适挂载点则停止，不采用其他执行手段。
+- 只推任务5b已取得的perf可执行文件和板上确实缺少的依赖库，LD_LIBRARY_PATH只指向专用目录；以root执行version、1秒硬件事件stat、2秒cycles record与evlist、2秒branch record，不改perf_event_paranoid。
+- 不remount，不写根文件系统，不安装RPM，不改服务、sysctl/sysfs或安全策略；继续遵守三项身份断言、前后进程/uptime记录及50MB临时产出上限。
+- 结束后只删除本次新建的整个lko_task5c目录，用ls确认不存在并记录df前后对照。证据仅上传小体积文本；09、RULES、STATUS与evidence/task5c同commit普通推送GitHub main。
+
 
 ## PM裁决：任务5b续（2026-10-30，覆盖下一节来源/下载的旧条件）
 

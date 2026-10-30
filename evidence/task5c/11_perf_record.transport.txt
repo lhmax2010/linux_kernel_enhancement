@@ -1,0 +1,4 @@
+[ perf record: Woken up 1 times to write data ]
+[ perf record: Captured and wrote 0.004 MB /opt/usr/lko_task5c/p.data (32 samples) ]
+PERF-COMMAND-EXIT=0
+34440	/opt/usr/lko_task5c

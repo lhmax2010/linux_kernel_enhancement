@@ -2,48 +2,48 @@
 
 更新：2026-10-30（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**任务5b续：来源与最终配置已闭合；BPF源码/板上只读核实已完成；perf功能实测因获准目录`/tmp`挂载noexec而未完成。** perf version即Permission denied、退出126，未继续stat/record/evlist，不能给出硬件计数或分支采样能力结论。板上本轮临时目录已删除并确认；未改挂载、sysctl/sysfs、服务或BPF状态。
+**任务5c已完成实测与清理：硬件计数可用，cycles采样32个样本且evlist明确type=0；分支栈采样-b在当前组合不支持（255）；未观察到软件事件替换。** 一次性授权的数据分区目录`/opt/usr/lko_task5c`已整体删除，ls确认不存在、df前后相同。未remount、写根文件系统、安装RPM或改paranoid。
 
 ## 计划与进度
 
-本轮计划：记录PM来源裁决 → 只读远端分支contains佐证 → 指定公开目录获取两个RPM → 平台最终.config比较 → 一次性perf尝试与BPF只读核实 → 更新09/RULES/STATUS和文本证据，同commit推main。
+本轮计划：读取规则/状态 → 记录一次性数据分区授权 → 身份/挂载/空间/所有者只读预检 → 仅推perf和缺失库 → version、stat、cycles record/evlist、branch record → 清理/df对照 → 09/RULES/STATUS及evidence/task5c同commit推main。已完成。
 
-- 设计文档10前轮已从Downloads移动入库，本轮保持原字节，21,880 B、SHA256 `80ecded8314071d8781c7329b37210613d8c788e819fba9a13c6d76c25909249`；未开始设计实现。
-- **PM裁决已接受**：QB1211696的BUILD_PKG_LIST明确为`platform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708`，SHA唯一确定源码内容，不再要求包级分支字段。PROJECT_BRANCH=tizen是Tizen-Unified-Toolchain项目级变量，USE_BRANCH_POLICY=false；产物目录与板上BUILD_ID一致。
-- QB开始10月28日10:58:35，时长6:15:43，推算结束17:14:18；**按PM要求将开始时间理解为UTC，这是推断，页面未明示时区**。内核12:18:25 UTC在开始后1:19:50、结束前4:55:53，落在该时间窗内。
-- `git branch -r --contains 0fac5de6…`只返回`origin/sandbox/lhmax2025/kernel_optimization`。结论范围为本地已获取的远端跟踪refs，本轮没有fetch、改源码或推Gerrit。
-- 没有再次登录QB。仅从指定公开根的`repos/standard/packages/armv7l/`下载devel/perf RPM（115,630,580 / 1,109,156 B），URL、大小、SHA256均留证。两个RPM未安装，RPM/CPIO/ELF仅留temp；RPM BUILDTIME均为epoch0，不能用于实际时间证明。
-- 用LLVM GBS root的平台rpm2cpio/readelf/rpm/Python经qemu-arm分析；平台scripts/diffconfig退出0且无输出。devel包arm-rpi4最终.config与任务4LLVM普通版全文相同，194,980 B、SHA256均为`62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5`。
-- 板上三项身份断言通过，BUILD_ID与/proc/version复核一致。perf的16项DT_NEEDED中仅缺libLLVM.so.22.1；只推perf及工作区既有LLVM GBS root的该库，共34,480,560 B，板上哈希一致、du33,676 KiB。
-- perf version执行失败126；只读确认`tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0`，没有进一步运行perf事件命令。清理后两次确认目录不存在。SDB进入时已uid0，本轮不切换root状态；paranoid=2、bpf_jit_enable=0均未修改。
-- BPF：ARM32缺少trampoline实现，正常前置条件下挂载先从弱size实现返回-ENOTSUPP(524)；libbpf错误传播已核对。当前未发现resource-monitor进程或插件映射；dlog命中仅SDB命令回显，journal仅一般systemd提示。**是否曾尝试加载、是否失败、实际失败原因均无法判断**，未启动服务或手动加载BPF。
+- SDB连接192.168.108.26:26101；三项身份、BUILD_ID和/proc/version与任务5b一致。会话起止均已uid0，未切换SDB root模式；paranoid始终2。保留起止uptime/进程快照，未操作既有串口shell PID3708或其他进程。
+- /proc/mounts筛出13个rw且不带noexec的挂载点，选`/opt/usr`（/dev/mmcblk0p5、F2FS，独立于根/dev/mmcblk0p2）。写前可用115,421,020 KiB；父目录0:0、0755。专用目录原先不存在，新建后0:0、0777、SMACK User::Shell；未修改安全策略。
+- 复用已验证来源的QB perf及工作区LLVM root的唯一缺失libLLVM.so.22.1，共34,480,560 B；推送前后SHA一致。依赖重新逐项只读确认，不推板上已有库。HOME/TMPDIR/LD_LIBRARY_PATH仅指向专用目录。
+- perf6.12.80 version成功；stat cycles=3,071,509、instructions=1,042,281、branch-misses=9,343，退出0。cycles record(-c100000/sleep2)退出0、32样本；evlist type0/config0。
+- record -b退出255，原文“PMU Hardware or event type doesn't support branch stack sampling.”。这项是已取得的“不支持”测试结论，不是未执行项；branch-misses计数成功不能替代分支栈采样。
+- 未观察到软件事件替换：cycles记录明确type0，stat仍输出原三硬件事件，-b直接失败。没有泛化到未测试事件。
+- 清理前du最大34,440 KiB（含HOME内自动生成的.debug缓存），低于50 MiB。整个目录已删除，ls退出2/No such file；df已用983,204 KiB、可用115,421,020 KiB前后完全相同。/proc/mounts全文前后相同。
 
 ## 已闭合结论（附证据）
 
 | 结论 | 证据 |
-| --- | --- |
-| PM来源裁决覆盖此前包级分支停止条件；时间UTC解释明确标推断 | [裁决及时间差](../evidence/task5b/pm_adjudication_20261030.txt)、[QB页面](../evidence/task5b/qb_1211696_page.txt)、[09 A节](09_board_rpi4_readonly.md) |
-| 本地已获取远端跟踪分支中只有授权sandbox包含0fac5de6 | [contains原文](../evidence/task5b/remote_contains_0fac5de6.txt) |
-| 指定公开来源两包已下载，最终配置无差异且字节一致 | [RPM清单](../evidence/task5b/rpm_manifest.json)、[配置摘要](../evidence/task5b/config_comparison_summary.txt)、[平台diffconfig](../evidence/task5b/final_config_diff.txt) |
-| perf可执行入口被/tmp noexec阻塞，未获得硬件事件结果 | [version原文](../evidence/task5b/11_perf_version.transport.txt)、[挂载证据](../evidence/task5b/18_exec_restriction.transport.txt)、[尝试摘要](../evidence/task5b/perf_attempt_summary.txt) |
-| 板上临时目录已删除，paranoid/JIT未变，保留开始/结束进程快照 | [清理记录](../evidence/task5b/17_cleanup_end.transport.txt)、[全部SDB命令](../evidence/task5b/board_commands.jsonl) |
-| ARM32 trampoline静态缺口与“插件实际失败未知”分别有证据 | [源码错误链](../evidence/task5b/bpf_source_error_chain.txt)、[运行摘要](../evidence/task5b/bpf_runtime_summary.txt) |
-| 设计10原文不变；前轮浏览器登录会话已清理，本轮无浏览器 | [设计](10_design_v1.md)、[移动记录](../evidence/task5b/design_move.txt)、[历史浏览器清理](../evidence/task5b/browser_cleanup.txt) |
+|---|---|
+| 本次使用获准、可执行的独立数据分区，未写根分区 | [全部候选/选择](../evidence/task5c/mount_selection.md)、[写前df/所有者](../evidence/task5c/04_preflight.transport.txt) |
+| 硬件计数与cycles采样可用，记录不是软件时钟 | [stat](../evidence/task5c/10_perf_stat.transport.txt)、[record](../evidence/task5c/11_perf_record.transport.txt)、[type0](../evidence/task5c/12_perf_evlist.transport.txt) |
+| 当前组合不支持-b分支栈采样；未发生可观察的软件事件替换 | [branch报错](../evidence/task5c/13_perf_branch.transport.txt)、[三项结论](../evidence/task5c/conclusions.txt)、[09 G节](09_board_rpi4_readonly.md) |
+| 专用目录清理完成、df/mounts/paranoid前后核对通过 | [结束原文](../evidence/task5c/16_cleanup_end.transport.txt)、[摘要](../evidence/task5c/cleanup_summary.txt)、[命令全表](../evidence/task5c/board_commands.jsonl) |
+| QB1211696来源与最终.config此前已按PM裁决闭合 | [来源裁决](../evidence/task5b/pm_adjudication_20261030.txt)、[配置摘要](../evidence/task5b/config_comparison_summary.txt) |
+| 设计10原文保持不变；BPF静态缺口与运行未知分别记录 | [设计10](10_design_v1.md)、[BPF源码](../evidence/task5b/bpf_source_error_chain.txt)、[BPF运行摘要](../evidence/task5b/bpf_runtime_summary.txt) |
 
 ## 需要人工裁决的前提与挂账
 
-- **perf实测未闭合**：本次唯一授权执行位置/tmp/lko_task5b所在挂载noexec；现有规则禁止remount和根文件系统写入。恢复需要PM明确可执行临时位置或镜像内置perf方案，不能自行改变边界。硬件计数是否type=0、-b是否可用、是否软件回退均仍待实测。
-- BPF插件没有实际load/attach日志；历史尝试/失败与原因无法判断。是否需要后续受控触发由PM决定，本次不触发；静态架构缺口不能自动视为删除BTF的产品批准。
-- QB页面时区没有独立证明；来源已按PM指定的UTC推断接受，不再作为来源停止条件。
-- 设计v1原样保存，其历史“待闭合/未实测”描述保留为PM提交原文；当前执行状态以09与本文件为准。
+- 本次授权用完即清理，不构成永久板上执行授权；后续性能实验由PM下发。本次硬件能力测试不是产品工作负载基准。
+- -b不支持已由实测确认；若后续设计需要分支样本，采样方案需另行设计。perf build-options的auxtrace=on、libopencsd=OFF也不能独立证明CoreSight可用；本次不扩展测试。
+- BPF插件历史load/attach尝试及实际失败原因仍无法判断，缺少相关日志。是否受控触发、插件产品需求/BTF取舍由PM决定，未启动服务或手动加载BPF。
+- QB开始时间按UTC理解是PM接受的推断，未独立证明页面时区，不再作为来源停止条件。
+- 设计v1原样保存，其历史“待闭合/未实测”描述保留为PM原文；当前结果以09及本状态为准。
 
-## 保留的任务5现场结论
+## 保留的任务5/5b结论
 
-2026-10-29三项身份断言通过，Clang22.1.8/LLD22.1.8、内核构建时间2026-10-28 12:18:25 UTC。板上没有/proc/config.gz及perf，模块build链接失效；最终配置本轮已通过QB devel包闭合。PMU驱动armv8_cortex_a72已绑定、报告7 counters，仍无本任务实际perf硬件事件结果。[09](09_board_rpi4_readonly.md)、[任务5证据](../evidence/task5/README.md)。
+QB1211696 BUILD_PKG_LIST固定`platform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708`。PM接受SHA作为来源证明，不再要求包级分支；PROJECT_BRANCH=tizen为项目级字段且USE_BRANCH_POLICY=false，公开产物目录与板上BUILD_ID一致。按UTC推断的构建窗口2026-10-28 10:58:35–17:14:18包含内核12:18:25 UTC；本地远端跟踪refs只有授权sandbox包含该SHA。[09 A节](09_board_rpi4_readonly.md)。
 
-BTF为6,478,350 B，resource-monitor-plugin-network有内嵌fentry/CO-RE静态依赖；没有插件运行/失败证据。tracefs开关开着但nop/events=0，F2FS在用，Btrfs/NFS无挂载，指定六个USB网卡/声卡驱动未绑定。MGLRU=0x0001；zram=lzo-rle、1,628,766,208 B，而resourced写zstd；实际CMA320MiB。这些项目未在本轮重复测量。任务5旧/tmp/lko_task5已清理，当轮SDB恢复owner；本轮开始时已为root，保持该状态。
+指定公开来源的devel/perf RPM已下载、未安装。devel最终.config与任务4LLVM普通版全文相同，194,980 B、SHA256 `62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5`，平台diffconfig为空。设计10为21,880 B、SHA256 `80ecded8314071d8781c7329b37210613d8c788e819fba9a13c6d76c25909249`，前轮已移动入库，本轮未改。
 
-任务5首次交付`34fccb5713bac3a3bbe61cd9aa1a788d6a9f1dce`；匿名QB限制记录`d6d2c80ecebe083e57dc7f7bd44872e56be8bb51`；任务5b首次分支停止与设计入库为`c8847a8856768bcc3be525dbca98f1ff728182db`。旧停止原始证据保留，已由本轮PM裁决和新配置证据覆盖，不再表示当前待办。
+ARM32缺少BPF trampoline；正常前置条件下挂载先从弱size实现返回-ENOTSUPP(524)。当前未见resource-monitor进程/插件映射或实际加载失败日志；静态缺口不等于实测失败，也不自动批准移除BTF。任务5时BTF6,478,350 B、tracefs开启但nop/events0、F2FS在用、六个指定外设驱动未绑定、MGLRU0x0001、zram lzo-rle/1,628,766,208 B、实际CMA320MiB，未在本轮重复采集。
+
+任务5b续提交`0f2bd63c0b6e8b6f07bb7ff2d67d5fefb290b91b`记录的/tmp noexec阻塞，已由本次新授权路径解决；旧证据保留为历史。没有重新登录QB、下载其他包、改源码或完整编译。
 
 ## 内核基线与历史挂账
 
@@ -55,4 +55,4 @@ BTF为6,478,350 B，resource-monitor-plugin-network有内嵌fentry/CO-RE静态�
 
 ## 发布状态
 
-本次将09、RULES、STATUS与evidence/task5b在同一commit普通推送GitHub main，署名Hao Lin <hao.lin@samsung.com>，沿用现有认证。设计10已在此前提交入库，本次不修改。没有上传RPM、CPIO、ELF、截图、浏览器会话或凭据。最终commit见本轮回复；perf功能验证明确保留未完成。
+本次09、RULES、STATUS与evidence/task5c在同一commit普通推送GitHub main，署名Hao Lin <hao.lin@samsung.com>，沿用现有认证。仅上传小于1MB文本；RPM、ELF、p.data、辅助脚本与完整原始日志留temp。最终commit见本轮回复。

@@ -1,0 +1,4 @@
+linux-rpi HEAD=0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+linux-rpi git status --porcelain: empty
+docs/10_design_v1.md SHA256=80ecded8314071d8781c7329b37210613d8c788e819fba9a13c6d76c25909249 (unchanged)
+Evidence result checks: perf exits 0/0/0/0/255; hardware event type0; 13 rw/no-noexec mount entries; cleanup absence marker; local links resolved.

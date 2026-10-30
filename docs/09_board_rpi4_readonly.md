@@ -2,7 +2,9 @@
 
 采集日期：2026-10-29。对象：`192.168.108.26:26101`，仅用 SDB。宿主操作记录时间为 **20:32:05–20:40:31（Asia/Shanghai）**；板钟显示 `+0900`，换算后另有约17秒偏差，未校时。原始输出、两份候选ELF及本地解析产物在 `temp/task5/`；本文链接均为可上传的小体积文本摘要。
 
-**任务5b续（2026-10-30）**：按PM新裁决，QB1211696的固定linux-rpi SHA与产物/BUILD_ID证据已接受；公开devel包最终.config与任务4LLVM普通版**全文字节相同、平台diffconfig为空**，来源与配置闭合。临时perf已按授权推送，但`/tmp`为`noexec`，执行version即Permission denied/126，未进行计数/采样，临时文件已清理。网络插件的ARM32 fentry缺少trampoline实现；没有插件加载/失败日志，不能称其“实测加载失败”。详见A、B、G新增小节。
+**任务5c（2026-10-30）**：PM一次性授权可执行数据分区后，已在`/opt/usr/lko_task5c`完成测试：硬件计数可用，cycles采样32个样本、evlist为type=0；`record -b`明确报branch stack sampling不支持（255）；本次未观察到软件事件替换。目录已删除，df前后相同，未remount或改paranoid。任务5b的noexec阻塞保留为历史，当前perf结论见G节任务5c。
+
+**任务5b续（2026-10-30，历史经过）**：按PM新裁决，QB1211696的固定linux-rpi SHA与产物/BUILD_ID证据已接受；公开devel包最终.config与任务4LLVM普通版**全文字节相同、平台diffconfig为空**，来源与配置闭合。临时perf已按授权推送，但`/tmp`为`noexec`，执行version即Permission denied/126，未进行计数/采样，临时文件已清理。网络插件的ARM32 fentry缺少trampoline实现；没有插件加载/失败日志，不能称其“实测加载失败”。详见A、B、G新增小节。
 
 ## 产品取舍所需的 B–E 结论
 
@@ -216,6 +218,8 @@ resourced/resourced-config/resourced-bin版本均为10.0.0-1；已保存`/etc/re
 
 ## G：PMU、perf与采样能力
 
+当前结论以本节“任务5c：数据分区perf实测结果”为准：硬件计数/采样已验证，-b分支栈采样不支持，未观察到软件事件替换。以下先保留任务5与5b的历史经过。
+
 证据：[G PMU/perf](../evidence/task5/G_pmu_perf.txt#L1)。
 
 | 核对项 | 现场结果 |
@@ -231,7 +235,7 @@ resourced/resourced-config/resourced-bin版本均为10.0.0-1；已保存`/etc/re
 
 三项结论：**硬件计数尚未验证可用**（PMU驱动已绑定）；**分支采样尚未验证**（没有执行到perf事件申请，不能写成硬件“不支持”）；**当前镜像未暴露可用ETM追踪路径**，也没有执行ETM采样。由于perf未启动，没有可观察的`<not supported>`或软件事件回退，不能宣称三种硬件事件全部成功。未安装perf、未推送二进制或改用别的采样程序，实际上没有施加任何perf测试负载。
 
-### 任务5b：临时perf实测在执行权限处阻塞
+### 历史：任务5b临时perf在执行权限处阻塞
 
 上表是任务5（10月29日）的“工具不存在”结果。本次已经取得QB的perf并按一次性授权尝试执行，停止点更新为：**`/tmp`挂载noexec，perf尚未启动**，不是PMU事件拒绝。
 
@@ -262,7 +266,41 @@ tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0
 
 临时目录已在finally中删除，并再次确认`TASK5B-TEMP-ABSENT-CONFIRMED`；[清理与结束进程](../evidence/task5b/17_cleanup_end.transport.txt)。只删除本轮新建目录，没有安装RPM或写根文件系统、sysctl、sysfs。起始uptime83729.49s，清理后83934.12s，权限核对时84005.07s；既有root串口shell PID3708未触碰。dmesg里uptime11755–11766s的perf采样率调整早于本次，不能归给本轮或据此宣称指定硬件事件已成功。
 
-后续需要PM裁决一个**可执行临时位置或镜像内置perf方案**；当前授权位置noexec，且禁止remount，代理不自行改边界或再试。一次性授权执行及阻塞摘要见[perf_attempt_summary.txt](../evidence/task5b/perf_attempt_summary.txt)。
+这次noexec停止之后，PM已在任务5c一次性授权非根数据分区的可执行专用目录；恢复后的结果见下节。原始阻塞摘要保留于[perf_attempt_summary.txt](../evidence/task5b/perf_attempt_summary.txt)。
+
+### 任务5c：数据分区perf实测结果
+
+2026-10-30宿主SDB窗口为20:16:01–20:17:34（Asia/Shanghai）；三项身份、BUILD_ID与/proc/version仍与A节一致。会话进入时已uid=0，保持原root状态；`perf_event_paranoid`始终为2。观察到原有串口shell PID3708与enlightenment等进程，未干预；这些短时`sleep`测试用于能力核对，不能当作产品性能基准。
+
+只读`cat /proc/mounts`筛出**13个rw且没有noexec的挂载点**，完整列表及选择理由在[挂载清单](../evidence/task5c/mount_selection.md)、[原始挂载文本](../evidence/task5c/03_mounts.transport.txt)。选定`/opt/usr`：设备`/dev/mmcblk0p5`、F2FS，与根文件系统`/dev/mmcblk0p2`不同；`/opt/usr`不是符号链接，父目录UID:GID=0:0、权限0755，开始可用115,421,020 KiB（约110 GiB）。专用目录原先不存在；新建`/opt/usr/lko_task5c`后所有者仍为0:0，权限0777、SMACK标签User::Shell，未改安全策略。[写前df/依赖检查](../evidence/task5c/04_preflight.transport.txt)、[新建记录](../evidence/task5c/05_create_temp.transport.txt)。
+
+只推任务5b同一perf（2,981,796 B）及板上唯一缺少的`libLLVM.so.22.1`（31,498,764 B），两文件SHA与前轮、板上推送后均一致；其他依赖只读核对存在。仅设置`HOME=TMPDIR=LD_LIBRARY_PATH=/opt/usr/lko_task5c`（三个变量各自的值都是该路径），LD_LIBRARY_PATH没有其他目录。perf为6.12.80；build-options显示auxtrace开启、libopencsd关闭，不能据auxtrace一项宣称CoreSight链已可用。[推送清单](../evidence/task5c/pushed_files.json)、[SHA复核](../evidence/task5c/08_push_hashes.transport.txt)、[版本选项](../evidence/task5c/09_perf_version.transport.txt)。
+
+以下命令均使用专用目录内的perf，并通过SDB以root执行；输出文件也只在该目录。
+
+| 命令（省略perf绝对路径） | 退出码 | 实测结果 | 证据 |
+|---|---:|---|---|
+| `version --build-options` | 0 | perf6.12.80正常执行 | [version](../evidence/task5c/09_perf_version.transport.txt) |
+| `stat -e cycles,instructions,branch-misses -- sleep 1` | 0 | cycles **3,071,509**；instructions **1,042,281**；branch-misses **9,343**；elapsed1.003534166s | [stat](../evidence/task5c/10_perf_stat.transport.txt) |
+| `record -e cycles -c 100000 -o /opt/usr/lko_task5c/p.data -- sleep 2` | 0 | **32 samples**；p.data文件7,060 B，已拉回temp/task5c，不上传二进制 | [record](../evidence/task5c/11_perf_record.transport.txt) |
+| `evlist -v -i /opt/usr/lko_task5c/p.data` | 0 | `type: 0 (PERF_TYPE_HARDWARE)`；`config: 0 (PERF_COUNT_HW_CPU_CYCLES)`；period100000 | [evlist](../evidence/task5c/12_perf_evlist.transport.txt) |
+| `record -b -e cycles -o /opt/usr/lko_task5c/b.data -- sleep 2` | **255** | `cycles: PMU Hardware or event type doesn't support branch stack sampling.`；b.data为0 B | [branch](../evidence/task5c/13_perf_branch.transport.txt) |
+
+三项结论：
+
+1. **硬件计数可用**：三项stat都有计数，cycles采样成功且evlist明确type=0，已闭合任务5/5b中“只有PMU驱动绑定”的不足。
+2. **分支栈采样不可用（当前板子/内核/PMU/perf组合）**：`-b`直接报告不支持，未取得分支样本。branch-misses可计数不等于能够采集分支栈；不把本次结果推广到未测架构或其他采样方案。
+3. **本次未观察到事件被换成软件事件**：cycles记录明确是硬件type0；stat按原三项硬件事件名输出计数，未出现cpu-clock/task-clock替换；`-b`直接失败。对应源码`tools/perf/util/parse-events.c:40–64`为硬件事件名，`tools/perf/util/evsel.c:3207–3231`显示cycles软件回退会修改type/config并清除原事件名；[源码摘录](../evidence/task5c/software_fallback_source.txt)。这不是对所有事件或未测试回退场景的保证。
+
+清理前du最大34,440 KiB，低于50 MiB。perf自动产生的build-id `.debug`缓存因HOME设在专用目录内，也随整个目录删除；没有把缓存写入真实root HOME。`ls -ld /opt/usr/lko_task5c`返回`No such file or directory`、退出2，随后确认`TASK5C-TEMP-ABSENT`。df对照如下（单位KiB）：
+
+| 时点 | 总量 | 已用 | 可用 |
+|---|---:|---:|---:|
+| 写前 | 116,404,224 | 983,204 | 115,421,020 |
+| 删除后 | 116,404,224 | 983,204 | 115,421,020 |
+| 差值 | 0 | 0 | 0 |
+
+起止uptime86077.52/86169.86秒；/proc/mounts全文前后相同，paranoid仍2。未remount、安装RPM、写根文件系统、改sysctl/sysfs或启动服务；只删除本轮新建专用目录。[清理/结束进程原文](../evidence/task5c/16_cleanup_end.transport.txt)、[清理摘要](../evidence/task5c/cleanup_summary.txt)、[全部命令](../evidence/task5c/board_commands.jsonl)、[证据索引](../evidence/task5c/README.md)。此次授权随清理结束，后续板上测试需新任务授权。
 
 ## H：调度和时钟
 
@@ -290,7 +328,7 @@ cpufreq policy0覆盖CPU0–3，driver=`cpufreq-dt`，governor=`schedutil`；可
 
 板上只新建`/tmp/lko_task5/`，收尾只删除其中本任务创建的17个普通文本文件并rmdir；最后在恢复owner后再次确认 **`TASK5-TEMP-ABSENT-FINAL`**。最大一次板上文本输出为包清单54,126 B，结束前du记录临时目录188KiB，均远低于50MB；两份ELF直接sdb pull到工作区，没有在板上另存。见[清理原文](../evidence/task5/session_and_cleanup.txt#L424)。
 
-待PM后续提供/决定：任务5b续已按裁决闭合来源/配置，实际perf测试仍需解决获准临时位置noexec的限制；网络插件的产品需求/触发条件、BTF取舍和固件CMA来源仍待核实。不自行补装、remount或触发服务。
+待PM后续提供/决定：来源/配置与硬件计数已闭合，任务5c确认当前组合不支持-b分支栈采样；网络插件的产品需求/触发条件、BTF取舍和固件CMA来源仍待核实。不自行补装、remount或触发服务。
 
 
 ## 历史：任务5b首次停止位置（2026-10-30，已由本轮PM裁决恢复）
@@ -304,6 +342,6 @@ QB源码SHA和构建成功状态有正向证据；**并未认定QB构建了错�
 因此任务5b步骤3配置比较、步骤4硬件计数/分支采样、步骤5BPF trampoline源码与板上加载日志核对均未执行。本轮没有任何SDB命令，未创建`/tmp/lko_task5b`；上文任务5的PMU/BPF结论仍是10月29日的旧快照，没有新增实测结论。尤其不能将源码中预期的ENOTSUPP路径当作这个插件实际尝试加载并失败的证据。
 
 
-## 任务5b续收尾
+## 历史：任务5b续收尾（当前perf结论见G节任务5c）
 
 来源和最终配置已闭合，BPF源码/只读运行核实已完成；perf功能测试因/tmp noexec未完成。没有将执行权限失败包装成硬件能力结论，也没有将无插件日志包装成ENOTSUPP实测。PM设计[10_design_v1.md](10_design_v1.md)内容未改、SHA仍为80ecded8314071d8781c7329b37210613d8c788e819fba9a13c6d76c25909249。本次只更新09、RULES、STATUS与[evidence/task5b](../evidence/task5b/README.md)，在同一GitHub main提交交付；不改内核源码、不构建、不推Gerrit。

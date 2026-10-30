@@ -1,0 +1,15 @@
+
+ Performance counter stats for 'sleep 1':
+
+           3071509      cycles
+           1042281      instructions                     #    0.34  insn per cycle
+              9343      branch-misses
+
+       1.003534166 seconds time elapsed
+
+       0.003997000 seconds user
+       0.000000000 seconds sys
+
+
+PERF-COMMAND-EXIT=0
+33712	/opt/usr/lko_task5c

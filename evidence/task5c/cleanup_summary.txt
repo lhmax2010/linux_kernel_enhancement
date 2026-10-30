@@ -1,0 +1,10 @@
+Directory: /opt/usr/lko_task5c
+Before: /dev/mmcblk0p5       116404224    983204 115421020       1% /opt/usr
+After:  /dev/mmcblk0p5       116404224    983204 115421020       1% /opt/usr
+Used difference: 0 KiB; available difference: 0 KiB (df snapshot precision).
+ls after cleanup: No such file or directory; exit=2. TASK5C-TEMP-ABSENT verified.
+/proc/mounts before/after identical. No remount or mount performed.
+perf_event_paranoid before/after=2. SDB uid=0 at entry and exit; no root mode change.
+Uptime before=86077.52s, after=86169.86s.
+Maximum recorded directory du=34440 KiB (<50 MiB), including perf build-id .debug cache under the explicitly selected HOME. Entire directory including cache and zero-byte failed b.data was deleted.
+Existing serial shell PID3708 and other processes were not touched.

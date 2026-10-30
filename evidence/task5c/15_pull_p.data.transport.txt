@@ -1,0 +1,5 @@
+
+pulled                         p.data	  0%	      0 B	    0KB/s
+pulled                         p.data	100%	   7060 B	    0KB/s
+1 file(s) pulled. 0 file(s) skipped.
+/opt/usr/lko_task5c/p.data       52KB/s (7060 bytes in 0.132s)
