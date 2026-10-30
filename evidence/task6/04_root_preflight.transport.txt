@@ -1,0 +1,38 @@
+uid=0(root) gid=0(root) groups=0(root),29(audio),44(video),201(display),1901(log),6505(pulse-access),6506(pulse-rt),6525(usb_device),10001(priv_externalstorage),10013(priv_tee_client),10014(priv_peripheralio),10212(priv_platform),10501(priv_camera),10502(priv_mediastorage),10503(priv_recorder),10704(priv_internet),10705(priv_network_get),10711(priv_tethering_admin),10901(priv_email),10903(priv_message_read),11103(priv_mapservice),11201(priv_appdebugging) context="User::Shell"
+[tools root]
+/usr/bin/lsblk
+TOOL-lsblk-EXIT=0
+/usr/sbin/blkid
+TOOL-blkid-EXIT=0
+/usr/bin/findmnt
+TOOL-findmnt-EXIT=0
+TOOL-vcgencmd-EXIT=1
+TOOL-rpi-eeprom-update-EXIT=1
+/usr/sbin/reboot
+TOOL-reboot-EXIT=0
+TOOL-systemd-analyze-EXIT=1
+/usr/bin/systemctl
+TOOL-systemctl-EXIT=0
+/usr/bin/connmanctl
+TOOL-connmanctl-EXIT=0
+/usr/bin/logger
+TOOL-logger-EXIT=0
+/usr/sbin/ip
+TOOL-ip-EXIT=0
+TOOL-timeout-EXIT=1
+/usr/bin/stat
+TOOL-stat-EXIT=0
+/usr/bin/mount
+TOOL-mount-EXIT=0
+/usr/bin/umount
+TOOL-umount-EXIT=0
+[target guard]
+[installed relevant binaries]
+ls: cannot access /usr/bin/systemd-analyze: No such file or directory
+ls: cannot access /bin/systemd-analyze: No such file or directory
+ls: cannot access /usr/sbin/connmanctl: No such file or directory
+-rwxr-xr-x 1 root       root       392364 Sep 12 23:27 /sbin/ip
+lrwxrwxrwx 1 root       root           24 Oct 28 21:15 /sbin/reboot -> /etc/alternatives/reboot
+-r-x------ 1 network_fw network_fw  72608 Oct 28 21:24 /usr/bin/connmanctl
+-rwxr-xr-x 1 root       root       392364 Sep 12 23:27 /usr/sbin/ip
+lrwxrwxrwx 1 root       root           24 Oct 28 21:15 /usr/sbin/reboot -> /etc/alternatives/reboot

@@ -1,0 +1,2 @@
+/bin/sh: systemd-analyze: command not found
+VERIFY-EXIT=127

@@ -1,0 +1,6 @@
+[systemd tool search]
+FIND-EXIT=0
+[systemd version]
+systemd 244 (244)
++PAM -AUDIT -SELINUX +IMA -APPARMOR +SMACK -SYSVINIT +UTMP -LIBCRYPTSETUP -GCRYPT -GNUTLS +ACL +XZ -LZ4 -SECCOMP +BLKID -ELFUTILS +KMOD -IDN2 -IDN +PCRE2 default-hierarchy=legacy
+VERSION-EXIT=0

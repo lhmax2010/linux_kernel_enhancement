@@ -2,7 +2,14 @@
 
 更新：2026-10-30（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**设计文档当前版本为v3：[docs/10_design_v3.md](10_design_v3.md)，待外部评审；[v1](10_design_v1.md)、[v2](10_design_v2.md)保留为历史记录。** 本次计划为原样入库v3及两份v2评审记录、补充板上授权，并同commit交付main；文件整理和授权登记已完成，本任务未操作开发板。
+**任务6停止于安装预检，未完成。** 三项身份断言通过，但板上缺少systemd-analyze，规定的verify命令报command not found、退出127，触发PM停止条件。未安装/启用服务，未执行配网脚本、挂载boot、remount或重启；结束恢复原SDB owner身份，/opt/usr/lko_task6从未创建且确认不存在，mounts/df前后一致。
+
+- 任务6计划与进度：身份/挂载/目标路径预检已完成；工具缺失后停止，启动链细项、内核替换/回退草案和服务安装均未继续。停止报告见[11_board_boot_chain.md](11_board_boot_chain.md)。
+- 已闭合：安装目标无同名文件；完整PATH及systemd工具目录均无systemd-analyze；verify实际退出127；根分区前后均rw,relatime，/与/opt/usr的df数值均未变；没有实际安装文件或enable链接。[verify原文](../evidence/task6/06_verify_blocker.transport.txt)、[结束核对](../evidence/task6/stop_and_cleanup_summary.txt)。
+- 需PM裁决：先提供具备规定验证工具的环境，或明确允许的替代验收方式；本次不补装RPM、不推额外工具、不自行替代。工具缺失不是unit语法错误，脚本/unit尚未生成或安装。
+- 后续顺序：解除工具阻塞后恢复任务6；任务6完成后再进入“第一次重启验证（需要用户在场）”与“PM审核内核替换方案”。当前不具备进入这两步的条件。
+
+**设计文档当前版本为v3：[docs/10_design_v3.md](10_design_v3.md)，待外部评审；[v1](10_design_v1.md)、[v2](10_design_v2.md)保留为历史记录。** 本次计划为原样入库v3及两份v2评审记录、补充板上授权，并同commit交付main；文件整理和授权登记已完成，该设计文档入库任务未操作开发板。
 
 - v3为同日修订版，补入上一轮 Claude Code 完整评审（docs/reviews/design_v2_review_claude_code.md）中此前未处理的内容；阶段 0 拆为 0a/0b。已从指定Downloads路径移动覆盖现有文件，Downloads下已无该文件；移动过程未修改内容，114,130 B，移动前后SHA-256均为`793c0762d48d9dc46a7af7ccc4c55a0aeb212b967c58184a8052f4db68d435cb`。
 - v2的Claude Code评审已找到，原文件已位于目标路径[docs/reviews/design_v2_review_claude_code.md](reviews/design_v2_review_claude_code.md)，原样入库；59,159 B，SHA-256为`126f6951cf1bb22286a991f57be0bce022482faf232538ea4eb3b5290ab03696`。
@@ -12,7 +19,7 @@
 - 已登记两项常规授权，今后不再逐次申请：同一次QB构建的临时perf及缺失库按任务5c流程在/opt/usr任务专用目录运行，三个环境变量仅指向该目录，结束删除并核对df/mounts；实验可修改/proc/sys和/sys可写参数，记录原值、结束恢复并回读、写入报告，同板参数实验串行。详见[RULES板上常规授权](RULES.md#板上常规授权2026-10-30pm裁决)。本次补充授权见下文；不用sudo、不碰其他任务进程。
 - 2026-10-30授权补充已写入RULES：zram运行时重配按参数实验记录原算法/disksize/swap状态并恢复回读；实验可通过sdb重启，记录原因/编号，重连超时10分钟停止、不补救；仅为安装开机配网服务允许一次remount读写，只写登记的unit/脚本并恢复只读，镜像刷新后准备仍由用户执行；只替换内核映像/设备树/模块分区、用户态不变，首次替换须只读调研并经PM审核方案，每次备份校验、替换后核对版本/配置，启动失败且无法自动回退时交用户处理。boot cmdline仍不在常规授权内。
 - 串口分工（PM提供）：开发机无串口，开机时间的串口分段由用户在内网机器采集，不属于本仓库板上操作。
-- 下一项任务为“开机配网服务安装 + 内核替换与回退机制只读调研”；本次仅登记，未执行该任务。
+- 已启动任务6“开机配网服务安装 + 内核替换与回退机制只读调研”，因verify工具缺失停止，当前进度与恢复前提见本文件开头。
 
 **任务5c已完成实测与清理：硬件计数可用，cycles采样32个样本且evlist明确type=0；分支栈采样-b在当前组合不支持（255）；未观察到软件事件替换。** 一次性授权的数据分区目录`/opt/usr/lko_task5c`已整体删除，ls确认不存在、df前后相同。未remount、写根文件系统、安装RPM或改paranoid。
 
@@ -67,4 +74,4 @@ ARM32缺少BPF trampoline；正常前置条件下挂载先从弱size实现返回
 
 ## 发布状态
 
-本次09、RULES、STATUS与evidence/task5c在同一commit普通推送GitHub main，署名Hao Lin <hao.lin@samsung.com>，沿用现有认证。仅上传小于1MB文本；RPM、ELF、p.data、辅助脚本与完整原始日志留temp。最终commit见本轮回复。
+本次仅将任务6停止报告11、STATUS与evidence/task6在同一commit普通推送GitHub main，署名Hao Lin <hao.lin@samsung.com>，沿用现有认证。任务6未完成，不以停止收尾代替验收；未生成脚本/unit，RULES无实际安装路径可登记。仅上传小于1MB文本，完整原始日志/辅助脚本留temp/task6。最终commit见本轮回复。
