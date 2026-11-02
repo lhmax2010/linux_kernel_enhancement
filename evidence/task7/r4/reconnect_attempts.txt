@@ -1,0 +1,158 @@
+FILE=reboot2_round01_connect.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot2_round01_disconnect.transport.txt
+error: remote target '192.168.108.26:26101' not connected
+
+FILE=reboot2_round01_probe.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot2_round02_connect.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot2_round02_disconnect.transport.txt
+error: remote target '192.168.108.26:26101' not connected
+
+FILE=reboot2_round02_probe.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot2_round03_connect.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot2_round03_disconnect.transport.txt
+error: remote target '192.168.108.26:26101' not connected
+
+FILE=reboot2_round03_probe.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot2_round03_tcp.transport.txt
+
+
+FILE=reboot2_round04_connect.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot2_round04_disconnect.transport.txt
+error: remote target '192.168.108.26:26101' not connected
+
+FILE=reboot2_round04_probe.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot2_round04_tcp.transport.txt
+
+
+FILE=reboot2_round05_connect.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot2_round05_devices.transport.txt
+List of devices attached
+
+FILE=reboot2_round05_disconnect.transport.txt
+error: remote target '192.168.108.26:26101' not connected
+
+FILE=reboot2_round05_kill_server.transport.txt
+
+
+FILE=reboot2_round05_probe.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot2_round05_start_server.transport.txt
+error: protocol fault: no status
+
+FILE=reboot2_round05_tcp.transport.txt
+
+
+FILE=reboot2_round06_connect.transport.txt
+connecting to 192.168.108.26:26101 ...
+connected to 192.168.108.26:26101
+
+FILE=reboot2_round06_disconnect.transport.txt
+* Server is not running. Start it now on port 26099 *
+* Server has started successfully *
+error: remote target '192.168.108.26:26101' not connected
+
+FILE=reboot2_round06_probe.transport.txt
+SDB-READY
+
+FILE=reboot3_round01_connect.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot3_round01_disconnect.transport.txt
+
+
+FILE=reboot3_round01_probe.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot3_round02_connect.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot3_round02_disconnect.transport.txt
+error: remote target '192.168.108.26:26101' not connected
+
+FILE=reboot3_round02_probe.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot3_round03_connect.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot3_round03_disconnect.transport.txt
+error: remote target '192.168.108.26:26101' not connected
+
+FILE=reboot3_round03_probe.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot3_round03_tcp.transport.txt
+
+
+FILE=reboot3_round04_connect.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot3_round04_disconnect.transport.txt
+error: remote target '192.168.108.26:26101' not connected
+
+FILE=reboot3_round04_probe.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot3_round04_tcp.transport.txt
+
+
+FILE=reboot3_round05_connect.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot3_round05_devices.transport.txt
+List of devices attached
+
+FILE=reboot3_round05_disconnect.transport.txt
+error: remote target '192.168.108.26:26101' not connected
+
+FILE=reboot3_round05_kill_server.transport.txt
+
+
+FILE=reboot3_round05_probe.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot3_round05_start_server.transport.txt
+* Server is not running. Start it now on port 26099 *
+* Server has started successfully *
+
+FILE=reboot3_round05_tcp.transport.txt
+
+
+FILE=reboot3_round06_connect.transport.txt
+connecting to 192.168.108.26:26101 ...
+connected to 192.168.108.26:26101
+
+FILE=reboot3_round06_disconnect.transport.txt
+error: remote target '192.168.108.26:26101' not connected
+
+FILE=reboot3_round06_probe.transport.txt
+SDB-READY

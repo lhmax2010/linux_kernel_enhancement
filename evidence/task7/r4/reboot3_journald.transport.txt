@@ -1,0 +1,7 @@
+-- Logs begin at Thu 1970-01-01 09:00:10 KST, end at Mon 2026-11-02 20:08:23 KST. --
+Jan 01 09:00:11 localhost systemd-journald[291]: Journal started
+Jan 01 09:00:11 localhost systemd-journald[291]: Runtime Journal (/run/log/journal/e6ea489be2674e9d820d428ba8b51a8e) is 8.0M, max 194.1M, 186.1M free.
+Jan 01 09:00:11 localhost systemd-journald[291]: Time spent on flushing to /var is 21.730ms for 482 entries.
+Jan 01 09:00:11 localhost systemd-journald[291]: System Journal (/var/log/journal/e6ea489be2674e9d820d428ba8b51a8e) is 44.0M, max 64.0M, 19.9M free.
+
+JOURNALD-EXIT=0

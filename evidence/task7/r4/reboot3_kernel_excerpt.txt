@@ -1,0 +1,8 @@
+Source=temp/task7/r4/reboot3_kernel_raw.transport.txt; normalized line numbers; pattern=genet|eth0|link is
+Matching lines=6
+210: [    0.752980] bcmgenet fd580000.ethernet: GENET 5.0 EPHY: 0x0000
+510: [   16.808746] bcmgenet fd580000.ethernet: configuring instance for external RGMII (RX delay)
+511: [   16.809720] bcmgenet fd580000.ethernet eth0: Link is Down
+512: [   17.147966] bcmgenet fd580000.ethernet: configuring instance for external RGMII (RX delay)
+513: [   17.149053] bcmgenet fd580000.ethernet eth0: Link is Down
+514: [   20.244747] bcmgenet fd580000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx

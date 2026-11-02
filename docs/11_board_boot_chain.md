@@ -480,3 +480,85 @@ error: serial number '192.168.108.26:26101' wrong
 等待用户确认期间曾root off且回读uid5001（[05](../evidence/task7/r3/05_wait_root_off.transport.txt)、[06](../evidence/task7/r3/06_wait_owner.transport.txt)）；收到在场确认后按授权再次root on。**由于本次重启后SDB不可达，最终无法恢复并回读owner，亦无法回读新boot挂载/空间状态**。不把等待期间的owner回读当作最终收尾。此项待用户恢复及PM后续安排，本轮不突破超时停止条件。
 
 已答复事项从STATUS待答列表移除：测量小程序/测试应用已获常规授权，冷启动由用户手动操作，读卡器可用。保留：**display-manager反复重启：用户可接显示器（本轮已接），实验期间如何处理待PM决定**；**U-Boot串口命令行能否进入，用户待测**。配网重启验收未完成、内核替换执行步骤仍待PM后续安排。
+
+## 2026-11-02 r6：根因确认与重启验证
+
+### PM裁定（原文）
+
+2026-11-02 18:3x–18:50 用户经串口和开发机排查：17:26 重启后的开机（boot_id 24a5fc5a-6a90-4eb1-a93d-0531a6b52f44）中，lko-net-setup 在 16.013–19.461 秒运行并退出 0，日志含 network setup complete；内核日志 19.27 秒 Link is Up（100Mbps/Full），此后无 Link is Down；MAC、IP、默认路由、ConnMan 服务均正确；sdbd 与 sdbd_tcp.socket 均 active，监听 :::26101，bindv6only=0，iptables 无拦截规则；开发机 ping 通，TCP 26101 可连（PORT-OPEN），但 sdb connect 失败。开发机执行 sdb kill-server 时报 'protocol fault: no status'，重启 sdb 服务后立即连上（uptime 4968.85）。根因：开发机 sdb 后台服务在板子重启后卡在旧连接状态。板上配网服务工作正常。11:09 那次另叠加了网线松动。
+
+### 本轮范围与根因证据
+
+本轮按PM授权，不要求用户在场。首先通过rpi4/armv7l/Tizen三项身份断言，当前boot_id确为`24a5fc5a-6a90-4eb1-a93d-0531a6b52f44`；再root on，优先保存当前开机journal全文和配网标签日志。该开机作为第1次补采；本轮只新发出第2、3次无参数reboot。没有手动运行配网脚本，没有操作任何板上服务，也没有修改板上文件、标签或网络配置。服务在正常开机中自行配置网络，不等于本轮手动调用。命令、退出码、原始日志哈希见[证据索引](../evidence/task7/r4/README.md)。
+
+上面的串口、ping、监听、iptables和用户手动恢复经过是**PM提供的裁定**，不是本轮代理重新执行的结果。本轮直接补采确认：第1次开机服务Result=success、ExecMainStatus=0，日志含network setup complete，MAC/IP/路由正确；19.272515秒Link is Up后，保存的dmesg未再出现Link is Down。启动前期15.727943、16.185499秒的Down仍如实保留，不写成“整个boot从未Down”。[第1次日志](../evidence/task7/r4/reboot1_tag.transport.txt)、[dmesg摘录](../evidence/task7/r4/reboot1_kernel_excerpt.txt)、[网络](../evidence/task7/r4/reboot1_network.transport.txt)。
+
+第2、3次均实测复现：连续SDB shell失败后，宿主TCP端口探测已成功；sdb devices为空；获准kill-server/start-server后下一轮自动连上并取得正确的新boot_id及完整成功日志。该现象支持PM裁定的**宿主SDB旧连接状态故障**，不是板上配网服务失败；没有进一步定位SDB内部实现缺陷。11:09叠加网线松动的历史结论按PM裁定保留，不与本轮两次自动验证混淆。
+
+### 重连流程与实际执行
+
+流程已加入RULES第4项。每轮先disconnect目标（忽略退出），再connect，再用宿主timeout 15运行只读`echo SDB-READY`；从发出reboot开始计算总600秒。轮次按10秒间隔串行，单轮耗时超过10秒时不重叠，截止按剩余时间收紧超时。连续3轮失败后用timeout 5 bash /dev/tcp检查端口；只有端口可连且sdb devices成功、没有其他设备才允许kill-server/start-server，每次开机最多2次。无法解析设备列表也不允许重置。未使用sudo或对其他进程发信号。
+
+实际第2、3次均第3、4轮端口探测超时；第5轮端口探测退出0，设备列表均只有标题、没有设备，然后分别执行**1次kill-server和1次start-server**（均退出0）；第6轮shell探测成功。全流程自动完成，没有用户串口配网或手动SDB干预。[全部重连输出](../evidence/task7/r4/reconnect_attempts.txt)、[第2次设备裁决](../evidence/task7/r4/reboot2_round05_reset_decision.txt)、[第3次设备裁决](../evidence/task7/r4/reboot3_round05_reset_decision.txt)、[执行代码文本](../evidence/task7/r4/reconnect_implementation.txt)。本轮自动kill-server合计**2次**；第1次的用户手动恢复属于此前PM排查，不计入本轮自动次数。
+
+第2次从reboot发出至shell恢复65.129695秒，第3次62.122372秒；这是宿主单调计时，包含板子关闭/启动及轮询，并非内核启动耗时。第2次reboot传输退出0；第3次宿主SDB等待8秒超时124，但后续新boot_id和采集均成功，124不当作板上reboot退出码。没有超过600秒，未触发停止条件。
+
+### 三次开机逐项判定
+
+第1次重启前boot_id取r3证据的559cfce8…；第2/3次各自重启前均通过LOWER_UP、两文件完整SHA-256及enabled核对。各次完整前后boot_id和逐项布尔判定见[汇总JSON](../evidence/task7/r4/three_boots.json)。
+
+| 项目 | 第1次（17:26开机补采） | 第2次（新流程） | 第3次（新流程） |
+|---|---|---|---|
+| boot_id | 24a5fc5a-6a90-4eb1-a93d-0531a6b52f44 | e9257b33-6808-4b36-bf04-97786a6c7b62 | f0f81c95-5063-47a4-96f7-8680ef0dcece |
+| 相对前一boot已变化；三项身份 | 通过 | 通过 | 通过 |
+| Result / ExecMainStatus | success / 0 | success / 0 | success / 0 |
+| 日志含network setup complete | 是，19.459752秒 | 是，19.426613秒 | 是，20.379322秒 |
+| MAC / IP | 2c:cf:67:a0:72:b5 / 192.168.108.26 | 相同 | 相同 |
+| 默认路由 / ConnMan | via 192.168.108.1；*AR Wired ethernet_2ccf67a072b5_cable | 相同 | 相同 |
+| SDB可连 | 开发机SDB服务由用户重启后可连 | 流程自动恢复 | 流程自动恢复 |
+| kill-server | PM记录用户手动恢复；本轮补采未调用 | 自动1次，设备列表为空 | 自动1次，设备列表为空 |
+| 总判定 | **补采通过** | **通过** | **通过** |
+
+状态与日志分别来自reboot1/2/3的`_service`、`_tag`、`_identity`、`_network`文本，不能仅以MAC/IP当前正确替代完成日志。三次均为active/exited、退出0；所要求验收项全部满足。第1次“补采通过”保留原来10分钟重连失败的历史，不把历史改写成当时自动恢复成功。
+
+### 服务、链路与unit时间点
+
+除耗时/差值列外，以下均是对应boot开机后的单调秒数；unit值为ActiveEnterTimestampMonotonic/1e6。数据源为各次`_service`、`_units`、`_kernel_excerpt`，可复算于[three_boots.json](../evidence/task7/r4/three_boots.json)。
+
+| 项目 | 第1次 | 第2次 | 第3次 |
+|---|---:|---:|---:|
+| 配网服务开始 | 16.013383 | 16.012213 | 16.962530 |
+| 配网服务退出 | 19.461487 | 19.427977 | 20.380745 |
+| **服务耗时（秒）** | **3.448104** | **3.415764** | **3.418215** |
+| Link is Up | 19.272515 | 19.285099 | 20.244747 |
+| systemd-journald.service | 10.540398 | 10.493378 | 11.135226 |
+| connman.service | 15.805244 | 15.670519 | 16.703905 |
+| multi-user.target | 19.493366 | 19.454110 | 20.403905 |
+| **multi-user到达−服务退出（毫秒）** | **+31.879** | **+26.133** | **+23.160** |
+| graphical.target | 19.521975 | 19.471854 | 20.422028 |
+| sdbd_tcp.socket | 13.950812 | 13.800861 | 14.960917 |
+| **sdbd.service** | **20.499910** | **20.352107** | **21.075432** |
+
+三次均在服务退出之后到达multi-user.target。sdbd“就绪时刻”在本报告指systemd ActiveEnter，不等同宿主SDB客户端能够正常连接的时刻；本轮正是区分了这两者。
+
+三次dmesg均明确`Link is Up - 100Mbps/Full - flow control rx/tx`，其后保存的dmesg未见Down；不推断为何协商为100Mbps，也不将其写作1Gbps。对其后未采样时段不作保证。
+
+### journald上限闭合
+
+三次`journalctl -b -u systemd-journald.service`均明确**System Journal max 64.0M**，新上限已生效：[第1次](../evidence/task7/r4/reboot1_journald.transport.txt)、[第2次](../evidence/task7/r4/reboot2_journald.transport.txt)、[第3次](../evidence/task7/r4/reboot3_journald.transport.txt)。Runtime Journal的max194.1M是另一个运行时存储上限，不与本项目SystemMaxUse混淆。第1次补采disk-usage为20.0M，第三次结束为52.0M；容量是实测占用，不是新上限值。未再次写配置、重启journald或清理日志。最终配置SHA仍为af93a465…、两配网文件SHA也不变。[结束回读](../evidence/task7/r4/06_final_readonly.transport.txt)。
+
+### display-manager只读排查
+
+[unit全文和Exec属性](../evidence/task7/r4/03_display_inspect.transport.txt)显示：ExecStartPre=-/usr/bin/keymap_update.sh（最近退出0），ExecStart=/usr/bin/enlightenment（最近退出127），Restart=always、RestartSec=10；另有ExecStartPost=/usr/bin/bash -c调用/usr/bin/touch及shell内建echo。没有运行这些命令本身。
+
+[文件格式及脚本全文](../evidence/task7/r4/04_display_files.transport.txt)：keymap_update.sh为#!/bin/sh脚本，全文3350 B已记录；enlightenment为ELF（魔数7f454c46），文件存在且1686116 B，不当成脚本读取。脚本设置PATH=/usr/bin:/bin:/usr/sbin:/sbin，外部命令为date、cat、grep、awk、rm、cp、mkdir；解释器sh与上述命令逐个command -v均成功。echo、eval、test/[、return等属于shell内建/语法，未当外部命令执行。ExecStart、Pre的绝对路径及Post中的bash/touch也均command -v成功。[逐项查找](../evidence/task7/r4/05_display_commands.transport.txt)。
+
+**退出127对应的缺失命令：无法确定。** 未找到缺失的脚本外部命令；失败的是ELF主程序，现存journal没有直接给出该进程的“command not found”、动态库加载或符号解析错误，不能仅凭127猜是哪一个库/程序。未执行ELF或脚本试跑、未改软件或服务。
+
+三次采样的display-manager均activating，NRestarts分别510（uptime5251.47秒）、1（33.76秒）、1（31.25秒），仍非active。首次补采较晚、后两次是刚开机快照，不能直接把次数当同窗口频率。连续重启噪声和后续处理继续交PM决定，不因配网验证通过而忽略。
+
+### 收尾
+
+已`sdb root off`，随后只读id回读**uid=5001(owner)**，boot_id仍为第3次的f0f81c95…：[root off](../evidence/task7/r4/07_root_off.transport.txt)、[owner](../evidence/task7/r4/08_owner.transport.txt)。本轮没有创建板上临时目录或推送文件，没有删除现有文件；无板上临时文件需要清理。起止根分区和模块分区均ro；/opt/usr df已用983204、可用115421020 KiB不变，/opt日志占用随重启增加，未声称所有df一致。完整快照见03与06。
+
+宿主原始文件留temp/task7/r4，journal/dmesg全文不上传，只发布相关文本摘录及行号、原始文件大小/行数/SHA-256；[manifest](../evidence/task7/r4/raw_manifest.tsv)。旧r3–r5及超时证据保留，当前结论以本节为准。配网服务验证完成；挂账：**display-manager处理方式待PM决定**、**U-Boot串口命令行能否进入，用户待测**；具体内核替换执行任务仍由PM下发。

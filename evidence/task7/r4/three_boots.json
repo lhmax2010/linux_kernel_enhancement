@@ -1,0 +1,118 @@
+[
+  {
+    "number": 1,
+    "boot_id": "24a5fc5a-6a90-4eb1-a93d-0531a6b52f44",
+    "start_us": 16013383,
+    "exit_us": 19461487,
+    "duration_s": 3.448104,
+    "multi_user_delta_ms": 31.879,
+    "units_us": {
+      "systemd-journald.service": 10540398,
+      "connman.service": 15805244,
+      "multi-user.target": 19493366,
+      "graphical.target": 19521975,
+      "sdbd_tcp.socket": 13950812,
+      "sdbd.service": 20499910
+    },
+    "link_up": "[   19.272515] bcmgenet fd580000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx",
+    "display_matching_lines": 3065,
+    "display_snapshot": "NRestarts=510\nActiveState=activating\nSHOW-EXIT=0\n5251.47 20428.40\nMon Nov  2 10:54:41 UTC 2026\n",
+    "verdict": {
+      "number": 1,
+      "before_boot_id": "559cfce8-46fe-49b0-97f2-2c5d18ecb275",
+      "after_boot_id": "24a5fc5a-6a90-4eb1-a93d-0531a6b52f44",
+      "checks": {
+        "boot_id_changed": true,
+        "identity": true,
+        "service_success": true,
+        "network_complete": true,
+        "mac": true,
+        "ip": true,
+        "sdb_connected": true
+      },
+      "result": "PASS"
+    }
+  },
+  {
+    "number": 2,
+    "boot_id": "e9257b33-6808-4b36-bf04-97786a6c7b62",
+    "start_us": 16012213,
+    "exit_us": 19427977,
+    "duration_s": 3.415764,
+    "multi_user_delta_ms": 26.133,
+    "units_us": {
+      "systemd-journald.service": 10493378,
+      "connman.service": 15670519,
+      "multi-user.target": 19454110,
+      "graphical.target": 19471854,
+      "sdbd_tcp.socket": 13800861,
+      "sdbd.service": 20352107
+    },
+    "link_up": "[   19.285099] bcmgenet fd580000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx",
+    "display_matching_lines": 11,
+    "display_snapshot": "NRestarts=1\nActiveState=activating\nSHOW-EXIT=0\n33.76 108.69\nMon Nov  2 11:07:06 UTC 2026\n",
+    "verdict": {
+      "number": 2,
+      "before_boot_id": "24a5fc5a-6a90-4eb1-a93d-0531a6b52f44",
+      "after_boot_id": "e9257b33-6808-4b36-bf04-97786a6c7b62",
+      "checks": {
+        "boot_id_changed": true,
+        "identity": true,
+        "service_success": true,
+        "network_complete": true,
+        "mac": true,
+        "ip": true,
+        "sdb_connected": true
+      },
+      "result": "PASS"
+    },
+    "reconnect": {
+      "number": 2,
+      "result": "CONNECTED",
+      "seconds": 65.12969539797632,
+      "attempts": 6,
+      "kill_server_calls": 1
+    }
+  },
+  {
+    "number": 3,
+    "boot_id": "f0f81c95-5063-47a4-96f7-8680ef0dcece",
+    "start_us": 16962530,
+    "exit_us": 20380745,
+    "duration_s": 3.418215,
+    "multi_user_delta_ms": 23.16,
+    "units_us": {
+      "systemd-journald.service": 11135226,
+      "connman.service": 16703905,
+      "multi-user.target": 20403905,
+      "graphical.target": 20422028,
+      "sdbd_tcp.socket": 14960917,
+      "sdbd.service": 21075432
+    },
+    "link_up": "[   20.244747] bcmgenet fd580000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx",
+    "display_matching_lines": 11,
+    "display_snapshot": "NRestarts=1\nActiveState=activating\nSHOW-EXIT=0\n31.25 99.37\nMon Nov  2 11:08:26 UTC 2026\n",
+    "verdict": {
+      "number": 3,
+      "before_boot_id": "e9257b33-6808-4b36-bf04-97786a6c7b62",
+      "after_boot_id": "f0f81c95-5063-47a4-96f7-8680ef0dcece",
+      "checks": {
+        "boot_id_changed": true,
+        "identity": true,
+        "service_success": true,
+        "network_complete": true,
+        "mac": true,
+        "ip": true,
+        "sdb_connected": true
+      },
+      "result": "PASS"
+    },
+    "reconnect": {
+      "number": 3,
+      "result": "CONNECTED",
+      "seconds": 62.12237173499307,
+      "attempts": 6,
+      "kill_server_calls": 1
+    }
+  }
+]

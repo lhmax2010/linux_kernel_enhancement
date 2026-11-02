@@ -1,0 +1,60 @@
+from capture import *
+import math
+
+def external(argv,label,limit):
+ start=datetime.datetime.now().astimezone().isoformat()
+ p=subprocess.run(argv,env=env,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,timeout=limit+2)
+ path=T/(label+'.transport.txt');assert not path.exists();path.write_bytes(p.stdout)
+ with (T/'board_commands.jsonl').open('a') as f:f.write(json.dumps(dict(start=start,end=datetime.datetime.now().astimezone().isoformat(),argv=argv,exit=p.returncode,bytes=len(p.stdout),file=path.name))+'\n')
+ print(label,p.returncode,flush=True)
+ return p.returncode,p.stdout.decode(errors='replace').replace('\r','')
+
+def run(n):
+ assert json.loads((T/f'reboot{n-1}_verdict.json').read_text())['result']=='PASS'
+ before=pre(n)
+ (T/f'reboot{n}_reason.txt').write_text(f'任务7 r4第{n}次验证，原因：新SDB重连流程自动验证配网服务。无参数reboot；不要求用户在场。\n')
+ start=time.monotonic();deadline=start+600
+ call(['shell','reboot'],f'reboot{n}_request',timeout=8)
+ attempts=0;failures=0;resets=0;rounds=[]
+ while time.monotonic()<deadline:
+  due=start+10 if not rounds else rounds[-1]+10
+  time.sleep(max(0,min(due,deadline)-time.monotonic()))
+  if time.monotonic()>=deadline:break
+  rounds.append(time.monotonic());attempts+=1;key=f'reboot{n}_round{attempts:02}'
+  def sd(args,suffix,select=False,limit=10):
+   return call(args,key+'_'+suffix,select=select,timeout=max(.1,min(limit,deadline-time.monotonic())),show=False)
+  sd(['disconnect',SERIAL],'disconnect')
+  if time.monotonic()>=deadline:break
+  sd(['connect',SERIAL],'connect')
+  if time.monotonic()>=deadline:break
+  limit=min(15,deadline-time.monotonic())
+  rc,out=external(['/usr/bin/timeout',str(limit),SDB,'-s',SERIAL,'shell','echo SDB-READY'],key+'_probe',limit)
+  if rc==0 and 'SDB-READY' in out:
+   result=dict(number=n,result='CONNECTED',seconds=time.monotonic()-start,attempts=attempts,kill_server_calls=resets)
+   (T/f'reboot{n}_reconnect.json').write_text(json.dumps(result,indent=2));print(result,flush=True)
+   call(['root','on'],f'reboot{n}_root_on')
+   collect(n,before)
+   return
+  failures+=1
+  if failures>=3 and resets<2 and time.monotonic()<deadline:
+   limit=min(5,deadline-time.monotonic())
+   rc,_=external(['/usr/bin/timeout',str(limit),'/bin/bash','-c','</dev/tcp/192.168.108.26/26101'],key+'_tcp',limit)
+   if rc==0:
+    rc,devices=sd(['devices'],'devices')
+    lines=[x.strip() for x in devices.splitlines() if x.strip()]
+    # Fail closed: header must be present; any non-target device or unknown line forbids reset.
+    safe=rc==0 and 'List of devices attached' in lines
+    for line in lines:
+     if line=='List of devices attached':continue
+     if line.split()[0]!=SERIAL:safe=False
+    (T/(key+'_reset_decision.txt')).write_text(f'devices_exit={rc}; no_other_devices_confirmed={safe}\n'+devices)
+    if safe and time.monotonic()<deadline:
+     resets+=1
+     sd(['kill-server'],'kill_server')
+     if time.monotonic()<deadline:sd(['start-server'],'start_server')
+     failures=0
+ result=dict(number=n,result='TIMEOUT',seconds=time.monotonic()-start,attempts=attempts,kill_server_calls=resets)
+ (T/f'reboot{n}_reconnect.json').write_text(json.dumps(result,indent=2));raise SystemExit('STOP '+json.dumps(result))
+if __name__=='__main__':
+ import sys
+ run(int(sys.argv[1]))

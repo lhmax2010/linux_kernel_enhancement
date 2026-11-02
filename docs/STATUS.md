@@ -2,6 +2,18 @@
 
 更新：2026-11-02（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
+**任务7 r4完成：配网服务三次开机验证均通过（第1次补采，第2/3次自动重连）。** PM确认此前故障为宿主SDB旧连接状态；本轮第2/3次各经1次获准kill-server/start-server自动恢复，设备列表均为空，支持该裁定。未修改板上文件/标签/网络、未手动执行配网脚本或操作板上服务。[11 r6](11_board_boot_chain.md#2026-11-02-r6根因确认与重启验证)、[证据](../evidence/task7/r4/README.md)。
+
+- 计划/进度：规则/历史读取→补采第1次→新重连流程登记→journald/显示服务只读核对→第2/3次前置检查、重启、自动重连与验收→owner恢复→文档证据同commit推main，均完成。
+- 已闭合：三次boot_id依次24a5fc5a…、e9257b33…、f0f81c95…；服务success/0、完成日志、MAC/IP及SDB可达均满足。第1次可达基于用户此前手动恢复宿主SDB；第2/3次分别65.130/62.122秒自动恢复，本轮kill-server总2次，没有其他设备受影响。
+- 服务耗时3.448104/3.415764/3.418215秒；multi-user到达比分别退出晚31.879/26.133/23.160毫秒；sdbd ActiveEnter为开机20.499910/20.352107/21.075432秒。三次链路均100Mbps/Full。
+- journald已证实System Journal max64.0M；最终disk-usage52.0M。两服务文件及容量配置哈希不变；未改配置或重启板上服务。
+- display-manager的Pre脚本外部命令均存在；ExecStart为存在的ELF enlightenment，主进程退出127；缺失命令无法确定，不猜测、不试跑。其持续重启仍作为测量噪声挂账。
+- 收尾：root off后回读uid5001(owner)，闭合此前owner收尾；无板上临时目录/文件。原始日志留temp/task7/r4，仅小体积摘录入库。
+- 挂账：**display-manager处理方式待 PM 决定**；**U-Boot串口命令行能否进入，用户待测**。内核替换具体执行任务仍由PM下发。
+
+以下r3及更早条目为历史停止状态，已由本轮补采和验证闭合；不再作为当前阻塞：
+
 **任务7 r3：授权和journald配置登记完成；第一次重做重启后SDB等待600秒超时，未通过可达性验收，第二次未执行。** 已按停止条件结束，未进行服务/网络补救。新boot的服务状态/退出码、日志、耗时、unit时间点及journald运行时上限均未取得，不能拿上轮结果替代。[11 r5](11_board_boot_chain.md#2026-11-02-r5重启验证重做)、[证据](../evidence/task7/r3/README.md)。
 
 - 计划/进度：身份核对→登记新授权→写入容量配置→用户确认在场/网线牢固/显示器已接→前置检查→第一次无参数重启→每10秒探测→600秒超时停止→封存证据同commit推main。未达到第二次重启条件。
@@ -109,4 +121,4 @@ ARM32缺少BPF trampoline；正常前置条件下挂载先从弱size实现返回
 
 ## 发布状态
 
-本轮仅提交任务7 r3产出：11末尾r5、RULES新增授权及配置登记、STATUS、evidence/task7/r3。普通推送GitHub main，作者/提交者Hao Lin <hao.lin@samsung.com>；不开PR、不force push、不推Gerrit。第一次重做超时，第二次跳过；不声称完成两次验收或owner最终恢复。任务7 r2历史提交b232534，r3调研历史提交52ece452，A/B提交1526c85与518a554；原文和证据保留。
+本轮提交任务7 r4：11追加r6、RULES第4项重连流程、STATUS及evidence/task7/r4。普通推送GitHub main，作者/提交者Hao Lin <hao.lin@samsung.com>；不开PR、不force push、不推Gerrit。三次开机验收通过，最终owner已恢复。历史r3停止提交89919c3及更早证据保持原样；最终SHA见回复。

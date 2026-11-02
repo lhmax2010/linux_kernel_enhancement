@@ -1,0 +1,40 @@
+Source=temp/task7/r4/reboot2_journal_raw.transport.txt; normalized line numbers; pattern=connman|sdbd|eth0|genet|link is|carrier|lko-net|LKO fixed|systemd-journald|display-manager|Display manager|graphical|multi-user
+Matching lines=38
+211: [    0.722185] localhost kernel: bcmgenet fd580000.ethernet: GENET 5.0 EPHY: 0x0000
+466: [   10.452024] localhost systemd-journald[289]: Journal started
+467: [   10.452188] localhost systemd-journald[289]: Runtime Journal (/run/log/journal/e6ea489be2674e9d820d428ba8b51a8e) is 8.0M, max 194.1M, 186.1M free.
+486: [   10.875846] localhost systemd-journald[289]: Time spent on flushing to /var is 17.735ms for 484 entries.
+487: [   10.875846] localhost systemd-journald[289]: System Journal (/var/log/journal/e6ea489be2674e9d820d428ba8b51a8e) is 28.0M, max 64.0M, 35.9M free.
+534: [   12.350312] localhost systemd[1]: Listening on DBUS1: net.connman.
+535: [   12.370319] localhost systemd[1]: Listening on DBUS1: net.connman.vpn.
+603: [   13.801066] localhost systemd[1]: Listening on sdbd: TCP socket.
+631: [   14.481243] localhost systemd[1]: Starting Display manager...
+687: [   15.381863] localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+688: [   15.382178] localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+689: [   15.386055] localhost systemd[1]: Failed to start Display manager.
+693: [   15.538664] localhost systemd[1]: Started Display manager monitor.
+882: [   16.013654] localhost systemd[1]: Starting LKO fixed Ethernet setup...
+888: [   16.150046] localhost lko-net-setup[656]: ip link set eth0 down : exit=0
+890: [   16.157836] localhost lko-net-setup[659]: ip link set eth0 address 2C:CF:67:A0:72:B5 : exit=0
+891: [   16.180049] localhost lko-net-setup[661]: ip link set eth0 up : exit=0
+892: [   16.188406] localhost lko-net-setup[662]: waiting up to 60 seconds for ethernet_2ccf67a072b5_cable
+974: [   19.334888] localhost lko-net-setup[820]: service found: ethernet_2ccf67a072b5_cable
+975: [   19.391821] localhost lko-net-setup[822]: connmanctl config ethernet_2ccf67a072b5_cable --ipv4 manual 192.168.108.26 255.255.255.0 192.168.108.1 --nameservers 221.131.143.69 : exit=0
+976: [   19.395538] localhost lko-net-setup[823]: /etc/resolv.conf is a symbolic link
+977: [   19.416018] localhost lko-net-setup[826]: DNS target=/opt/etc/resolv.conf; findmnt exit=0; options=rw,relatime
+978: [   19.422204] localhost lko-net-setup[828]: DNS written successfully
+979: [   19.426613] localhost lko-net-setup[829]: network setup complete
+980: [   19.429424] localhost systemd[1]: Started LKO fixed Ethernet setup.
+981: [   19.454321] localhost systemd[1]: Reached target Multi-User System.
+982: [   19.472077] localhost systemd[1]: Reached target Graphical Interface.
+984: [   19.556688] localhost wait-target-done[686]: /run/systemd/system/graphical.target.done is created. (19556)
+985: [   19.557583] localhost wait-target-done[740]: /run/systemd/system/graphical.target.done is created. (19556)
+1030: [   20.174930] localhost systemd[1]: Listening on sdbd Socket for sdb.
+1032: [   20.293636] localhost systemd[1]: Starting sdbd...
+1035: [   20.352221] localhost systemd[1]: Started sdbd.
+1129: [   25.435319] localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 1.
+1130: [   25.436991] localhost systemd[1]: Stopped Display manager.
+1131: [   25.492206] localhost systemd[1]: Starting Display manager...
+1132: [   25.529546] localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+1133: [   25.530203] localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+1134: [   25.531694] localhost systemd[1]: Failed to start Display manager.

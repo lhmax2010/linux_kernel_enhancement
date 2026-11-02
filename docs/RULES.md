@@ -9,6 +9,8 @@
 2. 运行时参数：实验中可直接修改/proc/sys和/sys下的可写参数（如调频策略、lowmem_reserve_ratio、min_ttl_ms）；修改前记录原值，实验结束后恢复并回读确认，全部写进实验报告；同一块板上不并行做两组参数实验。
 3. zram运行时重配：swapoff、zram reset、设置comp_algorithm/algorithm_params、设置disksize、mkswap、swapon按运行时参数处理；修改前记录原算法、disksize和swap状态，实验结束后恢复并回读确认。
 4. 重启：实验需要时可通过sdb重启开发板。每次重启前记录原因和重启编号；重启后等待sdb重新连上，超时（10分钟）就停下报告，不做任何其他补救操作。
+   - 用户2026-11-02已在开发机验证的重连流程：重启后每10秒一轮，先`sdb disconnect 192.168.108.26:26101`（忽略返回值），再`sdb connect`，再用`timeout 15`执行一条只读shell命令探测。连续3轮失败且宿主`timeout 5 bash -c '</dev/tcp/192.168.108.26/26101'`确认端口可连时，先执行`sdb devices`，仅确认列表无其他设备后执行`sdb kill-server`及`sdb start-server`，再继续轮询。每次重启最多重启宿主SDB服务2次；有其他设备则不重启，记录后继续轮询。总时限仍为10分钟，超时停止。此授权仅针对宿主SDB服务，不允许操作其他进程或板上服务；单轮耗时超过10秒时串行完成、不并发，截止时按剩余时限收紧命令超时。
+
 5. 开机自动配网服务：允许为安装该服务执行一次remount读写，只写入该服务的unit文件和脚本（具体路径在安装任务中登记），装完恢复只读；除此之外仍不改根文件系统、不安装或卸载RPM。刷新镜像后的一次性准备（remount、osu --resize、卸载wlandrv-plugin-tizen/mesa/coregl、首次配网）由用户执行。
    - 任务6 r2（2026-11-02）实际安装登记：`/usr/local/sbin/lko-net-setup.sh`（0755）、`/etc/systemd/system/lko-net-setup.service`（0644）；enable创建`/etc/systemd/system/multi-user.target.wants/lko-net-setup.service`，指向`/etc/systemd/system/lko-net-setup.service`。本次 / 原本为 rw，未执行 remount；前后均rw,relatime。只安装/enable，未start、未手动执行脚本、未重启。
    - PM 2026-11-02替代验收仅适用于本次任务6恢复：不要求板上systemd-analyze；以LoadState=loaded、LoadError为空、UnitFileState=enabled、is-enabled=enabled、enable链接正确及reload后无该unit警告/错误为准。任一不符须disable、删除两文件、daemon-reload并确认恢复；安装前/若为ro则停止第二部分，不remount。本次验收通过；第一次重启验证需要用户在场。

@@ -1,0 +1,7 @@
+Result=success
+ExecMainStartTimestampMonotonic=16962530
+ExecMainExitTimestampMonotonic=20380745
+ExecMainStatus=0
+ActiveState=active
+SubState=exited
+SHOW-EXIT=0

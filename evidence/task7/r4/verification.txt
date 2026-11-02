@@ -1,0 +1,10 @@
+Task7 r4: PASS for three boots (first supplemented, second/third automatic).
+PM root cause is quoted verbatim in pm_adjudication.txt; serial/ping/firewall facts are PM-provided, not re-measured here.
+Second/third automatic recovery: disconnect/connect/timeout 15 shell probe; consecutive failures; timeout 5 TCP probe success; devices list empty; kill-server/start-server success; next round shell success.
+Actual agent kill-server calls=2; start-server calls=2; each reboot uses exactly one pair, each preceded by successful empty devices list.
+Actual new board reboot commands=2; no board service start/stop/restart/enable/disable, no manual network script, no board file/label/network changes.
+No new board temporary files or directories; no cleanup deletion needed.
+All three journals confirm System Journal max=64.0M, distinct from Runtime Journal max194.1M.
+All keymap_update.sh external commands resolved; enlightenment exists as ELF. Missing command causing exit127: undetermined.
+Owner restored/read back uid5001 after third boot. Final boot_id f0f81c95-5063-47a4-96f7-8680ef0dcece.
+Full journal/dmesg and pre-reboot journal raw remain temp/task7/r4; evidence holds filtered excerpts with normalized source line numbers.

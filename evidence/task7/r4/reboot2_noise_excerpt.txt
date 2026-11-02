@@ -1,0 +1,350 @@
+Source=temp/task7/r4/reboot2_noise_raw.transport.txt; normalized line numbers; pattern=connman|sdbd|eth0|genet|link is|carrier|lko-net|LKO fixed|systemd-journald|display-manager|Display manager|graphical|multi-user
+Matching lines=348
+2: Nov 02 19:56:05 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 519.
+3: Nov 02 19:56:05 localhost systemd[1]: Stopped Display manager.
+4: Nov 02 19:56:05 localhost systemd[1]: Starting Display manager...
+5: Nov 02 19:56:05 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+6: Nov 02 19:56:05 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+7: Nov 02 19:56:05 localhost systemd[1]: Failed to start Display manager.
+8: Nov 02 19:56:15 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 520.
+9: Nov 02 19:56:15 localhost systemd[1]: Stopped Display manager.
+10: Nov 02 19:56:15 localhost systemd[1]: Starting Display manager...
+11: Nov 02 19:56:15 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+12: Nov 02 19:56:15 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+13: Nov 02 19:56:15 localhost systemd[1]: Failed to start Display manager.
+14: Nov 02 19:56:25 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 521.
+15: Nov 02 19:56:25 localhost systemd[1]: Stopped Display manager.
+16: Nov 02 19:56:25 localhost systemd[1]: Starting Display manager...
+17: Nov 02 19:56:25 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+18: Nov 02 19:56:25 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+19: Nov 02 19:56:25 localhost systemd[1]: Failed to start Display manager.
+20: Nov 02 19:56:35 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 522.
+21: Nov 02 19:56:35 localhost systemd[1]: Stopped Display manager.
+22: Nov 02 19:56:35 localhost systemd[1]: Starting Display manager...
+23: Nov 02 19:56:35 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+24: Nov 02 19:56:35 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+25: Nov 02 19:56:35 localhost systemd[1]: Failed to start Display manager.
+26: Nov 02 19:56:46 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 523.
+27: Nov 02 19:56:46 localhost systemd[1]: Stopped Display manager.
+28: Nov 02 19:56:46 localhost systemd[1]: Starting Display manager...
+29: Nov 02 19:56:46 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+30: Nov 02 19:56:46 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+31: Nov 02 19:56:46 localhost systemd[1]: Failed to start Display manager.
+32: Nov 02 19:56:56 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 524.
+33: Nov 02 19:56:56 localhost systemd[1]: Stopped Display manager.
+34: Nov 02 19:56:56 localhost systemd[1]: Starting Display manager...
+35: Nov 02 19:56:56 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+36: Nov 02 19:56:56 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+37: Nov 02 19:56:56 localhost systemd[1]: Failed to start Display manager.
+38: Nov 02 19:57:06 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 525.
+39: Nov 02 19:57:06 localhost systemd[1]: Stopped Display manager.
+40: Nov 02 19:57:06 localhost systemd[1]: Starting Display manager...
+41: Nov 02 19:57:06 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+42: Nov 02 19:57:06 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+43: Nov 02 19:57:06 localhost systemd[1]: Failed to start Display manager.
+44: Nov 02 19:57:16 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 526.
+45: Nov 02 19:57:16 localhost systemd[1]: Stopped Display manager.
+46: Nov 02 19:57:16 localhost systemd[1]: Starting Display manager...
+47: Nov 02 19:57:16 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+48: Nov 02 19:57:16 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+49: Nov 02 19:57:16 localhost systemd[1]: Failed to start Display manager.
+50: Nov 02 19:57:27 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 527.
+51: Nov 02 19:57:27 localhost systemd[1]: Stopped Display manager.
+52: Nov 02 19:57:27 localhost systemd[1]: Starting Display manager...
+53: Nov 02 19:57:27 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+54: Nov 02 19:57:27 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+55: Nov 02 19:57:27 localhost systemd[1]: Failed to start Display manager.
+56: Nov 02 19:57:37 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 528.
+57: Nov 02 19:57:37 localhost systemd[1]: Stopped Display manager.
+58: Nov 02 19:57:37 localhost systemd[1]: Starting Display manager...
+59: Nov 02 19:57:37 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+60: Nov 02 19:57:37 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+61: Nov 02 19:57:37 localhost systemd[1]: Failed to start Display manager.
+62: Nov 02 19:57:47 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 529.
+63: Nov 02 19:57:47 localhost systemd[1]: Stopped Display manager.
+64: Nov 02 19:57:47 localhost systemd[1]: Starting Display manager...
+65: Nov 02 19:57:47 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+66: Nov 02 19:57:47 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+67: Nov 02 19:57:47 localhost systemd[1]: Failed to start Display manager.
+68: Nov 02 19:57:57 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 530.
+69: Nov 02 19:57:57 localhost systemd[1]: Stopped Display manager.
+70: Nov 02 19:57:57 localhost systemd[1]: Starting Display manager...
+71: Nov 02 19:57:57 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+72: Nov 02 19:57:57 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+73: Nov 02 19:57:57 localhost systemd[1]: Failed to start Display manager.
+74: Nov 02 19:58:08 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 531.
+75: Nov 02 19:58:08 localhost systemd[1]: Stopped Display manager.
+76: Nov 02 19:58:08 localhost systemd[1]: Starting Display manager...
+77: Nov 02 19:58:08 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+78: Nov 02 19:58:08 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+79: Nov 02 19:58:08 localhost systemd[1]: Failed to start Display manager.
+80: Nov 02 19:58:18 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 532.
+81: Nov 02 19:58:18 localhost systemd[1]: Stopped Display manager.
+82: Nov 02 19:58:18 localhost systemd[1]: Starting Display manager...
+83: Nov 02 19:58:18 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+84: Nov 02 19:58:18 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+85: Nov 02 19:58:18 localhost systemd[1]: Failed to start Display manager.
+86: Nov 02 19:58:28 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 533.
+87: Nov 02 19:58:28 localhost systemd[1]: Stopped Display manager.
+88: Nov 02 19:58:28 localhost systemd[1]: Starting Display manager...
+89: Nov 02 19:58:28 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+90: Nov 02 19:58:28 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+91: Nov 02 19:58:28 localhost systemd[1]: Failed to start Display manager.
+92: Nov 02 19:58:38 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 534.
+93: Nov 02 19:58:38 localhost systemd[1]: Stopped Display manager.
+94: Nov 02 19:58:38 localhost systemd[1]: Starting Display manager...
+95: Nov 02 19:58:38 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+96: Nov 02 19:58:38 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+97: Nov 02 19:58:38 localhost systemd[1]: Failed to start Display manager.
+98: Nov 02 19:58:49 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 535.
+99: Nov 02 19:58:49 localhost systemd[1]: Stopped Display manager.
+100: Nov 02 19:58:49 localhost systemd[1]: Starting Display manager...
+101: Nov 02 19:58:49 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+102: Nov 02 19:58:49 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+103: Nov 02 19:58:49 localhost systemd[1]: Failed to start Display manager.
+104: Nov 02 19:58:59 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 536.
+105: Nov 02 19:58:59 localhost systemd[1]: Stopped Display manager.
+106: Nov 02 19:58:59 localhost systemd[1]: Starting Display manager...
+107: Nov 02 19:58:59 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+108: Nov 02 19:58:59 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+109: Nov 02 19:58:59 localhost systemd[1]: Failed to start Display manager.
+110: Nov 02 19:59:09 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 537.
+111: Nov 02 19:59:09 localhost systemd[1]: Stopped Display manager.
+112: Nov 02 19:59:09 localhost systemd[1]: Starting Display manager...
+113: Nov 02 19:59:09 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+114: Nov 02 19:59:09 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+115: Nov 02 19:59:09 localhost systemd[1]: Failed to start Display manager.
+116: Nov 02 19:59:19 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 538.
+117: Nov 02 19:59:19 localhost systemd[1]: Stopped Display manager.
+118: Nov 02 19:59:19 localhost systemd[1]: Starting Display manager...
+119: Nov 02 19:59:19 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+120: Nov 02 19:59:19 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+121: Nov 02 19:59:19 localhost systemd[1]: Failed to start Display manager.
+122: Nov 02 19:59:30 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 539.
+123: Nov 02 19:59:30 localhost systemd[1]: Stopped Display manager.
+124: Nov 02 19:59:30 localhost systemd[1]: Starting Display manager...
+125: Nov 02 19:59:30 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+126: Nov 02 19:59:30 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+127: Nov 02 19:59:30 localhost systemd[1]: Failed to start Display manager.
+128: Nov 02 19:59:40 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 540.
+129: Nov 02 19:59:40 localhost systemd[1]: Stopped Display manager.
+130: Nov 02 19:59:40 localhost systemd[1]: Starting Display manager...
+131: Nov 02 19:59:40 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+132: Nov 02 19:59:40 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+133: Nov 02 19:59:40 localhost systemd[1]: Failed to start Display manager.
+134: Nov 02 19:59:50 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 541.
+135: Nov 02 19:59:50 localhost systemd[1]: Stopped Display manager.
+136: Nov 02 19:59:50 localhost systemd[1]: Starting Display manager...
+137: Nov 02 19:59:50 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+138: Nov 02 19:59:50 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+139: Nov 02 19:59:50 localhost systemd[1]: Failed to start Display manager.
+140: Nov 02 20:00:00 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 542.
+141: Nov 02 20:00:00 localhost systemd[1]: Stopped Display manager.
+142: Nov 02 20:00:00 localhost systemd[1]: Starting Display manager...
+143: Nov 02 20:00:00 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+144: Nov 02 20:00:00 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+145: Nov 02 20:00:00 localhost systemd[1]: Failed to start Display manager.
+146: Nov 02 20:00:11 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 543.
+147: Nov 02 20:00:11 localhost systemd[1]: Stopped Display manager.
+148: Nov 02 20:00:11 localhost systemd[1]: Starting Display manager...
+149: Nov 02 20:00:11 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+150: Nov 02 20:00:11 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+151: Nov 02 20:00:11 localhost systemd[1]: Failed to start Display manager.
+152: Nov 02 20:00:21 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 544.
+153: Nov 02 20:00:21 localhost systemd[1]: Stopped Display manager.
+154: Nov 02 20:00:21 localhost systemd[1]: Starting Display manager...
+155: Nov 02 20:00:21 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+156: Nov 02 20:00:21 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+157: Nov 02 20:00:21 localhost systemd[1]: Failed to start Display manager.
+158: Nov 02 20:00:31 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 545.
+159: Nov 02 20:00:31 localhost systemd[1]: Stopped Display manager.
+160: Nov 02 20:00:31 localhost systemd[1]: Starting Display manager...
+161: Nov 02 20:00:31 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+162: Nov 02 20:00:31 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+163: Nov 02 20:00:31 localhost systemd[1]: Failed to start Display manager.
+164: Nov 02 20:00:41 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 546.
+165: Nov 02 20:00:41 localhost systemd[1]: Stopped Display manager.
+166: Nov 02 20:00:41 localhost systemd[1]: Starting Display manager...
+167: Nov 02 20:00:41 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+168: Nov 02 20:00:41 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+169: Nov 02 20:00:41 localhost systemd[1]: Failed to start Display manager.
+170: Nov 02 20:00:52 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 547.
+171: Nov 02 20:00:52 localhost systemd[1]: Stopped Display manager.
+172: Nov 02 20:00:52 localhost systemd[1]: Starting Display manager...
+173: Nov 02 20:00:52 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+174: Nov 02 20:00:52 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+175: Nov 02 20:00:52 localhost systemd[1]: Failed to start Display manager.
+176: Nov 02 20:01:02 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 548.
+177: Nov 02 20:01:02 localhost systemd[1]: Stopped Display manager.
+178: Nov 02 20:01:02 localhost systemd[1]: Starting Display manager...
+179: Nov 02 20:01:02 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+180: Nov 02 20:01:02 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+181: Nov 02 20:01:02 localhost systemd[1]: Failed to start Display manager.
+182: Nov 02 20:01:12 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 549.
+183: Nov 02 20:01:12 localhost systemd[1]: Stopped Display manager.
+184: Nov 02 20:01:12 localhost systemd[1]: Starting Display manager...
+185: Nov 02 20:01:12 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+186: Nov 02 20:01:12 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+187: Nov 02 20:01:12 localhost systemd[1]: Failed to start Display manager.
+188: Nov 02 20:01:22 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 550.
+189: Nov 02 20:01:22 localhost systemd[1]: Stopped Display manager.
+190: Nov 02 20:01:22 localhost systemd[1]: Starting Display manager...
+191: Nov 02 20:01:22 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+192: Nov 02 20:01:22 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+193: Nov 02 20:01:22 localhost systemd[1]: Failed to start Display manager.
+194: Nov 02 20:01:33 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 551.
+195: Nov 02 20:01:33 localhost systemd[1]: Stopped Display manager.
+196: Nov 02 20:01:33 localhost systemd[1]: Starting Display manager...
+197: Nov 02 20:01:33 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+198: Nov 02 20:01:33 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+199: Nov 02 20:01:33 localhost systemd[1]: Failed to start Display manager.
+200: Nov 02 20:01:43 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 552.
+201: Nov 02 20:01:43 localhost systemd[1]: Stopped Display manager.
+202: Nov 02 20:01:43 localhost systemd[1]: Starting Display manager...
+203: Nov 02 20:01:43 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+204: Nov 02 20:01:43 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+205: Nov 02 20:01:43 localhost systemd[1]: Failed to start Display manager.
+206: Nov 02 20:01:53 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 553.
+207: Nov 02 20:01:53 localhost systemd[1]: Stopped Display manager.
+208: Nov 02 20:01:53 localhost systemd[1]: Starting Display manager...
+209: Nov 02 20:01:53 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+210: Nov 02 20:01:53 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+211: Nov 02 20:01:53 localhost systemd[1]: Failed to start Display manager.
+212: Nov 02 20:02:03 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 554.
+213: Nov 02 20:02:03 localhost systemd[1]: Stopped Display manager.
+214: Nov 02 20:02:03 localhost systemd[1]: Starting Display manager...
+215: Nov 02 20:02:03 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+216: Nov 02 20:02:03 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+217: Nov 02 20:02:03 localhost systemd[1]: Failed to start Display manager.
+218: Nov 02 20:02:14 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 555.
+219: Nov 02 20:02:14 localhost systemd[1]: Stopped Display manager.
+220: Nov 02 20:02:14 localhost systemd[1]: Starting Display manager...
+221: Nov 02 20:02:14 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+222: Nov 02 20:02:14 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+223: Nov 02 20:02:14 localhost systemd[1]: Failed to start Display manager.
+224: Nov 02 20:02:24 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 556.
+225: Nov 02 20:02:24 localhost systemd[1]: Stopped Display manager.
+226: Nov 02 20:02:24 localhost systemd[1]: Starting Display manager...
+227: Nov 02 20:02:24 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+228: Nov 02 20:02:24 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+229: Nov 02 20:02:24 localhost systemd[1]: Failed to start Display manager.
+230: Nov 02 20:02:34 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 557.
+231: Nov 02 20:02:34 localhost systemd[1]: Stopped Display manager.
+232: Nov 02 20:02:34 localhost systemd[1]: Starting Display manager...
+233: Nov 02 20:02:34 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+234: Nov 02 20:02:34 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+235: Nov 02 20:02:34 localhost systemd[1]: Failed to start Display manager.
+236: Nov 02 20:02:44 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 558.
+237: Nov 02 20:02:44 localhost systemd[1]: Stopped Display manager.
+238: Nov 02 20:02:44 localhost systemd[1]: Starting Display manager...
+239: Nov 02 20:02:44 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+240: Nov 02 20:02:44 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+241: Nov 02 20:02:44 localhost systemd[1]: Failed to start Display manager.
+242: Nov 02 20:02:55 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 559.
+243: Nov 02 20:02:55 localhost systemd[1]: Stopped Display manager.
+244: Nov 02 20:02:55 localhost systemd[1]: Starting Display manager...
+245: Nov 02 20:02:55 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+246: Nov 02 20:02:55 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+247: Nov 02 20:02:55 localhost systemd[1]: Failed to start Display manager.
+248: Nov 02 20:03:05 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 560.
+249: Nov 02 20:03:05 localhost systemd[1]: Stopped Display manager.
+250: Nov 02 20:03:05 localhost systemd[1]: Starting Display manager...
+251: Nov 02 20:03:05 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+252: Nov 02 20:03:05 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+253: Nov 02 20:03:05 localhost systemd[1]: Failed to start Display manager.
+254: Nov 02 20:03:15 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 561.
+255: Nov 02 20:03:15 localhost systemd[1]: Stopped Display manager.
+256: Nov 02 20:03:15 localhost systemd[1]: Starting Display manager...
+257: Nov 02 20:03:15 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+258: Nov 02 20:03:15 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+259: Nov 02 20:03:15 localhost systemd[1]: Failed to start Display manager.
+260: Nov 02 20:03:25 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 562.
+261: Nov 02 20:03:25 localhost systemd[1]: Stopped Display manager.
+262: Nov 02 20:03:25 localhost systemd[1]: Starting Display manager...
+263: Nov 02 20:03:25 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+264: Nov 02 20:03:25 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+265: Nov 02 20:03:25 localhost systemd[1]: Failed to start Display manager.
+266: Nov 02 20:03:36 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 563.
+267: Nov 02 20:03:36 localhost systemd[1]: Stopped Display manager.
+268: Nov 02 20:03:36 localhost systemd[1]: Starting Display manager...
+269: Nov 02 20:03:36 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+270: Nov 02 20:03:36 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+271: Nov 02 20:03:36 localhost systemd[1]: Failed to start Display manager.
+272: Nov 02 20:03:46 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 564.
+273: Nov 02 20:03:46 localhost systemd[1]: Stopped Display manager.
+274: Nov 02 20:03:46 localhost systemd[1]: Starting Display manager...
+275: Nov 02 20:03:46 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+276: Nov 02 20:03:46 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+277: Nov 02 20:03:46 localhost systemd[1]: Failed to start Display manager.
+278: Nov 02 20:03:56 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 565.
+279: Nov 02 20:03:56 localhost systemd[1]: Stopped Display manager.
+280: Nov 02 20:03:56 localhost systemd[1]: Starting Display manager...
+281: Nov 02 20:03:56 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+282: Nov 02 20:03:56 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+283: Nov 02 20:03:56 localhost systemd[1]: Failed to start Display manager.
+284: Nov 02 20:04:06 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 566.
+285: Nov 02 20:04:06 localhost systemd[1]: Stopped Display manager.
+286: Nov 02 20:04:06 localhost systemd[1]: Starting Display manager...
+287: Nov 02 20:04:06 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+288: Nov 02 20:04:06 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+289: Nov 02 20:04:06 localhost systemd[1]: Failed to start Display manager.
+290: Nov 02 20:04:17 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 567.
+291: Nov 02 20:04:17 localhost systemd[1]: Stopped Display manager.
+292: Nov 02 20:04:17 localhost systemd[1]: Starting Display manager...
+293: Nov 02 20:04:17 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+294: Nov 02 20:04:17 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+295: Nov 02 20:04:17 localhost systemd[1]: Failed to start Display manager.
+296: Nov 02 20:04:27 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 568.
+297: Nov 02 20:04:27 localhost systemd[1]: Stopped Display manager.
+298: Nov 02 20:04:27 localhost systemd[1]: Starting Display manager...
+299: Nov 02 20:04:27 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+300: Nov 02 20:04:27 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+301: Nov 02 20:04:27 localhost systemd[1]: Failed to start Display manager.
+302: Nov 02 20:04:37 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 569.
+303: Nov 02 20:04:37 localhost systemd[1]: Stopped Display manager.
+304: Nov 02 20:04:37 localhost systemd[1]: Starting Display manager...
+305: Nov 02 20:04:37 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+306: Nov 02 20:04:37 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+307: Nov 02 20:04:37 localhost systemd[1]: Failed to start Display manager.
+308: Nov 02 20:04:47 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 570.
+309: Nov 02 20:04:47 localhost systemd[1]: Stopped Display manager.
+310: Nov 02 20:04:47 localhost systemd[1]: Starting Display manager...
+311: Nov 02 20:04:47 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+312: Nov 02 20:04:47 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+313: Nov 02 20:04:47 localhost systemd[1]: Failed to start Display manager.
+314: Nov 02 20:04:58 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 571.
+315: Nov 02 20:04:58 localhost systemd[1]: Stopped Display manager.
+316: Nov 02 20:04:58 localhost systemd[1]: Starting Display manager...
+317: Nov 02 20:04:58 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+318: Nov 02 20:04:58 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+319: Nov 02 20:04:58 localhost systemd[1]: Failed to start Display manager.
+320: Nov 02 20:05:08 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 572.
+321: Nov 02 20:05:08 localhost systemd[1]: Stopped Display manager.
+322: Nov 02 20:05:08 localhost systemd[1]: Starting Display manager...
+323: Nov 02 20:05:08 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+324: Nov 02 20:05:08 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+325: Nov 02 20:05:08 localhost systemd[1]: Failed to start Display manager.
+326: Nov 02 20:05:18 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 573.
+327: Nov 02 20:05:18 localhost systemd[1]: Stopped Display manager.
+328: Nov 02 20:05:18 localhost systemd[1]: Starting Display manager...
+329: Nov 02 20:05:18 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+330: Nov 02 20:05:18 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+331: Nov 02 20:05:18 localhost systemd[1]: Failed to start Display manager.
+332: Nov 02 20:05:28 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 574.
+333: Nov 02 20:05:28 localhost systemd[1]: Stopped Display manager.
+334: Nov 02 20:05:28 localhost systemd[1]: Starting Display manager...
+335: Nov 02 20:05:28 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+336: Nov 02 20:05:28 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+337: Nov 02 20:05:28 localhost systemd[1]: Failed to start Display manager.
+338: Nov 02 20:05:39 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 575.
+339: Nov 02 20:05:39 localhost systemd[1]: Stopped Display manager.
+340: Nov 02 20:05:39 localhost systemd[1]: Starting Display manager...
+341: Nov 02 20:05:39 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+342: Nov 02 20:05:39 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+343: Nov 02 20:05:39 localhost systemd[1]: Failed to start Display manager.
+344: Nov 02 20:05:49 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 576.
+345: Nov 02 20:05:49 localhost systemd[1]: Stopped Display manager.
+346: Nov 02 20:05:49 localhost systemd[1]: Starting Display manager...
+347: Nov 02 20:05:49 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+348: Nov 02 20:05:49 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+349: Nov 02 20:05:49 localhost systemd[1]: Failed to start Display manager.

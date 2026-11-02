@@ -1,0 +1,13 @@
+-- Logs begin at Thu 1970-01-01 09:00:10 KST, end at Mon 2026-11-02 20:08:23 KST. --
+[   17.125364] localhost lko-net-setup[654]: ip link set eth0 down : exit=0
+[   17.135349] localhost lko-net-setup[656]: ip link set eth0 address 2C:CF:67:A0:72:B5 : exit=0
+[   17.148989] localhost lko-net-setup[658]: ip link set eth0 up : exit=0
+[   17.154721] localhost lko-net-setup[659]: waiting up to 60 seconds for ethernet_2ccf67a072b5_cable
+[   20.286151] localhost lko-net-setup[816]: service found: ethernet_2ccf67a072b5_cable
+[   20.343232] localhost lko-net-setup[819]: connmanctl config ethernet_2ccf67a072b5_cable --ipv4 manual 192.168.108.26 255.255.255.0 192.168.108.1 --nameservers 221.131.143.69 : exit=0
+[   20.347975] localhost lko-net-setup[820]: /etc/resolv.conf is a symbolic link
+[   20.367851] localhost lko-net-setup[823]: DNS target=/opt/etc/resolv.conf; findmnt exit=0; options=rw,relatime
+[   20.374832] localhost lko-net-setup[825]: DNS written successfully
+[   20.379322] localhost lko-net-setup[826]: network setup complete
+
+TAG-JOURNAL-EXIT=0

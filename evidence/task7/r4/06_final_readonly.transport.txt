@@ -1,0 +1,265 @@
+Archived and active journals take up 52.0M in the file system.
+RC=0
+8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608  /usr/local/sbin/lko-net-setup.sh
+bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78  /etc/systemd/system/lko-net-setup.service
+af93a4657b122ff5aff84aaae90ce03b94747155954e04f6a539bf83445b8f5e  /etc/systemd/journald.conf.d/50-lko.conf
+RC=0
+drwxr-xr-x 2 root root _ 4096 Nov  2 16:47 /etc/systemd/journald.conf.d
+-rw-r--r-- 1 root root _   27 Nov  2 16:47 /etc/systemd/journald.conf.d/50-lko.conf
+devtmpfs /dev devtmpfs rw,nosuid,size=1815944k,nr_inodes=91845,mode=755 0 0
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+/dev/mmcblk0p6 /usr/lib/modules ext4 ro,relatime 0 0
+/dev/mmcblk0p2 / ext4 ro,relatime 0 0
+/dev/mmcblk0p3 /opt ext4 rw,relatime 0 0
+/dev/mmcblk0p10 /hal ext4 ro,relatime 0 0
+overlay /apps overlay ro,relatime,lowerdir=/sysroot/product/apps:/sysroot/apps,redirect_dir=on 0 0
+smackfs /sys/fs/smackfs smackfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev,noexec 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,noexec,mode=755 0 0
+tmpfs /sys/fs/cgroup tmpfs ro,nosuid,nodev,noexec,mode=755 0 0
+cgroup /sys/fs/cgroup/systemd cgroup rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd 0 0
+kdbusfs /sys/fs/kdbus kdbusfs rw,nosuid,nodev,noexec,relatime 0 0
+bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+cgroup /sys/fs/cgroup/cpu,cpuacct cgroup rw,nosuid,nodev,noexec,relatime,cpu,cpuacct 0 0
+cgroup /sys/fs/cgroup/freezer cgroup rw,nosuid,nodev,noexec,relatime,freezer 0 0
+cgroup /sys/fs/cgroup/devices cgroup rw,nosuid,nodev,noexec,relatime,devices 0 0
+cgroup /sys/fs/cgroup/cpuset cgroup rw,nosuid,nodev,noexec,relatime,cpuset 0 0
+cgroup /sys/fs/cgroup/blkio cgroup rw,nosuid,nodev,noexec,relatime,blkio 0 0
+cgroup /sys/fs/cgroup/memory cgroup rw,nosuid,nodev,noexec,relatime,memory 0 0
+cgroup /sys/fs/cgroup/net_cls cgroup rw,nosuid,nodev,noexec,relatime,net_cls,release_agent=/usr/bin/net-cls-release 0 0
+systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=25,pgrp=1,timeout=0,minproto=5,maxproto=5,direct 0 0
+mqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0
+configfs /sys/kernel/config configfs rw,nosuid,nodev,noexec,relatime 0 0
+debugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0
+/dev/mmcblk0p9 /mnt/inform ext4 rw,relatime 0 0
+/dev/mmcblk0p5 /opt/usr f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+tracefs /sys/kernel/debug/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+fusectl /sys/fs/fuse/connections fusectl rw,nosuid,nodev,noexec,relatime 0 0
+/dev/loop0 /opt/usr/home/owner/subsession/__templ_acct_fix__ ext4 rw,relatime 0 0
+cgroup /sys/fs/cgroup/watchdog cgroup rw,nosuid,nodev,noexec,relatime,release_agent=/usr/bin/resourced-watchdog-handler.sh,name=watchdog 0 0
+/dev/loop1 /opt/usr/home/owner/subsession/__templ_prof_fix__ ext4 rw,relatime 0 0
+tmpfs /opt/media tmpfs rw,relatime 0 0
+tmpfs /run/user/5001 tmpfs rw,nosuid,nodev,noexec,relatime,size=397644k,mode=700,uid=5001,gid=100 0 0
+sdb.default /dev/usb-funcs/sdb/default functionfs rw,relatime 0 0
+mtp.default /dev/usb-funcs/mtp/default functionfs rw,relatime 0 0
+/dev/mmcblk0p5 /opt/usr/home/owner/media f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/mmcblk0p2         3021464   1340336   1650020  45% /
+/dev/mmcblk0p3         1335696    134856   1170732  11% /opt
+/dev/mmcblk0p5       116404224    983244 115420980   1% /opt/usr
+60.55 214.09
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  3 20:07 ?        00:00:02 /sbin/init
+root         2     0  0 20:07 ?        00:00:00 [kthreadd]
+root         3     2  0 20:07 ?        00:00:00 [pool_workqueue_release]
+root         4     2  0 20:07 ?        00:00:00 [kworker/R-kvfree_rcu_reclaim]
+root         5     2  0 20:07 ?        00:00:00 [kworker/R-rcu_gp]
+root         6     2  0 20:07 ?        00:00:00 [kworker/R-sync_wq]
+root         7     2  0 20:07 ?        00:00:00 [kworker/R-slub_flushwq]
+root         8     2  0 20:07 ?        00:00:00 [kworker/R-netns]
+root         9     2  0 20:07 ?        00:00:00 [kworker/0:0-mm_percpu_wq]
+root        10     2  0 20:07 ?        00:00:00 [kworker/0:0H-events_highpri]
+root        11     2  0 20:07 ?        00:00:00 [kworker/0:1-cgroup_pidlist_dest
+root        12     2  0 20:07 ?        00:00:00 [kworker/u16:0-ipv6_addrconf]
+root        13     2  0 20:07 ?        00:00:00 [kworker/R-mm_percpu_wq]
+root        14     2  0 20:07 ?        00:00:00 [rcu_tasks_rude_kthread]
+root        15     2  0 20:07 ?        00:00:00 [rcu_tasks_trace_kthread]
+root        16     2  0 20:07 ?        00:00:00 [ksoftirqd/0]
+root        17     2  0 20:07 ?        00:00:00 [rcu_sched]
+root        18     2  0 20:07 ?        00:00:00 [rcu_exp_par_gp_kthread_worker/0
+root        19     2  0 20:07 ?        00:00:00 [rcu_exp_gp_kthread_worker]
+root        20     2  0 20:07 ?        00:00:00 [migration/0]
+root        21     2  0 20:07 ?        00:00:00 [cpuhp/0]
+root        22     2  0 20:07 ?        00:00:00 [cpuhp/1]
+root        23     2  0 20:07 ?        00:00:00 [migration/1]
+root        24     2  0 20:07 ?        00:00:00 [ksoftirqd/1]
+root        25     2  0 20:07 ?        00:00:00 [kworker/1:0-rcu_gp]
+root        26     2  0 20:07 ?        00:00:00 [kworker/1:0H-events_highpri]
+root        27     2  0 20:07 ?        00:00:00 [cpuhp/2]
+root        28     2  0 20:07 ?        00:00:00 [migration/2]
+root        29     2  0 20:07 ?        00:00:00 [ksoftirqd/2]
+root        30     2  0 20:07 ?        00:00:00 [kworker/2:0-cgroup_free]
+root        31     2  0 20:07 ?        00:00:00 [kworker/2:0H]
+root        32     2  0 20:07 ?        00:00:00 [cpuhp/3]
+root        33     2  0 20:07 ?        00:00:00 [migration/3]
+root        34     2  0 20:07 ?        00:00:00 [ksoftirqd/3]
+root        35     2  0 20:07 ?        00:00:00 [kworker/3:0-events]
+root        36     2  0 20:07 ?        00:00:00 [kworker/3:0H-events_highpri]
+root        37     2  0 20:07 ?        00:00:00 [kworker/u17:0-async]
+root        38     2  0 20:07 ?        00:00:00 [kworker/u18:0-events_unbound]
+root        39     2  0 20:07 ?        00:00:00 [kworker/u19:0-events_unbound]
+root        40     2  0 20:07 ?        00:00:00 [kworker/u20:0-events_unbound]
+root        41     2  0 20:07 ?        00:00:00 [kdevtmpfs]
+root        42     2  0 20:07 ?        00:00:00 [kworker/R-inet_frag_wq]
+root        43     2  0 20:07 ?        00:00:00 [kauditd]
+root        44     2  0 20:07 ?        00:00:00 [khungtaskd]
+root        45     2  0 20:07 ?        00:00:00 [oom_reaper]
+root        46     2  0 20:07 ?        00:00:00 [kworker/u20:1-events_unbound]
+root        47     2  0 20:07 ?        00:00:00 [kworker/R-writeback]
+root        48     2  0 20:07 ?        00:00:00 [kcompactd0]
+root        49     2  0 20:07 ?        00:00:00 [kworker/R-cryptd]
+root        50     2  0 20:07 ?        00:00:00 [kworker/R-kblockd]
+root        51     2  0 20:07 ?        00:00:00 [kworker/R-blkcg_punt_bio]
+root        52     2  0 20:07 ?        00:00:00 [kworker/u17:1-events_unbound]
+root        53     2  0 20:07 ?        00:00:00 [kworker/u17:2-events_unbound]
+root        54     2  0 20:07 ?        00:00:00 [watchdogd]
+root        55     2  0 20:07 ?        00:00:00 [kworker/0:1H-mmc_complete]
+root        56     2  0 20:07 ?        00:00:00 [kworker/R-rpciod]
+root        57     2  0 20:07 ?        00:00:00 [kworker/R-xprtiod]
+root        58     2  0 20:07 ?        00:00:00 [kworker/2:1-cgroup_pidlist_dest
+root        59     2  0 20:07 ?        00:00:00 [kworker/R-cfg80211]
+root        60     2  0 20:07 ?        00:00:00 [kworker/u19:1-events_unbound]
+root        61     2  0 20:07 ?        00:00:00 [kswapd0]
+root        62     2  0 20:07 ?        00:00:00 [kworker/R-nfsiod]
+root        63     2  0 20:07 ?        00:00:00 [kworker/u21:0-hci0]
+root        64     2  0 20:07 ?        00:00:00 [kworker/u22:0]
+root        65     2  0 20:07 ?        00:00:00 [kworker/u23:0]
+root        66     2  0 20:07 ?        00:00:00 [kworker/u24:0]
+root        67     2  0 20:07 ?        00:00:00 [kworker/u25:0]
+root        68     2  0 20:07 ?        00:00:00 [kworker/R-kthrotld]
+root        69     2  0 20:07 ?        00:00:00 [kworker/1:1-rcu_gp]
+root        70     2  0 20:07 ?        00:00:00 [kworker/1:2-cgroup_pidlist_dest
+root        71     2  0 20:07 ?        00:00:00 [kworker/1:3-events]
+root        72     2  0 20:07 ?        00:00:00 [kworker/1:4-cgroup_free]
+root        73     2  0 20:07 ?        00:00:00 [kworker/u18:1-async]
+root        76     2  0 20:07 ?        00:00:00 [kworker/u18:2-async]
+root        77     2  0 20:07 ?        00:00:00 [hwrng]
+root        78     2  0 20:07 ?        00:00:00 [kworker/R-iscsi_conn_cleanup]
+root        80     2  0 20:07 ?        00:00:00 [kworker/R-uas]
+root        81     2  0 20:07 ?        00:00:00 [kworker/3:1-events]
+root        82     2  0 20:07 ?        00:00:00 [kworker/R-dm_bufio_cache]
+root        83     2  0 20:07 ?        00:00:00 [sugov:0]
+root        84     2  0 20:07 ?        00:00:00 [vchiq-slot/0]
+root        85     2  0 20:07 ?        00:00:00 [vchiq-recy/0]
+root        86     2  0 20:07 ?        00:00:00 [vchiq-sync/0]
+root        87     2  0 20:07 ?        00:00:00 [vchiq-keep/0]
+root        89     2  0 20:07 ?        00:00:00 [kworker/1:1H-kblockd]
+root        90     2  0 20:07 ?        00:00:00 [SMIO]
+root        91     2  0 20:07 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        92     2  0 20:07 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        93     2  0 20:07 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        94     2  0 20:07 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        95     2  0 20:07 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        96     2  0 20:07 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        97     2  0 20:07 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        98     2  0 20:07 ?        00:00:00 [kworker/R-mld]
+root        99     2  0 20:07 ?        00:00:00 [kworker/R-ipv6_addrconf]
+root       100     2  0 20:07 ?        00:00:00 [kworker/u16:1]
+root       101     2  0 20:07 ?        00:00:00 [krfcommd]
+root       102     2  0 20:07 ?        00:00:00 [kworker/u18:3-events_unbound]
+root       103     2  0 20:07 ?        00:00:00 [kworker/u18:4]
+root       104     2  0 20:07 ?        00:00:00 [irq/58-vc4 hdmi hpd connected]
+root       105     2  0 20:07 ?        00:00:00 [irq/59-vc4 hdmi hpd disconnecte
+root       106     2  0 20:07 ?        00:00:00 [cec-vc4-hdmi-0]
+root       107     2  0 20:07 ?        00:00:00 [irq/60-vc4 hdmi cec rx]
+root       108     2  0 20:07 ?        00:00:00 [irq/61-vc4 hdmi cec tx]
+root       109     2  0 20:07 ?        00:00:00 [irq/62-vc4 hdmi hpd connected]
+root       110     2  0 20:07 ?        00:00:00 [irq/63-vc4 hdmi hpd disconnecte
+root       111     2  0 20:07 ?        00:00:00 [cec-vc4-hdmi-1]
+root       112     2  0 20:07 ?        00:00:00 [irq/64-vc4 hdmi cec rx]
+root       113     2  0 20:07 ?        00:00:00 [irq/65-vc4 hdmi cec tx]
+root       114     2  0 20:07 ?        00:00:00 [card0-crtc0]
+root       115     2  0 20:07 ?        00:00:00 [card0-crtc1]
+root       116     2  0 20:07 ?        00:00:00 [card0-crtc2]
+root       117     2  0 20:07 ?        00:00:00 [card0-crtc3]
+root       118     2  0 20:07 ?        00:00:00 [card0-crtc4]
+root       119     2  0 20:07 ?        00:00:00 [card0-crtc5]
+root       120     2  0 20:07 ?        00:00:00 [kworker/R-sdhci]
+root       121     2  0 20:07 ?        00:00:00 [irq/72-mmc0]
+root       122     2  0 20:07 ?        00:00:00 [kworker/u20:2]
+root       124     2  0 20:07 ?        00:00:00 [kworker/R-v3d_bin]
+root       125     2  0 20:07 ?        00:00:00 [kworker/R-v3d_render]
+root       126     2  0 20:07 ?        00:00:00 [kworker/R-v3d_tfu]
+root       127     2  0 20:07 ?        00:00:00 [kworker/R-v3d_csd]
+root       128     2  0 20:07 ?        00:00:00 [kworker/R-v3d_cache_clean]
+root       129     2  0 20:07 ?        00:00:00 [kworker/R-v3d_cpu]
+root       130     2  0 20:07 ?        00:00:00 [kworker/3:2-events_freezable_pw
+root       134     2  0 20:07 ?        00:00:00 [kworker/3:1H-kblockd]
+root       171     2  0 20:07 ?        00:00:00 [kworker/R-mmc_complete]
+root       189     2  0 20:07 ?        00:00:00 [jbd2/mmcblk0p6-8]
+root       190     2  0 20:07 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+root       197     2  0 20:07 ?        00:00:00 [kworker/2:1H-kblockd]
+root       198     2  0 20:07 ?        00:00:00 [kworker/1:2H-kblockd]
+root       199     2  0 20:07 ?        00:00:00 [kworker/0:2-rcu_gp]
+root       227     2  0 20:07 ?        00:00:00 [jbd2/mmcblk0p2-8]
+root       228     2  0 20:07 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+root       232     2  0 20:07 ?        00:00:00 [jbd2/mmcblk0p3-8]
+root       233     2  0 20:07 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+root       235     2  0 20:07 ?        00:00:00 [jbd2/mmcblk0p10-8]
+root       236     2  0 20:07 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+root       267     2  0 20:08 ?        00:00:00 [kworker/0:2H-kblockd]
+root       272     2  0 20:08 ?        00:00:00 [kworker/3:2H-kblockd]
+root       285     2  0 20:08 ?        00:00:00 [kworker/2:2H]
+root       287     2  0 20:08 ?        00:00:00 [jbd2/mmcblk0p9-8]
+root       288     2  0 20:08 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+root       291     1  0 20:08 ?        00:00:00 /usr/lib/systemd/systemd-journal
+root       294     2  0 20:08 ?        00:00:00 [f2fs_ckpt-179:5]
+root       295     2  0 20:08 ?        00:00:00 [f2fs_flush-179:5]
+root       296     2  0 20:08 ?        00:00:00 [f2fs_discard-179:5]
+root       315     2  0 20:08 ?        00:00:00 [f2fs_gc-179:5]
+root       320     2  0 20:08 ?        00:00:00 [kworker/0:3]
+root       321     2  0 20:08 ?        00:00:00 [kworker/0:4]
+root       338     1  0 20:08 ?        00:00:00 /usr/lib/systemd/systemd-udevd -
+root       351     2  0 20:08 ?        00:00:00 [kworker/3:3-cgroup_pidlist_dest
+root       390     2  0 20:08 ?        00:00:00 [kworker/u21:1-hci0]
+root       391     2  0 20:08 ?        00:00:00 [kworker/u21:2-hci0]
+root       401     2  0 20:08 ?        00:00:00 [kworker/u17:3]
+root       403     1  0 20:08 ?        00:00:00 /usr/bin/hal/hal-backend-service
+buxton     415     1  0 20:08 ?        00:00:00 /usr/sbin/buxton2d -f
+key-man+   416     1  0 20:08 ?        00:00:00 /usr/bin/key-manager
+app_fw     417     1  0 20:08 ?        00:00:00 /usr/bin/esd
+app_fw     420     1  0 20:08 ?        00:00:00 /usr/bin/pkginfo-server
+root       422     1  0 20:08 ?        00:00:00 /usr/bin/resourced
+log        425     1  0 20:08 ?        00:00:00 /usr/bin/dlog_logger
+sensor     444     1  0 20:08 ?        00:00:00 /usr/bin/sensord
+root       448     2  0 20:08 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+app_fw     459     1  0 20:08 ?        00:00:00 /usr/bin/amd
+root       463     2  0 20:08 ?        00:00:00 [psimon]
+cynara     469     1  0 20:08 ?        00:00:00 /usr/bin/cynara
+root       471     1  0 20:08 ?        00:00:00 /usr/bin/deviced
+securit+   475     1  0 20:08 ?        00:00:00 /usr/bin/license-manager-agent
+multime+   476     1  0 20:08 ?        00:00:00 /usr/bin/media-server
+root       483     2  0 20:08 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+multime+   484     1  0 20:08 ?        00:00:00 /usr/bin/pipewire
+service+   487     1  0 20:08 ?        00:00:00 /usr/bin/pushd
+root       496     1  0 20:08 ttyS0    00:00:00 /sbin/agetty -o -p -- \u --keep-
+stabili+   498     1  0 20:08 ?        00:00:00 /usr/sbin/stability-monitor
+network+   528     1  0 20:08 ?        00:00:00 /usr/bin/net-config
+root       556     1  0 20:08 ?        00:00:00 /usr/lib/systemd/systemd-logind
+network+   560     1  0 20:08 ?        00:00:00 /usr/bin/connmand -n --nobacktra
+multime+   568     1  0 20:08 ?        00:00:00 /usr/bin/rscmgr-service
+root       575     1  0 20:08 ?        00:00:00 /usr/bin/update-manager
+root       580     1  0 20:08 ?        00:00:00 /bin/bash /usr/bin/clone_partiti
+root       605     2  0 20:08 ?        00:00:00 [kworker/2:2-cgroup_release]
+root       606     2  0 20:08 ?        00:00:00 [kworker/2:3-events]
+root       612   580  0 20:08 ?        00:00:00 /bin/bash /usr/bin/clone_partiti
+root       614   612  0 20:08 ?        00:00:00 sleep 60
+service+   616     1  0 20:08 ?        00:00:00 /usr/bin/contextd
+graphic+   617     1  0 20:08 ?        00:00:00 bash /usr/bin/enlightenment_mon.
+securit+   636     1  0 20:08 ?        00:00:00 /usr/bin/security-manager
+root       638     1  0 20:08 ?        00:00:00 /usr/bin/storaged
+securit+   640   636  0 20:08 ?        00:00:00 /usr/bin/security-manager
+multime+   669     1  0 20:08 ?        00:00:00 /usr/bin/focus_server -S
+root       675     1  0 20:08 ?        00:00:00 /usr/bin/tlm
+root       680   675  0 20:08 ?        00:00:00 /usr/bin/tlm-sessiond
+network+   686     1  0 20:08 ?        00:00:00 /usr/bin/wfd-manager
+owner      696     1  0 20:08 ?        00:00:00 /usr/lib/systemd/systemd --user
+owner      697   696  0 20:08 ?        00:00:00 (sd-pam)
+owner      708   680  0 20:08 tty7     00:00:00 /bin/bash
+owner      729   696  0 20:08 ?        00:00:00 /usr/bin/sh -c while [ ! -f /run
+owner      756   696  0 20:08 ?        00:00:00 /usr/bin/launchpad-process-pool
+owner      774   756  0 20:08 ?        00:00:00 /usr/apps/org.tizen.multi-assist
+owner      840   696  0 20:08 ?        00:00:00 /usr/bin/contacts-service-ipcd t
+owner      841   696  0 20:08 ?        00:00:00 /usr/bin/efl_config
+location   857     1  0 20:08 ?        00:00:00 /usr/bin/lbs-server
+root       863     1  0 20:08 ?        00:00:00 /usr/bin/pass
+sdk        891     1  0 20:08 ?        00:00:00 /usr/sbin/sdbd
+owner      924   696  0 20:08 ?        00:00:00 /usr/bin/calendar-serviced 90
+owner     1441   756  0 20:08 ?        00:00:00 /usr/bin/process-pool [loader]
+graphic+  1520   617  0 20:08 ?        00:00:00 sleep 3
+root      1535     1 16 20:08 pts/0    00:00:00 /bin/sh -c journalctl --disk-usa
+owner     1538   729  0 20:08 ?        00:00:00 /usr/bin/sleep .1
+root      1544  1535 99 20:08 pts/0    00:00:00 ps -ef

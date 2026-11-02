@@ -1,0 +1,5 @@
+NRestarts=1
+ActiveState=activating
+SHOW-EXIT=0
+33.76 108.69
+Mon Nov  2 11:07:06 UTC 2026

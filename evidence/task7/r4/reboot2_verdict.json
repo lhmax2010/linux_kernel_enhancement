@@ -1,0 +1,15 @@
+{
+  "number": 2,
+  "before_boot_id": "24a5fc5a-6a90-4eb1-a93d-0531a6b52f44",
+  "after_boot_id": "e9257b33-6808-4b36-bf04-97786a6c7b62",
+  "checks": {
+    "boot_id_changed": true,
+    "identity": true,
+    "service_success": true,
+    "network_complete": true,
+    "mac": true,
+    "ip": true,
+    "sdb_connected": true
+  },
+  "result": "PASS"
+}

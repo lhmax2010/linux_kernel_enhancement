@@ -1,0 +1,2 @@
+devices_exit=0; no_other_devices_confirmed=True
+List of devices attached
