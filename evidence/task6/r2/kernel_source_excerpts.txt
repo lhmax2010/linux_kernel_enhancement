@@ -1,0 +1,259 @@
+Kernel commit: 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+Commands: git -C linux-rpi rev-parse HEAD; git -C linux-rpi status --porcelain; numbered source excerpts. Both exit=0, status empty.
+
+FILE packaging/linux-rpi.spec
+4: %define config_name tizen_bcm2711_defconfig
+5: %ifarch aarch64
+6: %define buildarch arm64
+7: %else
+8: %define buildarch arm
+9: %endif
+10: %define target_board rpi4
+11: %define variant %{buildarch}-%{target_board}
+
+FILE packaging/linux-rpi.spec
+47: %package -n %{variant}-linux-kernel
+48: License: GPL-2.0
+49: Summary: Tizen kernel for %{target_board}
+50: Group: System/Kernel
+51: Provides: %{variant}-kernel-uname-r = %{fullVersion}
+52: Provides: linux-kernel = %{version}_%{release}
+53:
+54: %description -n %{variant}-linux-kernel
+55: This package contains the Linux kernel for Tizen (arch %{buildarch}, target board %{target_board})
+56:
+57: %package -n %{variant}-rt-linux-kernel
+58: License: GPL-2.0
+59: Summary: Tizen kernel for %{target_board}
+60: Group: System/Kernel
+61: Provides: %{variant}-kernel-uname-r = %{fullVersion}_rt
+62: Provides: linux-kernel = %{version}_%{release}_rt
+63:
+64: %description -n %{variant}-rt-linux-kernel
+65: This package contains the Linux kernel for Tizen (arch %{buildarch}, target board %{target_board})
+66:
+67: # modules
+68:
+69: %package -n %{variant}-linux-kernel-modules
+70: Summary: Kernel modules for %{target_board}
+71: Group: System/Kernel
+72: Provides: %{variant}-kernel-modules = %{fullVersion}
+73: Provides: %{variant}-kernel-modules-uname-r = %{fullVersion}
+74:
+75: %description -n %{variant}-linux-kernel-modules
+76: Kernel-modules includes the loadable kernel modules(.ko files) for %{target_board}
+77:
+78: %package -n %{variant}-rt-linux-kernel-modules
+79: Summary: Kernel modules for %{target_board}
+80: Group: System/Kernel
+81: Provides: %{variant}-kernel-modules = %{fullVersion}_rt
+82: Provides: %{variant}-kernel-modules-uname-r = %{fullVersion}_rt
+83:
+84: %description -n %{variant}-rt-linux-kernel-modules
+85: Kernel-modules includes the loadable kernel modules(.ko files) for %{target_board}
+
+FILE packaging/linux-rpi.spec
+241: mkdir -p %{buildroot}/boot
+242: mkdir -p %{buildroot}/lib/modules
+243:
+244: # Install boot binary files
+245: %ifarch aarch64
+246: install -m 644 rpi/boot/config_64bit.txt %{buildroot}/boot/config.txt
+247: %else
+248: install -m 644 rpi/boot/config.txt %{buildroot}/boot/
+249: %endif
+250: install -m 644 rpi/boot/LICENCE.broadcom %{buildroot}/boot/
+251: install -m 644 rpi/boot/start*.elf %{buildroot}/boot/
+252: install -m 644 rpi/boot/fixup*.dat %{buildroot}/boot/
+253:
+254: # Install kernel DTB
+255: install -m 644 build/%{variant}/arch/%{buildarch}/boot/dts/broadcom/bcm*.dtb %{buildroot}/boot/
+256: mkdir -p %{buildroot}/boot/overlays
+257: install -m 644 build/%{variant}/arch/%{buildarch}/boot/dts/overlays/*.dtb* %{buildroot}/boot/overlays/
+
+FILE packaging/linux-rpi.spec
+264:     case $target in
+265: 	%{variant})
+266: %ifarch aarch64
+267:             install -m 644 build/${target}/arch/%{buildarch}/boot/Image %{buildroot}/boot/Image
+268: %else
+269:             install -m 644 build/${target}/arch/%{buildarch}/boot/zImage %{buildroot}/boot/zImage
+270: %endif
+
+FILE packaging/linux-rpi.spec
+291: %ifarch aarch64
+292:             install -m 644 build/${target}/arch/%{buildarch}/boot/Image %{buildroot}/boot/Image_rt
+293: %else
+294:             install -m 644 build/${target}/arch/%{buildarch}/boot/zImage %{buildroot}/boot/zImage_rt
+295: %endif
+296: 	;;
+297:     esac
+298:
+299:     # Install modules
+300:     make O=build/${target} INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%{buildroot} modules_install
+
+FILE packaging/linux-rpi.spec
+337: %post -n %{variant}-rt-linux-kernel
+338: %ifarch aarch64
+339: mv /boot/Image_rt /boot/Image
+340: %else
+341: mv /boot/zImage_rt /boot/zImage
+342: %endif
+343:
+344: %preun -n %{variant}-rt-linux-kernel
+345: %ifarch aarch64
+346: mv /boot/Image /boot/Image_rt
+347: %else
+348: mv /boot/zImage /boot/zImage_rt
+349: %endif
+350:
+351: %files -n %{variant}-linux-kernel-modules
+352: %ifarch aarch64
+353: /lib/modules/*%{variant}-v8/
+354: %else
+355: /lib/modules/*%{variant}-v7l/
+356: %endif
+357:
+358: %files -n %{variant}-rt-linux-kernel-modules
+359: %ifarch aarch64
+360: /lib/modules/*%{variant}-rt-v8/
+361: %else
+362: /lib/modules/*%{variant}-rt-v7l/
+363: %endif
+364:
+365: %files -n %{variant}-linux-kernel-devel
+366: /boot/kernel/devel/*%{variant}/
+367:
+368: %files -n %{variant}-rt-linux-kernel-devel
+369: /boot/kernel/devel/*%{variant}-rt/
+370:
+371: %files -n %{variant}-linux-kernel-btf-devel
+372: /usr/include/bpf/vmlinux.h
+373:
+374: %files -n %{variant}-linux-kernel
+375: %license COPYING
+376: %ifarch aarch64
+377: /boot/Image
+378: %else
+379: /boot/zImage
+380: %endif
+381: /boot/bcm*.dtb
+382: /boot/overlays/*.dtb*
+383: /boot/config.txt
+384: /boot/LICENCE.broadcom
+385: /boot/start*.elf
+386: /boot/fixup*.dat
+387:
+388: %files -n %{variant}-rt-linux-kernel
+389: %license COPYING
+390: %ifarch aarch64
+391: /boot/Image_rt
+392: %else
+393: /boot/zImage_rt
+394: %endif
+395: /boot/bcm*.dtb
+396: /boot/overlays/*.dtb*
+397: /boot/config.txt
+398: /boot/LICENCE.broadcom
+399: /boot/start*.elf
+400: /boot/fixup*.dat
+
+FILE drivers/firmware/raspberrypi.c
+186: static int rpi_firmware_notify_reboot(struct notifier_block *nb,
+187: 				      unsigned long action,
+188: 				      void *data)
+189: {
+190: 	struct rpi_firmware *fw;
+191: 	struct platform_device *pdev = g_pdev;
+192: 	u32 reboot_flags = 0;
+193:
+194: 	if (!pdev)
+195: 		return 0;
+196:
+197: 	fw = platform_get_drvdata(pdev);
+198: 	if (!fw)
+199: 		return 0;
+200:
+201: 	// The partition id is the first parameter followed by zero or
+202: 	// more flags separated by spaces indicating the reason for the reboot.
+203: 	//
+204: 	// 'tryboot': Sets a one-shot flag which is cleared upon reboot and
+205: 	//            causes the tryboot.txt to be loaded instead of config.txt
+206: 	//            by the bootloader and the start.elf firmware.
+207: 	//
+208: 	//            This is intended to allow automatic fallback to a known
+209: 	//            good image if an OS/FW upgrade fails.
+210: 	//
+211: 	// N.B. The firmware mechanism for storing reboot flags may vary
+212: 	// on different Raspberry Pi models.
+213: 	if (data && strstr(data, " tryboot"))
+214: 		reboot_flags |= 0x1;
+215:
+216: 	// The mailbox might have been called earlier, directly via vcmailbox
+217: 	// so only overwrite if reboot flags are passed to the reboot command.
+218: 	if (reboot_flags)
+219: 		(void)rpi_firmware_property(fw, RPI_FIRMWARE_SET_REBOOT_FLAGS,
+220: 				&reboot_flags, sizeof(reboot_flags));
+221:
+222: 	(void)rpi_firmware_property(fw, RPI_FIRMWARE_NOTIFY_REBOOT, NULL, 0);
+223:
+224: 	return 0;
+
+FILE drivers/firmware/raspberrypi.c
+496: static struct notifier_block rpi_firmware_reboot_notifier = {
+497: 	.notifier_call = rpi_firmware_notify_reboot,
+498: };
+499:
+500: static int __init rpi_firmware_init(void)
+501: {
+502: 	int ret = register_reboot_notifier(&rpi_firmware_reboot_notifier);
+503: 	if (ret)
+504: 		goto out1;
+505: 	ret = platform_driver_register(&rpi_firmware_driver);
+506: 	if (ret)
+507: 		goto out2;
+508:
+509: 	return 0;
+510:
+
+FILE drivers/watchdog/bcm2835_wdt.c
+101: static void __bcm2835_restart(struct bcm2835_wdt *wdt, u8 partition)
+102: {
+103: 	u32 val, rsts;
+104:
+105: 	rsts = (partition & BIT(0)) | ((partition & BIT(1)) << 1) |
+106: 	       ((partition & BIT(2)) << 2) | ((partition & BIT(3)) << 3) |
+107: 	       ((partition & BIT(4)) << 4) | ((partition & BIT(5)) << 5);
+108:
+109: 	val = readl_relaxed(wdt->base + PM_RSTS);
+110: 	val &= PM_RSTS_PARTITION_CLR;
+111: 	val |= PM_PASSWORD | rsts;
+112: 	writel_relaxed(val, wdt->base + PM_RSTS);
+113:
+114: 	/* use a timeout of 10 ticks (~150us) */
+115: 	writel_relaxed(10 | PM_PASSWORD, wdt->base + PM_WDOG);
+116: 	val = readl_relaxed(wdt->base + PM_RSTC);
+117: 	val &= PM_RSTC_WRCFG_CLR;
+118: 	val |= PM_PASSWORD | PM_RSTC_WRCFG_FULL_RESET;
+119: 	writel_relaxed(val, wdt->base + PM_RSTC);
+120:
+121: 	/* No sleeping, possibly atomic. */
+122: 	mdelay(1);
+123: }
+124:
+125: static int bcm2835_restart(struct watchdog_device *wdog,
+126: 			   unsigned long action, void *data)
+127: {
+128: 	struct bcm2835_wdt *wdt = watchdog_get_drvdata(wdog);
+129:
+130: 	unsigned long val;
+131: 	u8 partition = 0;
+132:
+133: 	// Allow extra arguments separated by spaces after
+134: 	// the partition number.
+135: 	if (data && sscanf(data, "%lu", &val) && val < 63)
+136: 		partition = val;
+137:
+138: 	__bcm2835_restart(wdt, partition);
+139:
+140: 	return 0;

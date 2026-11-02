@@ -1,0 +1,116 @@
+ZONES
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000000000000-0x000000002fffffff]
+[    0.000000]   Normal   empty
+[    0.000000]   HighMem  [mem 0x0000000030000000-0x00000000fbffffff]
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000000000000-0x000000003b3fffff]
+[    0.000000]   node   0: [mem 0x0000000040000000-0x00000000fbffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000000000000-0x00000000fbffffff]
+MODULES
+TARGET           SOURCE         FSTYPE OPTIONS
+/usr/lib/modules /dev/mmcblk0p6 ext4   ro,relatime
+/usr/lib/modules
+/usr/lib/modules/lost+found
+/usr/lib/modules/6.12.80-arm-rpi4-v7l
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/extra
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/extra/kdbus
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/extra/zlogger
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/fs
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/fs/ecryptfs
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/sound
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/sound/soc
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/lib
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/leds
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/i2c
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/char
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/input
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/mfd
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/spi
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/misc
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/block
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/usb
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/net
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/hid
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/watchdog
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/bluetooth
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/media
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/net
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/net/netfilter
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/kernel/crypto
+/usr/lib/modules/modprobe.d
+/usr/lib/modules/modules-load.d
+SLOT-LINKS
+total 0
+lrwxrwxrwx 1 root root 15 Jan  1  1970 boot_a -> ../../mmcblk0p1
+lrwxrwxrwx 1 root root 16 Jan  1  1970 boot_b -> ../../mmcblk0p11
+lrwxrwxrwx 1 root root 16 Oct 31 00:32 hal_a -> ../../mmcblk0p10
+lrwxrwxrwx 1 root root 16 Jan  1  1970 hal_b -> ../../mmcblk0p16
+lrwxrwxrwx 1 root root 15 Jan  1  1970 inform -> ../../mmcblk0p9
+lrwxrwxrwx 1 root root 15 Jan  1  1970 module_a -> ../../mmcblk0p6
+lrwxrwxrwx 1 root root 16 Jan  1  1970 module_b -> ../../mmcblk0p13
+lrwxrwxrwx 1 root root 15 Jan  1  1970 none -> ../../mmcblk0p4
+lrwxrwxrwx 1 root root 15 Jan  1  1970 ramdisk-recovery_a -> ../../mmcblk0p8
+lrwxrwxrwx 1 root root 16 Jan  1  1970 ramdisk-recovery_b -> ../../mmcblk0p15
+lrwxrwxrwx 1 root root 15 Jan  1  1970 ramdisk_a -> ../../mmcblk0p7
+lrwxrwxrwx 1 root root 16 Jan  1  1970 ramdisk_b -> ../../mmcblk0p14
+lrwxrwxrwx 1 root root 16 Jan  1  1970 reserved0 -> ../../mmcblk0p17
+lrwxrwxrwx 1 root root 16 Jan  1  1970 reserved1 -> ../../mmcblk0p18
+lrwxrwxrwx 1 root root 16 Jan  1  1970 reserved2 -> ../../mmcblk0p19
+lrwxrwxrwx 1 root root 15 Oct 31 00:32 rootfs_a -> ../../mmcblk0p2
+lrwxrwxrwx 1 root root 16 Jan  1  1970 rootfs_b -> ../../mmcblk0p12
+lrwxrwxrwx 1 root root 15 Jan  1  1970 system-data -> ../../mmcblk0p3
+lrwxrwxrwx 1 root root 15 Jan  1  1970 user -> ../../mmcblk0p5
+FSTAB
+cat: /etc/fstab: No such file or directory
+SLOT-CONFIGS
+SEARCH-EXIT=2
+TOOLS
+/usr/sbin/reboot
+REBOOT-LINK
+lrwxrwxrwx 1 root root 24 Oct 28 21:15 /sbin/reboot -> /etc/alternatives/reboot
+lrwxrwxrwx 1 root root 24 Oct 28 21:15 /usr/sbin/reboot -> /etc/alternatives/reboot
+REBOOT-HELP
+reboot [OPTIONS...] [ARG]
+
+Reboot the system.
+
+Options:
+     --help      Show this help
+     --halt      Halt the machine
+  -p --poweroff  Switch off the machine
+     --reboot    Reboot the machine
+  -f --force     Force immediate halt/power-off/reboot
+  -w --wtmp-only Don't halt/power-off/reboot, just write wtmp record
+  -d --no-wtmp   Don't write wtmp record
+     --no-wall   Don't send wall message before halt/power-off/reboot
+
+See the halt(8) man page for details.
+REBOOT-HELP-EXIT=0
+DT-CHOSEN
+/sys/firmware/devicetree/base/chosen/u-boot,version
+/sys/firmware/devicetree/base/chosen/stdout-path
+/sys/firmware/devicetree/base/chosen/bootargs
+/sys/firmware/devicetree/base/chosen/user-warnings
+/sys/firmware/devicetree/base/chosen/linux,initrd-start
+/sys/firmware/devicetree/base/chosen/rpi-boardrev-ext
+/sys/firmware/devicetree/base/chosen/bootloader/version
+/sys/firmware/devicetree/base/chosen/bootloader/capabilities
+/sys/firmware/devicetree/base/chosen/bootloader/boot-mode
+/sys/firmware/devicetree/base/chosen/bootloader/partition
+/sys/firmware/devicetree/base/chosen/bootloader/rsts
+/sys/firmware/devicetree/base/chosen/bootloader/build-timestamp
+/sys/firmware/devicetree/base/chosen/bootloader/tryboot
+/sys/firmware/devicetree/base/chosen/bootloader/update-timestamp
+/sys/firmware/devicetree/base/chosen/bootloader/name
+/sys/firmware/devicetree/base/chosen/log
+/sys/firmware/devicetree/base/chosen/linux,initrd-end
+/sys/firmware/devicetree/base/chosen/phandle
+/sys/firmware/devicetree/base/chosen/rpi-serial64
+/sys/firmware/devicetree/base/chosen/os_prefix
+/sys/firmware/devicetree/base/chosen/overlay_prefix
+/sys/firmware/devicetree/base/chosen/kaslr-seed
+/sys/firmware/devicetree/base/chosen/name

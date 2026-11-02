@@ -1,0 +1,122 @@
+FILE=/usr/lib/systemd/system/clone_partitions.service
+[Unit]
+Description=Clone partitions
+After=system-delayed-target-done.service update-manager.service
+
+[Service]
+Type=simple
+SmackProcessLabel=System
+ExecStart=/usr/bin/clone_partitions.sh background
+RemainAfterExit=true
+Nice=19
+IOSchedulingClass=idle
+IOSchedulingPriority=7
+
+[Install]
+WantedBy=multi-user.target
+FILE=/usr/lib/systemd/system/clone_partitions_recovery.service
+[Unit]
+Description=Clone partitions in the recovery mode
+DefaultDependencies=no
+After=sysinit.target
+Before=recovery.service
+ConditionKernelCommandLine=bootmode=recovery
+
+[Service]
+Type=oneshot
+SmackProcessLabel=System
+ExecStart=/usr/bin/clone_partitions.sh recovery
+RemainAfterExit=true
+
+[Install]
+WantedBy=recovery.service
+FILE=/usr/lib/systemd/system/ramdisk-flush.service
+[Unit]
+Description=Flush ramdisk /dev/ram0
+ConditionKernelCommandLine=root=/dev/ram0
+ConditionPathIsMountPoint=!/mnt/initrd
+ConditionPathExists=!/dev/initramfs
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=system_fw
+Group=disk
+Capabilities=cap_sys_admin=i
+SecureBits=keep-caps
+ExecStart=/sbin/blockdev --flushbufs /dev/ram0
+SmackProcessLabel=System
+FILE=/usr/lib/systemd/system/online-update-success.service
+[Unit]
+Description=Finalize OS update
+DefaultDependencies=no
+Before=online-update-success.target
+After=system-delayed-target-done.service online-update-verify.service
+Requires=online-update-verify.service
+Conflicts=shutdown.target online-update-failure.target reboot.target
+ConditionKernelCommandLine=bootmode=fota
+
+[Service]
+Type=oneshot
+SmackProcessLabel=System::Privileged
+ExecStart=/usr/share/upgrade/online-update-success.sh
+RemainAfterExit=true
+StandardOutput=tty
+StandardError=tty
+FILE=/usr/lib/systemd/system/online-update-failure.service
+[Unit]
+Description=System Update failure - reboot
+DefaultDependencies=no
+Before=online-update-failure.target
+ConditionKernelCommandLine=bootmode=fota
+
+[Service]
+Type=oneshot
+SmackProcessLabel=System::Privileged
+ExecStartPre=-/bin/device_board_set_upgrade_progress_status -1
+ExecStart=/usr/sbin/reboot -f fota
+StandardOutput=tty
+StandardError=tty
+RemainAfterExit=yes
+
+FILE=/etc/update_info_file.sh
+#!/bin/sh
+# update_info_file.sh : update /etc/info.ini
+#
+
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+if [ "$1" == "hal" ]; then
+	/usr/bin/system_info_init_db --input=/hal/etc/config/model-config.xml \
+		--release=/hal/etc/hal-info.ini \
+		--build-info-type=hal \
+		--output=/hal/etc/system_info_db
+	if [ $? -ne 0 ]; then
+		echo "Failed to update system_info_db"
+		exit 1
+	fi
+	echo "Update system info db(/hal/etc/system_info_db) by /hal/etc/config/model-config.xml and /hal/etc/hal-info.ini"
+elif [ "$1" == "product" ]; then
+	/usr/bin/system_info_init_db --input=/product/etc/config/model-config.xml \
+		--release=/product/etc/product-info.ini \
+		--build-info-type=product \
+		--output=/product/etc/system_info_db
+	if [ $? -ne 0 ]; then
+		echo "Failed to update system_info_db"
+		exit 1
+	fi
+	echo "Update system info db(/product/etc/system_info_db) by /product/etc/config/model-config.xml and /product/etc/product-info.ini"
+else
+	/usr/bin/system_info_init_db
+	if [ $? -ne 0 ]; then
+		echo "Failed to update system_info_db"
+		exit 1
+	fi
+
+	# Create version info file for update
+	if [ -e /usr/share/upgrade/record-version.sh ]; then
+		/usr/share/upgrade/record-version.sh
+	fi
+	echo "Update system info db(/etc/system_info_db) by /etc/config/model-config.xml and /etc/info.ini"
+fi
+END-RC=0

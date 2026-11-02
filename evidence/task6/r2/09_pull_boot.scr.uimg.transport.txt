@@ -1,0 +1,5 @@
+
+pulled                  boot.scr.uimg	  0%	      0 B	    0KB/s
+pulled                  boot.scr.uimg	100%	   7520 B	    0KB/s
+1 file(s) pulled. 0 file(s) skipped.
+/opt/usr/lko_task6/boot/boot.scr.uimg   47KB/s (7520 bytes in 0.155s)

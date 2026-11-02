@@ -1,0 +1,202 @@
+/usr/bin/dbus-send
+method return time=1793584291.547062 sender=:1.72 -> destination=:1.354 serial=453 reply_serial=2
+   array [
+      struct {
+         object path "/net/connman/service/ethernet_2ccf67a072b5_cable"
+         array [
+            dict entry(
+               string "Frequency"
+               variant                   uint16 0
+            )
+            dict entry(
+               string "Type"
+               variant                   string "ethernet"
+            )
+            dict entry(
+               string "Security"
+               variant                   array [
+                  ]
+            )
+            dict entry(
+               string "State"
+               variant                   string "ready"
+            )
+            dict entry(
+               string "StateIPv6"
+               variant                   string "configuration"
+            )
+            dict entry(
+               string "Favorite"
+               variant                   boolean true
+            )
+            dict entry(
+               string "Immutable"
+               variant                   boolean false
+            )
+            dict entry(
+               string "AutoConnect"
+               variant                   boolean true
+            )
+            dict entry(
+               string "Name"
+               variant                   string "Wired"
+            )
+            dict entry(
+               string "EapOverEthernet"
+               variant                   array [
+                     dict entry(
+                        string "UseEapol"
+                        variant                            boolean false
+                     )
+                  ]
+            )
+            dict entry(
+               string "Ethernet"
+               variant                   array [
+                     dict entry(
+                        string "Method"
+                        variant                            string "auto"
+                     )
+                     dict entry(
+                        string "Interface"
+                        variant                            string "eth0"
+                     )
+                     dict entry(
+                        string "Address"
+                        variant                            string "2C:CF:67:A0:72:B5"
+                     )
+                     dict entry(
+                        string "MTU"
+                        variant                            uint16 1500
+                     )
+                  ]
+            )
+            dict entry(
+               string "IPv4"
+               variant                   array [
+                     dict entry(
+                        string "Method"
+                        variant                            string "manual"
+                     )
+                     dict entry(
+                        string "Address"
+                        variant                            string "192.168.108.26"
+                     )
+                     dict entry(
+                        string "Netmask"
+                        variant                            string "255.255.255.0"
+                     )
+                     dict entry(
+                        string "Gateway"
+                        variant                            string "192.168.108.1"
+                     )
+                  ]
+            )
+            dict entry(
+               string "IPv4.Configuration"
+               variant                   array [
+                     dict entry(
+                        string "Method"
+                        variant                            string "manual"
+                     )
+                     dict entry(
+                        string "Address"
+                        variant                            string "192.168.108.26"
+                     )
+                     dict entry(
+                        string "Netmask"
+                        variant                            string "255.255.255.0"
+                     )
+                     dict entry(
+                        string "Gateway"
+                        variant                            string "192.168.108.1"
+                     )
+                  ]
+            )
+            dict entry(
+               string "IPv6"
+               variant                   array [
+                  ]
+            )
+            dict entry(
+               string "IPv6.Configuration"
+               variant                   array [
+                     dict entry(
+                        string "Method"
+                        variant                            string "auto"
+                     )
+                     dict entry(
+                        string "Privacy"
+                        variant                            string "prefered"
+                     )
+                  ]
+            )
+            dict entry(
+               string "Nameservers"
+               variant                   array [
+                     string "ipv4.unknown"
+                     string "ipv6.unknown"
+                  ]
+            )
+            dict entry(
+               string "Nameservers.Configuration"
+               variant                   array [
+                     string "ipv4.unknown"
+                     string "ipv6.unknown"
+                  ]
+            )
+            dict entry(
+               string "Timeservers"
+               variant                   array [
+                     string "pool.ntp.org"
+                     string "time.google.com"
+                     string "time.cloudflare.com"
+                     string "time.windows.com"
+                  ]
+            )
+            dict entry(
+               string "Timeservers.Configuration"
+               variant                   array [
+                  ]
+            )
+            dict entry(
+               string "Domains"
+               variant                   array [
+                  ]
+            )
+            dict entry(
+               string "Domains.Configuration"
+               variant                   array [
+                  ]
+            )
+            dict entry(
+               string "Proxy"
+               variant                   array [
+                     dict entry(
+                        string "Method"
+                        variant                            string "direct"
+                     )
+                  ]
+            )
+            dict entry(
+               string "Proxy.Configuration"
+               variant                   array [
+                  ]
+            )
+            dict entry(
+               string "mDNS"
+               variant                   boolean false
+            )
+            dict entry(
+               string "mDNS.Configuration"
+               variant                   boolean false
+            )
+            dict entry(
+               string "Provider"
+               variant                   array [
+                  ]
+            )
+         ]
+      }
+   ]
+DBUS-EXIT=0

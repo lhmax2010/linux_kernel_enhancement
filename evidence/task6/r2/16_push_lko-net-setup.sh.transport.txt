@@ -1,0 +1,6 @@
+WARNING: Your data are to be sent over an unencrypted connection and could be read by others.
+
+pushed               lko-net-setup.sh	  0%	      0 B	    0KB/s
+pushed               lko-net-setup.sh	100%	   2642 B	    0KB/s
+1 file(s) pushed. 0 file(s) skipped.
+/home/linhao/Toolchain/development/linux_kernel_optimization/scripts/board/lko-net-setup.sh   14KB/s (2642 bytes in 0.180s)

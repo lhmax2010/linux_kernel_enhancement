@@ -1,0 +1,12 @@
+[Unit]
+Description=LKO fixed Ethernet setup
+After=connman.service
+Wants=connman.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/sbin/lko-net-setup.sh
+
+[Install]
+WantedBy=multi-user.target

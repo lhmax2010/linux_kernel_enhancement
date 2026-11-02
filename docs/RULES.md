@@ -10,6 +10,8 @@
 3. zram运行时重配：swapoff、zram reset、设置comp_algorithm/algorithm_params、设置disksize、mkswap、swapon按运行时参数处理；修改前记录原算法、disksize和swap状态，实验结束后恢复并回读确认。
 4. 重启：实验需要时可通过sdb重启开发板。每次重启前记录原因和重启编号；重启后等待sdb重新连上，超时（10分钟）就停下报告，不做任何其他补救操作。
 5. 开机自动配网服务：允许为安装该服务执行一次remount读写，只写入该服务的unit文件和脚本（具体路径在安装任务中登记），装完恢复只读；除此之外仍不改根文件系统、不安装或卸载RPM。刷新镜像后的一次性准备（remount、osu --resize、卸载wlandrv-plugin-tizen/mesa/coregl、首次配网）由用户执行。
+   - 任务6 r2（2026-11-02）实际安装登记：`/usr/local/sbin/lko-net-setup.sh`（0755）、`/etc/systemd/system/lko-net-setup.service`（0644）；enable创建`/etc/systemd/system/multi-user.target.wants/lko-net-setup.service`，指向`/etc/systemd/system/lko-net-setup.service`。本次 / 原本为 rw，未执行 remount；前后均rw,relatime。只安装/enable，未start、未手动执行脚本、未重启。
+   - PM 2026-11-02替代验收仅适用于本次任务6恢复：不要求板上systemd-analyze；以LoadState=loaded、LoadError为空、UnitFileState=enabled、is-enabled=enabled、enable链接正确及reload后无该unit警告/错误为准。任一不符须disable、删除两文件、daemon-reload并确认恢复；安装前/若为ro则停止第二部分，不remount。本次验收通过；第一次重启验证需要用户在场。
 6. 只替换内核：实验内核变体可只替换boot分区中的内核映像、设备树和模块分区，用户态不变。前提：第一次替换前先完成只读调研并由PM审核替换和回退方案；每次替换前备份当前可用的内核文件并核对哈希；替换后核对uname、/proc/version和内核配置；新内核起不来且无法自动回退时停下报告，由用户处理。
 
 boot分区的启动参数（cmdline）仍不在常规授权内。开机时间的串口采集由用户在内网机器上执行，不属于本仓库的板上操作。不用sudo，不碰其他任务的进程。

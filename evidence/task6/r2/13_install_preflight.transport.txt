@@ -1,0 +1,48 @@
+ROOT
+/dev/mmcblk0p2 ext4 rw,relatime
+TARGETS
+ABSENT=/usr/local/sbin/lko-net-setup.sh
+ABSENT=/etc/systemd/system/lko-net-setup.service
+ABSENT=/etc/systemd/system/multi-user.target.wants/lko-net-setup.service
+ABSENT=/usr/lib/systemd/system/lko-net-setup.service
+PARENTS
+ls: cannot access /etc/systemd/system/multi-user.target.wants: No such file or directory
+drwxr-xr-x 2 root root 4096 Oct 28 21:15 /etc/systemd/system
+drwxr-xr-x 2 root root 4096 Sep 12 23:16 /usr/local/sbin
+RESOLV
+lrwxrwxrwx 1 network_fw network_fw 20 Oct 28 22:07 /etc/resolv.conf -> /opt/etc/resolv.conf
+/opt/etc/resolv.conf
+TARGET SOURCE         FSTYPE OPTIONS
+/opt   /dev/mmcblk0p3 ext4   rw,relatime
+CONNMAN
+drwxr-xr-x 4 root root 4096 Jan  1  1970 /var/lib/connman
+/opt/var/lib/connman
+TARGET SOURCE         FSTYPE OPTIONS
+/opt   /dev/mmcblk0p3 ext4   rw,relatime
+drwx------ 2 network_fw network_fw 4096 Oct 31 00:32 /var/lib/connman/ethernet_2ccf67a072b5_cable
+[ethernet_2ccf67a072b5_cable]
+Name=Wired
+AutoConnect=true
+IPv4.method=manual
+IPv4.netmask_prefixlen=24
+IPv4.local_address=192.168.108.26
+IPv4.gateway=192.168.108.1
+Nameservers=221.131.143.69;
+SERVICE
+LoadState=loaded
+ActiveState=active
+FragmentPath=/usr/lib/systemd/system/connman.service
+UTILITIES
+/usr/sbin/ip
+/usr/bin/logger
+/usr/bin/connmanctl
+/usr/bin/readlink
+/usr/bin/findmnt
+/usr/bin/awk
+/usr/bin/sleep
+/usr/bin/stat
+/usr/bin/sha256sum
+/usr/bin/install
+TIME
+2026-11-02T01:50:24Z
+END-RC=0

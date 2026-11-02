@@ -1,0 +1,10 @@
+Mount text identical: PASS (including order). Root before/after: /dev/mmcblk0p2 / ext4 rw,relatime; no remount.
+/ df KiB: used 1340316 -> 1340328 (+12), available 1650040 -> 1650028 (-12); persistent service installation is authorized. Not claiming exact block attribution.
+/opt/usr df KiB: used 983204 -> 983204, available 115421020 -> 115421020.
+Board temporary tree: removed, rm exit=0, ls exit=2, TEMP-ABSENT and TEMP-ABSENT-FINAL.
+SDB final uid=5001(owner). Uptime 209867.42 -> 210138.24 seconds; no reboot command executed.
+Three ro boot mounts all unmounted successfully; no boot file changed.
+Service loaded/enabled; LoadError empty, inactive/dead, ExecMainPID=0, start timestamp empty. No execution or reboot.
+Journal reads exit=0; no lko-net-setup messages in either all-priority or warning+ entries after reload.
+Unrelated cgroup memory.limit_in_bytes and display-manager errors are present; retained as observed, not changed or attributed to this service.
+Boot inventory files=413. OOM snapshot rows=196, value counts={'0': 191, '-250': 1, '-1000': 1, '-100': 2, '230': 1}; transient processes may disappear during enumeration.

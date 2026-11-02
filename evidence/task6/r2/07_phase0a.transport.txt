@@ -1,0 +1,338 @@
+BTF
+drwxr-xr-x 2 root root 0 Nov  2 10:49 /sys/kernel/btf
+total 0
+-r--r--r-- 1 root root   65671 Nov  2 10:49 brcmfmac
+-r--r--r-- 1 root root    2347 Nov  2 10:49 brcmutil
+-r--r--r-- 1 root root     924 Nov  2 10:49 btbcm
+-r--r--r-- 1 root root    3146 Nov  2 10:49 dm_bow
+-r--r--r-- 1 root root     137 Nov  2 10:49 extcon_usb_fixed
+-r--r--r-- 1 root root    4742 Nov  2 10:49 hci_uart
+-r--r--r-- 1 root root     166 Nov  2 10:49 inform_reboot
+-r--r--r-- 1 root root   26749 Nov  2 10:49 kdbus
+-r--r--r-- 1 root root    1996 Nov  2 10:49 logger
+-r--r--r-- 1 root root     274 Nov  2 10:49 proc_tsm
+-r--r--r-- 1 root root 6478350 Nov  2 10:49 vmlinux
+OOM-ADJ
+1	systemd	0
+100	kworker/u16:1	0
+101	krfcommd	0
+104	irq/58-vc4 hdmi hpd connected	0
+105	irq/59-vc4 hdmi hpd disconnected	0
+106	cec-vc4-hdmi-0	0
+107	irq/60-vc4 hdmi cec rx	0
+1073	kworker/0:1-cgroup_pidlist_destroy	0
+108	irq/61-vc4 hdmi cec tx	0
+109	irq/62-vc4 hdmi hpd connected	0
+110	irq/63-vc4 hdmi hpd disconnected	0
+111	cec-vc4-hdmi-1	0
+112	irq/64-vc4 hdmi cec rx	0
+113	irq/65-vc4 hdmi cec tx	0
+114	card0-crtc0	0
+115	card0-crtc1	0
+116	card0-crtc2	0
+117	card0-crtc3	0
+118	card0-crtc4	0
+11855	kworker/u18:2	0
+11878	kworker/u17:2-flush-179:0	0
+119	card0-crtc5	0
+12	kworker/u16:0-ipv6_addrconf	0
+120	kworker/R-sdhci	0
+121	irq/72-mmc0	0
+123	kworker/R-v3d_bin	0
+124	kworker/R-v3d_render	0
+125	kworker/R-v3d_tfu	0
+126	kworker/R-v3d_csd	0
+127	kworker/R-v3d_cache_clean	0
+128	kworker/R-v3d_cpu	0
+13	kworker/R-mm_percpu_wq	0
+14	rcu_tasks_rude_kthread	0
+14329	kworker/u18:1-events_unbound	0
+1464	kworker/3:3	0
+15	rcu_tasks_trace_kthread	0
+1540	sh	0
+16	ksoftirqd/0	0
+17	rcu_sched	0
+171	kworker/R-mmc_complete	0
+18	rcu_exp_par_gp_kthread_worker/0	0
+18885	kworker/u20:1-events_unbound	0
+189	jbd2/mmcblk0p6-8	0
+19	rcu_exp_gp_kthread_worker	0
+190	kworker/R-ext4-rsv-conversion	0
+19458	kworker/0:3-cgroup_pidlist_destroy	0
+19911	kworker/u20:2	0
+19938	kworker/1:1-mm_percpu_wq	0
+2	kthreadd	0
+20	migration/0	0
+20839	kworker/0:1H-kblockd	0
+21	cpuhp/0	0
+22	cpuhp/1	0
+226	jbd2/mmcblk0p2-8	0
+227	kworker/R-ext4-rsv-conversion	0
+23	migration/1	0
+231	jbd2/mmcblk0p3-8	0
+232	kworker/R-ext4-rsv-conversion	0
+235	jbd2/mmcblk0p10-8	0
+23560	kworker/1:0-mm_percpu_wq	0
+236	kworker/R-ext4-rsv-conversion	0
+24	ksoftirqd/1	0
+24409	kworker/u18:0-events_unbound	0
+24994	kworker/3:1-cgroup_pidlist_destroy	0
+26344	kworker/0:2H-kblockd	0
+26705	kworker/1:2H-kblockd	0
+27	cpuhp/2	0
+2760	sleep	0
+27848	kworker/u19:1-kvfree_rcu_reclaim	0
+2796	sh	0
+28	migration/2	0
+286	jbd2/mmcblk0p9-8	0
+287	kworker/R-ext4-rsv-conversion	0
+29	ksoftirqd/2	0
+290	systemd-journal	-250
+29045	kworker/0:0-events	0
+29165	kworker/0:2-cgroup_pidlist_destroy	0
+29200	kworker/3:0H-kblockd	0
+295	f2fs_ckpt-179:5	0
+296	f2fs_flush-179:5	0
+29674	kworker/2:1H	0
+297	f2fs_discard-179:5	0
+2976	kworker/u17:0-events_unbound	0
+3	pool_workqueue_release	0
+30123	kworker/3:0-cgroup_pidlist_destroy	0
+30608	kworker/2:2-events	0
+31065	kworker/2:2H-kblockd	0
+31252	kworker/0:0H-kblockd	0
+31322	kworker/2:3-events	0
+317	f2fs_gc-179:5	0
+32	cpuhp/3	0
+32400	kworker/1:2-cgroup_free	0
+33	migration/3	0
+34	ksoftirqd/3	0
+340	systemd-udevd	-1000
+349	kworker/3:2H-kblockd	0
+3686	kworker/u19:0-events_unbound	0
+4	kworker/R-kvfree_rcu_reclaim	0
+40	kworker/u20:0-events_unbound	0
+401	kworker/u21:1-hci0	0
+405	hal-backend-ser	0
+4078	kworker/2:0-cgroup_pidlist_destroy	0
+41	kdevtmpfs	0
+418	buxton2d	0
+419	key-manager	0
+42	kworker/R-inet_frag_wq	0
+420	esd	0
+423	pkginfo-server	-100
+425	resourced	0
+427	dlog_logger	0
+43	kauditd	0
+44	khungtaskd	0
+447	sensord	0
+45	oom_reaper	0
+451	kworker/R-ext4-rsv-conversion	0
+464	psimon	0
+469	amd	-100
+47	kworker/R-writeback	0
+473	kworker/R-ext4-rsv-conversion	0
+474	cynara	0
+475	deviced	0
+48	kcompactd0	0
+481	license-manager	0
+485	media-server	0
+489	pipewire	0
+49	kworker/R-cryptd	0
+491	pushd	0
+5	kworker/R-rcu_gp	0
+50	kworker/R-kblockd	0
+502	login	0
+51	kworker/R-blkcg_punt_bio	0
+516	stability-monit	0
+536	net-config	0
+54	watchdogd	0
+553	systemd-logind	0
+56	kworker/R-rpciod	0
+568	connmand	0
+57	kworker/R-xprtiod	0
+579	rscmgr-service	0
+58	kworker/R-cfg80211	0
+582	update-manager	0
+59	kswapd0	0
+6	kworker/R-sync_wq	0
+60	kworker/R-nfsiod	0
+61	kworker/u21:0-hci0	0
+611	contextd	0
+612	bash	0
+62	kworker/u22:0	0
+622	security-manage	0
+6290	kworker/u19:3-kvfree_rcu_reclaim	0
+63	kworker/u23:0	0
+631	security-manage	0
+637	storaged	0
+64	kworker/u24:0	0
+65	kworker/u25:0	0
+657	focus_server	0
+66	kworker/R-kthrotld	0
+663	tlm	0
+668	tlm-sessiond	0
+685	systemd	0
+686	(sd-pam)	0
+696	bash	0
+7	kworker/R-slub_flushwq	0
+7174	kworker/u17:1-kvfree_rcu_reclaim	0
+720	sh	0
+745	launchpad-proce	0
+75	hwrng	0
+758	org.tizen.multi	230
+76	kworker/R-iscsi_conn_cleanup	0
+78	kworker/R-uas	0
+783	efl_config	0
+79	kworker/R-dm_bufio_cache	0
+8	kworker/R-netns	0
+800	lbs-server	0
+805	pass	0
+82	sugov:0	0
+83	vchiq-slot/0	0
+84	vchiq-recy/0	0
+85	vchiq-sync/0	0
+86	vchiq-keep/0	0
+8688	kworker/3:2-cgroup_release	0
+88	kworker/1:1H-kblockd	0
+881	mtp-responder	0
+884	sdbd	0
+89	kworker/3:1H-kblockd	0
+90	SMIO	0
+91	kworker/R-mmal-vchiq	0
+92	kworker/R-mmal-vchiq	0
+9271	kworker/2:1-cgroup_release	0
+93	kworker/R-mmal-vchiq	0
+94	kworker/R-mmal-vchiq	0
+95	kworker/R-mmal-vchiq	0
+96	kworker/R-mmal-vchiq	0
+97	kworker/R-mmal-vchiq	0
+98	kworker/R-mld	0
+99	kworker/R-ipv6_addrconf	0
+BTRFS-RULES
+FILE=/usr/lib/udev/rules.d/50-udev-default.rules
+# do not edit this file, it will be overwritten on update
+
+# run a command on remove events
+ACTION=="remove", ENV{REMOVE_CMD}!="", RUN+="$env{REMOVE_CMD}"
+ACTION=="remove", GOTO="default_end"
+
+SUBSYSTEM=="virtio-ports", KERNEL=="vport*", ATTR{name}=="?*", SYMLINK+="virtio-ports/$attr{name}"
+
+# select "system RTC" or just use the first one
+SUBSYSTEM=="rtc", ATTR{hctosys}=="1", SYMLINK+="rtc"
+SUBSYSTEM=="rtc", KERNEL=="rtc0", SYMLINK+="rtc", OPTIONS+="link_priority=-100"
+
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", IMPORT{builtin}="usb_id", IMPORT{builtin}="hwdb --subsystem=usb"
+ENV{MODALIAS}!="", IMPORT{builtin}="hwdb --subsystem=$env{SUBSYSTEM}"
+
+ACTION!="add", GOTO="default_end"
+
+SUBSYSTEM=="tty", KERNEL=="ptmx", GROUP="tty", MODE="0666"
+SUBSYSTEM=="tty", KERNEL=="tty", GROUP="tty", MODE="0666"
+SUBSYSTEM=="tty", KERNEL=="tty[0-9]*", GROUP="tty", MODE="0620"
+SUBSYSTEM=="tty", KERNEL=="sclp_line[0-9]*", GROUP="tty", MODE="0620"
+SUBSYSTEM=="tty", KERNEL=="ttysclp[0-9]*", GROUP="tty", MODE="0620"
+SUBSYSTEM=="tty", KERNEL=="3270/tty[0-9]*", GROUP="tty", MODE="0620"
+SUBSYSTEM=="vc", KERNEL=="vcs*|vcsa*", GROUP="tty"
+KERNEL=="tty[A-Z]*[0-9]|ttymxc[0-9]*|pppox[0-9]*|ircomm[0-9]*|noz[0-9]*|rfcomm[0-9]*", GROUP="dialout"
+
+SUBSYSTEM=="mem", KERNEL=="mem|kmem|port", GROUP="kmem", MODE="0640"
+
+SUBSYSTEM=="input", GROUP="input"
+SUBSYSTEM=="input", KERNEL=="js[0-9]*", MODE="0664"
+
+SUBSYSTEM=="video4linux", GROUP="video"
+SUBSYSTEM=="graphics", GROUP="video"
+SUBSYSTEM=="drm", KERNEL!="renderD*", GROUP="video"
+SUBSYSTEM=="dvb", GROUP="video"
+SUBSYSTEM=="media", GROUP="video"
+SUBSYSTEM=="cec", GROUP="video"
+
+SUBSYSTEM=="drm", KERNEL=="renderD*", GROUP="render", MODE="0666"
+SUBSYSTEM=="kfd", GROUP="render", MODE="0666"
+
+# When using static_node= with non-default permissions, also update
+# tmpfiles.d/static-nodes-permissions.conf.in to keep permissions synchronized.
+
+SUBSYSTEM=="sound", GROUP="audio", \
+  OPTIONS+="static_node=snd/seq", OPTIONS+="static_node=snd/timer"
+
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", MODE="0664"
+
+SUBSYSTEM=="firewire", ATTR{units}=="*0x00a02d:0x00010*", GROUP="video"
+SUBSYSTEM=="firewire", ATTR{units}=="*0x00b09d:0x00010*", GROUP="video"
+SUBSYSTEM=="firewire", ATTR{units}=="*0x00a02d:0x010001*", GROUP="video"
+SUBSYSTEM=="firewire", ATTR{units}=="*0x00a02d:0x014001*", GROUP="video"
+
+KERNEL=="parport[0-9]*", GROUP="lp"
+SUBSYSTEM=="printer", KERNEL=="lp*", GROUP="lp"
+SUBSYSTEM=="ppdev", GROUP="lp"
+KERNEL=="lp[0-9]*", GROUP="lp"
+KERNEL=="irlpt[0-9]*", GROUP="lp"
+SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ENV{ID_USB_INTERFACES}=="*:0701??:*", GROUP="lp"
+
+SUBSYSTEM=="block", GROUP="disk"
+SUBSYSTEM=="block", KERNEL=="sr[0-9]*", GROUP="cdrom"
+SUBSYSTEM=="scsi_generic", SUBSYSTEMS=="scsi", ATTRS{type}=="4|5", GROUP="cdrom"
+KERNEL=="sch[0-9]*", GROUP="cdrom"
+KERNEL=="pktcdvd[0-9]*", GROUP="cdrom"
+KERNEL=="pktcdvd", GROUP="cdrom"
+
+SUBSYSTEM=="scsi_generic|scsi_tape", SUBSYSTEMS=="scsi", ATTRS{type}=="1|8", GROUP="tape"
+SUBSYSTEM=="scsi_generic", SUBSYSTEMS=="scsi", ATTRS{type}=="0", GROUP="disk"
+KERNEL=="qft[0-9]*|nqft[0-9]*|zqft[0-9]*|nzqft[0-9]*|rawqft[0-9]*|nrawqft[0-9]*", GROUP="disk"
+KERNEL=="loop-control", GROUP="disk", OPTIONS+="static_node=loop-control"
+KERNEL=="btrfs-control", GROUP="disk"
+KERNEL=="rawctl", GROUP="disk"
+SUBSYSTEM=="raw", KERNEL=="raw[0-9]*", GROUP="disk"
+SUBSYSTEM=="aoe", GROUP="disk", MODE="0220"
+SUBSYSTEM=="aoe", KERNEL=="err", MODE="0440"
+
+KERNEL=="rfkill", MODE="0664"
+KERNEL=="tun", MODE="0666", OPTIONS+="static_node=net/tun", SECLABEL{smack}="*"
+
+KERNEL=="fuse", MODE="0666", OPTIONS+="static_node=fuse"
+
+# The static_node is required on s390x and ppc (they are using MODULE_ALIAS)
+KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"
+
+KERNEL=="udmabuf", GROUP="kvm"
+
+SUBSYSTEM=="ptp", ATTR{clock_name}=="KVM virtual PTP", SYMLINK += "ptp_kvm"
+
+LABEL="default_end"
+FILE=/usr/lib/udev/rules.d/64-btrfs.rules
+# do not edit this file, it will be overwritten on update
+
+SUBSYSTEM!="block", GOTO="btrfs_end"
+ACTION=="remove", GOTO="btrfs_end"
+ENV{ID_FS_TYPE}!="btrfs", GOTO="btrfs_end"
+ENV{SYSTEMD_READY}=="0", GOTO="btrfs_end"
+
+# let the kernel know about this btrfs filesystem, and check if it is complete
+IMPORT{builtin}="btrfs ready $devnode"
+
+# mark the device as not ready to be used by the system
+ENV{ID_BTRFS_READY}=="0", ENV{SYSTEMD_READY}="0"
+
+# reconsider pending devices in case when multidevice volume awaits
+ENV{ID_BTRFS_READY}=="1", RUN+="/usr/bin/udevadm trigger -s block -p ID_BTRFS_READY=0"
+
+LABEL="btrfs_end"
+F2FS
+/dev/mmcblk0p5 /opt/usr f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+FREEZER
+total 0
+dr-xr-xr-x  3 root root   0 Jan  1  1970 .
+drwxr-xr-x 11 root root 280 Jan  1  1970 ..
+-rw-r--r--  1 root root   0 Nov  2 10:49 cgroup.clone_children
+-rw-r--r--  1 root root   0 Nov  2 10:49 cgroup.procs
+-r--r--r--  1 root root   0 Nov  2 10:49 cgroup.sane_behavior
+-rw-r--r--  1 root root   0 Nov  2 10:49 notify_on_release
+-rw-r--r--  1 root root   0 Nov  2 10:49 release_agent
+-rw-r--r--  1 root root   0 Nov  2 10:49 tasks
+drwxr-xr-x  2 root root   0 Nov  2 10:49 tzip
+/sys/fs/cgroup/freezer
+/sys/fs/cgroup/freezer/tzip
+END-RC=0

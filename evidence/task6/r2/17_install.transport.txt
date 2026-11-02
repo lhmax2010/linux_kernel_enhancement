@@ -1,0 +1,12 @@
+8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608  /opt/usr/lko_task6/lko-net-setup.sh
+bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78  /opt/usr/lko_task6/lko-net-setup.service
+RELOAD-SINCE=2026-11-02T01:52:16Z
+DAEMON-RELOAD-EXIT=0
+Created symlink /etc/systemd/system/multi-user.target.wants/lko-net-setup.service → /etc/systemd/system/lko-net-setup.service.
+ENABLE-EXIT=0
+INSTALL-COMPLETE
+755 root:root /usr/local/sbin/lko-net-setup.sh
+644 root:root /etc/systemd/system/lko-net-setup.service
+8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608  /usr/local/sbin/lko-net-setup.sh
+bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78  /etc/systemd/system/lko-net-setup.service
+lrwxrwxrwx 1 root root 41 Nov  2 10:52 /etc/systemd/system/multi-user.target.wants/lko-net-setup.service -> /etc/systemd/system/lko-net-setup.service

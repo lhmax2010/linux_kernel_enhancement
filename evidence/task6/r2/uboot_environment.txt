@@ -1,0 +1,76 @@
+arch=arm
+backup_addr=0x02310000
+backup_ver=00302e31
+backup_ver_size=4
+baudrate=115200
+board=rpi
+board_name=rpi
+boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}
+boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootaa64.efi; if fdt addr -q ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};else bootefi ${kernel_addr_r} ${fdtcontroladdr};fi
+boot_efi_bootmgr=if fdt addr -q ${fdt_addr_r}; then bootefi bootmgr ${fdt_addr_r};else bootefi bootmgr;fi
+boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}${boot_syslinux_conf}
+boot_net_usb_start=usb start
+boot_pci_enum=pci enum
+boot_prefixes=/ /boot/
+boot_script_dhcp=boot.scr.uimg
+boot_scripts=boot.scr.uimg boot.scr
+boot_syslinux_conf=extlinux/extlinux.conf
+boot_targets=mmc usb pxe dhcp
+bootcmd=run distro_bootcmd
+bootcmd=run distro_bootcmd
+bootcmd_dhcp=devtype=dhcp; run boot_net_usb_start; run boot_pci_enum; if dhcp ${scriptaddr} ${boot_script_dhcp}; then source ${scriptaddr}; fi;setenv efi_fdtfile ${fdtfile}; setenv efi_old_vci ${bootp_vci};setenv efi_old_arch ${bootp_arch};setenv bootp_vci PXEClient:Arch:00011:UNDI:003000;setenv bootp_arch 0xb;if dhcp ${kernel_addr_r}; then tftpboot ${fdt_addr_r} dtb/${efi_fdtfile};if fdt addr -q ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r}; else bootefi ${kernel_addr_r} ${fdtcontroladdr};fi;fi;setenv bootp_vci ${efi_old_vci};setenv bootp_arch ${efi_old_arch};setenv efi_fdtfile;setenv efi_old_arch;setenv efi_old_vci;
+bootcmd_mmc=devnum=0; run mmc_boot
+bootcmd_pxe=run boot_net_usb_start; run boot_pci_enum; dhcp; if pxe get; then pxe boot; fi
+bootcmd_usb=devnum=0; run usb_boot
+bootdelay=2
+cpu=armv7
+dfu_alt_info=Image fat 0 1; bcm2711-rpi-4-b.dtb fat 0 1; bcm2712-rpi-5-b.dtb fat 0 1; u-boot.bin fat 0 1; uboot.env fat 0 1; boot.scr.uimg fat 0 1; zImage fat 0 1; boot.img part 0 1; rootfs part 0 2; system-data part 0 3; user part 0 5; module part 0 6; ramdisk.img part 0 7; ramdisk-recovery part 0 8; hal.img part 0 10
+dfu_device=0
+dfu_interface=mmc
+dfu_usb_con=0
+disable_delay=setenv console console=ram; setenv bootdelay 0; saveenv
+distro_bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done
+download_val=6c6e7764
+enable_delay=env delete console; setenv bootdelay 2; saveenv
+fdt_addr_r=0x02600000
+fdt_high=ffffffffffffffff
+gpt_parts="uuid_disk=${uuid_gpt_disk};	name=boot_a,start=4MiB,uuid=${uuid_gpt_boot_a},size=64MiB,type=C12A7328-F81F-11D2-BA4B-00A0C93EC93B;	name=rootfs_a,size=3072MiB,uuid=${uuid_gpt_rootfs_a},type=linux;	name=system-data,size=1344MiB,uuid=${uuid_gpt_data},type=linux;	name=none,size=36MiB,uuid=${uuid_gpt_none},type=linux;	name=user,size=6636MiB,uuid=${uuid_gpt_user},type=linux;	name=module_a,size=32MiB,uuid=${uuid_gpt_module_a},type=linux;	name=ramdisk_a,size=32MiB,uuid=${uuid_gpt_ramdisk_a},type=linux;	name=ramdisk-recovery_a,size=32MiB,uuid=${uuid_gpt_ramdisk-recovery_a},type=linux;	name=inform,size=8MiB,uuid=${uuid_gpt_inform},type=linux;	name=hal_a,size=256MiB,uuid=${uuid_gpt_hal_a},type=linux;	name=boot_b,size=64MiB,uuid=${uuid_gpt_boot_b},type=C12A7328-F81F-11D2-BA4B-00A0C93EC93B;	name=rootfs_b,size=3072MiB,uuid=${uuid_gpt_rootf_b},type=linux;	name=module_b,size=32MiB,uuid=${uuid_gpt_module_b},type=linux;	name=ramdisk_b,size=32MiB,uuid=${uuid_gpt_ramdisk_b},type=linux;	name=ramdisk-recovery_b,size=32MiB,uuid=${uuid_gpt_ramdisk-recovery_b},type=linux;	name=hal_b,size=256MiB,uuid=${uuid_gpt_hal_b},type=linux;	name=reserved0,size=4MiB,uuid=${uuid_gpt_reserved0},type=linux;	name=reserved1,size=64MiB,uuid=${uuid_gpt_reserved1},type=linux;	name=backup,size=-,uuid=${uuid_gpt_backup},type=linux"
+informpart=9
+initrd_high=ffffffffffffffff
+kernel=zImage
+kernel_addr_r=0x00080000
+loadaddr=0x1000000
+mmc_boot=if mmc dev ${devnum}; then devtype=mmc; run scan_dev_for_boot_part; fi
+nodef_val=6665646e
+normal_val=6d726f6e
+opts=loglevel=4
+pxefile_addr_r=0x02500000
+ramdisk_addr_r=0x02700000
+reboot_param_clear=part number ${devtype} ${devnum} ${informname} informpart; mw.l ${rebootparam_addr} ${normal_val}; ext4write ${devtype} ${devnum}:${informpart} ${rebootparam_addr} /${rebootparamfile} 8
+rebootparam_addr=0x02100000
+rebootparamfile=reboot-param.bin
+recovery_val=72766372
+scan_dev_for_boot=echo Scanning ${devtype} ${devnum}:${distro_bootpart}...; for prefix in ${boot_prefixes}; do run scan_dev_for_extlinux; run scan_dev_for_scripts; done;run scan_dev_for_efi;
+scan_dev_for_boot_part=part list ${devtype} ${devnum} -bootable devplist; env exists devplist || setenv devplist 1; for distro_bootpart in ${devplist}; do if fstype ${devtype} ${devnum}:${distro_bootpart} bootfstype; then part uuid ${devtype} ${devnum}:${distro_bootpart} distro_bootpart_uuid ; run scan_dev_for_boot; fi; done; setenv devplist
+scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; for prefix in ${efi_dtb_prefixes}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${efi_fdtfile}; then run load_efi_dtb; fi;done;run boot_efi_bootmgr;if test -e ${devtype} ${devnum}:${distro_bootpart} efi/boot/bootaa64.efi; then echo Found EFI removable media binary efi/boot/bootaa64.efi; run boot_efi_binary; echo EFI LOAD FAILED: continuing...; fi; setenv efi_fdtfile
+scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${boot_syslinux_conf}; then echo Found ${prefix}${boot_syslinux_conf}; run boot_extlinux; echo EXTLINUX FAILED: continuing...; fi
+scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script}; then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done
+scriptaddr=0x02400000
+set_to_part_a=part number ${devtype} ${devnum} ${informname} informpart; if test -e ${devtype} ${devnum}:${informpart} ${slotfile}; then; load ${devtype} ${devnum}:${informpart} ${slot_addr} /${slotfile} 2; fi; mw.b ${slot_addr} "0x61"; ext4write ${devtype} ${devnum}:${informpart} ${slot_addr} /${slotfile} 2
+set_to_part_b=part number ${devtype} ${devnum} ${informname} informpart; if test -e ${devtype} ${devnum}:${informpart} ${slotfile}; then; load ${devtype} ${devnum}:${informpart} ${slot_addr} /${slotfile} 2; fi; mw.b ${slot_addr} "0x62"; ext4write ${devtype} ${devnum}:${informpart} ${slot_addr} /${slotfile} 2
+slot_addr=0x02200000
+slotfile=partition-ab.info
+soc=bcm283x
+stderr=serial
+stdin=serial
+stdout=serial
+tfm=setenv bootmode download; run set_to_part_a; run reboot_param_clear; run bootcmd
+tizen_bootarg=cgroup_enable=memory vc_mem.mem_base=0x3ec00000 vc_mem.mem_size=0x40000000 swiotlb=8192 8250.nr_uarts=1 dma.dmachans=0x7f35 bcm2709.serial=0xed6687d3 snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1 bcm2709.uart_clock=48000000 dwc_otg.lpm_enable=0
+update_gpt_part=gpt write ${devtype} ${devnum} ${gpt_parts}
+upgrade_val=72677075
+upgradetype_addr=0x02300000
+upgradetype_online_val=696c6e6f
+upgradetypefile=upgrade-type.info
+usb_boot=usb start; if usb dev ${devnum}; then devtype=usb; run scan_dev_for_boot_part; fi
+usb_ignorelist=
+vendor=raspberrypi

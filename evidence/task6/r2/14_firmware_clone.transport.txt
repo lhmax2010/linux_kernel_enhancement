@@ -1,0 +1,72 @@
+FIRMWARE-LOG
+[    0.034045] raspberrypi-firmware soc:firmware: Attached to firmware from 2025-05-14T12:23:36, variant start
+[    0.044049] raspberrypi-firmware soc:firmware: Firmware hash is 17084b403fb60475b8ee2641c26049a7d54bf153
+CLONED-STATE
+0
+SUPPORT-FILES
+/usr/libexec/upgrade-support/upgrade-common.inc
+/usr/libexec/upgrade-support/upgrade-partial.sh
+/usr/libexec/upgrade-support/upgrade-trigger.sh
+/usr/libexec/upgrade-support/upgrade-fota.sh
+/usr/libexec/upgrade-support/upgrade-prepare-partitions.sh
+SLOT-MAPPING
+/usr/libexec/upgrade-support/upgrade-common.inc:5:HAL_PART_LIST_FILE="background_copy.list"
+/usr/libexec/upgrade-support/upgrade-common.inc:160:	CURRENT_AB="$(/bin/sed -E 's|.*(partition_ab=)([a-b]).*|\2|' /proc/cmdline)"
+/usr/libexec/upgrade-support/upgrade-common.inc:322:background_copy() {
+/usr/libexec/upgrade-support/upgrade-common.inc:347:	for partition_name in ${PARTITION_LIST}; do
+/usr/libexec/upgrade-support/upgrade-common.inc:356:			CURRENT_PARTITION="/dev/mapper/${partition_name}_${CURRENT_AB}"
+/usr/libexec/upgrade-support/upgrade-common.inc:357:			CURRENT_PARTITION_SIZE="$(blockdev --getsize64 $CURRENT_PARTITION)"
+/usr/libexec/upgrade-support/upgrade-common.inc:366:			NEXT_PARTITION="/dev/mapper/${partition_name}_${NEXT_AB}"
+/usr/libexec/upgrade-support/upgrade-common.inc:367:			NEXT_PARTITION_SIZE="$(blockdev --getsize64 $NEXT_PARTITION)"
+/usr/libexec/upgrade-support/upgrade-common.inc:369:			if ! CURRENT_PARTITION="$(get_partition_path "$EMMC_DEVICE" "$partition_name" "$CURRENT_AB")"; then
+/usr/libexec/upgrade-support/upgrade-common.inc:375:			CURRENT_PARTITION_SIZE="$(calculate_size $CURRENT_PARTITION)"
+/usr/libexec/upgrade-support/upgrade-common.inc:377:			if ! NEXT_PARTITION="$(get_partition_path "$EMMC_DEVICE" "$partition_name" "$NEXT_AB")"; then
+/usr/libexec/upgrade-support/upgrade-common.inc:383:			NEXT_PARTITION_SIZE="$(calculate_size $NEXT_PARTITION)"
+/usr/libexec/upgrade-support/upgrade-common.inc:385:		if [ "$CURRENT_PARTITION" == "" ] || [ "$NEXT_PARTITION" == "" ]; then
+/usr/libexec/upgrade-support/upgrade-common.inc:386:			log "[Error] current: $CURRENT_PARTITION or next: $NEXT_PARTITION partition is empty on $EMMC_DEVICE device"
+/usr/libexec/upgrade-support/upgrade-common.inc:389:		if [ "$CURRENT_PARTITION" == "$NEXT_PARTITION" ]; then
+/usr/libexec/upgrade-support/upgrade-common.inc:390:			log "[Info] $partition_name partition current and next are the same: $CURRENT_PARTITION on $EMMC_DEVICE device"
+/usr/libexec/upgrade-support/upgrade-common.inc:396:		if [ "$NEXT_PARTITION_SIZE" -lt "$CURRENT_PARTITION_SIZE" ]; then
+/usr/libexec/upgrade-support/upgrade-common.inc:397:			BYTES_TO_COPY="$NEXT_PARTITION_SIZE"
+/usr/libexec/upgrade-support/upgrade-common.inc:399:			BYTES_TO_COPY="$CURRENT_PARTITION_SIZE"
+/usr/libexec/upgrade-support/upgrade-common.inc:403:		partitions+=("$partition_name $CURRENT_PARTITION $NEXT_PARTITION $BYTES_TO_COPY")
+/usr/libexec/upgrade-support/upgrade-common.inc:407:		read -r partition_name CURRENT_PARTITION NEXT_PARTITION BYTES_TO_COPY <<< "${partition}"
+/usr/libexec/upgrade-support/upgrade-common.inc:420:		log "[Info] Background copy $partition_name, from: $CURRENT_PARTITION to $NEXT_PARTITION"
+/usr/libexec/upgrade-support/upgrade-common.inc:421:		if ! "$COPY_BLOCKDEV" "$CURRENT_PARTITION" "$NEXT_PARTITION" --cnt "$BYTES_TO_COPY" $update $check_sha1 --progress-from $curr_progress_from_int --progress-to $curr_progress_to_int; then
+/usr/libexec/upgrade-support/upgrade-common.inc:422:			log "[Error] Couldn't copy $CURRENT_PARTITION to $NEXT_PARTITION"
+/usr/libexec/upgrade-support/upgrade-common.inc:425:		log "[Info] Finished background copy $partition_name from $CURRENT_PARTITION to $NEXT_PARTITION"
+/usr/libexec/upgrade-support/upgrade-common.inc:435:load_background_copy_list() {
+/usr/libexec/upgrade-support/upgrade-common.inc:436:	PARTITION_LIST=$(sed -e '/^#/d' -e '/^$/d' "${HAL_UPGRADE_CFG_DIR}/${HAL_PART_LIST_FILE}")
+/usr/libexec/upgrade-support/upgrade-common.inc:501:		local CURR_PARTITION=""
+/usr/libexec/upgrade-support/upgrade-common.inc:502:		local NEXT_PARTITION=""
+/usr/libexec/upgrade-support/upgrade-common.inc:519:			NEXT_PARTITION="/dev/mapper/${PART_NAME}_${NEXT_AB}"
+/usr/libexec/upgrade-support/upgrade-common.inc:520:			CURR_PARTITION="/dev/mapper/${PART_NAME}_${CURRENT_AB}"
+/usr/libexec/upgrade-support/upgrade-common.inc:522:			if ! NEXT_PARTITION="$(get_partition_path "$EMMC_DEVICE" "$PART_NAME" "$NEXT_AB")"; then
+/usr/libexec/upgrade-support/upgrade-common.inc:528:			if ! CURR_PARTITION="$(get_partition_path "$EMMC_DEVICE" "$PART_NAME" "$CURRENT_AB")"; then
+/usr/libexec/upgrade-support/upgrade-common.inc:535:		log "[Info] Flashing $DELTA_NAME... to $NEXT_PARTITION, Delta type: ${TYPE_S[0]}"
+/usr/libexec/upgrade-support/upgrade-common.inc:543:									`"--dest $NEXT_PARTITION "`
+/usr/libexec/upgrade-support/upgrade-common.inc:553:									`"--dest $NEXT_PARTITION "`
+/usr/libexec/upgrade-support/upgrade-common.inc:557:									`"--patch-orig $CURR_PARTITION "`
+/usr/libexec/upgrade-support/upgrade-common.inc:565:				mount "$NEXT_PARTITION" "$FOTA_DIR/partition_mnt"
+/usr/libexec/upgrade-support/upgrade-common.inc:573:				umount "$NEXT_PARTITION"
+/usr/libexec/upgrade-support/upgrade-common.inc:580:				log "[Info] Finished flashing $DELTA_NAME... to $NEXT_PARTITION"
+/usr/libexec/upgrade-support/upgrade-common.inc:583:				log "[Info] Flashing error $DELTA_NAME... to $NEXT_PARTITION"
+/usr/libexec/upgrade-support/upgrade-common.inc:659:	CLEANUP_PARTITION+=("$DST")
+/usr/libexec/upgrade-support/upgrade-common.inc:665:	for (( idx=${#CLEANUP_PARTITION[@]}-1 ; idx>=0 ; idx-- )) ; do
+/usr/libexec/upgrade-support/upgrade-common.inc:666:		local DST="${CLEANUP_PARTITION[idx]}"
+/usr/libexec/upgrade-support/upgrade-common.inc:668:			log "[Error] Partition for cleanup is empty, idx: $idx, partition count: ${#CLEANUP_PARTITION[@]}"
+/usr/libexec/upgrade-support/upgrade-common.inc:676:	CLEANUP_PARTITION=()
+/usr/libexec/upgrade-support/upgrade-trigger.sh:24:SCRIPT_UPGRADE_PREPARE_PARTITIONS="upgrade-prepare-partitions.sh"
+/usr/libexec/upgrade-support/upgrade-trigger.sh:86:	if grep -q partition_ab= /proc/cmdline; then
+/usr/libexec/upgrade-support/upgrade-trigger.sh:123:		if [ "$(device_board_get_partition_ab_cloned)" -eq 0 ]; then
+/usr/libexec/upgrade-support/upgrade-trigger.sh:126:			unpack_file "${DELTA_A}" "${SCRIPT_UPGRADE_PREPARE_PARTITIONS}" "${DELTA_A_CHECKSUM_FILE}" ""
+/usr/libexec/upgrade-support/upgrade-trigger.sh:128:			run_script "${FOTA_DIR}/${SCRIPT_UPGRADE_PREPARE_PARTITIONS} $PROGRESS_AFTER_CLONING"
+/usr/libexec/upgrade-support/upgrade-trigger.sh:140:		device_board_clear_partition_ab_cloned
+/usr/libexec/upgrade-support/upgrade-prepare-partitions.sh:35:load_background_copy_list
+/usr/libexec/upgrade-support/upgrade-prepare-partitions.sh:37:if ! background_copy $progress_to; then
+CLONE-STATUS
+Result=success
+LoadState=loaded
+ActiveState=active
+UnitFileState=disabled
+END-RC=0

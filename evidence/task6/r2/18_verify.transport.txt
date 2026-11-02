@@ -1,0 +1,28 @@
+SHOW
+ExecMainStartTimestamp=
+ExecMainPID=0
+ExecStart={ path=/usr/local/sbin/lko-net-setup.sh ; argv[]=/usr/local/sbin/lko-n
+et-setup.sh ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; co
+de=(null) ; status=0/0 }
+Wants=connman.service
+After=sysinit.target system.slice basic.target connman.service
+LoadState=loaded
+ActiveState=inactive
+SubState=dead
+UnitFileState=enabled
+LoadError=
+SHOW-EXIT=0
+ENABLED
+enabled
+IS-ENABLED-EXIT=0
+LINK
+/etc/systemd/system/lko-net-setup.service
+LINK-EXIT=0
+JOURNAL
+JOURNAL-MATCH-EXIT=1
+JOURNAL-WARNINGS
+JOURNAL-WARNING-MATCH-EXIT=1
+LABELS
+-rw-r--r-- 1 root root User::Shell  213 Nov  2 10:52 /etc/systemd/system/lko-net-setup.service
+-rwxr-xr-x 1 root root User::Shell 2642 Nov  2 10:52 /usr/local/sbin/lko-net-setup.sh
+END-RC=0

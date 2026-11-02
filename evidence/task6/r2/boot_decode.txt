@@ -1,0 +1,4 @@
+SDB pull only; boot partition mounted ro. Host Python struct/zlib validates uImage magic, header CRC32 and data CRC32. Header=64 bytes, script length table=8 bytes.
+boot.scr.uimg bytes=7520 sha256=b470712abab8a1d9ad0ffb0061dd34e3acd21ea2483b7ffaca38db6db18fe041
+payload_bytes=7456, script_bytes=7448, header_crc32=1f46911e, data_crc32=430c2e5e
+uboot.env: ASCII runs >=4 bytes, NUL separators replaced with newlines; no environment execution.

@@ -1,0 +1,73 @@
+# For more options and information see
+# http://rptl.io/configtxt
+# Some settings may impact device functionality. See link above for details
+
+# Uncomment some or all of these to enable the optional hardware interfaces
+#dtparam=i2c_arm=on
+#dtparam=i2s=on
+#dtparam=spi=on
+
+# Enable audio (loads snd_bcm2835)
+dtparam=audio=on
+
+# Additional overlays and parameters are documented
+# /boot/firmware/overlays/README
+
+# Automatically load initramfs files, if found
+auto_initramfs=1
+
+# Don't have the firmware create an initial video= setting in cmdline.txt.
+# Use the kernel's default instead.
+disable_fw_kms_setup=1
+
+# Disable compensation for displays with overscan
+#disable_overscan=1
+
+# Run as fast as firmware / board allows
+#arm_boost=1
+
+[cm4]
+# Enable host mode on the 2711 built-in XHCI USB controller.
+# This line should be removed if the legacy DWC2 controller is required
+# (e.g. for USB device mode) or if USB support is not required.
+otg_mode=1
+
+[cm5]
+dtoverlay=dwc2,dr_mode=host
+
+[pi4]
+# Automatically load overlays for detected DSI displays
+display_auto_detect=1
+
+# Enable DRM VC4 V3D driver
+dtoverlay=vc4-kms-v3d-pi4,cma-320
+max_framebuffers=2
+
+# Disable ID_SC and ID_SD pins to use UART2
+force_eeprom_read=0
+
+# Enable dwc2 driver
+dtoverlay=dwc2,dr_mode=peripheral
+
+kernel=u-boot.bin
+
+[all]
+# Enable serial
+enable_uart=1
+uart_2ndstage=1
+
+# Enable the camera module
+camera_auto_detect=1
+
+# Turn off the red camera LED when recording video or taking a still picture
+disable_camera_led=1
+
+# Defines the HDMI output group DMT, set defualt mode 720p
+hdmi_group=2
+hdmi_mode=85
+
+# Set gpio pins to Input, Pullup mode.
+gpio=6,12,13,16,25=ip,pu
+
+# Enable i2c1 controller on default GPIO pins
+dtoverlay=i2c1,pins_2_3

@@ -1,0 +1,159 @@
+CLONE-SCRIPT
+#!/bin/bash
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+FLOCK_PATH="/var/lock/clone_partitions.lock"
+
+do_clone() {
+	check_ab_partition_scheme
+	check_used_block_device
+	load_background_copy_list
+	if background_copy; then
+		device_board_set_partition_ab_cloned
+		unmap_next_dynamic_partitions
+		log "[Info] Partitions have been cloned"
+		return 0
+	else
+		critical_log "[Error] Partitions have not been cloned"
+		unmap_next_dynamic_partitions
+		return 1
+	fi
+}
+
+set_partition_status_ok(){
+		CURRENT_AB=$(device_board_get_current_partition)
+
+		if [ "$CURRENT_AB" == "a" ]; then
+			OPPOSITE_AB="b"
+		elif [ "$CURRENT_AB" == "b" ]; then
+			OPPOSITE_AB="a"
+		else
+			exit 1
+		fi
+
+		device_board_set_partition_status $OPPOSITE_AB "ok"
+}
+
+start_clone() {
+	if [ "$(device_board_get_partition_ab_cloned)" -eq "1" ]; then
+		log "[Info] Partitions already cloned"
+	else
+		do_clone
+	fi
+}
+
+clone_recovery() {
+	/bin/device_board_clear_partition_ab_cloned
+	do_clone
+	set_partition_status_ok
+}
+
+check_clone_background_available() {
+	# Partitions should not be cloned if upgrade is in progress.
+	local upgrade_state
+	local upgrade_type
+	local bootmode
+	local ret
+
+	upgrade_state=$(device_board_get_upgrade_state)
+	ret=$?
+	if [[ $? -ne 0 ]]; then
+		critical_log "[Error] Cannot get upgrade state: ${ret}"
+		exit 1
+	fi
+
+	upgrade_type=$(device_board_get_upgrade_type)
+	ret=$?
+	if [[ $? -ne 0 ]]; then
+		critical_log "[Error] Cannot get upgrade type: ${ret}"
+		exit 1
+	fi
+
+	bootmode=$(device_board_get_boot_mode)
+	ret=$?
+	if [[ $? -ne 0 ]]; then
+		critical_log "[Error] Cannot get boot mode: ${ret}"
+		exit 1
+	fi
+
+	if [[ "${upgrade_state}" != "completed" ]]; then
+		log "[Info] Upgrade state is not \"completed\": ${upgrade_state}"
+		exit 0
+	fi
+
+	if [[ "${bootmode}" != "normal" ]]; then
+		if [[ "${bootmode}" != "fota" ]]; then
+			log "[Info] bootmode should be \"normal\" or \"fota\": ${bootmode}"
+			exit 0
+		fi
+
+		if [[ "${upgrade_type}" != "online" ]]; then
+			log "[Info] Upgrade type should be online if bootmode is fota: ${upgrade_type}"
+			exit 0
+		fi
+	fi
+}
+
+clone_background() {
+	# wait for 60 seconds to wait for bootup
+	sleep 60
+
+	check_clone_background_available
+	start_clone
+}
+
+set -o errexit -o errtrace -o pipefail
+trap 'echo "Aborting due to errexit on ${0##*/}:$LINENO. Exit code: $?" >&2' ERR
+
+if [ -n "${UPGRADE_DEBUG}" ]; then
+	set -o xtrace
+fi
+
+. /usr/libexec/upgrade-support/upgrade-common.inc
+
+set_script_name_and_log_file "${BASH_SOURCE[0]}"
+
+(
+flock 9
+case $1 in
+	"recovery")
+		clone_recovery
+		;;
+	"background")
+		clone_background
+		;;
+	*)
+		start_clone
+		;;
+esac
+) 9> "$FLOCK_PATH"
+CLONE-EXIT=0
+INFORM
+total 52
+drwxr-xr-x 3 root root       4096 Oct 29 15:39 .
+drwxr-xr-x 5 root root       4096 Oct 29 01:48 ..
+drwx------ 2 root root      16384 Oct 29 15:38 lost+found
+-rw-rw-r-- 1 root system_fw     2 Oct 29 15:39 partition-ab-cloned.info
+-rw-rw-r-- 1 root system_fw     2 Oct 29 15:39 partition-ab.info
+-rw-rw-r-- 1 root system_fw     5 Oct 29 15:39 reboot-param.bin
+-rw-r--r-- 1 root root          5 Oct 29 15:39 reboot-param.info
+-rw-rw-r-- 1 root system_fw     2 Oct 29 15:39 upgrade-progress-status.info
+-rw-rw-r-- 1 root system_fw     8 Oct 29 15:39 upgrade-state.info
+-rw-rw-r-- 1 root system_fw     8 Oct 29 15:39 upgrade-type.info
+FILE=/mnt/inform/partition-ab.info
+ 61 0a
+READ-EXIT=0
+FILE=/mnt/inform/reboot-param.bin
+ 6e 6f 72 6d 0a
+READ-EXIT=0
+UPGRADE-SLOT-REFERENCES
+/usr/share/upgrade/offline-update-post.sh:5:if [[ $(</proc/cmdline) =~ partition_ab= ]]
+/usr/share/upgrade/online-update-success.sh:44:	/usr/bin/device_board_clear_partition_ab_cloned
+/usr/share/upgrade/offline-update-finalize.sh:46:	/usr/bin/device_board_clear_partition_ab_cloned
+/usr/share/upgrade/update.sh:102:if [[ $(</proc/cmdline) =~ partition_ab= ]] && [ ! -f ${RW_UPDATE_FLAG} ]
+/usr/share/upgrade/update.sh:222:if [[ ! $(</proc/cmdline) =~ partition_ab= ]]
+/usr/share/upgrade/update-checkpoint-create.sh:34:        if [[ ! $(</proc/cmdline) =~ partition_ab= ]]; then
+SYSROOT-MOUNT-METADATA
+ls: cannot access /sysroot: No such file or directory
+lrwxrwxrwx 1 root root    7 Sep 12 23:16 /lib -> usr/lib
+dr-xr-xr-x 6 root root 4096 Oct 29 01:49 /lib/modules
+END-RC=2

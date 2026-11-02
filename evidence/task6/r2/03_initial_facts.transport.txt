@@ -1,0 +1,333 @@
+uid=0(root) gid=0(root) groups=0(root),29(audio),44(video),201(display),1901(log),6505(pulse-access),6506(pulse-rt),6525(usb_device),10001(priv_externalstorage),10013(priv_tee_client),10014(priv_peripheralio),10212(priv_platform),10501(priv_camera),10502(priv_mediastorage),10503(priv_recorder),10704(priv_internet),10705(priv_network_get),10711(priv_tethering_admin),10901(priv_email),10903(priv_message_read),11103(priv_mapservice),11201(priv_appdebugging) context="User::Shell"
+MOUNTS-BEGIN
+devtmpfs /dev devtmpfs rw,nosuid,size=1815944k,nr_inodes=91845,mode=755 0 0
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+/dev/mmcblk0p6 /usr/lib/modules ext4 ro,relatime 0 0
+/dev/mmcblk0p2 / ext4 rw,relatime 0 0
+/dev/mmcblk0p3 /opt ext4 rw,relatime 0 0
+/dev/mmcblk0p10 /hal ext4 rw,relatime 0 0
+overlay /apps overlay ro,relatime,lowerdir=/sysroot/product/apps:/sysroot/apps,redirect_dir=on 0 0
+smackfs /sys/fs/smackfs smackfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev,noexec 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,noexec,mode=755 0 0
+tmpfs /sys/fs/cgroup tmpfs ro,nosuid,nodev,noexec,mode=755 0 0
+cgroup /sys/fs/cgroup/systemd cgroup rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd 0 0
+kdbusfs /sys/fs/kdbus kdbusfs rw,nosuid,nodev,noexec,relatime 0 0
+bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+cgroup /sys/fs/cgroup/net_cls cgroup rw,nosuid,nodev,noexec,relatime,net_cls,release_agent=/usr/bin/net-cls-release 0 0
+cgroup /sys/fs/cgroup/freezer cgroup rw,nosuid,nodev,noexec,relatime,freezer 0 0
+cgroup /sys/fs/cgroup/cpu,cpuacct cgroup rw,nosuid,nodev,noexec,relatime,cpu,cpuacct 0 0
+cgroup /sys/fs/cgroup/devices cgroup rw,nosuid,nodev,noexec,relatime,devices 0 0
+cgroup /sys/fs/cgroup/blkio cgroup rw,nosuid,nodev,noexec,relatime,blkio 0 0
+cgroup /sys/fs/cgroup/cpuset cgroup rw,nosuid,nodev,noexec,relatime,cpuset 0 0
+cgroup /sys/fs/cgroup/memory cgroup rw,nosuid,nodev,noexec,relatime,memory 0 0
+systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=25,pgrp=1,timeout=0,minproto=5,maxproto=5,direct 0 0
+mqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0
+configfs /sys/kernel/config configfs rw,nosuid,nodev,noexec,relatime 0 0
+debugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0
+/dev/mmcblk0p9 /mnt/inform ext4 rw,relatime 0 0
+/dev/mmcblk0p5 /opt/usr f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+tracefs /sys/kernel/debug/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+fusectl /sys/fs/fuse/connections fusectl rw,nosuid,nodev,noexec,relatime 0 0
+/dev/loop0 /opt/usr/home/owner/subsession/__templ_acct_fix__ ext4 rw,relatime 0 0
+cgroup /sys/fs/cgroup/watchdog cgroup rw,nosuid,nodev,noexec,relatime,release_agent=/usr/bin/resourced-watchdog-handler.sh,name=watchdog 0 0
+/dev/loop1 /opt/usr/home/owner/subsession/__templ_prof_fix__ ext4 rw,relatime 0 0
+tmpfs /opt/media tmpfs rw,relatime 0 0
+tmpfs /run/user/5001 tmpfs rw,nosuid,nodev,noexec,relatime,size=397644k,mode=700,uid=5001,gid=100 0 0
+sdb.default /dev/usb-funcs/sdb/default functionfs rw,relatime 0 0
+mtp.default /dev/usb-funcs/mtp/default functionfs rw,relatime 0 0
+/dev/mmcblk0p5 /opt/usr/home/owner/media f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+MOUNTS-END
+Filesystem         1024-blocks      Used Available Capacity Mounted on
+/dev/mmcblk0p2         3021464   1340316   1650040      45% /
+/dev/mmcblk0p5       116404224    983204 115421020       1% /opt/usr
+drwxr-xr-x 11 root root 4096 Oct 30 21:17 /opt/usr
+TEMP-ABSENT
+PROCESSES
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 Oct31 ?        00:09:51 /sbin/init
+root         2     0  0 Oct31 ?        00:00:00 [kthreadd]
+root         3     2  0 Oct31 ?        00:00:00 [pool_workqueue_release]
+root         4     2  0 Oct31 ?        00:00:00 [kworker/R-kvfree_rcu_reclaim]
+root         5     2  0 Oct31 ?        00:00:00 [kworker/R-rcu_gp]
+root         6     2  0 Oct31 ?        00:00:00 [kworker/R-sync_wq]
+root         7     2  0 Oct31 ?        00:00:00 [kworker/R-slub_flushwq]
+root         8     2  0 Oct31 ?        00:00:00 [kworker/R-netns]
+root        12     2  0 Oct31 ?        00:00:00 [kworker/u16:0-ipv6_addrconf]
+root        13     2  0 Oct31 ?        00:00:00 [kworker/R-mm_percpu_wq]
+root        14     2  0 Oct31 ?        00:00:00 [rcu_tasks_rude_kthread]
+root        15     2  0 Oct31 ?        00:00:00 [rcu_tasks_trace_kthread]
+root        16     2  0 Oct31 ?        00:00:17 [ksoftirqd/0]
+root        17     2  0 Oct31 ?        00:03:59 [rcu_sched]
+root        18     2  0 Oct31 ?        00:00:00 [rcu_exp_par_gp_kthread_worker/0
+root        19     2  0 Oct31 ?        00:00:00 [rcu_exp_gp_kthread_worker]
+root        20     2  0 Oct31 ?        00:00:00 [migration/0]
+root        21     2  0 Oct31 ?        00:00:00 [cpuhp/0]
+root        22     2  0 Oct31 ?        00:00:00 [cpuhp/1]
+root        23     2  0 Oct31 ?        00:00:00 [migration/1]
+root        24     2  0 Oct31 ?        00:00:13 [ksoftirqd/1]
+root        27     2  0 Oct31 ?        00:00:00 [cpuhp/2]
+root        28     2  0 Oct31 ?        00:00:00 [migration/2]
+root        29     2  0 Oct31 ?        00:00:09 [ksoftirqd/2]
+root        32     2  0 Oct31 ?        00:00:00 [cpuhp/3]
+root        33     2  0 Oct31 ?        00:00:00 [migration/3]
+root        34     2  0 Oct31 ?        00:00:13 [ksoftirqd/3]
+root        40     2  0 Oct31 ?        00:00:06 [kworker/u20:0-ext4-rsv-conversi
+root        41     2  0 Oct31 ?        00:00:00 [kdevtmpfs]
+root        42     2  0 Oct31 ?        00:00:00 [kworker/R-inet_frag_wq]
+root        43     2  0 Oct31 ?        00:00:00 [kauditd]
+root        44     2  0 Oct31 ?        00:00:00 [khungtaskd]
+root        45     2  0 Oct31 ?        00:00:00 [oom_reaper]
+root        47     2  0 Oct31 ?        00:00:00 [kworker/R-writeback]
+root        48     2  0 Oct31 ?        00:00:10 [kcompactd0]
+root        49     2  0 Oct31 ?        00:00:00 [kworker/R-cryptd]
+root        50     2  0 Oct31 ?        00:00:00 [kworker/R-kblockd]
+root        51     2  0 Oct31 ?        00:00:00 [kworker/R-blkcg_punt_bio]
+root        54     2  0 Oct31 ?        00:00:00 [watchdogd]
+root        56     2  0 Oct31 ?        00:00:00 [kworker/R-rpciod]
+root        57     2  0 Oct31 ?        00:00:00 [kworker/R-xprtiod]
+root        58     2  0 Oct31 ?        00:00:00 [kworker/R-cfg80211]
+root        59     2  0 Oct31 ?        00:00:00 [kswapd0]
+root        60     2  0 Oct31 ?        00:00:00 [kworker/R-nfsiod]
+root        61     2  0 Oct31 ?        00:00:00 [kworker/u21:0-hci0]
+root        62     2  0 Oct31 ?        00:00:00 [kworker/u22:0]
+root        63     2  0 Oct31 ?        00:00:00 [kworker/u23:0]
+root        64     2  0 Oct31 ?        00:00:00 [kworker/u24:0]
+root        65     2  0 Oct31 ?        00:00:00 [kworker/u25:0]
+root        66     2  0 Oct31 ?        00:00:00 [kworker/R-kthrotld]
+root        75     2  0 Oct31 ?        00:00:00 [hwrng]
+root        76     2  0 Oct31 ?        00:00:00 [kworker/R-iscsi_conn_cleanup]
+root        78     2  0 Oct31 ?        00:00:00 [kworker/R-uas]
+root        79     2  0 Oct31 ?        00:00:00 [kworker/R-dm_bufio_cache]
+root        82     2  0 Oct31 ?        00:19:28 [sugov:0]
+root        83     2  0 Oct31 ?        00:00:00 [vchiq-slot/0]
+root        84     2  0 Oct31 ?        00:00:00 [vchiq-recy/0]
+root        85     2  0 Oct31 ?        00:00:00 [vchiq-sync/0]
+root        86     2  0 Oct31 ?        00:00:00 [vchiq-keep/0]
+root        88     2  0 Oct31 ?        00:00:02 [kworker/1:1H-kblockd]
+root        89     2  0 Oct31 ?        00:00:02 [kworker/3:1H-kblockd]
+root        90     2  0 Oct31 ?        00:00:00 [SMIO]
+root        91     2  0 Oct31 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        92     2  0 Oct31 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        93     2  0 Oct31 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        94     2  0 Oct31 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        95     2  0 Oct31 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        96     2  0 Oct31 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        97     2  0 Oct31 ?        00:00:00 [kworker/R-mmal-vchiq]
+root        98     2  0 Oct31 ?        00:00:00 [kworker/R-mld]
+root        99     2  0 Oct31 ?        00:00:00 [kworker/R-ipv6_addrconf]
+root       100     2  0 Oct31 ?        00:00:00 [kworker/u16:1]
+root       101     2  0 Oct31 ?        00:00:00 [krfcommd]
+root       104     2  0 Oct31 ?        00:00:00 [irq/58-vc4 hdmi hpd connected]
+root       105     2  0 Oct31 ?        00:00:00 [irq/59-vc4 hdmi hpd disconnecte
+root       106     2  0 Oct31 ?        00:00:00 [cec-vc4-hdmi-0]
+root       107     2  0 Oct31 ?        00:00:00 [irq/60-vc4 hdmi cec rx]
+root       108     2  0 Oct31 ?        00:00:00 [irq/61-vc4 hdmi cec tx]
+root       109     2  0 Oct31 ?        00:00:00 [irq/62-vc4 hdmi hpd connected]
+root       110     2  0 Oct31 ?        00:00:00 [irq/63-vc4 hdmi hpd disconnecte
+root       111     2  0 Oct31 ?        00:00:00 [cec-vc4-hdmi-1]
+root       112     2  0 Oct31 ?        00:00:00 [irq/64-vc4 hdmi cec rx]
+root       113     2  0 Oct31 ?        00:00:00 [irq/65-vc4 hdmi cec tx]
+root       114     2  0 Oct31 ?        00:00:00 [card0-crtc0]
+root       115     2  0 Oct31 ?        00:00:00 [card0-crtc1]
+root       116     2  0 Oct31 ?        00:00:00 [card0-crtc2]
+root       117     2  0 Oct31 ?        00:00:00 [card0-crtc3]
+root       118     2  0 Oct31 ?        00:00:00 [card0-crtc4]
+root       119     2  0 Oct31 ?        00:00:00 [card0-crtc5]
+root       120     2  0 Oct31 ?        00:00:00 [kworker/R-sdhci]
+root       121     2  0 Oct31 ?        00:00:02 [irq/72-mmc0]
+root       123     2  0 Oct31 ?        00:00:00 [kworker/R-v3d_bin]
+root       124     2  0 Oct31 ?        00:00:00 [kworker/R-v3d_render]
+root       125     2  0 Oct31 ?        00:00:00 [kworker/R-v3d_tfu]
+root       126     2  0 Oct31 ?        00:00:00 [kworker/R-v3d_csd]
+root       127     2  0 Oct31 ?        00:00:00 [kworker/R-v3d_cache_clean]
+root       128     2  0 Oct31 ?        00:00:00 [kworker/R-v3d_cpu]
+root       171     2  0 Oct31 ?        00:00:00 [kworker/R-mmc_complete]
+root       189     2  0 Oct31 ?        00:00:00 [jbd2/mmcblk0p6-8]
+root       190     2  0 Oct31 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+root       226     2  0 Oct31 ?        00:00:00 [jbd2/mmcblk0p2-8]
+root       227     2  0 Oct31 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+root       231     2  0 Oct31 ?        00:00:11 [jbd2/mmcblk0p3-8]
+root       232     2  0 Oct31 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+root       235     2  0 Oct31 ?        00:00:00 [jbd2/mmcblk0p10-8]
+root       236     2  0 Oct31 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+root       286     2  0 Oct31 ?        00:00:00 [jbd2/mmcblk0p9-8]
+root       287     2  0 Oct31 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+root       290     1  0 Oct31 ?        00:01:20 /usr/lib/systemd/systemd-journal
+root       295     2  0 Oct31 ?        00:00:00 [f2fs_ckpt-179:5]
+root       296     2  0 Oct31 ?        00:00:00 [f2fs_flush-179:5]
+root       297     2  0 Oct31 ?        00:00:00 [f2fs_discard-179:5]
+root       317     2  0 Oct31 ?        00:00:00 [f2fs_gc-179:5]
+root       340     1  0 Oct31 ?        00:00:00 /usr/lib/systemd/systemd-udevd -
+root       349     2  0 10:47 ?        00:00:00 [kworker/3:2H-kblockd]
+root       401     2  0 Oct31 ?        00:00:00 [kworker/u21:1-hci0]
+root       405     1  0 Oct31 ?        00:00:00 /usr/bin/hal/hal-backend-service
+buxton     418     1  0 Oct31 ?        00:02:30 /usr/sbin/buxton2d -f
+key-man+   419     1  0 Oct31 ?        00:00:03 /usr/bin/key-manager
+app_fw     420     1  0 Oct31 ?        00:00:17 /usr/bin/esd
+app_fw     423     1  0 Oct31 ?        00:00:00 /usr/bin/pkginfo-server
+root       425     1  0 Oct31 ?        00:00:14 /usr/bin/resourced
+log        427     1  0 Oct31 ?        00:05:17 /usr/bin/dlog_logger
+sensor     447     1  0 Oct31 ?        00:00:00 /usr/bin/sensord
+root       451     2  0 Oct31 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+root       464     2  0 Oct31 ?        00:01:30 [psimon]
+app_fw     469     1  0 Oct31 ?        00:02:01 /usr/bin/amd
+root       473     2  0 Oct31 ?        00:00:00 [kworker/R-ext4-rsv-conversion]
+cynara     474     1  0 Oct31 ?        00:00:07 /usr/bin/cynara
+root       475     1  0 Oct31 ?        00:01:57 /usr/bin/deviced
+securit+   481     1  0 Oct31 ?        00:00:00 /usr/bin/license-manager-agent
+multime+   485     1  0 Oct31 ?        00:00:00 /usr/bin/media-server
+multime+   489     1  0 Oct31 ?        00:00:00 /usr/bin/pipewire
+service+   491     1  0 Oct31 ?        00:00:00 /usr/bin/pushd
+root       502     1  0 Oct31 ?        00:00:00 login -- root
+stabili+   516     1  0 Oct31 ?        00:02:11 /usr/sbin/stability-monitor
+network+   536     1  0 Oct31 ?        00:01:00 /usr/bin/net-config
+root       553     1  0 Oct31 ?        00:00:48 /usr/lib/systemd/systemd-logind
+network+   568     1  0 Oct31 ?        00:00:00 /usr/bin/connmand -n --nobacktra
+multime+   579     1  0 Oct31 ?        00:00:00 /usr/bin/rscmgr-service
+root       582     1  0 Oct31 ?        00:00:00 /usr/bin/update-manager
+service+   611     1  0 Oct31 ?        00:00:00 /usr/bin/contextd
+graphic+   612     1  0 Oct31 ?        00:03:13 bash /usr/bin/enlightenment_mon.
+securit+   622     1  0 Oct31 ?        00:00:00 /usr/bin/security-manager
+securit+   631   622  0 Oct31 ?        00:00:00 /usr/bin/security-manager
+root       637     1  0 Oct31 ?        00:00:11 /usr/bin/storaged
+multime+   657     1  0 Oct31 ?        00:00:00 /usr/bin/focus_server -S
+root       663     1  0 Oct31 ?        00:00:00 /usr/bin/tlm
+root       668   663  0 Oct31 ?        00:00:00 /usr/bin/tlm-sessiond
+owner      685     1  0 Oct31 ?        00:01:04 /usr/lib/systemd/systemd --user
+owner      686   685  0 Oct31 ?        00:00:00 (sd-pam)
+owner      696   668  0 Oct31 tty7     00:00:00 /bin/bash
+owner      720   685  1 Oct31 ?        01:00:47 /usr/bin/sh -c while [ ! -f /run
+owner      745   685  0 Oct31 ?        00:00:00 /usr/bin/launchpad-process-pool
+owner      758   745  0 Oct31 ?        00:01:04 /usr/apps/org.tizen.multi-assist
+owner      783   685  0 Oct31 ?        00:00:00 /usr/bin/efl_config
+location   800     1  0 Oct31 ?        00:00:00 /usr/bin/lbs-server
+root       805     1  0 Oct31 ?        00:02:06 /usr/bin/pass
+network+   881     1  0 Oct31 ?        00:01:10 /usr/bin/mtp-responder
+sdk        884     1  0 Oct31 ?        00:00:00 /usr/sbin/sdbd
+root      1073     2  0 10:48 ?        00:00:00 [kworker/0:1]
+graphic+  1318   612  0 10:48 ?        00:00:00 sleep 3
+root      1347     1 20 10:48 pts/0    00:00:00 /bin/sh -c export PATH=/usr/bin:
+owner     1353   720  0 10:48 ?        00:00:00 /usr/bin/sleep .1
+root      1354  1347 99 10:48 pts/0    00:00:00 ps -ef
+root      1540   502  0 Oct31 ttyS0    00:00:00 -sh
+root      2976     2  0 10:04 ?        00:00:00 [kworker/u17:0-kvfree_rcu_reclai
+root      3686     2  0 Nov01 ?        00:00:01 [kworker/u19:0-events_unbound]
+root      4078     2  0 10:06 ?        00:00:00 [kworker/2:0-cgroup_pidlist_dest
+root      6290     2  0 00:11 ?        00:00:00 [kworker/u19:3-kvfree_rcu_reclai
+root      7174     2  0 Nov01 ?        00:00:03 [kworker/u17:1-kvfree_rcu_reclai
+root      8688     2  0 09:26 ?        00:00:00 [kworker/3:2-events]
+root      9271     2  0 10:13 ?        00:00:00 [kworker/2:1-cgroup_release]
+root     11855     2  0 00:19 ?        00:00:00 [kworker/u18:2]
+root     11878     2  0 03:23 ?        00:00:00 [kworker/u17:2-events_unbound]
+root     14329     2  0 Nov01 ?        00:00:01 [kworker/u18:1-flush-179:0]
+root     18885     2  0 04:19 ?        00:00:00 [kworker/u20:1-events_unbound]
+root     19458     2  0 08:56 ?        00:00:01 [kworker/0:3-events]
+root     19911     2  0 06:38 ?        00:00:00 [kworker/u20:2]
+root     19938     2  0 10:28 ?        00:00:00 [kworker/1:1-mm_percpu_wq]
+root     20839     2  0 05:54 ?        00:00:01 [kworker/0:1H-kblockd]
+root     23560     2  0 10:34 ?        00:00:00 [kworker/1:0-rcu_gp]
+root     24409     2  0 Nov01 ?        00:00:01 [kworker/u18:0-events_unbound]
+root     24994     2  0 10:36 ?        00:00:00 [kworker/3:1-cgroup_free]
+root     26344     2  0 10:38 ?        00:00:00 [kworker/0:2H-kblockd]
+root     26532     2  0 10:38 ?        00:00:00 [kworker/3:3-cgroup_pidlist_dest
+root     26705     2  0 10:38 ?        00:00:00 [kworker/1:2H-kblockd]
+root     27848     2  0 Oct31 ?        00:00:03 [kworker/u19:1-kvfree_rcu_reclai
+root     29045     2  0 10:41 ?        00:00:00 [kworker/0:0-events]
+root     29165     2  0 10:42 ?        00:00:00 [kworker/0:2-cgroup_pidlist_dest
+root     29200     2  0 10:42 ?        00:00:00 [kworker/3:0H-kblockd]
+root     29674     2  0 10:42 ?        00:00:00 [kworker/2:1H]
+root     30123     2  0 10:43 ?        00:00:00 [kworker/3:0-cgroup_pidlist_dest
+root     30608     2  0 10:44 ?        00:00:00 [kworker/2:2-events_freezable_pw
+root     31065     2  0 Oct31 ?        00:00:02 [kworker/2:2H-kblockd]
+root     31252     2  0 10:45 ?        00:00:00 [kworker/0:0H-kblockd]
+root     31322     2  0 10:45 ?        00:00:00 [kworker/2:3-cgroup_pidlist_dest
+root     32400     2  0 10:46 ?        00:00:00 [kworker/1:2]
+CMDLINE
+cgroup_enable=memory vc_mem.mem_base=0x3ec00000 vc_mem.mem_size=0x40000000 swiotlb=8192 8250.nr_uarts=1 dma.dmachans=0x7f35 bcm2709.serial=0xed6687d3 snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1 bcm2709.uart_clock=48000000 dwc_otg.lpm_enable=0  bootmode=normal partition_ab=a console=ttyS0,115200n8 earlycon=uart8250,mmio32,0xfe215040 loglevel=4
+PARTITIONS
+major minor  #blocks  name
+
+   1        0      32768 ram0
+   1        1      32768 ram1
+   1        2      32768 ram2
+   1        3      32768 ram3
+   1        4      32768 ram4
+   1        5      32768 ram5
+   1        6      32768 ram6
+   1        7      32768 ram7
+   1        8      32768 ram8
+   1        9      32768 ram9
+   1       10      32768 ram10
+   1       11      32768 ram11
+   1       12      32768 ram12
+   1       13      32768 ram13
+   1       14      32768 ram14
+   1       15      32768 ram15
+   7        0      10240 loop0
+   7        1      10240 loop1
+ 254        0    1590592 zram0
+ 179        0  125173760 mmcblk0
+ 179        1      65536 mmcblk0p1
+ 179        2    3145728 mmcblk0p2
+ 179        3    1376256 mmcblk0p3
+ 179        4      36864 mmcblk0p4
+ 179        5  116406272 mmcblk0p5
+ 179        6      32768 mmcblk0p6
+ 179        7      32768 mmcblk0p7
+ 179        8      32768 mmcblk0p8
+ 179        9       8192 mmcblk0p9
+ 179       10     262144 mmcblk0p10
+ 179       11      65536 mmcblk0p11
+ 179       12    3145728 mmcblk0p12
+ 179       13      32768 mmcblk0p13
+ 179       14      32768 mmcblk0p14
+ 179       15      32768 mmcblk0p15
+ 179       16     262144 mmcblk0p16
+ 179       17       4096 mmcblk0p17
+ 179       18      65536 mmcblk0p18
+ 179       19     128000 mmcblk0p19
+BLKID
+/dev/mmcblk0p2: LABEL="rootfs" UUID="51d0324b-547a-4333-8e43-6f69fea3a8e9" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="rootfs_a" PARTUUID="af5ff372-625e-4c42-957d-e8bb41ada12e"
+/dev/mmcblk0p10: LABEL="hal" UUID="586cdcab-b4c5-4b08-9a0c-18ad1b88a385" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="hal_a" PARTUUID="b03a3d52-5000-3842-b48e-27cd568a6270"
+/dev/mmcblk0p9: LABEL="inform" UUID="fb4a8b89-22ea-4525-85bd-c66d7d75acd4" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="inform" PARTUUID="336ae749-e887-ae46-90f2-22266d9a8c7f"
+/dev/mmcblk0p5: LABEL="user" UUID="fff42d46-cb5e-4946-a618-f01b43218566" BLOCK_SIZE="4096" TYPE="f2fs" PARTLABEL="user" PARTUUID="b617068d-208d-6947-9e7a-c99b778f280c"
+/dev/mmcblk0p3: LABEL="system-data" UUID="cde9b8a5-4888-4541-8955-eec695e74930" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="system-data" PARTUUID="efb26d9f-ba19-6f4d-b667-398d8338c48e"
+/dev/mmcblk0p1: SEC_TYPE="msdos" LABEL_FATBOOT="boot" LABEL="boot" UUID="D41A-6222" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="boot_a" PARTUUID="9260eee2-0299-b944-b3c1-346399efa1e6"
+/dev/mmcblk0p6: LABEL="modules" UUID="de98b29f-1809-46e8-acb2-d90851b3c86c" BLOCK_SIZE="4096" TYPE="ext4" PARTLABEL="module_a" PARTUUID="2443b407-33ce-c24a-a9df-8b04ca9e7f73"
+/dev/loop1: UUID="08a32dbd-8077-4d7f-bc24-dba45e7d76ca" BLOCK_SIZE="1024" TYPE="ext4"
+/dev/loop0: UUID="fc4f511d-96b8-44c5-a660-abcaa267736a" BLOCK_SIZE="1024" TYPE="ext4"
+/dev/zram0: UUID="5ace0c23-60f4-4b88-8242-8d7f620c464c" TYPE="swap"
+/dev/mmcblk0p4: PARTLABEL="none" PARTUUID="c6ce6b87-8572-0846-a7c4-69bde03d903f"
+/dev/mmcblk0p12: PARTLABEL="rootfs_b" PARTUUID="a5e2d013-4207-1942-84b5-a8e140c4543b"
+/dev/mmcblk0p19: PARTLABEL="reserved2" PARTUUID="b7270000-660e-9847-9b08-9fe3734e4ad2"
+/dev/mmcblk0p17: PARTLABEL="reserved0" PARTUUID="0170f2a4-9e02-da48-a35c-5f43111a079b"
+/dev/mmcblk0p7: PARTLABEL="ramdisk_a" PARTUUID="0eddfaa8-c937-674a-ba48-8288ec009b04"
+/dev/mmcblk0p15: PARTLABEL="ramdisk-recovery_b" PARTUUID="e7b46654-7304-b44b-82e2-49460ced8b9c"
+/dev/mmcblk0p13: PARTLABEL="module_b" PARTUUID="2c26051e-91dd-bb4f-8629-3d16df8dda64"
+/dev/mmcblk0p11: PARTLABEL="boot_b" PARTUUID="073891ac-b46b-2a49-b760-1b0e8cffd208"
+/dev/mmcblk0p18: PARTLABEL="reserved1" PARTUUID="daea397b-4c16-1b4d-9eef-e28f39f3d9e3"
+/dev/mmcblk0p8: PARTLABEL="ramdisk-recovery_a" PARTUUID="5865afeb-3250-8046-8efb-75ae6b8a41e0"
+/dev/mmcblk0p16: PARTLABEL="hal_b" PARTUUID="8db5c55a-cdd9-3140-9662-04b3147895db"
+/dev/mmcblk0p14: PARTLABEL="ramdisk_b" PARTUUID="66236798-ec68-2c42-9b68-89ce94b3e19f"
+BLKID-EXIT=0
+CPU
+Hardware	: BCM2835
+Revision	: c03115
+BOOTLOG
+[    0.000000] OF: fdt: Machine model: Raspberry Pi 4 Model B Rev 1.5
+[    0.000000] Reserved memory: created CMA memory pool at 0x000000001ac00000, size 320 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma, compatible id shared-dma-pool
+[    0.000000] OF: reserved mem: 0x000000001ac00000..0x000000002ebfffff (327680 KiB) map reusable linux,cma
+[    0.000000] Zone ranges:
+[    0.004519] Memory: 3628300K/4050944K available (20480K kernel code, 1867K rwdata, 11884K rodata, 2048K init, 575K bss, 91372K reserved, 327680K cma-reserved, 3264512K highmem)
+[    0.146406] Freeing initrd memory: 14856K
+[    1.172055] bcm2835_vc_sm_cma_probe: Videocore shared memory driver
+[    1.327530] Freeing unused kernel image (initmem) memory: 2048K
+IOMEM
+00000000-3b3fffff : System RAM
+40000000-fbffffff : System RAM
+END-RC=0

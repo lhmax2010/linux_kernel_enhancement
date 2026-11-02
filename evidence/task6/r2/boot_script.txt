@@ -1,0 +1,231 @@
+# U-boot script for tizen RPI4
+
+setenv legacy_boot_part			0x1
+setenv legacy_rootfs_part		0x2
+setenv legacy_ramdisk_part		0x7
+setenv legacy_ramdisk-recovery_part	0x8
+setenv legacy_inform_part		0x9
+
+if test -z "${devtype}"; then
+	if test "${target}" = "mmc0"; then;
+		setenv devtype mmc
+	fi
+	if test "${target}" = "usb0"; then;
+		setenv devtype usb
+	fi
+fi
+
+# find 'inform' partition
+setenv informpart $legacy_inform_part
+part number $devtype $devnum "inform" informpart
+if test -z "${informpart}"; then;
+	echo No \"inform\" partition found.
+	exit
+fi
+
+setenv partition_ab "a"
+if test -e $devtype $devnum:$informpart $slotfile; then;
+	ext4load $devtype $devnum:$informpart $slot_addr $slotfile;
+	if itest.b *${slot_addr} == 0x62; then;
+		setenv partition_ab "b"
+	fi
+fi
+echo "boot from slot_${partition_ab}"
+
+# find the boot partition
+setenv bootpart $legacy_boot_part
+part number $devtype $devnum "boot_${partition_ab}" bootpart
+if test -z "${bootpart}"; then;
+	echo No \"boot_${partition_ab}\" partition found.
+	exit
+fi
+
+# check if we need to let distro_boot to switch to boot_b
+if test "0x${distro_bootpart}" -ne "${bootpart}"; then
+	# Load the environmet from partition_b
+	echo "Loading uboot.env from boot_${partition_ab}"
+	load $devtype $devnum:$bootpart 0x02500000 uboot.env
+	env import -b 0x02500000 0x4000
+	exit
+fi
+
+# set sane defaults
+setenv partition_name "ramdisk"
+if test -z "${bootmode}"; then;
+	setenv bootmode "normal"
+fi
+
+# check rebootparamfile
+if test -e $devtype $devnum:$informpart $rebootparamfile; then;
+	ext4load $devtype $devnum:$informpart $rebootparam_addr $rebootparamfile;
+	if itest.l *${rebootparam_addr} == ${upgrade_val}; then;
+		setenv partition_name "ramdisk-recovery"
+		setenv bootmode "fota"
+		if test -e $devtype $devnum:$informpart $upgradetypefile; then;
+			ext4load $devtype $devnum:$informpart $upgradetype_addr $upgradetypefile;
+			if itest.l *${upgradetype_addr} == ${upgradetype_online_val}; then;
+				setenv partition_name "ramdisk"
+			fi
+		fi
+	elif itest.l *${rebootparam_addr} == ${recovery_val}; then;
+		setenv partition_name "ramdisk-recovery"
+		setenv bootmode "recovery"
+	elif itest.l *${rebootparam_addr} == ${download_val}; then;
+		setenv partition_name "ramdisk-recovery"
+		setenv bootmode "flash"
+	elif itest.l *${rebootparam_addr} == ${nodef_val}; then;
+		echo "This reboot parameter is not supported...";
+	fi
+fi
+
+# This is for jumping to flash mode on u-boot.
+if test "${bootmode}" = "download"; then;
+	setenv partition_name "ramdisk-recovery"
+	setenv bootmode "flash"
+fi
+
+if test "${bootmode}" = "flash"; then;
+	if test -n "${ipaddr}"; then;
+		ip_opt=\"ip=${ipaddr}::${gateway}:${netmask}\"
+	fi
+fi
+
+# find the selected ramdisk variant partition
+if test "${bootmode}" != "rootfs"; then;
+	setenv tmp_env "setenv ramdiskpart \"\$\{legacy_${partition_name}_part\}\""
+	run tmp_env
+	setenv tmp_env
+	part number $devtype $devnum "${partition_name}_${partition_ab}" ramdiskpart
+else
+	setenv ramdiskpart
+fi
+
+# load ramdisk
+if test -n "${ramdiskpart}"; then;
+	# Find the ramdisk offset and block count
+	part start $devtype $devnum $ramdiskpart ramdisk_start
+	part size $devtype $devnum $ramdiskpart ramdisk_size
+	# Load it
+	$devtype dev $devnum;
+	$devtype read $ramdisk_addr_r $ramdisk_start $ramdisk_size;
+	part number $devtype $devnum backup backuppart
+
+	# Check Backup Partition is existing
+	if test "${bootmode}" = "flash" && env exists use_backup && env exists backuppart; then;
+		if test "${cpu}" = "armv8"; then;
+			setenv backup_file recovery.img.64
+			setenv backup_ver_file recovery.ver.64
+		else
+			setenv backup_file recovery.img.32
+			setenv backup_ver_file recovery.ver.32
+		fi
+
+		# Check backup_version if needs to update
+		if test -e $devtype $devnum:$backuppart $backup_ver_file; then;
+			# Compare version at heare
+			load $devtype $devnum:$backuppart $backup_addr $backup_ver_file $backup_ver_size
+			if itest.l *${backup_addr} < "${backup_ver}" || env exists backup_update_force; then;
+				setenv backup_update 1
+			fi
+		else
+			setenv backup_update 1
+		fi
+
+		if env exists backup_update; then;
+			echo "Update ${backup_file}..."
+			mw.l $backup_addr $backup_ver
+			ext4write $devtype $devnum:$backuppart $backup_addr $backup_ver_file $backup_ver_size
+
+			#Copy ramdisk-recovery -> recovery.img.64 or rcovery.img.32
+			setexpr file_size $ramdisk_size * 200
+			# Load it
+			ext4write $devtype $devnum:$backuppart $ramdisk_addr_r $backup_file $file_size;
+		elif test -e $devtype $devnum:$backuppart $backup_file; then;
+			echo "Using the ${backup_file} from backup partition"
+
+			load $devtype $devnum:$backuppart  $ramdisk_addr_r $backup_file;
+		else
+			echo "Create the ${backup_file} from backup partition"
+			#Copy ramdisk-recovery -> recovery.img.64 or rcovery.img.32
+			setexpr file_size $ramdisk_size * 200
+			# Load it
+			ext4write $devtype $devnum:$backuppart $ramdisk_addr_r $backup_file $file_size;
+		fi
+	fi
+	# Set to ramdisk_size with real partition size. (Need to multiply block-size 0x200)
+	setexpr ramdisk_size $ramdisk_size * 200
+fi
+
+# check loaded ramdisk
+if test -e $devtype $devnum:$ramdiskpart sbin/init; then;
+	echo "Using ramdisk from partition ${ramdiskpart}";
+	# boot from ram0 if there is sbin
+	setenv rootargs root=/dev/ram0 rw
+elif itest.w *$ramdisk_addr_r == 0x8b1f; then;	# check for gzip (initramfs) magic
+	echo "Using initramfs from partition ${ramdiskpart}";
+	setenv rootargs
+	setexpr ramdisk2_addr_r $ramdisk_addr_r + $ramdisk_size
+	unzip $ramdisk_addr_r $ramdisk2_addr_r
+	setenv ramdisk_size $filesize
+	setenv ramdisk_addr_r $ramdisk2_addr_r
+else
+	echo "Booting without initrd/initramfs";
+	setenv bootmode normal
+	setenv ramdisk_size 0
+
+	# find the rootfs partition
+	setenv rootfspart $legacy_rootfs_part
+	part number $devtype $devnum "rootfs_${partition_ab}" rootfspart
+	if test -z "${rootfspart}"; then;
+		echo No \"rootfs_${partition_ab}\" partition found.
+		exit
+	fi
+
+	# simplified hex2dec conversion for 0x1..0x13->1..19 range
+	if itest $rootfspart > 9; then;
+		setexpr rootfspart $rootfspart + 6
+	else
+		setexpr rootfspart $rootfspart + 0
+	fi
+	if test "${devtype}" = "mmc"; then;
+		setenv rootargs root=/dev/mmcblk${devnum}p${rootfspart} rw rootwait
+	elif test "${devtype}" = "usb"; then;
+		setenv rootargs root=/dev/sda${rootfspart} rw rootwait
+	fi
+fi
+
+# setting console device if noting is set
+if test -z "${console}"; then;
+	if test "$board_name" = "5 Model B"; then;
+		fdt addr $fdt_addr;
+		fdt get value uart0_path "/aliases" "serial0";
+		fdt get value uart "$uart0_path" status;
+		if test "$uart" = "okay"; then;
+			setenv console "console=ttyAMA0,115200n8";
+		else
+			setenv console "console=ttyAMA10,115200n8 earlycon";
+		fi
+	else
+		setenv console "console=ttyS0,115200n8 earlycon=uart8250,mmio32,0xfe215040";
+	fi
+fi
+echo "console: ${console}"
+
+setenv bootargs \"${tizen_bootarg} ${rootargs} bootmode=${bootmode} partition_ab=${partition_ab} ${console} ${opts} ${ip_opt}\"
+
+setenv boot_prefixes \"/\"
+
+setexpr tizen_kernel_addr_r $ramdisk_addr_r + $ramdisk_size
+echo "Searching for kernel in"; for prefix in $boot_prefixes; do
+echo $prefix$kernel on partition $bootpart;
+if load $devtype $devnum:$bootpart $tizen_kernel_addr_r $prefix$kernel; then;
+	echo ${bootmode} "boot";
+
+	# use fdt already preloaded by the firmware available at $fdt_addr
+	if test "$kernel" = "zImage"; then;
+		bootz $tizen_kernel_addr_r $ramdisk_addr_r:$ramdisk_size $fdt_addr;
+	else
+		booti $tizen_kernel_addr_r $ramdisk_addr_r:$ramdisk_size $fdt_addr;
+	fi
+fi
+done

@@ -1,0 +1,19 @@
+Reference only; upstream systemd v244, not proof of byte-identical Tizen source.
+URL: https://raw.githubusercontent.com/systemd/systemd/v244/src/systemctl/systemctl.c
+curl -fL --max-time 30; exit=0. Download sha256=7a2cb4f1ccddd287bca76352834240fd4c4995489f6838ac50e64d27aa182800
+8776:
+8777:         if (arg_action == ACTION_REBOOT && (argc == optind || argc == optind + 1)) {
+8778:                 r = update_reboot_parameter_and_warn(argc == optind + 1 ? argv[optind] : NULL, false);
+8779:                 if (r < 0)
+8780:                         return r;
+8781:         } else if (optind < argc)
+8782:                 return log_error_errno(SYNTHETIC_ERRNO(EINVAL),
+8783:                                        "Too many arguments.");
+8784:
+8785:         return 1;
+8786: }
+
+RPi official documentation consulted 2026-11-02:
+https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#fail-safe-os-updates-tryboot
+https://www.raspberrypi.com/documentation/computers/config_txt.html#autoboot-txt
+Summary: quoted single reboot argument selects a one-shot tryboot flag; firmware can load an alternate configuration and clears the flag before handing off. It is not by itself a watchdog or proof that a hung kernel will reset. Board configured with U-Boot, no tryboot.txt/autoboot.txt; end-to-end use untested.
