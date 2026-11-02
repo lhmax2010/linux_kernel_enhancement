@@ -1,0 +1,11 @@
+COMMAND: ( cat /proc/iomem ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:44.061171+08:00
+END: 2026-11-02T23:15:44.225934+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 1315
+RAW_SHA256: 7a8de08ef6d1e898f8c858627ef6185a88ca36c0bd63f062a034cd01af1428ea
+
+04000000-2ef3ffff : System RAM
+80000000-989fffff : System RAM
+a0000000-bfffffff : System RAM

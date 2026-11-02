@@ -1,0 +1,43 @@
+Product /proc/config.gz absent (exit 2); readable test exit 1. /boot listing contains only . and ..; no config.
+Full diff NOT RUN: product config unavailable. No Kconfig value is inferred from missing sysfs interfaces.
+Requested option rows: 149
+RPi4 USB y/m categories (first token after USB_; remaining detailed symbols stay in existing baseline):
+ACM m 1
+ALI y 1
+AN2720 y 1
+ANNOUNCE y 1
+ARCH y 1
+ARMLINUX y 1
+BELKIN y 1
+COMMON y 1
+CONFIGFS y 4
+DEFAULT y 1
+DUMMY m 1
+DWC2 y 2
+EPSON2888 y 1
+F y 3
+GADGET y 1
+GSPCA m 2
+HID y 1
+HIDDEV y 1
+KC2190 y 1
+LAN78XX y 1
+LIBCOMPOSITE y 1
+NET y 10
+OHCI y 1
+PCI y 1
+PHY y 1
+PRINTER y 1
+ROLE y 1
+RTL8152 y 1
+RTL8153 y 1
+SERIAL m 5
+SERIAL y 2
+STORAGE y 1
+SUPPORT y 1
+U y 2
+UAS y 1
+USBNET y 1
+VIDEO y 2
+XHCI y 3
+Product USB Kconfig categories: UNKNOWN. Connected USB descriptors in 06_usb.txt.

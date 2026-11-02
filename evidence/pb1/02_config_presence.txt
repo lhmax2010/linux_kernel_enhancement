@@ -1,0 +1,11 @@
+COMMAND: ( ls -l /proc/config.gz ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:42.597551+08:00
+END: 2026-11-02T23:15:42.762971+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 2
+RAW_BYTES: 76
+RAW_SHA256: a1421af5bc959fd1834fda71cf28b1845b0d9015afad866cbc3a8acde4bc227a
+
+ls: cannot access /proc/config.gz: No such file or directory
+
+__PB1_RC=2

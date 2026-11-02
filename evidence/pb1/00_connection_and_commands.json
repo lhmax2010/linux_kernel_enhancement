@@ -1,0 +1,1989 @@
+{
+  "initial_connection": {
+    "connected": true,
+    "attempts": 5,
+    "resets": 1,
+    "seconds": 51.400029306998476
+  },
+  "reconnection": {
+    "connected": true,
+    "attempts": 1,
+    "resets": 1,
+    "seconds": 2.141394574951846
+  },
+  "identity": {
+    "armv7l": true,
+    "tizen": true,
+    "not_rpi4": true,
+    "passed": true
+  },
+  "records": [
+    {
+      "label": "connect_01_disconnect",
+      "start": "2026-11-02T23:11:38.366067+08:00",
+      "end": "2026-11-02T23:11:38.369772+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 1,
+      "file": "connect_01_disconnect.raw"
+    },
+    {
+      "label": "connect_01_connect",
+      "start": "2026-11-02T23:11:38.369875+08:00",
+      "end": "2026-11-02T23:11:41.392362+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 81,
+      "file": "connect_01_connect.raw"
+    },
+    {
+      "label": "connect_01_probe",
+      "start": "2026-11-02T23:11:41.392665+08:00",
+      "end": "2026-11-02T23:11:41.397226+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( printf PB1-READY ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "connect_01_probe.raw"
+    },
+    {
+      "label": "connect_02_disconnect",
+      "start": "2026-11-02T23:11:51.397710+08:00",
+      "end": "2026-11-02T23:11:51.402757+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 58,
+      "file": "connect_02_disconnect.raw"
+    },
+    {
+      "label": "connect_02_connect",
+      "start": "2026-11-02T23:11:51.403018+08:00",
+      "end": "2026-11-02T23:11:54.427815+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 81,
+      "file": "connect_02_connect.raw"
+    },
+    {
+      "label": "connect_02_probe",
+      "start": "2026-11-02T23:11:54.428131+08:00",
+      "end": "2026-11-02T23:11:54.432962+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( printf PB1-READY ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "connect_02_probe.raw"
+    },
+    {
+      "label": "connect_03_disconnect",
+      "start": "2026-11-02T23:12:04.433506+08:00",
+      "end": "2026-11-02T23:12:04.443527+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 58,
+      "file": "connect_03_disconnect.raw"
+    },
+    {
+      "label": "connect_03_connect",
+      "start": "2026-11-02T23:12:04.443808+08:00",
+      "end": "2026-11-02T23:12:07.469466+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 81,
+      "file": "connect_03_connect.raw"
+    },
+    {
+      "label": "connect_03_probe",
+      "start": "2026-11-02T23:12:07.469791+08:00",
+      "end": "2026-11-02T23:12:07.474507+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( printf PB1-READY ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "connect_03_probe.raw"
+    },
+    {
+      "label": "connect_03_devices",
+      "start": "2026-11-02T23:12:07.480535+08:00",
+      "end": "2026-11-02T23:12:07.484479+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "devices"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 26,
+      "file": "connect_03_devices.raw"
+    },
+    {
+      "label": "connect_03_kill_server",
+      "start": "2026-11-02T23:12:07.484645+08:00",
+      "end": "2026-11-02T23:12:07.488582+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "kill-server"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 0,
+      "file": "connect_03_kill_server.raw"
+    },
+    {
+      "label": "connect_03_start_server",
+      "start": "2026-11-02T23:12:07.488710+08:00",
+      "end": "2026-11-02T23:12:07.553023+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "start-server"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 33,
+      "file": "connect_03_start_server.raw"
+    },
+    {
+      "label": "connect_04_disconnect",
+      "start": "2026-11-02T23:12:17.553531+08:00",
+      "end": "2026-11-02T23:12:17.558480+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 1,
+      "file": "connect_04_disconnect.raw"
+    },
+    {
+      "label": "connect_04_connect",
+      "start": "2026-11-02T23:12:17.558734+08:00",
+      "end": "2026-11-02T23:12:17.563401+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 42,
+      "file": "connect_04_connect.raw"
+    },
+    {
+      "label": "connect_04_probe",
+      "start": "2026-11-02T23:12:17.563643+08:00",
+      "end": "2026-11-02T23:12:17.567810+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( printf PB1-READY ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 44,
+      "file": "connect_04_probe.raw"
+    },
+    {
+      "label": "connect_05_disconnect",
+      "start": "2026-11-02T23:12:27.568304+08:00",
+      "end": "2026-11-02T23:12:27.578271+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 58,
+      "file": "connect_05_disconnect.raw"
+    },
+    {
+      "label": "connect_05_connect",
+      "start": "2026-11-02T23:12:27.578544+08:00",
+      "end": "2026-11-02T23:12:29.600553+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 73,
+      "file": "connect_05_connect.raw"
+    },
+    {
+      "label": "connect_05_probe",
+      "start": "2026-11-02T23:12:29.600867+08:00",
+      "end": "2026-11-02T23:12:29.765883+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( printf PB1-READY ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 23,
+      "file": "connect_05_probe.raw"
+    },
+    {
+      "label": "identity_machine",
+      "start": "2026-11-02T23:12:29.766162+08:00",
+      "end": "2026-11-02T23:12:29.930641+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( uname -m ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 22,
+      "file": "identity_machine.raw"
+    },
+    {
+      "label": "identity_release",
+      "start": "2026-11-02T23:12:29.930875+08:00",
+      "end": "2026-11-02T23:12:30.096022+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( uname -r ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 23,
+      "file": "identity_release.raw"
+    },
+    {
+      "label": "identity_os_release",
+      "start": "2026-11-02T23:12:30.096319+08:00",
+      "end": "2026-11-02T23:12:30.262297+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /etc/os-release ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 230,
+      "file": "identity_os_release.raw"
+    },
+    {
+      "label": "identity_default_id",
+      "start": "2026-11-02T23:12:30.262759+08:00",
+      "end": "2026-11-02T23:12:30.428278+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( id ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 496,
+      "file": "identity_default_id.raw"
+    },
+    {
+      "label": "root_on",
+      "start": "2026-11-02T23:12:30.428567+08:00",
+      "end": "2026-11-02T23:12:30.493717+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "root",
+        "on"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 0,
+      "file": "root_on.raw"
+    },
+    {
+      "label": "identity_after_root_id",
+      "start": "2026-11-02T23:12:30.493973+08:00",
+      "end": "2026-11-02T23:12:30.658729+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( id ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 496,
+      "file": "identity_after_root_id.raw"
+    },
+    {
+      "label": "01_uname",
+      "start": "2026-11-02T23:14:27.780665+08:00",
+      "end": "2026-11-02T23:14:27.784508+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( uname -a ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "01_uname.raw"
+    },
+    {
+      "label": "01_version",
+      "start": "2026-11-02T23:14:27.784609+08:00",
+      "end": "2026-11-02T23:14:27.788287+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/version ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "01_version.raw"
+    },
+    {
+      "label": "01_buildfiles",
+      "start": "2026-11-02T23:14:27.788376+08:00",
+      "end": "2026-11-02T23:14:27.791940+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for f in /etc/tizen-build.conf /etc/info.ini; do if test -e \"$f\"; then run cat \"$f\"; else printf \"ABSENT %s\\n\" \"$f\"; fi; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "01_buildfiles.raw"
+    },
+    {
+      "label": "01_cmdline",
+      "start": "2026-11-02T23:14:27.792007+08:00",
+      "end": "2026-11-02T23:14:27.795622+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/cmdline ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "01_cmdline.raw"
+    },
+    {
+      "label": "01_uptime",
+      "start": "2026-11-02T23:14:27.795814+08:00",
+      "end": "2026-11-02T23:14:27.799545+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( uptime ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "01_uptime.raw"
+    },
+    {
+      "label": "02_config_presence",
+      "start": "2026-11-02T23:14:27.799700+08:00",
+      "end": "2026-11-02T23:14:27.803440+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( ls -l /proc/config.gz ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "02_config_presence.raw"
+    },
+    {
+      "label": "02_boot_config",
+      "start": "2026-11-02T23:14:27.803567+08:00",
+      "end": "2026-11-02T23:14:27.807305+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; run ls -ld /boot; for f in /boot/*config* /boot/.*config*; do if test -f \"$f\"; then run ls -l \"$f\"; run cat \"$f\"; fi; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "02_boot_config.raw"
+    },
+    {
+      "label": "03_dmesg",
+      "start": "2026-11-02T23:14:27.807437+08:00",
+      "end": "2026-11-02T23:14:27.811205+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( dmesg ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "03_dmesg.raw"
+    },
+    {
+      "label": "03_meminfo",
+      "start": "2026-11-02T23:14:27.811311+08:00",
+      "end": "2026-11-02T23:14:27.815029+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/meminfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "03_meminfo.raw"
+    },
+    {
+      "label": "03_zoneinfo",
+      "start": "2026-11-02T23:14:27.815127+08:00",
+      "end": "2026-11-02T23:14:27.816675+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/zoneinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "03_zoneinfo.raw"
+    },
+    {
+      "label": "03_buddyinfo",
+      "start": "2026-11-02T23:14:27.816777+08:00",
+      "end": "2026-11-02T23:14:27.820502+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/buddyinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "03_buddyinfo.raw"
+    },
+    {
+      "label": "03_pagetypeinfo",
+      "start": "2026-11-02T23:14:27.820598+08:00",
+      "end": "2026-11-02T23:14:27.822133+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/pagetypeinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "03_pagetypeinfo.raw"
+    },
+    {
+      "label": "03_iomem",
+      "start": "2026-11-02T23:14:27.822265+08:00",
+      "end": "2026-11-02T23:14:27.825951+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/iomem ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "03_iomem.raw"
+    },
+    {
+      "label": "03_vmallocinfo",
+      "start": "2026-11-02T23:14:27.826061+08:00",
+      "end": "2026-11-02T23:14:27.827551+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/vmallocinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "03_vmallocinfo.raw"
+    },
+    {
+      "label": "03_slabinfo",
+      "start": "2026-11-02T23:14:27.827638+08:00",
+      "end": "2026-11-02T23:14:27.831300+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/slabinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "03_slabinfo.raw"
+    },
+    {
+      "label": "04_swaps",
+      "start": "2026-11-02T23:14:27.831381+08:00",
+      "end": "2026-11-02T23:14:27.834914+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/swaps ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "04_swaps.raw"
+    },
+    {
+      "label": "04_zram",
+      "start": "2026-11-02T23:14:27.835029+08:00",
+      "end": "2026-11-02T23:14:27.838674+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for d in /sys/block/zram*; do test -d \"$d\" || continue; for n in comp_algorithm disksize mm_stat io_stat bd_stat recomp_algorithm; do f=\"$d/$n\"; if test -e \"$f\"; then run cat \"$f\"; else printf \"ABSENT %s\\n\" \"$f\"; fi; done; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "04_zram.raw"
+    },
+    {
+      "label": "04_vm_params",
+      "start": "2026-11-02T23:14:27.838844+08:00",
+      "end": "2026-11-02T23:14:27.840567+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for f in /proc/sys/vm/*; do test -f \"$f\" || continue; run cat \"$f\"; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "04_vm_params.raw"
+    },
+    {
+      "label": "04_pressure",
+      "start": "2026-11-02T23:14:27.840733+08:00",
+      "end": "2026-11-02T23:14:27.844487+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for f in /proc/pressure/cpu /proc/pressure/memory /proc/pressure/io; do run cat \"$f\"; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "04_pressure.raw"
+    },
+    {
+      "label": "04_mm_state",
+      "start": "2026-11-02T23:14:27.844618+08:00",
+      "end": "2026-11-02T23:14:27.848212+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for f in /sys/kernel/mm/lru_gen/enabled /sys/kernel/mm/lru_gen/min_ttl_ms /sys/kernel/mm/transparent_hugepage/enabled; do run cat \"$f\"; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "04_mm_state.raw"
+    },
+    {
+      "label": "04_vmstat",
+      "start": "2026-11-02T23:14:27.848341+08:00",
+      "end": "2026-11-02T23:14:27.852113+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/vmstat ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "04_vmstat.raw"
+    },
+    {
+      "label": "05_modules",
+      "start": "2026-11-02T23:14:27.852259+08:00",
+      "end": "2026-11-02T23:14:27.853929+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/modules ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "05_modules.raw"
+    },
+    {
+      "label": "05_btf",
+      "start": "2026-11-02T23:14:27.854077+08:00",
+      "end": "2026-11-02T23:14:27.857887+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; run ls -l /sys/kernel/btf; run stat -c \"%s\" /sys/kernel/btf/vmlinux ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "05_btf.raw"
+    },
+    {
+      "label": "05_module_dirs",
+      "start": "2026-11-02T23:14:27.858084+08:00",
+      "end": "2026-11-02T23:14:27.859810+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for d in /usr/lib/modules /lib/modules; do run ls -ld \"$d\"; for v in \"$d\"/*; do test -d \"$v\" || continue; run du -sk \"$v\"; done; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "05_module_dirs.raw"
+    },
+    {
+      "label": "06_mounts",
+      "start": "2026-11-02T23:14:27.859976+08:00",
+      "end": "2026-11-02T23:14:27.861643+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/mounts ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "06_mounts.raw"
+    },
+    {
+      "label": "06_filesystems",
+      "start": "2026-11-02T23:14:27.861808+08:00",
+      "end": "2026-11-02T23:14:27.865631+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/filesystems ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "06_filesystems.raw"
+    },
+    {
+      "label": "06_df",
+      "start": "2026-11-02T23:14:27.865756+08:00",
+      "end": "2026-11-02T23:14:27.869509+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( df -k ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "06_df.raw"
+    },
+    {
+      "label": "06_usb",
+      "start": "2026-11-02T23:14:27.869627+08:00",
+      "end": "2026-11-02T23:14:27.873411+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for d in /sys/bus/usb/devices/*; do test -d \"$d\" || continue; for n in idVendor idProduct bDeviceClass; do f=\"$d/$n\"; if test -e \"$f\"; then run cat \"$f\"; fi; done; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "06_usb.raw"
+    },
+    {
+      "label": "06_partitions",
+      "start": "2026-11-02T23:14:27.873523+08:00",
+      "end": "2026-11-02T23:14:27.877118+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/partitions ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "06_partitions.raw"
+    },
+    {
+      "label": "07_tracing",
+      "start": "2026-11-02T23:14:27.877243+08:00",
+      "end": "2026-11-02T23:14:27.881027+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for d in /sys/kernel/tracing /sys/kernel/debug/tracing; do run ls -ld \"$d\"; run cat \"$d/available_tracers\"; done; run cat /sys/kernel/debug/kprobes/enabled ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "07_tracing.raw"
+    },
+    {
+      "label": "07_restrictions",
+      "start": "2026-11-02T23:14:27.881156+08:00",
+      "end": "2026-11-02T23:14:27.882771+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for f in /proc/sys/kernel/perf_event_paranoid /proc/sys/kernel/kptr_restrict /proc/sys/kernel/dmesg_restrict /proc/sys/kernel/ftrace_enabled /proc/sys/net/core/bpf_jit_enable; do run cat \"$f\"; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "07_restrictions.raw"
+    },
+    {
+      "label": "08_cpuinfo",
+      "start": "2026-11-02T23:14:27.882889+08:00",
+      "end": "2026-11-02T23:14:27.886721+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/cpuinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "08_cpuinfo.raw"
+    },
+    {
+      "label": "08_cpufreq",
+      "start": "2026-11-02T23:14:27.886834+08:00",
+      "end": "2026-11-02T23:14:27.890599+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for d in /sys/devices/system/cpu/cpu[0-9]*/cpufreq; do test -d \"$d\" || continue; for n in scaling_governor scaling_cur_freq scaling_available_frequencies; do run cat \"$d/$n\"; done; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "08_cpufreq.raw"
+    },
+    {
+      "label": "08_cpuidle",
+      "start": "2026-11-02T23:14:27.890732+08:00",
+      "end": "2026-11-02T23:14:27.894430+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( ls -ld /sys/devices/system/cpu/cpuidle ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "08_cpuidle.raw"
+    },
+    {
+      "label": "08_pmu_coresight",
+      "start": "2026-11-02T23:14:27.894646+08:00",
+      "end": "2026-11-02T23:14:27.898551+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; run ls /sys/bus/event_source/devices; run ls /sys/bus/coresight/devices ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "08_pmu_coresight.raw"
+    },
+    {
+      "label": "09_process_status",
+      "start": "2026-11-02T23:14:27.898677+08:00",
+      "end": "2026-11-02T23:14:27.902553+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( for f in /proc/[0-9]*/status; do printf '\\nFILE=%s\\nCMD=awk selected_status_fields %s\\n' \"$f\" \"$f\"; awk '/^(Name|VmRSS|VmSwap|RssAnon|RssFile|Threads):/' \"$f\"; r=$?; printf 'RC=%s\\n' \"$r\"; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "09_process_status.raw"
+    },
+    {
+      "label": "10_units",
+      "start": "2026-11-02T23:14:27.902787+08:00",
+      "end": "2026-11-02T23:14:27.906734+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for u in sysinit.target basic.target multi-user.target graphical.target; do run systemctl show \"$u\" -p LoadState -p ActiveEnterTimestampMonotonic; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "10_units.raw"
+    },
+    {
+      "label": "10_journal_boots",
+      "start": "2026-11-02T23:14:27.906902+08:00",
+      "end": "2026-11-02T23:14:27.910776+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( journalctl --list-boots --no-pager ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "10_journal_boots.raw"
+    },
+    {
+      "label": "10_end_uptime",
+      "start": "2026-11-02T23:14:27.910952+08:00",
+      "end": "2026-11-02T23:14:27.914940+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/uptime ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "10_end_uptime.raw"
+    },
+    {
+      "label": "02_config_readable",
+      "start": "2026-11-02T23:14:27.915117+08:00",
+      "end": "2026-11-02T23:14:27.919415+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( test -r /proc/config.gz ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "02_config_readable.raw"
+    },
+    {
+      "label": "99_root_off",
+      "start": "2026-11-02T23:14:27.919636+08:00",
+      "end": "2026-11-02T23:14:27.923628+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "root",
+        "off"
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "99_root_off.raw"
+    },
+    {
+      "label": "99_final_id",
+      "start": "2026-11-02T23:14:27.923826+08:00",
+      "end": "2026-11-02T23:14:27.928018+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( id ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 1,
+      "remote_exit": null,
+      "bytes": 74,
+      "file": "99_final_id.raw"
+    },
+    {
+      "label": "connect_01_disconnect",
+      "start": "2026-11-02T23:15:38.965270+08:00",
+      "end": "2026-11-02T23:15:38.969142+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 1,
+      "file": "connect_01_disconnect.raw"
+    },
+    {
+      "label": "connect_01_connect",
+      "start": "2026-11-02T23:15:38.969252+08:00",
+      "end": "2026-11-02T23:15:40.991220+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 73,
+      "file": "connect_01_connect.raw"
+    },
+    {
+      "label": "connect_01_probe",
+      "start": "2026-11-02T23:15:40.991553+08:00",
+      "end": "2026-11-02T23:15:41.106395+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( printf PB1-READY ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 23,
+      "file": "connect_01_probe.raw"
+    },
+    {
+      "label": "r2_identity_machine",
+      "start": "2026-11-02T23:15:41.106834+08:00",
+      "end": "2026-11-02T23:15:41.271810+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( uname -m ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 22,
+      "file": "r2_identity_machine.raw"
+    },
+    {
+      "label": "r2_identity_release",
+      "start": "2026-11-02T23:15:41.272128+08:00",
+      "end": "2026-11-02T23:15:41.437543+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( uname -r ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 23,
+      "file": "r2_identity_release.raw"
+    },
+    {
+      "label": "r2_identity_os_release",
+      "start": "2026-11-02T23:15:41.437847+08:00",
+      "end": "2026-11-02T23:15:41.602859+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /etc/os-release ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 230,
+      "file": "r2_identity_os_release.raw"
+    },
+    {
+      "label": "r2_id",
+      "start": "2026-11-02T23:15:41.603309+08:00",
+      "end": "2026-11-02T23:15:41.768793+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( id ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 496,
+      "file": "r2_id.raw"
+    },
+    {
+      "label": "01_uname",
+      "start": "2026-11-02T23:15:41.769113+08:00",
+      "end": "2026-11-02T23:15:41.934644+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( uname -a ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 100,
+      "file": "01_uname.raw"
+    },
+    {
+      "label": "01_version",
+      "start": "2026-11-02T23:15:41.934940+08:00",
+      "end": "2026-11-02T23:15:42.100267+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/version ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 134,
+      "file": "01_version.raw"
+    },
+    {
+      "label": "01_buildfiles",
+      "start": "2026-11-02T23:15:42.100583+08:00",
+      "end": "2026-11-02T23:15:42.265824+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for f in /etc/tizen-build.conf /etc/info.ini; do if test -e \"$f\"; then run cat \"$f\"; else printf \"ABSENT %s\\n\" \"$f\"; fi; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 991,
+      "file": "01_buildfiles.raw"
+    },
+    {
+      "label": "01_cmdline",
+      "start": "2026-11-02T23:15:42.266148+08:00",
+      "end": "2026-11-02T23:15:42.430943+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/cmdline ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 1479,
+      "file": "01_cmdline.raw"
+    },
+    {
+      "label": "01_uptime",
+      "start": "2026-11-02T23:15:42.431274+08:00",
+      "end": "2026-11-02T23:15:42.597218+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( uptime ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 78,
+      "file": "01_uptime.raw"
+    },
+    {
+      "label": "02_config_presence",
+      "start": "2026-11-02T23:15:42.597551+08:00",
+      "end": "2026-11-02T23:15:42.762971+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( ls -l /proc/config.gz ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 2,
+      "bytes": 76,
+      "file": "02_config_presence.raw"
+    },
+    {
+      "label": "02_boot_config",
+      "start": "2026-11-02T23:15:42.763304+08:00",
+      "end": "2026-11-02T23:15:42.929275+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; run ls -ld /boot; for f in /boot/*config* /boot/.*config*; do if test -f \"$f\"; then run ls -l \"$f\"; run cat \"$f\"; fi; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 89,
+      "file": "02_boot_config.raw"
+    },
+    {
+      "label": "03_dmesg",
+      "start": "2026-11-02T23:15:42.929588+08:00",
+      "end": "2026-11-02T23:15:43.399192+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( dmesg ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 733519,
+      "file": "03_dmesg.raw"
+    },
+    {
+      "label": "03_meminfo",
+      "start": "2026-11-02T23:15:43.399520+08:00",
+      "end": "2026-11-02T23:15:43.564490+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/meminfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 1458,
+      "file": "03_meminfo.raw"
+    },
+    {
+      "label": "03_zoneinfo",
+      "start": "2026-11-02T23:15:43.564785+08:00",
+      "end": "2026-11-02T23:15:43.729719+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/zoneinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 5403,
+      "file": "03_zoneinfo.raw"
+    },
+    {
+      "label": "03_buddyinfo",
+      "start": "2026-11-02T23:15:43.730061+08:00",
+      "end": "2026-11-02T23:15:43.895687+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/buddyinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 317,
+      "file": "03_buddyinfo.raw"
+    },
+    {
+      "label": "03_pagetypeinfo",
+      "start": "2026-11-02T23:15:43.896000+08:00",
+      "end": "2026-11-02T23:15:44.060859+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/pagetypeinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 3132,
+      "file": "03_pagetypeinfo.raw"
+    },
+    {
+      "label": "03_iomem",
+      "start": "2026-11-02T23:15:44.061171+08:00",
+      "end": "2026-11-02T23:15:44.225934+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/iomem ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 1315,
+      "file": "03_iomem.raw"
+    },
+    {
+      "label": "03_vmallocinfo",
+      "start": "2026-11-02T23:15:44.226249+08:00",
+      "end": "2026-11-02T23:15:44.391635+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/vmallocinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 127986,
+      "file": "03_vmallocinfo.raw"
+    },
+    {
+      "label": "03_slabinfo",
+      "start": "2026-11-02T23:15:44.391916+08:00",
+      "end": "2026-11-02T23:15:44.556917+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/slabinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 14085,
+      "file": "03_slabinfo.raw"
+    },
+    {
+      "label": "04_swaps",
+      "start": "2026-11-02T23:15:44.557214+08:00",
+      "end": "2026-11-02T23:15:44.721871+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/swaps ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 123,
+      "file": "04_swaps.raw"
+    },
+    {
+      "label": "04_zram",
+      "start": "2026-11-02T23:15:44.722175+08:00",
+      "end": "2026-11-02T23:15:44.886899+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for d in /sys/block/zram*; do test -d \"$d\" || continue; for n in comp_algorithm disksize mm_stat io_stat bd_stat recomp_algorithm; do f=\"$d/$n\"; if test -e \"$f\"; then run cat \"$f\"; else printf \"ABSENT %s\\n\" \"$f\"; fi; done; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 470,
+      "file": "04_zram.raw"
+    },
+    {
+      "label": "04_vm_params",
+      "start": "2026-11-02T23:15:44.887224+08:00",
+      "end": "2026-11-02T23:15:45.202781+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for f in /proc/sys/vm/*; do test -f \"$f\" || continue; run cat \"$f\"; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 2357,
+      "file": "04_vm_params.raw"
+    },
+    {
+      "label": "04_pressure",
+      "start": "2026-11-02T23:15:45.203106+08:00",
+      "end": "2026-11-02T23:15:45.368006+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for f in /proc/pressure/cpu /proc/pressure/memory /proc/pressure/io; do run cat \"$f\"; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 429,
+      "file": "04_pressure.raw"
+    },
+    {
+      "label": "04_mm_state",
+      "start": "2026-11-02T23:15:45.368315+08:00",
+      "end": "2026-11-02T23:15:45.533558+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for f in /sys/kernel/mm/lru_gen/enabled /sys/kernel/mm/lru_gen/min_ttl_ms /sys/kernel/mm/transparent_hugepage/enabled; do run cat \"$f\"; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 271,
+      "file": "04_mm_state.raw"
+    },
+    {
+      "label": "04_vmstat",
+      "start": "2026-11-02T23:15:45.533865+08:00",
+      "end": "2026-11-02T23:15:45.698965+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/vmstat ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 3153,
+      "file": "04_vmstat.raw"
+    },
+    {
+      "label": "05_modules",
+      "start": "2026-11-02T23:15:45.699282+08:00",
+      "end": "2026-11-02T23:15:45.863893+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/modules ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 4207,
+      "file": "05_modules.raw"
+    },
+    {
+      "label": "05_btf",
+      "start": "2026-11-02T23:15:45.864199+08:00",
+      "end": "2026-11-02T23:15:46.028851+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; run ls -l /sys/kernel/btf; run stat -c \"%s\" /sys/kernel/btf/vmlinux ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 237,
+      "file": "05_btf.raw"
+    },
+    {
+      "label": "05_module_dirs",
+      "start": "2026-11-02T23:15:46.029153+08:00",
+      "end": "2026-11-02T23:15:46.293898+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for d in /usr/lib/modules /lib/modules; do run ls -ld \"$d\"; for v in \"$d\"/*; do test -d \"$v\" || continue; run du -sk \"$v\"; done; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 962,
+      "file": "05_module_dirs.raw"
+    },
+    {
+      "label": "06_mounts",
+      "start": "2026-11-02T23:15:46.294219+08:00",
+      "end": "2026-11-02T23:15:46.459701+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/mounts ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 2832,
+      "file": "06_mounts.raw"
+    },
+    {
+      "label": "06_filesystems",
+      "start": "2026-11-02T23:15:46.460007+08:00",
+      "end": "2026-11-02T23:15:46.624924+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/filesystems ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 379,
+      "file": "06_filesystems.raw"
+    },
+    {
+      "label": "06_df",
+      "start": "2026-11-02T23:15:46.625213+08:00",
+      "end": "2026-11-02T23:15:46.790445+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( df -k ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 1321,
+      "file": "06_df.raw"
+    },
+    {
+      "label": "06_usb",
+      "start": "2026-11-02T23:15:46.790735+08:00",
+      "end": "2026-11-02T23:15:47.005938+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for d in /sys/bus/usb/devices/*; do test -d \"$d\" || continue; for n in idVendor idProduct bDeviceClass; do f=\"$d/$n\"; if test -e \"$f\"; then run cat \"$f\"; fi; done; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 755,
+      "file": "06_usb.raw"
+    },
+    {
+      "label": "06_partitions",
+      "start": "2026-11-02T23:15:47.006191+08:00",
+      "end": "2026-11-02T23:15:47.171412+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/partitions ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 1841,
+      "file": "06_partitions.raw"
+    },
+    {
+      "label": "07_tracing",
+      "start": "2026-11-02T23:15:47.171693+08:00",
+      "end": "2026-11-02T23:15:47.336829+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for d in /sys/kernel/tracing /sys/kernel/debug/tracing; do run ls -ld \"$d\"; run cat \"$d/available_tracers\"; done; run cat /sys/kernel/debug/kprobes/enabled ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 550,
+      "file": "07_tracing.raw"
+    },
+    {
+      "label": "07_restrictions",
+      "start": "2026-11-02T23:15:47.337152+08:00",
+      "end": "2026-11-02T23:15:47.502430+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for f in /proc/sys/kernel/perf_event_paranoid /proc/sys/kernel/kptr_restrict /proc/sys/kernel/dmesg_restrict /proc/sys/kernel/ftrace_enabled /proc/sys/net/core/bpf_jit_enable; do run cat \"$f\"; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 421,
+      "file": "07_restrictions.raw"
+    },
+    {
+      "label": "08_cpuinfo",
+      "start": "2026-11-02T23:15:47.502724+08:00",
+      "end": "2026-11-02T23:15:47.667609+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/cpuinfo ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 1282,
+      "file": "08_cpuinfo.raw"
+    },
+    {
+      "label": "08_cpufreq",
+      "start": "2026-11-02T23:15:47.667903+08:00",
+      "end": "2026-11-02T23:15:47.882623+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for d in /sys/devices/system/cpu/cpu[0-9]*/cpufreq; do test -d \"$d\" || continue; for n in scaling_governor scaling_cur_freq scaling_available_frequencies; do run cat \"$d/$n\"; done; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 1110,
+      "file": "08_cpufreq.raw"
+    },
+    {
+      "label": "08_cpuidle",
+      "start": "2026-11-02T23:15:47.882945+08:00",
+      "end": "2026-11-02T23:15:48.047763+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( ls -ld /sys/devices/system/cpu/cpuidle ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 2,
+      "bytes": 92,
+      "file": "08_cpuidle.raw"
+    },
+    {
+      "label": "08_pmu_coresight",
+      "start": "2026-11-02T23:15:48.048074+08:00",
+      "end": "2026-11-02T23:15:48.212944+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; run ls /sys/bus/event_source/devices; run ls /sys/bus/coresight/devices ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 233,
+      "file": "08_pmu_coresight.raw"
+    },
+    {
+      "label": "09_process_status",
+      "start": "2026-11-02T23:15:48.213258+08:00",
+      "end": "2026-11-02T23:15:51.638716+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( for f in /proc/[0-9]*/status; do printf '\\nFILE=%s\\nCMD=awk selected_status_fields %s\\n' \"$f\" \"$f\"; awk '/^(Name|VmRSS|VmSwap|RssAnon|RssFile|Threads):/' \"$f\"; r=$?; printf 'RC=%s\\n' \"$r\"; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 49742,
+      "file": "09_process_status.raw"
+    },
+    {
+      "label": "10_units",
+      "start": "2026-11-02T23:15:51.639057+08:00",
+      "end": "2026-11-02T23:15:52.156456+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( run() { printf '\\nCMD='; printf '%s ' \"$@\"; printf '\\n'; \"$@\"; r=$?; printf '\\nRC=%s\\n' \"$r\"; }; for u in sysinit.target basic.target multi-user.target graphical.target; do run systemctl show \"$u\" -p LoadState -p ActiveEnterTimestampMonotonic; done ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 617,
+      "file": "10_units.raw"
+    },
+    {
+      "label": "10_journal_boots",
+      "start": "2026-11-02T23:15:52.156779+08:00",
+      "end": "2026-11-02T23:15:52.322343+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( journalctl --list-boots --no-pager ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 57,
+      "file": "10_journal_boots.raw"
+    },
+    {
+      "label": "10_end_uptime",
+      "start": "2026-11-02T23:15:52.322661+08:00",
+      "end": "2026-11-02T23:15:52.488274+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/uptime ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 29,
+      "file": "10_end_uptime.raw"
+    },
+    {
+      "label": "02_config_readable",
+      "start": "2026-11-02T23:15:52.488591+08:00",
+      "end": "2026-11-02T23:15:52.654425+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( test -r /proc/config.gz ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 1,
+      "bytes": 14,
+      "file": "02_config_readable.raw"
+    },
+    {
+      "label": "99_root_off",
+      "start": "2026-11-02T23:15:52.654747+08:00",
+      "end": "2026-11-02T23:15:52.719821+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "root",
+        "off"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 36,
+      "file": "99_root_off.raw"
+    },
+    {
+      "label": "99_final_id",
+      "start": "2026-11-02T23:15:52.720134+08:00",
+      "end": "2026-11-02T23:15:52.884829+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( id ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 526,
+      "file": "99_final_id.raw"
+    },
+    {
+      "label": "02_boot_listing",
+      "start": "2026-11-02T23:18:21.506406+08:00",
+      "end": "2026-11-02T23:18:21.671598+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( ls -la /boot ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 108,
+      "file": "02_boot_listing.raw"
+    },
+    {
+      "label": "07_profiler_presence",
+      "start": "2026-11-02T23:18:21.671922+08:00",
+      "end": "2026-11-02T23:18:21.836800+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( ls -l /sys/kernel/debug/tracing/function_profile_enabled /sys/kernel/debug/tracing/trace_stat /sys/kernel/tracing/function_profile_enabled ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 2,
+      "bytes": 285,
+      "file": "07_profiler_presence.raw"
+    },
+    {
+      "label": "99_final_id_confirmed",
+      "start": "2026-11-02T23:18:21.837124+08:00",
+      "end": "2026-11-02T23:18:22.001919+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( id ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 526,
+      "file": "99_final_id_confirmed.raw"
+    },
+    {
+      "label": "03_pagesize",
+      "start": "2026-11-02T23:27:01.991574+08:00",
+      "end": "2026-11-02T23:27:02.156897+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( getconf PAGESIZE ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 20,
+      "file": "03_pagesize.raw"
+    },
+    {
+      "label": "99_final_identity",
+      "start": "2026-11-02T23:27:02.157235+08:00",
+      "end": "2026-11-02T23:27:02.323274+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( id ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 526,
+      "file": "99_final_identity.raw"
+    },
+    {
+      "label": "09_later_uptime",
+      "start": "2026-11-02T23:27:38.264363+08:00",
+      "end": "2026-11-02T23:27:38.429860+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( uptime ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 80,
+      "file": "09_later_uptime.raw"
+    },
+    {
+      "label": "09_cpu_stat_before",
+      "start": "2026-11-02T23:27:38.430075+08:00",
+      "end": "2026-11-02T23:27:38.598676+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/stat ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 679,
+      "file": "09_cpu_stat_before.raw"
+    },
+    {
+      "label": "09_cpu_stat_after",
+      "start": "2026-11-02T23:32:08.750360+08:00",
+      "end": "2026-11-02T23:32:08.915432+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( cat /proc/stat ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 682,
+      "file": "09_cpu_stat_after.raw"
+    },
+    {
+      "label": "99_root_off_final",
+      "start": "2026-11-02T23:32:08.915779+08:00",
+      "end": "2026-11-02T23:32:08.981251+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "root",
+        "off"
+      ],
+      "transport_exit": 0,
+      "remote_exit": null,
+      "bytes": 0,
+      "file": "99_root_off_final.raw"
+    },
+    {
+      "label": "99_owner_final",
+      "start": "2026-11-02T23:32:08.981600+08:00",
+      "end": "2026-11-02T23:32:09.146728+08:00",
+      "argv": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "( id ); __pb1_rc=$?; printf \"\\n__PB1_RC=%s\\n\" \"$__pb1_rc\""
+      ],
+      "transport_exit": 0,
+      "remote_exit": 0,
+      "bytes": 526,
+      "file": "99_owner_final.raw"
+    }
+  ]
+}

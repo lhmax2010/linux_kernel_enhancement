@@ -1,0 +1,119 @@
+COMMAND: ( dmesg ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:42.929588+08:00
+END: 2026-11-02T23:15:43.399192+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 733519
+RAW_SHA256: 95bd4152c722ba55f6a91fa642ccbc9f0a7a3ea883cab6d4415e19048939ffbd
+
+Retained log timestamps: ['0.094053', '101.316799']
+Pattern counts: {"Machine model": 0, "Zone ranges": 0, "Memory:": 1, "Kernel command line": 0, "vmalloc": 6, "lowmem": 2, "cma": 100}
+RAW_LINE 1288: [    0.231163]  dtsversion=[PRODUCT_ID] console=ttyS0,115200 earlycon rs232=0 maxcpus=4 no_console_suspend only_entry_model root=/dev/dm-1       KDUMP=16 SELP_ENABLE=20102011 [VENDOR_BOOT_MARKER] rootfstype=erofs rw init=/sbin/iniz mem=703744K@64M mem=394M@2048M mem=512M@2560M vmalloc=300M rootwait quiet trace_event=early_event,user bdinfo=[PRODUCT_ID] model=[PRODUCT_ID]   blperf=8_3_435           pba_none partition_ab=a dm-mod.waitfor=/dev/mmcblk0p18 dm-mod.create="plt_linear, , 0, ro, 0 2289664 linear /dev/mmcblk0p18 2048;plt_verity, , 1, ro, 0 2253232 verity 1 /dev/dm-0 /dev/dm-0 4096 4096 281654 281654 sha256 [VERITY_HASH] [VERITY_HASH] 11 check_at_most_once ignore_zero_blocks panic_on_corruption use_fec_from_device /dev/dm-0 fec_roots 2 fec_blocks 283874 fec_start 283874;prd_linear, , 2, ro, 0 81920 linear /dev/mmcblk0p18 2291712;prd_verity, , 3, ro, 0 78840 verity 1 /dev/dm-2 /dev/dm-2 4096 4096 9855 9855 P102
+RAW_LINE 1311: [    0.367083] Freeing unused kernel image (initmem) memory: 440K
+RAW_LINE 1599: [    1.799649] [I/SOC_CMA][OOR]node[vbi] cma[(null)] set OOR MemStart[0x9ff00000] MemEnd[0x9ff40000]
+RAW_LINE 1600: [    1.799663] [F/SOC_CMA][OOR]set OOR node[vbi] cma[(null)] MemStart[0x9ff00000] MemEnd[0x9ff40000]
+RAW_LINE 1601: [    1.799679] [I/SOC_CMA][OOR]node[encrypt] cma[(null)] set OOR MemStart[0x9ff40000] MemEnd[0x9ff80000]
+RAW_LINE 1602: [    1.799689] [F/SOC_CMA][OOR]set OOR node[encrypt] cma[(null)] MemStart[0x9ff40000] MemEnd[0x9ff80000]
+RAW_LINE 1603: [    1.799703] [I/SOC_CMA][OOR]node[pq_frc] cma[(null)] set OOR MemStart[0x9fd00000] MemEnd[0x9ff00000]
+RAW_LINE 1604: [    1.799713] [F/SOC_CMA][OOR]set OOR node[pq_frc] cma[(null)] MemStart[0x9fd00000] MemEnd[0x9ff00000]
+RAW_LINE 1605: [    1.799731] [I/SOC_CMA][OOR]node[atv] cma[(null)] set OOR MemStart[0x2ef40000] MemEnd[0x33600000]
+RAW_LINE 1606: [    1.799746] [F/SOC_CMA][OOR]set OOR node[atv] cma[(null)] MemStart[0x3000000] MemEnd[0x33600000]
+RAW_LINE 1607: [    1.799759] [I/SOC_CMA][OOR]node[isdb_buffer] cma[cma_zone_demod] set OOR MemStart[0x93400000] MemEnd[0x93c00000]
+RAW_LINE 1608: [    1.799772] [I/SOC_CMA][OOR]node[atv_mau1] cma[(null)] set OOR MemStart[0x98a00000] MemEnd[0x9ad80000]
+RAW_LINE 1609: [    1.799783] [F/SOC_CMA][OOR]set OOR node[atv_mau1] cma[(null)] MemStart[0x98a00000] MemEnd[0x9ad80000]
+RAW_LINE 1610: [    1.799796] [I/SOC_CMA][OOR]node[demura] cma[(null)] set OOR MemStart[0x9f200000] MemEnd[0x9f500000]
+RAW_LINE 1611: [    1.799806] [F/SOC_CMA][OOR]set OOR node[demura] cma[(null)] MemStart[0x9f200000] MemEnd[0x9f500000]
+RAW_LINE 1612: [    1.799819] [I/SOC_CMA][OOR]node[dtv] cma[cma_zone_subdec] set OOR MemStart[0x34e00000] MemEnd[0x40000000]
+RAW_LINE 1613: [    1.799883] [F/SOC_CMA][OOR]set OOR node[dtv] cma[cma_zone_subdec] MemStart[0x2a800000] MemEnd[0x40000000]
+RAW_LINE 1614: [    1.799902] [I/SOC_CMA][OOR]node[demux] cma[cma_zone_demux] set OOR MemStart[0x3340000] MemEnd[0x3f40000]
+RAW_LINE 1615: [    1.799913] [F/SOC_CMA][OOR]set OOR node[demux] cma[cma_zone_demux] MemStart[0x3340000] MemEnd[0x3f40000]
+RAW_LINE 1616: [    1.799928] [I/SOC_CMA][OOR]node[od] cma[(null)] set OOR MemStart[0x9f500000] MemEnd[0x9fd00000]
+RAW_LINE 1617: [    1.799938] [F/SOC_CMA][OOR]set OOR node[od] cma[(null)] MemStart[0x9f500000] MemEnd[0x9fd00000]
+RAW_LINE 1618: [    1.799950] [I/SOC_CMA][OOR]node[aud] cma[(null)] set OOR MemStart[0x9c980000] MemEnd[0x9dd00000]
+RAW_LINE 1619: [    1.799961] [F/SOC_CMA][OOR]set OOR node[aud] cma[(null)] MemStart[0x9c980000] MemEnd[0x9dd00000]
+RAW_LINE 1620: [    1.799973] [I/SOC_CMA][OOR]node[dsp] cma[(null)] set OOR MemStart[0x9dd00000] MemEnd[0x9f200000]
+RAW_LINE 1621: [    1.799983] [F/SOC_CMA][OOR]set OOR node[dsp] cma[(null)] MemStart[0x9c980000] MemEnd[0x9f200000]
+RAW_LINE 1622: [    1.800117] nvt_cma cma_default: assigned reserved memory node default_cma
+RAW_LINE 1623: [    1.800164] nvt_cma cma_osd: assigned reserved memory node cma_1
+RAW_LINE 1624: [    1.800207] nvt_cma cma_videoenc: assigned reserved memory node cma_2
+RAW_LINE 1625: [    1.800268] nvt_cma cma_atv: assigned reserved memory node cma_3
+RAW_LINE 1626: [    1.800311] nvt_cma cma_enc_capture: assigned reserved memory node cma_4
+RAW_LINE 1627: [    1.800351] nvt_cma cma_cars: assigned reserved memory node cma_5
+RAW_LINE 1628: [    1.800393] nvt_cma cma_isdb: assigned reserved memory node cma_7
+RAW_LINE 1629: [    1.800434] nvt_cma cma_demux: assigned reserved memory node cma_8
+RAW_LINE 1630: [    1.800475] nvt_cma cma_section: assigned reserved memory node cma_9
+RAW_LINE 1631: [    1.800516] nvt_cma cma_pvr: assigned reserved memory node cma_10
+RAW_LINE 1632: [    1.800557] nvt_cma cma_nagsam: assigned reserved memory node cma_11
+RAW_LINE 1633: [    1.800598] nvt_cma cma_subdec: assigned reserved memory node cma_13
+RAW_LINE 1634: [    1.800638] nvt_cma cma_va: assigned reserved memory node cma_14
+RAW_LINE 1750: [    1.865352] init: videobuf2_vmalloc
+RAW_LINE 1752: [    1.865629] videobuf2_vmalloc mod ld(0xbe34b000)		0xbe34c000 0xbe34b000
+RAW_LINE 1858: [    2.014592] [1-1.920] cma: P669(341): __cma_alloc((ptrval), default_cma, count 16, align 4)
+RAW_LINE 1859: [    2.014602] [1-1.921] cma: P669(341): __cma_alloc(default_cma): returned (ptrval)(pfn 8e040)
+RAW_LINE 2014: [    2.132636] trustware-cma trustware-cma: assigned reserved memory node cma_6
+RAW_LINE 2015: [    2.132662] trustware-cma trustware-cma: Registered TrustWare CMA driver
+RAW_LINE 2183: [    2.290978] [F/SOC_KFDT]no such memory node aud_cma_0
+RAW_LINE 2184: [    2.291003] [F/SOC_KFDT]no such memory node aud_cma_1
+RAW_LINE 2185: [    2.291013] [F/SOC_KFDT]no such memory node dsp_cma_0
+RAW_LINE 2186: [    2.291021] [F/SOC_KFDT]no such memory node aud_buf_cma
+RAW_LINE 2315: [    2.692723] [F/SOC_KFDT]no such memory node dtv_cma_1
+RAW_LINE 2320: [    2.694212] [F/SOC_CMA]allocate 0x200000 bytes from cma_va
+RAW_LINE 2330: [    2.717802] [1-2.569] cma: P670(385): __cma_alloc((ptrval), cma_14, count 512, align 8)
+RAW_LINE 2331: [    2.717825] [1-2.577] cma: P670(385): __cma_alloc(cma_14): range at pfn 0x2a800(page (ptrval)) busy, retrying
+RAW_LINE 2332: [    2.717834] [1-2.579] cma: P670(385): __cma_alloc(cma_14): range at pfn 0x2a900(page (ptrval)) busy, retrying
+RAW_LINE 2333: [    2.717842] [1-2.581] cma: P670(385): __cma_alloc(cma_14): range at pfn 0x2aa00(page (ptrval)) busy, retrying
+RAW_LINE 2334: [    2.717850] [1-2.584] cma: P670(385): __cma_alloc(cma_14): range at pfn 0x2ab00(page (ptrval)) busy, retrying
+RAW_LINE 2335: [    2.717858] [1-2.586] cma: P670(385): __cma_alloc(cma_14): range at pfn 0x2ac00(page (ptrval)) busy, retrying
+RAW_LINE 2336: [    2.717866] [1-2.589] cma: P670(385): __cma_alloc(cma_14): range at pfn 0x2ad00(page (ptrval)) busy, retrying
+RAW_LINE 2337: [    2.717874] [1-2.591] cma: P670(385): __cma_alloc(cma_14): range at pfn 0x2ae00(page (ptrval)) busy, retrying
+RAW_LINE 2338: [    2.717882] [1-2.591] cma: P670(385): __cma_alloc(cma_14): attempt 0, memory busy, retrying
+RAW_LINE 2470: [    2.951742] [1-2.706] cma: P670(385): __cma_alloc(cma_14): range at pfn 0x2a800(page 9f2dae54) busy, retrying
+RAW_LINE 2471: [    2.951754] [1-2.814] cma: P670(385): __cma_alloc(cma_14): returned 01022ffc(pfn 2a900)
+RAW_LINE 2472: [    2.953426] dev_cma_query_alloc_size 3 0
+RAW_LINE 2473: [    2.953453] [F/SOC_KFDT]no such memory node dtv_cma_1
+RAW_LINE 2474: [    2.953460] [I/SOC_CMA][OOR][ERROR]cannot find OOR region for node name[dtv_cma_1]
+RAW_LINE 2475: [    2.953468] [F/SOC_CMA][OOR]set OOR node[dtv] MemStart[0x26800000] MemEnd[0x40000000]
+RAW_LINE 2476: [    2.953488] [F/SOC_CMA]Add in-range exclusion for cma_zone_va
+RAW_LINE 2477: [    2.953506] [I/SOC_CMA][2a800000, 2b000000) region mask is 2
+RAW_LINE 2480: [    2.953540] [F/SOC_CMA][0]IR blkid=3000000, region mask is 3
+RAW_LINE 2483: [    2.953569] [F/SOC_CMA][1]IR blkid=3000000, region mask is 1
+RAW_LINE 2486: [    2.953593] [F/SOC_CMA][0]IR blkid=3020000, region mask is 3
+RAW_LINE 2489: [    2.953618] [F/SOC_CMA][1]IR blkid=3020000, region mask is 1
+RAW_LINE 2492: [    2.953643] [F/SOC_CMA][0]IR blkid=1000000, region mask is 3
+RAW_LINE 2495: [    2.953668] [F/SOC_CMA][1]IR blkid=1000000, region mask is 1
+RAW_LINE 2498: [    2.953692] [F/SOC_CMA][0]IR blkid=1010000, region mask is 3
+RAW_LINE 2501: [    2.953718] [F/SOC_CMA][1]IR blkid=1010000, region mask is 1
+RAW_LINE 2504: [    2.953742] [F/SOC_CMA][0]IR blkid=3050000, region mask is 3
+RAW_LINE 2507: [    2.953768] [F/SOC_CMA][1]IR blkid=3050000, region mask is 1
+RAW_LINE 2510: [    2.953791] [F/SOC_CMA][0]IR blkid=5060000, region mask is 0
+RAW_LINE 2513: [    2.953817] [F/SOC_CMA][1]IR blkid=5060000, region mask is 0
+RAW_LINE 2516: [    2.953841] [F/SOC_CMA][0]IR blkid=70000, region mask is 0
+RAW_LINE 2519: [    2.953866] [F/SOC_CMA][1]IR blkid=70000, region mask is 0
+RAW_LINE 2522: [    2.953890] [F/SOC_CMA][0]IR blkid=2060000, region mask is 0
+RAW_LINE 2525: [    2.953916] [F/SOC_CMA][1]IR blkid=2060000, region mask is 0
+RAW_LINE 2528: [    2.953940] [F/SOC_CMA][0]IR blkid=5040000, region mask is 0
+RAW_LINE 2531: [    2.953965] [F/SOC_CMA][1]IR blkid=5040000, region mask is 0
+RAW_LINE 2532: [    2.953973] DPB:[CMA_alloc][cma_zone_va] Addr:(0x2a900000)(4684794e) , Size(0x200000) Time:(259766)
+RAW_LINE 2550: [    2.956392] [F/SOC_KFDT]no such memory node atv_cma
+RAW_LINE 2551: [    2.956399] [M/SOC_VPLT][DEV_SRC_GetATVMemInfo():457] atv_cma node == NULL
+RAW_LINE 2552: [    2.956411] [M/SOC_VPLT][VPL_SCLR_SetCMARegionName():4921] region(1) name(cma_zone_atv) size(37748736) base(721420288) oor(3)
+RAW_LINE 2553: [    2.956428] [F/SOC_KFDT]no such memory node capture_cma
+RAW_LINE 2554: [    2.956434] [M/SOC_VPLT][DEV_SRC_GetATVMemInfo():457] capture_cma node == NULL
+RAW_LINE 2555: [    2.956443] [F/SOC_KFDT]no such memory node pre_cma
+RAW_LINE 2556: [    2.956449] [M/SOC_VPLT][DEV_SRC_GetATVMemInfo():457] pre_cma node == NULL
+RAW_LINE 2557: [    2.956459] [M/SOC_VPLT][VPL_SCLR_SetCMARegionName():4921] region(4) name(cma_zone_cars) size(12582912) base(771751936) oor(3)
+RAW_LINE 2558: [    2.956476] [M/SOC_VPLT][VPL_SCLR_SetCMARegionName():4921] region(5) name(cma_zone_enc_capture) size(12582912) base(759169024) oor(3)
+RAW_LINE 2854: [    3.131167] [D/SOC_DRM_VIDEO][ndp_dp-common] [Capture][capture_main     ] PhyAdr 0x03000000 addr 0x00000000 size 0x000C0000 cma: 0
+RAW_LINE 2858: [    3.131432] [D/SOC_DRM_VIDEO][ndp_dp-common] [Capture][capture_sub      ] PhyAdr 0x03000000 addr 0x000C0000 size 0x000C0000 cma: 0
+RAW_LINE 2862: [    3.131670] [D/SOC_DRM_VIDEO][ndp_dp-common] [Capture][capture_post     ] PhyAdr 0x03000000 addr 0x00180000 size 0x00099000 cma: 0
+RAW_LINE 3394: [    4.467906] usb_enable: [usben_check_dtbversion]:[58]: bootargs: dtsversion=[PRODUCT_ID] console=ttyS0,115200 earlycon rs232=0 maxcpus=4 no_console_suspend only_entry_model root=/dev/dm-1       KDUMP=16 SELP_ENABLE=20102011 [VENDOR_BOOT_MARKER] rootfstype=erofs rw init=/sbin/iniz mem=703744K@64M mem=394M@2048M mem=512M@2560M vmalloc=300M rootwait quiet trace_event=early_event,user bdinfo=[PRODUCT_ID] model=[PRODUCT_ID]   blperf=8_3_435           pba_none partition_ab=a dm-mod.waitfor=/dev/mmcblk0p18 dm-mod.create="plt_linear, , 0, ro, 0 2289664 linear /dev/mmcblk0p18 2048;plt_verity, , 1, ro, 0 2253232 verity 1 /dev/dm-0 /dev/dm-0 4096 4096 281654 281654 sha256 [VERITY_HASH] [VERITY_HASH] 11 check_at_most_once ignore_zero_blocks panic_on_corruption use_fec_from_device /dev/dm-0 fec_roots 2 fec_blocks 283874 fec_start 283874;prd_linear, , 2, ro, 0 81920 linear /dev/mmcblk0p18 2291712;prd_verity, , 3, ro, 0 78840
+RAW_LINE 3503: [    4.515172] [0-4.305] cma: P669(589): __cma_alloc(b624bbf6, default_cma, count 2, align 1)
+RAW_LINE 3504: [    4.515182] [0-4.305] cma: P669(589): __cma_alloc(default_cma): returned f88d572f(pfn 8e050)
+RAW_LINE 3507: [    4.516639] [0-4.306] cma: P669(589): __cma_alloc(b624bbf6, default_cma, count 87, align 7)
+RAW_LINE 3508: [    4.516660] [0-4.307] cma: P669(589): __cma_alloc(default_cma): returned 13fe44ab(pfn 8e080)
+RAW_LINE 7171: [   44.347446] [LMF] lowmemnotify_poll (35%, Used 555MB, Swapfree 1013 MB, Free 303MB, Available 1007MB, extramem_alloc)
+RAW_LINE 7174: [   44.348172] VmallocUsed:      123160 kB
+RAW_LINE 7175: [   44.348228] CMAFree:        716 kB CMAUsed-DMA:     2724 kB
+RAW_LINE 7298: [   50.685174] [LMF] lowmemnotify_poll (36%, Used 565MB, Swapfree 1013 MB, Free 287MB, Available 997MB, high          )
+RAW_LINE 7301: [   50.686597] VmallocUsed:      122488 kB
+RAW_LINE 7302: [   50.686654] CMAFree:        620 kB CMAUsed-DMA:     2724 kB

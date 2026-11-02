@@ -1,0 +1,181 @@
+COMMAND: ( for f in /proc/[0-9]*/status; do printf '\nFILE=%s\nCMD=awk selected_status_fields %s\n' "$f" "$f"; awk '/^(Name|VmRSS|VmSwap|RssAnon|RssFile|Threads):/' "$f"; r=$?; printf 'RC=%s\n' "$r"; done ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:48.213258+08:00
+END: 2026-11-02T23:15:51.638716+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 49742
+RAW_SHA256: b24f9908eacdede27d41f6d484ac0669e742a8bf297c2bb0994e3749c11ae4d9
+
+Snapshot is sequential; includes short-lived collection processes. Shared pages/swap may be counted in multiple processes.
+{
+  "processes": 344,
+  "per_status_read_exit_counts": {
+    "0": 344,
+    "2": 3
+  },
+  "threads": 1253,
+  "sum_RSS_KiB": 1374420,
+  "sum_Swap_KiB": 80504,
+  "top20": [
+    {
+      "VmRSS": 73216,
+      "VmSwap": 0,
+      "RssAnon": 22388,
+      "RssFile": 50444,
+      "Threads": 35,
+      "code": "P01"
+    },
+    {
+      "VmRSS": 70804,
+      "VmSwap": 0,
+      "RssAnon": 18128,
+      "RssFile": 52352,
+      "Threads": 47,
+      "code": "P02"
+    },
+    {
+      "VmRSS": 64868,
+      "VmSwap": 5180,
+      "RssAnon": 21408,
+      "RssFile": 42316,
+      "Threads": 38,
+      "code": "P03"
+    },
+    {
+      "VmRSS": 39808,
+      "VmSwap": 0,
+      "RssAnon": 9484,
+      "RssFile": 29348,
+      "Threads": 22,
+      "code": "P04"
+    },
+    {
+      "VmRSS": 34840,
+      "VmSwap": 0,
+      "RssAnon": 8276,
+      "RssFile": 26072,
+      "Threads": 33,
+      "code": "P05"
+    },
+    {
+      "VmRSS": 32744,
+      "VmSwap": 4108,
+      "RssAnon": 4532,
+      "RssFile": 27868,
+      "Threads": 36,
+      "code": "P06"
+    },
+    {
+      "VmRSS": 32308,
+      "VmSwap": 5944,
+      "RssAnon": 2792,
+      "RssFile": 29224,
+      "Threads": 25,
+      "code": "P07"
+    },
+    {
+      "VmRSS": 31508,
+      "VmSwap": 6476,
+      "RssAnon": 3500,
+      "RssFile": 27588,
+      "Threads": 23,
+      "code": "P08"
+    },
+    {
+      "VmRSS": 28608,
+      "VmSwap": 0,
+      "RssAnon": 10472,
+      "RssFile": 17900,
+      "Threads": 8,
+      "code": "P09"
+    },
+    {
+      "VmRSS": 24220,
+      "VmSwap": 1596,
+      "RssAnon": 4232,
+      "RssFile": 19612,
+      "Threads": 7,
+      "code": "P10"
+    },
+    {
+      "VmRSS": 22804,
+      "VmSwap": 5008,
+      "RssAnon": 2100,
+      "RssFile": 20560,
+      "Threads": 15,
+      "code": "P11"
+    },
+    {
+      "VmRSS": 21652,
+      "VmSwap": 2072,
+      "RssAnon": 3468,
+      "RssFile": 18156,
+      "Threads": 1,
+      "code": "P12"
+    },
+    {
+      "VmRSS": 20472,
+      "VmSwap": 5020,
+      "RssAnon": 2148,
+      "RssFile": 17992,
+      "Threads": 19,
+      "code": "P13"
+    },
+    {
+      "VmRSS": 20240,
+      "VmSwap": 0,
+      "RssAnon": 3856,
+      "RssFile": 16192,
+      "Threads": 7,
+      "code": "P14"
+    },
+    {
+      "VmRSS": 19528,
+      "VmSwap": 3096,
+      "RssAnon": 2100,
+      "RssFile": 16488,
+      "Threads": 7,
+      "code": "P15"
+    },
+    {
+      "VmRSS": 19416,
+      "VmSwap": 0,
+      "RssAnon": 4580,
+      "RssFile": 14548,
+      "Threads": 9,
+      "code": "P16"
+    },
+    {
+      "VmRSS": 18524,
+      "VmSwap": 2996,
+      "RssAnon": 1940,
+      "RssFile": 16244,
+      "Threads": 26,
+      "code": "P17"
+    },
+    {
+      "VmRSS": 18424,
+      "VmSwap": 0,
+      "RssAnon": 3668,
+      "RssFile": 14372,
+      "Threads": 11,
+      "code": "P18"
+    },
+    {
+      "VmRSS": 17956,
+      "VmSwap": 0,
+      "RssAnon": 4408,
+      "RssFile": 12804,
+      "Threads": 19,
+      "code": "P19"
+    },
+    {
+      "VmRSS": 17728,
+      "VmSwap": 0,
+      "RssAnon": 3272,
+      "RssFile": 14240,
+      "Threads": 14,
+      "code": "P20"
+    }
+  ]
+}

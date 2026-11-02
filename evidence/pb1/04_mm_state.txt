@@ -1,0 +1,25 @@
+COMMAND: ( run() { printf '\nCMD='; printf '%s ' "$@"; printf '\n'; "$@"; r=$?; printf '\nRC=%s\n' "$r"; }; for f in /sys/kernel/mm/lru_gen/enabled /sys/kernel/mm/lru_gen/min_ttl_ms /sys/kernel/mm/transparent_hugepage/enabled; do run cat "$f"; done ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:45.368315+08:00
+END: 2026-11-02T23:15:45.533558+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 271
+RAW_SHA256: e7cd57638317edade39b848eb2e8da8efd86c4906c9c90c22725577d4e24e107
+
+
+CMD=cat /sys/kernel/mm/lru_gen/enabled
+0x0001
+
+RC=0
+
+CMD=cat /sys/kernel/mm/lru_gen/min_ttl_ms
+0
+
+RC=0
+
+CMD=cat /sys/kernel/mm/transparent_hugepage/enabled
+cat: /sys/kernel/mm/transparent_hugepage/enabled: No such file or directory
+
+RC=1
+
+__PB1_RC=0

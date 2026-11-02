@@ -1,0 +1,11 @@
+COMMAND: ( cat /proc/cmdline ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:42.266148+08:00
+END: 2026-11-02T23:15:42.430943+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 1479
+RAW_SHA256: d1d4584f0f850d1df025c949d5389c1baa81c9b4bbc7ff0118b25fff68bd9099
+
+dtsversion=[PRODUCT_ID] console=ttyS0,115200 earlycon rs232=0 maxcpus=4 no_console_suspend only_entry_model root=/dev/dm-1       KDUMP=16 SELP_ENABLE=20102011 [VENDOR_BOOT_MARKER] rootfstype=erofs rw init=/sbin/iniz mem=703744K@64M mem=394M@2048M mem=512M@2560M vmalloc=300M rootwait quiet trace_event=early_event,user bdinfo=[PRODUCT_ID] model=[PRODUCT_ID]   blperf=8_3_435           pba_none partition_ab=a dm-mod.waitfor=/dev/mmcblk0p18 dm-mod.create="plt_linear, , 0, ro, 0 2289664 linear /dev/mmcblk0p18 2048;plt_verity, , 1, ro, 0 2253232 verity 1 /dev/dm-0 /dev/dm-0 4096 4096 281654 281654 sha256 [VERITY_HASH] [VERITY_HASH] 11 check_at_most_once ignore_zero_blocks panic_on_corruption use_fec_from_device /dev/dm-0 fec_roots 2 fec_blocks 283874 fec_start 283874;prd_linear, , 2, ro, 0 81920 linear /dev/mmcblk0p18 2291712;prd_verity, , 3, ro, 0 78840 verity 1 /dev/dm-2 /dev/dm-2 4096 4096 9855 9855 sha256 [VERITY_HASH] [VERITY_HASH] 11 check_at_most_once ignore_zero_blocks panic_on_corruption use_fec_from_device /dev/dm-2 fec_roots 2 fec_blocks 9933 fec_start 9933"
+
+__PB1_RC=0

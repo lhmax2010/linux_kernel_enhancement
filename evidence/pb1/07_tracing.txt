@@ -1,0 +1,35 @@
+COMMAND: ( run() { printf '\nCMD='; printf '%s ' "$@"; printf '\n'; "$@"; r=$?; printf '\nRC=%s\n' "$r"; }; for d in /sys/kernel/tracing /sys/kernel/debug/tracing; do run ls -ld "$d"; run cat "$d/available_tracers"; done; run cat /sys/kernel/debug/kprobes/enabled ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:47.171693+08:00
+END: 2026-11-02T23:15:47.336829+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 550
+RAW_SHA256: cf4c5f08cc02fda038f63831327457dd4b593e2d71fe656034a8fd080a388c48
+
+
+CMD=ls -ld /sys/kernel/tracing
+dr-xr-xr-x 2 root root 0 Nov  2 07:16 /sys/kernel/tracing
+
+RC=0
+
+CMD=cat /sys/kernel/tracing/available_tracers
+cat: /sys/kernel/tracing/available_tracers: No such file or directory
+
+RC=1
+
+CMD=ls -ld /sys/kernel/debug/tracing
+drwxr-xr-x 6 root users 0 Dec 31  1969 /sys/kernel/debug/tracing
+
+RC=0
+
+CMD=cat /sys/kernel/debug/tracing/available_tracers
+nop
+
+RC=0
+
+CMD=cat /sys/kernel/debug/kprobes/enabled
+cat: /sys/kernel/debug/kprobes/enabled: No such file or directory
+
+RC=1
+
+__PB1_RC=0

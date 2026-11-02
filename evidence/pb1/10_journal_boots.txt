@@ -1,0 +1,11 @@
+COMMAND: ( journalctl --list-boots --no-pager ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:52.156779+08:00
+END: 2026-11-02T23:15:52.322343+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 57
+RAW_SHA256: 8feecab4fc4f611e99151e1e58cf53a0d74b7c435253d5f3bf8d7688513a776b
+
+No journal files were found.
+
+__PB1_RC=0

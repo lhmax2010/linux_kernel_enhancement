@@ -1,0 +1,84 @@
+COMMAND: ( cat /proc/modules ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:45.699282+08:00
+END: 2026-11-02T23:15:45.863893+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 4207
+RAW_SHA256: b8384ac8b5df6304bd9a2b8fdf7a53f9a9aedab83a4ec1da9ec0f5b335805f4e
+
+hid_logitech_hidpp 36864 0 - Live 0xbfb79000
+pms_proc_entry 12288 0 - Live 0xbf545000 (O)
+sim 159744 0 - Live 0xbfb4f000 (O)
+ecryptfs 69632 1 - Live 0xbfb43000 (O)
+emdev 12288 0 - Live 0xbf5ad000 (O)
+smart_deadlock 16384 53 [permanent], Live 0xbe643000 (O)
+rtl8822eu 3674112 0 - Live 0xbf7bf000 (O)
+xpad 36864 0 - Live 0xbf7b1000
+hid_nintendo 28672 0 - Live 0xbf7a1000
+hid_generic 12288 0 - Live 0xbf795000
+hid_nvidia 12288 0 - Live 0xbf789000
+hid_amazon 12288 0 - Live 0xbf77d000
+hid_playstation 32768 0 - Live 0xbf76e000
+hid_microsoft 20480 0 - Live 0xbf648000
+hid_sony 20480 0 - Live 0xbf5fb000
+led_class 12288 4 xpad,hid_nintendo,hid_playstation,hid_sony, Live 0xbf5de000
+ff_memless 12288 5 xpad,hid_nintendo,hid_playstation,hid_microsoft,hid_sony, Live 0xbf5cd000
+usbhid 20480 2 hid_logitech_hidpp,hid_sony, Live 0xbf5af000
+usb_storage 49152 0 - Live 0xbe393000
+btusb 466944 1 - Live 0xbf6ec000 (O)
+btpcm 49152 1 btusb, Live 0xbf6e5000 (O)
+usb_enable 24576 0 - Live 0xbe653000
+btsbc 12288 0 - Live 0xbe480000 (O)
+rtl8822eu_prealloc 12288 1 rtl8822eu, Live 0xbe359000 (O)
+cfg80211 585728 1 rtl8822eu, Live 0xbf64c000
+tztv_jackident 16384 0 - Live 0xbf494000 (O)
+tztv_hdmi_switch 184320 0 - Live 0xbf618000 (PO)
+ehci_hcd 57344 0 - Live 0xbf601000
+phy_nvt_u2 16384 3 - Live 0xbf5f4000
+ax88179_178a 28672 0 - Live 0xbf5e4000
+asix 32768 0 - Live 0xbf5d3000
+phylink 28672 1 asix,[permanent], Live 0xbf5c5000
+usbnet 36864 2 ax88179_178a,asix, Live 0xbf5b3000
+tztv_hdmi_switch_api 397312 1 tztv_hdmi_switch, Live 0xbf549000 (O)
+usbcore 184320 12 hid_logitech_hidpp,rtl8822eu,xpad,hid_sony,usbhid,usb_storage,btusb,ehci_hcd,ax88179_178a,asix,usbnet, Live 0xbf513000
+usb_common 12288 1 usbcore, Live 0xbe4e0000
+ndp_drm 434176 33 - Live 0xbf4ac000 (O)
+ndp_hdmi 77824 5 tztv_hdmi_switch_api, Live 0xbf498000 (O)
+ndp_misc 28672 1 - Live 0xbf48c000 (O)
+tztv_audio_amp 2469888 1 - Live 0xbf228000 (O)
+ndp_extin 49152 1 - Live 0xbf213000 (O)
+ndp_pq 3907584 20 - Live 0xbee50000 (O)
+tztv_audio_amp_api 12288 1 tztv_audio_amp, Live 0xbee4a000 (O)
+ndp_tsd 495616 2 - Live 0xbedc8000 (O)
+ndp_codec 1015808 1 ndp_drm, Live 0xbecc9000 (O)
+tztv_tuner_atsc 593920 5 - Live 0xbec35000 (O)
+tztv_tuner_drv_atsc 147456 1 tztv_tuner_atsc, Live 0xbec11000 (PO)
+ndp_demod 552960 8 ndp_extin,tztv_tuner_atsc, Live 0xbeb87000 (O)
+ndp_sbm 69632 5 ndp_tsd,ndp_codec, Live 0xbeb7d000 (O)
+ndp_video 2920448 8 ndp_drm,ndp_hdmi,ndp_extin,ndp_pq,ndp_codec, Live 0xbe8b1000 (O)
+kantsu2e_frc 73728 0 - Live 0xbe8a6000 (O)
+ndp_alsa 2408448 23 - Live 0xbe657000 (O)
+temperature_sensor 40960 0 - Live 0xbe646000 (O)
+ndp_khdmi 991232 4 ndp_hdmi,ndp_video, Live 0xbe54b000 (O)
+tztv_frc_tcon 98304 20 - Live 0xbe52a000 (O)
+tztv_frc_tcon_api 122880 64 kantsu2e_frc,temperature_sensor,tztv_frc_tcon, Live 0xbe509000 (O)
+ndp_led 69632 2 - Live 0xbe4f1000 (O)
+ndp_tcon 311296 6 ndp_drm,ndp_hdmi,ndp_pq,ndp_video, Live 0xbe491000 (O)
+tztv_battery 24576 0 - Live 0xbe482000 (O)
+mali_kbase 495616 27 - Live 0xbe3ff000 (O)
+ndp_gfx 372736 2 ndp_drm,ndp_pq, Live 0xbe399000 (O)
+system_drv 24576 27 tztv_jackident,tztv_hdmi_switch_api,tztv_audio_amp,tztv_audio_amp_api,tztv_tuner_atsc, Live 0xbe38a000 (O)
+tzdev 143360 12 ecryptfs,emdev, Live 0xbe35d000 (O)
+feature_config_driver 12288 15 tztv_jackident,tztv_hdmi_switch_api,tztv_tuner_atsc, Live 0xbe351000 (O)
+videobuf2_vmalloc 12288 4 ndp_hdmi,ndp_extin,ndp_codec, Live 0xbe34b000
+videobuf2_v4l2 20480 3 ndp_hdmi,ndp_extin,ndp_codec, Live 0xbe343000
+videobuf2_memops 12288 1 videobuf2_vmalloc, Live 0xbe33d000
+videobuf2_common 49152 6 ndp_hdmi,ndp_extin,ndp_codec,videobuf2_vmalloc,videobuf2_v4l2,videobuf2_memops, Live 0xbe301000
+tztv_micom 81920 17 tztv_hdmi_switch_api, Live 0xbe324000 (O)
+tztv_eeprom 73728 90 - Live 0xbe309000 (O)
+ndp_preinit 782336 20 ndp_drm,ndp_hdmi,ndp_misc,ndp_extin,ndp_pq,ndp_tsd,ndp_codec,ndp_demod,ndp_sbm,ndp_video,ndp_alsa,ndp_khdmi,ndp_led,ndp_tcon,ndp_gfx,tztv_micom, Live 0xbe23f000 (O)
+kfactory_drv 20480 21 tztv_jackident,tztv_hdmi_switch_api,tztv_audio_amp,tztv_tuner_atsc,system_drv, Live 0xbe207000 (O)
+logger 180224 111 - Live 0xbe20d000 (O)
+lwipc 16384 0 - Live 0xbe200000 (O)
+
+__PB1_RC=0

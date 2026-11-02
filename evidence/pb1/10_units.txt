@@ -1,0 +1,34 @@
+COMMAND: ( run() { printf '\nCMD='; printf '%s ' "$@"; printf '\n'; "$@"; r=$?; printf '\nRC=%s\n' "$r"; }; for u in sysinit.target basic.target multi-user.target graphical.target; do run systemctl show "$u" -p LoadState -p ActiveEnterTimestampMonotonic; done ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:51.639057+08:00
+END: 2026-11-02T23:15:52.156456+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 617
+RAW_SHA256: 2aaf72858a07187b6fcf99fa35e37d78a7212576cd0a33345efc30bfbae9f83a
+
+
+CMD=systemctl show sysinit.target -p LoadState -p ActiveEnterTimestampMonotonic
+LoadState=loaded
+ActiveEnterTimestampMonotonic=13689043
+
+RC=0
+
+CMD=systemctl show basic.target -p LoadState -p ActiveEnterTimestampMonotonic
+LoadState=loaded
+ActiveEnterTimestampMonotonic=15278295
+
+RC=0
+
+CMD=systemctl show multi-user.target -p LoadState -p ActiveEnterTimestampMonotonic
+LoadState=loaded
+ActiveEnterTimestampMonotonic=34052645
+
+RC=0
+
+CMD=systemctl show graphical.target -p LoadState -p ActiveEnterTimestampMonotonic
+LoadState=loaded
+ActiveEnterTimestampMonotonic=34052705
+
+RC=0
+
+__PB1_RC=0

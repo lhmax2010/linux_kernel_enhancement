@@ -1,0 +1,57 @@
+COMMAND: ( cat /proc/meminfo ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:43.399520+08:00
+END: 2026-11-02T23:15:43.564490+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 1458
+RAW_SHA256: bb993d6c4051ec2770880abc197532042c5567a1421fec17a13e56b1cda042fb
+
+MemTotal:        1600700 kB
+MemFree:          217136 kB
+MemAvailable:    1002956 kB
+Buffers:            9060 kB
+Cached:           794832 kB
+SwapCached:            0 kB
+Active:           727148 kB
+Inactive:         410348 kB
+Active(anon):     345332 kB
+Inactive(anon):        0 kB
+Active(file):     381816 kB
+Inactive(file):   410348 kB
+Unevictable:        7644 kB
+Mlocked:            7644 kB
+HighTotal:       1037568 kB
+HighFree:           7484 kB
+LowTotal:         563132 kB
+LowFree:          209652 kB
+SwapTotal:       1040164 kB
+SwapFree:        1037860 kB
+Dirty:                96 kB
+Writeback:             0 kB
+AnonPages:        341248 kB
+Mapped:           223632 kB
+Shmem:              5676 kB
+Shmem_swapped:         0 kB
+KReclaimable:      29232 kB
+Slab:              82536 kB
+SReclaimable:      29232 kB
+SUnreclaim:        53304 kB
+KernelStack:        5980 kB
+On-demandKStack:     152 kB
+PageTables:        16656 kB
+SecPageTables:         0 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1840512 kB
+Committed_AS:    6252756 kB
+Percpu:              944 kB
+CmaTotal:         311296 kB
+CmaFree:            6220 kB
+CmaUsed-DMA:        2724 kB
+CmaUsed-USER:     302352 kB
+zram0: 2140 kB OrigDataSize, 534 kB ComprDataSize, 2848 kB MemUsedTotal
+BG_Recompress: 0 kB OrigDataSize, 0 kB RecomprDataSize, 0 kB SavedTotal
+BG_Merge: 0 kB Saved
+
+__PB1_RC=0

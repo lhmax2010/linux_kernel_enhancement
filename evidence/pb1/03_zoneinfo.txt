@@ -1,0 +1,216 @@
+COMMAND: ( cat /proc/zoneinfo ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:43.564785+08:00
+END: 2026-11-02T23:15:43.729719+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 5403
+RAW_SHA256: a8dc2c12311057f3d2fd02f62c6d6af5b51f09a54c2027f1c2536286bbd501dc
+
+Node 0, zone   Normal
+  per-node stats
+      nr_inactive_anon 0
+      nr_active_anon 86342
+      nr_inactive_file 102587
+      nr_active_file 95454
+      nr_unevictable 1911
+      nr_slab_reclaimable 7308
+      nr_slab_unreclaimable 13323
+      nr_isolated_anon 0
+      nr_isolated_file 0
+      workingset_nodes 50
+      workingset_refault_anon 394
+      workingset_refault_file 0
+      workingset_activate_anon 394
+      workingset_activate_file 0
+      workingset_restore_anon 394
+      workingset_restore_file 0
+      workingset_nodereclaim 0
+      nr_anon_pages 85325
+      nr_mapped    55900
+      nr_file_pages 200973
+      nr_dirty     24
+      nr_writeback 0
+      nr_writeback_temp 0
+      nr_shmem     1419
+      nr_shmem_swapped_out 0
+      nr_shmem_hugepages 0
+      nr_shmem_pmdmapped 0
+      nr_file_hugepages 0
+      nr_file_pmdmapped 0
+      nr_anon_transparent_hugepages 0
+      nr_vmscan_write 793
+      nr_vmscan_immediate_reclaim 0
+      nr_dirtied   6204
+      nr_written   7108
+      nr_throttled_written 0
+      nr_kernel_misc_reclaimable 0
+      nr_foll_pin_acquired 0
+      nr_foll_pin_released 0
+      nr_kernel_stack 5968
+      nr_kernel_stack_dynamic 152
+      nr_page_table_pages 4152
+      nr_sec_page_table_pages 0
+      nr_swapcached 0
+      pgdemote_kswapd 0
+      pgdemote_direct 0
+      pgdemote_khugepaged 0
+  pages free     52448
+        boost    0
+        min      750
+        low      937
+        high     1124
+        promo    1311
+        spanned  515264
+        present  148480
+        managed  140783
+        cma      0
+Zone:Normal, proactive-score odr(2):0, odr(3):0, odr(4):1
+        protection: (0, 3840, 3840, 3840)
+      nr_zone_inactive_anon 0
+      nr_zone_active_anon 10286
+      nr_zone_inactive_file 19069
+      nr_zone_active_file 21243
+      nr_zone_unevictable 314
+      nr_zone_slab_reclaimable 7308
+      nr_zone_slab_unreclaimable 13323
+      nr_free_pages 52448
+      nr_zone_write_pending 2
+      nr_mlock     314
+      nr_bounce    0
+      nr_zspages   0
+      nr_free_cma  0
+  pagesets
+    cpu: 0
+              count: 547
+              high:  673
+              batch: 31
+  vm stats threshold: 24
+    cpu: 1
+              count: 837
+              high:  877
+              batch: 31
+  vm stats threshold: 24
+    cpu: 2
+              count: 366
+              high:  380
+              batch: 31
+  vm stats threshold: 24
+    cpu: 3
+              count: 359
+              high:  992
+              batch: 31
+  vm stats threshold: 24
+  node_unreclaimable:  0
+  start_pfn:           16384
+Node 0, zone  HighMem
+  pages free     316
+        boost    0
+        min      128
+        low      370
+        high     612
+        promo    854
+        spanned  254784
+        present  181568
+        managed  181568
+        cma      0
+Zone:HighMem, proactive-score odr(2):0, odr(3):0, odr(4):1
+        protection: (0, 0, 0, 0)
+      nr_zone_inactive_anon 0
+      nr_zone_active_anon 1380
+      nr_zone_inactive_file 83512
+      nr_zone_active_file 74211
+      nr_zone_unevictable 1509
+      nr_zone_slab_reclaimable 0
+      nr_zone_slab_unreclaimable 0
+      nr_free_pages 316
+      nr_zone_write_pending 22
+      nr_mlock     1509
+      nr_bounce    0
+      nr_zspages   0
+      nr_free_cma  0
+  pagesets
+    cpu: 0
+              count: 48
+              high:  252
+              batch: 63
+  vm stats threshold: 24
+    cpu: 1
+              count: 235
+              high:  252
+              batch: 63
+  vm stats threshold: 24
+    cpu: 2
+              count: 226
+              high:  252
+              batch: 63
+  vm stats threshold: 24
+    cpu: 3
+              count: 225
+              high:  252
+              batch: 63
+  vm stats threshold: 24
+  node_unreclaimable:  0
+  start_pfn:           531648
+Node 0, zone  Movable
+  pages free     0
+        boost    0
+        min      32
+        low      32
+        high     32
+        promo    32
+        spanned  0
+        present  0
+        managed  0
+        cma      0
+        protection: (0, 0, 0, 0)
+Node 0, zone      CMA
+  pages free     1562
+        boost    0
+        min      76
+        low      179
+        high     282
+        promo    385
+        spanned  467968
+        present  77824
+        managed  77824
+        cma      77824
+Zone:CMA, proactive-score odr(2):11, odr(3):15, odr(4):16
+        protection: (0, 0, 0, 0)
+      nr_zone_inactive_anon 0
+      nr_zone_active_anon 74657
+      nr_zone_inactive_file 6
+      nr_zone_active_file 0
+      nr_zone_unevictable 88
+      nr_zone_slab_reclaimable 0
+      nr_zone_slab_unreclaimable 0
+      nr_free_pages 1562
+      nr_zone_write_pending 0
+      nr_mlock     88
+      nr_bounce    0
+      nr_zspages   712
+      nr_free_cma  1562
+  pagesets
+    cpu: 0
+              count: 51
+              high:  60
+              batch: 15
+  vm stats threshold: 18
+    cpu: 1
+              count: 2
+              high:  60
+              batch: 15
+  vm stats threshold: 18
+    cpu: 2
+              count: 18
+              high:  60
+              batch: 15
+  vm stats threshold: 18
+    cpu: 3
+              count: 56
+              high:  60
+              batch: 15
+  vm stats threshold: 18
+  node_unreclaimable:  0
+  start_pfn:           156672
+
+__PB1_RC=0

@@ -1,0 +1,297 @@
+{
+  "timestamp": "2026-11-02T23:43:11.953760+08:00",
+  "scope": "evidence/pb1 except this result, docs/13_product_board_probe.md, new PB1 section of STATUS",
+  "method": "Complete real-name token boundaries (not identifier substrings); known identifiers case-insensitive; generic MAC/ANSI regex. Private term lists remain in temp only. Manual check of build info, command line, kernel excerpts, CPU and mounts also completed.",
+  "process_name_terms": 326,
+  "private_identifier_terms": 17,
+  "hits": {
+    "real_process_names": 0,
+    "known_private_identifiers_including_serials": 0,
+    "mac_addresses": 0,
+    "ansi_escapes": 0
+  },
+  "issues": [],
+  "result": "PASS",
+  "files": [
+    {
+      "path": "evidence/pb1/00_connection_and_commands.json",
+      "bytes": 63726,
+      "sha256": "2ee50ad783857fbcc6996d5121ff61b8374e54ccfd38c974b9f25a34cdb25878"
+    },
+    {
+      "path": "evidence/pb1/01_buildfiles.txt",
+      "bytes": 1618,
+      "sha256": "87737512e4949bd84a00b2b53417aa7e70801028dfee68199db4727578fff2b0"
+    },
+    {
+      "path": "evidence/pb1/01_cmdline.txt",
+      "bytes": 1378,
+      "sha256": "1b3b5a04c37d17ca6d5c883f5453b6ec04e3ff0f6fad7be73ed5ee92eb733f1d"
+    },
+    {
+      "path": "evidence/pb1/01_uname.txt",
+      "bytes": 375,
+      "sha256": "8bbc4f21c71a6105cb1c5d7de3ca3f4b60a6f3da4a8b2be876fccf4360d61de7"
+    },
+    {
+      "path": "evidence/pb1/01_uptime.txt",
+      "bytes": 349,
+      "sha256": "bd3b05140611a053c3c0ade612aff3b18adc2ea7ab8b9baff07ea499a6c0f5f2"
+    },
+    {
+      "path": "evidence/pb1/01_version.txt",
+      "bytes": 412,
+      "sha256": "96ffb75afdf5863fb3bc8dbd3a9ad668ca175c0a46f96bb9a47b0460ea31d8ba"
+    },
+    {
+      "path": "evidence/pb1/02_boot_config.txt",
+      "bytes": 568,
+      "sha256": "93030b0b516ca4c6551cef668acd57add19013a47a89270f34e75c1edcaa4495"
+    },
+    {
+      "path": "evidence/pb1/02_boot_listing.txt",
+      "bytes": 384,
+      "sha256": "569849c7c38a02a1ca0f50e28f58bd94581e6f7828bd55cda7679bc1cb10c9e0"
+    },
+    {
+      "path": "evidence/pb1/02_config_comparison.txt",
+      "bytes": 829,
+      "sha256": "834f7002db53c3442abf3541fbd3ca4d3c2d4ed7290c34958a01312292e00533"
+    },
+    {
+      "path": "evidence/pb1/02_config_options.tsv",
+      "bytes": 7704,
+      "sha256": "676ce7ac4cfdb910d7d09a1e081972bd1778308e6163d424005f6cfb65385f16"
+    },
+    {
+      "path": "evidence/pb1/02_config_presence.txt",
+      "bytes": 362,
+      "sha256": "c9456d2284618e66ceb6431801a318e909940dfffd8e359c0b66a1a8c3199d99"
+    },
+    {
+      "path": "evidence/pb1/03_buddyinfo.txt",
+      "bytes": 597,
+      "sha256": "e2c4218ae732e6cd115c6c804390b7b5940333ab7b4d23b7224f4132789e7d85"
+    },
+    {
+      "path": "evidence/pb1/03_dmesg.txt",
+      "bytes": 13032,
+      "sha256": "6a1ecea13db172c1cc54254f90cf97f60d313ad74dce60809ab0d885e9ee892d"
+    },
+    {
+      "path": "evidence/pb1/03_iomem.txt",
+      "bytes": 378,
+      "sha256": "3b903677b6c17bf8f8a1c7e57219c14f095a48aeaa98a0679acd5f6972279000"
+    },
+    {
+      "path": "evidence/pb1/03_meminfo.txt",
+      "bytes": 1696,
+      "sha256": "8ba22618fcf5a9ded47e9facd9fa9cc2993ff7b9ead457e64ecba5bf091437f8"
+    },
+    {
+      "path": "evidence/pb1/03_pagesize.txt",
+      "bytes": 301,
+      "sha256": "046c1c3ecb5db19b90d89abb34ecba932f93b5a0c80f6cc3b9f1290b4b7050c2"
+    },
+    {
+      "path": "evidence/pb1/03_pagetypeinfo.txt",
+      "bytes": 3372,
+      "sha256": "37a7458623d10746de0e6b58beda23f694477214a003095782d08857981f98bc"
+    },
+    {
+      "path": "evidence/pb1/03_slabinfo.txt",
+      "bytes": 5776,
+      "sha256": "e8b1bfe65cc1cb0ef269a53071529b45c7dab5e3ff8a5b6e622e708d99f192d7"
+    },
+    {
+      "path": "evidence/pb1/03_vmallocinfo.txt",
+      "bytes": 3021,
+      "sha256": "3f049775b2ded979f46f32fd070035238510eb2b08cc6c0cfd4325db64436eb6"
+    },
+    {
+      "path": "evidence/pb1/03_zoneinfo.txt",
+      "bytes": 5483,
+      "sha256": "43dd2199b9bce95daf1ce79d7b2d21735ffedf70f8593744624059919d2c4427"
+    },
+    {
+      "path": "evidence/pb1/04_mm_state.txt",
+      "bytes": 757,
+      "sha256": "209a64497cbc11ee5a48629460a07d9773f695fd603da9fbc5ede8c7b4e61cd3"
+    },
+    {
+      "path": "evidence/pb1/04_pressure.txt",
+      "bytes": 862,
+      "sha256": "5499a2156f5338f636c6b18da8877089478aa23ef6694616142dda8f27328928"
+    },
+    {
+      "path": "evidence/pb1/04_swaps.txt",
+      "bytes": 403,
+      "sha256": "84b9c3acb2195d1cca52b548714fb440c082a84cff83b05c739deedf282a8dcd"
+    },
+    {
+      "path": "evidence/pb1/04_vm_params.txt",
+      "bytes": 2555,
+      "sha256": "08922436a2deaf6b71e6bb7e66c2c3c8354cb4de4e9851374d5ab4fb18fd2077"
+    },
+    {
+      "path": "evidence/pb1/04_vmstat.txt",
+      "bytes": 3292,
+      "sha256": "d0bbda2e447c6812269306f14c466af7e64ba75a89754198a71f5b4f1372845e"
+    },
+    {
+      "path": "evidence/pb1/04_zram.txt",
+      "bytes": 1028,
+      "sha256": "f2ceb6f4245e3d639196dd269dc25c1cfb468d5d61fd02b50481537f24dd30a1"
+    },
+    {
+      "path": "evidence/pb1/05_btf.txt",
+      "bytes": 656,
+      "sha256": "24a6e4eba032b51022a374d1a622368e2a20f10e2c74a32e3cbf3ebe8dfa4bb5"
+    },
+    {
+      "path": "evidence/pb1/05_module_dirs.txt",
+      "bytes": 1387,
+      "sha256": "e20337bf196739e02eb75d2d92001b84752aeb5d252aabd8e022e7ebfb2a8b4e"
+    },
+    {
+      "path": "evidence/pb1/05_modules.txt",
+      "bytes": 4418,
+      "sha256": "f3c3387f30b1214b48265836a31d861ca5f33b169df851df41312cfd73dd1a47"
+    },
+    {
+      "path": "evidence/pb1/06_df.txt",
+      "bytes": 1575,
+      "sha256": "97949ed08620503ca874da5ea80af7b12000f0288af3871d3edba6cf850fb351"
+    },
+    {
+      "path": "evidence/pb1/06_filesystems.txt",
+      "bytes": 639,
+      "sha256": "d1012dbedb368b4fa807f0d8468f6241a31b08d241980f00306f74a4f6ca1d11"
+    },
+    {
+      "path": "evidence/pb1/06_mounts.txt",
+      "bytes": 3064,
+      "sha256": "6d5b8def3b98698bdb2743e597973e80531fc8e06f2428d8cbee622abb52eacb"
+    },
+    {
+      "path": "evidence/pb1/06_partitions.txt",
+      "bytes": 2075,
+      "sha256": "4278eb8e1bf176e9323c65509c68e3b4a748d5385b90353b08ca35df0f02a886"
+    },
+    {
+      "path": "evidence/pb1/06_usb.txt",
+      "bytes": 1215,
+      "sha256": "f3b7d7ccc8c0031169125ed8211ed8eed35a80dab1d88728a1d1d5fecaadee62"
+    },
+    {
+      "path": "evidence/pb1/07_profiler_presence.txt",
+      "bytes": 687,
+      "sha256": "45178ff90a7b5b54f643fa08cf0a2015657f689b0ed35e0f74fa3d1bfb0ced76"
+    },
+    {
+      "path": "evidence/pb1/07_restrictions.txt",
+      "bytes": 952,
+      "sha256": "a9dbd3fca0d57629f979b518b8f19f7adb33acafc963106c94ee1fd64070c6c6"
+    },
+    {
+      "path": "evidence/pb1/07_tracing.txt",
+      "bytes": 1039,
+      "sha256": "56abd9f25a415f371b6298fb6f9fa62c024ca7cbaf03d3dbe9a3fb5128aec4a2"
+    },
+    {
+      "path": "evidence/pb1/08_cpufreq.txt",
+      "bytes": 1584,
+      "sha256": "27351240fba9f5d6c557c37ef9fcb74a8256d7025ac5db5deaa063f8de9a813a"
+    },
+    {
+      "path": "evidence/pb1/08_cpuidle.txt",
+      "bytes": 395,
+      "sha256": "5d572b21f4ca5da7d52e9724123a404e156acdb025dfee40dc23c9fece7fe035"
+    },
+    {
+      "path": "evidence/pb1/08_cpuinfo.txt",
+      "bytes": 1507,
+      "sha256": "20124c379dcd16d9bf3b2db8a744cea0d9bd50c91ae03397d773045187c2b049"
+    },
+    {
+      "path": "evidence/pb1/08_pmu_coresight.txt",
+      "bytes": 656,
+      "sha256": "056f8d20ce1d9e84c7d9f1f3636c1b8b786a4597ba7e57e5a9d35ac27914c52f"
+    },
+    {
+      "path": "evidence/pb1/09_cpu_activity_summary.json",
+      "bytes": 360,
+      "sha256": "910934907b1b4c0a5f73f400745a39fbb132e09dc4605a12a8a30bf8a12cf838"
+    },
+    {
+      "path": "evidence/pb1/09_cpu_stat_after.txt",
+      "bytes": 951,
+      "sha256": "d5b7dc943b21edc5b791a23878c8eb80a0d13e4429de6f8a3026950e7ebd325b"
+    },
+    {
+      "path": "evidence/pb1/09_cpu_stat_before.txt",
+      "bytes": 948,
+      "sha256": "9c22e3c26277967cd69c89d9f228cc5093cebfae87e6a6b97623d00f662eb781"
+    },
+    {
+      "path": "evidence/pb1/09_later_uptime.txt",
+      "bytes": 351,
+      "sha256": "2e81e69f08a7b66d8e3ae541f48b4e2756cb0e72f4bfe0d3d9ef669b3d8e2bab"
+    },
+    {
+      "path": "evidence/pb1/09_process_status.txt",
+      "bytes": 3630,
+      "sha256": "d26958f77e2f2bb0083314e219f9239e81887135018c32938f83edcc056d09f8"
+    },
+    {
+      "path": "evidence/pb1/10_end_uptime.txt",
+      "bytes": 310,
+      "sha256": "e89b6eccee11c37e27e8a1dd8b54d404f726be2e8bc795d2928cc07b0d1ea282"
+    },
+    {
+      "path": "evidence/pb1/10_journal_boots.txt",
+      "bytes": 343,
+      "sha256": "70ef43e272e2ee8807dd43f18083dcf396c32517ea9e9adb98f152b02572a9c5"
+    },
+    {
+      "path": "evidence/pb1/10_units.txt",
+      "bytes": 1104,
+      "sha256": "d094e1b8757441a661b3650bb117e969ad14bc12b539e376c229d16adbe7471d"
+    },
+    {
+      "path": "evidence/pb1/99_final_id_confirmed.txt",
+      "bytes": 291,
+      "sha256": "137ef75949583c7d3f53744b2d28e250161dfa41ab976eb5f7f2d8ba6551c7e5"
+    },
+    {
+      "path": "evidence/pb1/99_owner_final.txt",
+      "bytes": 291,
+      "sha256": "d91e7d04ca9d955d5e8fe9491ee5b46aea52103a86ad13eb69087a984904d6ee"
+    },
+    {
+      "path": "evidence/pb1/99_root_off.txt",
+      "bytes": 255,
+      "sha256": "4afcaf94377a093c63ec1a104ccaeabdc6306280fa18f567476eeba76111d9a1"
+    },
+    {
+      "path": "evidence/pb1/99_root_off_final.txt",
+      "bytes": 217,
+      "sha256": "081ddea3c532765e7546b05cd1d9069e87be6d9255954b5c18a36c67ea2df19e"
+    },
+    {
+      "path": "evidence/pb1/README.md",
+      "bytes": 1765,
+      "sha256": "2f99c26d0aebd0192c0c9bbddb78f19f552923b9cf3a3314e74207bda0923ede"
+    },
+    {
+      "path": "evidence/pb1/r2_identity_os_release.txt",
+      "bytes": 487,
+      "sha256": "a1a9be239e93fc1c2b426ce4c5c784bc5be4af2c61c4c39915ddc20738297ba7"
+    },
+    {
+      "path": "docs/13_product_board_probe.md",
+      "bytes": 18859,
+      "sha256": "29d346e3a09bc1d60a1fc83c882ae4594267c965de13c894a7051a02b2afd358"
+    }
+  ]
+}

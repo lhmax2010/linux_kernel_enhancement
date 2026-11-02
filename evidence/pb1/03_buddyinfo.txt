@@ -1,0 +1,13 @@
+COMMAND: ( cat /proc/buddyinfo ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:43.730061+08:00
+END: 2026-11-02T23:15:43.895687+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 317
+RAW_SHA256: 63d44d1f38457b01ef89f84d06bd2db940c84a8a80bea3f7054ce77a80c1d3b7
+
+Node 0, zone   Normal    270    207    174     69     24     18     19      8      3      1     45
+Node 0, zone  HighMem      0      0      1      1      1      1      0      2      0      0      0
+Node 0, zone      CMA    544    213     75     15      5      1      1      0      0      0      0
+
+__PB1_RC=0

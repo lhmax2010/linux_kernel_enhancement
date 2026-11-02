@@ -1,0 +1,36 @@
+COMMAND: ( run() { printf '\nCMD='; printf '%s ' "$@"; printf '\n'; "$@"; r=$?; printf '\nRC=%s\n' "$r"; }; for d in /sys/block/zram*; do test -d "$d" || continue; for n in comp_algorithm disksize mm_stat io_stat bd_stat recomp_algorithm; do f="$d/$n"; if test -e "$f"; then run cat "$f"; else printf "ABSENT %s\n" "$f"; fi; done; done ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:44.722175+08:00
+END: 2026-11-02T23:15:44.886899+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 470
+RAW_SHA256: b90eaa0280a7c23c15728fd949485a8e55d312c94422e4117dc6d5fae2dfa6c6
+
+
+CMD=cat /sys/block/zram0/comp_algorithm
+lz4 [zstd]
+
+RC=0
+
+CMD=cat /sys/block/zram0/disksize
+1065132032
+
+RC=0
+
+CMD=cat /sys/block/zram0/mm_stat
+ 2191360   546821  2916352        0  3330048        4        0        0        0        0        0        0
+
+RC=0
+
+CMD=cat /sys/block/zram0/io_stat
+       0        0 0      256
+
+RC=0
+ABSENT /sys/block/zram0/bd_stat
+
+CMD=cat /sys/block/zram0/recomp_algorithm
+#1: lz4 [zstd]
+
+RC=0
+
+__PB1_RC=0

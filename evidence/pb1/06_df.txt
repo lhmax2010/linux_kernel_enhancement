@@ -1,0 +1,29 @@
+COMMAND: ( df -k ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:46.625213+08:00
+END: 2026-11-02T23:15:46.790445+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 1321
+RAW_SHA256: 112b25bfdb4f7df686e1d1e14fb52fecc54ad93fa95017c9bc8a21a8df4a6af0
+
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/root              1123212   1123212         0 100% /.org_rootfs
+/dev/dm-3                39368     39368         0 100% /.org_rootfs/prd
+/dev/mmcblk0p21        3986176   1407924   2578252  36% /.org_rootfs/opt
+overlay                3986176   1407924   2578252  36% /
+/dev/mmcblk0p22            640       640         0 100% /.org_rootfs/factory_peq
+overlay                3986176   1407924   2578252  36% /factory_peq
+overlay                3986176   1407924   2578252  36% /prd
+none                    644480         0    644480   0% /dev
+tmpfs                   800348       124    800224   1% /tmp
+tmpfs                   800348      1868    798480   1% /run
+/dev/mmcblk0p20          20480      1616     18864   8% /mnt/systemrw
+/dev/mmcblk0p21        3986176   1407924   2578252  36% /opt
+tmpfs                   800348       176    800172   1% /run/user/5001
+tmpfs                   800348      2536    797812   1% /dev/shm
+/dev/mmcblk0p17          12288      2072     10216  17% /mnt/drm
+tmpfs                   800348         0    800348   0% /sys/fs/cgroup
+tmpfs                   800348         0    800348   0% /opt/media
+/dev/mmcblk0p21        3986176   1407924   2578252  36% /opt/usr/home/owner/content
+
+__PB1_RC=0

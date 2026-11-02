@@ -1,0 +1,70 @@
+COMMAND: ( run() { printf '\nCMD='; printf '%s ' "$@"; printf '\n'; "$@"; r=$?; printf '\nRC=%s\n' "$r"; }; for d in /sys/bus/usb/devices/*; do test -d "$d" || continue; for n in idVendor idProduct bDeviceClass; do f="$d/$n"; if test -e "$f"; then run cat "$f"; fi; done; done ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:46.790735+08:00
+END: 2026-11-02T23:15:47.005938+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 755
+RAW_SHA256: c7ca9cbb7121be4b0c285586fee90a8c90a7b83d3b6860cd6082e764eb4def32
+
+
+CMD=cat /sys/bus/usb/devices/2-1/idVendor
+04e8
+
+RC=0
+
+CMD=cat /sys/bus/usb/devices/2-1/idProduct
+2108
+
+RC=0
+
+CMD=cat /sys/bus/usb/devices/2-1/bDeviceClass
+ef
+
+RC=0
+
+CMD=cat /sys/bus/usb/devices/usb1/idVendor
+1d6b
+
+RC=0
+
+CMD=cat /sys/bus/usb/devices/usb1/idProduct
+0002
+
+RC=0
+
+CMD=cat /sys/bus/usb/devices/usb1/bDeviceClass
+09
+
+RC=0
+
+CMD=cat /sys/bus/usb/devices/usb2/idVendor
+1d6b
+
+RC=0
+
+CMD=cat /sys/bus/usb/devices/usb2/idProduct
+0002
+
+RC=0
+
+CMD=cat /sys/bus/usb/devices/usb2/bDeviceClass
+09
+
+RC=0
+
+CMD=cat /sys/bus/usb/devices/usb3/idVendor
+1d6b
+
+RC=0
+
+CMD=cat /sys/bus/usb/devices/usb3/idProduct
+0002
+
+RC=0
+
+CMD=cat /sys/bus/usb/devices/usb3/bDeviceClass
+09
+
+RC=0
+
+__PB1_RC=0

@@ -1,0 +1,12 @@
+COMMAND: ( cat /proc/swaps ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:44.557214+08:00
+END: 2026-11-02T23:15:44.721871+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 123
+RAW_SHA256: 853b9241a4c303b5e7826c640b65b75203ab2b949798288d4e4fd7f26e2f2d78
+
+Filename				Type		Size		Used		Priority
+/dev/zram0                              partition	1040164		2304		-2
+
+__PB1_RC=0

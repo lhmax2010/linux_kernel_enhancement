@@ -1,0 +1,11 @@
+COMMAND: ( uptime ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:27:38.264363+08:00
+END: 2026-11-02T23:27:38.429860+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 80
+RAW_SHA256: 4010ab3ccd15ddc336d5335c059d64fbbce2ed387513e5deec6b9164004668d1
+
+ 07:28:01 up 13 min,  0 user,  load average: 28.18, 26.92, 17.40
+
+__PB1_RC=0

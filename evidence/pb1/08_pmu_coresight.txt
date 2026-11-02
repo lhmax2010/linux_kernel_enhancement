@@ -1,0 +1,20 @@
+COMMAND: ( run() { printf '\nCMD='; printf '%s ' "$@"; printf '\n'; "$@"; r=$?; printf '\nRC=%s\n' "$r"; }; run ls /sys/bus/event_source/devices; run ls /sys/bus/coresight/devices ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:48.048074+08:00
+END: 2026-11-02T23:15:48.212944+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 233
+RAW_SHA256: fcfebe1c267783f8092ce18a6f4233b9fe82bb937e8e8dea55d0b01bb9d7f4e1
+
+
+CMD=ls /sys/bus/event_source/devices
+armv7_cortex_a7  breakpoint  software  tracepoint
+
+RC=0
+
+CMD=ls /sys/bus/coresight/devices
+ls: cannot access /sys/bus/coresight/devices: No such file or directory
+
+RC=2
+
+__PB1_RC=0

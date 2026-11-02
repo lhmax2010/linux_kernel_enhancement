@@ -1,0 +1,64 @@
+COMMAND: ( cat /proc/partitions ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:47.006191+08:00
+END: 2026-11-02T23:15:47.171412+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 1841
+RAW_SHA256: dd1a5fe3a9fb4112e5e0d2957f4c6d9fd00b7644fcd8dbc8ed1811e710e3d2ff
+
+major minor  #blocks  name
+
+   1        0       8192 ram0
+   1        1       8192 ram1
+   1        2       8192 ram2
+   1        3       8192 ram3
+   1        4       8192 ram4
+   1        5       8192 ram5
+   1        6       8192 ram6
+   1        7       8192 ram7
+   1        8       8192 ram8
+   1        9       8192 ram9
+   1       10       8192 ram10
+   1       11       8192 ram11
+   1       12       8192 ram12
+   1       13       8192 ram13
+   1       14       8192 ram14
+   1       15       8192 ram15
+ 253        0    1040168 zram0
+ 179        0    7634944 mmcblk0
+ 179        1        512 mmcblk0p1
+ 179        2        512 mmcblk0p2
+ 179        3       4608 mmcblk0p3
+ 179        4       4608 mmcblk0p4
+ 179        5      26624 mmcblk0p5
+ 179        6      26624 mmcblk0p6
+ 179        7       1536 mmcblk0p7
+ 179        8       1536 mmcblk0p8
+ 179        9         64 mmcblk0p9
+ 179       10         64 mmcblk0p10
+ 179       11         64 mmcblk0p11
+ 179       12       8192 mmcblk0p12
+ 179       13       8192 mmcblk0p13
+ 179       14       3072 mmcblk0p14
+ 179       15       3072 mmcblk0p15
+ 179       16       2048 mmcblk0p16
+ 179       17      12288 mmcblk0p17
+ 179       18    1740800 mmcblk0p18
+ 179       19    1740800 mmcblk0p19
+ 179       20      20480 mmcblk0p20
+ 179       21    3986176 mmcblk0p21
+ 179       22      12288 mmcblk0p22
+ 179       23      12288 mmcblk0p23
+ 179       24         64 mmcblk0p24
+ 179       25       2048 mmcblk0p25
+ 179       26       4608 mmcblk0p26
+ 179       27        512 mmcblk0p27
+ 179       28       2048 mmcblk0p28
+ 179       32       4096 mmcblk0boot0
+ 179       64       4096 mmcblk0boot1
+ 252        0    1144832 dm-0
+ 252        1    1126616 dm-1
+ 252        2      40960 dm-2
+ 252        3      39420 dm-3
+
+__PB1_RC=0

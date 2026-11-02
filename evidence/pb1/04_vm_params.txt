@@ -1,0 +1,209 @@
+COMMAND: ( run() { printf '\nCMD='; printf '%s ' "$@"; printf '\n'; "$@"; r=$?; printf '\nRC=%s\n' "$r"; }; for f in /proc/sys/vm/*; do test -f "$f" || continue; run cat "$f"; done ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:44.887224+08:00
+END: 2026-11-02T23:15:45.202781+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 2357
+RAW_SHA256: fba765084c41f800c6b1720881899a2ed196095473d4db6e36a1184bd2eca96a
+
+
+CMD=cat /proc/sys/vm/admin_reserve_kbytes
+8192
+
+RC=0
+
+CMD=cat /proc/sys/vm/compact_memory
+cat: /proc/sys/vm/compact_memory: Permission denied
+
+RC=1
+
+CMD=cat /proc/sys/vm/compact_unevictable_allowed
+1
+
+RC=0
+
+CMD=cat /proc/sys/vm/compaction_proactiveness
+85
+
+RC=0
+
+CMD=cat /proc/sys/vm/dirty_background_bytes
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/dirty_background_ratio
+10
+
+RC=0
+
+CMD=cat /proc/sys/vm/dirty_bytes
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/dirty_expire_centisecs
+3000
+
+RC=0
+
+CMD=cat /proc/sys/vm/dirty_ratio
+20
+
+RC=0
+
+CMD=cat /proc/sys/vm/dirty_writeback_centisecs
+500
+
+RC=0
+
+CMD=cat /proc/sys/vm/dirtytime_expire_seconds
+43200
+
+RC=0
+
+CMD=cat /proc/sys/vm/drop_caches
+cat: /proc/sys/vm/drop_caches: Permission denied
+
+RC=1
+
+CMD=cat /proc/sys/vm/extfrag_threshold
+500
+
+RC=0
+
+CMD=cat /proc/sys/vm/highmem_is_dirtyable
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/laptop_mode
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/legacy_va_layout
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/lowmem_reserve_ratio
+32	2147483647	2147483647	2147483647
+
+RC=0
+
+CMD=cat /proc/sys/vm/max_map_count
+65530
+
+RC=0
+
+CMD=cat /proc/sys/vm/memfd_noexec
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/min_free_kbytes
+3000
+
+RC=0
+
+CMD=cat /proc/sys/vm/mmap_min_addr
+32768
+
+RC=0
+
+CMD=cat /proc/sys/vm/mmap_rnd_bits
+8
+
+RC=0
+
+CMD=cat /proc/sys/vm/oom_dump_tasks
+1
+
+RC=0
+
+CMD=cat /proc/sys/vm/oom_kill_allocating_task
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/overcommit_kbytes
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/overcommit_memory
+1
+
+RC=0
+
+CMD=cat /proc/sys/vm/overcommit_ratio
+50
+
+RC=0
+
+CMD=cat /proc/sys/vm/page-cluster
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/page_lock_unfairness
+5
+
+RC=0
+
+CMD=cat /proc/sys/vm/panic_on_oom
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/percpu_pagelist_high_fraction
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/profile_memory_usage
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/stat_interval
+1
+
+RC=0
+
+CMD=cat /proc/sys/vm/stat_refresh
+
+RC=0
+
+CMD=cat /proc/sys/vm/swappiness
+100
+
+RC=0
+
+CMD=cat /proc/sys/vm/user_reserve_kbytes
+49640
+
+RC=0
+
+CMD=cat /proc/sys/vm/vfs_cache_pressure
+100
+
+RC=0
+
+CMD=cat /proc/sys/vm/vmallocinfo_enable
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/watermark_boost_factor
+0
+
+RC=0
+
+CMD=cat /proc/sys/vm/watermark_scale_factor
+0
+
+RC=0
+
+__PB1_RC=0

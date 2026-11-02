@@ -1,0 +1,256 @@
+COMMAND: ( cat /proc/slabinfo ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:44.391916+08:00
+END: 2026-11-02T23:15:44.556917+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 14085
+RAW_SHA256: 46bd3837b98dc03bdfdaa5ded86b94f46fcd4fc5f6f0cea1e2b57026776738a9
+
+Product header: # name                 <active_objs> <num_objs> <objsize> <objperslab> <pagesperslab> <oo_slabs> <active_slabs> <num_slabs> <memory_usage>
+Sort uses supplied memory_usage KB, not guessed standard slabinfo positions.
+{
+  "caches": 103,
+  "sum_memory_usage_KiB": 72268,
+  "top30": [
+    {
+      "cache": "proc_inode_cache",
+      "active_objects": 18015,
+      "objects": 18225,
+      "object_bytes": 448,
+      "slabs": 2025,
+      "occupancy_KiB": 8100
+    },
+    {
+      "cache": "vm_area_struct",
+      "active_objects": 55382,
+      "objects": 56712,
+      "object_bytes": 80,
+      "slabs": 1112,
+      "occupancy_KiB": 4448
+    },
+    {
+      "cache": "kmalloc-64",
+      "active_objects": 68663,
+      "objects": 69248,
+      "object_bytes": 64,
+      "slabs": 1082,
+      "occupancy_KiB": 4328
+    },
+    {
+      "cache": "task_struct",
+      "active_objects": 1298,
+      "objects": 1314,
+      "object_bytes": 2688,
+      "slabs": 219,
+      "occupancy_KiB": 3504
+    },
+    {
+      "cache": "skbuff_small_head",
+      "active_objects": 5834,
+      "objects": 6013,
+      "object_bytes": 576,
+      "slabs": 859,
+      "occupancy_KiB": 3436
+    },
+    {
+      "cache": "kmalloc-192",
+      "active_objects": 17576,
+      "objects": 17871,
+      "object_bytes": 192,
+      "slabs": 851,
+      "occupancy_KiB": 3404
+    },
+    {
+      "cache": "erofs_overlay_dentry",
+      "active_objects": 24900,
+      "objects": 24900,
+      "object_bytes": 136,
+      "slabs": 830,
+      "occupancy_KiB": 3320
+    },
+    {
+      "cache": "ovl_inode",
+      "active_objects": 6953,
+      "objects": 6953,
+      "object_bytes": 464,
+      "slabs": 409,
+      "occupancy_KiB": 3272
+    },
+    {
+      "cache": "proc_sys_dentry",
+      "active_objects": 23026,
+      "objects": 23250,
+      "object_bytes": 136,
+      "slabs": 775,
+      "occupancy_KiB": 3100
+    },
+    {
+      "cache": "anon_vma_chain",
+      "active_objects": 95997,
+      "objects": 98048,
+      "object_bytes": 32,
+      "slabs": 766,
+      "occupancy_KiB": 3064
+    },
+    {
+      "cache": "erofs_inode",
+      "active_objects": 5664,
+      "objects": 5664,
+      "object_bytes": 480,
+      "slabs": 708,
+      "occupancy_KiB": 2832
+    },
+    {
+      "cache": "inode_cache",
+      "active_objects": 5830,
+      "objects": 5830,
+      "object_bytes": 408,
+      "slabs": 583,
+      "occupancy_KiB": 2332
+    },
+    {
+      "cache": "kernfs_node_cache",
+      "active_objects": 26690,
+      "objects": 26818,
+      "object_bytes": 88,
+      "slabs": 583,
+      "occupancy_KiB": 2332
+    },
+    {
+      "cache": "radix_tree_node",
+      "active_objects": 19266,
+      "objects": 19266,
+      "object_bytes": 104,
+      "slabs": 494,
+      "occupancy_KiB": 1976
+    },
+    {
+      "cache": "kmalloc-128",
+      "active_objects": 12968,
+      "objects": 13408,
+      "object_bytes": 128,
+      "slabs": 419,
+      "occupancy_KiB": 1676
+    },
+    {
+      "cache": "kmalloc-256",
+      "active_objects": 5302,
+      "objects": 6608,
+      "object_bytes": 256,
+      "slabs": 413,
+      "occupancy_KiB": 1652
+    },
+    {
+      "cache": "shmem_inode_cache",
+      "active_objects": 3051,
+      "objects": 3088,
+      "object_bytes": 488,
+      "slabs": 386,
+      "occupancy_KiB": 1544
+    },
+    {
+      "cache": "kmalloc-768",
+      "active_objects": 1752,
+      "objects": 1775,
+      "object_bytes": 768,
+      "slabs": 355,
+      "occupancy_KiB": 1420
+    },
+    {
+      "cache": "vdfs4_icache",
+      "active_objects": 1740,
+      "objects": 1740,
+      "object_bytes": 768,
+      "slabs": 348,
+      "occupancy_KiB": 1392
+    },
+    {
+      "cache": "anon_vma",
+      "active_objects": 21700,
+      "objects": 21952,
+      "object_bytes": 64,
+      "slabs": 343,
+      "occupancy_KiB": 1372
+    },
+    {
+      "cache": "skbuff_head_cache",
+      "active_objects": 6311,
+      "objects": 6783,
+      "object_bytes": 192,
+      "slabs": 323,
+      "occupancy_KiB": 1292
+    },
+    {
+      "cache": "lsm_inode_cache",
+      "active_objects": 51568,
+      "objects": 52190,
+      "object_bytes": 24,
+      "slabs": 307,
+      "occupancy_KiB": 1228
+    },
+    {
+      "cache": "filp",
+      "active_objects": 5097,
+      "objects": 5250,
+      "object_bytes": 192,
+      "slabs": 250,
+      "occupancy_KiB": 1000
+    },
+    {
+      "cache": "dentry",
+      "active_objects": 7224,
+      "objects": 7380,
+      "object_bytes": 136,
+      "slabs": 246,
+      "occupancy_KiB": 984
+    },
+    {
+      "cache": "kmalloc-3072",
+      "active_objects": 265,
+      "objects": 290,
+      "object_bytes": 3072,
+      "slabs": 58,
+      "occupancy_KiB": 928
+    },
+    {
+      "cache": "kmalloc-2048",
+      "active_objects": 433,
+      "objects": 456,
+      "object_bytes": 2048,
+      "slabs": 114,
+      "occupancy_KiB": 912
+    },
+    {
+      "cache": "kmalloc-4096",
+      "active_objects": 174,
+      "objects": 180,
+      "object_bytes": 4096,
+      "slabs": 45,
+      "occupancy_KiB": 720
+    },
+    {
+      "cache": "vdfs_dentry",
+      "active_objects": 4620,
+      "objects": 4620,
+      "object_bytes": 136,
+      "slabs": 154,
+      "occupancy_KiB": 616
+    },
+    {
+      "cache": "sock_inode_cache",
+      "active_objects": 823,
+      "objects": 840,
+      "object_bytes": 640,
+      "slabs": 140,
+      "occupancy_KiB": 560
+    },
+    {
+      "cache": "sighand_cache",
+      "active_objects": 402,
+      "objects": 402,
+      "object_bytes": 1344,
+      "slabs": 67,
+      "occupancy_KiB": 536
+    }
+  ]
+}

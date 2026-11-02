@@ -1,0 +1,35 @@
+COMMAND: ( run() { printf '\nCMD='; printf '%s ' "$@"; printf '\n'; "$@"; r=$?; printf '\nRC=%s\n' "$r"; }; for f in /proc/sys/kernel/perf_event_paranoid /proc/sys/kernel/kptr_restrict /proc/sys/kernel/dmesg_restrict /proc/sys/kernel/ftrace_enabled /proc/sys/net/core/bpf_jit_enable; do run cat "$f"; done ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:47.337152+08:00
+END: 2026-11-02T23:15:47.502430+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 421
+RAW_SHA256: f597ee801526683f8af560aafb9e3245b1b32ea2e044b1a81623fdf76dcfe37e
+
+
+CMD=cat /proc/sys/kernel/perf_event_paranoid
+2
+
+RC=0
+
+CMD=cat /proc/sys/kernel/kptr_restrict
+1
+
+RC=0
+
+CMD=cat /proc/sys/kernel/dmesg_restrict
+0
+
+RC=0
+
+CMD=cat /proc/sys/kernel/ftrace_enabled
+cat: /proc/sys/kernel/ftrace_enabled: No such file or directory
+
+RC=1
+
+CMD=cat /proc/sys/net/core/bpf_jit_enable
+cat: /proc/sys/net/core/bpf_jit_enable: No such file or directory
+
+RC=1
+
+__PB1_RC=0

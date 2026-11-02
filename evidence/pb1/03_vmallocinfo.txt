@@ -1,0 +1,129 @@
+COMMAND: ( cat /proc/vmallocinfo ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:44.226249+08:00
+END: 2026-11-02T23:15:44.391635+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 127986
+RAW_SHA256: 09ff1677e37e2bc89dbb1504f1cde35051d3e9ed888d1987eb8df6550eb9cdbf
+
+VmallocUsedVirt:      122944 kB [    7168 kB vm_map_ram,    47548 kB ioremap,
+   62136 kB vmalloc (   25916 kB ModulesUsedVirt,    36140 kB OtherVmalloc,       80 kB KernelStackVirt),
+     144 kB vmap,        8 kB usermap,     8228 kB vpages,     2872 kB dma-coherent,     8236 kB overlapped]
+VmallocChunk Total   :   205188 kB
+VmallocChunk Largest :   179304 kB
+VmallocChunk Count by Size :
+   <16K  <32K  <64K <128K <256K <512K   <1M   <2M   <4M   <8M  <16M  <32M  <64M  64M+
+ ------------------------------------------------------------------------------------
+    184    17    10     3     2     4     5     3     3     1     0     0     0     1
+
+AGGREGATION (range bytes, may include guards/overlaps/unpurged; not physical RSS)
+{
+  "raw_lines": 2046,
+  "range_entries": 2035,
+  "listed_range_bytes": 126803968,
+  "distinct_callers": 144,
+  "top20": [
+    {
+      "caller": "0xbe657000+0xed148",
+      "entries": 2,
+      "bytes": 20488192
+    },
+    {
+      "caller": "0xc00c0500",
+      "entries": 74,
+      "bytes": 14204928
+    },
+    {
+      "caller": "0xbeb7d000+0x3094",
+      "entries": 1,
+      "bytes": 12587008
+    },
+    {
+      "caller": "0xc0024584",
+      "entries": 1265,
+      "bytes": 10362880
+    },
+    {
+      "caller": "0xbe20d000+0x7970",
+      "entries": 2,
+      "bytes": 8441856
+    },
+    {
+      "caller": "vm_map_ram",
+      "entries": 7,
+      "bytes": 7340032
+    },
+    {
+      "caller": "0xc00c0548",
+      "entries": 74,
+      "bytes": 6733824
+    },
+    {
+      "caller": "0xc00c0594",
+      "entries": 74,
+      "bytes": 5562368
+    },
+    {
+      "caller": "0xbe657000+0xed274",
+      "entries": 2,
+      "bytes": 3256320
+    },
+    {
+      "caller": "0xc0b2c854",
+      "entries": 1,
+      "bytes": 3149824
+    },
+    {
+      "caller": "0xc05be1e4",
+      "entries": 1,
+      "bytes": 3125248
+    },
+    {
+      "caller": "0xc00bcec4",
+      "entries": 21,
+      "bytes": 2940928
+    },
+    {
+      "caller": "0xc040313c",
+      "entries": 17,
+      "bytes": 2232320
+    },
+    {
+      "caller": "0xbecc9000+0xb51b0",
+      "entries": 1,
+      "bytes": 2101248
+    },
+    {
+      "caller": "0xbe23f000+0xf1c",
+      "entries": 29,
+      "bytes": 2056192
+    },
+    {
+      "caller": "0xbf7bf000+0xd1008",
+      "entries": 30,
+      "bytes": 1806336
+    },
+    {
+      "caller": "0xbe3ff000+0x46930",
+      "entries": 1,
+      "bytes": 1581056
+    },
+    {
+      "caller": "0xbf4ac000+0x1438",
+      "entries": 3,
+      "bytes": 1470464
+    },
+    {
+      "caller": "0xc05c09c4",
+      "entries": 8,
+      "bytes": 1425408
+    },
+    {
+      "caller": "0xbe20d000+0x793c",
+      "entries": 1,
+      "bytes": 1052672
+    }
+  ],
+  "dmesg_first": "0.094053",
+  "dmesg_last": "101.316799"
+}

@@ -1,0 +1,15 @@
+{
+  "interval_seconds": 270.320285,
+  "tick_deltas_user_nice_system_idle_iowait_irq_softirq_steal": [
+    17569,
+    0,
+    18926,
+    206572,
+    46,
+    0,
+    18123,
+    0
+  ],
+  "busy_excluding_idle_and_iowait_percent": 20.907531886876235,
+  "note": "Aggregate across all CPUs; read-only interval includes normal device workload. Not an idle benchmark."
+}

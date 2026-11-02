@@ -1,0 +1,28 @@
+COMMAND: ( run() { printf '\nCMD='; printf '%s ' "$@"; printf '\n'; "$@"; r=$?; printf '\nRC=%s\n' "$r"; }; for f in /proc/pressure/cpu /proc/pressure/memory /proc/pressure/io; do run cat "$f"; done ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:45.203106+08:00
+END: 2026-11-02T23:15:45.368006+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 429
+RAW_SHA256: 97a418d0a0898b7bbc0ab99754ffb8eab6e5a409c76ca0a2c1910aa661b6dd81
+
+
+CMD=cat /proc/pressure/cpu
+some avg2=10.71 avg6=9.61 avg10=9.89 total=35353149
+full avg2=0.00 avg6=0.00 avg10=0.00 total=0
+
+RC=0
+
+CMD=cat /proc/pressure/memory
+some avg2=0.00 avg6=0.00 avg10=0.00 total=39319
+full avg2=0.00 avg6=0.00 avg10=0.00 total=9912
+
+RC=0
+
+CMD=cat /proc/pressure/io
+some avg2=0.00 avg6=0.00 avg10=0.02 total=2468671
+full avg2=0.00 avg6=0.00 avg10=0.00 total=428101
+
+RC=0
+
+__PB1_RC=0

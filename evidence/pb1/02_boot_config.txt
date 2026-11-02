@@ -1,0 +1,15 @@
+COMMAND: ( run() { printf '\nCMD='; printf '%s ' "$@"; printf '\n'; "$@"; r=$?; printf '\nRC=%s\n' "$r"; }; run ls -ld /boot; for f in /boot/*config* /boot/.*config*; do if test -f "$f"; then run ls -l "$f"; run cat "$f"; fi; done ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:42.763304+08:00
+END: 2026-11-02T23:15:42.929275+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 89
+RAW_SHA256: 38a2856acc7b8d5950fd297d2e281c2e159a3d4d7fed4391b20360b9e39b6b42
+
+
+CMD=ls -ld /boot
+dr-xr-xr-x 2 root root 27 Aug 18 22:35 /boot
+
+RC=0
+
+__PB1_RC=0

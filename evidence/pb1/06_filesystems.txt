@@ -1,0 +1,38 @@
+COMMAND: ( cat /proc/filesystems ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:46.460007+08:00
+END: 2026-11-02T23:15:46.624924+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 0
+RAW_BYTES: 379
+RAW_SHA256: 569f89a79f3abe294cf913214080cea19b20e9f75951fc7b526a2f335774710f
+
+nodev	sysfs
+nodev	tmpfs
+nodev	bdev
+nodev	proc
+nodev	cgroup
+nodev	cgroup2
+nodev	cpuset
+nodev	devtmpfs
+nodev	debugfs
+nodev	tracefs
+nodev	securityfs
+nodev	sockfs
+nodev	pipefs
+nodev	ramfs
+nodev	devpts
+	squashfs
+	vfat
+	msdos
+	fuseblk
+nodev	fuse
+nodev	fusectl
+nodev	overlay
+	erofs
+	vdfs
+nodev	mqueue
+nodev	kdbusfs
+nodev	smackfs
+nodev	ecryptfs
+
+__PB1_RC=0

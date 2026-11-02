@@ -1,0 +1,11 @@
+COMMAND: ( ls -ld /sys/devices/system/cpu/cpuidle ); __pb1_rc=$?; printf "\n__PB1_RC=%s\n" "$__pb1_rc"
+START: 2026-11-02T23:15:47.882945+08:00
+END: 2026-11-02T23:15:48.047763+08:00
+TRANSPORT_EXIT: 0
+REMOTE_EXIT: 2
+RAW_BYTES: 92
+RAW_SHA256: 57ce954f671556262df07748450918a764bfc6d7a304fc121db86fcf977de71b
+
+ls: cannot access /sys/devices/system/cpu/cpuidle: No such file or directory
+
+__PB1_RC=2
