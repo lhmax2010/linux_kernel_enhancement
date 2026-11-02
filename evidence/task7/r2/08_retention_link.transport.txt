@@ -1,0 +1,136 @@
+CMD=cat /etc/systemd/journald.conf
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 2.1 of the License, or
+#  (at your option) any later version.
+#
+# Entries in this file show the compile time defaults.
+# You can change settings by editing this file.
+# Defaults can be restored by simply deleting this file.
+#
+# See journald.conf(5) for details.
+
+[Journal]
+Storage=persistent
+#Compress=yes
+#Seal=yes
+SplitMode=none
+#SyncIntervalSec=5m
+#RateLimitIntervalSec=30s
+#RateLimitBurst=10000
+SystemMaxUse=4M
+#SystemKeepFree=
+#SystemMaxFileSize=
+#SystemMaxFiles=100
+#RuntimeMaxUse=
+#RuntimeKeepFree=
+#RuntimeMaxFileSize=
+#RuntimeMaxFiles=100
+#MaxRetentionSec=
+#MaxFileSec=1month
+#ForwardToSyslog=no
+#ForwardToKMsg=no
+#ForwardToConsole=no
+#ForwardToWall=yes
+#TTYPath=/dev/console
+#MaxLevelStore=debug
+#MaxLevelSyslog=debug
+#MaxLevelKMsg=notice
+#MaxLevelConsole=info
+#MaxLevelWall=emerg
+#LineMax=48K
+#ReadKMsg=yes
+
+RC=0
+CMD=ls -ld /etc/systemd/journald.conf.d /usr/lib/systemd/journald.conf.d /run/systemd/journald.conf.d
+ls: cannot access /etc/systemd/journald.conf.d: No such file or directory
+ls: cannot access /usr/lib/systemd/journald.conf.d: No such file or directory
+ls: cannot access /run/systemd/journald.conf.d: No such file or directory
+
+RC=2
+CMD=readlink -f /var/log/journal
+/opt/var/log/journal
+
+RC=0
+CMD=findmnt -T /var/log/journal
+TARGET SOURCE         FSTYPE OPTIONS
+/opt   /dev/mmcblk0p3 ext4   rw,relatime
+
+RC=0
+CMD=journalctl --disk-usage
+Archived and active journals take up 4.0M in the file system.
+
+RC=0
+CMD=ls -lR /var/log/journal
+/var/log/journal:
+total 8
+drwxr-sr-x 2 root systemd-journal 4096 Nov  2 15:46 e6ea489be2674e9d820d428ba8b51a8e
+
+/var/log/journal/e6ea489be2674e9d820d428ba8b51a8e:
+total 4156
+-rw-r----- 1 root systemd-journal 524288 Nov  2 15:50 system.journal
+-rw-r----- 1 root systemd-journal 524288 Nov  2 14:44 system@ca7debfd37d14c8d8b9d9928e8350213-0000000000001815-00065f447d6ede84.journal
+-rw-r----- 1 root systemd-journal 524288 Nov  2 14:54 system@ca7debfd37d14c8d8b9d9928e8350213-0000000000001983-00065f44a2b39d22.journal
+-rw-r----- 1 root systemd-journal 524288 Nov  2 15:05 system@ca7debfd37d14c8d8b9d9928e8350213-0000000000001af1-00065f44c7f8357d.journal
+-rw-r----- 1 root systemd-journal 524288 Nov  2 15:15 system@ca7debfd37d14c8d8b9d9928e8350213-0000000000001c5f-00065f44ed3c87a5.journal
+-rw-r----- 1 root systemd-journal 524288 Nov  2 15:25 system@ca7debfd37d14c8d8b9d9928e8350213-0000000000001dca-00065f4511479d5f.journal
+-rw-r----- 1 root systemd-journal 524288 Nov  2 15:35 system@ca7debfd37d14c8d8b9d9928e8350213-0000000000001f38-00065f45368c05c1.journal
+-rw-r----- 1 root systemd-journal 524288 Nov  2 15:46 system@ca7debfd37d14c8d8b9d9928e8350213-00000000000020a6-00065f455bd0e880.journal
+
+RC=0
+CMD=cat /usr/lib/systemd/network/99-default.link /etc/systemd/network/99-default.link
+#  SPDX-License-Identifier: LGPL-2.1+
+#
+#  This file is part of systemd.
+#
+#  systemd is free software; you can redistribute it and/or modify it
+#  under the terms of the GNU Lesser General Public License as published by
+#  the Free Software Foundation; either version 2.1 of the License, or
+#  (at your option) any later version.
+
+[Match]
+OriginalName=*
+
+[Link]
+NamePolicy=keep kernel database onboard slot path
+MACAddressPolicy=persistent
+
+RC=0
+CMD=ls -l /usr/lib/systemd/network/99-default.link /etc/systemd/network/99-default.link
+lrwxrwxrwx 1 root root   9 Oct 29 01:52 /etc/systemd/network/99-default.link -> /dev/null
+-rw-r--r-- 1 root root 441 Nov 30  2019 /usr/lib/systemd/network/99-default.link
+
+RC=0
+CMD=readlink -f /usr/bin/logger
+/usr/bin/logger
+
+RC=0
+CMD=ls -lZ /dev/log
+lrwxrwxrwx 1 root root System::Privileged 28 Jan  1  1970 /dev/log -> /run/systemd/journal/dev-log
+
+RC=0
+CMD=readlink -f /dev/log
+/run/systemd/journal/dev-log
+
+RC=0
+CMD=systemctl show systemd-journald.service -p ActiveEnterTimestampMonotonic
+ActiveEnterTimestampMonotonic=11074879
+
+RC=0
+CMD=systemctl show lko-net-setup.service -p ExecStart -p StandardOutput -p StandardError -p SyslogIdentifier
+ExecStart={ path=/usr/local/sbin/lko-net-setup.sh ; argv[]=/usr/local/sbin/lko-net-setup.sh ; ignore_errors=no ; start_time=[Thu 1970-01-01 09:00:16 KST] ; stop_time=[Mon 2026-11-02 12:10:43 KST] ; pid=618 ; code=exited ; status=0 }
+StandardOutput=dlog|journal
+StandardError=dlog|journal
+SyslogIdentifier=
+
+RC=0
+CMD=date -u
+Mon Nov  2 06:50:34 UTC 2026
+
+RC=0
+CMD=cat /proc/uptime
+13212.37 51435.30
+
+RC=0

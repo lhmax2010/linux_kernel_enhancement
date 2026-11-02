@@ -1,0 +1,9 @@
+Identity: PASS rpi4 / armv7l / ID=tizen.
+Boot ID unchanged during this readonly task: 559cfce8-46fe-49b0-97f2-2c5d18ecb275.
+Mounts identical including order; no board temp created, /opt/usr/lko_task7 absent.
+Owner restored and read back uid=5001.
+Service start_us=16155117 exit_us=21129311 duration_us=4974194 duration_s=4.974194
+multi_user_enter_us=21133569 after_service_exit_us=4258 after_service_exit_ms=4.258
+Service final active/exited Result=success ExecMainCode=1 (code=exited per ExecStart) ExecMainStatus=0 NRestarts=0.
+Hashes match previous installed script/unit exactly. No logger execution, service operation, network/label/file change, daemon-reload or reboot performed.
+df / and /opt/usr unchanged: root used/available=1340328/1650028 KiB; /opt/usr=983204/115421020 KiB.

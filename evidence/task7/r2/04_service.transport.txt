@@ -1,0 +1,31 @@
+TimeoutStartUSec=infinity
+Result=success
+NRestarts=0
+ExecMainStartTimestampMonotonic=16155117
+ExecMainExitTimestampMonotonic=21129311
+ExecMainCode=1
+ExecMainStatus=0
+Before=shutdown.target multi-user.target
+After=system.slice connman.service sysinit.target basic.target
+LoadState=loaded
+ActiveState=active
+SubState=exited
+UnitFileState=enabled
+InactiveExitTimestampMonotonic=16156439
+ActiveEnterTimestampMonotonic=21130467
+ConditionResult=yes
+ConditionTimestampMonotonic=16153051
+SHOW-EXIT=0
+-rw-r--r-- 1 root root  213 Nov  2 10:52 /etc/systemd/system/lko-net-setup.service
+lrwxrwxrwx 1 root root   41 Nov  2 10:52 /etc/systemd/system/multi-user.target.wants/lko-net-setup.service -> /etc/systemd/system/lko-net-setup.service
+-rwxr-xr-x 1 root root 2642 Nov  2 10:52 /usr/local/sbin/lko-net-setup.sh
+LS-EXIT=0
+                 _ /etc/systemd/system/lko-net-setup.service
+System::Privileged /etc/systemd/system/multi-user.target.wants/lko-net-setup.service
+                 _ /usr/local/sbin/lko-net-setup.sh
+LABEL-EXIT=0
+/etc/systemd/system/lko-net-setup.service
+LINK-EXIT=0
+8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608  /usr/local/sbin/lko-net-setup.sh
+bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78  /etc/systemd/system/lko-net-setup.service
+HASH-EXIT=0

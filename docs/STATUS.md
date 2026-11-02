@@ -2,6 +2,17 @@
 
 更新：2026-11-02（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
+**任务7 r2只读排查完成；没有重启或修复服务。** 本次boot服务为active/exited、Result=success、ExecMainStatus=0，耗时4.974194秒，multi-user.target在退出后4.258毫秒到达。当前网络由用户手动恢复，不能补判上次首次重启验收通过。[11 r4](11_board_boot_chain.md#2026-11-02-r4首次重启失败排查)、[证据](../evidence/task7/r2/README.md)。
+
+- 计划/进度：身份断言、服务/日志/网络/udev只读采集、时间线与缺失证据分析、owner恢复、文档证据同commit推main；采集分析与收尾已完成。
+- 已闭合：两服务文件哈希/标签与启用链接保持不变，当前boot服务确实执行并退出0；现存journal从开机8605秒开始，不覆盖16–21秒执行窗口。Storage=persistent、上限4MiB且已占满；早期日志被高频display-manager日志挤出是推测，logger是否曾成功写入无法确定。11:09失败不能仅归因网线松动。
+- 时间前提：用户报告约13:12再次开机，但当前uptime/UTC推算与之不一致且早期墙钟由1970跳变；不将当前boot直接对应11:09故障，详见11 r4。
+- .link前提：目录与net_setup_link udev规则存在；默认99-default.link被/etc同名/dev/null链接屏蔽，eth0无ID_NET_LINK_FILE，启用前设置MAC的效果未验证。
+- 收尾：本轮无板上临时文件，/opt/usr/lko_task7不存在，mounts与根/opt/usr df前后一致；SDB已恢复owner并回读uid5001。原始输出保留temp/task7/r2，不删除历史证据。
+- 挂账：**配网服务的修复方案或重启验证重做，待 PM 决定**；内核替换执行步骤仍待PM下发。上次五项用户待答问题保留如下。
+
+以下为任务7 r3结束时的历史状态（本轮补充以以上及11 r4为准）：
+
 **任务7：第一部分完成；第二部分首次重启后SDB等待600秒超时，按PM条件停止，未执行第二次重启。服务运行结果未知，整体未通过首次重启验收。** 未修改内核、启动参数或boot/模块分区；不安装RPM、不手动启动配网服务。已请用户通过串口手动配网恢复；本轮未做其他补救。
 
 - 已闭合：模块分区Available=14,648 KiB、空闲inode=8,054，现有版本目录du=4,424 KiB；kdbus已加载使用，zlogger未加载，logger是另一模块；rpm -qf未找到两外部模块所属包。ramdisk无版本目录/.ko，init按槽位只读挂载模块分区再modprobe。已有sandbox QB1211696 DTB与板上SHA一致。证据：evidence/task7/。
@@ -86,4 +97,4 @@ ARM32缺少BPF trampoline；正常前置条件下挂载先从弱size实现返回
 
 ## 发布状态
 
-本轮仅提交任务7产出：11末尾r3与PM审核原文、RULES标签登记/新版本目录部署规则、STATUS及evidence/task7。普通推送GitHub main，作者/提交者Hao Lin <hao.lin@samsung.com>；不开PR、不force push、不推Gerrit。完整ramdisk/U-Boot/解包文件留temp/task7，仅小于1MB文本证据入库。任务7第二部分超时不是完成验收；最终commit见本轮回复。上轮A/B提交仍为1526c85与518a554。
+本轮仅提交任务7 r2产出：11末尾r4、STATUS及evidence/task7/r2；不改RULES/脚本/内核树。普通推送GitHub main，作者/提交者Hao Lin <hao.lin@samsung.com>；不开PR、不force push、不推Gerrit。全程只读排查，恢复owner；服务修复及重启验收待PM决定。最终commit见本轮回复。此前任务7 r3提交52ece452，A/B提交1526c85与518a554，历史证据保持原样。

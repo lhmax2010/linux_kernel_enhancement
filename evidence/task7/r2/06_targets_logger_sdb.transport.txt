@@ -1,0 +1,498 @@
+CMD=systemctl show multi-user.target -p ActiveEnterTimestampMonotonic
+ActiveEnterTimestampMonotonic=21133569
+
+RC=0
+CMD=systemctl list-dependencies multi-user.target --no-pager
+multi-user.target
+● ├─bluetooth-frwk.service
+● ├─boot-animation.path
+● ├─central-key-manager.service
+● ├─chromium-efl-update.service
+● ├─chromium-efl.service
+● ├─clone_partitions.service
+● ├─connman.service
+● ├─contextd.service
+● ├─cynara.service
+● ├─deviced.service
+● ├─lightweight-web-engine-update.service
+● ├─lko-net-setup.service
+● ├─media-server.service
+● ├─net-config.service
+● ├─nsjail.service
+● ├─package-recovery.service
+● ├─pipewire.service
+● ├─pushd.service
+● ├─resourced.service
+● ├─security-config.service
+● ├─sensord.service
+● ├─sessiond.service
+● ├─setup-adaptor.service
+● ├─stability-monitor.service
+● ├─stc-manager.service
+● ├─systemd-logind.service
+● ├─systemd-user-sessions.service
+● ├─tlm.service
+● ├─update-manager.service
+● ├─webappenc-initializer.service
+● ├─wifi-tethering-manager.service
+● ├─basic.target
+● │ ├─ac.service
+● │ ├─actd.service
+● │ ├─buxton2.service
+● │ ├─dlog_logger.service
+● │ ├─esd.service
+● │ ├─hal-backend-service.service
+● │ ├─pkg-db-recovery.service
+● │ ├─pkgmgr-info.service
+● │ ├─privilege-checker-integrity.service
+● │ ├─rscmgr-msgq.service
+● │ ├─rscmgr-service.service
+● │ ├─security-manager-cleanup.service
+● │ ├─security-manager-rules-loader.service
+● │ ├─tizen-system-env.service
+● │ ├─tmp.mount
+● │ ├─busnames.target
+● │ │ ├─net.asp.busname
+● │ │ ├─net.connman.busname
+● │ │ ├─net.connman.vpn.busname
+● │ │ ├─net.inm_manager.busname
+● │ │ ├─net.nan.busname
+● │ │ ├─net.netconfig.busname
+● │ │ ├─net.stc.busname
+● │ │ ├─net.stc.iptables.busname
+● │ │ ├─net.uamd.busname
+● │ │ ├─net.wifidirect.busname
+● │ │ ├─net.wifitetheringExt.busname
+● │ │ ├─org.bluez.ag_agent.busname
+● │ │ ├─org.bluez.obex.busname
+● │ │ ├─org.freedesktop.locale1.busname
+● │ │ ├─org.freedesktop.login1.busname
+● │ │ ├─org.freedesktop.systemd1.busname
+● │ │ ├─org.O1.SecurityAccounts.gUserManagement.busname
+● │ │ ├─org.projectx.bt.busname
+● │ │ ├─org.projectx.bt_core.busname
+● │ │ ├─org.tizen.account.manager.busname
+● │ │ ├─org.tizen.activationd.busname
+● │ │ ├─org.tizen.app2sd.busname
+● │ │ ├─org.tizen.clatd.busname
+● │ │ ├─org.tizen.data_provider_service.busname
+● │ │ ├─org.tizen.dumpsys.providers.org.tizen.bugreport-service.busname
+● │ │ ├─org.tizen.dumpsys.providers.org.tizen.systemstate.busname
+● │ │ ├─org.tizen.dumpsys.service.busname
+● │ │ ├─org.tizen.engine-loader.busname
+● │ │ ├─org.tizen.factoryreset.busname
+● │ │ ├─org.tizen.lbs.Providers.LbsServer.busname
+● │ │ ├─org.tizen.machinelearning.service.busname
+● │ │ ├─org.tizen.MobileapAgent.busname
+● │ │ ├─org.tizen.PhonenumberUtils.dbus.busname
+● │ │ ├─org.tizen.pkgdir_tool.busname
+● │ │ ├─org.tizen.scmirroring.server.busname
+● │ │ ├─org.tizen.sessiond.busname
+● │ │ ├─org.tizen.sticker.server.busname
+● │ │ ├─org.tizen.system.crash.livedump.busname
+● │ │ ├─org.tizen.system.deviced.busname
+● │ │ ├─org.tizen.system.diagnostics.busname
+● │ │ ├─org.tizen.system.isu.busname
+● │ │ ├─org.tizen.system.pass.busname
+● │ │ ├─org.tizen.system.popup.busname
+● │ │ ├─org.tizen.system.storage.busname
+● │ │ ├─org.tizen.system.thermal.busname
+● │ │ ├─org.tizen.system.vibrator.busname
+● │ │ ├─org.tizen.voice.sttserver.busname
+● │ │ ├─org.tizen.voice.sttservercustom.busname
+● │ │ ├─org.tizen.voice.ttsinterruptserver.busname
+● │ │ ├─org.tizen.voice.ttsnotiserver.busname
+● │ │ ├─org.tizen.voice.ttsserver.busname
+● │ │ └─org.tizen.voice.ttssrserver.busname
+● │ ├─paths.target
+● │ │ ├─dlog_cleanup.path
+● │ │ ├─focus-server.path
+● │ │ └─muse-server.path
+● │ ├─slices.target
+● │ │ ├─-.slice
+● │ │ └─system.slice
+● │ ├─sockets.target
+● │ │ ├─ac.socket
+● │ │ ├─alarm-server.socket
+● │ │ ├─amd-tizen-action-service.socket
+● │ │ ├─askuser-notification-stream.socket
+● │ │ ├─buxton2.socket
+● │ │ ├─central-key-manager-api-control.socket
+● │ │ ├─central-key-manager-api-encryption.socket
+● │ │ ├─central-key-manager-api-extended.socket
+● │ │ ├─central-key-manager-api-ocsp.socket
+● │ │ ├─central-key-manager-api-storage.socket
+● │ │ ├─connman.socket
+● │ │ ├─cynara-admin.socket
+● │ │ ├─cynara-agent.socket
+● │ │ ├─cynara-monitor-get.socket
+● │ │ ├─cynara.socket
+● │ │ ├─dbus.socket
+● │ │ ├─device-certificate-manager.socket
+● │ │ ├─download-provider.socket
+● │ │ ├─esd-badge.socket
+● │ │ ├─esd-cion.socket
+● │ │ ├─esd-dpm.socket
+● │ │ ├─esd-group.socket
+● │ │ ├─hal-backend-service.socket
+● │ │ ├─mdnsd.socket
+● │ │ ├─mediacontroller.socket
+● │ │ ├─package-manager.socket
+● │ │ ├─pass-resource-monitor.socket
+● │ │ ├─pkgmgr-info.socket
+● │ │ ├─resourced.socket
+● │ │ ├─sdbd_tcp.socket
+● │ │ ├─security-manager.socket
+● │ │ ├─sensord.socket
+● │ │ ├─systemd-initctl.socket
+● │ │ ├─systemd-journald-audit.socket
+● │ │ ├─systemd-journald-dev-log.socket
+● │ │ ├─systemd-journald.socket
+● │ │ ├─systemd-udevd-control.socket
+● │ │ ├─systemd-udevd-kernel.socket
+● │ │ ├─tizen-action-plugin-launcher.socket
+● │ │ ├─tizen-theme-manager.socket
+● │ │ ├─tizen-watcherd.socket
+● │ │ └─webauthn.socket
+● │ ├─sysinit.target
+● │ │ ├─dev-mqueue.mount
+● │ │ ├─hal-compatibility-checker.service
+● │ │ ├─kmod-static-nodes.service
+● │ │ ├─platform-extension-config.service
+● │ │ ├─proc-sys-fs-binfmt_misc.automount
+● │ │ ├─sys-kernel-config.mount
+● │ │ ├─sys-kernel-debug-tracing.mount
+● │ │ ├─sys-kernel-debug.mount
+● │ │ ├─systemd-boot-system-token.service
+● │ │ ├─systemd-journal-catalog-update.service
+● │ │ ├─systemd-journal-flush.service
+● │ │ ├─systemd-journald.service
+● │ │ ├─systemd-machine-id-commit.service
+● │ │ ├─systemd-sysctl.service
+● │ │ ├─systemd-tmpfiles-setup-dev.service
+● │ │ ├─systemd-tmpfiles-setup.service
+● │ │ ├─systemd-udev-trigger.service
+● │ │ ├─systemd-udevd.service
+● │ │ ├─systemd-update-done.service
+● │ │ ├─systemd-vconsole-setup.service
+● │ │ ├─tizen-watcherd.service
+● │ │ ├─tizenid.service
+● │ │ ├─ttrace-marker.service
+● │ │ ├─local-fs.target
+● │ │ │ ├─data-checkpoint.service
+● │ │ │ ├─dlconf.service
+● │ │ │ ├─mnt-inform.mount
+● │ │ │ ├─opt-usr.mount
+● │ │ │ ├─platform-extension-config.service
+● │ │ │ ├─platform-extension-migration.service
+● │ │ │ └─tmp.mount
+● │ │ └─swap.target
+● │ └─timers.target
+● └─getty.target
+●   └─serial-getty@ttyS0.service
+
+RC=0
+CMD=systemctl get-default
+graphical.target
+
+RC=0
+CMD=systemctl list-dependencies graphical.target --no-pager
+graphical.target
+● ├─display-manager-monitor.service
+● ├─display-manager.service
+● ├─system-default-target-done.service
+● ├─system-delayed-target-trigger.service
+● └─multi-user.target
+●   ├─bluetooth-frwk.service
+●   ├─boot-animation.path
+●   ├─central-key-manager.service
+●   ├─chromium-efl-update.service
+●   ├─chromium-efl.service
+●   ├─clone_partitions.service
+●   ├─connman.service
+●   ├─contextd.service
+●   ├─cynara.service
+●   ├─deviced.service
+●   ├─lightweight-web-engine-update.service
+●   ├─lko-net-setup.service
+●   ├─media-server.service
+●   ├─net-config.service
+●   ├─nsjail.service
+●   ├─package-recovery.service
+●   ├─pipewire.service
+●   ├─pushd.service
+●   ├─resourced.service
+●   ├─security-config.service
+●   ├─sensord.service
+●   ├─sessiond.service
+●   ├─setup-adaptor.service
+●   ├─stability-monitor.service
+●   ├─stc-manager.service
+●   ├─systemd-logind.service
+●   ├─systemd-user-sessions.service
+●   ├─tlm.service
+●   ├─update-manager.service
+●   ├─webappenc-initializer.service
+●   ├─wifi-tethering-manager.service
+●   ├─basic.target
+●   │ ├─ac.service
+●   │ ├─actd.service
+●   │ ├─buxton2.service
+●   │ ├─dlog_logger.service
+●   │ ├─esd.service
+●   │ ├─hal-backend-service.service
+●   │ ├─pkg-db-recovery.service
+●   │ ├─pkgmgr-info.service
+●   │ ├─privilege-checker-integrity.service
+●   │ ├─rscmgr-msgq.service
+●   │ ├─rscmgr-service.service
+●   │ ├─security-manager-cleanup.service
+●   │ ├─security-manager-rules-loader.service
+●   │ ├─tizen-system-env.service
+●   │ ├─tmp.mount
+●   │ ├─busnames.target
+●   │ │ ├─net.asp.busname
+●   │ │ ├─net.connman.busname
+●   │ │ ├─net.connman.vpn.busname
+●   │ │ ├─net.inm_manager.busname
+●   │ │ ├─net.nan.busname
+●   │ │ ├─net.netconfig.busname
+●   │ │ ├─net.stc.busname
+●   │ │ ├─net.stc.iptables.busname
+●   │ │ ├─net.uamd.busname
+●   │ │ ├─net.wifidirect.busname
+●   │ │ ├─net.wifitetheringExt.busname
+●   │ │ ├─org.bluez.ag_agent.busname
+●   │ │ ├─org.bluez.obex.busname
+●   │ │ ├─org.freedesktop.locale1.busname
+●   │ │ ├─org.freedesktop.login1.busname
+●   │ │ ├─org.freedesktop.systemd1.busname
+●   │ │ ├─org.O1.SecurityAccounts.gUserManagement.busname
+●   │ │ ├─org.projectx.bt.busname
+●   │ │ ├─org.projectx.bt_core.busname
+●   │ │ ├─org.tizen.account.manager.busname
+●   │ │ ├─org.tizen.activationd.busname
+●   │ │ ├─org.tizen.app2sd.busname
+●   │ │ ├─org.tizen.clatd.busname
+●   │ │ ├─org.tizen.data_provider_service.busname
+●   │ │ ├─org.tizen.dumpsys.providers.org.tizen.bugreport-service.busname
+●   │ │ ├─org.tizen.dumpsys.providers.org.tizen.systemstate.busname
+●   │ │ ├─org.tizen.dumpsys.service.busname
+●   │ │ ├─org.tizen.engine-loader.busname
+●   │ │ ├─org.tizen.factoryreset.busname
+●   │ │ ├─org.tizen.lbs.Providers.LbsServer.busname
+●   │ │ ├─org.tizen.machinelearning.service.busname
+●   │ │ ├─org.tizen.MobileapAgent.busname
+●   │ │ ├─org.tizen.PhonenumberUtils.dbus.busname
+●   │ │ ├─org.tizen.pkgdir_tool.busname
+●   │ │ ├─org.tizen.scmirroring.server.busname
+●   │ │ ├─org.tizen.sessiond.busname
+●   │ │ ├─org.tizen.sticker.server.busname
+●   │ │ ├─org.tizen.system.crash.livedump.busname
+●   │ │ ├─org.tizen.system.deviced.busname
+●   │ │ ├─org.tizen.system.diagnostics.busname
+●   │ │ ├─org.tizen.system.isu.busname
+●   │ │ ├─org.tizen.system.pass.busname
+●   │ │ ├─org.tizen.system.popup.busname
+●   │ │ ├─org.tizen.system.storage.busname
+●   │ │ ├─org.tizen.system.thermal.busname
+●   │ │ ├─org.tizen.system.vibrator.busname
+●   │ │ ├─org.tizen.voice.sttserver.busname
+●   │ │ ├─org.tizen.voice.sttservercustom.busname
+●   │ │ ├─org.tizen.voice.ttsinterruptserver.busname
+●   │ │ ├─org.tizen.voice.ttsnotiserver.busname
+●   │ │ ├─org.tizen.voice.ttsserver.busname
+●   │ │ └─org.tizen.voice.ttssrserver.busname
+●   │ ├─paths.target
+●   │ │ ├─dlog_cleanup.path
+●   │ │ ├─focus-server.path
+●   │ │ └─muse-server.path
+●   │ ├─slices.target
+●   │ │ ├─-.slice
+●   │ │ └─system.slice
+●   │ ├─sockets.target
+●   │ │ ├─ac.socket
+●   │ │ ├─alarm-server.socket
+●   │ │ ├─amd-tizen-action-service.socket
+●   │ │ ├─askuser-notification-stream.socket
+●   │ │ ├─buxton2.socket
+●   │ │ ├─central-key-manager-api-control.socket
+●   │ │ ├─central-key-manager-api-encryption.socket
+●   │ │ ├─central-key-manager-api-extended.socket
+●   │ │ ├─central-key-manager-api-ocsp.socket
+●   │ │ ├─central-key-manager-api-storage.socket
+●   │ │ ├─connman.socket
+●   │ │ ├─cynara-admin.socket
+●   │ │ ├─cynara-agent.socket
+●   │ │ ├─cynara-monitor-get.socket
+●   │ │ ├─cynara.socket
+●   │ │ ├─dbus.socket
+●   │ │ ├─device-certificate-manager.socket
+●   │ │ ├─download-provider.socket
+●   │ │ ├─esd-badge.socket
+●   │ │ ├─esd-cion.socket
+●   │ │ ├─esd-dpm.socket
+●   │ │ ├─esd-group.socket
+●   │ │ ├─hal-backend-service.socket
+●   │ │ ├─mdnsd.socket
+●   │ │ ├─mediacontroller.socket
+●   │ │ ├─package-manager.socket
+●   │ │ ├─pass-resource-monitor.socket
+●   │ │ ├─pkgmgr-info.socket
+●   │ │ ├─resourced.socket
+●   │ │ ├─sdbd_tcp.socket
+●   │ │ ├─security-manager.socket
+●   │ │ ├─sensord.socket
+●   │ │ ├─systemd-initctl.socket
+●   │ │ ├─systemd-journald-audit.socket
+●   │ │ ├─systemd-journald-dev-log.socket
+●   │ │ ├─systemd-journald.socket
+●   │ │ ├─systemd-udevd-control.socket
+●   │ │ ├─systemd-udevd-kernel.socket
+●   │ │ ├─tizen-action-plugin-launcher.socket
+●   │ │ ├─tizen-theme-manager.socket
+●   │ │ ├─tizen-watcherd.socket
+●   │ │ └─webauthn.socket
+●   │ ├─sysinit.target
+●   │ │ ├─dev-mqueue.mount
+●   │ │ ├─hal-compatibility-checker.service
+●   │ │ ├─kmod-static-nodes.service
+●   │ │ ├─platform-extension-config.service
+●   │ │ ├─proc-sys-fs-binfmt_misc.automount
+●   │ │ ├─sys-kernel-config.mount
+●   │ │ ├─sys-kernel-debug-tracing.mount
+●   │ │ ├─sys-kernel-debug.mount
+●   │ │ ├─systemd-boot-system-token.service
+●   │ │ ├─systemd-journal-catalog-update.service
+●   │ │ ├─systemd-journal-flush.service
+●   │ │ ├─systemd-journald.service
+●   │ │ ├─systemd-machine-id-commit.service
+●   │ │ ├─systemd-sysctl.service
+●   │ │ ├─systemd-tmpfiles-setup-dev.service
+●   │ │ ├─systemd-tmpfiles-setup.service
+●   │ │ ├─systemd-udev-trigger.service
+●   │ │ ├─systemd-udevd.service
+●   │ │ ├─systemd-update-done.service
+●   │ │ ├─systemd-vconsole-setup.service
+●   │ │ ├─tizen-watcherd.service
+●   │ │ ├─tizenid.service
+●   │ │ ├─ttrace-marker.service
+●   │ │ ├─local-fs.target
+●   │ │ │ ├─data-checkpoint.service
+●   │ │ │ ├─dlconf.service
+●   │ │ │ ├─mnt-inform.mount
+●   │ │ │ ├─opt-usr.mount
+●   │ │ │ ├─platform-extension-config.service
+●   │ │ │ ├─platform-extension-migration.service
+●   │ │ │ └─tmp.mount
+●   │ │ └─swap.target
+●   │ └─timers.target
+●   └─getty.target
+●     └─serial-getty@ttyS0.service
+
+RC=0
+CMD=command -v logger
+/usr/bin/logger
+
+RC=0
+CMD=ls -lZ /usr/bin/logger /dev/log
+lrwxrwxrwx 1 root root System::Privileged    28 Jan  1  1970 /dev/log -> /run/systemd/journal/dev-log
+-rwxr-xr-x 1 root root _                  26556 Oct 13 15:07 /usr/bin/logger
+
+RC=0
+CMD=systemctl show connman.service -p ActiveEnterTimestampMonotonic
+ActiveEnterTimestampMonotonic=15990239
+
+RC=0
+SDB-UNITS
+  dev-usb\x2dfuncs-sdb-default.mount                                                                                        loaded    active     mounted      /dev/usb-funcs/sdb/default
+  sdbd.service                                                                                                              loaded    active     running      sdbd
+  udev-sdb-init.service                                                                                                     loaded    inactive   dead         Install rule for udev sdb
+  sdbd.socket                                                                                                               loaded    active     running      sdbd Socket for sdb
+  sdbd_tcp.socket                                                                                                           loaded    active     running      sdbd: TCP socket
+SDB-GREP-EXIT=0
+CMD=systemctl show dev-usb\x2dfuncs-sdb-default.mount -p ActiveEnterTimestampMonotonic
+ActiveEnterTimestampMonotonic=21668379
+
+RC=0
+CMD=systemctl cat dev-usb\x2dfuncs-sdb-default.mount
+No files found for dev-usb\x2dfuncs-sdb-default.mount.
+
+RC=1
+CMD=systemctl show sdbd.service -p ActiveEnterTimestampMonotonic
+ActiveEnterTimestampMonotonic=21892593
+
+RC=0
+CMD=systemctl cat sdbd.service
+# /usr/lib/systemd/system/sdbd.service
+[Unit]
+Description=sdbd
+After=tmp.mount
+
+[Service]
+User=sdk
+Group=sdk
+SmackProcessLabel=System
+EnvironmentFile=-/run/sdbd-env
+#If necessary, Put Environment variable settings in a file like below
+#ExecStartPre=/bin/bash -c "/bin/echo 'SDB_TRACE=all SDBD_LOG_PATH=/tmp' >> /tmp/.sdbdlog.conf"
+Type=notify
+Capabilities=cap_kill,cap_dac_override,cap_setgid,cap_setuid,cap_sys_admin=i
+SecureBits=keep-caps
+PIDFile=/tmp/.sdbd.pid
+RemainAfterExit=yes
+ExecStart=/usr/sbin/sdbd $SDBD_CMDLINE
+USBFunctionDescriptors=/etc/sdbd/descs
+USBFunctionStrings=/etc/sdbd/strs
+
+RC=0
+CMD=systemctl show udev-sdb-init.service -p ActiveEnterTimestampMonotonic
+ActiveEnterTimestampMonotonic=0
+
+RC=0
+CMD=systemctl cat udev-sdb-init.service
+# /usr/lib/systemd/system/udev-sdb-init.service
+[Unit]
+Description=Install rule for udev sdb
+DefaultDependencies=no
+Before=sysinit.target systemd-udevd.service
+
+[Service]
+SmackProcessLabel=System
+Type=oneshot
+ExecStart=/usr/share/upgrade/install-sdb-rule.sh
+
+RC=0
+CMD=systemctl show sdbd.socket -p ActiveEnterTimestampMonotonic
+ActiveEnterTimestampMonotonic=21684805
+
+RC=0
+CMD=systemctl cat sdbd.socket
+# /usr/lib/systemd/system/sdbd.socket
+[Unit]
+Description=sdbd Socket for sdb
+
+[Socket]
+ListenUSBFunction=/dev/usb-funcs/sdb/default
+
+RC=0
+CMD=systemctl show sdbd_tcp.socket -p ActiveEnterTimestampMonotonic
+ActiveEnterTimestampMonotonic=14350858
+
+RC=0
+CMD=systemctl cat sdbd_tcp.socket
+# /usr/lib/systemd/system/sdbd_tcp.socket
+[Unit]
+Description=sdbd: TCP socket
+ConditionPathExists=!/home/owner/apps_rw/com.samsung.tv.store/data/develop_mode
+
+[Socket]
+ListenStream=26101
+SmackLabelIPIn=*
+SmackLabelIPOut=@
+Service=sdbd.service
+
+[Install]
+WantedBy=sockets.target
+
+RC=0

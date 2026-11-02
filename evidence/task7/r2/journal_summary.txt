@@ -1,0 +1,12 @@
+Source: 05_journal.transport.txt, FULL-JOURNAL-BEGIN..FULL-JOURNAL-EXIT=0
+Payload lines including journal header: 2689
+Lines matching display-manager|Display manager: 2677
+First monotonic log entry: [ 8605.093301] localhost systemd[1]: Failed to start Display manager.
+Case insensitive network filter: connman|sdbd|eth0|genet|link is|carrier
+Network total=0 kept=0 (limit=400)
+lko-net|LKO fixed total=0
+(smack|denied|audit) AND (lko|logger), case insensitive: total=0
+Service execution window: 16.155117..21.129311 seconds, outside retained journal window.
+Storage=persistent; SystemMaxUse=4M; journalctl --disk-usage=4.0M.
+Inference only: early journal may have rotated out under the size limit and repeated display-manager logs.
+Logger success at service execution time is not established by this snapshot.

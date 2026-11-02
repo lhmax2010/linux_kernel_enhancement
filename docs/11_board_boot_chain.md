@@ -306,3 +306,92 @@ error: serial number '192.168.108.26:26101' wrong
 ## PM审核结论（2026-11-02）
 
 内核替换方案：不用一次性试启动（启动脚本只在内核文件名为 zImage 时走 bootz，其他名字走 booti；绕过 U-Boot 需要启动参数文件，不在授权内），不用 A/B 槽（B 槽未克隆，切槽会连带切换 rootfs/ramdisk/hal）。不整块重写模块分区。采用：每个实验内核（包括自编基线）加独立版本后缀，模块放在模块分区的新版本目录，与原有 6.12.80-arm-rpi4-v7l 目录并存；boot 分区保留原厂内核为 zImage.orig，实验内核以 zImage 放入，回退为改回文件名。设备树和 overlays 不动，除非变体本身改动设备树。前提：模块分区空间足够、ramdisk 不依赖带版本号的模块、外部模块（kdbus/zlogger）的使用情况已查清；空间不足时停下由 PM 决定。回退分级：sdb 可达时由 Codex 改回文件名；不可达时由用户经串口手工引导原厂内核或取卡改名；最坏重刷镜像。具体执行步骤另行下发。
+
+## 2026-11-02 r4：首次重启失败排查
+
+### 范围、背景与时间边界
+
+本轮为任务7 r2，仅只读采集；没有重启、运行配网脚本或logger、操作服务、daemon-reload、修改网络/文件/标签。唯一权限切换是获准的SDB root on/off。三项身份断言通过，SDB可达。原始输出留在`temp/task7/r2/`，去ANSI文本及命令、退出码见[证据索引](../evidence/task7/r2/README.md)。
+
+PM提供的背景：11:09重启后SDB未恢复，随后发现网线松动，已经重插并通过串口手动配网；据用户描述约13:12（北京时间）又开过一次机，11:09那次日志已不存在。[用户背景原文记录](../evidence/task7/r2/user_background.txt)。这是用户观察，不是本轮采集到的故障日志。
+
+本轮boot_id始终为`559cfce8-46fe-49b0-97f2-2c5d18ecb275`；`--list-boots`只有该boot。首次读取uptime=13170.56秒、UTC时间06:49:52，日志显示KST时区，保留范围14:33:47–15:49:48 KST，即13:33:47–14:49:48北京时间。**list-boots两端是现存日志范围，不是实际开关机时间。** 来源：[03基本信息](../evidence/task7/r2/03_basic.transport.txt):5–20。
+
+时间有未闭合之处：按当前UTC减uptime推算约11:10北京时间，与用户所述约13:12不一致；服务ExecStart的墙钟起点为1970、终点为2026-11-02 12:10:43 KST，表明启动早期墙钟发生跳变（[08补充](../evidence/task7/r2/08_retention_link.transport.txt):122–135）。本轮不能独立确认“13:12再次开机”的绝对时刻，也不据此将当前boot等同于11:09那次。以下顺序仅按当前boot的单调时钟；先前失败仍按缺失日志处理。
+
+### 服务实际运行状态与文件核对
+
+服务**本次boot确实执行并退出0**，最终为`active/exited`、`Result=success`，不是“没有执行”。[04服务快照](../evidence/task7/r2/04_service.transport.txt):1–18及[09结束回读](../evidence/task7/r2/09_final.transport.txt):4–13一致：
+
+| 属性 | 实测 |
+|---|---|
+| LoadState / UnitFileState | loaded / enabled |
+| ActiveState / SubState / Result | active / exited / success |
+| ExecMainCode / ExecMainStatus | 1（ExecStart明确code=exited） / **0** |
+| ExecMainStart / Exit TimestampMonotonic | 16,155,117 / 21,129,311 µs |
+| InactiveExit / ActiveEnter TimestampMonotonic | 16,156,439 / 21,130,467 µs |
+| ConditionResult / ConditionTimestampMonotonic | yes / 16,153,051 µs |
+| TimeoutStartUSec / NRestarts | infinity / 0 |
+| Before | shutdown.target multi-user.target |
+| After | system.slice connman.service sysinit.target basic.target |
+
+耗时`(21129311−16155117)/1e6`=**4.974194秒**。multi-user.target于21.133569秒到达，比脚本退出晚**4.258毫秒**；依赖图和Before同时支持其等待关系。默认target是graphical.target，其依赖包含multi-user.target，后者包含lko-net-setup.service。[06目标和SDB](../evidence/task7/r2/06_targets_logger_sdb.transport.txt):1–18、195–217。当前system状态running，failed为0、无待处理job（03:31–42）。
+
+两个文件内容及标签不变，enable链接仍在且指向正确（04:19–31）：
+
+| 对象 | 权限/标签 | SHA-256或目标 |
+|---|---|---|
+| /usr/local/sbin/lko-net-setup.sh | 0755 / `_` | `8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608` |
+| /etc/systemd/system/lko-net-setup.service | 0644 / `_` | `bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78` |
+| /etc/systemd/system/multi-user.target.wants/lko-net-setup.service | symlink / System::Privileged | /etc/systemd/system/lko-net-setup.service |
+
+退出0是本次boot的进程结果；当前网络已经用户手动恢复，**不能据此补判此前自动配网和两次重启验收通过**。
+
+### 为什么没有日志：已证实的范围与推测
+
+[05日志全文](../evidence/task7/r2/05_journal.transport.txt):1–8显示`-u`与`-t`查询都成功但“No entries”；全journal读取也退出0。全量文本中`lko-net|LKO fixed`为0行；`(smack|denied|audit)`且同时含`(lko|logger)`为0行；网络关键词也为0行。筛选统计和原始全文均保留，不能把“未命中”当“历史上从未产生”。
+
+[08](../evidence/task7/r2/08_retention_link.transport.txt):15–23、47–80明确：Storage=persistent，SystemMaxUse=4M；/var/log/journal实际在/opt/var/log/journal（p3/ext4/rw）；/run/log/journal不存在；三个已检查journald.conf.d目录均不存在。journal当前占用4.0M，8个文件各524,288 B。现存完整journal首条是开机后**8605.093301秒**（05:11），不覆盖服务执行的16–21秒；其中2,677行是display-manager/Display manager失败与重启相关记录，统计见[日志摘要](../evidence/task7/r2/journal_summary.txt)。
+
+**推测：4MiB容量限制加上反复产生的display-manager日志，使早期日志被轮转淘汰，是当前无服务日志的合理解释。** 可直接确认的是“早期时段已经不在保留范围”；具体淘汰过程、logger当时是否写入成功均**无法确定**，不能仅以容量碰满证明唯一原因。本轮未干预display-manager。
+
+logger路径为/usr/bin/logger，标签`_`；/dev/log是标签System::Privileged的链接，指向/run/systemd/journal/dev-log，实际socket权限srw-rw-rw-、标签`*`（06:394–400、08:105–114、09:1–3）。服务StandardOutput/StandardError为dlog|journal（08:124–126）。仅有这些元数据不足以证明logger在当时服务环境一定能写入；遵照只读要求未执行logger，亦没有保留下来的相关拒绝日志，因此该点**无法确定**。
+
+### 本次boot的网络相关时间线与当前状态
+
+[网络筛选](../evidence/task7/r2/network_timeline.txt)：从完整journal按不区分大小写`connman|sdbd|eth0|genet|link is|carrier`匹配，总0行、保留0行，未触发400行截断。下表来自systemd属性/udev数据库，**不是补造缺失的journal时间线**；单位是本次开机后秒。
+
+| 秒 | 事件/属性 | 证据 |
+|---:|---|---|
+| 11.074879 | systemd-journald ActiveEnter | 08:117–120 |
+| 11.711858 | eth0 USEC_INITIALIZED（udev属性） | 07:74 |
+| 14.350858 | sdbd_tcp.socket ActiveEnter | 06:479–480 |
+| 15.990239 | connman.service ActiveEnter | 06:403–406 |
+| 16.155117 | lko-net-setup开始 | 04:4 |
+| 21.129311 | lko-net-setup退出0 | 04:5–7 |
+| 21.133569 | multi-user.target ActiveEnter | 06:1–4 |
+| 21.668379 | dev-usb\\x2dfuncs-sdb-default.mount ActiveEnter | 06:414–415 |
+| 21.684805 | sdbd.socket ActiveEnter | 06:466–467 |
+| 21.892593 | sdbd.service ActiveEnter | 06:422–423 |
+
+SDB相关unit清单、每个systemctl cat及退出码见06:408起；观察到的USB mount无unit文件，cat报No files found；udev-sdb-init.service的ActiveEnterTimestampMonotonic为0，不当作有效启动时刻。socket/service active不等于某时刻远端已经连通。物理carrier变化、网线重插、手动配网与首次成功连接的精确时间，现存日志均**无法确定**。
+
+[07网络快照](../evidence/task7/r2/07_network_link.transport.txt):1–40：eth0为UP/LOWER_UP，MAC=2c:cf:67:a0:72:b5，IP=192.168.108.26/24；ConnMan显示`*AR Wired ethernet_2ccf67a072b5_cable`；DNS为221.131.143.69。/var/lib/connman同时存在2ccf67a072b5与88a29e230117服务目录；用户指定的旧MAC settings全文已记录，IPv4/IPv6.method均auto、AutoConnect=true，Modified为1970时间，不能据此确定真实修改时刻。以上只描述**用户手动恢复后的状态**。
+
+**11:09失败能否归因于网线松动：无法确定。** 松动是用户提供的物理观察，能够作为背景，但没有该次carrier/服务/连接日志，不能确定它是唯一原因，也不能排除其他问题。本次boot进程退出0不替代11:09故障证据。
+
+### .link方案的只读前提
+
+[07](../evidence/task7/r2/07_network_link.transport.txt):42–88与[08](../evidence/task7/r2/08_retention_link.transport.txt):82–103：
+
+- /usr/lib/systemd/network和/etc/systemd/network均存在，只列出99-default.link。系统文件含NamePolicy=keep kernel database onboard slot path与MACAddressPolicy=persistent；/etc同名文件指向/dev/null，屏蔽默认文件。
+- /usr/lib/udev/rules.d/80-net-setup-link.rules存在，全文已记录；net设备的add处理路径含`IMPORT{builtin}="net_setup_link"`。基础规则入口具备。
+- eth0有ID_NET_NAMING_SCHEME=v243、ID_NET_NAME_MAC=enx88a29e230117、ID_NET_DRIVER=bcmgenet；没有ID_NET_LINK_FILE，也没有ID_NET_NAME属性。addr_assign_type当前为3。
+
+结论：**目录和udev规则入口存在；当前默认.link被屏蔽，未取得实际应用.link的证据。** 是否能用该机制在网口启用前可靠设置指定MAC，单靠本轮只读元数据**无法确定**；没有创建文件、触发udev或实测。此处仅核实前提，不提出或执行修复方案。
+
+### 收尾与挂账
+
+[09结束快照](../evidence/task7/r2/09_final.transport.txt)、[10 root off](../evidence/task7/r2/10_root_off.transport.txt)、[11 owner回读](../evidence/task7/r2/11_owner.transport.txt)、[核验摘要](../evidence/task7/r2/verification.txt)：本轮未创建板上临时文件，/opt/usr/lko_task7明确不存在；/proc/mounts全文前后一致，根仍rw、模块分区仍ro。根与/opt/usr的df数值也一致。SDB已root off并回读uid=5001(owner)，闭合上轮因不可达而未能完成的owner收尾。本轮未删除宿主原始证据，全部保留在temp/task7/r2。
+
+任务7 r2只读排查完成；**配网服务的修复方案或重启验证重做，待PM决定**。不将本轮观察标为两次重启验证通过。内核替换具体执行步骤及用户待答的读卡器、U-Boot串口、测量小程序授权、冷启动电源控制、测试应用安装授权继续挂账。
