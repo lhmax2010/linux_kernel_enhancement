@@ -1,0 +1,40 @@
+baseline olddefconfig exit=0
+(empty diff)
+
+lz4hc olddefconfig exit=0
+-ZRAM_BACKEND_FORCE_LZO y
+ ZRAM_BACKEND_LZ4 n -> y
+ ZRAM_BACKEND_LZ4HC n -> y
+ ZRAM_MULTI_COMP n -> y
++ZRAM_DEF_COMP_LZ4 n
++ZRAM_DEF_COMP_LZ4HC n
+
+
+ksm olddefconfig exit=0
+ KSM n -> y
+
+
+alloc_profile olddefconfig exit=0
+ MEM_ALLOC_PROFILING n -> y
+ PAGE_EXTENSION n -> y
++CODE_TAGGING y
++MEM_ALLOC_PROFILING_DEBUG n
++MEM_ALLOC_PROFILING_ENABLED_BY_DEFAULT y
+
+
+gnu_default exit=0
+
+attributes #0 = { nounwind "frame-pointer"="all" "instrument-function-entry-inlined"="llvm.arm.gnu.eabi.mcount" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic" "target-features"="+armv7-a,+dsp,+read-tp-tpidruro,+soft-float,-aes,-bf16,-d32,-dotprod,-fp-armv8,-fp-armv8d16,-fp-armv8d16sp,-fp-armv8sp,-fp16,-fp16fml,-fp64,-fpregs,-fullfp16,-mve,-mve.fp,-neon,-sha2,-thumb-mode,-vfp2,-vfp2sp,-vfp3,-vfp3d16,-vfp3d16sp,-vfp3sp,-vfp4,-vfp4d16,-vfp4d16sp,-vfp4sp" "use-soft-float"="true" }
+attributes #1 = { mustprogress nocallback nofree nosync nounwind willreturn memory(argmem: readwrite) }
+attributes #2 = { "frame-pointer"="all" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic" "target-features"="+armv7-a,+dsp,+read-tp-tpidruro,+soft-float,-aes,-bf16,-d32,-dotprod,-fp-armv8,-fp-armv8d16,-fp-armv8d16sp,-fp-armv8sp,-fp16,-fp16fml,-fp64,-fpregs,-fullfp16,-mve,-mve.fp,-neon,-sha2,-thumb-mode,-vfp2,-vfp2sp,-vfp3,-vfp3d16,-vfp3d16sp,-vfp3sp,-vfp4,-vfp4d16,-vfp4d16sp,-vfp4sp" "use-soft-float"="true" }
+attributes #3 = { nounwind }
+
+gnu_xclang exit=0
+
+attributes #0 = { nounwind "instrument-function-entry-inlined"="llvm.arm.gnu.eabi.mcount" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic" "target-features"="+armv7-a,+dsp,+read-tp-tpidruro,+soft-float,-aes,-bf16,-d32,-dotprod,-fp-armv8,-fp-armv8d16,-fp-armv8d16sp,-fp-armv8sp,-fp16,-fp16fml,-fp64,-fpregs,-fullfp16,-mve,-mve.fp,-neon,-sha2,-thumb-mode,-vfp2,-vfp2sp,-vfp3,-vfp3d16,-vfp3d16sp,-vfp3sp,-vfp4,-vfp4d16,-vfp4d16sp,-vfp4sp" "use-soft-float"="true" }
+attributes #1 = { mustprogress nocallback nofree nosync nounwind willreturn memory(argmem: readwrite) }
+attributes #2 = { "no-trapping-math"="true" "stack-protector-buffer-size"="8" "target-cpu"="generic" "target-features"="+armv7-a,+dsp,+read-tp-tpidruro,+soft-float,-aes,-bf16,-d32,-dotprod,-fp-armv8,-fp-armv8d16,-fp-armv8d16sp,-fp-armv8sp,-fp16,-fp16fml,-fp64,-fpregs,-fullfp16,-mve,-mve.fp,-neon,-sha2,-thumb-mode,-vfp2,-vfp2sp,-vfp3,-vfp3d16,-vfp3d16sp,-vfp3sp,-vfp4,-vfp4d16,-vfp4d16sp,-vfp4sp" "use-soft-float"="true" }
+attributes #3 = { nounwind }
+
+gnu_explicit exit=1
+clang: error: invalid argument '-fomit-frame-pointer' not allowed with '-pg'

@@ -1,6 +1,6 @@
 # 项目状态
 
-更新：2026-10-30（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
+更新：2026-11-02（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
 **任务6停止于安装预检，未完成。** 三项身份断言通过，但板上缺少systemd-analyze，规定的verify命令报command not found、退出127，触发PM停止条件。未安装/启用服务，未执行配网脚本、挂载boot、remount或重启；结束恢复原SDB owner身份，/opt/usr/lko_task6从未创建且确认不存在，mounts/df前后一致。
 
@@ -9,7 +9,10 @@
 - 需PM裁决：先提供具备规定验证工具的环境，或明确允许的替代验收方式；本次不补装RPM、不推额外工具、不自行替代。工具缺失不是unit语法错误，脚本/unit尚未生成或安装。
 - 后续顺序：解除工具阻塞后恢复任务6；任务6完成后再进入“第一次重启验证（需要用户在场）”与“PM审核内核替换方案”。当前不具备进入这两步的条件。
 
-**设计文档当前版本为v3：[docs/10_design_v3.md](10_design_v3.md)，待外部评审；[v1](10_design_v1.md)、[v2](10_design_v2.md)保留为历史记录。** 本次计划为原样入库v3及两份v2评审记录、补充板上授权，并同commit交付main；文件整理和授权登记已完成，该设计文档入库任务未操作开发板。
+**设计文档当前版本为v4：[docs/10_design_v4.md](10_design_v4.md)，待外部评审；[v1](10_design_v1.md)、[v2](10_design_v2.md)、[v3](10_design_v3.md)保留为历史记录。**
+
+- 2026-11-02 A入库完成：v4从指定Downloads移动，原文未改，147,550 B，SHA-256 `f620a3cdc34a6afd586396252c901c1a0ca4d1c591afc27c4c2d3b9a07698fb3`；Downloads已无副本。三份v3评审记录均找到且已位于docs/reviews，原样入库：[Codex评审](reviews/design_v3_review_codex.md)、[Codex核验](reviews/design_v3_review_codex_verification.txt)、[Claude Code评审](reviews/design_v3_review_claude_code.md)。核验记录：temp/task6/r2/intake.json。
+- 挂账、待用户决定：测量小程序是否纳入常规授权；冷启动的电源控制方式；标准场景安装测试应用是否纳入常规授权。A未操作开发板；B将按2026-11-02替代验收裁决恢复任务6，单独提交。
 
 - v3为同日修订版，补入上一轮 Claude Code 完整评审（docs/reviews/design_v2_review_claude_code.md）中此前未处理的内容；阶段 0 拆为 0a/0b。已从指定Downloads路径移动覆盖现有文件，Downloads下已无该文件；移动过程未修改内容，114,130 B，移动前后SHA-256均为`793c0762d48d9dc46a7af7ccc4c55a0aeb212b967c58184a8052f4db68d435cb`。
 - v2的Claude Code评审已找到，原文件已位于目标路径[docs/reviews/design_v2_review_claude_code.md](reviews/design_v2_review_claude_code.md)，原样入库；59,159 B，SHA-256为`126f6951cf1bb22286a991f57be0bce022482faf232538ea4eb3b5290ab03696`。
@@ -52,7 +55,7 @@
 - -b不支持已由实测确认；若后续设计需要分支样本，采样方案需另行设计。perf build-options的auxtrace=on、libopencsd=OFF也不能独立证明CoreSight可用；本次不扩展测试。
 - BPF插件历史load/attach尝试及实际失败原因仍无法判断，缺少相关日志。是否受控触发、插件产品需求/BTF取舍由PM决定，未启动服务或手动加载BPF。
 - QB开始时间按UTC理解是PM接受的推断，未独立证明页面时区，不再作为来源停止条件。
-- 设计当前版本为v3，待外部评审；v1、v2原样保留为历史记录，其历史“待闭合/未实测”描述保留为PM原文；当前结果以09及本状态为准。
+- 设计当前版本为v4，待外部评审；v1–v3原样保留为历史记录，其历史“待闭合/未实测”描述保留为PM原文；当前结果以09及本状态为准。
 
 ## 保留的任务5/5b结论
 
