@@ -12,7 +12,9 @@
 5. 开机自动配网服务：允许为安装该服务执行一次remount读写，只写入该服务的unit文件和脚本（具体路径在安装任务中登记），装完恢复只读；除此之外仍不改根文件系统、不安装或卸载RPM。刷新镜像后的一次性准备（remount、osu --resize、卸载wlandrv-plugin-tizen/mesa/coregl、首次配网）由用户执行。
    - 任务6 r2（2026-11-02）实际安装登记：`/usr/local/sbin/lko-net-setup.sh`（0755）、`/etc/systemd/system/lko-net-setup.service`（0644）；enable创建`/etc/systemd/system/multi-user.target.wants/lko-net-setup.service`，指向`/etc/systemd/system/lko-net-setup.service`。本次 / 原本为 rw，未执行 remount；前后均rw,relatime。只安装/enable，未start、未手动执行脚本、未重启。
    - PM 2026-11-02替代验收仅适用于本次任务6恢复：不要求板上systemd-analyze；以LoadState=loaded、LoadError为空、UnitFileState=enabled、is-enabled=enabled、enable链接正确及reload后无该unit警告/错误为准。任一不符须disable、删除两文件、daemon-reload并确认恢复；安装前/若为ro则停止第二部分，不remount。本次验收通过；第一次重启验证需要用户在场。
+   - 任务7（2026-11-02，用户确认在场后）：仅把/usr/local/sbin/lko-net-setup.sh与/etc/systemd/system/lko-net-setup.service的SMACK标签从User::Shell改为`_`，分别与/usr/sbin/ip、connman.service一致，chsmack -a后回读通过；文件内容SHA未变，未改其他对象标签。daemon-reload后loaded/enabled。
 6. 只替换内核：实验内核变体可只替换boot分区中的内核映像、设备树和模块分区，用户态不变。前提：第一次替换前先完成只读调研并由PM审核替换和回退方案；每次替换前备份当前可用的内核文件并核对哈希；替换后核对uname、/proc/version和内核配置；新内核起不来且无法自动回退时停下报告，由用户处理。
+   部署方式按 11_board_boot_chain.md 中的 PM 审核结论（2026-11-02）执行；模块分区仅在写入新版本目录期间 remount 读写，写完恢复只读并回读。
 
 boot分区的启动参数（cmdline）仍不在常规授权内。开机时间的串口采集由用户在内网机器上执行，不属于本仓库的板上操作。不用sudo，不碰其他任务的进程。
 

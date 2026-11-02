@@ -1,0 +1,5 @@
+
+pulled                     u-boot.bin	  0%	      0KB	    0KB/s
+pulled                     u-boot.bin	100%	    789KB	    0KB/s
+1 file(s) pulled. 0 file(s) skipped.
+/opt/usr/lko_task7/boot/u-boot.bin   3521KB/s (808272 bytes in 0.224s)

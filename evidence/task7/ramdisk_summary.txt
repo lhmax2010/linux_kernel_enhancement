@@ -1,0 +1,7 @@
+cpio_entries=103
+regular_files_selected=2
+module_entries=1
+usr/lib/modules
+Extraction selected regular files only; no device nodes or archive symlinks extracted. Absolute/.. names rejected before cpio --no-absolute-filenames. Original image unchanged sha256=01e2f0cbfe091b14989f69154c488697c60ac98bea32e11bebfec6ea98b71024
+
+Follow-up: init is symlink sbin/init; sbin -> usr/sbin. Regular usr/sbin/init and usr/share/upgrade/update-checkpoint-create.sh explicitly extracted with same cpio safety flags. Empty usr/lib/modules directory is the only module entry, no version directory or .ko in this decoded cpio. Trailing partition bytes outside first gzip stream are not interpreted; gzip warning retained.

@@ -1,0 +1,931 @@
+#!/bin/bash
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+
+SUPERFS=
+HALFS=
+ROOTFS=
+DATAFS=
+USERFS=
+MODULES=
+VENDORFS=
+APPSFS=
+PRODUCTFS=
+
+HALFS_MNT=
+ROOTFS_MNT=
+DATAFS_MNT=
+MODULES_MNT=
+VENDOR_MNT=
+APPS_MNT=
+PRODUCT_MNT=
+
+MODULES_INITRD_MNT=/lib/modules
+
+IN_INITRD=0
+IN_INITRAMFS=0
+NEED_RESIZEFS=1
+USERFS_ENCRYPTED=0
+FS_RETRY_COUNT=10
+BOOT_MODE=
+
+BLKID_LINES=()
+
+PLATFORM_EXTENSION_OVERLAYFS_FORBIDDEN_RW_DIRS=("dev" "sys" "proc" "opt" "run" "tmp" "mnt" "home" "media" "var")
+
+function get_blk_dev_path()
+{
+    PART_REGEX="(^|[ ])$1($|[ ])"
+
+    for LINE in ${BLKID_LINES[@]}; do
+        if [[ $LINE =~ $PART_REGEX ]]; then
+            IFS=':'
+            SPLITTED=($LINE)
+            echo "${SPLITTED[0]}"
+            IFS=$'\n'
+            return
+        fi
+    done
+}
+
+function map_from_super()
+{
+    local part_name="$1"
+    local part_table="$2"
+    echo -e "$part_table" | /usr/sbin/dmsetup create "$part_name" &>/dev/null
+    if [ $? = 0 ]
+    then
+        /usr/sbin/dmsetup mknodes "$part_name"
+        echo "/dev/mapper/$part_name"
+        return 0
+    else
+        echo "WARNING : SUPER FOUND BUT $part_name NOT FOUND" >&2
+        return 1
+    fi
+}
+
+function check_network()
+{
+    if [[ $(</proc/cmdline) =~ ip=[^\ ]* ]]; then
+	echo "" > /dev/.kernel_ipconfig
+    fi
+}
+
+function setup_nbd()
+{
+    if [ ! -e /usr/sbin/nbd-client ]; then
+	    return
+    fi
+
+    local NBDROOT=$([[ $(</proc/cmdline) =~ nbdroot=([^ ]*) ]]; echo ${BASH_REMATCH[1]})
+    if [ "x$NBDROOT" = "x" ]; then
+        return
+    fi
+
+    local NBDDEV=$([[ $(</proc/cmdline) =~ nbddev=([^ ]*) ]]; echo ${BASH_REMATCH[1]})
+    local nbd_device=$NBDDEV
+
+    if [[ "$NBDROOT" =~ ([^:]*):([^:]*):([^:,]*)(,([^ ]*))? ]]; then
+        #
+        # nbdroot=<server-ip>:<server-port>:<export-name>[,<nbd-options>]
+        #
+        local nbd_server=${BASH_REMATCH[1]}
+        local nbd_port=${BASH_REMATCH[2]}
+        local nbd_name=${BASH_REMATCH[3]}
+        local nbd_options=${BASH_REMATCH[5]}
+    elif [[ "$NBDROOT" =~ ([^,]*),([^,]*)(,([^ ]*))? ]]; then
+        #
+        # nbdroot=<server-ip>,<export-name>[,<base_device>]
+        #
+        local nbd_server=${BASH_REMATCH[1]}
+        local nbd_name=${BASH_REMATCH[2]}
+        if [[ -n "${BASH_REMATCH[3]}" ]]; then
+            nbd_device="/dev/${BASH_REMATCH[4]}"
+        fi
+    fi
+
+    if [ -z "$nbd_server" -o -z "$nbd_device" -o -z "$nbd_name" ]; then
+	echo "WARNING: INVALID NBDROOT \"$NBDROOT\""
+	if [ "$IN_INITRD" = "1" ]; then
+            exec /bin/sh
+        else
+            return
+        fi
+    fi
+
+    nbd_device=${nbd_device%p*}
+    nbd_port=${nbd_port:-10809}
+    nbd-client "${nbd_server}" "${nbd_port}" "${nbd_device}" -systemd-mark -persist -name "${nbd_name}"
+}
+
+function find_partitions()
+{
+    P_SLOT=$([[ $(</proc/cmdline) =~ partition_ab=([ab]) ]]; echo ${BASH_REMATCH[1]})
+    P_SUFFIX=""
+
+    if [ "${P_SLOT}" != "" ]; then
+        P_SUFFIX="_${P_SLOT}"
+        echo "Using A/B slot: ${P_SLOT}"
+    fi
+
+    IFS_BACKUP=$IFS
+    IFS=$'\n'
+    BLKID_LINES=($(/sbin/blkid))
+
+    SUPERFS=`get_blk_dev_path "PARTLABEL=\"super\""`
+    if [ x$SUPERFS = "x" ]
+    then
+        SUPERFS=`get_blk_dev_path "LABEL=\"super\""`
+    fi
+
+    if [ x$SUPERFS != "x" ]
+    then
+        PARSE_DYNPARTS=`/usr/sbin/parse-dynparts "$SUPERFS" --list-tables`
+
+        while IFS=$IFS_BACKUP read -r part_name part_table; do
+            if [ "$part_name" = "rootfs${P_SUFFIX}" ]
+            then
+                ROOTFS=`map_from_super "$part_name" "$part_table"`
+            fi
+
+            if [ "$part_name" = "hal${P_SUFFIX}" ]
+            then
+                HALFS=`map_from_super "$part_name" "$part_table"`
+            fi
+        done <<< "$PARSE_DYNPARTS"
+    fi
+
+    if [ x$ROOTFS = "x" ]
+    then
+        ROOTFS=`get_blk_dev_path "PARTLABEL=\"rootfs${P_SUFFIX}\""`
+    fi
+    if [ x$ROOTFS = "x" ]
+    then
+        ROOTFS=`get_blk_dev_path "LABEL=\"rootfs\""`
+    fi
+    if [ x$ROOTFS = "x" ]
+    then
+        ROOTFS=`get_blk_dev_path "LABEL=\"contain-rootfs\""`
+    fi
+    if [ x$ROOTFS = "x" ]
+    then
+        ROOTFS=`get_blk_dev_path "LABEL=\"emulator-rootfs\""`
+    fi
+
+    DATAFS=`get_blk_dev_path "PARTLABEL=\"system-data\""`
+    if [ x$DATAFS = "x" ]
+    then
+        DATAFS=`get_blk_dev_path "LABEL=\"system-data\""`
+    fi
+    if [ x$DATAFS = "x" ]
+    then
+        DATAFS=`get_blk_dev_path "LABEL=\"contain-sysdata\""`
+    fi
+    if [ x$DATAFS = "x" ]
+    then
+        DATAFS=`get_blk_dev_path "LABEL=\"emulator-sysdata\""`
+    fi
+
+    USERFS=`get_blk_dev_path "PARTLABEL=\"user\""`
+    if [ x$USERFS = "x" ]
+    then
+        USERFS=`get_blk_dev_path "LABEL=\"user\""`
+    fi
+    if [ x$USERFS = "x" ]
+    then
+        USERFS=`get_blk_dev_path "LABEL=\"contain-user\""`
+    fi
+
+    MODULES=`get_blk_dev_path "PARTLABEL=\"module${P_SUFFIX}\""`
+    if [ x$MODULES = "x" ]
+    then
+        MODULES=`get_blk_dev_path "LABEL=\"modules\""`
+    fi
+
+    if [ x$HALFS = "x" ]
+    then
+        HALFS=`get_blk_dev_path "PARTLABEL=\"hal${P_SUFFIX}\""`
+    fi
+    if [ x$HALFS = "x" ]
+    then
+        HALFS=`get_blk_dev_path "LABEL=\"hal\""`
+    fi
+
+    VENDORFS=`get_blk_dev_path "PARTLABEL=\"vendor${P_SUFFIX}\""`
+    if [ x$VENDORFS = "x" ]
+    then
+        VENDORFS=`get_blk_dev_path "LABEL=\"vendor\""`
+    fi
+
+    APPSFS=`get_blk_dev_path "PARTLABEL=\"apps${P_SUFFIX}\""`
+    if [ x$APPSFS = "x" ]
+    then
+        APPSFS=`get_blk_dev_path "LABEL=\"apps\""`
+    fi
+
+    PRODUCTFS=`get_blk_dev_path "PARTLABEL=\"product${P_SUFFIX}\""`
+    if [ x$PRODUCTFS = "x" ]
+    then
+        PRODUCTFS=`get_blk_dev_path "LABEL=\"product\""`
+    fi
+
+    IFS=$IFS_BACKUP
+}
+
+function wait_find_partitions()
+{
+	for ((I=1;I<=$FS_RETRY_COUNT;I++))
+	do
+		find_partitions
+		if [ x$ROOTFS != "x" ]
+		then
+			break
+		fi
+		echo "Waiting for rootfs block device, try $I of $FS_RETRY_COUNT..."
+		sleep .5
+	done
+}
+
+function check_flags()
+{
+    if [ -e /etc/initrd-release ]
+    then
+        if [ "$(findmnt -n --output=fstype /)" != "rootfs" ]
+        then
+            IN_INITRD=1
+        else
+            IN_INITRAMFS=1
+        fi
+        ROOTFS_MNT="/sysroot"
+    else
+        IN_INITRD=0
+        IN_INITRAMFS=0
+        ROOTFS_MNT="/"
+    fi
+    HALFS_MNT=${ROOTFS_MNT}/hal
+    DATAFS_MNT=${ROOTFS_MNT}/opt
+    MODULES_MNT=${ROOTFS_MNT}/lib/modules
+    VENDOR_MNT=${ROOTFS_MNT}/vendor
+    APPS_MNT=${ROOTFS_MNT}/apps
+    PRODUCT_MNT=${ROOTFS_MNT}/product
+
+    if [ x"$DATAFS" != "x" ]
+    then
+        /sbin/fsck -y $DATAFS
+        /bin/mount $DATAFS /opt
+
+        # The device is being encrypted or encrypted.
+        if [ -e /opt/etc/.odeprogress -o -e /opt/etc/.ode_* ]
+        then
+            USERFS_ENCRYPTED=1
+        fi
+
+        if [ -e /opt/var/.resizefs_done ]
+        then
+            NEED_RESIZEFS=0
+        fi
+
+        /bin/umount /opt
+    fi
+}
+
+#------------------------------------------------
+#       restore_checkpoint
+#------------------------------------------------
+restore_checkpoint() {
+    # Any existing checkpoint means that the RW update was unexpectedly
+    # aborded, so we must roll back the changes and update again.
+    echo "Checkpoint restore"
+    PART="${1}"
+    FS_TYPE="$(blkid -o value -s TYPE "${PART}")"
+    if [ "$FS_TYPE" = "ext4" ]; then
+        bow-restore "${PART}"
+    elif [ "$FS_TYPE" = "f2fs" ]; then
+        # f2fs does not need a restore - if the data was not commited before
+        # the reboot, any changes were discarded
+        :
+    else
+        echo "Checkpoint restore error: unknown filesystem ${FS_TYPE} on ${PART}"
+    fi
+}
+
+#------------------------------------------------
+#       restore_partitions
+#------------------------------------------------
+restore_partitions() {
+    echo "Restore partitions"
+
+    if [ ! "z${USERFS}" = "z" ]; then
+        restore_checkpoint "${USERFS}"
+    fi
+    if [ ! "z${DATAFS}" = "z" ]; then
+        restore_checkpoint "${DATAFS}"
+    fi
+}
+
+function check_verity_and_mount()
+{
+    local name=$1
+    local device=$2
+    local mntpnt=$3
+
+    # check verity only in initrd/initramfs
+    if [ "$IN_INITRD" = "1" ] || [ "$IN_INITRAMFS" = "1" ]
+    then
+        /usr/bin/verityctl create "${name}" "${device}" "${mntpnt}"
+        case $? in
+            0)
+                echo "verifyboot: disabled"
+                # do nothing
+                ;;
+            1)
+                echo "verityboot: enabled";
+                return
+                ;;
+            2)
+                echo "verifyboot: enabled but corrupted"
+                # reboot
+                /usr/sbin/reboot
+                while true; do
+                    sleep 1
+                    echo "."
+                done
+                ;;
+            3)
+                echo "verifyboot: disabling (perform resizefs)"
+                /sbin/fsck -y "${device}"
+                /sbin/resize2fs -f "${device}"
+                ;;
+        esac
+
+        /bin/mount -o ro "${device}" "${mntpnt}"
+    fi
+}
+
+function process_rootfs()
+{
+    # No rootfs
+    if [ x$ROOTFS = "x" ]
+    then
+        echo "WARNING : THERE IS NO ROOTFS."
+        if [ "$IN_INITRD" = "1" -o "$IN_INITRAMFS" = "1" ]
+        then
+            exec /bin/sh
+        else
+            return
+        fi
+    fi
+
+    # btrfs rootfs
+    BTRFS_ROOTFS=`/sbin/blkid $ROOTFS -t TYPE=btrfs -o device`
+    if [ x$BTRFS_ROOTFS != "x" ]
+    then
+        if [ "$IN_INITRD" = "1" ]
+        then
+            /sbin/btrfs check $ROOTFS
+            /bin/mount $ROOTFS $ROOTFS_MNT -o ro,compress-force=lzo
+        fi
+
+        return
+    fi
+
+   check_verity_and_mount rootfs $ROOTFS $ROOTFS_MNT
+}
+
+function process_datafs()
+{
+    if [ x"$DATAFS" = "x" ]; then return; fi
+
+    if [ "$NEED_RESIZEFS" = "1" ]
+    then
+        /sbin/fsck -y $DATAFS
+        /sbin/resize2fs -f $DATAFS
+    fi
+    /sbin/fsck -y $DATAFS
+
+    if [ "$BOOT_MODE" == "fota" ]; then
+        /usr/share/upgrade/update-checkpoint-create.sh "$ROOTFS_MNT" system-data
+    else
+        /bin/mount $DATAFS $DATAFS_MNT
+    fi
+}
+
+function process_modulesfs
+{
+    if [ x$MODULES = "x" ]; then return; fi
+
+    /bin/mount -o ro $MODULES $MODULES_INITRD_MNT
+}
+
+function move_modulesfs
+{
+    if [ "$HALFS_MNT" -a -d "$HALFS_MNT/lib/modules" ]; then
+        /bin/mountpoint -q $MODULES_INITRD_MNT && /bin/umount $MODULES_INITRD_MNT
+        /bin/mount --bind $HALFS_MNT/lib/modules $MODULES_MNT
+    else
+        /bin/mountpoint -q $MODULES_INITRD_MNT && /bin/mount --move $MODULES_INITRD_MNT $MODULES_MNT
+    fi
+}
+
+function process_userfs()
+{
+    if [ x"$USERFS" = "x" ]; then return; fi
+    if [ "$USERFS_ENCRYPTED" = "1" ]; then return; fi
+
+    F2FS_USERFS=$(/sbin/blkid $USERFS -t TYPE=f2fs -o device)
+    if [ x$F2FS_USERFS != "x" ]
+    then
+        if [ "$NEED_RESIZEFS" = "1" ]
+        then
+            /sbin/fsck.f2fs -p 2 -y $USERFS
+            echo y | /sbin/resize.f2fs $USERFS
+        fi
+        /sbin/fsck.f2fs -p 2 -y $USERFS
+    else
+        if [ "$NEED_RESIZEFS" = "1" ]
+        then
+            /sbin/fsck -y $USERFS
+            /sbin/resize2fs -f $USERFS
+        fi
+        /sbin/fsck -y $USERFS
+    fi
+
+    # We don't mount $USERFS here, platform mounts it,
+    # because if it's an upgrade, we may need to create a checkpoint
+}
+
+function process_halfs()
+{
+    if [ x$HALFS = "x" ]; then return; fi
+
+    #Workaround code to check whether /hal/lib directory is existed#
+    #In future, it will be removed#
+    if [ -d $HALFS_MNT/lib ]; then return; fi
+
+    /bin/mount -o ro $HALFS $HALFS_MNT
+}
+
+function process_vendorfs()
+{
+    if [ -z "${VENDORFS}" ]; then return; fi
+
+    /bin/mount -o ro "${VENDORFS}" "${VENDOR_MNT}"
+}
+
+function process_appsfs()
+{
+    if [ -z "${APPSFS}" ]; then return; fi
+
+    /bin/mount -o ro "${APPSFS}" "${APPS_MNT}"
+}
+
+function process_productfs()
+{
+    if [ -z "${PRODUCTFS}" ]; then return; fi
+
+    check_verity_and_mount product "${PRODUCTFS}" "${PRODUCT_MNT}"
+}
+
+function write_resized_flag()
+{
+    if [ x"$DATAFS" = "x" ]; then return; fi
+    if [ "$NEED_RESIZEFS" = "0" ]; then return; fi
+
+    echo " " > ${DATAFS_MNT}/var/.resizefs_done
+}
+
+
+function load_kernel_modules
+{
+    echo "Load kernel modules"
+
+    modprobe="/sbin/modprobe"
+    if [ x$ROOTFS_MNT != x ] && mountpoint -q "$ROOTFS_MNT"; then
+        modprobe="$modprobe --dirname=$ROOTFS_MNT"
+    fi
+
+    conffiles=""
+    for it in "$@"; do
+        conffiles="$conffiles $(compgen -G "${it}/modules-load.d/*.conf")"
+        modprobe="$modprobe --config=${it}/modprobe.d"
+    done
+
+    for conf in $conffiles
+    do
+        echo "Read module conf: $conf"
+        while read module junk
+        do
+            # skip blank lines, # commented lines & already loaded modules
+            if [ "$module" = "" -o "${module:0:1}" = "#" -o -d "/sys/module/${module}" ]
+            then
+                 continue
+            fi
+
+            echo "Loading module: $module"
+            $modprobe $module &
+        done < $conf
+    done
+
+    wait # wait all background jobs
+}
+
+
+function pivot_root()
+{
+    if [ "$IN_INITRD" = "1" ]
+    then
+        cd $ROOTFS_MNT
+
+        /sbin/pivot_root . ./mnt/initrd
+        /bin/mount -M /mnt/initrd/dev /dev
+        /bin/mount -M /mnt/initrd/sys /sys
+        /bin/mount -M /mnt/initrd/proc /proc
+        /bin/umount -l /mnt/initrd
+    fi
+}
+
+function platform_extension_overlayfs_get_value_from_map()
+{
+    local map=$1
+    local key=$2
+    local i="${map}_$key"
+    printf '%s' "${!i}"
+}
+
+function platform_extension_overlayfs_find_overlays()
+{
+    local src_dir=$1
+    local type=$2
+
+    for entry in ${src_dir}/*; do
+        if [ ! -d "${entry}" ]; then
+            continue
+        fi
+
+        local dir=${entry##*/}
+
+        if [ "${type}" = "hal" ] && [ "${dir}" != "hal" ]; then
+            continue
+        fi
+
+        if [ "${type}" = "platform" ] && [ "${dir}" = "hal" ]; then
+            continue
+        fi
+
+        if [ "${dir}" = "lost+found" ] || [ "${dir}" = "rpm" ]; then
+            continue
+        fi
+
+        if [ ! -d "${ROOTFS_MNT}"/"${dir}" ]; then
+           continue
+        fi
+
+        local forbidden_found=0
+
+        for forbidden_dir in "${PLATFORM_EXTENSION_OVERLAYFS_FORBIDDEN_RW_DIRS[@]}"; do
+            if [ "${dir}" = "${forbidden_dir}" ]; then
+                forbidden_found=1
+                break
+            fi
+        done
+
+        if [ "${forbidden_found}" -eq 1 ]; then
+            echo "WARNING: Found a forbidden read-write directory on the Platform Extension image: /${dir}. Skipping this directory."
+            continue
+        fi
+
+        local tmp_lowerdir
+        tmp_lowerdir=$(platform_extension_overlayfs_get_value_from_map lowerdirs "${dir}")
+
+        if [ -n "${tmp_lowerdir}" ]; then
+            tmp_lowerdir+=":"
+        else
+            PLATFORM_EXTENSION_OVERLAY_DIRS+=("${dir}")
+        fi
+
+        tmp_lowerdir+="${entry}"
+        printf -v "lowerdirs_$dir" '%s' "$tmp_lowerdir"
+    done
+
+    return 0
+}
+
+function platform_extension_overlayfs_mount_overlays()
+{
+    local lowerdir
+
+    for dir in "${PLATFORM_EXTENSION_OVERLAY_DIRS[@]}"; do
+        lowerdir=$(platform_extension_overlayfs_get_value_from_map lowerdirs "${dir}")
+
+        if ! mount -t overlay overlay -o lowerdir="${lowerdir}":"${ROOTFS_MNT}"/"${dir}" "${ROOTFS_MNT}"/"${dir}"; then
+            echo "WARNING: Unable to overlay /${dir}"
+            continue
+        fi
+    done
+}
+
+function platform_extension_overlayfs_move_modules_to_tmp()
+{
+    local TMP_MODULES_MNT="/tmp/modules-tmp-mntpnt"
+
+    if /bin/mountpoint -q "$MODULES_MNT"; then
+        if mkdir "${TMP_MODULES_MNT}"; then
+            if ! mount --move "${MODULES_MNT}" "${TMP_MODULES_MNT}"; then
+                echo "WARNING: Failed to move mount at ${MODULES_MNT} to ${TMP_MODULES_MNT}"
+            fi
+        else
+            echo "WARNING: Failed to create ${TMP_MODULES_MNT}"
+        fi
+    fi
+}
+
+function platform_extension_overlayfs_restore_modules_from_tmp()
+{
+    local TMP_MODULES_MNT="/tmp/modules-tmp-mntpnt"
+
+    if /bin/mountpoint -q "$TMP_MODULES_MNT"; then
+        if ! mount --move "${TMP_MODULES_MNT}" "${MODULES_MNT}"; then
+            echo "WARNING: Failed to move mount at ${TMP_MODULES_MNT} to ${MODULES_MNT}"
+        fi
+    fi
+
+    # there is no rm on ramdisk, so we use find
+    if ! find "${TMP_MODULES_MNT}" -delete; then
+        echo "WARNING: Failed to remove ${TMP_MODULES_MNT}"
+    fi
+}
+
+function platform_extension_overlayfs_get_first_unused_loop_device()
+{
+    local first_unused_loop_device
+    local first_unused_loop_device_no
+
+    if ! first_unused_loop_device="$(/usr/sbin/losetup -f 2> /dev/null)"; then
+        local last_used_loop_device
+        local last_used_loop_device_no
+
+        last_used_loop_device="$(ls -c1 -v /dev/loop[0-9]*)"
+        last_used_loop_device=${last_used_loop_device##*$'\n'}
+
+        if [ -z "${last_used_loop_device}" ]; then
+            last_used_loop_device_no=-1
+        else
+            last_used_loop_device_no="${last_used_loop_device#/dev/loop}"
+        fi
+
+        first_unused_loop_device_no="$((last_used_loop_device_no+1))"
+        first_unused_loop_device="/dev/loop${first_unused_loop_device_no}"
+
+        if ! /usr/bin/mknod -m660 "${first_unused_loop_device}" b 7 "${first_unused_loop_device_no}"; then
+            return 1
+        fi
+    fi
+
+    echo "${first_unused_loop_device}"
+    return 0
+}
+
+function platform_extension_overlayfs_make_loop_device()
+{
+    local platform_extension_img_dir="$1"
+    local first_unused_loop_device
+
+    if ! first_unused_loop_device="$(platform_extension_overlayfs_get_first_unused_loop_device)"; then
+        echo "WARNING: Failed to get first unused loop device"
+        return 1
+    fi
+
+    if ! /usr/sbin/losetup "${first_unused_loop_device}" "${platform_extension_img_dir}"; then
+        echo "WARNING: Unable to set ${first_unused_loop_device} as a loop device for ${platform_extension_img_dir}. Will not setup ${platform_extension_img_dir}"
+        return 1
+    fi
+    PLATFORM_EXTENSION_LOOP_DEVICE="${first_unused_loop_device}"
+    return 0
+}
+
+function platform_extension_overlayfs_prepare_image()
+{
+    local platform_extension_img_dir="$1"
+    local platform_extension_img=${platform_extension_img_dir##*/}
+
+    local pub_key="$2"
+    local file_info="${platform_extension_img_dir}".info
+    local file_sign="${platform_extension_img_dir}".sign
+
+    if [ ! -f "${file_sign}" ]; then
+        # dm-verity is disabled. We can mount image directly.
+        echo "INFO: dm-verity for Platform Extension image ${platform_extension_img_dir} is disabled."
+        if platform_extension_overlayfs_make_loop_device "${platform_extension_img_dir}"; then
+            PLATFORM_EXTENSION_SOURCE_TO_MOUNT="${PLATFORM_EXTENSION_LOOP_DEVICE}"
+            return 0
+        else
+            return 1
+        fi
+    fi
+
+    if [ ! -f "${pub_key}" ]; then
+        # We previously reported on the lack of a key
+        # However, since there is no key, and the image is
+        # prepared for use dm-verity, we can not mount it
+        return 1
+    fi
+
+    if ! openssl dgst -sha256 -verify "${pub_key}" -signature "${file_sign}" "${file_info}" > /dev/null 2>&1; then
+        echo "WARNING: Failed to verify ${file_info}. Will not setup ${platform_extension_img_dir}"
+        return 1
+    fi
+
+    local hash_offset=""
+    local root_hash=""
+
+    while IFS= read -r line; do
+        if [[ "${line}" == hash_offset* ]]; then
+            hash_offset="${line#*=}"
+        elif [[ "${line}" == root_hash* ]]; then
+            root_hash="${line#*=}"
+        fi
+    done < "${file_info}"
+
+    if [ -z "${hash_offset}" ] || [ -z "${root_hash}" ]; then
+        echo "WARNING: ${hash_offset} and/or ${root_hash} are empty. Will not setup ${platform_extension_img_dir}"
+        return 1
+    fi
+
+    if ! platform_extension_overlayfs_make_loop_device "${platform_extension_img_dir}"; then
+        return 1
+    fi
+
+    if ! /usr/sbin/veritysetup open --hash-offset="${hash_offset}" "${PLATFORM_EXTENSION_LOOP_DEVICE}" "${platform_extension_img}" "${PLATFORM_EXTENSION_LOOP_DEVICE}" "${root_hash}"; then
+        echo "WARNING: Failed to create dm-verity mapping for ${platform_extension_img}. Will not setup ${platform_extension_img_dir}"
+        return 1
+    fi
+
+    PLATFORM_EXTENSION_SOURCE_TO_MOUNT="/dev/mapper/$platform_extension_img"
+}
+
+function platform_extension_overlayfs_vendor_setup()
+{
+    local platform_extension_img_basedir="${DATAFS_MNT}"/platform-extension
+    local platform_extension_mnt_basedir="${DATAFS_MNT}"/platform-extension/mnt
+    local pub_key="${ROOTFS_MNT}"/etc/platform-extension/pub.pem
+
+    if [ ! -d "${platform_extension_img_basedir}"/hal ] && [ ! -d "${platform_extension_img_basedir}"/platform ]; then
+        echo "${platform_extension_img_basedir}/hal and ${platform_extension_img_basedir}/platform do not exist. There are no Platform Extension images to setup"
+        return
+    fi
+
+    if [ ! -f "${pub_key}" ]; then
+        # But it is ok if we don't use Platform Extension images that require dm-verity
+        echo "WARNING: ${pub_key} does not exist. There is no public key to verify images"
+    fi
+
+    for platform_extension_img_dir in "${platform_extension_img_basedir}"/hal/*.img "${platform_extension_img_basedir}"/platform/*.img; do
+        if [ ! -e "${platform_extension_img_dir}" ]; then
+            continue
+        fi
+
+        echo "Found ${platform_extension_img_dir}. Trying to setup the Platform Extension image..."
+        local platform_extension_img=${platform_extension_img_dir##*/}
+        platform_extension_img="${platform_extension_img%.img}"
+        local type=""
+
+        if [[ "${platform_extension_img_dir}" == "${platform_extension_img_basedir}/hal/"* ]]; then
+            type="hal"
+        elif [[ "${platform_extension_img_dir}" == "${platform_extension_img_basedir}/platform/"* ]]; then
+            type="platform"
+        fi
+
+        if ! platform_extension_overlayfs_prepare_image "${platform_extension_img_dir}" "${pub_key}"; then
+            continue
+        fi
+
+        local platform_extension_mnt_dir="${platform_extension_mnt_basedir}"/"${type}"/"${platform_extension_img}"
+
+        if ! mkdir -p "${platform_extension_mnt_dir}"; then
+            echo "WARNING: Unable to create ${platform_extension_mnt_basedir}/${type}/${platform_extension_img}. Will not setup ${platform_extension_img_dir}"
+            continue
+        fi
+
+        echo "Mounting ${PLATFORM_EXTENSION_SOURCE_TO_MOUNT} in ${platform_extension_mnt_dir}"
+
+        if ! mount -t squashfs -o ro "${PLATFORM_EXTENSION_SOURCE_TO_MOUNT}" "${platform_extension_mnt_dir}"; then
+            echo "WARNING: Unable to mount /dev/mapper/${platform_extension_img_dir} in ${platform_extension_mnt_dir}. Will not setup ${platform_extension_img_dir}"
+            continue
+        fi
+
+        echo "${platform_extension_img_dir} is ready to be used for overlaying. Finding overlays..."
+        platform_extension_overlayfs_find_overlays "${platform_extension_mnt_dir}" "${type}"
+        echo "Finished finding overlays on ${platform_extension_img_dir}"
+
+    done
+}
+
+function platform_extension_overlayfs_product_setup()
+{
+    echo "Finding overlays in /product..."
+    platform_extension_overlayfs_find_overlays "${ROOTFS_MNT}/product"
+    echo "Finished finding overlays in /product"
+}
+
+function platform_extension_overlayfs_setup()
+{
+    local curr_smack_label
+    curr_smack_label="$(cat /proc/self/attr/current)"
+    echo "System::Privileged" > /proc/self/attr/current
+    PLATFORM_EXTENSION_OVERLAY_DIRS=()
+    platform_extension_overlayfs_move_modules_to_tmp
+    platform_extension_overlayfs_vendor_setup
+    platform_extension_overlayfs_product_setup
+    platform_extension_overlayfs_mount_overlays
+    platform_extension_overlayfs_restore_modules_from_tmp
+    echo "${curr_smack_label}" > /proc/self/attr/current
+}
+
+function change_root()
+{
+    ADDON=
+    INIT_BINARY=/sbin/init
+    if [ "$BOOT_MODE" == "fota" ]; then
+        ADDON="--unit=online-update.target"
+        INIT_BINARY=/usr/lib/systemd/systemd
+    fi
+
+    if [ $$ = 1 ]
+    then
+        if [ "$IN_INITRD" = "1" ]
+        then
+            exec chroot . "$INIT_BINARY" "$ADDON" $@
+        elif [ "$IN_INITRAMFS" = "1" ]
+        then
+            exec switch_root $ROOTFS_MNT "$INIT_BINARY" "$ADDON" $@
+        else
+            exec /usr/lib/systemd/systemd "$ADDON" $@
+        fi
+    fi
+}
+
+function print_boot_info() {
+    CMDLINE_ROOT=$([[ $(</proc/cmdline) =~ (root=[^ ]*) ]]; echo ${BASH_REMATCH[1]})
+    CMDLINE_PARTITION_AB=$([[ $(</proc/cmdline) =~ (partition_ab=[ab]) ]]; echo ${BASH_REMATCH[1]})
+    CMDLINE_BOOTMODE=$([[ $(</proc/cmdline) =~ (bootmode=[^ ]*) ]]; echo ${BASH_REMATCH[1]})
+    echo "Initrd booting (/proc/cmdline $CMDLINE_BOOTMODE $CMDLINE_PARTITION_AB $CMDLINE_ROOT)"
+}
+
+function process_special_filesystem() {
+    if [ ! -d /dev ]; then mkdir -p /dev; fi
+    if [ ! -d /sys ]; then mkdir -p /sys; fi
+    if [ ! -d /proc ]; then mkdir -p /proc; fi
+
+    mount -o nosuid,strictatime,mode=755 -t devtmpfs devtmpfs /dev
+    mount -o nosuid,noexec,nodev -t sysfs sysfs /sys
+    mount -o nosuid,noexec,nodev -t proc proc /proc
+}
+
+check_bootmode() {
+    read -r cmdline </proc/cmdline
+    echo "Kernel command line: $cmdline"
+    for element in $cmdline; do
+        key="${element%%=*}"
+        if [ "$key" = "bootmode" ]; then
+            BOOT_MODE="${element#*=}"
+            break;
+        fi
+    done
+}
+
+if [ x$container = "x" ]; then
+    process_special_filesystem
+else
+    source /sbin/init.container
+fi
+
+print_boot_info
+wait_find_partitions
+
+process_modulesfs
+load_kernel_modules "$MODULES_INITRD_MNT"                               # 1st pass, try to load modules from modules.img
+
+check_network
+setup_nbd
+restore_partitions
+check_flags
+check_bootmode
+
+process_rootfs
+process_datafs
+process_vendorfs
+process_appsfs
+process_productfs
+process_halfs
+process_userfs
+move_modulesfs
+load_kernel_modules "$MODULES_MNT" "$HALFS_MNT/lib" "$HALFS_MNT/etc"    # 2nd pass, try to load modules from hal.img
+
+write_resized_flag
+
+platform_extension_overlayfs_setup
+
+pivot_root
+change_root $@
+
+# WARNING! never rearch
+exec /bin/sh

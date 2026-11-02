@@ -1,0 +1,1 @@
+PM confirmed: 已在场，可以开始. Applies to task7 label correction and two serial reboot verifications; second conditional on first passing.

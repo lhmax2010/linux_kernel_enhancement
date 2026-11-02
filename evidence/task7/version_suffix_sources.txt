@@ -1,0 +1,93 @@
+HEAD=0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+FILE=packaging/linux-rpi.spec
+4: %define config_name tizen_bcm2711_defconfig
+5: %ifarch aarch64
+6: %define buildarch arm64
+7: %else
+8: %define buildarch arm
+9: %endif
+10: %define target_board rpi4
+11: %define variant %{buildarch}-%{target_board}
+173: %define lsm_fragment kernel/configs/selinux.config
+174: %else
+175: %if "%{?dev_wos}" == "1"
+176: %define lsm_fragment kernel/configs/nosmack.config
+177: %endif
+178: %endif
+179:
+180: for target in %{variant} %{variant}-rt; do
+181:     echo "-${target}" > localversion-tizen
+182:
+183:     # extract uapi headers
+184:     make O=build/${target} headers_install %{?_smp_mflags}
+185:
+186:     # Set config file
+187:     BASE_CONFIG="arch/%{buildarch}/configs/%{config_name}"
+188:     EXTRA_FRAGMENTS=""
+189:
+190:     case $target in
+191: 	%{variant})
+192: 	    EXTRA_FRAGMENTS="%{?lsm_fragment}"
+193: 	;;
+194: 	%{variant}-rt)
+195: 	    EXTRA_FRAGMENTS="kernel/configs/rt.config %{?lsm_fragment}"
+196: 	;;
+197:     esac
+198:
+199:     mkdir -p build/${target}
+200:     ./scripts/kconfig/merge_config.sh -m -O build/${target} ${BASE_CONFIG} ${EXTRA_FRAGMENTS}
+201:     make O=build/${target} olddefconfig %{?_smp_mflags}
+299:     # Install modules
+300:     make O=build/${target} INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%{buildroot} modules_install
+351: %files -n %{variant}-linux-kernel-modules
+352: %ifarch aarch64
+353: /lib/modules/*%{variant}-v8/
+354: %else
+355: /lib/modules/*%{variant}-v7l/
+356: %endif
+357:
+358: %files -n %{variant}-rt-linux-kernel-modules
+359: %ifarch aarch64
+360: /lib/modules/*%{variant}-rt-v8/
+361: %else
+362: /lib/modules/*%{variant}-rt-v7l/
+363: %endif
+FILE=arch/arm/configs/tizen_bcm2711_defconfig
+1: CONFIG_LOCALVERSION="-v7l"
+2: # CONFIG_LOCALVERSION_AUTO is not set
+FILE=scripts/setlocalversion
+174: # localversion* files in the build and source directory
+175: file_localversion="$(collect_files localversion*)"
+176: if test ! "$srctree" -ef .; then
+177: 	file_localversion="${file_localversion}$(collect_files "$srctree"/localversion*)"
+178: fi
+179:
+180: if ${no_local}; then
+181: 	echo "${KERNELVERSION}$(scm_version --no-dirty)"
+182: 	exit 0
+183: fi
+184:
+185: if ! test -e include/config/auto.conf; then
+186: 	echo "Error: kernelrelease not valid - run 'make prepare' to update it" >&2
+187: 	exit 1
+188: fi
+189:
+190: # version string from CONFIG_LOCALVERSION
+191: config_localversion=$(sed -n 's/^CONFIG_LOCALVERSION=\(.*\)$/\1/p' include/config/auto.conf)
+192:
+193: # scm version string if not at the kernel version tag or at the file_localversion
+194: if grep -q "^CONFIG_LOCALVERSION_AUTO=y$" include/config/auto.conf; then
+195: 	# full scm version string
+196: 	scm_version="$(scm_version)"
+197: elif [ "${LOCALVERSION+set}" != "set" ]; then
+198: 	# If the variable LOCALVERSION is not set, append a plus
+199: 	# sign if the repository is not in a clean annotated or
+200: 	# signed tagged state (as git describe only looks at signed
+201: 	# or annotated tags - git tag -a/-s).
+202: 	#
+203: 	# If the variable LOCALVERSION is set (including being set
+204: 	# to an empty string), we don't want to append a plus sign.
+205: 	scm_version="$(scm_version --short)"
+206: fi
+207:
+208: echo "${KERNELVERSION}${file_localversion}${config_localversion}${LOCALVERSION}${scm_version}"

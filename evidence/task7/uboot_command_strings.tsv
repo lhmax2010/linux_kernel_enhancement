@@ -1,0 +1,16 @@
+name	strings_substring	independent_token	first_examples
+fatwrite	字符串出现	有	L1042: fatwrite
+fatload	字符串出现	有	L1054: fatload
+fatls	字符串出现	有	L1051: fatls
+load	字符串出现	有	L242: bcm2711: Failed to load vl805's firmware, %d | L943: Invalid load option for %ls
+bootz	字符串出现	有	L349: bootz
+booti	字符串出现	无	L345: ERROR: booting os '%s' (%d) is not supported | L2314: ** Checksum Error in booting catalog validation entry on %d:%d **
+ext4write	字符串出现	有	L1021: ext4write | L3528: reboot_param_clear=part number ${devtype} ${devnum} ${informname} informpart; mw.l ${rebootparam_addr} ${normal_val}; ext4write ${devtype} ${devnum}:${informpart} ${rebootparam_addr} /${rebootparamfile} 8
+ext4load	字符串出现	有	L1007: ext4load
+mmc	字符串出现	有	L324: mmc 0=u-boot.bin fat 0 1 | L1390: no mmc device at slot %x
+part	字符串出现	有	L1009: <interface> [<dev[:part]> [addr [filename [bytes [pos]]]]] | L1014: <interface> <dev[:part]> [directory]
+setenv	字符串出现	有	L1518: setenv | L1529: setenv [-f] name value ...
+saveenv	字符串出现	有	L1550: saveenv | L3520: disable_delay=setenv console console=ram; setenv bootdelay 0; saveenv
+ums	字符串出现	有	L1887: <USB_controller> [<devtype>] <dev[:part]>  e.g. ums 0 mmc 0
+dfu	字符串出现	有	L2459: dfu: fs_set_blk_dev error! | L2460: dfu: fs_read error!
+thor	字符串出现	无	L115: thor_func_set_alt | L149: thor_handle

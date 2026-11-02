@@ -1,0 +1,4 @@
+REMOVE-RAMDISK-EXIT=0
+MOUNT-EXIT=0
+/dev/mmcblk0p1 /opt/usr/lko_task7/boot vfat ro,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=ascii,shortname=mixed,errors=remount-ro 0 0
+cd6abbb4475282aa54024adbfd079f16363930de9cd0f65a7e5ac7f41c871e16  /opt/usr/lko_task7/boot/u-boot.bin

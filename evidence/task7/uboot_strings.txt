@@ -1,0 +1,3757 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task7/namespace_home /home --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp /home/linhao/Toolchain/development/linux_kernel_optimization/temp --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task7 --setenv HOME /home/abuild --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin -- /usr/bin/qemu-arm -L / /usr/bin/strings /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task7/u-boot.bin
+%s: Unknown relocation type %llx
+%s: Relocation at %p is out of range (%lx)
+ n;^
+Qkkbal
+i]Wb
+9a&g
+MGiI
+wn>Jj
+#.zf
++o*7
+IBI SYSTn
+RUNTSERVn
+UbEfiVa
+ B0!
+ B0!
+ B0!
+UUUU
+gfff
+gfff
+USBCUSBS7@-
+0C08$
+EFI PART
+IGNOREME
+@p@-
+@p@-
+USBS|x
+USBC
+_BHRfS_M
+hsqs
+3333p@-
+UbEfiVa
+UbEfiVa
+UbEfiVa
+@cR40
+ aR<
+IBI SYST
+0C ?
+:6;@
+'p@-
+: 0F
+* 0F
+'s@-
+vRQ>
+8STs
+LwH'
+S!^P
+Cp@-
+ScDj
+@ #!
+!1C "
+BGRs
+(*>~
+8Ogz
+ygL5
+ir;w.
+nW	?m
+nW	?m
+ir;a
+nW	?m
+ir; >
+p9DK
+GI8z
+r~XP
+A`Bti
+wP2*
+ir;~
+ -;6
+ir;(s*
+crc32c
+xxhash64
+sha256
+blake2
+:&;&e&f&c&`&"
+%B&@&j&k&<&
+%$%a%b%V%U%c%Q%W%]%\%[%
+%4%,%
+%<%^%_%Z%T%i%f%`%P%l%g%h%d%e%Y%X%R%S%k%j%
+)"a"
+e"d" #!#
+B c0
+s2R"
+b$C4
+S6r&
+>2.Q
+P%@Fpg`
+RwbVr
+ftGd$T
+Wfvv
+F4VL
+DXeH
+uJTZ7j
+ld\EL
+n6~UNt^
+ttt  6RitttZ_dtotq
+
+ipaddr
++,;=[]
+fdt_get_dma_range
+__of_translate_address
+fdt_fixup_memory_banks
+do_bootvx_fdt
+do_gpt
+initcall_run_f
+initcall_run_r
+usb_setup_descriptor
+stdio_add_devices
+dfu_fill_entity
+dfu_read_medium_mmc
+bcm2835_check_data_error
+phy_device_create
+dwc2_flush_rx_fifo
+dwc2_free_request
+g_dnl_register
+thor_func_set_alt
+btrfs_decompress
+btrfs_next_sibling_tree_block
+free_extent_buffer_final
+btrfs_lookup_path
+btrfs_read_fs_root
+__btrfs_map_block
+btrfs_find_last_root
+alloc_double_indirect_block
+ext4fs_put_metadata
+sqfs_find_inode
+efi_free_pool
+efi_runtime_relocate
+zstd_decompress
+gzwrite
+dfu_read
+dfu_get_medium_size_mmc
+bcm2835_prepare_data
+dwc2_flush_tx_fifo
+dwc2_ep0_read
+leaf_space_used
+free_extent_buffer_internal
+ext4fs_log_journal
+fs_devread
+efi_realloc
+dfu_write
+dfu_flush_medium_mmc
+bcm2835_read_wait_sdcmd
+dwc2_core_reset
+btrfs_leaf_free_space
+efi_free_pages
+dfu_get_buf
+mmc_file_op
+bcm2835_send_command
+thor_handle
+btrfs_search_slot
+dfu_write_medium_mmc
+thor_init
+fdt_find_or_add_subnode
+btrfs_free_extent_state
+(((((
+AAAAAA
+BBBBBB
+
+(fake run for tracing)
+machid
+Using machid 0x%lx from environment
+Starting kernel ...%s
+FDT creation failed!
+FDT and ATAGS support not compiled in
+/memory
+## WARNING: fixup memory failed!
+zimage: Bad magic!
+Kernel image @ %#08lx [ %#08lx - %#08lx ]
+arch_number
+TLB addr
+irq_sp
+sp start
+Early malloc usage: %x / %x
+Resetting CPU ...
+(%0*x)
+%0*x
+reloc pc : [<%08lx>]	   lr : [<%08lx>]
+sp : %08lx  ip : %08lx	 fp : %08lx
+r10: %08lx  r9 : %08lx	 r8 : %08lx
+r7 : %08lx  r6 : %08lx	 r5 : %08lx  r4 : %08lx
+r3 : %08lx  r2 : %08lx	 r1 : %08lx  r0 : %08lx
+Flags: %c%c%c%c
+  IRQs %s  FIQs %s  Mode %s%s
+Code:
+undefined instruction
+software interrupt
+prefetch abort
+data abort
+not used
+fast interrupt request
+USER_26
+FIQ_26
+IRQ_26
+SVC_26
+UK4_26
+UK5_26
+UK6_26
+UK7_26
+UK8_26
+UK9_26
+UK10_26
+UK11_26
+UK12_26
+UK13_26
+UK14_26
+UK15_26
+USER_32
+FIQ_32
+IRQ_32
+SVC_32
+UK4_32
+UK5_32
+UK6_32
+ABT_32
+UK8_32
+UK9_32
+HYP_32
+UND_32
+UK12_32
+UK13_32
+UK14_32
+SYS_32
+resetting ...
+CACHE: Misaligned operation at range [%08lx, %08lx]
+/soc
+brcm,bcm2835-mbox
+brcm,bcm2835-sdhci
+brcm,bcm2835-system-timer
+brcm,bcm2712-pm
+mbox: Illegal mbox data 0x%08x
+mbox: Timeout draining stale responses
+mbox: Timeout waiting for send space
+mbox: Timeout waiting for response
+mbox: Response channel mismatch
+mbox: Response buffer mismatch
+mbox: Header response code invalid
+mbox: Tag %d missing val_len response bit
+bcm2835: Could not set module %u power state
+bcm2835: Could not query eMMC clock rate
+bcm2835: Could not query max eMMC clock rate
+bcm2835: Could not query sdhost clock rate
+bcm2711: Failed to load vl805's firmware, %d
+bcm2835: Could not query ARM memory size
+fdt_addr
+fdtfile
+usbethaddr
+bcm2835: Could not query MAC address
+bcm2835: Could not query RSTS value
+0x%08X
+reg_rsts
+0x%X
+board_revision
+board_rev_scheme
+board_rev
+board_name
+serial#
+bcm2835: Could not query board serial
+%016llx
+devtype
+devnum
+/system
+bcm2835: Could not find /system node
+linux,revision
+bcm2835: Could not find linux,revision
+RPI: Board rev 0x%x outside known range
+RPI: Board rev 0x%x unknown
+RPI %s (0x%x)
+CPU: %s
+memreserve
+/reserved-memory/linux,cma
+dma-ranges
+emmc2bus
+pcie0
+blconfig
+kaslr-seed
+/chosen
+user-warnings
+ethernet0/mdio@e14/ethernet-phy@1
+local-bd-address
+/soc/serial@7e201000/bluetooth
+clock-frequency
+/clocks/clk-uart
+simple-framebuffer
+bcm2835-rpi-b.dtb
+Model B rev2
+bcm2835-rpi-b-rev2.dtb
+Model A
+bcm2835-rpi-a.dtb
+bcm2835-rpi-b-plus.dtb
+Compute Module
+bcm2835-rpi-cm.dtb
+bcm2835-rpi-a-plus.dtb
+2 Model B
+bcm2836-rpi-2-b.dtb
+3 Model B
+bcm2837-rpi-3-b.dtb
+Zero
+bcm2835-rpi-zero.dtb
+Compute Module 3
+bcm2837-rpi-cm3.dtb
+Zero W
+bcm2835-rpi-zero-w.dtb
+3 Model B+
+bcm2837-rpi-3-b-plus.dtb
+3 Model A+
+bcm2837-rpi-3-a-plus.dtb
+Compute Module 3+
+4 Model B
+bcm2711-rpi-4-b.dtb
+Zero 2 W
+bcm2837-rpi-zero-2-w.dtb
+bcm2711-rpi-400.dtb
+Compute Module 4
+bcm2711-rpi-cm4.dtb
+5 Model B
+bcm2712-rpi-5-b.dtb
+Compute Module 5
+bcm2712-rpi-cm5-cm5io.dtb
+bcm2712-rpi-500.dtb
+Compute Module 5 Lite
+bcm2712-rpi-cm5l-cm5io.dtb
+Unknown model
+bcm283x-rpi-other.dtb
+mmc 0=u-boot.bin fat 0 1
+ERROR: %s image overlaps OS image (OS=%lx..%lx)
+Ramdisk image is corrupt or invalid
+Could not find a valid device tree
+verify
+## Booting kernel from Legacy Image at %08lx ...
+   Verifying Checksum ...
+Unsupported Architecture 0x%x
+Wrong Image Type for %s command
+ERROR %dE: can't get kernel image!
+ERROR: unknown image format type!
+Could not find a valid setup.bin for x86
+Could not find kernel entry point!
+Image too large: increase CONFIG_SYS_BOOTM_LEN
+%s: uncompress error %d
+Must RESET board to recover
+WARNING: legacy format multi component image overwritten
+ERROR: new format image overwritten - must RESET the board to recover
+Unable to allocate memory %#lx for loading OS
+initrd_start
+initrd_end
+ERROR: booting os '%s' (%d) is not supported
+subcommand failed (err=%d)
+Resetting the board...
+bootm
+bootz
+## Transferring control to RTEMS (at address %08lx) ...
+confaddr
+## Transferring control to Plan 9 (at address %08lx) ...
+filesize
+## Transferring control to NetBSD stage-2 loader (at address %08lx) ...
+   Using standard DTB
+   !!! WARNING !!! Using legacy DTB
+## ERROR: %s : %s
+## Starting vxWorks at 0x%08lx, device tree at 0x%08lx ...
+## vxWorks terminated
+%s:	%s
+Base path too long (%s%s)
+Retrieving file: %s
+Expected string literal: %.*s
+Expected string: %.*s
+outbuf is too small (%zd < 21)
+01-%02x-%02x-%02x-%02x-%02x-%02x
+localcmd
+No kernel given, skipping %s
+kernel_addr_r
+Skipping %s for failure retrieving kernel
+malloc fail (FIT address)
+ramdisk_addr_r
+Skipping %s for failure retrieving initrd
+%s:%lx
+ipaddr
+serverip
+gatewayip
+netmask
+ ip=%s:%s:%s:%s
+ BOOTIF=
+bootarg overflow %zd+%zd+%zd+1 > %zd
+append: %s
+fdt_addr_r
+malloc fail (FDT filename)
+%s%s%s%s%s%s
+Skipping %s for failure retrieving FDT
+Skipping fdtdir %s for failure retrieving dts
+fdtoverlay_addr_r
+Invalid fdtoverlay_addr_r for loading overlays
+Failed loading overlay %s
+Invalid overlay %s, skipping
+Failed to apply overlay %s, skipping
+fdtcontroladdr
+Expected include path: %.*s
+Couldn't retrieve %s
+Maximum nesting (%d) exceeded
+Ignoring malformed menu command: %.*s
+Expected label name: %.*s
+initrd=
+Ignoring unknown command: %.*s
+pxelinux.cfg/
+path (%s%s) too long, skipping
+pxelinux.cfg/%s
+Setting use of fallback
+Selected fallback option, but not set
+pxe_label_override
+Missing override pxe label: %s
+Missing default: %s
+Error parsing config file
+menu
+title
+default
+prompt
+label
+kernel
+localboot
+initrd
+include
+devicetree
+devicetreedir
+fdtdir
+fdtoverlays
+devicetree-overlay
+ontimeout
+ipappend
+background
+kaslrseed
+fallback
+Unknown OS
+Unknown Architecture
+Unknown Image
+Loading
+   %s %s
+   Uncompressing %s
+Unimplemented compression type %d
+Unknown Compression
+%sImage Name:   %.*s
+%sImage Type:
+%s %s %s (%s)
+%sData Size:
+%sLoad Address: %08x
+%sEntry Point:  %08x
+%sContents:
+%s   Image %d:
+%s    Offset = 0x%08lx
+HAB Blocks:   0x%08x   0x0000   0x%08x
+architecture
+compression
+operating system
+image type
+bzip2
+gzip
+lzma
+zstd
+none
+u-boot
+U-Boot phase
+SPL Phase
+uncompressed
+bzip2 compressed
+gzip compressed
+lzma compressed
+lzo compressed
+lz4 compressed
+zstd compressed
+aisimage
+Davinci AIS image
+Filesystem Image
+flat_dt
+Flat Device Tree
+gpimage
+TI Keystone SPL Image
+Kernel Image
+kernel_noload
+Kernel Image (no loading done)
+kwbimage
+Kirkwood Boot Image
+imximage
+Freescale i.MX Boot Image
+imx8image
+NXP i.MX8 Boot Image
+imx8mimage
+NXP i.MX8M Boot Image
+Invalid Image
+multi
+Multi-File Image
+omapimage
+TI OMAP SPL With GP CH
+pblimage
+Freescale PBL Boot Image
+ramdisk
+RAMDisk Image
+Script
+socfpgaimage
+Altera SoCFPGA CV/AV preloader
+socfpgaimage_v1
+Altera SoCFPGA A10 preloader
+standalone
+Standalone Program
+ublimage
+Davinci UBL image
+mxsimage
+Freescale MXS Boot Image
+atmelimage
+ATMEL ROM-Boot Image
+x86_setup
+x86 setup.bin
+lpc32xximage
+LPC32XX Boot Image
+rkimage
+Rockchip Boot Image
+rksd
+Rockchip SD Boot Image
+rkspi
+Rockchip SPI Boot Image
+vybridimage
+Vybrid Boot Image
+zynqimage
+Xilinx Zynq Boot Image
+zynqmpimage
+Xilinx ZynqMP Boot Image
+zynqmpbif
+Xilinx ZynqMP Boot Image (bif)
+fpga
+FPGA Image
+Trusted Execution Environment Image
+firmware_ivt
+Firmware with HABv4 IVT
+pmmc
+TI Power Management Micro-Controller Firmware
+stm32image
+STMicroelectronics STM32 Image
+mtk_image
+MediaTek BootROM loadable Image
+copro
+Coprocessor Image
+sunxi_egon
+Allwinner eGON Boot Image
+sunxi_toc0
+Allwinner TOC0 Boot Image
+fdt_legacy
+legacy Image with Flat Device Tree
+spkgimage
+Renesas SPKG Image
+sfspl
+StarFive SPL Image
+tfa-bl31
+TFA BL31 Image
+stm32imagev2
+STMicroelectronics STM32 Image V2.0
+Invalid OS
+arm-trusted-firmware
+ARM Trusted Firmware
+Linux
+netbsd
+NetBSD
+Enea OSE
+plan9
+Plan 9
+rtems
+RTEMS
+Trusted Execution Environment
+U-Boot
+vxworks
+VxWorks
+opensbi
+RISC-V OpenSBI
+EFI Firmware
+ELF Image
+Invalid ARCH
+alpha
+Alpha
+Intel x86
+ia64
+IA64
+m68k
+M68K
+microblaze
+MicroBlaze
+mips
+MIPS
+mips64
+MIPS 64 Bit
+nios2
+NIOS II
+powerpc
+PowerPC
+s390
+IBM S390
+SuperH
+sparc
+SPARC
+sparc64
+SPARC 64 Bit
+blackfin
+Blackfin
+avr32
+AVR32
+nds32
+NDS32
+or1k
+OpenRISC 1000
+sandbox
+Sandbox
+arm64
+AArch64
+AMD x86_64
+xtensa
+Xtensa
+riscv
+RISC-V
+bootm_low
+bootm_size
+bootm_mapsize
+## Loading init Ramdisk from Legacy Image at %08lx ...
+No Linux %s Ramdisk Image
+Wrong Ramdisk Image Format
+## Loading init Ramdisk from multi component Legacy Image at %08lx ...
+initrd_high
+in-place initrd alloc failed
+ramdisk - allocation error
+   Loading Ramdisk to %08lx, end %08lx ...
+%d Bytes =
+Bad magic number
+Bad header crc
+Bad data crc
+Bad image type
+Empty Script
+Wrong image format for "source" command
+loadaddr
+Hunting with: %s
+%s.%s
+part_%x
+whole
+.sib
+%.*s.%s
+.bootdev
+%.*s.blk
+dhcp
+Unknown uclass '%s' in label
+No bootdevs for '%s'
+label "%s" is way too long
+Invalid partition number: %s
+Missing bootstd device
+** Booting bootflow '%s' with %s
+Using prior-stage device tree
+Boot failed (err=%d)
+bootmeth
+boot_targets
+bootstd
+bootstd_drv
+bootmeth_
+u-boot,boot-std
+/boot/
+Invalid option
+Unexpected value '%s'
+extlinux/extlinux.conf
+bootmeth_extlinux
+u-boot,extlinux
+tftp
+pxefile_addr_r
+bootmeth_pxe
+u-boot,extlinux-pxe
+/EFI/BOOT/
+PXEClient:Arch:%05x:UNDI:003000
+bootp_vci
+bootp_arch
+bootfile
+bootmeth_efi
+u-boot,distro-efi
+EFI bootmgr flow
+bootmeth_efi_mgr
+u-boot,efi-bootmgr
+#size-cells
+%s: Bad cell count for %s
+%s: %s: %s
+fdt_root: %s
+serial-number
+WARNING: could not set serial-number %s.
+fdt_initrd: %s
+linux,initrd-start
+WARNING: could not set linux,initrd-start %s.
+linux,initrd-end
+WARNING: could not set linux,initrd-end %s.
+No RNG device
+%s %s: dm_rng_read failed: %d
+udevice *)
+(NULL
+WARNING: could not set kaslr-seed %s.
+fdt_chosen: %s
+WARNING: could not set bootargs %s.
+u-boot,version
+WARNING: could not set u-boot,version %s.
+Unable to update property %s:%s, err=%s
+%s: num banks %d exceeds hardcoded limit %d. Recompile with higher MEMORY_BANKS_MAX?
+device_type
+WARNING: could not set %s %s.
+/aliases
+ethernet
+eth%daddr
+local-mac-address
+disabled
+#address-cells
+Found dma-ranges in root node, shouldn't happen
+okay
+fail
+Invalid fdt status: %x
+framebuffer@%llx
+height
+stride
+format
+/__symbols__
+failed on fdt_overlay_apply(): %s
+base fdt does not have a /__symbols__ node
+make sure you've compiled with -@
+The address of the fdt is invalid (NULL).
+libfdt fdt_check_header(): %s
+ - too old, fdt %d < %d
+ - too new, fdt %d > %d
+r5g6b5
+a8r8g8b8
+compatible
+ERROR:
+ - must RESET the board to recover.
+ERROR: reserving fdt memory region failed
+(addr=%llx size=%llx flags=%x)
+no-map
+image is not a fdt
+fdt_high
+Failed to reserve memory for fdt at %#llx
+Failed to allocate memory for Device Tree relocation
+device tree - allocation error
+   Using Device Tree in place at %p, end %p
+   Loading Device Tree to %p, end %p ...
+fdt move failed
+## Flattened Device Tree from Legacy Image at %08lx
+fdt header checksum invalid
+fdt checksum invalid
+uImage is not a fdt
+uImage is compressed
+uImage data is not a fdt
+fdt overwritten
+## Flattened Device Tree blob at %08lx
+ERROR: Did not find a cmdline Flattened Device Tree
+   Booting using the fdt blob at %#08lx
+## Flattened Device Tree from multi component Image at %08lX
+   Booting using the fdt at 0x%p
+fdt size != image size
+ERROR: root node setup failed
+ERROR: /chosen node create failed
+ERROR: arch-specific fdt fixup failed
+u-boot,bootconf
+skip_board_fixup
+skip all board fdt fixup
+ERROR: board-specific fdt fixup failed: %s
+ERROR: fdt fixup event failed: %d
+Failed to reserve memory for the fdt at %#llx
+ - must RESET the board to recover.
+## Starting application at 0x%08lX ...
+## Application terminated, rc = 0x%lX
+Perform RESET of the CPU
+- cold boot without level specifier
+reset -w - warm reset if implemented
+start application at address 'addr'
+addr [arg ...]
+    - start application at address 'addr'
+      passing 'arg' as arguments
+bootcmd
+## Checking Image at %08lx ...
+   Legacy image found
+   Bad Magic Number
+   Bad Header Checksum
+   Bad Data CRC
+Unknown image format!
+Trying to execute a command out of order
+Automatic boot of image at addr 0x%08lX ...
+iminfo
+print header information for application image
+addr [addr ...]
+    - print header information for application image starting at
+      address 'addr' in memory; this includes verification of the
+      image contents (magic number, header and payload checksums)
+bootd
+boot default, i.e., run 'bootcmd'
+boot application image from memory
+loados
+cmdline
+prep
+fake
+alias for 'help'
+help
+print command description/usage
+	- print brief description of all commands
+help command ...
+	- print detailed usage of 'command'
+panic
+Panic with optional message
+[message]
+gcc (Tizen GCC 14.2.0 20240801 1.4) 14.2.0
+GNU ld (GNU Binutils) 2.43
+print monitor, compiler and linker version
+           vaddr            paddr             size
+================ ================ ================
+%16.8lx %16.8llx %16.8llx
+addrmap
+List non-identity virtual-physical memory mappings for 32-bit CPUs
+ERROR
+no %s devices available
+no %s partition table available
+... is now current device
+%s device %d not available
+read
+%s read: device %d block # %lu, count %lu ...
+%ld blocks read: %s
+%s write: device %d block # %lu, count %lu ...
+%ld blocks written: %s
+erase
+%s erase: device %d block # %lu, count %lu ...
+%ld blocks erased: %s
+Flags not supported: enable CONFIG_BOOTSTD_FULL
+bootflow
+Boot flows
+## Executing script at %08lx
+source
+run script from memory
+%-12s= 0x%0*lx
+%-12s= 0x%.*llx
+boot_params
+DRAM bank
+-> start
+-> size
+flashstart
+flashsize
+flashoffset
+baudrate    = %u bps
+relocaddr
+reloc off
+Build
+%-12s= %u-bit
+eth%iaddr
+current eth = %s
+%-12s= (not set)
+%-12s= %pM
+ipaddr%d
+IP addr     = %s
+fdt_blob
+Video
+%-12s= %s %sactive
+FB base
+FB copy
+ copy size
+FB size
+%-12s= %dx%dx%d
+devicetree  = %s
+serial addr
+ width
+ shift
+ clock
+print Board Info structure
+%s is not a valid uclass
+Cannot find device %d of class %s
+%s is not a valid driver name
+%s is not a valid node path
+Cannot find a parent device for node path %s
+Unable to bind. err:%d
+Cannot find a device with path %s
+Unable to remove. err:%d
+Unable to unbind. err:%d
+Cannot find driver '%s'
+Unable to remove all. err:%d
+Unable to unbind all. err:%d
+unbind
+Unbind a device from a driver
+<node path>
+unbind <class> <seq>
+unbind <class> <seq> <driver>
+Use 'dm tree' to list all devices registered in the driver model,
+their path, class, sequence and current driver.
+Bind a device to a driver
+<node path> <driver>
+bind <class> <seq> <driver>
+Use 'dm tree' to list all devices registered in the driver model,
+their path, class, sequence and current driver.
+changed to max of %u entries of %u blocks each
+hits: %u
+misses: %u
+entries: %u
+max blocks/entry: %u
+max cache entries: %u
+blkcache
+block cache diagnostics and control
+show - show and reset statistics
+blkcache configure <blocks> <entries> - set max blocks per entry and max cache entries
+show
+configure
+No UEFI binary known at %s
+bootefi
+Boots an EFI payload from memory
+Failed to allocate memory for the image at %#llx
+boot Linux zImage image from memory
+List of available devices
+|-- %s (%s%s)
+|   |-- %s
+coninfo
+print console devices and information
+Unknown parameter: %s
+Driver model low level access
+compat
+devres
+drivers
+static
+uclass
+function: %s, cpu-time: %lld us, frequency: %lld.%02d times/s
+cyclic_demo
+Registered function "%s" to be executed all %dms
+cyclic
+Cyclic
+echo args to console
+[-n] [args..]
+    - echo args to console; -n suppresses newline
+[2K%s
+[%d;%dH
+[*]
+[ ]
+[%d;%dH
+[%d;%dH
+[%d;%dH%s
+[%d;%dH%s
+[%d;%dH  Press ENTER to complete, ESC to quit
+  ** Edit URI **
+  enter HTTP Boot URI:
+  ** Edit Optional Data **
+  enter optional data:
+  ** Edit Description **
+  Enter description:
+Save
+[?25l
+[%d;%dH%s
+  Press any key to continue
+File path is too long!
+Boot Description is empty!
+File is not selected!
+Invalid load option for %ls
+Quit
+[?25l
+[%d;%dH
+[%d;%dH
+[?25h
+  ** Update File/URI **
+  ** Update File **
+No block device found!
+  ** Select Volume **
+Reading volume failed!
+  ** Select File **
+Error: Cannot initialize UEFI sub-system, r = %lu
+Console size is too small!
+  ** UEFI Maintenance Menu **
+  ** Select Boot Option **
+  Press UP/DOWN to move, +/- to change orde
+  Press SPACE to activate or deactivate the entry
+  CTRL+S to save, ESC to quit
+  ** Change Boot Order **
+Description:
+Initrd File:
+Fdt File:
+Optional Data:
+  ** Edit Boot Option **
+  ** Add Boot Option **
+eficonfig
+provide menu-driven UEFI variable maintenance interface
+Add Boot Option
+Edit Boot Option
+Change Boot Order
+Delete Boot Option
+Select File
+Clear
+Enter URI
+  Press UP/DOWN to move, ENTER to select, ESC to quit
+Invalid ELF image
+Automatic boot of VxWorks image at address 0x%08lx ...
+## Ethernet MAC address not copied to NV RAM
+bootaddr
+## VxWorks bootline address not specified
+## VxWorks boot device not specified
+host:%s
+host:vxWorks
+e=%s
+:%08x
+h=%s
+g=%s
+hostname
+tn=%s
+othbootargs
+## Using bootline (@ 0x%lx): %s
+## Not an ELF image, assuming binary
+## Starting vxWorks at 0x%08lx ...
+bootvx
+Boot vxWorks from an ELF image
+ [address] - load address of vxWorks ELF image.
+bootelf
+Boot from an ELF image in memory
+[-p|-s] [address]
+	- load ELF image at [address] via program headers (-p)
+	  or via section headers (-s)
+exit
+exit script
+ext4load
+load binary file from a Ext4 filesystem
+<interface> [<dev[:part]> [addr [filename [bytes [pos]]]]]
+    - load binary file 'filename' from 'dev' on 'interface'
+      to address 'addr' from ext4 filesystem
+ext4ls
+list files in a directory (default /)
+<interface> <dev[:part]> [directory]
+    - list files from 'dev' on 'interface' in a 'directory'
+ext4size
+determine a file's size
+<interface> <dev[:part]> <filename>
+    - Find file 'filename' from 'dev' on 'interface'
+      and determine its size.
+ext4write
+create a file in the root directory
+<interface> <dev[:part]> <addr> <absolute filename path>
+    [sizebytes] [file offset]
+    - create a file in / directory
+ext2load
+load binary file from a Ext2 filesystem
+<interface> [<dev[:part]> [addr [filename [bytes [pos]]]]]
+    - load binary file 'filename' from 'dev' on 'interface'
+      to address 'addr' from ext2 filesystem.
+ext2ls
+usage: fatinfo <interface> [<dev[:part]>]
+** Unable to use %s %d:%d for fatinfo **
+fatmkdir
+create a directory
+<interface> [<dev[:part]>] <directory>
+    - create a directory in 'dev' on 'interface'
+fatrm
+delete a file
+<interface> [<dev[:part]>] <filename>
+    - delete a file from 'dev' on 'interface'
+fatwrite
+write file into a dos filesystem
+<interface> <dev[:part]> <addr> <filename> [<bytes> [<offset>]]
+    - write file 'filename' from the address 'addr' in RAM
+      to 'dev' on 'interface'
+fatinfo
+print information about filesystem
+<interface> [<dev[:part]>]
+    - print information about filesystem from 'dev' on 'interface'
+fatls
+<interface> [<dev[:part]>] [directory]
+    - list files from 'dev' on 'interface' in a 'directory'
+fatload
+load binary file from a dos filesystem
+<interface> [<dev[:part]> [<addr> [<filename> [bytes [pos]]]]]
+    - Load binary file 'filename' from 'dev' on 'interface'
+      to address 'addr' from dos filesystem.
+      'pos' gives the file position to start loading from.
+      If 'pos' is omitted, 0 is used. 'pos' requires 'bytes'.
+      'bytes' gives the size to load. If 'bytes' is 0 or omitted,
+      the load stops on end of file.
+      If either 'pos' or 'bytes' are not aligned to
+      ARCH_DMA_MINALIGN then a misaligned buffer warning will
+      be printed and performance will suffer for the load.
+fatsize
+fdt_max_dump
+", "
+* 0x%p [0x%08x]
+0x%08x%s
+%02x%s
+Working FDT set to %lx
+fdtaddr
+Control
+Working
+/* NULL pointer error */
+%s fdt: %08lx
+New length %d < existing length %d, ignoring
+libfdt fdt_open_into(): %s
+New length 0x%X < existing length 0x%X, aborting.
+No FDT memory address configured. Please configure
+the FDT address via "fdt addr <address>" command.
+Aborting!
+libfdt fdt_path_offset() returned %s
+libfdt fdt_add_subnode(): %s
+prop (%d) doesn't fit in scratchpad!
+Sorry, I could not convert "%s"
+Unexpected character '%c'
+libfdt fdt_setprop(): %s
+libfdt node not found
+error: unprintable value
+libfdt fdt_getprop(): %s
+%s%s {
+Nested too deep, aborting.
+%s};
+%s%s;
+%s%s =
+%s/* NOP */
+Unknown tag 0x%08X
+libfdt fdt_delprop(): %s
+libfdt fdt_del_node(): %s
+magic:			0x%x
+totalsize:		0x%x (%d)
+off_dt_struct:		0x%x
+off_dt_strings:		0x%x
+off_mem_rsvmap:		0x%x
+version:		%d
+last_comp_version:	%d
+boot_cpuid_phys:	0x%x
+size_dt_strings:	0x%x
+size_dt_struct:		0x%x
+number mem_rsv:		0x%x
+index		   start		    size
+libfdt fdt_get_mem_rsv():  %s
+    %x	%08x%08x	%08x%08x
+libfdt fdt_add_mem_rsv(): %s
+libfdt fdt_del_mem_rsv(): %s
+Failed to update board information in FDT: %s
+flattened device tree utility commands
+totalsize
+off_dt_struct
+off_dt_strings
+off_mem_rsvmap
+last_comp_version
+boot_cpuid_phys
+size_dt_strings
+size_dt_struct
+sqfsload
+load binary file from a SquashFS filesystem
+<interface> [<dev[:part]> [<addr> [<filename> [bytes [pos]]]]]
+    - Load binary file 'filename' from 'dev' on 'interface'
+      to address 'addr' from SquashFS filesystem.
+      'pos' gives the file position to start loading from.
+      If 'pos' is omitted, 0 is used. 'pos' requires 'bytes'.
+      'bytes' gives the size to load. If 'bytes' is 0 or omitted,
+      the load stops on end of file.
+      If either 'pos' or 'bytes' are not aligned to
+      ARCH_DMA_MINALIGN then a misaligned buffer warning will
+      be printed and performance will suffer for the load.
+sqfsls
+List files in directory. Default: root (/).
+<interface> [<dev[:part]>] [directory]
+    - list files from 'dev' on 'interface' in 'directory'
+rename/move a file/directory
+<interface> [<dev[:part]>] <old_path> <new_path>
+    - renames/moves a file/directory in 'dev' on 'interface' from
+      'old_path' to 'new_path'
+fstypes
+List supported filesystem types
+fstype
+Look up a filesystem type
+<interface> <dev>:<part>
+- print filesystem type
+fstype <interface> <dev>:<part> <varname>
+- set environment variable to filesystem type
+<interface> [<dev[:part]>] <filename>
+    - delete a file with the name 'filename' on
+      device type 'interface' instance 'dev'.
+<interface> [<dev[:part]>] <directory>
+    - Create a directory 'directory' of partition 'part' on
+      device type 'interface' instance 'dev'.
+Create a symbolic link
+<interface> <dev[:part]> target linkname
+    - create a symbolic link to 'target' with the name 'linkname' on
+      device type 'interface' instance 'dev'.
+<interface> [<dev[:part]> [directory]]
+    - List files in directory 'directory' of partition 'part' on
+      device type 'interface' instance 'dev'.
+save
+save file to a filesystem
+<interface> <dev[:part]> <addr> <filename> bytes [pos]
+    - Save binary file 'filename' to partition 'part' on device
+      type 'interface' instance 'dev' from addr 'addr' in memory.
+      'bytes' gives the size to save in bytes and is mandatory.
+      'pos' gives the file byte position to start writing to.
+      If 'pos' is 0 or omitted, the file is written from the start.
+load binary file from a filesystem
+<interface> [<dev[:part]> [<addr> [<filename> [bytes [pos]]]]]
+    - Load binary file 'filename' from partition 'part' on device
+       type 'interface' instance 'dev' to address 'addr' in memory.
+      'bytes' gives the size to load in bytes.
+      If 'bytes' is 0 or omitted, the file is read until the end.
+      'pos' gives the file byte position to start reading from.
+      If 'pos' is 0 or omitted, the file is read from the start.
+<interface> <dev[:part]> <filename>
+    - Find file 'filename' from 'dev' on 'interface'
+      determine its size, and store in the 'filesize' variable.
+Bank %s:
+GPIO device %s probe error %i
+GPIO: '%s' not found
+cmd_gpio
+gpio: requesting pin %u failed
+gpio: pin %s (gpio %u) value is
+unknown (ret=%d)
+   Warning: no access to GPIO output value
+   Warning: value of pin is still %d
+query and control gpio pins
+<input|set|clear|toggle> <pin>
+    - input/set/clear/toggle the specified pin
+gpio status [-a] [<bank> | <pin>]  - show [all/claimed] GPIOs
+Failed to map physical memory
+Unknown operator '%s'
+Invalid data width specifier
+itest
+return true/false on integer compare
+[.b, .w, .l, .q, .s] [*]value1 <op> [*]value2
+Uart
+## Total Size      = 0x%08x = %d Bytes
+Cannot overwrite reserved area (%08lx..%08lx)
+## First Load Addr = 0x%08lX
+## Last  Load Addr = 0x%08lX
+## Total Size      = 0x%08lX = %ld Bytes
+loads_echo
+## Ready for S-Record download ...
+## S-Record download aborted
+## Start Addr      = 0x%08lX
+## Switch baudrate to %d bps and press ENTER ...
+loady
+## Ready for binary (ymodem) download to 0x%08lX at %d bps...
+## Binary (ymodem) download aborted
+loadx
+## Ready for binary (xmodem) download to 0x%08lX at %d bps...
+## Binary (xmodem) download aborted
+## Ready for binary (kermit) download to 0x%08lX at %d bps...
+## Binary (kermit) download aborted
+## Switch baudrate to %d bps and press ESC ...
+load binary file over serial line (ymodem mode)
+[ addr [ baud ] ]
+    - load binary file over serial line at address 'addr' with baudrate 'baud'
+load binary file over serial line (xmodem mode)
+loadb
+load binary file over serial line (kermit mode)
+loads
+load S-Record file over serial line
+[ off ]
+    - load S-Record file over serial line with offset 'off'
+Base Address: 0x%08lx
+crc32
+The seed cannot be 0. Using 0xDEADBEEF.
+%lu bytes filled with random data
+%08lx:
+ %08x
+ %04x
+ %02x
+Zero length ???
+byte
+%s at 0x%08lx (%#0*lx) != %s at 0x%08lx (%#0*lx)
+Total of %ld %s(s) were the same
+halfword
+double word
+random
+fill memory with random pattern
+<addr> <len> [<seed>]
+   - Fill 'len' bytes of memory starting at 'addr' with random data
+loop
+infinite loop on address range
+[.b, .w, .l] address number_of_objects
+print or set address offset
+    - print address offset for memory commands
+base off
+    - set address offset for memory commands to 'off'
+checksum calculation
+address count [addr]
+    - compute CRC32 checksum [save at addr]
+memory compare
+[.b, .w, .l] addr1 addr2 count
+memory copy
+[.b, .w, .l] source target count
+memory write (fill)
+[.b, .w, .l] address value [count]
+memory modify (constant address)
+[.b, .w, .l] address
+memory modify (auto-incrementing address)
+memory display
+[.b, .w, .l] address [# of objects]
+%2u
+%2u-%2u
+ = %5u	  %s
+full
+half
+IEEE 802.3 CSMA/CD
+IEEE 802.9 ISLAN-16T
+Incorrect PHY address. Range should be 0-31
+PHY 0x%02X: OUI = 0x%04X, Model = 0x%02X, Rev = 0x%02X, %3dbase%s, %s
+Error reading from the PHY addr=%02x reg=%02x
+addr=%02x reg=%02x data=
+%04X
+Error writing to the PHY addr=%02x reg=%02x
+Error reading from the PHY
+ addr=%02x
+Error writing to the PHY
+The MII dump command only formats the standard MII registers, 0-5, 9-a.
+%u.     (%04hx)                 -- %s --
+  (%04hx:%04x) %u.
+%2u,%2u =   b%u%u    speed selection = %s Mbps
+ = %s
+MII utility commands
+device                            - list available devices
+mii device <devname>                  - set current device
+mii info   <addr>                     - display MII PHY info
+mii read   <addr> <reg>               - read  MII PHY <addr> register <reg>
+mii write  <addr> <reg> <data>        - write MII PHY <addr> register <reg>
+mii modify <addr> <reg> <data> <mask> - modify MII PHY <addr> register <reg>
+                                        updating bits identified in <mask>
+mii dump   <addr> <reg>               - pretty-print <addr> <reg> (0-5 only)
+Addr and/or reg may be ranges, e.g. 2-7.
+PHY control register
+PHY status register
+PHY ID 1 register
+PHY ID 2 register
+Autonegotiation advertisement register
+Autonegotiation partner abilities register
+1000BASE-T control register
+1000BASE-T status register
+master/slave config fault
+master/slave config result
+local receiver status OK
+remote receiver status OK
+1000BASE-T full duplex able
+1000BASE-T half duplex able
+(reserved)
+1000BASE-T idle error counter
+test mode
+manual master/slave enable
+manual master/slave value
+multi/single port
+automatic TDR on link down
+next page able
+acknowledge
+remote fault
+asymmetric pause able
+100BASE-T4 able
+100BASE-X full duplex able
+100BASE-TX able
+10BASE-T full duplex able
+10BASE-T able
+partner selector
+asymmetric pause
+pause enable
+100BASE-TX full duplex able
+10BASE-T   full duplex able
+10BASE-T   able
+OUI portion
+manufacturer part number
+manufacturer rev. number
+100BASE-X  full duplex able
+100BASE-X  half duplex able
+10 Mbps    full duplex able
+10 Mbps    half duplex able
+100BASE-T2 full duplex able
+100BASE-T2 half duplex able
+extended status
+MF preamble suppression
+A/N complete
+A/N able
+link status
+jabber detect
+extended capabilities
+loopback
+speed selection
+A/N enable
+power-down
+isolate
+restart A/N
+collision test enable
+PHY does not have extended functions
+No MDIO bus found
+Reading from bus %s
+PHY at address %x:
+Error
+%d - 0x%x
+mdio
+MDIO utility commands
+list			- List MDIO buses
+mdio read <phydev> [<devad>.]<reg> - read PHY's register at <devad>.<reg>
+mdio write <phydev> [<devad>.]<reg> <data> - write PHY's register at <devad>.<reg>
+mdio rx <phydev> [<devad>.]<reg> - read PHY's extended register at <devad>.<reg>
+mdio wx <phydev> [<devad>.]<reg> <data> - write PHY's extended register at <devad>.<reg>
+<phydev> may be:
+   <busname>  <addr>
+   <addr>
+   <eth name>
+<addr> <devad>, and <reg> may be ranges, e.g. 1-5.4-0x1f.
+sleep
+delay execution for some time
+    - delay execution for N seconds (N is _decimal_ and can be
+      fractional)
+No MMC device available
+OK, force rescan
+no mmc device at slot %x
+set dsr %s
+ DDR
+ ENH
+ ENH
+Device: %s
+Manufacturer ID: %x
+OEM: %x
+Name: %c%c%c%c%c
+Name: %c%c%c%c%c%c
+Bus Speed: %d
+Mode: %s
+card capabilities
+host capabilities
+Rd Block Len: %d
+%s version %d.%d
+High Capacity: %s
+Bus Width: %d-bit%s
+Erase Group Size:
+HC WP Group Size:
+User Capacity:
+ WRREL
+Boot Capacity:
+RPMB Capacity:
+Boot area %d is
+not write protected
+power on protected
+permanently protected
+in reserved protection state
+SD doesn't support partitioning
+user
+wrrel
+Partition configuration:
+	User Enhanced Start:
+	User Enhanced Size:
+	No enhanced user data area
+	User partition write reliability: %s
+	GP%i Capacity:
+	No GP%i partition
+	GP%i write reliability: %s
+Partitioning successful, power-cycle to make effective
+#part_num shouldn't be larger than %d
+switch to partitions #%d, %s
+mmc%d is current device
+mmc%d(part %d) is current device
+get mmc type error!
+MMC erase: dev # %d, block # %d, count %d ...
+Error: card is write protected!
+%d blocks erased: %s
+MMC write: dev # %d, block # %d, count %d ...
+%d blocks written: %s
+It is not an eMMC device
+boot areas protected
+MMC read: dev # %d, block # %d, count %d ...
+%d blocks read: %s
+mmcinfo
+display MMC info
+- display info of the current MMC device
+MMC sub system
+info - display info of the current MMC device
+mmc read addr blk# cnt
+mmc write addr blk# cnt
+mmc erase blk# cnt
+mmc erase partname
+mmc rescan [mode]
+mmc part - lists available partition on current mmc device
+mmc dev [dev] [part] [mode] - show or set current mmc device [partition] and set mode
+  - the required speed mode is passed as the index from the following list
+    [MMC_LEGACY, MMC_HS, SD_HS, MMC_HS_52, MMC_DDR_52, UHS_SDR12, UHS_SDR25,
+    UHS_SDR50, UHS_DDR50, UHS_SDR104, MMC_HS_200, MMC_HS_400, MMC_HS_400_ES]
+mmc list - lists available devices
+mmc wp [PART] - power on write protect boot partitions
+  arguments:
+   PART - [0|1]
+       : 0 - first boot partition, 1 - second boot partition
+         if not assigned, write protect all boot partitions
+mmc hwpartition <USER> <GP> <MODE> - does hardware partitioning
+  arguments (sizes in 512-byte blocks):
+   USER - <user> <enh> <start> <cnt> <wrrel> <{on|off}>
+	: sets user data area attributes
+   GP - <{gp1|gp2|gp3|gp4}> <cnt> <enh> <wrrel> <{on|off}>
+	: general purpose partition
+   MODE - <{check|set|complete}>
+	: mode, complete set partitioning completed
+  WARNING: Partitioning is a write-once setting once it is set to complete.
+  Power cycling is required to initialize partitions after set to complete.
+mmc setdsr <value> - set DSR register value
+hwpartition
+setdsr
+ping failed; host %s is not alive
+host %s is alive
+rootpath
+dnsip
+domain
+autoload
+ping
+send ICMP ECHO_REQUEST to network host
+pingAddress
+boot image via network using NFS protocol
+[loadAddress] [[hostIPaddr:]bootfilename]
+boot image via network using DHCP/TFTP protocol
+tftpboot
+load file via network using TFTP protocol
+bootp
+boot image via network using BOOTP/TFTP protocol
+eth%d : %s %pM %s
+Could not find device %s
+Driver does not implement stats dump!
+  %s: %llu
+NET sub-system
+list - list available devices
+stats <device> - dump statistics for specified device
+stats
+%s=%s
+## Error: cannot export environment
+Environment size: %d/%ld bytes
+## Error: "%s" not defined
+## Warning: defaulting to text format
+## Error: external checksum format must pass size
+## Info: input data size = %zu = 0x%zX
+## Error: Invalid size 0x%zX
+## Error: bad CRC, import failed
+## Error: Environment import failed: errno = %d
+## %s: only one of "-b", "-c" or "-t" allowed
+## Warning: Input data exceeds %d bytes - truncated
+## Error: Cannot export environment: errno = %d
+## Error: %s: only one of "-b", "-c" or "-t" allowed
+edit:
+setenv
+## Resetting to default environment
+Please enter '%s':
+run commands in an environment variable
+var [...]
+    - run the commands in the environment variable(s) 'var'
+askenv
+get environment variables from stdin
+name [message] [size]
+    - get environment variable 'name' from stdin (max 'size' chars)
+set environment variables
+setenv [-f] name value ...
+    - [forcibly] set environment variable 'name' to 'value ...'
+setenv [-f] name
+    - [forcibly] delete environment variable 'name'
+printenv
+print environment variables
+[-a]
+    - print [all] values of all environment variables
+printenv name ...
+    - print value of environment variable 'name'
+editenv
+edit environment variable
+name
+    - edit environment variable 'name'
+environment handling commands
+delete
+edit
+export
+import
+print
+exists
+saveenv
+save environment variables to persistent storage
+Unknown option %s
+%s%x
+0x%x
+Supported partition tables
+%c %s
+: <none>
+** Bad device specification %s %s **
+Unknown partition type '%s'
+disk partition related commands
+uuid <interface> <dev>:<part>
+    - print partition UUID
+part uuid <interface> <dev>:<part> <varname>
+    - set environment variable to partition UUID
+part list <interface> <dev>
+    - print a device's partition table
+part list <interface> <dev> [flags] <varname>
+    - set environment variable to the list of partitions
+      flags can be -bootable (list only bootable partitions)
+part start <interface> <dev> <part> <varname>
+    - set environment variable to the start of the partition (in blocks)
+      part can be either partition number or partition name
+part size <interface> <dev> <part> <varname>
+    - set environment variable to the size of the partition (in blocks)
+      part can be either partition number or partition name
+part number <interface> <dev> <part> <varname>
+    - set environment variable to the partition number using the partition name
+      part must be specified as partition name
+part type <interface> <dev>:<part>
+    - print partition type
+part type <interface> <dev>:<part> <varname>
+    - set environment variable to partition type
+part set <interface> <dev> type
+    - set partition type for a device
+part types
+    - list supported partition table types
+Bus '%s' is not a PCI controller
+Buses %02x-%02x
+Size
+Phys start
+Bus start
+#   %-18s %-18s %-18s  %s
+Flags
+%d   %#018llx %#018llx %#018llx
+mem
+  %s =%*s%#.*lx
+  class code =                  0x%.2x (%s)
+unknown header
+Scanning PCI devices on bus %d
+BusDevFun  VendorId   DeviceId   Device Class       Sub-Class
+_____________________________________________________________
+%02x.%02x.%02x
+0x%.4lx     0x%.4lx     %-23s 0x%.2lx
+Found PCI device %02x.%02x.%02x:
+ %0*lx
+Prefetchable
+No such bus
+No such device
+CardBus doesn't support BARs
+unknown header type
+ID   Base                Size                Width  Type
+ %d   %#018llx  %#018llx  %d     %s   %s
+list and access PCI Configuration Space
+prefetch
+sysmem
+readonly
+secondary status
+primary bus number
+CardBus number
+subordinate bus number
+CardBus latency timer
+CardBus memory base 0
+CardBus memory limit 0
+CardBus memory base 1
+CardBus memory limit 1
+CardBus IO base 0
+CardBus IO base high 0
+CardBus IO limit 0
+CardBus IO limit high 0
+CardBus IO base 1
+CardBus IO base high 1
+CardBus IO limit 1
+CardBus IO limit high 1
+interrupt line
+interrupt pin
+bridge control
+subvendor ID
+subdevice ID
+PC Card 16bit base address
+base address 1
+secondary bus number
+secondary latency timer
+IO base
+IO limit
+prefetch memory base
+prefetch memory limit
+prefetch memory base upper
+prefetch memory limit upper
+IO base upper 16 bits
+IO limit upper 16 bits
+expansion ROM base address
+base address 2
+base address 3
+base address 4
+base address 5
+cardBus CIS pointer
+sub system vendor ID
+sub system ID
+min Grant
+max Latency
+sub class code
+programming interface
+cache line
+latency time
+header type
+BIST
+base address 0
+command register ID
+revision ID
+| %-*.*s| %-*.*s| %s
+Parent
+Driver
+Ops get_pins_count not supported by %s
+Ops get_pin_name error (%d) by %s
+Ops get_pin_muxing error (%d) by %s in %s
+%-*s: %-*s
+pin-controller device not selected
+Can't get the pin-controller: %s!
+Pin-controller device is not set!
+dev: %s
+pinmux
+show pin-controller muxing
+list                     - list UCLASS_PINCTRL devices
+pinmux dev [pincontroller-name] - select pin-controller device
+pinmux status [-a | pin-name]   - print pin-controller muxing [for all | for pin-name]
+-ipv6
+Invalid pxefile address: %s
+pxeuuid
+Config file '%s' found
+Config file not found
+get and boot from pxe files
+get [-ipv6] - try to retrieve a pxe file using tftp
+pxe boot [pxefile_addr_r] [-ipv6] - boot from the pxe file at pxefile_addr_r
+default-arm-bcm283x-rpi
+default-arm-bcm283x
+default-arm
+## error: substitution buffer overflow
+Error compiling regex: %s
+## error: pattern buffer overflow: have %d, need %d
+## Error: variable "%s" not defined
+## error: subst buffer overflow: have %d, need %d
+gsub
+Could not set var
+invalid op
+setexpr
+set environment variable as the result of eval expression
+[.b, .w, .l, .s] name [*]value1 <op> [*]value2
+    - set environment variable 'name' to the result of the evaluated
+      expression specified by <op>.  <op> can be &, |, ^, +, -, *, /, %
+      (for strings only + is supported)
+      size argument is only meaningful if value1 and/or value2 are
+      memory addresses (*)
+setexpr[.b, .w, .l] name [*]value
+    - load a value into a variable
+setexpr name gsub r s [t]
+    - For each substring matching the regular expression <r> in the
+      string <t>, substitute the string <s>.  The result is
+      assigned to <name>.  If <t> is not supplied, use the old
+      value of <name>. If no substring matching <r> is found in <t>,
+      assign <t> to <name>.
+setexpr name sub r s [t]
+    - Just like gsub(), but replace only the first matching substring
+Specify a filename or set the ${bootfile} environment variable
+ext2
+Invalid filesystem: %s
+Error reading config file
+sysboot
+command to get and boot from syslinux files
+[-p] <interface> <dev[:part]> <ext2|fat|any> [addr] [filename]
+    - load and parse syslinux menu file 'filename' from ext2, fat
+      or any filesystem on 'dev' on 'interface' to address 'addr'
+true
+do nothing, successfully
+false
+do nothing, unsuccessfully
+minimal test like /bin/sh
+[args..]
+Uncompressed err :%d
+Uncompressed size: %zd = 0x%zX
+unlz4
+lz4 uncompress a memory region
+srcaddr dstaddr dstsize
+NOTE: Specify the destination size that is sufficiently larger
+ than the source size.
+Uncompressed size: %lu = 0x%lX
+gzwrite
+unzip and write memory to block device
+<interface> <dev> <addr> length [wbuf=1M [offs=0 [outsize=0]]]
+	wbuf is the size in bytes (hex) of write buffer
+		and should be padded to erase size for SSDs
+	offs is the output start offset in bytes (hex)
+	outsize is the size of the expected output (hex bytes)
+		and is required for files with uncompressed lengths
+		4 GiB or larger
+unzip
+unzip a memory region
+srcaddr dstaddr [dstsize]
+Uncompressed size: %ld = %#lX
+lzmadec
+lzma uncompress a memory region
+See Interface
+Communication
+Human Interface
+Printer
+Mass Storage
+CDC Data
+Vendor specific
+Audio
+Human Interface, Subclass:
+None
+Boot
+Keyboard
+Mouse
+reserved
+Mass Storage,
+RBC
+SFF-8020i (ATAPI)
+QIC-157 (Tape)
+SFF-8070
+Transp. SCSI
+Command/Bulk
+Command/Bulk/Int
+Bulk only
+%d: %s,  USB Revision %x.%x
+ - %s %s %s
+ - Class:
+ - Class: (from Interface) %s
+ - PacketSize: %d  Configurations: %d
+ - Vendor: 0x%04x  Product 0x%04x Version %d.%d
+12 Mb/s
+ %s (%s, %dmA)
+ %s  %s %s %s
+String: "%s"
+Self Powered
+Bus Powered
+Remote Wakeup
+   Configuration: %d
+   - Interfaces: %d %s%s%dmA
+     Interface: %d
+     - Alternate Setting %d, Endpoints: %d
+     - Class
+     -
+     - Endpoint %d %s
+Isochronous
+Interrupt
+ MaxPacket %d
+ Interval %dms
+starting USB...
+resetting USB...
+stop
+serial
+stopping USB..
+USB is stopped. Please issue 'usb start' first.
+USB device tree:
+config for device %d
+*** No device available ***
+Device %d does not exist.
+Device is no hub or does not have %d ports.
+Setting Test_J mode
+Setting Test_K mode
+Setting Test_SE0_NAK mode
+Setting Test_Packet mode
+Setting Test_Force_Enable mode
+Unrecognized test mode: %s
+Available modes: J, K, S[E0_NAK], P[acket], F[orce_Enable]
+ on downstream facing port %d...
+ on upstream facing port...
+Error during SET_FEATURE.
+Test mode successfully set. Use 'usb start' to return to normal operation.
+stor
+1.5 Mb/s
+480 Mb/s
+5 Gb/s
+usbboot
+boot from USB device
+loadAddr dev:part
+USB sub-system
+start - start (scan) USB controller
+usb reset - reset (rescan) USB controller
+usb stop [f] - stop USB [f]=force stop
+usb tree - show USB device tree
+usb info [dev] - show available USB devices
+usb test [dev] [port] [mode] - set USB 2.0 test mode
+    (specify port 0 to indicate the device's upstream port)
+    Available modes: J, K, S[E0_NAK], P[acket], F[orce_Enable]
+usb storage - show details of USB storage devices
+usb dev [dev] - show or set current USB storage device
+usb part [dev] - print partition table of one or all USB storage    devices
+usb read addr blk# cnt - read `cnt' blocks starting at block `blk#'
+    to memory address `addr'
+usb write addr blk# cnt - write `cnt' blocks starting at block `blk#'
+    from memory address `addr'
+Loading from %s device %d, partition %d: Name: %.32s  Type: %.32s
+** Read error on %d:%d
+** Bad Header Checksum **
+** Unknown image type
+lcdputs
+print string on video framebuffer
+    <string>
+setcurs
+set cursor position within screen
+    <col> <row> in character
+fsuuid
+Look up a filesystem UUID
+<interface> <dev>:<part>
+    - print filesystem UUID
+fsuuid <interface> <dev>:<part> <varname>
+    - set environment variable to filesystem UUID
+dfu_usb_con
+dfu_interface
+dfu_device
+DFU: default device environment is not set.
+UMS disk %d
+UMS: LUN %d, dev %s %d, hwpart %d, sector %#x, count %#x
+Couldn't init USB controller.
+fsg_init failed
+usb_dnl_ums
+g_dnl_register failed
+Please connect USB cable.
+CTRL+C - Operation aborted.
+USB cable not detected.
+Command exit.
+Auto exit in: %.2d s.
+Check USB cable connection
+CTRL+C - Operation aborted
+Use the UMS [USB Mass Storage]
+<USB_controller> [<devtype>] <dev[:part]>  e.g. ums 0 mmc 0
+    devtype defaults to mmc
+TIZEN "THOR" Downloader
+USB init failed: %d
+usb_dnl_thor
+g_dnl_register failed %d
+THOR DOWNLOAD stopped
+THOR DOWNLOAD failed: %d
+THOR failed: %d
+thordown
+TIZEN "THOR" downloader
+<USB_controller> <interface> <dev>
+  - device software upgrade via LTHOR TIZEN download
+    program via <USB_controller> on device <dev>,
+	attached to interface <interface>
+DFU entity for file %s not found
+Downloading %s, offset %u...
+NFS download of file %s failed!!
+Writing:
+DFU entity write failed
+DFU init entities failed
+%s/%s
+SKIP %s
+########################################
+%20s -	%10d Bytes
+Unsupported USB block device..
+File usb%s%s not found
+Reading %s, chunk %d/%d (offset %u) ...
+%d: Unknown block device..
+Failed to read %s file %lld.
+TIZEN "NFS" Downloader
+TIZEN "USB" Downloader
+/updateTizen
+usbdown
+TIZEN "USB" downloader
+usbdown [image file name]
+  - device firmware upgrade via USB mass-storage for Tizen
+    fusing images from "updateTizen" USB directory to MMC.
+  - "updateTizen" directory has to be on the first partition
+    of the USB storage
+(e.g) usbdown [rootfs.img]
+nfsdown
+TIZEN "NFS" downloader
+nfsdown [<IP_ADDR>:]<IMG_PATH> [image file name]
+  - device firmware upgrade via nfs for Tizen
+    fusing images from <IP_ADDR>:<IMG_PATH> to MMC.
+  - required to set env for ipaddr, serverip, gatewayip,
+    and netmask.
+(e.g) nfsdown 192.168.0.1:/nfs [rootfs.img]
+boot.img
+rootfs.img
+system-data.img
+user.img
+modules.img
+ramdisk.img
+ramdisk-recovery.img
+## Copying part %d from legacy image at %08lx ...
+Must specify load address for %s command with compressed image
+Bad Image Part
+Invalid image type for imxtract
+   Loading part %d ...
+   Uncompressing part %d ...
+Image too large: increase CONFIG_SYS_XIMG_LEN
+GUNZIP ERROR - image not loaded
+ZSTD ERROR %d - image not loaded
+fileaddr
+imxtract
+extract a part of a multi-image
+usb_dnl_dfu
+Device Firmware Upgrade
+<USB_controller> [<interface> <dev>] [list]
+  - device firmware upgrade via <USB_controller>
+    on device <dev>, attached to interface
+    <interface>
+    [list] - list available alt settings
+uuid_disk=;
+name=,
+start=0x,
+size=0x,
+uuid=,
+type=;
+Failed to get partition driver count
+Error insufficient memory
+gpt_partition_list
+** No valid partitions found **
+uuid_disk
+Error: is the partitions string NULL-terminated?
+Wrong uuid format for partition %d
+Wrong type guid format for partition %d
+uuid_disk=
+name=
+,start=0x%llx
+,size=0x%llx
+,type=
+,uuid=
+,bootable
+%lluMiB
+Partition %d:
+Start %s, size %s
+Block size %lu, name %s
+Type %s, bootable %d
+UUID %s
+Type GUID %s
+'%s' is not a number
+%s: %s dev %d NOT available
+repair
+Repairing GPT:
+Writing GPT:
+No partition list provided
+Partition list incomplete
+No partition list provided - only basic check
+Verify GPT:
+gpt_partition_addr
+gpt_partition_size
+gpt_partition_entry
+gpt_partition_name
+gpt_partition_bootable
+enumerate
+guid
+swap
+rename
+transpose
+Names longer than %d characters are truncated.
+Cannot swap partition names except in pairs.
+Cannot swap partition with itself
+Illegal partition number %s
+Writing new partition table failed
+new partition table with %d partitions is:
+set-bootable
+Warning: No partition matching '%s' found
+success!
+GUID Partition Table
+<command> <interface> <dev> <partitions_list>
+ - GUID partition table restoration and validity check
+ Restore or verify GPT information on a device connected
+ to interface
+ Example usage:
+ gpt repair mmc 0
+    - repair the GPT on the device
+ gpt write mmc 0 $partitions
+    - write the GPT to device
+ gpt verify mmc 0 $partitions
+    - verify the GPT on device against $partitions
+ gpt setenv mmc 0 $name
+    - setup environment variables for partition $name:
+      gpt_partition_addr, gpt_partition_size,
+      gpt_partition_name, gpt_partition_entry,
+      gpt_partition_bootable
+ gpt enumerate mmc 0
+    - store list of partitions to gpt_partition_list environment variable
+ gpt guid <interface> <dev>
+    - print disk GUID
+ gpt guid <interface> <dev> <varname>
+    - set environment variable to disk GUID
+ Example usage:
+ gpt guid mmc 0
+ gpt guid mmc 0 varname
+gpt partition renaming commands:
+ gpt read <interface> <dev> [<varname>]
+    - read GPT into a data structure for manipulation
+    - read GPT partitions into environment variable
+ gpt swap <interface> <dev> <name1> <name2>
+    - change all partitions named name1 to name2
+      and vice-versa
+ gpt transpose <interface> <dev> <part1> <part2>
+    - Swap the order of the entries for part1 and part2 in the partition table
+ gpt rename <interface> <dev> <part> <name>
+    - rename the specified partition
+ gpt set-bootable <interface> <dev> <list>
+    - make partition names in list bootable
+ Example usage:
+ gpt swap mmc 0 foo bar
+ gpt rename mmc 0 3 foo
+ gpt set-bootable mmc 0 boot_a,boot_b
+ gpt transpose mmc 0 1 2
+preboot
+No CLI available
+syntax error
+ERROR : xmalloc failed
+ERROR : xrealloc failed
+ ** Abort
+U-Boot>
+*?[\
+%s: readonly variable
+%s=%s
+HUSH_NO_EVAL
+Unknown command '%s' - try 'help' or use 'run' command
+\$'"
+;&|#
+;$&|
+exit not allowed from main input shell.
+<INTERRUPT>
+HUSH_VERSION
+0.01
+showvar
+print local hushshell variables
+    - print values of all hushshell variables
+showvar name ...
+    - print value of hushshell variable 'name'
+then
+elif
+else
+while
+until
+done
+bootdelay
+kernel-offset
+kernaddr
+rootdisk-offset
+rootaddr
+Hit any key to stop autoboot: %2d
+Hit any key to stop autoboot: %1d
+fdtdec_setup
+%s(): initcall %s() failed
+initf_malloc
+event_init
+%s(): event %d/%s failed
+arch_cpu_init
+mach_cpu_init
+initf_dm
+timer_init
+env_init
+baudrate
+serial_init
+console_init_f
+display_options
+checkcpu
+DRAM:
+dram_init
+setup_dest_addr
+arch_reserve_mmu
+reserve_video
+reserve_arch
+reserve_stacks
+dram_init_banksize
+ (total
+setup_bdinfo
+clear_bss
+cyclic_unregister_all
+initr_dm
+init_addr_map
+board_init
+initr_lmb
+efi_memory_init
+stdio_init_tables
+serial_initialize
+Core:  %d devices, %d uclasses
+, devicetree: %s
+Warning: Unexpected devicetree source (not from a prior stage)
+Warning: U-Boot may not function properly
+Warning: Device tree includes old 'u-boot,dm-' tags: please fix by 2023.07!
+arch_initr_trap
+board_early_init_r
+power_init_board
+efi_init_early
+MMC:
+load-environment
+cpu_secondary_init_r
+stdio_add_devices
+jumptable_init
+console_init_r
+misc_init_r
+interrupt_init
+Net:
+NULL device name!
+mdio_register: non unique device name '%s'
+%x - %s
+ <--> %s
+No such device: %s
+%s is not a known ethernet
+MII devices:
+'%s'
+Current device: '%s'
+PHY speed
+PHY AN speed
+PHY AN adv speed
+ read failed, assuming 10BASE-T
+PHY duplex
+PHY AN duplex
+PHY AN adv duplex
+ read failed, assuming half duplex
+unable to get device descriptor (error=%d)
+USB device descriptor short read (expected %i, got %i)
+%s: invalid max packet size
+unable to get descriptor, error %lX
+config descriptor too short (expected %i, got %i)
+selecting invalid interface %d
+usb_ignorelist
+usb_ignorelist parse error in "%s"
+usb_new_device: Cannot read configuration, skipping device %04x:%04x
+ ERROR: NOT USB_CONFIG_DESC %x
+ERROR: Invalid USB CFG length (%d)
+ERROR: Invalid USB IF length (%d)
+USB IF descriptor overflowed buffer!
+Too many USB interfaces!
+ERROR: Invalid USB EP length (%d)
+USB EP descriptor overflowed buffer!
+Endpoint descriptor out of order!
+Interface %d has too many endpoints!
+ERROR: Invalid USB EPC length (%d)
+USB EPC descriptor overflowed buffer!
+EPC descriptor out of order!
+failed to set default configuration len %d, status %lX
+Cannot allocate device context to get SLOT_ID
+      USB device not accepting new address (error=%lX)
+cannot reset port %i!?
+usb_pgood_delay
+Can't allocate memory for USB device!
+Port %d over-current occurred %d times
+usb_hub
+usb-hub
+	Did not get interrupt on CBI
+cmd 0x%02X returned 0x%02X 0x%02X 0x%02X 0x%02X (NOT READY)
+cmd 0x%02X returned 0x%02X 0x%02X 0x%02X 0x%02X
+  Device %d:
+No storage devices, perhaps not 'usb start'ed..?
+       scanning usb for storage devices...
+%d Storage Device(s) found
+USB Storage Transport unknown / not yet implemented
+Sorry, protocol %d not yet supported.
+Device NOT ready
+   Request Sense returned %02X %02X %02X
+READ_CAP ERROR
+error in inquiry
+lun%d
+usb_storage_blk
+usb_bootdev
+usb_mass_storage
+usb-mass-storage
+Enter choice:
+stdout
+stderr
+No devices available!
+In:
+Out:
+Err:
+pre-reloc realloc() is not supported
+alloc space exhausted ptr %lx limit %x
+cyclic function %s took too long: %lldus vs %dus max
+(unknown)
+Unknown hash algorithm '%s'
+HASH_MAX_DIGEST_SIZE exceeded
+%s for %08lx ... %08lx ==>
+sha1
+sha256
+crc16-ccitt
+vidconsole
+nulldev
+%s: Failed to probe video device '%s' (ret=%d)
+bootsecure
+## Error: Secure boot command not specified
+## Error: "%s" returned (code %d)
+Problem
+No valid hush parser to use, cli will not initialized!
+[?25h
+udc_device_get_by_index failed
+g_dnl_register failed
+Deferred dfu_flush() failed!
+%s - %s
+Usage:
+- No additional help available.
+%-*s- %s
+Unknown command '%s' - try 'help' without arguments for list of all known commands
+xtrace
+Unknown command '%s' - try 'help'
+'bootd' recursion detected
+Command '%s' failed: Error %d
+loadxy_timeout
+Unknown error
+Block sequence error
+CRC/checksum error
+Invalid framing
+Cancelled
+End of file
+Timed out
+Sorry, zModem not available yet
+Can't access file
+(%d:%d) Vendor: %s Prod.: %s Rev: %s
+Model: %s Firm: %s Ser#: %s
+Vendor: %s Rev: %s Prod: %s
+%s VirtIO Block Device
+EFI media Block Device %d
+device type unknown
+Unhandled device type: %i
+            Type:
+Removable
+Hard Disk
+CD ROM
+Optical Device
+Tape
+# %02X #
+            Capacity: %lu.%lu MB = %lu.%lu GB (%lu x %lu)
+            Capacity: not available
+## Unknown partition table type %x
+Partition Map for %s device %d  --   Partition Type: %s
+Whole Disk
+** Bad HW partition specification %s %s **
+bootdevice
+** No device specified **
+auto
+** Bad partition specification %s %s **
+** Bad device size - %s %s **
+** No partition table - %s %s **
+** Invalid partition %d **
+** Invalid partition type "%.32s" (expect "U-Boot")
+Could not find "%s" partition
+Couldn't find partition %s %s
+usbd
+mmcsd
+%s%c%d
+blk_partition
+FAT32
+** Nested DOS partitions detected, stopping **
+** Can't read partition table on %d:%lu **
+bad MBR sector signature 0x%02x%02x
+%08x-%02x
+ Extd
+ Boot
+%3d	%-10lu	%-10lu	%08x-%02x	%02x%s%s
+Part	Start Sector	Num Sectors	UUID		Type
+** First descriptor is NOT a primary desc on %d:%d **
+CD001
+** Wrong ISO Ident: %s on %d:%d **
+EL TORITO SPECIFICATION
+** No valid boot catalog found on %d:%d **
+** Wrong El Torito ident: %s on %d:%d **
+** Can't read Boot Entry at %lX on %d:%d **
+** Checksum Error in booting catalog validation entry on %d:%d **
+** Key 0x55 0xAA error on %d:%d **
+** Partition %d not found on device %d **
+** Partition %d is not bootable on device %d **
+** No boot partition found on device %d **
+Part   Start     Sect x Size Type
+ %2d %8lu %8lu %6ld %.32s
+u-boot,efi-partition-entries-offset
+Part	Start LBA	End LBA		Name
+	Attributes
+	Type GUID
+	Partition GUID
+%3d	0x%08llx	0x%08llx	"%s"
+	attrs:	0x%016llx
+	type:	%pUl
+		(%pUs)
+	guid:	%pUl
+More partitions than allowed!
+Partition name: %s does not match %s!
+Partition %s size: %llu does not match %llu!
+Partition %s start: %llu does not match %llu!
+%s:%d
+(none)
+IDE device %d:
+Device %d:
+unknown device
+scsi
+sata
+nvme
+nvmxip
+efiloader
+virtio
+pvblock
+blkmap
+rkmtd
+/clocks
+/firmware
+/reserved-memory
+root_driver
+device '%s' failed to unbind
+simple_bus
+simple-bus
+simple-mfd
+ %-10.10s  %3d  [ %c ]   %-20.20s
+|
+`--
+|--
+uclass %d: %s
+%-3i %c %s @ %08lx
+, seq %d
+(out of memory)
+ Class     Seq    Probed  Driver                Name
+-----------------------------------------------------------
+Driver                Compatible
+%-20.20s
+%-20.20s  %s
+<no uclass>
+Driver                    uid uclass               Devices
+%-25.25s %-3.3d %-20.20s
+%-51.51s
+%-25.25s
+<none>
+Driver                    Address
+%-25.25s %p
+pciVVVV,DDDD
+bootph-all
+bootph-some-ram
+bootph-pre-ram
+bootph-pre-sram
+u-boot,dm-pre-reloc
+u-boot,dm-pre-proper
+u-boot,dm-spl
+u-boot,dm-tpl
+u-boot,dm-vpl
+/config
+phy-mode
+phy-connection-type
+phy-handle
+phy-device
+internal
+rev-mii
+rev-rmii
+rgmii-id
+rgmii-rxid
+rgmii-txid
+rtbi
+smii
+xlgmii
+moca
+qsgmii
+trgmii
+100base-x
+1000base-x
+2500base-x
+rxaui
+10gbase-r
+25gbase-r
+usxgmii
+10gbase-kr
+qusgmii
+1000base-kx
+dfu_bufsiz
+%s: Could not memalign 0x%lx bytes
+DFU complete %s: 0x%08x
+%s: Wrong sequence number! [%d] [%d]
+Wrong sequence number
+DFU write error
+Buffer overflow! (0x%p + 0x%x > 0x%p)
+Buffer overflow
+%s: Failed to fill buffer
+UPLOAD ... done
+Ctrl+C to exit ...
+dfu_hash_algo
+DFU hash method: %s not supported!
+Hash algorithm %s not supported
+Too many arguments for %s
+MTD support not available!
+NAND support not available!
+RAM support not available!
+SF support not available!
+virt
+VIRT support not available!
+SCSI support not available!
+%s: Device %s not (yet) supported!
+dfu_alt_info
+"dfu_alt_info" env variable not defined!
+DFU entities configuration failed!
+(partition table does not match dfu_alt_info?)
+DFU alt settings list:
+dev: %s alt: %d name: %s layout: %s
+RAW_ADDR
+EXT2
+EXT3
+EXT4
+RAM_ADDR
+SKIP
+SCRIPT
+eMMC
+OneNAND
+VIRT
+Device MMC %d - not found!
+Request would exceed designated area!
+MMC operation failed
+%s: Layout (%s) not (yet) supported!
+%d:%x
+dfu: fs_set_blk_dev error!
+dfu: fs_read error!
+dfu: fs_write error!
+dfu: fs_size error!
+The number of parameters are not enough.
+Couldn't find MMC device no. %d.
+Couldn't init MMC device.
+DFU mmc raw accept 'mmcpart <partnum>' option.
+mmcpart
+Couldn't find part #%d on mmc device #%d
+ext4
+Memory layout (%s) not supported!
+Could not memalign 0x%x bytes
+%s: %s: error: gpio %s%d not reserved
+get_value
+set_value
+set_dir_flags
+%s.%s%d
+#gpio-cells
+%s%d: %s
+: %d [%c]%s%s
+input
+output
+unused
+func
+GPIO
+gpio_bcm2835
+Unknown mode
+Status Error: %#08x
+Timeout waiting card ready
+MMC: block number 0x%lx exceeds max(0x%lx)
+mmc fail to send stop cmd
+eMMC >= 4.4 required for enhanced user data area
+Card does not support partitioning
+Card does not define HC WP group size
+User data enhanced area not HC WP group size aligned
+GP%i partition not HC WP group-size aligned
+Card does not support enhanced attribute
+Total enhanced size exceeds maximum (%#x > %#x)
+Card does not support host controlled partition write reliability settings
+Card already partitioned
+Card did not respond to voltage select! : %d
+MMC: no card present
+unable to select a mode
+No ext_csd found!
+Select HS400 failed %d
+Select HS400ES failed %d
+unable to select a mode: %d
+Man %06x Snr %04x%04x
+%c%c%c%c%c%c
+%s - probe failed: %d
+MMC legacy
+MMC High Speed (26MHz)
+SD High Speed (50MHz)
+MMC High Speed (52MHz)
+MMC DDR52 (52MHz)
+UHS SDR12 (25MHz)
+UHS SDR25 (50MHz)
+UHS SDR50 (100MHz)
+UHS DDR50 (50MHz)
+UHS SDR104 (208MHz)
+HS200 (200MHz)
+HS400 (200MHz)
+HS400ES (200MHz)
+boot0
+boot1
+rpmb
+MMC Device %d not found
+%s: %d
+ (%s)
+mmc_blk
+mmc_bootdev
+u-boot,bootdev-mmc
+Caution! Your devices Erase group is 0x%x
+The erase range would be change to 0x%lx~0x%lx
+mmc erase failed
+mmc write failed
+Reset %#x never completed
+mmc%d busy
+timeout increasing to: %u ms
+Timeout for status update: %08x %08x
+Transfer data timeout
+Timeout waiting for cmd & data inhibit
+Error while setting tap delay
+Error configuring dll
+Error while configuring dll
+Internal clock never stabilised.
+cd-gpios
+Aligned buffer alloc failed
+sdhci-caps-mask
+sdhci-caps
+Hardware doesn't specify base clock frequency
+sdhci-bcm2835
+brcm,bcm2711-emmc2
+%s: timeout (%d us)
+unexpected command %d error
+unsupported block size (%d bytes)
+previous command (%d) not complete (EDM %08x)
+drivers/mmc/bcm2835_sdhost.c
+WARNING at %s:%d/%s()!
+unsupported response type!
+previous command never completed.
+%s:%d %d
+sdhost_busy_irq: intmask %08x
+fsm %x, hsts %08x
+%s transfer error - HSTS %08x
+%s timeout error - HSTS %08x
+%s %s: wait_transfer_complete - still waiting after %lu ms
+brcm,bcm2835-sdhost
+bcmgenet: PHY startup failed: %d
+bcmgenet: Unsupported PHY speed: %d
+bcmgenet: adjust PHY link failed: %d
+max-speed
+Unsupported GENETv%d.%d
+unknown phy mode: %d
+WARNING: Cache invalidate area exceeds buffer size
+eth_bcmgenet
+brcm,genet-v5
+brcm,bcm2711-genet-v5
+(null bus)
+Failed to allocate PHY device for %s:%d
+%s, PHY probe failed
+%s:%d is connected to %s.  Reconnecting to %s
+Could not get PHY for %s: addr %d
+phy_aneg_timeout
+%s Waiting for PHY auto negotiation to complete
+ TIMEOUT !
+user interrupt!
+ done
+Generic PHY
+u-boot,skip-auto-config-until-reloc
+PCI: Device '%s' on unprobed bus '%s'
+pci,no-autoconfig
+pci_bridge_drv
+pci_generic_drv
+u-boot,pci-pre-reloc
+pci_%x:%x.%x
+PCI: Device '%s': Cannot decode dma-ranges
+pci-generic
+pci_generic
+pci-bridge
+PCI: Failed autoconfig bar %x
+PCI Autoconfig: %02x.%02x.%02x: Downstream link non-functional
+PCI Autoconfig: %02x.%02x.%02x: Retrying with speed restricted to 2.5GT/s...
+PCI Autoconfig: %02x.%02x.%02x: Succeeded!
+PCI Autoconfig: %02x.%02x.%02x: Failed!
+Build before PCI Rev2.0
+Network controller
+Display controller
+Multimedia device
+Memory controller
+Bridge device
+Simple comm. controller
+Base system peripheral
+Input device
+Docking station
+Processor
+Serial bus controller
+Intelligent controller
+Satellite controller
+Cryptographic device
+Does not fit any class
+Mass storage controller
+brcm,enable-ssc
+max-link-speed
+(SSC)
+(!SSC)
+PCIe BRCM: link down
+PCIe misconfigured; is in EP mode
+PCIe BRCM: failed attempt to enter SSC mode
+PCIe BRCM: link up, %s Gbps x%u %s
+pcie_brcm
+brcm,bcm2711-pcie
+gpio-controller
+pinconfig
+pinctrl-names
+pinctrl-%d
+%s %s: could not find pctldev
+brcm,pins
+brcm,function
+Failed to bind GPIO driver
+bcm283x_pinctrl
+brcm,bcm2835-gpio
+brcm,bcm2711-gpio
+stdout-path
+## Baudrate %d bps not supported
+## Baudrate may not be deleted
+skip-init
+serial_pl01x
+arm,pl011
+arm,pl010
+serial_bcm283x_mu
+brcm,bcm2835-aux-uart
+bcm283x_pl011
+brcm,bcm2835-pl011
+sysinfo
+sysinfo_smbios
+u-boot,sysinfo-smbios
+backlight
+vidconsole0
+no such font: %s, make sure it's name has <width>x<height> format
+8x16
+Video device '%s' cannot allocate frame buffer memory - ensure the device is set up before relocation
+%s.vidconsole%d
+video_init
+Error: no valid bmp image at %lx
+Error: %d bit/pixel mode, but BMP has %d bit/pixel
+enable-gpios
+simple_panel
+simple-panel
+auo,b133xtn01
+auo,b116xw03
+auo,b133htn01
+boe,nv140fhmn49
+lg,lb070wv8
+sharp,lq123p1jx31
+boe,nv101wxmn51
+panasonic,vvx10f004b00
+/cpus
+cpu_bus
+Broadcom
+arm,cortex-a53
+arm,cortex-a72
+Broadcom Cortex-%s at %u MHz
+bcm283x_cpu
+#reset-cells
+resets
+raspberrypi-reset
+raspberrypi,firmware-reset
+iproc_rng200-rng
+brcm,bcm2711-rng200
+brcm,iproc-rng200
+dr_mode
+utmi
+utmi_wide
+ulpi
+hsic
+UNKNOWN
+low-speed
+full-speed
+high-speed
+wireless
+super-speed
+super-speed-plus
+%s: Waiting for GINTSTS_CURMODE_HOST timeout
+%s: Waiting for GRSTCTL_AHBIDLE timeout
+%s: Waiting for GRSTCTL_CSFTRST timeout
+%s: Waiting for GRSTCTL_CSFTRST_DONE timeout
+%s: Waiting for GRSTCTL_TXFFLSH timeout
+%s: Waiting for GRSTCTL_RXFFLSH timeout
+drivers/usb/gadget/dwc2_udc_otg.c
+g-rx-fifo-size
+g-np-tx-fifo-size
+g-tx-fifo-size
+u-boot,force-b-session-valid
+u-boot,force-vbus-detection
+drivers/usb/gadget/dwc2_udc_otg_xfer_dma.c
+BUG at %s:%d/%s()!
+BUG!
+No memory available for UDC!
+crq->brequest:0x%x
+dwc2-udc-otg
+snps,dwc2
+brcm,bcm2835-usb
+st,stm32mp15-hsotg
+ep1in-bulk
+ep2out-bulk
+ep3in-int
+!cdev->config
+composite
+usb_dnload
+%s: failed!, error: %d
+serialno
+kill %s:  resubmit %d bytes --> %d
+ERROR:%d
+thor_setup: unknown request: %d
+f_thor
+U-Boot 2025.10-gd5489c7b9-TIZEN.org
+k unknown
+p unknown
+c unknown
+Command not supported -> cmd: %d
+PIT table file - not supported
+Alt setting [%d] to write not found!
+DFU write failed [%d] cnt: %d
+Alt setting: %d entity not found!
+Transfer buffer not allocated!
+DFU write failed[%d]: left: %llu
+DFU flush failed!
+Operation not supported: %d
+RQT: UPLOAD not supported!
+unknown request (%d)
+%s: EPs setup failed!
+THOR
+%s: Data not received!
+Download request from the Host PC
+ROHT
+Wrong reply information
+%s: No data received!
+DOWNLOAD ... OK
+Ctrl+C to exit ...
+invalid number of LUNs: %u
+Linux
+%-8s%-16s%04x
+File-Store Gadget
+Mass Storage Function
+, H%c=%u
+nwritten:%zd amount:%u
+Unknown x%02x
+gadget not registered.
+failed to start %s: %d
+No UDC available in the system
+All UDCs in use (%d available), use the unbind command
+No USB device found
+usb_gadget
+usb,device-class
+usb,interface-class
+generic_bus_%x_dev_%x
+usb_dev_generic_drv
+Scanning bus %s failed, error %d
+Bus %s: Port not available.
+Bus %s: probe failed, error %d
+companion
+Failed to get companion (ret=%d)
+Bus %s:
+No USB Device found
+%d USB Device(s) found
+No USB controllers found
+usb_dev_generic
+u-boot,bootdev-usb
+env_buf [%u bytes] too small for value of "%s"
+## Error: illegal character '=' in variable name "%s"
+## Can't malloc %d bytes
+## Error inserting "%s" variable, errno=%d
+missing environment variable: %s
+autostart
+*** Warning - %s, using default environment
+bad CRC
+Cannot import environment: errno = %d
+import failed
+${...}
+Loading Environment from %s...
+not initialized
+Failed (%d)
+Saving Environment to %s...
+not possible
+^%s$
+eth\d*addr:mo,ipaddr:i,gatewayip:i,netmask:i,serverip:i,nvlan:d,vlan:d,dnsip:i,serial#:so,
+## Warning: Unknown environment variable type '%c'
+## Warning: Unknown environment variable access method '%c'
+.flags
+## Error: flags type check failure for "%s" <= "%s" (type: %c)
+## Error: Can't delete "%s"
+## Error: Can't overwrite "%s"
+oldval: %s  defval: %s
+## Error: Can't create "%s"
+\.callbacks:callbacks,\.flags:flags,baudrate:baudrate,bootfile:bootfile,ipaddr:ipaddr,gatewayip:gatewayip,netmask:netmask,serverip:serverip,nvlan:nvlan,vlan:vlan,eth\d*addr:ethaddr,dfu_alt_info:dfu_alt_info,loadaddr:loadaddr,stdin:console,stdout:console,stderr:console,serial#:serialno,
+.callbacks
+Unable to use %s %d:%d...
+uboot.env
+Unable to write "%s" from %s%d:%d...
+Unable to read "%s" from %s%d:%d...
+** Unable to write file %s **
+            %s/
+    <SYM>   %s
+ %8lld   %s
+%d file(s), %d dir(s)
+** Unable to create link %s -> %s **
+Can't set block device
+** No boot file defined **
+** Reading file would overwrite reserved memory **
+Failed to load '%s'
+%llu bytes read in %lu ms
+%llu bytes written in %lu ms
+** Unable to create a directory "%s" **
+Supported filesystems
+btrfs
+squashfs
+unsupported
+BTRFS: Can't find root %llu
+BTRFS: Can't find inode %llu
+%.3s %.3s %.2d %.2d:%.2d:%.2d %d
+BTRFS: Can't alloc memory for symlink %llu
+BTRFS: Failed to read symlink %llu
+<%s>
+?%3u?
+%4llu,%5llu
+%10llu
+%24.24s  %.*s
+ -> %s
+Cannot lookup path %s
+BTRFS: Not a directory: %s
+BTRFS: An error occurred while listing directory %s
+Cannot lookup ino %llu
+Ino %llu does not exist
+BTRFS: Cannot lookup file %s
+BTRFS: Not a regular file: %s
+BTRFS: Failed to get inode size: %s
+BTRFS: An error occurred while reading file %s
+%s: Unsupported compression in extent: %i
+fs/btrfs/ctree.c
+BTRFS: child eb corrupted: parent bytenr=%llu item=%d parent level=%d child level=%d
+leaf free space ret %d, leaf data size %u, used %d nritems %d
+invalid number of items %llu
+leaf is not a leaf %llu
+leaf free space incorrect %llu %d
+leaf parent key incorrect %llu
+bad key ordering %d %d
+incorrect offsets %u %u
+bad item end %u wanted %u
+slot end outside of leaf %llu > %llu
+invalid dir item name len: %u
+invalid dir item name + data len: %u + %u
+invalid dir item size
+fs/btrfs/extent-io.c
+BTRFS: dirty eb leak (aborted trans): start %llu len %u
+BTRFS: Extent for symlink %llu must be INLINE type!
+BTRFS: Extent for symlink %llu must not be compressed!
+BTRFS: Symlink %llu extent data too large (%llu)!
+BTRFS: %s: Name too long at "%.*s"
+BTRFS: %s: Too much symlinks!
+Unknown csum type %d
+BTRFS: unsupported checksum algorithm %u
+BTRFS: superblock checksum mismatch
+BTRFS: tree_root level too big: %d >= %d
+BTRFS: chunk_root level too big: %d >= %d
+BTRFS: log_root level too big: %d >= %d
+BTRFS: tree_root block unaligned: %llu
+BTRFS: chunk_root block unaligned: %llu
+BTRFS: log_root block unaligned: %llu
+BTRFS: nodesize too small: %u < 4096
+BTRFS: nodesize unaligned: %u
+BTRFS: sectorsize too small: %u < 4096
+BTRFS: sectorsize unaligned: %u
+BTRFS: invalid total_bytes 0
+BTRFS: invalid bytes_used %llu
+BTRFS: invalid stripesize %u
+BTRFS: dev_item UUID does not match fsid: %s != %s
+BTRFS: suspicious number of devices: %llu
+BTRFS: number of devices is 0
+BTRFS: system chunk array too big %u > %u
+BTRFS: system chunk array too small %u < %zu
+BTRFS: superblock checksum matches but it has invalid members
+checksum verify failed on %llu found %08X wanted %08X
+Couldn't map the block %Lu
+BTRFS: Couldn't map the block %llu
+BTRFS: devid %llu is missing
+BTRFS: read failed on devid %llu physical %llu
+couldn't open because of unsupported option features (%llx).
+parent transid verify failed on %llu wanted %llu found %llu
+Ignoring transid failure
+BTRFS: tree block bytenr %llu is not aligned to sectorsize %u
+bad tree block %llu,
+fsid mismatch, want=%s, have=%s
+bytenr mismatch, want=%llu, have=%llu
+bad level, %u > %d
+invalid nr_items: %u
+Csum didn't match
+fs/btrfs/disk-io.c
+csum
+BTRFS: could not setup %s tree
+Couldn't read tree root
+Failed to allocate memory for fs_info
+ERROR: Filesystem UUID change in progress
+BTRFS: cannot read chunk root
+Couldn't read chunk tree
+no device found for devid %llu, skip it
+BTRFS: adding devid %llu gen %llu but found an existing device gen %llu
+BTRFS: invalid chunk item size, have %u expect [%zu, %zu)
+BTRFS: invalid num_stripes, have %u expect non-zero
+BTRFS: invalid chunk item size, have %u expect %lu
+BTRFS: invalid chunk logical %llu
+BTRFS: invalid chunk sectorsize %llu
+BTRFS: invalid chunk length %llu
+BTRFS: invalid chunk stripe length: %llu
+BTRFS: invalid chunk type %llu
+BTRFS: unrecognized chunk type: %llu
+BTRFS: missing chunk type flag: %llu
+BTRFS: conflicting chunk type detected: %llu
+BTRFS: invalid num_stripes: %u
+BTRFS: Invalid num_stripes:sub_stripes %u:%u for profile %llu
+Superblock
+try btrfsck --repair -s <superblock> ie, 0,1,2
+Metadata
+BTRFS: %s checksums match, but it has an invalid chunk, %s
+warning, device %llu is missing
+BTRFS: failed to add chunk map start=%llu len=%llu: %d (%m)
+ERROR: nodesize %u too small to read superblock
+ERROR: invalid number of stripes %u in sys_array at offset %u
+ERROR: unexpected item type %u in sys_array at offset %u
+ERROR: sys_array too short to read %u bytes at offset %u
+BTRFS: Seed device is not yet supported
+fs/btrfs/volumes.c
+No mapping for %llu-%llu
+Invalid mapping for %llu-%llu, got %llu-%llu
+fs/btrfs/root-tree.c
+** File not found %s **
+part_offset is %lu
+total_sector is %llu
+error: overflow occurs
+no block left to assign
+No Memory
+%s: Device read error!
+no block left assign
+no block left
+invalid extent block
+** SI ext2fs read block (indir 1)malloc failed. **
+** SI ext2fs read block (indir 1):malloc failed. **
+** SI ext2fs read block (indir 1)failed. **
+** DI ext2fs read block (indir 2 1)malloc failed. **
+** DI ext2fs read block (indir 2 1)failed. **
+** DI ext2fs read block (indir 2 2)malloc failed. **
+** DI ext2fs read block (indir 2 2)failed. **
+** TI ext2fs read block (indir 2 1)malloc failed. **
+** TI ext2fs read block (indir 2 1)failed. **
+** TI ext2fs read block (indir 2 2)malloc failed. **
+** TI ext2fs read block (indir 2 2)failed. **
+Block full, trying previous
+All blocks full: Allocate new
+Directory uses extents
+Directory exceeds limit
+no inode left to assign
+Badly aligned ext2_dirent
+Invalid path
+It is a Directory
+file found, deleting
+Failed to iterate over directory %s
+fs uses incompatible features: %08x, ignoring
+Error in ext4fs_log_gdt
+Error in getting the block group descriptor table
+error in File System init
+Unsupported features found %08x, not writing.
+Unsupported RO compat features found %08x, not writing.
+hash tree directory
+No memory
+Not enough space on partition !!!
+Error in copying content
+** Cannot support non-zero offset **
+** Error ext4fs_write() **
+*** Not enough journal entries allocated
+Invalid input arguments %s
+buffer ptr is NULL
+_get_node: malloc failed
+Journal Recovery Completed
+Journal Scan Completed
+Recovery required
+update journal finished
+Invalid FAT entry: %#08x
+FAT sector size mismatch (fs=%u, dev=%lu)
+FAT cluster size not set
+FAT cluster size too big (cs=%u, max=%u)
+Error: writing directory entry
+<>:"/\|?*
+Error get-and-setting cluster
+Error: no space left: %llu
+%.*s.%.3s
+No current device
+Interface:  %s
+No valid FAT fs found
+Filesystem: FAT%d "%s"
+Invalid FAT entry
+Error reading cluster
+%02X%02X-%02X%02X
+FAT: illegal filename (%s)
+%s: doesn't exist (%d)
+Error: writing contents
+Error: flush fat buffer
+Error: out of memory
+Error: cannot remove root
+Error: directory is not empty: %d
+%s: already exists
+.
+..
+** Cannot find directory. **
+Empty directory.
+Error: failed to allocate squashfs inode_table of size %i, increasing CONFIG_SYS_MALLOC_LEN could help
+Error: reading at a specific offset in a squashfs file is not supported yet.
+File not found.
+Unsupported entry type
+Error: too many data blocks to be read.
+Unable to recover entry's size.
+Error while searching inode: unknown type.
+%s: Invalid pointer to inode table.
+Inode not found.
+Invalid metatada block size: %d bytes.
+Error: this is not a directory.
+Error: invalid inode reference to directory table.
+Error: unknown compression type.
+LZO decompression failed. Error code: %d
+Error: 'dest' buffer is not large enough.
+Error: corrupted compressed data.
+Error: insufficient memory.
+LZ4 decompression failed.
+ZSTD Error code: %d
+** Invalid Block Device Descriptor (NULL)
+** Read outside partition %lu
+ ** %s read error **
+ ** %s read error - block
+* %s read error - last part
+Cannot free EFI memory pool
+EFI protocol GUID missing for driver '%s'
+Failed to add EFI driver %s
+efiblk#%d
+efi_blk
+efi_disk add
+Event registration for efi_disk add failed
+efi_disk del
+Event registration for efi_disk del failed
+EFI block driver
+DM_TAG_EFI not found
+/EFI/BOOT/%s
+1234567
+Loading %ls '%ls' failed
+Booting: Label: %ls Device path: %pD
+Unloading image failed
+BootNext must be 16-bit integer
+Loading from BootNext failed, falling back to BootOrder
+Deleting BootNext failed
+BootOrder not defined
+delete boot option(%ls) failed
+EFI boot manager: Cannot load any image
+Can't find %pD specified in Boot####
+Can't read fdt
+Http
+Booting %pD
+Loading image failed
+Uninstalling protocol interfaces failed
+%x:%x
+Cannot boot EFI app on media '%s'
+Handle %p has protocols installed. Unable to delete
+ERROR: Failure to install protocols for loaded image
+EFI application exited
+BOOTARM.EFI
+need device tree
+invalid $fdt_addr or $fdtcontroladdr
+invalid device tree
+Unable to free up existing FDT memory region
+Failed to reserve space for FDT
+failed to process device tree
+failed to install device tree
+failed to set watchdog timer
+## Application failed, r = %lu
+## %ls
+[1;1H
+[?25%c
+[0;37;40m
+[%u;%u;%um
+[999;999H
+ERROR: Failed to register WaitForKey event
+ERROR: Failed to register console event
+ERROR: Failed to set console timer
+ERROR: Out of memory
+[%d;%dH
+[?25h
+[%d;%dH%ls
+[%d;%dH%ls
+Partition %d: invalid GUID %s
+http://
+hostfs
+UNKNOWN(%04x,%04x)
+Static
+DHCP
+MemoryMapped(0x%x,0x%llx,0x%llx)
+VenHw(%pUl
+Ctrl(0x%0x)
+Acpi(PNP%04X,%d)
+Ata(%d,%d,%d)
+Scsi(%u,%u)
+Uart(%lld,%d,
+USB(0x%x,0x%x)
+MAC(
+IPv4(%pI4,
+TCP,
+UDP,
+,%pI4,%pI4
+UsbClass(0x%x,0x%x,0x%x,0x%x,0x%x)
+Sata(0x%x,0x%x,0x%x)
+NVMe(0x%x,
+%s%02x
+Uri(
+%s(%u)
+HD(%d,MBR,0x%08x,0x%llx,0x%llx)
+HD(%d,GPT,%pUl,0x%llx,0x%llx)
+HD(%d,0x%02x,0,0x%llx,0x%llx)
+CDROM(%u,0x%llx,0x%llx)
+VenMedia(%pUl
+DNEOMS
+Reserved memory mapping failed addr %llx size %llx
+Error deleting %s
+rng-seed
+<prior>
+/dtb
+/dtb/current
+/dtbs
+bad file path!
+invalid image type: %u
+UEFI image
+ [0x%p:0x%p]
+ pc=0x%zx
+ '%pD'
+Not a PE-COFF file
+Invalid number of sections: %d
+Invalid optional header magic %x
+Unknown Relocation off %x type %x
+Machine type 0x%04x is not supported
+%s: illegal free 0x%llx, 0x%zx
+%s: illegal free 0x%p
+%s: illegal realloc 0x%p
+LMB Map notify failure %lu
+en-US
+EFI: cannot initialize platform language settings
+%04X
+ERROR: Secure state transition failed
+Cannot persist EFI variables without system partition
+ubootefi.var
+Failed to persist EFI variables
+Invalid EFI variables file
+Failed to set EFI variable %ls
+Failed to load EFI variables
+EFI: Watchdog timeout
+ERROR: Failed to register watchdog event
+ERROR: Failure adding GOP protocol
+Disk %s not ready
+Adding block device %s failed, r = %lu
+Adding partition for %s failed
+%s %d:%u
+%s %d
+ethact
+ERROR: Failed to register network event
+ERROR: Failed to set network timer
+ERROR: Failure to add protocol
+Failed to write SMBIOS table
+No SMBIOS tables to install
+Missing RNG device for EFI_RNG_PROTOCOL
+Cannot install EFI_RNG_PROTOCOL
+Can't find initrd specified in Boot####
+installing EFI_LOAD_FILE2_PROTOCOL failed
+Creating event failed
+Failed to install ECPT
+Installing EFI system table pointer failed
+Adding new efi_debug_image_info failed
+manufacturer
+product
+asset-tag
+chassis-location
+10/01/2025
+socket-design
+family
+_SM3_
+baseboard
+chassis
+processor
+%d.%d.%d.%d
+list passed to list_sort() too long for efficiency
+invalid distance too far back
+invalid distance code
+invalid literal/length code
+unknown header flags set
+unknown compression method
+incorrect header check
+invalid window size
+header crc mismatch
+invalid block type
+invalid stored block lengths
+too many length or distance symbols
+invalid code lengths set
+invalid bit length repeat
+invalid literal/lengths set
+invalid distances set
+incorrect data check
+incorrect length check
+%s: zstd_init_dctx() failed
+%s: failed to detect compressed size: %d
+%s: failed to decompress: %d
+Error: Bad gzipped data
+Error: gunzip out of data in header
+%lu/%lu
+	%lu bytes, crc 0x%08x
+	uncompressed %lu of %lu
+	crcs == 0x%08x/0x%08x
+%s: size %lu not a multiple of %lu
+%s: start offset %lu not a multiple of %lu
+Error: gunzip out of data in header
+size of %lx doesn't match trailer low bits %x
+%s: uncompressed size %lu exceeds device size
+Error: inflateInit2() returned %d
+%s: weird termination with result %d
+Error: inflate() returned %d
+linux,phandle
+<valid offset/length>
+<no error>
+<unknown error>
+FDT_ERR_NOTFOUND
+FDT_ERR_EXISTS
+FDT_ERR_NOSPACE
+FDT_ERR_BADOFFSET
+FDT_ERR_BADPATH
+FDT_ERR_BADPHANDLE
+FDT_ERR_BADSTATE
+FDT_ERR_TRUNCATED
+FDT_ERR_BADMAGIC
+FDT_ERR_BADVERSION
+FDT_ERR_BADSTRUCTURE
+FDT_ERR_BADLAYOUT
+FDT_ERR_INTERNAL
+FDT_ERR_BADNCELLS
+FDT_ERR_BADVALUE
+FDT_ERR_BADOVERLAY
+FDT_ERR_NOPHANDLES
+FDT_ERR_BADFLAGS
+target
+target-path
+/__local_fixups__
+/__fixups__
+/__overlay__/
+/__overlay__
+No valid device tree binary found at %p
+display-timings
+hback-porch
+hfront-porch
+hactive
+hsync-len
+vback-porch
+vfront-porch
+vactive
+vsync-len
+vsync-active
+hsync-active
+de-active
+pixelclk-active
+interlaced
+doublescan
+doubleclk
+%s@%x,%x
+%s@%x
+separate
+embed
+bloblist
+nvidia,tegra20-emc
+nvidia,tegra20-emc-table
+nvidia,tegra20-nand
+nvidia,tegra124-xusb-padctl
+nvidia,tegra210-xusb-padctl
+samsung,exynos-usb-phy
+samsung,exynos5250-usb3-phy
+samsung,exynos-tmu
+samsung,exynos-mipi-dsi
+samsung,exynos-dwmmc
+jedec,spi-nor
+samsung,sysmmu-v3.3
+intel,microcode
+intel,quark-mrc
+altr,socfpga-stmmac
+altr,socfpga-dw-mshc
+intel,baytrail-fsp
+intel,baytrail-fsp-mdp
+intel,ivybridge-fsp
+altr,clk-mgr
+pinctrl-single
+altr,socfpga-hps2fpga-bridge
+altr,socfpga-lwhps2fpga-bridge
+altr,socfpga-fpga2hps-bridge
+altr,socfpga-fpga2sdram0-bridge
+altr,socfpga-fpga2sdram1-bridge
+altr,socfpga-fpga2sdram2-bridge
+altr,socfpga-a10-fpga-mgr
+altr,socfpga-a10-noc
+altr,socfpga-a10-clk-init
+## ERROR: unsupported match method: 0x%02x
+Env export buffer too small: %lu, but need %lu
+himport_r: can't insert "%s=%s" into hash table
+WARNING: '%s' neither in running nor in imported env!
+WARNING: '%s' not in imported env, deleting it!
+, Build: %s
+%llu Hz%s
+.%ld
+ %cHz%s
+%u Bytes%s
+ %ciB%s
+### ERROR ### Please RESET the board ###
+ %s.count = %#x
+ %s[%d]	[%#llx-%#llx], %#llx bytes, flags:
+invalid %#x
+lmb_dump_all:
+Unable to init LMB
+no-overwrite
+no-notify
+RE is too long (code overflow)
+RE is too long (data overflow)
+unknown cmd (%d) at %d
+Jump offset is too big
+No closing ']' bracket
+No closing bracket
+Unbalanced brackets
+|.^$*+?()[\
+msft
+raid
+u-boot-env
+cros-kern
+cros-root
+cros-fw
+cros-rsrv
+EFI System Partition
+%s:%u: %s: Assertion `%s' failed.
+<NULL>
+## No elf image at address 0x%08lx
+## Not a 32-bit elf image at address 0x%08lx
+## Warning: gatewayip needed but not set
+ARP Retry count exceeded; starting again
+bad length %d < %d
+U-Boot.armv7
+Invalid pxeuuid: %s
+Host Name
+*** WARNING: %s is too long (%d - max: %d) - truncated
+Root Path
+NIS Domain Name
+Error: Failed to allocate pxelinux_configfile
+*** Unhandled DHCP Option in OFFER/ACK: %d
+DHCP client bound to address %pI4 (%lu ms)
+DHCP: INVALID STATE
+bootpretransmitperiodinit
+bootpretryperiod
+bootpretransmitperiodmax
+BOOTP broadcast %d
+Retry time exceeded; starting again
+netretry
+once
+ ICMP Host Redirect to %pI4
+*** ERROR: ping address not given
+*** ERROR: `serverip' not set
+*** ERROR: `ipaddr' not set
+*** ERROR: No ethernet found.
+*** ERROR: `ethaddr' not set
+*** ERROR: `eth%daddr' not set
+Cannot autoload with NFS
+Cannot autoload with TFTPGET
+Abort
+Bytes transferred = %u (%x hex)
+nvlan
+*** ERROR: NFS version not supported
+*** ERROR: Cannot mount
+done
+*** ERROR: File lookup fail
+*** ERROR: Symlink fail
+Retry count exceeded; starting again
+/nfsroot/%02X%02X%02X%02X.img
+*** Warning: no boot file name; using '%s'
+Using %s device
+File transfer via NFS from server %pI4; our IP address is %pI4
+; sending through gateway %pI4
+Filename '%s/%s', offset %u.
+ Size is 0x%x Bytes =
+Load address: 0x%lx
+Loading: *
+octet
+tsize%c%u%c
+blksize%c%d%c
+windowsize%c%d%c
+File too large
+File has bad magic
+Option Negotiation Failed
+blksize
+Invalid blk size(=%d)
+Invalid timeout val(=%d s)
+TFTP error:
+First block is not block 1 (%ld)
+Starting again
+trying to overwrite reserved memory...
+TFTP error: '%s' (%d)
+Not retrying...
+Retry count exceeded
+%s; starting again
+tftpblocksize
+tftpwindowsize
+tftptimeout
+TFTP timeout (%ld ms) too low, set min = 1000 ms
+tftptimeoutcountmax
+TFTP timeout count max (%d ms) negative, set to 0
+Capping tftp block size option to %d (was %d)
+from
+TFTP %s server %pI4; our IP address is %pI4
+Filename '%s'.
+Load address: 0x%lx
+Error: eth device name "%s" has a space!
+eth_bootdev
+Error: %s address %pM illegal value
+Warning: %s failed to set MAC address
+Warning: %s MAC addresses don't match:
+Address in %s is		%pM
+Address in environment is	%pM
+Error: %s No valid MAC address found.
+ethrotate
+ethprime
+eth%d: %s
+ [PRIME]
+Failed to init PCI (%dE)
+%s.%d
+u-boot,bootdev-eth
+%s%daddr
+%saddr
+eth%dmacskip
+ethmacskip
+<image address>[:<size>] [<initrd address>:<size>] [<fdt address>]
+  - boot EFI payload
+bootefi bootmgr [fdt address]
+  - load and boot EFI payload based on BootOrder/BootXXXX variables.
+    If specified, the device tree located at <fdt address> gets
+    exposed as EFI configuration table.
+scan - boot first available bootflow
+[addr [arg ...]]
+    - boot application image stored in memory
+	passing arguments 'arg ...'; when booting a Linux kernel,
+	'arg' can be the address of an initrd image
+	When booting a Linux kernel which requires a flat device-tree
+	a third argument is required which is the address of the
+	device-tree blob. To boot that kernel without an initrd image,
+	use a '-' for the second argument. If you do not pass a third
+	a bd_info struct will be passed instead
+Sub-commands to do part of the bootm sequence.  The sub-commands must be
+issued in the order below (it's ok to not issue all sub-commands):
+	start [addr [arg ...]]
+	loados  - load OS image
+	ramdisk - relocate initrd, set env initrd_start/initrd_end
+	fdt     - relocate flat device tree
+	cmdline - OS specific command line processing/setup
+	bdt     - OS specific bd_info processing
+	prep    - OS specific prep before relocation or go
+	go      - start OS
+[addr [initrd[:size]] [fdt]]
+    - boot Linux zImage stored in memory
+	The argument 'initrd' is optional and specifies the address
+	of the initrd in memory. The optional argument ':size' allows
+	specifying the size of RAW initrd.
+	When booting a Linux kernel which requires a flat device-tree
+	a third argument is required which is the address of the
+	device-tree blob. To boot that kernel without an initrd image,
+	use a '-' for the second argument. If you do not pass a third
+	a bd_info struct will be passed instead
+:>.*
+3333+3
+simple-framebuffer
+demo <cycletime_ms> <delay_us> - register cyclic demo function
+cyclic list - list cyclic functions
+SunMonTueWedThuFriSatbootcmd=run distro_bootcmd
+bootdelay=2
+baudrate=115200
+loadaddr=0x1000000
+arch=arm
+cpu=armv7
+board=rpi
+board_name=rpi
+vendor=raspberrypi
+soc=bcm283x
+usb_ignorelist=
+dfu_interface=mmc
+recovery_val=72766372
+scan_dev_for_extlinux=if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${boot_syslinux_conf}; then echo Found ${prefix}${boot_syslinux_conf}; run boot_extlinux; echo EXTLINUX FAILED: continuing...; fi
+boot_syslinux_conf=extlinux/extlinux.conf
+upgradetype_online_val=696c6e6f
+dfu_usb_con=0
+boot_extlinux=sysboot ${devtype} ${devnum}:${distro_bootpart} any ${scriptaddr} ${prefix}${boot_syslinux_conf}
+disable_delay=setenv console console=ram; setenv bootdelay 0; saveenv
+scan_dev_for_boot_part=part list ${devtype} ${devnum} -bootable devplist; env exists devplist || setenv devplist 1; for distro_bootpart in ${devplist}; do if fstype ${devtype} ${devnum}:${distro_bootpart} bootfstype; then part uuid ${devtype} ${devnum}:${distro_bootpart} distro_bootpart_uuid ; run scan_dev_for_boot; fi; done; setenv devplist
+backup_ver_size=4
+scan_dev_for_efi=setenv efi_fdtfile ${fdtfile}; for prefix in ${efi_dtb_prefixes}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${efi_fdtfile}; then run load_efi_dtb; fi;done;run boot_efi_bootmgr;if test -e ${devtype} ${devnum}:${distro_bootpart} efi/boot/bootaa64.efi; then echo Found EFI removable media binary efi/boot/bootaa64.efi; run boot_efi_binary; echo EFI LOAD FAILED: continuing...; fi; setenv efi_fdtfile
+mmc_boot=if mmc dev ${devnum}; then devtype=mmc; run scan_dev_for_boot_part; fi
+dfu_alt_info=Image fat 0 1; bcm2711-rpi-4-b.dtb fat 0 1; bcm2712-rpi-5-b.dtb fat 0 1; u-boot.bin fat 0 1; uboot.env fat 0 1; boot.scr.uimg fat 0 1; zImage fat 0 1; boot.img part 0 1; rootfs part 0 2; system-data part 0 3; user part 0 5; module part 0 6; ramdisk.img part 0 7; ramdisk-recovery part 0 8; hal.img part 0 10
+dfu_device=0
+bootcmd_pxe=run boot_net_usb_start; run boot_pci_enum; dhcp; if pxe get; then pxe boot; fi
+reboot_param_clear=part number ${devtype} ${devnum} ${informname} informpart; mw.l ${rebootparam_addr} ${normal_val}; ext4write ${devtype} ${devnum}:${informpart} ${rebootparam_addr} /${rebootparamfile} 8
+scan_dev_for_boot=echo Scanning ${devtype} ${devnum}:${distro_bootpart}...; for prefix in ${boot_prefixes}; do run scan_dev_for_extlinux; run scan_dev_for_scripts; done;run scan_dev_for_efi;
+kernel_addr_r=0x00080000
+bootcmd_usb=devnum=0; run usb_boot
+ramdisk_addr_r=0x02700000
+opts=loglevel=4
+slotfile=partition-ab.info
+scriptaddr=0x02400000
+rebootparamfile=reboot-param.bin
+pxefile_addr_r=0x02500000
+download_val=6c6e7764
+bootcmd_mmc=devnum=0; run mmc_boot
+backup_addr=0x02310000
+upgradetype_addr=0x02300000
+normal_val=6d726f6e
+upgradetypefile=upgrade-type.info
+boot_scripts=boot.scr.uimg boot.scr
+scan_dev_for_scripts=for script in ${boot_scripts}; do if test -e ${devtype} ${devnum}:${distro_bootpart} ${prefix}${script}; then echo Found U-Boot script ${prefix}${script}; run boot_a_script; echo SCRIPT FAILED: continuing...; fi; done
+update_gpt_part=gpt write ${devtype} ${devnum} ${gpt_parts}
+tizen_bootarg=cgroup_enable=memory vc_mem.mem_base=0x3ec00000 vc_mem.mem_size=0x40000000 swiotlb=8192 8250.nr_uarts=1 dma.dmachans=0x7f35 bcm2709.serial=0xed6687d3 snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1 bcm2709.uart_clock=48000000 dwc_otg.lpm_enable=0
+boot_targets=mmc usb pxe dhcp
+usb_boot=usb start; if usb dev ${devnum}; then devtype=usb; run scan_dev_for_boot_part; fi
+boot_efi_binary=load ${devtype} ${devnum}:${distro_bootpart} ${kernel_addr_r} efi/boot/bootaa64.efi; if fdt addr -q ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r};else bootefi ${kernel_addr_r} ${fdtcontroladdr};fi
+stderr=serial
+rebootparam_addr=0x02100000
+initrd_high=ffffffffffffffff
+fdt_high=ffffffffffffffff
+stdout=serial
+boot_prefixes=/ /boot/
+backup_ver=00302e31
+boot_pci_enum=pci enum
+stdin=serial
+bootcmd_dhcp=devtype=dhcp; run boot_net_usb_start; run boot_pci_enum; if dhcp ${scriptaddr} ${boot_script_dhcp}; then source ${scriptaddr}; fi;setenv efi_fdtfile ${fdtfile}; setenv efi_old_vci ${bootp_vci};setenv efi_old_arch ${bootp_arch};setenv bootp_vci PXEClient:Arch:00011:UNDI:003000;setenv bootp_arch 0xb;if dhcp ${kernel_addr_r}; then tftpboot ${fdt_addr_r} dtb/${efi_fdtfile};if fdt addr -q ${fdt_addr_r}; then bootefi ${kernel_addr_r} ${fdt_addr_r}; else bootefi ${kernel_addr_r} ${fdtcontroladdr};fi;fi;setenv bootp_vci ${efi_old_vci};setenv bootp_arch ${efi_old_arch};setenv efi_fdtfile;setenv efi_old_arch;setenv efi_old_vci;
+distro_bootcmd=for target in ${boot_targets}; do run bootcmd_${target}; done
+enable_delay=env delete console; setenv bootdelay 2; saveenv
+tfm=setenv bootmode download; run set_to_part_a; run reboot_param_clear; run bootcmd
+boot_script_dhcp=boot.scr.uimg
+nodef_val=6665646e
+slot_addr=0x02200000
+kernel=zImage
+boot_a_script=load ${devtype} ${devnum}:${distro_bootpart} ${scriptaddr} ${prefix}${script}; source ${scriptaddr}
+gpt_parts="uuid_disk=${uuid_gpt_disk};	name=boot_a,start=4MiB,uuid=${uuid_gpt_boot_a},size=64MiB,type=C12A7328-F81F-11D2-BA4B-00A0C93EC93B;	name=rootfs_a,size=3072MiB,uuid=${uuid_gpt_rootfs_a},type=linux;	name=system-data,size=1344MiB,uuid=${uuid_gpt_data},type=linux;	name=none,size=36MiB,uuid=${uuid_gpt_none},type=linux;	name=user,size=6636MiB,uuid=${uuid_gpt_user},type=linux;	name=module_a,size=32MiB,uuid=${uuid_gpt_module_a},type=linux;	name=ramdisk_a,size=32MiB,uuid=${uuid_gpt_ramdisk_a},type=linux;	name=ramdisk-recovery_a,size=32MiB,uuid=${uuid_gpt_ramdisk-recovery_a},type=linux;	name=inform,size=8MiB,uuid=${uuid_gpt_inform},type=linux;	name=hal_a,size=256MiB,uuid=${uuid_gpt_hal_a},type=linux;	name=boot_b,size=64MiB,uuid=${uuid_gpt_boot_b},type=C12A7328-F81F-11D2-BA4B-00A0C93EC93B;	name=rootfs_b,size=3072MiB,uuid=${uuid_gpt_rootf_b},type=linux;	name=module_b,size=32MiB,uuid=${uuid_gpt_module_b},type=linux;	name=ramdisk_b,size=32MiB,uuid=${uuid_gpt_ramdisk_b},type=linux;	name=ramdisk-recovery_b,size=32MiB,uuid=${uuid_gpt_ramdisk-recovery_b},type=linux;	name=hal_b,size=256MiB,uuid=${uuid_gpt_hal_b},type=linux;	name=reserved0,size=4MiB,uuid=${uuid_gpt_reserved0},type=linux;	name=reserved1,size=64MiB,uuid=${uuid_gpt_reserved1},type=linux;	name=backup,size=-,uuid=${uuid_gpt_backup},type=linux"
+upgrade_val=72677075
+informpart=9
+set_to_part_a=part number ${devtype} ${devnum} ${informname} informpart; if test -e ${devtype} ${devnum}:${informpart} ${slotfile}; then; load ${devtype} ${devnum}:${informpart} ${slot_addr} /${slotfile} 2; fi; mw.b ${slot_addr} "0x61"; ext4write ${devtype} ${devnum}:${informpart} ${slot_addr} /${slotfile} 2
+set_to_part_b=part number ${devtype} ${devnum} ${informname} informpart; if test -e ${devtype} ${devnum}:${informpart} ${slotfile}; then; load ${devtype} ${devnum}:${informpart} ${slot_addr} /${slotfile} 2; fi; mw.b ${slot_addr} "0x62"; ext4write ${devtype} ${devnum}:${informpart} ${slot_addr} /${slotfile} 2
+fdt_addr_r=0x02600000
+boot_net_usb_start=usb start
+bootcmd=run distro_bootcmd
+boot_efi_bootmgr=if fdt addr -q ${fdt_addr_r}; then bootefi bootmgr ${fdt_addr_r};else bootefi bootmgr;fi
+-///)/+
+Device Firmware Upgrade
+g
+
+60123456789ABCDEFuoindisabled
+compat        Dump list of drivers with compatibility strings
+dm devres        Dump list of device resources for each device
+dm drivers       Dump list of drivers with uclass and instances
+dm static        Dump list of drivers with static platform data
+dm tree [-s][-e][name]   Dump tree of driver model devices (-s=sort)
+dm uclass [-e][name]     Dump list of instances for each uclass
+ &:V
+!(5AN[fsx.
+dwc2-udc
+
+*U^s[
+(H_7aroc
+sdxbim
+ask name [message] [size] - ask for environment variable
+env default [-k] [-f] -a - [forcibly] reset default environment
+env default [-k] [-f] var [...] - [forcibly] reset variable(s) to their default values
+      "-k": keep variables not defined in default environment
+env delete [-f] var [...] - [forcibly] delete variable(s)
+env edit name - edit environment variable
+env exists name - tests for existence of variable
+env export [-t | -b | -c] [-s size] addr [var ...] - export environment
+env import [-d] [-t [-r] | -b | -c] addr [size] [var ...] - import environment
+env print [-a | name ...] - print environment
+env run var [...] - run commands in an environment variable
+env save - save environment
+env set [-f] name [arg ...]
+ep0-control
+addr [-c] [-q] <addr> [<size>]  - Set the [control] fdt location to <addr>
+fdt apply <addr>                    - Apply overlay to the DT
+fdt boardsetup                      - Do board-specific set up
+fdt move   <fdt> <newaddr> <length> - Copy the fdt to <addr> and make it active
+fdt resize [<extrasize>]            - Resize fdt to size + padding to 4k addr + some optional <extrasize> if needed
+fdt print  <path> [<prop>]          - Recursive print starting at <path>
+fdt list   <path> [<prop>]          - Print one level starting at <path>
+fdt get value <var> <path> <prop> [<index>] - Get <property> and store in <var>
+                                      In case of stringlist property, use optional <index>
+                                      to select string within the stringlist. Default is 0.
+fdt get name <var> <path> <index>   - Get name of node <index> and store in <var>
+fdt get addr <var> <path> <prop>    - Get start address of <property> and store in <var>
+fdt get size <var> <path> [<prop>]  - Get size of [<property>] or num nodes and store in <var>
+fdt set    <path> <prop> [<val>]    - Set <property> [to <val>]
+fdt mknode <path> <node>            - Create a new node after <path>
+fdt rm     <path> [<prop>]          - Delete the node or <property>
+fdt header [get <var> <member>]     - Display header info
+                                      get - get header member <member> and store it in <var>
+fdt bootcpu <id>                    - Set boot cpuid
+fdt memory <addr> <size>            - Add/Update memory node
+fdt rsvmem print                    - Show current mem reserves
+fdt rsvmem add <addr> <size>        - Add a mem reserve
+fdt rsvmem delete <index>           - Delete a mem reserves
+fdt chosen [<start> <size>]         - Add/update the /chosen branch in the tree
+                                        <start>/<size> - initrd start addr/size
+NOTE: Dereference aliases by omitting the leading '/', e.g. fdt print ethernet0.
+Mass Storage
+0123456789abcdef
++,<=>:;"/\|?*[]
+ )07addr part [dest]
+    - extract <part> from legacy image at <addr> and copy to <dest>
+
+Tizen
+AOHa4py
+JanFebMarAprMayJunJulAugSepOctNovDec
+#(-27<FPEPTGMK
+).16=
+!#[bus|*] [long]
+    - short or long list of PCI devices on bus 'bus'
+pci enum
+    - Enumerate PCI buses
+pci header b.d.f
+    - show header of PCI device 'bus.device.function'
+pci bar b.d.f
+    - show BARs base and size for device b.d.f'
+pci regions [bus|*]
+    - show PCI regions
+pci display[.b, .w, .l] b.d.f [address] [# of objects]
+    - display PCI configuration space (CFG)
+pci next[.b, .w, .l] b.d.f address
+    - modify, read and keep CFG address
+pci modify[.b, .w, .l] b.d.f address
+    -  modify, auto increment CFG address
+pci write[.b, .w, .l] b.d.f address value
+    - write to CFG address
+USB download gadget
+[<addr>]
+	- Run script starting at addr
+Sllgg
+2SnnllJ(H
+.....
+$)7aGaKNS
+
+LU_LL
+Linux
+U-Boot 2025.10-gd5489c7b9-TIZEN.org (Oct 28 2026 - 12:12:04 +0000)
+
+<fBBf<
+<ffff<
+?3?0000p
+ccccg
+fffffff
+88||
+||88
+fff$
+8ll8v
+000`
+000000
+0000
+fff|ffff
+lffffffl
+fbhxh`bf
+fbhxh```
+fflxxlff
+``````bf
+fff|````
+fff|lfff
+l|88|l
+ffff<
+<00000000<
+``xlffff|
+620x0000x
+``lvffff
+``flxxlf
+ffffff
+fffff|``
+vf```
+00006
+l888l
+fbhxhbf
+8ld`
+````
+ffffff
+<ll>
+8ll8
+6666666
+66666666
+66666666
+66666
+666666666666666666666666
+6666666666666
+6666666
+66666667666666666666670?
+?076666666666666
+666666666666670766666666
+66666
+66666666
+6666666
+666666666666666?
+?666666666666666
+66666666
+llllll
+ffffff|``
+<ffff<
+llll
+>ffff<
+0``|```0
+8ll8
+l66666
+~~~~~~~
+MSFT100
+BOOTSERVn
+,0,(,X,
+,7,*,Z,
+,:,),Y,',W,	,9,+,[,
+,=,.,^,
+,K,,,\,
+,D,$,T,%,U,",R,-,],
+,2,!,Q, ,P,
+,5,&,V,#,S,
+g,h,&
+u,v,&
+i,j,B
+`,a,H
+r,s,X
+k,l,{
+
+EXIT=0

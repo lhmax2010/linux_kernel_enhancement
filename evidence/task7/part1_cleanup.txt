@@ -1,0 +1,3 @@
+Part1: /opt/usr/lko_task7 deleted before reboot; rm=0, ls=2. All boot mounts unmounted. /proc/mounts identical including order.
+Before/after df: root used=1340328 KiB available=1650028 KiB; /opt/usr used=983204 available=115421020 KiB, unchanged.
+SDB root off after part1 confirmed by transport response; part2 root on separately authorized. Final post-reboot identity/mounts/df require reconnection; do not infer them from this part1 snapshot.

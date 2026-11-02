@@ -1,0 +1,24 @@
+REBOOT-NUMBER=1
+REASON=first-boot-network-service-validation-user-present
+2026-11-02T03:09:22Z
+BOOT-ID
+0fb981c1-1852-425c-bc1f-665fe09f946d
+UPTIME
+214734.64 835215.94
+MAC
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+ADDRESS
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.108.26/24 brd 192.168.108.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::2ecf:67ff:fea0:72b5/64 scope link
+       valid_lft forever preferred_lft forever
+SERVICES
+*AR Wired                ethernet_2ccf67a072b5_cable
+SERVICES-EXIT=0
+DNS
+nameserver 221.131.143.69
+
+DNS-EXIT=0

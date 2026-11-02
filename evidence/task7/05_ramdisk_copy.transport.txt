@@ -1,0 +1,192 @@
+FILE=/lib/modules/6.12.80-arm-rpi4-v7l/extra/kdbus/kdbus.ko
+file /lib/modules/6.12.80-arm-rpi4-v7l/extra/kdbus/kdbus.ko is not owned by any package
+RPM-QF-EXIT=1
+kdbus
+MODINFO-EXIT=0
+FILE=/lib/modules/6.12.80-arm-rpi4-v7l/extra/zlogger/zlogger.ko
+file /lib/modules/6.12.80-arm-rpi4-v7l/extra/zlogger/zlogger.ko is not owned by any package
+RPM-QF-EXIT=1
+zlogger
+MODINFO-EXIT=0
+FILE=/lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko
+file /lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko is not owned by any package
+RPM-QF-EXIT=1
+logger
+MODINFO-EXIT=0
+DLOG-CONFIG
+# Lines starting with # are comments and are ignored.
+# Empty lines are also ignored.
+# Every other line is a config value and has to be in key=value format
+# Maximum key length is currently 31 bytes and maximum value length is 255
+
+##### Settings used by the logging library
+
+# Whether logging happens to the `main`, `radio`, and `system` (NOT `apps`!) buffers.
+# Deprecated, prefer `enable_*` (see below).
+#plog=1
+
+# Whether logging happens to the relevant buffer. Overrides `plog`.
+# Note that the buffer is still there, just libdlog doesn't send logs.
+enable_main=1
+enable_radio=1
+enable_system=1
+enable_apps=1
+
+# Disables stdout redirection for given buffer. No effect on "regular" logs.
+stdout_enable_main=1
+stdout_enable_radio=1
+stdout_enable_system=1
+stdout_enable_apps=1
+
+# enable_kmsg = 1 # DOESN'T WORK! KMSG is not a libdlog-populated buffer. See below for `handle_kmsg` instead.
+enable_critical=1
+
+# these two are not full buffers, they are just log sinks that redirect to the 'apps' buffer.
+enable_dotnet_api=1
+enable_native_api=1
+
+# Debugmode - whether write platform debug log or not
+# If disabled, logs at priority levels DEBUG and below - this means also VERBOSE - are completely dropped
+debugmode=1
+
+# Limiter - whether it's enabled and the rules (check the documentation for how to create rules).
+limiter=1
+limiter|*|*=allow
+# A flag indicating if apps/events buffer entries are always checked against static/dynamic limiter rules
+limiter_apply_to_all_buffers=1
+
+# dynamic config_path - specifies the path to a DIRECTORY to enable dynamic runtime config changes (use dlogctl for control)
+dynamic_config_path=/run/dlog/filters.d/
+
+# Whether secure printing is enabled.
+# If this setting is set to 0, secure logs
+# are dropped and don't go into the buffer.
+enable_secure_logs=1
+
+##### Settings used by the logging daemon
+# See also 20-pipe.conf for more info
+
+# Unused sockets.
+kmsg=:
+syslog=:
+
+# Sockets that all programs connect to to receive a logging pipe.
+kmsg_conn_sock=/run/dlog/kmsg.conn
+syslog_conn_sock=/run/dlog/syslog.conn
+
+# Sockets that administrative programs connect to to manipulate the daemon.
+kmsg_ctl_sock=/run/dlog/kmsg.ctl
+syslog_ctl_sock=/run/dlog/syslog.ctl
+
+# Permissions for the relevant sockets.
+kmsg_conn_sock_rights=0222
+syslog_conn_sock_rights=0222
+
+kmsg_ctl_sock_rights=0220
+syslog_ctl_sock_rights=0220
+
+# Size (in bytes) of internal cyclic buffers.
+kmsg_size=1048576
+syslog_size=1048576
+
+# link to /dev/log even if systemd did not pass the socket to logger (default 0)
+#syslog_force=1
+
+# Whether the buffer is handled. This means the buffer is not read by the daemon.
+# This only affects some "external" buffers not populated by libdlog, currently only kmsg.
+handle_kmsg=1
+
+# epoll delay, meaning how often the daemon wakes up to do bookkeeping
+# and flush passive logging files when no new logs are incoming.
+# Higher values mean lower CPU usage, but can also mean some log delay
+# for continuous dlogutil instances.
+epoll_time_ms=1000
+
+# Syslog handling currently disabled in the daemon - not needed in Tizen.
+#dlog_logger_conf_syslog=dlogutil -b syslog -r 256 -n 1 -f /var/log/dlog/syslog -v recv_realtime
+
+##### Settings used by dlogutil
+
+# Sorting time window (in milliseconds). Proportional to sorting quality, but also delay.
+# Defaults to 1000
+util_sorting_time_window=1000
+
+# Sorting buffer size (in entries). Larger values heavily increase performance demands but also
+# lower the chance a log gets printed out of requested order. The whole sorting container gets
+# allocated at once on start so avoid large values. This value gets overridden by `-u`, can be
+# increased by `-t` if it is larger, and is completely ignored when the requested sorting order
+# agrees with what the source provides.
+#util_sorting_buffer_size=131072
+
+# Default output format. This applies both to explicit dlogutil calls and
+# persistent logging (i.e. writing to a file defined in daemon config).
+# By default this is brief, but this will work even if the option is not provided explicitly.
+#util_default_format=brief
+
+# Deduplication blocks logs within the certain period of time (interval_millisec) starting from last_millisec.
+
+# Block logs when neighbouring logs have the same content. It is quite simple deduplication,
+# some logs could be repeated, on the other hand it is really fast.
+# ABBBABBBAAACC (during one interval) -> ABABAC
+# deduplicate_method=only_identical_neighbours
+
+# Block all repeated logs within the time window. It is more precise in deduplication, but it
+# takes more time and allocates more memory.
+# ABBBABBBAAACC (during one interval) -> ABC
+# deduplicate_method=all_identical_logs
+
+# Any other value results in no deduplication. This is the default
+deduplicate_method=
+
+# One can also specify how long the time window is - "deduplicate_interval_ms" should be used.
+deduplicate_interval_ms=1
+
+# Failed log stashing. Allows the log sending application to take an action when they fail to send a log.
+# For example, on pipe backend, this can happen when the daemon dies or can't handle the logs being received.
+# Can be "critical" to store failed logs in the critical log file, or "" to disable the feature (default).
+stash_failed_log_method=
+CAT-EXIT=0
+/etc/dlog.conf.d/86-disable-dlog.conf_inactive:6:backend=null
+/etc/dlog.conf.d/20-pipe.conf:1:# Uncomment line below to force pipe backend (otherwise it will be autodetected)
+/etc/dlog.conf.d/20-pipe.conf:2:#backend=pipe
+/etc/dlog.conf.d/20-pipe.conf:40:# NOTE: Do not change the following key names!  When different backend
+/etc/dlog.conf.d/20-pipe.conf:41:#       is used (eg. logger, via 25-logger.conf) these will be overriden.
+/etc/dlog.conf.d/20-pipe.conf:42:# dlog_logger_conf_kmsg=dlogutil -b kmsg -r 256 -n 1 -f /var/log/dlog/kernel -v kerneltime
+/etc/dlog.conf.d/25-logger.conf:1:# Uncomment line below to force logger backend (otherwise it will be autodetected)
+/etc/dlog.conf.d/25-logger.conf:2:#backend=logger
+/etc/dlog.conf.d/25-logger.conf:15:# NOTE: Do not change the following key names!  When different backend
+/etc/dlog.conf.d/25-logger.conf:16:#       is used (eg. logger, via 25-logger.conf) these will be overriden.
+/etc/dlog.conf.d/25-logger.conf:17:# dlog_logger_conf_kmsg=dlogutil -b kmsg -r 1024 -n 1 -f /var/log/dlog/kernel -v kerneltime
+/etc/dlog.conf.d/25-logger.conf:21:# from an Android Logger device, affecting how a busy buffer
+/etc/dlog.conf.d/25-logger.conf:27:logger_dev_throttling=100
+/etc/dlog.conf.d/25-logger.conf:31:#logger_dev_throttling_radio=1000
+/etc/dlog.conf.d/25-logger.conf:32:#logger_dev_throttling_main=80
+/etc/dlog.conf.d/10-persistent-logs.conf:2:# The key has to be of the format `dlog_logger_conf_%s`, where %s is an arbitrary idenfitier.
+/etc/dlog.conf.d/10-persistent-logs.conf:8:dlog_logger_conf_system=dlogutil -b system -r 8192 -n 1 -f /var/log/dlog/system -v threadtime *:I
+/etc/dlog.conf.d/10-persistent-logs.conf:9:dlog_logger_conf_main=  dlogutil -b main   -r 8192 -n 1 -f /var/log/dlog/main   -v threadtime *:W
+/etc/dlog.conf.d/10-persistent-logs.conf:10:dlog_logger_conf_radio= dlogutil -b radio  -r 2048 -n 1 -f /var/log/dlog/radio  -v threadtime
+/etc/dlog.conf.d/10-persistent-logs.conf:11:dlog_logger_conf_kmsg=  dlogutil -b kmsg   -r 8192 -n 1 -f /var/log/dlog/kernel -v rwtime
+GREP-EXIT=0
+ls: cannot access /dev/kdbus*: No such file or directory
+ls: cannot access /dev/zlogger*: No such file or directory
+lrwxrwxrwx 1 root root      28 Jan  1  1970 /dev/log -> /run/systemd/journal/dev-log
+crw-rw--w- 1 log  log  10, 262 Jan  1  1970 /dev/log_events
+crw-rw--w- 1 log  log  10, 261 Jan  1  1970 /dev/log_main
+crw-rw--w- 1 log  log  10, 263 Jan  1  1970 /dev/log_radio
+crw-rw--w- 1 log  log  10, 264 Jan  1  1970 /dev/log_system
+DEV-EXIT=2
+KDBUS-FS
+total 0
+dr-xr-xr-x  2 root  root  0 Jan  1  1970 .
+drwxr-xr-x 12 root  root  0 Jan  1  1970 ..
+dr-xr-xr-x  2 root  root  0 Jan  1  1970 0-system
+dr-x------  2 owner users 0 Jan  1  1970 5001-user
+-rw-rw-rw-  1 root  root  0 Jan  1  1970 control
+RC=0
+MKDIR-EXIT=0
+32+0 records in
+32+0 records out
+33554432 bytes (34 MB) copied, 0.738012 s, 45.5 MB/s
+DD-EXIT=0
+01e2f0cbfe091b14989f69154c488697c60ac98bea32e11bebfec6ea98b71024  /opt/usr/lko_task7/ramdisk_a.img
+SHA-EXIT=0

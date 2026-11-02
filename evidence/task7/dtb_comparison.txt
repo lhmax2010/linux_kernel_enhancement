@@ -1,0 +1,7 @@
+Existing sandbox QB1211696 devel RPM extracted artifact (source identity previously closed in task5b).
+File=temp/task5b/extract-devel/boot/kernel/devel/kernel-devel-arm-rpi4/arch/arm/boot/dts/broadcom/bcm2711-rpi-4-b.dtb
+bytes=56450
+sha256=a0561668ec520b0605cdc8b7be6844365ce44f569f363e85f3d7332e1989d6ed
+Board expected=a0561668ec520b0605cdc8b7be6844365ce44f569f363e85f3d7332e1989d6ed
+MATCH=True
+No compilation. Local f240c280 task2 artifacts are not used as sandbox proof.

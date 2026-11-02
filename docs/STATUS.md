@@ -2,6 +2,13 @@
 
 更新：2026-11-02（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
+**任务7：第一部分完成；第二部分首次重启后SDB等待600秒超时，按PM条件停止，未执行第二次重启。服务运行结果未知，整体未通过首次重启验收。** 未修改内核、启动参数或boot/模块分区；不安装RPM、不手动启动配网服务。已请用户通过串口手动配网恢复；本轮未做其他补救。
+
+- 已闭合：模块分区Available=14,648 KiB、空闲inode=8,054，现有版本目录du=4,424 KiB；kdbus已加载使用，zlogger未加载，logger是另一模块；rpm -qf未找到两外部模块所属包。ramdisk无版本目录/.ko，init按槽位只读挂载模块分区再modprobe。已有sandbox QB1211696 DTB与板上SHA一致。证据：evidence/task7/。
+- 已记录PM审核结论：不采用tryboot/A/B，不整块重写模块分区；后续每个实验kernelrelease唯一，模块新目录并存，原厂zImage.orig与实验zImage文件名切换。具体内核替换执行步骤待PM下发；本轮不执行替换。
+- 用户待答复：是否有读卡器；串口能否进入U-Boot命令行；测量小程序是否纳入常规授权；冷启动电源控制方式；测试应用安装是否纳入常规授权。
+- 临时目录/opt/usr/lko_task7已在第一部分结束整体删除；首次重启前只持久修改了两服务文件SMACK标签User::Shell→`_`，内容哈希不变。重启前临时目录已删除、mounts/df一致；首次重启后不可达，最终owner恢复及新一轮身份/mounts/df无法回读，不声称完成。详见[11 r3](11_board_boot_chain.md)、[超时证据](../evidence/task7/reboot1_reconnect.json)。
+
 **任务6 r2已完成调研与只安装验收，未运行配网脚本、未重启。** PM于2026-11-02明确替代systemd-analyze的验收规则，解除上轮工具阻塞。上次停止报告保留在[11](11_board_boot_chain.md)前半部分，本轮结果追加在其末尾。
 
 - 计划/进度：身份断言 → 先只读启动链及阶段0a → 脚本语法/人工检查 → root原本rw条件下安装、enable → PM替代验收 → 删除临时目录、恢复owner → 文档/证据同commit推main，均完成。未改内核树/分区/启动参数，未推Gerrit。
@@ -9,7 +16,7 @@
 - 服务已安装：/usr/local/sbin/lko-net-setup.sh、/etc/systemd/system/lko-net-setup.service及multi-user.target.wants启用链接。LoadState=loaded、LoadError为空、enabled，inactive/dead且ExecMainPID=0；reload后journal无该unit警告/错误。[验收](../evidence/task6/r2/18_verify.transport.txt)。脚本运行及SMACK执行权限仍待首次重启验证，未以装载成功替代运行验收。
 - 清理闭合：/opt/usr/lko_task6已整体删除，SDB恢复owner；/proc/mounts全文前后一致，/始终rw,relatime、未remount。/opt/usr df不变；根分区已用增加12KiB，服务文件/enable目录按授权保留。[对照](../evidence/task6/r2/cleanup_and_verification.txt)。
 - 需PM审核/挂账：内核替换与回退草案；B槽完整性/可启动性、端到端tryboot及自动复位/回退、initramfs模块槽映射、QB模块镜像封装/刷写命令及现场恢复途径仍未知或未验证。没有把A/B标签当成可用回退。设计v4的三项待用户决定事项见下文。
-- 下一步：**第一次重启验证（需要用户在场）**；**PM审核内核替换方案**。本轮不自行推进这两项。
+- 下一步：**第一次重启验证（需要用户在场）**；**PM审核内核替换方案**。这是任务6结束时的后续项；任务7已按在场确认尝试第一次但超时，PM审核原文已追加11 r3。
 
 **设计文档当前版本为v4：[docs/10_design_v4.md](10_design_v4.md)，待外部评审；[v1](10_design_v1.md)、[v2](10_design_v2.md)、[v3](10_design_v3.md)保留为历史记录。**
 
@@ -53,7 +60,7 @@
 
 ## 需要人工裁决的前提与挂账
 
-- 板上操作按上述常规授权及本次补充的各项前提执行；首次内核替换前的替换/回退方案仍须PM审核，后续性能实验由PM下发。任务5c硬件能力测试不是产品工作负载基准。
+- 板上操作按上述常规授权及本次补充的各项前提执行；首次内核替换方案已由PM 2026-11-02裁定，原文见11；具体执行步骤与后续性能实验仍由PM下发。任务5c硬件能力测试不是产品工作负载基准。
 - -b不支持已由实测确认；若后续设计需要分支样本，采样方案需另行设计。perf build-options的auxtrace=on、libopencsd=OFF也不能独立证明CoreSight可用；本次不扩展测试。
 - BPF插件历史load/attach尝试及实际失败原因仍无法判断，缺少相关日志。是否受控触发、插件产品需求/BTF取舍由PM决定，未启动服务或手动加载BPF。
 - QB开始时间按UTC理解是PM接受的推断，未独立证明页面时区，不再作为来源停止条件。
@@ -79,4 +86,4 @@ ARM32缺少BPF trampoline；正常前置条件下挂载先从弱size实现返回
 
 ## 发布状态
 
-A已独立提交并普通推送GitHub main：`1526c85`（v4、三份v3评审原文、STATUS）。B本次只提交任务6 r2的11追加报告、RULES安装登记、STATUS、scripts/board两文件与evidence/task6/r2，署名Hao Lin <hao.lin@samsung.com>，正常环境使用现有认证。不上PR、不force push、不推Gerrit；原始输出和拉回二进制仅保留temp/task6/r2，小于1MB文本证据上传。最终两个完整commit见本轮回复。
+本轮仅提交任务7产出：11末尾r3与PM审核原文、RULES标签登记/新版本目录部署规则、STATUS及evidence/task7。普通推送GitHub main，作者/提交者Hao Lin <hao.lin@samsung.com>；不开PR、不force push、不推Gerrit。完整ramdisk/U-Boot/解包文件留temp/task7，仅小于1MB文本证据入库。任务7第二部分超时不是完成验收；最终commit见本轮回复。上轮A/B提交仍为1526c85与518a554。

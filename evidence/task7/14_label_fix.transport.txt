@@ -1,0 +1,16 @@
+BEFORE
+User::Shell /etc/systemd/system/lko-net-setup.service
+          _ /usr/lib/systemd/system/connman.service
+User::Shell /usr/local/sbin/lko-net-setup.sh
+          _ /usr/sbin/ip
+/usr/bin/chsmack
+AFTER
+_ /etc/systemd/system/lko-net-setup.service  _ /usr/local/sbin/lko-net-setup.sh
+8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608  /usr/local/sbin/lko-net-setup.sh
+bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78  /etc/systemd/system/lko-net-setup.service
+RELOAD-EXIT=0
+LoadState=loaded
+ActiveState=inactive
+UnitFileState=enabled
+LoadError=
+SHOW-EXIT=0

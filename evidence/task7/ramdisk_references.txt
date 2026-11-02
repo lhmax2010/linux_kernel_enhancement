@@ -1,0 +1,28 @@
+temp/task7/ramdisk_x/usr/sbin/init:22:MODULES_INITRD_MNT=/lib/modules
+temp/task7/ramdisk_x/usr/sbin/init:122:    P_SLOT=$([[ $(</proc/cmdline) =~ partition_ab=([ab]) ]]; echo ${BASH_REMATCH[1]})
+temp/task7/ramdisk_x/usr/sbin/init:201:        MODULES=`get_blk_dev_path "LABEL=\"modules\""`
+temp/task7/ramdisk_x/usr/sbin/init:266:    MODULES_MNT=${ROOTFS_MNT}/lib/modules
+temp/task7/ramdisk_x/usr/sbin/init:412:function process_modulesfs
+temp/task7/ramdisk_x/usr/sbin/init:419:function move_modulesfs
+temp/task7/ramdisk_x/usr/sbin/init:421:    if [ "$HALFS_MNT" -a -d "$HALFS_MNT/lib/modules" ]; then
+temp/task7/ramdisk_x/usr/sbin/init:423:        /bin/mount --bind $HALFS_MNT/lib/modules $MODULES_MNT
+temp/task7/ramdisk_x/usr/sbin/init:497:function load_kernel_modules
+temp/task7/ramdisk_x/usr/sbin/init:499:    echo "Load kernel modules"
+temp/task7/ramdisk_x/usr/sbin/init:501:    modprobe="/sbin/modprobe"
+temp/task7/ramdisk_x/usr/sbin/init:503:        modprobe="$modprobe --dirname=$ROOTFS_MNT"
+temp/task7/ramdisk_x/usr/sbin/init:508:        conffiles="$conffiles $(compgen -G "${it}/modules-load.d/*.conf")"
+temp/task7/ramdisk_x/usr/sbin/init:509:        modprobe="$modprobe --config=${it}/modprobe.d"
+temp/task7/ramdisk_x/usr/sbin/init:517:            # skip blank lines, # commented lines & already loaded modules
+temp/task7/ramdisk_x/usr/sbin/init:524:            $modprobe $module &
+temp/task7/ramdisk_x/usr/sbin/init:626:function platform_extension_overlayfs_move_modules_to_tmp()
+temp/task7/ramdisk_x/usr/sbin/init:628:    local TMP_MODULES_MNT="/tmp/modules-tmp-mntpnt"
+temp/task7/ramdisk_x/usr/sbin/init:641:function platform_extension_overlayfs_restore_modules_from_tmp()
+temp/task7/ramdisk_x/usr/sbin/init:643:    local TMP_MODULES_MNT="/tmp/modules-tmp-mntpnt"
+temp/task7/ramdisk_x/usr/sbin/init:835:    platform_extension_overlayfs_move_modules_to_tmp
+temp/task7/ramdisk_x/usr/sbin/init:839:    platform_extension_overlayfs_restore_modules_from_tmp
+temp/task7/ramdisk_x/usr/sbin/init:868:    CMDLINE_PARTITION_AB=$([[ $(</proc/cmdline) =~ (partition_ab=[ab]) ]]; echo ${BASH_REMATCH[1]})
+temp/task7/ramdisk_x/usr/sbin/init:904:process_modulesfs
+temp/task7/ramdisk_x/usr/sbin/init:905:load_kernel_modules "$MODULES_INITRD_MNT"                               # 1st pass, try to load modules from modules.img
+temp/task7/ramdisk_x/usr/sbin/init:920:move_modulesfs
+temp/task7/ramdisk_x/usr/sbin/init:921:load_kernel_modules "$MODULES_MNT" "$HALFS_MNT/lib" "$HALFS_MNT/etc"    # 2nd pass, try to load modules from hal.img
+temp/task7/ramdisk_x/usr/share/upgrade/update-checkpoint-create.sh:34:        if [[ ! $(</proc/cmdline) =~ partition_ab= ]]; then

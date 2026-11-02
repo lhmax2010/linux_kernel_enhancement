@@ -1,0 +1,26 @@
+CMD=cat /proc/1/attr/current
+System::PrivilegedRC=0
+CMD=ls -Zd /usr/sbin/ip /usr/bin/connmanctl /usr/lib/systemd/system/connman.service /usr/local/sbin /etc/systemd/system /usr/local/sbin/lko-net-setup.sh /etc/systemd/system/lko-net-setup.service
+          _ /etc/systemd/system
+User::Shell /etc/systemd/system/lko-net-setup.service
+          _ /usr/bin/connmanctl
+          _ /usr/lib/systemd/system/connman.service
+          _ /usr/local/sbin
+User::Shell /usr/local/sbin/lko-net-setup.sh
+          _ /usr/sbin/ip
+RC=0
+CMD=command -v chsmack
+/usr/bin/chsmack
+RC=0
+SMACK-RULE
+System::Privileged User::Shell rwxat
+RC=0
+CMD=systemctl cat usr-lib-modules.mount
+No files found for usr-lib-modules.mount.
+RC=1
+CMD=systemctl show usr-lib-modules.mount -p FragmentPath -p SourcePath -p Where -p What
+Where=/usr/lib/modules
+What=/dev/mmcblk0p6
+FragmentPath=
+SourcePath=/proc/self/mountinfo
+RC=0

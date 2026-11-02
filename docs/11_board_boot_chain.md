@@ -209,3 +209,100 @@ ExecStart正确指向/usr/local/sbin/lko-net-setup.sh；is-enabled输出enabled�
 - 首次重启验证必须用户在场；PM先审核上述内核替换/回退草案，未批准前不替换。设计v4另挂账的三项授权仍待用户决定。
 
 第一部分仍为**未知/未验证**的清单：B槽镜像内容/完整性和可启动性；Tizen A/B启动失败自动切回策略；当前固件→U-Boot→内核→匹配模块的端到端tryboot效果及失败后的自动复位来源；initramfs内模块槽选择的具体实现；QB模块镜像封装与实际刷写命令；现场串口/DFU/取卡恢复路径及可执行回退的实测。相应调查已读取分区标签、boot脚本/环境、DT版本、克隆脚本和相关源码；本任务不通过重启、克隆或写分区来填补这些未知。
+
+---
+
+## 2026-11-02 r3：任务7，内核替换前提与首次重启验证
+
+### 第一部分：只读核实
+
+三项身份通过：uname-r=6.12.80-arm-rpi4-v7l，uname-m=armv7l，ID=tizen。宿主原始产物在temp/task7；板上只使用/opt/usr/lko_task7。第一部分没有修改启动参数、boot或模块分区，boot只ro挂载并立即卸载，没有安装/卸载RPM。[命令及证据索引](../evidence/task7/README.md)。
+
+**模块当前使用与归属。** [03](../evidence/task7/03_modules_initial.transport.txt)、[05](../evidence/task7/05_ramdisk_copy.transport.txt)记录10个已加载模块，每个modinfo -n均成功：proc_tsm、hci_uart、btbcm、brcmfmac、brcmutil、kdbus、dm_bow、logger、inform_reboot、extcon_usb_fixed。kdbus来自extra/kdbus/kdbus.ko，引用计数88；logger来自extra/logger.ko，引用计数194。extra/zlogger/zlogger.ko的内部名称为zlogger，未出现在/proc/modules中；不能把logger等同zlogger。kdbus在用，zlogger未见当前加载使用，不能推断以后可从产品删除。
+
+/usr/lib/modules和/lib/modules两种路径的rpm -qf均报“not owned by any package”，后者明确退出1，故**已安装RPM数据库无法给出kdbus/zlogger所属包**；不猜包名。/dev/kdbus*和/dev/zlogger*均不存在，ls退出2；但/sys/fs/kdbus存在control及0-system、5001-user，其中0-system/bus存在，设备路径不在/dev不能证明kdbus未使用。/dev/log_main、log_radio、log_system存在，与已加载logger分别记录。
+
+/etc/dlog.conf未发现有效的backend赋值，只有backend相关注释；/etc/dlog.conf.d/20-pipe.conf和25-logger.conf中的backend=pipe/logger均注释掉，表示自动检测；86-disable-dlog.conf_inactive有backend=null，但文件名为inactive，不能把该值当当前有效backend。只读配置不足以直接断言最终自动选择的backend，原文保留。
+
+**模块容量。** 本次df/du命令的实测如下，单位KiB；不要把GPT的32MiB分区大小当成可用文件空间：
+
+| 项目 | 数值 |
+|---|---:|
+| df总量 / 已用 / Available | 19,396 / 4,020 / **14,648** |
+| inode总量 / 已用 / 空闲 | 8,192 / 138 / **8,054** |
+| 6.12.80-arm-rpi4-v7l版本目录du -sk | **4,424** |
+| kernel子目录du -sk | 3,428 |
+| extra子目录du -sk | 328 |
+
+df和du是不同口径，本轮不修改文件系统、也不强行解释二者差值。新版本预计大小需在实际生成后另测，加上外部模块和索引核对可用容量/余量，当前数字不等于批准部署任意变体。[03容量原文](../evidence/task7/03_modules_initial.transport.txt)。
+
+**谁挂载模块分区。** systemctl list-units可见usr-lib-modules.mount，但systemctl cat报No files found、退出1；FragmentPath为空，SourcePath=/proc/self/mountinfo，What=/dev/mmcblk0p6。这是systemd观察到的既有挂载，**不是由systemd mount unit文件发起挂载**。实际挂载者是ramdisk init脚本，见下文。[04](../evidence/task7/04_mount_smack.transport.txt)。
+
+**ramdisk解包与模块版本依赖。** dd只读p7到专用目录，32MiB、退出0，SDB拉回后删除板上副本。SHA-256 `01e2f0cbfe091b14989f69154c488697c60ac98bea32e11bebfec6ea98b71024`，宿主与板上一致。GBS LLVM buildroot内的file判为gzip；gzip -dc返回2并明确“decompression OK, trailing garbage ignored”。复核第一个gzip流已正常结束/校验，输出15,211,008 B，与cpio文件完全相同；整个原始分区在该gzip流之后尚有25,644,116 B尾部，其中1,036,266 B非零，**不是全零padding**。本轮不猜尾部来源、不改镜像，分析对象是成功解码的当前首个gzip/cpio流。[格式与解压](../evidence/task7/ramdisk_file.txt)、[gzip警告](../evidence/task7/ramdisk_gzip.txt)、[尾部核对](../evidence/task7/ramdisk_gzip_padding.txt)。
+
+cpio -it成功，103个entry；只有空的usr/lib/modules目录，没有版本子目录、没有.ko。lib→usr/lib，init→sbin/init，sbin→usr/sbin。先按用户指定路径提取普通文件，再明确提取init指向的usr/sbin/init及相关update-checkpoint-create.sh；全部使用cpio --no-absolute-filenames，预先拒绝绝对路径/..，只选择普通文件，不解设备节点/符号链接，也不执行解出的init。[完整清单](../evidence/task7/ramdisk_list.txt)、[init全文](../evidence/task7/ramdisk_init.txt)。
+
+- usr/sbin/init:122–127从partition_ab形成_a/_b；198–201优先找PARTLABEL=module${P_SUFFIX}，退回LABEL=modules。
+- :412–417在initramfs的/lib/modules用mount -o ro挂模块分区；:419–427随后move到新root的lib/modules，或在HAL提供模块时改bind挂载。当前板上观察到p6直接挂载，符合move路径。
+- :497–530读取各modules-load.d/*.conf，调用modprobe加载名字，没有写死6.12.80或其他版本、也没有指定--set-version；:904–905第一轮从模块分区加载，:920–921移挂后从模块/HAL配置第二轮加载。
+- 当前模块分区tizen-modules-rpi4.conf列出dm-bow、extcon-usb-fixed、inform-reboot、logger、kdbus；modprobe配置另含proc-tsm选项。HAL两个modules-load.d路径不存在。[10配置](../evidence/task7/10_readonly_finish.transport.txt)。因此新版本目录必须包含这些所需外部模块及索引，**不能只放内核源码内编出的kernel/模块**。
+
+**U-Boot字符串。** ro挂载p1拉回u-boot.bin后立即卸载；SHA-256与前轮完全一致：`cd6abbb4475282aa54024adbfd079f16363930de9cd0f65a7e5ac7f41c871e16`。使用LLVM buildroot平台strings，只记录字符串，不推定命令已编译注册或运行可用。[逐项结果](../evidence/task7/uboot_command_strings.tsv)。fatwrite、fatload、fatls、load、bootz、ext4write、ext4load、mmc、part、setenv、saveenv、ums、dfu均出现；booti未出现；thor作为thor_init/thor_handle/usb_dnl_thor等片段出现，独立thor命令名未出现，另有thordown。boot.scr中引用booti不意味着这个U-Boot二进制有该命令。
+
+**独立版本后缀方法（仅方案）。** spec:4–11把variant定义成arm-rpi4；:180–181对普通/RT target分别写localversion-tizen=-arm-rpi4/-arm-rpi4-rt；defconfig:1为CONFIG_LOCALVERSION="-v7l"、:2关闭LOCALVERSION_AUTO；scripts/setlocalversion:174–208按KERNELVERSION、localversion文件、CONFIG_LOCALVERSION、LOCALVERSION、scm依次拼接。[源码行号](../evidence/task7/version_suffix_sources.txt)。未来实验可在该实验构建的所有内核make步骤统一传`LOCALVERSION=-lko-base01`（下一变体换唯一标识），得到`6.12.80-arm-rpi4-v7l-lko-base01`；包括准备、实际编译、modules_install及外部模块构建/安装均须保持一致，不能只改uname显示或事后改目录名。CONFIG_LOCALVERSION_AUTO仍关闭，显式LOCALVERSION避免未指定变量时的scm加号路径。
+
+现有spec:351–363的%files通配以-arm-rpi4-v7l/或-rt-v7l/结尾，直接追加后缀会不匹配；未来实现必须同步调整为**对应实验完整kernelrelease目录**并核对包内文件清单和外部模块vermagic，不能只加make参数便宣称打包已适配。方法尚未执行、未改spec或源码，具体实施待PM任务。
+
+**DTB。** 已有QB1211696 sandbox基线的devel RPM解出产物，56,450 B，SHA-256 `a0561668ec520b0605cdc8b7be6844365ce44f569f363e85f3d7332e1989d6ed`，与板上值完全一致。来源沿用任务5b已经闭合的0fac5de6/QB1211696；不把任务2旧f240c280的DTB当sandbox基线，不为此构建。[比对](../evidence/task7/dtb_comparison.txt)。
+
+**SMACK只读结果。** PID1标签为System::Privileged；ip、connmanctl、connman.service、/usr/local/sbin及/etc/systemd/system均为`_`，两安装文件均为User::Shell。load2中明确有`System::Privileged User::Shell rwxat`，不能断言旧标签必然导致访问拒绝。chsmack存在/usr/bin/chsmack。[04原文](../evidence/task7/04_mount_smack.transport.txt)。第二部分按PM要求仍统一为参考文件标签，具体前后及启动结果另列。
+
+### 第二部分：标签修正与第一次重启超时（未完成验收）
+
+用户已在对话中确认“已在场，可以开始”，此前已打印PM指定提示。[在场确认记录](../evidence/task7/user_presence.txt)。重启前重新通过三项身份断言并取得SDB root。只对两个指定文件执行chsmack -a，回读结果如下；其他对象标签未改：
+
+| 文件 | 原标签 | 新标签 | 参考 |
+|---|---|---|---|
+| /usr/local/sbin/lko-net-setup.sh | User::Shell | `_` | /usr/sbin/ip |
+| /etc/systemd/system/lko-net-setup.service | User::Shell | `_` | /usr/lib/systemd/system/connman.service |
+
+脚本与unit SHA-256仍分别为`8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608`、`bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78`。daemon-reload退出0，LoadState=loaded、LoadError为空、UnitFileState=enabled，ActiveState=inactive。没有手动执行脚本或start/restart服务。[14修正/验收原文](../evidence/task7/14_label_fix.transport.txt)。
+
+第一次重启编号1，原因为“用户在场的配网服务首次开机验证”。重启前boot_id=`0fb981c1-1852-425c-bc1f-665fe09f946d`，uptime=214734.64秒；MAC=2c:cf:67:a0:72:b5、IP=192.168.108.26/24，ConnMan服务为`*AR Wired ethernet_2ccf67a072b5_cable`，DNS为nameserver 221.131.143.69。[15前置快照](../evidence/task7/15_reboot1_before.transport.txt)。
+
+2026-11-02 11:09:27（Asia/Shanghai，精确时间见命令JSON）发出唯一一次无参数`sdb -s 192.168.108.26:26101 shell reboot`。该SDB客户端8秒内没有返回，宿主记录HOST-SDB-CALL-TIMEOUT/124；**124是宿主传输等待超时码，不是板上reboot退出码**，未获得远端退出状态。随后按10秒节拍尝试connect，并只读探测boot_id；600秒窗口内没有取得新的boot_id或可用shell。第6次connect曾返回“already connected”，随后shell却是target not found，因此未误判为恢复。[重连全记录](../evidence/task7/reboot_reconnect_log.txt)、[600秒结果](../evidence/task7/reboot1_reconnect.json)、[精确命令与退出码](../evidence/task7/board_commands.jsonl)。
+
+窗口在约11:19:27达到600.0002秒，59次按10秒节拍发起的connect均未形成可用会话，达到截止不再发起新的连接。最后原文：
+
+```text
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+{"number": 1, "result": "TIMEOUT", "elapsed_seconds": 600.0002119870041}
+```
+
+**按PM停止条件结束第二部分，不做第二次重启或其他板上补救。** 已向用户报告，请用户经串口手动执行配网命令恢复连接；本轮不绕过SDB、不修改服务、不重试重启。SDB不可达本身不能证明是该配网服务失败，也不能排除其他启动/网络问题，原因未知。没有新boot_id，因此连“内核已完成重启”也未通过规定的boot_id变更核验。
+
+| 验收项 | 第一次 | 第二次 |
+|---|---|---|
+| SDB可连 | 未满足：600秒超时 | 未执行 |
+| 三项身份、新boot_id | 无法采集/核验 | 未执行 |
+| Result=success、ExecMainStatus=0 | 无法采集 | 未执行 |
+| 重启后MAC/IP匹配 | 无法采集；重启前匹配不作替代 | 未执行 |
+| journal -t/-u、SMACK/权限拒绝 | 无法采集 | 未执行 |
+| 服务耗时=退出单调时刻−开始单调时刻 | 无法计算，缺重启后属性 | 未执行 |
+| multi-user.target在服务退出之后到达 | 无法判断，缺目标/服务时间戳 | 未执行 |
+| 总判定 | **未通过可达性验收，服务结果未知** | **按条件跳过** |
+
+### 收尾与待恢复事项
+
+第一部分结束时已经整体删除/opt/usr/lko_task7，rm退出0、ls退出2明确不存在，boot挂载全部卸载；/proc/mounts全文前后一致；根分区/opt/usr df也分别一致：根已用1,340,328/可用1,650,028 KiB，/opt/usr已用983,204/可用115,421,020 KiB。[10结束原文](../evidence/task7/10_readonly_finish.transport.txt)、[清理摘要](../evidence/task7/part1_cleanup.txt)。第二部分没有再创建板上临时目录。
+
+第一部分后曾root off；第二部分按授权再次root on。因首次重启后无法连接，**最终无法再执行并回读owner恢复，也无法重新读取mounts/df**，不声称这些重启后核验已完成。临时目录已删除的证据时间点是重启前，而非假造重启后ls结果。恢复连接后的身份/日志/owner收尾待用户恢复及PM后续安排，本轮不继续连接或修复。
+
+任务7第一部分完成，第二部分按超时停止，整体不标“首次重启验证通过”。内核替换执行步骤仍待PM下发；用户待答复：是否有读卡器、串口能否进入U-Boot命令行、测量小程序授权、冷启动电源控制、测试应用安装授权。
+
+## PM审核结论（2026-11-02）
+
+内核替换方案：不用一次性试启动（启动脚本只在内核文件名为 zImage 时走 bootz，其他名字走 booti；绕过 U-Boot 需要启动参数文件，不在授权内），不用 A/B 槽（B 槽未克隆，切槽会连带切换 rootfs/ramdisk/hal）。不整块重写模块分区。采用：每个实验内核（包括自编基线）加独立版本后缀，模块放在模块分区的新版本目录，与原有 6.12.80-arm-rpi4-v7l 目录并存；boot 分区保留原厂内核为 zImage.orig，实验内核以 zImage 放入，回退为改回文件名。设备树和 overlays 不动，除非变体本身改动设备树。前提：模块分区空间足够、ramdisk 不依赖带版本号的模块、外部模块（kdbus/zlogger）的使用情况已查清；空间不足时停下由 PM 决定。回退分级：sdb 可达时由 Codex 改回文件名；不可达时由用户经串口手工引导原厂内核或取卡改名；最坏重刷镜像。具体执行步骤另行下发。

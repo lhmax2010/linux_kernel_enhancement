@@ -1,0 +1,8 @@
+
+pulled                  ramdisk_a.img	  0%	      0MB	    0KB/s
+pulled                  ramdisk_a.img	 27%	      8MB	 8834KB/s
+pulled                  ramdisk_a.img	 55%	     17MB	 9460KB/s
+pulled                  ramdisk_a.img	 85%	     27MB	 9511KB/s
+pulled                  ramdisk_a.img	100%	     32MB	 7262KB/s
+1 file(s) pulled. 0 file(s) skipped.
+/opt/usr/lko_task7/ramdisk_a.img   8657KB/s (33554432 bytes in 3.784s)
