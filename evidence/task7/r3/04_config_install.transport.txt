@@ -1,0 +1,15 @@
+DF-BEFORE
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/mmcblk0p3         1335696     80408   1225180   7% /opt
+LABEL-BEFORE
+-rw-r--r-- 1 root root _           1047 Oct 28 21:12 /etc/systemd/journald.conf
+drwxr-xr-x 2 root root User::Shell 4096 Nov  2 16:47 /etc/systemd/journald.conf.d
+-rw-r--r-- 1 root root User::Shell   27 Nov  2 16:47 /etc/systemd/journald.conf.d/50-lko.conf
+READBACK
+[Journal]
+SystemMaxUse=64M
+-rw-r--r-- 1 root root _ 1047 Oct 28 21:12 /etc/systemd/journald.conf
+drwxr-xr-x 2 root root _ 4096 Nov  2 16:47 /etc/systemd/journald.conf.d
+-rw-r--r-- 1 root root _   27 Nov  2 16:47 /etc/systemd/journald.conf.d/50-lko.conf
+af93a4657b122ff5aff84aaae90ce03b94747155954e04f6a539bf83445b8f5e  /etc/systemd/journald.conf.d/50-lko.conf
+CONFIG-INSTALL-EXIT=0

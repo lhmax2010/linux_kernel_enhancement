@@ -1,0 +1,2 @@
+
+HOST-SDB-TIMEOUT exit=124 (transport timeout, remote status unknown)

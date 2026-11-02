@@ -1,0 +1,75 @@
+
+CMD=ip link show eth0
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+RC=0
+
+CMD=sha256sum /usr/local/sbin/lko-net-setup.sh /etc/systemd/system/lko-net-setup.service
+8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608  /usr/local/sbin/lko-net-setup.sh
+bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78  /etc/systemd/system/lko-net-setup.service
+RC=0
+
+CMD=systemctl is-enabled lko-net-setup.service
+enabled
+RC=0
+
+CMD=cat /proc/sys/kernel/random/boot_id
+559cfce8-46fe-49b0-97f2-2c5d18ecb275
+RC=0
+
+CMD=cat /proc/uptime
+22563.90 87836.51
+RC=0
+
+CMD=date -u
+Mon Nov  2 09:26:25 UTC 2026
+RC=0
+
+CMD=systemctl show display-manager.service -p ActiveState -p NRestarts
+NRestarts=2199
+ActiveState=activating
+RC=0
+
+CMD=journalctl -u display-manager.service -n 40 --no-pager
+-- Logs begin at Mon 2026-11-02 17:09:45 KST, end at Mon 2026-11-02 18:26:17 KST. --
+Nov 02 18:25:15 localhost systemd[1]: Starting Display manager...
+Nov 02 18:25:15 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+Nov 02 18:25:15 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+Nov 02 18:25:15 localhost systemd[1]: Failed to start Display manager.
+Nov 02 18:25:25 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 2194.
+Nov 02 18:25:25 localhost systemd[1]: Stopped Display manager.
+Nov 02 18:25:25 localhost systemd[1]: Starting Display manager...
+Nov 02 18:25:25 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+Nov 02 18:25:25 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+Nov 02 18:25:25 localhost systemd[1]: Failed to start Display manager.
+Nov 02 18:25:36 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 2195.
+Nov 02 18:25:36 localhost systemd[1]: Stopped Display manager.
+Nov 02 18:25:36 localhost systemd[1]: Starting Display manager...
+Nov 02 18:25:36 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+Nov 02 18:25:36 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+Nov 02 18:25:36 localhost systemd[1]: Failed to start Display manager.
+Nov 02 18:25:46 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 2196.
+Nov 02 18:25:46 localhost systemd[1]: Stopped Display manager.
+Nov 02 18:25:46 localhost systemd[1]: Starting Display manager...
+Nov 02 18:25:46 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+Nov 02 18:25:46 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+Nov 02 18:25:46 localhost systemd[1]: Failed to start Display manager.
+Nov 02 18:25:56 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 2197.
+Nov 02 18:25:56 localhost systemd[1]: Stopped Display manager.
+Nov 02 18:25:56 localhost systemd[1]: Starting Display manager...
+Nov 02 18:25:56 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+Nov 02 18:25:56 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+Nov 02 18:25:56 localhost systemd[1]: Failed to start Display manager.
+Nov 02 18:26:06 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 2198.
+Nov 02 18:26:06 localhost systemd[1]: Stopped Display manager.
+Nov 02 18:26:06 localhost systemd[1]: Starting Display manager...
+Nov 02 18:26:06 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+Nov 02 18:26:06 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+Nov 02 18:26:06 localhost systemd[1]: Failed to start Display manager.
+Nov 02 18:26:17 localhost systemd[1]: display-manager.service: Scheduled restart job, restart counter is at 2199.
+Nov 02 18:26:17 localhost systemd[1]: Stopped Display manager.
+Nov 02 18:26:17 localhost systemd[1]: Starting Display manager...
+Nov 02 18:26:17 localhost systemd[1]: display-manager.service: Main process exited, code=exited, status=127/n/a
+Nov 02 18:26:17 localhost systemd[1]: display-manager.service: Failed with result 'exit-code'.
+Nov 02 18:26:17 localhost systemd[1]: Failed to start Display manager.
+RC=0

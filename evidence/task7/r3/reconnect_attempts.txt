@@ -1,0 +1,464 @@
+FILE=reboot1_connect_01.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot1_connect_02.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot1_connect_03.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot1_connect_04.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot1_connect_05.transport.txt
+error: failed to connect to remote target '192.168.108.26'
+
+FILE=reboot1_connect_06.transport.txt
+192.168.108.26:26101 is already connected
+
+FILE=reboot1_connect_07.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_08.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_09.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_10.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_11.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_12.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_13.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_14.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_15.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_16.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_17.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_18.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_19.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_20.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_21.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_22.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_23.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_24.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_25.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_26.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_27.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_28.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_29.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_30.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_31.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_32.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_33.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_34.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_35.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_36.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_37.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_38.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_39.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_40.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_41.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_42.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_43.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_44.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_45.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_46.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_47.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_48.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_49.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_50.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_51.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_52.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_53.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_54.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_55.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_56.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_57.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_58.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_connect_59.transport.txt
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+FILE=reboot1_probe_01.transport.txt
+
+HOST-SDB-TIMEOUT exit=124 (transport timeout, remote status unknown)
+
+FILE=reboot1_probe_02.transport.txt
+
+HOST-SDB-TIMEOUT exit=124 (transport timeout, remote status unknown)
+
+FILE=reboot1_probe_03.transport.txt
+
+HOST-SDB-TIMEOUT exit=124 (transport timeout, remote status unknown)
+
+FILE=reboot1_probe_04.transport.txt
+
+HOST-SDB-TIMEOUT exit=124 (transport timeout, remote status unknown)
+
+FILE=reboot1_probe_05.transport.txt
+
+HOST-SDB-TIMEOUT exit=124 (transport timeout, remote status unknown)
+
+FILE=reboot1_probe_06.transport.txt
+error: target not found
+
+FILE=reboot1_probe_07.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_08.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_09.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_10.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_11.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_12.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_13.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_14.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_15.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_16.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_17.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_18.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_19.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_20.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_21.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_22.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_23.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_24.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_25.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_26.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_27.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_28.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_29.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_30.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_31.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_32.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_33.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_34.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_35.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_36.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_37.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_38.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_39.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_40.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_41.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_42.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_43.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_44.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_45.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_46.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_47.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_48.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_49.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_50.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_51.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_52.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_53.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_54.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_55.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_56.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_57.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_58.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+FILE=reboot1_probe_59.transport.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong

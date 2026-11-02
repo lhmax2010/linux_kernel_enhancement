@@ -2,6 +2,18 @@
 
 更新：2026-11-02（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
+**任务7 r3：授权和journald配置登记完成；第一次重做重启后SDB等待600秒超时，未通过可达性验收，第二次未执行。** 已按停止条件结束，未进行服务/网络补救。新boot的服务状态/退出码、日志、耗时、unit时间点及journald运行时上限均未取得，不能拿上轮结果替代。[11 r5](11_board_boot_chain.md#2026-11-02-r5重启验证重做)、[证据](../evidence/task7/r3/README.md)。
+
+- 计划/进度：身份核对→登记新授权→写入容量配置→用户确认在场/网线牢固/显示器已接→前置检查→第一次无参数重启→每10秒探测→600秒超时停止→封存证据同commit推main。未达到第二次重启条件。
+- 已闭合：/opt可用1,225,180 KiB，配置选SystemMaxUse=64M；/etc/systemd/journald.conf.d为0755，50-lko.conf为0644，标签均与journald.conf一致为`_`，内容和SHA回读通过。没有restart/reload journald；是否实际生效待恢复后取日志确认。
+- 前置检查通过：LOWER_UP、脚本/unit哈希不变、enabled。用户已在场并接显示器；display-manager仍activating、NRestarts=2199，前10分钟58次计划重启（5.8次/分钟）、348行相关日志；直接报错exit127，底层原因未给出。
+- 第一次重做于17:26:14+08发出reboot，600.0002秒内59次实际connect/探测未恢复shell；第二次跳过。已请用户在串口执行ip link show eth0并查看网口指示灯。本轮最终owner恢复/回读因不可达未完成；等待用户确认时的owner回读不作最终替代。没有板上临时目录，授权的journald配置保留。
+- PM对r4裁定原文见11 r5：r4即11:09重启后的boot；约13:12是日志范围误读。上次最可能链路中断但未完全确定；本次原因仍未知。
+- 新常规授权已登记RULES第7–9项：测量小程序、/opt测试应用、journald容量；冷启动由用户手动，读卡器已具备。这四项不再作为待答问题。
+- 挂账：**display-manager反复重启：用户可接显示器，实验期间如何处理待 PM 决定**（本轮已接仍观察到失败）；**U-Boot串口命令行能否进入，用户待测**；本次超时后的配网验证/owner收尾及内核替换执行步骤待PM后续安排。
+
+以下为任务7 r2的历史状态；其开机对应关系已由上述PM裁定更新：
+
 **任务7 r2只读排查完成；没有重启或修复服务。** 本次boot服务为active/exited、Result=success、ExecMainStatus=0，耗时4.974194秒，multi-user.target在退出后4.258毫秒到达。当前网络由用户手动恢复，不能补判上次首次重启验收通过。[11 r4](11_board_boot_chain.md#2026-11-02-r4首次重启失败排查)、[证据](../evidence/task7/r2/README.md)。
 
 - 计划/进度：身份断言、服务/日志/网络/udev只读采集、时间线与缺失证据分析、owner恢复、文档证据同commit推main；采集分析与收尾已完成。
@@ -9,7 +21,7 @@
 - 时间前提：用户报告约13:12再次开机，但当前uptime/UTC推算与之不一致且早期墙钟由1970跳变；不将当前boot直接对应11:09故障，详见11 r4。
 - .link前提：目录与net_setup_link udev规则存在；默认99-default.link被/etc同名/dev/null链接屏蔽，eth0无ID_NET_LINK_FILE，启用前设置MAC的效果未验证。
 - 收尾：本轮无板上临时文件，/opt/usr/lko_task7不存在，mounts与根/opt/usr df前后一致；SDB已恢复owner并回读uid5001。原始输出保留temp/task7/r2，不删除历史证据。
-- 挂账：**配网服务的修复方案或重启验证重做，待 PM 决定**；内核替换执行步骤仍待PM下发。上次五项用户待答问题保留如下。
+- 挂账：**配网服务的修复方案或重启验证重做，待 PM 决定**；内核替换执行步骤仍待PM下发。历史待答事项已按本轮授权更新，当前挂账见本文件开头。
 
 以下为任务7 r3结束时的历史状态（本轮补充以以上及11 r4为准）：
 
@@ -17,7 +29,7 @@
 
 - 已闭合：模块分区Available=14,648 KiB、空闲inode=8,054，现有版本目录du=4,424 KiB；kdbus已加载使用，zlogger未加载，logger是另一模块；rpm -qf未找到两外部模块所属包。ramdisk无版本目录/.ko，init按槽位只读挂载模块分区再modprobe。已有sandbox QB1211696 DTB与板上SHA一致。证据：evidence/task7/。
 - 已记录PM审核结论：不采用tryboot/A/B，不整块重写模块分区；后续每个实验kernelrelease唯一，模块新目录并存，原厂zImage.orig与实验zImage文件名切换。具体内核替换执行步骤待PM下发；本轮不执行替换。
-- 用户待答复：是否有读卡器；串口能否进入U-Boot命令行；测量小程序是否纳入常规授权；冷启动电源控制方式；测试应用安装是否纳入常规授权。
+- 用户待测：串口能否进入U-Boot命令行。读卡器已具备；测量小程序、测试应用已授权；冷启动由用户手动操作。
 - 临时目录/opt/usr/lko_task7已在第一部分结束整体删除；首次重启前只持久修改了两服务文件SMACK标签User::Shell→`_`，内容哈希不变。重启前临时目录已删除、mounts/df一致；首次重启后不可达，最终owner恢复及新一轮身份/mounts/df无法回读，不声称完成。详见[11 r3](11_board_boot_chain.md)、[超时证据](../evidence/task7/reboot1_reconnect.json)。
 
 **任务6 r2已完成调研与只安装验收，未运行配网脚本、未重启。** PM于2026-11-02明确替代systemd-analyze的验收规则，解除上轮工具阻塞。上次停止报告保留在[11](11_board_boot_chain.md)前半部分，本轮结果追加在其末尾。
@@ -26,13 +38,13 @@
 - 已闭合：boot_a=p1/vfat，固件加载u-boot.bin，boot.scr.uimg从所选槽加载zImage及ramdisk，/mnt/inform/partition-ab.info当前a；module_a=p6/ext4、ro。CMA320MiB对应cma-320 overlay；413个boot文件已记录大小/哈希。详见[11本轮结果](11_board_boot_chain.md#2026-11-02-r2恢复调研与安装本轮结果)、[证据索引](../evidence/task6/r2/README.md)。
 - 服务已安装：/usr/local/sbin/lko-net-setup.sh、/etc/systemd/system/lko-net-setup.service及multi-user.target.wants启用链接。LoadState=loaded、LoadError为空、enabled，inactive/dead且ExecMainPID=0；reload后journal无该unit警告/错误。[验收](../evidence/task6/r2/18_verify.transport.txt)。脚本运行及SMACK执行权限仍待首次重启验证，未以装载成功替代运行验收。
 - 清理闭合：/opt/usr/lko_task6已整体删除，SDB恢复owner；/proc/mounts全文前后一致，/始终rw,relatime、未remount。/opt/usr df不变；根分区已用增加12KiB，服务文件/enable目录按授权保留。[对照](../evidence/task6/r2/cleanup_and_verification.txt)。
-- 需PM审核/挂账：内核替换与回退草案；B槽完整性/可启动性、端到端tryboot及自动复位/回退、initramfs模块槽映射、QB模块镜像封装/刷写命令及现场恢复途径仍未知或未验证。没有把A/B标签当成可用回退。设计v4的三项待用户决定事项见下文。
+- 需PM审核/挂账：内核替换与回退草案；B槽完整性/可启动性、端到端tryboot及自动复位/回退、initramfs模块槽映射、QB模块镜像封装/刷写命令及现场恢复途径仍未知或未验证。没有把A/B标签当成可用回退。设计v4此前三项授权问题现已由任务7 r3裁定，见本文件开头。
 - 下一步：**第一次重启验证（需要用户在场）**；**PM审核内核替换方案**。这是任务6结束时的后续项；任务7已按在场确认尝试第一次但超时，PM审核原文已追加11 r3。
 
 **设计文档当前版本为v4：[docs/10_design_v4.md](10_design_v4.md)，待外部评审；[v1](10_design_v1.md)、[v2](10_design_v2.md)、[v3](10_design_v3.md)保留为历史记录。**
 
 - 2026-11-02 A入库完成：v4从指定Downloads移动，原文未改，147,550 B，SHA-256 `f620a3cdc34a6afd586396252c901c1a0ca4d1c591afc27c4c2d3b9a07698fb3`；Downloads已无副本。三份v3评审记录均找到且已位于docs/reviews，原样入库：[Codex评审](reviews/design_v3_review_codex.md)、[Codex核验](reviews/design_v3_review_codex_verification.txt)、[Claude Code评审](reviews/design_v3_review_claude_code.md)。核验记录：temp/task6/r2/intake.json。
-- 挂账、待用户决定：测量小程序是否纳入常规授权；冷启动的电源控制方式；标准场景安装测试应用是否纳入常规授权。A未操作开发板，独立提交`1526c85`；B按2026-11-02替代验收裁决完成任务6并另行提交，见本文件开头。
+- 此前设计授权问题已闭合：测量小程序/测试应用纳入常规授权，冷启动由用户手动操作（任务7 r3）。A未操作开发板，独立提交`1526c85`；B按2026-11-02替代验收裁决完成任务6并另行提交，见本文件开头。
 
 - v3为同日修订版，补入上一轮 Claude Code 完整评审（docs/reviews/design_v2_review_claude_code.md）中此前未处理的内容；阶段 0 拆为 0a/0b。已从指定Downloads路径移动覆盖现有文件，Downloads下已无该文件；移动过程未修改内容，114,130 B，移动前后SHA-256均为`793c0762d48d9dc46a7af7ccc4c55a0aeb212b967c58184a8052f4db68d435cb`。
 - v2的Claude Code评审已找到，原文件已位于目标路径[docs/reviews/design_v2_review_claude_code.md](reviews/design_v2_review_claude_code.md)，原样入库；59,159 B，SHA-256为`126f6951cf1bb22286a991f57be0bce022482faf232538ea4eb3b5290ab03696`。
@@ -97,4 +109,4 @@ ARM32缺少BPF trampoline；正常前置条件下挂载先从弱size实现返回
 
 ## 发布状态
 
-本轮仅提交任务7 r2产出：11末尾r4、STATUS及evidence/task7/r2；不改RULES/脚本/内核树。普通推送GitHub main，作者/提交者Hao Lin <hao.lin@samsung.com>；不开PR、不force push、不推Gerrit。全程只读排查，恢复owner；服务修复及重启验收待PM决定。最终commit见本轮回复。此前任务7 r3提交52ece452，A/B提交1526c85与518a554，历史证据保持原样。
+本轮仅提交任务7 r3产出：11末尾r5、RULES新增授权及配置登记、STATUS、evidence/task7/r3。普通推送GitHub main，作者/提交者Hao Lin <hao.lin@samsung.com>；不开PR、不force push、不推Gerrit。第一次重做超时，第二次跳过；不声称完成两次验收或owner最终恢复。任务7 r2历史提交b232534，r3调研历史提交52ece452，A/B提交1526c85与518a554；原文和证据保留。

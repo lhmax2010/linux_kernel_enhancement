@@ -395,3 +395,88 @@ SDB相关unit清单、每个systemctl cat及退出码见06:408起；观察到的
 [09结束快照](../evidence/task7/r2/09_final.transport.txt)、[10 root off](../evidence/task7/r2/10_root_off.transport.txt)、[11 owner回读](../evidence/task7/r2/11_owner.transport.txt)、[核验摘要](../evidence/task7/r2/verification.txt)：本轮未创建板上临时文件，/opt/usr/lko_task7明确不存在；/proc/mounts全文前后一致，根仍rw、模块分区仍ro。根与/opt/usr的df数值也一致。SDB已root off并回读uid=5001(owner)，闭合上轮因不可达而未能完成的owner收尾。本轮未删除宿主原始证据，全部保留在temp/task7/r2。
 
 任务7 r2只读排查完成；**配网服务的修复方案或重启验证重做，待PM决定**。不将本轮观察标为两次重启验证通过。内核替换具体执行步骤及用户待答的读卡器、U-Boot串口、测量小程序授权、冷启动电源控制、测试应用安装授权继续挂账。
+
+## 2026-11-02 r5：重启验证重做
+
+### PM对r4的裁定（原文）
+
+r4 采集时 uptime 为 13170.56 秒、UTC 06:49:52，倒推开机约为北京时间 11:10；服务 ExecStart 墙钟终点为 12:10:43 KST（即北京时间 11:10:43）；boot_id 已从 0fb981c1… 变为 559cfce8…。因此 r4 所查的就是 11:09 重启后的那次开机，'约 13:12 开机'为误读（那是 journal 保留范围的起点）。该次开机中服务在 16.155–21.129 秒运行并退出 0，说明重启和配网均已完成；之后 sdb 不可达，最可能的原因是链路中断（用户随后发现网线松动、看到 NO-CARRIER），因日志已被轮转，不能完全确定。重启验证需重做。
+
+### journald配置与授权登记
+
+任务7 r3已登记常规授权第7–9项：测量小程序、/opt测试应用、限定路径的journald容量配置；用户手动冷启动、手边有读卡器也已记录。三项身份断言通过；用户随后明确确认“已在场、网线插牢，已接显示器，可以开始”。[在场确认](../evidence/task7/r3/user_presence.txt)、[身份](../evidence/task7/r3/07_resume_identity.transport.txt)。本轮仅第2步写入下面的配置目录/文件并修改其标签，除此之外不改文件、标签或网络；未手动执行配网脚本，未start/stop/restart/enable/disable任何服务，未daemon-reload。
+
+写前df -k /opt的Available为**1,225,180 KiB**，大于512 MiB（524,288 KiB），故选择64M。[配置写入和回读](../evidence/task7/r3/04_config_install.transport.txt)原文：
+
+```text
+/dev/mmcblk0p3         1335696     80408   1225180   7% /opt
+[Journal]
+SystemMaxUse=64M
+```
+
+实际新增目录`/etc/systemd/journald.conf.d`权限0755；新增文件`/etc/systemd/journald.conf.d/50-lko.conf`权限0644，内容仅上述两行、末行换行，共27 B。目录及文件初始SMACK标签User::Shell，chsmack后均为`_`，与/etc/systemd/journald.conf相同。SHA-256：`af93a4657b122ff5aff84aaae90ce03b94747155954e04f6a539bf83445b8f5e`。set -e安装链完成、CONFIG-INSTALL-EXIT=0；权限/标签/内容/哈希均已回读，已登记RULES第9项。根挂载原为rw，未remount。
+
+**只证明配置已正确写入，不证明新上限运行时已生效。** 未重启journald服务；随后第一次整机重启未恢复SDB，无法取得journald容量max日志，运行时上限仍待核实。
+
+### 重启前检查与噪声基线
+
+[第一次前置快照](../evidence/task7/r3/reboot1_before.transport.txt)与[命令时间/退出码](../evidence/task7/r3/board_commands.jsonl)：
+
+- eth0明确含LOWER_UP，MAC=2c:cf:67:a0:72:b5；is-enabled为enabled，退出0。
+- 脚本SHA-256仍为`8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608`，unit仍为`bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78`；sha256sum退出0。
+- boot_id=`559cfce8-46fe-49b0-97f2-2c5d18ecb275`，uptime=22563.90秒，板上date -u为2026-11-02 09:26:25 UTC。宿主操作时间以JSON的Asia/Shanghai时间为准；板上墙钟与宿主存在小幅差异，不用二者混算重连耗时。
+- 用户已接显示器，但display-manager为**ActiveState=activating、NRestarts=2199**，并非active。没有操作该服务或显示相关进程。
+
+前10分钟journal中含display-manager或Display manager共**348行**，其中“Scheduled restart job”**58行**，即窗口内约**5.8次/分钟**。首末计划重启时间为18:16:32–18:26:17 KST，计数2142→2199；57个间隔覆盖585秒，平均约**10.26秒/次**。这是重启前的噪声基线，不能当作此次新boot的频率。[完整筛选及计数](../evidence/task7/r3/reboot1_noise_summary.txt)。
+
+最近40行反复出现以下失败原文（前置快照保留全部40行）：
+
+```text
+display-manager.service: Main process exited, code=exited, status=127/n/a
+display-manager.service: Failed with result 'exit-code'.
+Failed to start Display manager.
+display-manager.service: Scheduled restart job, restart counter is at 2199.
+```
+
+已知直接失败形式为**主进程退出127、result=exit-code**；这些日志没有给出更底层错误，不能仅凭127断言缺少某个命令或动态库，具体原因**无法确定**。接显示器后该快照仍显示反复失败。新boot是否仍然失败、频率如何，因本次SDB不可达没有采集到。
+
+### 第一次重启：600秒超时；第二次按条件跳过
+
+编号：本次重做第1次（自任务7首次尝试以来第2次），原因“用户在场且确认网线插牢，配网服务自动启动验证重做”。在**2026-11-02 17:26:14.376158 +08:00**发出唯一一次`sdb -s 192.168.108.26:26101 shell reboot`，没有参数。[原因](../evidence/task7/r3/reboot1_reason.txt)、[命令](../evidence/task7/r3/board_commands.jsonl)。
+
+该SDB客户端8秒内未返回，宿主记录HOST-SDB-TIMEOUT/124；**124是宿主传输超时，不是板上reboot退出码**。随后每10秒发起connect，并以只读`echo SDB-READY`检查shell是否可用。最初connect返回成功/已连接，但shell前5次超时，第6次target not found；第7–59次均无法取得可用会话，没有误判为恢复。[完整重连输出](../evidence/task7/r3/reconnect_attempts.txt)。
+
+截至约**17:36:14.376 +08:00**，等待**600.0002166100312秒**仍不可达，停止全部后续板上操作。共实际发起**59次connect和59次shell探测**。原始reconnect.json中的attempts=60是循环进入截止检查时的计数，**第60次未发出命令**；该统计瑕疵原样保留，实际次数按命令日志核算，见[核验摘要](../evidence/task7/r3/verification.txt)。不修改原始结果以掩盖计数差异。
+
+末次失败原文：
+
+```text
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+```
+
+| 验收/采集项 | 第一次重做 | 第二次重做 |
+|---|---|---|
+| SDB恢复 | **未满足：600秒超时** | 按条件不执行 |
+| 新boot_id及重启后三项身份 | 未取得，无法验证变化 | 未执行 |
+| Result=success / ExecMainStatus=0 | 未取得，不能判定脚本成功或失败 | 未执行 |
+| 日志有network setup complete | 未取得新boot日志 | 未执行 |
+| 重启后MAC/IP匹配 | 未取得，重启前LOWER_UP和MAC不替代 | 未执行 |
+| journald运行时max=64M | 未取得，只有配置写入核对通过 | 未执行 |
+| 服务耗时 | 无法计算 | 无数据 |
+| multi-user.target到达−服务退出 | 无法计算 | 无数据 |
+| journald/connman/multi-user/graphical/sdbd_tcp.socket/sdbd.service的ActiveEnter | 全部未取得 | 无数据 |
+| display-manager新boot状态、日志行数、采集uptime及频率 | 全部未取得 | 无数据 |
+| 总判定 | **未通过SDB可达性验收；其余运行结果未知** | **跳过** |
+
+没有用r4或重启前的旧时间戳填充本次结果，也不能用上次“最可能链路中断”的PM裁定解释本次超时。达到停止条件后已向用户报告：**请在串口执行`ip link show eth0`并查看网口指示灯**。没有另行修复、重启、改网络或继续连接尝试。
+
+### 收尾与待PM决定
+
+本轮没有创建板上临时目录；仅保留已登记的journald配置目录及文件。宿主原始输出/准备脚本均留在temp/task7/r3，不删除历史产物；证据目录仅小体积文本，原始全文的大小、行数和SHA-256见[manifest](../evidence/task7/r3/raw_manifest.tsv)。本轮尚未取得重启后journal全文；重启前10分钟全文只留temp，入库仅相关摘录。
+
+等待用户确认期间曾root off且回读uid5001（[05](../evidence/task7/r3/05_wait_root_off.transport.txt)、[06](../evidence/task7/r3/06_wait_owner.transport.txt)）；收到在场确认后按授权再次root on。**由于本次重启后SDB不可达，最终无法恢复并回读owner，亦无法回读新boot挂载/空间状态**。不把等待期间的owner回读当作最终收尾。此项待用户恢复及PM后续安排，本轮不突破超时停止条件。
+
+已答复事项从STATUS待答列表移除：测量小程序/测试应用已获常规授权，冷启动由用户手动操作，读卡器可用。保留：**display-manager反复重启：用户可接显示器（本轮已接），实验期间如何处理待PM决定**；**U-Boot串口命令行能否进入，用户待测**。配网重启验收未完成、内核替换执行步骤仍待PM后续安排。

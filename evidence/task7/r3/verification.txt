@@ -1,0 +1,20 @@
+Task7 r3 final result: first reboot TIMEOUT; second reboot NOT EXECUTED.
+Configuration installed: /etc/systemd/journald.conf.d/50-lko.conf, 27 bytes, 0644, SMACK _.
+Directory: /etc/systemd/journald.conf.d, 0755, SMACK _.
+Before chsmack both new objects had User::Shell; reference journald.conf had _.
+File content SHA-256: af93a4657b122ff5aff84aaae90ce03b94747155954e04f6a539bf83445b8f5e
+/opt available before write: 1225180 KiB >= 524288 KiB; selected 64M.
+Runtime journald max after reboot: NOT OBSERVED (SDB unavailable).
+Exactly one remote reboot command; no service start/stop/restart/enable/disable or daemon-reload.
+User confirmed physically present, cable secured, display attached.
+Pre-reboot LOWER_UP / both service SHA-256 / enabled: PASS.
+Remote reboot result: UNKNOWN; host SDB transport timed out after 8s (124).
+Reconnect window: 600.0002166100312 seconds; actual connect calls=59, shell probes=59.
+Original reconnect.json attempts=60 is loop counter at deadline check; attempt 60 sent no command. Original JSON retained.
+No post-reboot shell: boot ID/identity/service/log/timing/network/display/journal max unobserved.
+Second reboot skipped under PM stop condition.
+Owner restored/read back during user-confirmation wait, then root enabled for test. Final owner restoration NOT completed: SDB unavailable, stop condition enforced.
+No board temporary directory created; only authorized journald config directory/file retained.
+Noise baseline (10-minute window): 348 matching lines, 58 scheduled restarts, 5.8 restarts/min.
+First/last scheduled restart KST 18:16:32/18:26:17: 585s / 57 intervals = 10.2631579s per interval.
+Display pre-reboot ActiveState=activating; NRestarts=2199; direct failure code=exited/status=127, result=exit-code. Underlying cause not shown.
