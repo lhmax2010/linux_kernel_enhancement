@@ -1,0 +1,44 @@
+{
+  "script": "scripts/run_task9_build.sh",
+  "script_sha256": "3e8c0857d0896e5bcba95773c920902fc3b643d5798c5a6cc3792df1db07bcf4",
+  "base_script": "scripts/run_baseline_build.sh",
+  "base_script_sha256": "7a47b58cea0bf9d8dba3b97045a53559d37ddf644c70814790b264f17066ecba",
+  "bash_n": {
+    "command": "/usr/bin/bash -n /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_task9_build.sh",
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "shellcheck": {
+    "path": null,
+    "result": "SKIPPED: not installed in PATH; no installation attempted"
+  },
+  "tmux": null,
+  "screen": null,
+  "execution": "Script never run or sourced; no gbs/export/build/sudo/signals; syntax/static inspection only.",
+  "direct_sudo_lines": [
+    365
+  ],
+  "signal_commands": [],
+  "umask_commands": [],
+  "config_sha256": "d47536dd30900412e7bbd2d7057e9dd486f94ad2b2b6d8404a510a23be0bdc48",
+  "source_states": [
+    {
+      "repo": "linux-rpi",
+      "head": "8c8f2429401d6b282373e58b73399801a9486d5b",
+      "status": ""
+    },
+    {
+      "repo": "ext/linux-tizen-modules",
+      "head": "10deb822453c759f6f944baf067c8b16a48ad914",
+      "status": ""
+    },
+    {
+      "repo": "ext/linux-tizen-modules-source",
+      "head": "25797e8af7ed95a5783bbe84c11959560aaf7e92",
+      "status": ""
+    }
+  ],
+  "independent_root_still_empty": true,
+  "no_run_artifacts_created": true
+}

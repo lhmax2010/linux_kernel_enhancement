@@ -23,3 +23,10 @@
 - resume1_gbs_privilege_audit.txt：已安装工具的只读调用链证据，包含命令行buildroot覆盖和明确sudo调用，未执行这些调用。
 
 旧root仅只读用于任务8同方式的kernelrelease计算；没有复制或复用它进行任务9实际构建。没有新RPM或部署包，没有启动GBS、sudo或连接板子。
+
+## 用户执行脚本准备（续跑二）
+
+- user_runner_static_checks.json：bash -n退出0、shellcheck/tmux/screen未找到、脚本及基准/config SHA、源码未变；没有运行脚本或创建构建运行日志/status/锁。
+- user_runner_commands.txt：三阶段完整命令，纯文本供评审，不应绕过脚本分别执行。
+
+本轮新增PM裁决允许用户终端内前台sudo -v及后续GBS自己的sudo调用；覆盖resume1权限停止记录。代理不运行这些命令。工具链及产物验收计划见14第7节。

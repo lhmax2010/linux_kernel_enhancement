@@ -4,14 +4,14 @@
 
 更新：2026-11-03（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**任务9续跑停在第一段剩余检查第2项：独立GBS root初始化前。** [14本轮记录](14_base01_build.md#5-任务9续跑kernelrelease通过环境初始化前停止)、[环境门槛](../evidence/task9/resume1_environment_gate.json)。没有启动GBS/构建/sudo、未连接开发板、未发信号、未推Gerrit或触发QB。
+**任务9续跑二：等待用户在 tmux 中运行 run_task9_build.sh。** [脚本](../scripts/run_task9_build.sh)、[14第6–7节](14_base01_build.md)、[静态检查](../evidence/task9/user_runner_static_checks.json)。代理只编写和静态检查，未运行脚本/GBS/导出/构建/sudo，未发信号、未连接开发板。
 
-- 计划/进度：三个HEAD和干净状态复核→登记PM静态改判→普通/RT kernelrelease复验，均完成；独立root路径已创建但为空，初始化及工具链门槛未通过，第二段未执行。
-- 已闭合：PM裁定树外模块%install不补LOCALVERSION，共享boot/配置/工具路径允许无后缀，原静态结果改判PASS。原static_preflight.json未改，新static_preflight_rejudged.json引用其SHA。普通/RT分别输出6.12.80-arm-rpi4[-rt]-v7l-lko-base01，两项exit0、无.o、源码干净。证据见task9/resume1_kernelrelease_results.json。
-- 本地源码不变：内核lko/base01=`8c8f2429401d6b282373e58b73399801a9486d5b`；树外模块lko/base01=`10deb822453c759f6f944baf067c8b16a48ad914`；source仓库仍=`25797e8af7ed95a5783bbe84c11959560aaf7e92`。本轮无源码修改或新提交，不推源码分支。
-- 当前阻塞/需PM明确：现有depanneur启动及初始化路径直接执行sudo /bin/echo -n、sudo /usr/bin/build（源码证据resume1_gbs_privilege_audit.txt），与本轮“不用sudo”不兼容。未试认证、未改工具或绕行；需明确是否允许GBS工具内部sudo及启动主体，或另行确定完全无sudo的构建环境。上轮两项静态挂账已闭合，不再要求补%install导出。
-- 未取得：新root工具链一致性、依赖来源、构建耗时、zImage/模块大小、vermagic/CRC、新.config及部署包；不可部署。config/gbs_llvm.conf未改，未复用旧root做任务9构建。
-- 后续：先恢复并完成任务9；验收通过后为“任务10：部署 base01 到 RPi4 并验证可以启动和回退（需要用户提前开板、在场）”。当前前提未满足，原有U-Boot串口等挂账保留。
+- 计划/进度：规则/历史读取→用户启动授权登记→以任务2脚本改写三阶段入口→bash -n/人工静态检查→运行与验收说明，均完成；等待用户实际启动。shellcheck未安装按要求跳过；本机目前未发现tmux/screen，需用户先准备可用tmux。
+- 已闭合：PM已允许仅由用户终端触发GBS内部sudo；脚本前台一次sudo -v，root跳过。原权限阻塞由此授权覆盖，代理仍不运行。之前静态改判PASS及普通/RT kernelrelease复验仍有效，原证据保留。
+- 脚本固定同一task9独立root、LLVM config SHA、三个HEAD，kernel→modsrc→modules串行；保留进程组/五分钟残留/不发信号、工作区外记录、实时日志与封存BUILD-END/ALL-END；只构建不做产物核验。预计45–90分钟（估算，非实测）。
+- 本地源码不变：内核8c8f2429401d、树外模块10deb822453c、source25797e8af7ed均在lko/base01且干净；无源码新提交，不推Gerrit/QB，不使用vendor_local。独立root仍为空，尚无运行日志/status/锁。
+- 挂账/验收：用户运行后先核对阶段和残留；新root clang/ld.lld必须22.1.8（否则产物作废）、实际新编kernel-devel身份、zImage差值、共享配置、vermagic/CRC、.config、容量及部署包均待核验。ALL-END/构建返回0不等于产物已验收。
+- 后续：通过任务9全部验收后，任务10“部署 base01 到 RPi4 并验证可以启动和回退（需要用户提前开板、在场）”。当前不可部署，U-Boot串口等既有挂账保留。
 
 **任务8开发机构建准备完成；未连接开发板、未完整构建、未推Gerrit或触发QB。** [12构建部署准备](12_kernel_deploy_prep.md)、[证据索引](../evidence/task8/README.md)。
 

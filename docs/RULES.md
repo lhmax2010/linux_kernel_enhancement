@@ -1,6 +1,15 @@
 1. 不使用工作目录以外的文件（配置、脚本、数据等）。系统已安装的工具本身（gbs、depanneur、编译器、git 等）不在此限。
 2. 生成的所有东西都必须在工作目录内。
 
+## 任务9：用户终端启动构建（2026-11-03，PM裁决）
+
+GBS 内部的 sudo 调用（depanneur 的 sudo /usr/bin/build、认证维持 sudo /bin/echo -n、chroot/挂载等）允许，但只能由用户在自己的终端启动脚本时发生，沿用任务2的做法：脚本开头前台执行一次 /usr/bin/sudo -v 由用户认证，之后后台运行。你本人仍然不运行脚本、gbs、导出、构建或任何 sudo，不发信号。
+
+- 本授权仅允许用户运行`scripts/run_task9_build.sh`，顺序为内核→linux-tizen-modules-source→linux-tizen-modules，armv7l，同一`temp/task9/GBS-ROOT-LKO-BASE01`，配置只读引用`config/gbs_llvm.conf`。不推Gerrit、不触发QB、不连接或部署开发板，不使用vendor_local。
+- 代理仅编写脚本、执行bash -n和已有shellcheck的静态检查；本轮不运行脚本或其中任何构建入口。root用户跳过前台sudo -v；除此之外脚本没有直接sudo调用。GBS自己的sudo/挂载/chroot仍属于上述用户启动授权。
+- 沿用任务2的独立进程组、控制终端、HOME/GIT_CONFIG_NOSYSTEM/GBP_CONF_FILES隔离、不改umask、负载上限和工作区外写入记录规则。建议用户在tmux中保持终端会话；发现凭据提示停止后续调度、不输入或重试；当前组最多观察五分钟后报告，不发信号，可能仍存活的原始日志保留。
+- 脚本只构建，不做产物核验。工具链22.1.8、实际kernel-devel依赖身份、vermagic/CRC、配置和部署包验收在用户报告结束后执行。出现ALL-END或三个GBS返回0均不等于产物已验收。
+
 ## 板上常规授权（2026-10-30，PM裁决）
 
 以下授权覆盖历史条目中对应的限制；按各项前提执行，已授权事项不再逐次申请，其余规则不变。第3–6项为用户2026-10-30补充授权。

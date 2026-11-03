@@ -1,6 +1,6 @@
 # 任务9：干净基线构建与前置检查
 
-**最新状态（2026-11-03续跑）：PM已裁定静态门槛通过，普通/RT kernelrelease复验通过；停在独立GBS root初始化前。已安装GBS/depanneur的初始化路径会执行sudo，与本轮“不用sudo”的约束不兼容。未启动GBS或任何构建。详见第5节。**
+**最新状态（2026-11-03续跑二）：已按PM裁决准备用户执行的三阶段构建脚本，bash -n通过，等待用户在tmux中运行。代理未运行脚本、GBS、导出、构建或sudo；目前没有新构建产物。第5节权限阻塞已由第6节新授权覆盖。**
 
 第1–4节保留上一轮准备/停止记录，第2.3节是本轮PM裁决；旧的静态不通过项及补导出建议已由该裁决覆盖。
 
@@ -143,3 +143,115 @@ RPi内核模块、devel和14条树外模块路径（普通/RT各7个）已经带
 | 构建总耗时 | 未开始构建，无构建耗时数据 |
 
 没有创建构建进程组、root子进程或持久构建挂载，无需发送信号或清理残留。静态检查namespace随命令自然退出；未连接任何开发板。下一步先闭合GBS初始化权限边界、完成任务9全部前置和构建验收；之后才是**任务10：部署base01到RPi4并验证可以启动和回退（需要用户提前开板、在场）**。当前不可部署。
+
+## 6. 任务9续跑二：用户执行构建脚本（本轮只写不运行）
+
+### 6.1 PM裁决与运行入口
+
+GBS 内部的 sudo 调用（depanneur 的 sudo /usr/bin/build、认证维持 sudo /bin/echo -n、chroot/挂载等）允许，但只能由用户在自己的终端启动脚本时发生，沿用任务2的做法：脚本开头前台执行一次 /usr/bin/sudo -v 由用户认证，之后后台运行。你本人仍然不运行脚本、gbs、导出、构建或任何 sudo，不发信号。
+
+已同步RULES任务9条目，覆盖第5节中需要明确启动主体的历史挂账。脚本为[scripts/run_task9_build.sh](../scripts/run_task9_build.sh)，权限0755；源码三个提交及配置保持不变。没有独立导出审计阶段，也没有在脚本中加入产物验证；导出由三次gbs build各自内部执行。
+
+建议用户先进入tmux；以下一行会新建会话、运行脚本，并在前台脚本退出后保留交互shell，使depanneur依赖的控制终端继续存在。tmux socket在任务目录，`-f /dev/null`不加载用户tmux配置；保留的bash不加载profile/rc。**本机当前PATH及常见系统位置未发现tmux、screen或shellcheck；未安装这些工具。下面tmux命令须先由用户准备可用的tmux，不能声称当前已经能启动tmux。**
+
+```sh
+tmux -f /dev/null -S /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/tmux.sock new-session -s lko-task9 -c /home/linhao/Toolchain/development/linux_kernel_optimization '/usr/bin/bash /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_task9_build.sh; exec /usr/bin/bash --noprofile --norc -i'
+```
+
+如果用户已经进入自己建立的持久终端，会话内的完整脚本命令是：
+
+```sh
+/usr/bin/bash /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_task9_build.sh
+```
+
+非root用户前台会执行一次sudo -v；策略需要时由用户在自己的终端输入密码。root跳过。认证后不等待用户输入，worker及每次构建stdin均接/dev/null；工具自行尝试控制终端认证时，凭据/停止态检查会停止后续调度，不回答提示、不再次认证。tmux不保证sudo缓存永久有效，工具仍按原机制每3分钟维持认证。
+
+### 6.2 前置核对与实现行号
+
+下表行号指本commit的run_task9_build.sh，不是旧脚本。所有前置核对均在:365唯一的直接sudo -v之前；root条件也仅跳过该行，不跳过预检。
+
+| 前置项 | 实现位置 | 判定 |
+|---|---|---|
+| task9工作目录可写、真实路径不重定向 | :295–303 | 失败即输出原因及ALL-END；目录不可写时只能写stderr，不谎称已写状态文件 |
+| 工具齐备、不接受用户参数 | :304–307 | 仅检查可执行文件存在，不执行GBS或sudo探测 |
+| 独占锁 | :308–310 | 拒绝符号链接/非普通节点，flock -n失败即停，不释放别人的锁 |
+| 前次supervisor及三个阶段PGID | :311–319 | 先校验非空正整数，再只读检查存活进程；有存活则停，不发信号 |
+| 历史日志/状态/监控证据 | :320–333 | 拒绝覆盖；仅在确认无冲突后把独立预检status提升为status.txt |
+| ROOT位于task9且独立、首次为空 | :334–338 | realpath、可写、非符号链接；不复制/复用旧root，不自动清理 |
+| 三个HEAD、分支、干净树 | :171–180、:339 | 精确匹配固定SHA、lko/base01；git读取失败不当作空状态成功；成功空status才是干净 |
+| config存在及SHA | :9–10、:181–186、:340 | 固定SHA=`d47536dd30900412e7bbd2d7057e9dd486f94ad2b2b6d8404a510a23be0bdc48` |
+| 隔离HOME与GBP配置 | :341–349 | .gbs.conf精确两行；.gbp.conf仅注释普通文件；/etc/gbs.conf不存在 |
+| 负载与环境覆盖 | :350–355 | nproc先判非空数字；-j10≤nproc/2；拒绝未审查Git/XDG/构建根/虚拟环境覆盖 |
+| 同root进程与已有编译任务 | :356–361 | 同root已有进程则停；其他GBS进程只打印，不处理 |
+
+构建各阶段启动前:256–266再次核对当前源码和config，并切换到对应仓库；commit参数固定SHA，不使用include-all。日期函数:25使用Asia/Shanghai；命令替换对必须有值的HEAD/branch/SHA/路径/PGID/nproc先检查退出状态和非空；git status及“无存活进程”的合法空结果单独处理。所有read都有文件或here-string输入，没有交互read。
+
+预检失败也由EXIT trap写ALL-END。重复启动/锁占用时写独立`preflight.<pid>.status`并保留已有status.txt；首次取得运行所有权后使用status.txt。无法写任务目录时只在stderr给ALL-END，属于明确记录能力限制。预检失败时三个阶段为SKIPPED，具体失败见STAGE preflight；不能仅因ALL-END中没有FAILED单词就判断成功。
+
+### 6.3 与任务2已验证机制的对照
+
+基础文件SHA-256为`7a47b58cea0bf9d8dba3b97045a53559d37ddf644c70814790b264f17066ecba`；没有修改run_baseline_build.sh。[静态检查记录](../evidence/task9/user_runner_static_checks.json)。
+
+| 机制 | 沿用或调整及原因 |
+|---|---|
+| 前台认证→独立后台supervisor | 沿用set -m、后台worker、FD9锁继承、disown；不使用setsid，保留控制终端用于GBS认证 |
+| 构建步骤 | 原export→GCC→LLVM改为kernel→modsrc→modules；本任务明确只要求三次build，取消独立export/trace审计及其清理，不运行其他构建入口 |
+| 配置与源码 | 改为三个固定HEAD、单一LLVM config SHA及明确-P tizen_unified_standard；-B指定task9独立root，arch/thread/-j保持任务2值 |
+| stdin与umask | 沿用后台/dev/null、系统PATH；不设置umask，不在后台进行额外sudo认证 |
+| 进程组/残留 | 沿用ps分组快照和300秒只读等待；本轮对凭据/停止态不调用可能无限等待的wait，只有组已空才reap；未退出则保留ACTIVE-OR-RESIDUAL，停止后续阶段 |
+| 实时日志 | 旧脚本仅raw实时、结束复制；本轮运行时log与raw为硬链接，同一输出立即可见；结束复制到新inode封存log，raw留给可能的残留写入者，保证BUILD-END仍是log末行 |
+| 凭据提示 | 增加日志模式检查，约5秒一次；出现提示立即停止后续调度，只观察本组最多五分钟，不输入、不重试、不向当前进程发信号 |
+| 工作区外写入 | 沿用marker/find和本组stdout/stderr直接观察；发现直接越界只记录、等当前构建自然结束后判失败；其他任务的文件仅标无法归属、不删不移 |
+| 状态/退出 | 沿用原子状态更新和EXIT/INT/TERM/HUP trap；三个阶段任一失败则后续SKIPPED；不宣称能拦截SIGKILL/断电 |
+| 产物验收 | 本脚本完全不做工具链/包身份/CRC等验收，按本轮要求移到用户报告结束后的独立核对 |
+
+run_managed在:187–255；残留等待在:132–144；凭据检查在:145–148；外部写入检查在:149–170。每个阶段记录完整运行前进程表、实际PGID和结束快照，其他任务不处理。观察失败不会被静默当作“无进程”。
+
+每个build_*.log末行是`BUILD-END <kernel|modsrc|modules> <Asia/Shanghai时间> exit=<阶段退出码>`；实际GBS/time退出码另记COMMAND-EXIT，残留时为UNKNOWN，不能冒充命令自然结束。SKIPPED日志明确NOT-STARTED、exit=125为监督器约定而非一次GBS退出；尚未开始的日志在最终收尾时生成。可能持续增长的原始输出仅在.log.raw，封存日志不再被后代追加。
+
+status.txt末行固定`ALL-END <时间> kernel=<结果> modsrc=<结果> modules=<结果>`；三个OK才代表构建调度成功，且仍需后续产物验收。凭据/残留失败的ALL-END表示监督器已停止调度，不表示残留全部退出。最后两条前台输出分别是tail三个日志及status的命令、grep ALL-END的命令；未创建的后续日志会由tail -F等待出现。
+
+### 6.4 三次构建完整命令（由脚本执行，不要另行并发运行）
+
+三个阶段均使用profile.tizen_unified_standard（命令-P省略profile.前缀），仓库URL由未修改且校验SHA的config/gbs_llvm.conf决定。相同GBS-ROOT使新内核RPM成为后续依赖候选；脚本不强行替换resolver结果、不安装指定旧包、不用--noinit。实际依赖是否为本次包，仍须按第7节核验。
+
+阶段`kernel` → `temp/task9/build_kernel.log`：
+
+```sh
+cd /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi && /usr/bin/env TMPDIR=/home/linhao/Toolchain/development/linux_kernel_optimization/temp PYTHONDONTWRITEBYTECODE=1 PATH=/usr/bin:/bin:/usr/sbin:/sbin HOME=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf /usr/bin/time -v /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define '_smp_mflags -j10' --commit 8c8f2429401d6b282373e58b73399801a9486d5b
+```
+
+阶段`modsrc` → `temp/task9/build_modsrc.log`：
+
+```sh
+cd /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules-source && /usr/bin/env TMPDIR=/home/linhao/Toolchain/development/linux_kernel_optimization/temp PYTHONDONTWRITEBYTECODE=1 PATH=/usr/bin:/bin:/usr/sbin:/sbin HOME=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf /usr/bin/time -v /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define '_smp_mflags -j10' --commit 25797e8af7ed95a5783bbe84c11959560aaf7e92
+```
+
+阶段`modules` → `temp/task9/build_modules.log`：
+
+```sh
+cd /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules && /usr/bin/env TMPDIR=/home/linhao/Toolchain/development/linux_kernel_optimization/temp PYTHONDONTWRITEBYTECODE=1 PATH=/usr/bin:/bin:/usr/sbin:/sbin HOME=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf /usr/bin/time -v /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define '_smp_mflags -j10' --commit 10deb822453c759f6f944baf067c8b16a48ad914
+```
+
+命令中的TMPDIR/PYTHONDONTWRITEBYTECODE/PATH在脚本顶层导出，HOME/GIT_CONFIG_NOSYSTEM/GBP_CONF_FILES只给GBS及后代；这里展开为完整行便于评审。每次用time -v记录墙钟耗时和最大RSS，三阶段串行。源码、profile、root参数不会由用户填写或临时选择。
+
+### 6.5 静态检查和预计耗时
+
+`/usr/bin/bash -n scripts/run_task9_build.sh`退出0；本机没有shellcheck，按“若已有”条件跳过，没有安装或调用替代构建检查。人工逐项检查了前台认证之前的所有门槛、三阶段顺序、失败跳过、锁与残留、凭据不输入、日志封存及退出trap。**没有运行脚本、source脚本、运行模拟构建或试验trap路径；语法/静态通过不代表运行验收已通过。** [检查证据](../evidence/task9/user_runner_static_checks.json)。
+
+三阶段构建估算约45–90分钟：参考任务2LLVM普通+RT约36分50秒，另计新root依赖初始化、source包和树外模块构建；后两者尚未实测，网络/缓存/其他任务负载可能延长。构建后的产物核验另需时间。本轮无构建耗时实测，也未生成运行日志/status/锁。
+
+## 7. 构建后核验计划（只写说明，未执行）
+
+用户告知结束后先看status的各阶段结果、BUILD-END和进程组；有失败/凭据/残留就封存日志并报告，停止后续验收或重试，不因存在RPM文件跳过失败状态。成功时按下列顺序处理：
+
+1. 在任务9新root中读取clang、ld.lld版本和对应RPM，必须同为22.1.8；结合compile.h、编译日志确认实际编译器。**不一致则本次产物作废，不部署**；不拿旧root版本替代。
+2. 核对modules构建实际安装的普通/RT kernel-devel、modules及source包：安装日志、root RPM数据库中的NVR/BUILDTIME和新devel路径，与本次生成RPM的NVR、构建时间、SHA-256交叉确认。还要关联实际解析/缓存/安装的RPM文件SHA，不能仅凭同名NVR认定；若缺乏安装来源证据就标未闭合，不强行指定依赖或把remote旧包当新包。共享root后续阶段可能更改已安装包集合，故须保留各阶段原始日志/仓库缓存作为证据。
+3. 解出普通版zImage，记录大小及SHA，核验版本6.12.80-arm-rpi4-v7l-lko-base01；与QB1211696原厂zImage比较字节和百分比。RT只核验zImage_rt的6.12.80-arm-rpi4-rt-v7l-lko-base01版本字符串。
+4. 在temp/task9/stage/合并普通版kernel/和extra/七个.ko；使用该root的depmod -b <stage> <release>生成索引。确认modprobe.d、modules-load.d共享配置与原厂一致，**不放进部署包**，板上沿用原件。
+5. 用该root的平台modinfo逐个检查所有.ko的vermagic必须为`6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8`；记录数量及全部不一致项。用平台工具解析七个树外模块__versions，对照新Module.symvers逐符号CRC，记录总比较数、缺失符号及不一致项，不以vermagic一致替代CRC。
+6. 用平台工具du -sk统计整个版本目录，与4,424 KiB估算对照；设新目录为S KiB，原厂已保留时再放干净/类产品两套的剩余空间估算为14,648−2×S KiB。类产品基线暂按同样大小估算，明确尚未实测，并复核inode/部署前df。
+7. 合格后生成temp/task9/deploy_lko-base01/部署包，仅含zImage和完整新版本模块目录，逐文件SHA-256清单随包保存；二进制不入库，不执行板上部署。
+8. 用平台Python运行scripts/diffconfig，与QB1211696最终.config比较。后缀当前来自环境LOCALVERSION，故.config可以完全相同；若出现非LOCALVERSION差异，逐项列出工具/来源依据，不自行认定可接受。
+
+验收结束后再更新14/STATUS及小体积证据。下一步仍为“任务10：部署 base01 到 RPi4 并验证可以启动和回退（需要用户提前开板、在场）”，只有任务9验收通过才具备执行前提。
