@@ -167,6 +167,8 @@ HOME=$WS/temp/gbs-home、GIT_CONFIG_NOSYSTEM=1 和 GBP_CONF_FILES=$WS/temp/gbs-h
 
 ## 厂商资料保密规则（2026-11-03起长期生效）
 
-厂商（产品内核 vdlinux）的代码、补丁、提交标题和提交说明属于公司内部资料，只能放在 $WS/vendor_local/ 下（加入 .gitignore），永远不进 linux_kernel_enhancement 仓库、不推 GitHub、不推 Gerrit。凡是包含厂商补丁标题、代码或冲突细节的报告，也只写在 $WS/vendor_local/ 下。推送到 GitHub 的内容只允许出现不含厂商信息的概括（例如“已完成厂商补丁本地入库和试打，详见本地报告”）。不用 sudo。
+厂商（产品内核 vdlinux）的代码、补丁、提交标题和提交说明属于公司内部资料，只能放在 $WS/vendor_local/ 下（加入 .gitignore），永远不进 linux_kernel_enhancement 仓库、不推 GitHub。凡是包含厂商补丁标题、代码或冲突细节的报告，也只写在 $WS/vendor_local/ 下。推送到 GitHub 的内容只允许出现不含厂商信息的概括（例如“已完成厂商补丁本地入库和试打，详见本地报告”）。不用 sudo。
 
 本条优先于历史代码快照上传及 sandbox 推送授权；涉及上述资料的临时文件、解包文件和试打结果也仅保存在 vendor_local/ 内。
+
+用户 2026-11-03 决定，厂商代码可以推送到公司内部的 Gerrit sandbox（lhmax2025/kernel_optimization），用于出类产品基线镜像；仍然永远不进 GitHub（linux_kernel_enhancement 仓库），报告中含厂商补丁标题、代码、冲突细节的部分仍只写在 $WS/vendor_local/。本任务本身不推 Gerrit，推送另行下达。

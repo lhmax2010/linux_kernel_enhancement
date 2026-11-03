@@ -1,5 +1,7 @@
 # 项目状态
 
+任务11：第一批厂商特性本地移植完成，详见本地报告 vendor_local/V2_report.md（不入库）；lko/vbase01 可进入采用已验证临时配置的完整构建，产品配置仍待核实。
+
 任务 V1：厂商补丁已本地入库并完成试打，报告在本地 vendor_local/V1_report.md（不入库）
 
 更新：2026-11-03（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
