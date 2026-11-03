@@ -1,0 +1,55 @@
+$ git -C linux-rpi rev-parse HEAD
+8c8f2429401d6b282373e58b73399801a9486d5b
+EXIT=0
+
+$ git -C linux-rpi branch --show-current
+lko/base01
+EXIT=0
+
+$ git -C linux-rpi status --porcelain
+EXIT=0
+
+$ git -C linux-rpi rev-list --count 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708..HEAD
+1
+EXIT=0
+
+$ git -C linux-rpi diff --name-only 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708 HEAD
+packaging/linux-rpi.spec
+EXIT=0
+
+$ git -C ext/linux-tizen-modules rev-parse HEAD
+10deb822453c759f6f944baf067c8b16a48ad914
+EXIT=0
+
+$ git -C ext/linux-tizen-modules branch --show-current
+lko/base01
+EXIT=0
+
+$ git -C ext/linux-tizen-modules status --porcelain
+EXIT=0
+
+$ git -C ext/linux-tizen-modules rev-list --count 36d0925699ac0ffc1ce3854ed838a48d24a56c28..HEAD
+1
+EXIT=0
+
+$ git -C ext/linux-tizen-modules diff --name-only 36d0925699ac0ffc1ce3854ed838a48d24a56c28 HEAD
+packaging/linux-tizen-modules.spec
+EXIT=0
+
+$ git -C ext/linux-tizen-modules-source rev-parse HEAD
+25797e8af7ed95a5783bbe84c11959560aaf7e92
+EXIT=0
+
+$ git -C ext/linux-tizen-modules-source branch --show-current
+lko/base01
+EXIT=0
+
+$ git -C ext/linux-tizen-modules-source status --porcelain
+EXIT=0
+
+$ git -C ext/linux-tizen-modules-source rev-list --count 25797e8af7ed95a5783bbe84c11959560aaf7e92..HEAD
+0
+EXIT=0
+
+$ git -C ext/linux-tizen-modules-source diff --name-only 25797e8af7ed95a5783bbe84c11959560aaf7e92 HEAD
+EXIT=0

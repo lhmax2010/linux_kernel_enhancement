@@ -4,6 +4,14 @@
 
 更新：2026-11-03（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
+**任务9停在第一段第2项静态门槛，尚未构建。** [14预检报告](14_base01_build.md)、[证据](../evidence/task9/README.md)。未连接开发板、未执行GBS/sudo、未发信号、未推Gerrit或触发QB。
+
+- 计划/进度：指定源码与分支准备完成→两个spec原样应用任务8 diff并各提交一次→平台rpmspec解析成功→语义门槛失败，后续kernelrelease复验、独立root/工具链检查、构建及产物核验均未执行。
+- 已闭合：内核lko/base01=`8c8f2429401d6b282373e58b73399801a9486d5b`；树外模块lko/base01=`10deb822453c759f6f944baf067c8b16a48ad914`；source仓库lko/base01仍为`25797e8af7ed95a5783bbe84c11959560aaf7e92`，不改源码。三树干净；lko/base仍0fac5de6；ext已忽略。证据见task9/source_integrity.json。
+- 停止原因：12第4.2节方案未在树外模块%install导出LOCALVERSION；两个spec还有共享boot/配置/头文件/工具路径不带后缀，不满足本轮“所有%files路径”的字面门槛。RPi版本模块/devel目录及depmod精确release检查通过。没有在失败后自行修spec或放行例外。
+- 需要PM裁决/挂账：补齐%install导出；明确后缀检查仅针对版本模块/devel目录还是也改共享路径。新root工具链、依赖来源、构建耗时、zImage/模块大小、vermagic/CRC、.config和部署包均未取得，不可部署。
+- 后续：先恢复并完成任务9；验收通过后下一步为“任务10：部署base01到RPi4并验证可以启动和回退（需要用户提前开板、在场）”。任务10当前前提未满足，原有U-Boot串口等挂账保留。
+
 **任务8开发机构建准备完成；未连接开发板、未完整构建、未推Gerrit或触发QB。** [12构建部署准备](12_kernel_deploy_prep.md)、[证据索引](../evidence/task8/README.md)。
 
 - 计划/进度：读取PM审核和历史证据→规则第5/10项更新→同次QB元数据/RPM/固定公开源码交叉核对→后缀kernelrelease及spec解析→容量和任务9建议→文档/证据同commit推main，均完成。

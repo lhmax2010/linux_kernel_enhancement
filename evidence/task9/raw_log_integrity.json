@@ -1,0 +1,20 @@
+[
+  {
+    "path": "temp/task9/rpmspec_kernel.log",
+    "bytes": 13246,
+    "sha256": "5b28405bd6cebf1e082274d9ed519b67345e1640ea411422a01d00fc2033837b",
+    "lines": 382
+  },
+  {
+    "path": "temp/task9/rpmspec_modules.log",
+    "bytes": 6762,
+    "sha256": "74464f1ec2836190680d210121496e370b2fab205d827843d51ec1dbadcaa77e",
+    "lines": 291
+  },
+  {
+    "path": "temp/task9/source_prepare.log",
+    "bytes": 5450,
+    "sha256": "9917b24a356a9cfa2c9641472fa6168130df0d5d03423d314d1df550f259b00d",
+    "lines": 133
+  }
+]

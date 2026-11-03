@@ -1,0 +1,382 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/namespace_home /home --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp /home/linhao/Toolchain/development/linux_kernel_optimization/temp --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9 --setenv HOME /home/abuild --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin -- /usr/bin/qemu-arm -L / /usr/bin/rpmspec --target armv7l --define '_toolchain clang' -P /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/kernel.spec
+
+
+
+
+
+
+
+
+
+
+
+
+
+Name: rpi4-linux-kernel
+Summary: The Linux Kernel for Raspberry Pi4
+Version: 6.12.80
+Release: 0
+License: GPL-2.0
+ExclusiveArch: armv3l armv4b armv4l armv4tl armv5tl armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl aarch64
+Group: System/Kernel
+Vendor: The Linux Community
+URL: https://www.kernel.org
+Source0:   linux-kernel-6.12.80.tar.xz
+Source1001: linux-rpi.manifest
+BuildRoot: /var/tmp/rpi4-linux-kernel-%{PACKAGE_VERSION}-root
+
+
+
+BuildRequires: bc
+BuildRequires: module-init-tools
+BuildRequires: bison
+BuildRequires: flex
+BuildRequires: pkgconfig(openssl3)
+BuildRequires: libunwind-devel
+BuildRequires: libdw-devel
+BuildRequires: libelf-devel
+BuildRequires: elfutils
+BuildRequires: xz-devel
+BuildRequires: binutils-devel
+BuildRequires: python3
+BuildRequires: rsync
+BuildRequires: dwarves
+
+%description
+The Linux Kernel, the operating system core itself
+
+
+%package -n arm-rpi4-linux-kernel
+License: GPL-2.0
+Summary: Tizen kernel for rpi4
+Group: System/Kernel
+Provides: arm-rpi4-kernel-uname-r = 6.12.80_arm_rpi4
+Provides: linux-kernel = 6.12.80_0
+
+%description -n arm-rpi4-linux-kernel
+This package contains the Linux kernel for Tizen (arch arm, target board rpi4)
+
+%package -n arm-rpi4-rt-linux-kernel
+License: GPL-2.0
+Summary: Tizen kernel for rpi4
+Group: System/Kernel
+Provides: arm-rpi4-kernel-uname-r = 6.12.80_arm_rpi4_rt
+Provides: linux-kernel = 6.12.80_0_rt
+
+%description -n arm-rpi4-rt-linux-kernel
+This package contains the Linux kernel for Tizen (arch arm, target board rpi4)
+
+
+
+%package -n arm-rpi4-linux-kernel-modules
+Summary: Kernel modules for rpi4
+Group: System/Kernel
+Provides: arm-rpi4-kernel-modules = 6.12.80_arm_rpi4
+Provides: arm-rpi4-kernel-modules-uname-r = 6.12.80_arm_rpi4
+
+%description -n arm-rpi4-linux-kernel-modules
+Kernel-modules includes the loadable kernel modules(.ko files) for rpi4
+
+%package -n arm-rpi4-rt-linux-kernel-modules
+Summary: Kernel modules for rpi4
+Group: System/Kernel
+Provides: arm-rpi4-kernel-modules = 6.12.80_arm_rpi4_rt
+Provides: arm-rpi4-kernel-modules-uname-r = 6.12.80_arm_rpi4_rt
+
+%description -n arm-rpi4-rt-linux-kernel-modules
+Kernel-modules includes the loadable kernel modules(.ko files) for rpi4
+with the PREEMPT_RT patch
+
+
+
+%package -n arm-rpi4-linux-kernel-devel
+License: GPL-2.0
+Summary: Linux support kernel map and etc for other packages
+Group: System/Kernel
+Provides: arm-rpi4-kernel-devel = 6.12.80_arm_rpi4
+Provides: arm-rpi4-kernel-devel-uname-r = 6.12.80_arm_rpi4
+
+%description -n arm-rpi4-linux-kernel-devel
+This package provides kernel map and etc information.
+
+%package -n arm-rpi4-rt-linux-kernel-devel
+License: GPL-2.0
+Summary: Linux support kernel map and etc for other packages
+Group: System/Kernel
+Provides: arm-rpi4-kernel-devel = 6.12.80_arm_rpi4_rt
+Provides: arm-rpi4-kernel-devel-uname-r = 6.12.80_arm_rpi4_rt
+
+%description -n arm-rpi4-rt-linux-kernel-devel
+This package provides kernel map and etc information.
+
+%package -n arm-rpi4-linux-kernel-btf-devel
+License: GPL-2.0
+Summary: Linux kernel BTF header for eBPF development
+Group: System/Kernel
+Provides: arm-rpi4-kernel-btf-devel = 6.12.80_arm_rpi4
+Provides: arm-rpi4-kernel-btf-devel-uname-r = 6.12.80_arm_rpi4
+Provides: kernel-btf-devel
+
+%description -n arm-rpi4-linux-kernel-btf-devel
+This package provides the vmlinux.h header file generated from the
+Linux kernel for eBPF program development. This header contains all the
+type definitions needed for BPF CO-RE (Compile Once - Run Everywhere).
+
+
+%package -n arm-rpi4-linux-kernel-headers
+License: GPL-2.0
+Summary: Linux support headers for userspace development
+Group: System/Kernel
+Provides: kernel-headers-tizen-dev
+
+%description -n arm-rpi4-linux-kernel-headers
+This package provides userspaces headers from the Linux kernel. These
+headers are used by the installed headers for GNU glibc and other system
+ libraries.
+
+%package -n linux-kernel-perf
+Summary: The perf performance counter tool
+Group: System/Kernel
+Provides: perf = 6.12.80
+
+%description -n linux-kernel-perf
+This package provides the "perf" tool that can be used to monitor performance
+counter events as well as various kernel internal events.
+
+%package -n linux-kernel-bpftool
+Summary: The bpftool utility
+Group: System/Kernel
+Provides: bpftool = 6.12.80
+
+%description -n linux-kernel-bpftool
+This package provides bpftool. Bpftool is a command-line utility designed
+for managing, inspecting, debugging, and generating skeletons for eBPF
+programs within the Linux kernel. Its skeleton generation feature
+("bpftool gen skeleton") enables easier integration of compiled BPF
+objects with user-space applications, making bpftool a critical component
+for building and running eBPF-based monitoring and instrumentation.
+
+%prep
+%setup -q
+cp /home/abuild/rpmbuild/SOURCES/linux-rpi.manifest .
+
+%build
+export AR=llvm-ar RANLIB=llvm-ranlib;
+export CC=armv7l-tizen-linux-gnueabi-clang CXX=armv7l-tizen-linux-gnueabi-clang++;
+export MAKEFLAGS+=" -k";
+
+export LOCALVERSION=-lko-base01
+
+
+
+
+export LLVM=1
+
+
+# LSM configuration fragment selection
+
+for target in arm-rpi4 arm-rpi4-rt; do
+    echo "-${target}" > localversion-tizen
+
+    # extract uapi headers
+    make O=build/${target} headers_install -j40
+
+    # Set config file
+    BASE_CONFIG="arch/arm/configs/tizen_bcm2711_defconfig"
+    EXTRA_FRAGMENTS=""
+
+    case $target in
+	arm-rpi4)
+	    EXTRA_FRAGMENTS=""
+	;;
+	arm-rpi4-rt)
+	    EXTRA_FRAGMENTS="kernel/configs/rt.config "
+	;;
+    esac
+
+    mkdir -p build/${target}
+    ./scripts/kconfig/merge_config.sh -m -O build/${target} ${BASE_CONFIG} ${EXTRA_FRAGMENTS}
+    make O=build/${target} olddefconfig -j40
+
+    if [ "${target}" = "arm-rpi4" ]; then
+        # Build perf
+        # WERROR=0 make O=build/${target} -s -C tools/lib/traceevent -j40
+        WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" -j40 NO_LIBTRACEEVENT=1 NO_JEVENTS=1
+
+        # Build bpftool
+        WERROR=0 make O=build/${target} -s -C tools/bpf/bpftool -j40
+    fi
+
+    # Build Image/Image.gz
+    make O=build/${target} -j40
+
+    # Build dtbs
+    make O=build/${target} dtbs -j40
+
+    # Build modules
+    make O=build/${target} modules -j40
+
+    if [ "${target}" = "arm-rpi4" ]; then
+       # Create directory for BTF data
+       mkdir -p build/${target}/btf
+
+       # Generate vmlinux.h from vmlinux binary
+       ./build/${target}/bpftool btf dump file build/${target}/vmlinux format c > build/${target}/btf/vmlinux.h
+    fi
+
+done
+
+
+%install
+export AR=llvm-ar RANLIB=llvm-ranlib;
+export CC=armv7l-tizen-linux-gnueabi-clang CXX=armv7l-tizen-linux-gnueabi-clang++;
+
+export LOCALVERSION=-lko-base01
+QA_SKIP_BUILD_ROOT="DO_NOT_WANT"; export QA_SKIP_BUILD_ROOT
+
+
+export LLVM=1
+
+
+# Destination directories
+mkdir -p /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot
+mkdir -p /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/lib/modules
+
+# Install boot binary files
+install -m 644 rpi/boot/config.txt /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/
+install -m 644 rpi/boot/LICENCE.broadcom /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/
+install -m 644 rpi/boot/start*.elf /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/
+install -m 644 rpi/boot/fixup*.dat /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/
+
+# Install kernel DTB
+install -m 644 build/arm-rpi4/arch/arm/boot/dts/broadcom/bcm*.dtb /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/
+mkdir -p /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/overlays
+install -m 644 build/arm-rpi4/arch/arm/boot/dts/overlays/*.dtb* /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/overlays/
+
+# Install kernel headers
+make O=build/arm-rpi4 headers_install -j40 INSTALL_HDR_PATH=/home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr
+
+for target in arm-rpi4 arm-rpi4-rt; do
+    echo "-${target}" > localversion-tizen
+    # Install kernel binary
+    case $target in
+	arm-rpi4)
+            install -m 644 build/${target}/arch/arm/boot/zImage /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/zImage
+
+            # Install perf
+            WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" DESTDIR=/home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr install NO_LIBTRACEEVENT=1 NO_JEVENTS=1
+
+	    # Install bpftool
+            mkdir -p /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/sbin
+            install -m 755 build/${target}/bpftool /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/sbin/
+
+	    # Install vmlinux.h header
+            mkdir -p /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/include/bpf
+            install -m 644 build/${target}/btf/vmlinux.h /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/include/bpf/vmlinux.h
+
+	    rm -rf /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/etc
+            rm -rf /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug
+            rm -rf /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/perf
+            rm -rf /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/share
+            find /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/libexec/ -type f -exec grep -ql '^#!/bin/bash' {} \; -exec rm -f {} \;
+
+	;;
+	arm-rpi4-rt)
+            install -m 644 build/${target}/arch/arm/boot/zImage /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/zImage_rt
+	;;
+    esac
+
+    # Install modules
+    make O=build/${target} INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=/home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm modules_install
+
+    # Copy files for devel package
+    mkdir -p /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/kernel/devel/kernel-devel-${target}-lko-base01
+    rsync -r \
+	  --include "/scripts/**.c" \
+	  --exclude "/debug*.list" \
+	  --exclude "/documentation.list" \
+	  --exclude "/*.manifest" \
+	  --exclude "/packaging/" \
+	  --exclude "/.gbs.conf" \
+	  --exclude "/.git**" \
+	  --exclude ".gitignore" \
+	  --exclude "*\.c" \
+	  --exclude ".tmp_vmlinux*" \
+	  --exclude ".*dtb*tmp" \
+	  --exclude ".*dtb" \
+	  --exclude "*.*tmp" \
+	  --exclude "Image" \
+	  --exclude "zImage" \
+	  --exclude "Image.gz" \
+	  --exclude "*.cmd" \
+	  --exclude "*.ko" \
+	  --exclude "*.o" \
+	  --exclude "*.S" \
+	  --exclude "*.HEX" \
+	  --exclude "/build/" \
+	  ./ build/${target}/ /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/kernel/devel/kernel-devel-${target}-lko-base01
+
+    # Replace #!/bin/bash and #! /bin/bash with #!/bin/sh for dash compatibility
+    find /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/boot/kernel/devel/kernel-devel-${target}-lko-base01 -type f \
+      -exec grep -qlE '^#! ?/bin/bash' {} \; -exec sed -i -E 's|^#! ?/bin/bash|#!/bin/sh|g' {} \;
+done
+
+%clean
+rm -rf /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm
+
+%post -n arm-rpi4-rt-linux-kernel
+mv /boot/zImage_rt /boot/zImage
+
+%preun -n arm-rpi4-rt-linux-kernel
+mv /boot/zImage /boot/zImage_rt
+
+%files -n arm-rpi4-linux-kernel-modules
+/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/
+
+%files -n arm-rpi4-rt-linux-kernel-modules
+/lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/
+
+%files -n arm-rpi4-linux-kernel-devel
+/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01/
+
+%files -n arm-rpi4-rt-linux-kernel-devel
+/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01/
+
+%files -n arm-rpi4-linux-kernel-btf-devel
+/usr/include/bpf/vmlinux.h
+
+%files -n arm-rpi4-linux-kernel
+%license COPYING
+/boot/zImage
+/boot/bcm*.dtb
+/boot/overlays/*.dtb*
+/boot/config.txt
+/boot/LICENCE.broadcom
+/boot/start*.elf
+/boot/fixup*.dat
+
+%files -n arm-rpi4-rt-linux-kernel
+%license COPYING
+/boot/zImage_rt
+/boot/bcm*.dtb
+/boot/overlays/*.dtb*
+/boot/config.txt
+/boot/LICENCE.broadcom
+/boot/start*.elf
+/boot/fixup*.dat
+
+%files -n arm-rpi4-linux-kernel-headers
+/usr/include/*
+
+%files -n linux-kernel-perf
+%manifest linux-rpi.manifest
+%license COPYING
+/usr/bin/*
+/usr/libexec/*
+
+%files -n linux-kernel-bpftool
+%manifest linux-rpi.manifest
+%license COPYING
+/usr/sbin/bpftool
+
+EXIT=0

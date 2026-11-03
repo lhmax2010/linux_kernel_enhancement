@@ -1,0 +1,35 @@
+[
+  {
+    "repo": "linux-rpi",
+    "base": "0fac5de6a63091d141ad1cd3ed9d9e92b8dde708",
+    "head": "8c8f2429401d6b282373e58b73399801a9486d5b",
+    "branch": "lko/base01",
+    "status": "",
+    "new_commit_count": 1,
+    "changed_paths": [
+      "packaging/linux-rpi.spec"
+    ],
+    "exact_task8_candidate_bytes_match": true
+  },
+  {
+    "repo": "ext/linux-tizen-modules",
+    "base": "36d0925699ac0ffc1ce3854ed838a48d24a56c28",
+    "head": "10deb822453c759f6f944baf067c8b16a48ad914",
+    "branch": "lko/base01",
+    "status": "",
+    "new_commit_count": 1,
+    "changed_paths": [
+      "packaging/linux-tizen-modules.spec"
+    ],
+    "exact_task8_candidate_bytes_match": true
+  },
+  {
+    "repo": "ext/linux-tizen-modules-source",
+    "base": "25797e8af7ed95a5783bbe84c11959560aaf7e92",
+    "head": "25797e8af7ed95a5783bbe84c11959560aaf7e92",
+    "branch": "lko/base01",
+    "status": "",
+    "new_commit_count": 0,
+    "changed_paths": []
+  }
+]

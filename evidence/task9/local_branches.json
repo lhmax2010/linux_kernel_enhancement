@@ -1,0 +1,23 @@
+[
+  {
+    "path": "linux-rpi",
+    "branch": "lko/base01",
+    "head": "8c8f2429401d6b282373e58b73399801a9486d5b",
+    "status": "",
+    "identity": "Author: Hao Lin <hao.lin@samsung.com>\nCommitter: Hao Lin <hao.lin@samsung.com>"
+  },
+  {
+    "path": "ext/linux-tizen-modules",
+    "branch": "lko/base01",
+    "head": "10deb822453c759f6f944baf067c8b16a48ad914",
+    "status": "",
+    "identity": "Author: Hao Lin <hao.lin@samsung.com>\nCommitter: Hao Lin <hao.lin@samsung.com>"
+  },
+  {
+    "path": "ext/linux-tizen-modules-source",
+    "branch": "lko/base01",
+    "head": "25797e8af7ed95a5783bbe84c11959560aaf7e92",
+    "status": "",
+    "identity": "Author: Mateusz Majewski <m.majewski2@samsung.com>\nCommitter: Mateusz Majewski <m.majewski2@samsung.com>"
+  }
+]

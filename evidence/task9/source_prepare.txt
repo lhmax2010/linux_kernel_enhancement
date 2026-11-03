@@ -1,0 +1,133 @@
+$ git -C linux-rpi rev-parse HEAD
+0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+EXIT=0
+
+$ git -C linux-rpi status --porcelain
+EXIT=0
+
+$ git -C linux-rpi branch --list lko/base01
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task8/repos/linux-tizen-modules rev-parse HEAD
+36d0925699ac0ffc1ce3854ed838a48d24a56c28
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task8/repos/linux-tizen-modules status --porcelain
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task8/repos/linux-tizen-modules-source rev-parse HEAD
+25797e8af7ed95a5783bbe84c11959560aaf7e92
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task8/repos/linux-tizen-modules-source status --porcelain
+EXIT=0
+
+$ git -C linux-rpi switch -c lko/base01 0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+Switched to a new branch 'lko/base01'
+EXIT=0
+
+$ git -C linux-rpi apply --unidiff-zero --check /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/kernel_approved.diff
+EXIT=0
+
+$ git -C linux-rpi apply --unidiff-zero /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/kernel_approved.diff
+EXIT=0
+
+$ git -C linux-rpi add packaging/linux-rpi.spec
+EXIT=0
+
+$ git -C linux-rpi -c 'user.name=Hao Lin' -c user.email=hao.lin@samsung.com commit -m 'experiment: version suffix -lko-base01, local only'
+[lko/base01 8c8f2429401d] experiment: version suffix -lko-base01, local only
+ 1 file changed, 13 insertions(+), 9 deletions(-)
+EXIT=0
+
+$ git clone --no-hardlinks --no-checkout /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task8/repos/linux-tizen-modules /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules
+Cloning into '/home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules'...
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules remote set-url origin ssh://lhmax2025@review.tizen.org:29418/platform/kernel/linux-tizen-modules
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules switch -c lko/base01 36d0925699ac0ffc1ce3854ed838a48d24a56c28
+Switched to a new branch 'lko/base01'
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules apply --unidiff-zero --check /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/modules_approved.diff
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules apply --unidiff-zero /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/modules_approved.diff
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules add packaging/linux-tizen-modules.spec
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules -c 'user.name=Hao Lin' -c user.email=hao.lin@samsung.com commit -m 'experiment: version suffix -lko-base01, local only'
+[lko/base01 10deb82] experiment: version suffix -lko-base01, local only
+ 1 file changed, 45 insertions(+), 36 deletions(-)
+EXIT=0
+
+$ git clone --no-hardlinks --no-checkout /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task8/repos/linux-tizen-modules-source /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules-source
+Cloning into '/home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules-source'...
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules-source remote set-url origin ssh://lhmax2025@review.tizen.org:29418/platform/kernel/linux-tizen-modules-source
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules-source switch -c lko/base01 25797e8af7ed95a5783bbe84c11959560aaf7e92
+Switched to a new branch 'lko/base01'
+EXIT=0
+
+$ git -C linux-rpi branch --show-current
+lko/base01
+EXIT=0
+
+$ git -C linux-rpi rev-parse HEAD
+8c8f2429401d6b282373e58b73399801a9486d5b
+EXIT=0
+
+$ git -C linux-rpi status --porcelain
+EXIT=0
+
+$ git -C linux-rpi log -1 '--format=Author: %an <%ae>%nCommitter: %cn <%ce>'
+Author: Hao Lin <hao.lin@samsung.com>
+Committer: Hao Lin <hao.lin@samsung.com>
+EXIT=0
+
+$ git -C ext/linux-tizen-modules branch --show-current
+lko/base01
+EXIT=0
+
+$ git -C ext/linux-tizen-modules rev-parse HEAD
+10deb822453c759f6f944baf067c8b16a48ad914
+EXIT=0
+
+$ git -C ext/linux-tizen-modules status --porcelain
+EXIT=0
+
+$ git -C ext/linux-tizen-modules log -1 '--format=Author: %an <%ae>%nCommitter: %cn <%ce>'
+Author: Hao Lin <hao.lin@samsung.com>
+Committer: Hao Lin <hao.lin@samsung.com>
+EXIT=0
+
+$ git -C ext/linux-tizen-modules-source branch --show-current
+lko/base01
+EXIT=0
+
+$ git -C ext/linux-tizen-modules-source rev-parse HEAD
+25797e8af7ed95a5783bbe84c11959560aaf7e92
+EXIT=0
+
+$ git -C ext/linux-tizen-modules-source status --porcelain
+EXIT=0
+
+$ git -C ext/linux-tizen-modules-source log -1 '--format=Author: %an <%ae>%nCommitter: %cn <%ce>'
+Author: Mateusz Majewski <m.majewski2@samsung.com>
+Committer: Mateusz Majewski <m.majewski2@samsung.com>
+EXIT=0
+
+$ git -C linux-rpi rev-parse lko/base
+0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+EXIT=0
+
+$ git check-ignore ext/linux-tizen-modules/packaging/linux-tizen-modules.spec
+ext/linux-tizen-modules/packaging/linux-tizen-modules.spec
+EXIT=0

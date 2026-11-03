@@ -1,0 +1,291 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/namespace_home /home --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp /home/linhao/Toolchain/development/linux_kernel_optimization/temp --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9 --setenv HOME /home/abuild --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin -- /usr/bin/qemu-arm -L / /usr/bin/rpmspec --target armv7l --define '_toolchain clang' -P /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/modules.spec
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Name:           linux-tizen-modules
+Version:        11.0.0
+Release:        0
+License:        GPL-2.0+
+Source0:        linux-tizen-modules-11.0.0.tar.xz
+Source1:        linux-tizen-modules.manifest
+Summary:        Tizen-specific kernel modules
+Group:          System/Kernel
+ExclusiveArch:  armv3l armv4b armv4l armv4tl armv5tl armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl aarch64 riscv64
+BuildRequires:  dwarves
+BuildRequires:  kmod
+BuildRequires:  linux-tizen-modules-source
+
+
+
+
+
+
+
+
+
+
+
+
+
+BuildRequires:  arm-rpi4-linux-kernel-devel
+BuildRequires:  arm-rpi4-linux-kernel-modules
+BuildRequires:  arm-rpi4-rt-linux-kernel-devel
+BuildRequires:  arm-rpi4-rt-linux-kernel-modules
+
+
+
+
+
+
+
+
+
+
+
+%description
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%package        rpi4
+Summary:        Tizen modules for RaspberryPI 4
+AutoReqProv:    no
+Requires:       arm-rpi4-linux-kernel-modules
+Requires(post): /bin/sh
+Requires(post): coreutils
+Requires(post): findutils
+Requires(post): kmod-compat
+Provides:       stability-monitor-kernel-module
+%description    rpi4
+
+%package        rpi4-rt
+Summary:        Tizen modules for RaspberryPI 4 RT (real-time)
+AutoReqProv:    no
+Requires:       arm-rpi4-rt-linux-kernel-modules
+Requires(post): /bin/sh
+Requires(post): coreutils
+Requires(post): findutils
+Requires(post): kmod-compat
+Provides:       stability-monitor-kernel-module
+%description    rpi4-rt
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%prep
+%setup -q
+cp /home/abuild/rpmbuild/SOURCES/linux-tizen-modules.manifest ./linux-tizen-modules.manifest
+cp -a /usr/src/linux-tizen-modules-source ./kernel
+mkdir -p .//lib/modules
+find /lib/modules -type f -not -name "*.ko" -exec cp --parents {} . \;
+
+%build
+export AR=llvm-ar RANLIB=llvm-ranlib;
+export CC=armv7l-tizen-linux-gnueabi-clang CXX=armv7l-tizen-linux-gnueabi-clang++;
+export MAKEFLAGS+=" -k";
+
+# Force not to build with sanitizers because this is kernel
+
+
+
+# Default buffer sizes to compile in. [kB]
+export LOGGER_MAIN_BUFFER_SIZE=256
+export LOGGER_EVENTS_BUFFER_SIZE=256
+export LOGGER_RADIO_BUFFER_SIZE=256
+export LOGGER_SYSTEM_BUFFER_SIZE=256
+
+export TIZEN_INFORM_PATH="/mnt/inform/reboot-param.bin"
+
+
+# RPI4
+export LOCALVERSION=-lko-base01
+export BUILD_dm_bow=m
+export BUILD_extcon_usb_fixed=m
+export BUILD_inform_reboot=m
+export BUILD_kdbus=m
+export BUILD_logger=m
+export BUILD_proc_tsm=m
+export BUILD_zlogger=m
+
+export THREAD_GROUP_CPUTIME_SUPPORT=1
+
+
+# Only apply LLVM build to RPI kernel module
+export LLVM=1
+# Remove LLVM unrecognized flags
+find kernel -name Makefile -exec sed -i "s/-Wno-error=missing-attributes//g" {} \;
+
+
+make -C kernel clean KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01
+make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01
+make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01 INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+
+make -C kernel clean KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01
+make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01
+make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01 INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+
+unset LLVM
+unset LOCALVERSION
+
+
+
+%install
+export AR=llvm-ar RANLIB=llvm-ranlib;
+export CC=armv7l-tizen-linux-gnueabi-clang CXX=armv7l-tizen-linux-gnueabi-clang++;
+
+mkdir -p /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm//lib/modules
+
+pushd lib/modules
+find -name "*.ko" -exec cp -a --parents {} /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm//lib/modules/ \;
+popd
+
+
+# module load config
+mkdir -p /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm//lib/modules/modprobe.d
+install -m 644 conf/tizen-modprobe-rpi4.conf /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm//lib/modules/modprobe.d
+
+mkdir -p /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm//lib/modules/modules-load.d
+install -m 644 conf/tizen-modules-rpi4.conf /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm//lib/modules/modules-load.d
+
+
+%clean
+rm -rf /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm
+rm -rf /home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/lib
+
+
+%post rpi4
+RELEASEVERSION=6.12.80-arm-rpi4-v7l-lko-base01
+/sbin/depmod -a $RELEASEVERSION
+
+%post rpi4-rt
+RELEASEVERSION=6.12.80-arm-rpi4-rt-v7l-lko-base01
+/sbin/depmod -a $RELEASEVERSION
+
+
+
+%files rpi4
+%manifest linux-tizen-modules.manifest
+%license COPYING
+/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/dm-bow.ko
+/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/extcon-usb-fixed.ko
+/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko
+/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/inform-reboot.ko
+/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/kdbus/kdbus.ko
+/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/logger.ko
+/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/zlogger/zlogger.ko
+/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf
+/lib/modules/modules-load.d/tizen-modules-rpi4.conf
+
+%files rpi4-rt
+%manifest linux-tizen-modules.manifest
+%license COPYING
+/lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/dm-bow.ko
+/lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/extcon-usb-fixed.ko
+/lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/proc-tsm.ko
+/lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/inform-reboot.ko
+/lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/kdbus/kdbus.ko
+/lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/logger.ko
+/lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/zlogger/zlogger.ko
+/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf
+/lib/modules/modules-load.d/tizen-modules-rpi4.conf
+
+
+EXIT=0

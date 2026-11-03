@@ -1,0 +1,151 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/namespace_home /home --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp /home/linhao/Toolchain/development/linux_kernel_optimization/temp --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9 --setenv HOME /home/abuild --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin -- /usr/bin/qemu-arm -L / /usr/bin/rpmspec --target armv7l --define '_toolchain clang' -P /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/modules.spec
+SOURCE_SHA256=d13ac7d39dbcfd1d36fa9611ee9563652d703bf7d88f579025f775469bfb7a6c
+EXIT=0
+Source sections (line numbers refer to spec):
+257:
+258: unset LLVM
+259: %endif
+260:
+261: %ifarch %{arm} aarch64
+262: # RPI4
+263: export LOCALVERSION=%{lko_suffix}
+264: export BUILD_dm_bow=m
+265: export BUILD_extcon_usb_fixed=m
+266: export BUILD_inform_reboot=m
+267: export BUILD_kdbus=m
+268: export BUILD_logger=m
+269: export BUILD_proc_tsm=m
+270: export BUILD_zlogger=m
+271:
+272: export THREAD_GROUP_CPUTIME_SUPPORT=1
+273:
+274: %{?_toolchain:
+275: %if %{toolchain_is clang}
+276: # Only apply LLVM build to RPI kernel module
+277: export LLVM=1
+278: # Remove LLVM unrecognized flags
+279: find kernel -name Makefile -exec sed -i "s/-Wno-error=missing-attributes//g" {} \;
+280: %endif
+281: }
+282:
+283: make -C kernel clean KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4%{lko_suffix}
+284: make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4%{lko_suffix}
+285: make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4%{lko_suffix} INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+286:
+287: make -C kernel clean KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4-rt%{lko_suffix}
+288: make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4-rt%{lko_suffix}
+289: make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4-rt%{lko_suffix} INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+290: %endif
+291:
+292: unset LLVM
+293: unset LOCALVERSION
+294:
+295: %ifarch riscv64
+296: # QEMU-RISCV64
+297: export BUILD_dm_bow=n
+298: export BUILD_extcon_usb_fixed=n
+299: export BUILD_inform_reboot=n
+300: export BUILD_kdbus=n
+345: make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-riscv-bpif3
+346: make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-riscv-bpif3 INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+347: %endif
+348:
+349: %install
+350: mkdir -p %{buildroot}/%{KMOD_PATH}
+351:
+352: pushd lib/modules
+353: find -name "*.ko" -exec cp -a --parents {} %{buildroot}/%{KMOD_PATH}/ \;
+354: popd
+355:
+356: %ifarch aarch64
+357: # module load config
+358: mkdir -p %{buildroot}/%{KMOD_PATH}/modprobe.d
+359: install -m 644 conf/tizen-modprobe-amlogic.conf %{buildroot}/%{KMOD_PATH}/modprobe.d
+360:
+361: mkdir -p %{buildroot}/%{KMOD_PATH}/modules-load.d
+362: install -m 644 conf/tizen-modules-amlogic.conf %{buildroot}/%{KMOD_PATH}/modules-load.d
+363: install -m 644 conf/tizen-modules-rubikpi3.conf %{buildroot}/%{KMOD_PATH}/modules-load.d
+364: install -m 644 conf/tizen-modules-orinnano.conf %{buildroot}/%{KMOD_PATH}/modules-load.d
+365: %endif
+366:
+367: %ifarch %{arm} aarch64
+368: # module load config
+369: mkdir -p %{buildroot}/%{KMOD_PATH}/modprobe.d
+370: install -m 644 conf/tizen-modprobe-rpi4.conf %{buildroot}/%{KMOD_PATH}/modprobe.d
+371:
+372: mkdir -p %{buildroot}/%{KMOD_PATH}/modules-load.d
+373: install -m 644 conf/tizen-modules-rpi4.conf %{buildroot}/%{KMOD_PATH}/modules-load.d
+374: %endif
+375:
+402: /sbin/depmod -a $RELEASEVERSION
+403: %endif
+404:
+405: %ifarch %{arm} aarch64
+406: %post rpi4
+407: RELEASEVERSION=%{lko_kversion}-%{buildarch}-rpi4-%{lko_ksuffix}%{lko_suffix}
+408: /sbin/depmod -a $RELEASEVERSION
+409:
+410: %post rpi4-rt
+411: RELEASEVERSION=%{lko_kversion}-%{buildarch}-rpi4-rt-%{lko_ksuffix}%{lko_suffix}
+412: /sbin/depmod -a $RELEASEVERSION
+413: %endif
+414:
+415: %ifarch riscv64
+416: %post visionfive2
+417: RELEASEVERSION=$(basename $(dirname `find /lib/modules -name extra | head -1`))
+418: /sbin/depmod -a $RELEASEVERSION
+419:
+420: %post lpi4a
+465: %manifest %{name}.manifest
+466: %license COPYING
+467: %ifarch aarch64
+468: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v8%{lko_suffix}/extra/dm-bow.ko
+469: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v8%{lko_suffix}/extra/extcon-usb-fixed.ko
+470: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v8%{lko_suffix}/extra/proc-tsm.ko
+471: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v8%{lko_suffix}/extra/inform-reboot.ko
+472: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v8%{lko_suffix}/extra/kdbus/kdbus.ko
+473: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v8%{lko_suffix}/extra/logger.ko
+474: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v8%{lko_suffix}/extra/zlogger/zlogger.ko
+475: %else
+476: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v7l%{lko_suffix}/extra/dm-bow.ko
+477: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v7l%{lko_suffix}/extra/extcon-usb-fixed.ko
+478: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v7l%{lko_suffix}/extra/proc-tsm.ko
+479: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v7l%{lko_suffix}/extra/inform-reboot.ko
+480: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v7l%{lko_suffix}/extra/kdbus/kdbus.ko
+481: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v7l%{lko_suffix}/extra/logger.ko
+482: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-v7l%{lko_suffix}/extra/zlogger/zlogger.ko
+483: %endif
+484: %{KMOD_PATH}/modprobe.d/tizen-modprobe-rpi4.conf
+485: %{KMOD_PATH}/modules-load.d/tizen-modules-rpi4.conf
+486:
+487: %files rpi4-rt
+488: %manifest %{name}.manifest
+489: %license COPYING
+490: %ifarch aarch64
+491: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v8%{lko_suffix}/extra/dm-bow.ko
+492: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v8%{lko_suffix}/extra/extcon-usb-fixed.ko
+493: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v8%{lko_suffix}/extra/proc-tsm.ko
+494: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v8%{lko_suffix}/extra/inform-reboot.ko
+495: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v8%{lko_suffix}/extra/kdbus/kdbus.ko
+496: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v8%{lko_suffix}/extra/logger.ko
+497: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v8%{lko_suffix}/extra/zlogger/zlogger.ko
+498: %else
+499: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v7l%{lko_suffix}/extra/dm-bow.ko
+500: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v7l%{lko_suffix}/extra/extcon-usb-fixed.ko
+501: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v7l%{lko_suffix}/extra/proc-tsm.ko
+502: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v7l%{lko_suffix}/extra/inform-reboot.ko
+503: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v7l%{lko_suffix}/extra/kdbus/kdbus.ko
+504: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v7l%{lko_suffix}/extra/logger.ko
+505: %{KMOD_PATH}/%{lko_kversion}-%{buildarch}-rpi4-rt-v7l%{lko_suffix}/extra/zlogger/zlogger.ko
+506: %endif
+507: %{KMOD_PATH}/modprobe.d/tizen-modprobe-rpi4.conf
+508: %{KMOD_PATH}/modules-load.d/tizen-modules-rpi4.conf
+509: %endif
+510:
+511: %ifarch riscv64
+512: %files rv64qemu
+513: %manifest %{name}.manifest
+514: %license COPYING
+515: %{KMOD_PATH}/*-riscv-qemu/extra/logger.ko
+516: %{KMOD_PATH}/*-riscv-qemu/extra/zlogger/zlogger.ko
+517:

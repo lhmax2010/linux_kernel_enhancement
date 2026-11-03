@@ -1,0 +1,79 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/namespace_home /home --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp /home/linhao/Toolchain/development/linux_kernel_optimization/temp --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9 --setenv HOME /home/abuild --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin -- /usr/bin/qemu-arm -L / /usr/bin/rpmspec --target armv7l --define '_toolchain clang' -P /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/kernel.spec
+SOURCE_SHA256=1e33144cf32adbe70a9dddfad0d2582845ac8248ace7805871563693dbaa635c
+EXIT=0
+Source sections (line numbers refer to spec):
+155: objects with user-space applications, making bpftool a critical component
+156: for building and running eBPF-based monitoring and instrumentation.
+157:
+158: %prep
+159: %setup -q
+160: cp %{SOURCE1001} .
+161:
+162: %build
+163: export LOCALVERSION=%{lko_suffix}
+164: %{?asan:/usr/bin/gcc-unforce-options}
+165: %{?ubsan:/usr/bin/gcc-unforce-options}
+166:
+167: %{?_toolchain:
+168: %if %{toolchain_is clang}
+169: export LLVM=1
+170: %endif
+228:        ./build/${target}/bpftool btf dump file build/${target}/vmlinux format c > build/${target}/btf/vmlinux.h
+229:     fi
+230:
+231: done
+232:
+233: %install
+234: export LOCALVERSION=%{lko_suffix}
+235: QA_SKIP_BUILD_ROOT="DO_NOT_WANT"; export QA_SKIP_BUILD_ROOT
+236:
+237: %{?_toolchain:
+238: %if %{toolchain_is clang}
+239: export LLVM=1
+240: %endif
+241: }
+242:
+243: # Destination directories
+244: mkdir -p %{buildroot}/boot
+245: mkdir -p %{buildroot}/lib/modules
+350: mv /boot/Image /boot/Image_rt
+351: %else
+352: mv /boot/zImage /boot/zImage_rt
+353: %endif
+354:
+355: %files -n %{variant}-linux-kernel-modules
+356: %ifarch aarch64
+357: /lib/modules/%{version}-%{variant}-v8%{lko_suffix}/
+358: %else
+359: /lib/modules/%{version}-%{variant}-v7l%{lko_suffix}/
+360: %endif
+361:
+362: %files -n %{variant}-rt-linux-kernel-modules
+363: %ifarch aarch64
+364: /lib/modules/%{version}-%{variant}-rt-v8%{lko_suffix}/
+365: %else
+366: /lib/modules/%{version}-%{variant}-rt-v7l%{lko_suffix}/
+367: %endif
+368:
+369: %files -n %{variant}-linux-kernel-devel
+370: /boot/kernel/devel/kernel-devel-%{variant}%{lko_suffix}/
+371:
+372: %files -n %{variant}-rt-linux-kernel-devel
+373: /boot/kernel/devel/kernel-devel-%{variant}-rt%{lko_suffix}/
+374:
+375: %files -n %{variant}-linux-kernel-btf-devel
+376: /usr/include/bpf/vmlinux.h
+377:
+378: %files -n %{variant}-linux-kernel
+379: %license COPYING
+380: %ifarch aarch64
+381: /boot/Image
+382: %else
+383: /boot/zImage
+384: %endif
+385: /boot/bcm*.dtb
+386: /boot/overlays/*.dtb*
+387: /boot/config.txt
+388: /boot/LICENCE.broadcom
+389: /boot/start*.elf
+390: /boot/fixup*.dat

@@ -21,3 +21,4 @@ GBS-ROOT*
 __pycache__/
 
 /vendor_local/
+/ext/

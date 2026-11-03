@@ -1,0 +1,40 @@
+from pathlib import Path
+import os,subprocess,shlex,shutil,json,re,hashlib
+W=Path('/home/linhao/Toolchain/development/linux_kernel_optimization');T=W/'temp/task9';E=W/'evidence/task9';R=W/'temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0';N=T/'namespace_home';S=Path('/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80')
+for p in [S.relative_to('/home'),(W/'temp').relative_to('/home')]: (N/p).mkdir(parents=True,exist_ok=True)
+shutil.copy2(R/'home/abuild/.rpmmacros',N/'abuild/.rpmmacros')
+rows=[];full=[]
+for kind,rel in [('kernel','linux-rpi/packaging/linux-rpi.spec'),('modules','ext/linux-tizen-modules/packaging/linux-tizen-modules.spec')]:
+ src=W/rel;cp=T/(kind+'.spec');shutil.copy2(src,cp)
+ cmd=['/usr/bin/bwrap','--unshare-user','--unshare-pid','--ro-bind',str(R),'/','--bind',str(N),'/home','--bind',str(W/'temp'),str(W/'temp'),'--ro-bind',str(W/'linux-rpi'),str(S),'--proc','/proc','--dev','/dev','--chdir',str(T),'--setenv','HOME','/home/abuild','--setenv','TMPDIR',str(W/'temp'),'--setenv','PYTHONDONTWRITEBYTECODE','1','--setenv','PATH','/usr/bin:/bin:/usr/sbin:/sbin','--','/usr/bin/qemu-arm','-L','/','/usr/bin/rpmspec','--target','armv7l','--define','_toolchain clang','-P',str(cp)]
+ p=subprocess.run(cmd,capture_output=True,text=True,env=dict(os.environ,TMPDIR=str(W/'temp'),PYTHONDONTWRITEBYTECODE='1'))
+ (T/f'rpmspec_{kind}.log').write_text('$ '+shlex.join(cmd)+'\n'+p.stdout+p.stderr+f'\nEXIT={p.returncode}\n')
+ row={'spec':rel,'sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'parse_exit':p.returncode,'parser_root':str(R),'parser_is_new_task9_buildroot':False}
+ assert p.returncode==0,p.stderr
+ text=p.stdout
+ for stage in ['build','install']:
+  m=re.search(r'^%'+stage+r'\b[^\n]*\n(.*?)(?=^%(?:prep|build|install|clean|check|files|post|pre|description|package|changelog)\b|\Z)',text,re.M|re.S)
+  row[stage+'_exports_LOCALVERSION']=bool(m and re.search(r'^\s*export LOCALVERSION=-lko-base01\s*$',m[1],re.M))
+ files=[];block=None
+ for i,line in enumerate(text.splitlines(),1):
+  if line.startswith('%files'):block=line
+  elif re.match(r'^%(?:prep|build|install|clean|check|post\w*|pre\w*|description|package|changelog)\b',line):block=None
+  if block and line.startswith('/'):
+   files.append({'line':i,'package':block,'path':line,'has_suffix':'-lko-base01' in line})
+ row['files_without_suffix']=[x for x in files if not x['has_suffix']]
+ row['rpi_versioned_module_and_devel_paths_have_suffix']=all(x['has_suffix'] for x in files if (x['path'].startswith('/lib/modules/') and '/extra/' in x['path']) or x['path'].startswith('/boot/kernel/devel/') or (kind=='kernel' and x['path'].startswith('/lib/modules/')))
+ if kind=='modules':
+  post=re.search(r'^%post rpi4\n(.*?)^%post ',text,re.M|re.S)[1]
+  rt=re.search(r'^%post rpi4-rt\n(.*?)(?=^%|\Z)',text,re.M|re.S)[1]
+  row['rpi_post_exact_release']=('RELEASEVERSION=6.12.80-arm-rpi4-v7l-lko-base01' in post and 'find ' not in post)
+  row['rpi_rt_post_exact_release']=('RELEASEVERSION=6.12.80-arm-rpi4-rt-v7l-lko-base01' in rt and 'find ' not in rt)
+ rows.append(row)
+ excerpts=['$ '+shlex.join(cmd),f'SOURCE_SHA256={row["sha256"]}',f'EXIT={p.returncode}','Source sections (line numbers refer to spec):']
+ lines=src.read_text().splitlines()
+ ranges=[(155,170),(228,245),(350,390)] if kind=='kernel' else [(257,300),(345,375),(402,420),(465,517)]
+ for a,b in ranges:excerpts.extend(f'{i}: {lines[i-1]}' for i in range(a,min(b,len(lines))+1))
+ (E/f'{kind}_static_excerpt.txt').write_text('\n'.join(l.rstrip() for l in excerpts)+'\n')
+result={'status':'FAILED','reason':'Exact docs/12 section 4.2 diff does not export LOCALVERSION in external-module %install. Literal all-%files-paths suffix check also has shared/unversioned exceptions; these are enumerated rather than silently accepted.','checks':rows,'next_stages':'NOT RUN: repeat kernelrelease, fresh buildroot/toolchain gate, GBS export/build, artifacts/deployment verification.'}
+(E/'static_preflight.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps(result,ensure_ascii=False,indent=2))
+raise SystemExit(1)
