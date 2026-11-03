@@ -1,0 +1,16 @@
+[
+  {
+    "type": "primary",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/repodata/2672552d62b856cd77b2f4874f12cba9681c7cb332fb2cc218c71eca999b7bba-primary.xml.gz",
+    "bytes": 20869050,
+    "compressed_sha256": "2672552d62b856cd77b2f4874f12cba9681c7cb332fb2cc218c71eca999b7bba",
+    "open_sha256": "f635b1c560d24a0f9bfe669a94200bdeabdc38143e8937b969f2c756580794f9"
+  },
+  {
+    "type": "filelists",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/repodata/a33572f5ff58c7b9e6ad8d914d722e18cfb47eaa8bac2d6800970b79d3126dc5-filelists.xml.gz",
+    "bytes": 83939386,
+    "compressed_sha256": "a33572f5ff58c7b9e6ad8d914d722e18cfb47eaa8bac2d6800970b79d3126dc5",
+    "open_sha256": "4c017510e010da4252d3470ef356e07ebe37d946e3a7e2fb60874e5248594272"
+  }
+]

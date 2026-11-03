@@ -1,0 +1,78 @@
+SOURCE: linux-rpi/Makefile
+SHA256: 4a4a597bd36c11b465a5041b600fc179df55eb52c9d30d3524646be42849f906
+
+LINES 350-360
+350: 	done
+351:
+352: else # !mixed-build
+353:
+354: include $(srctree)/scripts/Kbuild.include
+355:
+356: # Read KERNELRELEASE from include/config/kernel.release (if it exists)
+357: KERNELRELEASE = $(call read-file, include/config/kernel.release)
+358: KERNELVERSION = $(VERSION)$(if $(PATCHLEVEL),.$(PATCHLEVEL)$(if $(SUBLEVEL),.$(SUBLEVEL)))$(EXTRAVERSION)
+359: export VERSION PATCHLEVEL SUBLEVEL KERNELRELEASE KERNELVERSION
+360:
+
+LINES 1104-1114
+1104:
+1105: #
+1106: # INSTALL_MOD_PATH specifies a prefix to MODLIB for module directory
+1107: # relocations required by build roots.  This is not defined in the
+1108: # makefile but the argument can be passed to make if needed.
+1109: #
+1110:
+1111: MODLIB	= $(INSTALL_MOD_PATH)/lib/modules/$(KERNELRELEASE)
+1112: export MODLIB
+1113:
+1114: PHONY += prepare0
+
+LINES 1186-1196
+1186:
+1187: ifeq ($(origin KERNELRELEASE),file)
+1188: filechk_kernel.release = $(srctree)/scripts/setlocalversion $(srctree)
+1189: else
+1190: filechk_kernel.release = echo $(KERNELRELEASE)
+1191: endif
+1192:
+1193: # Store (new) KERNELRELEASE string in include/config/kernel.release
+1194: include/config/kernel.release: FORCE
+1195: 	$(call filechk,kernel.release)
+1196:
+
+LINES 1248-1258
+1248: uts_len := 64
+1249: define filechk_utsrelease.h
+1250: 	if [ `echo -n "$(KERNELRELEASE)" | wc -c ` -gt $(uts_len) ]; then \
+1251: 	  echo '"$(KERNELRELEASE)" exceeds $(uts_len) characters' >&2;    \
+1252: 	  exit 1;                                                         \
+1253: 	fi;                                                               \
+1254: 	echo \#define UTS_RELEASE \"$(KERNELRELEASE)\"
+1255: endef
+1256:
+1257: define filechk_version.h
+1258: 	if [ $(SUBLEVEL) -gt 255 ]; then                                 \
+
+LINES 1797-1809
+1797: all: scripts_gdb
+1798: endif
+1799:
+1800: else # KBUILD_EXTMOD
+1801:
+1802: filechk_kernel.release = echo $(KERNELRELEASE)
+1803:
+1804: ###
+1805: # External module support.
+1806: # When building external modules the kernel used as basis is considered
+1807: # read-only, and no consistency checks are made and the make
+1808: # system is not used on the basis kernel. If updates are required
+1809: # in the basis kernel ordinary make commands (without M=...) must be used.
+
+LINES 2068-2074
+2068: 	$(OBJDUMP) -d vmlinux $$(find . -name '*.ko') | \
+2069: 	$(PERL) $(srctree)/scripts/checkstack.pl $(CHECKSTACK_ARCH) $(MINSTACKSIZE)
+2070:
+2071: kernelrelease:
+2072: 	@$(filechk_kernel.release)
+2073:
+2074: kernelversion:

@@ -1,0 +1,4 @@
+{
+  "pattern": "(^|/)(modules?|module_[ab])\\.(img|tar|raw)",
+  "matches": []
+}

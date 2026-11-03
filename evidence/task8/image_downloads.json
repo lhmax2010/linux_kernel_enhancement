@@ -1,0 +1,30 @@
+[
+  {
+    "file": "boot_image.ks",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/images/standard/tizen-boot-armv7l-rpi/tizen-unified-toolchain_20261028.105834_tizen-boot-armv7l-rpi.ks",
+    "exit": 0,
+    "bytes": 7671,
+    "sha256": "4a7325bda70e9388dac399229ff5e46e50c956426f538170465e2fd0f47f067f"
+  },
+  {
+    "file": "boot_image.packages",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/images/standard/tizen-boot-armv7l-rpi/tizen-unified-toolchain_20261028.105834_tizen-boot-armv7l-rpi.packages",
+    "exit": 0,
+    "bytes": 19205,
+    "sha256": "6a47b18fcf12577aafa5e7f0a1b74469072b8e6c1769cd925685f83db1c6d968"
+  },
+  {
+    "file": "boot_image.log",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/images/standard/tizen-boot-armv7l-rpi/tizen-unified-toolchain_20261028.105834_tizen-boot-armv7l-rpi.log",
+    "exit": 0,
+    "bytes": 96598,
+    "sha256": "25e49b7620bd2c65e2f2adb9eaffb60c868a8f80d13b3324717571fbcfc4bc3d"
+  },
+  {
+    "file": "boot_image.xml",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/images/standard/tizen-boot-armv7l-rpi/tizen-unified-toolchain_20261028.105834_tizen-boot-armv7l-rpi.xml",
+    "exit": 0,
+    "bytes": 1765,
+    "sha256": "7f62fbab00e26e6f27015e0fe95a2721235db5049745a0c9a4baab1aa6189ab3"
+  }
+]

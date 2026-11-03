@@ -1,0 +1,34 @@
+SOURCE: temp/task8/boot_image.log
+SHA256: 25e49b7620bd2c65e2f2adb9eaffb60c868a8f80d13b3324717571fbcfc4bc3d
+
+LINES 125-130
+125: [10/28 16:48:50 UTC] Retrieving alsa-ucm-data-rpi3-0.0.1-1.noarch.rpm [96/187] ...
+126: [10/28 16:48:50 UTC] Retrieving tizen-platform-config-5.0-1.armv7l.rpm [97/187] ...
+127: [10/28 16:48:50 UTC] Retrieving libsystemd-244-0.armv7l.rpm [98/187] ...
+128: [10/28 16:48:50 UTC] Retrieving linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm [99/187] ...
+129: [10/28 16:48:50 UTC] Retrieving dlog-9.0.2-1.armv7l.rpm [100/187] ...
+130: [10/28 16:48:50 UTC] Retrieving building-blocks-sub2-Preset_boards-RPI4_HAL_Backend-Sec [101/187] ...
+
+LINES 1015-1020
+1015: [10/28 16:49:41 UTC] Next install: building-blocks-sub1-Preset_boards-RPI4_HAL_Backend-11.0.0-0.armv7l.rpm
+1016: [10/28 16:49:41 UTC] Installing: building-blocks-sub1-Preset_boards-RPI4_HAL_Backen ++++++++++++++++++++++++++++++++   [178/187]
+1017: [10/28 16:49:41 UTC] Next install: linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm
+1018: [10/28 16:49:41 UTC] Installing: linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm       ++++++++++++++++++++++++++++++++   [179/187]
+1019: [10/28 16:49:41 UTC] Next install: tizen-release-11.0.0-0.armv7l.rpm
+1020: [10/28 16:49:41 UTC] Installing: tizen-release-11.0.0-0.armv7l.rpm                  ++++++++++++++++++++++++++++++++   [180/187]
+
+LINES 1059-1072
+1059: [10/28 16:50:08 UTC] Make system info db(/hal/etc/system_info_db) by /hal/etc/config/model-config.xml and /hal/etc/hal-info.ini
+1060: [10/28 16:50:08 UTC] #################### common-hal-rule-directory-check.post ####################
+1061: [10/28 16:50:08 UTC]
+1062: [10/28 16:50:09 UTC] Resizing filesystem ...
+1063: [10/28 16:50:09 UTC] Checking filesystem /var/tmp/mic/build/imgcreate-2pmiga0d/tmp-k4sfp883/hal.img
+1064: [10/28 16:50:09 UTC] Resizing filesystem ...
+1065: [10/28 16:50:09 UTC] Checking filesystem /var/tmp/mic/build/imgcreate-2pmiga0d/tmp-k4sfp883/modules.img
+1066: [10/28 16:50:09 UTC] filesystem size of modules.img : 25133056 bytes
+1067: [10/28 16:50:09 UTC] filesystem size of boot.img : 67108864 bytes
+1068: [10/28 16:50:09 UTC] filesystem size of hal.img : 107552768 bytes
+1069: [10/28 16:50:09 UTC] Pack all loop images together to tizen-unified-toolchain_20261028.105834_tizen-boot-armv7l-rpi.tar.gz
+1070: [10/28 16:50:09 UTC] Running command: tar -C /var/tmp/mic/build/imgcreate-2pmiga0d/tmp-k4sfp883 -cf /var/tmp/mic/build/imgcreate-2pmiga0d/out/tmpyobotjjk.tar modules.img boot.img hal.img
+1071: [10/28 16:50:09 UTC] Running command: pigz -f /var/tmp/mic/build/imgcreate-2pmiga0d/out/tmpyobotjjk.tar
+1072: [10/28 16:50:11 UTC] Creating manifest file...

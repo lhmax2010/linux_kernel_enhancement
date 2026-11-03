@@ -1,0 +1,241 @@
+SOURCE: temp/task8/repos/linux-tizen-modules/packaging/linux-tizen-modules.spec
+SHA256: c222ae81482f810f23024ffd8a41762e38807a8ee0e8f94ce7b9061976fe9d72
+
+LINES 1-43
+1: %define KMOD_PATH /lib/modules
+2:
+3: %ifarch aarch64
+4: %define buildarch arm64
+5: %endif
+6: %ifarch %{arm}
+7: %define buildarch arm
+8: %endif
+9: %ifarch riscv64
+10: %define buildarch riscv
+11: %endif
+12:
+13: Name:           linux-tizen-modules
+14: Version:        11.0.0
+15: Release:        0
+16: License:        GPL-2.0+
+17: Source0:        %{name}-%{version}.tar.xz
+18: Source1:        %{name}.manifest
+19: Summary:        Tizen-specific kernel modules
+20: Group:          System/Kernel
+21: ExclusiveArch:  %{arm} aarch64 riscv64
+22: BuildRequires:  dwarves
+23: BuildRequires:  kmod
+24: BuildRequires:  linux-tizen-modules-source
+25: %ifarch aarch64
+26: BuildRequires:  linux-kernel-devel-amlogic-kvim
+27: BuildRequires:  linux-kernel-modules-amlogic-kvim
+28: BuildRequires:  linux-kernel-devel-amlogic-odroid
+29: BuildRequires:  linux-kernel-modules-amlogic-odroid
+30: BuildRequires:  %{buildarch}-rpi4-linux-kernel-devel
+31: BuildRequires:  %{buildarch}-rpi4-linux-kernel-modules
+32: BuildRequires:  %{buildarch}-rpi4-rt-linux-kernel-devel
+33: BuildRequires:  %{buildarch}-rpi4-rt-linux-kernel-modules
+34: BuildRequires:  linux-qc-devel
+35: BuildRequires:  jetson-linux-kernel-devel
+36: %endif
+37: %ifarch %{arm}
+38: BuildRequires:  %{buildarch}-rpi4-linux-kernel-devel
+39: BuildRequires:  %{buildarch}-rpi4-linux-kernel-modules
+40: BuildRequires:  %{buildarch}-rpi4-rt-linux-kernel-devel
+41: BuildRequires:  %{buildarch}-rpi4-rt-linux-kernel-modules
+42: %endif
+43: %ifarch riscv64
+
+LINES 104-129
+104: Requires(post): /bin/sh
+105: Requires(post): coreutils
+106: Requires(post): findutils
+107: Requires(post): kmod-compat
+108: Provides:       stability-monitor-kernel-module
+109: %description    rpi4
+110:
+111: %package        rpi4-rt
+112: Summary:        Tizen modules for RaspberryPI 4 RT (real-time)
+113: AutoReqProv:    no
+114: Requires:       %{buildarch}-rpi4-rt-linux-kernel-modules
+115: Requires(post): /bin/sh
+116: Requires(post): coreutils
+117: Requires(post): findutils
+118: Requires(post): kmod-compat
+119: Provides:       stability-monitor-kernel-module
+120: %description    rpi4-rt
+121: %endif
+122:
+123: %ifarch riscv64
+124: %package        rv64qemu
+125: Summary:        Tizen modules for RISCV QEMU
+126: Requires:       %{buildarch}-qemu-linux-kernel-modules
+127: AutoReqProv:    no
+128: Requires(post): /bin/sh
+129: Requires(post): coreutils
+
+LINES 164-188
+164:
+165: %prep
+166: %setup -q
+167: cp %{SOURCE1} ./%{name}.manifest
+168: cp -a /usr/src/linux-tizen-modules-source ./kernel
+169: mkdir -p ./%{KMOD_PATH}
+170: find %{KMOD_PATH} -type f -not -name "*.ko" -exec cp --parents {} . \;
+171:
+172: %build
+173: # Force not to build with sanitizers because this is kernel
+174: %{?asan:/usr/bin/gcc-unforce-options}
+175: %{?ubsan:/usr/bin/gcc-unforce-options}
+176:
+177: # Default buffer sizes to compile in. [kB]
+178: export LOGGER_MAIN_BUFFER_SIZE=256
+179: export LOGGER_EVENTS_BUFFER_SIZE=256
+180: export LOGGER_RADIO_BUFFER_SIZE=256
+181: export LOGGER_SYSTEM_BUFFER_SIZE=256
+182:
+183: export TIZEN_INFORM_PATH="/mnt/inform/reboot-param.bin"
+184:
+185: %ifarch aarch64
+186: # KVIM
+187: export BUILD_dm_bow=n
+188: export BUILD_extcon_usb_fixed=m
+
+LINES 246-289
+246:
+247: make -C kernel clean KERNELDIR=/boot/kernel/devel/kernel-devel-jetson/
+248: make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-jetson/
+249: make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-jetson/ INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+250:
+251: unset LLVM
+252: %endif
+253:
+254: %ifarch %{arm} aarch64
+255: # RPI4
+256: export BUILD_dm_bow=m
+257: export BUILD_extcon_usb_fixed=m
+258: export BUILD_inform_reboot=m
+259: export BUILD_kdbus=m
+260: export BUILD_logger=m
+261: export BUILD_proc_tsm=m
+262: export BUILD_zlogger=m
+263:
+264: export THREAD_GROUP_CPUTIME_SUPPORT=1
+265:
+266: %{?_toolchain:
+267: %if %{toolchain_is clang}
+268: # Only apply LLVM build to RPI kernel module
+269: export LLVM=1
+270: # Remove LLVM unrecognized flags
+271: find kernel -name Makefile -exec sed -i "s/-Wno-error=missing-attributes//g" {} \;
+272: %endif
+273: }
+274:
+275: make -C kernel clean KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4
+276: make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4
+277: make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4 INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+278:
+279: make -C kernel clean KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4-rt
+280: make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4-rt
+281: make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-%{buildarch}-rpi4-rt INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+282: %endif
+283:
+284: unset LLVM
+285:
+286: %ifarch riscv64
+287: # QEMU-RISCV64
+288: export BUILD_dm_bow=n
+289: export BUILD_extcon_usb_fixed=n
+
+LINES 340-365
+340: %install
+341: mkdir -p %{buildroot}/%{KMOD_PATH}
+342:
+343: pushd lib/modules
+344: find -name "*.ko" -exec cp -a --parents {} %{buildroot}/%{KMOD_PATH}/ \;
+345: popd
+346:
+347: %ifarch aarch64
+348: # module load config
+349: mkdir -p %{buildroot}/%{KMOD_PATH}/modprobe.d
+350: install -m 644 conf/tizen-modprobe-amlogic.conf %{buildroot}/%{KMOD_PATH}/modprobe.d
+351:
+352: mkdir -p %{buildroot}/%{KMOD_PATH}/modules-load.d
+353: install -m 644 conf/tizen-modules-amlogic.conf %{buildroot}/%{KMOD_PATH}/modules-load.d
+354: install -m 644 conf/tizen-modules-rubikpi3.conf %{buildroot}/%{KMOD_PATH}/modules-load.d
+355: install -m 644 conf/tizen-modules-orinnano.conf %{buildroot}/%{KMOD_PATH}/modules-load.d
+356: %endif
+357:
+358: %ifarch %{arm} aarch64
+359: # module load config
+360: mkdir -p %{buildroot}/%{KMOD_PATH}/modprobe.d
+361: install -m 644 conf/tizen-modprobe-rpi4.conf %{buildroot}/%{KMOD_PATH}/modprobe.d
+362:
+363: mkdir -p %{buildroot}/%{KMOD_PATH}/modules-load.d
+364: install -m 644 conf/tizen-modules-rpi4.conf %{buildroot}/%{KMOD_PATH}/modules-load.d
+365: %endif
+
+LINES 395-404
+395:
+396: %ifarch %{arm} aarch64
+397: %post rpi4
+398: RELEASEVERSION=$(basename $(dirname `find /lib/modules -name extra | head -1`))
+399: /sbin/depmod -a $RELEASEVERSION
+400:
+401: %post rpi4-rt
+402: RELEASEVERSION=$(basename $(dirname `find /lib/modules -name extra | head -1`))
+403: /sbin/depmod -a $RELEASEVERSION
+404: %endif
+
+LINES 452-502
+452: %endif
+453:
+454: %ifarch %{arm} aarch64
+455: %files rpi4
+456: %manifest %{name}.manifest
+457: %license COPYING
+458: %ifarch aarch64
+459: %{KMOD_PATH}/*rpi4-v8/extra/dm-bow.ko
+460: %{KMOD_PATH}/*rpi4-v8/extra/extcon-usb-fixed.ko
+461: %{KMOD_PATH}/*rpi4-v8/extra/proc-tsm.ko
+462: %{KMOD_PATH}/*rpi4-v8/extra/inform-reboot.ko
+463: %{KMOD_PATH}/*rpi4-v8/extra/kdbus/kdbus.ko
+464: %{KMOD_PATH}/*rpi4-v8/extra/logger.ko
+465: %{KMOD_PATH}/*rpi4-v8/extra/zlogger/zlogger.ko
+466: %else
+467: %{KMOD_PATH}/*rpi4-v7l/extra/dm-bow.ko
+468: %{KMOD_PATH}/*rpi4-v7l/extra/extcon-usb-fixed.ko
+469: %{KMOD_PATH}/*rpi4-v7l/extra/proc-tsm.ko
+470: %{KMOD_PATH}/*rpi4-v7l/extra/inform-reboot.ko
+471: %{KMOD_PATH}/*rpi4-v7l/extra/kdbus/kdbus.ko
+472: %{KMOD_PATH}/*rpi4-v7l/extra/logger.ko
+473: %{KMOD_PATH}/*rpi4-v7l/extra/zlogger/zlogger.ko
+474: %endif
+475: %{KMOD_PATH}/modprobe.d/tizen-modprobe-rpi4.conf
+476: %{KMOD_PATH}/modules-load.d/tizen-modules-rpi4.conf
+477:
+478: %files rpi4-rt
+479: %manifest %{name}.manifest
+480: %license COPYING
+481: %ifarch aarch64
+482: %{KMOD_PATH}/*rpi4-rt-v8/extra/dm-bow.ko
+483: %{KMOD_PATH}/*rpi4-rt-v8/extra/extcon-usb-fixed.ko
+484: %{KMOD_PATH}/*rpi4-rt-v8/extra/proc-tsm.ko
+485: %{KMOD_PATH}/*rpi4-rt-v8/extra/inform-reboot.ko
+486: %{KMOD_PATH}/*rpi4-rt-v8/extra/kdbus/kdbus.ko
+487: %{KMOD_PATH}/*rpi4-rt-v8/extra/logger.ko
+488: %{KMOD_PATH}/*rpi4-rt-v8/extra/zlogger/zlogger.ko
+489: %else
+490: %{KMOD_PATH}/*rpi4-rt-v7l/extra/dm-bow.ko
+491: %{KMOD_PATH}/*rpi4-rt-v7l/extra/extcon-usb-fixed.ko
+492: %{KMOD_PATH}/*rpi4-rt-v7l/extra/proc-tsm.ko
+493: %{KMOD_PATH}/*rpi4-rt-v7l/extra/inform-reboot.ko
+494: %{KMOD_PATH}/*rpi4-rt-v7l/extra/kdbus/kdbus.ko
+495: %{KMOD_PATH}/*rpi4-rt-v7l/extra/logger.ko
+496: %{KMOD_PATH}/*rpi4-rt-v7l/extra/zlogger/zlogger.ko
+497: %endif
+498: %{KMOD_PATH}/modprobe.d/tizen-modprobe-rpi4.conf
+499: %{KMOD_PATH}/modules-load.d/tizen-modules-rpi4.conf
+500: %endif
+501:
+502: %ifarch riscv64

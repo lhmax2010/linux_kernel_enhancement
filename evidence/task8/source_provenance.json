@@ -1,0 +1,34 @@
+[
+  {
+    "project": "platform/kernel/linux-tizen-modules",
+    "commit": "36d0925699ac0ffc1ce3854ed838a48d24a56c28",
+    "git_url": "https://review.tizen.org/git/platform/kernel/linux-tizen-modules.git",
+    "browse_url": "https://review.tizen.org/git/?p=platform/kernel/linux-tizen-modules.git;a=tree;hb=36d0925699ac0ffc1ce3854ed838a48d24a56c28",
+    "retrieval": "SSH read-only fetch of exact QB BUILD_PKG_LIST commit; HTTPS gitweb returned 403",
+    "package_identity": "fixed QB1211696, not current branch HEAD"
+  },
+  {
+    "project": "platform/kernel/linux-tizen-modules-source",
+    "commit": "25797e8af7ed95a5783bbe84c11959560aaf7e92",
+    "git_url": "https://review.tizen.org/git/platform/kernel/linux-tizen-modules-source.git",
+    "browse_url": "https://review.tizen.org/git/?p=platform/kernel/linux-tizen-modules-source.git;a=tree;hb=25797e8af7ed95a5783bbe84c11959560aaf7e92",
+    "retrieval": "SSH read-only fetch of exact QB BUILD_PKG_LIST commit; HTTPS gitweb returned 403",
+    "package_identity": "fixed QB1211696, not current branch HEAD"
+  },
+  {
+    "project": "platform/upstream/image-configurations",
+    "commit": "c54ac43af03c802e164560fc431509bdad950cfc",
+    "git_url": "https://review.tizen.org/git/platform/upstream/image-configurations.git",
+    "browse_url": "https://review.tizen.org/git/?p=platform/upstream/image-configurations.git;a=tree;hb=c54ac43af03c802e164560fc431509bdad950cfc",
+    "retrieval": "SSH read-only fetch of exact QB BUILD_PKG_LIST commit; HTTPS gitweb returned 403",
+    "package_identity": "fixed QB1211696, not current branch HEAD"
+  },
+  {
+    "project": "platform/upstream/mic",
+    "commit": "c446578d87b055984e5eeca04e2f485436f55759",
+    "git_url": "https://review.tizen.org/git/platform/upstream/mic.git",
+    "browse_url": "https://review.tizen.org/git/?p=platform/upstream/mic.git;a=tree;hb=c446578d87b055984e5eeca04e2f485436f55759",
+    "retrieval": "SSH read-only fetch of exact QB BUILD_PKG_LIST commit; HTTPS gitweb returned 403",
+    "package_identity": "fixed QB1211696, not current branch HEAD"
+  }
+]

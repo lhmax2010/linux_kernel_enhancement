@@ -1,0 +1,320 @@
+[
+  {
+    "file": "COPYING",
+    "source_repo_file": "COPYING",
+    "sha256": "32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670",
+    "identical": true
+  },
+  {
+    "file": "Makefile",
+    "source_repo_file": "kernel/Makefile",
+    "sha256": "d4d92cf9f894883a8202ee9288de6b0460075c51cb4226b7231bbceac756e858",
+    "identical": true
+  },
+  {
+    "file": "dm-bow.c",
+    "source_repo_file": "kernel/dm-bow.c",
+    "sha256": "ce8babefacf56c660d1dfb74f8d99e047123118484cd41e87c04283b77e2a71c",
+    "identical": true
+  },
+  {
+    "file": "dm-core.h",
+    "source_repo_file": "kernel/dm-core.h",
+    "sha256": "a5a681e7e09b8ebb0a466d0cced14a16025ec22591fb87efffbddc7d31a8bb32",
+    "identical": true
+  },
+  {
+    "file": "dm.h",
+    "source_repo_file": "kernel/dm.h",
+    "sha256": "6e7d025865949d5bb708a6e050492dc3328ef4eda9579106857897ee9d791649",
+    "identical": true
+  },
+  {
+    "file": "extcon-usb-fixed.c",
+    "source_repo_file": "kernel/extcon-usb-fixed.c",
+    "sha256": "9bc125949cd66674f56dd416c280aa7663925599b05556a9939815cd2af644b7",
+    "identical": true
+  },
+  {
+    "file": "include/uapi/linux/kdbus.h",
+    "source_repo_file": "include/uapi/linux/kdbus.h",
+    "sha256": "7774b1f57127a36b1f537117eab4ca5061eb4b7ac290003f2acf77091722e9db",
+    "identical": true
+  },
+  {
+    "file": "include/uapi/linux/logger.h",
+    "source_repo_file": "include/uapi/linux/logger.h",
+    "sha256": "2480478ee0ecfbb7235577e0e8bcdd8d40c0170a6bbaa1a91b530034b2d2ddad",
+    "identical": true
+  },
+  {
+    "file": "include/uapi/linux/zlogger.h",
+    "source_repo_file": "include/uapi/linux/zlogger.h",
+    "sha256": "e8da9fd9af1ae0a47f3c2e61ed924164e617f7914928afe16ec0a899e3c3d6a2",
+    "identical": true
+  },
+  {
+    "file": "inform-reboot.c",
+    "source_repo_file": "kernel/inform-reboot.c",
+    "sha256": "52d6eca54bfdc451e59549faef9ce493090e084a4a23d24a0e93130dd847169a",
+    "identical": true
+  },
+  {
+    "file": "kdbus/Makefile",
+    "source_repo_file": "kernel/kdbus/Makefile",
+    "sha256": "b63ae82a3a8a206e98819e077eece09f9660b39352f4edf48ee7095520379b50",
+    "identical": true
+  },
+  {
+    "file": "kdbus/bus.c",
+    "source_repo_file": "kernel/kdbus/bus.c",
+    "sha256": "034da0726d289e7e2b90f5530bd211c0d12412a2d0550cc2c87a719f70c81f36",
+    "identical": true
+  },
+  {
+    "file": "kdbus/bus.h",
+    "source_repo_file": "kernel/kdbus/bus.h",
+    "sha256": "8d31b8b840f3c2d2e3c05a612f09007b7a21380f451dd27dfea769aa684af106",
+    "identical": true
+  },
+  {
+    "file": "kdbus/connection.c",
+    "source_repo_file": "kernel/kdbus/connection.c",
+    "sha256": "de91142fd908954ce771e36290fd25e5ddb3ee031df8aea2172c1d34cbb23721",
+    "identical": true
+  },
+  {
+    "file": "kdbus/connection.h",
+    "source_repo_file": "kernel/kdbus/connection.h",
+    "sha256": "e103457a853375c9e45f7207ea9b10095edb645eb3499046665464108fdf1c94",
+    "identical": true
+  },
+  {
+    "file": "kdbus/domain.c",
+    "source_repo_file": "kernel/kdbus/domain.c",
+    "sha256": "d74165ee457bfe0f0b57eb1705bf10cb3f996c133704171909fa85e76c492a79",
+    "identical": true
+  },
+  {
+    "file": "kdbus/domain.h",
+    "source_repo_file": "kernel/kdbus/domain.h",
+    "sha256": "63dfa61eef20c369b32fa038ef14209ea5e6bfbf8d244e16c96773e117492ea0",
+    "identical": true
+  },
+  {
+    "file": "kdbus/endpoint.c",
+    "source_repo_file": "kernel/kdbus/endpoint.c",
+    "sha256": "b69198de38aa26641a7f90b4a54ef81b50f74847757facc270ebd1e3fad1f21d",
+    "identical": true
+  },
+  {
+    "file": "kdbus/endpoint.h",
+    "source_repo_file": "kernel/kdbus/endpoint.h",
+    "sha256": "083a6ec4215283f44195779532644a057957aa2f0dc513935dc9c164d07f66e9",
+    "identical": true
+  },
+  {
+    "file": "kdbus/fs.c",
+    "source_repo_file": "kernel/kdbus/fs.c",
+    "sha256": "812b5196d7ac927c29103f7ccfa0781675a8fcff0d12b0fac21f9432b1e7331f",
+    "identical": true
+  },
+  {
+    "file": "kdbus/fs.h",
+    "source_repo_file": "kernel/kdbus/fs.h",
+    "sha256": "4658b87bba6d8d9913e7cbbdf4a8aee115319ffe31fda627db6035ee8818ad7a",
+    "identical": true
+  },
+  {
+    "file": "kdbus/handle.c",
+    "source_repo_file": "kernel/kdbus/handle.c",
+    "sha256": "0ec395a8986b21f0bf0a16cdf71fd1c7e0fe3c0f6a0d9614e18541316caeb23c",
+    "identical": true
+  },
+  {
+    "file": "kdbus/handle.h",
+    "source_repo_file": "kernel/kdbus/handle.h",
+    "sha256": "b538a130361cc798403a87af3224af2b30e918fc24d368a9532fa89735e90640",
+    "identical": true
+  },
+  {
+    "file": "kdbus/item.c",
+    "source_repo_file": "kernel/kdbus/item.c",
+    "sha256": "9756d272ddae7d251805ee782799b7f99339d749e1483eba085ad1826c3caec3",
+    "identical": true
+  },
+  {
+    "file": "kdbus/item.h",
+    "source_repo_file": "kernel/kdbus/item.h",
+    "sha256": "29c09ee09fe9357de79b072a522a7b6754c20c921b7ca59cae3d47eba2a8b384",
+    "identical": true
+  },
+  {
+    "file": "kdbus/limits.h",
+    "source_repo_file": "kernel/kdbus/limits.h",
+    "sha256": "22308795a4775e9322ac896e8db31fddd3befe87f424961c22fc5d11828cd6fd",
+    "identical": true
+  },
+  {
+    "file": "kdbus/main.c",
+    "source_repo_file": "kernel/kdbus/main.c",
+    "sha256": "5f5466191fabf213192713c6232ab323dafab5d78e6cab5b1b50b8d472dd6ec3",
+    "identical": true
+  },
+  {
+    "file": "kdbus/match.c",
+    "source_repo_file": "kernel/kdbus/match.c",
+    "sha256": "53f32eb006c856b5b148b16876ada5b1e890e507c4136e42c2b2bfe2cbe878ec",
+    "identical": true
+  },
+  {
+    "file": "kdbus/match.h",
+    "source_repo_file": "kernel/kdbus/match.h",
+    "sha256": "2e7ddaa0bff599dbeb0de0487c6c0cc7ecd4e1ac4b2e2d7a26f6ab77d55c9399",
+    "identical": true
+  },
+  {
+    "file": "kdbus/message.c",
+    "source_repo_file": "kernel/kdbus/message.c",
+    "sha256": "62d9e4323555d1e8c210c16ec8d211d506bec388f2c841ad92d99261d2c69d14",
+    "identical": true
+  },
+  {
+    "file": "kdbus/message.h",
+    "source_repo_file": "kernel/kdbus/message.h",
+    "sha256": "72480ef2420657c005f692f260714e4bbfc814f676bb06f7f8cce83718fef342",
+    "identical": true
+  },
+  {
+    "file": "kdbus/metadata.c",
+    "source_repo_file": "kernel/kdbus/metadata.c",
+    "sha256": "ba5d6ff889d08e4a5ff763c4dd386935964a0508222908d59dac0660abee4b40",
+    "identical": true
+  },
+  {
+    "file": "kdbus/metadata.h",
+    "source_repo_file": "kernel/kdbus/metadata.h",
+    "sha256": "ba3710ed2e63aa9d1994abf65bad0e03487cb8d0c540b736989b1892ce503500",
+    "identical": true
+  },
+  {
+    "file": "kdbus/names.c",
+    "source_repo_file": "kernel/kdbus/names.c",
+    "sha256": "c9f7318d92f442a8b2705371f87890955c843ce89c385a38406b50593d148cad",
+    "identical": true
+  },
+  {
+    "file": "kdbus/names.h",
+    "source_repo_file": "kernel/kdbus/names.h",
+    "sha256": "30c4ef4712cd05d45380aea70c4bfd4e2152d86716640536c2a89417b5141709",
+    "identical": true
+  },
+  {
+    "file": "kdbus/node.c",
+    "source_repo_file": "kernel/kdbus/node.c",
+    "sha256": "964ca51ed2c8c6b46bd63409296c843cc6cebdbb854cb1bd7f404cf6d8f2b848",
+    "identical": true
+  },
+  {
+    "file": "kdbus/node.h",
+    "source_repo_file": "kernel/kdbus/node.h",
+    "sha256": "9943c5974baf683fbaf2fb9ed4cdba108c5f850598bb5221dd8d145d8b982ee1",
+    "identical": true
+  },
+  {
+    "file": "kdbus/notify.c",
+    "source_repo_file": "kernel/kdbus/notify.c",
+    "sha256": "60df6aaf2bb8a00195f157356915732a94f20ef49d3084515db2d27876f94553",
+    "identical": true
+  },
+  {
+    "file": "kdbus/notify.h",
+    "source_repo_file": "kernel/kdbus/notify.h",
+    "sha256": "552902a258f112a46b44bf22c3743ce6fecee985759ebf4d9d6e88361a6cdb6b",
+    "identical": true
+  },
+  {
+    "file": "kdbus/policy.c",
+    "source_repo_file": "kernel/kdbus/policy.c",
+    "sha256": "bbec511a503ce3b502551dd75dda0b505337395724f60489468c54ce2eaffc82",
+    "identical": true
+  },
+  {
+    "file": "kdbus/policy.h",
+    "source_repo_file": "kernel/kdbus/policy.h",
+    "sha256": "d8fa23c8fdb57987081ab7bfc1cfc46f3e72058fb7a26ed7e4d9237cb4521e3e",
+    "identical": true
+  },
+  {
+    "file": "kdbus/pool.c",
+    "source_repo_file": "kernel/kdbus/pool.c",
+    "sha256": "3334f8c324ac27e247a189aebc1c309340c6a27d0eee282f55d34ea0ced135a8",
+    "identical": true
+  },
+  {
+    "file": "kdbus/pool.h",
+    "source_repo_file": "kernel/kdbus/pool.h",
+    "sha256": "09dcc67149a0da1a40e0f586becc53c701828ca934521260d5dc7f968cdf1e57",
+    "identical": true
+  },
+  {
+    "file": "kdbus/queue.c",
+    "source_repo_file": "kernel/kdbus/queue.c",
+    "sha256": "6ff5f0319a3751bdd9f6cb28ef2cc0afb481d163060d5effc5e3bef1fe3c3409",
+    "identical": true
+  },
+  {
+    "file": "kdbus/queue.h",
+    "source_repo_file": "kernel/kdbus/queue.h",
+    "sha256": "11931ec3a350846fb6dd4c3d99cbb0f29c0c43abd464bef9326c081a0ad19a09",
+    "identical": true
+  },
+  {
+    "file": "kdbus/reply.c",
+    "source_repo_file": "kernel/kdbus/reply.c",
+    "sha256": "aa0d78319f2bcd0fd84f1df5a44df57fbecf5a7ace6fe9abba7bd6b02bae1f6f",
+    "identical": true
+  },
+  {
+    "file": "kdbus/reply.h",
+    "source_repo_file": "kernel/kdbus/reply.h",
+    "sha256": "26284e600211c965bbb1644d40029e6508b2d2b701361dc2cec2096c630228b8",
+    "identical": true
+  },
+  {
+    "file": "kdbus/util.c",
+    "source_repo_file": "kernel/kdbus/util.c",
+    "sha256": "5afe16c663957bd06e9e5c1d61de26faefa4f91f80e4b7799a1f4c4d05f9953c",
+    "identical": true
+  },
+  {
+    "file": "kdbus/util.h",
+    "source_repo_file": "kernel/kdbus/util.h",
+    "sha256": "0ee32d70d1a4a8625cdfa7b240a32fc8af575b79330e8cba8d317409d5b5fd6d",
+    "identical": true
+  },
+  {
+    "file": "logger.c",
+    "source_repo_file": "kernel/logger.c",
+    "sha256": "6ca98a18c96d3b47a402ac0fa3787a050879561c5718f203fe6374ea17dc676c",
+    "identical": true
+  },
+  {
+    "file": "proc-tsm.c",
+    "source_repo_file": "kernel/proc-tsm.c",
+    "sha256": "4b16e0d55a5dbbfe5a248792bc87fa7be1f306cf96bfd278ea2ff85e65bb3535",
+    "identical": true
+  },
+  {
+    "file": "zlogger/Makefile",
+    "source_repo_file": "kernel/zlogger/Makefile",
+    "sha256": "65b3f7ce8e0b1ee088813588f96c41610719d547670ea9c8116f712631f9b183",
+    "identical": true
+  },
+  {
+    "file": "zlogger/zlogger.c",
+    "source_repo_file": "kernel/zlogger/zlogger.c",
+    "sha256": "0c523eee797d45ccd641492e16a7caf162a29fa109806319a343b5ddcfdeb87c",
+    "identical": true
+  }
+]

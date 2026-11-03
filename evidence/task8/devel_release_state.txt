@@ -1,0 +1,11 @@
+FILE: temp/task5b/extract-devel/boot/kernel/devel/kernel-devel-arm-rpi4/localversion-tizen
+SHA256: 47efce9e4736d443e8a5c46f8124317b6b8940380a70ec2f6c6150237455ba7d
+-arm-rpi4-rt
+
+FILE: temp/task5b/extract-devel/boot/kernel/devel/kernel-devel-arm-rpi4/include/config/kernel.release
+SHA256: cf160b6b94cdb51fa241c893e453280c20357f6768d99ac8ec59ae9c52d3c740
+6.12.80-arm-rpi4-v7l
+
+FILE: temp/task5b/extract-devel/boot/kernel/devel/kernel-devel-arm-rpi4/include/generated/utsrelease.h
+SHA256: d7672fea8b725cbb1519ef34b1ae82ccf82ffcfd43f5286bcb2c2330febcf82e
+#define UTS_RELEASE "6.12.80-arm-rpi4-v7l"

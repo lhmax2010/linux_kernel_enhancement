@@ -1,0 +1,7 @@
+{
+  "source": "temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/.rpmmacros",
+  "copy": "temp/task8/namespace_home/abuild/.rpmmacros",
+  "sha256": "7c8bfbcaed00d4624f61bfcb9a5a4d1deb0058906b43f5b97fdb19a09a7fc249",
+  "identical": true,
+  "reason": "Use exact existing LLVM buildroot macro definitions in the isolated HOME; initial parser attempt lacked toolchain_is."
+}

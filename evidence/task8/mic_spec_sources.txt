@@ -1,0 +1,39 @@
+SOURCE: temp/task8/repos/mic/packaging/mic.spec
+SHA256: 33245810e9dab42d0ffebe9560c0deb2dbffa07e65fb5ca2ebd94c626bf49173
+
+LINES 1-35
+1: %define rc_version 0
+2:
+3: %if 0%{?rc_version}
+4: %define release_prefix 0.rc%{rc_version}.
+5: %endif
+6:
+7: Name:       mic
+8: Summary:    Image Creator for Linux Distributions
+9: Version:    2.1.0
+10: Release:    0
+11: Group:      Development/Tools
+12: License:    GPLv2
+13: BuildArch:  noarch
+14: URL:        http://www.tizen.org
+15: Source0:    %{name}_%{version}.tar.gz
+16: %if 0%{?tizen_version:1}
+17: Source1001: mic.manifest
+18: %endif
+19:
+20: Requires:   python3 >= 3.2
+21:
+22: #for mic in mic-bootstrap, we don't need the below three dependency packages.
+23: #what is more, thre is no python3.x version currently in tizne platform.
+24: #Requires:   python3-urlgrabber >= 3.9.0
+25: #Requires:   yum
+26: #Requires:   python3-requests
+27: Requires:   python3-py
+28:
+29: #xml module has been exist in python3 path once installing python3 package.
+30: %if 0%{?suse_version}
+31: Requires:   python3-xml
+32: %endif
+33:
+34: %if 0%{?tizen_version:1}
+35: Requires:   python3-rpm

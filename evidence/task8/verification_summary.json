@@ -1,0 +1,11 @@
+{
+  "kernel_head": "0fac5de6a63091d141ad1cd3ed9d9e92b8dde708",
+  "kernel_status": "",
+  "kernelrelease_tests_pass": true,
+  "no_objects": true,
+  "broken_relative_links": [],
+  "all_evidence_text_under_1MB": true,
+  "known_confidential_keyword_matches": 0,
+  "tracked_vendor_local_files": 0,
+  "scope": "host only; no board, full kernel build, Gerrit push, or Quickbuild trigger"
+}

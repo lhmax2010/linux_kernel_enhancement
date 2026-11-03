@@ -1,0 +1,26 @@
+[
+  {
+    "file": "modules.rpm",
+    "bytes": 92240,
+    "sha256": "4272a7fe45eac0ae87b35e6a7ea2512eb763cbd225cc832a1dfca18c9a8f8941",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm"
+  },
+  {
+    "file": "modules.src.rpm",
+    "bytes": 19590,
+    "sha256": "d90c060735a025a5d099e8bc01e64338bee649686ad537646c27d027f77e6fe9",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/source/linux-tizen-modules-11.0.0-0.src.rpm"
+  },
+  {
+    "file": "modules_source.rpm",
+    "bytes": 123424,
+    "sha256": "d08170ca4529dd8d0d27c09bc9ae6c7bfc38c3762b4e4688940db08c655aa19e",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/linux-tizen-modules-source-11.0.0-0.armv7l.rpm"
+  },
+  {
+    "file": "modules_source.src.rpm",
+    "bytes": 176565,
+    "sha256": "79e45d2aaecd6c7f6dcbe4d4d0a1904628d7e204771e04d10df867bd0f166c91",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/source/linux-tizen-modules-source-11.0.0-0.src.rpm"
+  }
+]

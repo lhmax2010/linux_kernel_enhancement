@@ -1,0 +1,17 @@
+SOURCE: linux-rpi/Documentation/kbuild/modules.rst
+SHA256: c16b2db72d9d9d00555f3815fd80b79dbee5581aec77e5f1bd28407dee1a8c1e
+29: that contains the configuration and header files used in the build.
+30: Also, the kernel must have been built with modules enabled. If you are
+31: using a distribution kernel, there will be a package for the kernel you
+32: are running provided by your distribution.
+33:
+34: An alternative is to use the "make" target "modules_prepare." This will
+35: make sure the kernel contains the information required. The target
+36: exists solely as a simple way to prepare a kernel source tree for
+37: building external modules.
+38:
+39: NOTE: "modules_prepare" will not build Module.symvers even if
+40: CONFIG_MODVERSIONS is set; therefore, a full kernel build needs to be
+41: executed to make module versioning work.
+42:
+43: Command Syntax

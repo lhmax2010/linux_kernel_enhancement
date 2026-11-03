@@ -1,0 +1,74 @@
+SOURCE: temp/task8/repos/image-configurations/packaging/image-configurations.spec
+SHA256: 9e6293e289195bb6ed756f687517e664b1f83c9c361d607cb0bf0b17ec823e75
+
+LINES 14-35
+14: Summary:	Create kickstart files for Tizen images
+15: Name:		image-configurations
+16: Version:	102
+17: Release:	1
+18: License:	GPL-2.0
+19: Group:		System/Configuration
+20: URL:		http://www.tizen.org
+21: Source:		image-configurations-%{version}.tar.bz2
+22: Source1001: 	image-configurations.manifest
+23:
+24: BuildArch:	noarch
+25: BuildRequires:  kickstarter >= 0.15
+26: BuildRequires:  meta-generic
+27: %if %{with legacy_imageconfig}
+28: BuildRequires:  meta-%{_profile}
+29: %else
+30: BuildRequires:	meta-common
+31: %endif
+32: BuildRequires:  package-groups
+33: BuildRequires:  python
+34:
+35: %description
+
+LINES 59-104
+59:     -r input/%_profile-repos.yaml \
+60:     -T input/%_profile-targets.yaml \
+61:     -t %{_repository} \
+62:     -i image-configs.xml
+63: %else
+64: echo "<image-configs>" > image-configs.xml
+65: for profile in common; do
+66:     mkdir -p input-$profile
+67:     for pn in generic $profile; do
+68:         pdir=%{_datadir}/image-configurations/$pn
+69:         [ -d $pdir ] && cp -a $pdir/* input-$profile/
+70:     done
+71:
+72:     kickstarter -c input-$profile/$profile.yaml \
+73:         -e input-$profile/configs \
+74:         -r input-$profile/$profile-repos.yaml \
+75:         -T input-$profile/$profile-targets.yaml \
+76:         -t %{_repository} \
+77:         -i image-configs_$profile.xml
+78:
+79:     cat image-configs_$profile.xml | sed 's/<image-configs>//g' |sed 's/<\/image-configs>//g' >> image-configs.xml
+80: done
+81: echo "</image-configs>" >> image-configs.xml
+82:
+83: # copy groups.xml file to input for convert_ks.py
+84: mkdir -p input
+85: pdir=%{_datadir}/package-groups
+86: [ -d "$pdir" ] && cp "$pdir/group.xml" input/
+87: %endif
+88:
+89: %install
+90:
+91: mkdir -p %{buildroot}/usr/share/image-configurations
+92: [ -n "$(ls -A %{baseline}/*.ks 2>/dev/null)" ] &&  cp %{baseline}/*.ks %{buildroot}/usr/share/image-configurations
+93: cp image-configs.xml %{buildroot}/usr/share/image-configurations
+94:
+95: [ -d %{buildroot}/usr/share/image-configurations ] && for ksfile in $(ls -A %{buildroot}/usr/share/image-configurations/*.ks 2>/dev/null)
+96: do
+97:     %{__python} convert_ks.py "${ksfile}" input/group.xml
+98:     chmod go+r "${ksfile}"
+99: done
+100:
+101: %files
+102: %manifest %{name}.manifest
+103: #%dir %_datadir/image-configurations
+104: %_datadir/image-configurations/*

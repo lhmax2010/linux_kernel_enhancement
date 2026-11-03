@@ -1,0 +1,9 @@
+SOURCE: temp/task8/boot_image.packages
+SHA256: 6a47b18fcf12577aafa5e7f0a1b74469072b8e6c1769cd925685f83db1c6d968
+
+LINES 7-8
+7: arm-rpi4-linux-kernel-modules.armv7l 6.12.80-0 platform/kernel/linux-rpi#0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+8: arm-rpi4-linux-kernel.armv7l 6.12.80-0 platform/kernel/linux-rpi#0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+
+LINES 139-139
+139: linux-tizen-modules-rpi4.armv7l 11.0.0-0 platform/kernel/linux-tizen-modules#36d0925699ac0ffc1ce3854ed838a48d24a56c28

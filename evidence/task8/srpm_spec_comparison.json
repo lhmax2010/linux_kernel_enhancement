@@ -1,0 +1,18 @@
+[
+  {
+    "repo": "linux-tizen-modules",
+    "git_spec_sha256": "c222ae81482f810f23024ffd8a41762e38807a8ee0e8f94ce7b9061976fe9d72",
+    "srpm_spec_sha256": "c1d8f7976fd38e740532836c68e1b3804bd6be9022867d62192f3a6f52d9d3ee",
+    "identical": false,
+    "only_difference_is_injected_VCS": true,
+    "VCS": "VCS:            platform/kernel/linux-tizen-modules#36d0925699ac0ffc1ce3854ed838a48d24a56c28"
+  },
+  {
+    "repo": "linux-tizen-modules-source",
+    "git_spec_sha256": "879680dba35b133e077344a9085bbe32b2d1cd2260c2093be7a13289401d650a",
+    "srpm_spec_sha256": "ca6c5dba9bfe76c402b2c70aa779e67228f7c27bdbbd359647dfa03bc7398142",
+    "identical": false,
+    "only_difference_is_injected_VCS": true,
+    "VCS": "VCS:            platform/kernel/linux-tizen-modules-source#25797e8af7ed95a5783bbe84c11959560aaf7e92"
+  }
+]

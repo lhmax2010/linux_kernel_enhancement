@@ -1,0 +1,53 @@
+SOURCE: linux-rpi/include/linux/vermagic.h
+SHA256: 48d4b7239f057f4af5d18fb38da3fb52b69a95023f217df8dee037ca6a4057bc
+
+LINES 1-49
+1: /* SPDX-License-Identifier: GPL-2.0 */
+2: #ifndef _LINUX_VERMAGIC_H
+3: #define _LINUX_VERMAGIC_H
+4:
+5: #ifndef INCLUDE_VERMAGIC
+6: #error "This header can be included from kernel/module.c or *.mod.c only"
+7: #endif
+8:
+9: #include <generated/utsrelease.h>
+10: #include <asm/vermagic.h>
+11:
+12: /* Simply sanity version stamp for modules. */
+13: #ifdef CONFIG_SMP
+14: #define MODULE_VERMAGIC_SMP "SMP "
+15: #else
+16: #define MODULE_VERMAGIC_SMP ""
+17: #endif
+18: #ifdef CONFIG_PREEMPT_BUILD
+19: #define MODULE_VERMAGIC_PREEMPT "preempt "
+20: #elif defined(CONFIG_PREEMPT_RT)
+21: #define MODULE_VERMAGIC_PREEMPT "preempt_rt "
+22: #else
+23: #define MODULE_VERMAGIC_PREEMPT ""
+24: #endif
+25: #ifdef CONFIG_MODULE_UNLOAD
+26: #define MODULE_VERMAGIC_MODULE_UNLOAD "mod_unload "
+27: #else
+28: #define MODULE_VERMAGIC_MODULE_UNLOAD ""
+29: #endif
+30: #ifdef CONFIG_MODVERSIONS
+31: #define MODULE_VERMAGIC_MODVERSIONS "modversions "
+32: #else
+33: #define MODULE_VERMAGIC_MODVERSIONS ""
+34: #endif
+35: #ifdef RANDSTRUCT
+36: #include <generated/randstruct_hash.h>
+37: #define MODULE_RANDSTRUCT "RANDSTRUCT_" RANDSTRUCT_HASHED_SEED
+38: #else
+39: #define MODULE_RANDSTRUCT
+40: #endif
+41:
+42: #define VERMAGIC_STRING 						\
+43: 	UTS_RELEASE " "							\
+44: 	MODULE_VERMAGIC_SMP MODULE_VERMAGIC_PREEMPT 			\
+45: 	MODULE_VERMAGIC_MODULE_UNLOAD MODULE_VERMAGIC_MODVERSIONS	\
+46: 	MODULE_ARCH_VERMAGIC						\
+47: 	MODULE_RANDSTRUCT
+48:
+49: #endif /* _LINUX_VERMAGIC_H */

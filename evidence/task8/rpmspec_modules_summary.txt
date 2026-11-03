@@ -1,0 +1,31 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task8/namespace_home /home --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp /home/linhao/Toolchain/development/linux_kernel_optimization/temp --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task8 --setenv HOME /home/abuild --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin -- /usr/bin/qemu-arm -L / /usr/bin/rpmspec --target armv7l --define '_toolchain clang' -P /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task8/proposed_modules.spec
+199: export LOCALVERSION=-lko-base01
+212: export LLVM=1
+217: make -C kernel clean KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01
+218: make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01
+219: make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01 INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+221: make -C kernel clean KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01
+222: make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01
+223: make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01 INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+226: unset LOCALVERSION
+255: RELEASEVERSION=6.12.80-arm-rpi4-v7l-lko-base01
+259: RELEASEVERSION=6.12.80-arm-rpi4-rt-v7l-lko-base01
+267: /lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/dm-bow.ko
+268: /lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/extcon-usb-fixed.ko
+269: /lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko
+270: /lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/inform-reboot.ko
+271: /lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/kdbus/kdbus.ko
+272: /lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/logger.ko
+273: /lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/zlogger/zlogger.ko
+274: /lib/modules/modprobe.d/tizen-modprobe-rpi4.conf
+275: /lib/modules/modules-load.d/tizen-modules-rpi4.conf
+280: /lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/dm-bow.ko
+281: /lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/extcon-usb-fixed.ko
+282: /lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/proc-tsm.ko
+283: /lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/inform-reboot.ko
+284: /lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/kdbus/kdbus.ko
+285: /lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/logger.ko
+286: /lib/modules/6.12.80-arm-rpi4-rt-v7l-lko-base01/extra/zlogger/zlogger.ko
+287: /lib/modules/modprobe.d/tizen-modprobe-rpi4.conf
+288: /lib/modules/modules-load.d/tizen-modules-rpi4.conf
+291: EXIT=0

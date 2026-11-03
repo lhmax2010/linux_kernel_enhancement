@@ -1,0 +1,53 @@
+SOURCE: temp/task8/repos/linux-tizen-modules-source/kernel/Makefile
+SHA256: d4d92cf9f894883a8202ee9288de6b0460075c51cb4226b7231bbceac756e858
+
+LINES 1-49
+1: PWD := $(shell pwd)
+2: LD = ${CROSS_COMPILE}ld
+3:
+4: LOGGER_MAIN_BUFFER_SIZE ?= 256
+5: LOGGER_EVENTS_BUFFER_SIZE ?= 256
+6: LOGGER_RADIO_BUFFER_SIZE ?= 256
+7: LOGGER_SYSTEM_BUFFER_SIZE ?= 256
+8:
+9: THREAD_GROUP_CPUTIME_SUPPORT ?= 0
+10:
+11: TIZEN_INFORM_PATH ?= "/mnt/inform/reboot-param.bin"
+12:
+13: # See commit 0b999ae3614d0 ("Merge tag 'compiler-attributes-for-linus-v5.0-rc7'"[..]) for rationale
+14: CFLAGS_logger.o   += -Wno-error=missing-attributes \
+15: 	-DLOGGER_MAIN_BUFFER_SIZE=$(LOGGER_MAIN_BUFFER_SIZE) \
+16: 	-DLOGGER_EVENTS_BUFFER_SIZE=$(LOGGER_EVENTS_BUFFER_SIZE) \
+17: 	-DLOGGER_RADIO_BUFFER_SIZE=$(LOGGER_RADIO_BUFFER_SIZE) \
+18: 	-DLOGGER_SYSTEM_BUFFER_SIZE=$(LOGGER_SYSTEM_BUFFER_SIZE)
+19: CFLAGS_proc-tsm.o += -Wno-error=missing-attributes \
+20: 		     -DTHREAD_GROUP_CPUTIME_SUPPORT=$(THREAD_GROUP_CPUTIME_SUPPORT)
+21: CFLAGS_inform-reboot.o += -DTIZEN_INFORM_PATH="\"$(TIZEN_INFORM_PATH)\""
+22:
+23: # Build is disabled by default so that when new module is added to this repository (and -source package),
+24: # it won't get automatically build in packages using it (that would break these automatically as file list
+25: # would no longer match).
+26: BUILD_dm_bow ?= n
+27: BUILD_extcon_usb_fixed ?= n
+28: BUILD_inform_reboot ?= n
+29: BUILD_logger ?= n
+30: BUILD_proc_tsm ?= n
+31: BUILD_kdbus ?= n
+32: BUILD_zlogger ?= n
+33:
+34: obj-$(BUILD_dm_bow) += dm-bow.o
+35: obj-$(BUILD_extcon_usb_fixed) += extcon-usb-fixed.o
+36: obj-$(BUILD_inform_reboot) += inform-reboot.o
+37: obj-$(BUILD_logger) += logger.o
+38: obj-$(BUILD_proc_tsm) += proc-tsm.o
+39: obj-$(BUILD_kdbus) += kdbus/
+40: obj-$(BUILD_zlogger) += zlogger/
+41:
+42: all:
+43: 	make -C $(KERNELDIR) M=$(PWD) CFLAGS_MODULE=-I$(PWD)/include modules
+44:
+45: modules_install:
+46: 	make -C $(KERNELDIR) M=$(PWD) INSTALL_MOD_STRIP=$(INSTALL_MOD_STRIP) INSTALL_MOD_PATH=$(PWD)/../$(INSTALL_MOD_PATH) modules_install
+47:
+48: clean:
+49: 	make -C $(KERNELDIR) M=$(PWD) clean

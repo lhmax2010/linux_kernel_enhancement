@@ -1,0 +1,36 @@
+SOURCE: linux-rpi/scripts/depmod.sh
+SHA256: aa3707e09781c5037d3acc8864e91bc709bf5ec35769a2ec746f6a64cd75755e
+
+LINES 1-32
+1: #!/bin/sh
+2: # SPDX-License-Identifier: GPL-2.0
+3: #
+4: # A depmod wrapper
+5:
+6: if test $# -ne 1; then
+7: 	echo "Usage: $0 <kernelrelease>" >&2
+8: 	exit 1
+9: fi
+10:
+11: KERNELRELEASE=$1
+12:
+13: : ${DEPMOD:=depmod}
+14:
+15: if ! test -r System.map ; then
+16: 	echo "Warning: modules_install: missing 'System.map' file. Skipping depmod." >&2
+17: 	exit 0
+18: fi
+19:
+20: # legacy behavior: "depmod" in /sbin, no /sbin in PATH
+21: PATH="$PATH:/sbin"
+22: if [ -z $(command -v $DEPMOD) ]; then
+23: 	echo "Warning: 'make modules_install' requires $DEPMOD. Please install it." >&2
+24: 	echo "This is probably in the kmod package." >&2
+25: 	exit 0
+26: fi
+27:
+28: set -- -ae -F System.map
+29: if test -n "$INSTALL_MOD_PATH"; then
+30: 	set -- "$@" -b "$INSTALL_MOD_PATH"
+31: fi
+32: exec "$DEPMOD" "$@" "$KERNELRELEASE"

@@ -12,6 +12,7 @@
    - 用户2026-11-02已在开发机验证的重连流程：重启后每10秒一轮，先`sdb disconnect 192.168.108.26:26101`（忽略返回值），再`sdb connect`，再用`timeout 15`执行一条只读shell命令探测。连续3轮失败且宿主`timeout 5 bash -c '</dev/tcp/192.168.108.26/26101'`确认端口可连时，先执行`sdb devices`，仅确认列表无其他设备后执行`sdb kill-server`及`sdb start-server`，再继续轮询。每次重启最多重启宿主SDB服务2次；有其他设备则不重启，记录后继续轮询。总时限仍为10分钟，超时停止。此授权仅针对宿主SDB服务，不允许操作其他进程或板上服务；单轮耗时超过10秒时串行完成、不并发，截止时按剩余时限收紧命令超时。
 
 5. 开机自动配网服务：允许为安装该服务执行一次remount读写，只写入该服务的unit文件和脚本（具体路径在安装任务中登记），装完恢复只读；除此之外仍不改根文件系统、不安装或卸载RPM。刷新镜像后的一次性准备（remount、osu --resize、卸载wlandrv-plugin-tizen/mesa/coregl、首次配网）由用户执行。
+   - 重启后根分区默认只读（见 r6 的 03_display_inspect 证据，此前的 rw 来自用户刷机后的一次性 remount）；今后任何根分区写入都须在授权范围内先 remount rw，写完恢复 ro 并回读。
    - 任务6 r2（2026-11-02）实际安装登记：`/usr/local/sbin/lko-net-setup.sh`（0755）、`/etc/systemd/system/lko-net-setup.service`（0644）；enable创建`/etc/systemd/system/multi-user.target.wants/lko-net-setup.service`，指向`/etc/systemd/system/lko-net-setup.service`。本次 / 原本为 rw，未执行 remount；前后均rw,relatime。只安装/enable，未start、未手动执行脚本、未重启。
    - PM 2026-11-02替代验收仅适用于本次任务6恢复：不要求板上systemd-analyze；以LoadState=loaded、LoadError为空、UnitFileState=enabled、is-enabled=enabled、enable链接正确及reload后无该unit警告/错误为准。任一不符须disable、删除两文件、daemon-reload并确认恢复；安装前/若为ro则停止第二部分，不remount。本次验收通过；第一次重启验证需要用户在场。
    - 任务7（2026-11-02，用户确认在场后）：仅把/usr/local/sbin/lko-net-setup.sh与/etc/systemd/system/lko-net-setup.service的SMACK标签从User::Shell改为`_`，分别与/usr/sbin/ip、connman.service一致，chsmack -a后回读通过；文件内容SHA未变，未改其他对象标签。daemon-reload后loaded/enabled。
@@ -23,6 +24,8 @@
 8. 测试应用（用户2026-11-02授权）：为标准场景在/opt安装和卸载测试应用；每次记录包名、版本、安装包SHA-256和安装/卸载命令输出。
 9. journald配置（用户2026-11-02授权）：允许写入/etc/systemd/journald.conf.d/50-lko.conf，仅用于调整日志容量；路径和内容在安装时登记。
    - 任务7 r3实际登记：目录/etc/systemd/journald.conf.d（0755），文件/etc/systemd/journald.conf.d/50-lko.conf（0644），内容为两行`[Journal]`、`SystemMaxUse=64M`（末行换行）。SHA-256 `af93a4657b122ff5aff84aaae90ce03b94747155954e04f6a539bf83445b8f5e`。目录/文件SMACK标签均由User::Shell设为`_`，与/etc/systemd/journald.conf相同；只写配置，未restart/reload journald；随后获准整机重启但SDB等待600秒超时，运行时新上限未能回读确认。
+
+10. 实验期间可临时停用 display-manager（用户2026-11-02同意）：systemctl stop display-manager.service 并 systemctl mask --runtime display-manager.service（只写 /run，重启后自动恢复）；停用前后记录状态，实验结束后 unmask --runtime 并回读。本阶段不做图形场景；RPi4 上的开机时间只用于比较内核自身的变化，不含窗口管理器启动。
 
 授权说明（2026-11-02）：冷启动（断电上电）由用户手动操作；用户手边有读卡器，可作为内核替换失败时的取卡恢复手段。
 

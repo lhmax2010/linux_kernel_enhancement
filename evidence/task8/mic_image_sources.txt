@@ -1,0 +1,87 @@
+SOURCE: temp/task8/repos/mic/mic/imager/loop.py
+SHA256: 8a0d3cea5e71250b337d566a06d69566aa6ed06d07f511767dbcbab13a3b3f04
+
+LINES 135-180
+135:             for part in sorted(kickstart.get_partitions(self.ks),
+136:                                key=lambda p: p.mountpoint):
+137:                 aft_fstype = None
+138:                 if part.fstype == "swap":
+139:                     continue
+140:                 elif part.fstype in list(AFTER_MNT_FS.keys()):
+141:                     aft_fstype = part.fstype
+142:                     part.fstype = "ext4"
+143:
+144:                 label = part.label
+145:                 fslabel = part.fslabel
+146:                 if fslabel == '':
+147:                     fslabel = label
+148:                 mp = part.mountpoint
+149:                 if mp == '/':
+150:                     # the base image
+151:                     if not label:
+152:                         label = self.name
+153:                 else:
+154:                     mp = mp.rstrip('/')
+155:                     if not label:
+156:                         msger.warning('no "label" specified for loop img at %s'
+157:                                       ', use the mountpoint as the name' % mp)
+158:                         label = mp.split('/')[-1]
+159:
+160:                 imgname = misc.strip_end(label, '.img') + '.img'
+161:                 allloops.append({
+162:                     'mountpoint': mp,
+163:                     'label': label,
+164:                     'fslabel':fslabel,
+165:                     'name': imgname,
+166:                     'size': part.size or 4096 * 1024 * 1024,
+167:                     'fstype': part.fstype or 'ext3',
+168:                     'fsopts': part.fsopts or None,
+169:                     'aft_fstype': aft_fstype or None,
+170:                     'extopts': part.extopts or None,
+171:                     'f2fsopts': part.f2fsopts or None,
+172:                     'vdfsopts': part.vdfsopts or None,
+173:                     'vfatopts': part.vfatopts or None,
+174:                     'erofsopts': part.erofsopts or None,
+175:                     'squashfsopts': part.squashfsopts or None,
+176:                     'squashfsoptions_maxsize': part.squashfsoptions_maxsize or None,
+177:                     'cpioopts': part.cpioopts or None,
+178:                     'loop': None,  # to be created in _mount_instroot
+179:                     'uuid': part.uuid or None,
+180:                     'kspart' : part,
+
+LINES 487-521
+487:                     ##FIXME temporary code - replace this with fs.mkvdfs()
+488:                     if item['vdfsopts']:
+489:                         vdfsopts=item['vdfsopts'].replace(',', ' ')
+490:                     else:
+491:                         vdfsopts="-i -z 1024M"
+492:
+493:                     fullpathmkvdfs = "mkfs.vdfs" #find_binary_path("mkfs.vdfs")
+494:                     runner.show("%s --help" % fullpathmkvdfs)
+495: #                    fs.mkvdfs(mountpoint, self._outdir+"/"+item['label']+fs_suffix, vdfsopts)
+496:                     ret = runner.show('%s %s -r %s %s' % (fullpathmkvdfs, vdfsopts, mountpoint, self._imgdir+"/"+item['label']+fs_suffix))
+497:                     if ret != 0:
+498:                         runner.show("mkfs.vdfs return error")
+499:                         raise VdfsError("' %s' exited with error (%d)" % (fullpathmkvdfs, ret))
+500:
+501:                 runner.show('umount %s' % mountpoint)
+502: #               os.unlink(mountpoint)
+503:                 runner.show('mv %s %s' % (self._imgdir+"/"+item['label']+fs_suffix, self._imgdir+"/"+item['label']+".img") )
+504:                 runner.show('ls -al %s' % self._imgdir)
+505:
+506:             if item['fstype'] == "ext4":
+507:                 if not item['cpioopts']:
+508:                     runner.show('/sbin/tune2fs -O ^huge_file,extents,uninit_bg %s '
+509:                             % imgfile)
+510:                     runner.quiet(["/sbin/e2fsck", "-f", "-y", imgfile])
+511:             self.image_files.setdefault('partitions', {}).update(
+512:                     {item['mountpoint']: item['label']})
+513:             if self.compress_image:
+514:                 compressing(imgfile, self.compress_image)
+515:                 self.image_files.setdefault('image_files', []).append(
+516:                                 '.'.join([item['name'], self.compress_image]))
+517:             else:
+518:                 self.image_files.setdefault('image_files', []).append(item['name'])
+519:
+520:         fallocate = fs.find_binary_path("fallocate")
+521:         for item in os.listdir(self._imgdir):

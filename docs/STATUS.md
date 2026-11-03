@@ -2,7 +2,16 @@
 
 任务 V1：厂商补丁已本地入库并完成试打，报告在本地 vendor_local/V1_report.md（不入库）
 
-更新：2026-11-02（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
+更新：2026-11-03（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
+
+**任务8开发机构建准备完成；未连接开发板、未完整构建、未推Gerrit或触发QB。** [12构建部署准备](12_kernel_deploy_prep.md)、[证据索引](../evidence/task8/README.md)。
+
+- 计划/进度：读取PM审核和历史证据→规则第5/10项更新→同次QB元数据/RPM/固定公开源码交叉核对→后缀kernelrelease及spec解析→容量和任务9建议→文档/证据同commit推main，均完成。
+- 已闭合：六个指定extra模块由linux-tizen-modules-rpi4 11.0.0-0提供，源码分属linux-tizen-modules和linux-tizen-modules-source两固定项目；同包另有zlogger。MIC根据同次KS生成modules.img，没有独立镜像提供RPM。证据见12第2–3节。
+- 版本方法：普通版精确验证6.12.80-arm-rpi4-v7l-lko-base01，RT及第二后缀字符串也通过；无.o生成，sandbox HEAD/status不变。spec diff只在报告和temp，未应用/提交源码改动；完整构建和模块ABI仍待任务9。
+- 容量估算：每套4,424 KiB；保留原厂再加两套约剩5,800 KiB，需任务9以新产物实测复核。共享modprobe.d/modules-load.d保持原状；不整块刷模块分区。
+- 授权已登记：根分区默认ro，授权写入须rw后恢复ro；实验临时停用显示服务仅runtime mask并在结束unmask，本阶段不做图形场景。历史“显示服务处理待PM决定”由本次授权覆盖。
+- 挂账/下一步：任务9构建干净基线和配套树外模块，建议约60–100分钟（估算，未执行）；独立依赖仓库、包哈希/Module.symvers/CRC、最终du/inode及部署前空间需核验；内核替换执行由PM另下发。RPi4仍下线；本轮任务8已明确只在开发机完成，无待补的任务8板上操作，后续部署待RPi4接回。U-Boot串口命令行能否进入仍待用户确认。
 
 **PB1产品板只读探测已完成采集与证据整理；配置全文比较和经确认的空闲基线未闭合。** 产品身份断言通过（armv7l / Tizen / 内核6.12.60不含rpi4），内核由Clang/LLD22.1.8编译。报告：[13_product_board_probe.md](13_product_board_probe.md)，[证据索引](../evidence/pb1/README.md)。
 

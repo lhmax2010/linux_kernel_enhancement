@@ -1,0 +1,43 @@
+SOURCE: linux-rpi/scripts/setlocalversion
+SHA256: 563f0a003599e96cf7fe1317445331a6730f46b058017cf9e8ccbc73de626161
+
+LINES 170-208
+170: 	echo "KERNELVERSION is not set" >&2
+171: 	exit 1
+172: fi
+173:
+174: # localversion* files in the build and source directory
+175: file_localversion="$(collect_files localversion*)"
+176: if test ! "$srctree" -ef .; then
+177: 	file_localversion="${file_localversion}$(collect_files "$srctree"/localversion*)"
+178: fi
+179:
+180: if ${no_local}; then
+181: 	echo "${KERNELVERSION}$(scm_version --no-dirty)"
+182: 	exit 0
+183: fi
+184:
+185: if ! test -e include/config/auto.conf; then
+186: 	echo "Error: kernelrelease not valid - run 'make prepare' to update it" >&2
+187: 	exit 1
+188: fi
+189:
+190: # version string from CONFIG_LOCALVERSION
+191: config_localversion=$(sed -n 's/^CONFIG_LOCALVERSION=\(.*\)$/\1/p' include/config/auto.conf)
+192:
+193: # scm version string if not at the kernel version tag or at the file_localversion
+194: if grep -q "^CONFIG_LOCALVERSION_AUTO=y$" include/config/auto.conf; then
+195: 	# full scm version string
+196: 	scm_version="$(scm_version)"
+197: elif [ "${LOCALVERSION+set}" != "set" ]; then
+198: 	# If the variable LOCALVERSION is not set, append a plus
+199: 	# sign if the repository is not in a clean annotated or
+200: 	# signed tagged state (as git describe only looks at signed
+201: 	# or annotated tags - git tag -a/-s).
+202: 	#
+203: 	# If the variable LOCALVERSION is set (including being set
+204: 	# to an empty string), we don't want to append a plus sign.
+205: 	scm_version="$(scm_version --short)"
+206: fi
+207:
+208: echo "${KERNELVERSION}${file_localversion}${config_localversion}${LOCALVERSION}${scm_version}"

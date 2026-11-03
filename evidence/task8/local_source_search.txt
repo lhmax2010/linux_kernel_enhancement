@@ -1,0 +1,13 @@
+COMMAND: git -C linux-rpi ls-files *kdbus* *logger* *dm-bow* *inform-reboot* *extcon-usb-fixed* *proc-tsm*
+drivers/gpu/drm/amd/display/dc/basics/calcs_logger.h
+drivers/gpu/drm/amd/display/dc/basics/logger.h
+drivers/gpu/drm/amd/display/dc/dml/dml_logger.h
+drivers/gpu/drm/amd/display/include/logger_interface.h
+drivers/gpu/drm/amd/display/include/logger_types.h
+drivers/md/dm-vdo/logger.c
+drivers/md/dm-vdo/logger.h
+drivers/platform/chrome/cros_usbpd_logger.c
+EXIT=0
+Other searched locations: existing temp/task5b/rpms and public-index, evidence/task5b, evidence/task7, config, and newly fetched public Tizen repos only. vendor_local excluded.
+Public Gitweb HTTP403; first repodata URL without packages/ HTTP404; corrected metadata and RPM URLs downloaded successfully.
+Module image files not found in primary/filelists; actual same-build KS/log show MIC image generation.

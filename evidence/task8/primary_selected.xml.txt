@@ -1,0 +1,61 @@
+<ns0:package xmlns:ns0="http://linux.duke.edu/metadata/common" xmlns:ns1="http://linux.duke.edu/metadata/rpm" type="rpm">
+  <ns0:name>linux-tizen-modules-rpi4</ns0:name>
+  <ns0:arch>armv7l</ns0:arch>
+  <ns0:version epoch="0" ver="11.0.0" rel="0" vcs="platform/kernel/linux-tizen-modules#36d0925699ac0ffc1ce3854ed838a48d24a56c28" />
+  <ns0:checksum type="sha256" pkgid="YES">4272a7fe45eac0ae87b35e6a7ea2512eb763cbd225cc832a1dfca18c9a8f8941</ns0:checksum>
+  <ns0:summary>Tizen modules for RaspberryPI 4</ns0:summary>
+  <ns0:description />
+  <ns0:packager />
+  <ns0:url />
+  <ns0:time file="1793203603" build="0" />
+  <ns0:size package="92240" installed="291714" archive="293656" />
+  <ns0:location href="armv7l/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm" />
+  <ns0:format>
+    <ns1:license>GPL-2.0+</ns1:license>
+    <ns1:vendor>tizen</ns1:vendor>
+    <ns1:group>System/Kernel</ns1:group>
+    <ns1:buildhost />
+    <ns1:sourcerpm>linux-tizen-modules-11.0.0-0.src.rpm</ns1:sourcerpm>
+    <ns1:header-range start="4504" end="9536" />
+    <ns1:provides>
+      <ns1:entry name="linux-tizen-modules-rpi4" flags="EQ" epoch="0" ver="11.0.0" rel="0" />
+      <ns1:entry name="linux-tizen-modules-rpi4(armv7l-32)" flags="EQ" epoch="0" ver="11.0.0" rel="0" />
+      <ns1:entry name="stability-monitor-kernel-module" />
+    </ns1:provides>
+    <ns1:requires>
+      <ns1:entry name="/bin/sh" pre="1" />
+      <ns1:entry name="arm-rpi4-linux-kernel-modules" />
+      <ns1:entry name="coreutils" pre="1" />
+      <ns1:entry name="findutils" pre="1" />
+      <ns1:entry name="kmod-compat" pre="1" />
+    </ns1:requires>
+  </ns0:format>
+</ns0:package>
+
+<ns0:package xmlns:ns0="http://linux.duke.edu/metadata/common" xmlns:ns1="http://linux.duke.edu/metadata/rpm" type="rpm">
+  <ns0:name>linux-tizen-modules-source</ns0:name>
+  <ns0:arch>armv7l</ns0:arch>
+  <ns0:version epoch="0" ver="11.0.0" rel="0" vcs="platform/kernel/linux-tizen-modules-source#25797e8af7ed95a5783bbe84c11959560aaf7e92" />
+  <ns0:checksum type="sha256" pkgid="YES">d08170ca4529dd8d0d27c09bc9ae6c7bfc38c3762b4e4688940db08c655aa19e</ns0:checksum>
+  <ns0:summary>Source code for Tizen-specific kernel modules</ns0:summary>
+  <ns0:description>This package contains source code for Tizen-specific kernel modules:
+- logger - provides in-kernel ring buffers for purpose of logging (via dlog)
+- proc-tsm - provides system-wide process infromation for monitoring purpose (via stability monitor)</ns0:description>
+  <ns0:packager />
+  <ns0:url />
+  <ns0:time file="1793203603" build="0" />
+  <ns0:size package="123424" installed="559754" archive="568928" />
+  <ns0:location href="armv7l/linux-tizen-modules-source-11.0.0-0.armv7l.rpm" />
+  <ns0:format>
+    <ns1:license>GPL-2.0+, GPL-2.0, LGPL-2.1+</ns1:license>
+    <ns1:vendor>tizen</ns1:vendor>
+    <ns1:group>System/Kernel</ns1:group>
+    <ns1:buildhost />
+    <ns1:sourcerpm>linux-tizen-modules-source-11.0.0-0.src.rpm</ns1:sourcerpm>
+    <ns1:header-range start="4504" end="14220" />
+    <ns1:provides>
+      <ns1:entry name="linux-tizen-modules-source" flags="EQ" epoch="0" ver="11.0.0" rel="0" />
+      <ns1:entry name="linux-tizen-modules-source(armv7l-32)" flags="EQ" epoch="0" ver="11.0.0" rel="0" />
+    </ns1:provides>
+  </ns0:format>
+</ns0:package>

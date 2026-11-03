@@ -1,0 +1,202 @@
+SOURCE: linux-rpi/packaging/linux-rpi.spec
+SHA256: 03cc402251ff955763eea39a653e6cd986a9b06d85950236d3eeee958c9d30ff
+
+LINES 1-28
+1: # Ignore double dash in version for rpmbuild
+2: %define _wrong_version_format_terminate_build 0
+3:
+4: %define config_name tizen_bcm2711_defconfig
+5: %ifarch aarch64
+6: %define buildarch arm64
+7: %else
+8: %define buildarch arm
+9: %endif
+10: %define target_board rpi4
+11: %define variant %{buildarch}-%{target_board}
+12:
+13: Name: rpi4-linux-kernel
+14: Summary: The Linux Kernel for Raspberry Pi4
+15: Version: 6.12.80
+16: Release: 0
+17: License: GPL-2.0
+18: ExclusiveArch: %{arm} aarch64
+19: Group: System/Kernel
+20: Vendor: The Linux Community
+21: URL: https://www.kernel.org
+22: Source0:   linux-kernel-%{version}.tar.xz
+23: Source1001: linux-rpi.manifest
+24: BuildRoot: %{_tmppath}/%{name}-%{PACKAGE_VERSION}-root
+25:
+26: %define fullVersion %{version}_%{buildarch}_%{target_board}
+27:
+28: BuildRequires: bc
+
+LINES 164-225
+164:
+165: %{?_toolchain:
+166: %if %{toolchain_is clang}
+167: export LLVM=1
+168: %endif
+169: }
+170:
+171: # LSM configuration fragment selection
+172: %if "%{?dev_sel}" == "1"
+173: %define lsm_fragment kernel/configs/selinux.config
+174: %else
+175: %if "%{?dev_wos}" == "1"
+176: %define lsm_fragment kernel/configs/nosmack.config
+177: %endif
+178: %endif
+179:
+180: for target in %{variant} %{variant}-rt; do
+181:     echo "-${target}" > localversion-tizen
+182:
+183:     # extract uapi headers
+184:     make O=build/${target} headers_install %{?_smp_mflags}
+185:
+186:     # Set config file
+187:     BASE_CONFIG="arch/%{buildarch}/configs/%{config_name}"
+188:     EXTRA_FRAGMENTS=""
+189:
+190:     case $target in
+191: 	%{variant})
+192: 	    EXTRA_FRAGMENTS="%{?lsm_fragment}"
+193: 	;;
+194: 	%{variant}-rt)
+195: 	    EXTRA_FRAGMENTS="kernel/configs/rt.config %{?lsm_fragment}"
+196: 	;;
+197:     esac
+198:
+199:     mkdir -p build/${target}
+200:     ./scripts/kconfig/merge_config.sh -m -O build/${target} ${BASE_CONFIG} ${EXTRA_FRAGMENTS}
+201:     make O=build/${target} olddefconfig %{?_smp_mflags}
+202:
+203:     if [ "${target}" = "%{variant}" ]; then
+204:         # Build perf
+205:         # WERROR=0 make O=build/${target} -s -C tools/lib/traceevent %{?_smp_mflags}
+206:         WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" %{?_smp_mflags} NO_LIBTRACEEVENT=1 NO_JEVENTS=1
+207:
+208:         # Build bpftool
+209:         WERROR=0 make O=build/${target} -s -C tools/bpf/bpftool %{?_smp_mflags}
+210:     fi
+211:
+212:     # Build Image/Image.gz
+213:     make O=build/${target} %{?_smp_mflags}
+214:
+215:     # Build dtbs
+216:     make O=build/${target} dtbs %{?_smp_mflags}
+217:
+218:     # Build modules
+219:     make O=build/${target} modules %{?_smp_mflags}
+220:
+221:     if [ "${target}" = "%{variant}" ]; then
+222:        # Create directory for BTF data
+223:        mkdir -p build/${target}/btf
+224:
+225:        # Generate vmlinux.h from vmlinux binary
+
+LINES 234-245
+234: %{?_toolchain:
+235: %if %{toolchain_is clang}
+236: export LLVM=1
+237: %endif
+238: }
+239:
+240: # Destination directories
+241: mkdir -p %{buildroot}/boot
+242: mkdir -p %{buildroot}/lib/modules
+243:
+244: # Install boot binary files
+245: %ifarch aarch64
+
+LINES 269-307
+269:             install -m 644 build/${target}/arch/%{buildarch}/boot/zImage %{buildroot}/boot/zImage
+270: %endif
+271:
+272:             # Install perf
+273:             WERROR=0 make O=build/${target} -s -C tools/perf EXTRA_CFLAGS="-fPIE" DESTDIR=%{buildroot}/usr install NO_LIBTRACEEVENT=1 NO_JEVENTS=1
+274:
+275: 	    # Install bpftool
+276:             mkdir -p %{buildroot}/usr/sbin
+277:             install -m 755 build/${target}/bpftool %{buildroot}/usr/sbin/
+278:
+279: 	    # Install vmlinux.h header
+280:             mkdir -p %{buildroot}/usr/include/bpf
+281:             install -m 644 build/${target}/btf/vmlinux.h %{buildroot}/usr/include/bpf/vmlinux.h
+282:
+283: 	    rm -rf %{buildroot}/usr/etc
+284:             rm -rf %{buildroot}/usr/lib/debug
+285:             rm -rf %{buildroot}/usr/lib/perf
+286:             rm -rf %{buildroot}/usr/share
+287:             find %{buildroot}/usr/libexec/ -type f -exec grep -ql '^#!/bin/bash' {} \; -exec rm -f {} \;
+288:
+289: 	;;
+290: 	%{variant}-rt)
+291: %ifarch aarch64
+292:             install -m 644 build/${target}/arch/%{buildarch}/boot/Image %{buildroot}/boot/Image_rt
+293: %else
+294:             install -m 644 build/${target}/arch/%{buildarch}/boot/zImage %{buildroot}/boot/zImage_rt
+295: %endif
+296: 	;;
+297:     esac
+298:
+299:     # Install modules
+300:     make O=build/${target} INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=%{buildroot} modules_install
+301:
+302:     # Copy files for devel package
+303:     mkdir -p %{buildroot}/boot/kernel/devel/kernel-devel-${target}
+304:     rsync -r \
+305: 	  --include "/scripts/**.c" \
+306: 	  --exclude "/debug*.list" \
+307: 	  --exclude "/documentation.list" \
+
+LINES 324-372
+324: 	  --exclude "*.S" \
+325: 	  --exclude "*.HEX" \
+326: 	  --exclude "/build/" \
+327: 	  ./ build/${target}/ %{buildroot}/boot/kernel/devel/kernel-devel-${target}
+328:
+329:     # Replace #!/bin/bash and #! /bin/bash with #!/bin/sh for dash compatibility
+330:     find %{buildroot}/boot/kernel/devel/kernel-devel-${target} -type f \
+331:       -exec grep -qlE '^#! ?/bin/bash' {} \; -exec sed -i -E 's|^#! ?/bin/bash|#!/bin/sh|g' {} \;
+332: done
+333:
+334: %clean
+335: rm -rf %{buildroot}
+336:
+337: %post -n %{variant}-rt-linux-kernel
+338: %ifarch aarch64
+339: mv /boot/Image_rt /boot/Image
+340: %else
+341: mv /boot/zImage_rt /boot/zImage
+342: %endif
+343:
+344: %preun -n %{variant}-rt-linux-kernel
+345: %ifarch aarch64
+346: mv /boot/Image /boot/Image_rt
+347: %else
+348: mv /boot/zImage /boot/zImage_rt
+349: %endif
+350:
+351: %files -n %{variant}-linux-kernel-modules
+352: %ifarch aarch64
+353: /lib/modules/*%{variant}-v8/
+354: %else
+355: /lib/modules/*%{variant}-v7l/
+356: %endif
+357:
+358: %files -n %{variant}-rt-linux-kernel-modules
+359: %ifarch aarch64
+360: /lib/modules/*%{variant}-rt-v8/
+361: %else
+362: /lib/modules/*%{variant}-rt-v7l/
+363: %endif
+364:
+365: %files -n %{variant}-linux-kernel-devel
+366: /boot/kernel/devel/*%{variant}/
+367:
+368: %files -n %{variant}-rt-linux-kernel-devel
+369: /boot/kernel/devel/*%{variant}-rt/
+370:
+371: %files -n %{variant}-linux-kernel-btf-devel
+372: /usr/include/bpf/vmlinux.h

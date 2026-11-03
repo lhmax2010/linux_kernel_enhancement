@@ -1,0 +1,14 @@
+[
+  {
+    "package": "linux-tizen-modules-rpi4",
+    "expected_sha256": "4272a7fe45eac0ae87b35e6a7ea2512eb763cbd225cc832a1dfca18c9a8f8941",
+    "actual_sha256": "4272a7fe45eac0ae87b35e6a7ea2512eb763cbd225cc832a1dfca18c9a8f8941",
+    "pass": true
+  },
+  {
+    "package": "linux-tizen-modules-source",
+    "expected_sha256": "d08170ca4529dd8d0d27c09bc9ae6c7bfc38c3762b4e4688940db08c655aa19e",
+    "actual_sha256": "d08170ca4529dd8d0d27c09bc9ae6c7bfc38c3762b4e4688940db08c655aa19e",
+    "pass": true
+  }
+]

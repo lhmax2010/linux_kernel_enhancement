@@ -1,0 +1,30 @@
+[
+  {
+    "file": "repomd.xml",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/repodata/repomd.xml",
+    "exit": 0,
+    "bytes": 4476,
+    "sha256": "7608f250c7305351b3db6abb587a18964d33e48409577166876bbe9493c897ed"
+  },
+  {
+    "file": "source_index.html",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/source/",
+    "exit": 0,
+    "bytes": 142777,
+    "sha256": "65f61d30b0007d66ac7cb03b3142494d31ddaeb4a55cfa5ae77d8c34a7bc03c6"
+  },
+  {
+    "file": "modules.rpm",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm",
+    "exit": 0,
+    "bytes": 92240,
+    "sha256": "4272a7fe45eac0ae87b35e6a7ea2512eb763cbd225cc832a1dfca18c9a8f8941"
+  },
+  {
+    "file": "modules_source.rpm",
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/linux-tizen-modules-source-11.0.0-0.armv7l.rpm",
+    "exit": 0,
+    "bytes": 123424,
+    "sha256": "d08170ca4529dd8d0d27c09bc9ae6c7bfc38c3762b4e4688940db08c655aa19e"
+  }
+]

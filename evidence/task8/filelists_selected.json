@@ -1,0 +1,381 @@
+[
+  {
+    "package": {
+      "pkgid": "e4597fa0ab63553654fe4a69a704cd44196538d447bbf9e135595a46e8864811",
+      "name": "linux-tizen-modules-rpi4",
+      "arch": "aarch64"
+    },
+    "version": {
+      "epoch": "0",
+      "ver": "11.0.0",
+      "rel": "0"
+    },
+    "files": [
+      "/lib/modules/6.12.80-arm64-rpi4-v8/extra/dm-bow.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-v8/extra/extcon-usb-fixed.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-v8/extra/inform-reboot.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-v8/extra/kdbus/kdbus.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-v8/extra/logger.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-v8/extra/proc-tsm.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-v8/extra/zlogger/zlogger.ko",
+      "/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf",
+      "/lib/modules/modules-load.d/tizen-modules-rpi4.conf",
+      "/usr/share/licenses/linux-tizen-modules-rpi4",
+      "/usr/share/licenses/linux-tizen-modules-rpi4/COPYING"
+    ]
+  },
+  {
+    "package": {
+      "pkgid": "4272a7fe45eac0ae87b35e6a7ea2512eb763cbd225cc832a1dfca18c9a8f8941",
+      "name": "linux-tizen-modules-rpi4",
+      "arch": "armv7l"
+    },
+    "version": {
+      "epoch": "0",
+      "ver": "11.0.0",
+      "rel": "0"
+    },
+    "files": [
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/dm-bow.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/inform-reboot.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/kdbus/kdbus.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/zlogger/zlogger.ko",
+      "/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf",
+      "/lib/modules/modules-load.d/tizen-modules-rpi4.conf",
+      "/usr/share/licenses/linux-tizen-modules-rpi4",
+      "/usr/share/licenses/linux-tizen-modules-rpi4/COPYING"
+    ]
+  },
+  {
+    "package": {
+      "pkgid": "dafe4d07724f28b0012f4942489d546206953ec3e957f03868530bda22fc41da",
+      "name": "linux-tizen-modules-rpi4-aarch64",
+      "arch": "armv7l"
+    },
+    "version": {
+      "epoch": "0",
+      "ver": "11.0.0",
+      "rel": "0"
+    },
+    "files": [
+      "/.linux-tizen-modules/lib",
+      "/.linux-tizen-modules/lib/modules",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-v8",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-v8/extra",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-v8/extra/dm-bow.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-v8/extra/extcon-usb-fixed.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-v8/extra/inform-reboot.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-v8/extra/kdbus",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-v8/extra/kdbus/kdbus.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-v8/extra/logger.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-v8/extra/proc-tsm.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-v8/extra/zlogger",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-v8/extra/zlogger/zlogger.ko",
+      "/.linux-tizen-modules/lib/modules/modprobe.d",
+      "/.linux-tizen-modules/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf",
+      "/.linux-tizen-modules/lib/modules/modules-load.d",
+      "/.linux-tizen-modules/lib/modules/modules-load.d/tizen-modules-rpi4.conf",
+      "/.linux-tizen-modules/usr",
+      "/.linux-tizen-modules/usr/share",
+      "/.linux-tizen-modules/usr/share/licenses",
+      "/.linux-tizen-modules/usr/share/licenses/linux-tizen-modules-rpi4",
+      "/.linux-tizen-modules/usr/share/licenses/linux-tizen-modules-rpi4/COPYING"
+    ]
+  },
+  {
+    "package": {
+      "pkgid": "aa0b2f58cc2e2420c28530fb8fa5a7d0fc259e1fcf835fbad8de9ae729a4c12d",
+      "name": "linux-tizen-modules-rpi4-rt",
+      "arch": "aarch64"
+    },
+    "version": {
+      "epoch": "0",
+      "ver": "11.0.0",
+      "rel": "0"
+    },
+    "files": [
+      "/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/dm-bow.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/extcon-usb-fixed.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/inform-reboot.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/kdbus/kdbus.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/logger.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/proc-tsm.ko",
+      "/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/zlogger/zlogger.ko",
+      "/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf",
+      "/lib/modules/modules-load.d/tizen-modules-rpi4.conf",
+      "/usr/share/licenses/linux-tizen-modules-rpi4-rt",
+      "/usr/share/licenses/linux-tizen-modules-rpi4-rt/COPYING"
+    ]
+  },
+  {
+    "package": {
+      "pkgid": "1d81ce6f138ba59eef00da21d8516c8dd58f72cc01f6f9d7a94fb5b00f0abfaa",
+      "name": "linux-tizen-modules-rpi4-rt",
+      "arch": "armv7l"
+    },
+    "version": {
+      "epoch": "0",
+      "ver": "11.0.0",
+      "rel": "0"
+    },
+    "files": [
+      "/lib/modules/6.12.80-arm-rpi4-rt-v7l/extra/dm-bow.ko",
+      "/lib/modules/6.12.80-arm-rpi4-rt-v7l/extra/extcon-usb-fixed.ko",
+      "/lib/modules/6.12.80-arm-rpi4-rt-v7l/extra/inform-reboot.ko",
+      "/lib/modules/6.12.80-arm-rpi4-rt-v7l/extra/kdbus/kdbus.ko",
+      "/lib/modules/6.12.80-arm-rpi4-rt-v7l/extra/logger.ko",
+      "/lib/modules/6.12.80-arm-rpi4-rt-v7l/extra/proc-tsm.ko",
+      "/lib/modules/6.12.80-arm-rpi4-rt-v7l/extra/zlogger/zlogger.ko",
+      "/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf",
+      "/lib/modules/modules-load.d/tizen-modules-rpi4.conf",
+      "/usr/share/licenses/linux-tizen-modules-rpi4-rt",
+      "/usr/share/licenses/linux-tizen-modules-rpi4-rt/COPYING"
+    ]
+  },
+  {
+    "package": {
+      "pkgid": "e5432ae62005d3415aa3e02704b9b2484886fbe099cf4a51adcfa45cc51ff048",
+      "name": "linux-tizen-modules-rpi4-rt-aarch64",
+      "arch": "armv7l"
+    },
+    "version": {
+      "epoch": "0",
+      "ver": "11.0.0",
+      "rel": "0"
+    },
+    "files": [
+      "/.linux-tizen-modules/lib",
+      "/.linux-tizen-modules/lib/modules",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-rt-v8",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/dm-bow.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/extcon-usb-fixed.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/inform-reboot.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/kdbus",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/kdbus/kdbus.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/logger.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/proc-tsm.ko",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/zlogger",
+      "/.linux-tizen-modules/lib/modules/6.12.80-arm64-rpi4-rt-v8/extra/zlogger/zlogger.ko",
+      "/.linux-tizen-modules/lib/modules/modprobe.d",
+      "/.linux-tizen-modules/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf",
+      "/.linux-tizen-modules/lib/modules/modules-load.d",
+      "/.linux-tizen-modules/lib/modules/modules-load.d/tizen-modules-rpi4.conf",
+      "/.linux-tizen-modules/usr",
+      "/.linux-tizen-modules/usr/share",
+      "/.linux-tizen-modules/usr/share/licenses",
+      "/.linux-tizen-modules/usr/share/licenses/linux-tizen-modules-rpi4-rt",
+      "/.linux-tizen-modules/usr/share/licenses/linux-tizen-modules-rpi4-rt/COPYING"
+    ]
+  },
+  {
+    "package": {
+      "pkgid": "7398f3681b5468435b0cc3b8660b62c31b9d8e07473ccf327cac00513455e8db",
+      "name": "linux-tizen-modules-source",
+      "arch": "aarch64"
+    },
+    "version": {
+      "epoch": "0",
+      "ver": "11.0.0",
+      "rel": "0"
+    },
+    "files": [
+      "/usr/share/licenses/linux-tizen-modules-source",
+      "/usr/share/licenses/linux-tizen-modules-source/COPYING",
+      "/usr/src/linux-tizen-modules-source/COPYING",
+      "/usr/src/linux-tizen-modules-source/Makefile",
+      "/usr/src/linux-tizen-modules-source/dm-bow.c",
+      "/usr/src/linux-tizen-modules-source/dm-core.h",
+      "/usr/src/linux-tizen-modules-source/dm.h",
+      "/usr/src/linux-tizen-modules-source/extcon-usb-fixed.c",
+      "/usr/src/linux-tizen-modules-source/include/uapi/linux/kdbus.h",
+      "/usr/src/linux-tizen-modules-source/include/uapi/linux/logger.h",
+      "/usr/src/linux-tizen-modules-source/include/uapi/linux/zlogger.h",
+      "/usr/src/linux-tizen-modules-source/inform-reboot.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/Makefile",
+      "/usr/src/linux-tizen-modules-source/kdbus/bus.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/bus.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/connection.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/connection.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/domain.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/domain.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/endpoint.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/endpoint.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/fs.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/fs.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/handle.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/handle.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/item.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/item.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/limits.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/main.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/match.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/match.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/message.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/message.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/metadata.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/metadata.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/names.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/names.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/node.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/node.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/notify.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/notify.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/policy.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/policy.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/pool.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/pool.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/queue.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/queue.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/reply.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/reply.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/util.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/util.h",
+      "/usr/src/linux-tizen-modules-source/logger.c",
+      "/usr/src/linux-tizen-modules-source/proc-tsm.c",
+      "/usr/src/linux-tizen-modules-source/zlogger/Makefile",
+      "/usr/src/linux-tizen-modules-source/zlogger/zlogger.c"
+    ]
+  },
+  {
+    "package": {
+      "pkgid": "d08170ca4529dd8d0d27c09bc9ae6c7bfc38c3762b4e4688940db08c655aa19e",
+      "name": "linux-tizen-modules-source",
+      "arch": "armv7l"
+    },
+    "version": {
+      "epoch": "0",
+      "ver": "11.0.0",
+      "rel": "0"
+    },
+    "files": [
+      "/usr/share/licenses/linux-tizen-modules-source",
+      "/usr/share/licenses/linux-tizen-modules-source/COPYING",
+      "/usr/src/linux-tizen-modules-source/COPYING",
+      "/usr/src/linux-tizen-modules-source/Makefile",
+      "/usr/src/linux-tizen-modules-source/dm-bow.c",
+      "/usr/src/linux-tizen-modules-source/dm-core.h",
+      "/usr/src/linux-tizen-modules-source/dm.h",
+      "/usr/src/linux-tizen-modules-source/extcon-usb-fixed.c",
+      "/usr/src/linux-tizen-modules-source/include/uapi/linux/kdbus.h",
+      "/usr/src/linux-tizen-modules-source/include/uapi/linux/logger.h",
+      "/usr/src/linux-tizen-modules-source/include/uapi/linux/zlogger.h",
+      "/usr/src/linux-tizen-modules-source/inform-reboot.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/Makefile",
+      "/usr/src/linux-tizen-modules-source/kdbus/bus.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/bus.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/connection.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/connection.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/domain.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/domain.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/endpoint.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/endpoint.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/fs.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/fs.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/handle.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/handle.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/item.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/item.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/limits.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/main.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/match.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/match.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/message.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/message.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/metadata.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/metadata.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/names.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/names.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/node.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/node.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/notify.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/notify.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/policy.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/policy.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/pool.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/pool.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/queue.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/queue.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/reply.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/reply.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/util.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/util.h",
+      "/usr/src/linux-tizen-modules-source/logger.c",
+      "/usr/src/linux-tizen-modules-source/proc-tsm.c",
+      "/usr/src/linux-tizen-modules-source/zlogger/Makefile",
+      "/usr/src/linux-tizen-modules-source/zlogger/zlogger.c"
+    ]
+  },
+  {
+    "package": {
+      "pkgid": "33174c4df81cc41986fea53839050eeddb8cc444e7cede15f5e4ff6cfb96aaff",
+      "name": "linux-tizen-modules-source",
+      "arch": "x86_64"
+    },
+    "version": {
+      "epoch": "0",
+      "ver": "11.0.0",
+      "rel": "0"
+    },
+    "files": [
+      "/usr/share/licenses/linux-tizen-modules-source",
+      "/usr/share/licenses/linux-tizen-modules-source/COPYING",
+      "/usr/src/linux-tizen-modules-source/COPYING",
+      "/usr/src/linux-tizen-modules-source/Makefile",
+      "/usr/src/linux-tizen-modules-source/dm-bow.c",
+      "/usr/src/linux-tizen-modules-source/dm-core.h",
+      "/usr/src/linux-tizen-modules-source/dm.h",
+      "/usr/src/linux-tizen-modules-source/extcon-usb-fixed.c",
+      "/usr/src/linux-tizen-modules-source/include/uapi/linux/kdbus.h",
+      "/usr/src/linux-tizen-modules-source/include/uapi/linux/logger.h",
+      "/usr/src/linux-tizen-modules-source/include/uapi/linux/zlogger.h",
+      "/usr/src/linux-tizen-modules-source/inform-reboot.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/Makefile",
+      "/usr/src/linux-tizen-modules-source/kdbus/bus.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/bus.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/connection.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/connection.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/domain.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/domain.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/endpoint.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/endpoint.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/fs.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/fs.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/handle.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/handle.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/item.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/item.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/limits.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/main.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/match.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/match.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/message.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/message.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/metadata.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/metadata.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/names.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/names.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/node.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/node.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/notify.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/notify.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/policy.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/policy.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/pool.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/pool.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/queue.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/queue.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/reply.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/reply.h",
+      "/usr/src/linux-tizen-modules-source/kdbus/util.c",
+      "/usr/src/linux-tizen-modules-source/kdbus/util.h",
+      "/usr/src/linux-tizen-modules-source/logger.c",
+      "/usr/src/linux-tizen-modules-source/proc-tsm.c",
+      "/usr/src/linux-tizen-modules-source/zlogger/Makefile",
+      "/usr/src/linux-tizen-modules-source/zlogger/zlogger.c"
+    ]
+  }
+]

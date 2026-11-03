@@ -1,0 +1,76 @@
+SOURCE: linux-rpi/scripts/Makefile.modinst
+SHA256: 4c4607a2c10b2e843682337c0a4d32c7d31f122361d9e19c5ce1e12997683940
+
+LINES 1-54
+1: # SPDX-License-Identifier: GPL-2.0
+2: # ==========================================================================
+3: # Installing modules
+4: # ==========================================================================
+5:
+6: PHONY := __modinst
+7: __modinst:
+8:
+9: include include/config/auto.conf
+10: include $(srctree)/scripts/Kbuild.include
+11:
+12: install-y :=
+13:
+14: ifeq ($(KBUILD_EXTMOD)$(sign-only),)
+15:
+16: # remove the old directory and symlink
+17: $(shell rm -fr $(MODLIB)/kernel $(MODLIB)/build)
+18:
+19: install-$(CONFIG_MODULES) += $(addprefix $(MODLIB)/, build modules.order)
+20:
+21: $(MODLIB)/build: FORCE
+22: 	$(call cmd,symlink)
+23:
+24: quiet_cmd_symlink = SYMLINK $@
+25:       cmd_symlink = ln -s $(CURDIR) $@
+26:
+27: $(MODLIB)/modules.order: modules.order FORCE
+28: 	$(call cmd,install_modorder)
+29:
+30: quiet_cmd_install_modorder = INSTALL $@
+31:       cmd_install_modorder = sed 's:^\(.*\)\.o$$:kernel/\1.ko:' $< > $@
+32:
+33: # Install modules.builtin(.modinfo,.ranges) even when CONFIG_MODULES is disabled.
+34: install-y += $(addprefix $(MODLIB)/, modules.builtin modules.builtin.modinfo)
+35:
+36: install-$(CONFIG_BUILTIN_MODULE_RANGES) += $(MODLIB)/modules.builtin.ranges
+37:
+38: $(addprefix $(MODLIB)/, modules.builtin modules.builtin.modinfo modules.builtin.ranges): $(MODLIB)/%: % FORCE
+39: 	$(call cmd,install)
+40:
+41: endif
+42:
+43: modules := $(call read-file, $(MODORDER))
+44:
+45: ifeq ($(KBUILD_EXTMOD),)
+46: dst := $(MODLIB)/kernel
+47: else
+48: INSTALL_MOD_DIR ?= updates
+49: dst := $(MODLIB)/$(INSTALL_MOD_DIR)
+50: endif
+51:
+52: $(foreach x, % :, $(if $(findstring $x, $(dst)), \
+53: 	$(error module installation path cannot contain '$x')))
+54:
+
+LINES 130-145
+130: PHONY += depmod
+131: depmod: $(install-y)
+132: 	$(call cmd,depmod)
+133:
+134: quiet_cmd_depmod = DEPMOD  $(MODLIB)
+135:       cmd_depmod = $(srctree)/scripts/depmod.sh $(KERNELRELEASE)
+136: endif
+137:
+138: else
+139:
+140: $(dst)/%.ko: FORCE
+141: 	$(call cmd,sign)
+142:
+143: endif
+144:
+145: #

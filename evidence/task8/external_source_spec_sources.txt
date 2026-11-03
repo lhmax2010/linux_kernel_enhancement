@@ -1,0 +1,59 @@
+SOURCE: temp/task8/repos/linux-tizen-modules-source/packaging/linux-tizen-modules-source.spec
+SHA256: 879680dba35b133e077344a9085bbe32b2d1cd2260c2093be7a13289401d650a
+
+LINES 1-18
+1: Name:           linux-tizen-modules-source
+2: Version:        11.0.0
+3: Release:        0
+4: License:        GPL-2.0+, GPL-2.0, LGPL-2.1+
+5: Source0:        %{name}-%{version}.tar.xz
+6: Source1:        %{name}.manifest
+7: Summary:        Source code for Tizen-specific kernel modules
+8: Group:          System/Kernel
+9: %description
+10: This package contains source code for Tizen-specific kernel modules:
+11: - logger - provides in-kernel ring buffers for purpose of logging (via dlog)
+12: - proc-tsm - provides system-wide process infromation for monitoring purpose (via stability monitor)
+13:
+14: %package        -n linux-tizen-modules-headers
+15: Summary:        Tizen-specific kernel modules headers
+16: License:        GPL-2.0+
+17: Group:          System/Kernel
+18: %description    -n linux-tizen-modules-headers
+
+LINES 42-76
+42: mkdir -p %{buildroot}/usr/src/%{name}/kdbus
+43: mkdir -p %{buildroot}/usr/src/%{name}/zlogger
+44: mkdir -p %{buildroot}/%{_includedir}/linux
+45: mkdir -p %{buildroot}/%{_libexecdir}/%{name}/tests
+46:
+47: cp -a include/ %{buildroot}/usr/src/%{name}
+48: cp kernel/*.[ch] kernel/Makefile COPYING %{buildroot}/usr/src/%{name}
+49: cp kernel/kdbus/*.[ch] kernel/kdbus/Makefile %{buildroot}/usr/src/%{name}/kdbus
+50: cp kernel/zlogger/*.c kernel/zlogger/Makefile %{buildroot}/usr/src/%{name}/zlogger
+51:
+52: cp include/uapi/linux/kdbus.h %{buildroot}/%{_includedir}/linux
+53: cp include/uapi/linux/logger.h %{buildroot}/%{_includedir}/linux
+54: cp include/uapi/linux/zlogger.h %{buildroot}/%{_includedir}/linux
+55:
+56: cp tests/logger/logger-test %{buildroot}/%{_libexecdir}/%{name}/tests/logger-test
+57: cp tests/kdbus/kdbus-test %{buildroot}/%{_libexecdir}/%{name}/tests/kdbus-test
+58: cp tests/zlog_stdout/zlog_stdout %{buildroot}/%{_libexecdir}/%{name}/tests/zlog_stdout
+59: cp tests/zlog_bitmap/zlog_bitmap %{buildroot}/%{_libexecdir}/%{name}/tests/zlog_bitmap
+60:
+61: %files
+62: %manifest %{name}.manifest
+63: %license COPYING
+64: /usr/src/%{name}/COPYING
+65: /usr/src/%{name}/*.c
+66: /usr/src/%{name}/*.h
+67: /usr/src/%{name}/Makefile
+68: /usr/src/%{name}/kdbus/*.c
+69: /usr/src/%{name}/kdbus/*.h
+70: /usr/src/%{name}/kdbus/Makefile
+71: /usr/src/%{name}/include/uapi/linux/*.h
+72:
+73: /usr/src/%{name}/zlogger/*.c
+74: /usr/src/%{name}/zlogger/Makefile
+75:
+76: %files -n linux-tizen-modules-headers

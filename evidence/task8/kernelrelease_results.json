@@ -1,0 +1,32 @@
+[
+  {
+    "target": "arm-rpi4",
+    "suffix": "-lko-base01",
+    "expected": "6.12.80-arm-rpi4-v7l-lko-base01",
+    "stdout": "6.12.80-arm-rpi4-v7l-lko-base01\n",
+    "stderr": "",
+    "exit": 0,
+    "seconds": 2.880583852995187,
+    "pass": true
+  },
+  {
+    "target": "arm-rpi4-rt",
+    "suffix": "-lko-base01",
+    "expected": "6.12.80-arm-rpi4-rt-v7l-lko-base01",
+    "stdout": "6.12.80-arm-rpi4-rt-v7l-lko-base01\n",
+    "stderr": "",
+    "exit": 0,
+    "seconds": 0.2967930909944698,
+    "pass": true
+  },
+  {
+    "target": "arm-rpi4",
+    "suffix": "-lko-vbase01",
+    "expected": "6.12.80-arm-rpi4-v7l-lko-vbase01",
+    "stdout": "6.12.80-arm-rpi4-v7l-lko-vbase01\n",
+    "stderr": "",
+    "exit": 0,
+    "seconds": 0.2922560019651428,
+    "pass": true
+  }
+]
