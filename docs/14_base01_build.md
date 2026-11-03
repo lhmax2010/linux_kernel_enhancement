@@ -1,4 +1,8 @@
-# 任务9：干净基线构建——第一段静态门槛未通过
+# 任务9：干净基线构建与前置检查
+
+**最新状态（2026-11-03续跑）：PM已裁定静态门槛通过，普通/RT kernelrelease复验通过；停在独立GBS root初始化前。已安装GBS/depanneur的初始化路径会执行sudo，与本轮“不用sudo”的约束不兼容。未启动GBS或任何构建。详见第5节。**
+
+第1–4节保留上一轮准备/停止记录，第2.3节是本轮PM裁决；旧的静态不通过项及补导出建议已由该裁决覆盖。
 
 日期：2026-11-03（Asia/Shanghai）。**停在第一段第2项，没有进入构建环境初始化或第二段构建。** 本轮已完成三个本地分支和两次指定的本地提交；未连接开发板、未部署、未执行GBS/export/sudo、未发信号、未推Gerrit或触发Quickbuild，没有访问vendor_local。
 
@@ -48,6 +52,16 @@ RPi内核模块、devel和14条树外模块路径（普通/RT各7个）已经带
 
 这些共享路径与12第5节及PM批准的zImage命名相符；它们不是漏改版本模块目录。建议明确门槛为“所有RPi版本模块目录和devel目录均带后缀”，列明上述共享路径例外。若确实要求所有包路径都带后缀，则需要重新设计打包/部署方案；本轮没有擅自改zImage名、共享配置路径或放行例外。
 
+### 2.3 PM裁决（任务9续跑，2026-11-03）
+
+以下为PM对上一轮两条不通过项的裁决，覆盖2.1/2.2及第4节的历史待办，不修改原始检查证据：
+
+- 树外模块 %install 不补 LOCALVERSION。理由：%install 只复制 %build 已产生的 .ko，不调用 Kbuild；外部模块的 release 目录由 KERNELDIR 指向的 devel 树中 include/config/kernel.release 决定；%files 列的是带后缀的精确路径，若目录不对 rpmbuild 会因文件缺失失败，构建本身就是检查。
+- %files 后缀检查的门槛改为：RPi 普通/RT 的版本模块目录、devel 目录、%post 中 depmod 的 release 字符串必须带 -lko-base01；共享路径（/boot 下 zImage、zImage_rt、dtb、overlays、config.txt、固件文件，/usr/include、/usr/bin、/usr/libexec、/usr/sbin/bpftool，/usr/include/bpf/vmlinux.h，以及 modprobe.d、modules-load.d 两个配置）为允许例外。理由：上板按已批准方案手工替换 zImage（原文件保留为 zImage.orig），不在板上安装这些 RPM。
+- 按此门槛，上一轮 static_preflight.json 的结果判为通过。把裁决和判定写进证据（新文件 evidence/task9/static_preflight_rejudged.json，引用原 json 的 SHA，不改原文件）。
+
+执行判定：**PASS，仅限上述静态门槛**。原JSON保持逐字不变，SHA-256为`2beed081b1833db84bc067b1dff89c3803d4369055cea735dad16b076354bd15`。[重新判定证据](../evidence/task9/static_preflight_rejudged.json)。未补导出、未改任何spec、未新增或改写源码提交；新root/实际工具链和构建仍须独立检查。
+
 ## 3. 停止边界、产物与未执行项
 
 遵守“第一段任一失败就停下报告”，在完成这次静态检查后仅整理证据和收尾，没有执行后续kernelrelease复验或初始化新的GBS-ROOT。
@@ -74,3 +88,58 @@ RPi内核模块、devel和14条树外模块路径（普通/RT各7个）已经带
 先闭合第2节门槛：补齐树外模块%install的LOCALVERSION导出，并由PM明确%files共享路径的适用范围；重新完成第一段全部检查后，才能进入内核→source包→树外模块的GBS构建及产物验收。当前尚未到工具链或依赖解析阶段，不臆测新root的版本、依赖包来源或sudo认证状态。
 
 任务9尚未完成。成功构建且所有验收通过之后，下一步才是：**任务10：部署base01到RPi4并验证可以启动和回退（需要用户提前开板、在场）**。本次不满足任务10的执行前提。
+
+## 5. 任务9续跑：kernelrelease通过，环境初始化前停止
+
+### 5.1 源码身份和静态裁决
+
+开工重新核对三个HEAD、lko/base01分支及工作树：内核仍为`8c8f2429401d6b282373e58b73399801a9486d5b`，树外模块仍为`10deb822453c759f6f944baf067c8b16a48ad914`，source仍为`25797e8af7ed95a5783bbe84c11959560aaf7e92`，均干净。没有改spec、补LOCALVERSION、新增或改写源码提交。[开工断言](../evidence/task9/resume1_source_assertions.json)、[收尾状态](../evidence/task9/resume1_final_source_state.json)。
+
+按第2.3节PM裁决，静态结果改判PASS；原static_preflight.json保留，新增的static_preflight_rejudged.json引用原文件SHA，不替换历史证据。该通过不自动覆盖环境、构建和产物验收。
+
+### 5.2 kernelrelease本轮复验
+
+与任务8相同，使用已有LLVM平台root的qemu-arm/make只读计算版本字符串，内核源码只读绑定；本次O=输出均位于`temp/task9/resume1/kernelrelease/`。普通/RT分别从任务4对应配置复制.config和auto.conf，设置相应localversion-tizen，执行`ARCH=arm LLVM=1 LOCALVERSION=-lko-base01 -j1 kernelrelease`。这仅是用户指定的任务8式前置检查；没有将旧root复制或用于任务9实际构建。
+
+| 变体 | 输出 | 退出码 | 耗时 |
+|---|---|---:|---:|
+| 普通 | 6.12.80-arm-rpi4-v7l-lko-base01 | 0 | 3.223529秒 |
+| RT | 6.12.80-arm-rpi4-rt-v7l-lko-base01 | 0 | 0.304571秒 |
+
+无.o生成，源码HEAD及工作树保持不变。[普通版完整命令](../evidence/task9/resume1_kernelrelease_arm-rpi4.txt)、[RT完整命令](../evidence/task9/resume1_kernelrelease_arm-rpi4-rt.txt)、[结果JSON](../evidence/task9/resume1_kernelrelease_results.json)、[执行脚本](../evidence/task9/resume1_kernelrelease_driver.py.txt)。两项合计约3.528秒，**不是构建耗时**。
+
+### 5.3 环境初始化检查与确定的阻塞
+
+已新建独立目录`temp/task9/GBS-ROOT-LKO-BASE01/`，保持空目录，尚未初始化；没有复用或复制其他任务的GBS-ROOT。`config/gbs_llvm.conf`与Git记录逐字一致，未修改。只读确认现有隔离HOME的.gbs.conf及仅含注释的.gbp.conf可用，/etc/gbs.conf不存在；配置与文件哈希见[环境门槛记录](../evidence/task9/resume1_environment_gate.json)。
+
+指定新root不必修改配置：`/usr/bin/gbs:204–209`支持`-B/--buildroot`，`gitbuildsys/cmd_build.py:686–695`优先采用命令行buildroot。因此本轮预定覆盖值为`-B $WS/temp/task9/GBS-ROOT-LKO-BASE01`，原config只读引用，三个隔离变量按RULES保留。**这只是已核对的参数方案，没有执行GBS。**
+
+阻塞来自已安装工具的实际调用路径，而非对认证缓存的推测：[当前工具源码摘录及SHA](../evidence/task9/resume1_gbs_privilege_audit.txt)。
+
+1. `gitbuildsys/cmd_build.py:725–730`生成depanneur命令并由os.system执行。
+2. `/usr/bin/depanneur:3164–3174`在启动路径设置认证维持回调并立即触发，回调明确调用`sudo /bin/echo -n`。
+3. `/usr/bin/depanneur:2048`无条件把`sudo /usr/bin/build`放入实际构建命令；`:2177–2183`的初始化用--no-build分支也是基于同一命令，不是无sudo初始化通道。
+4. `:2247`初始化后保存dist配置仍调用sudo。`--noinit`仅跳过初始化；`:529–548`要求已有scratch和配置，`:2067`不移除上述sudo调用，所以既不满足独立新root初始化要求，也不是不用sudo的解决办法。
+
+当前执行身份为uid1000。此前任务2的成功GBS由用户终端启动，文档03明确记录工具自身会调用sudo；不能据此把本轮“不用sudo”解释为允许间接执行。**本轮未执行sudo -v/-n/-l、未尝试密码、未运行GBS探测认证状态、未修改已安装工具或建立sudo替代脚本。** 也没有通过复制旧root、改走宿主工具链或提前编译跳过前置检查。
+
+因此停在“第一段剩余检查第2项：独立GBS-ROOT初始化”。这不是初始化命令返回失败、不是认证失败、不是工具链版本不一致，更不是内核编译失败：初始化命令尚未发出，clang/ld.lld版本及22.1.8一致性均未知。若继续沿用本机现有GBS链，需要PM明确是否允许GBS工具自身的sudo调用及由谁启动；若要求全过程完全不调用sudo，则须另行确定构建环境。本轮没有自行选择替代方案，也没有索要密码。
+
+### 5.4 已产生内容、未执行项及下一步
+
+已产生：新静态改判证据、两个kernelrelease输出目录/日志、空独立root目录、只读初始化调用链审计，以及本轮文档。历史源码提交和上轮原始证据保留。
+
+| 验收项目 | 本轮结果 |
+|---|---|
+| kernelrelease普通/RT | 两项通过 |
+| 新root中的Clang/LLD是否22.1.8 | 未初始化，未核验 |
+| 内核、source包、树外模块构建 | 均未启动；build_kernel.log、build_modules.log未创建，无BUILD-END可记录 |
+| 新zImage/RT版本、大小、SHA与原厂差值 | 无新产物，未核验 |
+| 模块合并、共享配置比较、depmod | 未执行 |
+| vermagic数量/不一致项、7个extra的CRC总比较数/不一致项 | 未取得；不能把未测写成0项不一致 |
+| 新.config与QB1211696差异 | 无新构建.config，未比较 |
+| 模块目录大小与三套容量 | 无新实测；任务8的估算不升级为实际结果 |
+| deploy_lko-base01部署包及逐文件哈希 | 未生成 |
+| 构建总耗时 | 未开始构建，无构建耗时数据 |
+
+没有创建构建进程组、root子进程或持久构建挂载，无需发送信号或清理残留。静态检查namespace随命令自然退出；未连接任何开发板。下一步先闭合GBS初始化权限边界、完成任务9全部前置和构建验收；之后才是**任务10：部署base01到RPi4并验证可以启动和回退（需要用户提前开板、在场）**。当前不可部署。

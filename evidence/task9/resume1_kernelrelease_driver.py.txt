@@ -1,0 +1,21 @@
+from pathlib import Path
+import os,subprocess,shutil,shlex,time,json
+W=Path('/home/linhao/Toolchain/development/linux_kernel_optimization');T=W/'temp/task9/resume1';E=W/'evidence/task9';R=W/'temp/GBS-ROOT-TIZEN-LLVM-CODES/local/BUILD-ROOTS/scratch.armv7l.0';S=Path('/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80');N=T/'namespace_home'
+for p in [S.relative_to('/home'),(W/'temp').relative_to('/home')]: (N/p).mkdir(parents=True,exist_ok=True)
+rows=[]
+for target in ['arm-rpi4','arm-rpi4-rt']:
+ out=T/'kernelrelease'/target;(out/'include/config').mkdir(parents=True,exist_ok=False)
+ old=W/'temp/pmu_config_check/llvm'/target
+ for rel in ['.config','include/config/auto.conf']:shutil.copy2(old/rel,out/rel)
+ (out/'localversion-tizen').write_text('-'+target+'\n')
+ cmd=['/usr/bin/bwrap','--unshare-user','--unshare-pid','--ro-bind',str(R),'/','--bind',str(N),'/home','--bind',str(W/'temp'),str(W/'temp'),'--ro-bind',str(W/'linux-rpi'),str(S),'--proc','/proc','--dev','/dev','--chdir',str(T),'--setenv','HOME','/home/abuild','--setenv','TMPDIR',str(W/'temp'),'--setenv','PYTHONDONTWRITEBYTECODE','1','--setenv','PATH','/usr/bin:/bin:/usr/sbin:/sbin','--','/usr/bin/qemu-arm','-L','/','/usr/bin/make','-s','-C',str(S),'O='+str(out),'ARCH=arm','LLVM=1','LOCALVERSION=-lko-base01','MAKE=/usr/bin/qemu-arm -L / /usr/bin/make','-j1','kernelrelease']
+ start=time.monotonic();p=subprocess.run(cmd,capture_output=True,text=True,env=dict(os.environ,TMPDIR=str(W/'temp'),PYTHONDONTWRITEBYTECODE='1'));elapsed=time.monotonic()-start
+ log='$ '+shlex.join(cmd)+'\n'+p.stdout+p.stderr+f'\nEXIT={p.returncode}\nSECONDS={elapsed:.6f}\n'
+ (T/f'kernelrelease_{target}.log').write_text(log);(E/f'resume1_kernelrelease_{target}.txt').write_text(log)
+ expected='6.12.80-'+target+'-v7l-lko-base01';row={'target':target,'expected':expected,'stdout':p.stdout,'stderr':p.stderr,'exit':p.returncode,'seconds':elapsed,'passed':p.returncode==0 and p.stdout.strip()==expected}
+ rows.append(row);(E/'resume1_kernelrelease_results.json').write_text(json.dumps(rows,indent=2)+'\n');print(row,flush=True)
+ if not row['passed']:raise SystemExit(1)
+assert not list((T/'kernelrelease').rglob('*.o'))
+assert subprocess.check_output(['git','-C',str(W/'linux-rpi'),'rev-parse','HEAD'],text=True).strip()=='8c8f2429401d6b282373e58b73399801a9486d5b'
+assert not subprocess.check_output(['git','-C',str(W/'linux-rpi'),'status','--porcelain'],text=True)
+print('PASS: both releases; no object files; source HEAD/status unchanged. Old root used read-only for the task8-style string check only, not as task9 build root.')

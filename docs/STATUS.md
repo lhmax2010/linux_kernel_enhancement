@@ -4,13 +4,14 @@
 
 更新：2026-11-03（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
-**任务9停在第一段第2项静态门槛，尚未构建。** [14预检报告](14_base01_build.md)、[证据](../evidence/task9/README.md)。未连接开发板、未执行GBS/sudo、未发信号、未推Gerrit或触发QB。
+**任务9续跑停在第一段剩余检查第2项：独立GBS root初始化前。** [14本轮记录](14_base01_build.md#5-任务9续跑kernelrelease通过环境初始化前停止)、[环境门槛](../evidence/task9/resume1_environment_gate.json)。没有启动GBS/构建/sudo、未连接开发板、未发信号、未推Gerrit或触发QB。
 
-- 计划/进度：指定源码与分支准备完成→两个spec原样应用任务8 diff并各提交一次→平台rpmspec解析成功→语义门槛失败，后续kernelrelease复验、独立root/工具链检查、构建及产物核验均未执行。
-- 已闭合：内核lko/base01=`8c8f2429401d6b282373e58b73399801a9486d5b`；树外模块lko/base01=`10deb822453c759f6f944baf067c8b16a48ad914`；source仓库lko/base01仍为`25797e8af7ed95a5783bbe84c11959560aaf7e92`，不改源码。三树干净；lko/base仍0fac5de6；ext已忽略。证据见task9/source_integrity.json。
-- 停止原因：12第4.2节方案未在树外模块%install导出LOCALVERSION；两个spec还有共享boot/配置/头文件/工具路径不带后缀，不满足本轮“所有%files路径”的字面门槛。RPi版本模块/devel目录及depmod精确release检查通过。没有在失败后自行修spec或放行例外。
-- 需要PM裁决/挂账：补齐%install导出；明确后缀检查仅针对版本模块/devel目录还是也改共享路径。新root工具链、依赖来源、构建耗时、zImage/模块大小、vermagic/CRC、.config和部署包均未取得，不可部署。
-- 后续：先恢复并完成任务9；验收通过后下一步为“任务10：部署base01到RPi4并验证可以启动和回退（需要用户提前开板、在场）”。任务10当前前提未满足，原有U-Boot串口等挂账保留。
+- 计划/进度：三个HEAD和干净状态复核→登记PM静态改判→普通/RT kernelrelease复验，均完成；独立root路径已创建但为空，初始化及工具链门槛未通过，第二段未执行。
+- 已闭合：PM裁定树外模块%install不补LOCALVERSION，共享boot/配置/工具路径允许无后缀，原静态结果改判PASS。原static_preflight.json未改，新static_preflight_rejudged.json引用其SHA。普通/RT分别输出6.12.80-arm-rpi4[-rt]-v7l-lko-base01，两项exit0、无.o、源码干净。证据见task9/resume1_kernelrelease_results.json。
+- 本地源码不变：内核lko/base01=`8c8f2429401d6b282373e58b73399801a9486d5b`；树外模块lko/base01=`10deb822453c759f6f944baf067c8b16a48ad914`；source仓库仍=`25797e8af7ed95a5783bbe84c11959560aaf7e92`。本轮无源码修改或新提交，不推源码分支。
+- 当前阻塞/需PM明确：现有depanneur启动及初始化路径直接执行sudo /bin/echo -n、sudo /usr/bin/build（源码证据resume1_gbs_privilege_audit.txt），与本轮“不用sudo”不兼容。未试认证、未改工具或绕行；需明确是否允许GBS工具内部sudo及启动主体，或另行确定完全无sudo的构建环境。上轮两项静态挂账已闭合，不再要求补%install导出。
+- 未取得：新root工具链一致性、依赖来源、构建耗时、zImage/模块大小、vermagic/CRC、新.config及部署包；不可部署。config/gbs_llvm.conf未改，未复用旧root做任务9构建。
+- 后续：先恢复并完成任务9；验收通过后为“任务10：部署 base01 到 RPi4 并验证可以启动和回退（需要用户提前开板、在场）”。当前前提未满足，原有U-Boot串口等挂账保留。
 
 **任务8开发机构建准备完成；未连接开发板、未完整构建、未推Gerrit或触发QB。** [12构建部署准备](12_kernel_deploy_prep.md)、[证据索引](../evidence/task8/README.md)。
 

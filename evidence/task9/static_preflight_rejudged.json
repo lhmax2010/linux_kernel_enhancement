@@ -1,0 +1,165 @@
+{
+  "original_file": "evidence/task9/static_preflight.json",
+  "original_sha256": "2beed081b1833db84bc067b1dff89c3803d4369055cea735dad16b076354bd15",
+  "original_status": "FAILED",
+  "original_preserved": true,
+  "decision_authority": "PM task9 continuation, 2026-11-03",
+  "status": "PASS",
+  "criteria": [
+    "RPi ordinary/RT versioned module and devel paths include -lko-base01",
+    "RPi ordinary/RT %post depmod uses exact suffixed release",
+    "External module %install only copies outputs; no additional LOCALVERSION export required",
+    "Shared boot, headers, tools, BTF header, modprobe.d and modules-load.d paths are allowed exceptions"
+  ],
+  "allowed_shared_path_entries": [
+    {
+      "spec": "linux-rpi/packaging/linux-rpi.spec",
+      "entries": [
+        {
+          "line": 345,
+          "package": "%files -n arm-rpi4-linux-kernel-btf-devel",
+          "path": "/usr/include/bpf/vmlinux.h",
+          "has_suffix": false
+        },
+        {
+          "line": 349,
+          "package": "%files -n arm-rpi4-linux-kernel",
+          "path": "/boot/zImage",
+          "has_suffix": false
+        },
+        {
+          "line": 350,
+          "package": "%files -n arm-rpi4-linux-kernel",
+          "path": "/boot/bcm*.dtb",
+          "has_suffix": false
+        },
+        {
+          "line": 351,
+          "package": "%files -n arm-rpi4-linux-kernel",
+          "path": "/boot/overlays/*.dtb*",
+          "has_suffix": false
+        },
+        {
+          "line": 352,
+          "package": "%files -n arm-rpi4-linux-kernel",
+          "path": "/boot/config.txt",
+          "has_suffix": false
+        },
+        {
+          "line": 353,
+          "package": "%files -n arm-rpi4-linux-kernel",
+          "path": "/boot/LICENCE.broadcom",
+          "has_suffix": false
+        },
+        {
+          "line": 354,
+          "package": "%files -n arm-rpi4-linux-kernel",
+          "path": "/boot/start*.elf",
+          "has_suffix": false
+        },
+        {
+          "line": 355,
+          "package": "%files -n arm-rpi4-linux-kernel",
+          "path": "/boot/fixup*.dat",
+          "has_suffix": false
+        },
+        {
+          "line": 359,
+          "package": "%files -n arm-rpi4-rt-linux-kernel",
+          "path": "/boot/zImage_rt",
+          "has_suffix": false
+        },
+        {
+          "line": 360,
+          "package": "%files -n arm-rpi4-rt-linux-kernel",
+          "path": "/boot/bcm*.dtb",
+          "has_suffix": false
+        },
+        {
+          "line": 361,
+          "package": "%files -n arm-rpi4-rt-linux-kernel",
+          "path": "/boot/overlays/*.dtb*",
+          "has_suffix": false
+        },
+        {
+          "line": 362,
+          "package": "%files -n arm-rpi4-rt-linux-kernel",
+          "path": "/boot/config.txt",
+          "has_suffix": false
+        },
+        {
+          "line": 363,
+          "package": "%files -n arm-rpi4-rt-linux-kernel",
+          "path": "/boot/LICENCE.broadcom",
+          "has_suffix": false
+        },
+        {
+          "line": 364,
+          "package": "%files -n arm-rpi4-rt-linux-kernel",
+          "path": "/boot/start*.elf",
+          "has_suffix": false
+        },
+        {
+          "line": 365,
+          "package": "%files -n arm-rpi4-rt-linux-kernel",
+          "path": "/boot/fixup*.dat",
+          "has_suffix": false
+        },
+        {
+          "line": 368,
+          "package": "%files -n arm-rpi4-linux-kernel-headers",
+          "path": "/usr/include/*",
+          "has_suffix": false
+        },
+        {
+          "line": 373,
+          "package": "%files -n linux-kernel-perf",
+          "path": "/usr/bin/*",
+          "has_suffix": false
+        },
+        {
+          "line": 374,
+          "package": "%files -n linux-kernel-perf",
+          "path": "/usr/libexec/*",
+          "has_suffix": false
+        },
+        {
+          "line": 379,
+          "package": "%files -n linux-kernel-bpftool",
+          "path": "/usr/sbin/bpftool",
+          "has_suffix": false
+        }
+      ]
+    },
+    {
+      "spec": "ext/linux-tizen-modules/packaging/linux-tizen-modules.spec",
+      "entries": [
+        {
+          "line": 273,
+          "package": "%files rpi4",
+          "path": "/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf",
+          "has_suffix": false
+        },
+        {
+          "line": 274,
+          "package": "%files rpi4",
+          "path": "/lib/modules/modules-load.d/tizen-modules-rpi4.conf",
+          "has_suffix": false
+        },
+        {
+          "line": 286,
+          "package": "%files rpi4-rt",
+          "path": "/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf",
+          "has_suffix": false
+        },
+        {
+          "line": 287,
+          "package": "%files rpi4-rt",
+          "path": "/lib/modules/modules-load.d/tizen-modules-rpi4.conf",
+          "has_suffix": false
+        }
+      ]
+    }
+  ],
+  "scope": "Static preflight rejudgment only; does not assert kernelrelease recheck, fresh root/toolchain, build or artifact checks have passed."
+}

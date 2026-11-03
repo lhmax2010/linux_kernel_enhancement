@@ -1,0 +1,164 @@
+SOURCE: /usr/bin/gbs
+SHA256: 9ead8b2308cbd8e6a3f37623294e87061803d123867ab2a4b19dd13e771d6059
+
+LINES 202-211
+202:
+203:     group = parser.add_argument_group('build env options')
+204:     group.add_argument('-B', '--buildroot',
+205:                         help='specify build root to setup chroot environment. '
+206:                         'By default, ~/GBS-ROOT/ will be used. User can specify'
+207:                         ' customized build root in gbs.conf with \'buildroot\' '
+208:                         'key, which can be set in [general] section for default'
+209:                         ' build root, or in [profile.xx] section for profile '
+210:                         'special build root')
+211:     group.add_argument('-C', '--clean', action='store_true',
+
+LINES 264-276
+264:                        help='build a package from the local git tree '
+265:                         'incremental. If the build fails, changes can be done '
+266:                         'directly to the source and build can continue from '
+267:                         'where it stopped')
+268:     group.add_argument('--no-configure', action='store_true',
+269:                         help='this option disables running configure scripts '
+270:                         'and auto generation of auto-tools to make incremental '
+271:                         'build possible. This requires the configure scripts '
+272:                         'in the spec to be referenced using the %%configure, '
+273:                         '%%reconfigure and %%autogen macros')
+274:     group.add_argument('--noinit', action='store_true',
+275:                         help='working in offline mode. Start building directly')
+276:     group.add_argument('--ccache', action="store_true",
+SOURCE: /usr/lib/python3/dist-packages/gitbuildsys/cmd_build.py
+SHA256: 7a9e01a903ceedc1afd5663c60fcea1d5122136bc3aa6b90ac3dcf8799a36309
+
+LINES 686-700
+686: def init_buildroot(args, profile):
+687:     '''init build root'''
+688:     if args.buildroot:
+689:         build_root = args.buildroot
+690:     elif 'TIZEN_BUILD_ROOT' in os.environ:
+691:         build_root = os.environ['TIZEN_BUILD_ROOT']
+692:     elif profile.buildroot:
+693:         build_root = profile.buildroot
+694:     else:
+695:         build_root = configmgr.get('buildroot', 'general')
+696:     build_root = os.path.expanduser(build_root)
+697:
+698:     return build_root
+699:
+700: def _build_one(args, workdir, build_root, buildarch, profile):
+
+LINES 722-731
+722:             args.exclude = ','.join(profile.exclude_packages)
+723:
+724:     os.environ['TIZEN_BUILD_ROOT'] = os.path.abspath(build_root)
+725:
+726:     #prepare depanneur commond
+727:     cmd = prepare_depanneur_cmd(args, buildarch, profile, workdir)
+728:
+729:     log.debug("running command: %s" % ' '.join(cmd))
+730:     retcode = os.system(' '.join(cmd))
+731:     return retcode
+SOURCE: /usr/bin/depanneur
+SHA256: 2ed084439b84bf223acadc1cf5b22677d6c81a3cb65942de43422a0525a91878
+
+LINES 397-422
+397: sub my_system {
+398:     my $cmd = shift;
+399:     debug("my_system: $cmd");
+400:     my $ret;
+401:     my $pid;
+402:     my @out = ();
+403:     if (wantarray) {
+404:         defined($pid=open(PIPE, "-|")) or die "Can not fork: $!\n";
+405:     } else {
+406:         defined($pid=fork) or die "Can not fork: $!\n";
+407:     }
+408:
+409:     unless ($pid) {  # Child
+410:         open(STDERR, ">&STDOUT");
+411:         exec ($cmd);
+412:         exit -1;
+413:     } else {  # Parent
+414:         if (wantarray) {
+415:             while (my $line = <PIPE>) {
+416:                 print $line;
+417:                 push @out, $line;
+418:             }
+419:         }
+420:         waitpid ($pid,0);
+421:         $ret = $?;
+422:         close(PIPE) if wantarray;
+
+LINES 529-548
+529: if ($noinit == 1) {
+530:     # check previours dist config from build root
+531:     my $scratch = "$scratch_dir.0";  # always use the first build root '0'
+532:     if (! -e "$scratch") {
+533:         error("build root:$scratch does not exist. Please build without --noinit first");
+534:     }
+535:
+536:     open(my $file, '<', "$scratch/.guessed_dist") ||
+537:         die "read dist name failed: $!";
+538:     $dist = readline($file);
+539:     close($file);
+540:     chomp $dist;
+541:     # get dist info e.g.
+542:     # /var/tmp/usr-gbs/tizen3.0_ivi.conf
+543:     $dist =~ s!^.*/(.*)\.conf!$1!;
+544:     $dist_configs= "$scratch";
+545:     if (! -e "$dist_configs/$dist.conf") {
+546:         error("build root broken caused by missing build conf. Please build without --noinit first");
+547:     }
+548: }
+
+LINES 2043-2050
+2043:     my @args = ();
+2044:     my @args_inc = ();
+2045:     if ($TERM == 1) {
+2046:         return -1;
+2047:     }
+2048:     push @args, "sudo /usr/bin/build";
+2049:     push @args, "--uid $zuid:$zgid" if ($zuid != 0 && $zgid != 0);
+2050:     my $nprocessors = 2;
+
+LINES 2063-2069
+2063:     } else {
+2064:         push @args, "--target $target_arch";
+2065:     }
+2066:     push @args, "--jobs " . $nprocessors * 2;
+2067:     push @args, "--no-init" if ($noinit == 1);
+2068:     push @args, "--keep-packs" if ($keep_packs == 1);
+2069:     push @args, "--use-higher-deps" if ($use_higher_deps == 1);
+
+LINES 2174-2185
+2174:     if ($incremental == 1) {
+2175:         info("doing incremental build");
+2176:         @args_inc = @args;
+2177:         my $buildcmd = "";
+2178:         if ( ! -d "$builddir" || grep($_ eq "--clean", @args_inc)){
+2179:             debug("Build directory does not exist");
+2180:             push @args_inc, "--no-build";
+2181:             push @args_inc, "--clean" if (! grep($_ eq "--clean", @args_inc));
+2182:             $cmd = join(" ", @args_inc);
+2183:             return -1 if (my_system($cmd) != 0);
+2184:         } else {
+2185:             debug("build directory exists");
+
+LINES 2245-2248
+2245:
+2246:     # Save build config to build root for --noinit use
+2247:     my_system("sudo /bin/cp '$dist_configs/$dist.conf' '$scratch'/$dist.conf") if ($noinit == 0);
+2248:
+
+LINES 3164-3174
+3164: # avoid inputing passwd while runnig build
+3165: $SIG{'ALRM'} = sub {
+3166:     if (my_system("sudo /bin/echo -n") != 0) {
+3167:         error("sudo: failed to request passwd")
+3168:     } else {
+3169:         alarm(SUDOV_PERIOD);
+3170:     }
+3171: };
+3172:
+3173: # trigger 'ALRM' immediately
+3174: kill 'ALRM', $$;

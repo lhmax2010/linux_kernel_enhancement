@@ -1,0 +1,17 @@
+[
+  {
+    "repo": "linux-rpi",
+    "head": "8c8f2429401d6b282373e58b73399801a9486d5b",
+    "status": ""
+  },
+  {
+    "repo": "ext/linux-tizen-modules",
+    "head": "10deb822453c759f6f944baf067c8b16a48ad914",
+    "status": ""
+  },
+  {
+    "repo": "ext/linux-tizen-modules-source",
+    "head": "25797e8af7ed95a5783bbe84c11959560aaf7e92",
+    "status": ""
+  }
+]
