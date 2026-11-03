@@ -1,0 +1,18 @@
+TASK9 RESUME3 STARTUP GATE
+TIME=2026-11-03T23:19:39.434046+08:00
+COMMAND: /usr/bin/test -e /usr/bin/tmux
+STDOUT: 
+STDERR: 
+EXIT: 1
+COMMAND: /usr/bin/test -x /usr/bin/tmux
+STDOUT: 
+STDERR: 
+EXIT: 1
+EXISTS /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/status.txt = False
+EXISTS /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/build_kernel.log = False
+EXISTS /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/build_modsrc.log = False
+EXISTS /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/build_modules.log = False
+DECISION: STOP at step 1; /usr/bin/tmux unavailable. 需要用户安装 tmux。
+No tmux session, launcher, sudo, GBS, build or board command executed. No signals sent.
+No build logs/status/ALL-END generated because the launcher was not invoked.
+SCRIPT_SHA256=3e8c0857d0896e5bcba95773c920902fc3b643d5798c5a6cc3792df1db07bcf4

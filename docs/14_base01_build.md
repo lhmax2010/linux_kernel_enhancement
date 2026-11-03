@@ -255,3 +255,18 @@ cd /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-
 8. 用平台Python运行scripts/diffconfig，与QB1211696最终.config比较。后缀当前来自环境LOCALVERSION，故.config可以完全相同；若出现非LOCALVERSION差异，逐项列出工具/来源依据，不自行认定可接受。
 
 验收结束后再更新14/STATUS及小体积证据。下一步仍为“任务10：部署 base01 到 RPi4 并验证可以启动和回退（需要用户提前开板、在场）”，只有任务9验收通过才具备执行前提。
+
+
+## 8. 任务9续跑三：启动前因tmux不可用停止（2026-11-03）
+
+PM允许代理按第6.1节同一socket/会话以分离方式启动脚本并监控；唯一前台sudo -v仍由用户在tmux窗口自行认证，代理不直接执行sudo、不处理密码、不配置askpass/sudoers、不发信号。规则已登记。
+
+按启动第1步检查，`/usr/bin/test -e /usr/bin/tmux`和`/usr/bin/test -x /usr/bin/tmux`均退出1：指定路径不存在且不可执行。**需要用户安装 tmux。** 已按停止条件结束，未尝试安装、替代终端、创建会话或启动脚本。[命令/输出/退出码与脚本哈希](../evidence/task9/resume3_tmux_gate.txt)，原始记录保存在`temp/task9/resume3/tmux_gate.txt`。
+
+- 认证：尚未进入sudo -v，没有密码提示，用户无需在本轮认证。
+- 监控：未启动supervisor或阶段进程，未创建monitor.log；status.txt及三个build_*.log均不存在，因此没有ALL-END、BUILD-END或可引用的失败日志末80行。这是启动条件不满足，不是脚本preflight或编译失败。
+- 三阶段kernel/modsrc/modules：均未启动；耗时、峰值RSS不适用，不写成0秒构建成功。
+- 本轮工具链版本、实际kernel-devel身份、zImage大小/差值、模块目录容量、vermagic/CRC和.config均未核验；没有新部署包，也没有Module.symvers.base01可复制。下一轮成功后须补充Module.symvers副本哈希及七个树外模块引用符号清单。
+- 源码、启动脚本及现有构建根未修改，既有文件未清理；未访问vendor_local，未连板、推Gerrit或触发QB。
+
+下一步由用户安装tmux；可用后再按已授权流程启动，不自动重复本次尝试。任务9未完成，**不满足任务10的产物验收前提**。后续模块依赖来源若不符，按本轮PM指令继续其余核验但明确标记；工具链不是22.1.8则停止并判产物作废。

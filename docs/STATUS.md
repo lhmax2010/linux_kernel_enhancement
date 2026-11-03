@@ -6,6 +6,14 @@
 
 更新：2026-11-03（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
+**任务9续跑三：启动前停止，需要用户安装 tmux。** [14第8节](14_base01_build.md)、[启动门槛证据](../evidence/task9/resume3_tmux_gate.txt)。
+
+- 计划/进度：读取规则、历史及脚本，登记代理启动/用户认证授权；第1步确认/usr/bin/tmux不存在、不可执行，按指令停止，未安装或启动脚本。
+- 已闭合：未进入认证、未启动三阶段构建或监控；status及三个构建日志均不存在。没有本轮构建耗时、RSS或产物核验结论；不访问vendor_local，不改源码/脚本，不发信号。
+- 挂账：用户安装tmux后，按既定socket/会话恢复启动；工具链、依赖身份、部署产物、vermagic/CRC、配置、容量及Module.symvers留底全部待核验。当前不满足任务10前提。
+
+以下保留续跑二的历史记录；启动主体限制由续跑三授权覆盖。
+
 **任务9续跑二：等待用户在 tmux 中运行 run_task9_build.sh。** [脚本](../scripts/run_task9_build.sh)、[14第6–7节](14_base01_build.md)、[静态检查](../evidence/task9/user_runner_static_checks.json)。代理只编写和静态检查，未运行脚本/GBS/导出/构建/sudo，未发信号、未连接开发板。
 
 - 计划/进度：规则/历史读取→用户启动授权登记→以任务2脚本改写三阶段入口→bash -n/人工静态检查→运行与验收说明，均完成；等待用户实际启动。shellcheck未安装按要求跳过；本机目前未发现tmux/screen，需用户先准备可用tmux。

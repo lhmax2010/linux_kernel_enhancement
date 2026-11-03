@@ -3,6 +3,13 @@
 
 ## 任务9：用户终端启动构建（2026-11-03，PM裁决）
 
+**任务9续跑三裁决（覆盖本节下方旧的启动主体限制）：** 用户 2026-11-03 授权由代理启动 run_task9_build.sh 并监控。代理本人仍不直接执行任何 sudo 命令，不输入、不索要、不记录任何密码，不配置 askpass/sudoers，不向任何进程发信号。脚本中唯一的 sudo -v 由用户在 tmux 窗口里自行认证；其余 sudo 是 GBS 自身行为。
+
+- 启动须先确认 `/usr/bin/tmux` 可用；不可用就停止并报告“需要用户安装 tmux”，不自行安装。使用既定 socket `temp/task9/tmux.sock`、会话 `lko-task9` 分离启动，脚本及原有隔离/进程组规则不变。认证提示由用户连接会话处理，最多等待30分钟，不重跑或清理旧文件。
+- 三阶段全部OK后按14的计划核验；工具链不符则产物作废并停止，模块依赖来源不符则明确标记并继续其余核验。仍不推Gerrit、不触发QB、不连接开发板、不访问vendor_local。
+
+以下为续跑二历史授权，启动主体与等待用户报告结束的条件以本轮裁决为准：
+
 GBS 内部的 sudo 调用（depanneur 的 sudo /usr/bin/build、认证维持 sudo /bin/echo -n、chroot/挂载等）允许，但只能由用户在自己的终端启动脚本时发生，沿用任务2的做法：脚本开头前台执行一次 /usr/bin/sudo -v 由用户认证，之后后台运行。你本人仍然不运行脚本、gbs、导出、构建或任何 sudo，不发信号。
 
 - 本授权仅允许用户运行`scripts/run_task9_build.sh`，顺序为内核→linux-tizen-modules-source→linux-tizen-modules，armv7l，同一`temp/task9/GBS-ROOT-LKO-BASE01`，配置只读引用`config/gbs_llvm.conf`。不推Gerrit、不触发QB、不连接或部署开发板，不使用vendor_local。
