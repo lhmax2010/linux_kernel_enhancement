@@ -19,3 +19,5 @@ GBS-ROOT*
 *.elf
 *.pyc
 __pycache__/
+
+/vendor_local/

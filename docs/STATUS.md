@@ -1,5 +1,7 @@
 # 项目状态
 
+任务 V1：厂商补丁已本地入库并完成试打，报告在本地 vendor_local/V1_report.md（不入库）
+
 更新：2026-11-02（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
 **PB1产品板只读探测已完成采集与证据整理；配置全文比较和经确认的空闲基线未闭合。** 产品身份断言通过（armv7l / Tizen / 内核6.12.60不含rpi4），内核由Clang/LLD22.1.8编译。报告：[13_product_board_probe.md](13_product_board_probe.md)，[证据索引](../evidence/pb1/README.md)。
