@@ -270,3 +270,39 @@ PM允许代理按第6.1节同一socket/会话以分离方式启动脚本并监�
 - 源码、启动脚本及现有构建根未修改，既有文件未清理；未访问vendor_local，未连板、推Gerrit或触发QB。
 
 下一步由用户安装tmux；可用后再按已授权流程启动，不自动重复本次尝试。任务9未完成，**不满足任务10的产物验收前提**。后续模块依赖来源若不符，按本轮PM指令继续其余核验但明确标记；工具链不是22.1.8则停止并判产物作废。
+
+
+## 9. tmux安装后续跑：认证等待超时（2026-11-03）
+
+开工重新读取RULES、第7–8节和上次tmux门槛证据。`/usr/bin/tmux -V`返回`tmux 3.4`、退出0；启动前task9顶层没有status.txt、build_*.log/raw、锁或阶段PGID文件。只新建本轮观察记录，未删除或归档旧构建文件。[检查记录](../evidence/task9/resume3_tmux_installed_launch.txt)。
+
+执行如下命令，返回0；TMPDIR为工作区temp，未加载用户tmux/bash配置：
+
+```sh
+/usr/bin/tmux -f /dev/null -S /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/tmux.sock new-session -d -s lko-task9 -c /home/linhao/Toolchain/development/linux_kernel_optimization '/usr/bin/bash /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_task9_build.sh; exec /usr/bin/bash --noprofile --norc -i'
+```
+
+脚本于23:24:46（Asia/Shanghai）进入preflight，通过认证之前的前置检查后显示：
+
+```text
+Foreground sudo validation; authenticate only in your own terminal.
+[sudo] password for linhao:
+```
+
+已向用户提供该socket/会话的attach命令；代理没有直接执行sudo、输入或记录密码、设置askpass/sudoers、发送信号。按30秒间隔读取窗口及status；前段通过工具逐轮读取，23:32:37起的结构化观察持久保存在[认证观察日志](../evidence/task9/resume3_auth_observation.txt)，只记录时间、状态、读取退出码和提示是否可见，不保存用户终端输入或其他任务进程清单。
+
+30分钟等待期限后首轮检查（23:55:42）仍为WAITING，按PM要求停止轮询，不重启脚本。23:55:59封存时：会话仍存活（pane_pid=4029395、pane_dead=0），状态为preflight RUNNING、kernel/modsrc/modules PENDING，未出现Background supervisor PID/PGID，没有supervisor PGID文件。[状态原文](../evidence/task9/resume3_auth_timeout_status.txt)、[终点摘要](../evidence/task9/resume3_auth_timeout_summary.json)、[证据大小/行数/SHA-256](../evidence/task9/resume3_auth_manifest.json)。
+
+这是**代理等待认证超时**，不是sudo返回认证失败，也不是脚本preflight已退出或编译失败：没有可报告的认证退出码。脚本没有生成ALL-END；不能替它写入FAILED/ALL-END或把PENDING改为SKIPPED。锁和status按原样保留。
+
+| 项目 | 本轮结果 |
+|---|---|
+| 用户认证完成 | 未观察到完成；终点仍为密码提示 |
+| kernel / modsrc / modules | 均未启动；无构建耗时或峰值RSS |
+| 三份构建日志 / BUILD-END / 最后80行 | 文件不存在，无可引用构建日志 |
+| 工具链22.1.8与新kernel-devel来源 | 未核验 |
+| zImage大小/差值、模块大小/容量、vermagic/CRC、配置差异 | 未取得新产物，未核验 |
+| 部署包 / Module.symvers.base01及引用符号清单 | 未生成 |
+| 任务10前提 | 不满足 |
+
+未访问vendor_local、连接开发板、修改源码/启动脚本、推Gerrit或触发QB。GBS尚未启动，因此没有进入10分钟构建监控，也没有伪造build监控日志。原tmux会话及前台认证进程没有被终止；**以后在原窗口完成认证仍会继续启动构建**。等待用户反馈后应读取原会话/status恢复监控，不再次执行启动脚本；本轮不清理锁、status或其他已有文件。

@@ -6,6 +6,14 @@
 
 更新：2026-11-03（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
+**任务9续跑三（tmux安装后）：认证等待达到30分钟期限，已停止轮询。** [14第9节](14_base01_build.md)、[终点证据](../evidence/task9/resume3_auth_timeout_summary.json)。
+
+- 计划/进度：tmux 3.4及无旧日志/锁检查通过，按授权分离启动原脚本；进入前台认证后提供attach命令并每30秒检查，未观察到认证完成。
+- 已闭合：23:55:59状态仍为preflight RUNNING、三个阶段PENDING；原tmux会话存活，未创建后台supervisor和构建日志。代理未直接运行sudo、未输入/记录密码、未发信号，未重跑或清理；不访问vendor_local。
+- 挂账：原会话仍等待认证，后续在该窗口认证会继续执行。用户反馈后从原会话/status恢复监控，不重复启动脚本；工具链、依赖身份、全部产物核验和Module.symvers留底待完成，当前不满足任务10前提。
+
+以下为安装tmux之前的历史停止记录，安装问题已闭合。
+
 **任务9续跑三：启动前停止，需要用户安装 tmux。** [14第8节](14_base01_build.md)、[启动门槛证据](../evidence/task9/resume3_tmux_gate.txt)。
 
 - 计划/进度：读取规则、历史及脚本，登记代理启动/用户认证授权；第1步确认/usr/bin/tmux不存在、不可执行，按指令停止，未安装或启动脚本。

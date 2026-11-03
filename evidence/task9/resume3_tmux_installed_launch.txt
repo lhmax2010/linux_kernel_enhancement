@@ -1,0 +1,5 @@
+TIME=2026-11-03T23:24:46.406953+08:00
+/usr/bin/tmux -V
+tmux 3.4
+exit=0
+Prior status/build logs/locks: none

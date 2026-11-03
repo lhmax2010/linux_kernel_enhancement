@@ -1,0 +1,26 @@
+[
+  {
+    "path": "temp/task9/resume3/tmux_installed_launch.txt",
+    "bytes": 107,
+    "lines": 5,
+    "sha256": "16c1e73f13b6efb9c0193bf5ad9e5a934160d7ebf2926ab2fbe9917c77131988"
+  },
+  {
+    "path": "temp/task9/resume3/auth_observation.log",
+    "bytes": 5358,
+    "lines": 47,
+    "sha256": "4f0b637404a26d2b65ab41d8998e8927d88ae89085f11012ca5f82cb9581acab"
+  },
+  {
+    "path": "temp/task9/resume3/auth_timeout_status.txt",
+    "bytes": 264,
+    "lines": 5,
+    "sha256": "1566225769736422d34235e013c77d8de2ff3058c1b09dbd5df49bcb9bf9b3d7"
+  },
+  {
+    "path": "temp/task9/resume3/auth_timeout_summary.json",
+    "bytes": 940,
+    "lines": 21,
+    "sha256": "3bc26687ac08be0d1de04db877c6c783117c477bfc04cb0e681ab2267c0d3aab"
+  }
+]

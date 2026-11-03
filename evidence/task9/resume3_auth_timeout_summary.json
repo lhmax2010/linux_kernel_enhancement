@@ -1,0 +1,21 @@
+{
+  "time": "2026-11-03T23:55:59.049143+08:00",
+  "tmux_version": "tmux 3.4",
+  "capture_exit": 0,
+  "pane_known_lines": [
+    "Foreground sudo validation; authenticate only in your own terminal.",
+    "[sudo] password for linhao:"
+  ],
+  "pane_metadata": "session=lko-task9 pane_pid=4029395 pane_dead=0 command=bash",
+  "metadata_exit": 0,
+  "status": "TASK9 UPDATED 2026-11-03T23:24:46+08:00\nSTAGE preflight result=RUNNING exit=- start=2026-11-03T23:24:46+08:00 end=-\nSTAGE kernel result=PENDING exit=- start=- end=-\nSTAGE modsrc result=PENDING exit=- start=- end=-\nSTAGE modules result=PENDING exit=- start=- end=-\n",
+  "outcome": "AUTH_WAIT_TIMEOUT; monitor stopped; launcher/session preserved; no build verdict",
+  "exists": {
+    "run_task9_build.lock": true,
+    "task9_supervisor.pgid": false,
+    "build_kernel.log": false,
+    "build_modsrc.log": false,
+    "build_modules.log": false,
+    "run_task9_build.log": false
+  }
+}
