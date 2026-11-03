@@ -1,0 +1,8 @@
+233: [   65s] + export CC=armv7l-tizen-linux-gnueabi-clang CXX=armv7l-tizen-linux-gnueabi-clang++
+399: [   71s] + export CC=armv7l-tizen-linux-gnueabi-clang CXX=armv7l-tizen-linux-gnueabi-clang++
+571: 	User time (seconds): 13.86
+572: 	System time (seconds): 5.80
+574: 	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:28.05
+579: 	Maximum resident set size (kbytes): 151408
+593: COMMAND-EXIT modsrc time=2026-11-04T02:32:38+08:00 exit=0 credential_seen=0
+596: BUILD-END modsrc 2026-11-04T02:32:38+08:00 exit=0

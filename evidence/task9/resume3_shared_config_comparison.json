@@ -1,0 +1,14 @@
+[
+  {
+    "name": "modprobe.d/tizen-modprobe-rpi4.conf",
+    "new_sha256": "2f2e0993bd11d75f08e5d8d73813a710af49e15246670c8a87135ac7e6713e9c",
+    "factory_sha256": "2f2e0993bd11d75f08e5d8d73813a710af49e15246670c8a87135ac7e6713e9c",
+    "equal": true
+  },
+  {
+    "name": "modules-load.d/tizen-modules-rpi4.conf",
+    "new_sha256": "faeccd87b2d8fbbf8022134ddd7ea8dc167f6cc19092c600c43503099d40ef72",
+    "factory_sha256": "faeccd87b2d8fbbf8022134ddd7ea8dc167f6cc19092c600c43503099d40ef72",
+    "equal": true
+  }
+]

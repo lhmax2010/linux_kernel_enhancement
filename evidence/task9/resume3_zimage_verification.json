@@ -1,0 +1,31 @@
+[
+  {
+    "variant": "normal",
+    "release": "6.12.80-arm-rpi4-v7l-lko-base01",
+    "bytes": 14906368,
+    "sha256": "4bb488d8d7768bde6f9b53b53342d9bde0d996cb37284a6d5547855d20e8c5f1",
+    "gzip_offset": 33353,
+    "image_bytes": 41725500,
+    "banners": [
+      "Linux version 6.12.80-arm-rpi4-v7l-lko-base01 (abuild@linhao-linux) (clang version 22.1.8, LLD 22.1.8) # SMP ",
+      "Linux version 6.12.80-arm-rpi4-v7l-lko-base01 (abuild@linhao-linux) (clang version 22.1.8, LLD 22.1.8) #1 SMP Tue Nov  3 16:48:07 UTC 2026"
+    ],
+    "factory_bytes": 14905736,
+    "factory_sha256": "50d642e137853a46029945965556f4f30e1d87a5706e4eb5f4b02f735a260a5e",
+    "factory_evidence": "evidence/task6/r2/04_boot_readonly.transport.txt",
+    "delta_bytes": 632,
+    "delta_percent": 0.004239978488817996
+  },
+  {
+    "variant": "rt",
+    "release": "6.12.80-arm-rpi4-rt-v7l-lko-base01",
+    "bytes": 14954944,
+    "sha256": "28a5c88272d0180128a8f8bc0dfba12a82246b9670021ce097c920d600b2b94c",
+    "gzip_offset": 33353,
+    "image_bytes": 41738272,
+    "banners": [
+      "Linux version 6.12.80-arm-rpi4-rt-v7l-lko-base01 (abuild@linhao-linux) (clang version 22.1.8, LLD 22.1.8) # SMP PREEMPT_RT ",
+      "Linux version 6.12.80-arm-rpi4-rt-v7l-lko-base01 (abuild@linhao-linux) (clang version 22.1.8, LLD 22.1.8) #1 SMP PREEMPT_RT Tue Nov  3 17:03:08 UTC 2026"
+    ]
+  }
+]

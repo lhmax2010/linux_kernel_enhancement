@@ -1,0 +1,140 @@
+{
+  "time": "2026-11-04T00:29:40.329737+08:00",
+  "status": "TASK9 UPDATED 2026-11-04T00:21:11+08:00\nSTAGE preflight result=OK exit=0 start=2026-11-03T23:24:46+08:00 end=2026-11-04T00:21:00+08:00\nSTAGE kernel result=RUNNING exit=- start=2026-11-04T00:21:01+08:00 end=-\nSTAGE modsrc result=PENDING exit=- start=- end=-\nSTAGE modules result=PENDING exit=- start=- end=-\nACTIVE-OR-RESIDUAL PGID=4061985; raw log may still grow; no signal sent\n",
+  "stages": {
+    "preflight": {
+      "result": "OK",
+      "exit": "0"
+    },
+    "kernel": {
+      "result": "RUNNING",
+      "exit": "-"
+    },
+    "modsrc": {
+      "result": "PENDING",
+      "exit": "-"
+    },
+    "modules": {
+      "result": "PENDING",
+      "exit": "-"
+    }
+  },
+  "groups": {
+    "supervisor": {
+      "pgid": "4061886",
+      "rows": [
+        "4061886    2503 4061886 linhao   S          08:39 00:00:00  0.0 bash            /usr/bin/bash /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_task9_build.sh --worker 8c8f2429401d6b282373e58b73399801a9486d5b 2026-11-03T23:24:46+08:00 2026-11-04T00:21:00+08:00"
+      ],
+      "work_processes": []
+    },
+    "kernel": {
+      "pgid": "4061985",
+      "rows": [
+        "4061985 4061886 4061985 linhao   S          08:29 00:00:00  0.0 time            /usr/bin/time -v /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define _smp_mflags -j10 --commit 8c8f2429401d6b282373e58b73399801a9486d5b",
+        "4061988 4061985 4061985 linhao   S          08:29 00:00:00  0.0 gbs             /usr/bin/python3 /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define _smp_mflags -j10 --commit 8c8f2429401d6b282373e58b73399801a9486d5b",
+        "4062032 4061988 4061985 linhao   S          08:24 00:00:00  0.0 sh              sh -c -- depanneur --arch=armv7l --repository=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/ --repository=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/reference/repos/standard/packages/ --dist='tizen_unified_standard' --configdir='/home/linhao/Toolchain/development/linux_kernel_optimization/temp/linhao-gbs' --path='/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi' --style=git --threads=1 --packaging-dir=packaging --commit=8c8f2429401d6b282373e58b73399801a9486d5b --define=\"_smp_mflags -j10\"",
+        "4062033 4062032 4061985 linhao   S          08:24 00:00:00  0.0 depanneur       /usr/bin/perl /usr/bin/depanneur --arch=armv7l --repository=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/ --repository=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/reference/repos/standard/packages/ --dist=tizen_unified_standard --configdir=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/linhao-gbs --path=/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi --style=git --threads=1 --packaging-dir=packaging --commit=8c8f2429401d6b282373e58b73399801a9486d5b --define=_smp_mflags -j10",
+        "4062042 4062033 4061985 linhao   S          08:23 00:00:00  0.0 depanneur       /usr/bin/perl /usr/bin/depanneur --arch=armv7l --repository=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/ --repository=https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/reference/repos/standard/packages/ --dist=tizen_unified_standard --configdir=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/linhao-gbs --path=/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi --style=git --threads=1 --packaging-dir=packaging --commit=8c8f2429401d6b282373e58b73399801a9486d5b --define=_smp_mflags -j10",
+        "4062051 4062042 4061985 linhao   S          08:23 00:00:00  0.0 sh              sh -c gbs export '/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi' -o '/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/sources/tizen_unified_standard/rpi4-linux-kernel-6.12.80-0' --outdir-directly --spec linux-rpi.spec --commit=8c8f2429401d6b282373e58b73399801a9486d5b --upstream-branch='upstream' --upstream-tag='v${upstreamversion}' --packaging-dir=packaging",
+        "4062052 4062051 4061985 linhao   S          08:23 00:00:06  1.3 gbs             /usr/bin/python3 /usr/bin/gbs export /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi -o /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/sources/tizen_unified_standard/rpi4-linux-kernel-6.12.80-0 --outdir-directly --spec linux-rpi.spec --commit=8c8f2429401d6b282373e58b73399801a9486d5b --upstream-branch=upstream --upstream-tag=v${upstreamversion} --packaging-dir=packaging",
+        "4062709 4062052 4061985 linhao   S          07:19 00:03:57 54.0 xz              xz --stdout -6",
+        "4062710 4062052 4061985 linhao   D          07:19 00:00:10  2.4 git             git archive --format=tar --prefix=rpi4-linux-kernel-6.12.80/ v6.12.80 --"
+      ],
+      "work_processes": [
+        "4062709 4062052 4061985 linhao   S          07:19 00:03:57 54.0 xz              xz --stdout -6",
+        "4062710 4062052 4061985 linhao   D          07:19 00:00:10  2.4 git             git archive --format=tar --prefix=rpi4-linux-kernel-6.12.80/ v6.12.80 --"
+      ]
+    },
+    "modsrc": {
+      "pgid": null,
+      "rows": [],
+      "work_processes": []
+    },
+    "modules": {
+      "pgid": null,
+      "rows": [],
+      "work_processes": []
+    }
+  },
+  "logs": {
+    "kernel": {
+      "exists": true,
+      "bytes": 1251,
+      "mtime": 1793722876.3962772,
+      "lines": 13,
+      "tail": [
+        "BUILD-START kernel 2026-11-04T00:21:11+08:00",
+        "SOURCE=/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi",
+        "COMMIT=8c8f2429401d6b282373e58b73399801a9486d5b",
+        "COMMAND=/usr/bin/env HOME=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf /usr/bin/time -v /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define _smp_mflags\\ -j10 --commit 8c8f2429401d6b282373e58b73399801a9486d5b ",
+        "info: generate repositories ...",
+        "warning: No local package repository for arch armv7l",
+        "info: build conf has been downloaded at:",
+        "      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/linhao-gbs/tizen_unified_standard.conf",
+        "info: start building packages from: /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi (git)",
+        "2026-11-04 00:21 +0800",
+        "gbs 2.1.0",
+        "info: prepare sources...",
+        "info: start export source from: /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi ..."
+      ],
+      "last": "info: start export source from: /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi ...",
+      "silence_seconds": 503.93337988853455
+    },
+    "modsrc": {
+      "exists": false
+    },
+    "modules": {
+      "exists": false
+    }
+  },
+  "auxiliary": {
+    "kernel.processes.log": {
+      "exists": true,
+      "bytes": 119729,
+      "tail": [
+        "BEFORE 2026-11-04T00:21:11+08:00",
+        "PROCESS-GROUP 2026-11-04T00:21:11+08:00 PGID=4061985",
+        "4061985 4061886 4061985 linhao   S    /usr/bin/time -v /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define _smp_mflags -j10 --commit 8c8f2429401d6b282373e58b73399801a9486d5b",
+        "4061988 4061985 4061985 linhao   D    /usr/bin/python3 /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define _smp_mflags -j10 --commit 8c8f2429401d6b282373e58b73399801a9486d5b"
+      ]
+    },
+    "kernel.observed_outside.txt": {
+      "exists": true,
+      "bytes": 0,
+      "tail": []
+    },
+    "kernel.external_review.txt": {
+      "exists": false
+    },
+    "kernel.external_paths.txt": {
+      "exists": false
+    },
+    "modsrc.processes.log": {
+      "exists": false
+    },
+    "modsrc.observed_outside.txt": {
+      "exists": false
+    },
+    "modsrc.external_review.txt": {
+      "exists": false
+    },
+    "modsrc.external_paths.txt": {
+      "exists": false
+    },
+    "modules.processes.log": {
+      "exists": false
+    },
+    "modules.observed_outside.txt": {
+      "exists": false
+    },
+    "modules.external_review.txt": {
+      "exists": false
+    },
+    "modules.external_paths.txt": {
+      "exists": false
+    }
+  },
+  "stop_reasons": [],
+  "all_end": false,
+  "outcome": "RUNNING"
+}

@@ -1,0 +1,10 @@
+{
+  "module_count": 59,
+  "expected_vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+  "vermagic_mismatches": [],
+  "external_modules": 7,
+  "crc_comparisons": 356,
+  "unique_imported_symbols": 253,
+  "crc_mismatches": [],
+  "Module.symvers_sha256": "fd1bf28f859933424c88f0e65c224bf4992c18e78cd0c5d0e59b1f72e8beb28c"
+}

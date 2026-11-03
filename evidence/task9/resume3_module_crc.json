@@ -1,0 +1,2494 @@
+[
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "__gnu_mcount_nc",
+    "module_crc": "0xb1ad28e0",
+    "kernel_crc": "0xb1ad28e0",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_register_target",
+    "module_crc": "0x844bd785",
+    "kernel_crc": "0x844bd785",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "_printk",
+    "module_crc": "0x92997ed8",
+    "kernel_crc": "0x92997ed8",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "__aeabi_unwind_cpp_pr1",
+    "module_crc": "0x2e5810c6",
+    "kernel_crc": "0x2e5810c6",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_unregister_target",
+    "module_crc": "0x3407c3e1",
+    "kernel_crc": "0x3407c3e1",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "__aeabi_unwind_cpp_pr0",
+    "module_crc": "0xefd6cf06",
+    "kernel_crc": "0xefd6cf06",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "__stack_chk_guard",
+    "module_crc": "0x8f678b07",
+    "kernel_crc": "0x8f678b07",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "kmalloc_caches",
+    "module_crc": "0x9624f32b",
+    "kernel_crc": "0x9624f32b",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "__kmalloc_cache_noprof",
+    "module_crc": "0x6aaf28b5",
+    "kernel_crc": "0x6aaf28b5",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_table_get_mode",
+    "module_crc": "0xa1368119",
+    "kernel_crc": "0xa1368119",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_get_device",
+    "module_crc": "0xa5596e6e",
+    "kernel_crc": "0xa5596e6e",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_read_arg_group",
+    "module_crc": "0x39c74235",
+    "kernel_crc": "0x39c74235",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_shift_arg",
+    "module_crc": "0x7d27e504",
+    "kernel_crc": "0x7d27e504",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "sscanf",
+    "module_crc": "0xbcab6ee6",
+    "kernel_crc": "0xbcab6ee6",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "__kmalloc_noprof",
+    "module_crc": "0x9b1485da",
+    "kernel_crc": "0x9b1485da",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "__init_swait_queue_head",
+    "module_crc": "0x870d5a1c",
+    "kernel_crc": "0x870d5a1c",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "__mutex_init",
+    "module_crc": "0xde4bf88b",
+    "kernel_crc": "0xde4bf88b",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_bufio_client_create",
+    "module_crc": "0xc19823f6",
+    "kernel_crc": "0xc19823f6",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "__num_online_cpus",
+    "module_crc": "0xc60d0620",
+    "kernel_crc": "0xc60d0620",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "alloc_workqueue",
+    "module_crc": "0x49cd25ed",
+    "kernel_crc": "0x49cd25ed",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "rb_insert_color",
+    "module_crc": "0xa5526619",
+    "kernel_crc": "0xa5526619",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "__stack_chk_fail",
+    "module_crc": "0xf0fdf6cb",
+    "kernel_crc": "0xf0fdf6cb",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "destroy_workqueue",
+    "module_crc": "0x8c03d20c",
+    "kernel_crc": "0x8c03d20c",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_bufio_client_destroy",
+    "module_crc": "0xeca7949e",
+    "kernel_crc": "0xeca7949e",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "kobject_put",
+    "module_crc": "0x71284ce9",
+    "kernel_crc": "0x71284ce9",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "wait_for_completion",
+    "module_crc": "0xf64bf255",
+    "kernel_crc": "0xf64bf255",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "rb_first",
+    "module_crc": "0xece784c2",
+    "kernel_crc": "0xece784c2",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "rb_erase",
+    "module_crc": "0x4d9b652b",
+    "kernel_crc": "0x4d9b652b",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "kfree",
+    "module_crc": "0x037a0cba",
+    "kernel_crc": "0x037a0cba",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "bio_associate_blkg",
+    "module_crc": "0x481ab4f9",
+    "kernel_crc": "0x481ab4f9",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "bio_endio",
+    "module_crc": "0xd0c2bb6e",
+    "kernel_crc": "0xd0c2bb6e",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "mutex_lock",
+    "module_crc": "0x828ce6bb",
+    "kernel_crc": "0x828ce6bb",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "mutex_unlock",
+    "module_crc": "0x9618ede0",
+    "kernel_crc": "0x9618ede0",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_table_get_md",
+    "module_crc": "0xf907b4cf",
+    "kernel_crc": "0xf907b4cf",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_disk",
+    "module_crc": "0x63399559",
+    "kernel_crc": "0x63399559",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "kobject_init_and_add",
+    "module_crc": "0x64fe026b",
+    "kernel_crc": "0x64fe026b",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "scnprintf",
+    "module_crc": "0x314b20c8",
+    "kernel_crc": "0x314b20c8",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "rb_next",
+    "module_crc": "0xca9360b5",
+    "kernel_crc": "0xca9360b5",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "rb_last",
+    "module_crc": "0xdf2c2742",
+    "kernel_crc": "0xdf2c2742",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "warn_slowpath_fmt",
+    "module_crc": "0x2cfde9a2",
+    "kernel_crc": "0x2cfde9a2",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "fs_bio_set",
+    "module_crc": "0x053d1147",
+    "kernel_crc": "0x053d1147",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "bio_split",
+    "module_crc": "0xa33e6aee",
+    "kernel_crc": "0xa33e6aee",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "bio_chain",
+    "module_crc": "0x9d10aa53",
+    "kernel_crc": "0x9d10aa53",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "submit_bio",
+    "module_crc": "0x0f3af6c0",
+    "kernel_crc": "0x0f3af6c0",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "queue_work_on",
+    "module_crc": "0xb2d48a2e",
+    "kernel_crc": "0xb2d48a2e",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "rb_prev",
+    "module_crc": "0xf82ec573",
+    "kernel_crc": "0xf82ec573",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_bufio_read",
+    "module_crc": "0xb04f56ab",
+    "kernel_crc": "0xb04f56ab",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "crc32_le",
+    "module_crc": "0x80c4c319",
+    "kernel_crc": "0x80c4c319",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_bufio_new",
+    "module_crc": "0xc0d7df85",
+    "kernel_crc": "0xc0d7df85",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "memcpy",
+    "module_crc": "0x9d669763",
+    "kernel_crc": "0x9d669763",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_bufio_mark_buffer_dirty",
+    "module_crc": "0x0ad0dc4f",
+    "kernel_crc": "0x0ad0dc4f",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_bufio_release",
+    "module_crc": "0xe6024e59",
+    "kernel_crc": "0xe6024e59",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_bufio_write_dirty_buffers",
+    "module_crc": "0xa82b2066",
+    "kernel_crc": "0xa82b2066",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "dm_kobject_release",
+    "module_crc": "0x4757698d",
+    "kernel_crc": "0x4757698d",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "kobj_sysfs_ops",
+    "module_crc": "0x15a77ba6",
+    "kernel_crc": "0x15a77ba6",
+    "match": true
+  },
+  {
+    "module": "extra/dm-bow.ko",
+    "symbol": "module_layout",
+    "module_crc": "0xc8c118b4",
+    "kernel_crc": "0xc8c118b4",
+    "match": true
+  },
+  {
+    "module": "extra/extcon-usb-fixed.ko",
+    "symbol": "__gnu_mcount_nc",
+    "module_crc": "0xb1ad28e0",
+    "kernel_crc": "0xb1ad28e0",
+    "match": true
+  },
+  {
+    "module": "extra/extcon-usb-fixed.ko",
+    "symbol": "platform_device_register",
+    "module_crc": "0x493ecfbf",
+    "kernel_crc": "0x493ecfbf",
+    "match": true
+  },
+  {
+    "module": "extra/extcon-usb-fixed.ko",
+    "symbol": "devm_extcon_dev_allocate",
+    "module_crc": "0x5fccb63c",
+    "kernel_crc": "0x5fccb63c",
+    "match": true
+  },
+  {
+    "module": "extra/extcon-usb-fixed.ko",
+    "symbol": "devm_extcon_dev_register",
+    "module_crc": "0xd86fca99",
+    "kernel_crc": "0xd86fca99",
+    "match": true
+  },
+  {
+    "module": "extra/extcon-usb-fixed.ko",
+    "symbol": "extcon_set_state_sync",
+    "module_crc": "0x9af76812",
+    "kernel_crc": "0x9af76812",
+    "match": true
+  },
+  {
+    "module": "extra/extcon-usb-fixed.ko",
+    "symbol": "__aeabi_unwind_cpp_pr1",
+    "module_crc": "0x2e5810c6",
+    "kernel_crc": "0x2e5810c6",
+    "match": true
+  },
+  {
+    "module": "extra/extcon-usb-fixed.ko",
+    "symbol": "platform_device_unregister",
+    "module_crc": "0x2806c0be",
+    "kernel_crc": "0x2806c0be",
+    "match": true
+  },
+  {
+    "module": "extra/extcon-usb-fixed.ko",
+    "symbol": "__aeabi_unwind_cpp_pr0",
+    "module_crc": "0xefd6cf06",
+    "kernel_crc": "0xefd6cf06",
+    "match": true
+  },
+  {
+    "module": "extra/extcon-usb-fixed.ko",
+    "symbol": "module_layout",
+    "module_crc": "0xc8c118b4",
+    "kernel_crc": "0xc8c118b4",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "__gnu_mcount_nc",
+    "module_crc": "0xb1ad28e0",
+    "kernel_crc": "0xb1ad28e0",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "register_reboot_notifier",
+    "module_crc": "0x254b636d",
+    "kernel_crc": "0x254b636d",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "__aeabi_unwind_cpp_pr0",
+    "module_crc": "0xefd6cf06",
+    "kernel_crc": "0xefd6cf06",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "unregister_reboot_notifier",
+    "module_crc": "0x00114764",
+    "kernel_crc": "0x00114764",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "__stack_chk_guard",
+    "module_crc": "0x8f678b07",
+    "kernel_crc": "0x8f678b07",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "filp_open",
+    "module_crc": "0xa62b55f8",
+    "kernel_crc": "0xa62b55f8",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "strncmp",
+    "module_crc": "0x84b183ae",
+    "kernel_crc": "0x84b183ae",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "kernel_write",
+    "module_crc": "0xc336a2ea",
+    "kernel_crc": "0xc336a2ea",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "down_read",
+    "module_crc": "0xfb1d7438",
+    "kernel_crc": "0xfb1d7438",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "sync_filesystem",
+    "module_crc": "0xf64585bc",
+    "kernel_crc": "0xf64585bc",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "up_read",
+    "module_crc": "0xa7b3181c",
+    "kernel_crc": "0xa7b3181c",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "fput",
+    "module_crc": "0xe9a35929",
+    "kernel_crc": "0xe9a35929",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "__stack_chk_fail",
+    "module_crc": "0xf0fdf6cb",
+    "kernel_crc": "0xf0fdf6cb",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "_printk",
+    "module_crc": "0x92997ed8",
+    "kernel_crc": "0x92997ed8",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "__aeabi_unwind_cpp_pr1",
+    "module_crc": "0x2e5810c6",
+    "kernel_crc": "0x2e5810c6",
+    "match": true
+  },
+  {
+    "module": "extra/inform-reboot.ko",
+    "symbol": "module_layout",
+    "module_crc": "0xc8c118b4",
+    "kernel_crc": "0xc8c118b4",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "drop_collected_mounts",
+    "module_crc": "0x38b669b9",
+    "kernel_crc": "0x38b669b9",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "ida_alloc_range",
+    "module_crc": "0x914a1b39",
+    "kernel_crc": "0x914a1b39",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "iget_locked",
+    "module_crc": "0x60b123e0",
+    "kernel_crc": "0x60b123e0",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "flush_dcache_page",
+    "module_crc": "0xfe14994b",
+    "kernel_crc": "0xfe14994b",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__init_rwsem",
+    "module_crc": "0x6f013ecd",
+    "kernel_crc": "0x6f013ecd",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "clear_inode",
+    "module_crc": "0x7f11c5ea",
+    "kernel_crc": "0x7f11c5ea",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "ida_destroy",
+    "module_crc": "0xd130d12c",
+    "kernel_crc": "0xd130d12c",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "idr_find",
+    "module_crc": "0x249293e3",
+    "kernel_crc": "0x249293e3",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "empty_aops",
+    "module_crc": "0x7f15c1a1",
+    "kernel_crc": "0x7f15c1a1",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__kmalloc_noprof",
+    "module_crc": "0x9b1485da",
+    "kernel_crc": "0x9b1485da",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "collect_mounts",
+    "module_crc": "0x0ce82795",
+    "kernel_crc": "0x0ce82795",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kmap_high",
+    "module_crc": "0x7af3a7be",
+    "kernel_crc": "0x7af3a7be",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "memmove",
+    "module_crc": "0x99bb8806",
+    "kernel_crc": "0x99bb8806",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "snprintf",
+    "module_crc": "0xc358aaf8",
+    "kernel_crc": "0xc358aaf8",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "memdup_user",
+    "module_crc": "0xad2d8966",
+    "kernel_crc": "0xad2d8966",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__stack_chk_guard",
+    "module_crc": "0x8f678b07",
+    "kernel_crc": "0x8f678b07",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__aeabi_unwind_cpp_pr0",
+    "module_crc": "0xefd6cf06",
+    "kernel_crc": "0xefd6cf06",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "unregister_filesystem",
+    "module_crc": "0x57c84426",
+    "kernel_crc": "0x57c84426",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "rb_next",
+    "module_crc": "0xca9360b5",
+    "kernel_crc": "0xca9360b5",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "get_pid_task",
+    "module_crc": "0xb5afb353",
+    "kernel_crc": "0xb5afb353",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "finish_wait",
+    "module_crc": "0x49970de8",
+    "kernel_crc": "0x49970de8",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "simple_statfs",
+    "module_crc": "0xab929071",
+    "kernel_crc": "0xab929071",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "d_make_root",
+    "module_crc": "0xe59a4896",
+    "kernel_crc": "0xe59a4896",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "idr_replace",
+    "module_crc": "0x0911d272",
+    "kernel_crc": "0x0911d272",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "fget",
+    "module_crc": "0xe087e9be",
+    "kernel_crc": "0xe087e9be",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__put_task_struct",
+    "module_crc": "0xaba25128",
+    "kernel_crc": "0xaba25128",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "task_cgroup_path",
+    "module_crc": "0xc6b74c8d",
+    "kernel_crc": "0xc6b74c8d",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "div64_u64_rem",
+    "module_crc": "0xd63fafc2",
+    "kernel_crc": "0xd63fafc2",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "d_splice_alias",
+    "module_crc": "0xf62493c0",
+    "kernel_crc": "0xf62493c0",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "fd_install",
+    "module_crc": "0x2019f5c8",
+    "kernel_crc": "0x2019f5c8",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "memcpy",
+    "module_crc": "0x9d669763",
+    "kernel_crc": "0x9d669763",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "generic_permission",
+    "module_crc": "0x340ba3c3",
+    "kernel_crc": "0x340ba3c3",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kfree",
+    "module_crc": "0x037a0cba",
+    "kernel_crc": "0x037a0cba",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "wrap_directory_iterator",
+    "module_crc": "0x3c4953c7",
+    "kernel_crc": "0x3c4953c7",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "warn_slowpath_fmt",
+    "module_crc": "0x2cfde9a2",
+    "kernel_crc": "0x2cfde9a2",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "prepare_to_wait_event",
+    "module_crc": "0x647af474",
+    "kernel_crc": "0x647af474",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "d_hash_and_lookup",
+    "module_crc": "0xaa86a4d2",
+    "kernel_crc": "0xaa86a4d2",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "iov_iter_init",
+    "module_crc": "0x53904f73",
+    "kernel_crc": "0x53904f73",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__wake_up",
+    "module_crc": "0x637493f3",
+    "kernel_crc": "0x637493f3",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "free_pages",
+    "module_crc": "0x4302d0eb",
+    "kernel_crc": "0x4302d0eb",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "register_filesystem",
+    "module_crc": "0x1374ac18",
+    "kernel_crc": "0x1374ac18",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "file_ns_capable",
+    "module_crc": "0xc257a10b",
+    "kernel_crc": "0xc257a10b",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "rb_insert_color",
+    "module_crc": "0xa5526619",
+    "kernel_crc": "0xa5526619",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "_raw_spin_lock",
+    "module_crc": "0xae577d60",
+    "kernel_crc": "0xae577d60",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "path_put",
+    "module_crc": "0xcde3d5c0",
+    "kernel_crc": "0xcde3d5c0",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "put_unused_fd",
+    "module_crc": "0x3f4547a7",
+    "kernel_crc": "0x3f4547a7",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__put_cred",
+    "module_crc": "0x99418ee8",
+    "kernel_crc": "0x99418ee8",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "unlock_new_inode",
+    "module_crc": "0xff4fa705",
+    "kernel_crc": "0xff4fa705",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "_printk",
+    "module_crc": "0x92997ed8",
+    "kernel_crc": "0x92997ed8",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "schedule",
+    "module_crc": "0x01000e51",
+    "kernel_crc": "0x01000e51",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__stack_chk_fail",
+    "module_crc": "0xf0fdf6cb",
+    "kernel_crc": "0xf0fdf6cb",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "refcount_warn_saturate",
+    "module_crc": "0x0296695f",
+    "kernel_crc": "0x0296695f",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "queue_delayed_work_on",
+    "module_crc": "0xcf86cdac",
+    "kernel_crc": "0xcf86cdac",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "make_kuid",
+    "module_crc": "0x1eb7c6ce",
+    "kernel_crc": "0x1eb7c6ce",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "truncate_inode_pages_final",
+    "module_crc": "0x87f4b890",
+    "kernel_crc": "0x87f4b890",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "fs_kobj",
+    "module_crc": "0xe74de390",
+    "kernel_crc": "0xe74de390",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "security_secid_to_secctx",
+    "module_crc": "0xf44d53da",
+    "kernel_crc": "0xf44d53da",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "strrchr",
+    "module_crc": "0x9f984513",
+    "kernel_crc": "0x9f984513",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "security_release_secctx",
+    "module_crc": "0xed61f6b3",
+    "kernel_crc": "0xed61f6b3",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__cond_resched",
+    "module_crc": "0x0800473f",
+    "kernel_crc": "0x0800473f",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "idr_remove",
+    "module_crc": "0x6cfdb686",
+    "kernel_crc": "0x6cfdb686",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "mark_page_accessed",
+    "module_crc": "0xcaf1c15b",
+    "kernel_crc": "0xcaf1c15b",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "shmem_file_setup",
+    "module_crc": "0xe6c1c9f4",
+    "kernel_crc": "0xe6c1c9f4",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "init_wait_entry",
+    "module_crc": "0xfe487975",
+    "kernel_crc": "0xfe487975",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "poll_initwait",
+    "module_crc": "0x2f3e90be",
+    "kernel_crc": "0x2f3e90be",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "fput",
+    "module_crc": "0xe9a35929",
+    "kernel_crc": "0xe9a35929",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "down_write",
+    "module_crc": "0x4253aa7e",
+    "kernel_crc": "0x4253aa7e",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "strndup_user",
+    "module_crc": "0x4d8f9d54",
+    "kernel_crc": "0x4d8f9d54",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "up_write",
+    "module_crc": "0x7e0ce0c3",
+    "kernel_crc": "0x7e0ce0c3",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "idr_alloc",
+    "module_crc": "0xb48e195d",
+    "kernel_crc": "0xb48e195d",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "memchr",
+    "module_crc": "0xdd27fa87",
+    "kernel_crc": "0xdd27fa87",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "security_current_getsecid_subj",
+    "module_crc": "0x189adfe6",
+    "kernel_crc": "0x189adfe6",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "poll_freewait",
+    "module_crc": "0xd06c1fd0",
+    "kernel_crc": "0xd06c1fd0",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "generate_random_uuid",
+    "module_crc": "0xa681fe88",
+    "kernel_crc": "0xa681fe88",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "noop_llseek",
+    "module_crc": "0x5324e5b0",
+    "kernel_crc": "0x5324e5b0",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kunmap_high",
+    "module_crc": "0x3c98423d",
+    "kernel_crc": "0x3c98423d",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "set_nlink",
+    "module_crc": "0x98ad69ca",
+    "kernel_crc": "0x98ad69ca",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "mutex_lock",
+    "module_crc": "0x828ce6bb",
+    "kernel_crc": "0x828ce6bb",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kmem_cache_free",
+    "module_crc": "0x79e8b837",
+    "kernel_crc": "0x79e8b837",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "fget_raw",
+    "module_crc": "0xa2c5761a",
+    "kernel_crc": "0xa2c5761a",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "strncmp",
+    "module_crc": "0x84b183ae",
+    "kernel_crc": "0x84b183ae",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "iterate_mounts",
+    "module_crc": "0x072e19c7",
+    "kernel_crc": "0x072e19c7",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "rb_erase",
+    "module_crc": "0x4d9b652b",
+    "kernel_crc": "0x4d9b652b",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "iov_iter_kvec",
+    "module_crc": "0x30ee5e30",
+    "kernel_crc": "0x30ee5e30",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "ida_free",
+    "module_crc": "0x2e63b3a9",
+    "kernel_crc": "0x2e63b3a9",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "sget",
+    "module_crc": "0x8cdb1101",
+    "kernel_crc": "0x8cdb1101",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__mutex_init",
+    "module_crc": "0xde4bf88b",
+    "kernel_crc": "0xde4bf88b",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "movable_zone",
+    "module_crc": "0xd89da37f",
+    "kernel_crc": "0xd89da37f",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "_ctype",
+    "module_crc": "0x11089ac7",
+    "kernel_crc": "0x11089ac7",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "idr_destroy",
+    "module_crc": "0xba119526",
+    "kernel_crc": "0xba119526",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "from_kuid",
+    "module_crc": "0x4757ebe8",
+    "kernel_crc": "0x4757ebe8",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "cancel_delayed_work",
+    "module_crc": "0xa15d0131",
+    "kernel_crc": "0xa15d0131",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "memset",
+    "module_crc": "0x5f754e5a",
+    "kernel_crc": "0x5f754e5a",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__put_user_8",
+    "module_crc": "0x407136b1",
+    "kernel_crc": "0x407136b1",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "vfs_iter_write",
+    "module_crc": "0xa766e13e",
+    "kernel_crc": "0xa766e13e",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kernel_read",
+    "module_crc": "0xe2b3e6b0",
+    "kernel_crc": "0xe2b3e6b0",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__get_task_comm",
+    "module_crc": "0x2dcad7ce",
+    "kernel_crc": "0x2dcad7ce",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kmem_cache_alloc_noprof",
+    "module_crc": "0x6ec11c1a",
+    "kernel_crc": "0x6ec11c1a",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kmemdup_noprof",
+    "module_crc": "0x940d811f",
+    "kernel_crc": "0x940d811f",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__init_waitqueue_head",
+    "module_crc": "0x5bbe49f4",
+    "kernel_crc": "0x5bbe49f4",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "make_kgid",
+    "module_crc": "0x39c95d57",
+    "kernel_crc": "0x39c95d57",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "rb_first",
+    "module_crc": "0xece784c2",
+    "kernel_crc": "0xece784c2",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__kmem_cache_create_args",
+    "module_crc": "0xf0b3721b",
+    "kernel_crc": "0xf0b3721b",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "from_kgid_munged",
+    "module_crc": "0x86685094",
+    "kernel_crc": "0x86685094",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kasprintf",
+    "module_crc": "0xfb384d37",
+    "kernel_crc": "0xfb384d37",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kobject_create_and_add",
+    "module_crc": "0xa04c4d42",
+    "kernel_crc": "0xa04c4d42",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "strcmp",
+    "module_crc": "0xe2d5255a",
+    "kernel_crc": "0xe2d5255a",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "down_read",
+    "module_crc": "0xfb1d7438",
+    "kernel_crc": "0xfb1d7438",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "arm_copy_to_user",
+    "module_crc": "0x6bedfd14",
+    "kernel_crc": "0x6bedfd14",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "rb_replace_node",
+    "module_crc": "0x7fe32873",
+    "kernel_crc": "0x7fe32873",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kstrdup",
+    "module_crc": "0x2d39b0a7",
+    "kernel_crc": "0x2d39b0a7",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "poll_schedule_timeout",
+    "module_crc": "0xbc57e23d",
+    "kernel_crc": "0xbc57e23d",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "path_get",
+    "module_crc": "0x4f12c77c",
+    "kernel_crc": "0x4f12c77c",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "memfd_fcntl",
+    "module_crc": "0x9d134d23",
+    "kernel_crc": "0x9d134d23",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "generic_read_dir",
+    "module_crc": "0x84e13372",
+    "kernel_crc": "0x84e13372",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "mutex_unlock",
+    "module_crc": "0x9618ede0",
+    "kernel_crc": "0x9618ede0",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "cancel_delayed_work_sync",
+    "module_crc": "0x29d9f26e",
+    "kernel_crc": "0x29d9f26e",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "arm_copy_from_user",
+    "module_crc": "0x86c1d099",
+    "kernel_crc": "0x86c1d099",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "init_timer_key",
+    "module_crc": "0xc6f46339",
+    "kernel_crc": "0xc6f46339",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "get_unused_fd_flags",
+    "module_crc": "0xa843805a",
+    "kernel_crc": "0xa843805a",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "init_user_ns",
+    "module_crc": "0x80a401b1",
+    "kernel_crc": "0x80a401b1",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__gnu_mcount_nc",
+    "module_crc": "0xb1ad28e0",
+    "kernel_crc": "0xb1ad28e0",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "inode_set_ctime_current",
+    "module_crc": "0x04e589ee",
+    "kernel_crc": "0x04e589ee",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__kmalloc_cache_noprof",
+    "module_crc": "0x6aaf28b5",
+    "kernel_crc": "0x6aaf28b5",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "ktime_get",
+    "module_crc": "0xb43f9365",
+    "kernel_crc": "0xb43f9365",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "dput",
+    "module_crc": "0xe0fe0c82",
+    "kernel_crc": "0xe0fe0c82",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "lockref_get",
+    "module_crc": "0xd32d6c08",
+    "kernel_crc": "0xd32d6c08",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "delayed_work_timer_fn",
+    "module_crc": "0xffeedf6a",
+    "kernel_crc": "0xffeedf6a",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "generic_delete_inode",
+    "module_crc": "0x399ef9cc",
+    "kernel_crc": "0x399ef9cc",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "deactivate_locked_super",
+    "module_crc": "0x5caf84eb",
+    "kernel_crc": "0x5caf84eb",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "pid_nr_ns",
+    "module_crc": "0x5a1282b9",
+    "kernel_crc": "0x5a1282b9",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "nsecs_to_jiffies",
+    "module_crc": "0xffae8e8b",
+    "kernel_crc": "0xffae8e8b",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__put_user_ns",
+    "module_crc": "0xe92c6366",
+    "kernel_crc": "0xe92c6366",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "find_vpid",
+    "module_crc": "0x8003ce89",
+    "kernel_crc": "0x8003ce89",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kill_anon_super",
+    "module_crc": "0x89e7356f",
+    "kernel_crc": "0x89e7356f",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "from_kuid_munged",
+    "module_crc": "0xe3699193",
+    "kernel_crc": "0xe3699193",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "d_parent_ino",
+    "module_crc": "0xd13eb151",
+    "kernel_crc": "0xd13eb151",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "page_address",
+    "module_crc": "0x47d134f1",
+    "kernel_crc": "0x47d134f1",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "strlen",
+    "module_crc": "0x97255bdf",
+    "kernel_crc": "0x97255bdf",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "__aeabi_unwind_cpp_pr1",
+    "module_crc": "0x2e5810c6",
+    "kernel_crc": "0x2e5810c6",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "d_invalidate",
+    "module_crc": "0x8e01c81f",
+    "kernel_crc": "0x8e01c81f",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "generic_file_llseek",
+    "module_crc": "0xcd7340eb",
+    "kernel_crc": "0xcd7340eb",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "get_free_pages_noprof",
+    "module_crc": "0xccf69887",
+    "kernel_crc": "0xccf69887",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "up_read",
+    "module_crc": "0xa7b3181c",
+    "kernel_crc": "0xa7b3181c",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "put_pid",
+    "module_crc": "0xedfd1355",
+    "kernel_crc": "0xedfd1355",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "set_anon_super",
+    "module_crc": "0xac28994b",
+    "kernel_crc": "0xac28994b",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "ktime_get_with_offset",
+    "module_crc": "0xc4f0da12",
+    "kernel_crc": "0xc4f0da12",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kmalloc_caches",
+    "module_crc": "0x9624f32b",
+    "kernel_crc": "0x9624f32b",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "krealloc_noprof",
+    "module_crc": "0x50c7fc54",
+    "kernel_crc": "0x50c7fc54",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kmem_cache_destroy",
+    "module_crc": "0x77d6fc55",
+    "kernel_crc": "0x77d6fc55",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "system_wq",
+    "module_crc": "0x2d3385d3",
+    "kernel_crc": "0x2d3385d3",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "d_path",
+    "module_crc": "0x475f0c75",
+    "kernel_crc": "0x475f0c75",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "kobject_put",
+    "module_crc": "0x71284ce9",
+    "kernel_crc": "0x71284ce9",
+    "match": true
+  },
+  {
+    "module": "extra/kdbus/kdbus.ko",
+    "symbol": "module_layout",
+    "module_crc": "0xc8c118b4",
+    "kernel_crc": "0xc8c118b4",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "__gnu_mcount_nc",
+    "module_crc": "0xb1ad28e0",
+    "kernel_crc": "0xb1ad28e0",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "__aeabi_unwind_cpp_pr0",
+    "module_crc": "0xefd6cf06",
+    "kernel_crc": "0xefd6cf06",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "misc_deregister",
+    "module_crc": "0x0e758421",
+    "kernel_crc": "0x0e758421",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "vfree",
+    "module_crc": "0x999e8297",
+    "kernel_crc": "0x999e8297",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "kfree",
+    "module_crc": "0x037a0cba",
+    "kernel_crc": "0x037a0cba",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "__aeabi_unwind_cpp_pr1",
+    "module_crc": "0x2e5810c6",
+    "kernel_crc": "0x2e5810c6",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "vmalloc_noprof",
+    "module_crc": "0x1b2fa1a9",
+    "kernel_crc": "0x1b2fa1a9",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "kmalloc_caches",
+    "module_crc": "0x9624f32b",
+    "kernel_crc": "0x9624f32b",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "__kmalloc_cache_noprof",
+    "module_crc": "0x6aaf28b5",
+    "kernel_crc": "0x6aaf28b5",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "kstrdup",
+    "module_crc": "0x2d39b0a7",
+    "kernel_crc": "0x2d39b0a7",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "__init_waitqueue_head",
+    "module_crc": "0x5bbe49f4",
+    "kernel_crc": "0x5bbe49f4",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "__mutex_init",
+    "module_crc": "0xde4bf88b",
+    "kernel_crc": "0xde4bf88b",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "misc_register",
+    "module_crc": "0xfe3e82f0",
+    "kernel_crc": "0xfe3e82f0",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "_printk",
+    "module_crc": "0x92997ed8",
+    "kernel_crc": "0x92997ed8",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "__stack_chk_guard",
+    "module_crc": "0x8f678b07",
+    "kernel_crc": "0x8f678b07",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "autoremove_wake_function",
+    "module_crc": "0xad73041f",
+    "kernel_crc": "0xad73041f",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "mutex_lock",
+    "module_crc": "0x828ce6bb",
+    "kernel_crc": "0x828ce6bb",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "prepare_to_wait",
+    "module_crc": "0x6578533e",
+    "kernel_crc": "0x6578533e",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "mutex_unlock",
+    "module_crc": "0x9618ede0",
+    "kernel_crc": "0x9618ede0",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "schedule",
+    "module_crc": "0x01000e51",
+    "kernel_crc": "0x01000e51",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "finish_wait",
+    "module_crc": "0x49970de8",
+    "kernel_crc": "0x49970de8",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "memcpy",
+    "module_crc": "0x9d669763",
+    "kernel_crc": "0x9d669763",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "arm_copy_to_user",
+    "module_crc": "0x6bedfd14",
+    "kernel_crc": "0x6bedfd14",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "__stack_chk_fail",
+    "module_crc": "0xf0fdf6cb",
+    "kernel_crc": "0xf0fdf6cb",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "warn_slowpath_fmt",
+    "module_crc": "0x2cfde9a2",
+    "kernel_crc": "0x2cfde9a2",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "ktime_get_real_ts64",
+    "module_crc": "0x9ec6ca96",
+    "kernel_crc": "0x9ec6ca96",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "file_path",
+    "module_crc": "0xeb75ce90",
+    "kernel_crc": "0xeb75ce90",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "filp_open",
+    "module_crc": "0xa62b55f8",
+    "kernel_crc": "0xa62b55f8",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "_raw_spin_lock",
+    "module_crc": "0xae577d60",
+    "kernel_crc": "0xae577d60",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "_copy_from_iter",
+    "module_crc": "0x2aa89406",
+    "kernel_crc": "0x2aa89406",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "memmove",
+    "module_crc": "0x99bb8806",
+    "kernel_crc": "0x99bb8806",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "__wake_up",
+    "module_crc": "0x637493f3",
+    "kernel_crc": "0x637493f3",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "filp_close",
+    "module_crc": "0x77654516",
+    "kernel_crc": "0x77654516",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "in_egroup_p",
+    "module_crc": "0x39461d6a",
+    "kernel_crc": "0x39461d6a",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "capable",
+    "module_crc": "0xc6cbbc89",
+    "kernel_crc": "0xc6cbbc89",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "arm_copy_from_user",
+    "module_crc": "0x86c1d099",
+    "kernel_crc": "0x86c1d099",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "__kmalloc_noprof",
+    "module_crc": "0x9b1485da",
+    "kernel_crc": "0x9b1485da",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "strlen",
+    "module_crc": "0x97255bdf",
+    "kernel_crc": "0x97255bdf",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "memset",
+    "module_crc": "0x5f754e5a",
+    "kernel_crc": "0x5f754e5a",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "nonseekable_open",
+    "module_crc": "0x6cb00904",
+    "kernel_crc": "0x6cb00904",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "param_ops_int",
+    "module_crc": "0x08d1b6c1",
+    "kernel_crc": "0x08d1b6c1",
+    "match": true
+  },
+  {
+    "module": "extra/logger.ko",
+    "symbol": "module_layout",
+    "module_crc": "0xc8c118b4",
+    "kernel_crc": "0xc8c118b4",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "__gnu_mcount_nc",
+    "module_crc": "0xb1ad28e0",
+    "kernel_crc": "0xb1ad28e0",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "proc_create",
+    "module_crc": "0xb4debe5b",
+    "kernel_crc": "0xb4debe5b",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "__aeabi_unwind_cpp_pr1",
+    "module_crc": "0x2e5810c6",
+    "kernel_crc": "0x2e5810c6",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "remove_proc_entry",
+    "module_crc": "0x65ef0eb8",
+    "kernel_crc": "0x65ef0eb8",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "__aeabi_unwind_cpp_pr0",
+    "module_crc": "0xefd6cf06",
+    "kernel_crc": "0xefd6cf06",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "single_open_size",
+    "module_crc": "0x49d5f475",
+    "kernel_crc": "0x49d5f475",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "__stack_chk_guard",
+    "module_crc": "0x8f678b07",
+    "kernel_crc": "0x8f678b07",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "memset",
+    "module_crc": "0x5f754e5a",
+    "kernel_crc": "0x5f754e5a",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "ktime_get_with_offset",
+    "module_crc": "0xc4f0da12",
+    "kernel_crc": "0xc4f0da12",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "si_meminfo",
+    "module_crc": "0x40c7247c",
+    "kernel_crc": "0x40c7247c",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "seq_put_decimal_ull",
+    "module_crc": "0x72398a88",
+    "kernel_crc": "0x72398a88",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "seq_printf",
+    "module_crc": "0x1d81a825",
+    "kernel_crc": "0x1d81a825",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "init_task",
+    "module_crc": "0x20b1a5e5",
+    "kernel_crc": "0x20b1a5e5",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "_raw_spin_lock",
+    "module_crc": "0xae577d60",
+    "kernel_crc": "0xae577d60",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "security_cred_getsecid",
+    "module_crc": "0x320a7188",
+    "kernel_crc": "0x320a7188",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "security_secid_to_secctx",
+    "module_crc": "0xf44d53da",
+    "kernel_crc": "0xf44d53da",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "strcmp",
+    "module_crc": "0xe2d5255a",
+    "kernel_crc": "0xe2d5255a",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "thread_group_cputime_adjusted",
+    "module_crc": "0x2b9a39bb",
+    "kernel_crc": "0x2b9a39bb",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "seq_put_decimal_ll",
+    "module_crc": "0xe3d837ab",
+    "kernel_crc": "0xe3d837ab",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "__stack_chk_fail",
+    "module_crc": "0xf0fdf6cb",
+    "kernel_crc": "0xf0fdf6cb",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "param_ops_charp",
+    "module_crc": "0x834f3813",
+    "kernel_crc": "0x834f3813",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "param_array_ops",
+    "module_crc": "0xfebc4b42",
+    "kernel_crc": "0xfebc4b42",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "seq_read",
+    "module_crc": "0x4d702855",
+    "kernel_crc": "0x4d702855",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "seq_lseek",
+    "module_crc": "0xe9d03e87",
+    "kernel_crc": "0xe9d03e87",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "single_release",
+    "module_crc": "0xe4b661ef",
+    "kernel_crc": "0xe4b661ef",
+    "match": true
+  },
+  {
+    "module": "extra/proc-tsm.ko",
+    "symbol": "module_layout",
+    "module_crc": "0xc8c118b4",
+    "kernel_crc": "0xc8c118b4",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__gnu_mcount_nc",
+    "module_crc": "0xb1ad28e0",
+    "kernel_crc": "0xb1ad28e0",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__kmalloc_large_noprof",
+    "module_crc": "0x128853de",
+    "kernel_crc": "0x128853de",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "memset",
+    "module_crc": "0x5f754e5a",
+    "kernel_crc": "0x5f754e5a",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "get_free_pages_noprof",
+    "module_crc": "0xccf69887",
+    "kernel_crc": "0xccf69887",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__mutex_init",
+    "module_crc": "0xde4bf88b",
+    "kernel_crc": "0xde4bf88b",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "_printk",
+    "module_crc": "0x92997ed8",
+    "kernel_crc": "0x92997ed8",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "free_pages",
+    "module_crc": "0x4302d0eb",
+    "kernel_crc": "0x4302d0eb",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "kfree",
+    "module_crc": "0x037a0cba",
+    "kernel_crc": "0x037a0cba",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "trace_clock_local",
+    "module_crc": "0x33efc8c8",
+    "kernel_crc": "0x33efc8c8",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "ktime_get",
+    "module_crc": "0xb43f9365",
+    "kernel_crc": "0xb43f9365",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "kthread_create_on_node",
+    "module_crc": "0x84fdc1c3",
+    "kernel_crc": "0x84fdc1c3",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "wake_up_process",
+    "module_crc": "0xf7abbcdc",
+    "kernel_crc": "0xf7abbcdc",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "misc_register",
+    "module_crc": "0xfe3e82f0",
+    "kernel_crc": "0xfe3e82f0",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "misc_deregister",
+    "module_crc": "0x0e758421",
+    "kernel_crc": "0x0e758421",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "kthread_stop",
+    "module_crc": "0x0f6ecc77",
+    "kernel_crc": "0x0f6ecc77",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__aeabi_unwind_cpp_pr0",
+    "module_crc": "0xefd6cf06",
+    "kernel_crc": "0xefd6cf06",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__aeabi_unwind_cpp_pr1",
+    "module_crc": "0x2e5810c6",
+    "kernel_crc": "0x2e5810c6",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "kthread_should_stop",
+    "module_crc": "0xb3f7646e",
+    "kernel_crc": "0xb3f7646e",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "up_write",
+    "module_crc": "0x7e0ce0c3",
+    "kernel_crc": "0x7e0ce0c3",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "mutex_unlock",
+    "module_crc": "0x9618ede0",
+    "kernel_crc": "0x9618ede0",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "mutex_lock",
+    "module_crc": "0x828ce6bb",
+    "kernel_crc": "0x828ce6bb",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__tracepoint_mmap_lock_start_locking",
+    "module_crc": "0x770ae94b",
+    "kernel_crc": "0x770ae94b",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "down_write_killable",
+    "module_crc": "0x6fb374e6",
+    "kernel_crc": "0x6fb374e6",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__tracepoint_mmap_lock_acquire_returned",
+    "module_crc": "0x15f1bb24",
+    "kernel_crc": "0x15f1bb24",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "mmput",
+    "module_crc": "0xc6d2a9fb",
+    "kernel_crc": "0xc6d2a9fb",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "mutex_is_locked",
+    "module_crc": "0xb5fdc18f",
+    "kernel_crc": "0xb5fdc18f",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "zap_vma_ptes",
+    "module_crc": "0x7124396f",
+    "kernel_crc": "0x7124396f",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "_clear_bit",
+    "module_crc": "0x49ebacbd",
+    "kernel_crc": "0x49ebacbd",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "_set_bit",
+    "module_crc": "0x676bbc0f",
+    "kernel_crc": "0x676bbc0f",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__tracepoint_mmap_lock_released",
+    "module_crc": "0x1cdee62c",
+    "kernel_crc": "0x1cdee62c",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "warn_slowpath_fmt",
+    "module_crc": "0x2cfde9a2",
+    "kernel_crc": "0x2cfde9a2",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__mmap_lock_do_trace_start_locking",
+    "module_crc": "0x4476f0ce",
+    "kernel_crc": "0x4476f0ce",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__mmap_lock_do_trace_acquire_returned",
+    "module_crc": "0x15b7738a",
+    "kernel_crc": "0x15b7738a",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__mmap_lock_do_trace_released",
+    "module_crc": "0x1fbc09e6",
+    "kernel_crc": "0x1fbc09e6",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "schedule_timeout_interruptible",
+    "module_crc": "0x054496b4",
+    "kernel_crc": "0x054496b4",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__kmalloc_noprof",
+    "module_crc": "0x9b1485da",
+    "kernel_crc": "0x9b1485da",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "kmalloc_caches",
+    "module_crc": "0x9624f32b",
+    "kernel_crc": "0x9624f32b",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__kmalloc_cache_noprof",
+    "module_crc": "0x6aaf28b5",
+    "kernel_crc": "0x6aaf28b5",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "arm_copy_from_user",
+    "module_crc": "0x86c1d099",
+    "kernel_crc": "0x86c1d099",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "memcpy",
+    "module_crc": "0x9d669763",
+    "kernel_crc": "0x9d669763",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "strnlen",
+    "module_crc": "0xd9ce8f0c",
+    "kernel_crc": "0xd9ce8f0c",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__stack_chk_guard",
+    "module_crc": "0x8f678b07",
+    "kernel_crc": "0x8f678b07",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__stack_chk_fail",
+    "module_crc": "0xf0fdf6cb",
+    "kernel_crc": "0xf0fdf6cb",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "mem_map",
+    "module_crc": "0x278533c4",
+    "kernel_crc": "0x278533c4",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__pv_phys_pfn_offset",
+    "module_crc": "0x987c11c7",
+    "kernel_crc": "0x987c11c7",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "remap_pfn_range",
+    "module_crc": "0x67a2554b",
+    "kernel_crc": "0x67a2554b",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "down_write",
+    "module_crc": "0x4253aa7e",
+    "kernel_crc": "0x4253aa7e",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "nonseekable_open",
+    "module_crc": "0x6cb00904",
+    "kernel_crc": "0x6cb00904",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "vmf_insert_pfn",
+    "module_crc": "0x41bb87f9",
+    "kernel_crc": "0x41bb87f9",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "__bitmap_or",
+    "module_crc": "0xa084749a",
+    "kernel_crc": "0xa084749a",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "arm_copy_to_user",
+    "module_crc": "0x6bedfd14",
+    "kernel_crc": "0x6bedfd14",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "param_ops_int",
+    "module_crc": "0x08d1b6c1",
+    "kernel_crc": "0x08d1b6c1",
+    "match": true
+  },
+  {
+    "module": "extra/zlogger/zlogger.ko",
+    "symbol": "module_layout",
+    "module_crc": "0xc8c118b4",
+    "kernel_crc": "0xc8c118b4",
+    "match": true
+  }
+]

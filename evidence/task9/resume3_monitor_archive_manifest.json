@@ -1,0 +1,173 @@
+{
+  "captured_at": "2026-11-04T02:40:01.683693+08:00",
+  "files": [
+    {
+      "path": "temp/task9/status.txt",
+      "exists": true,
+      "bytes": 477,
+      "lines": 6,
+      "sha256": "1939b93f49a2d697001146e9c6d28520119df37b48fce3038ccb8b0a7230f4e4",
+      "mtime_ns": 1793730845856593253
+    },
+    {
+      "path": "temp/task9/monitor.log",
+      "exists": true,
+      "bytes": 11947,
+      "lines": 14,
+      "sha256": "2e27e068990cb0e764e20b7de6aad1f0fe963ed40a716aa4c648928861961ba0",
+      "mtime_ns": 1793731185353963968
+    },
+    {
+      "path": "temp/task9/build_kernel.log",
+      "exists": true,
+      "bytes": 985621,
+      "lines": 15638,
+      "sha256": "b10e354db5f7a11085434c1991ce07ab089f9a756009be0d2e4180fbe20bad2f",
+      "mtime_ns": 1793730667718586186
+    },
+    {
+      "path": "temp/task9/build_kernel.log.raw",
+      "exists": true,
+      "bytes": 985518,
+      "lines": 15635,
+      "sha256": "33fcba80e5dea412d505a487596099f5e67618c481f9ada1bd2e57c7e7236095",
+      "mtime_ns": 1793730641641585151
+    },
+    {
+      "path": "temp/task9/kernel.processes.log",
+      "exists": true,
+      "bytes": 119782,
+      "lines": 489,
+      "sha256": "709eb313fb24d77540ab692549c83f9f05b353b0e7af47b18e247d8ce9b6cd64",
+      "mtime_ns": 1793730641608585150
+    },
+    {
+      "path": "temp/task9/kernel.observed_outside.txt",
+      "exists": true,
+      "bytes": 0,
+      "lines": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1793722871297664103
+    },
+    {
+      "path": "temp/task9/kernel.external_review.txt",
+      "exists": true,
+      "bytes": 1968,
+      "lines": 34,
+      "sha256": "fedced8833efe209ba5ff32675933cdb3acaac9c748e4d517493cc2f5a45c381",
+      "mtime_ns": 1793730667711728320
+    },
+    {
+      "path": "temp/task9/kernel.external_paths.txt",
+      "exists": true,
+      "bytes": 1352,
+      "lines": 30,
+      "sha256": "6f2799ef5736edfe7187b52bf93cccd977d4f1f9a42d33ad1ddb490d124651d2",
+      "mtime_ns": 1793730667705586185
+    },
+    {
+      "path": "temp/task9/build_modsrc.log",
+      "exists": true,
+      "bytes": 58817,
+      "lines": 596,
+      "sha256": "5ff1e6e879e8fb11627acca8029f13defd1b774fdf43a357e6b336a4d1741d76",
+      "mtime_ns": 1793730758709589796
+    },
+    {
+      "path": "temp/task9/build_modsrc.log.raw",
+      "exists": true,
+      "bytes": 58714,
+      "lines": 593,
+      "sha256": "dfc1b5b5b900429198f379ab4cbde6c391cb99efb9832c2a11475f699d443f36",
+      "mtime_ns": 1793730758674589794
+    },
+    {
+      "path": "temp/task9/modsrc.processes.log",
+      "exists": true,
+      "bytes": 84769,
+      "lines": 460,
+      "sha256": "cd6e57f9e436b0fad5de51fdb7f4b95c667fe0968c4e31ac65906b3951c6fba8",
+      "mtime_ns": 1793730758643589793
+    },
+    {
+      "path": "temp/task9/modsrc.observed_outside.txt",
+      "exists": true,
+      "bytes": 0,
+      "lines": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1793730667992269626
+    },
+    {
+      "path": "temp/task9/modsrc.external_review.txt",
+      "exists": true,
+      "bytes": 226,
+      "lines": 4,
+      "sha256": "c1121373d52eab1cf7aad342b2a6646a0142d2b25ba69134b5ed4d7c699735a9",
+      "mtime_ns": 1793730758702589795
+    },
+    {
+      "path": "temp/task9/modsrc.external_paths.txt",
+      "exists": true,
+      "bytes": 0,
+      "lines": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1793730758677589794
+    },
+    {
+      "path": "temp/task9/build_modules.log",
+      "exists": true,
+      "bytes": 48237,
+      "lines": 612,
+      "sha256": "247bb32f2a2571086982c1441601bbe801822252103a64b9ac2b62ff80786f7e",
+      "mtime_ns": 1793730845847593253
+    },
+    {
+      "path": "temp/task9/build_modules.log.raw",
+      "exists": true,
+      "bytes": 48133,
+      "lines": 609,
+      "sha256": "23f7a3ab801ee45d0513f1f78960b366d759f2aed47342e466aae619f6c7cadc",
+      "mtime_ns": 1793730845809593251
+    },
+    {
+      "path": "temp/task9/modules.processes.log",
+      "exists": true,
+      "bytes": 84754,
+      "lines": 460,
+      "sha256": "e57fc8e5cdd410190a73dfd254d959e03fca429cf6b92025561cd18a70832a45",
+      "mtime_ns": 1793730845779593250
+    },
+    {
+      "path": "temp/task9/modules.observed_outside.txt",
+      "exists": true,
+      "bytes": 0,
+      "lines": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1793730759751799724
+    },
+    {
+      "path": "temp/task9/modules.external_review.txt",
+      "exists": true,
+      "bytes": 226,
+      "lines": 4,
+      "sha256": "31cd4e043f0cf04095b88d2dc168c662de11e8e2ccecccba98246fe5dbef874d",
+      "mtime_ns": 1793730845840593252
+    },
+    {
+      "path": "temp/task9/modules.external_paths.txt",
+      "exists": true,
+      "bytes": 0,
+      "lines": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mtime_ns": 1793730845812593251
+    },
+    {
+      "path": "temp/task9/resume3/monitor_once.py",
+      "exists": true,
+      "bytes": 4815,
+      "lines": 58,
+      "sha256": "2501955c71ac8b104d31c310d2df9efea1cefe8a7037a78849683500c8004893",
+      "mtime_ns": 1793725827779394172
+    }
+  ]
+}

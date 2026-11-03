@@ -1,0 +1,4 @@
+FIND-END 2026-11-04T02:31:07+08:00 exit=1; permission errors suppressed; root/deeper/deleted files not covered
+Names/time alone cannot attribute concurrent writes; no files removed.
+Public summary: 30 external-path candidates; attribution unknown. Unrelated path names omitted. Full original remains temp/task9/kernel.external_paths.txt; original SHA256 is in resume3_monitor_archive_manifest.json.
+Direct observations of this process group: zero entries.

@@ -1,0 +1,82 @@
+[
+  {
+    "variant": "arm-rpi4",
+    "file": ".config",
+    "rpm_payload_sha256": "62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5",
+    "installed_sha256": "62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5",
+    "equal": true,
+    "text": null
+  },
+  {
+    "variant": "arm-rpi4",
+    "file": "Module.symvers",
+    "rpm_payload_sha256": "fd1bf28f859933424c88f0e65c224bf4992c18e78cd0c5d0e59b1f72e8beb28c",
+    "installed_sha256": "fd1bf28f859933424c88f0e65c224bf4992c18e78cd0c5d0e59b1f72e8beb28c",
+    "equal": true,
+    "text": null
+  },
+  {
+    "variant": "arm-rpi4",
+    "file": "include/config/kernel.release",
+    "rpm_payload_sha256": "52877927ff90ca62e79e8f344ca3ed684ec73de73118abe8e995f1f0d703c5cb",
+    "installed_sha256": "52877927ff90ca62e79e8f344ca3ed684ec73de73118abe8e995f1f0d703c5cb",
+    "equal": true,
+    "text": "6.12.80-arm-rpi4-v7l-lko-base01\n"
+  },
+  {
+    "variant": "arm-rpi4",
+    "file": "include/generated/compile.h",
+    "rpm_payload_sha256": "fa181242a9dd537cef8ab7d62d2f96eb2621d5bbdb5e5134b42a429aa953b03e",
+    "installed_sha256": "fa181242a9dd537cef8ab7d62d2f96eb2621d5bbdb5e5134b42a429aa953b03e",
+    "equal": true,
+    "text": "#define UTS_MACHINE\t\t\"arm\"\n#define LINUX_COMPILE_BY\t\"abuild\"\n#define LINUX_COMPILE_HOST\t\"linhao-linux\"\n#define LINUX_COMPILER\t\t\"clang version 22.1.8, LLD 22.1.8\"\n"
+  },
+  {
+    "variant": "arm-rpi4",
+    "file": "include/generated/utsrelease.h",
+    "rpm_payload_sha256": "cc9175330a8a5a6221eb5f6de8786a0717916814d79f1fefe36c0fda5fa2099a",
+    "installed_sha256": "cc9175330a8a5a6221eb5f6de8786a0717916814d79f1fefe36c0fda5fa2099a",
+    "equal": true,
+    "text": "#define UTS_RELEASE \"6.12.80-arm-rpi4-v7l-lko-base01\"\n"
+  },
+  {
+    "variant": "arm-rpi4-rt",
+    "file": ".config",
+    "rpm_payload_sha256": "fe2d86397727e714f0eac24feadc48f6ad0c0a71b348f0f956e029d9e0bfee53",
+    "installed_sha256": "fe2d86397727e714f0eac24feadc48f6ad0c0a71b348f0f956e029d9e0bfee53",
+    "equal": true,
+    "text": null
+  },
+  {
+    "variant": "arm-rpi4-rt",
+    "file": "Module.symvers",
+    "rpm_payload_sha256": "867fe27378c0c59ffa1a5a93addee3cb815c3a61737177bada77f2f87e0df6c4",
+    "installed_sha256": "867fe27378c0c59ffa1a5a93addee3cb815c3a61737177bada77f2f87e0df6c4",
+    "equal": true,
+    "text": null
+  },
+  {
+    "variant": "arm-rpi4-rt",
+    "file": "include/config/kernel.release",
+    "rpm_payload_sha256": "c2c135ac23e5c6c4f325ae28b1b04bb3c0fc7d429c3bb156ff67495835280fd6",
+    "installed_sha256": "c2c135ac23e5c6c4f325ae28b1b04bb3c0fc7d429c3bb156ff67495835280fd6",
+    "equal": true,
+    "text": "6.12.80-arm-rpi4-rt-v7l-lko-base01\n"
+  },
+  {
+    "variant": "arm-rpi4-rt",
+    "file": "include/generated/compile.h",
+    "rpm_payload_sha256": "fa181242a9dd537cef8ab7d62d2f96eb2621d5bbdb5e5134b42a429aa953b03e",
+    "installed_sha256": "fa181242a9dd537cef8ab7d62d2f96eb2621d5bbdb5e5134b42a429aa953b03e",
+    "equal": true,
+    "text": "#define UTS_MACHINE\t\t\"arm\"\n#define LINUX_COMPILE_BY\t\"abuild\"\n#define LINUX_COMPILE_HOST\t\"linhao-linux\"\n#define LINUX_COMPILER\t\t\"clang version 22.1.8, LLD 22.1.8\"\n"
+  },
+  {
+    "variant": "arm-rpi4-rt",
+    "file": "include/generated/utsrelease.h",
+    "rpm_payload_sha256": "878d8e3e87be86877acf47014a1866c7f5809b061f272a090b36c7d163d8304f",
+    "installed_sha256": "878d8e3e87be86877acf47014a1866c7f5809b061f272a090b36c7d163d8304f",
+    "equal": true,
+    "text": "#define UTS_RELEASE \"6.12.80-arm-rpi4-rt-v7l-lko-base01\"\n"
+  }
+]

@@ -1,0 +1,81 @@
+Snapshot of temp/task9/build_kernel.log; original lines 15559-15638; full captured SHA256 b10e354db5f7a11085434c1991ce07ab089f9a756009be0d2e4180fbe20bad2f
+15559: [ 7060s] Provides: linux-kernel-perf-debuginfo = 6.12.80-0 linux-kernel-perf-debuginfo(armv7l-32) = 6.12.80-0
+15560: [ 7060s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PartialHardlinkSets) <= 4.0.4-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+15561: [ 7060s] Recommends: rpi4-linux-kernel-debugsource(armv7l-32) = 6.12.80-0
+15562: [ 7060s] Processing files: linux-kernel-bpftool-debuginfo-6.12.80-0.armv7l
+15563: [ 7060s] Aptk: PG1hbmlmZXN0PgogPHJlcXVlc3Q+CiAgICA8ZG9tYWluIG5hbWU9Il8iLz4KIDwv
+15564: [ 7060s] cmVxdWVzdD4KPC9tYW5pZmVzdD4K
+15565: [ 7060s] 
+15566: [ 7060s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm/usr/lib/debug/usr/sbin/bpftool.debug
+15567: [ 7060s] Provides: linux-kernel-bpftool-debuginfo = 6.12.80-0 linux-kernel-bpftool-debuginfo(armv7l-32) = 6.12.80-0
+15568: [ 7060s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+15569: [ 7060s] Recommends: rpi4-linux-kernel-debugsource(armv7l-32) = 6.12.80-0
+15570: [ 7060s] Checking for unpackaged file(s): /usr/lib/rpm/check-files /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm
+15571: [ 7067s] Wrote: /home/abuild/rpmbuild/SRPMS/rpi4-linux-kernel-6.12.80-0.src.rpm
+15572: [ 7075s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/rpi4-linux-kernel-debugsource-6.12.80-0.armv7l.rpm
+15573: [ 7081s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-6.12.80-0.armv7l.rpm
+15574: [ 7087s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-rt-linux-kernel-6.12.80-0.armv7l.rpm
+15575: [ 7087s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-modules-6.12.80-0.armv7l.rpm
+15576: [ 7088s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-rt-linux-kernel-modules-6.12.80-0.armv7l.rpm
+15577: [ 7103s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm
+15578: [ 7118s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-rt-linux-kernel-devel-6.12.80-0.armv7l.rpm
+15579: [ 7118s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-btf-devel-6.12.80-0.armv7l.rpm
+15580: [ 7120s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-headers-6.12.80-0.armv7l.rpm
+15581: [ 7121s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-kernel-perf-6.12.80-0.armv7l.rpm
+15582: [ 7121s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-kernel-bpftool-6.12.80-0.armv7l.rpm
+15583: [ 7132s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-linux-kernel-devel-debuginfo-6.12.80-0.armv7l.rpm
+15584: [ 7142s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/arm-rpi4-rt-linux-kernel-devel-debuginfo-6.12.80-0.armv7l.rpm
+15585: [ 7142s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-kernel-perf-debuginfo-6.12.80-0.armv7l.rpm
+15586: [ 7143s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-kernel-bpftool-debuginfo-6.12.80-0.armv7l.rpm
+15587: [ 7143s] Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.9cYxBN
+15588: [ 7143s] + umask 022
+15589: [ 7143s] + cd /home/abuild/rpmbuild/BUILD
+15590: [ 7143s] + /bin/rm -rf /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm
+15591: [ 7150s] + cd rpi4-linux-kernel-6.12.80
+15592: [ 7150s] + rm -rf /home/abuild/rpmbuild/BUILDROOT/rpi4-linux-kernel-6.12.80-0.arm
+15593: [ 7150s] + exit 0
+15594: [ 7150s] ... checking for files with abuild user/group
+15595: [ 7152s] 
+15596: [ 7152s] linhao-linux finished "build linux-rpi.spec" at Tue Nov  3 18:30:32 UTC 2026.
+15597: [ 7152s] 
+15598: info: finished building rpi4-linux-kernel
+15599: info: updating local repo
+15600: info: *** Build Status Summary ***
+15601: === Total succeeded built packages: (1) ===
+15602: info: generated html format report:
+15603:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/index.html
+15604: info: generated RPM packages can be found from local repo:
+15605:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS
+15606: info: generated source RPM packages can be found from local repo:
+15607:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/SRPMS
+15608: info: build logs can be found in:
+15609:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/logs
+15610: info: build roots located in:
+15611:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.*
+15612: 	Command being timed: "/usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define _smp_mflags -j10 --commit 8c8f2429401d6b282373e58b73399801a9486d5b"
+15613: 	User time (seconds): 8658.89
+15614: 	System time (seconds): 1079.81
+15615: 	Percent of CPU this job got: 125%
+15616: 	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:09:25
+15617: 	Average shared text size (kbytes): 0
+15618: 	Average unshared data size (kbytes): 0
+15619: 	Average stack size (kbytes): 0
+15620: 	Average total size (kbytes): 0
+15621: 	Maximum resident set size (kbytes): 2607444
+15622: 	Average resident set size (kbytes): 0
+15623: 	Major (requiring I/O) page faults: 49614
+15624: 	Minor (reclaiming a frame) page faults: 311392200
+15625: 	Voluntary context switches: 18919986
+15626: 	Involuntary context switches: 797042
+15627: 	Swaps: 0
+15628: 	File system inputs: 33794088
+15629: 	File system outputs: 36374448
+15630: 	Socket messages sent: 0
+15631: 	Socket messages received: 0
+15632: 	Signals delivered: 0
+15633: 	Page size (bytes): 4096
+15634: 	Exit status: 0
+15635: COMMAND-EXIT kernel time=2026-11-04T02:30:41+08:00 exit=0 credential_seen=0
+15636: 
+15637: RESULT=OK; GBS/time exit=0; active_or_residual=none
+15638: BUILD-END kernel 2026-11-04T02:31:07+08:00 exit=0

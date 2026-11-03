@@ -4,7 +4,18 @@
 
 任务 V1：厂商补丁已本地入库并完成试打，报告在本地 vendor_local/V1_report.md（不入库）
 
-更新：2026-11-03（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
+更新：2026-11-04（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
+
+**任务9续跑三（2026-11-04）完成：三阶段构建和产物核验均通过，未部署。** [14第11–12节](14_base01_build.md)、[验收汇总](../evidence/task9/resume3_verification_summary.json)。
+
+- 计划/进度：按PM新门槛恢复原supervisor→每10分钟监控14轮→ALL-END三阶段OK→工具链/依赖/映像/模块/配置/部署包核验→文档证据同commit推main；全部完成。用户在原tmux窗口完成认证，代理未直接sudo、处理密码、发信号或重启脚本。
+- 已闭合：kernel/modsrc/modules均exit0，time -v为2:09:25 / 1:28.05 / 1:21.21；监督阶段总跨度2:13:04。Clang/LLD均22.1.8，modules实际devel来源与本次local RPM相符（包SHA、安装头/时间、载荷和日志交叉核对；BUILDTIME=0不当作墙钟）。
+- 已闭合：普通zImage14,906,368 B，比原厂+632 B（+0.004240%）；普通/RT均正确-lko-base01版本。59个模块vermagic全符，7个树外模块356项CRC比较0不一致；.config与QB1211696逐字相同、0符号差异。[模块汇总](../evidence/task9/resume3_module_verification_summary.json)、[映像](../evidence/task9/resume3_zimage_verification.json)。
+- 容量/产物：新版本目录3,976 KiB；原厂保留后另加两套同大小估算剩6,696 KiB。部署包在temp/task9/deploy_lko-base01/，74文件哈希和归档成员核验通过；Module.symvers.base01及7模块引用符号清单已留底。二进制不入库。
+- 限制：外部扫描kernel30项无法归属，后两阶段0项；本组直接路径观测0项，find均exit1且有覆盖限制，不能证明无外部写入。现场模块空间/inode需部署前重查，类产品大小仍为估算。完整日志及中间文件保留，未清理原会话/构建根。
+- 下一步：**任务10：部署base01到RPi4并验证可以启动和回退（需要用户提前开板、在场）**。任务9构建产物前提已满足；等待PM部署执行指令、RPi4接回及现场核对，U-Boot串口等既有挂账保留。本轮不连板、不推Gerrit/QB，不访问vendor_local；三个源码HEAD和干净树保持不变。
+
+以下为已被新裁决覆盖的恢复门槛停止记录，保留历史：
 
 **任务9续跑三（2026-11-04认证后）：恢复检查未确认日志增长，按前置条件停止后续监控。** [14第10节](14_base01_build.md)、[状态快照](../evidence/task9/resume3_post_auth_status.txt)。
 

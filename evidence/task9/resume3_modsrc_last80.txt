@@ -1,0 +1,81 @@
+Snapshot of temp/task9/build_modsrc.log; original lines 517-596; full captured SHA256 5ff1e6e879e8fb11627acca8029f13defd1b774fdf43a357e6b336a4d1741d76
+517: [   75s] + /bin/mkdir -p /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm/usr/share/licenses/linux-tizen-modules-tests
+518: [   75s] + cp -pr COPYING /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm/usr/share/licenses/linux-tizen-modules-tests
+519: [   75s] + exit 0
+520: [   75s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm/usr/libexec/linux-tizen-modules-source/tests/logger-test
+521: [   75s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm/usr/libexec/linux-tizen-modules-source/tests/kdbus-test
+522: [   75s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm/usr/libexec/linux-tizen-modules-source/tests/zlog_stdout
+523: [   75s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm/usr/libexec/linux-tizen-modules-source/tests/zlog_bitmap
+524: [   75s] Provides: linux-kernel-kdbus-tests linux-kernel-logger-tests linux-tizen-modules-tests = 11.0.0-0 linux-tizen-modules-tests(armv7l-32) = 11.0.0-0
+525: [   75s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+526: [   75s] Requires: ld-linux.so.3 ld-linux.so.3(GLIBC_2.4) libc.so.6 libc.so.6(GLIBC_2.16) libc.so.6(GLIBC_2.17) libc.so.6(GLIBC_2.28) libc.so.6(GLIBC_2.33) libc.so.6(GLIBC_2.34) libc.so.6(GLIBC_2.38) libc.so.6(GLIBC_2.4) libc.so.6(GLIBC_2.7) libc.so.6(GLIBC_2.8) libcap.so.2 libgcc_s.so.1 libgcc_s.so.1(GCC_3.5) libm.so.6 libpthread.so.0 rtld(GNU_HASH)
+527: [   75s] Processing files: linux-tizen-modules-tests-debuginfo-11.0.0-0.armv7l
+528: [   75s] Aptk: PG1hbmlmZXN0PgogPHJlcXVlc3Q+CiAgICA8ZG9tYWluIG5hbWU9Il8iLz4KIDwv
+529: [   75s] cmVxdWVzdD4KPC9tYW5pZmVzdD4K
+530: [   75s] 
+531: [   75s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm/usr/lib/debug/usr/libexec/linux-tizen-modules-source/tests/kdbus-test.debug
+532: [   75s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm/usr/lib/debug/usr/libexec/linux-tizen-modules-source/tests/logger-test.debug
+533: [   75s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm/usr/lib/debug/usr/libexec/linux-tizen-modules-source/tests/zlog_bitmap.debug
+534: [   75s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm/usr/lib/debug/usr/libexec/linux-tizen-modules-source/tests/zlog_stdout.debug
+535: [   75s] Provides: linux-tizen-modules-tests-debuginfo = 11.0.0-0 linux-tizen-modules-tests-debuginfo(armv7l-32) = 11.0.0-0
+536: [   75s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+537: [   75s] Recommends: linux-tizen-modules-source-debugsource(armv7l-32) = 11.0.0-0
+538: [   75s] Checking for unpackaged file(s): /usr/lib/rpm/check-files /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm
+539: [   75s] Wrote: /home/abuild/rpmbuild/SRPMS/linux-tizen-modules-source-11.0.0-0.src.rpm
+540: [   75s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-tizen-modules-source-11.0.0-0.armv7l.rpm
+541: [   75s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-tizen-modules-source-debugsource-11.0.0-0.armv7l.rpm
+542: [   75s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-tizen-modules-headers-11.0.0-0.armv7l.rpm
+543: [   75s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-tizen-modules-tests-11.0.0-0.armv7l.rpm
+544: [   76s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-tizen-modules-tests-debuginfo-11.0.0-0.armv7l.rpm
+545: [   76s] Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.9mLhIF
+546: [   76s] + umask 022
+547: [   76s] + cd /home/abuild/rpmbuild/BUILD
+548: [   76s] + /bin/rm -rf /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm
+549: [   76s] + cd linux-tizen-modules-source-11.0.0
+550: [   76s] + /bin/rm -rf /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-source-11.0.0-0.arm
+551: [   76s] + exit 0
+552: [   76s] ... checking for files with abuild user/group
+553: [   76s] 
+554: [   76s] linhao-linux finished "build linux-tizen-modules-source.spec" at Tue Nov  3 18:32:34 UTC 2026.
+555: [   76s] 
+556: info: finished building linux-tizen-modules-source
+557: info: updating local repo
+558: info: *** Build Status Summary ***
+559: === Total succeeded built packages: (1) ===
+560: info: generated html format report:
+561:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/index.html
+562: info: generated RPM packages can be found from local repo:
+563:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS
+564: info: generated source RPM packages can be found from local repo:
+565:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/SRPMS
+566: info: build logs can be found in:
+567:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/logs
+568: info: build roots located in:
+569:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.*
+570: 	Command being timed: "/usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define _smp_mflags -j10 --commit 25797e8af7ed95a5783bbe84c11959560aaf7e92"
+571: 	User time (seconds): 13.86
+572: 	System time (seconds): 5.80
+573: 	Percent of CPU this job got: 22%
+574: 	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:28.05
+575: 	Average shared text size (kbytes): 0
+576: 	Average unshared data size (kbytes): 0
+577: 	Average stack size (kbytes): 0
+578: 	Average total size (kbytes): 0
+579: 	Maximum resident set size (kbytes): 151408
+580: 	Average resident set size (kbytes): 0
+581: 	Major (requiring I/O) page faults: 472
+582: 	Minor (reclaiming a frame) page faults: 1142912
+583: 	Voluntary context switches: 102291
+584: 	Involuntary context switches: 1175
+585: 	Swaps: 0
+586: 	File system inputs: 294736
+587: 	File system outputs: 141360
+588: 	Socket messages sent: 0
+589: 	Socket messages received: 0
+590: 	Signals delivered: 0
+591: 	Page size (bytes): 4096
+592: 	Exit status: 0
+593: COMMAND-EXIT modsrc time=2026-11-04T02:32:38+08:00 exit=0 credential_seen=0
+594: 
+595: RESULT=OK; GBS/time exit=0; active_or_residual=none
+596: BUILD-END modsrc 2026-11-04T02:32:38+08:00 exit=0

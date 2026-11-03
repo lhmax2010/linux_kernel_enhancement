@@ -1,0 +1,123 @@
+{
+  "all_stages_ok": true,
+  "build_start": "2026-11-04T00:21:01+08:00",
+  "all_end": "2026-11-04T02:34:05+08:00",
+  "managed_elapsed_seconds": 7984,
+  "time_v_total_seconds": 7934.26,
+  "stages": {
+    "kernel": {
+      "time_v_elapsed": "2:09:25",
+      "seconds": 7765.0,
+      "max_rss_kib": 2607444,
+      "exit": 0
+    },
+    "modsrc": {
+      "time_v_elapsed": "1:28.05",
+      "seconds": 88.05,
+      "max_rss_kib": 151408,
+      "exit": 0
+    },
+    "modules": {
+      "time_v_elapsed": "1:21.21",
+      "seconds": 81.21000000000001,
+      "max_rss_kib": 137564,
+      "exit": 0
+    }
+  },
+  "toolchain": {
+    "clang": "22.1.8",
+    "lld": "22.1.8",
+    "match_qb1211696": true
+  },
+  "dependency_provenance": "MATCH: local source path + package SHA256 + installed NVR/BUILDTIME=0/SIGMD5/SHA1HEADER + installed payload equality + installation log/time",
+  "rpm_buildtime_note": "BUILDTIME=0 on produced and installed RPMs; not a real wall-clock timestamp; reason not established by this audit. Actual build/install timing is recorded separately.",
+  "zimage": [
+    {
+      "variant": "normal",
+      "release": "6.12.80-arm-rpi4-v7l-lko-base01",
+      "bytes": 14906368,
+      "sha256": "4bb488d8d7768bde6f9b53b53342d9bde0d996cb37284a6d5547855d20e8c5f1",
+      "gzip_offset": 33353,
+      "image_bytes": 41725500,
+      "banners": [
+        "Linux version 6.12.80-arm-rpi4-v7l-lko-base01 (abuild@linhao-linux) (clang version 22.1.8, LLD 22.1.8) # SMP ",
+        "Linux version 6.12.80-arm-rpi4-v7l-lko-base01 (abuild@linhao-linux) (clang version 22.1.8, LLD 22.1.8) #1 SMP Tue Nov  3 16:48:07 UTC 2026"
+      ],
+      "factory_bytes": 14905736,
+      "factory_sha256": "50d642e137853a46029945965556f4f30e1d87a5706e4eb5f4b02f735a260a5e",
+      "factory_evidence": "evidence/task6/r2/04_boot_readonly.transport.txt",
+      "delta_bytes": 632,
+      "delta_percent": 0.004239978488817996
+    },
+    {
+      "variant": "rt",
+      "release": "6.12.80-arm-rpi4-rt-v7l-lko-base01",
+      "bytes": 14954944,
+      "sha256": "28a5c88272d0180128a8f8bc0dfba12a82246b9670021ce097c920d600b2b94c",
+      "gzip_offset": 33353,
+      "image_bytes": 41738272,
+      "banners": [
+        "Linux version 6.12.80-arm-rpi4-rt-v7l-lko-base01 (abuild@linhao-linux) (clang version 22.1.8, LLD 22.1.8) # SMP PREEMPT_RT ",
+        "Linux version 6.12.80-arm-rpi4-rt-v7l-lko-base01 (abuild@linhao-linux) (clang version 22.1.8, LLD 22.1.8) #1 SMP PREEMPT_RT Tue Nov  3 17:03:08 UTC 2026"
+      ]
+    }
+  ],
+  "modules": {
+    "module_count": 59,
+    "expected_vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "vermagic_mismatches": [],
+    "external_modules": 7,
+    "crc_comparisons": 356,
+    "unique_imported_symbols": 253,
+    "crc_mismatches": [],
+    "Module.symvers_sha256": "fd1bf28f859933424c88f0e65c224bf4992c18e78cd0c5d0e59b1f72e8beb28c"
+  },
+  "config": {
+    "diffconfig_exit": 0,
+    "diff_symbols": 0,
+    "sha256": "62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5",
+    "reason": "LOCALVERSION is supplied by spec environment, not a .config change"
+  },
+  "capacity": {
+    "module_dir_kib": 3976,
+    "prior_estimate_kib": 4424,
+    "delta_kib": -448,
+    "available_kib": 14648,
+    "new_sets": 2,
+    "estimated_remaining_kib": 6696,
+    "three_sets_with_factory_fit": true,
+    "limitation": "new variant assumed same size; host du allocation is an estimate for board filesystem; recheck df/inodes before deployment"
+  },
+  "external_observations": {
+    "kernel_candidates_unattributed": 30,
+    "modsrc_candidates": 0,
+    "modules_candidates": 0,
+    "direct_observed_outside_entries": 0,
+    "find_exit": [
+      1,
+      1,
+      1
+    ],
+    "limits": "permission errors suppressed; root/deeper/deleted files not covered; cannot prove no external writes"
+  },
+  "symvers_backup": {
+    "path": "temp/task9/Module.symvers.base01",
+    "bytes": 822183,
+    "sha256": "fd1bf28f859933424c88f0e65c224bf4992c18e78cd0c5d0e59b1f72e8beb28c"
+  },
+  "deployment": {
+    "archive": "temp/task9/deploy_lko-base01/deploy_lko-base01.tar.gz",
+    "bytes": 15990491,
+    "sha256": "583fbb45389f3b98a8498c09f4acb9a2a73a4b074439bdae6df663cbeaeeb61c",
+    "regular_files": 74,
+    "symlinks": [
+      {
+        "path": "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/build",
+        "target": "/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4",
+        "target_text_sha256": "622276031915ebe2d0f4251f7d212209a734348c0c398cb2ebc16e58d9519674"
+      }
+    ]
+  },
+  "task10_artifact_prerequisites_met": true,
+  "task10_remaining": "RPi4 reconnect, user present, PM deployment instruction and on-board preflight; no deployment performed"
+}

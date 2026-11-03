@@ -6,6 +6,8 @@
 **任务9续跑三裁决（覆盖本节下方旧的启动主体限制）：** 用户 2026-11-03 授权由代理启动 run_task9_build.sh 并监控。代理本人仍不直接执行任何 sudo 命令，不输入、不索要、不记录任何密码，不配置 askpass/sudoers，不向任何进程发信号。脚本中唯一的 sudo -v 由用户在 tmux 窗口里自行认证；其余 sudo 是 GBS 自身行为。
 
 - 启动须先确认 `/usr/bin/tmux` 可用；不可用就停止并报告“需要用户安装 tmux”，不自行安装。使用既定 socket `temp/task9/tmux.sock`、会话 `lko-task9` 分离启动，脚本及原有隔离/进程组规则不变。认证提示由用户连接会话处理，最多等待30分钟，不重跑或清理旧文件。
+- PM 2026-11-04补充：用户完成认证后，preflight=OK、supervisor存活、kernel=RUNNING即满足恢复监控前提；源码导出可长时间静默，不以短间隔日志增长作为恢复门槛。仍每10分钟检查，记录本任务进程组中的git/tar/gzip/xz/rpmbuild/clang等工作进程；原有连续30分钟日志不增长且进程组存活的停止条件不变。全新构建根的“No local package repository for arch armv7l”为正常提示；modules实际kernel-devel来源仍须核验。不得重新启动原脚本。
+
 - 三阶段全部OK后按14的计划核验；工具链不符则产物作废并停止，模块依赖来源不符则明确标记并继续其余核验。仍不推Gerrit、不触发QB、不连接开发板、不访问vendor_local。
 
 以下为续跑二历史授权，启动主体与等待用户报告结束的条件以本轮裁决为准：

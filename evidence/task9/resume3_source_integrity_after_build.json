@@ -1,0 +1,125 @@
+[
+  {
+    "repo": "linux-rpi",
+    "checks": {
+      "HEAD": {
+        "command": [
+          "git",
+          "-C",
+          "/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit": 0,
+        "output": "8c8f2429401d6b282373e58b73399801a9486d5b\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "-C",
+          "/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi",
+          "branch",
+          "--show-current"
+        ],
+        "exit": 0,
+        "output": "lko/base01\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "-C",
+          "/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi",
+          "status",
+          "--porcelain"
+        ],
+        "exit": 0,
+        "output": "",
+        "stderr": ""
+      }
+    }
+  },
+  {
+    "repo": "ext/linux-tizen-modules",
+    "checks": {
+      "HEAD": {
+        "command": [
+          "git",
+          "-C",
+          "/home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit": 0,
+        "output": "10deb822453c759f6f944baf067c8b16a48ad914\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "-C",
+          "/home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules",
+          "branch",
+          "--show-current"
+        ],
+        "exit": 0,
+        "output": "lko/base01\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "-C",
+          "/home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules",
+          "status",
+          "--porcelain"
+        ],
+        "exit": 0,
+        "output": "",
+        "stderr": ""
+      }
+    }
+  },
+  {
+    "repo": "ext/linux-tizen-modules-source",
+    "checks": {
+      "HEAD": {
+        "command": [
+          "git",
+          "-C",
+          "/home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules-source",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit": 0,
+        "output": "25797e8af7ed95a5783bbe84c11959560aaf7e92\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "-C",
+          "/home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules-source",
+          "branch",
+          "--show-current"
+        ],
+        "exit": 0,
+        "output": "lko/base01\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "-C",
+          "/home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules-source",
+          "status",
+          "--porcelain"
+        ],
+        "exit": 0,
+        "output": "",
+        "stderr": ""
+      }
+    }
+  }
+]

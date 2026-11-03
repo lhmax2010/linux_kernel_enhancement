@@ -1,0 +1,81 @@
+Snapshot of temp/task9/build_modules.log; original lines 533-612; full captured SHA256 247bb32f2a2571086982c1441601bbe801822252103a64b9ac2b62ff80786f7e
+533: [   69s] Requires(interp): /bin/sh
+534: [   69s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+535: [   69s] Requires(post): /bin/sh /bin/sh coreutils findutils kmod-compat
+536: [   69s] Processing files: linux-tizen-modules-rpi4-rt-11.0.0-0.armv7l
+537: [   69s] Aptk: PG1hbmlmZXN0PgoJPHJlcXVlc3Q+CgkJPGRvbWFpbiBuYW1lPSJfIiAvPgoJPC9y
+538: [   69s] ZXF1ZXN0Pgo8L21hbmlmZXN0Pgo=
+539: [   69s] 
+540: [   69s] Executing(%license): /bin/sh -e /var/tmp/rpm-tmp.oKqcpT
+541: [   69s] + umask 022
+542: [   69s] + cd /home/abuild/rpmbuild/BUILD
+543: [   69s] + cd linux-tizen-modules-11.0.0
+544: [   69s] + LICENSEDIR=/home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm/usr/share/licenses/linux-tizen-modules-rpi4-rt
+545: [   69s] + export LC_ALL=C
+546: [   69s] + LC_ALL=C
+547: [   69s] + export LICENSEDIR
+548: [   69s] + /bin/mkdir -p /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm/usr/share/licenses/linux-tizen-modules-rpi4-rt
+549: [   69s] + cp -pr COPYING /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm/usr/share/licenses/linux-tizen-modules-rpi4-rt
+550: [   69s] + exit 0
+551: [   69s] Provides: linux-tizen-modules-rpi4-rt = 11.0.0-0 linux-tizen-modules-rpi4-rt(armv7l-32) = 11.0.0-0 stability-monitor-kernel-module
+552: [   69s] Requires(interp): /bin/sh
+553: [   69s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+554: [   69s] Requires(post): /bin/sh /bin/sh coreutils findutils kmod-compat
+555: [   69s] Checking for unpackaged file(s): /usr/lib/rpm/check-files /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm
+556: [   70s] Wrote: /home/abuild/rpmbuild/SRPMS/linux-tizen-modules-11.0.0-0.src.rpm
+557: [   70s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-tizen-modules-debugsource-11.0.0-0.armv7l.rpm
+558: [   70s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm
+559: [   70s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-tizen-modules-rpi4-rt-11.0.0-0.armv7l.rpm
+560: [   70s] Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.vNZCcj
+561: [   70s] + umask 022
+562: [   70s] + cd /home/abuild/rpmbuild/BUILD
+563: [   70s] + /bin/rm -rf /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm
+564: [   70s] + cd linux-tizen-modules-11.0.0
+565: [   70s] + rm -rf /home/abuild/rpmbuild/BUILDROOT/linux-tizen-modules-11.0.0-0.arm
+566: [   70s] + rm -rf /home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/lib
+567: [   70s] + exit 0
+568: [   70s] ... checking for files with abuild user/group
+569: [   70s] 
+570: [   70s] linhao-linux finished "build linux-tizen-modules.spec" at Tue Nov  3 18:33:58 UTC 2026.
+571: [   70s] 
+572: info: finished building linux-tizen-modules
+573: info: updating local repo
+574: info: *** Build Status Summary ***
+575: === Total succeeded built packages: (1) ===
+576: info: generated html format report:
+577:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/index.html
+578: info: generated RPM packages can be found from local repo:
+579:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS
+580: info: generated source RPM packages can be found from local repo:
+581:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/SRPMS
+582: info: build logs can be found in:
+583:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/logs
+584: info: build roots located in:
+585:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.*
+586: 	Command being timed: "/usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define _smp_mflags -j10 --commit 10deb822453c759f6f944baf067c8b16a48ad914"
+587: 	User time (seconds): 45.00
+588: 	System time (seconds): 10.52
+589: 	Percent of CPU this job got: 68%
+590: 	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:21.21
+591: 	Average shared text size (kbytes): 0
+592: 	Average unshared data size (kbytes): 0
+593: 	Average stack size (kbytes): 0
+594: 	Average total size (kbytes): 0
+595: 	Maximum resident set size (kbytes): 137564
+596: 	Average resident set size (kbytes): 0
+597: 	Major (requiring I/O) page faults: 98
+598: 	Minor (reclaiming a frame) page faults: 2446783
+599: 	Voluntary context switches: 218354
+600: 	Involuntary context switches: 1751
+601: 	Swaps: 0
+602: 	File system inputs: 19736
+603: 	File system outputs: 5063344
+604: 	Socket messages sent: 0
+605: 	Socket messages received: 0
+606: 	Signals delivered: 0
+607: 	Page size (bytes): 4096
+608: 	Exit status: 0
+609: COMMAND-EXIT modules time=2026-11-04T02:34:05+08:00 exit=0 credential_seen=0
+610: 
+611: RESULT=OK; GBS/time exit=0; active_or_residual=none
+612: BUILD-END modules 2026-11-04T02:34:05+08:00 exit=0

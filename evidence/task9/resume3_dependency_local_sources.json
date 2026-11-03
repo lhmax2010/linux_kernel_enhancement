@@ -1,0 +1,34 @@
+{
+  "cache": "temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0/.srcfiles.cache",
+  "cache_sha256": "953afe0b2b7ad1bfb0dbdf63e6883b893d6ee2b8e859b5572204fba6cf34e8d8",
+  "selected_local_records": [
+    {
+      "source_record_line": 13,
+      "source_record": "F:arm-rpi4-linux-kernel-devel.armv7l-1793730583/116693460/7531234: /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+      "rpm_path": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+      "sha256": "bf2cac5930600ba10213c47dc8eddea038b7c33fdd956766d749049325d11b38",
+      "bytes": 116693460
+    },
+    {
+      "source_record_line": 31,
+      "source_record": "F:arm-rpi4-linux-kernel-modules.armv7l-1793730567/728356/7531232: /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-linux-kernel-modules-6.12.80-0.armv7l.rpm",
+      "rpm_path": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-linux-kernel-modules-6.12.80-0.armv7l.rpm",
+      "sha256": "f21e1f2db4c273bb3a86ffb7394ade6aaa37b76fabe007827c7c6908d32d7128",
+      "bytes": 728356
+    },
+    {
+      "source_record_line": 35,
+      "source_record": "F:linux-tizen-modules-source.armv7l-1793730753/123492/7505882: /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-tizen-modules-source-11.0.0-0.armv7l.rpm",
+      "rpm_path": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-tizen-modules-source-11.0.0-0.armv7l.rpm",
+      "sha256": "4e58db24706de57814f475fcb53c9614ec902c31d55383776887dc59f129ba61",
+      "bytes": 123492
+    },
+    {
+      "source_record_line": 73,
+      "source_record": "F:arm-rpi4-rt-linux-kernel-devel.armv7l-1793730598/112630260/7531235: /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-rt-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+      "rpm_path": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-rt-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+      "sha256": "4f41f28a46a360b63f1b4bd4626d18cf2cf5949f04d4cbe0c907d196e7625730",
+      "bytes": 112630260
+    }
+  ]
+}

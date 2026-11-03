@@ -1,10 +1,10 @@
 # 任务9：干净基线构建与前置检查
 
-**最新状态（2026-11-03续跑二）：已按PM裁决准备用户执行的三阶段构建脚本，bash -n通过，等待用户在tmux中运行。代理未运行脚本、GBS、导出、构建或sudo；目前没有新构建产物。第5节权限阻塞已由第6节新授权覆盖。**
+**最新状态（2026-11-04续跑三）：原tmux构建三阶段均OK，产物核验通过，部署包已在本地准备。Clang/LLD 22.1.8、实际devel依赖、59个模块vermagic、7个树外模块356项CRC和普通版.config均已核对。未连接开发板、未部署；详见第11–12节。**
 
 第1–4节保留上一轮准备/停止记录，第2.3节是本轮PM裁决；旧的静态不通过项及补导出建议已由该裁决覆盖。
 
-日期：2026-11-03（Asia/Shanghai）。**停在第一段第2项，没有进入构建环境初始化或第二段构建。** 本轮已完成三个本地分支和两次指定的本地提交；未连接开发板、未部署、未执行GBS/export/sudo、未发信号、未推Gerrit或触发Quickbuild，没有访问vendor_local。
+以下为首次尝试的历史记录。日期：2026-11-03（Asia/Shanghai）。**停在第一段第2项，没有进入构建环境初始化或第二段构建。** 本轮已完成三个本地分支和两次指定的本地提交；未连接开发板、未部署、未执行GBS/export/sudo、未发信号、未推Gerrit或触发Quickbuild，没有访问vendor_local。
 
 ## 1. 源码准备与提交
 
@@ -325,3 +325,102 @@ Foreground sudo validation; authenticate only in your own terminal.
 [当前tmux窗口相关尾部](../evidence/task9/resume3_post_auth_pane.txt)、[status完整原文](../evidence/task9/resume3_post_auth_status.txt)、[内核日志全部13行](../evidence/task9/resume3_post_auth_kernel_excerpt.txt)、[停止摘要](../evidence/task9/resume3_post_auth_stop.json)。窗口中的旧sudo提示是滚屏历史；其后已显示Background supervisor PID/PGID=4061886，不能据此声称仍等待认证。其他任务的进程列表仅在原窗口，入库摘录省略。
 
 停止快照为kernel RUNNING、modsrc/modules PENDING，尚无阶段退出码、BUILD-END或ALL-END。脚本的ACTIVE-OR-RESIDUAL此时标识正在运行的kernel组，不代表已发现残留。尚未进入产物验收；工具链、依赖来源、zImage、模块容量/vermagic/CRC、配置和Module.symvers留底仍未核验，当前不满足任务10前提。后续应从原会话和既有status恢复，不重复启动脚本；本轮没有清理锁、日志或构建根。
+
+
+## 11. PM调整恢复门槛后的继续监控（2026-11-04）
+
+PM裁决：上一条“build_kernel.log已开始增长”的前置条件过严。内核源码导出（gbs export，打包整棵内核树）阶段可以长时间无输出，属正常。preflight=OK、supervisor 4061886存活、kernel阶段RUNNING即视为前置条件满足，不重启脚本。仍按原第5步停止条件处理，包括连续30分钟日志不增长且进程组存活；每次额外记录本任务组中的git/tar/gzip/xz/rpmbuild/clang等工作进程。全新构建根的“No local package repository for arch armv7l”不判为失败；modules所用kernel-devel仍须核实来自本次构建。
+
+第10节停止仅为历史前置门槛判定，本轮已按上述裁决恢复。原supervisor/阶段组、锁、脚本及日志均保留；用户认证已在00:21:00结束。代理未直接执行sudo、处理密码、发信号或重新启动。
+
+监控从00:29:40开始，每10分钟读取status、三个日志末20行、阶段进程记录和外部路径观测；以ps记录本组PID/PGID、状态、elapsed、CPU time和工作命令；每轮将摘要追加到temp/task9/monitor.log，完整样本保留temp/task9/resume3/monitor_samples。阶段尚未结束时，external_review文件不存在不视为“已经确认无外部写入”。
+
+- 00:29:40：日志1251 B/13行，约504秒未追加；组内有git archive和xz，未达30分钟门槛。
+- 00:39:40：日志211849 B/3185行，最近追加距采样约1.6秒；已导出并进入普通版构建，末行为libbpf.a链接。没有凭据、FAILED、INCOMPLETE或残留停止标记。
+
+监控共14轮，最后一轮02:39:45读取到ALL-END；kernel于02:31:07、modsrc于02:32:38、modules于02:34:05结束，全部OK/exit=0。终点supervisor及三个阶段的已登记PGID均无非僵尸存活进程，没有残留等待、凭据、STOPPED-JOB、FAILED或INCOMPLETE停止条件。普通/RT链接、devel复制/解释器处理、RPM静态库strip均出现过静默，但每轮静默时长未达到30分钟。`ACTIVE-OR-RESIDUAL`只在运行期间出现，不当作残留失败。原脚本未重启。
+
+[14轮监控摘要](../evidence/task9/resume3_monitor_history.jsonl)、[终点状态](../evidence/task9/resume3_monitor_terminal_status.txt)、[终点进程/外部观测摘要](../evidence/task9/resume3_monitor_20261104_023945.json)。完整样本分别入库为resume3_monitor_日期时间.json，仅含本任务组及其后代；不同PGID的GBS子进程单独列出。
+
+工作区外观测：本组stdout/stderr直接路径观测三阶段均0条；kernel结束后的find扫描30个候选路径，均无法归属，modsrc/modules扫描0条。三次find均exit=1，权限错误被原脚本抑制，且不覆盖root拥有、深层或已删除文件，因此不能宣称“证明无工作区外写入”。无关应用路径名称仅留原始temp文件，公开证据保留数量、限制及原始文件哈希；未删除、移动任何外部文件。[外部扫描摘要](../evidence/task9/resume3_kernel_external_review.txt)。
+
+完整日志仍保留temp/task9，不改写。kernel/modsrc/modules日志分别15638/596/612行；[封存清单](../evidence/task9/resume3_monitor_archive_manifest.json)记录字节数、行数和SHA-256，末80行分别保存为resume3_kernel_last80.txt、resume3_modsrc_last80.txt、resume3_modules_last80.txt，带原始行号。三份BUILD-END和status末行ALL-END均完整。产物核验仅在ALL_OK之后开始。
+
+
+## 12. 构建与产物验收完成（2026-11-04）
+
+### 12.1 构建身份、耗时和核验工具
+
+沿用第9节的唯一tmux会话；认证由用户在原窗口完成，preflight于00:21:00转OK。代理没有直接执行sudo、输入/记录密码、发送信号、修改源码或启动第二次构建。三棵lko/base01工作树仍干净，HEAD仍为第1节三个固定SHA。[构建后源码核对](../evidence/task9/resume3_source_integrity_after_build.json)。
+
+| 阶段 | 结果 | time -v墙钟 | 最大单进程RSS（KiB） | status起止（+08） |
+|---|---|---|---:|---|
+| kernel | OK / 0 | 2:09:25 | 2,607,444 | 00:21:01–02:31:07 |
+| modsrc | OK / 0 | 1:28.05 | 151,408 | 02:31:07–02:32:38 |
+| modules | OK / 0 | 1:21.21 | 137,564 | 02:32:38–02:34:05 |
+
+time -v合计2:12:14.26；包含监督器检查/扫描的三阶段跨度2:13:04，不含用户认证等待。实际耗时超出原45–90分钟估算；安装树复制、逐文件解释器处理和RPM检查耗时已体现在日志/监控中，不据此推断性能回归。RSS不是全机/全部并行进程的合计峰值。[kernel时间与编译器行](../evidence/task9/resume3_kernel_time_compiler_excerpt.txt)、[modsrc](../evidence/task9/resume3_modsrc_time_compiler_excerpt.txt)、[modules](../evidence/task9/resume3_modules_time_compiler_excerpt.txt)。
+
+核验工具来自任务9独立GBS root，通过bwrap只读绑定及该root的qemu-arm执行，未用宿主工具链。clang --version=22.1.8、ld.lld --version=22.1.8，分别归属clang-22.1.8-1.6和llvm-22.1.8-1.6；普通/RT compile.h与实际zImage字符串均写Clang/LLD 22.1.8。满足QB1211696版本门槛。[clang](../evidence/task9/resume3_clang_version.txt)、[lld](../evidence/task9/resume3_lld_version.txt)、[RPM](../evidence/task9/resume3_installed_toolchain_rpms.txt)、[compile.h等实际文件](../evidence/task9/resume3_devel_installed_payload_comparison.json)。
+
+核验工具调整留痕：modsrc日志69、72–73行记录删除libpython/python3/python3-base，故最终root不再有Python，首次直接调用退出1。仅从本次GBS缓存解出内核阶段实际安装过的python3-base-3.14.2-1.8.armv7l与libpython3_141_0-3.14.2-1.8.armv7l到temp/task9/verify/platform-python；设置其PYTHONHOME/库路径，经同一root qemu-arm执行Python3.14.2，不安装RPM、不修改buildroot，不用宿主Python分析内核。[包来源与SHA](../evidence/task9/resume3_platform_python_packages.json)、[平台版本](../evidence/task9/resume3_recovered_platform_python_version.txt)。宿主Python只用于调度、复制、哈希及报告汇总。
+
+### 12.2 modules的实际依赖来源
+
+**相符。** build_modules.log第154行将普通devel纳入依赖，第185行安装；第187行安装RT devel；第271–365行实际KERNELDIR为/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01。[带行号摘录](../evidence/task9/resume3_dependency_log_excerpt.txt)。
+
+`.srcfiles.cache`第13/73行把普通/RT devel对应到本任务local/repos中的文件；当前RPM的完整SHA-256分别为：
+
+- 普通devel：`bf2cac5930600ba10213c47dc8eddea038b7c33fdd956766d749049325d11b38`（116,693,460 B）。
+- RT devel：`4f41f28a46a360b63f1b4bd4626d18cf2cf5949f04d4cbe0c907d196e7625730`（112,630,260 B）。
+
+安装数据库与对应新RPM的NVR、BUILDTIME、SIGMD5、SHA1HEADER全部匹配；普通安装时间epoch1793730784（02:33:04+08），RT为1793730793（02:33:13+08），落在modules阶段。两个BUILDTIME均为0，不是实际墙钟；本轮未查明该字段归零的实现原因，不猜测。真实生成/安装时序取构建日志和INSTALLTIME，身份不能只靠同NVR或0时间。已进一步逐字比对RPM载荷和实际安装的.config、Module.symvers、kernel.release、compile.h、utsrelease.h，十项全相同。此证据链把当前包SHA、local来源、安装头和实际KERNELDIR连接起来；没有声称RPM数据库直接保存了整个RPM文件的SHA-256。
+
+[local来源和包SHA](../evidence/task9/resume3_dependency_local_sources.json)、[安装数据库](../evidence/task9/resume3_installed_dependency_identity.txt)、[新普通RPM身份](../evidence/task9/resume3_rpm_identity_arm-rpi4-linux-kernel-devel.txt)、[载荷比较](../evidence/task9/resume3_devel_installed_payload_comparison.json)、[全部新RPM清单](../evidence/task9/resume3_rpm_manifest.json)。同名远端候选存在不等于被采用；本轮没有强制替换resolver结果。
+
+### 12.3 映像与最终配置
+
+仅解包、不安装。用平台Python定位zImage中gzip载荷、解压后取真实数字版本记录，另用平台strings交叉检查。首次解析误把`Linux version %s (%s)`格式常量也当作版本而触发断言；修正为只选数字版本后两种映像均通过，原错误输出保留。这是核验脚本的匹配问题，未改映像。
+
+| 映像 | 实际版本 | 大小（B） | SHA-256 |
+|---|---|---:|---|
+| zImage | 6.12.80-arm-rpi4-v7l-lko-base01 | 14,906,368 | 4bb488d8d7768bde6f9b53b53342d9bde0d996cb37284a6d5547855d20e8c5f1 |
+| zImage_rt | 6.12.80-arm-rpi4-rt-v7l-lko-base01 | 14,954,944 | 28a5c88272d0180128a8f8bc0dfba12a82246b9670021ce097c920d600b2b94c |
+
+原厂QB1211696板上zImage由任务6只读哈希清单记录为14,905,736 B、SHA256 50d642e137853a46029945965556f4f30e1d87a5706e4eb5f4b02f735a260a5e；新普通版**+632 B（+0.004240%）**。本次没有重新连板取件。[原厂证据](../evidence/task6/r2/04_boot_readonly.transport.txt)、[新映像核验](../evidence/task9/resume3_zimage_verification.json)。这些是产物大小，不是板上运行内存。
+
+新普通.config与evidence/task5b/qb_arm-rpi4.config逐字相同，平台scripts/diffconfig退出0、输出为空，**0个符号差异**，SHA均为`62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5`。后缀由spec环境LOCALVERSION传入，不要求.config改变；实际kernel.release和两个zImage同时证明后缀生效。[diffconfig](../evidence/task9/resume3_config_diff_qb.txt)、[实际配置](../evidence/task9/base01_arm-rpi4.config)。第5.2节普通/RT kernelrelease复验仍有效。RT本轮只验映像版本，不作普通版同等部署/模块验收。
+
+### 12.4 模块、ABI和容量
+
+在temp/task9/stage合并内核RPM的kernel/与新树外RPM的extra/，使用本root depmod -b stage 6.12.80-arm-rpi4-v7l-lko-base01生成索引，退出0无诊断。[depmod命令](../evidence/task9/resume3_depmod_stage.txt)。共享modprobe.d/tizen-modprobe-rpi4.conf与modules-load.d/tizen-modules-rpi4.conf均与任务8取得的同次QB原厂RPM逐字一致，不加入部署包。[共享配置哈希](../evidence/task9/resume3_shared_config_comparison.json)。
+
+59个.ko（52内核+7树外）vermagic全部精确匹配`6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8`，0个不一致。平台modprobe --show-modversions只读解析每个树外模块，逐项与新Module.symvers比较，共356项、253个去重符号，缺失/CRC不一致均0。
+
+| extra模块 | CRC比较项数 | 不一致 |
+|---|---:|---:|
+| dm-bow | 56 | 0 |
+| extcon-usb-fixed | 9 | 0 |
+| inform-reboot | 16 | 0 |
+| kdbus/kdbus | 154 | 0 |
+| logger | 42 | 0 |
+| proc-tsm | 26 | 0 |
+| zlogger/zlogger | 53 | 0 |
+
+[vermagic逐文件](../evidence/task9/resume3_module_vermagic.json)、[CRC逐符号](../evidence/task9/resume3_module_crc.json)、[汇总](../evidence/task9/resume3_module_verification_summary.json)。
+
+平台du -sk：整个新版本目录**3,976 KiB**（kernel/3,040、extra/288，其余为索引/目录等），比12中的4,424 KiB估算少448 KiB。原厂已保留，可用14,648 KiB；再放干净/类产品两套均按3,976估算，剩余`14648−3976×2=6696 KiB`，三套并存的容量估算通过。类产品尚未实测，宿主du分配与板上ext4可能不同，部署前必须回读df/inode，不把估算当现场余量保证。[du原文](../evidence/task9/resume3_module_disk_usage.txt)。
+
+新Module.symvers已复制到`temp/task9/Module.symvers.base01`，822,183 B，SHA256 `fd1bf28f859933424c88f0e65c224bf4992c18e78cd0c5d0e59b1f72e8beb28c`。本轮不读任何其他基线；以后可用[7个模块的引用符号清单](../evidence/task9/resume3_external_module_imports.tsv)和本地副本比较符号CRC。
+
+### 12.5 部署包与任务10前提
+
+本地入口为`temp/task9/deploy_lko-base01/`：
+
+- `payload/boot/zImage`与`payload/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/`完整新版本目录；不含DT、overlays、共享配置或RT产物。
+- `SHA256SUMS`覆盖74个普通文件；另用symlinks.json记录RPM原有的build链接字面目标和目标文本哈希。该链接指向构建机目录，在板上不会解析到devel树，但不影响运行时模块加载；按“整个版本目录”保留，归档未跟随链接。
+- `deploy_lko-base01.tar.gz`为15,990,491 B，SHA256 `583fbb45389f3b98a8498c09f4acb9a2a73a4b074439bdae6df663cbeaeeb61c`。平台tar生成后，平台Python逐成员核对74文件哈希/大小、1个链接目标、uid/gid=0及路径无逃逸，全部通过。
+
+[逐文件清单](../evidence/task9/resume3_deployment_file_manifest.json)、[SHA清单](../evidence/task9/resume3_deployment_SHA256SUMS.txt)、[归档身份](../evidence/task9/resume3_deployment_archive.json)、[归档复核](../evidence/task9/resume3_deployment_archive_verify.txt)。二进制只留temp，不入库、不上板。
+
+**任务9验收完成，任务10所需构建产物前提满足。** 下一步为“任务10：部署base01到RPi4并验证可以启动和回退（需要用户提前开板、在场）”；仍需PM下发部署执行指令并做现场身份/空间/备份核对。本轮未连接开发板，不推Gerrit，不触发QB，未修改源码或启动脚本，不访问vendor_local。

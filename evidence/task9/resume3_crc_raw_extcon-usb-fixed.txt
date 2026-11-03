@@ -1,0 +1,12 @@
+COMMAND=["/usr/bin/qemu-arm", "-L", "/", "/sbin/modprobe", "--show-modversions", "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/extcon-usb-fixed.ko"]
+0xb1ad28e0	__gnu_mcount_nc
+0x493ecfbf	platform_device_register
+0x5fccb63c	devm_extcon_dev_allocate
+0xd86fca99	devm_extcon_dev_register
+0x9af76812	extcon_set_state_sync
+0x2e5810c6	__aeabi_unwind_cpp_pr1
+0x2806c0be	platform_device_unregister
+0xefd6cf06	__aeabi_unwind_cpp_pr0
+0xc8c118b4	module_layout
+
+EXIT=0

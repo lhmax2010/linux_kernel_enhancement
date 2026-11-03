@@ -1,0 +1,1 @@
+Public summary: 30 external-path candidates; attribution unknown. Unrelated path names omitted. Full original remains temp/task9/kernel.external_paths.txt; original SHA256 is in resume3_monitor_archive_manifest.json.

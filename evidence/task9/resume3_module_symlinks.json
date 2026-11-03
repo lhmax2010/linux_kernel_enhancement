@@ -1,0 +1,6 @@
+[
+  {
+    "path": "build",
+    "target": "/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4"
+  }
+]

@@ -1,0 +1,58 @@
+from pathlib import Path
+import subprocess,json,re,time
+from datetime import datetime
+from zoneinfo import ZoneInfo
+W=Path('/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9')
+now=time.time(); stamp=datetime.now(ZoneInfo('Asia/Shanghai')).isoformat();status=(W/'status.txt').read_text();phases=['kernel','modsrc','modules'];stages={}
+for line in status.splitlines():
+ m=re.match(r'STAGE (\w+) result=(\S+) exit=(\S+)',line)
+ if m:stages[m[1]]={'result':m[2],'exit':m[3]}
+ps=subprocess.check_output(['/usr/bin/ps','-eo','pid=,ppid=,pgid=,user=,stat=,etime=,time=,pcpu=,comm=,args='],text=True).splitlines()
+snap={'time':stamp,'status':status,'stages':stages,'groups':{},'logs':{},'auxiliary':{},'stop_reasons':[]}
+for phase in ['supervisor']+phases:
+ f=W/f'task9_{phase}.pgid';group=f.read_text().strip() if f.exists() else None
+ rows=[l for l in ps if group and len(l.split())>8 and l.split()[2]==group and not l.split()[4].startswith('Z')]
+ snap['groups'][phase]={'pgid':group,'rows':rows,'work_processes':[l for l in rows if re.search(r'^(git|tar|gzip|xz|rpmbuild|clang.*|cc1.*|ld.*|lld.*|make|ar|qemu.*)$',l.split()[8])]}
+# GBS su/chroot may start descendants in a different PGID. Keep this separate
+# from the exact group so new process groups are not mistaken for unrelated jobs.
+for phase in phases:
+ seeds={int(l.split()[0]) for l in snap['groups'][phase]['rows']}
+ descendants=set(seeds)
+ changed=True
+ while changed:
+  changed=False
+  for l in ps:
+   parts=l.split()
+   if len(parts)>8 and int(parts[1]) in descendants and int(parts[0]) not in descendants:
+    descendants.add(int(parts[0]));changed=True
+ rows=[l for l in ps if len(l.split())>8 and int(l.split()[0]) in descendants-seeds and not l.split()[4].startswith('Z')]
+ snap['groups'][phase]['descendant_other_group_rows']=rows
+ snap['groups'][phase]['descendant_work_processes']=[l for l in rows if re.search(r'^(git|tar|gzip|xz|rpmbuild|clang.*|cc1.*|ld.*|lld.*|make|ar|qemu.*)$',l.split()[8])]
+for phase in phases:
+ f=W/f'build_{phase}.log';info={'exists':f.exists()}
+ if f.exists():
+  text=f.read_text(errors='replace');lines=text.splitlines();info.update(bytes=f.stat().st_size,mtime=f.stat().st_mtime,lines=len(lines),tail=lines[-20:],last=lines[-1] if lines else '',silence_seconds=now-f.stat().st_mtime)
+  for flag in ['CREDENTIAL-STOP','STOPPED-JOB','INCOMPLETE:']:
+   if flag in text:snap['stop_reasons'].append(phase+': '+flag)
+  if stages.get(phase,{}).get('result')=='RUNNING' and info['silence_seconds']>=1800 and snap['groups'][phase]['rows']:snap['stop_reasons'].append(phase+': log unchanged >=30 min with live group')
+ snap['logs'][phase]=info
+ if stages.get(phase,{}).get('result')=='FAILED':snap['stop_reasons'].append(phase+': FAILED')
+ if stages.get(phase,{}).get('result')=='OK' and snap['groups'][phase]['rows']:snap['stop_reasons'].append(phase+': residual processes after OK')
+ for suffix in ['processes.log','observed_outside.txt','external_review.txt','external_paths.txt']:
+  p=W/f'{phase}.{suffix}';key=phase+'.'+suffix
+  if not p.exists():snap['auxiliary'][key]={'exists':False};continue
+  text=p.read_text(errors='replace');lines=text.splitlines()
+  if suffix=='processes.log':
+   # Initial snapshot also lists other jobs: retain markers and this phase group only.
+   g=snap['groups'][phase]['pgid'];lines=[l for l in lines if l.startswith(('BEFORE ','PROCESS-GROUP ','Residuals/')) or (g and len(l.split())>2 and l.split()[2]==g)]
+   if 'Residuals/stopped job:' in text:snap['stop_reasons'].append(phase+': residual/stopped-job observation recorded')
+  snap['auxiliary'][key]={'exists':True,'bytes':p.stat().st_size,'tail':lines[-40:]}
+final=bool(re.search(r'^ALL-END ',status,re.M));snap['all_end']=final
+if final:snap['outcome']='ALL_OK' if all(stages.get(p,{}).get('result')=='OK' for p in phases) and not snap['stop_reasons'] else 'STOP'
+elif snap['stop_reasons']:snap['outcome']='STOP'
+else:snap['outcome']='RUNNING'
+path=W/'resume3/monitor_samples'/datetime.now(ZoneInfo('Asia/Shanghai')).strftime('%Y%m%d_%H%M%S.json');path.write_text(json.dumps(snap,ensure_ascii=False,indent=2)+'\n')
+active=[p for p in phases if stages.get(p,{}).get('result')=='RUNNING'];summary={'time':stamp,'active':active,'outcome':snap['outcome'],'stages':stages,'log_summary':{p:{k:v for k,v in x.items() if k in ['bytes','lines','last','silence_seconds']} for p,x in snap['logs'].items()},'work_processes':{p:[l.split()[8] for l in snap['groups'][p]['work_processes']] for p in phases},'stop_reasons':snap['stop_reasons'],'snapshot':str(path)}
+summary['descendant_work_processes']={p:[l.split()[8] for l in snap['groups'][p]['descendant_work_processes']] for p in phases}
+with (W/'monitor.log').open('a') as f:f.write(json.dumps(summary,ensure_ascii=False)+'\n')
+print(json.dumps(summary,ensure_ascii=False))

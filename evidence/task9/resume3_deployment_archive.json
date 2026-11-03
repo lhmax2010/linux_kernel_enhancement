@@ -1,0 +1,13 @@
+{
+  "archive": "temp/task9/deploy_lko-base01/deploy_lko-base01.tar.gz",
+  "bytes": 15990491,
+  "sha256": "583fbb45389f3b98a8498c09f4acb9a2a73a4b074439bdae6df663cbeaeeb61c",
+  "regular_files": 74,
+  "symlinks": [
+    {
+      "path": "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/build",
+      "target": "/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4",
+      "target_text_sha256": "622276031915ebe2d0f4251f7d212209a734348c0c398cb2ebc16e58d9519674"
+    }
+  ]
+}

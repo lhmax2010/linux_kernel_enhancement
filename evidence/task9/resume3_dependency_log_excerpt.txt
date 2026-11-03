@@ -1,0 +1,49 @@
+6:warning: No local package repository for arch armv7l
+34:[    0s] init_buildsystem --configdir /usr/lib/build/configs --cachedir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/cache --define _smp_mflags -j10 --repository /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS --repository https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/ --repository https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/reference/repos/standard/packages/ /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/sources/tizen_unified_standard/linux-tizen-modules-11.0.0-0/linux-tizen-modules.spec ...
+36:[    0s] /usr/lib/build/createdirdeps --oldfile /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0/.srcfiles.cache /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS
+55:[    9s] [1/119] cumulate arm-rpi4-linux-kernel-modules-6.12.80-0
+56:[    9s] [2/119] cumulate arm-rpi4-rt-linux-kernel-modules-6.12.80-0
+58:[    9s] [4/119] cumulate linux-tizen-modules-source-11.0.0-0
+152:[    9s] [98/119] cumulate arm-rpi4-rt-linux-kernel-devel-6.12.80-0
+154:[    9s] [100/119] cumulate arm-rpi4-linux-kernel-devel-6.12.80-0
+174:[    9s] now installing cumulated packages
+176:[   10s] Updating / installing...
+177:[   10s] linux-tizen-modules-source-11.0.0-0   ########################################
+178:[   10s] arm-rpi4-rt-linux-kernel-modules-6.12.########################################
+179:[   10s] arm-rpi4-linux-kernel-modules-6.12.80-########################################
+185:[   16s] arm-rpi4-linux-kernel-devel-6.12.80-0 ########################################
+187:[   25s] arm-rpi4-rt-linux-kernel-devel-6.12.80########################################
+210:[   33s] + cp -a /usr/src/linux-tizen-modules-source ./kernel
+271:[   33s] + make -C kernel clean KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01
+273:[   33s] make -C /boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01 M=/home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/kernel clean
+274:[   33s] make[1]: Entering directory '/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01'
+275:[   33s] make[1]: Leaving directory '/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01'
+277:[   33s] + make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01
+279:[   34s] make -C /boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01 M=/home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/kernel CFLAGS_MODULE=-I/home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/kernel/include modules
+280:[   34s] make[1]: Entering directory '/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01'
+344:[   51s] make[1]: Leaving directory '/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01'
+346:[   51s] + make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01 INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+348:[   51s] make -C /boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01 M=/home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/kernel INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=/home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/kernel/../ modules_install
+349:[   51s] make[1]: Entering directory '/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01'
+365:[   51s] make[1]: Leaving directory '/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01'
+367:[   51s] + make -C kernel clean KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01
+369:[   51s] make -C /boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01 M=/home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/kernel clean
+370:[   51s] make[1]: Entering directory '/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01'
+372:[   52s] make[1]: Leaving directory '/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01'
+374:[   52s] + make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01
+376:[   52s] make -C /boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01 M=/home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/kernel CFLAGS_MODULE=-I/home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/kernel/include modules
+377:[   52s] make[1]: Entering directory '/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01'
+441:[   67s] make[1]: Leaving directory '/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01'
+443:[   67s] + make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01 INSTALL_MOD_STRIP=1 INSTALL_MOD_DIR=extra
+445:[   67s] make -C /boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01 M=/home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/kernel INSTALL_MOD_STRIP=1 INSTALL_MOD_PATH=/home/abuild/rpmbuild/BUILD/linux-tizen-modules-11.0.0/kernel/../ modules_install
+446:[   67s] make[1]: Entering directory '/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01'
+462:[   67s] make[1]: Leaving directory '/boot/kernel/devel/kernel-devel-arm-rpi4-rt-lko-base01'
+556:[   70s] Wrote: /home/abuild/rpmbuild/SRPMS/linux-tizen-modules-11.0.0-0.src.rpm
+557:[   70s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-tizen-modules-debugsource-11.0.0-0.armv7l.rpm
+558:[   70s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm
+559:[   70s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/linux-tizen-modules-rpi4-rt-11.0.0-0.armv7l.rpm
+573:info: updating local repo
+578:info: generated RPM packages can be found from local repo:
+579:     /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS
+580:info: generated source RPM packages can be found from local repo:
+581:     /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/SRPMS

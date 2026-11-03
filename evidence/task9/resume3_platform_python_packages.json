@@ -1,0 +1,14 @@
+[
+  {
+    "rpm": "temp/task9/GBS-ROOT-LKO-BASE01/local/cache/92b056697f250e5b095232782601f8c6/python3-base-3.14.2-1.8.armv7l.rpm",
+    "sha256": "844e50c59b3b1bd675e5489f23be472e71f884603709b3338c1c8aa14cc808c4",
+    "metadata": "python3-base-3.14.2-1.8.armv7l\n",
+    "extraction_exit": 0
+  },
+  {
+    "rpm": "temp/task9/GBS-ROOT-LKO-BASE01/local/cache/92b056697f250e5b095232782601f8c6/libpython3_141_0-3.14.2-1.8.armv7l.rpm",
+    "sha256": "89d1bcd71803157c649a3d6f093cc57c04b98204ecd461c4f9571f672cef2466",
+    "metadata": "libpython3_141_0-3.14.2-1.8.armv7l\n",
+    "extraction_exit": 0
+  }
+]

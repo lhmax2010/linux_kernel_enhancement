@@ -1,0 +1,117 @@
+[
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-linux-kernel-6.12.80-0.armv7l.rpm",
+    "bytes": 17605960,
+    "sha256": "cbce5a86b175e368c0dcf03565b53a9c93ab72de87cc9e89ab3681c0f8b90fc5"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-linux-kernel-btf-devel-6.12.80-0.armv7l.rpm",
+    "bytes": 610608,
+    "sha256": "1f250f42accb94fb6064dfffaa382d9e10e9e79c0576e316a01b90f81b2c58ef"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+    "bytes": 116693460,
+    "sha256": "bf2cac5930600ba10213c47dc8eddea038b7c33fdd956766d749049325d11b38"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-linux-kernel-devel-debuginfo-6.12.80-0.armv7l.rpm",
+    "bytes": 75887404,
+    "sha256": "2c34ff8b5ac6b77b6d17e6e04dd6673f9398fe3cfb087b284c156d5ed840e2fa"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-linux-kernel-headers-6.12.80-0.armv7l.rpm",
+    "bytes": 2048952,
+    "sha256": "d2705599c78243a48f2d64a48dd22fed0093777eecb00120777c8176d56bbef0"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-linux-kernel-modules-6.12.80-0.armv7l.rpm",
+    "bytes": 728356,
+    "sha256": "f21e1f2db4c273bb3a86ffb7394ade6aaa37b76fabe007827c7c6908d32d7128"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-rt-linux-kernel-6.12.80-0.armv7l.rpm",
+    "bytes": 17652632,
+    "sha256": "08e6907659588d0a75129f0d28ac6cfea88bc2b7f1868d9936f8db90a28acff3"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-rt-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+    "bytes": 112630260,
+    "sha256": "4f41f28a46a360b63f1b4bd4626d18cf2cf5949f04d4cbe0c907d196e7625730"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-rt-linux-kernel-devel-debuginfo-6.12.80-0.armv7l.rpm",
+    "bytes": 75228456,
+    "sha256": "1a31eb5e660b3d02ad277f51f187a062f40f7086d6424c8f95c7ea3ffe39607f"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/arm-rpi4-rt-linux-kernel-modules-6.12.80-0.armv7l.rpm",
+    "bytes": 729456,
+    "sha256": "13b3b9ce6a99bb490adf81950f074d883e3e05b7f72960bccf4f6f938aa68e2b"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-kernel-bpftool-6.12.80-0.armv7l.rpm",
+    "bytes": 196796,
+    "sha256": "690e86d1a6f9957006bafd4d16e994ede673d3d56b7191af9df917ea37039e77"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-kernel-bpftool-debuginfo-6.12.80-0.armv7l.rpm",
+    "bytes": 199996,
+    "sha256": "8a45a49b23ee651edd494d49aa0d68837c3d72c232612b56f62ab38203230fc0"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-kernel-perf-6.12.80-0.armv7l.rpm",
+    "bytes": 1109388,
+    "sha256": "c6c65f53160e0a0f195b0feb9e05881b86dda5b5c0db59e11e8b4a1fd13f5c90"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-kernel-perf-debuginfo-6.12.80-0.armv7l.rpm",
+    "bytes": 202424,
+    "sha256": "ce71731a2ad55d3857c9262de56cd3400767c5d9aa7452b81671fcaad8bd7d64"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-tizen-modules-debugsource-11.0.0-0.armv7l.rpm",
+    "bytes": 6744,
+    "sha256": "d5f30ac62e26c8c73aa054d229469d3227b8a6d208817290d02415a55beb3c8d"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-tizen-modules-headers-11.0.0-0.armv7l.rpm",
+    "bytes": 23508,
+    "sha256": "d4d0b1011475c93162fc590f3a6c406e12895837ed8351821c3a5acc78582957"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm",
+    "bytes": 92296,
+    "sha256": "840d1508d15ef46ad3632ec6d33ed35c2e5dd830b08994b91583df281875f20f"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-tizen-modules-rpi4-rt-11.0.0-0.armv7l.rpm",
+    "bytes": 92484,
+    "sha256": "8f86d14f79914871f9b3f364211ef28b1e85eaed83ae51fe474c32f0e96fb54e"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-tizen-modules-source-11.0.0-0.armv7l.rpm",
+    "bytes": 123492,
+    "sha256": "4e58db24706de57814f475fcb53c9614ec902c31d55383776887dc59f129ba61"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-tizen-modules-source-debugsource-11.0.0-0.armv7l.rpm",
+    "bytes": 73944,
+    "sha256": "f71158c032f7540513f2d07610e25084c7960ca0347e317638f6179baef0fd47"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-tizen-modules-tests-11.0.0-0.armv7l.rpm",
+    "bytes": 172440,
+    "sha256": "8c501ce01795fdee0c4ba0529e6757dcf1e548f8396036c2787dfce2e1f0f8df"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/linux-tizen-modules-tests-debuginfo-11.0.0-0.armv7l.rpm",
+    "bytes": 331036,
+    "sha256": "071ea3f5c658e45a47c513335bc583476ea992163878b603f2ad82a899e055d4"
+  },
+  {
+    "file": "temp/task9/GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS/rpi4-linux-kernel-debugsource-6.12.80-0.armv7l.rpm",
+    "bytes": 18617524,
+    "sha256": "e8d8f0b87f3c14cb6ad1879aa9758c0d2f329f84ac0cbcdd83f8ff9b8db8554d"
+  }
+]

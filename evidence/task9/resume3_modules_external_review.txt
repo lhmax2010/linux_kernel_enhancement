@@ -1,0 +1,4 @@
+FIND-END 2026-11-04T02:34:05+08:00 exit=1; permission errors suppressed; root/deeper/deleted files not covered
+Names/time alone cannot attribute concurrent writes; no files removed.
+
+Direct observations of this process group:

@@ -1,0 +1,21 @@
+from pathlib import Path
+import hashlib,json,zlib,re
+V=Path('/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify')
+results=[]
+for label,rel,expected in [('normal','extract-kernel/boot/zImage','6.12.80-arm-rpi4-v7l-lko-base01'),('rt','extract-kernel-rt/boot/zImage_rt','6.12.80-arm-rpi4-rt-v7l-lko-base01')]:
+ p=V/rel;b=p.read_bytes();candidates=[]
+ for m in re.finditer(b'\x1f\x8b\x08',b):
+  try: image=zlib.decompress(b[m.start():],31)
+  except zlib.error: continue
+  banners=re.findall(rb'Linux version [0-9][^\x00\n]+',image)
+  if banners:
+   out=V/(label+'.Image');out.write_bytes(image)
+   candidates.append({'gzip_offset':m.start(),'image_bytes':len(image),'banners':[x.decode(errors='replace') for x in banners]})
+ assert len(candidates)==1,candidates
+ assert all(x.startswith('Linux version '+expected+' ') for x in candidates[0]['banners'])
+ row={'variant':label,'release':expected,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),**candidates[0]}
+ if label=='normal':
+  row.update(factory_bytes=14905736,factory_sha256='50d642e137853a46029945965556f4f30e1d87a5706e4eb5f4b02f735a260a5e',factory_evidence='evidence/task6/r2/04_boot_readonly.transport.txt',delta_bytes=len(b)-14905736,delta_percent=(len(b)-14905736)*100/14905736)
+ results.append(row)
+(V/'zimage_verification.json').write_text(json.dumps(results,indent=2)+'\n')
+print(json.dumps(results,indent=2))

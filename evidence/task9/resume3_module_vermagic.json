@@ -1,0 +1,946 @@
+[
+  {
+    "file": "extra/dm-bow.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/dm-bow.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "extra/extcon-usb-fixed.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/extcon-usb-fixed.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "extra/inform-reboot.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/inform-reboot.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "extra/kdbus/kdbus.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/kdbus/kdbus.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "extra/logger.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/logger.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "extra/proc-tsm.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "extra/zlogger/zlogger.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/zlogger/zlogger.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/crypto/md5.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/crypto/md5.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/block/nbd.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/block/nbd.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/bluetooth/bcm203x.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/bcm203x.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/bluetooth/btbcm.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btbcm.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/bluetooth/btintel.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btintel.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/bluetooth/btrtl.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btrtl.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/bluetooth/btusb.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btusb.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/bluetooth/hci_uart.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/hci_uart.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/char/broadcom/bcm2835_smi_dev.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/char/broadcom/bcm2835_smi_dev.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/hid/hid-led.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/hid/hid-led.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/i2c/busses/i2c-bcm2708.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c/busses/i2c-bcm2708.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/i2c/i2c-stub.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c/i2c-stub.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/input/joydev.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/input/joydev.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/leds/trigger/ledtrig-camera.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds/trigger/ledtrig-camera.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/leds/trigger/ledtrig-transient.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds/trigger/ledtrig-transient.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/media/usb/gspca/gspca_main.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb/gspca/gspca_main.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/media/usb/gspca/gspca_zc3xx.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb/gspca/gspca_zc3xx.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/mfd/wl1273-core.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/mfd/wl1273-core.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/misc/bcm2835_smi.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/misc/bcm2835_smi.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bca/brcmfmac-bca.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bca/brcmfmac-bca.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cyw/brcmfmac-cyw.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cyw/brcmfmac-cyw.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/wcc/brcmfmac-wcc.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/wcc/brcmfmac-wcc.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil/brcmutil.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil/brcmutil.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/mediatek/mt76/mt76-connac-lib.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76-connac-lib.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/mediatek/mt76/mt76-usb.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76-usb.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/mediatek/mt76/mt76.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921-common.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921-common.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921u.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921u.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/mediatek/mt76/mt792x-lib.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt792x-lib.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/net/wireless/mediatek/mt76/mt792x-usb.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt792x-usb.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/spi/spi-bcm2835aux.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/spi/spi-bcm2835aux.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/usb/class/cdc-acm.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/class/cdc-acm.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/usb/gadget/udc/dummy_hcd.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/gadget/udc/dummy_hcd.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/usb/serial/cp210x-stlink.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/cp210x-stlink.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/usb/serial/cp210x.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/cp210x.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/usb/serial/ftdi_sio.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/ftdi_sio.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/usb/serial/option.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/option.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/usb/serial/pl2303.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/pl2303.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/usb/serial/usb_wwan.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/usb_wwan.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/drivers/watchdog/gpio_wdt.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/watchdog/gpio_wdt.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/fs/binfmt_misc.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs/binfmt_misc.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/fs/ecryptfs/ecryptfs.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs/ecryptfs/ecryptfs.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/lib/crc7.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/lib/crc7.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/net/netfilter/xt_LED.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/net/netfilter/xt_LED.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/sound/soc/codecs/snd-soc-cs42xx8-i2c.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-cs42xx8-i2c.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/sound/soc/codecs/snd-soc-cs42xx8.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-cs42xx8.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/sound/soc/codecs/snd-soc-pcm512x-i2c.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-pcm512x-i2c.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/sound/soc/codecs/snd-soc-pcm512x.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-pcm512x.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/sound/soc/codecs/snd-soc-sgtl5000.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-sgtl5000.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/sound/soc/codecs/snd-soc-tpa6130a2.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-tpa6130a2.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  },
+  {
+    "file": "kernel/sound/soc/codecs/snd-soc-wm8741.ko",
+    "command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/sbin/modinfo",
+      "-F",
+      "vermagic",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-wm8741.ko"
+    ],
+    "exit": 0,
+    "vermagic": "6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8",
+    "stderr": "",
+    "match": true
+  }
+]
