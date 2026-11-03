@@ -306,3 +306,22 @@ Foreground sudo validation; authenticate only in your own terminal.
 | 任务10前提 | 不满足 |
 
 未访问vendor_local、连接开发板、修改源码/启动脚本、推Gerrit或触发QB。GBS尚未启动，因此没有进入10分钟构建监控，也没有伪造build监控日志。原tmux会话及前台认证进程没有被终止；**以后在原窗口完成认证仍会继续启动构建**。等待用户反馈后应读取原会话/status恢复监控，不再次执行启动脚本；本轮不清理锁、status或其他已有文件。
+
+
+## 10. 用户认证后恢复检查：日志增长未确认，按前置条件停止（2026-11-04）
+
+用户告知已在原lko-task9窗口完成认证，本轮未重新启动脚本。先读取第7–9节及上次认证超时摘要，然后只读核对原状态/窗口/进程组。
+
+| 本轮前置门槛 | 观测 | 结论 |
+|---|---|---|
+| preflight=OK | exit=0，结束2026-11-04 00:21:00 +08:00 | 通过 |
+| supervisor PGID文件且组存活 | PGID=4061886；组内为原脚本--worker，状态S | 通过 |
+| build_kernel.log开始增长 | 恢复检查期间多次采样均1251 B、13行，mtime保持00:21:16.396277082 | 未确认，不继续进入常规监控 |
+
+[首次样本](../evidence/task9/resume3_post_auth_gate_first.json)、[进程组/对比](../evidence/task9/resume3_post_auth_gate_result.json)、[间隔样本](../evidence/task9/resume3_post_auth_gate_third.json)。首次工具读取约00:22:36，持久首次样本00:22:45，间隔样本00:23:56；这些时刻均未见字节数变化。日志从认证前不存在变为有输出，但本轮未观察到追加，不能把“文件存在”写成“间隔增长已验证”。
+
+按本轮“任一项不符就停下报告”的前置要求停止后续监控，不自动重跑/清理。**这不是构建失败，也不是30分钟无增长判定**：观测时间尚短，当前PGID=4061985中可以看到gbs export、git archive和xz --stdout -6，日志末行为开始导出源码；导出压缩期间可能没有新增日志，这是对短期静默的解释候选，并非已证明异常或死锁。未发信号，未执行sudo，构建保持自然运行。
+
+[当前tmux窗口相关尾部](../evidence/task9/resume3_post_auth_pane.txt)、[status完整原文](../evidence/task9/resume3_post_auth_status.txt)、[内核日志全部13行](../evidence/task9/resume3_post_auth_kernel_excerpt.txt)、[停止摘要](../evidence/task9/resume3_post_auth_stop.json)。窗口中的旧sudo提示是滚屏历史；其后已显示Background supervisor PID/PGID=4061886，不能据此声称仍等待认证。其他任务的进程列表仅在原窗口，入库摘录省略。
+
+停止快照为kernel RUNNING、modsrc/modules PENDING，尚无阶段退出码、BUILD-END或ALL-END。脚本的ACTIVE-OR-RESIDUAL此时标识正在运行的kernel组，不代表已发现残留。尚未进入产物验收；工具链、依赖来源、zImage、模块容量/vermagic/CRC、配置和Module.symvers留底仍未核验，当前不满足任务10前提。后续应从原会话和既有status恢复，不重复启动脚本；本轮没有清理锁、日志或构建根。

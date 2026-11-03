@@ -1,0 +1,15 @@
+COMMAND: tail -n 80 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/build_kernel.log
+EXIT: 0
+BUILD-START kernel 2026-11-04T00:21:11+08:00
+SOURCE=/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi
+COMMIT=8c8f2429401d6b282373e58b73399801a9486d5b
+COMMAND=/usr/bin/env HOME=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home/.gbp.conf /usr/bin/time -v /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01 --threads 1 --define _smp_mflags\ -j10 --commit 8c8f2429401d6b282373e58b73399801a9486d5b 
+info: generate repositories ...
+warning: No local package repository for arch armv7l
+info: build conf has been downloaded at:
+      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/linhao-gbs/tizen_unified_standard.conf
+info: start building packages from: /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi (git)
+2026-11-04 00:21 +0800
+gbs 2.1.0
+info: prepare sources...
+info: start export source from: /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi ...

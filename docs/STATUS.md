@@ -6,6 +6,12 @@
 
 更新：2026-11-03（Asia/Shanghai）。新Session先读本文件和[RULES.md](RULES.md)。
 
+**任务9续跑三（2026-11-04认证后）：恢复检查未确认日志增长，按前置条件停止后续监控。** [14第10节](14_base01_build.md)、[状态快照](../evidence/task9/resume3_post_auth_status.txt)。
+
+- 已闭合：用户已认证，preflight OK/exit=0；supervisor PGID=4061886存活，kernel组4061985处于源码导出。未重启脚本，未发信号、sudo或清理文件。
+- 未闭合：间隔样本内核日志均1251 B/13行，增长门槛未确认；不是构建失败，也未达到30分钟静默条件。停止时kernel RUNNING、后两阶段PENDING，构建继续自然运行。
+- 挂账：从原会话/status恢复监控，不能重新启动；所有产物核验及任务10前提仍未完成。下方认证等待超时为历史，现已完成认证。
+
 **任务9续跑三（tmux安装后）：认证等待达到30分钟期限，已停止轮询。** [14第9节](14_base01_build.md)、[终点证据](../evidence/task9/resume3_auth_timeout_summary.json)。
 
 - 计划/进度：tmux 3.4及无旧日志/锁检查通过，按授权分离启动原脚本；进入前台认证后提供attach命令并每30秒检查，未观察到认证完成。

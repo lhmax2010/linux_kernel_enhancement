@@ -1,0 +1,12 @@
+{
+  "time": "2026-11-04T00:25:26.238938+08:00",
+  "outcome": "STOP: preflight OK and supervisor live; log growth not confirmed during sampled interval",
+  "not_build_failure": true,
+  "not_30_minute_stall": true,
+  "no_intervention": true,
+  "last_observed_bytes": 1251,
+  "last_observed_lines": 13,
+  "last_observed_mtime": "2026-11-04T00:21:16.396277082+08:00",
+  "three_stages": "kernel RUNNING; modsrc/modules PENDING",
+  "stage_exit_code": "not available while running"
+}
