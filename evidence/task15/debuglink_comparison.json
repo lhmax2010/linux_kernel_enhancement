@@ -1,0 +1,182 @@
+[
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so",
+    "debuglink": {
+      "old": {
+        "file": "libplugin-resourced-limiter-freezer.so.debug",
+        "crc32_hex": "43b48c3d",
+        "section_bytes": 52
+      },
+      "new": {
+        "file": "libplugin-resourced-limiter-freezer.so.debug",
+        "crc32_hex": "3984fe2d",
+        "section_bytes": 52
+      }
+    },
+    "normalization": "objcopy --remove-section .gnu_debuglink, then platform cmp",
+    "equal_after_removing_debuglink": true
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so",
+    "debuglink": {
+      "old": {
+        "file": "libplugin-resourced-monitor-heart.so.debug",
+        "crc32_hex": "6c45000d",
+        "section_bytes": 48
+      },
+      "new": {
+        "file": "libplugin-resourced-monitor-heart.so.debug",
+        "crc32_hex": "109e6b4f",
+        "section_bytes": 48
+      }
+    },
+    "normalization": "objcopy --remove-section .gnu_debuglink, then platform cmp",
+    "equal_after_removing_debuglink": true
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so",
+    "debuglink": {
+      "old": {
+        "file": "libplugin-resourced-optimizer-cpu-sched.so.debug",
+        "crc32_hex": "ac0e31a5",
+        "section_bytes": 56
+      },
+      "new": {
+        "file": "libplugin-resourced-optimizer-cpu-sched.so.debug",
+        "crc32_hex": "1b4ccec5",
+        "section_bytes": 56
+      }
+    },
+    "normalization": "objcopy --remove-section .gnu_debuglink, then platform cmp",
+    "equal_after_removing_debuglink": true
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so",
+    "debuglink": {
+      "old": {
+        "file": "libplugin-resourced-optimizer-memory-compaction.so.debug",
+        "crc32_hex": "174ee4ff",
+        "section_bytes": 64
+      },
+      "new": {
+        "file": "libplugin-resourced-optimizer-memory-compaction.so.debug",
+        "crc32_hex": "b6550fcd",
+        "section_bytes": 64
+      }
+    },
+    "normalization": "objcopy --remove-section .gnu_debuglink, then platform cmp",
+    "equal_after_removing_debuglink": false
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so",
+    "debuglink": {
+      "old": {
+        "file": "libplugin-resourced-optimizer-memory-dedup.so.debug",
+        "crc32_hex": "43ac3495",
+        "section_bytes": 56
+      },
+      "new": {
+        "file": "libplugin-resourced-optimizer-memory-dedup.so.debug",
+        "crc32_hex": "4ef90315",
+        "section_bytes": 56
+      }
+    },
+    "normalization": "objcopy --remove-section .gnu_debuglink, then platform cmp",
+    "equal_after_removing_debuglink": true
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so",
+    "debuglink": {
+      "old": {
+        "file": "libplugin-resourced-optimizer-memory-swap.so.debug",
+        "crc32_hex": "1b12a332",
+        "section_bytes": 56
+      },
+      "new": {
+        "file": "libplugin-resourced-optimizer-memory-swap.so.debug",
+        "crc32_hex": "edcd27fd",
+        "section_bytes": 56
+      }
+    },
+    "normalization": "objcopy --remove-section .gnu_debuglink, then platform cmp",
+    "equal_after_removing_debuglink": false
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-process-block.so",
+    "debuglink": {
+      "old": {
+        "file": "libplugin-resourced-process-block.so.debug",
+        "crc32_hex": "c3aab198",
+        "section_bytes": 48
+      },
+      "new": {
+        "file": "libplugin-resourced-process-block.so.debug",
+        "crc32_hex": "37545e56",
+        "section_bytes": 48
+      }
+    },
+    "normalization": "objcopy --remove-section .gnu_debuglink, then platform cmp",
+    "equal_after_removing_debuglink": true
+  },
+  {
+    "package": "resourced-bin",
+    "path": "/usr/bin/resourced",
+    "debuglink": {
+      "old": {
+        "file": "resourced.debug",
+        "crc32_hex": "ae3dca1d",
+        "section_bytes": 20
+      },
+      "new": {
+        "file": "resourced.debug",
+        "crc32_hex": "b1862001",
+        "section_bytes": 20
+      }
+    },
+    "normalization": "objcopy --remove-section .gnu_debuglink, then platform cmp",
+    "equal_after_removing_debuglink": false
+  },
+  {
+    "package": "resourced-bin",
+    "path": "/usr/lib/libresourced-private-api.so.10.0.0",
+    "debuglink": {
+      "old": {
+        "file": "libresourced-private-api.so.10.0.0.debug",
+        "crc32_hex": "b15c1602",
+        "section_bytes": 48
+      },
+      "new": {
+        "file": "libresourced-private-api.so.10.0.0.debug",
+        "crc32_hex": "52a785eb",
+        "section_bytes": 48
+      }
+    },
+    "normalization": "objcopy --remove-section .gnu_debuglink, then platform cmp",
+    "equal_after_removing_debuglink": false
+  },
+  {
+    "package": "resourced-watchdog-handler",
+    "path": "/usr/bin/resourced-watchdog-handler",
+    "debuglink": {
+      "old": {
+        "file": "resourced-watchdog-handler.debug",
+        "crc32_hex": "e9dda7aa",
+        "section_bytes": 40
+      },
+      "new": {
+        "file": "resourced-watchdog-handler.debug",
+        "crc32_hex": "7e943e81",
+        "section_bytes": 40
+      }
+    },
+    "normalization": "objcopy --remove-section .gnu_debuglink, then platform cmp",
+    "equal_after_removing_debuglink": true
+  }
+]

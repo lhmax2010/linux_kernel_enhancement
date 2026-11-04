@@ -1,0 +1,50 @@
+{
+  "completed": true,
+  "status": "resourced=OK",
+  "exit": 0,
+  "started": "2026-11-04T23:05:28+08:00",
+  "ended": "2026-11-04T23:21:49+08:00",
+  "supervisor_elapsed_seconds": 981,
+  "time_v_wall": "15:43.20",
+  "time_v_max_rss_kib": 124372,
+  "make_expansion": "+ make -j10",
+  "make_line": 1088,
+  "clang": "22.1.8",
+  "lld": "22.1.8",
+  "new_rpm_count": 17,
+  "new_rpm_total_bytes": 957404,
+  "all_nvr_version_release": [
+    "10.0.0-1"
+  ],
+  "test_summary": {
+    "ctest_rounds": 2,
+    "unique_passed": 4,
+    "unique_skipped": 17,
+    "unique_failed": 0,
+    "cumulative_passed": 8,
+    "cumulative_skipped": 34,
+    "cumulative_failed": 0,
+    "new_groups_passed_each_round": 3,
+    "cmocka_retained_round_passed_cases": 11,
+    "cmocka_retained_round_new_cases": 5
+  },
+  "image_package_comparison": {
+    "packages": 5,
+    "added": 0,
+    "deleted": 0,
+    "changed": 11,
+    "inherited_script": 1,
+    "code_changed_elf": 4,
+    "debuglink_only_elf": 6
+  },
+  "external_observation": {
+    "candidate_paths": 22,
+    "direct_stdout_stderr_outside": 0,
+    "attribution": "unknown; concurrent host activity, limited find coverage"
+  },
+  "live_build_groups_at_completion": 0,
+  "gerrit_pushed": false,
+  "deployed": false,
+  "source_rpm_count": 1,
+  "source_rpm_bytes": 329241
+}

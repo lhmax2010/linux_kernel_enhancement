@@ -128,18 +128,103 @@ HOME=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home 
 
 ## 4. 构建与产物结果
 
-**本轮停止在前台认证：等待已达30分钟，未观察到认证完成；构建尚未开始，不是编译失败。**
+**原会话完成用户认证后构建通过，产物核验已完成；待 PM 审核，不推 Gerrit、不部署。** 源码仍为 `lko/resourced-fix@94d346c306233803661e8eab8557596549d82be4`，工作树干净，本轮没有改源码或重新启动构建脚本（[收尾源码状态](../evidence/task15/source_after_build.txt)）。
 
-2026-11-04 22:11:26（+08:00）已在 tmux 3.4 的独立 `lko-task15` 会话启动。前台已到用户认证提示；检查器共记录58轮，终点2026-11-04T22:42:33.735442+08:00，status仍为 preflight=RUNNING、resourced=PENDING。未生成 supervisor PGID、构建日志或 ALL-END；没有新 RPM，单元测试和包文件对比未执行。代理未直接sudo、未输入/记录密码、未发信号、未重跑或清理。
+### 4.1 认证、监控与实际构建参数
 
-证据：[启动](../evidence/task15/launch.json)、[30分钟等待摘要](../evidence/task15/authentication_wait_summary.json)、[状态原文](../evidence/task15/authentication_status_snapshot.txt)、[保留会话](../evidence/task15/tmux_session_snapshot.txt)。原会话和锁保留，不能重新启动脚本；用户在原窗口完成认证后原脚本可继续，下一轮应从原status及进程组恢复监控。当前补丁只完成静态核对，尚不能称为“本地构建通过”或可部署。
+历史停止记录保留：2026-11-04 22:11:26（+08:00）启动 tmux；到22:42:33等待认证已超过30分钟，尚未开始构建。见[启动](../evidence/task15/launch.json)、[原等待摘要](../evidence/task15/authentication_wait_summary.json)、[原状态](../evidence/task15/authentication_status_snapshot.txt)。用户随后在同一 `lko-task15` 窗口自行完成认证；前台preflight于23:05:28变为OK，原脚本继续进入后台，代理未直接执行sudo、未处理密码、未发信号。
 
-原会话连接命令：
+23:07:41恢复检查时，supervisor PGID=2491608和构建PGID=2491625均存活，日志106行且依赖下载进行中，符合恢复门槛。23:08:10、23:18:10各记录一轮，23:22:10读到最终结果；未触发异常停止条件。结束检查两组均无存活进程。证据：[恢复门槛](../evidence/task15/resume_gate.json)、[监控记录](../evidence/task15/resume_monitor.log)、[最终检查](../evidence/task15/monitor_final.json)、[本次进程组摘要](../evidence/task15/process_group_summary.txt)。
 
-```sh
-tmux -S /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/tmux.sock attach -t lko-task15
-```
+|项目|结果与依据|
+|---|---|
+|GBS结果|exit=0；`ALL-END 2026-11-04T23:21:49+08:00 resourced=OK`|
+|日志末行|`BUILD-END resourced 2026-11-04T23:21:49+08:00 exit=0`|
+|构建阶段|23:05:28–23:21:49，16分21秒（包括检查和封存）|
+|time -v|墙钟15:43.20；最大单进程RSS 124,372 KiB，非所有编译进程合计|
+|实际make并行数|完整日志第1088行：`[ 906s] + make -j10`；第925行rpmbuild同时有`_smp_mflags -j10`与`jobs 10`|
+|内部包装参数|depanneur的build包装仍显示`--jobs 40`；本包spec展开后的make实测为10，不能仅凭外层jobs参数判断|
+|工具链|日志第986行CMake识别Clang22.1.8；平台clang和ld.lld版本均为22.1.8|
 
-构建通过后核对：RPM NVR/大小/SHA-256、CTest 实际执行/跳过结果；与 QB1211696 镜像所含 resourced、resourced-bin、resourced-config、resourced-isu、resourced-watchdog-handler 10.0.0-1 的路径、文件内容与链接/权限变化比较。基线来源固定为任务14镜像 manifest 与任务8 primary.xml；旧包下载校验记录在 [baseline_rpm_downloads.json](../evidence/task15/baseline_rpm_downloads.json)。新增生成的非镜像包单独列出，不与“镜像删除了文件”混为一谈。QB 包源码为 b0bbb7c5，当前 tizen 还包含既有的 dash 兼容和 cgroup 修复两个提交；包内容差异同时受这两个提交、工具链/构建环境及本轮九补丁影响，不能全部归因于本轮补丁。
+证据：[最终状态](../evidence/task15/build_status_final.txt)、[末100行](../evidence/task15/build_resourced_last100.txt)、[带原始行号的关键日志](../evidence/task15/build_validation_excerpt.txt)、[工具版本](../evidence/task15/tool_versions.json)。完整日志保留在`temp/task15/`，行数、字节数、SHA-256见[完整日志清单](../evidence/task15/full_log_manifest.json)。依赖初始化占主要时间；不将本轮总耗时当作纯C编译耗时。
 
-即使构建和单元测试全部通过，也仅代表开发机构建验证，不能替代两种目标内核上的实际激活、回收及错误路径验证。本轮不部署；待 PM 审核补丁后另行决定 Gerrit 推送与镜像验证。
+### 4.2 CTest与cmocka：实际执行和跳过分开计数
+
+构建与install分别触发一次CTest，共两轮；每轮21组。旧用例中的17组返回`SKIP_TEST=77`，不能把CTest的“100% tests passed”解释为21组实际通过。
+
+|统计口径|通过|跳过|失败/异常|
+|---|---:|---:|---:|
+|唯一CTest组|4|17|0|
+|两轮累计CTest结果|8|34|0|
+|最后一轮保留的cmocka内部用例|11|0|0|
+
+新增三组均在两轮中实际执行并通过：
+
+|新增测试组|第一轮日志行|第二轮日志行|最后一轮cmocka内部通过数|
+|---|---:|---:|---:|
+|test-reclaim-io|1762|2217|3|
+|test-file-write-errors|1768|2219|1|
+|test-integer-read-errors|1776|2221|1|
+
+另一实际通过组`test-init-plugin-loader`包含6个内部用例。`LastTest.log`只保留最后一轮，因此可直接核实的内部用例为11个（新增5、既有6）；第一轮内部逐用例日志已被后轮覆盖，不虚报有22个可独立追溯的内部记录。17个跳过组名称及每次结果见[test_results.json](../evidence/task15/test_results.json)，原始最后一轮见[ctest_LastTest_0.txt](../evidence/task15/ctest_LastTest_0.txt)，测试接入/跳过依据见[test_and_binary_mapping.txt](../evidence/task15/test_and_binary_mapping.txt)。LastTest对返回77也可能写“Test Passed”，以CTest明确的Skipped结果判定。
+
+### 4.3 RPM清单与身份
+
+产生17个armv7l二进制RPM，Version-Release均为`10.0.0-1`，合计957,404 B；另有1个源RPM。文件只留`temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/`，没有安装。元数据查询、解包、ELF段检查均通过本次GBS buildroot的平台工具，经无sudo的bwrap+qemu-arm执行；宿主仅汇总文本和计算哈希。命令/退出码见[platform_queries.txt](../evidence/task15/platform_queries.txt)、[payload_commands.json](../evidence/task15/payload_commands.json)、[debuglink_commands.json](../evidence/task15/debuglink_commands.json)。
+
+RPM头的BuildTime为0，不能用于判断真实构建时间；真实时间以上述构建日志为准。新旧包NVR相同，不代表代码相同，交付必须同时核对源码HEAD和RPM SHA-256。下表名称均省略共同后缀`-10.0.0-1.armv7l.rpm`。
+
+|包名|大小（B）|SHA-256|
+|---|---:|---|
+|resourced|89,344|`e70f1f49c8e78f9c44e45246c7356dac063680b2139832e7c52997987deabb12`|
+|resourced-bin|121,236|`01297d4530c4ebf94c6752b603740b5240905add232b3d75b07747994c4670a2`|
+|resourced-bin-debuginfo|233,684|`8ed6486b8dd2815abf39a764081cb3b33dc3e7308976aedc64d72fda8427b291`|
+|resourced-config|10,216|`c83e7c3f470fda98449ddb33c20ea0704075a54efc11875c6606fc4081157205`|
+|resourced-config-iot-headless|7,272|`7e3f3434440aeb036133008ad48eec68566c700fa3d24b23047b9601921d8f1b`|
+|resourced-config-tv|8,200|`c7dd2b726eb21444cd0ef484e216fd31663d07f427f448379f38bab1d01b2363`|
+|resourced-debuginfo|150,080|`acdbc4f5d100ca6bd5cf29dae6011f24cb7ea093d033f4a79082b293a626f8cf`|
+|resourced-debugsource|208,424|`881e894ce58a8e98f820ea8a42d04a47ec372fbc92b072dd266112ff0f6b2408`|
+|resourced-isu|8,256|`2285f7e9b1d40613f197a9bb476f100ddcbb355f03cb1cf019ad3fddbd83ad24`|
+|resourced-light|7,276|`7ca1290c80f7e2dc659eebab6c61bbfea215c98c214a9240585f4c7caba56ae6`|
+|resourced-monitor|10,880|`85052606c24da149d781975b0d26407e9f586ce1c9ec8ac19f02f9f4d3c7a500`|
+|resourced-monitor-debuginfo|10,720|`1723413b3a5ec0f49558a31618813b5c2efd8ab4a6a1bc30a2d52e11566fa5af`|
+|resourced-private-api-devel|38,788|`1e3eab67fe79f4176697fc31be702cdbc31bdf859dc6111ee7084f368b0ebacf`|
+|resourced-tests|10,980|`834b6527077cb2a7d6f6e64b6922126e6710f5711be826145932877372a60f41`|
+|resourced-tests-debuginfo|10,644|`869dcf706e55187c2ede315bc3614ae689976219aaf0405a6df2df32efc9d940`|
+|resourced-watchdog-handler|16,356|`9b574626f139d9e161d702d151e78478da0c37ee1afe0376a029ced1f9ef4b89`|
+|resourced-watchdog-handler-debuginfo|15,048|`3a26927209115c0c2591263b2e6dcf494f33ca132ed05d4aec355f71f9ed77d7`|
+
+源包`resourced-10.0.0-1.src.rpm`：329,241 B，SHA-256 `f8bab9f76a0e2e04a73496c234b012781f2368bb378cae14b729ddb3e7b13f6e`。完整新旧包清单：[rpm_inventory.json](../evidence/task15/rpm_inventory.json)、[源包记录](../evidence/task15/source_rpm.json)、[源包查询](../evidence/task15/source_rpm_query.txt)。
+
+### 4.4 与QB1211696镜像包的文件差异及来源
+
+基线只比较镜像manifest中的五个armv7l包，均为10.0.0-1；下载及SHA核对见[baseline_rpm_downloads.json](../evidence/task15/baseline_rpm_downloads.json)。比较RPM文件路径、类型/权限、链接及文件内容摘要，不以RPM容器哈希不同直接判定所有载荷变化。其他12个新构建二进制包不在这五个旧镜像包的比较集合中，不能据此声称镜像新增/删除了其文件。
+
+|镜像包|新增路径|删除路径|变化路径|
+|---|---:|---:|---:|
+|resourced|0|0|7|
+|resourced-bin|0|0|2|
+|resourced-config|0|0|0|
+|resourced-isu|0|0|0|
+|resourced-watchdog-handler|0|0|2|
+|合计|0|0|11|
+
+11个变化路径的归因：
+
+|类型|数量|具体依据|
+|---|---:|---|
+|既有tizen脚本改动|1|`resourced-watchdog-handler.sh`的bash→sh来自`1d529ce7`，本轮未改；载荷文本diff吻合|
+|包含本轮修复的ELF|4|`resourced`、`libresourced-private-api.so.10.0.0`、memory-swap插件、memory-compaction插件；对应源码和链接归属可核对；其中主程序还包含tizen `82e79c09`的cgroup改动|
+|重建产生的debuglink差异|6|freezer、heart、cpu-sched、memory-dedup、process-block插件及watchdog-handler可执行文件；生产源码未变，`.text/.rodata/.data`摘要相同，平台objcopy删除`.gnu_debuglink`后平台cmp全部返回0；debug文件名相同、CRC不同|
+
+旧QB源码为`b0bbb7c5`，本轮tizen基线继承其后的两个提交，见[inherited_vs_local_changes.txt](../evidence/task15/inherited_vs_local_changes.txt)。变化文件明细见[rpm_file_comparison.json](../evidence/task15/rpm_file_comparison.json)、[file_attribution.json](../evidence/task15/file_attribution.json)、[文本diff](../evidence/task15/changed_text_files.diff.txt)、[ELF段核对](../evidence/task15/payload_inspection.json)、[debuglink逐字比较](../evidence/task15/debuglink_comparison.json)。
+
+归因边界：4个含代码变化的ELF仍含重建因素，主程序还混合了tizen与本轮修改，未做受控重编，不能逐字节划分各因素贡献；6个debuglink-only文件只能确定成品差异局限于该段，未进一步区分底层调试文件为何变化。旧/新strip后的ELF均缺`.comment`和`.note.gnu.build-id`，不据此推断旧包编译器版本相同。config和isu载荷不变，RPM容器SHA仍可因打包元数据而不同。
+
+### 4.5 警告、外部观察与审核边界
+
+[build_warnings.txt](../evidence/task15/build_warnings.txt)保留编译/打包警告：既有源码的const限定符及未使用变量、编译阶段未使用的链接选项、CMake变量未使用、缺build-id及重复列出`/usr/bin/resourced`。本轮未为了消除既有警告扩大补丁范围；构建成功不表示没有警告。
+
+工作区外find观察得到22个候选路径，全部“无法归属”；find退出1，且未覆盖root属主、深层及已删除对象。本次进程组stdout/stderr的直接外部路径观察为0，**不能据此宣称没有任何工作区外写入**。未删除、移动或修改外部文件。证据：[外部观察](../evidence/task15/resume_resourced.external_review.txt)。
+
+验收汇总见[resume_verification_summary.json](../evidence/task15/resume_verification_summary.json)。本地构建及新增测试通过，不代表两种目标内核上的实际zram激活、回收和错误路径已经验证；尤其既有swap组为跳过。本轮不部署、不推Gerrit；下一步为PM审核九个补丁及上述取舍，镜像/板测另行安排。PB2单独状态仅登记在STATUS，详细记录不入库。

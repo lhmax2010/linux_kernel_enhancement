@@ -1,0 +1,26 @@
+FIND-END 2026-11-04T23:21:49+08:00 exit=1; permission errors suppressed; root/deeper/deleted files not covered
+Names/time alone cannot attribute concurrent writes; no files removed.
+无法归属	/tmp/sdb.log
+无法归属	/tmp/xxxtmp.log
+无法归属	/home/linhao
+无法归属	/home/linhao/.claude.json
+无法归属	/home/linhao/.sogouinput
+无法归属	/home/linhao/.sogouinput/SogouImebsUIEnvMutex
+无法归属	/home/linhao/.sogouinput/ImeKernel_DictLocker
+无法归属	/home/linhao/.sogouinput/SogouIme_VersionManagerSharedTable_V2_Lock
+无法归属	/home/linhao/.sogouinput/SogouIme_FuncManager_1__Lock
+无法归属	/home/linhao/.sogouinput/DictManager_DictSaveLocker
+无法归属	/home/linhao/.cache/tracker3/files
+无法归属	/home/linhao/.config/gedit/accels
+无法归属	/home/linhao/.config/google-chrome-local
+无法归属	/home/linhao/.config/google-chrome-local/Variations
+无法归属	/home/linhao/.config/google-chrome-local/segmentation_platform
+无法归属	/home/linhao/.config/google-chrome-local/Default
+无法归属	/home/linhao/.config/google-chrome-local/Local State
+无法归属	/home/linhao/.config/fcitx/config
+无法归属	/home/linhao/.local/share
+无法归属	/home/linhao/.local/share/gedit
+无法归属	/home/linhao/.local/share/recently-used.xbel
+无法归属	/home/linhao/.local/share/gnome-shell
+
+Direct observations of this process group:

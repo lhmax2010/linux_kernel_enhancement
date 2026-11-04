@@ -1,0 +1,5 @@
+1: BEFORE 2026-11-04T23:05:29+08:00
+491: PROCESS-GROUP 2026-11-04T23:05:29+08:00 PGID=2491625
+492: 2491625 2491608 2491625 linhao   S    /usr/bin/time -v /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED --threads 1 --define _smp_mflags -j10 --define jobs 10 --commit 94d346c306233803661e8eab8557596549d82be4
+493: 2491631 2491625 2491625 linhao   D    /usr/bin/python3 /usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED --threads 1 --define _smp_mflags -j10 --define jobs 10 --commit 94d346c306233803661e8eab8557596549d82be4
+494: PROCESS-GROUP 2026-11-04T23:21:16+08:00 PGID=2491625

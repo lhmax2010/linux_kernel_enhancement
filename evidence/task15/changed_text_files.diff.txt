@@ -1,0 +1,8 @@
+--- QB1211696:/usr/bin/resourced-watchdog-handler.sh
++++ task15:/usr/bin/resourced-watchdog-handler.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash -l
++#!/bin/sh -l
+ PATH=/bin:/usr/bin:/sbin:/usr/sbin
+ 
+ exec /usr/bin/resourced-watchdog-handler "$@"

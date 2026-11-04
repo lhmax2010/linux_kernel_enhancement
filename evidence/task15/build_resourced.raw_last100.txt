@@ -1,0 +1,100 @@
+2700: [  918s] Aptk: PG1hbmlmZXN0PgogPHJlcXVlc3Q+CiAgICA8ZG9tYWluIG5hbWU9Il8iLz4KIDwv
+2701: [  918s] cmVxdWVzdD4KPC9tYW5pZmVzdD4K
+2702: [  918s] 
+2703: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/bin/resourced.debug
+2704: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/lib/libresourced-private-api.so.10.0.0.debug
+2705: [  918s] Provides: resourced-bin-debuginfo = 10.0.0-1 resourced-bin-debuginfo(armv7l-32) = 10.0.0-1
+2706: [  918s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+2707: [  918s] Recommends: resourced-debugsource(armv7l-32) = 10.0.0-1
+2708: [  918s] Processing files: resourced-tests-debuginfo-10.0.0-1.armv7l
+2709: [  918s] Aptk: PG1hbmlmZXN0PgogPHJlcXVlc3Q+CiAgICA8ZG9tYWluIG5hbWU9Il8iLz4KIDwv
+2710: [  918s] cmVxdWVzdD4KPC9tYW5pZmVzdD4K
+2711: [  918s] 
+2712: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/lib/resourced-tests/watchdog-test.debug
+2713: [  918s] Provides: resourced-tests-debuginfo = 10.0.0-1 resourced-tests-debuginfo(armv7l-32) = 10.0.0-1
+2714: [  918s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+2715: [  918s] Recommends: resourced-debugsource(armv7l-32) = 10.0.0-1
+2716: [  918s] Processing files: resourced-watchdog-handler-debuginfo-10.0.0-1.armv7l
+2717: [  918s] Aptk: PG1hbmlmZXN0PgogPHJlcXVlc3Q+CiAgICA8ZG9tYWluIG5hbWU9Il8iLz4KIDwv
+2718: [  918s] cmVxdWVzdD4KPC9tYW5pZmVzdD4K
+2719: [  918s] 
+2720: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/bin/resourced-watchdog-handler.debug
+2721: [  918s] Provides: resourced-watchdog-handler-debuginfo = 10.0.0-1 resourced-watchdog-handler-debuginfo(armv7l-32) = 10.0.0-1
+2722: [  918s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+2723: [  918s] Recommends: resourced-debugsource(armv7l-32) = 10.0.0-1
+2724: [  918s] Processing files: resourced-monitor-debuginfo-10.0.0-1.armv7l
+2725: [  918s] Aptk: PG1hbmlmZXN0PgogPHJlcXVlc3Q+CiAgICA8ZG9tYWluIG5hbWU9Il8iLz4KIDwv
+2726: [  918s] cmVxdWVzdD4KPC9tYW5pZmVzdD4K
+2727: [  918s] 
+2728: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/bin/resourced-monitor.debug
+2729: [  918s] Provides: resourced-monitor-debuginfo = 10.0.0-1 resourced-monitor-debuginfo(armv7l-32) = 10.0.0-1
+2730: [  918s] Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+2731: [  918s] Recommends: resourced-debugsource(armv7l-32) = 10.0.0-1
+2732: [  918s] Checking for unpackaged file(s): /usr/lib/rpm/check-files /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm
+2733: [  918s] Wrote: /home/abuild/rpmbuild/SRPMS/resourced-10.0.0-1.src.rpm
+2734: [  918s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-10.0.0-1.armv7l.rpm
+2735: [  918s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-debugsource-10.0.0-1.armv7l.rpm
+2736: [  918s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-light-10.0.0-1.armv7l.rpm
+2737: [  918s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-bin-10.0.0-1.armv7l.rpm
+2738: [  918s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-private-api-devel-10.0.0-1.armv7l.rpm
+2739: [  918s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-config-10.0.0-1.armv7l.rpm
+2740: [  918s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-config-tv-10.0.0-1.armv7l.rpm
+2741: [  918s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-config-iot-headless-10.0.0-1.armv7l.rpm
+2742: [  918s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-tests-10.0.0-1.armv7l.rpm
+2743: [  918s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-watchdog-handler-10.0.0-1.armv7l.rpm
+2744: [  918s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-isu-10.0.0-1.armv7l.rpm
+2745: [  919s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-monitor-10.0.0-1.armv7l.rpm
+2746: [  919s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-debuginfo-10.0.0-1.armv7l.rpm
+2747: [  919s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-bin-debuginfo-10.0.0-1.armv7l.rpm
+2748: [  919s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-tests-debuginfo-10.0.0-1.armv7l.rpm
+2749: [  919s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-watchdog-handler-debuginfo-10.0.0-1.armv7l.rpm
+2750: [  919s] Wrote: /home/abuild/rpmbuild/RPMS/armv7l/resourced-monitor-debuginfo-10.0.0-1.armv7l.rpm
+2751: [  919s] Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.x22sg5
+2752: [  919s] + umask 022
+2753: [  919s] + cd /home/abuild/rpmbuild/BUILD
+2754: [  919s] + /bin/rm -rf /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm
+2755: [  919s] + cd resourced-10.0.0
+2756: [  919s] + /bin/rm -rf /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm
+2757: [  919s] + exit 0
+2758: [  919s] ... checking for files with abuild user/group
+2759: [  919s] 
+2760: [  919s] linhao-linux finished "build resourced.spec" at Wed Nov  4 15:21:08 UTC 2026.
+2761: [  919s] 
+2762: info: finished building resourced
+2763: info: updating local repo
+2764: info: *** Build Status Summary ***
+2765: === Total succeeded built packages: (1) ===
+2766: info: generated html format report:
+2767:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/index.html
+2768: info: generated RPM packages can be found from local repo:
+2769:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS
+2770: info: generated source RPM packages can be found from local repo:
+2771:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/SRPMS
+2772: info: build logs can be found in:
+2773:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/logs
+2774: info: build roots located in:
+2775:      /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.*
+2776: 	Command being timed: "/usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED --threads 1 --define _smp_mflags -j10 --define jobs 10 --commit 94d346c306233803661e8eab8557596549d82be4"
+2777: 	User time (seconds): 111.32
+2778: 	System time (seconds): 28.04
+2779: 	Percent of CPU this job got: 14%
+2780: 	Elapsed (wall clock) time (h:mm:ss or m:ss): 15:43.20
+2781: 	Average shared text size (kbytes): 0
+2782: 	Average unshared data size (kbytes): 0
+2783: 	Average stack size (kbytes): 0
+2784: 	Average total size (kbytes): 0
+2785: 	Maximum resident set size (kbytes): 124372
+2786: 	Average resident set size (kbytes): 0
+2787: 	Major (requiring I/O) page faults: 1829
+2788: 	Minor (reclaiming a frame) page faults: 5646436
+2789: 	Voluntary context switches: 649169
+2790: 	Involuntary context switches: 51946
+2791: 	Swaps: 0
+2792: 	File system inputs: 1078496
+2793: 	File system outputs: 5557960
+2794: 	Socket messages sent: 0
+2795: 	Socket messages received: 0
+2796: 	Signals delivered: 0
+2797: 	Page size (bytes): 4096
+2798: 	Exit status: 0
+2799: COMMAND-EXIT resourced time=2026-11-04T23:21:16+08:00 exit=0 credential_seen=0

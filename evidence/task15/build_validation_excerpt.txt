@@ -1,0 +1,58 @@
+925: [  898s] + exec rpmbuild --define '_smp_mflags -j10' --define 'jobs 10' --define '_srcdefattr (-,root,root)' --nosignature --target=armv7l-tizen-linux --define '_build_create_debug 1' -ba /home/abuild/rpmbuild/SOURCES/resourced.spec
+986: [  899s] -- The C compiler identification is Clang 22.1.8
+1088: [  906s] + make -j10
+1751: [  910s] /usr/bin/ctest --force-new-ctest-process 
+1752: [  910s] Test project /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+1762: [  910s]  1/21 Test  #1: test-reclaim-io ..................   Passed    0.11 sec
+1768: [  910s] /bin/armv7l-tizen-linux-gnueabi-clang -fPIC -Os -ffunction-sections -fdata-sections -fstack-protector -Wno-unused-command-line-argument -Wno-error=unused-but-set-variable -Wno-error=unused-command-line-argument  -g2 -gdwarf-4 -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -Wformat -Wformat-security -fmessage-length=0 -frecord-gcc-switches -march=armv7-a -mtune=cortex-a8 -mlittle-endian -mfpu=neon -mfloat-abi=softfp -mthumb -Wp,-D__SOFTFP__ -D_FILE_OFFSET_BITS=64 -g -D_GNU_SOURCE -DRESOURCED_BUILD -Wall -Werror -fvisibility=hidden  -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-exceptions -pthread -I/usr/include -I/usr/include/storage -I/usr/include/gum -I/usr/include -I/usr/include/ -I/usr/include -I/usr/include/system -I/usr/include -I/usr/include/system -I/usr/include -I/usr/include/dbus-1.0 -I/usr/lib/dbus-1.0/include -I/usr/include -I/usr/include/gio-unix-2.0 -I/usr/include -I/usr/include/libmount -I/usr/include/blkid -I/usr/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include -I/usr/include/dlog -I/usr/include -I/usr/include/json-c -I/usr/include/gio-unix-2.0 -I/usr/include -I/usr/include/json-c -I/usr/include/system -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include -I/usr/include/dlog -I/usr/include -I/usr/include/system -I/usr/include -I/usr/include/system -I/usr/include/dlog -I/usr/include -I/usr/include/libmount -I/usr/include/blkid -I/usr/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include -I/usr/include/libmount -I/usr/include/blkid -I/usr/include -I/usr/include/aul -I/usr/include/aul/api -I/usr/include -I/usr/include/vconf -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include -I/usr/include/dlog -I/usr/include -I/usr/include/cynara -I/usr/include/security-manager -I/usr/include/cynara -pthread -fPIE -fPIC  -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-exceptions -pthread -I/usr/include -I/usr/include/storage -I/usr/include/gum -I/usr/include -I/usr/include/ -I/usr/include -I/usr/include/system -I/usr/include -I/usr/include/system -I/usr/include -I/usr/include/dbus-1.0 -I/usr/lib/dbus-1.0/include -I/usr/include -I/usr/include/gio-unix-2.0 -I/usr/include -I/usr/include/libmount -I/usr/include/blkid -I/usr/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include -I/usr/include/dlog -I/usr/include -I/usr/include/json-c -I/usr/include/gio-unix-2.0 -I/usr/include -I/usr/include/json-c -I/usr/include/system -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include -I/usr/include/dlog -I/usr/include -I/usr/include/system -I/usr/include -I/usr/include/system -I/usr/include/dlog -I/usr/include -I/usr/include/libmount -I/usr/include/blkid -I/usr/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include -I/usr/include/libmount -I/usr/include/blkid -I/usr/include -I/usr/include/aul -I/usr/include/aul/api -I/usr/include -I/usr/include/vconf -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include -I/usr/include/dlog -I/usr/include -I/usr/include/cynara -I/usr/include/security-manager -I/usr/include/cynara -Wall -fPIE -O3 -DNDEBUG -Xlinker --dependency-file=CMakeFiles/plugin-resourced-optimizer-memory-swap.dir/link.d -Wl,-z,relro,--as-needed,-O1,--hash-style=gnu,-z,max-page-size=4096 -Wl,--gc-sections -shared  -o libplugin-resourced-optimizer-memory-swap.so "CMakeFiles/plugin-resourced-optimizer-memory-swap.dir/resource-optimizer/memory/swap/swap.c.o" "CMakeFiles/plugin-resourced-optimizer-memory-swap.dir/resource-optimizer/memory/swap/swap_tools.c.o" "CMakeFiles/plugin-resourced-optimizer-memory-swap.dir/resource-optimizer/memory/swap/fileswap.c.o" "CMakeFiles/plugin-resourced-optimizer-memory-swap.dir/resource-optimizer/memory/swap/zswap.c.o" "CMakeFiles/plugin-resourced-optimizer-memory-swap.dir/resource-optimizer/memory/swap/zramswap.c.o" "CMakeFiles/plugin-resourced-optimizer-memory-swap.dir/resource-optimizer/memory/swap/swap-dbus.c.o"  libresourced-private-api.so.10.0.0 -L/usr/lib -lsqlite3 -lsystemd -lleveldb -leventsystem -lstorage -lgum -lgio-2.0 -lgobject-2.0  2/21 Test  #2: test-file-write-errors ...........   Passed    0.06 sec
+1776: [  910s]  3/21 Test  #3: test-integer-read-errors .........   Passed    0.07 sec
+1780: [  910s]  4/21 Test  #4: test-heart-dbus ..................***Skipped   0.02 sec
+1785: [  910s]  5/21 Test  #5: test-heart-battery ...............***Skipped   0.02 sec
+1790: [  910s]  6/21 Test  #6: test-heart-memory ................***Skipped   0.02 sec
+1794: [  910s]  7/21 Test  #7: test-heart-cpu ...................***Skipped   0.02 sec
+1796: [  910s]  8/21 Test  #8: test-heart-others ................***Skipped   0.02 sec
+1799: [  910s]  9/21 Test  #9: test-swap ........................***Skipped   0.02 sec
+1803: [  910s] 10/21 Test #10: test-swap-others .................***Skipped   0.02 sec
+1805: [  910s] 11/21 Test #11: test-proc-process ................***Skipped   0.02 sec
+1809: [  910s] 12/21 Test #12: test-proc-others .................***Skipped   0.02 sec
+1811: [  910s] 13/21 Test #13: test-mem-stress ..................***Skipped   0.02 sec
+1819: [  911s] 14/21 Test #14: test-memory-others ...............***Skipped   0.03 sec
+1823: [  911s] 15/21 Test #15: test-freezer .....................***Skipped   0.02 sec
+1825: [  911s] 16/21 Test #16: test-cpu .........................***Skipped   0.02 sec
+1827: [  911s] 17/21 Test #17: test-block .......................***Skipped   0.02 sec
+1829: [  911s] 18/21 Test #18: test-block-monitor ...............***Skipped   0.02 sec
+1831: [  911s] 19/21 Test #19: test-common-procfs ...............***Skipped   0.02 sec
+1835: [  911s] 20/21 Test #20: test-proc-watchdog-handler .......***Skipped   0.02 sec
+1837: [  911s] 21/21 Test #21: test-init-plugin-loader ..........   Passed    0.04 sec
+1839: [  911s] 100% tests passed, 0 tests failed out of 21
+1843: [  911s] The following tests did not run:
+2214: [  912s] /usr/bin/ctest --force-new-ctest-process 
+2215: [  912s] Test project /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+2217: [  912s]  1/21 Test  #1: test-reclaim-io ..................   Passed    0.03 sec
+2219: [  912s]  2/21 Test  #2: test-file-write-errors ...........   Passed    0.03 sec
+2221: [  912s]  3/21 Test  #3: test-integer-read-errors .........   Passed    0.04 sec
+2223: [  912s]  4/21 Test  #4: test-heart-dbus ..................***Skipped   0.03 sec
+2225: [  912s]  5/21 Test  #5: test-heart-battery ...............***Skipped   0.01 sec
+2227: [  912s]  6/21 Test  #6: test-heart-memory ................***Skipped   0.01 sec
+2229: [  912s]  7/21 Test  #7: test-heart-cpu ...................***Skipped   0.01 sec
+2231: [  912s]  8/21 Test  #8: test-heart-others ................***Skipped   0.01 sec
+2233: [  912s]  9/21 Test  #9: test-swap ........................***Skipped   0.01 sec
+2235: [  912s] 10/21 Test #10: test-swap-others .................***Skipped   0.01 sec
+2237: [  912s] 11/21 Test #11: test-proc-process ................***Skipped   0.01 sec
+2239: [  912s] 12/21 Test #12: test-proc-others .................***Skipped   0.01 sec
+2241: [  912s] 13/21 Test #13: test-mem-stress ..................***Skipped   0.01 sec
+2243: [  912s] 14/21 Test #14: test-memory-others ...............***Skipped   0.01 sec
+2245: [  912s] 15/21 Test #15: test-freezer .....................***Skipped   0.01 sec
+2247: [  912s] 16/21 Test #16: test-cpu .........................***Skipped   0.01 sec
+2249: [  912s] 17/21 Test #17: test-block .......................***Skipped   0.01 sec
+2251: [  912s] 18/21 Test #18: test-block-monitor ...............***Skipped   0.01 sec
+2253: [  912s] 19/21 Test #19: test-common-procfs ...............***Skipped   0.01 sec
+2255: [  912s] 20/21 Test #20: test-proc-watchdog-handler .......***Skipped   0.01 sec
+2257: [  912s] 21/21 Test #21: test-init-plugin-loader ..........   Passed    0.03 sec
+2259: [  912s] 100% tests passed, 0 tests failed out of 21
+2263: [  912s] The following tests did not run:
+2776: 	Command being timed: "/usr/bin/gbs -c /home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf build -P tizen_unified_standard -A armv7l -B /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED --threads 1 --define _smp_mflags -j10 --define jobs 10 --commit 94d346c306233803661e8eab8557596549d82be4"
+2780: 	Elapsed (wall clock) time (h:mm:ss or m:ss): 15:43.20
+2785: 	Maximum resident set size (kbytes): 124372
+2799: COMMAND-EXIT resourced time=2026-11-04T23:21:16+08:00 exit=0 credential_seen=0
+2802: BUILD-END resourced 2026-11-04T23:21:49+08:00 exit=0

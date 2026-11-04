@@ -1,0 +1,50 @@
+[
+  {
+    "file": "temp/task15/build_resourced.log",
+    "bytes": 977073,
+    "lines": 2802,
+    "sha256": "9b065b0ee82bae566f65c919f76d7cc64b300c25cb198311504401353931f7c3"
+  },
+  {
+    "file": "temp/task15/build_resourced.log.raw",
+    "bytes": 976967,
+    "lines": 2799,
+    "sha256": "0c15b3384bdb8b3751f4599412b9bda20579141a5362741366514645124474af"
+  },
+  {
+    "file": "temp/task15/run_task15_build.log",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "temp/task15/resourced.processes.log",
+    "bytes": 125626,
+    "lines": 494,
+    "sha256": "52de697c63c59a17df3f2fcc18ca770c7da0b1c8534ad101c3067cb4257eb18b"
+  },
+  {
+    "file": "temp/task15/resourced.external_paths.txt",
+    "bytes": 861,
+    "lines": 22,
+    "sha256": "d6fa3fa756e20b000c9e7fc9cc9379a10480609370309027ed8073135fc64f33"
+  },
+  {
+    "file": "temp/task15/resourced.external_review.txt",
+    "bytes": 1373,
+    "lines": 26,
+    "sha256": "88b21c8901e3e0f923283a68cdc3a1fe6edf01693d296725e0fd4b1c7f34994e"
+  },
+  {
+    "file": "temp/task15/resourced.observed_outside.txt",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "temp/task15/monitor.log",
+    "bytes": 531,
+    "lines": 3,
+    "sha256": "00c9e28c2797c3ce47797ef96d750750b2226e4f8c4ec39b9fbebda7ea5f090e"
+  }
+]

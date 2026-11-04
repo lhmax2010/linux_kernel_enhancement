@@ -1,0 +1,785 @@
+RECORD new_resourced-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-10.0.0-1.armv7l.rpm
+/opt/etc/dump.d/module.d/dump_heart_data.sh	33216	222	2057abd30fcdd2e432fec5e9ea0e59bb109243a99de47b431fa07e4dd74d34b8	
+/usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so	33261	13668	d1f042388ec1d188c63c23f83c8b73fbf238d8385f451585b6bb01d8a8b06f7b	
+/usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so	33261	113956	3d22c4e7ed6bb81c4af36c5ed21eb365ffa2dd500955654f403378710b1ece24	
+/usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so	33261	22008	287c4098b817bf5b242981898a79a27970d26c5e4c3d2eb8cc038dd0b4bf913b	
+/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so	33261	13712	9b6e4bfb8367a25320c3ec24a7704b3b1a1f6e0e934d4ab82bf3faf36cfb93d9	
+/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so	33261	13624	89d70a7aec7f050d3e5ecbf5551b4a0db270ee53ff75a6cc4f8193d973f0a08b	
+/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so	33261	30744	d38019d8345389ad165832ac03cea80230d81dcd2fa7f329aece91c9a5c2622f	
+/usr/lib/resourced/plugins/libplugin-resourced-process-block.so	33261	13756	6c604301d36d5edccc51ef8e810c6bfb3f3e014276dcb3fda3c6c9495492d289	
+/usr/share/licenses/resourced	16877	0		
+/usr/share/licenses/resourced/LICENSE	33188	11564	b7e6940623b879b3850dda8eb58b6a08c73cef9e13f7bee36e8b439bdb2c9147	
+
+EXIT=0
+
+
+RECORD new_resourced-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-10.0.0-1.armv7l.rpm
+resourced	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-bin-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-bin-10.0.0-1.armv7l.rpm
+/opt/etc/dump.d/module.d/dump_heart_data.sh	33216	222	2057abd30fcdd2e432fec5e9ea0e59bb109243a99de47b431fa07e4dd74d34b8	
+/usr/bin/resourced	33217	93844	2ca9b6e91958e46203c2e7b71d91aa9aee9d313279a501a98c1539c7c640cecf	
+/usr/lib/libresourced-private-api.so.10.0.0	33261	185824	c45e4a1b813445e9fae4cca9ec2adf874eed1d2de4c1451af743e0cfd260463f	
+/usr/lib/resourced/plugins	16877	0		
+/usr/share/licenses/resourced-bin	16877	0		
+/usr/share/licenses/resourced-bin/LICENSE	33188	11564	b7e6940623b879b3850dda8eb58b6a08c73cef9e13f7bee36e8b439bdb2c9147	
+/usr/share/licenses/resourced-bin/LICENSE.BSD-3-Clause	33188	1508	961da2665d94fbaf5ca5a2c245946c0e0223cee1448189995182752b694d01f6	
+
+EXIT=0
+
+
+RECORD new_resourced-bin-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-bin-10.0.0-1.armv7l.rpm
+resourced-bin	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-bin-debuginfo-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-bin-debuginfo-10.0.0-1.armv7l.rpm
+/usr/lib/debug	16877	0		
+/usr/lib/debug/usr	16877	0		
+/usr/lib/debug/usr/bin	16877	0		
+/usr/lib/debug/usr/bin/resourced.debug	33188	323380	95f66296881009dcf2d0f1d4b1a493a8fa6019aad99ebeba043edceba4700c04	
+/usr/lib/debug/usr/lib	16877	0		
+/usr/lib/debug/usr/lib/libresourced-private-api.so.10.0.0.debug	33188	707144	d68bc1566573e00c3464f4656a442963d325e2b92da503aecd1ea0d4cbe93502	
+
+EXIT=0
+
+
+RECORD new_resourced-bin-debuginfo-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-bin-debuginfo-10.0.0-1.armv7l.rpm
+resourced-bin-debuginfo	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-bin_libresourced-private-api.so.10.0.0_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_new_resourced-bin/usr/lib/libresourced-private-api.so.10.0.0
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD new_resourced-bin_resourced_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_new_resourced-bin/usr/bin/resourced
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD new_resourced-config-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-config-10.0.0-1.armv7l.rpm
+/etc/dbus-1/system.d/org.tizen.resourced.conf	33188	1762	de0fa284730062351a0864d78ed7774a80f82da89aebc8e7b4fbc4b2dc1d86fe	
+/etc/resourced/limiter.conf	33188	892	dee7600cb071a41577d3a05c769cab6c7071707c6ef3c81d6ff71fd7be3a4741	
+/etc/resourced/monitor.conf	33188	535	8c7ff8b33a077e1c49e2c229651de089134b70fb3bee321dbb58f1cc671a9b9b	
+/etc/resourced/optimizer.conf	33188	815	b42f6f7d191b8396c386583d0dafb6a2deb796776a759595da6cbda28eec792c	
+/etc/resourced/process.conf	33188	133	fea880ecf175c325ec51c59cc103f78f5fba36bcd1a9a22f39e6785bf3d0e11a	
+/usr/lib/systemd/system/multi-user.target.wants/resourced.service	41471	20		../resourced.service
+/usr/lib/systemd/system/resourced.service	33188	627	25a8b22f9b4ceb107b246ac7cfc42127ed063e9db4fb254a10812b4b59ddbc35	
+/usr/lib/systemd/system/resourced.socket	33188	146	b0f1442f22a74036629a7ba458f53cc93348876bdd3a9235c1a89d16574aa533	
+/usr/lib/systemd/system/sockets.target.wants/resourced.socket	41471	19		../resourced.socket
+
+EXIT=0
+
+
+RECORD new_resourced-config-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-config-10.0.0-1.armv7l.rpm
+resourced-config	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-config-iot-headless-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-config-iot-headless-10.0.0-1.armv7l.rpm
+
+EXIT=0
+
+
+RECORD new_resourced-config-iot-headless-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-config-iot-headless-10.0.0-1.armv7l.rpm
+resourced-config-iot-headless	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-config-tv-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-config-tv-10.0.0-1.armv7l.rpm
+/etc/resourced/optimizer-profile-tv.conf	33188	497	120c582adf243499b95be6b2371fd9489607ae48436c0ef67684538fc441473b	
+
+EXIT=0
+
+
+RECORD new_resourced-config-tv-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-config-tv-10.0.0-1.armv7l.rpm
+resourced-config-tv	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-debuginfo-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-debuginfo-10.0.0-1.armv7l.rpm
+/usr/lib/debug	16877	0		
+/usr/lib/debug/usr	16877	0		
+/usr/lib/debug/usr/lib	16877	0		
+/usr/lib/debug/usr/lib/resourced	16877	0		
+/usr/lib/debug/usr/lib/resourced/plugins	16877	0		
+/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so.debug	33188	37196	530ac4386ae07c6e0c0443f52f700360f6200655ff24b8902125a9531848b009	
+/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so.debug	33188	281372	4fb67ca6a9f8c0e072b5042194b31204ff038857ab5e0ee8a7e5d2f8356c673a	
+/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so.debug	33188	47604	84aa6fec5f209b38da766bd3d466c824150feb172d284c3781a20a13c61eb25e	
+/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so.debug	33188	31236	bdde1394b6b466a16690c109a7742920fea2638be8d53e0b24d823a54de1e345	
+/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so.debug	33188	28916	7658b75b813c3a0c5afc42cf4b60abdd93f833864b1776583de7d8f507d1f101	
+/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so.debug	33188	95568	89b347947844af3c03828d06feced72d7171bfdb32537111dce342d8ebeb0bef	
+/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-process-block.so.debug	33188	41644	6b333e688ff703a42990f7d7a75baded4cfbba021907c724760250d2b339d44a	
+
+EXIT=0
+
+
+RECORD new_resourced-debuginfo-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-debuginfo-10.0.0-1.armv7l.rpm
+resourced-debuginfo	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-debugsource-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-debugsource-10.0.0-1.armv7l.rpm
+/usr/src/debug/resourced-10.0.0-1.arm	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/build	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/build/src	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/include	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/include/resourced.h	33188	2424	3a4097f5f166eb076ab81d8e77f84a9deeddcd8ab8ebbe9a6ce3962fa2f26dc6	
+/usr/src/debug/resourced-10.0.0-1.arm/src	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/common	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/appinfo-list.c	33188	4016	fdf9f0d95e3fcd522834dac15be32482a478eb9d67a7e9a2c1ce2fe279c1fb0b	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/appinfo-list.h	33188	1128	6b198ccc6d475d736f99d3fc6b745bafa71eb9ec3c094d488da39ab83fea5c85	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/cgroup	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/cgroup/cgroup-memory-stat-lookup.c	33188	10946	6e1af5bbab686bb185c52bff43b369458fbb79d48ed64cdd06a63d5ecbf5d5d8	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/cgroup/cgroup.c	33188	10542	eb40c3e86666d40d65951494a7d3b79c01a62fb9d5373e0ebb9a3142c045dac8	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/cgroup/cgroup.h	33188	6588	0e895f1a2b37e4fddb4f2022f81c0dc53121bbcd10fdee3dd0a885f33fa09386	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/cgroup/cpu-cgroup.c	33188	797	705463ee52de8c2e9bb2ff719b4f9d654bbebf9826f88f09e458cf5a9172359e	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/cgroup/memory-cgroup.c	33188	18876	6dd482b5edea317fe28eb1ba8ff29b2b0381248e05782cb34d25332e2851f81a	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/cgroup/memory-cgroup.h	33188	9312	42a6ffce62f93576fb105a3f0b6f08f3b8f94d1845e0fb8427ce43e348463b01	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/cgroup/watchdog-cgroup.c	33188	1006	f8cc51792eb447213c1db3d622729608747b0e3e116f1181d9b6b39251964461	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/compact-common.c	33188	529	4ac1cb1197a3a1ad02063e5a2d3afcb804e0ea390814fae5b726d403be9675f4	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/compact-common.h	33188	355	0368707c3f949b771d5a905d7da49cbc3da56d42d3d0f6da8e672e920b3c8e86	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/config-parser.c	33188	45741	9eac6cdde05f82a82ceab86dc1124868cf9b111a309f90a2f24716ef409d5640	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/config-parser.h	33188	12187	a42bafffaeede579b797e891adcf07ee053c7469e825a1ba5a1f67de3d205def	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/cpu-common.c	33188	4781	2f4381b9faf2d229df6f42f9081b97a5e9d613281c446c480928efd211116b79	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/cpu-common.h	33188	2481	514396acba71a5aeee64062b092fcbfab2166092f098b1f609f91b15cb580cf3	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/dedup-common.c	33188	1481	e782943487dad4649fa9a96d23f898f3f27fe8f66e7be3455e6ece29428d8d3c	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/dedup-common.h	33188	1996	2fd79754849ccb464704e1beddd60e8a23d48dc8e547b78f435e861537a12d0f	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/memory-common.c	33188	1187	d6600c6631ef860994c0285788c33715fa4802edee37717229ff6ec77e8353ca	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/reclaim-config.c	33188	1244	0e04d922bf98624e462fc02c3dc421038107b8d8047d81c0781e4f212392349a	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/reclaim-config.h	33188	1108	f185cd5fcccf3b353ce1f6b2c19b5cd702269e1131929af530467540f91665ba	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/swap-common.c	33188	2664	1d7d15f03b5dbac6a0e64ef981994bb39f36de9bd70ea2b9afb1ba20d03987ac	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/swap-common.h	33188	3346	29884d2db5d29d9b991036745801549a2249400d7d27df8cf8b7dd846f67d4ac	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/watchdog-config.c	33188	2408	8bb37cf786100e4582583781a499562e17699c0e15b85246205738d7a288f816	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/conf/watchdog-config.h	33188	1363	531206a16ee7dc1563f9b112f9efe31c88011e02cfd79ae3e6bb9056ac05f0af	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/fd-handler.c	33188	3306	d30fbd11779ee2813bf8e49f33128abcfb320bfd93537589451aba5dcaf80e4c	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/fd-handler.h	33188	2501	37beef7317d2c152e40f1684f6178323b48ea9d6c28c43e9c4bcfa78a8effa7a	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/file-helper.c	33188	5557	252b2b2979622494d8788b0ce1114d95101cc76aaaecadd3ed4523bd7e867680	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/file-helper.h	33188	2294	87fdc7c47755df8d2516a62d6a1077eaf492ce669736f4163161bba13f6aaa88	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/filemap.c	33188	9843	52a2e0ff29d7e7527c0f36d35045d1feea0266d0752ac88efeabba1c41ea2450	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/filemap.h	33188	1799	13fc5fdd46ad9be63d7aa317445ce94d63e65da3895a445c9e8ac84bd032d21f	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/freezer-common.c	33188	1263	daa7571eba91258a463c53976bc6997b76af92478d8907f2c9bc6808a320c8d4	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/heart-common.c	33188	1213	d334fb91e3b03284a2c1c426675b9e7a8de1b4e3f06da8f32e23ad0a5351eb48	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/heart-common.h	33188	4269	2e1c3085fc29d497aaec4310f78856c8eeed52eb798ee24bf35ab007c54af785	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/ipc	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/ipc/dbus-handler.c	33188	16747	fe7ad3c6419f036a93f211b5cd4e457684c243494a73e07a6c2ed7312cfb7ce0	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/ipc/dbus-handler.h	33188	4932	f0cc97b8295e1118c689c308e91774b791dc35631a1b4d95b2d9e038e297099a	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/ipc/safe-kill.c	33188	2622	14f1f6daf95d9286b6dd573a59b2ff06ad5b2dda6bb322d294cf162ccc6c9ae2	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/ipc/safe-kill.h	33188	1228	b8c396412a2ae60d4508e5987cb5ad6d2b3919e31d1ac326d6684475b2ae4f0d	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/losetup.c	33188	4425	ef9988ff8b5b7230638416e794203ca981f3217e8f97b570faa990e6994dcd1d	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/module	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/module/module-data.c	33188	1060	1a23ea2e50ebfb59aec4623f0cc9d603383cd4e12241081edc1014719e121416	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/module/module-data.h	33188	1227	73b363b636f546afc3e27c23e19c521d5c3bc41e61228087ad529da28de7202c	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/module/module.c	33188	7122	6285acef9829db1c895fe471c43564858ec6f43c03b9e6698542026259699e4d	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/module/module.h	33188	3021	9896905805f64d96a4d5775d7e7cfdd0aefdb4579e381ecf32a9ff477420a6b2	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/notifier.c	33188	3495	36f6ab6d06c122c117816ce705f398e9bc4ed68711562b1dd69bb1231c37690d	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/notifier.h	33188	3449	8f13e7ba0c0bc4330d86957fd76ba6eaede7db636f5029a6875026c1c34ae480	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/proc-common.c	33188	4720	3367250ad6b8facf3e6cbe14b4bd13c0ae27fc7297faf72f45d92c16d8f5b89c	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/proc-common.h	33188	9683	2b1e6dc8f61340a2225d8a60d33067013af5c0d868afcdd496cfb592c01ef6bb	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/procfs	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/procfs/meminfo-lookup.c	33188	6929	6c2efbbaff5139a9a93443d804bb835948c3aa4c28044d419f31a9860f24810c	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/procfs/procfs.c	33188	27402	a7ae4a276c432fb38e349efdde109403db03a45f0e219cc8db921cd7e52eae9a	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/procfs/procfs.h	33188	14315	af257016f17ca721ce5bbc5e92d2f6a19f81496357573b886fde0c40219633fa	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/procfs/smaps-lookup.c	33188	5292	44459211ce3acd483d15bac78d896b918805fe94a73ed08c4d90ae498bd50bae	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/procfs/smaps.c	33188	4416	d07f13fb482ec29b3c6b6ce99e7d0fdf271c0c0084e9b8f80066d8390605d3b6	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/procfs/smaps.h	33188	3291	ccca387daaac825df79d271bac17a0c22e7b0ad20e5c3c5ae00912edb2c0f564	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/resourced-helper-worker.c	33188	5278	f9a45396ef1487b1159502cc369e1e5b8c73e08615ad316517f3949032dd5455	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/sched-attr.c	33188	8180	32d4610974ef1bc48551e53cd924651e060a86b1898a320c2e458bd1ca2cd749	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/sched-attr.h	33188	2474	0cb6780753f0daa0d2591b8bdcf6f83ca6288122293fa7953b41968cba73c492	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/storage-helper.c	33188	3735	c6335d47b85babdc16bdbf34293c61317e8872bfb1f50b1b61073e69cff6e89d	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/storage-helper.h	33188	1497	0cd8ed2f69ca67459e91a538f3ffbd6c71d5737d76b9638747a0d76a88b60f0b	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/userinfo-list.c	33188	3115	7757927fd9a8c273d33d3bde1ebb716f31a2b1e49648c22d6c6494bccb47ef64	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/userinfo-list.h	33188	1743	811f5bb4b3c57746a79e7285db105c46e396fc619217a0453cca85054d2fdc95	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/util.c	33188	6346	01830204ddfbc0ff7a3ba7ae17dc8bb2536c558c1a01a6ecc7e9ec9c6023b6f2	
+/usr/src/debug/resourced-10.0.0-1.arm/src/common/util.h	33188	4750	7c59076a1608c36124006cc209e3143c1b67ed4201266f65e46b1553af8dd316	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/block	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/block/block-monitor.c	33188	7350	b898f7b509900d14cef578e00bab9a338cb467b4c78c71f8d5bad63046fdc0c6	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/block/block.c	33188	6656	0fcfa276c9554abaa1ccb87c018303f306c18cb48cfcc1b39be78a1812881188	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/block/block.h	33188	1453	d422fa725d106b77d10072db8c9867d1098ad1a332d053d4baaa9269fbe0f7e0	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/proc-appusage.c	33188	4334	2cc624c525d448d6b4095a95c9e2917f6af101e3626c791974cfe452047f086e	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/proc-dbus.c	33188	47571	c560ba7ba5af08ff712bf7c14a1ce0e9f0b6fbc07a54ec2ca51cf258effcf5fe	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/proc-main.c	33188	58977	a3fc38183cce2753e85a0f1c471d2acc75d1fd02a6a88fe17755c5af3767fd69	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/proc-main.h	33188	3284	15e88283733872044863ddbe73e02fb7e8b32a2fc27cc46e68a71975d6756507	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/proc-oom-priority.c	33188	6264	c02d844b4e05d576f0314c43f4205c0e436c7822a8e1d969cc5e28324484f6b6	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/proc-priority.c	33188	3372	0c98b076af221b572e1bda174b811775b724b06d30bf87b12a85aeb86e862ea7	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/proc-process.c	33188	15090	94fcd14f3bbc7ceddd2c34cdace56296473b64049102f3b2846e42c12946a369	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/proc-process.h	33188	1519	2a4d41ed85137720fb51f549ae4a3ac3a8f40188cda4eb1119b6a0cb71ea9ccd	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/proc-usage-stats-helper.c	33188	6618	3231d33892ad6bfea2cbea19faf84005d04b0519802f7d3ccfba3893835b309a	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/proc-usage-stats-helper.h	33188	3516	5ad067ed78f81149db1a5206e0c98b11d8cd4469d020d1c242e1a150259e91ee	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/proc-usage-stats.c	33188	12089	95af25d02f4aaa2a877325c15f54cc00fffe771c8640e28fecb6b3d35b61827a	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/watchdog	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/watchdog/proc-watchdog-handler.c	33188	8101	8d28f8a6d9e83b673d81a19c71616b6b4535e77e28db3fc6ae08800d54cfe42b	
+/usr/src/debug/resourced-10.0.0-1.arm/src/process/watchdog/proc-watchdog.c	33188	7912	35031bf31b86134197e15ebfdb6497891ea24cacfa6b28d0baf84f77e6a6d6c1	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/cpu-throttling.c	33188	9093	d4e5a1d7a73e17100e3961d9238fc3a57e63e822838dbef3bd7c441f88f28ca7	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/freezer	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/freezer/freezer-dbus.c	33188	2268	3d784cd9b23e1018c74d127ba022bb19318be161859dc92a83aa353bbaf04fdf	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/freezer/freezer.c	33188	16690	f7b0d3ca0ae68bda8febb38aca0fdd0fcb1f14e1846323c1582f567f11577ab8	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/freezer/freezer.h	33188	1846	6a2902f5f9c1d47fdf49183b810c996bc2adc3ab2a0d340c2737266d41dfa647	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem-controller.c	33188	19652	fc86f69372b47f6370d72ea8efd0d1b68189be25c8c74c9d356183ccd67fd89f	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem-dbus.c	33188	5418	0b46a9e9691a7466f899df9b96eb426b3700395ed759b0c15ccfaae9c1625085	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem-governor.c	33188	2154	836f8805f46a1fd9addc3819b542ee746edc41e93a79034da4f3cad9a730f0c2	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem-limit.c	33188	24981	ee75acb9a1b5b4e96847697cb6e8dfd0d634a0d45c204ae894ff2105b89921b4	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem-limit.h	33188	1933	db478bf46c93b14be8192c01cc704f2427a95bca3b1ae23112d1683e6bd48e5d	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem-monitor-psi.c	33188	10707	88ae38167fd5122e86d659046c2adad1c49b9cd6ff2c74042684cd1cb59b2757	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem-monitor-psi.h	33188	1158	8e8b97169ce72d70cf35f06a656575d8f408362826d403cb8626fb8711db62f0	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem-monitor-vmpressure.c	33188	3281	21bceff44ef7efe1f0ddbcaa88721b67651b451ec1a26324129f8aa1f972f491	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem-monitor-vmpressure.h	33188	1222	66e8ebd07194eec433413c5ef2aa2562245b3624589bacdf1441562892c7cdd2	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem-monitor.c	33188	2962	96be45b788e620f6057688003bd99755d5928fc61e003492ad6666b9b0c07f66	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem-system.c	33188	4739	9d9c4c1834a31bb97834c79f937cab173b423065888f6204b2309435d33bd455	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem.c	33188	55619	e1d086476159f3ff3842399b8aa787d3153f307da9673679f663500af7bd92cb	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-limiter/memory/lowmem.h	33188	4984	6b3221f19a08e26d5999a248848c43236e961c344bf79433107d03477801f6d2	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-monitor	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-monitor/heart-abnormal.c	33188	11861	90e592b962fb4c87de7f7167c3b5613b16f139ec29971b99ba5705234eb391b5	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-monitor/heart-battery.c	33188	115347	83013a774cf8c73a47024caf7908aa4e3d080b063fd7bafac03779b17f38c527	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-monitor/heart-cpu.c	33188	36907	c6dca5df02c6a65674d3e71630a326fe9cc8e3e262a5fef9c56e6cec77cd009d	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-monitor/heart-dbus.c	33188	4431	a7cdd4f9a6e5f9808ce8151bddcd2ba90e12447b8564b079624dd2bf7b6b3f53	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-monitor/heart-memory.c	33188	33104	4f10e83155ac4f81f4546c2aada481d6c548884fbfc66d13149824352bd64143	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-monitor/heart-storage.c	33188	3660	0987dba8c4712512f42140a06a95c2887dce9400acfe64120827b82757efa352	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-monitor/heart.c	33188	4523	1cfaf99ae3ab7f34ebfe48a2c8fdd3824c7269a5e2425d5f824236cbb765c368	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-monitor/heart.h	33188	2036	e5193e623e03766875c83617c70d1752c16a269caa49aa62f2b1b628acd57837	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-monitor/logging.c	33188	44232	5d6adf9ba87f46d40a8adee77516289f094c0e49d81df8de756de237d5063ea7	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-monitor/logging.h	33188	3790	39001745b44e4ff35ccc12dfc3ed245ca074a3e8d71e8be332109adfc2eceedc	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/cpu	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/cpu/cpu-boosting-monitor-psi.c	33188	10310	e0f8bc94c55aa8ad7b9feaae97c42355def3747c79ad0d29e43feffec883e09c	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/cpu/cpu-boosting.c	33188	56919	93ccd470cfa6113d3035e218913cf229f05640df90a12d7dad6312bf4589e209	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/cpu/cpu-hotplug.c	33188	4967	513bc716eeb0caa9ca29319086fb29e8be3e1f2284dd71cfc1b91ad095292fa5	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/cpu/cpu-sched.c	33188	18376	3569e40cee8e77a5a274efd8cb9bdb69ad27d20a5a2ad546472771ed3e2acfbf	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/memory	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/memory/compaction.c	33188	18676	5105a90194a636b1c5d88f046316a8b8ff4dec415b4897f653937c5dfcbdb547	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/memory/dedup.c	33188	15910	94637508f6956663798b69841eebc8905afd847f5c2e91fd79dae63c1c1a8a58	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/memory/swap	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/memory/swap/fileswap.c	33188	3296	7c3c6099d782b7d31141d8463607ffed2082d866078dfc4c733f65550af3812e	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/memory/swap/swap-dbus.c	33188	1731	8c9eb7455f4c1bd81256e0b5631b357fe422feef2b8479d474c35d22cb29088a	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/memory/swap/swap.c	33188	30698	1b5dad0741ce54de23f7bc6289941b162d1b7cf80437b5fc9e5138f14dd92fa8	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/memory/swap/swap_tools.c	33188	912	9a0abfa2fb052898b26885035e6aea27a1dac8b9a52aa321d4aa4ff6272097ce	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/memory/swap/zramswap.c	33188	8355	c84f23feb08c0ef800a960781ecda052234f639545f911e47c25a62364da9890	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resource-optimizer/memory/swap/zswap.c	33188	4458	dfe9856ebf71f31195160f8494c4574c8c372bdf87d4ea98d31193f26e97fade	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resourced	16877	0		
+/usr/src/debug/resourced-10.0.0-1.arm/src/resourced/init.c	33188	15240	043aaae1307865e07c24a079ed7b652c6a94a8a248694b02deb078174b82e041	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resourced/init.h	33188	1429	28c96649b46a6dbf9ac368c34aba2d2c4f4562816e015820d49dd7c20090cbb4	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resourced/main.c	33188	1385	d74e48496c973b918268bf22e83804ff31392d15fa562e8c437fd8b08c796069	
+/usr/src/debug/resourced-10.0.0-1.arm/src/resourced/plugin-loader.c	33188	7866	82a82772d605e78262070eb97f0cf8581ac1bbda403082d1d6b1d3bc1c8d73f3	
+
+EXIT=0
+
+
+RECORD new_resourced-debugsource-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-debugsource-10.0.0-1.armv7l.rpm
+resourced-debugsource	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-isu-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-isu-10.0.0-1.armv7l.rpm
+/etc/isu/resourced/isu.cfg	33152	231	f06134b462c0e67d9ecce9b1f7ebd1bcab1637a9201e60af2163f665eff0ba1f	
+/etc/isu/resourced/system-services	16877	0		
+/etc/isu/resourced/system-services/etc-resourced.mount	33156	204	195fc681970cbb6bad5415581e21e4a7e00f471d93ce36e4b25ec7954840817e	
+/etc/isu/resourced/system-services/resourced.service	33156	730	5179aaff9f1605455cedcbd5f7bcfec843a7815fe8ab191998e8c5f5b94dceae	
+/etc/isu/resourced/system-services/usr-lib-resourced-plugins.mount	33156	294	022f590d7d7e63ee215db5cfba4a6490eeeefbd7aa7c4012817bec1c12d403e5	
+
+EXIT=0
+
+
+RECORD new_resourced-isu-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-isu-10.0.0-1.armv7l.rpm
+resourced-isu	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-light-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-light-10.0.0-1.armv7l.rpm
+
+EXIT=0
+
+
+RECORD new_resourced-light-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-light-10.0.0-1.armv7l.rpm
+resourced-light	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-monitor-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-monitor-10.0.0-1.armv7l.rpm
+/usr/bin/resourced-monitor	33261	13700	7188f0ece298bd279ebc96ebd403762690b34f932b9c1b4ada6a25bd2ba5275b	
+
+EXIT=0
+
+
+RECORD new_resourced-monitor-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-monitor-10.0.0-1.armv7l.rpm
+resourced-monitor	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-monitor-debuginfo-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-monitor-debuginfo-10.0.0-1.armv7l.rpm
+/usr/lib/debug	16877	0		
+/usr/lib/debug/usr	16877	0		
+/usr/lib/debug/usr/bin	16877	0		
+/usr/lib/debug/usr/bin/resourced-monitor.debug	33188	9108	974d0e2e78ae1dfc0e1107a9193ddbfb3c81fd8006aef596ac6bfc3e8956c944	
+
+EXIT=0
+
+
+RECORD new_resourced-monitor-debuginfo-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-monitor-debuginfo-10.0.0-1.armv7l.rpm
+resourced-monitor-debuginfo	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-private-api-devel-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-private-api-devel-10.0.0-1.armv7l.rpm
+/usr/include/resourced/private-api/appinfo-list.h	33188	1128	6b198ccc6d475d736f99d3fc6b745bafa71eb9ec3c094d488da39ab83fea5c85	
+/usr/include/resourced/private-api/cgroup.h	33188	6588	0e895f1a2b37e4fddb4f2022f81c0dc53121bbcd10fdee3dd0a885f33fa09386	
+/usr/include/resourced/private-api/compact-common.h	33188	355	0368707c3f949b771d5a905d7da49cbc3da56d42d3d0f6da8e672e920b3c8e86	
+/usr/include/resourced/private-api/config-parser.h	33188	12187	a42bafffaeede579b797e891adcf07ee053c7469e825a1ba5a1f67de3d205def	
+/usr/include/resourced/private-api/config.h	33188	260	2bd4ca2c8fcce2fdd3e3c158b66f0d7d31723b827d475c7277348f1619dbed0e	
+/usr/include/resourced/private-api/const.h	33188	1300	245be5bd54fbb5e6e3e7610c9891f645b0e4f09fa9ea1c2a42c01bf22924aec6	
+/usr/include/resourced/private-api/cpu-cgroup.h	33188	1635	c7072a5768ae91a7eb3560fe75f1a09d2abc1fc7d0d37c77af33fedc766b2d1d	
+/usr/include/resourced/private-api/cpu-common.h	33188	2481	514396acba71a5aeee64062b092fcbfab2166092f098b1f609f91b15cb580cf3	
+/usr/include/resourced/private-api/dedup-common.h	33188	1996	2fd79754849ccb464704e1beddd60e8a23d48dc8e547b78f435e861537a12d0f	
+/usr/include/resourced/private-api/fd-handler.h	33188	2501	37beef7317d2c152e40f1684f6178323b48ea9d6c28c43e9c4bcfa78a8effa7a	
+/usr/include/resourced/private-api/file-helper.h	33188	2294	87fdc7c47755df8d2516a62d6a1077eaf492ce669736f4163161bba13f6aaa88	
+/usr/include/resourced/private-api/filemap.h	33188	1799	13fc5fdd46ad9be63d7aa317445ce94d63e65da3895a445c9e8ac84bd032d21f	
+/usr/include/resourced/private-api/freezer-common.h	33188	1015	8e96e154b5f4357953d524ef0dcc8d2606c6ad486a35ee3315935c7f8351bcee	
+/usr/include/resourced/private-api/heart-common.h	33188	4269	2e1c3085fc29d497aaec4310f78856c8eeed52eb798ee24bf35ab007c54af785	
+/usr/include/resourced/private-api/init.h	33188	1429	28c96649b46a6dbf9ac368c34aba2d2c4f4562816e015820d49dd7c20090cbb4	
+/usr/include/resourced/private-api/losetup.h	33188	1073	47632c78fef9ccf5c3d553812dc3c2c3ed4efc3f19e24274202c358787b0f401	
+/usr/include/resourced/private-api/macro.h	33188	5171	e5a23aea0e632a964b5ae0a9e5e45d146e78425e06bcb24bb8ea8a5317e3d9a5	
+/usr/include/resourced/private-api/memory-cgroup.h	33188	9312	42a6ffce62f93576fb105a3f0b6f08f3b8f94d1845e0fb8427ce43e348463b01	
+/usr/include/resourced/private-api/memory-common.h	33188	1047	8f33b3db0cfdfdd514180b50684a5eb74c9bb571c37a4c91654a9506a372167a	
+/usr/include/resourced/private-api/notifier.h	33188	3449	8f13e7ba0c0bc4330d86957fd76ba6eaede7db636f5029a6875026c1c34ae480	
+/usr/include/resourced/private-api/plugin-loader.h	33188	1387	26301191adf6115275c8fe5b84ada9cf1e684e90411e562d3252359f91e4a27e	
+/usr/include/resourced/private-api/proc-appusage.h	33188	1097	0f3d13955da3cf95f2560a5d91dbc3cbe9c17058f584e67beace8159d028bf2e	
+/usr/include/resourced/private-api/proc-common.h	33188	9683	2b1e6dc8f61340a2225d8a60d33067013af5c0d868afcdd496cfb592c01ef6bb	
+/usr/include/resourced/private-api/proc-dbus.h	33188	2512	48feb9f7215c6113917c4ca3314915dd443521ee53c240554952988a30de3128	
+/usr/include/resourced/private-api/proc-main.h	33188	3284	15e88283733872044863ddbe73e02fb7e8b32a2fc27cc46e68a71975d6756507	
+/usr/include/resourced/private-api/proc-process.h	33188	1519	2a4d41ed85137720fb51f549ae4a3ac3a8f40188cda4eb1119b6a0cb71ea9ccd	
+/usr/include/resourced/private-api/proc-usage-stats-helper.h	33188	3516	5ad067ed78f81149db1a5206e0c98b11d8cd4469d020d1c242e1a150259e91ee	
+/usr/include/resourced/private-api/proc-usage-stats.h	33188	3681	47cc7ca570fa81613309f3f9494c15a1771738bae3117df8a9d0c2437befb835	
+/usr/include/resourced/private-api/reclaim-config.h	33188	1108	f185cd5fcccf3b353ce1f6b2c19b5cd702269e1131929af530467540f91665ba	
+/usr/include/resourced/private-api/resourced-helper-worker.h	33188	1495	bc9d189c6795d6ffb4d53e2722113bdcc75ec691cf30705483478753f766ae27	
+/usr/include/resourced/private-api/resourced.h	33188	2424	3a4097f5f166eb076ab81d8e77f84a9deeddcd8ab8ebbe9a6ce3962fa2f26dc6	
+/usr/include/resourced/private-api/sched-attr.h	33188	2474	0cb6780753f0daa0d2591b8bdcf6f83ca6288122293fa7953b41968cba73c492	
+/usr/include/resourced/private-api/storage-helper.h	33188	1497	0cd8ed2f69ca67459e91a538f3ffbd6c71d5737d76b9638747a0d76a88b60f0b	
+/usr/include/resourced/private-api/swap-common.h	33188	3346	29884d2db5d29d9b991036745801549a2249400d7d27df8cf8b7dd846f67d4ac	
+/usr/include/resourced/private-api/trace.h	33188	2271	29542ab6843b67d285cfad7079c356613e9b7fbf28693dd134c53cea2d27d133	
+/usr/include/resourced/private-api/userinfo-list.h	33188	1743	811f5bb4b3c57746a79e7285db105c46e396fc619217a0453cca85054d2fdc95	
+/usr/include/resourced/private-api/util.h	33188	4750	7c59076a1608c36124006cc209e3143c1b67ed4201266f65e46b1553af8dd316	
+/usr/include/resourced/private-api/watchdog-cgroup.h	33188	776	378bf2234ac07332af25dea1de8b0da44753a4c88ce69c6cf6d5771d699f530a	
+/usr/include/resourced/private-api/watchdog-config.h	33188	1363	531206a16ee7dc1563f9b112f9efe31c88011e02cfd79ae3e6bb9056ac05f0af	
+/usr/lib/libresourced-private-api.so	41471	34		libresourced-private-api.so.10.0.0
+/usr/lib/pkgconfig/resourced-private-api.pc	33188	286	80a247f802214dca49ed0eebe70cd6314f373b063ea38a3aafe4236b4ae7a8b4	
+/usr/share/licenses/resourced-private-api-devel	16877	0		
+/usr/share/licenses/resourced-private-api-devel/LICENSE	33188	11564	b7e6940623b879b3850dda8eb58b6a08c73cef9e13f7bee36e8b439bdb2c9147	
+
+EXIT=0
+
+
+RECORD new_resourced-private-api-devel-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-private-api-devel-10.0.0-1.armv7l.rpm
+resourced-private-api-devel	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-tests-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-tests-10.0.0-1.armv7l.rpm
+/usr/lib/resourced-tests/run_tests.sh	33261	1066	6216e336955b69f76249ebc11f5a13669553962a2149aa5ce52b455202dcdee8	
+/usr/lib/resourced-tests/watchdog-test	33261	9556	328a78005fda39a7f9b172f62ebdd553bf842178ac9044cfa61909f926aa6742	
+
+EXIT=0
+
+
+RECORD new_resourced-tests-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-tests-10.0.0-1.armv7l.rpm
+resourced-tests	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-tests-debuginfo-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-tests-debuginfo-10.0.0-1.armv7l.rpm
+/usr/lib/debug	16877	0		
+/usr/lib/debug/usr	16877	0		
+/usr/lib/debug/usr/lib	16877	0		
+/usr/lib/debug/usr/lib/resourced-tests	16877	0		
+/usr/lib/debug/usr/lib/resourced-tests/watchdog-test.debug	33188	8332	10cfe36a8b201d1875eac8df06ade91ab0a7311a24d17310bc8f8a75a4122dec	
+
+EXIT=0
+
+
+RECORD new_resourced-tests-debuginfo-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-tests-debuginfo-10.0.0-1.armv7l.rpm
+resourced-tests-debuginfo	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-watchdog-handler-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-watchdog-handler-10.0.0-1.armv7l.rpm
+/usr/bin/resourced-watchdog-handler	33216	8396	c8abb284d84458938f09ac9610f6ecd8c754d5e6a77d02b550c4c8fb4916fd8a	
+/usr/bin/resourced-watchdog-handler.sh	33216	95	ff878a2efe9adb904a28f220eae9e4adfd299148cf42aa2586c0de05229e5104	
+/usr/share/licenses/resourced-watchdog-handler	16877	0		
+/usr/share/licenses/resourced-watchdog-handler/LICENSE	33188	11564	b7e6940623b879b3850dda8eb58b6a08c73cef9e13f7bee36e8b439bdb2c9147	
+
+EXIT=0
+
+
+RECORD new_resourced-watchdog-handler-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-watchdog-handler-10.0.0-1.armv7l.rpm
+resourced-watchdog-handler	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-watchdog-handler-debuginfo-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-watchdog-handler-debuginfo-10.0.0-1.armv7l.rpm
+/usr/lib/debug	16877	0		
+/usr/lib/debug/usr	16877	0		
+/usr/lib/debug/usr/bin	16877	0		
+/usr/lib/debug/usr/bin/resourced-watchdog-handler.debug	33188	22660	11f8180f9dab42b8889aae4cdbd6646824f81bb0cf5f4ecb5227e562a857e257	
+
+EXIT=0
+
+
+RECORD new_resourced-watchdog-handler-debuginfo-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/RPMS/resourced-watchdog-handler-debuginfo-10.0.0-1.armv7l.rpm
+resourced-watchdog-handler-debuginfo	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD new_resourced-watchdog-handler_resourced-watchdog-handler_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_new_resourced-watchdog-handler/usr/bin/resourced-watchdog-handler
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD new_resourced_libplugin-resourced-limiter-freezer.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_new_resourced/usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD new_resourced_libplugin-resourced-monitor-heart.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_new_resourced/usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD new_resourced_libplugin-resourced-optimizer-cpu-sched.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_new_resourced/usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD new_resourced_libplugin-resourced-optimizer-memory-compaction.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_new_resourced/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD new_resourced_libplugin-resourced-optimizer-memory-dedup.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_new_resourced/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD new_resourced_libplugin-resourced-optimizer-memory-swap.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_new_resourced/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD new_resourced_libplugin-resourced-process-block.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_new_resourced/usr/lib/resourced/plugins/libplugin-resourced-process-block.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD old_resourced-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/baseline-rpms/resourced-10.0.0-1.armv7l.rpm
+/opt/etc/dump.d/module.d/dump_heart_data.sh	33216	222	2057abd30fcdd2e432fec5e9ea0e59bb109243a99de47b431fa07e4dd74d34b8	
+/usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so	33261	13668	a29ca6bbe7c41561f0520dcbac59bcaa61706499b5207361e3ee344bd333185d	
+/usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so	33261	113956	8214a8d224f9f8cb4ed641646b6ad30ecf21b5f7c999f12c0823c07c9cb39ff9	
+/usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so	33261	22008	7c66b641aad622cdd716cb9a04d038971d87db795a8b0db5bcb05b233019435f	
+/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so	33261	13712	1393781ed359247d65816366f705cf67638df5d4b08d24a6e0ab539513820e06	
+/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so	33261	13624	dbec2f92ab8b7618331e45f4fa42f5a926afb268406c98626122879942d6c2ac	
+/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so	33261	30744	7edec5680eb85e6bafcc740d11012ab8cd4d39980ee7071a5c5cea83e97f62af	
+/usr/lib/resourced/plugins/libplugin-resourced-process-block.so	33261	13756	68f7def4a829b41fe60b1e6e86b42bbffbdf4b8f1bbfc2e1b1514a38e9f86133	
+/usr/share/licenses/resourced	16877	0		
+/usr/share/licenses/resourced/LICENSE	33188	11564	b7e6940623b879b3850dda8eb58b6a08c73cef9e13f7bee36e8b439bdb2c9147	
+
+EXIT=0
+
+
+RECORD old_resourced-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/baseline-rpms/resourced-10.0.0-1.armv7l.rpm
+resourced	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD old_resourced-bin-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/baseline-rpms/resourced-bin-10.0.0-1.armv7l.rpm
+/opt/etc/dump.d/module.d/dump_heart_data.sh	33216	222	2057abd30fcdd2e432fec5e9ea0e59bb109243a99de47b431fa07e4dd74d34b8	
+/usr/bin/resourced	33217	90564	27e1c7f63df6f35e7e5dbce869764fb278ccb47a00295113dc6aa0a210b343a4	
+/usr/lib/libresourced-private-api.so.10.0.0	33261	185816	a63e888b47cdc26285f4cd87081755612ed8636a29fb51787e8420ac98bd7108	
+/usr/lib/resourced/plugins	16877	0		
+/usr/share/licenses/resourced-bin	16877	0		
+/usr/share/licenses/resourced-bin/LICENSE	33188	11564	b7e6940623b879b3850dda8eb58b6a08c73cef9e13f7bee36e8b439bdb2c9147	
+/usr/share/licenses/resourced-bin/LICENSE.BSD-3-Clause	33188	1508	961da2665d94fbaf5ca5a2c245946c0e0223cee1448189995182752b694d01f6	
+
+EXIT=0
+
+
+RECORD old_resourced-bin-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/baseline-rpms/resourced-bin-10.0.0-1.armv7l.rpm
+resourced-bin	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD old_resourced-bin_libresourced-private-api.so.10.0.0_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_old_resourced-bin/usr/lib/libresourced-private-api.so.10.0.0
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD old_resourced-bin_resourced_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_old_resourced-bin/usr/bin/resourced
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD old_resourced-config-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/baseline-rpms/resourced-config-10.0.0-1.armv7l.rpm
+/etc/dbus-1/system.d/org.tizen.resourced.conf	33188	1762	de0fa284730062351a0864d78ed7774a80f82da89aebc8e7b4fbc4b2dc1d86fe	
+/etc/resourced/limiter.conf	33188	892	dee7600cb071a41577d3a05c769cab6c7071707c6ef3c81d6ff71fd7be3a4741	
+/etc/resourced/monitor.conf	33188	535	8c7ff8b33a077e1c49e2c229651de089134b70fb3bee321dbb58f1cc671a9b9b	
+/etc/resourced/optimizer.conf	33188	815	b42f6f7d191b8396c386583d0dafb6a2deb796776a759595da6cbda28eec792c	
+/etc/resourced/process.conf	33188	133	fea880ecf175c325ec51c59cc103f78f5fba36bcd1a9a22f39e6785bf3d0e11a	
+/usr/lib/systemd/system/multi-user.target.wants/resourced.service	41471	20		../resourced.service
+/usr/lib/systemd/system/resourced.service	33188	627	25a8b22f9b4ceb107b246ac7cfc42127ed063e9db4fb254a10812b4b59ddbc35	
+/usr/lib/systemd/system/resourced.socket	33188	146	b0f1442f22a74036629a7ba458f53cc93348876bdd3a9235c1a89d16574aa533	
+/usr/lib/systemd/system/sockets.target.wants/resourced.socket	41471	19		../resourced.socket
+
+EXIT=0
+
+
+RECORD old_resourced-config-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/baseline-rpms/resourced-config-10.0.0-1.armv7l.rpm
+resourced-config	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD old_resourced-isu-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/baseline-rpms/resourced-isu-10.0.0-1.armv7l.rpm
+/etc/isu/resourced/isu.cfg	33152	231	f06134b462c0e67d9ecce9b1f7ebd1bcab1637a9201e60af2163f665eff0ba1f	
+/etc/isu/resourced/system-services	16877	0		
+/etc/isu/resourced/system-services/etc-resourced.mount	33156	204	195fc681970cbb6bad5415581e21e4a7e00f471d93ce36e4b25ec7954840817e	
+/etc/isu/resourced/system-services/resourced.service	33156	730	5179aaff9f1605455cedcbd5f7bcfec843a7815fe8ab191998e8c5f5b94dceae	
+/etc/isu/resourced/system-services/usr-lib-resourced-plugins.mount	33156	294	022f590d7d7e63ee215db5cfba4a6490eeeefbd7aa7c4012817bec1c12d403e5	
+
+EXIT=0
+
+
+RECORD old_resourced-isu-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/baseline-rpms/resourced-isu-10.0.0-1.armv7l.rpm
+resourced-isu	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD old_resourced-watchdog-handler-10.0.0-1.armv7l.rpm_files.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '[%{FILENAMES}	%{FILEMODES}	%{FILESIZES}	%{FILEDIGESTS}	%{FILELINKTOS}
+]' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/baseline-rpms/resourced-watchdog-handler-10.0.0-1.armv7l.rpm
+/usr/bin/resourced-watchdog-handler	33216	8396	282e90ae867d9329b67232f7a096151ebf58b31e6760d4156396b74883c048a5	
+/usr/bin/resourced-watchdog-handler.sh	33216	97	c2d37b1df59716ca2081f3c450ee84262bb0bee8acbad929089c782cd067edb2	
+/usr/share/licenses/resourced-watchdog-handler	16877	0		
+/usr/share/licenses/resourced-watchdog-handler/LICENSE	33188	11564	b7e6940623b879b3850dda8eb58b6a08c73cef9e13f7bee36e8b439bdb2c9147	
+
+EXIT=0
+
+
+RECORD old_resourced-watchdog-handler-10.0.0-1.armv7l.rpm_header.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/rpmdb -qp --qf '%{NAME}	%{VERSION}	%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{FILEDIGESTALGO}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/baseline-rpms/resourced-watchdog-handler-10.0.0-1.armv7l.rpm
+resourced-watchdog-handler	10.0.0	1	armv7l	0	8
+
+EXIT=0
+
+
+RECORD old_resourced-watchdog-handler_resourced-watchdog-handler_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_old_resourced-watchdog-handler/usr/bin/resourced-watchdog-handler
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD old_resourced_libplugin-resourced-limiter-freezer.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_old_resourced/usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD old_resourced_libplugin-resourced-monitor-heart.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_old_resourced/usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD old_resourced_libplugin-resourced-optimizer-cpu-sched.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_old_resourced/usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD old_resourced_libplugin-resourced-optimizer-memory-compaction.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_old_resourced/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD old_resourced_libplugin-resourced-optimizer-memory-dedup.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_old_resourced/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD old_resourced_libplugin-resourced-optimizer-memory-swap.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_old_resourced/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD old_resourced_libplugin-resourced-process-block.so_comment.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -p .comment /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/payload_old_resourced/usr/lib/resourced/plugins/libplugin-resourced-process-block.so
+readelf: Warning: Section '.comment' was not dumped because it does not exist
+
+EXIT=0
+
+
+RECORD version_clang.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/clang --version
+clang version 22.1.8
+Target: armv7l-tizen-linux-gnueabi
+Thread model: posix
+InstalledDir: /usr/bin
+Configuration file: /usr/bin/clang.cfg
+
+EXIT=0
+
+
+RECORD version_lld.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/ld.lld --version
+LLD 22.1.8 (compatible with GNU linkers)
+
+EXIT=0
+
+
+RECORD version_rpm.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/verify/tmp --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --version
+RPM version 4.14.1
+
+EXIT=0

@@ -1,0 +1,55 @@
+6: warning: No local package repository for arch armv7l
+607: [  415s] setup-0.9-1.9                         ###############warning: /etc/profile created as /etc/profile.rpmnew
+774: [  755s] useradd warning: dbus's uid 81 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+775: [  756s] useradd warning: system_fw's uid 202 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+776: [  757s] useradd warning: web_fw's uid 251 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+777: [  758s] useradd warning: app_fw's uid 301 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+778: [  759s] useradd warning: buxton's uid 375 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+779: [  760s] useradd warning: security_fw's uid 402 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+780: [  761s] useradd warning: multimedia_fw's uid 451 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+781: [  762s] useradd warning: graphic_fw's uid 501 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+782: [  763s] useradd warning: ui_fw's uid 502 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+783: [  764s] useradd warning: network_fw's uid 551 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+784: [  766s] useradd warning: telephony's uid 601 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+785: [  767s] useradd warning: service_fw's uid 651 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+786: [  767s] useradd warning: messaging's uid 652 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+787: [  769s] useradd warning: social's uid 653 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+788: [  770s] useradd warning: location's uid 654 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+789: [  771s] useradd warning: sensor's uid 655 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+790: [  771s] useradd warning: sdk's uid 901 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+791: [  772s] useradd warning: scm's uid 925 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+792: [  773s] useradd warning: application's uid 951 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+793: [  776s] useradd warning: crash_worker's uid 203 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+794: [  777s] useradd warning: stability_monitor's uid 204 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+795: [  778s] useradd warning: ai-agent's uid 940 outside of the UID_MIN 1000 and UID_MAX 60000 range.
+1079: [  906s] CMake Warning:
+1137: [  907s] armv7l-tizen-linux-gnueabi-clangarmv7l-tizen-linux-gnueabi-clangarmv7l-tizen-linux-gnueabi-clang: : : warning: warning: -Wl,--gc-sections: 'linker' input unused [-Wunused-command-line-argument]warning: 
+1140: [  907s] armv7l-tizen-linux-gnueabi-clang: warning: -Wl,--gc-sections: 'linker' input unused [-Wunused-command-line-argument]
+1143: [  908s] /home/abuild/rpmbuild/BUILD/resourced-10.0.0/tools/resourced-monitor/proc-info.c:148:14: warning: assigning to 'char *' from 'const char *' discards qualifiers [-Wincompatible-pointer-types-discards-qualifiers]
+1732: [  910s] /home/abuild/rpmbuild/BUILD/resourced-10.0.0/src/resource-monitor/heart-battery.c:1118:6: warning: variable 'len' set but not used [-Wunused-but-set-variable]
+2499: [  917s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/resourced/plugins/libplugin-resourced-process-block.so
+2500: [  917s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so
+2501: [  917s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so
+2502: [  917s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so
+2503: [  917s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so
+2504: [  917s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so
+2505: [  917s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so
+2555: [  917s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/libresourced-private-api.so.10.0.0
+2556: [  917s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/bin/resourced
+2557: [  917s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/bin/resourced
+2558: [  917s] warning: File listed twice: /usr/bin/resourced
+2642: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/resourced-tests/watchdog-test
+2671: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/bin/resourced-watchdog-handler
+2681: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/bin/resourced-monitor
+2689: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so.debug
+2690: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so.debug
+2691: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so.debug
+2692: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so.debug
+2693: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so.debug
+2694: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so.debug
+2695: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-process-block.so.debug
+2703: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/bin/resourced.debug
+2704: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/lib/libresourced-private-api.so.10.0.0.debug
+2712: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/lib/resourced-tests/watchdog-test.debug
+2720: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/bin/resourced-watchdog-handler.debug
+2728: [  918s] warning: Missing build-id in /home/abuild/rpmbuild/BUILDROOT/resourced-10.0.0-1.arm/usr/lib/debug/usr/bin/resourced-monitor.debug

@@ -1,0 +1,123 @@
+{
+  "summary": [
+    {
+      "package": "resourced",
+      "added": 0,
+      "deleted": 0,
+      "changed": 7,
+      "added_non_build_id": [],
+      "deleted_non_build_id": [],
+      "added_build_id_count": 0,
+      "deleted_build_id_count": 0
+    },
+    {
+      "package": "resourced-bin",
+      "added": 0,
+      "deleted": 0,
+      "changed": 2,
+      "added_non_build_id": [],
+      "deleted_non_build_id": [],
+      "added_build_id_count": 0,
+      "deleted_build_id_count": 0
+    },
+    {
+      "package": "resourced-config",
+      "added": 0,
+      "deleted": 0,
+      "changed": 0,
+      "added_non_build_id": [],
+      "deleted_non_build_id": [],
+      "added_build_id_count": 0,
+      "deleted_build_id_count": 0
+    },
+    {
+      "package": "resourced-isu",
+      "added": 0,
+      "deleted": 0,
+      "changed": 0,
+      "added_non_build_id": [],
+      "deleted_non_build_id": [],
+      "added_build_id_count": 0,
+      "deleted_build_id_count": 0
+    },
+    {
+      "package": "resourced-watchdog-handler",
+      "added": 0,
+      "deleted": 0,
+      "changed": 2,
+      "added_non_build_id": [],
+      "deleted_non_build_id": [],
+      "added_build_id_count": 0,
+      "deleted_build_id_count": 0
+    }
+  ],
+  "changed_files": [
+    {
+      "package": "resourced",
+      "path": "/usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so",
+      "category": "rebuild_debuglink_metadata_only",
+      "basis": "Corresponding production source unchanged from QB source through task15; .text/.rodata/.data hashes equal, and buildroot objcopy removing .gnu_debuglink followed by buildroot cmp returns 0. Debug filename unchanged, CRC differs. Exact underlying debug-info cause not separated."
+    },
+    {
+      "package": "resourced",
+      "path": "/usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so",
+      "category": "rebuild_debuglink_metadata_only",
+      "basis": "Corresponding production source unchanged from QB source through task15; .text/.rodata/.data hashes equal, and buildroot objcopy removing .gnu_debuglink followed by buildroot cmp returns 0. Debug filename unchanged, CRC differs. Exact underlying debug-info cause not separated."
+    },
+    {
+      "package": "resourced",
+      "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so",
+      "category": "rebuild_debuglink_metadata_only",
+      "basis": "Corresponding production source unchanged from QB source through task15; .text/.rodata/.data hashes equal, and buildroot objcopy removing .gnu_debuglink followed by buildroot cmp returns 0. Debug filename unchanged, CRC differs. Exact underlying debug-info cause not separated."
+    },
+    {
+      "package": "resourced",
+      "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so",
+      "category": "task15_and_build_environment",
+      "basis": "Task15 compaction.c edit compiles here (src/CMakeLists.txt:263-266)."
+    },
+    {
+      "package": "resourced",
+      "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so",
+      "category": "rebuild_debuglink_metadata_only",
+      "basis": "Corresponding production source unchanged from QB source through task15; .text/.rodata/.data hashes equal, and buildroot objcopy removing .gnu_debuglink followed by buildroot cmp returns 0. Debug filename unchanged, CRC differs. Exact underlying debug-info cause not separated."
+    },
+    {
+      "package": "resourced",
+      "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so",
+      "category": "task15_and_build_environment",
+      "basis": "Task15 swap.c and zramswap.c edits compile here (src/CMakeLists.txt:246-256)."
+    },
+    {
+      "package": "resourced",
+      "path": "/usr/lib/resourced/plugins/libplugin-resourced-process-block.so",
+      "category": "rebuild_debuglink_metadata_only",
+      "basis": "Corresponding production source unchanged from QB source through task15; .text/.rodata/.data hashes equal, and buildroot objcopy removing .gnu_debuglink followed by buildroot cmp returns 0. Debug filename unchanged, CRC differs. Exact underlying debug-info cause not separated."
+    },
+    {
+      "package": "resourced-bin",
+      "path": "/usr/bin/resourced",
+      "category": "inherited_tizen_and_task15_and_build_environment",
+      "basis": "lowmem-controller.c contains both 82e79c09 and task15 changes and is linked into resourced; cannot separate binary byte deltas without controlled builds."
+    },
+    {
+      "package": "resourced-bin",
+      "path": "/usr/lib/libresourced-private-api.so.10.0.0",
+      "category": "task15_and_build_environment",
+      "basis": "file-helper.c and cgroup.c task15 edits are compiled here (src/CMakeLists.txt:38-42,209). Exact byte contributions require controlled rebuilds."
+    },
+    {
+      "package": "resourced-watchdog-handler",
+      "path": "/usr/bin/resourced-watchdog-handler",
+      "category": "rebuild_debuglink_metadata_only",
+      "basis": "Corresponding production source unchanged from QB source through task15; .text/.rodata/.data hashes equal, and buildroot objcopy removing .gnu_debuglink followed by buildroot cmp returns 0. Debug filename unchanged, CRC differs. Exact underlying debug-info cause not separated."
+    },
+    {
+      "package": "resourced-watchdog-handler",
+      "path": "/usr/bin/resourced-watchdog-handler.sh",
+      "category": "inherited_tizen",
+      "basis": "1d529ce7 changes shebang from /bin/bash -l to /bin/sh -l; unchanged by the task15 series."
+    }
+  ],
+  "limits": "Source mapping identifies which changes feed each binary, not byte-by-byte attribution of mixed tizen/task15 changes. No controlled rebuild performed. Stripped old/new ELF lack .comment and .note.gnu.build-id; absent sections are not evidence of matching compiler versions."
+}

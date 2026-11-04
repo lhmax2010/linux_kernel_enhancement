@@ -1,0 +1,4 @@
+$ git status --porcelain -b
+## lko/resourced-fix...origin/tizen [ahead 9]
+EXIT=0
+HEAD=94d346c306233803661e8eab8557596549d82be4

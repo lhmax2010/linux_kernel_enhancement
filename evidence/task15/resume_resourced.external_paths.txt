@@ -1,0 +1,22 @@
+/tmp/sdb.log
+/tmp/xxxtmp.log
+/home/linhao
+/home/linhao/.claude.json
+/home/linhao/.sogouinput
+/home/linhao/.sogouinput/SogouImebsUIEnvMutex
+/home/linhao/.sogouinput/ImeKernel_DictLocker
+/home/linhao/.sogouinput/SogouIme_VersionManagerSharedTable_V2_Lock
+/home/linhao/.sogouinput/SogouIme_FuncManager_1__Lock
+/home/linhao/.sogouinput/DictManager_DictSaveLocker
+/home/linhao/.cache/tracker3/files
+/home/linhao/.config/gedit/accels
+/home/linhao/.config/google-chrome-local
+/home/linhao/.config/google-chrome-local/Variations
+/home/linhao/.config/google-chrome-local/segmentation_platform
+/home/linhao/.config/google-chrome-local/Default
+/home/linhao/.config/google-chrome-local/Local State
+/home/linhao/.config/fcitx/config
+/home/linhao/.local/share
+/home/linhao/.local/share/gedit
+/home/linhao/.local/share/recently-used.xbel
+/home/linhao/.local/share/gnome-shell

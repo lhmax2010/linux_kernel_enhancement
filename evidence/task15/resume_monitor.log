@@ -1,0 +1,3 @@
+2026-11-04T23:08:10.511200+08:00 lines=122 bytes=18985 stage=resourced last=[  141s] [78/242] downloading https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/reference/repos/standard/packages/armv7l/hostname-3.23-1.1.armv7l.rpm ... 
+2026-11-04T23:18:10.763330+08:00 lines=772 bytes=79042 stage=resourced last=[  734s] groupadd: group 'dbus' already exists
+2026-11-04T23:22:10.949064+08:00 lines=2799 bytes=976967 stage=resourced last=COMMAND-EXIT resourced time=2026-11-04T23:21:16+08:00 exit=0 credential_seen=0

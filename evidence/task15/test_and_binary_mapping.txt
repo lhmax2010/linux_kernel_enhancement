@@ -1,0 +1,267 @@
+
+FILE src/CMakeLists.txt @ 94d346c3
+32: FILE(GLOB FILES "${PROCESS_SOURCE_DIR}/*.c")
+33: SET(RESOURCED_SHARED_SOURCES ${RESOURCED_SHARED_SOURCES} ${FILES})
+34: 
+35: FILE(GLOB FILES "${BLOCK_SOURCE_DIR}/*.c")
+36: SET(RESOURCED_SHARED_SOURCES ${RESOURCED_SHARED_SOURCES} ${FILES})
+37: 
+38: FILE(GLOB FILES "${COMMON_SOURCE_DIR}/*.c")
+39: SET(RESOURCED_SHARED_SOURCES ${RESOURCED_SHARED_SOURCES} ${FILES})
+40: 
+41: FILE(GLOB FILES "${CGROUP_SOURCE_DIR}/*.c")
+42: SET(RESOURCED_SHARED_SOURCES ${RESOURCED_SHARED_SOURCES} ${FILES})
+43: 
+44: FILE(GLOB FILES "${CONF_SOURCE_DIR}/*.c")
+45: SET(RESOURCED_SHARED_SOURCES ${RESOURCED_SHARED_SOURCES} ${FILES})
+46: 
+47: FILE(GLOB FILES "${IPC_SOURCE_DIR}/*.c")
+48: SET(RESOURCED_SHARED_SOURCES ${RESOURCED_SHARED_SOURCES} ${FILES})
+49: 
+50: FILE(GLOB FILES "${MODULE_SOURCE_DIR}/*.c")
+51: SET(RESOURCED_SHARED_SOURCES ${RESOURCED_SHARED_SOURCES} ${FILES})
+52: 
+53: FILE(GLOB FILES "${PROCFS_SOURCE_DIR}/*.c")
+54: SET(RESOURCED_SHARED_SOURCES ${RESOURCED_SHARED_SOURCES} ${FILES})
+55: 
+96: #memory module
+97: IF("${MEMORY_MODULE}" STREQUAL "ON")
+98:   FILE(GLOB FILES "${MEMORY_LIMITER_SOURCE_DIR}/*.c")
+99: 
+100:   IF("${EBPF_ENABLED}" STREQUAL "ON")
+101:     ADD_CUSTOM_COMMAND(
+102:       OUTPUT  ${CMAKE_CURRENT_BINARY_DIR}/lowmem_memory_pressure.bpf.o
+103:       DEPENDS ${MEMORY_LIMITER_SOURCE_DIR}/lowmem_memory_pressure.bpf.c
+104:       COMMAND clang -g -target bpf -Wall -O2
+105:         -D${BPF_ARCH_MACRO}
+106:         -c ${MEMORY_LIMITER_SOURCE_DIR}/lowmem_memory_pressure.bpf.c
+107:         -o ${CMAKE_CURRENT_BINARY_DIR}/lowmem_memory_pressure.bpf.o
+108:       COMMENT "Compiling eBPF object lowmem_memory_pressure.bpf.o"
+109:     )
+110: 
+111:     ADD_CUSTOM_COMMAND(
+112:       OUTPUT  ${CMAKE_CURRENT_BINARY_DIR}/memory-pressure-skel/lowmem_bpf_memory_pressure.skel.h
+113:       DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/lowmem_memory_pressure.bpf.o
+114:       COMMAND mkdir -p ${CMAKE_CURRENT_BINARY_DIR}/memory-pressure-skel
+115:       COMMAND /usr/sbin/bpftool gen skeleton ${CMAKE_CURRENT_BINARY_DIR}/lowmem_memory_pressure.bpf.o
+116:         > ${CMAKE_CURRENT_BINARY_DIR}/memory-pressure-skel/lowmem_bpf_memory_pressure.skel.h
+117:       COMMENT "Generating skeleton lowmem_bpf_memory_pressure.skel.h"
+118:     )
+119: 
+120:     ADD_CUSTOM_TARGET(
+121:       memory_pressure_skel ALL
+122:       DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/memory-pressure-skel/lowmem_bpf_memory_pressure.skel.h
+123:     )
+124: 
+125:     # Include directory for the skeleton header:
+126:     INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR}/memory-pressure-skel)
+127:   ELSE()
+128:     LIST(REMOVE_ITEM FILES "${MEMORY_LIMITER_SOURCE_DIR}/lowmem-monitor-ebpf.c")
+129:   ENDIF()
+130: 
+131:   LIST(REMOVE_ITEM FILES "${MEMORY_LIMITER_SOURCE_DIR}/lowmem_memory_pressure.bpf.c")
+132: 
+133:   FOREACH(FILE ${FILES})
+134:     SET(SOURCES ${SOURCES} ${FILE})
+135:   ENDFOREACH()
+136: ENDIF()
+137: 
+138: IF("${CPU_THROTTLING_MODULE}" STREQUAL "ON")
+139:   FILE(GLOB FILES "${CPU_LIMITER_SOURCE_DIR}/cpu-throttling.c")
+140:   FOREACH(FILE ${FILES})
+209: ADD_LIBRARY(resourced-private-api SHARED ${RESOURCED_SHARED_SOURCES})
+210: 
+211: TARGET_LINK_LIBRARIES(resourced-private-api ${RESOURCED_REQUIRE_PKGS_LDFLAGS})
+212: SET_TARGET_PROPERTIES(resourced-private-api PROPERTIES VERSION ${FULLVER} COMPILE_FLAGS "-fvisibility=default")
+213: INSTALL(TARGETS resourced-private-api DESTINATION ${CMAKE_INSTALL_LIBDIR})
+214: INSTALL(FILES ${RESOURCED_HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/resourced/private-api)
+215: CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/resourced-private-api.pc.in ${CMAKE_SOURCE_DIR}/resourced-private-api.pc @ONLY)
+216: INSTALL(FILES ${CMAKE_SOURCE_DIR}/resourced-private-api.pc DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)
+217: 
+218: INSTALL(DIRECTORY DESTINATION ${MAKE_INSTALL_PREFIX}${RD_PLUGIN_PATH})
+234: IF(${ENABLE_SYSTEM_SERVER})
+235: ADD_LIBRARY(plugin-resourced-optimizer-memory-swap MODULE
+236: 	${SWAP_SOURCE_DIR}/swap.c
+237: 	${SWAP_SOURCE_DIR}/swap_tools_system_server.c
+238: 	${SWAP_SOURCE_DIR}/fileswap.c
+239: 	${SWAP_SOURCE_DIR}/zswap.c
+240: 	${SWAP_SOURCE_DIR}/zramswap.c
+241: 	${SWAP_SOURCE_DIR}/swap-dbus.c
+242: )
+243: 
+244: 
+245: ELSE()
+246: ADD_LIBRARY(plugin-resourced-optimizer-memory-swap MODULE
+247: 	${SWAP_SOURCE_DIR}/swap.c
+248: 	${SWAP_SOURCE_DIR}/swap_tools.c
+249: 	${SWAP_SOURCE_DIR}/fileswap.c
+250: 	${SWAP_SOURCE_DIR}/zswap.c
+251: 	${SWAP_SOURCE_DIR}/zramswap.c
+252: 	${SWAP_SOURCE_DIR}/swap-dbus.c
+253: )
+254: ENDIF()
+255: TARGET_LINK_LIBRARIES(plugin-resourced-optimizer-memory-swap resourced-private-api ${RESOURCED_REQUIRE_PKGS_LDFLAGS})
+256: INSTALL(TARGETS plugin-resourced-optimizer-memory-swap DESTINATION ${MAKE_INSTALL_PREFIX}${RD_PLUGIN_PATH})
+257: 
+258: ADD_LIBRARY(plugin-resourced-optimizer-memory-dedup MODULE
+259: 	${DEDUP_SOURCE_DIR}/dedup.c)
+260: TARGET_LINK_LIBRARIES(plugin-resourced-optimizer-memory-dedup resourced-private-api ${RESOURCED_REQUIRE_PKGS_LDFLAGS})
+261: INSTALL(TARGETS plugin-resourced-optimizer-memory-dedup DESTINATION ${MAKE_INSTALL_PREFIX}${RD_PLUGIN_PATH})
+262: 
+263: ADD_LIBRARY(plugin-resourced-optimizer-memory-compaction MODULE
+264: 	${COMPACTION_SOURCE_DIR}/compaction.c)
+265: TARGET_LINK_LIBRARIES(plugin-resourced-optimizer-memory-compaction resourced-private-api ${RESOURCED_REQUIRE_PKGS_LDFLAGS})
+266: INSTALL(TARGETS plugin-resourced-optimizer-memory-compaction DESTINATION ${MAKE_INSTALL_PREFIX}${RD_PLUGIN_PATH})
+345: INSTALL_SYMLINK(../resourced.socket lib/systemd/system/sockets.target.wants/resourced.socket)
+346: ELSE()
+347: ADD_EXECUTABLE(${RD_BINARY_NAME}
+348:   ${RESOURCED_SOURCE_DIR}/init.c
+349:   ${RESOURCED_SOURCE_DIR}/plugin-loader.c
+350:   ${RESOURCED_SOURCE_DIR}/main.c
+351:   ${SOURCES})
+352: 
+353: TARGET_LINK_LIBRARIES(${RD_BINARY_NAME}
+354:   resourced-private-api ${RESOURCED_REQUIRE_PKGS_LDFLAGS} "-pie -ldl -lm -Wl,-rpath=${RD_PLUGIN_PATH}")
+355: SET_TARGET_PROPERTIES(${RD_BINARY_NAME} PROPERTIES COMPILE_FLAGS "-fvisibility=default")
+356: 
+357: SET_TARGET_PROPERTIES(${RD_BINARY_NAME} PROPERTIES SKIP_BUILD_RPATH true)
+358: INSTALL(TARGETS ${RD_BINARY_NAME}
+359: 	DESTINATION ${MAKE_INSTALL_PREFIX}/usr/bin RENAME ${RD_BINARY_NAME}
+360:   PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE WORLD_EXECUTE)
+361: 
+362: INSTALL(FILES
+363:   ${RESOURCED_SOURCE_DIR}/${RESOURCED}.service
+364:   DESTINATION lib/systemd/system)
+365: INSTALL_SYMLINK(../${RESOURCED}.service lib/systemd/system/multi-user.target.wants/${RESOURCED}.service)
+385: 
+386: IF("${PROC_WATCHDOG}" STREQUAL "ON")
+387:   SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${EXTRA_CFLAGS} -Wall -fPIE")
+388:   SET(CMAKE_EXE_LINKER_FLAGS "-Wl,--as-needed -pie")
+389:   ADD_EXECUTABLE(resourced-watchdog-handler ${WATCHDOG_SOURCE_DIR}/proc-watchdog-handler.c)
+390:   TARGET_LINK_LIBRARIES(resourced-watchdog-handler resourced-private-api dlog)
+391:   INSTALL(TARGETS resourced-watchdog-handler DESTINATION bin)
+392:   INSTALL(FILES ${CMAKE_SOURCE_DIR}/watchdog/resourced-watchdog-handler.sh DESTINATION bin)
+393: ENDIF()
+394: 
+395: INSTALL(FILES ${CONF_DIR}/process.conf
+396: 	DESTINATION ${RD_CONFIG_PATH} RENAME process.conf)
+
+FILE tests/CMakeLists.txt @ 94d346c3
+24: # run unit tests autimatically whenever building resourced
+25: ADD_CUSTOM_TARGET(do-test ALL make test
+26:   WORKING_DIRECTORY ./
+27:   USES_TERMINAL)
+28: 
+29: # build unit test
+30: PKG_CHECK_MODULES(CMOCKA REQUIRED cmocka)
+31: PKG_CHECK_MODULES(DLOG REQUIRED dlog)
+32: STRING(REPLACE ";" " " DLOG_LDFLAGS "${DLOG_LDFLAGS}")
+33: STRING(REPLACE ";" " " DLOG_CFLAGS "${DLOG_CFLAGS}")
+34: 
+35: SET(EXTRA_CFLAGS "")
+36: SET(RESOURCED_REQUIRE_PKGS_LDFLAGS "")
+63: 
+64: 	TARGET_LINK_LIBRARIES(${name} resourced_shared_test cmocka dlog gio-2.0 gobject-2.0 glib-2.0
+65: 	${wraps})
+66: 
+67: 	ADD_TEST(${name} ${name})
+68: 	SET_TESTS_PROPERTIES(${name} PROPERTIES SKIP_RETURN_CODE 77)
+69: 	ADD_DEPENDENCIES(do-test ${name})
+70: endfunction()
+71: 
+72: ADD_TESTS(test-reclaim-io "${UNIT_TESTS_CFLAGS}"
+73:   "-Wl,--wrap=open,--wrap=open64,--wrap=write,--wrap=close" test-reclaim-io.c)
+74: 
+75: ADD_TESTS(test-file-write-errors "${UNIT_TESTS_CFLAGS}"
+76:   "-Wl,--wrap=fopen,--wrap=fopen64,--wrap=fputs,--wrap=fflush,--wrap=fclose" test-file-write-errors.c)
+77: 
+78: ADD_TESTS(test-integer-read-errors "${UNIT_TESTS_CFLAGS}" "" test-integer-read-errors.c)
+79: 
+80: #ADD_TESTS(cmocka-core "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=malloc,--wrap=free,--wrap=g_slist_append,--wrap=g_slist_remove,--wrap=strdup,--wrap=strndup -O0" cmocka-core.c)
+81: #ADD_TESTS(cmocka-proc-dbus-typecheck "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_set_group,--wrap=g_dbus_method_invocation_get_message,--wrap=g_dbus_message_new_method_reply,--wrap=d_bus_reply_message,--wrap=g_object_unref,--wrap=g_dbus_method_invocation_return_value,--wrap=find_app_info_by_appid,--wrap=proc_get_mem_usage,--wrap=proc_get_cpu_time,--wrap=resourced_proc_status_change,--wrap=resourced_notify,--wrap=proc_set_runtime_exclude_list,--wrap=find_app_info,--wrap=proc_add_app_info,--wrap=proc_create_app_info,--wrap=proc_app_list_add_app_info,--wrap=proc_check_suspend_state,--wrap=g_dbus_method_invocation_return_error,--wrap=proc_dbus_exclude_signal_handler,--wrap=g_dbus_method_invocation_get_method_name -O0" cmocka-proc-dbus-typecheck.c)
+82: #ADD_TESTS(cmocka-proc-dbus-aul-group "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_set_group,--wrap=proc_get_oom_score_adj,--wrap=resourced_notify -O0" cmocka-proc-dbus-aul-group.c)
+83: #ADD_TESTS(cmocka-proc-add-app-info "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=g_slist_prepend,--wrap=g_slist_remove -O0" cmocka-proc-add-app-info.c)
+84: #ADD_TESTS(cmocka-dbus-get-memory-lists "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=g_dbus_method_invocation_return_value,--wrap=proc_get_mem_usage,--wrap=g_dbus_method_invocation_get_message,--wrap=g_dbus_message_new_method_reply,--wrap=d_bus_reply_message,--wrap=g_dbus_method_invocation_return_error -O0" cmocka-dbus-get-memory-lists.c)
+85: #ADD_TESTS(cmocka-dbus-get-cpu-lists "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_get_uptime,--wrap=proc_get_cpu_time,--wrap=g_dbus_method_invocation_return_value,--wrap=g_dbus_method_invocation_get_message,--wrap=g_dbus_message_new_method_reply,--wrap=d_bus_reply_message,--wrap=g_dbus_method_invocation_return_error -O0" cmocka-dbus-get-cpu-lists.c)
+86: #ADD_TESTS(cmocka-file-helper "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fopen,--wrap=fputs,--wrap=fscanf,--wrap=fgets,--wrap=fopen64,--wrap=vfscanf,--wrap=fscanf64,--wrap=__isoc99_fscanf,--wrap=asprintf -O0" cmocka-file-helper.c)
+87: #ADD_TESTS(cmocka-test-child-pid "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=g_slist_prepend,--wrap=g_slist_remove -O0" cmocka-test-child-pid.c)
+88: #ADD_TESTS(cmocka-proc-app-list "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=g_slist_prepend,--wrap=g_slist_remove,--wrap=g_slist_prepend,--wrap=g_slist_remove -O0" cmocka-proc-app-list.c)
+89: #ADD_TESTS(test-common "${UNIT_TESTS_CFLAGS}" "-O0" test-common.c)
+108: 	ADD_TEST(${name} ${name})
+109: 	SET_TESTS_PROPERTIES(${name} PROPERTIES SKIP_RETURN_CODE 77)
+110: 	ADD_DEPENDENCIES(do-test ${name})
+111: endfunction()
+112: 
+113: ADD_SKIP_TEST(test-heart-dbus "-O0" test-heart-dbus.c)
+114: ADD_SKIP_TEST(test-heart-battery "-O0" test-heart-battery.c)
+115: ADD_SKIP_TEST(test-heart-memory "-O0" test-heart-memory.c)
+116: ADD_SKIP_TEST(test-heart-cpu "-O0" test-heart-cpu.c)
+117: ADD_SKIP_TEST(test-heart-others "-O0" test-heart-others.c)
+118: ADD_SKIP_TEST(test-swap "-O0" test-swap.c)
+119: ADD_SKIP_TEST(test-swap-others "-O0" test-swap-others.c)
+120: ADD_SKIP_TEST(test-proc-process "-O0" test-proc-process.c)
+121: ADD_SKIP_TEST(test-proc-others "-O0" test-proc-others.c)
+122: ADD_SKIP_TEST(test-mem-stress "-O0" test-mem-stress.c)
+123: ADD_SKIP_TEST(test-memory-others "-O0" test-memory-others.c)
+124: ADD_SKIP_TEST(test-freezer "-O0" test-freezer.c)
+125: ADD_SKIP_TEST(test-cpu "-O0" test-cpu.c)
+126: ADD_SKIP_TEST(test-block "-O0" test-block.c)
+127: ADD_SKIP_TEST(test-block-monitor "-O0" test-block-monitor.c)
+128: ADD_SKIP_TEST(test-common-procfs "-O0" test-common-procfs.c)
+129: ADD_SKIP_TEST(test-proc-watchdog-handler "-O0" test-proc-watchdog-handler.c)
+130: 
+131: function(ADD_MEMORY_TESTS name libs wraps sources)
+132: 	ADD_EXECUTABLE(${name} ${sources} ${ARGN})
+133: 	SET_TARGET_PROPERTIES(${name} PROPERTIES COMPILE_FLAGS "-fprofile-arcs -ftest-coverage")
+134: 	if(NOT ${wraps} EQUAL "")
+135: 		SET_TARGET_PROPERTIES(${name} PROPERTIES LINK_FLAGS ${wraps})
+136: 	endif()
+137: 	TARGET_COMPILE_DEFINITIONS(${name}
+138: 				   PRIVATE RD_CONFIG_PATH="." SYSTEM_LIB_PATH="/usr/lib" SWAP_SUPPORT RD_SYS_DB="." RD_SYS_DATA="." _UNIT_TEST)
+139: 	TARGET_INCLUDE_DIRECTORIES(${name}
+140: 				   PRIVATE ${COMMON_SOURCE_DIR}
+141: 				   PRIVATE ${CGROUP_SOURCE_DIR}
+142: 								   ../include
+143: 								   ../src/resource-limiter/memory
+144: 								   ../src/resourced
+145: 								   ../src/common
+146: 								   ../src/common/cgroup
+147: 				   PUBLIC ${RESOURCED_REQUIRE_PKGS_INCLUDE_DIRS})
+148: 	TARGET_LINK_LIBRARIES(${name} cmocka pthread dl m gcov dlog ${libs})
+149: 	ADD_TEST(${name} ${name})
+150: 	ADD_DEPENDENCIES(do-test ${name})
+151: endfunction()
+152: 
+153: # lowmem-limit unit test
+154: #ADD_MEMORY_TESTS(lowmem-limit-test "${GLIB2_LDFLAGS}"
+155: #		       "-Wl,--wrap=kill,--wrap=read,--wrap=access"
+
+FILE tests/test-reclaim-io.c @ 94d346c3
+105: }
+106: int main(void)
+107: {
+108: 	const struct CMUnitTest tests[] = {
+109: 		cmocka_unit_test(test_reclaim_results),
+110: 		cmocka_unit_test(test_reclaim_open_and_close),
+111: 		cmocka_unit_test(test_reclaim_long_path),
+112: 	};
+113: 	return cmocka_run_group_tests(tests, NULL, NULL);
+114: }
+
+FILE tests/test-file-write-errors.c @ 94d346c3
+63: 	}
+64: }
+65: int main(void)
+66: {
+67: 	const struct CMUnitTest tests[] = {cmocka_unit_test(test_write_completion)};
+68: 	return cmocka_run_group_tests(tests, NULL, NULL);
+69: }
+
+FILE tests/test-integer-read-errors.c @ 94d346c3
+40: 	}
+41: }
+42: int main(void)
+43: {
+44: 	const struct CMUnitTest tests[] = {cmocka_unit_test(test_invalid_samples)};
+45: 	return cmocka_run_group_tests(tests, NULL, NULL);
+46: }

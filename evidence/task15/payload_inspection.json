@@ -1,0 +1,541 @@
+[
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so",
+    "payload_sha256": {
+      "old": "a29ca6bbe7c41561f0520dcbac59bcaa61706499b5207361e3ee344bd333185d",
+      "new": "d1f042388ec1d188c63c23f83c8b73fbf238d8385f451585b6bb01d8a8b06f7b"
+    },
+    "elf": true,
+    "comment": {
+      "old": "",
+      "new": ""
+    },
+    "sections": {
+      "old": {
+        ".text": {
+          "bytes": 2972,
+          "sha256": "23d5088855dc81a8335464bad04fa91104101ec2f51e5048b5bbbf68a6fb56b4"
+        },
+        ".rodata": {
+          "bytes": 2268,
+          "sha256": "115e9c4c787ae1f9e9a9f303e94fa2d2399087dc56c7c99eb3d003591d168ac2"
+        },
+        ".data": {
+          "bytes": 72,
+          "sha256": "5074e75ef90e65a88758dec35dd7533e83a8871dbb5968aa85d2eb3ad952f49f"
+        }
+      },
+      "new": {
+        ".text": {
+          "bytes": 2972,
+          "sha256": "23d5088855dc81a8335464bad04fa91104101ec2f51e5048b5bbbf68a6fb56b4"
+        },
+        ".rodata": {
+          "bytes": 2268,
+          "sha256": "115e9c4c787ae1f9e9a9f303e94fa2d2399087dc56c7c99eb3d003591d168ac2"
+        },
+        ".data": {
+          "bytes": 72,
+          "sha256": "5074e75ef90e65a88758dec35dd7533e83a8871dbb5968aa85d2eb3ad952f49f"
+        }
+      }
+    },
+    "equal_sections": {
+      ".text": true,
+      ".rodata": true,
+      ".data": true,
+      ".note.gnu.build-id": null
+    },
+    "absent_sections_both": [
+      ".note.gnu.build-id"
+    ],
+    "comment_section_present": false
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so",
+    "payload_sha256": {
+      "old": "8214a8d224f9f8cb4ed641646b6ad30ecf21b5f7c999f12c0823c07c9cb39ff9",
+      "new": "3d22c4e7ed6bb81c4af36c5ed21eb365ffa2dd500955654f403378710b1ece24"
+    },
+    "elf": true,
+    "comment": {
+      "old": "",
+      "new": ""
+    },
+    "sections": {
+      "old": {
+        ".text": {
+          "bytes": 67628,
+          "sha256": "fefbdbe60629bcdfcd9b2928e354b9776c74aea7e73c3e73958198be91c42ddc"
+        },
+        ".rodata": {
+          "bytes": 23816,
+          "sha256": "e3b0c6b7347ec87f8ccc1b2467d7c3107b25905838124c4aa5afe99b21f47d5a"
+        },
+        ".data": {
+          "bytes": 1428,
+          "sha256": "514d0e6db8b55b6e065c78e4b8f1a32e1a534e7b595abb7c6180c84422f65779"
+        }
+      },
+      "new": {
+        ".text": {
+          "bytes": 67628,
+          "sha256": "fefbdbe60629bcdfcd9b2928e354b9776c74aea7e73c3e73958198be91c42ddc"
+        },
+        ".rodata": {
+          "bytes": 23816,
+          "sha256": "e3b0c6b7347ec87f8ccc1b2467d7c3107b25905838124c4aa5afe99b21f47d5a"
+        },
+        ".data": {
+          "bytes": 1428,
+          "sha256": "514d0e6db8b55b6e065c78e4b8f1a32e1a534e7b595abb7c6180c84422f65779"
+        }
+      }
+    },
+    "equal_sections": {
+      ".text": true,
+      ".rodata": true,
+      ".data": true,
+      ".note.gnu.build-id": null
+    },
+    "absent_sections_both": [
+      ".note.gnu.build-id"
+    ],
+    "comment_section_present": false
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so",
+    "payload_sha256": {
+      "old": "7c66b641aad622cdd716cb9a04d038971d87db795a8b0db5bcb05b233019435f",
+      "new": "287c4098b817bf5b242981898a79a27970d26c5e4c3d2eb8cc038dd0b4bf913b"
+    },
+    "elf": true,
+    "comment": {
+      "old": "",
+      "new": ""
+    },
+    "sections": {
+      "old": {
+        ".text": {
+          "bytes": 5612,
+          "sha256": "d051ae25aa772f5a1da5e5a963e30e592871f39c4f2116311ee1aac0b98133a9"
+        },
+        ".rodata": {
+          "bytes": 3805,
+          "sha256": "ff8d408211163c38b338f48c38823581d77999fc4c5b6e260ce793128026cb8b"
+        },
+        ".data": {
+          "bytes": 48,
+          "sha256": "775205e2dc5fdd343fe306c9003911a0d4725285212c29a7ff6b55d1889276d2"
+        }
+      },
+      "new": {
+        ".text": {
+          "bytes": 5612,
+          "sha256": "d051ae25aa772f5a1da5e5a963e30e592871f39c4f2116311ee1aac0b98133a9"
+        },
+        ".rodata": {
+          "bytes": 3805,
+          "sha256": "ff8d408211163c38b338f48c38823581d77999fc4c5b6e260ce793128026cb8b"
+        },
+        ".data": {
+          "bytes": 48,
+          "sha256": "775205e2dc5fdd343fe306c9003911a0d4725285212c29a7ff6b55d1889276d2"
+        }
+      }
+    },
+    "equal_sections": {
+      ".text": true,
+      ".rodata": true,
+      ".data": true,
+      ".note.gnu.build-id": null
+    },
+    "absent_sections_both": [
+      ".note.gnu.build-id"
+    ],
+    "comment_section_present": false
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so",
+    "payload_sha256": {
+      "old": "1393781ed359247d65816366f705cf67638df5d4b08d24a6e0ab539513820e06",
+      "new": "9b6e4bfb8367a25320c3ec24a7704b3b1a1f6e0e934d4ab82bf3faf36cfb93d9"
+    },
+    "elf": true,
+    "comment": {
+      "old": "",
+      "new": ""
+    },
+    "sections": {
+      "old": {
+        ".text": {
+          "bytes": 3500,
+          "sha256": "54c6ae98158269e015504e30ec243439a951196925c3245b53c85bba0c5c8d5e"
+        },
+        ".rodata": {
+          "bytes": 1154,
+          "sha256": "2acbd3bc8141c51a48f672cf76fcad4801bab6b40db1274f76311aa1a1ba5198"
+        },
+        ".data": {
+          "bytes": 48,
+          "sha256": "3b3b3c6c62fb07b61031edcc83cdc131cbb99ea37a426f72802d3c4fe88476f2"
+        }
+      },
+      "new": {
+        ".text": {
+          "bytes": 3500,
+          "sha256": "ca424b0be3384243782ae3eced3bcd545b0066e53fe383d0921e1b1498884105"
+        },
+        ".rodata": {
+          "bytes": 1156,
+          "sha256": "4faf04bd45f0e7e71da395a18cabdc461ec7d9e152743b987f87ab3833260a53"
+        },
+        ".data": {
+          "bytes": 48,
+          "sha256": "3b3b3c6c62fb07b61031edcc83cdc131cbb99ea37a426f72802d3c4fe88476f2"
+        }
+      }
+    },
+    "equal_sections": {
+      ".text": false,
+      ".rodata": false,
+      ".data": true,
+      ".note.gnu.build-id": null
+    },
+    "absent_sections_both": [
+      ".note.gnu.build-id"
+    ],
+    "comment_section_present": false
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so",
+    "payload_sha256": {
+      "old": "dbec2f92ab8b7618331e45f4fa42f5a926afb268406c98626122879942d6c2ac",
+      "new": "89d70a7aec7f050d3e5ecbf5551b4a0db270ee53ff75a6cc4f8193d973f0a08b"
+    },
+    "elf": true,
+    "comment": {
+      "old": "",
+      "new": ""
+    },
+    "sections": {
+      "old": {
+        ".text": {
+          "bytes": 2944,
+          "sha256": "a7d382f18edad8b48aa48ec8b48c8d5a9ac16a221ccfd204f1c65f46c2642b51"
+        },
+        ".rodata": {
+          "bytes": 1988,
+          "sha256": "e00d6473d5591ed435a59027136e85d72edb68baf887f97a45723d90e61656fc"
+        },
+        ".data": {
+          "bytes": 48,
+          "sha256": "3e3d026bcddfc430d4faebf034d91b6d9f688e407d6d1ed370526b575e6c1f9f"
+        }
+      },
+      "new": {
+        ".text": {
+          "bytes": 2944,
+          "sha256": "a7d382f18edad8b48aa48ec8b48c8d5a9ac16a221ccfd204f1c65f46c2642b51"
+        },
+        ".rodata": {
+          "bytes": 1988,
+          "sha256": "e00d6473d5591ed435a59027136e85d72edb68baf887f97a45723d90e61656fc"
+        },
+        ".data": {
+          "bytes": 48,
+          "sha256": "3e3d026bcddfc430d4faebf034d91b6d9f688e407d6d1ed370526b575e6c1f9f"
+        }
+      }
+    },
+    "equal_sections": {
+      ".text": true,
+      ".rodata": true,
+      ".data": true,
+      ".note.gnu.build-id": null
+    },
+    "absent_sections_both": [
+      ".note.gnu.build-id"
+    ],
+    "comment_section_present": false
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so",
+    "payload_sha256": {
+      "old": "7edec5680eb85e6bafcc740d11012ab8cd4d39980ee7071a5c5cea83e97f62af",
+      "new": "d38019d8345389ad165832ac03cea80230d81dcd2fa7f329aece91c9a5c2622f"
+    },
+    "elf": true,
+    "comment": {
+      "old": "",
+      "new": ""
+    },
+    "sections": {
+      "old": {
+        ".text": {
+          "bytes": 10800,
+          "sha256": "0c4c51e1ff3ade50bc161cb0d44999ccd0d2661f555571baacccc6056fd2f9c1"
+        },
+        ".rodata": {
+          "bytes": 5986,
+          "sha256": "9aec2b2a793dc49ec4fadc097f1e30eede43f230bd521e3ddf78306dae529c9d"
+        },
+        ".data": {
+          "bytes": 424,
+          "sha256": "e64c72e2f85fe11fd79bbcf85193f8db704ab43d8cc3ec864d370336d236af08"
+        }
+      },
+      "new": {
+        ".text": {
+          "bytes": 10648,
+          "sha256": "8cee79d2d695ec52653ac6d0d455ec1ec7a4133fde6fa6e12841efeadc5d6259"
+        },
+        ".rodata": {
+          "bytes": 6028,
+          "sha256": "a49fdc85517d3fd4848419392da1a921a5e7321eaaabda9468b41c6ac3533096"
+        },
+        ".data": {
+          "bytes": 424,
+          "sha256": "65d481ec67106b6cc5848434ae9c61a644cae4df4459aae70cee4c6eafaafb1b"
+        }
+      }
+    },
+    "equal_sections": {
+      ".text": false,
+      ".rodata": false,
+      ".data": false,
+      ".note.gnu.build-id": null
+    },
+    "absent_sections_both": [
+      ".note.gnu.build-id"
+    ],
+    "comment_section_present": false
+  },
+  {
+    "package": "resourced",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-process-block.so",
+    "payload_sha256": {
+      "old": "68f7def4a829b41fe60b1e6e86b42bbffbdf4b8f1bbfc2e1b1514a38e9f86133",
+      "new": "6c604301d36d5edccc51ef8e810c6bfb3f3e014276dcb3fda3c6c9495492d289"
+    },
+    "elf": true,
+    "comment": {
+      "old": "",
+      "new": ""
+    },
+    "sections": {
+      "old": {
+        ".text": {
+          "bytes": 3192,
+          "sha256": "75ff949793ec24d1caa38c615979eccd16e4f96d05203ef0ebbcfa1dda31486f"
+        },
+        ".rodata": {
+          "bytes": 1280,
+          "sha256": "8924c8ed74ffe1d7ef240f51b25657e3dd633a5dd378ebe59f16ad8be88631ea"
+        },
+        ".data": {
+          "bytes": 48,
+          "sha256": "2c4f056a77e12795d3fbd5b1499884c138a7053df74cb509b2afe466e92abf47"
+        }
+      },
+      "new": {
+        ".text": {
+          "bytes": 3192,
+          "sha256": "75ff949793ec24d1caa38c615979eccd16e4f96d05203ef0ebbcfa1dda31486f"
+        },
+        ".rodata": {
+          "bytes": 1280,
+          "sha256": "8924c8ed74ffe1d7ef240f51b25657e3dd633a5dd378ebe59f16ad8be88631ea"
+        },
+        ".data": {
+          "bytes": 48,
+          "sha256": "2c4f056a77e12795d3fbd5b1499884c138a7053df74cb509b2afe466e92abf47"
+        }
+      }
+    },
+    "equal_sections": {
+      ".text": true,
+      ".rodata": true,
+      ".data": true,
+      ".note.gnu.build-id": null
+    },
+    "absent_sections_both": [
+      ".note.gnu.build-id"
+    ],
+    "comment_section_present": false
+  },
+  {
+    "package": "resourced-bin",
+    "path": "/usr/bin/resourced",
+    "payload_sha256": {
+      "old": "27e1c7f63df6f35e7e5dbce869764fb278ccb47a00295113dc6aa0a210b343a4",
+      "new": "2ca9b6e91958e46203c2e7b71d91aa9aee9d313279a501a98c1539c7c640cecf"
+    },
+    "elf": true,
+    "comment": {
+      "old": "",
+      "new": ""
+    },
+    "sections": {
+      "old": {
+        ".text": {
+          "bytes": 44800,
+          "sha256": "af97775a4adc9b52e66a49314b2dd08d2795624ec205a3fe6192a3f9b975eca6"
+        },
+        ".rodata": {
+          "bytes": 22215,
+          "sha256": "ae348417bc35b6bf5f8b7a9e7b7c49b0636ea66bc783fe396b708c82670ea89e"
+        },
+        ".data": {
+          "bytes": 704,
+          "sha256": "91f4c8819011237873cc31cf8ac902beb50a059da09d1414b00b4a1e39e8a934"
+        }
+      },
+      "new": {
+        ".text": {
+          "bytes": 45392,
+          "sha256": "5af7b4d7a70e864e96b223d7f00b5bd356dcbc2c2daaa8911620a208fedb52f9"
+        },
+        ".rodata": {
+          "bytes": 22375,
+          "sha256": "43666ce1f3cdd02078fba86412820114241dfd0da4021752a58ad22df3acbbd8"
+        },
+        ".data": {
+          "bytes": 704,
+          "sha256": "14302f6e853f2a335278b56470d68a4951bbfb049a0e706f8915a949f26de2e4"
+        }
+      }
+    },
+    "equal_sections": {
+      ".text": false,
+      ".rodata": false,
+      ".data": false,
+      ".note.gnu.build-id": null
+    },
+    "absent_sections_both": [
+      ".note.gnu.build-id"
+    ],
+    "comment_section_present": false
+  },
+  {
+    "package": "resourced-bin",
+    "path": "/usr/lib/libresourced-private-api.so.10.0.0",
+    "payload_sha256": {
+      "old": "a63e888b47cdc26285f4cd87081755612ed8636a29fb51787e8420ac98bd7108",
+      "new": "c45e4a1b813445e9fae4cca9ec2adf874eed1d2de4c1451af743e0cfd260463f"
+    },
+    "elf": true,
+    "comment": {
+      "old": "",
+      "new": ""
+    },
+    "sections": {
+      "old": {
+        ".text": {
+          "bytes": 96368,
+          "sha256": "9d623765e702a230218079b94ecd45add8922a021ce47e907fd34fb0c4d6d44d"
+        },
+        ".rodata": {
+          "bytes": 40905,
+          "sha256": "40c085a329a83b6f81edd78f1f87218536e387d0fa2de809f460252b78442d82"
+        },
+        ".data": {
+          "bytes": 2856,
+          "sha256": "2af1a5087085dd0e1e162835c1719e9d4cc656399b54df7f5a3aea01f3a34e05"
+        }
+      },
+      "new": {
+        ".text": {
+          "bytes": 96912,
+          "sha256": "15f9f1e94eb2746097d431901430a900c523b59e974ef3c67a4b7da32aade45b"
+        },
+        ".rodata": {
+          "bytes": 41053,
+          "sha256": "6205e9a18c84f5186248264515cbcbbb3dc4c115302e94bd0c9e934ede5a6dbc"
+        },
+        ".data": {
+          "bytes": 2856,
+          "sha256": "d965ce210f170e33e6628bc5a6e49623759214bd45beaaeed3dc3cce00d324c5"
+        }
+      }
+    },
+    "equal_sections": {
+      ".text": false,
+      ".rodata": false,
+      ".data": false,
+      ".note.gnu.build-id": null
+    },
+    "absent_sections_both": [
+      ".note.gnu.build-id"
+    ],
+    "comment_section_present": false
+  },
+  {
+    "package": "resourced-watchdog-handler",
+    "path": "/usr/bin/resourced-watchdog-handler",
+    "payload_sha256": {
+      "old": "282e90ae867d9329b67232f7a096151ebf58b31e6760d4156396b74883c048a5",
+      "new": "c8abb284d84458938f09ac9610f6ecd8c754d5e6a77d02b550c4c8fb4916fd8a"
+    },
+    "elf": true,
+    "comment": {
+      "old": "",
+      "new": ""
+    },
+    "sections": {
+      "old": {
+        ".text": {
+          "bytes": 2088,
+          "sha256": "4af21b1613268603d7caf7e58f83715d68976fda262d29e09e2fa17d638ba2bc"
+        },
+        ".rodata": {
+          "bytes": 1330,
+          "sha256": "4de0f239169a18bc8b5daba9467f30fd081f303d3dd632741d468cf999a031d8"
+        },
+        ".data": {
+          "bytes": 8,
+          "sha256": "35f59b755bddaae5430df7656a22170eedaabbc9f738a296ee1be582ecfc1271"
+        }
+      },
+      "new": {
+        ".text": {
+          "bytes": 2088,
+          "sha256": "4af21b1613268603d7caf7e58f83715d68976fda262d29e09e2fa17d638ba2bc"
+        },
+        ".rodata": {
+          "bytes": 1330,
+          "sha256": "4de0f239169a18bc8b5daba9467f30fd081f303d3dd632741d468cf999a031d8"
+        },
+        ".data": {
+          "bytes": 8,
+          "sha256": "35f59b755bddaae5430df7656a22170eedaabbc9f738a296ee1be582ecfc1271"
+        }
+      }
+    },
+    "equal_sections": {
+      ".text": true,
+      ".rodata": true,
+      ".data": true,
+      ".note.gnu.build-id": null
+    },
+    "absent_sections_both": [
+      ".note.gnu.build-id"
+    ],
+    "comment_section_present": false
+  },
+  {
+    "package": "resourced-watchdog-handler",
+    "path": "/usr/bin/resourced-watchdog-handler.sh",
+    "payload_sha256": {
+      "old": "c2d37b1df59716ca2081f3c450ee84262bb0bee8acbad929089c782cd067edb2",
+      "new": "ff878a2efe9adb904a28f220eae9e4adfd299148cf42aa2586c0de05229e5104"
+    },
+    "elf": false
+  }
+]

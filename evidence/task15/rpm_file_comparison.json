@@ -1,0 +1,178 @@
+{
+  "method": "GBS-root ARM rpm -qp file manifests; compare modes, payload digests, symlink targets and regular-file sizes; no install. Old ARM RPMs SHA-verified against QB metadata.",
+  "packages": [
+    {
+      "name": "resourced",
+      "old_nvr": "resourced-10.0.0-1",
+      "new_nvr": "resourced-10.0.0-1",
+      "added": [],
+      "deleted": [],
+      "changed": [
+        {
+          "path": "/usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so",
+          "changes": {
+            "digest": {
+              "old": "a29ca6bbe7c41561f0520dcbac59bcaa61706499b5207361e3ee344bd333185d",
+              "new": "d1f042388ec1d188c63c23f83c8b73fbf238d8385f451585b6bb01d8a8b06f7b"
+            }
+          }
+        },
+        {
+          "path": "/usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so",
+          "changes": {
+            "digest": {
+              "old": "8214a8d224f9f8cb4ed641646b6ad30ecf21b5f7c999f12c0823c07c9cb39ff9",
+              "new": "3d22c4e7ed6bb81c4af36c5ed21eb365ffa2dd500955654f403378710b1ece24"
+            }
+          }
+        },
+        {
+          "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so",
+          "changes": {
+            "digest": {
+              "old": "7c66b641aad622cdd716cb9a04d038971d87db795a8b0db5bcb05b233019435f",
+              "new": "287c4098b817bf5b242981898a79a27970d26c5e4c3d2eb8cc038dd0b4bf913b"
+            }
+          }
+        },
+        {
+          "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so",
+          "changes": {
+            "digest": {
+              "old": "1393781ed359247d65816366f705cf67638df5d4b08d24a6e0ab539513820e06",
+              "new": "9b6e4bfb8367a25320c3ec24a7704b3b1a1f6e0e934d4ab82bf3faf36cfb93d9"
+            }
+          }
+        },
+        {
+          "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so",
+          "changes": {
+            "digest": {
+              "old": "dbec2f92ab8b7618331e45f4fa42f5a926afb268406c98626122879942d6c2ac",
+              "new": "89d70a7aec7f050d3e5ecbf5551b4a0db270ee53ff75a6cc4f8193d973f0a08b"
+            }
+          }
+        },
+        {
+          "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so",
+          "changes": {
+            "digest": {
+              "old": "7edec5680eb85e6bafcc740d11012ab8cd4d39980ee7071a5c5cea83e97f62af",
+              "new": "d38019d8345389ad165832ac03cea80230d81dcd2fa7f329aece91c9a5c2622f"
+            }
+          }
+        },
+        {
+          "path": "/usr/lib/resourced/plugins/libplugin-resourced-process-block.so",
+          "changes": {
+            "digest": {
+              "old": "68f7def4a829b41fe60b1e6e86b42bbffbdf4b8f1bbfc2e1b1514a38e9f86133",
+              "new": "6c604301d36d5edccc51ef8e810c6bfb3f3e014276dcb3fda3c6c9495492d289"
+            }
+          }
+        }
+      ],
+      "unchanged_count": 3
+    },
+    {
+      "name": "resourced-bin",
+      "old_nvr": "resourced-bin-10.0.0-1",
+      "new_nvr": "resourced-bin-10.0.0-1",
+      "added": [],
+      "deleted": [],
+      "changed": [
+        {
+          "path": "/usr/bin/resourced",
+          "changes": {
+            "digest": {
+              "old": "27e1c7f63df6f35e7e5dbce869764fb278ccb47a00295113dc6aa0a210b343a4",
+              "new": "2ca9b6e91958e46203c2e7b71d91aa9aee9d313279a501a98c1539c7c640cecf"
+            },
+            "size": {
+              "old": 90564,
+              "new": 93844
+            }
+          }
+        },
+        {
+          "path": "/usr/lib/libresourced-private-api.so.10.0.0",
+          "changes": {
+            "digest": {
+              "old": "a63e888b47cdc26285f4cd87081755612ed8636a29fb51787e8420ac98bd7108",
+              "new": "c45e4a1b813445e9fae4cca9ec2adf874eed1d2de4c1451af743e0cfd260463f"
+            },
+            "size": {
+              "old": 185816,
+              "new": 185824
+            }
+          }
+        }
+      ],
+      "unchanged_count": 5
+    },
+    {
+      "name": "resourced-config",
+      "old_nvr": "resourced-config-10.0.0-1",
+      "new_nvr": "resourced-config-10.0.0-1",
+      "added": [],
+      "deleted": [],
+      "changed": [],
+      "unchanged_count": 9
+    },
+    {
+      "name": "resourced-isu",
+      "old_nvr": "resourced-isu-10.0.0-1",
+      "new_nvr": "resourced-isu-10.0.0-1",
+      "added": [],
+      "deleted": [],
+      "changed": [],
+      "unchanged_count": 5
+    },
+    {
+      "name": "resourced-watchdog-handler",
+      "old_nvr": "resourced-watchdog-handler-10.0.0-1",
+      "new_nvr": "resourced-watchdog-handler-10.0.0-1",
+      "added": [],
+      "deleted": [],
+      "changed": [
+        {
+          "path": "/usr/bin/resourced-watchdog-handler",
+          "changes": {
+            "digest": {
+              "old": "282e90ae867d9329b67232f7a096151ebf58b31e6760d4156396b74883c048a5",
+              "new": "c8abb284d84458938f09ac9610f6ecd8c754d5e6a77d02b550c4c8fb4916fd8a"
+            }
+          }
+        },
+        {
+          "path": "/usr/bin/resourced-watchdog-handler.sh",
+          "changes": {
+            "digest": {
+              "old": "c2d37b1df59716ca2081f3c450ee84262bb0bee8acbad929089c782cd067edb2",
+              "new": "ff878a2efe9adb904a28f220eae9e4adfd299148cf42aa2586c0de05229e5104"
+            },
+            "size": {
+              "old": 97,
+              "new": 95
+            }
+          }
+        }
+      ],
+      "unchanged_count": 2
+    }
+  ],
+  "new_packages_not_in_old_image": [
+    "resourced-bin-debuginfo",
+    "resourced-config-iot-headless",
+    "resourced-config-tv",
+    "resourced-debuginfo",
+    "resourced-debugsource",
+    "resourced-light",
+    "resourced-monitor",
+    "resourced-monitor-debuginfo",
+    "resourced-private-api-devel",
+    "resourced-tests",
+    "resourced-tests-debuginfo",
+    "resourced-watchdog-handler-debuginfo"
+  ]
+}

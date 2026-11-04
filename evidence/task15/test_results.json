@@ -1,0 +1,402 @@
+{
+  "ctest_executions": [
+    {
+      "line": 1762,
+      "index": 1,
+      "total": 21,
+      "name": "test-reclaim-io",
+      "result": "Passed"
+    },
+    {
+      "line": 1768,
+      "index": 2,
+      "total": 21,
+      "name": "test-file-write-errors",
+      "result": "Passed"
+    },
+    {
+      "line": 1776,
+      "index": 3,
+      "total": 21,
+      "name": "test-integer-read-errors",
+      "result": "Passed"
+    },
+    {
+      "line": 1780,
+      "index": 4,
+      "total": 21,
+      "name": "test-heart-dbus",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1785,
+      "index": 5,
+      "total": 21,
+      "name": "test-heart-battery",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1790,
+      "index": 6,
+      "total": 21,
+      "name": "test-heart-memory",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1794,
+      "index": 7,
+      "total": 21,
+      "name": "test-heart-cpu",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1796,
+      "index": 8,
+      "total": 21,
+      "name": "test-heart-others",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1799,
+      "index": 9,
+      "total": 21,
+      "name": "test-swap",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1803,
+      "index": 10,
+      "total": 21,
+      "name": "test-swap-others",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1805,
+      "index": 11,
+      "total": 21,
+      "name": "test-proc-process",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1809,
+      "index": 12,
+      "total": 21,
+      "name": "test-proc-others",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1811,
+      "index": 13,
+      "total": 21,
+      "name": "test-mem-stress",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1819,
+      "index": 14,
+      "total": 21,
+      "name": "test-memory-others",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1823,
+      "index": 15,
+      "total": 21,
+      "name": "test-freezer",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1825,
+      "index": 16,
+      "total": 21,
+      "name": "test-cpu",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1827,
+      "index": 17,
+      "total": 21,
+      "name": "test-block",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1829,
+      "index": 18,
+      "total": 21,
+      "name": "test-block-monitor",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1831,
+      "index": 19,
+      "total": 21,
+      "name": "test-common-procfs",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1835,
+      "index": 20,
+      "total": 21,
+      "name": "test-proc-watchdog-handler",
+      "result": "***Skipped"
+    },
+    {
+      "line": 1837,
+      "index": 21,
+      "total": 21,
+      "name": "test-init-plugin-loader",
+      "result": "Passed"
+    },
+    {
+      "line": 2217,
+      "index": 1,
+      "total": 21,
+      "name": "test-reclaim-io",
+      "result": "Passed"
+    },
+    {
+      "line": 2219,
+      "index": 2,
+      "total": 21,
+      "name": "test-file-write-errors",
+      "result": "Passed"
+    },
+    {
+      "line": 2221,
+      "index": 3,
+      "total": 21,
+      "name": "test-integer-read-errors",
+      "result": "Passed"
+    },
+    {
+      "line": 2223,
+      "index": 4,
+      "total": 21,
+      "name": "test-heart-dbus",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2225,
+      "index": 5,
+      "total": 21,
+      "name": "test-heart-battery",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2227,
+      "index": 6,
+      "total": 21,
+      "name": "test-heart-memory",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2229,
+      "index": 7,
+      "total": 21,
+      "name": "test-heart-cpu",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2231,
+      "index": 8,
+      "total": 21,
+      "name": "test-heart-others",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2233,
+      "index": 9,
+      "total": 21,
+      "name": "test-swap",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2235,
+      "index": 10,
+      "total": 21,
+      "name": "test-swap-others",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2237,
+      "index": 11,
+      "total": 21,
+      "name": "test-proc-process",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2239,
+      "index": 12,
+      "total": 21,
+      "name": "test-proc-others",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2241,
+      "index": 13,
+      "total": 21,
+      "name": "test-mem-stress",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2243,
+      "index": 14,
+      "total": 21,
+      "name": "test-memory-others",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2245,
+      "index": 15,
+      "total": 21,
+      "name": "test-freezer",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2247,
+      "index": 16,
+      "total": 21,
+      "name": "test-cpu",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2249,
+      "index": 17,
+      "total": 21,
+      "name": "test-block",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2251,
+      "index": 18,
+      "total": 21,
+      "name": "test-block-monitor",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2253,
+      "index": 19,
+      "total": 21,
+      "name": "test-common-procfs",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2255,
+      "index": 20,
+      "total": 21,
+      "name": "test-proc-watchdog-handler",
+      "result": "***Skipped"
+    },
+    {
+      "line": 2257,
+      "index": 21,
+      "total": 21,
+      "name": "test-init-plugin-loader",
+      "result": "Passed"
+    }
+  ],
+  "execution_counts": {
+    "Passed": 8,
+    "***Skipped": 34,
+    "***Failed": 0,
+    "***Exception": 0
+  },
+  "unique_tests": 21,
+  "unique_passed": [
+    "test-file-write-errors",
+    "test-init-plugin-loader",
+    "test-integer-read-errors",
+    "test-reclaim-io"
+  ],
+  "unique_skipped": [
+    "test-block",
+    "test-block-monitor",
+    "test-common-procfs",
+    "test-cpu",
+    "test-freezer",
+    "test-heart-battery",
+    "test-heart-cpu",
+    "test-heart-dbus",
+    "test-heart-memory",
+    "test-heart-others",
+    "test-mem-stress",
+    "test-memory-others",
+    "test-proc-others",
+    "test-proc-process",
+    "test-proc-watchdog-handler",
+    "test-swap",
+    "test-swap-others"
+  ],
+  "new_groups": {
+    "test-reclaim-io": [
+      {
+        "line": 1762,
+        "index": 1,
+        "total": 21,
+        "name": "test-reclaim-io",
+        "result": "Passed"
+      },
+      {
+        "line": 2217,
+        "index": 1,
+        "total": 21,
+        "name": "test-reclaim-io",
+        "result": "Passed"
+      }
+    ],
+    "test-file-write-errors": [
+      {
+        "line": 1768,
+        "index": 2,
+        "total": 21,
+        "name": "test-file-write-errors",
+        "result": "Passed"
+      },
+      {
+        "line": 2219,
+        "index": 2,
+        "total": 21,
+        "name": "test-file-write-errors",
+        "result": "Passed"
+      }
+    ],
+    "test-integer-read-errors": [
+      {
+        "line": 1776,
+        "index": 3,
+        "total": 21,
+        "name": "test-integer-read-errors",
+        "result": "Passed"
+      },
+      {
+        "line": 2221,
+        "index": 3,
+        "total": 21,
+        "name": "test-integer-read-errors",
+        "result": "Passed"
+      }
+    ]
+  },
+  "last_test_logs": [
+    {
+      "path": "temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/Testing/Temporary/LastTest.log",
+      "sha256": "2311ea0a1548054be2eeeacc273e2869a1eb8847d52a13cd7d21548f26aed2d8",
+      "cmocka_passed_lines": [
+        "[  PASSED  ] 3 test(s).",
+        "[  PASSED  ] 1 test(s).",
+        "[  PASSED  ] 1 test(s).",
+        "[  PASSED  ] 6 test(s)."
+      ],
+      "cmocka_case_passes": 11
+    }
+  ],
+  "new_groups_passed": true,
+  "cmocka_last_recorded_round": {
+    "passed_cases": 11,
+    "failed_cases": 0,
+    "skipped_cases": 0,
+    "new_cases": 5,
+    "existing_plugin_loader_cases": 6,
+    "detail": "LastTest.log retains final round only. Build log proves both rounds of 4 groups passed; do not label 17 CTest SKIP_RETURN_CODE=77 groups as executed cmocka cases."
+  }
+}

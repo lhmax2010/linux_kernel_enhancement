@@ -1,0 +1,169 @@
+$ git log --format=%H %s b0bbb7c5..origin/tizen
+82e79c09ea80c1977dfb27d3752577c74340f9bc lowmem-controller: Keep memory-limited apps in Private cgroup on BackgroundMru
+1d529ce7b24d7b4c3a8fca7c25c4173a228c6f01 Convert shell scripts from bash to dash compatibility
+
+EXIT=0
+
+$ git diff --stat b0bbb7c5 origin/tizen
+ packaging/resourced.spec                        | 12 ++--
+ src/resource-limiter/memory/lowmem-controller.c | 92 ++++++++++++++++++++++++-
+ tests/run_tests.sh                              | 59 +++++++++-------
+ watchdog/resourced-watchdog-handler.sh          |  2 +-
+ 4 files changed, 130 insertions(+), 35 deletions(-)
+
+EXIT=0
+
+$ git diff b0bbb7c5 origin/tizen -- packaging/resourced.spec tests/run_tests.sh watchdog/resourced-watchdog-handler.sh
+diff --git a/packaging/resourced.spec b/packaging/resourced.spec
+index 75cdfda..e22fd2b 100644
+--- a/packaging/resourced.spec
++++ b/packaging/resourced.spec
+@@ -161,7 +161,8 @@ Requires:	%{name}-monitor = %{version}-%{release}
+ 
+ %build
+ mkdir -p build
+-pushd build
++_resourced_srcdir=$(pwd)
++cd build
+ %cmake .. -DFULLVER=%{version}                        \
+ 	 -DCMAKE_BUILD_TYPE=Release                       \
+ 	 -DISU_ARCH_BIT=%{ISU_ARCH_BIT}                   \
+@@ -185,24 +186,25 @@ pushd build
+ 	 %{?asan:-DASAN_BUILD=True}
+ 
+ make %{?jobs:-j%jobs}
+-popd
++cd "$_resourced_srcdir"
+ 
+ LIB_DIR=%{_libdir}
+ sed -ie s,"##LIBDIR##,$LIB_DIR,g" isu/isu.cfg
+ RD_PLUGIN_PATH=%{plugindir}
+ RD_PLUGIN_MOUNT_NAME=$(systemd-escape $RD_PLUGIN_PATH).mount
+-RD_PLUGIN_MOUNT_NAME=$(cut -c2- <<< $RD_PLUGIN_MOUNT_NAME) > /dev/null
++RD_PLUGIN_MOUNT_NAME=${RD_PLUGIN_MOUNT_NAME#?}
+ sed -ie s,"##PLUGIN_MOUNT##,$RD_PLUGIN_MOUNT_NAME,g" isu/isu.cfg
+ sed -ie s,"##PLUGIN_MOUNT##,$RD_PLUGIN_MOUNT_NAME,g" isu/resourced.service
+ sed -ie s,"##PLUGIN_LIB_DIR##,$RD_PLUGIN_PATH,g" isu/usr-lib-resourced-plugins.mount
+ 
+ %install
+ rm -rf %{buildroot}
+-pushd build
++_resourced_srcdir=$(pwd)
++cd build
+ %make_install
+ mkdir -p %{buildroot}/%{TZ_SYS_DATA}/heart
+ mkdir -p %{buildroot}/%{TZ_SYS_DB}
+-popd
++cd "$_resourced_srcdir"
+ 
+ %if "%{asan}" == "1"
+ mkdir -p %{buildroot}%{_unitdir}/resourced.service.d
+diff --git a/tests/run_tests.sh b/tests/run_tests.sh
+index 487c59f..b0f9b69 100644
+--- a/tests/run_tests.sh
++++ b/tests/run_tests.sh
+@@ -1,45 +1,52 @@
+ #!/bin/sh
+ 
+-cd $(dirname $0)
++cd "$(dirname "$0")"
+ 
+-declare -a cnt
+-cnt=(0 0 0)
+-function inc_testno { cnt[0]=$((cnt[0] + 1)); }
+-function inc_errors { cnt[1]=$((cnt[1] + 1)); }
+-function inc_skips  { cnt[2]=$((cnt[2] + 1)); }
++cnt_total=0
++cnt_errors=0
++cnt_skips=0
+ 
+-function test_name { echo "test_${cnt[0]}"; }
+-function test_result {
++inc_testno() { cnt_total=$((cnt_total + 1)); }
++inc_errors() { cnt_errors=$((cnt_errors + 1)); }
++inc_skips()  { cnt_skips=$((cnt_skips + 1)); }
++
++test_name() { echo "test_${cnt_total}"; }
++
++test_result() {
+   inc_testno
+-  echo -n "$(test_name): "
+-  if [[ $1 = "0" ]]; then
+-    echo -n "OK  "
+-  elif [[ $1 = "7" ]]; then
+-    echo -n "SKIP  "
++  printf "%s: " "$(test_name)"
++  ret="$1"
++  shift
++  if [ "$ret" = "0" ]; then
++    printf "OK  "
++  elif [ "$ret" = "7" ]; then
++    printf "SKIP  "
+     inc_skips
+   else
+-    echo -n "FAIL"
++    printf "FAIL"
+     inc_errors
+   fi
+-  echo " ${@:2}"
++  echo " $*"
+ }
+-function print_info {
+-  tt=$((($(date +%s%N) - $ts)/1000000))
++
++print_info() {
++  tt=$((($(date +%s%N) - ts) / 1000000))
+   echo "----------------------------------------------------------------------"
+-  echo -n "Ran ${cnt[0]} tests in "
+-  echo -n $tt | awk '{ printf("%d.%03d", int($1/1000), int($1%1000)); }'
+-  echo -e "s\n"
+-  if (( cnt[1] == 0 )); then
++  printf "Ran %d tests in " "$cnt_total"
++  printf "%s" "$tt" | awk '{ printf("%d.%03d", int($1/1000), int($1%1000)); }'
++  printf "s\n\n"
++  if [ "$cnt_skips" -ne 0 ]; then
++    echo "SKIPPED (skpped=$cnt_skips)"
++  fi
++  if [ "$cnt_errors" -eq 0 ]; then
+     echo OK
+     exit 0
+   else
+-    echo "FAILED (failures=${cnt[1]})"
+-    exit ${cnt[1]}
+-  fi
+-  if (( cnt[2] != 0 )); then
+-      echo "SKIPPED (skpped=${cnt[2]})"
++    echo "FAILED (failures=$cnt_errors)"
++    exit "$cnt_errors"
+   fi
+ }
++
+ ts=$(date +%s%N)
+ 
+ ./watchdog-test
+diff --git a/watchdog/resourced-watchdog-handler.sh b/watchdog/resourced-watchdog-handler.sh
+index 9ead04f..02d883a 100644
+--- a/watchdog/resourced-watchdog-handler.sh
++++ b/watchdog/resourced-watchdog-handler.sh
+@@ -1,4 +1,4 @@
+-#!/bin/bash -l
++#!/bin/sh -l
+ PATH=/bin:/usr/bin:/sbin:/usr/sbin
+ 
+ exec /usr/bin/resourced-watchdog-handler "$@"
+
+EXIT=0
+
+$ git diff --name-only origin/tizen HEAD
+src/common/cgroup/cgroup.c
+src/common/file-helper.c
+src/resource-limiter/memory/lowmem-controller.c
+src/resource-optimizer/memory/compaction.c
+src/resource-optimizer/memory/swap/swap.c
+src/resource-optimizer/memory/swap/zramswap.c
+tests/CMakeLists.txt
+tests/test-file-write-errors.c
+tests/test-integer-read-errors.c
+tests/test-reclaim-io.c
+
+EXIT=0

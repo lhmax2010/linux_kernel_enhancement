@@ -1,0 +1,352 @@
+Start testing: Nov 04 15:21 UTC
+----------------------------------------------------------
+1/21 Testing: test-reclaim-io
+1/21 Test: test-reclaim-io
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-reclaim-io"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-reclaim-io" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+[==========] tests: Running 3 test(s).
+[ RUN      ] test_reclaim_results
+[       OK ] test_reclaim_results
+[ RUN      ] test_reclaim_open_and_close
+[       OK ] test_reclaim_open_and_close
+[ RUN      ] test_reclaim_long_path
+[       OK ] test_reclaim_long_path
+[==========] tests: 3 test(s) run.
+[  PASSED  ] 3 test(s).
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"test-reclaim-io" end time: Nov 04 15:21 UTC
+"test-reclaim-io" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/21 Testing: test-file-write-errors
+2/21 Test: test-file-write-errors
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-file-write-errors"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-file-write-errors" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+[==========] tests: Running 1 test(s).
+[ RUN      ] test_write_completion
+[       OK ] test_write_completion
+[==========] tests: 1 test(s) run.
+[  PASSED  ] 1 test(s).
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"test-file-write-errors" end time: Nov 04 15:21 UTC
+"test-file-write-errors" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/21 Testing: test-integer-read-errors
+3/21 Test: test-integer-read-errors
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-integer-read-errors"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-integer-read-errors" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+[==========] tests: Running 1 test(s).
+[ RUN      ] test_invalid_samples
+[       OK ] test_invalid_samples
+[==========] tests: 1 test(s) run.
+[  PASSED  ] 1 test(s).
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"test-integer-read-errors" end time: Nov 04 15:21 UTC
+"test-integer-read-errors" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/21 Testing: test-heart-dbus
+4/21 Test: test-heart-dbus
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-heart-dbus"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-heart-dbus" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"test-heart-dbus" end time: Nov 04 15:21 UTC
+"test-heart-dbus" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/21 Testing: test-heart-battery
+5/21 Test: test-heart-battery
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-heart-battery"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-heart-battery" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-heart-battery" end time: Nov 04 15:21 UTC
+"test-heart-battery" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/21 Testing: test-heart-memory
+6/21 Test: test-heart-memory
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-heart-memory"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-heart-memory" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-heart-memory" end time: Nov 04 15:21 UTC
+"test-heart-memory" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/21 Testing: test-heart-cpu
+7/21 Test: test-heart-cpu
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-heart-cpu"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-heart-cpu" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-heart-cpu" end time: Nov 04 15:21 UTC
+"test-heart-cpu" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/21 Testing: test-heart-others
+8/21 Test: test-heart-others
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-heart-others"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-heart-others" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-heart-others" end time: Nov 04 15:21 UTC
+"test-heart-others" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/21 Testing: test-swap
+9/21 Test: test-swap
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-swap"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-swap" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-swap" end time: Nov 04 15:21 UTC
+"test-swap" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/21 Testing: test-swap-others
+10/21 Test: test-swap-others
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-swap-others"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-swap-others" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-swap-others" end time: Nov 04 15:21 UTC
+"test-swap-others" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/21 Testing: test-proc-process
+11/21 Test: test-proc-process
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-proc-process"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-proc-process" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-proc-process" end time: Nov 04 15:21 UTC
+"test-proc-process" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/21 Testing: test-proc-others
+12/21 Test: test-proc-others
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-proc-others"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-proc-others" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-proc-others" end time: Nov 04 15:21 UTC
+"test-proc-others" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/21 Testing: test-mem-stress
+13/21 Test: test-mem-stress
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-mem-stress"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-mem-stress" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-mem-stress" end time: Nov 04 15:21 UTC
+"test-mem-stress" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/21 Testing: test-memory-others
+14/21 Test: test-memory-others
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-memory-others"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-memory-others" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-memory-others" end time: Nov 04 15:21 UTC
+"test-memory-others" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/21 Testing: test-freezer
+15/21 Test: test-freezer
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-freezer"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-freezer" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-freezer" end time: Nov 04 15:21 UTC
+"test-freezer" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/21 Testing: test-cpu
+16/21 Test: test-cpu
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-cpu"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-cpu" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-cpu" end time: Nov 04 15:21 UTC
+"test-cpu" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/21 Testing: test-block
+17/21 Test: test-block
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-block"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-block" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-block" end time: Nov 04 15:21 UTC
+"test-block" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/21 Testing: test-block-monitor
+18/21 Test: test-block-monitor
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-block-monitor"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-block-monitor" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-block-monitor" end time: Nov 04 15:21 UTC
+"test-block-monitor" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/21 Testing: test-common-procfs
+19/21 Test: test-common-procfs
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-common-procfs"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-common-procfs" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-common-procfs" end time: Nov 04 15:21 UTC
+"test-common-procfs" time elapsed: 00:00:00
+----------------------------------------------------------
+
+20/21 Testing: test-proc-watchdog-handler
+20/21 Test: test-proc-watchdog-handler
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-proc-watchdog-handler"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-proc-watchdog-handler" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"test-proc-watchdog-handler" end time: Nov 04 15:21 UTC
+"test-proc-watchdog-handler" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/21 Testing: test-init-plugin-loader
+21/21 Test: test-init-plugin-loader
+Command: "/home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests/test-init-plugin-loader"
+Directory: /home/abuild/rpmbuild/BUILD/resourced-10.0.0/build/tests
+"test-init-plugin-loader" start time: Nov 04 15:21 UTC
+Output:
+----------------------------------------------------------
+[==========] tests: Running 6 test(s).
+[ RUN      ] test_plugins_fully_configured_and_active
+[       OK ] test_plugins_fully_configured_and_active
+[ RUN      ] test_plugins_configured_as_inactive
+[       OK ] test_plugins_configured_as_inactive
+[ RUN      ] test_plugins_with_configuration_sections_missing
+[       OK ] test_plugins_with_configuration_sections_missing
+[ RUN      ] test_plugins_with_physical_files_missing
+[       OK ] test_plugins_with_physical_files_missing
+[ RUN      ] test_plugins_invalid_arguments
+[       OK ] test_plugins_invalid_arguments
+[ RUN      ] test_heart_unload_and_call_safety
+[       OK ] test_heart_unload_and_call_safety
+[==========] tests: 6 test(s) run.
+[  PASSED  ] 6 test(s).
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"test-init-plugin-loader" end time: Nov 04 15:21 UTC
+"test-init-plugin-loader" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 04 15:21 UTC

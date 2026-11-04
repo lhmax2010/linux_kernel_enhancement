@@ -1,0 +1,8 @@
+{
+  "file": "temp/task15/GBS-ROOT-RESOURCED/local/repos/tizen_unified_standard/armv7l/SRPMS/resourced-10.0.0-1.src.rpm",
+  "bytes": 329241,
+  "sha256": "f8bab9f76a0e2e04a73496c234b012781f2368bb378cae14b729ddb3e7b13f6e",
+  "rpm_query": "resourced\t10.0.0\t1\tarmv7l\t0",
+  "query_exit": 0,
+  "note": "Source RPM; separate from 17 armv7l binary packages."
+}

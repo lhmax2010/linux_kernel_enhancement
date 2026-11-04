@@ -1,0 +1,5 @@
+{
+  "clang": "clang version 22.1.8\nTarget: armv7l-tizen-linux-gnueabi\nThread model: posix\nInstalledDir: /usr/bin\nConfiguration file: /usr/bin/clang.cfg\n",
+  "lld": "LLD 22.1.8 (compatible with GNU linkers)\n",
+  "rpm": "RPM version 4.14.1\n"
+}
