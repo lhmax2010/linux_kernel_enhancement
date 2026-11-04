@@ -1,0 +1,152 @@
+[
+  {
+    "path": "temp/task12/build_kernel.log",
+    "bytes": 986714,
+    "lines": 15663,
+    "sha256": "5f226a489895887d9817aecaae77fffabba6f894b90a610ba0e2f6cac92a10d4"
+  },
+  {
+    "path": "temp/task12/build_kernel.log.raw",
+    "bytes": 986611,
+    "lines": 15660,
+    "sha256": "a438e05b0f4a59535628f367a2c0f0a30862bb22c3641b5ac2c5738f993f611e"
+  },
+  {
+    "path": "temp/task12/build_modsrc.log",
+    "bytes": 58856,
+    "lines": 596,
+    "sha256": "d0ce5d49f3462496ba384ecbb44a4557ddaf2b36347209f51552338420381389"
+  },
+  {
+    "path": "temp/task12/build_modsrc.log.raw",
+    "bytes": 58753,
+    "lines": 593,
+    "sha256": "851e91993c2bbe6674724a3bac6b91a31b8506128c083fbc761f44b34870cb3c"
+  },
+  {
+    "path": "temp/task12/build_modules.log",
+    "bytes": 48333,
+    "lines": 612,
+    "sha256": "53cde4f3a7aafc4d1b6a4eb9357cd0bd9971ee9ae7c462db28d30a96f82aeab4"
+  },
+  {
+    "path": "temp/task12/build_modules.log.raw",
+    "bytes": 48229,
+    "lines": 609,
+    "sha256": "9cc1a4dea8b8239cb273db2eee7b87ddd1c638532b97171e8177a9a9e63211cc"
+  },
+  {
+    "path": "temp/task12/existing_processes.txt",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "temp/task12/kernel.external_paths.txt",
+    "bytes": 26918,
+    "lines": 514,
+    "sha256": "e7ccbac2f7a59978e031a0319c9fe606912ccc2ff5f69096754ea5320c248979"
+  },
+  {
+    "path": "temp/task12/kernel.external_review.txt",
+    "bytes": 33889,
+    "lines": 518,
+    "sha256": "328819967ee8497427ab2231fe01bff5e5a75c2858f1c796d91523f9e4a0d93c"
+  },
+  {
+    "path": "temp/task12/kernel.observed_outside.txt",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "temp/task12/kernel.processes.log",
+    "bytes": 118974,
+    "lines": 515,
+    "sha256": "46b60f2cdadcbd70fa51774882ec1c6e46d03ff3c68e892840f0740aa264260d"
+  },
+  {
+    "path": "temp/task12/modsrc.external_paths.txt",
+    "bytes": 3144,
+    "lines": 54,
+    "sha256": "e1a8be2cdfe70cd5c7abffea28b7389fcf9cfa070f29afc907216ce55e7d83bc"
+  },
+  {
+    "path": "temp/task12/modsrc.external_review.txt",
+    "bytes": 4072,
+    "lines": 58,
+    "sha256": "c799cb6a6fab886c679fe08e3b611541e21618ed7ac14d995c1e3aac891580c9"
+  },
+  {
+    "path": "temp/task12/modsrc.observed_outside.txt",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "temp/task12/modsrc.processes.log",
+    "bytes": 119073,
+    "lines": 525,
+    "sha256": "1bb47c472781649bbd357d8218bc17ed26e4efa4b93f8523fbbde4c1c3514b25"
+  },
+  {
+    "path": "temp/task12/modules.external_paths.txt",
+    "bytes": 2689,
+    "lines": 42,
+    "sha256": "c072f8a6328f2430a909bb53fb0f27beef78dc035f897b1f9c3a0a5c42bc78df"
+  },
+  {
+    "path": "temp/task12/modules.external_review.txt",
+    "bytes": 3461,
+    "lines": 46,
+    "sha256": "1eb46dbcc87d910de7a1d6ecf6a361ef43b7651524d5b423fcd342e4eff4c78f"
+  },
+  {
+    "path": "temp/task12/modules.observed_outside.txt",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "temp/task12/modules.processes.log",
+    "bytes": 121042,
+    "lines": 525,
+    "sha256": "744485a59e3b2fe36545a2383b11864b4177f5445dafee7eeeefe2406ff0c30c"
+  },
+  {
+    "path": "temp/task12/run_task12_build.log",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "temp/task12/status.txt",
+    "bytes": 478,
+    "lines": 6,
+    "sha256": "3e2b3917c03c3ad51098c530f7a409b74b2fde26e189ab648f6f8ab08f9442f2"
+  },
+  {
+    "path": "temp/task12/task12_kernel.pgid",
+    "bytes": 8,
+    "lines": 1,
+    "sha256": "d160a91a418aff61e5ae8d6af712cbd40ce0ff05688673f53f3adc65357de888"
+  },
+  {
+    "path": "temp/task12/task12_modsrc.pgid",
+    "bytes": 8,
+    "lines": 1,
+    "sha256": "94812be682606ab10eb3747ba5a906cb489363a643e987bf9617746a7513d0c8"
+  },
+  {
+    "path": "temp/task12/task12_modules.pgid",
+    "bytes": 8,
+    "lines": 1,
+    "sha256": "1e04931c374c9ec4f2e5f46081a7260d388d6f525f66fcb59a936560f11d6550"
+  },
+  {
+    "path": "temp/task12/task12_supervisor.pgid",
+    "bytes": 8,
+    "lines": 1,
+    "sha256": "a231b8d91ea8f5154fc6b717812ee8d5b46d373064c34401e2ed3849a3207cce"
+  }
+]

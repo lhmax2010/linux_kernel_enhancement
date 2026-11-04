@@ -1,0 +1,359 @@
+[
+  {
+    "time": "2026-11-04T15:00:18.934614+08:00",
+    "stop_conditions": [],
+    "phases": {
+      "supervisor": {
+        "pgid": "1038573",
+        "live_group_processes": 1,
+        "log_lines": null,
+        "log_bytes": null,
+        "silent_seconds": null,
+        "work_command_names": []
+      },
+      "kernel": {
+        "pgid": "1038698",
+        "live_group_processes": 9,
+        "log_lines": 13,
+        "log_bytes": 1310,
+        "silent_seconds": 0.0,
+        "work_command_names": [
+          "git",
+          "xz"
+        ]
+      },
+      "modsrc": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 0.0,
+        "work_command_names": []
+      },
+      "modules": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 0.0,
+        "work_command_names": []
+      }
+    }
+  },
+  {
+    "time": "2026-11-04T15:10:18.955158+08:00",
+    "stop_conditions": [],
+    "phases": {
+      "supervisor": {
+        "pgid": "1038573",
+        "live_group_processes": 1,
+        "log_lines": null,
+        "log_bytes": null,
+        "silent_seconds": null,
+        "work_command_names": []
+      },
+      "kernel": {
+        "pgid": "1038698",
+        "live_group_processes": 9,
+        "log_lines": 3064,
+        "log_bytes": 197394,
+        "silent_seconds": 0.0,
+        "work_command_names": [
+          "qemu-arm"
+        ]
+      },
+      "modsrc": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 600.0205407142639,
+        "work_command_names": []
+      },
+      "modules": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 600.0205407142639,
+        "work_command_names": []
+      }
+    }
+  },
+  {
+    "time": "2026-11-04T15:20:19.063998+08:00",
+    "stop_conditions": [],
+    "phases": {
+      "supervisor": {
+        "pgid": "1038573",
+        "live_group_processes": 1,
+        "log_lines": null,
+        "log_bytes": null,
+        "silent_seconds": null,
+        "work_command_names": []
+      },
+      "kernel": {
+        "pgid": "1038698",
+        "live_group_processes": 9,
+        "log_lines": 12194,
+        "log_bytes": 686261,
+        "silent_seconds": 0.0,
+        "work_command_names": [
+          "qemu-arm"
+        ]
+      },
+      "modsrc": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 1200.1293823719025,
+        "work_command_names": []
+      },
+      "modules": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 1200.1293823719025,
+        "work_command_names": []
+      }
+    }
+  },
+  {
+    "time": "2026-11-04T15:30:19.205579+08:00",
+    "stop_conditions": [],
+    "phases": {
+      "supervisor": {
+        "pgid": "1038573",
+        "live_group_processes": 1,
+        "log_lines": null,
+        "log_bytes": null,
+        "silent_seconds": null,
+        "work_command_names": []
+      },
+      "kernel": {
+        "pgid": "1038698",
+        "live_group_processes": 9,
+        "log_lines": 14631,
+        "log_bytes": 856317,
+        "silent_seconds": 0.0,
+        "work_command_names": [
+          "qemu-arm"
+        ]
+      },
+      "modsrc": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 1800.2709577083588,
+        "work_command_names": []
+      },
+      "modules": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 1800.2709577083588,
+        "work_command_names": []
+      }
+    }
+  },
+  {
+    "time": "2026-11-04T15:40:19.460364+08:00",
+    "stop_conditions": [],
+    "phases": {
+      "supervisor": {
+        "pgid": "1038573",
+        "live_group_processes": 1,
+        "log_lines": null,
+        "log_bytes": null,
+        "silent_seconds": null,
+        "work_command_names": []
+      },
+      "kernel": {
+        "pgid": "1038698",
+        "live_group_processes": 9,
+        "log_lines": 14759,
+        "log_bytes": 877323,
+        "silent_seconds": 0.0,
+        "work_command_names": [
+          "qemu-arm"
+        ]
+      },
+      "modsrc": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 2400.525748729706,
+        "work_command_names": []
+      },
+      "modules": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 2400.525748729706,
+        "work_command_names": []
+      }
+    }
+  },
+  {
+    "time": "2026-11-04T15:50:19.546984+08:00",
+    "stop_conditions": [],
+    "phases": {
+      "supervisor": {
+        "pgid": "1038573",
+        "live_group_processes": 1,
+        "log_lines": null,
+        "log_bytes": null,
+        "silent_seconds": null,
+        "work_command_names": []
+      },
+      "kernel": {
+        "pgid": "1038698",
+        "live_group_processes": 9,
+        "log_lines": 14801,
+        "log_bytes": 881070,
+        "silent_seconds": 0.0,
+        "work_command_names": [
+          "qemu-arm"
+        ]
+      },
+      "modsrc": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 3000.612363100052,
+        "work_command_names": []
+      },
+      "modules": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 3000.612363100052,
+        "work_command_names": []
+      }
+    }
+  },
+  {
+    "time": "2026-11-04T16:00:19.665972+08:00",
+    "stop_conditions": [],
+    "phases": {
+      "supervisor": {
+        "pgid": "1038573",
+        "live_group_processes": 1,
+        "log_lines": null,
+        "log_bytes": null,
+        "silent_seconds": null,
+        "work_command_names": []
+      },
+      "kernel": {
+        "pgid": "1038698",
+        "live_group_processes": 9,
+        "log_lines": 15258,
+        "log_bytes": 928860,
+        "silent_seconds": 0.0,
+        "work_command_names": [
+          "qemu-arm"
+        ]
+      },
+      "modsrc": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 3600.731352329254,
+        "work_command_names": []
+      },
+      "modules": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 3600.731352329254,
+        "work_command_names": []
+      }
+    }
+  },
+  {
+    "time": "2026-11-04T16:10:19.795415+08:00",
+    "stop_conditions": [],
+    "phases": {
+      "supervisor": {
+        "pgid": "1038573",
+        "live_group_processes": 1,
+        "log_lines": null,
+        "log_bytes": null,
+        "silent_seconds": null,
+        "work_command_names": []
+      },
+      "kernel": {
+        "pgid": "1038698",
+        "live_group_processes": 0,
+        "log_lines": 15660,
+        "log_bytes": 986611,
+        "silent_seconds": 0.0,
+        "work_command_names": []
+      },
+      "modsrc": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 4200.86079788208,
+        "work_command_names": []
+      },
+      "modules": {
+        "pgid": null,
+        "live_group_processes": 0,
+        "log_lines": 0,
+        "log_bytes": 0,
+        "silent_seconds": 4200.86079788208,
+        "work_command_names": []
+      }
+    }
+  },
+  {
+    "time": "2026-11-04T16:20:19.889007+08:00",
+    "stop_conditions": [],
+    "phases": {
+      "supervisor": {
+        "pgid": "1038573",
+        "live_group_processes": 0,
+        "log_lines": null,
+        "log_bytes": null,
+        "silent_seconds": null,
+        "work_command_names": []
+      },
+      "kernel": {
+        "pgid": "1038698",
+        "live_group_processes": 0,
+        "log_lines": 15663,
+        "log_bytes": 986714,
+        "silent_seconds": 0.0,
+        "work_command_names": []
+      },
+      "modsrc": {
+        "pgid": "1918336",
+        "live_group_processes": 0,
+        "log_lines": 596,
+        "log_bytes": 58856,
+        "silent_seconds": 0.0,
+        "work_command_names": []
+      },
+      "modules": {
+        "pgid": "1922482",
+        "live_group_processes": 0,
+        "log_lines": 612,
+        "log_bytes": 48333,
+        "silent_seconds": 0.0,
+        "work_command_names": []
+      }
+    }
+  }
+]

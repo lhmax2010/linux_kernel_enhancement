@@ -1,0 +1,9 @@
+{
+  "source_url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/arm-rpi4-rt-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+  "rpm_bytes": 112065728,
+  "rpm_sha256": "a84ec3ec8f24a092e4dc670d3feb01b8dc6817948f82da33659bf39d8b1c8e4c",
+  "matches_repository_metadata": true,
+  "reference_diffconfig_exit": 0,
+  "reference_diff_symbols": 0,
+  "byte_identical": true
+}

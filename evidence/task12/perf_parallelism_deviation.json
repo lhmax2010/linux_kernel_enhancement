@@ -1,0 +1,20 @@
+{
+  "nproc": 20,
+  "project_parallel_limit": 10,
+  "gbs_macro": "_smp_mflags -j10",
+  "perf_reported_jobs": 20,
+  "observed_log_excerpt": [
+    "[  297s]   BUILD:   Doing 'make -j20' parallel build"
+  ],
+  "source": "tools/perf/Makefile",
+  "source_lines": {
+    "19": "unexport MAKEFLAGS",
+    "25": "# (To override it, run 'make JOBS=1' and similar.)",
+    "27": "ifeq ($(JOBS),)",
+    "28": "  JOBS := $(shell (getconf _NPROCESSORS_ONLN || grep -E -c '^processor|^CPU[0-9]' /proc/cpuinfo) 2>/dev/null)",
+    "61": "  @printf '  BUILD:   Doing '\\''make \\033[33m-j'$(JOBS)'\\033[m'\\'' $(BUILD_TYPE) build\\n'",
+    "65": "  @$(MAKE) -f Makefile.perf --no-print-directory -j$(JOBS) O=$(FULL_O) $(SET_DEBUG) $@"
+  },
+  "conclusion": "perf overrides outer make -j10; runtime resource limit deviated",
+  "actions": "Read-only observation; no signal, no active script/spec/environment changes; continue original monitoring. Future runs require explicit JOBS limit."
+}

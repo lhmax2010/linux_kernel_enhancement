@@ -1,0 +1,15 @@
+{
+  "time": "2026-11-04T15:00:18.910249+08:00",
+  "passed": true,
+  "user_reported_authentication_complete": true,
+  "preflight": "OK",
+  "kernel": "RUNNING",
+  "supervisor_pgid": 1038573,
+  "kernel_pgid": 1038698,
+  "supervisor_live": true,
+  "source_export_work_processes": [
+    "git",
+    "xz"
+  ],
+  "script_restarted": false
+}

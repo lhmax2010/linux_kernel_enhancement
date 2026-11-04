@@ -1,10 +1,12 @@
 # 项目状态
 
-任务12：类产品基线配置对齐和普通/RT局部检查通过（各43项核对、23条既有警告、0错误）；原tmux会话认证等待满30分钟，完整构建尚未开始。详细内容仅见本地 vendor_local/V3_report.md（不入库），公开记录见[15](15_vbase01_build.md)。任务9文件与linux-rpi主工作树未修改。
-- 计划/进度：源码和配置→便宜检查→独立本地构建分支/通用脚本→原tmux认证等待；前三项完成，14:12:54达到等待上限。
-- 已闭合：每变体43项匹配、无范围外配置差异，局部编译各0错误/23条既有警告，六个检查进程组无残留；脚本bash -n与模板一致性检查通过。[检查](../evidence/task12/prebuild_summary.json)、[脚本一致性](../evidence/task12/runner_parity.json)。
-- 需人工动作：用户连接原lko-task12窗口完成认证；未观察到认证完成，原脚本/锁/会话保留，不得重新启动。截止时preflight RUNNING，三阶段PENDING且无supervisor PGID。[等待摘要](../evidence/task12/authentication_wait_summary.json)。
-- 挂账：三阶段完整构建及耗时/工具链/依赖来源/映像/模块vermagic与CRC/253符号兼容性/容量/部署包/最终配置验收全部待完成；目前不能判断现成外部模块可复用，不满足部署前提。
+任务12完成：用户在原tmux窗口认证后继续构建，三阶段全部OK，产物核验通过；未部署、未推Gerrit。详细内容仅在本地vendor_local/V3_report.md，公开结果见[15](15_vbase01_build.md)和[验收汇总](../evidence/task12/verification_summary.json)。
+- 计划/进度：配置对齐/普通RT便宜检查→原会话认证→9轮只读监控→工具链/依赖/映像/模块/配置/容量/部署包核验→同commit记录；本轮完成。原认证超时作为历史保留，未重启脚本、直接sudo或发信号。
+- 已闭合：kernel/modsrc/modules均exit0；time -v为1:10:18 / 1:01.39 / 1:11.69，总监督跨度1:13:42。Clang/LLD22.1.8；devel本次来源与安装载荷匹配。普通zImage14,928,528 B，比base01 +22,160 B（+0.148661%）；普通/RT版本正确。
+- 已闭合：59模块vermagic全符，7模块356项CRC比较0不一致；最终普通配置与便宜检查逐字一致。253个base01导入符号中132个CRC变化、0缺失，**出类产品镜像时必须同步重编linux-tizen-modules**；全部同名导出CRC变化10,208，新增2、删除0。
+- 产物/容量：temp/task12/deploy_lko-vbase01/，74文件哈希与归档复核通过；模块目录3,976 KiB，按既有余量估算原厂+base01+vbase01三套后剩6,696 KiB。部署前需重查现场块/inode；本轮未连板。无后缀lko/vbase01 SHA：b11f669e0cb1c1e26d878430b998d6486c5476a1。
+- 执行偏差/挂账：perf子构建覆盖外层-j10，实际-j20超过上限10，已记录，未干预；后续启动须显式限制perf JOBS，当前固定脚本/spec未改。外部扫描存在无法归属候选，直接观测0不代表完全无外写。[并行偏差](../evidence/task12/perf_parallelism_deviation.json)。
+- 后续前提：内部镜像构建须配套重编外部模块；Gerrit推送、部署与运行实验待PM另行下达。任务9文件及linux-rpi主工作树未修改。
 
 任务11：第一批厂商特性本地移植完成，详见本地报告 vendor_local/V2_report.md（不入库）；lko/vbase01 可进入采用已验证临时配置的完整构建，产品配置仍待核实。
 

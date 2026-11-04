@@ -1,0 +1,139 @@
+{
+  "all_stages_ok": true,
+  "authentication": "completed by user in original tmux session",
+  "script_restarted": false,
+  "monitor_samples": 9,
+  "stages": {
+    "kernel": {
+      "result": "OK",
+      "exit": 0,
+      "start": "2026-11-04T14:59:14+08:00",
+      "end": "2026-11-04T16:10:34+08:00",
+      "time_v_elapsed": "1:10:18",
+      "time_v_seconds": 4218.0,
+      "max_single_process_rss_kib": 2608860
+    },
+    "modsrc": {
+      "result": "OK",
+      "exit": 0,
+      "start": "2026-11-04T16:10:34+08:00",
+      "end": "2026-11-04T16:11:40+08:00",
+      "time_v_elapsed": "1:01.39",
+      "time_v_seconds": 61.39,
+      "max_single_process_rss_kib": 153236
+    },
+    "modules": {
+      "result": "OK",
+      "exit": 0,
+      "start": "2026-11-04T16:11:40+08:00",
+      "end": "2026-11-04T16:12:56+08:00",
+      "time_v_elapsed": "1:11.69",
+      "time_v_seconds": 71.69,
+      "max_single_process_rss_kib": 139500
+    }
+  },
+  "managed_build_seconds": 4422,
+  "time_v_total_seconds": 4351.08,
+  "toolchain": {
+    "clang": "22.1.8",
+    "lld": "22.1.8",
+    "match_required": true
+  },
+  "dependency": {
+    "matches_new_local_rpms": true,
+    "installed_payload_files_checked": 10,
+    "payload_mismatches": 0,
+    "install_times_within_modules_stage": true,
+    "buildtime_note": "RPM BUILDTIME=0 for local and installed packages; actual chronology uses logs and INSTALLTIME; full RPM SHA linked through local source cache, installed headers and payload comparison."
+  },
+  "images": [
+    {
+      "variant": "normal",
+      "release": "6.12.80-arm-rpi4-v7l-lko-vbase01",
+      "bytes": 14928528,
+      "sha256": "d3bc1ec49e56a8d279f566da3f0b536584e18349627a33ff9efd1f3c4b1e3c9e",
+      "delta_vs_base01_bytes": 22160,
+      "delta_vs_base01_percent": 0.14866129697052965
+    },
+    {
+      "variant": "rt",
+      "release": "6.12.80-arm-rpi4-rt-v7l-lko-vbase01",
+      "bytes": 14977872,
+      "sha256": "fd00f8e0c150401707f120cf5d3acd826d1895c48504005d81ff6e78a1ad4dfe"
+    }
+  ],
+  "modules": {
+    "count": 59,
+    "external_count": 7,
+    "expected_vermagic": "6.12.80-arm-rpi4-v7l-lko-vbase01 SMP mod_unload modversions ARMv7 p2v8",
+    "vermagic_mismatches": 0,
+    "crc_comparisons": 356,
+    "crc_mismatches": 0,
+    "unique_imported_symbols": 253,
+    "shared_config_mismatches": 0
+  },
+  "crc_compatibility": {
+    "imported_unique_symbols": 253,
+    "imported_crc_changed_or_missing": 132,
+    "imported_missing_in_base01": 0,
+    "imported_missing_in_vbase01": 0,
+    "all_common_export_crc_changed": 10208,
+    "exports_added": 2,
+    "exports_removed": 0,
+    "unsuffixed_image_existing_external_modules_reusable_per_pm_crc_criterion": false,
+    "local_suffix_deployment_requires_matching_new_modules": true
+  },
+  "final_config": {
+    "diffconfig_exit": 0,
+    "diff_symbols": 0,
+    "byte_identical_to_step5": true
+  },
+  "capacity": {
+    "factory_retained_available_kib": 14648,
+    "base01_actual_kib": 3976,
+    "vbase01_actual_kib": 3976,
+    "prior_per_set_estimate_kib": 4424,
+    "estimated_remaining_kib": 6696,
+    "three_sets_fit_estimate": true,
+    "limitation": "Host allocated size estimate; recheck board free blocks/inodes before deployment; no board accessed."
+  },
+  "deployment": {
+    "archive": "temp/task12/deploy_lko-vbase01/deploy_lko-vbase01.tar.gz",
+    "bytes": 16011775,
+    "sha256": "0c76212eff51c74bc1a7469ffb40e7354d25c85d79bd595c3bf12d4b1f80eb4c",
+    "regular_files": 74,
+    "symlinks": 1,
+    "module_files": 59,
+    "payload_sha256_all_match": true,
+    "archive_members_all_match": true
+  },
+  "external_write_observations": {
+    "kernel": {
+      "unattributed_paths": 514,
+      "direct_observed_outside_paths": 0,
+      "find_exit": 1
+    },
+    "modsrc": {
+      "unattributed_paths": 54,
+      "direct_observed_outside_paths": 0,
+      "find_exit": 1
+    },
+    "modules": {
+      "unattributed_paths": 42,
+      "direct_observed_outside_paths": 0,
+      "find_exit": 1
+    }
+  },
+  "external_scan_limits": "Unattributed concurrent filesystem changes; find exit1 and permission/depth/root/deletion limits prevent proof of no outside writes. Unrelated paths not published.",
+  "execution_deviation": {
+    "perf_jobs": 20,
+    "nproc": 20,
+    "project_limit": 10,
+    "intervened": false,
+    "future_action": "Explicitly cap perf JOBS before subsequent builds; current fixed script/spec left unchanged."
+  },
+  "source_integrity_pass": true,
+  "task9_untouched": true,
+  "no_board_deployment": true,
+  "unsuffixed_baseline_sha": "b11f669e0cb1c1e26d878430b998d6486c5476a1"
+}
