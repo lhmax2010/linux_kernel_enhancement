@@ -1,0 +1,52 @@
+From abdbc4a414b9616b5d90f3ae1c2f4c6b114a9d0e Mon Sep 17 00:00:00 2001
+From: Hao Lin <hao.lin@samsung.com>
+Date: Wed, 4 Nov 2026 22:05:40 +0800
+Subject: [PATCH 4/9] swap: mark only active devices as enabled
+
+An activation failure previously marked swap ON even after removing
+the failed module, suppressing later activation. Only the already-active
+EEXIST result may set ON in the error branch; successful swapon retains
+its existing status update. Use safe iteration when removing the failed
+list element so the following module can still be considered.
+
+Based on analysis of He Fangyu's fix 16d6125d
+---
+ src/resource-optimizer/memory/swap/swap.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/resource-optimizer/memory/swap/swap.c b/src/resource-optimizer/memory/swap/swap.c
+index 682df7f..2a7abd8 100644
+--- a/src/resource-optimizer/memory/swap/swap.c
++++ b/src/resource-optimizer/memory/swap/swap.c
+@@ -597,7 +597,7 @@ static void swap_early_reclaim_memcg(void)
+ static void swap_activate_in_module(void)
+ {
+ 	int r;
+-	GSList *iter;
++	GSList *iter, *next;
+ 	struct swap_module_ops *swaps;
+ 
+ 	r = cgroup_read_node_int32(MEMCG_PATH,
+@@ -608,10 +608,9 @@ static void swap_activate_in_module(void)
+ 	if (swap_get_state() == SWAP_ON)
+ 		return;
+ 
+-	gslist_for_each_item(iter, swap_module) {
++	gslist_for_each_safe(swap_module, iter, next, swaps) {
+ 		int flags = SWAP_FLAG_DISCARD;
+ 
+-		swaps = (struct swap_module_ops *)iter->data;
+ 
+ 		if (!swaps->activate)
+ 			continue;
+@@ -621,8 +620,9 @@ static void swap_activate_in_module(void)
+ 			if (r != -EEXIST) {
+ 				_E("[SWAP] %s activate failed", swaps->name);
+ 				swap_remove(swaps);
++			} else {
++				swap_set_state(SWAP_ON);
+ 			}
+-			swap_set_state(SWAP_ON);
+ 			continue;
+ 		}
+ 

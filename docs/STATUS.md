@@ -1,5 +1,9 @@
 # 项目状态
 
+PB2 产品板只读探测因连接不可达未完成，详见本地报告（不入库）。
+
+任务15：resourced修复已基于最新tizen整理为9个本地提交并完成静态核对，补丁与分析待PM审核；独立tmux构建入口已启动，但前台认证等待30分钟未完成，构建/单元测试/新RPM及文件清单对比均未执行，不能标记为构建通过。原lko-task15会话、锁及源码保留，不重启脚本；用户在原会话认证后从status恢复监控。既有QB1211696五个armv7l基线包已下载并核对SHA。后续需完成构建验收和PM审核，Gerrit推送另行授权；见[17_resourced_fix.md](17_resourced_fix.md)、evidence/task15/。常规规则和resourced维护分支裁决已登记，未推Gerrit。
+
 任务14完成：resourced 16d6125d不基于最新tizen（缺1个提交），向当前tizen试cherry-pick干净、0冲突，临时工作树已删除；QB1211696镜像为10.0.0-1/b0bbb7c5，不含该修复；SR仍需内核与用户态配套，未构建/连板/推源码，后续基线选择待PM决定。证据与命令见[16_resourced_fangyu_check.md](16_resourced_fangyu_check.md)及evidence/task14/。
 
 任务13完成：类产品基线源码已快进推送内部sandbox既有分支，待用户出镜像；出镜像须同时重编树外模块包。未新建分支，干净基线按固定提交保留。已闭合源码/祖先关系/无后缀及推前推后SHA核对；详细证据和出镜像说明仅见本地vendor_local/task13_push_report.md、vendor_local/image_build_note.md（不入库）。perf已知偏差按PM裁决沿用；下一步由用户出镜像，板上核验待另行安排。本轮不构建、不连板、不触发Quickbuild。

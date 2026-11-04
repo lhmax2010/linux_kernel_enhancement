@@ -1,0 +1,12 @@
+{
+  "time": "2026-11-04T22:35:18.774499+08:00",
+  "reason": "resourced.spec make consumes jobs, not _smp_mflags; depanneur:2050-2066 derives jobs=2*nproc/threads; prior clean root rpm macro jobs=40. Explicit jobs=10 enforces half-nproc rule without modifying spec.",
+  "old_script_sha256": "b2c3924b2834a9052e18cf6b04f5568338c6f6eb24cc96ddac29b9e804bb70f4",
+  "new_script_sha256": "7672f145ff97edc8551208b0469e4fc4ae017bce98c9911dc03682e0c74de685",
+  "pre_update_status": "TASK15 UPDATED 2026-11-04T22:11:29+08:00\nSTAGE preflight result=RUNNING exit=- start=2026-11-04T22:11:29+08:00 end=-\nSTAGE resourced result=PENDING exit=- start=- end=-\n",
+  "supervisor_after_update_exists": false,
+  "mechanism": "No relaunch. Foreground parent remains at sudo -v; after authentication it execs this script anew for --worker, which owns the updated command.",
+  "nproc": 20,
+  "half_nproc": 10,
+  "explicit_jobs": 10
+}

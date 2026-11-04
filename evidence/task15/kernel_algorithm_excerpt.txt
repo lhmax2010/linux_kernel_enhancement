@@ -1,0 +1,331 @@
+
+drivers/block/zram/zram_drv.c @ 0fac5de6
+964: 	return scnprintf(buf, PAGE_SIZE, "%d\n", num_online_cpus());
+965: }
+966: 
+967: static ssize_t max_comp_streams_store(struct device *dev,
+968: 		struct device_attribute *attr, const char *buf, size_t len)
+969: {
+970: 	return len;
+971: }
+972: 
+973: static void comp_algorithm_set(struct zram *zram, u32 prio, const char *alg)
+974: {
+975: 	/* Do not free statically defined compression algorithms */
+976: 	if (zram->comp_algs[prio] != default_compressor)
+977: 		kfree(zram->comp_algs[prio]);
+978: 
+979: 	zram->comp_algs[prio] = alg;
+980: }
+981: 
+982: static ssize_t __comp_algorithm_show(struct zram *zram, u32 prio, char *buf)
+983: {
+984: 	ssize_t sz;
+985: 
+986: 	down_read(&zram->init_lock);
+987: 	sz = zcomp_available_show(zram->comp_algs[prio], buf);
+988: 	up_read(&zram->init_lock);
+989: 
+990: 	return sz;
+991: }
+992: 
+993: static int __comp_algorithm_store(struct zram *zram, u32 prio, const char *buf)
+994: {
+995: 	char *compressor;
+996: 	size_t sz;
+997: 
+998: 	sz = strlen(buf);
+999: 	if (sz >= CRYPTO_MAX_ALG_NAME)
+1000: 		return -E2BIG;
+1001: 
+1002: 	compressor = kstrdup(buf, GFP_KERNEL);
+1003: 	if (!compressor)
+1004: 		return -ENOMEM;
+1005: 
+1006: 	/* ignore trailing newline */
+1007: 	if (sz > 0 && compressor[sz - 1] == '\n')
+1008: 		compressor[sz - 1] = 0x00;
+1009: 
+1010: 	if (!zcomp_available_algorithm(compressor)) {
+1011: 		kfree(compressor);
+1012: 		return -EINVAL;
+1013: 	}
+1014: 
+1015: 	down_write(&zram->init_lock);
+1016: 	if (init_done(zram)) {
+1017: 		up_write(&zram->init_lock);
+1018: 		kfree(compressor);
+1019: 		pr_info("Can't change algorithm for initialized device\n");
+1020: 		return -EBUSY;
+1021: 	}
+1022: 
+1023: 	comp_algorithm_set(zram, prio, compressor);
+1024: 	up_write(&zram->init_lock);
+1025: 	return 0;
+1026: }
+1027: 
+1028: static void comp_params_reset(struct zram *zram, u32 prio)
+1029: {
+1030: 	struct zcomp_params *params = &zram->params[prio];
+1031: 
+1032: 	vfree(params->dict);
+1122: 	return ret ? ret : len;
+1123: }
+1124: 
+1125: static ssize_t comp_algorithm_show(struct device *dev,
+1126: 				   struct device_attribute *attr,
+1127: 				   char *buf)
+1128: {
+1129: 	struct zram *zram = dev_to_zram(dev);
+1130: 
+1131: 	return __comp_algorithm_show(zram, ZRAM_PRIMARY_COMP, buf);
+1132: }
+1133: 
+1134: static ssize_t comp_algorithm_store(struct device *dev,
+1135: 				    struct device_attribute *attr,
+1136: 				    const char *buf,
+1137: 				    size_t len)
+1138: {
+1139: 	struct zram *zram = dev_to_zram(dev);
+1140: 	int ret;
+1141: 
+1142: 	ret = __comp_algorithm_store(zram, ZRAM_PRIMARY_COMP, buf);
+1143: 	return ret ? ret : len;
+1144: }
+1145: 
+1146: #ifdef CONFIG_ZRAM_MULTI_COMP
+1147: static ssize_t recomp_algorithm_show(struct device *dev,
+1148: 				     struct device_attribute *attr,
+1149: 				     char *buf)
+1150: {
+1151: 	struct zram *zram = dev_to_zram(dev);
+1152: 	ssize_t sz = 0;
+1153: 	u32 prio;
+1154: 
+1155: 	for (prio = ZRAM_SECONDARY_COMP; prio < ZRAM_MAX_COMPS; prio++) {
+1156: 		if (!zram->comp_algs[prio])
+1157: 			continue;
+1158: 
+1159: 		sz += scnprintf(buf + sz, PAGE_SIZE - sz - 2, "#%d: ", prio);
+1160: 		sz += __comp_algorithm_show(zram, prio, buf + sz);
+1161: 	}
+1162: 
+1163: 	return sz;
+1164: }
+1165: 
+1166: static ssize_t recomp_algorithm_store(struct device *dev,
+1167: 				      struct device_attribute *attr,
+1168: 				      const char *buf,
+1169: 				      size_t len)
+1170: {
+1171: 	struct zram *zram = dev_to_zram(dev);
+1172: 	int prio = ZRAM_SECONDARY_COMP;
+1173: 	char *args, *param, *val;
+1174: 	char *alg = NULL;
+1175: 	int ret;
+1176: 
+1177: 	args = skip_spaces(buf);
+1178: 	while (*args) {
+1179: 		args = next_arg(args, &param, &val);
+1180: 
+1181: 		if (!val || !*val)
+1182: 			return -EINVAL;
+1183: 
+1184: 		if (!strcmp(param, "algo")) {
+1185: 			alg = val;
+1186: 			continue;
+1187: 		}
+1188: 
+1189: 		if (!strcmp(param, "priority")) {
+1190: 			ret = kstrtoint(val, 10, &prio);
+1191: 			if (ret)
+1192: 				return ret;
+1193: 			continue;
+1194: 		}
+1195: 	}
+1196: 
+1197: 	if (!alg)
+1198: 		return -EINVAL;
+1199: 
+1200: 	if (prio < ZRAM_SECONDARY_COMP || prio >= ZRAM_MAX_COMPS)
+1201: 		return -EINVAL;
+1202: 
+1203: 	ret = __comp_algorithm_store(zram, prio, alg);
+1204: 	return ret ? ret : len;
+1205: }
+1206: #endif
+1207: 
+1208: static ssize_t compact_store(struct device *dev,
+1209: 		struct device_attribute *attr, const char *buf, size_t len)
+1210: {
+1211: 	struct zram *zram = dev_to_zram(dev);
+1212: 
+1213: 	down_read(&zram->init_lock);
+1214: 	if (!init_done(zram)) {
+1215: 		up_read(&zram->init_lock);
+1216: 		return -EINVAL;
+1217: 	}
+1218: 
+1219: 	zs_compact(zram->mem_pool);
+1220: 	up_read(&zram->init_lock);
+1221: 
+1222: 	return len;
+1223: }
+1224: 
+1225: static ssize_t io_stat_show(struct device *dev,
+1226: 		struct device_attribute *attr, char *buf)
+1227: {
+1228: 	struct zram *zram = dev_to_zram(dev);
+1229: 	ssize_t ret;
+1230: 
+1231: 	down_read(&zram->init_lock);
+1232: 	ret = scnprintf(buf, PAGE_SIZE,
+1233: 			"%8llu %8llu 0 %8llu\n",
+1234: 			(u64)atomic64_read(&zram->stats.failed_reads),
+1235: 			(u64)atomic64_read(&zram->stats.failed_writes),
+1236: 			(u64)atomic64_read(&zram->stats.notify_free));
+1237: 	up_read(&zram->init_lock);
+1238: 
+1239: 	return ret;
+1240: }
+1241: 
+1242: static ssize_t mm_stat_show(struct device *dev,
+
+drivers/block/zram/zcomp.c @ 0fac5de6
+82: 	return backends[i];
+83: }
+84: 
+85: bool zcomp_available_algorithm(const char *comp)
+86: {
+87: 	return lookup_backend_ops(comp) != NULL;
+88: }
+89: 
+90: /* show available compressors */
+91: ssize_t zcomp_available_show(const char *comp, char *buf)
+92: {
+93: 	ssize_t sz = 0;
+94: 	int i;
+95: 
+96: 	for (i = 0; i < ARRAY_SIZE(backends) - 1; i++) {
+97: 		if (!strcmp(comp, backends[i]->name)) {
+98: 			sz += scnprintf(buf + sz, PAGE_SIZE - sz - 2,
+99: 					"[%s] ", backends[i]->name);
+100: 		} else {
+101: 			sz += scnprintf(buf + sz, PAGE_SIZE - sz - 2,
+102: 					"%s ", backends[i]->name);
+103: 		}
+104: 	}
+105: 
+106: 	sz += scnprintf(buf + sz, PAGE_SIZE - sz, "\n");
+107: 	return sz;
+108: }
+109: 
+110: struct zcomp_strm *zcomp_stream_get(struct zcomp *comp)
+111: {
+112: 	local_lock(&comp->stream->lock);
+113: 	return this_cpu_ptr(comp->stream);
+114: }
+115: 
+116: void zcomp_stream_put(struct zcomp *comp)
+117: {
+118: 	local_unlock(&comp->stream->lock);
+119: }
+120: 
+121: int zcomp_compress(struct zcomp *comp, struct zcomp_strm *zstrm,
+122: 		   const void *src, unsigned int *dst_len)
+123: {
+124: 	struct zcomp_req req = {
+125: 		.src = src,
+126: 		.dst = zstrm->buffer,
+127: 		.src_len = PAGE_SIZE,
+128: 		.dst_len = 2 * PAGE_SIZE,
+129: 	};
+130: 	int ret;
+
+mm/compaction.c @ 0fac5de6
+2970:  * This is the entry point for compacting all nodes via
+2971:  * /proc/sys/vm/compact_memory
+2972:  */
+2973: static int sysctl_compaction_handler(const struct ctl_table *table, int write,
+2974: 			void *buffer, size_t *length, loff_t *ppos)
+2975: {
+2976: 	int ret;
+2977: 
+2978: 	ret = proc_dointvec(table, write, buffer, length, ppos);
+2979: 	if (ret)
+2980: 		return ret;
+2981: 
+2982: 	if (sysctl_compact_memory != 1)
+2983: 		return -EINVAL;
+2984: 
+2985: 	if (write)
+2986: 		ret = compact_nodes();
+2987: 
+2988: 	return ret;
+2989: }
+2990: 
+2991: #if defined(CONFIG_SYSFS) && defined(CONFIG_NUMA)
+2992: static ssize_t compact_store(struct device *dev,
+2993: 			     struct device_attribute *attr,
+2994: 			     const char *buf, size_t count)
+2995: {
+2996: 	int nid = dev->id;
+2997: 
+2998: 	if (nid >= 0 && nid < nr_node_ids && node_online(nid)) {
+2999: 		/* Flush pending updates to the LRU lists */
+3000: 		lru_add_drain_all();
+3001: 
+3002: 		compact_node(NODE_DATA(nid), false);
+3003: 	}
+3004: 
+3005: 	return count;
+3006: }
+3007: static DEVICE_ATTR_WO(compact);
+3008: 
+3009: int compaction_register_node(struct node *node)
+3010: {
+3011: 	return device_create_file(&node->dev, &dev_attr_compact);
+3012: }
+3309: 		.data		= &sysctl_compact_memory,
+3310: 		.maxlen		= sizeof(int),
+3311: 		.mode		= 0200,
+3312: 		.proc_handler	= sysctl_compaction_handler,
+3313: 	},
+3314: 	{
+3315: 		.procname	= "compaction_proactiveness",
+3316: 		.data		= &sysctl_compaction_proactiveness,
+3317: 		.maxlen		= sizeof(sysctl_compaction_proactiveness),
+3318: 		.mode		= 0644,
+3319: 		.proc_handler	= compaction_proactiveness_sysctl_handler,
+3320: 		.extra1		= SYSCTL_ZERO,
+3321: 		.extra2		= SYSCTL_ONE_HUNDRED,
+3322: 	},
+3323: 	{
+3324: 		.procname	= "extfrag_threshold",
+3325: 		.data		= &sysctl_extfrag_threshold,
+3326: 		.maxlen		= sizeof(int),
+3327: 		.mode		= 0644,
+3328: 		.proc_handler	= proc_dointvec_minmax,
+3329: 		.extra1		= SYSCTL_ZERO,
+3330: 		.extra2		= SYSCTL_ONE_THOUSAND,
+3331: 	},
+3332: 	{
+3333: 		.procname	= "compact_unevictable_allowed",
+3334: 		.data		= &sysctl_compact_unevictable_allowed,
+3335: 		.maxlen		= sizeof(int),
+3336: 		.mode		= 0644,
+3337: 		.proc_handler	= proc_dointvec_minmax_warn_RT_change,
+3338: 		.extra1		= SYSCTL_ZERO,
+3339: 		.extra2		= SYSCTL_ONE,
+3340: 	},
+3341: };
+3342: 
+3343: static int __init kcompactd_init(void)
+3344: {
+3345: 	int nid;
+3346: 	int ret;
+3347: 
+3348: 	ret = cpuhp_setup_state_nocalls(CPUHP_AP_ONLINE_DYN,
+3349: 					"mm/compaction:online",
+3350: 					kcompactd_cpu_online, NULL);
+3351: 	if (ret < 0) {

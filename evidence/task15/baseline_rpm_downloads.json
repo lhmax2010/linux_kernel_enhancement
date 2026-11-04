@@ -1,0 +1,52 @@
+[
+  {
+    "name": "resourced",
+    "location": "armv7l/resourced-10.0.0-1.armv7l.rpm",
+    "sha256": "64a0f28ff7a4edca8dd5ebfe4a1e59cc5849e3c5e342b4bdab3a8953054bf47d",
+    "bytes": 89512,
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/resourced-10.0.0-1.armv7l.rpm",
+    "downloaded": true,
+    "actual_bytes": 89512,
+    "actual_sha256": "64a0f28ff7a4edca8dd5ebfe4a1e59cc5849e3c5e342b4bdab3a8953054bf47d"
+  },
+  {
+    "name": "resourced-bin",
+    "location": "armv7l/resourced-bin-10.0.0-1.armv7l.rpm",
+    "sha256": "8b9e5e1295c735f034eaa7da299af9117cf50e0b81d30763558ef921d10d5957",
+    "bytes": 120616,
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/resourced-bin-10.0.0-1.armv7l.rpm",
+    "downloaded": true,
+    "actual_bytes": 120616,
+    "actual_sha256": "8b9e5e1295c735f034eaa7da299af9117cf50e0b81d30763558ef921d10d5957"
+  },
+  {
+    "name": "resourced-config",
+    "location": "armv7l/resourced-config-10.0.0-1.armv7l.rpm",
+    "sha256": "0e703f1a7c71728cb1f549ef0a8b98d663c00d138f1a72988e01e51795fb8486",
+    "bytes": 10180,
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/resourced-config-10.0.0-1.armv7l.rpm",
+    "downloaded": true,
+    "actual_bytes": 10180,
+    "actual_sha256": "0e703f1a7c71728cb1f549ef0a8b98d663c00d138f1a72988e01e51795fb8486"
+  },
+  {
+    "name": "resourced-isu",
+    "location": "armv7l/resourced-isu-10.0.0-1.armv7l.rpm",
+    "sha256": "240efbc3a800b1cda5722d20ac1544e0d22e49fb038f6ddb49710c0a6fb92815",
+    "bytes": 8220,
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/resourced-isu-10.0.0-1.armv7l.rpm",
+    "downloaded": true,
+    "actual_bytes": 8220,
+    "actual_sha256": "240efbc3a800b1cda5722d20ac1544e0d22e49fb038f6ddb49710c0a6fb92815"
+  },
+  {
+    "name": "resourced-watchdog-handler",
+    "location": "armv7l/resourced-watchdog-handler-10.0.0-1.armv7l.rpm",
+    "sha256": "35bb5a54cac17ec091404fe2d39a24269a1e644f220d00b0a973a28ac567c498",
+    "bytes": 16328,
+    "url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/repos/standard/packages/armv7l/resourced-watchdog-handler-10.0.0-1.armv7l.rpm",
+    "downloaded": true,
+    "actual_bytes": 16328,
+    "actual_sha256": "35bb5a54cac17ec091404fe2d39a24269a1e644f220d00b0a973a28ac567c498"
+  }
+]

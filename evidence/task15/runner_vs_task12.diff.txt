@@ -1,0 +1,187 @@
+--- scripts/run_task12_build.sh	2026-11-04 13:42:46.630135026 +0800
++++ scripts/run_task15_build.sh	2026-11-04 22:35:18.574452583 +0800
+@@ -1,34 +1,28 @@
+ #!/usr/bin/bash
+-# User-run only. Adapted from run_baseline_build.sh; never source this file.
++# Task15-authorized tmux launcher. Adapted from run_task12_build.sh; never source this file.
+ # No artifact verification here. One foreground sudo -v; all other sudo is GBS-owned.
+ set -uo pipefail
+ readonly WS=/home/linhao/Toolchain/development/linux_kernel_optimization
+-readonly WORK=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12
+-readonly ROOT=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01
++readonly WORK=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15
++readonly ROOT=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/GBS-ROOT-RESOURCED
+ readonly GBS_HOME=/home/linhao/Toolchain/development/linux_kernel_optimization/temp/gbs-home
+ readonly CONF=/home/linhao/Toolchain/development/linux_kernel_optimization/config/gbs_llvm.conf
+ readonly CONF_SHA=d47536dd30900412e7bbd2d7057e9dd486f94ad2b2b6d8404a510a23be0bdc48
+-readonly SCRIPT=/home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_task12_build.sh
+-readonly LOCK="$WORK/run_task12_build.lock"
+-readonly -a phases=(kernel modsrc modules)
+-declare -Ar source_dir=(
+-    [kernel]="$WS/vendor_local/linux-rpi-vbase"
+-    [modsrc]="$WS/ext/linux-tizen-modules-source"
+-    [modules]="$WS/ext/linux-tizen-modules")
+-declare -Ar expected=(
+-    [kernel]=7a1eddc637fc8ff5e55963b00fec49b5f3706b43
+-    [modsrc]=25797e8af7ed95a5783bbe84c11959560aaf7e92
+-    [modules]=8e032ef18ae9d9633c1508b48d4778216ab960a0)
+-declare -Ar expected_branch=([kernel]=lko/vbase01-local [modsrc]=lko/base01 [modules]=lko/vbase01)
++readonly SCRIPT=/home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_task15_build.sh
++readonly LOCK="$WORK/run_task15_build.lock"
++readonly -a phases=(resourced)
++declare -Ar source_dir=([resourced]="$WS/ext/resourced")
++declare -Ar expected=([resourced]=94d346c306233803661e8eab8557596549d82be4)
++declare -Ar expected_branch=([resourced]=lko/resourced-fix)
+ export TMPDIR="$WS/temp" PYTHONDONTWRITEBYTECODE=1
+ export PATH=/usr/bin:/bin:/usr/sbin:/sbin
+ # Do not set umask. Keep the caller's terminal/session for GBS sudo timestamps.
+ stamp() { TZ=Asia/Shanghai /usr/bin/date --iso-8601=seconds; }
+-declare -A result=([preflight]=PENDING [kernel]=PENDING [modsrc]=PENDING [modules]=PENDING)
+-declare -A code=([preflight]=- [kernel]=- [modsrc]=- [modules]=-)
+-declare -A started=([preflight]=- [kernel]=- [modsrc]=- [modules]=-)
+-declare -A ended=([preflight]=- [kernel]=- [modsrc]=- [modules]=-)
+-declare -A sealed=([kernel]=0 [modsrc]=0 [modules]=0)
++declare -A result=([preflight]=PENDING [resourced]=PENDING)
++declare -A code=([preflight]=- [resourced]=-)
++declare -A started=([preflight]=- [resourced]=-)
++declare -A ended=([preflight]=- [resourced]=-)
++declare -A sealed=([resourced]=0)
+ status_file="$WORK/preflight.$$.status"
+ current=preflight
+ handoff=0
+@@ -42,15 +36,15 @@
+ write_status() {
+     local phase status_tmp="${status_file}.new.$$"
+     {
+-        printf 'TASK12 UPDATED %s\n' "$(stamp)"
++        printf 'TASK15 UPDATED %s\n' "$(stamp)"
+         for phase in preflight "${phases[@]}"; do
+             printf 'STAGE %s result=%s exit=%s start=%s end=%s\n' \
+                 "$phase" "${result[$phase]}" "${code[$phase]}" "${started[$phase]}" "${ended[$phase]}"
+         done
+         [[ -z $active_pid ]] || printf 'ACTIVE-OR-RESIDUAL PGID=%s; raw log may still grow; no signal sent\n' "$active_pid"
+         if [[ ${1:-} == final ]]; then
+-            printf 'ALL-END %s kernel=%s modsrc=%s modules=%s\n' \
+-                "$(stamp)" "${result[kernel]}" "${result[modsrc]}" "${result[modules]}"
++            printf 'ALL-END %s resourced=%s\n' \
++                "$(stamp)" "${result[resourced]}"
+         fi
+     } > "$status_tmp" && /usr/bin/mv -- "$status_tmp" "$status_file"
+ }
+@@ -88,8 +82,8 @@
+                 printf 'ERROR: cannot seal %s log\n' "$phase" >&2
+         fi
+     done
+-    write_status final || printf 'ERROR writing status; ALL-END %s kernel=%s modsrc=%s modules=%s\n' \
+-        "$(stamp)" "${result[kernel]}" "${result[modsrc]}" "${result[modules]}" >&2
++    write_status final || printf 'ERROR writing status; ALL-END %s resourced=%s\n' \
++        "$(stamp)" "${result[resourced]}" >&2
+ }
+ fail() {
+     local rc=$1; shift
+@@ -199,7 +193,7 @@
+     set -m
+     "$@" >> "$raw_log" 2>&1 < /dev/null &
+     pid=$!; active_pid=$pid
+-    printf '%s\n' "$pid" > "$WORK/task12_${phase}.pgid"
++    printf '%s\n' "$pid" > "$WORK/task15_${phase}.pgid"
+     actual_group=$(/usr/bin/ps -o pgid= -p "$pid" 2>/dev/null) || actual_group=
+     actual_group=${actual_group//[[:space:]]/}
+     if [[ -n $actual_group && $actual_group != "$pid" ]]; then
+@@ -264,7 +258,7 @@
+     run_managed "$phase" "$WORK/build_${phase}.log" \
+         /usr/bin/env HOME="$GBS_HOME" GIT_CONFIG_NOSYSTEM=1 GBP_CONF_FILES="$GBS_HOME/.gbp.conf" \
+         /usr/bin/time -v /usr/bin/gbs -c "$CONF" build -P tizen_unified_standard -A armv7l -B "$ROOT" \
+-        --threads 1 --define '_smp_mflags -j10' --commit "${expected[$phase]}"
++        --threads 1 --define '_smp_mflags -j10' --define 'jobs 10' --commit "${expected[$phase]}"
+     rc=$?
+     scan_external "$phase" || { (( rc != 0 )) || rc=125; }
+     (( interrupted == 0 || rc != 0 )) || rc=130
+@@ -279,15 +273,13 @@
+     result[preflight]=OK; code[preflight]=0; started[preflight]=$1; ended[preflight]=$2
+     trap finish EXIT
+     trap 'on_interrupt worker' INT TERM HUP
+-    run_build kernel
+-    run_build modsrc
+-    run_build modules
++    run_build resourced
+     exit 0
+ }
+ # Internal handoff requires the inherited descriptor for the launcher lock.
+ if [[ ${1:-} == --worker ]]; then
+     lock_target=$(/usr/bin/readlink "/proc/$$/fd/9" 2>/dev/null) || lock_target=
+-    [[ $# == 4 && ${2:-} == "${expected[kernel]}" && -n $lock_target && $lock_target == "$LOCK" ]] || exit 96
++    [[ $# == 4 && ${2:-} == "${expected[resourced]}" && -n $lock_target && $lock_target == "$LOCK" ]] || exit 96
+     worker "$3" "$4"
+ fi
+ 
+@@ -295,10 +287,10 @@
+ # they must not overwrite a running/completed invocation's status.txt or logs.
+ resolved_work=$(/usr/bin/realpath -e -- "$WORK" 2>/dev/null) || resolved_work=
+ if [[ -z $resolved_work || $resolved_work != "$WORK" || ! -d $WORK || ! -w $WORK ]]; then
+-    printf 'FAILED: task12 directory missing/unwritable/redirected\nALL-END %s kernel=SKIPPED modsrc=SKIPPED modules=SKIPPED\n' "$(stamp)" >&2
++    printf 'FAILED: task15 directory missing/unwritable/redirected\nALL-END %s resourced=SKIPPED\n' "$(stamp)" >&2
+     exit 1
+ fi
+-[[ ! -e $status_file && ! -L $status_file ]] || { printf 'FAILED: preflight status exists\nALL-END %s kernel=SKIPPED modsrc=SKIPPED modules=SKIPPED\n' "$(stamp)" >&2; exit 1; }
++[[ ! -e $status_file && ! -L $status_file ]] || { printf 'FAILED: preflight status exists\nALL-END %s resourced=SKIPPED\n' "$(stamp)" >&2; exit 1; }
+ trap finish EXIT
+ trap 'on_interrupt foreground' INT TERM HUP
+ result[preflight]=RUNNING; started[preflight]=$(stamp); write_status || fail 93 'cannot create preflight status'
+@@ -307,18 +299,18 @@
+     [[ -x /usr/bin/$tool ]] || fail 2 "missing installed tool /usr/bin/$tool"
+ done
+ [[ ! -L $LOCK && ( ! -e $LOCK || -f $LOCK ) ]] || fail 2 'lock must be a regular file, never a symlink/device'
+-exec 9>> "$LOCK" || fail 2 'cannot open task12 lock'
+-/usr/bin/flock -n 9 || fail 2 'task12 lock still held; no authentication or process changes'
++exec 9>> "$LOCK" || fail 2 'cannot open task15 lock'
++/usr/bin/flock -n 9 || fail 2 'task15 lock still held; no authentication or process changes'
+ for phase in supervisor "${phases[@]}"; do
+-    pgfile="$WORK/task12_${phase}.pgid"
++    pgfile="$WORK/task15_${phase}.pgid"
+     [[ ! -e $pgfile && ! -L $pgfile ]] && continue
+     [[ -f $pgfile && ! -L $pgfile ]] || fail 2 "invalid old PGID file: $pgfile"
+     old_group=$(< "$pgfile")
+     [[ -n $old_group && $old_group =~ ^[1-9][0-9]*$ ]] || fail 2 "empty/invalid PGID: $pgfile"
+     old_rows=$(group_rows "$old_group") || fail 2 'cannot inspect old process group'
+-    [[ -z $old_rows ]] || fail 2 "old task12 PGID $old_group still live; preserve all processes"
++    [[ -z $old_rows ]] || fail 2 "old task15 PGID $old_group still live; preserve all processes"
+ done
+-for file in status.txt run_task12_build.log build_kernel.log build_modsrc.log build_modules.log build_kernel.log.raw build_modsrc.log.raw build_modules.log.raw; do
++for file in status.txt run_task15_build.log build_resourced.log build_resourced.log.raw; do
+     [[ ! -e $WORK/$file && ! -L $WORK/$file ]] || fail 2 "preserving existing $file; no automatic rerun/overwrite"
+ done
+ for phase in "${phases[@]}"; do
+@@ -333,10 +325,10 @@
+ /usr/bin/mv -- "$previous_status" "$status_file" || fail 2 'cannot promote preflight status'
+ owns_run=1
+ resolved_root=$(/usr/bin/realpath -e -- "$ROOT" 2>/dev/null) || resolved_root=
+-[[ -n $resolved_root && $resolved_root == "$ROOT" && $ROOT == "$WORK/"* && -d $ROOT && -w $ROOT && ! -L $ROOT ]] || fail 2 'independent task12 build root missing/unwritable/redirected'
+-# First launch must use the fresh empty directory created during task12 preparation.
++[[ -n $resolved_root && $resolved_root == "$ROOT" && $ROOT == "$WORK/"* && -d $ROOT && -w $ROOT && ! -L $ROOT ]] || fail 2 'independent task15 build root missing/unwritable/redirected'
++# First launch must use the fresh empty directory created during task15 preparation.
+ root_entry=$(/usr/bin/find "$ROOT" -mindepth 1 -maxdepth 1 -print -quit) || fail 2 'cannot inspect root contents'
+-[[ -z $root_entry ]] || fail 2 'task12 root is not empty; refusing reuse or automatic cleanup'
++[[ -z $root_entry ]] || fail 2 'task15 root is not empty; refusing reuse or automatic cleanup'
+ for phase in "${phases[@]}"; do check_source "$phase"; done
+ check_config
+ resolved_home=$(/usr/bin/realpath -e -- "$GBS_HOME" 2>/dev/null) || resolved_home=
+@@ -368,14 +360,14 @@
+ (( interrupted == 0 )) || fail 130 'interrupted before handoff'
+ result[preflight]=OK; code[preflight]=0; ended[preflight]=$(stamp); write_status || fail 93 'cannot record preflight completion'
+ set -m
+-/usr/bin/bash "$SCRIPT" --worker "${expected[kernel]}" "${started[preflight]}" "${ended[preflight]}" \
+-    > "$WORK/run_task12_build.log" 2>&1 < /dev/null &
++/usr/bin/bash "$SCRIPT" --worker "${expected[resourced]}" "${started[preflight]}" "${ended[preflight]}" \
++    > "$WORK/run_task15_build.log" 2>&1 < /dev/null &
+ worker_pid=$!
+-printf '%s\n' "$worker_pid" > "$WORK/task12_supervisor.pgid"
++printf '%s\n' "$worker_pid" > "$WORK/task15_supervisor.pgid"
+ handoff=1
+ disown "$worker_pid"
+ printf 'Background supervisor PID/PGID=%s. Keep this tmux/terminal session open for GBS sudo authentication.\n' "$worker_pid"
+ printf 'ALL-END records supervisor completion; inspect stage results and ACTIVE-OR-RESIDUAL before assuming success.\n'
+ # These are deliberately the last two foreground output lines.
+-printf '/usr/bin/tail -F %s/build_kernel.log %s/build_modsrc.log %s/build_modules.log %s/status.txt\n' "$WORK" "$WORK" "$WORK" "$WORK"
++printf '/usr/bin/tail -F %s/build_resourced.log %s/status.txt\n' "$WORK" "$WORK"
+ printf '/usr/bin/grep ALL-END %s/status.txt\n' "$WORK"

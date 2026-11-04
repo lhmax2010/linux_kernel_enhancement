@@ -1,0 +1,5 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced ls-remote origin refs/heads/tizen refs/heads/sandbox/lhmax2025/kernel_optimization
+TIME=2026-11-04T22:05:29.064719+08:00
+82e79c09ea80c1977dfb27d3752577c74340f9bc	refs/heads/tizen
+
+EXIT=0

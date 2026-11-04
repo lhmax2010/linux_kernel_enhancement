@@ -1,0 +1,43 @@
+From a8e3344c10d355857a17b008709ee303a0ecc9f6 Mon Sep 17 00:00:00 2001
+From: Hao Lin <hao.lin@samsung.com>
+Date: Wed, 4 Nov 2026 22:05:40 +0800
+Subject: [PATCH 5/9] swap: stop boot reclaim when progress cannot be measured
+
+Usage increases underflow the unsigned saved-minus-current calculation
+and look like huge reclaim progress. Stop on a nondecreasing sample
+before subtraction. If the initial usage cannot be read, skip this run
+rather than inventing ULONG_MAX/ULLONG_MAX; also honor nonpositive retry
+limits. Keep the existing accounting selection and thresholds.
+
+Based on analysis of He Fangyu's fix 16d6125d
+---
+ src/resource-optimizer/memory/swap/swap.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/src/resource-optimizer/memory/swap/swap.c b/src/resource-optimizer/memory/swap/swap.c
+index 2a7abd8..3b1ad5c 100644
+--- a/src/resource-optimizer/memory/swap/swap.c
++++ b/src/resource-optimizer/memory/swap/swap.c
+@@ -552,8 +552,10 @@ static void swap_early_reclaim_memcg(void)
+ 					MEMCG_USAGE, &prev_usage_bytes);
+ 		}
+ 
+-		if (r)
+-			prev_usage_bytes = ULONG_MAX;
++		if (r || try <= 0) {
++			_E("[SWAP] Early reclaim skipped: no usage baseline or trials");
++			return;
++		}
+ 
+ 		for (;;) {
+ 			try--;
+@@ -579,7 +581,8 @@ static void swap_early_reclaim_memcg(void)
+ 			 * The default threshold is very large, so it may
+ 			 * reclaim once.
+ 			 */
+-			if (!try || prev_usage_bytes - usage_bytes < arg_swap_at_boot_threshold_bytes)
++			if (try <= 0 || usage_bytes >= prev_usage_bytes ||
++				prev_usage_bytes - usage_bytes < arg_swap_at_boot_threshold_bytes)
+ 				break;
+ 
+ 			prev_usage_bytes = usage_bytes;

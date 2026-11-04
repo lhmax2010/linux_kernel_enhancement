@@ -1,6 +1,12 @@
 1. 不使用工作目录以外的文件（配置、脚本、数据等）。系统已安装的工具本身（gbs、depanneur、编译器、git 等）不在此限。
 2. 生成的所有东西都必须在工作目录内。
 
+## 任务15：resourced维护与本地构建（PM裁决）
+
+resourced的修复由本项目自行维护，sandbox分支名与内核保持一致：platform/core/system/resourced的sandbox/lhmax2025/kernel_optimization。用户已授权创建该分支，但本任务不推Gerrit，推送在PM审核补丁后另行下达。
+
+本任务允许沿用任务12机制由代理在独立tmux会话启动单包构建；唯一前台sudo -v由用户自行认证，代理不直接sudo、不处理密码、不发信号。采用独立构建根和已有配置隔离、日志/进程组/残留规则。公开补丁、构建证据与分析仅涉及Tizen公开resourced代码；产品板详细结果仅留vendor_local，GitHub只登记一行概括。
+
 ## 任务13：内部sandbox快进推送与perf裁决（2026-11-04）
 
 - PM裁决：perf 并行数 -j20 来自 spec 自身，为保持本地构建与镜像构建一致，不修改 spec；作为已知偏差记录，后续本地构建沿用。本项覆盖此前要求后续显式限制perf JOBS的待办，仅适用于此已知perf偏差，不放宽其他并行度规则。

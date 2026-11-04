@@ -1,0 +1,30 @@
+/usr/bin/depanneur
+2048:     push @args, "sudo /usr/bin/build";
+2049:     push @args, "--uid $zuid:$zgid" if ($zuid != 0 && $zgid != 0);
+2050:     my $nprocessors = 2;
+2051:     if ($^O eq "linux") {
+2052:         $nprocessors = int(int(sysconf(SC_NPROCESSORS_ONLN))/int($MAX_THREADS));
+2053:         if ($nprocessors < 1) {
+2054:             $nprocessors = 1;
+2055:         }
+2056:     } else {
+2057:         warning("depanneur only support linux platform");
+2058:     }
+2059:     my $target_arch=`$build_dir/queryconfig target --dist '$dist' --configdir '$dist_configs' --archpath '$arch'`;
+2060:     chomp $target_arch;
+2061:     if ($target_arch eq "") {
+2062:         push @args, "--target $arch";
+2063:     } else {
+2064:         push @args, "--target $target_arch";
+2065:     }
+2066:     push @args, "--jobs " . $nprocessors * 2;
+2067:     push @args, "--no-init" if ($noinit == 1);
+/home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced/packaging/resourced.spec
+185: 	 -DENABLE_SYSTEM_SERVER=%{enable_system_server} \
+186: 	 %{?asan:-DASAN_BUILD=True}
+187: 
+188: make %{?jobs:-j%jobs}
+189: cd "$_resourced_srcdir"
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild/.rpmmacros
+139: %jobs 40
+140: %_smp_mflags -j40

@@ -1,0 +1,123 @@
+From 879c021f9daac03875c5919f5456876e741885ed Mon Sep 17 00:00:00 2001
+From: Hao Lin <hao.lin@samsung.com>
+Date: Wed, 4 Nov 2026 22:05:40 +0800
+Subject: [PATCH 8/9] file-helper: reject malformed integer samples
+
+fscanf returning zero leaves the temporary value unassigned, but the
+helpers reported success and copied it to callers. Require one converted
+field for each of the four existing signed/unsigned integer readers.
+Leave caller output unchanged on failure, including memory usage reads.
+
+Based on analysis of He Fangyu's fix 16d6125d
+---
+ src/common/file-helper.c         |  8 ++++++
+ tests/CMakeLists.txt             |  2 ++
+ tests/test-integer-read-errors.c | 46 ++++++++++++++++++++++++++++++++
+ 3 files changed, 56 insertions(+)
+ create mode 100644 tests/test-integer-read-errors.c
+
+diff --git a/src/common/file-helper.c b/src/common/file-helper.c
+index 7281672..db92e00 100644
+--- a/src/common/file-helper.c
++++ b/src/common/file-helper.c
+@@ -160,6 +160,8 @@ int fread_nth_int(const char *path, size_t n, int32_t *number)
+ 		ret = fscanf(f, "%d", &t);
+ 		ret_value_errno_msg_if(ret == EOF, -(errno ?: ENOENT),
+ 				       "Fail to read file\n");
++		ret_value_msg_if(ret != 1, -EINVAL,
++				 "Invalid integer in file %s at index %zu", path, i);
+ 	}
+ 
+ 	*number = t;
+@@ -182,6 +184,8 @@ int fread_nth_uint(const char *path, size_t n, u_int32_t *number)
+ 		ret = fscanf(f, "%u", &t);
+ 		ret_value_errno_msg_if(ret == EOF, -(errno ?: ENOENT),
+ 				       "Fail to read file\n");
++		ret_value_msg_if(ret != 1, -EINVAL,
++				 "Invalid integer in file %s at index %zu", path, i);
+ 	}
+ 
+ 	*number = t;
+@@ -204,6 +208,8 @@ int fread_nth_ulong(const char *path, size_t n, unsigned long *number)
+ 		ret = fscanf(f, "%lu", &t);
+ 		ret_value_errno_msg_if(ret == EOF, -(errno ?: ENOENT),
+ 				       "Fail to read file\n");
++		ret_value_msg_if(ret != 1, -EINVAL,
++				 "Invalid integer in file %s at index %zu", path, i);
+ 	}
+ 
+ 	*number = t;
+@@ -226,6 +232,8 @@ int fread_nth_ulonglong(const char *path, size_t n, unsigned long long *number)
+ 		ret = fscanf(f, "%llu", &t);
+ 		ret_value_errno_msg_if(ret == EOF, -(errno ?: ENOENT),
+ 				       "Fail to read file\n");
++		ret_value_msg_if(ret != 1, -EINVAL,
++				 "Invalid integer in file %s at index %zu", path, i);
+ 	}
+ 
+ 	*number = t;
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 94c629a..d44fb25 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -75,6 +75,8 @@ ADD_TESTS(test-reclaim-io "${UNIT_TESTS_CFLAGS}"
+ ADD_TESTS(test-file-write-errors "${UNIT_TESTS_CFLAGS}"
+   "-Wl,--wrap=fopen,--wrap=fopen64,--wrap=fputs,--wrap=fflush,--wrap=fclose" test-file-write-errors.c)
+ 
++ADD_TESTS(test-integer-read-errors "${UNIT_TESTS_CFLAGS}" "" test-integer-read-errors.c)
++
+ #ADD_TESTS(cmocka-core "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=malloc,--wrap=free,--wrap=g_slist_append,--wrap=g_slist_remove,--wrap=strdup,--wrap=strndup -O0" cmocka-core.c)
+ #ADD_TESTS(cmocka-proc-dbus-typecheck "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_set_group,--wrap=g_dbus_method_invocation_get_message,--wrap=g_dbus_message_new_method_reply,--wrap=d_bus_reply_message,--wrap=g_object_unref,--wrap=g_dbus_method_invocation_return_value,--wrap=find_app_info_by_appid,--wrap=proc_get_mem_usage,--wrap=proc_get_cpu_time,--wrap=resourced_proc_status_change,--wrap=resourced_notify,--wrap=proc_set_runtime_exclude_list,--wrap=find_app_info,--wrap=proc_add_app_info,--wrap=proc_create_app_info,--wrap=proc_app_list_add_app_info,--wrap=proc_check_suspend_state,--wrap=g_dbus_method_invocation_return_error,--wrap=proc_dbus_exclude_signal_handler,--wrap=g_dbus_method_invocation_get_method_name -O0" cmocka-proc-dbus-typecheck.c)
+ #ADD_TESTS(cmocka-proc-dbus-aul-group "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_set_group,--wrap=proc_get_oom_score_adj,--wrap=resourced_notify -O0" cmocka-proc-dbus-aul-group.c)
+diff --git a/tests/test-integer-read-errors.c b/tests/test-integer-read-errors.c
+new file mode 100644
+index 0000000..cc35af0
+--- /dev/null
++++ b/tests/test-integer-read-errors.c
+@@ -0,0 +1,46 @@
++/* SPDX-License-Identifier: Apache-2.0 */
++#include <stdarg.h>
++#include <stddef.h>
++#include <setjmp.h>
++#include <cmocka.h>
++#include <sys/types.h>
++#include <stdint.h>
++#include <errno.h>
++#include <stdlib.h>
++#include <string.h>
++#include <unistd.h>
++#include "file-helper.h"
++
++static void test_invalid_samples(void **state)
++{
++	(void)state;
++	const char *samples[] = {"invalid\n", "1 invalid\n"};
++	for (size_t n = 0; n < 2; n++) {
++		char path[] = "test-integer-read-XXXXXX";
++		int fd = mkstemp(path);
++		int32_t i = 99;
++		u_int32_t u = 99;
++		unsigned long ul = 99;
++		unsigned long long ull = 99;
++		assert_true(fd >= 0);
++		assert_int_equal(write(fd, samples[n], strlen(samples[n])), strlen(samples[n]));
++		assert_int_equal(close(fd), 0);
++		assert_int_equal(fread_nth_int(path, n, &i), -EINVAL);
++		assert_int_equal(fread_nth_uint(path, n, &u), -EINVAL);
++		assert_int_equal(fread_nth_ulong(path, n, &ul), -EINVAL);
++		assert_int_equal(fread_nth_ulonglong(path, n, &ull), -EINVAL);
++		assert_int_equal(i, 99); assert_int_equal(u, 99);
++		assert_int_equal(ul, 99); assert_int_equal(ull, 99);
++		/* A valid preceding field must still be accepted. */
++		if (n) {
++			assert_int_equal(fread_int(path, &i), 0);
++			assert_int_equal(i, 1);
++		}
++		assert_int_equal(unlink(path), 0);
++	}
++}
++int main(void)
++{
++	const struct CMUnitTest tests[] = {cmocka_unit_test(test_invalid_samples)};
++	return cmocka_run_group_tests(tests, NULL, NULL);
++}

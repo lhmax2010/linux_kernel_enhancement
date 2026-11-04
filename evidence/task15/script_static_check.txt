@@ -1,0 +1,4 @@
+bash -n scripts/run_task15_build.sh
+exit=0
+
+shellcheck availability: exit=1 (not installed)

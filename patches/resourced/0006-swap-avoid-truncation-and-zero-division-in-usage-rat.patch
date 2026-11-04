@@ -1,0 +1,40 @@
+From 7d418a6604fb8d00950713b318befd863a9b92c5 Mon Sep 17 00:00:00 2001
+From: Hao Lin <hao.lin@samsung.com>
+Date: Wed, 4 Nov 2026 22:05:40 +0800
+Subject: [PATCH 6/9] swap: avoid truncation and zero division in usage ratio
+
+Integer division truncated nonzero background shares before conversion
+to float, and zero total usage could divide by zero. Convert before
+division and guard free >= total snapshots, retaining the existing
+threshold and victim-selection policy.
+
+Based on analysis of He Fangyu's fix 16d6125d
+---
+ src/resource-optimizer/memory/swap/zramswap.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/resource-optimizer/memory/swap/zramswap.c b/src/resource-optimizer/memory/swap/zramswap.c
+index d3f44aa..81ddd37 100644
+--- a/src/resource-optimizer/memory/swap/zramswap.c
++++ b/src/resource-optimizer/memory/swap/zramswap.c
+@@ -180,7 +180,7 @@ static int swap_zram_reclaim(void *data)
+ 	static bool zram_compact;
+ 	unsigned long long swap_available_bytes;
+ 	unsigned long long swap_usage_bytes;
+-	float swapcg_usage_ratio;
++	double swapcg_usage_ratio;
+ 	unsigned int ram_available;
+ 
+ 	swap_available_bytes = KBYTE_TO_BYTE(proc_get_swap_free());
+@@ -233,7 +233,10 @@ static int swap_zram_reclaim(void *data)
+ 	r = memcg_get_swap_usage(MEMCG_BACKGROUND_LRU_PATH, &swap_usage_bytes);
+ 	if (r)
+ 		return r;
+-	swapcg_usage_ratio = (float)(swap_usage_bytes / (swap_total_bytes - swap_available_bytes) *100);
++	swapcg_usage_ratio = 0;
++	if (swap_available_bytes < swap_total_bytes)
++		swapcg_usage_ratio = (double)swap_usage_bytes /
++				(swap_total_bytes - swap_available_bytes) * 100;
+ 	if (swapcg_usage_ratio > SWAPCG_CHECK_RATIO)
+ 		score = OOM_LEVEL_BACKGROUND_LEAST_RECENTLY_USED;
+ 	else

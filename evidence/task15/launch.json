@@ -1,0 +1,21 @@
+{
+  "time": "2026-11-04T22:11:26.305844+08:00",
+  "command": [
+    "/usr/bin/tmux",
+    "-f",
+    "/dev/null",
+    "-S",
+    "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task15/tmux.sock",
+    "new-session",
+    "-d",
+    "-s",
+    "lko-task15",
+    "-c",
+    "/home/linhao/Toolchain/development/linux_kernel_optimization",
+    "/usr/bin/bash /home/linhao/Toolchain/development/linux_kernel_optimization/scripts/run_task15_build.sh; exec /usr/bin/bash --noprofile --norc -i"
+  ],
+  "exit": 0,
+  "stdout": "",
+  "stderr": "",
+  "tmux_version": "tmux 3.4"
+}

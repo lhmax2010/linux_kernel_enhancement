@@ -1,0 +1,14 @@
+$ git diff --stat origin/tizen
+ src/common/cgroup/cgroup.c                      |  30 ++++++-
+ src/common/file-helper.c                        |  37 ++++++--
+ src/resource-limiter/memory/lowmem-controller.c |  12 ++-
+ src/resource-optimizer/memory/compaction.c      |   7 +-
+ src/resource-optimizer/memory/swap/swap.c       |  17 ++--
+ src/resource-optimizer/memory/swap/zramswap.c   |  37 +++++---
+ tests/CMakeLists.txt                            |   8 ++
+ tests/test-file-write-errors.c                  |  69 ++++++++++++++
+ tests/test-integer-read-errors.c                |  46 ++++++++++
+ tests/test-reclaim-io.c                         | 114 ++++++++++++++++++++++++
+ 10 files changed, 337 insertions(+), 40 deletions(-)
+
+EXIT=0

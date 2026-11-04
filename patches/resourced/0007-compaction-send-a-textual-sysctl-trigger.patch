@@ -1,0 +1,33 @@
+From 649d9434977b52357f28fd69d99fef19477de9d2 Mon Sep 17 00:00:00 2001
+From: Hao Lin <hao.lin@samsung.com>
+Date: Wed, 4 Nov 2026 22:05:40 +0800
+Subject: [PATCH 7/9] compaction: send a textual sysctl trigger
+
+Writing the binary representation of int 1 violates the sysctl integer
+parser and can fail without triggering compaction. Send the one-byte
+textual value and require that byte to be accepted. Keep n for the
+existing zone loop; do not change compaction policy.
+
+Based on analysis of He Fangyu's fix 16d6125d
+---
+ src/resource-optimizer/memory/compaction.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/src/resource-optimizer/memory/compaction.c b/src/resource-optimizer/memory/compaction.c
+index 4b5fec3..d060cfc 100644
+--- a/src/resource-optimizer/memory/compaction.c
++++ b/src/resource-optimizer/memory/compaction.c
+@@ -218,11 +218,8 @@ static void compaction_start(struct compact_control *compact)
+ 		_E("Compaction: failed to open procfs entry [%d]\n", errno);
+ 		goto leave;
+ 	}
+-	/*
+-	 * It doesn't really matter what gets written,
+-	 * as long as smth gets....
+-	 */
+-	if (write(fd, &n, sizeof(n)) <= 0)
++	/* compact_memory is a textual integer sysctl. */
++	if (write(fd, "1", 1) != 1)
+ 		current_status |= COMPACT_FAILURE;
+ 	/*
+ 	 * Reset the external fragmentation warnings.

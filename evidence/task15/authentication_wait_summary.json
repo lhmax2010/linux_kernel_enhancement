@@ -1,0 +1,13 @@
+{
+  "checks": 58,
+  "elapsed_seconds": 1821.8,
+  "last": {
+    "time": "2026-11-04T22:42:33.735442+08:00",
+    "capture_exit": 0,
+    "prompt_visible": true,
+    "background_visible": false,
+    "status": "TASK15 UPDATED 2026-11-04T22:11:29+08:00\nSTAGE preflight result=RUNNING exit=- start=2026-11-04T22:11:29+08:00 end=-\nSTAGE resourced result=PENDING exit=- start=- end=-\n"
+  },
+  "authenticated": false,
+  "timeout": true
+}

@@ -1,0 +1,9 @@
+04b14e34d7b4c2591ff3cb38c22c5007d2f990730a5928895af75a744423c131  patches/resourced/0001-cgroup-submit-force_reclaim-through-a-single-write.patch
+cadff50b21d70f063cb6fb45fe1791dc5821e80964482e5796b0fafa12e5a256  patches/resourced/0002-file-helper-report-flush-and-close-failures.patch
+c97746c578cdbe0f15cac2b376541628bd18a9738272651dae80e91331e6ebfa  patches/resourced/0003-zram-retain-the-selected-backend-when-a-setting-is-u.patch
+d761308bcc901f184520309c06b18c10cbbbf843d54dff68491123c285eb758d  patches/resourced/0004-swap-mark-only-active-devices-as-enabled.patch
+622024ee474b914f2c2d4645eba53a1e35d02bf28649c6489c0ddc38534e81f0  patches/resourced/0005-swap-stop-boot-reclaim-when-progress-cannot-be-measu.patch
+69ea1c21a8ee851cf2fc9d0de59dae3152063dc462b05279fd28811cd4f5a9e1  patches/resourced/0006-swap-avoid-truncation-and-zero-division-in-usage-rat.patch
+c3ba33e41ad375d99684c6fe736450cbdbd5c41582de0dd5b555ef7a66994ac3  patches/resourced/0007-compaction-send-a-textual-sysctl-trigger.patch
+1add690f94ec5474c69a52668b3daee7c2f3016aebcf02546021388ede48cd6a  patches/resourced/0008-file-helper-reject-malformed-integer-samples.patch
+f0573f26458f6bd0569de65595a5905565ba24c2b0243332fb7e64de039ce1e3  patches/resourced/0009-lowmem-use-an-unknown-state-after-failed-vconf-reads.patch

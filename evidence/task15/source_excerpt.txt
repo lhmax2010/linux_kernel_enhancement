@@ -1,0 +1,655 @@
+
+FILE src/common/cgroup/cgroup.c @ 94d346c306233803661e8eab8557596549d82be4
+110: 	const char *cgroup_name, const int pid)
+111: {
+112: 	char buf[MAX_PATH_LENGTH];
+113: 	int size = snprintf(buf, sizeof(buf), "%s/%s", cgroup_subsystem, cgroup_name);
+114: 	if(size < 0) {
+115: 		_E("failed to setup path (%s/%s)", cgroup_subsystem, cgroup_name);
+116: 		return size;
+117: 	}
+118: 	return cgroup_write_pid_fullpath(buf, pid);
+119: }
+120: 
+121: int cgroup_write_node_uint32(const char *cgroup_name,
+122: 		const char *file_name, uint32_t value)
+123: {
+124: 	int ret;
+125: 	char buf[MAX_PATH_LENGTH];
+126: 
+127: 	ret = snprintf(buf, sizeof(buf), "%s/%s", cgroup_name, file_name);
+128: 	if (ret < 0 || (size_t)ret >= sizeof(buf))
+129: 		return -ENAMETOOLONG;
+130: 
+131: 	if (!strcmp(file_name, MEMCG_FORCE_RECLAIM)) {
+132: 		char number[11]; /* UINT32_MAX and its terminating NUL. */
+133: 		ssize_t written;
+134: 		int fd, len = snprintf(number, sizeof(number), "%u", value);
+135: 
+136: 		fd = open(buf, O_WRONLY | O_CLOEXEC);
+137: 		if (fd < 0)
+138: 			return -(errno ?: EIO);
+139: 
+140: 		/* Legacy callbacks may return reclaimed pages, not bytes.
+141: 		 * Submit once: retrying a short write would repeat the command.
+142: 		 */
+143: 		errno = 0;
+144: 		written = write(fd, number, len);
+145: 		ret = written > 0 ? RESOURCED_ERROR_NONE :
+146: 			-(written < 0 && errno ? errno : EIO);
+147: 		if (close(fd) < 0)
+148: 			_SE("Failed to close %s after reclaim request: %m", buf);
+149: 		if (ret < 0)
+150: 			errno = -ret;
+151: 	} else {
+152: 		ret = fwrite_uint(buf, value);
+153: 	}
+154: 	if (ret == RESOURCED_ERROR_NONE)
+155: 		_SD("cgroup_buf = %s, value = %u\n", buf, value);
+156: 	else
+157: 		_SE("errno = %d", ret);
+158: 
+159: 	return ret;
+160: }
+161: 
+162: int cgroup_write_node_int32(const char *cgroup_name,
+163: 		const char *file_name, int32_t value)
+164: {
+165: 	int ret;
+
+FILE src/common/file-helper.c @ 94d346c306233803661e8eab8557596549d82be4
+37: int fwrite_str(const char *path, const char *str)
+38: {
+39: 	FILE *f;
+40: 	int ret = RESOURCED_ERROR_NONE;
+41: 
+42: 	assert(path);
+43: 	assert(str);
+44: 
+45: 	f = fopen(path, "w");
+46: 	ret_value_errno_msg_if(!f, -(errno ?: EIO),
+47: 			       "Fail to open file %s", path);
+48: 
+49: 	/* Command nodes requiring exactly one submission must use a
+50: 	 * dedicated single write, not this buffered helper.
+51: 	 */
+52: 	errno = 0;
+53: 	if (fputs(str, f) == EOF)
+54: 		ret = -(errno ?: EIO);
+55: 	if (ret == RESOURCED_ERROR_NONE) {
+56: 		errno = 0;
+57: 		if (fflush(f) == EOF)
+58: 			ret = -(errno ?: EIO);
+59: 	}
+60: 	errno = 0;
+61: 	if (fclose(f) == EOF && ret == RESOURCED_ERROR_NONE)
+62: 		ret = -(errno ?: EIO);
+63: 	if (ret < 0) {
+64: 		errno = -ret;
+65: 		ETRACE_ERRNO_MSG("Fail to write file %s", path);
+66: 	}
+67: 	return ret;
+68: }
+69: 
+70: int fwrite_int(const char *path, const int number)
+71: {
+72: 	_cleanup_free_ char *digit_buf = NULL;
+73: 	int ret;
+74: 
+75: 	ret = asprintf(&digit_buf, "%d", number);
+76: 	ret_value_errno_msg_if(ret < 0, -ENOMEM,
+77: 			       "sprintf failed\n");
+78: 
+79: 	return fwrite_str(path, digit_buf);
+80: }
+147: int fread_nth_int(const char *path, size_t n, int32_t *number)
+148: {
+149: 	_cleanup_fclose_ FILE *f = NULL;
+150: 	size_t i;
+151: 	int32_t t;
+152: 	int ret;
+153: 
+154: 	f = fopen(path, "r");
+155: 	ret_value_errno_msg_if(!f, -errno,
+156: 			       "Fail to open  %s file.", path);
+157: 
+158: 	errno = 0;
+159: 	for (i = 0; i <= n; i++) {
+160: 		ret = fscanf(f, "%d", &t);
+161: 		ret_value_errno_msg_if(ret == EOF, -(errno ?: ENOENT),
+162: 				       "Fail to read file\n");
+163: 		ret_value_msg_if(ret != 1, -EINVAL,
+164: 				 "Invalid integer in file %s at index %zu", path, i);
+165: 	}
+166: 
+167: 	*number = t;
+168: 	return RESOURCED_ERROR_NONE;
+169: }
+170: 
+171: int fread_nth_uint(const char *path, size_t n, u_int32_t *number)
+172: {
+173: 	_cleanup_fclose_ FILE *f = NULL;
+174: 	size_t i;
+175: 	u_int32_t t;
+176: 	int ret;
+177: 
+178: 	f = fopen(path, "r");
+179: 	ret_value_errno_msg_if(!f, -errno,
+180: 			       "Fail to open %s file.", path);
+181: 
+182: 	errno = 0;
+183: 	for (i = 0; i <= n; i++) {
+184: 		ret = fscanf(f, "%u", &t);
+185: 		ret_value_errno_msg_if(ret == EOF, -(errno ?: ENOENT),
+186: 				       "Fail to read file\n");
+187: 		ret_value_msg_if(ret != 1, -EINVAL,
+188: 				 "Invalid integer in file %s at index %zu", path, i);
+189: 	}
+190: 
+191: 	*number = t;
+192: 	return RESOURCED_ERROR_NONE;
+193: }
+194: 
+195: int fread_nth_ulong(const char *path, size_t n, unsigned long *number)
+196: {
+197: 	_cleanup_fclose_ FILE *f = NULL;
+198: 	size_t i;
+199: 	unsigned long t;
+200: 	int ret;
+201: 
+202: 	f = fopen(path, "r");
+203: 	ret_value_errno_msg_if(!f, -errno,
+204: 			       "Fail to open %s file.", path);
+205: 
+206: 	errno = 0;
+207: 	for (i = 0; i <= n; i++) {
+208: 		ret = fscanf(f, "%lu", &t);
+209: 		ret_value_errno_msg_if(ret == EOF, -(errno ?: ENOENT),
+210: 				       "Fail to read file\n");
+211: 		ret_value_msg_if(ret != 1, -EINVAL,
+212: 				 "Invalid integer in file %s at index %zu", path, i);
+213: 	}
+214: 
+215: 	*number = t;
+216: 	return RESOURCED_ERROR_NONE;
+217: }
+218: 
+219: int fread_nth_ulonglong(const char *path, size_t n, unsigned long long *number)
+220: {
+221: 	_cleanup_fclose_ FILE *f = NULL;
+222: 	size_t i;
+223: 	unsigned long long t;
+224: 	int ret;
+225: 
+226: 	f = fopen(path, "r");
+227: 	ret_value_errno_msg_if(!f, -errno,
+228: 			       "Fail to open %s file.", path);
+229: 
+230: 	errno = 0;
+231: 	for (i = 0; i <= n; i++) {
+232: 		ret = fscanf(f, "%llu", &t);
+233: 		ret_value_errno_msg_if(ret == EOF, -(errno ?: ENOENT),
+234: 				       "Fail to read file\n");
+235: 		ret_value_msg_if(ret != 1, -EINVAL,
+236: 				 "Invalid integer in file %s at index %zu", path, i);
+237: 	}
+238: 
+239: 	*number = t;
+240: 	return RESOURCED_ERROR_NONE;
+241: }
+
+FILE src/resource-optimizer/memory/swap/zramswap.c @ 94d346c306233803661e8eab8557596549d82be4
+90: }
+91: 
+92: static int swap_zram_activate(void *data)
+93: {
+94: 	struct swap_module_ops *swap = (struct swap_module_ops *)data;
+95: 	unsigned long long swap_size_bytes, read_size_bytes;
+96: 	int r;
+97: 
+98: 	swap_size_bytes = KBYTE_TO_BYTE(swap->k_size);
+99: 	zram_control.zram_reclaim_bytes =
+100: 			swap_size_bytes - (swap_size_bytes * ZRAM_FULLNESS_RATIO);
+101: 
+102: 	if (swap_is_on(swap->path))
+103: 		return -EEXIST;
+104: 
+105: 	r = fwrite_int(SWAP_ZRAM_MAX_COMP_STREAMS,
+106: 				zram_control.max_comp_streams);
+107: 	if (r < 0) {
+108: 		_E("fail to write max_comp_streams");
+109: 		return r;
+110: 	}
+111: 
+112: 	r = fwrite_str(SWAP_ZRAM_COMP_ALGORITHM,
+113: 				zram_control.comp_algorithm);
+114: 	if (r == -EINVAL || r == -EBUSY) {
+115: 		char buf[LINE_MAX], *algorithms = buf;
+116: 		char *selected, *end;
+117: 
+118: 		/* Backends differ between kernels. Keep the kernel-selected
+119: 		 * algorithm instead of trying an unavailable fixed fallback.
+120: 		 * EBUSY means an initialized device must retain its algorithm.
+121: 		 */
+122: 		r = fread_str(SWAP_ZRAM_COMP_ALGORITHM, &algorithms);
+123: 		if (r < 0)
+124: 			return r;
+125: 		selected = strchr(algorithms, '[');
+126: 		end = selected ? strchr(selected + 1, ']') : NULL;
+127: 		if (!end || end == selected + 1)
+128: 			return -ENODATA;
+129: 		*end = '\0';
+130: 		_W("Cannot apply configured algorithm %s; retaining kernel algorithm %s",
+131: 				zram_control.comp_algorithm, selected + 1);
+132: 	} else if (r < 0) {
+133: 		return r;
+134: 	}
+135: 
+136: 	r = fread_ulonglong(SWAP_ZRAM_DISK_SIZE, &read_size_bytes);
+137: 	if (r < 0) {
+138: 		_E("fail to read zram disk_size");
+139: 		return r;
+140: 	}
+141: 
+142: 	/* disksize can be pre-fixed by other means, do not set size in that case */
+143: 	if (read_size_bytes == 0) {
+144: 		r = fwrite_ulonglong(SWAP_ZRAM_DISK_SIZE, swap_size_bytes);
+145: 		if (r < 0) {
+146: 			_E("fail to write disk_size");
+147: 			return r;
+148: 		}
+149: 
+150: 		r = fread_ulonglong(SWAP_ZRAM_DISK_SIZE, &read_size_bytes);
+151: 		if (r < 0) {
+152: 			_E("fail to read zram disk_size");
+153: 			return r;
+154: 		}
+155: 
+156: 		/* Check if zram was sucessfully initialized (zcomp rollback case) */
+157: 		if (read_size_bytes < swap_size_bytes) {
+158: 			_E("swap size (%llu) less than expected swap size (%llu)",
+159: 					read_size_bytes, swap_size_bytes);
+160: 			return RESOURCED_ERROR_OUT_OF_MEMORY;
+161: 		}
+162: 	}
+163: 
+164: 	r = do_mkswap(swap->path);
+165: 	if (r > 0) {
+166: 		_E("Failed to make swap device(%s), exit code: %d", swap->path, r);
+167: 		return -EBUSY;
+168: 	} else if (r < 0) {
+169: 		_E("Failed to make swap device(%s): %m", swap->path);
+170: 		return r;
+227: 	 * If swap usage of this cgroup is higher, run LMK about background applications.
+228: 	 * Otherwise, need to check all processes in order to find mallicious process.
+229: 	 */
+230: 	if (!swap_total_bytes)
+231: 		swap_total_bytes = KBYTE_TO_BYTE(proc_get_swap_total());
+232: 
+233: 	r = memcg_get_swap_usage(MEMCG_BACKGROUND_LRU_PATH, &swap_usage_bytes);
+234: 	if (r)
+235: 		return r;
+236: 	swapcg_usage_ratio = 0;
+237: 	if (swap_available_bytes < swap_total_bytes)
+238: 		swapcg_usage_ratio = (double)swap_usage_bytes /
+239: 				(swap_total_bytes - swap_available_bytes) * 100;
+240: 	if (swapcg_usage_ratio > SWAPCG_CHECK_RATIO)
+241: 		score = OOM_LEVEL_BACKGROUND_LEAST_RECENTLY_USED;
+242: 	else
+243: 		score = OOM_LEVEL_ALL;
+244: 
+245: 	lowmem_trigger_swap_reclaim(score, zram_control.zram_reclaim_bytes);
+246: 	zram_compact = false;
+247: 	return -ENOSPC;
+248: }
+249: 
+
+FILE src/resource-optimizer/memory/swap/swap.c @ 94d346c306233803661e8eab8557596549d82be4
+296: 		 */
+297: 		if (root_memcg)
+298: 			ret = cgroup_read_node_ulonglong(memcg, MEMCG_USAGE, &usage_bytes);
+299: 		else
+300: 			ret = memcg_get_anon_usage(memcg, &usage_bytes);
+301: 
+302: 
+303: 		if (ret != RESOURCED_ERROR_NONE)
+304: 			usage_bytes = 0;
+305: 
+306: 		nr_to_reclaim = BYTE_TO_PAGE(usage_bytes);
+307: 		if (nr_to_reclaim <= SWAP_RECLAIM_PAGES_MIN)
+308: 			break; /* don't reclaim if little gain */
+309: 		if (nr_to_reclaim > SWAP_RECLAIM_PAGES_MAX)
+310: 			nr_to_reclaim = SWAP_RECLAIM_PAGES_MAX;
+311: 
+312: 		total_reclaim_pages += nr_to_reclaim;
+313: 		ret = cgroup_write_node_uint32(memcg, MEMCG_FORCE_RECLAIM,
+314: 			nr_to_reclaim);
+315: 		if (ret != RESOURCED_ERROR_NONE)
+316: 			break; /* if we can't reclaim don't continue */
+317: 
+318: 		try -= 1;
+319: 	} while (try > 0);
+320: 
+321: 	_D("[SWAP] FORCE_RECLAIM tried %u pages from %s", total_reclaim_pages, memcg);
+322: 	return ret;
+323: }
+324: 
+325: static int swap_start_reclaim(char *memcg)
+326: {
+327: 	int r;
+328: 	int swappiness;
+329: 
+330: 	r = cgroup_read_node_int32(memcg, MEMCG_SWAPPINESS,
+331: 			&swappiness);
+332: 	if (r)
+333: 		return r;
+334: 
+335: 	/*
+520: 
+521: 	for (i = 0; i < n; i++) {
+522: 		if (streq(swaps[i]->filename, name))
+523: 			return true;
+524: 	}
+525: 
+526: 	return false;
+527: }
+528: 
+529: static void swap_early_reclaim_memcg(void)
+530: {
+531: 	int r;
+532: 	static bool early_reclaim = false;
+533: 
+534: 	/*
+535: 	 * Most system daemons use much memory for intializing own process.
+536: 	 * but there is little change to reuse it while running.
+537: 	 * So early reclaiming moves unused system memory to swap device.
+538: 	 * If multiple swap devices are available,
+539: 	 * first swap with the lowest priority will start reclaiming.
+540: 	 */
+541: 	if (!early_reclaim) {
+542: 		int try = arg_swap_at_boot_maxtry;
+543: 		unsigned long long usage_bytes, prev_usage_bytes = 0;
+544: 
+545: 
+546: 		if (memcg_memsw_is_supported()) {
+547: 			r = cgroup_read_node_ulonglong(MEMCG_PATH,
+548: 					MEMCG_SWAP_USAGE, &prev_usage_bytes);
+549: 		}
+550: 		else {
+551: 			r = cgroup_read_node_ulonglong(MEMCG_PATH,
+552: 					MEMCG_USAGE, &prev_usage_bytes);
+553: 		}
+554: 
+555: 		if (r || try <= 0) {
+556: 			_E("[SWAP] Early reclaim skipped: no usage baseline or trials");
+557: 			return;
+558: 		}
+559: 
+560: 		for (;;) {
+561: 			try--;
+562: 			swap_start_reclaim(MEMCG_PATH);
+563: 
+564: 			if (memcg_memsw_is_supported()) {
+565: 				r = cgroup_read_node_ulonglong(MEMCG_PATH,
+566: 						MEMCG_SWAP_USAGE, &usage_bytes);
+567: 			}
+568: 			else {
+569: 				r = cgroup_read_node_ulonglong(MEMCG_PATH,
+570: 						MEMCG_USAGE, &usage_bytes);
+571: 			}
+572: 
+573: 			if (r) {
+574: 				_E("[SWAP] Early reclaim is aborted");
+575: 				break;
+576: 			}
+577: 
+578: 			/*
+579: 			 * Continue to reclaim memory at boot time until
+580: 			 * there is no more saving or trial reaches maximum.
+581: 			 * The default threshold is very large, so it may
+582: 			 * reclaim once.
+583: 			 */
+584: 			if (try <= 0 || usage_bytes >= prev_usage_bytes ||
+585: 				prev_usage_bytes - usage_bytes < arg_swap_at_boot_threshold_bytes)
+586: 				break;
+587: 
+588: 			prev_usage_bytes = usage_bytes;
+589: 			/*
+590: 			 * To prevent continuous reclaim to harm entire system,
+591: 			 * having relaxation on each reclaim
+592: 			 */
+593: 			sleep(arg_swap_at_boot_interval_sec);
+594: 		}
+595: 
+596: 		early_reclaim = true;
+597: 	}
+598: }
+599: 
+600: static void swap_activate_in_module(void)
+601: {
+602: 	int r;
+603: 	GSList *iter, *next;
+604: 	struct swap_module_ops *swaps;
+605: 
+606: 	r = cgroup_read_node_int32(MEMCG_PATH,
+607: 			MEMCG_SWAPPINESS, &current_swappiness);
+608: 	if (r)
+609: 		return;
+610: 
+611: 	if (swap_get_state() == SWAP_ON)
+612: 		return;
+613: 
+614: 	gslist_for_each_safe(swap_module, iter, next, swaps) {
+615: 		int flags = SWAP_FLAG_DISCARD;
+616: 
+617: 
+618: 		if (!swaps->activate)
+619: 			continue;
+620: 
+621: 		r = swaps->activate(swaps);
+622: 		if (r != 0) {
+623: 			if (r != -EEXIST) {
+624: 				_E("[SWAP] %s activate failed", swaps->name);
+625: 				swap_remove(swaps);
+626: 			} else {
+627: 				swap_set_state(SWAP_ON);
+628: 			}
+629: 			continue;
+630: 		}
+631: 
+632: #ifdef SWAP_FLAG_PREFER
+633: 		if (swaps->priority >= 0) {
+634: 			flags |= SWAP_FLAG_PREFER |
+635: 				(swaps->priority & SWAP_FLAG_PRIO_MASK) << SWAP_FLAG_PRIO_SHIFT;
+636: 		}
+637: #endif
+638: 		r = swapon(swaps->path, flags);
+639: 		if (r < 0) {
+640: 			_E("[SWAP] Failed to turn on swap device(%s): %m", swaps->path);
+641: 			continue;
+642: 		}
+643: 		_I("[SWAP] swap device(%s) was turned on: %s", swaps->name, swaps->path);
+644: 
+645: 
+646: 		swap_set_state(SWAP_ON);
+647: 	}
+648: }
+649: 
+650: static void *swap_thread_main(void * data)
+651: {
+652: 	int is_empty;
+653: 	struct swap_thread_bundle *bundle;
+654: 
+655: 	setpriority(PRIO_PROCESS, 0, SWAP_PRIORITY);
+
+FILE src/resource-optimizer/memory/compaction.c @ 94d346c306233803661e8eab8557596549d82be4
+205: 
+206: 	pthread_mutex_unlock(&compact->lock);
+207: 
+208: 	if (current_status & COMPACT_WITHDRAW)
+209: 		return;
+210: 
+211: 	mem_info = compact->mem_info;
+212: 
+213: 
+214: 	fd = open(PROC_COMPACT_ENTRY,  O_WRONLY);
+215: 	if (fd < 0) {
+216: 		if (errno == EACCES || errno == EFAULT || errno == ENOENT)
+217: 			current_status |= COMPACT_WITHDRAW;
+218: 		_E("Compaction: failed to open procfs entry [%d]\n", errno);
+219: 		goto leave;
+220: 	}
+221: 	/* compact_memory is a textual integer sysctl. */
+222: 	if (write(fd, "1", 1) != 1)
+223: 		current_status |= COMPACT_FAILURE;
+224: 	/*
+225: 	 * Reset the external fragmentation warnings.
+226: 	 * Locking is not required here as all updates will get suspended
+227: 	 * until the compaction status won't indicate all is done here
+228: 	 */
+229: 	if (current_status & COMPACT_FAILURE)
+230: 		goto leave;
+231: 
+232: 	for (n = 0; n < mem_info->zone_count; ++n)
+233: 		mem_info->zones[n].frag_warn &= ~ZONE_FRAG_WARN_RAISE;
+234: leave:
+235: 
+
+FILE src/resource-limiter/memory/lowmem-controller.c @ 94d346c306233803661e8eab8557596549d82be4
+285: 
+286: static void swap_activate_act(void)
+287: {
+288: 	int ret, status = -1;
+289: 
+290: 	ret = vconf_get_int(VCONFKEY_SYSMAN_LOW_MEMORY, &status);
+291: 	if (ret) {
+292: 		status = -1;
+293: 		_E("vconf get failed %s", VCONFKEY_SYSMAN_LOW_MEMORY);
+294: 	}
+295: 
+296: 	if (status != VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL) {
+297: 		ret = vconf_set_int(VCONFKEY_SYSMAN_LOW_MEMORY,
+298: 				VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL);
+299: 		if (ret < 0)
+300: 			_W("Cannot set VCONFKEY_SYSMAN_LOW_MEMORY to VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL");
+301: 
+302: 		lowmem_memory_level_send_system_event(MEM_LEVEL_LOW);
+303: 	}
+304: 	lowmem_change_lowmem_state(MEM_LEVEL_LOW);
+305: 	if (proc_get_freezer_status() == CGROUP_FREEZER_PAUSED)
+306: 		resourced_notify(RESOURCED_NOTIFIER_FREEZER_CGROUP_STATE,
+307: 			(void *)CGROUP_FREEZER_ENABLED);
+308: 
+309: 	if (swap_get_state() != SWAP_ON)
+310: 		resourced_notify(RESOURCED_NOTIFIER_SWAP_ACTIVATE, NULL);
+525: }
+526: 
+527: 
+528: 
+529: /* lowmem control actions */
+530: static int high_mem_control(void *data)
+531: {
+532: 	int ret, status = -1;
+533: 
+534: 	ret = vconf_get_int(VCONFKEY_SYSMAN_LOW_MEMORY, &status);
+535: 	if (ret) {
+536: 		status = -1;
+537: 		_D("vconf_get_int fail %s", VCONFKEY_SYSMAN_LOW_MEMORY);
+538: 	}
+539: 	if (status != VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL) {
+540: 		ret = vconf_set_int(VCONFKEY_SYSMAN_LOW_MEMORY,
+541: 				VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL);
+542: 		if (ret < 0)
+543: 			_W("Cannot set VCONFKEY_SYSMAN_LOW_MEMORY to VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL");
+544: 
+545: 		lowmem_memory_level_send_system_event(MEM_LEVEL_HIGH);
+546: 	}
+547: 
+548: 	lowmem_change_lowmem_state(MEM_LEVEL_HIGH);
+549: 
+550: 	if (swap_get_state() == SWAP_ON && lowmem_get_memcg_swap_status()) {
+551: 		resourced_notify(RESOURCED_NOTIFIER_SWAP_UNSET_LIMIT,
+552: 				get_memcg_info(MEMCG_BACKGROUND_LRU));
+553: 		lowmem_set_memcg_swap_status(false);
+554: 	}
+555: 	if (proc_get_freezer_status() == CGROUP_FREEZER_PAUSED)
+
+FILE tests/CMakeLists.txt @ 94d346c306233803661e8eab8557596549d82be4
+24: # run unit tests autimatically whenever building resourced
+25: ADD_CUSTOM_TARGET(do-test ALL make test
+26:   WORKING_DIRECTORY ./
+27:   USES_TERMINAL)
+28: 
+29: # build unit test
+30: PKG_CHECK_MODULES(CMOCKA REQUIRED cmocka)
+31: PKG_CHECK_MODULES(DLOG REQUIRED dlog)
+32: STRING(REPLACE ";" " " DLOG_LDFLAGS "${DLOG_LDFLAGS}")
+33: STRING(REPLACE ";" " " DLOG_CFLAGS "${DLOG_CFLAGS}")
+34: 
+35: SET(EXTRA_CFLAGS "")
+63: 
+64: 	TARGET_LINK_LIBRARIES(${name} resourced_shared_test cmocka dlog gio-2.0 gobject-2.0 glib-2.0
+65: 	${wraps})
+66: 
+67: 	ADD_TEST(${name} ${name})
+68: 	SET_TESTS_PROPERTIES(${name} PROPERTIES SKIP_RETURN_CODE 77)
+69: 	ADD_DEPENDENCIES(do-test ${name})
+70: endfunction()
+71: 
+72: ADD_TESTS(test-reclaim-io "${UNIT_TESTS_CFLAGS}"
+73:   "-Wl,--wrap=open,--wrap=open64,--wrap=write,--wrap=close" test-reclaim-io.c)
+74: 
+75: ADD_TESTS(test-file-write-errors "${UNIT_TESTS_CFLAGS}"
+76:   "-Wl,--wrap=fopen,--wrap=fopen64,--wrap=fputs,--wrap=fflush,--wrap=fclose" test-file-write-errors.c)
+77: 
+78: ADD_TESTS(test-integer-read-errors "${UNIT_TESTS_CFLAGS}" "" test-integer-read-errors.c)
+79: 
+80: #ADD_TESTS(cmocka-core "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=malloc,--wrap=free,--wrap=g_slist_append,--wrap=g_slist_remove,--wrap=strdup,--wrap=strndup -O0" cmocka-core.c)
+81: #ADD_TESTS(cmocka-proc-dbus-typecheck "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_set_group,--wrap=g_dbus_method_invocation_get_message,--wrap=g_dbus_message_new_method_reply,--wrap=d_bus_reply_message,--wrap=g_object_unref,--wrap=g_dbus_method_invocation_return_value,--wrap=find_app_info_by_appid,--wrap=proc_get_mem_usage,--wrap=proc_get_cpu_time,--wrap=resourced_proc_status_change,--wrap=resourced_notify,--wrap=proc_set_runtime_exclude_list,--wrap=find_app_info,--wrap=proc_add_app_info,--wrap=proc_create_app_info,--wrap=proc_app_list_add_app_info,--wrap=proc_check_suspend_state,--wrap=g_dbus_method_invocation_return_error,--wrap=proc_dbus_exclude_signal_handler,--wrap=g_dbus_method_invocation_get_method_name -O0" cmocka-proc-dbus-typecheck.c)
+82: #ADD_TESTS(cmocka-proc-dbus-aul-group "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_set_group,--wrap=proc_get_oom_score_adj,--wrap=resourced_notify -O0" cmocka-proc-dbus-aul-group.c)
+83: #ADD_TESTS(cmocka-proc-add-app-info "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=g_slist_prepend,--wrap=g_slist_remove -O0" cmocka-proc-add-app-info.c)
+84: #ADD_TESTS(cmocka-dbus-get-memory-lists "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=g_dbus_method_invocation_return_value,--wrap=proc_get_mem_usage,--wrap=g_dbus_method_invocation_get_message,--wrap=g_dbus_message_new_method_reply,--wrap=d_bus_reply_message,--wrap=g_dbus_method_invocation_return_error -O0" cmocka-dbus-get-memory-lists.c)
+85: #ADD_TESTS(cmocka-dbus-get-cpu-lists "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_get_uptime,--wrap=proc_get_cpu_time,--wrap=g_dbus_method_invocation_return_value,--wrap=g_dbus_method_invocation_get_message,--wrap=g_dbus_message_new_method_reply,--wrap=d_bus_reply_message,--wrap=g_dbus_method_invocation_return_error -O0" cmocka-dbus-get-cpu-lists.c)
+86: #ADD_TESTS(cmocka-file-helper "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fopen,--wrap=fputs,--wrap=fscanf,--wrap=fgets,--wrap=fopen64,--wrap=vfscanf,--wrap=fscanf64,--wrap=__isoc99_fscanf,--wrap=asprintf -O0" cmocka-file-helper.c)
+87: #ADD_TESTS(cmocka-test-child-pid "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=g_slist_prepend,--wrap=g_slist_remove -O0" cmocka-test-child-pid.c)
+88: #ADD_TESTS(cmocka-proc-app-list "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=g_slist_prepend,--wrap=g_slist_remove,--wrap=g_slist_prepend,--wrap=g_slist_remove -O0" cmocka-proc-app-list.c)
+89: #ADD_TESTS(test-common "${UNIT_TESTS_CFLAGS}" "-O0" test-common.c)
+90: #ADD_TESTS(test-safe-kill "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=kill,--wrap=fopen,--wrap=fopen64 -O0" test-safe-kill.c)
+
+FILE packaging/resourced.spec @ 94d346c306233803661e8eab8557596549d82be4
+155: 
+156: %ifarch %{arm} %ix86
+157: %define ISU_ARCH_BIT 32
+158: %else
+159: %define ISU_ARCH_BIT 64
+160: %endif
+161: 
+162: %build
+163: mkdir -p build
+164: _resourced_srcdir=$(pwd)
+165: cd build
+166: %cmake .. -DFULLVER=%{version}                        \
+167: 	 -DCMAKE_BUILD_TYPE=Release                       \
+168: 	 -DISU_ARCH_BIT=%{ISU_ARCH_BIT}                   \
+169: 	 -DCPU_THROTTLING_MODULE=%{cpu_throttling_module} \
+170: 	 -DCPU_BOOSTING_MODULE=%{cpu_boosting_module}     \
+171: 	 -DMEMORY_MODULE=%{memory_module}                 \
+172: 	 -DPROC_WATCHDOG=%{watchdog_module}               \
+173: 	 -DEBPF_ENABLED=%{ebpf_enabled}                   \
+174: 	 -DRD_SYS_ETC=%{TZ_SYS_ETC}                       \
+175: 	 -DRD_SYS_DATA=%{TZ_SYS_DATA}                     \
+176: 	 -DRD_SYS_DB=%{TZ_SYS_DB}                         \
+177: 	 -DRD_CONFIG_PATH=%{confdir}                      \
+178: 	 -DRD_PRODUCT_CONFIG_PATH=%{TZ_SYS_RO_PRODUCT_ETC}/resourced \
+179: 	 -DRD_PLUGIN_PATH=%{plugindir}                    \
+180: 	 -DRD_TESTS_PATH=%{_libdir}/resourced-tests       \
+181: 	 -DRD_BINARY_NAME=resourced                       \
+182: %if %{enable_system_server}
+183: 	 -DSYSTEM_SERVER_DIR=%{_system_server_dir} \
+184: %endif
+185: 	 -DENABLE_SYSTEM_SERVER=%{enable_system_server} \
+186: 	 %{?asan:-DASAN_BUILD=True}
+187: 
+188: make %{?jobs:-j%jobs}
+189: cd "$_resourced_srcdir"
+190: 

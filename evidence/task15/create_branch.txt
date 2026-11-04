@@ -1,0 +1,6 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced checkout -b lko/resourced-fix origin/tizen
+TIME=2026-11-04T22:05:34.015892+08:00
+branch 'lko/resourced-fix' set up to track 'origin/tizen'.
+Switched to a new branch 'lko/resourced-fix'
+
+EXIT=0

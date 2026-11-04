@@ -1,0 +1,125 @@
+commit 152161a1d80b2dbf244f044824699df77f84d5d1
+Author: Hao Lin <hao.lin@samsung.com>
+Committer: Hao Lin <hao.lin@samsung.com>
+Date: 2026-11-04T22:05:39+08:00
+cgroup: submit force_reclaim through a single write
+
+Buffered writes can hide failures or resubmit a positive legacy page-count
+return as a short write. Keep cgroup_write_node_uint32 and its callers,
+but route only memory.force_reclaim through one unbuffered syscall.
+Accept positive legacy and fixed-kernel results; report zero/errors and
+do not retry or turn a successful submission into failure on close.
+Check path truncation. Add mocked return and error regression cases.
+
+Based on analysis of He Fangyu's fix 16d6125d
+
+commit 3f59151b2f8b9f2d506181d61722d1d7b9555c7c
+Author: Hao Lin <hao.lin@samsung.com>
+Committer: Hao Lin <hao.lin@samsung.com>
+Date: 2026-11-04T22:05:39+08:00
+file-helper: report flush and close failures
+
+fputs success can only mean data entered the stdio buffer. The previous
+cleanup fclose discarded failures, hiding rejected sysfs settings.
+Check write, flush and close explicitly, always close the stream and keep
+the first error with an EIO fallback. Add fault-injected completion tests.
+No rollback is promised after a partially completed write.
+
+Based on analysis of He Fangyu's fix 16d6125d
+
+commit 53452fa3315f10c02c0260efe032e3e6ef398779
+Author: Hao Lin <hao.lin@samsung.com>
+Committer: Hao Lin <hao.lin@samsung.com>
+Date: 2026-11-04T22:05:39+08:00
+zram: retain the selected backend when a setting is unavailable
+
+A fixed lz4 fallback cannot initialize a kernel with only the LZO
+backend. After EINVAL or an initialized-device EBUSY, read and validate
+the bracketed kernel-selected algorithm and retain it without another
+algorithm write. Permission, I/O, read and malformed-list errors still
+fail. Existing nonzero disksize handling and all function names remain.
+The configured zstd succeeds on the lz4/zstd kernel; the LZO-only kernel
+retains its own default. No unavailable fallback algorithm is guessed.
+
+Based on analysis of He Fangyu's fix 16d6125d
+
+commit abdbc4a414b9616b5d90f3ae1c2f4c6b114a9d0e
+Author: Hao Lin <hao.lin@samsung.com>
+Committer: Hao Lin <hao.lin@samsung.com>
+Date: 2026-11-04T22:05:40+08:00
+swap: mark only active devices as enabled
+
+An activation failure previously marked swap ON even after removing
+the failed module, suppressing later activation. Only the already-active
+EEXIST result may set ON in the error branch; successful swapon retains
+its existing status update. Use safe iteration when removing the failed
+list element so the following module can still be considered.
+
+Based on analysis of He Fangyu's fix 16d6125d
+
+commit a8e3344c10d355857a17b008709ee303a0ecc9f6
+Author: Hao Lin <hao.lin@samsung.com>
+Committer: Hao Lin <hao.lin@samsung.com>
+Date: 2026-11-04T22:05:40+08:00
+swap: stop boot reclaim when progress cannot be measured
+
+Usage increases underflow the unsigned saved-minus-current calculation
+and look like huge reclaim progress. Stop on a nondecreasing sample
+before subtraction. If the initial usage cannot be read, skip this run
+rather than inventing ULONG_MAX/ULLONG_MAX; also honor nonpositive retry
+limits. Keep the existing accounting selection and thresholds.
+
+Based on analysis of He Fangyu's fix 16d6125d
+
+commit 7d418a6604fb8d00950713b318befd863a9b92c5
+Author: Hao Lin <hao.lin@samsung.com>
+Committer: Hao Lin <hao.lin@samsung.com>
+Date: 2026-11-04T22:05:40+08:00
+swap: avoid truncation and zero division in usage ratio
+
+Integer division truncated nonzero background shares before conversion
+to float, and zero total usage could divide by zero. Convert before
+division and guard free >= total snapshots, retaining the existing
+threshold and victim-selection policy.
+
+Based on analysis of He Fangyu's fix 16d6125d
+
+commit 649d9434977b52357f28fd69d99fef19477de9d2
+Author: Hao Lin <hao.lin@samsung.com>
+Committer: Hao Lin <hao.lin@samsung.com>
+Date: 2026-11-04T22:05:40+08:00
+compaction: send a textual sysctl trigger
+
+Writing the binary representation of int 1 violates the sysctl integer
+parser and can fail without triggering compaction. Send the one-byte
+textual value and require that byte to be accepted. Keep n for the
+existing zone loop; do not change compaction policy.
+
+Based on analysis of He Fangyu's fix 16d6125d
+
+commit 879c021f9daac03875c5919f5456876e741885ed
+Author: Hao Lin <hao.lin@samsung.com>
+Committer: Hao Lin <hao.lin@samsung.com>
+Date: 2026-11-04T22:10:15+08:00
+file-helper: reject malformed integer samples
+
+fscanf returning zero leaves the temporary value unassigned, but the
+helpers reported success and copied it to callers. Require one converted
+field for each of the four existing signed/unsigned integer readers.
+Leave caller output unchanged on failure, including memory usage reads.
+
+Based on analysis of He Fangyu's fix 16d6125d
+
+commit 94d346c306233803661e8eab8557596549d82be4
+Author: Hao Lin <hao.lin@samsung.com>
+Committer: Hao Lin <hao.lin@samsung.com>
+Date: 2026-11-04T22:10:15+08:00
+lowmem: use an unknown state after failed vconf reads
+
+Two callbacks compared an uninitialized status after vconf_get_int
+failed, potentially suppressing the required normal-state update. Set
+the local result to unknown before and after a failed read. Keep existing
+log levels and leave already-initialized callbacks unchanged.
+
+Based on analysis of He Fangyu's fix 16d6125d
+

@@ -1,0 +1,156 @@
+From 3f59151b2f8b9f2d506181d61722d1d7b9555c7c Mon Sep 17 00:00:00 2001
+From: Hao Lin <hao.lin@samsung.com>
+Date: Wed, 4 Nov 2026 22:05:39 +0800
+Subject: [PATCH 2/9] file-helper: report flush and close failures
+
+fputs success can only mean data entered the stdio buffer. The previous
+cleanup fclose discarded failures, hiding rejected sysfs settings.
+Check write, flush and close explicitly, always close the stream and keep
+the first error with an EIO fallback. Add fault-injected completion tests.
+No rollback is promised after a partially completed write.
+
+Based on analysis of He Fangyu's fix 16d6125d
+---
+ src/common/file-helper.c       | 29 ++++++++++----
+ tests/CMakeLists.txt           |  3 ++
+ tests/test-file-write-errors.c | 69 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 93 insertions(+), 8 deletions(-)
+ create mode 100644 tests/test-file-write-errors.c
+
+diff --git a/src/common/file-helper.c b/src/common/file-helper.c
+index 28ffff9..7281672 100644
+--- a/src/common/file-helper.c
++++ b/src/common/file-helper.c
+@@ -36,22 +36,35 @@
+ 
+ int fwrite_str(const char *path, const char *str)
+ {
+-	_cleanup_fclose_ FILE *f = NULL;
+-	int ret;
++	FILE *f;
++	int ret = RESOURCED_ERROR_NONE;
+ 
+ 	assert(path);
+ 	assert(str);
+ 
+ 	f = fopen(path, "w");
+-	ret_value_errno_msg_if(!f, -errno,
++	ret_value_errno_msg_if(!f, -(errno ?: EIO),
+ 			       "Fail to open file %s", path);
+ 
++	/* Command nodes requiring exactly one submission must use a
++	 * dedicated single write, not this buffered helper.
++	 */
+ 	errno = 0;
+-	ret = fputs(str, f);
+-	ret_value_errno_msg_if(ret == EOF, -(errno ?: EIO),
+-			       "Fail to write file");
+-
+-	return RESOURCED_ERROR_NONE;
++	if (fputs(str, f) == EOF)
++		ret = -(errno ?: EIO);
++	if (ret == RESOURCED_ERROR_NONE) {
++		errno = 0;
++		if (fflush(f) == EOF)
++			ret = -(errno ?: EIO);
++	}
++	errno = 0;
++	if (fclose(f) == EOF && ret == RESOURCED_ERROR_NONE)
++		ret = -(errno ?: EIO);
++	if (ret < 0) {
++		errno = -ret;
++		ETRACE_ERRNO_MSG("Fail to write file %s", path);
++	}
++	return ret;
+ }
+ 
+ int fwrite_int(const char *path, const int number)
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index f2cb181..94c629a 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -72,6 +72,9 @@ endfunction()
+ ADD_TESTS(test-reclaim-io "${UNIT_TESTS_CFLAGS}"
+   "-Wl,--wrap=open,--wrap=open64,--wrap=write,--wrap=close" test-reclaim-io.c)
+ 
++ADD_TESTS(test-file-write-errors "${UNIT_TESTS_CFLAGS}"
++  "-Wl,--wrap=fopen,--wrap=fopen64,--wrap=fputs,--wrap=fflush,--wrap=fclose" test-file-write-errors.c)
++
+ #ADD_TESTS(cmocka-core "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=malloc,--wrap=free,--wrap=g_slist_append,--wrap=g_slist_remove,--wrap=strdup,--wrap=strndup -O0" cmocka-core.c)
+ #ADD_TESTS(cmocka-proc-dbus-typecheck "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_set_group,--wrap=g_dbus_method_invocation_get_message,--wrap=g_dbus_message_new_method_reply,--wrap=d_bus_reply_message,--wrap=g_object_unref,--wrap=g_dbus_method_invocation_return_value,--wrap=find_app_info_by_appid,--wrap=proc_get_mem_usage,--wrap=proc_get_cpu_time,--wrap=resourced_proc_status_change,--wrap=resourced_notify,--wrap=proc_set_runtime_exclude_list,--wrap=find_app_info,--wrap=proc_add_app_info,--wrap=proc_create_app_info,--wrap=proc_app_list_add_app_info,--wrap=proc_check_suspend_state,--wrap=g_dbus_method_invocation_return_error,--wrap=proc_dbus_exclude_signal_handler,--wrap=g_dbus_method_invocation_get_method_name -O0" cmocka-proc-dbus-typecheck.c)
+ #ADD_TESTS(cmocka-proc-dbus-aul-group "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_set_group,--wrap=proc_get_oom_score_adj,--wrap=resourced_notify -O0" cmocka-proc-dbus-aul-group.c)
+diff --git a/tests/test-file-write-errors.c b/tests/test-file-write-errors.c
+new file mode 100644
+index 0000000..7f3efa3
+--- /dev/null
++++ b/tests/test-file-write-errors.c
+@@ -0,0 +1,69 @@
++/* SPDX-License-Identifier: Apache-2.0 */
++#include <stdarg.h>
++#include <stddef.h>
++#include <setjmp.h>
++#include <cmocka.h>
++#include <stdio.h>
++#include <stdint.h>
++#include <errno.h>
++#include <string.h>
++#include "file-helper.h"
++
++static FILE *const mock_stream = (FILE *)(uintptr_t)0x1234;
++static int puts_fail, flush_fail, close_fail, saved_error, flushes, closes;
++FILE *__real_fopen(const char *path, const char *mode);
++FILE *__real_fopen64(const char *path, const char *mode);
++int __real_fputs(const char *str, FILE *stream);
++int __real_fflush(FILE *stream);
++int __real_fclose(FILE *stream);
++FILE *__wrap_fopen(const char *path, const char *mode)
++{
++	return !strcmp(path, "/task15/mock-file") ? mock_stream : __real_fopen(path, mode);
++}
++FILE *__wrap_fopen64(const char *path, const char *mode)
++{
++	return !strcmp(path, "/task15/mock-file") ? mock_stream : __real_fopen64(path, mode);
++}
++int __wrap_fputs(const char *str, FILE *stream)
++{
++	if (stream != mock_stream) return __real_fputs(str, stream);
++	assert_string_equal(str, "value"); errno = saved_error;
++	return puts_fail ? EOF : 1;
++}
++int __wrap_fflush(FILE *stream)
++{
++	if (stream != mock_stream) return __real_fflush(stream);
++	flushes++; errno = saved_error;
++	return flush_fail ? EOF : 0;
++}
++int __wrap_fclose(FILE *stream)
++{
++	if (stream != mock_stream) return __real_fclose(stream);
++	closes++; errno = close_fail ? EBADF : 0;
++	return close_fail ? EOF : 0;
++}
++static void test_write_completion(void **state)
++{
++	(void)state;
++	/* Success, fputs failure, delayed flush failure, close-only failure,
++	 * and errno-less flush failure. Later close errors cannot replace
++	 * an earlier ENOSPC/EIO result.
++	 */
++	const int cases[][5] = {
++		{0, 0, 0, 0, 0}, {1, 0, 1, ENOSPC, -ENOSPC},
++		{0, 1, 1, EIO, -EIO}, {0, 0, 1, 0, -EBADF},
++		{0, 1, 1, 0, -EIO},
++	};
++	for (size_t i = 0; i < sizeof(cases) / sizeof(cases[0]); i++) {
++		puts_fail = cases[i][0]; flush_fail = cases[i][1];
++		close_fail = cases[i][2]; saved_error = cases[i][3];
++		flushes = closes = 0;
++		assert_int_equal(fwrite_str("/task15/mock-file", "value"), cases[i][4]);
++		assert_int_equal(flushes, !puts_fail); assert_int_equal(closes, 1);
++	}
++}
++int main(void)
++{
++	const struct CMUnitTest tests[] = {cmocka_unit_test(test_write_completion)};
++	return cmocka_run_group_tests(tests, NULL, NULL);
++}

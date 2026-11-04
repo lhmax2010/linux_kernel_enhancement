@@ -1,0 +1,4 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced status --porcelain
+TIME=2026-11-04T22:05:34.034925+08:00
+
+EXIT=0

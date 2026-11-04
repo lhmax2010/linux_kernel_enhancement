@@ -1,0 +1,4 @@
+$ git -c core.sshCommand=ssh -o BatchMode=yes ls-remote origin refs/heads/tizen refs/heads/sandbox/lhmax2025/kernel_optimization
+82e79c09ea80c1977dfb27d3752577c74340f9bc	refs/heads/tizen
+
+EXIT=0

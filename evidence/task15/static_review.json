@@ -1,0 +1,89 @@
+{
+  "commits": [
+    {
+      "commit": "152161a1d80b2dbf244f044824699df77f84d5d1",
+      "reference_annotation": true,
+      "identity_ok": true,
+      "files": [
+        "src/common/cgroup/cgroup.c",
+        "tests/CMakeLists.txt",
+        "tests/test-reclaim-io.c"
+      ]
+    },
+    {
+      "commit": "3f59151b2f8b9f2d506181d61722d1d7b9555c7c",
+      "reference_annotation": true,
+      "identity_ok": true,
+      "files": [
+        "src/common/file-helper.c",
+        "tests/CMakeLists.txt",
+        "tests/test-file-write-errors.c"
+      ]
+    },
+    {
+      "commit": "53452fa3315f10c02c0260efe032e3e6ef398779",
+      "reference_annotation": true,
+      "identity_ok": true,
+      "files": [
+        "src/resource-optimizer/memory/swap/zramswap.c"
+      ]
+    },
+    {
+      "commit": "abdbc4a414b9616b5d90f3ae1c2f4c6b114a9d0e",
+      "reference_annotation": true,
+      "identity_ok": true,
+      "files": [
+        "src/resource-optimizer/memory/swap/swap.c"
+      ]
+    },
+    {
+      "commit": "a8e3344c10d355857a17b008709ee303a0ecc9f6",
+      "reference_annotation": true,
+      "identity_ok": true,
+      "files": [
+        "src/resource-optimizer/memory/swap/swap.c"
+      ]
+    },
+    {
+      "commit": "7d418a6604fb8d00950713b318befd863a9b92c5",
+      "reference_annotation": true,
+      "identity_ok": true,
+      "files": [
+        "src/resource-optimizer/memory/swap/zramswap.c"
+      ]
+    },
+    {
+      "commit": "649d9434977b52357f28fd69d99fef19477de9d2",
+      "reference_annotation": true,
+      "identity_ok": true,
+      "files": [
+        "src/resource-optimizer/memory/compaction.c"
+      ]
+    },
+    {
+      "commit": "879c021f9daac03875c5919f5456876e741885ed",
+      "reference_annotation": true,
+      "identity_ok": true,
+      "files": [
+        "src/common/file-helper.c",
+        "tests/CMakeLists.txt",
+        "tests/test-integer-read-errors.c"
+      ]
+    },
+    {
+      "commit": "94d346c306233803661e8eab8557596549d82be4",
+      "reference_annotation": true,
+      "identity_ok": true,
+      "files": [
+        "src/resource-limiter/memory/lowmem-controller.c"
+      ]
+    }
+  ],
+  "source_clean": true,
+  "bash_n": 0,
+  "runner_direct_sudo_invocations": 1,
+  "runner_config_sha256": "d47536dd30900412e7bbd2d7057e9dd486f94ad2b2b6d8404a510a23be0bdc48",
+  "runner_preflight_line": 286,
+  "runner_source_check_line": 166,
+  "production_function_names_unchanged": true
+}

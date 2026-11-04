@@ -1,0 +1,4 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced fetch origin refs/heads/tizen:refs/remotes/origin/tizen
+TIME=2026-11-04T22:05:33.706062+08:00
+
+EXIT=0

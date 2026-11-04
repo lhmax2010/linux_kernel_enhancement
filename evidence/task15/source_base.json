@@ -1,0 +1,7 @@
+{
+  "base": "82e79c09ea80c1977dfb27d3752577c74340f9bc",
+  "task14_base": "82e79c09ea80c1977dfb27d3752577c74340f9bc",
+  "base_changed": false,
+  "sandbox_absent": true,
+  "branch": "lko/resourced-fix"
+}

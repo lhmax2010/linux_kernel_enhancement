@@ -1,0 +1,51 @@
+From 94d346c306233803661e8eab8557596549d82be4 Mon Sep 17 00:00:00 2001
+From: Hao Lin <hao.lin@samsung.com>
+Date: Wed, 4 Nov 2026 22:05:40 +0800
+Subject: [PATCH 9/9] lowmem: use an unknown state after failed vconf reads
+
+Two callbacks compared an uninitialized status after vconf_get_int
+failed, potentially suppressing the required normal-state update. Set
+the local result to unknown before and after a failed read. Keep existing
+log levels and leave already-initialized callbacks unchanged.
+
+Based on analysis of He Fangyu's fix 16d6125d
+---
+ src/resource-limiter/memory/lowmem-controller.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/src/resource-limiter/memory/lowmem-controller.c b/src/resource-limiter/memory/lowmem-controller.c
+index eb95442..c0bcfb1 100644
+--- a/src/resource-limiter/memory/lowmem-controller.c
++++ b/src/resource-limiter/memory/lowmem-controller.c
+@@ -285,11 +285,13 @@ static void lowmem_memory_level_send_system_event(int lv)
+ 
+ static void swap_activate_act(void)
+ {
+-	int ret, status;
++	int ret, status = -1;
+ 
+ 	ret = vconf_get_int(VCONFKEY_SYSMAN_LOW_MEMORY, &status);
+-	if (ret)
++	if (ret) {
++		status = -1;
+ 		_E("vconf get failed %s", VCONFKEY_SYSMAN_LOW_MEMORY);
++	}
+ 
+ 	if (status != VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL) {
+ 		ret = vconf_set_int(VCONFKEY_SYSMAN_LOW_MEMORY,
+@@ -527,11 +529,13 @@ static void medium_cb(struct lowmem_control *ctl)
+ /* lowmem control actions */
+ static int high_mem_control(void *data)
+ {
+-	int ret, status;
++	int ret, status = -1;
+ 
+ 	ret = vconf_get_int(VCONFKEY_SYSMAN_LOW_MEMORY, &status);
+-	if (ret)
++	if (ret) {
++		status = -1;
+ 		_D("vconf_get_int fail %s", VCONFKEY_SYSMAN_LOW_MEMORY);
++	}
+ 	if (status != VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL) {
+ 		ret = vconf_set_int(VCONFKEY_SYSMAN_LOW_MEMORY,
+ 				VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL);

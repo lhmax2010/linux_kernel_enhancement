@@ -1,0 +1,3 @@
+$ tmux -S temp/task15/tmux.sock list-sessions -F <name/windows/attached>
+lko-task15 1 0
+EXIT=0

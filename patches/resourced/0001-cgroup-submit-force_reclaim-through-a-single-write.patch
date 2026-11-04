@@ -1,0 +1,195 @@
+From 152161a1d80b2dbf244f044824699df77f84d5d1 Mon Sep 17 00:00:00 2001
+From: Hao Lin <hao.lin@samsung.com>
+Date: Wed, 4 Nov 2026 22:05:39 +0800
+Subject: [PATCH 1/9] cgroup: submit force_reclaim through a single write
+
+Buffered writes can hide failures or resubmit a positive legacy page-count
+return as a short write. Keep cgroup_write_node_uint32 and its callers,
+but route only memory.force_reclaim through one unbuffered syscall.
+Accept positive legacy and fixed-kernel results; report zero/errors and
+do not retry or turn a successful submission into failure on close.
+Check path truncation. Add mocked return and error regression cases.
+
+Based on analysis of He Fangyu's fix 16d6125d
+---
+ src/common/cgroup/cgroup.c |  30 +++++++++-
+ tests/CMakeLists.txt       |   3 +
+ tests/test-reclaim-io.c    | 114 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 145 insertions(+), 2 deletions(-)
+ create mode 100644 tests/test-reclaim-io.c
+
+diff --git a/src/common/cgroup/cgroup.c b/src/common/cgroup/cgroup.c
+index 59fd9b7..408daee 100644
+--- a/src/common/cgroup/cgroup.c
++++ b/src/common/cgroup/cgroup.c
+@@ -123,8 +123,34 @@ int cgroup_write_node_uint32(const char *cgroup_name,
+ {
+ 	int ret;
+ 	char buf[MAX_PATH_LENGTH];
+-	snprintf(buf, sizeof(buf), "%s/%s", cgroup_name, file_name);
+-	ret = fwrite_uint(buf, value);
++
++	ret = snprintf(buf, sizeof(buf), "%s/%s", cgroup_name, file_name);
++	if (ret < 0 || (size_t)ret >= sizeof(buf))
++		return -ENAMETOOLONG;
++
++	if (!strcmp(file_name, MEMCG_FORCE_RECLAIM)) {
++		char number[11]; /* UINT32_MAX and its terminating NUL. */
++		ssize_t written;
++		int fd, len = snprintf(number, sizeof(number), "%u", value);
++
++		fd = open(buf, O_WRONLY | O_CLOEXEC);
++		if (fd < 0)
++			return -(errno ?: EIO);
++
++		/* Legacy callbacks may return reclaimed pages, not bytes.
++		 * Submit once: retrying a short write would repeat the command.
++		 */
++		errno = 0;
++		written = write(fd, number, len);
++		ret = written > 0 ? RESOURCED_ERROR_NONE :
++			-(written < 0 && errno ? errno : EIO);
++		if (close(fd) < 0)
++			_SE("Failed to close %s after reclaim request: %m", buf);
++		if (ret < 0)
++			errno = -ret;
++	} else {
++		ret = fwrite_uint(buf, value);
++	}
+ 	if (ret == RESOURCED_ERROR_NONE)
+ 		_SD("cgroup_buf = %s, value = %u\n", buf, value);
+ 	else
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 0d87177..f2cb181 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -69,6 +69,9 @@ function(ADD_TESTS name flags wraps sources)
+ 	ADD_DEPENDENCIES(do-test ${name})
+ endfunction()
+ 
++ADD_TESTS(test-reclaim-io "${UNIT_TESTS_CFLAGS}"
++  "-Wl,--wrap=open,--wrap=open64,--wrap=write,--wrap=close" test-reclaim-io.c)
++
+ #ADD_TESTS(cmocka-core "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=malloc,--wrap=free,--wrap=g_slist_append,--wrap=g_slist_remove,--wrap=strdup,--wrap=strndup -O0" cmocka-core.c)
+ #ADD_TESTS(cmocka-proc-dbus-typecheck "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_set_group,--wrap=g_dbus_method_invocation_get_message,--wrap=g_dbus_message_new_method_reply,--wrap=d_bus_reply_message,--wrap=g_object_unref,--wrap=g_dbus_method_invocation_return_value,--wrap=find_app_info_by_appid,--wrap=proc_get_mem_usage,--wrap=proc_get_cpu_time,--wrap=resourced_proc_status_change,--wrap=resourced_notify,--wrap=proc_set_runtime_exclude_list,--wrap=find_app_info,--wrap=proc_add_app_info,--wrap=proc_create_app_info,--wrap=proc_app_list_add_app_info,--wrap=proc_check_suspend_state,--wrap=g_dbus_method_invocation_return_error,--wrap=proc_dbus_exclude_signal_handler,--wrap=g_dbus_method_invocation_get_method_name -O0" cmocka-proc-dbus-typecheck.c)
+ #ADD_TESTS(cmocka-proc-dbus-aul-group "${UNIT_TESTS_CFLAGS}" "-Wl,--wrap=fread_int,--wrap=fread_uint,--wrap=fread_ulong,--wrap=proc_set_group,--wrap=proc_get_oom_score_adj,--wrap=resourced_notify -O0" cmocka-proc-dbus-aul-group.c)
+diff --git a/tests/test-reclaim-io.c b/tests/test-reclaim-io.c
+new file mode 100644
+index 0000000..a4ea503
+--- /dev/null
++++ b/tests/test-reclaim-io.c
+@@ -0,0 +1,114 @@
++/* SPDX-License-Identifier: Apache-2.0 */
++#include <stdarg.h>
++#include <stddef.h>
++#include <setjmp.h>
++#include <cmocka.h>
++#include <errno.h>
++#include <fcntl.h>
++#include <stdint.h>
++#include <string.h>
++#include <unistd.h>
++#include "cgroup.h"
++
++static int writes, closes, write_error, close_error, open_error;
++static ssize_t write_result;
++static const int mock_fd = 12345;
++int __real_open(const char *path, int flags, ...);
++int __real_open64(const char *path, int flags, ...);
++ssize_t __real_write(int fd, const void *buf, size_t count);
++int __real_close(int fd);
++
++static int mock_open(const char *path, int flags)
++{
++	assert_string_equal(path, "/task15/mock/memory.force_reclaim");
++	assert_true(flags & O_CLOEXEC);
++	assert_int_equal(flags & O_ACCMODE, O_WRONLY);
++	if (open_error) {
++		errno = open_error;
++		return -1;
++	}
++	return mock_fd;
++}
++
++int __wrap_open(const char *path, int flags, ...)
++{
++	mode_t mode = 0;
++	if (!strcmp(path, "/task15/mock/memory.force_reclaim"))
++		return mock_open(path, flags);
++	if (flags & O_CREAT) {
++		va_list ap;
++		va_start(ap, flags); mode = va_arg(ap, int); va_end(ap);
++	}
++	return __real_open(path, flags, mode);
++}
++int __wrap_open64(const char *path, int flags, ...)
++{
++	mode_t mode = 0;
++	if (!strcmp(path, "/task15/mock/memory.force_reclaim"))
++		return mock_open(path, flags);
++	if (flags & O_CREAT) {
++		va_list ap;
++		va_start(ap, flags); mode = va_arg(ap, int); va_end(ap);
++	}
++	return __real_open64(path, flags, mode);
++}
++ssize_t __wrap_write(int fd, const void *buf, size_t count)
++{
++	if (fd != mock_fd)
++		return __real_write(fd, buf, count);
++	writes++;
++	assert_int_equal(count, 4);
++	assert_memory_equal(buf, "1024", 4);
++	errno = write_error;
++	return write_result;
++}
++int __wrap_close(int fd)
++{
++	if (fd != mock_fd)
++		return __real_close(fd);
++	closes++;
++	errno = close_error;
++	return close_error ? -1 : 0;
++}
++static void test_reclaim_results(void **state)
++{
++	const ssize_t returns[] = {4, 1, 100, 0, -1, -1, -1};
++	const int errors[] = {0, 0, 0, 0, EINTR, EACCES, 0};
++	const int expected[] = {0, 0, 0, -EIO, -EINTR, -EACCES, -EIO};
++	(void)state;
++	for (size_t i = 0; i < sizeof(returns) / sizeof(returns[0]); i++) {
++		writes = closes = open_error = close_error = 0;
++		write_result = returns[i]; write_error = errors[i];
++		assert_int_equal(cgroup_write_node_uint32("/task15/mock", "memory.force_reclaim", 1024), expected[i]);
++		assert_int_equal(writes, 1);
++		assert_int_equal(closes, 1);
++	}
++}
++static void test_reclaim_open_and_close(void **state)
++{
++	(void)state;
++	writes = closes = 0; open_error = EACCES;
++	assert_int_equal(cgroup_write_node_uint32("/task15/mock", "memory.force_reclaim", 1024), -EACCES);
++	assert_int_equal(writes, 0); assert_int_equal(closes, 0);
++	open_error = 0; write_result = 4; write_error = 0; close_error = EIO;
++	assert_int_equal(cgroup_write_node_uint32("/task15/mock", "memory.force_reclaim", 1024), 0);
++	assert_int_equal(writes, 1); assert_int_equal(closes, 1);
++}
++static void test_reclaim_long_path(void **state)
++{
++	char path[8192];
++	(void)state;
++	memset(path, 'a', sizeof(path) - 1); path[sizeof(path) - 1] = '\0';
++	writes = closes = 0;
++	assert_int_equal(cgroup_write_node_uint32(path, "memory.force_reclaim", 1024), -ENAMETOOLONG);
++	assert_int_equal(writes, 0); assert_int_equal(closes, 0);
++}
++int main(void)
++{
++	const struct CMUnitTest tests[] = {
++		cmocka_unit_test(test_reclaim_results),
++		cmocka_unit_test(test_reclaim_open_and_close),
++		cmocka_unit_test(test_reclaim_long_path),
++	};
++	return cmocka_run_group_tests(tests, NULL, NULL);
++}
