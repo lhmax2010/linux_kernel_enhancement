@@ -1,0 +1,6 @@
+$ git clone --no-checkout --branch tizen ssh://lhmax2025@review.tizen.org:29418/platform/core/system/resourced /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced
+TIME=2026-11-04T21:34:05.263597+08:00
+Cloning into '/home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced'...
+Total 11944 (delta 0), reused 11933 (delta 0)
+
+EXIT=0

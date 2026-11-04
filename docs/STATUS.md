@@ -1,5 +1,7 @@
 # 项目状态
 
+任务14完成：resourced 16d6125d不基于最新tizen（缺1个提交），向当前tizen试cherry-pick干净、0冲突，临时工作树已删除；QB1211696镜像为10.0.0-1/b0bbb7c5，不含该修复；SR仍需内核与用户态配套，未构建/连板/推源码，后续基线选择待PM决定。证据与命令见[16_resourced_fangyu_check.md](16_resourced_fangyu_check.md)及evidence/task14/。
+
 任务13完成：类产品基线源码已快进推送内部sandbox既有分支，待用户出镜像；出镜像须同时重编树外模块包。未新建分支，干净基线按固定提交保留。已闭合源码/祖先关系/无后缀及推前推后SHA核对；详细证据和出镜像说明仅见本地vendor_local/task13_push_report.md、vendor_local/image_build_note.md（不入库）。perf已知偏差按PM裁决沿用；下一步由用户出镜像，板上核验待另行安排。本轮不构建、不连板、不触发Quickbuild。
 
 任务12完成：用户在原tmux窗口认证后继续构建，三阶段全部OK，产物核验通过；未部署、未推Gerrit。详细内容仅在本地vendor_local/V3_report.md，公开结果见[15](15_vbase01_build.md)和[验收汇总](../evidence/task12/verification_summary.json)。

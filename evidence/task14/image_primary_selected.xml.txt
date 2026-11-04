@@ -1,0 +1,214 @@
+<ns0:package xmlns:ns0="http://linux.duke.edu/metadata/common" xmlns:ns1="http://linux.duke.edu/metadata/rpm" type="rpm">
+  <ns0:name>resourced</ns0:name>
+  <ns0:arch>armv7l</ns0:arch>
+  <ns0:version epoch="0" ver="10.0.0" rel="1" vcs="platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19" />
+  <ns0:checksum type="sha256" pkgid="YES">64a0f28ff7a4edca8dd5ebfe4a1e59cc5849e3c5e342b4bdab3a8953054bf47d</ns0:checksum>
+  <ns0:summary>Resource management daemon</ns0:summary>
+  <ns0:description />
+  <ns0:packager />
+  <ns0:url />
+  <ns0:time file="1793203603" build="0" />
+  <ns0:size package="89512" installed="233254" archive="235108" />
+  <ns0:location href="armv7l/resourced-10.0.0-1.armv7l.rpm" />
+  <ns0:format>
+    <ns1:license>Apache-2.0 AND BSD-3-Clause</ns1:license>
+    <ns1:vendor>tizen</ns1:vendor>
+    <ns1:group>System/Libraries</ns1:group>
+    <ns1:buildhost />
+    <ns1:sourcerpm>resourced-10.0.0-1.src.rpm</ns1:sourcerpm>
+    <ns1:header-range start="4504" end="10636" />
+    <ns1:provides>
+      <ns1:entry name="libplugin-resourced-limiter-freezer.so" />
+      <ns1:entry name="libplugin-resourced-monitor-heart.so" />
+      <ns1:entry name="libplugin-resourced-optimizer-cpu-sched.so" />
+      <ns1:entry name="libplugin-resourced-optimizer-memory-compaction.so" />
+      <ns1:entry name="libplugin-resourced-optimizer-memory-dedup.so" />
+      <ns1:entry name="libplugin-resourced-optimizer-memory-swap.so" />
+      <ns1:entry name="libplugin-resourced-process-block.so" />
+      <ns1:entry name="resourced" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+      <ns1:entry name="resourced(armv7l-32)" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+    </ns1:provides>
+    <ns1:requires>
+      <ns1:entry name="/usr/bin/dd" />
+      <ns1:entry name="/usr/sbin/mkswap" />
+      <ns1:entry name="ld-linux.so.3" />
+      <ns1:entry name="ld-linux.so.3(GLIBC_2.4)" />
+      <ns1:entry name="libcapi-system-device.so.0" />
+      <ns1:entry name="libcapi-system-info.so.0" />
+      <ns1:entry name="libcynara-client-helpers.so.0" />
+      <ns1:entry name="libdlog.so.0" />
+      <ns1:entry name="libgio-2.0.so.0" />
+      <ns1:entry name="libglib-2.0.so.0" />
+      <ns1:entry name="libleveldb.so.1" />
+      <ns1:entry name="libpthread.so.0" />
+      <ns1:entry name="libresourced-private-api.so.10.0.0" />
+      <ns1:entry name="libsqlite3.so.0" />
+      <ns1:entry name="libudev.so.1" />
+      <ns1:entry name="libudev.so.1(LIBUDEV_183)" />
+      <ns1:entry name="libvconf.so.0" />
+      <ns1:entry name="libvconf.so.0(VCONF_BUXTON_1.0)" />
+      <ns1:entry name="resourced-bin" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+      <ns1:entry name="resourced-config" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+      <ns1:entry name="resourced-watchdog-handler" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+      <ns1:entry name="rtld(GNU_HASH)" />
+      <ns1:entry name="libc.so.6(GLIBC_2.38)" />
+    </ns1:requires>
+  </ns0:format>
+</ns0:package>
+
+<ns0:package xmlns:ns0="http://linux.duke.edu/metadata/common" xmlns:ns1="http://linux.duke.edu/metadata/rpm" type="rpm">
+  <ns0:name>resourced-bin</ns0:name>
+  <ns0:arch>armv7l</ns0:arch>
+  <ns0:version epoch="0" ver="10.0.0" rel="1" vcs="platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19" />
+  <ns0:checksum type="sha256" pkgid="YES">8b9e5e1295c735f034eaa7da299af9117cf50e0b81d30763558ef921d10d5957</ns0:checksum>
+  <ns0:summary>Resourced binary</ns0:summary>
+  <ns0:description />
+  <ns0:packager />
+  <ns0:url />
+  <ns0:time file="1793203603" build="0" />
+  <ns0:size package="120616" installed="289674" archive="290856" />
+  <ns0:location href="armv7l/resourced-bin-10.0.0-1.armv7l.rpm" />
+  <ns0:format>
+    <ns1:license>Apache-2.0 AND BSD-3-Clause</ns1:license>
+    <ns1:vendor>tizen</ns1:vendor>
+    <ns1:group>System/Libraries</ns1:group>
+    <ns1:buildhost />
+    <ns1:sourcerpm>resourced-10.0.0-1.src.rpm</ns1:sourcerpm>
+    <ns1:header-range start="4504" end="9752" />
+    <ns1:provides>
+      <ns1:entry name="libresourced-private-api.so.10.0.0" />
+      <ns1:entry name="resourced-bin" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+      <ns1:entry name="resourced-bin(armv7l-32)" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+    </ns1:provides>
+    <ns1:requires>
+      <ns1:entry name="ld-linux.so.3" />
+      <ns1:entry name="ld-linux.so.3(GLIBC_2.4)" />
+      <ns1:entry name="libaul.so.0" />
+      <ns1:entry name="libbundle.so.0" />
+      <ns1:entry name="libcynara-client-helpers.so.0" />
+      <ns1:entry name="libdlog.so.0" />
+      <ns1:entry name="libeventsystem.so.0" />
+      <ns1:entry name="libgio-2.0.so.0" />
+      <ns1:entry name="libglib-2.0.so.0" />
+      <ns1:entry name="libgobject-2.0.so.0" />
+      <ns1:entry name="libgum.so.0" />
+      <ns1:entry name="libpthread.so.0" />
+      <ns1:entry name="libsecurity-manager-client.so.3" />
+      <ns1:entry name="libstorage.so.0.1" />
+      <ns1:entry name="libsyscommon-plugin-api-resourced.so.0" />
+      <ns1:entry name="libsyscommon.so.5.0.0" />
+      <ns1:entry name="libsystemd.so.0" />
+      <ns1:entry name="libsystemd.so.0(LIBSYSTEMD_209)" />
+      <ns1:entry name="libtzplatform-config-2.0.so.2" />
+      <ns1:entry name="libtzplatform-config-2.0.so.2(TPC)" />
+      <ns1:entry name="libvconf.so.0" />
+      <ns1:entry name="libvconf.so.0(VCONF_BUXTON_1.0)" />
+      <ns1:entry name="rtld(GNU_HASH)" />
+      <ns1:entry name="libc.so.6(GLIBC_2.38)" />
+    </ns1:requires>
+    <ns0:file>/usr/bin/resourced</ns0:file>
+    <ns0:file>/usr/share/licenses/resourced-bin/LICENSE</ns0:file>
+    <ns0:file>/usr/share/licenses/resourced-bin/LICENSE.BSD-3-Clause</ns0:file>
+  </ns0:format>
+</ns0:package>
+
+<ns0:package xmlns:ns0="http://linux.duke.edu/metadata/common" xmlns:ns1="http://linux.duke.edu/metadata/rpm" type="rpm">
+  <ns0:name>resourced-config</ns0:name>
+  <ns0:arch>armv7l</ns0:arch>
+  <ns0:version epoch="0" ver="10.0.0" rel="1" vcs="platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19" />
+  <ns0:checksum type="sha256" pkgid="YES">0e703f1a7c71728cb1f549ef0a8b98d663c00d138f1a72988e01e51795fb8486</ns0:checksum>
+  <ns0:summary>Common configuration for resourced</ns0:summary>
+  <ns0:description />
+  <ns0:packager />
+  <ns0:url />
+  <ns0:time file="1793203603" build="0" />
+  <ns0:size package="10180" installed="4910" archive="6472" />
+  <ns0:location href="armv7l/resourced-config-10.0.0-1.armv7l.rpm" />
+  <ns0:format>
+    <ns1:license>Apache-2.0 AND BSD-3-Clause</ns1:license>
+    <ns1:vendor>tizen</ns1:vendor>
+    <ns1:group>System/Libraries</ns1:group>
+    <ns1:buildhost />
+    <ns1:sourcerpm>resourced-10.0.0-1.src.rpm</ns1:sourcerpm>
+    <ns1:header-range start="4504" end="7980" />
+    <ns1:provides>
+      <ns1:entry name="config(resourced-config)" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+      <ns1:entry name="resourced-config" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+      <ns1:entry name="resourced-config(armv7l-32)" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+    </ns1:provides>
+    <ns0:file>/etc/dbus-1/system.d/org.tizen.resourced.conf</ns0:file>
+    <ns0:file>/etc/resourced/limiter.conf</ns0:file>
+    <ns0:file>/etc/resourced/monitor.conf</ns0:file>
+    <ns0:file>/etc/resourced/optimizer.conf</ns0:file>
+    <ns0:file>/etc/resourced/process.conf</ns0:file>
+  </ns0:format>
+</ns0:package>
+
+<ns0:package xmlns:ns0="http://linux.duke.edu/metadata/common" xmlns:ns1="http://linux.duke.edu/metadata/rpm" type="rpm">
+  <ns0:name>resourced-isu</ns0:name>
+  <ns0:arch>armv7l</ns0:arch>
+  <ns0:version epoch="0" ver="10.0.0" rel="1" vcs="platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19" />
+  <ns0:checksum type="sha256" pkgid="YES">240efbc3a800b1cda5722d20ac1544e0d22e49fb038f6ddb49710c0a6fb92815</ns0:checksum>
+  <ns0:summary>ISU package for resourced</ns0:summary>
+  <ns0:description>Configuration files to generate the ISU (Individual Service Upgrade) package</ns0:description>
+  <ns0:packager />
+  <ns0:url />
+  <ns0:time file="1793203604" build="0" />
+  <ns0:size package="8220" installed="1459" archive="2388" />
+  <ns0:location href="armv7l/resourced-isu-10.0.0-1.armv7l.rpm" />
+  <ns0:format>
+    <ns1:license>Apache-2.0 AND BSD-3-Clause</ns1:license>
+    <ns1:vendor>tizen</ns1:vendor>
+    <ns1:group>Application Framework/Service</ns1:group>
+    <ns1:buildhost />
+    <ns1:sourcerpm>resourced-10.0.0-1.src.rpm</ns1:sourcerpm>
+    <ns1:header-range start="4504" end="7320" />
+    <ns1:provides>
+      <ns1:entry name="resourced-isu" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+      <ns1:entry name="resourced-isu(armv7l-32)" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+    </ns1:provides>
+    <ns0:file>/etc/isu/resourced/isu.cfg</ns0:file>
+    <ns0:file type="dir">/etc/isu/resourced/system-services</ns0:file>
+    <ns0:file>/etc/isu/resourced/system-services/etc-resourced.mount</ns0:file>
+    <ns0:file>/etc/isu/resourced/system-services/resourced.service</ns0:file>
+    <ns0:file>/etc/isu/resourced/system-services/usr-lib-resourced-plugins.mount</ns0:file>
+  </ns0:format>
+</ns0:package>
+
+<ns0:package xmlns:ns0="http://linux.duke.edu/metadata/common" xmlns:ns1="http://linux.duke.edu/metadata/rpm" type="rpm">
+  <ns0:name>resourced-watchdog-handler</ns0:name>
+  <ns0:arch>armv7l</ns0:arch>
+  <ns0:version epoch="0" ver="10.0.0" rel="1" vcs="platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19" />
+  <ns0:checksum type="sha256" pkgid="YES">35bb5a54cac17ec091404fe2d39a24269a1e644f220d00b0a973a28ac567c498</ns0:checksum>
+  <ns0:summary>watchdog module for resourced</ns0:summary>
+  <ns0:description />
+  <ns0:packager />
+  <ns0:url />
+  <ns0:time file="1793203603" build="0" />
+  <ns0:size package="16328" installed="20057" archive="20812" />
+  <ns0:location href="armv7l/resourced-watchdog-handler-10.0.0-1.armv7l.rpm" />
+  <ns0:format>
+    <ns1:license>Apache-2.0 AND BSD-3-Clause</ns1:license>
+    <ns1:vendor>tizen</ns1:vendor>
+    <ns1:group>System/Libraries</ns1:group>
+    <ns1:buildhost />
+    <ns1:sourcerpm>resourced-10.0.0-1.src.rpm</ns1:sourcerpm>
+    <ns1:header-range start="4504" end="8760" />
+    <ns1:provides>
+      <ns1:entry name="resourced-watchdog-handler" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+      <ns1:entry name="resourced-watchdog-handler(armv7l-32)" flags="EQ" epoch="0" ver="10.0.0" rel="1" />
+    </ns1:provides>
+    <ns1:requires>
+      <ns1:entry name="/bin/sh" pre="1" />
+      <ns1:entry name="ld-linux.so.3" />
+      <ns1:entry name="ld-linux.so.3(GLIBC_2.4)" />
+      <ns1:entry name="libdlog.so.0" />
+      <ns1:entry name="libpthread.so.0" />
+      <ns1:entry name="libresourced-private-api.so.10.0.0" />
+      <ns1:entry name="rtld(GNU_HASH)" />
+      <ns1:entry name="libc.so.6(GLIBC_2.34)" />
+    </ns1:requires>
+    <ns0:file>/usr/bin/resourced-watchdog-handler</ns0:file>
+    <ns0:file>/usr/bin/resourced-watchdog-handler.sh</ns0:file>
+  </ns0:format>
+</ns0:package>

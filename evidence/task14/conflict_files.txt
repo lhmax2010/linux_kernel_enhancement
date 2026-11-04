@@ -1,0 +1,3 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task14/try_tizen -c 'user.name=Hao Lin' -c user.email=hao.lin@samsung.com diff --name-only --diff-filter=U
+
+EXIT=0

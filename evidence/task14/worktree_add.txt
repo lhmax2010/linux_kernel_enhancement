@@ -1,0 +1,5 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced -c 'user.name=Hao Lin' -c user.email=hao.lin@samsung.com worktree add --detach /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task14/try_tizen 82e79c09ea80c1977dfb27d3752577c74340f9bc
+HEAD is now at 82e79c0 lowmem-controller: Keep memory-limited apps in Private cgroup on BackgroundMru
+Preparing worktree (detached HEAD 82e79c0)
+
+EXIT=0

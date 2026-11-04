@@ -1,0 +1,8 @@
+{
+  "tizen_contains_image": true,
+  "tizen_commits_after_image": 2,
+  "target_contains_image": true,
+  "target_commits_after_image": 2,
+  "merge_base_contains_image": true,
+  "merge_base_commits_after_image": 1
+}

@@ -1,0 +1,8 @@
+$ curl -fL -o temp/task14/headed.packages http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/images/standard/tizen-headed-armv7l/tizen-unified-toolchain_20261028.105834_tizen-headed-armv7l.packages
+EXIT=0
+Full original: temp/task14/headed.packages
+1101: resourced-bin.armv7l 10.0.0-1 platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19
+1102: resourced-config.armv7l 10.0.0-1 platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19
+1103: resourced-isu.armv7l 10.0.0-1 platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19
+1104: resourced-watchdog-handler.armv7l 10.0.0-1 platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19
+1105: resourced.armv7l 10.0.0-1 platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19

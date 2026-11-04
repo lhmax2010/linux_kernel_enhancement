@@ -1,0 +1,15 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task14/try_tizen -c 'user.name=Hao Lin' -c user.email=hao.lin@samsung.com diff --cached --stat
+ src/common/cgroup/cgroup.c                      | 47 +++++++++++++++++
+ src/common/cgroup/cgroup.h                      |  3 ++
+ src/common/cgroup/watchdog-cgroup.c             | 41 +++++++++++----
+ src/common/conf/config-parser.c                 |  6 ++-
+ src/common/file-helper.c                        | 43 ++++++++++++++--
+ src/common/notifier.c                           |  6 +--
+ src/process/watchdog/proc-watchdog-handler.c    |  7 ++-
+ src/resource-limiter/memory/lowmem-controller.c | 20 +++++---
+ src/resource-optimizer/memory/compaction.c      |  7 +--
+ src/resource-optimizer/memory/swap/swap.c       | 17 +++----
+ src/resource-optimizer/memory/swap/zramswap.c   | 68 +++++++++++++++++++------
+ 11 files changed, 206 insertions(+), 59 deletions(-)
+
+EXIT=0

@@ -1,0 +1,4 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task14/try_tizen -c 'user.name=Hao Lin' -c user.email=hao.lin@samsung.com cherry-pick --no-commit 16d6125d0cbb99eea354eee4315d7ed301e67917
+Auto-merging src/resource-limiter/memory/lowmem-controller.c
+
+EXIT=0

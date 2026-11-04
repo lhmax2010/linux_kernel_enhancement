@@ -1,0 +1,4 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced show -s '--format=%H | author=%an <%ae> | author_date=%aI | commit_date=%cI | %s' 82e79c09ea80c1977dfb27d3752577c74340f9bc
+82e79c09ea80c1977dfb27d3752577c74340f9bc | author=Unsung Lee <unsung.lee@samsung.com> | author_date=2026-10-26T15:30:49+09:00 | commit_date=2026-10-27T13:54:59+09:00 | lowmem-controller: Keep memory-limited apps in Private cgroup on BackgroundMru
+
+EXIT=0

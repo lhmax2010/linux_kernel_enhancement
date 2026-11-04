@@ -1,0 +1,504 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task14/try_tizen -c 'user.name=Hao Lin' -c user.email=hao.lin@samsung.com diff --cached
+diff --git a/src/common/cgroup/cgroup.c b/src/common/cgroup/cgroup.c
+index 59fd9b7..ba2597a 100644
+--- a/src/common/cgroup/cgroup.c
++++ b/src/common/cgroup/cgroup.c
+@@ -118,6 +118,53 @@ resourced_ret_c cgroup_write_pid(const char *cgroup_subsystem,
+ 	return cgroup_write_pid_fullpath(buf, pid);
+ }
+ 
++/* This command may return reclaimed pages instead of a byte count on
++ * vendor kernels. Never retry a positive short write as another request.
++ */
++int cgroup_force_reclaim(const char *cgroup_name, uint32_t nr_pages)
++{
++	char path[MAX_PATH_LENGTH];
++	char value[11]; /* UINT32_MAX in decimal, including the terminator. */
++	ssize_t written;
++	int fd, len, ret;
++
++	assert(cgroup_name);
++	len = snprintf(path, sizeof(path), "%s/%s", cgroup_name,
++			MEMCG_FORCE_RECLAIM);
++	if (len < 0 || (size_t)len >= sizeof(path)) {
++		errno = ENAMETOOLONG;
++		ETRACE_ERRNO_MSG("force_reclaim path is too long");
++		return -ENAMETOOLONG;
++	}
++	len = snprintf(value, sizeof(value), "%u", nr_pages);
++
++	fd = open(path, O_WRONLY | O_CLOEXEC);
++	if (fd < 0) {
++		ret = -errno;
++		ETRACE_ERRNO_MSG("Fail to open file %s", path);
++		errno = -ret;
++		return ret;
++	}
++
++	errno = 0;
++	written = write(fd, value, len);
++	ret = written > 0 ? 0 : -(written < 0 ? (errno ?: EIO) : EIO);
++	if (ret < 0) {
++		errno = -ret;
++		ETRACE_ERRNO_MSG("Fail to write force_reclaim request to %s", path);
++	}
++
++	/* A successful write already submitted the command. A close error
++	 * must be reported, but must not turn it into a failed request.
++	 */
++	if (close(fd) < 0) {
++		errno = errno ?: EIO;
++		ETRACE_ERRNO_MSG("Fail to close file %s", path);
++	}
++	errno = ret < 0 ? -ret : 0;
++	return ret;
++}
++
+ int cgroup_write_node_uint32(const char *cgroup_name,
+ 		const char *file_name, uint32_t value)
+ {
+diff --git a/src/common/cgroup/cgroup.h b/src/common/cgroup/cgroup.h
+index a0360b8..f1dbcc1 100644
+--- a/src/common/cgroup/cgroup.h
++++ b/src/common/cgroup/cgroup.h
+@@ -99,6 +99,9 @@ int cgroup_read_node_ulonglong(const char *cgroup_name,
+  */
+ int cgroup_write_node_uint32(const char *cgroup_name,  const char *file_name, uint32_t value);
+ 
++/* Submit memory.force_reclaim once; any positive write result is success. */
++int cgroup_force_reclaim(const char *cgroup_name, uint32_t nr_pages);
++
+ /**
+  * @desc Put signed int32 value to cgroup,
+  * @param cgroup_name - cgroup path
+diff --git a/src/common/cgroup/watchdog-cgroup.c b/src/common/cgroup/watchdog-cgroup.c
+index f2bebb6..059e381 100644
+--- a/src/common/cgroup/watchdog-cgroup.c
++++ b/src/common/cgroup/watchdog-cgroup.c
+@@ -19,20 +19,43 @@ int watchdog_cgroup_get_fail_count(int *watchdog_fail_count)
+ 		return -EINVAL;
+ 	}
+ 
+-	if (access(WATCHDOG_FAIL_COUNT_FILE_PATH, F_OK) == 0)
+-		return fread_int(WATCHDOG_FAIL_COUNT_FILE_PATH, watchdog_fail_count);
++	if (access(WATCHDOG_FAIL_COUNT_FILE_PATH, F_OK) == 0) {
++		ret = fread_int(WATCHDOG_FAIL_COUNT_FILE_PATH, watchdog_fail_count);
++		if (ret >= 0)
++			return ret;
++
++		_E("Failed to read watchdog fail count. ret (%d); "
++				"count unreadable, removing file and executing FailOther", ret);
++		if (unlink(WATCHDOG_FAIL_COUNT_FILE_PATH) < 0 && errno != ENOENT)
++			_E("Failed to remove watchdog fail count file (%s): %m",
++					WATCHDOG_FAIL_COUNT_FILE_PATH);
++
++		/* Select FailOther and reset the next count to the initial value. */
++		*watchdog_fail_count = INIT_WATCHDOG_FAIL_COUNT + 2;
++		return RESOURCED_ERROR_NONE;
++	}
+ 
+ 	ret = fwrite_int(WATCHDOG_FAIL_COUNT_FILE_PATH, INIT_WATCHDOG_FAIL_COUNT);
+-	if (ret == RESOURCED_ERROR_NONE)
+-		*watchdog_fail_count = INIT_WATCHDOG_FAIL_COUNT;
+-	else
+-		_E("Failed to create and write value (%d) at file (%s)",
+-				INIT_WATCHDOG_FAIL_COUNT, WATCHDOG_FAIL_COUNT_FILE_PATH);
++	if (ret < 0) {
++		_E("Failed to persist initial watchdog fail count (%d) at file (%s). "
++				"ret (%d); count not persisted, continuing failure action",
++				INIT_WATCHDOG_FAIL_COUNT, WATCHDOG_FAIL_COUNT_FILE_PATH, ret);
++		if (unlink(WATCHDOG_FAIL_COUNT_FILE_PATH) < 0 && errno != ENOENT)
++			_E("Failed to remove watchdog fail count file (%s): %m",
++					WATCHDOG_FAIL_COUNT_FILE_PATH);
++	}
+ 
+-	return ret;
++	*watchdog_fail_count = INIT_WATCHDOG_FAIL_COUNT;
++	return RESOURCED_ERROR_NONE;
+ }
+ 
+ int watchdog_cgroup_set_fail_count(int watchdog_fail_count)
+ {
+-	return fwrite_int(WATCHDOG_FAIL_COUNT_FILE_PATH, watchdog_fail_count);
++	int ret = fwrite_int(WATCHDOG_FAIL_COUNT_FILE_PATH, watchdog_fail_count);
++
++	if (ret < 0 && unlink(WATCHDOG_FAIL_COUNT_FILE_PATH) < 0 && errno != ENOENT)
++		_E("Failed to remove watchdog fail count file (%s): %m",
++				WATCHDOG_FAIL_COUNT_FILE_PATH);
++
++	return ret;
+ }
+diff --git a/src/common/conf/config-parser.c b/src/common/conf/config-parser.c
+index 9f51aa1..261bfc5 100644
+--- a/src/common/conf/config-parser.c
++++ b/src/common/conf/config-parser.c
+@@ -156,11 +156,13 @@ static bool config_parse_bool(const char *value)
+ 	if (!strncmp(value, "yes", 4) ||
+ 			!strncmp(value, "1", 2) ||
+ 			!strncmp(value, "ok", 3) ||
+-			!strncmp(value, "on", 3))
++			!strncmp(value, "on", 3) ||
++			!strncmp(value, "true", 5))
+ 		return true;
+ 	else if (!strncmp(value, "no", 3) ||
+ 			!strncmp(value, "0", 2) ||
+-			!strncmp(value, "off", 4))
++			!strncmp(value, "off", 4) ||
++			!strncmp(value, "false", 6))
+ 		return false;
+ 	else {
+ 		_E("Unknown name (%s)", value);
+diff --git a/src/common/file-helper.c b/src/common/file-helper.c
+index 28ffff9..3c7c338 100644
+--- a/src/common/file-helper.c
++++ b/src/common/file-helper.c
+@@ -36,7 +36,15 @@
+ 
+ int fwrite_str(const char *path, const char *str)
+ {
+-	_cleanup_fclose_ FILE *f = NULL;
++	/*
++	 * After fflush fails, fclose may try to flush buffered data again.
++	 * Do not use this helper for command nodes where each write triggers
++	 * an action and repeating that action is harmful. Use a dedicated
++	 * single-write helper such as cgroup_force_reclaim for those nodes.
++	 * Nodes where repeating the action is harmless, such as zram compact,
++	 * may continue to use this helper.
++	 */
++	FILE *f = NULL;
+ 	int ret;
+ 
+ 	assert(path);
+@@ -48,10 +56,35 @@ int fwrite_str(const char *path, const char *str)
+ 
+ 	errno = 0;
+ 	ret = fputs(str, f);
+-	ret_value_errno_msg_if(ret == EOF, -(errno ?: EIO),
+-			       "Fail to write file");
++	if (ret == EOF) {
++		ret = -(errno ?: EIO);
++		errno = -ret;
++		ETRACE_ERRNO_MSG("Fail to write file %s", path);
++		goto close;
++	}
+ 
+-	return RESOURCED_ERROR_NONE;
++	errno = 0;
++	ret = fflush(f);
++	if (ret == EOF) {
++		ret = -(errno ?: EIO);
++		errno = -ret;
++		ETRACE_ERRNO_MSG("Fail to flush file %s", path);
++	}
++
++close:
++	errno = 0;
++	if (fclose(f) == EOF) {
++		int error = errno ?: EIO;
++
++		errno = error;
++		ETRACE_ERRNO_MSG("Fail to close file %s", path);
++		if (ret >= 0)
++			ret = -error;
++	}
++
++	if (ret < 0)
++		errno = -ret;
++	return ret;
+ }
+ 
+ int fwrite_int(const char *path, const int number)
+@@ -147,6 +180,8 @@ int fread_nth_int(const char *path, size_t n, int32_t *number)
+ 		ret = fscanf(f, "%d", &t);
+ 		ret_value_errno_msg_if(ret == EOF, -(errno ?: ENOENT),
+ 				       "Fail to read file\n");
++		ret_value_msg_if(ret != 1, -EINVAL,
++				 "Invalid integer in file %s at index %zu", path, i);
+ 	}
+ 
+ 	*number = t;
+diff --git a/src/common/notifier.c b/src/common/notifier.c
+index 8e0a866..bb916e7 100644
+--- a/src/common/notifier.c
++++ b/src/common/notifier.c
+@@ -115,15 +115,15 @@ void resourced_notify(enum notifier_type status, void *data)
+ 
+ static int notifier_exit(void *data)
+ {
+-	GSList *iter;
++	GSList *iter, *next;
+ 	/* Deinitialize in reverse order */
+ 	struct resourced_notifier *notifier;
+ 
+ 	for(int status = RESOURCED_NOTIFIER_APP_LAUNCH;
+ 	        status < RESOURCED_NOTIFIER_MAX; status++) {
+ 		GSList *reverse_list = g_slist_reverse(resourced_notifier_list[status]);
+-		gslist_for_each_item(iter, reverse_list) {
+-			notifier = (struct resourced_notifier *)iter->data;
++		resourced_notifier_list[status] = reverse_list;
++		gslist_for_each_safe(reverse_list, iter, next, notifier) {
+ 			resourced_notifier_list[status] =
+ 				g_slist_remove(resourced_notifier_list[status], notifier);
+ 			free(notifier);
+diff --git a/src/process/watchdog/proc-watchdog-handler.c b/src/process/watchdog/proc-watchdog-handler.c
+index 2da4efe..0c6b3b5 100644
+--- a/src/process/watchdog/proc-watchdog-handler.c
++++ b/src/process/watchdog/proc-watchdog-handler.c
+@@ -315,10 +315,9 @@ int main(int argc, char *argv[])
+ 	}
+ 
+ 	ret = watchdog_cgroup_set_fail_count(next_watchdog_fail_count);
+-	if (ret < 0) {
+-		_E("Failed to set watchdog fail count. ret (%d)", ret);
+-		goto free;
+-	}
++	if (ret < 0)
++		_E("Failed to set watchdog fail count. ret (%d); "
++				"count not persisted, continuing failure action", ret);
+ 
+ 	ret = get_watchdog_fail_action(prev_watchdog_fail_count,
+ 			watchdog_fail_action, sizeof(watchdog_fail_action));
+diff --git a/src/resource-limiter/memory/lowmem-controller.c b/src/resource-limiter/memory/lowmem-controller.c
+index eb95442..dbdfcd7 100644
+--- a/src/resource-limiter/memory/lowmem-controller.c
++++ b/src/resource-limiter/memory/lowmem-controller.c
+@@ -285,11 +285,13 @@ static void lowmem_memory_level_send_system_event(int lv)
+ 
+ static void swap_activate_act(void)
+ {
+-	int ret, status;
++	int ret, status = -1;
+ 
+ 	ret = vconf_get_int(VCONFKEY_SYSMAN_LOW_MEMORY, &status);
+-	if (ret)
+-		_E("vconf get failed %s", VCONFKEY_SYSMAN_LOW_MEMORY);
++	if (ret) {
++		status = -1;
++		_W("vconf_get_int failed for %s", VCONFKEY_SYSMAN_LOW_MEMORY);
++	}
+ 
+ 	if (status != VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL) {
+ 		ret = vconf_set_int(VCONFKEY_SYSMAN_LOW_MEMORY,
+@@ -527,11 +529,13 @@ static void medium_cb(struct lowmem_control *ctl)
+ /* lowmem control actions */
+ static int high_mem_control(void *data)
+ {
+-	int ret, status;
++	int ret, status = -1;
+ 
+ 	ret = vconf_get_int(VCONFKEY_SYSMAN_LOW_MEMORY, &status);
+-	if (ret)
+-		_D("vconf_get_int fail %s", VCONFKEY_SYSMAN_LOW_MEMORY);
++	if (ret) {
++		status = -1;
++		_W("vconf_get_int failed for %s", VCONFKEY_SYSMAN_LOW_MEMORY);
++	}
+ 	if (status != VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL) {
+ 		ret = vconf_set_int(VCONFKEY_SYSMAN_LOW_MEMORY,
+ 				VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL);
+@@ -565,7 +569,7 @@ static int medium_mem_control(void *data)
+ 		return RESOURCED_ERROR_FAIL;
+ 
+ 	if (vconf_get_int(VCONFKEY_SYSMAN_LOW_MEMORY, &status) != 0)
+-		_E("vconf get failed %s", VCONFKEY_SYSMAN_LOW_MEMORY);
++		_W("vconf_get_int failed for %s", VCONFKEY_SYSMAN_LOW_MEMORY);
+ 
+ 	if (status != VCONFKEY_SYSMAN_LOW_MEMORY_NORMAL) {
+ 		ret = vconf_set_int(VCONFKEY_SYSMAN_LOW_MEMORY,
+@@ -614,7 +618,7 @@ static int oom_mem_control(void *data)
+ 	int ret;
+ 
+ 	if (vconf_get_int(VCONFKEY_SYSMAN_LOW_MEMORY, &status) != 0)
+-		_D("vconf_get_int fail %s", VCONFKEY_SYSMAN_LOW_MEMORY);
++		_W("vconf_get_int failed for %s", VCONFKEY_SYSMAN_LOW_MEMORY);
+ 
+ 	lowmem_memory_level_send_system_event(MEM_LEVEL_OOM);
+ 	if (status != VCONFKEY_SYSMAN_LOW_MEMORY_HARD_WARNING) {
+diff --git a/src/resource-optimizer/memory/compaction.c b/src/resource-optimizer/memory/compaction.c
+index 4b5fec3..cd5dc18 100644
+--- a/src/resource-optimizer/memory/compaction.c
++++ b/src/resource-optimizer/memory/compaction.c
+@@ -218,11 +218,8 @@ static void compaction_start(struct compact_control *compact)
+ 		_E("Compaction: failed to open procfs entry [%d]\n", errno);
+ 		goto leave;
+ 	}
+-	/*
+-	 * It doesn't really matter what gets written,
+-	 * as long as smth gets....
+-	 */
+-	if (write(fd, &n, sizeof(n)) <= 0)
++	/* The sysctl handler expects a textual integer. */
++	if (write(fd, "1", 1) != 1)
+ 		current_status |= COMPACT_FAILURE;
+ 	/*
+ 	 * Reset the external fragmentation warnings.
+diff --git a/src/resource-optimizer/memory/swap/swap.c b/src/resource-optimizer/memory/swap/swap.c
+index 682df7f..b5cdec7 100644
+--- a/src/resource-optimizer/memory/swap/swap.c
++++ b/src/resource-optimizer/memory/swap/swap.c
+@@ -310,8 +310,7 @@ static int swap_use_force_reclaim(char *memcg)
+ 			nr_to_reclaim = SWAP_RECLAIM_PAGES_MAX;
+ 
+ 		total_reclaim_pages += nr_to_reclaim;
+-		ret = cgroup_write_node_uint32(memcg, MEMCG_FORCE_RECLAIM,
+-			nr_to_reclaim);
++		ret = cgroup_force_reclaim(memcg, nr_to_reclaim);
+ 		if (ret != RESOURCED_ERROR_NONE)
+ 			break; /* if we can't reclaim don't continue */
+ 
+@@ -553,7 +552,7 @@ static void swap_early_reclaim_memcg(void)
+ 		}
+ 
+ 		if (r)
+-			prev_usage_bytes = ULONG_MAX;
++			prev_usage_bytes = ULLONG_MAX;
+ 
+ 		for (;;) {
+ 			try--;
+@@ -579,7 +578,8 @@ static void swap_early_reclaim_memcg(void)
+ 			 * The default threshold is very large, so it may
+ 			 * reclaim once.
+ 			 */
+-			if (!try || prev_usage_bytes - usage_bytes < arg_swap_at_boot_threshold_bytes)
++			if (!try || usage_bytes >= prev_usage_bytes ||
++				prev_usage_bytes - usage_bytes < arg_swap_at_boot_threshold_bytes)
+ 				break;
+ 
+ 			prev_usage_bytes = usage_bytes;
+@@ -597,7 +597,7 @@ static void swap_early_reclaim_memcg(void)
+ static void swap_activate_in_module(void)
+ {
+ 	int r;
+-	GSList *iter;
++	GSList *iter, *next;
+ 	struct swap_module_ops *swaps;
+ 
+ 	r = cgroup_read_node_int32(MEMCG_PATH,
+@@ -608,11 +608,9 @@ static void swap_activate_in_module(void)
+ 	if (swap_get_state() == SWAP_ON)
+ 		return;
+ 
+-	gslist_for_each_item(iter, swap_module) {
++	gslist_for_each_safe(swap_module, iter, next, swaps) {
+ 		int flags = SWAP_FLAG_DISCARD;
+ 
+-		swaps = (struct swap_module_ops *)iter->data;
+-
+ 		if (!swaps->activate)
+ 			continue;
+ 
+@@ -621,8 +619,9 @@ static void swap_activate_in_module(void)
+ 			if (r != -EEXIST) {
+ 				_E("[SWAP] %s activate failed", swaps->name);
+ 				swap_remove(swaps);
++			} else {
++				swap_set_state(SWAP_ON);
+ 			}
+-			swap_set_state(SWAP_ON);
+ 			continue;
+ 		}
+ 
+diff --git a/src/resource-optimizer/memory/swap/zramswap.c b/src/resource-optimizer/memory/swap/zramswap.c
+index 8d24cd1..d1003c6 100644
+--- a/src/resource-optimizer/memory/swap/zramswap.c
++++ b/src/resource-optimizer/memory/swap/zramswap.c
+@@ -89,6 +89,45 @@ static int swap_zram_compact(void)
+ 	return 0;
+ }
+ 
++static int swap_zram_use_current_algorithm(bool initialized)
++{
++	char buf[LINE_MAX], *algorithms = buf;
++	char *selected, *end;
++	int r;
++
++	r = fread_str(SWAP_ZRAM_COMP_ALGORITHM, &algorithms);
++	if (r < 0) {
++		if (initialized) {
++			_W("device is initialized; unable to read current algorithm");
++			return 0;
++		}
++		_E("fail to read current comp_algorithm");
++		return r;
++	}
++
++	selected = strchr(algorithms, '[');
++	end = selected ? strchr(selected + 1, ']') : NULL;
++	if (!end || end == selected + 1) {
++		if (initialized) {
++			_W("device is initialized; unable to read current algorithm");
++			return 0;
++		}
++		_E("no selected algorithm in comp_algorithm");
++		return -ENODATA;
++	}
++	*end = '\0';
++	if (initialized) {
++		_W("device is initialized; retaining kernel current algorithm %s",
++			selected + 1);
++		return 0;
++	}
++	_W("configured algorithm %s and fallback %s are unavailable; "
++		"using kernel current algorithm %s",
++		zram_control.comp_algorithm, DEFAULT_ZRAM_COMPRESSOR,
++		selected + 1);
++	return 0;
++}
++
+ static int swap_zram_activate(void *data)
+ {
+ 	struct swap_module_ops *swap = (struct swap_module_ops *)data;
+@@ -111,21 +150,17 @@ static int swap_zram_activate(void *data)
+ 
+ 	r = fwrite_str(SWAP_ZRAM_COMP_ALGORITHM,
+ 				zram_control.comp_algorithm);
+-	if (r < 0) {
+-		/*
+-		 * if it fails to set compressor described in .conf file,
+-		 * then try again with default compressor.
+-		 */
++	if (r == -EINVAL && strcmp(zram_control.comp_algorithm,
++				DEFAULT_ZRAM_COMPRESSOR)) {
++		/* Try the default only when the configured algorithm is unavailable. */
+ 		_I("failed to write comp_algorithm: %s, try default: %s",
+-						zram_control.comp_algorithm,
+-						DEFAULT_ZRAM_COMPRESSOR);
+-		r = fwrite_str(SWAP_ZRAM_COMP_ALGORITHM,
+-				DEFAULT_ZRAM_COMPRESSOR);
+-		if (r < 0) {
+-			_E("fail to write comp_algrithm");
+-			return r;
+-		}
++				zram_control.comp_algorithm, DEFAULT_ZRAM_COMPRESSOR);
++		r = fwrite_str(SWAP_ZRAM_COMP_ALGORITHM, DEFAULT_ZRAM_COMPRESSOR);
+ 	}
++	if (r == -EBUSY || r == -EINVAL)
++		r = swap_zram_use_current_algorithm(r == -EBUSY);
++	if (r < 0)
++		return r;
+ 
+ 	r = fread_ulonglong(SWAP_ZRAM_DISK_SIZE, &read_size_bytes);
+ 	if (r < 0) {
+@@ -174,7 +209,7 @@ static int swap_zram_reclaim(void *data)
+ 	static bool zram_compact;
+ 	unsigned long long swap_available_bytes;
+ 	unsigned long long swap_usage_bytes;
+-	float swapcg_usage_ratio;
++	double swapcg_usage_ratio;
+ 	unsigned int ram_available;
+ 
+ 	swap_available_bytes = KBYTE_TO_BYTE(proc_get_swap_free());
+@@ -227,7 +262,10 @@ static int swap_zram_reclaim(void *data)
+ 	r = memcg_get_swap_usage(MEMCG_BACKGROUND_LRU_PATH, &swap_usage_bytes);
+ 	if (r)
+ 		return r;
+-	swapcg_usage_ratio = (float)(swap_usage_bytes / (swap_total_bytes - swap_available_bytes) *100);
++	swapcg_usage_ratio = 0;
++	if (swap_available_bytes < swap_total_bytes)
++		swapcg_usage_ratio = (double)swap_usage_bytes /
++				(swap_total_bytes - swap_available_bytes) * 100;
+ 	if (swapcg_usage_ratio > SWAPCG_CHECK_RATIO)
+ 		score = OOM_LEVEL_BACKGROUND_LEAST_RECENTLY_USED;
+ 	else
+
+EXIT=0

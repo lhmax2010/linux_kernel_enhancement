@@ -1,0 +1,165 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi show f240c28093027707f5e09f8a9cbbed16a43ebb1a:mm/memcontrol-v1.c
+EXIT=0
+SOURCE=mm/memcontrol-v1.c @ f240c28093027707f5e09f8a9cbbed16a43ebb1a
+LINES 2422-2470
+2422: }
+2423: 
+2424: #if defined(CONFIG_MEMCG_V1) && defined(CONFIG_SWAP)
+2425: static int mem_cgroup_force_reclaim(struct cgroup_subsys_state *css,
+2426: 				struct cftype *cft, u64 val)
+2427: {
+2428: 	struct mem_cgroup *memcg = mem_cgroup_from_css(css);
+2429: 	unsigned long nr_to_reclaim;
+2430: 	unsigned long total = 0;
+2431: 	unsigned int no_progress = 0;
+2432: 	int loop;
+2433: 
+2434: 	if (val > ULONG_MAX)
+2435: 		return -ERANGE;
+2436: 	nr_to_reclaim = val;
+2437: 
+2438: 	if (!nr_to_reclaim)
+2439: 		return 0;
+2440: 
+2441: 	for (loop = 0; loop < MEM_CGROUP_MAX_RECLAIM_LOOPS; loop++) {
+2442: 		unsigned long reclaimed;
+2443: 
+2444: 		reclaimed = try_to_free_mem_cgroup_pages(memcg, nr_to_reclaim - total,
+2445: 						GFP_KERNEL, MEMCG_RECLAIM_MAY_SWAP, NULL);
+2446: 		total += reclaimed;
+2447: 		if (reclaimed)
+2448: 			no_progress = 0;
+2449: 		else
+2450: 			no_progress++;
+2451: 
+2452: 		/*
+2453: 		 * If two consecutive attempts reclaimed nothing, there
+2454: 		 * may be no reclaimable pages in this hierarchy.
+2455: 		 * If at least nr_to_reclaim pages were already reclaimed,
+2456: 		 * finish force reclaim.
+2457: 		 */
+2458: 		if (total >= nr_to_reclaim || no_progress >= 2)
+2459: 			break;
+2460: 	}
+2461: 
+2462: 	pr_info("%s: [Mem_reclaim] Loop: %d - Total_reclaimed: %lu - nr_to_reclaim: %lu\n",
+2463: 		__func__, loop, total, nr_to_reclaim);
+2464: 
+2465: 	return 0;
+2466: }
+2467: #endif
+2468: 
+2469: static u64 mem_cgroup_hierarchy_read(struct cgroup_subsys_state *css,
+2470: 				     struct cftype *cft)
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi show f240c28093027707f5e09f8a9cbbed16a43ebb1a:kernel/cgroup/cgroup.c
+EXIT=0
+SOURCE=kernel/cgroup/cgroup.c @ f240c28093027707f5e09f8a9cbbed16a43ebb1a
+LINES 4206-4257
+4206: static ssize_t cgroup_file_write(struct kernfs_open_file *of, char *buf,
+4207: 				 size_t nbytes, loff_t off)
+4208: {
+4209: 	struct cgroup_file_ctx *ctx = of->priv;
+4210: 	struct cgroup *cgrp = of->kn->parent->priv;
+4211: 	struct cftype *cft = of_cft(of);
+4212: 	struct cgroup_subsys_state *css;
+4213: 	int ret;
+4214: 
+4215: 	if (!nbytes)
+4216: 		return 0;
+4217: 
+4218: 	/*
+4219: 	 * If namespaces are delegation boundaries, disallow writes to
+4220: 	 * files in an non-init namespace root from inside the namespace
+4221: 	 * except for the files explicitly marked delegatable -
+4222: 	 * eg. cgroup.procs, cgroup.threads and cgroup.subtree_control.
+4223: 	 */
+4224: 	if ((cgrp->root->flags & CGRP_ROOT_NS_DELEGATE) &&
+4225: 	    !(cft->flags & CFTYPE_NS_DELEGATABLE) &&
+4226: 	    ctx->ns != &init_cgroup_ns && ctx->ns->root_cset->dfl_cgrp == cgrp)
+4227: 		return -EPERM;
+4228: 
+4229: 	if (cft->write)
+4230: 		return cft->write(of, buf, nbytes, off);
+4231: 
+4232: 	/*
+4233: 	 * kernfs guarantees that a file isn't deleted with operations in
+4234: 	 * flight, which means that the matching css is and stays alive and
+4235: 	 * doesn't need to be pinned.  The RCU locking is not necessary
+4236: 	 * either.  It's just for the convenience of using cgroup_css().
+4237: 	 */
+4238: 	rcu_read_lock();
+4239: 	css = cgroup_css(cgrp, cft->ss);
+4240: 	rcu_read_unlock();
+4241: 
+4242: 	if (cft->write_u64) {
+4243: 		unsigned long long v;
+4244: 		ret = kstrtoull(buf, 0, &v);
+4245: 		if (!ret)
+4246: 			ret = cft->write_u64(css, cft, v);
+4247: 	} else if (cft->write_s64) {
+4248: 		long long v;
+4249: 		ret = kstrtoll(buf, 0, &v);
+4250: 		if (!ret)
+4251: 			ret = cft->write_s64(css, cft, v);
+4252: 	} else {
+4253: 		ret = -EINVAL;
+4254: 	}
+4255: 
+4256: 	return ret ?: nbytes;
+4257: }
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi show f240c28093027707f5e09f8a9cbbed16a43ebb1a:include/linux/swap.h
+EXIT=0
+SOURCE=include/linux/swap.h @ f240c28093027707f5e09f8a9cbbed16a43ebb1a
+LINES 410-435
+410: extern void lru_add_drain_cpu_zone(struct zone *zone);
+411: extern void lru_add_drain_all(void);
+412: void folio_deactivate(struct folio *folio);
+413: void folio_mark_lazyfree(struct folio *folio);
+414: extern void swap_setup(void);
+415: 
+416: /* linux/mm/vmscan.c */
+417: extern unsigned long zone_reclaimable_pages(struct zone *zone);
+418: extern unsigned long try_to_free_pages(struct zonelist *zonelist, int order,
+419: 					gfp_t gfp_mask, nodemask_t *mask);
+420: 
+421: #define MEMCG_RECLAIM_MAY_SWAP (1 << 1)
+422: #define MEMCG_RECLAIM_PROACTIVE (1 << 2)
+423: #define MIN_SWAPPINESS 0
+424: #define MAX_SWAPPINESS 200
+425: extern unsigned long try_to_free_mem_cgroup_pages(struct mem_cgroup *memcg,
+426: 						  unsigned long nr_pages,
+427: 						  gfp_t gfp_mask,
+428: 						  unsigned int reclaim_options,
+429: 						  int *swappiness);
+430: extern unsigned long mem_cgroup_shrink_node(struct mem_cgroup *mem,
+431: 						gfp_t gfp_mask, bool noswap,
+432: 						pg_data_t *pgdat,
+433: 						unsigned long *nr_scanned);
+434: extern unsigned long shrink_all_memory(unsigned long nr_pages);
+435: extern int vm_swappiness;
+$ git -C linux-rpi show f240c28093027707f5e09f8a9cbbed16a43ebb1a:mm/vmscan.c
+EXIT=0
+SOURCE=mm/vmscan.c @ f240c28093027707f5e09f8a9cbbed16a43ebb1a
+6588: 
+6589: unsigned long try_to_free_mem_cgroup_pages(struct mem_cgroup *memcg,
+6590: 					   unsigned long nr_pages,
+6591: 					   gfp_t gfp_mask,
+6592: 					   unsigned int reclaim_options,
+6593: 					   int *swappiness)
+6594: {
+6595: 	unsigned long nr_reclaimed;
+6596: 	unsigned int noreclaim_flag;
+6597: 	struct scan_control sc = {
+6598: 		.nr_to_reclaim = max(nr_pages, SWAP_CLUSTER_MAX),
+6599: 		.proactive_swappiness = swappiness,
+6600: 		.gfp_mask = (current_gfp_context(gfp_mask) & GFP_RECLAIM_MASK) |
+6601: 				(GFP_HIGHUSER_MOVABLE & ~GFP_RECLAIM_MASK),
+6602: 		.reclaim_idx = MAX_NR_ZONES - 1,
+6603: 		.target_mem_cgroup = memcg,
+6604: 		.priority = DEF_PRIORITY,
+6605: 		.may_writepage = !laptop_mode,
+6606: 		.may_unmap = 1,
+6607: 		.may_swap = !!(reclaim_options & MEMCG_RECLAIM_MAY_SWAP),
+6608: 		.proactive = !!(reclaim_options & MEMCG_RECLAIM_PROACTIVE),
+6609: 	};
+6610: 	/*

@@ -1,0 +1,59 @@
+{
+  "image_BUILD_ID": "tizen-unified-toolchain_20261028.105834_tizen-headed-armv7l",
+  "manifest_url": "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261028.105834/images/standard/tizen-headed-armv7l/tizen-unified-toolchain_20261028.105834_tizen-headed-armv7l.packages",
+  "manifest_bytes": 138118,
+  "manifest_sha256": "8ba88f795f1e7ad62fde02259b9374e458e7c6372db0d16d3910f3a10bc5f390",
+  "metadata_path": "temp/task8/primary.xml",
+  "metadata_sha256": "f635b1c560d24a0f9bfe669a94200bdeabdc38143e8937b969f2c756580794f9",
+  "source_commit": "b0bbb7c5a1c9dc90100928cf7b230cc751722a19",
+  "packages": [
+    {
+      "name": "resourced",
+      "epoch": "0",
+      "ver": "10.0.0",
+      "rel": "1",
+      "vcs": "platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19",
+      "rpm_sha256": "64a0f28ff7a4edca8dd5ebfe4a1e59cc5849e3c5e342b4bdab3a8953054bf47d"
+    },
+    {
+      "name": "resourced-bin",
+      "epoch": "0",
+      "ver": "10.0.0",
+      "rel": "1",
+      "vcs": "platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19",
+      "rpm_sha256": "8b9e5e1295c735f034eaa7da299af9117cf50e0b81d30763558ef921d10d5957"
+    },
+    {
+      "name": "resourced-config",
+      "epoch": "0",
+      "ver": "10.0.0",
+      "rel": "1",
+      "vcs": "platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19",
+      "rpm_sha256": "0e703f1a7c71728cb1f549ef0a8b98d663c00d138f1a72988e01e51795fb8486"
+    },
+    {
+      "name": "resourced-isu",
+      "epoch": "0",
+      "ver": "10.0.0",
+      "rel": "1",
+      "vcs": "platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19",
+      "rpm_sha256": "240efbc3a800b1cda5722d20ac1544e0d22e49fb038f6ddb49710c0a6fb92815"
+    },
+    {
+      "name": "resourced-watchdog-handler",
+      "epoch": "0",
+      "ver": "10.0.0",
+      "rel": "1",
+      "vcs": "platform/core/system/resourced#b0bbb7c5a1c9dc90100928cf7b230cc751722a19",
+      "rpm_sha256": "35bb5a54cac17ec091404fe2d39a24269a1e644f220d00b0a973a28ac567c498"
+    }
+  ],
+  "relations": {
+    "tizen_contains_image": true,
+    "tizen_commits_after_image": 2,
+    "target_contains_image": true,
+    "target_commits_after_image": 2,
+    "merge_base_contains_image": true,
+    "merge_base_commits_after_image": 1
+  }
+}

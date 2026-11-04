@@ -1,0 +1,4 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced rev-parse origin/tizen
+82e79c09ea80c1977dfb27d3752577c74340f9bc
+
+EXIT=0

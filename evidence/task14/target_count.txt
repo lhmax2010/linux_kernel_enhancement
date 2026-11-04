@@ -1,0 +1,4 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced rev-list --count 1d529ce7b24d7b4c3a8fca7c25c4173a228c6f01..16d6125d0cbb99eea354eee4315d7ed301e67917
+1
+
+EXIT=0

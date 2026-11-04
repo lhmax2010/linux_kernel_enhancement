@@ -1,0 +1,11 @@
+{
+  "target": "16d6125d0cbb99eea354eee4315d7ed301e67917",
+  "tizen_head": "82e79c09ea80c1977dfb27d3752577c74340f9bc",
+  "merge_base": "1d529ce7b24d7b4c3a8fca7c25c4173a228c6f01",
+  "tizen_head_is_ancestor": false,
+  "tizen_commits_since_merge_base": 1,
+  "target_commits_since_merge_base": 1,
+  "contains": [
+    "  origin/sandbox/lhmax2025/silent-reclaim-fix"
+  ]
+}

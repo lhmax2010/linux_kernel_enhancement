@@ -1,0 +1,468 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced show 16d6125d0cbb99eea354eee4315d7ed301e67917:src/common/cgroup/cgroup.c
+EXIT=0
+SOURCE=src/common/cgroup/cgroup.c @ 16d6125d0cbb99eea354eee4315d7ed301e67917
+LINES 121-165
+121: /* This command may return reclaimed pages instead of a byte count on
+122:  * vendor kernels. Never retry a positive short write as another request.
+123:  */
+124: int cgroup_force_reclaim(const char *cgroup_name, uint32_t nr_pages)
+125: {
+126: 	char path[MAX_PATH_LENGTH];
+127: 	char value[11]; /* UINT32_MAX in decimal, including the terminator. */
+128: 	ssize_t written;
+129: 	int fd, len, ret;
+130: 
+131: 	assert(cgroup_name);
+132: 	len = snprintf(path, sizeof(path), "%s/%s", cgroup_name,
+133: 			MEMCG_FORCE_RECLAIM);
+134: 	if (len < 0 || (size_t)len >= sizeof(path)) {
+135: 		errno = ENAMETOOLONG;
+136: 		ETRACE_ERRNO_MSG("force_reclaim path is too long");
+137: 		return -ENAMETOOLONG;
+138: 	}
+139: 	len = snprintf(value, sizeof(value), "%u", nr_pages);
+140: 
+141: 	fd = open(path, O_WRONLY | O_CLOEXEC);
+142: 	if (fd < 0) {
+143: 		ret = -errno;
+144: 		ETRACE_ERRNO_MSG("Fail to open file %s", path);
+145: 		errno = -ret;
+146: 		return ret;
+147: 	}
+148: 
+149: 	errno = 0;
+150: 	written = write(fd, value, len);
+151: 	ret = written > 0 ? 0 : -(written < 0 ? (errno ?: EIO) : EIO);
+152: 	if (ret < 0) {
+153: 		errno = -ret;
+154: 		ETRACE_ERRNO_MSG("Fail to write force_reclaim request to %s", path);
+155: 	}
+156: 
+157: 	/* A successful write already submitted the command. A close error
+158: 	 * must be reported, but must not turn it into a failed request.
+159: 	 */
+160: 	if (close(fd) < 0) {
+161: 		errno = errno ?: EIO;
+162: 		ETRACE_ERRNO_MSG("Fail to close file %s", path);
+163: 	}
+164: 	errno = ret < 0 ? -ret : 0;
+165: 	return ret;
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced show 16d6125d0cbb99eea354eee4315d7ed301e67917:src/common/file-helper.c
+EXIT=0
+SOURCE=src/common/file-helper.c @ 16d6125d0cbb99eea354eee4315d7ed301e67917
+LINES 37-90
+37: int fwrite_str(const char *path, const char *str)
+38: {
+39: 	/*
+40: 	 * After fflush fails, fclose may try to flush buffered data again.
+41: 	 * Do not use this helper for command nodes where each write triggers
+42: 	 * an action and repeating that action is harmful. Use a dedicated
+43: 	 * single-write helper such as cgroup_force_reclaim for those nodes.
+44: 	 * Nodes where repeating the action is harmless, such as zram compact,
+45: 	 * may continue to use this helper.
+46: 	 */
+47: 	FILE *f = NULL;
+48: 	int ret;
+49: 
+50: 	assert(path);
+51: 	assert(str);
+52: 
+53: 	f = fopen(path, "w");
+54: 	ret_value_errno_msg_if(!f, -errno,
+55: 			       "Fail to open file %s", path);
+56: 
+57: 	errno = 0;
+58: 	ret = fputs(str, f);
+59: 	if (ret == EOF) {
+60: 		ret = -(errno ?: EIO);
+61: 		errno = -ret;
+62: 		ETRACE_ERRNO_MSG("Fail to write file %s", path);
+63: 		goto close;
+64: 	}
+65: 
+66: 	errno = 0;
+67: 	ret = fflush(f);
+68: 	if (ret == EOF) {
+69: 		ret = -(errno ?: EIO);
+70: 		errno = -ret;
+71: 		ETRACE_ERRNO_MSG("Fail to flush file %s", path);
+72: 	}
+73: 
+74: close:
+75: 	errno = 0;
+76: 	if (fclose(f) == EOF) {
+77: 		int error = errno ?: EIO;
+78: 
+79: 		errno = error;
+80: 		ETRACE_ERRNO_MSG("Fail to close file %s", path);
+81: 		if (ret >= 0)
+82: 			ret = -error;
+83: 	}
+84: 
+85: 	if (ret < 0)
+86: 		errno = -ret;
+87: 	return ret;
+88: }
+89: 
+90: int fwrite_int(const char *path, const int number)
+LINES 167-191
+167: int fread_nth_int(const char *path, size_t n, int32_t *number)
+168: {
+169: 	_cleanup_fclose_ FILE *f = NULL;
+170: 	size_t i;
+171: 	int32_t t;
+172: 	int ret;
+173: 
+174: 	f = fopen(path, "r");
+175: 	ret_value_errno_msg_if(!f, -errno,
+176: 			       "Fail to open  %s file.", path);
+177: 
+178: 	errno = 0;
+179: 	for (i = 0; i <= n; i++) {
+180: 		ret = fscanf(f, "%d", &t);
+181: 		ret_value_errno_msg_if(ret == EOF, -(errno ?: ENOENT),
+182: 				       "Fail to read file\n");
+183: 		ret_value_msg_if(ret != 1, -EINVAL,
+184: 				 "Invalid integer in file %s at index %zu", path, i);
+185: 	}
+186: 
+187: 	*number = t;
+188: 	return RESOURCED_ERROR_NONE;
+189: }
+190: 
+191: int fread_nth_uint(const char *path, size_t n, u_int32_t *number)
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced show 16d6125d0cbb99eea354eee4315d7ed301e67917:src/resource-optimizer/memory/swap/zramswap.c
+EXIT=0
+SOURCE=src/resource-optimizer/memory/swap/zramswap.c @ 16d6125d0cbb99eea354eee4315d7ed301e67917
+LINES 27-40
+27: #include "memory-cgroup.h"
+28: #include "config-parser.h"
+29: #include "lowmem.h"
+30: 
+31: #define SWAP_ZRAM_DISK_SIZE		SWAP_ZRAM_SYSFILE"disksize"
+32: #define SWAP_ZRAM_MAX_COMP_STREAMS	SWAP_ZRAM_SYSFILE"max_comp_streams"
+33: #define SWAP_ZRAM_COMP_ALGORITHM	SWAP_ZRAM_SYSFILE"comp_algorithm"
+34: #define SWAP_ZRAM_COMPACT		SWAP_ZRAM_SYSFILE"compact"
+35: #define SWAP_ZRAM_MEM_USED_TOTAL	SWAP_ZRAM_SYSFILE"mem_used_total"
+36: 
+37: #define DEFAULT_ZRAM_COMPRESSOR		"lz4"
+38: #define DEFAULT_ZRAM_RATIO ((double) 0.25)
+39: #define ZRAM_FULLNESS_RATIO		0.8
+40: #define SWAPCG_CHECK_RATIO		5  /* 5 % of total swap */
+LINES 92-163
+92: static int swap_zram_use_current_algorithm(bool initialized)
+93: {
+94: 	char buf[LINE_MAX], *algorithms = buf;
+95: 	char *selected, *end;
+96: 	int r;
+97: 
+98: 	r = fread_str(SWAP_ZRAM_COMP_ALGORITHM, &algorithms);
+99: 	if (r < 0) {
+100: 		if (initialized) {
+101: 			_W("device is initialized; unable to read current algorithm");
+102: 			return 0;
+103: 		}
+104: 		_E("fail to read current comp_algorithm");
+105: 		return r;
+106: 	}
+107: 
+108: 	selected = strchr(algorithms, '[');
+109: 	end = selected ? strchr(selected + 1, ']') : NULL;
+110: 	if (!end || end == selected + 1) {
+111: 		if (initialized) {
+112: 			_W("device is initialized; unable to read current algorithm");
+113: 			return 0;
+114: 		}
+115: 		_E("no selected algorithm in comp_algorithm");
+116: 		return -ENODATA;
+117: 	}
+118: 	*end = '\0';
+119: 	if (initialized) {
+120: 		_W("device is initialized; retaining kernel current algorithm %s",
+121: 			selected + 1);
+122: 		return 0;
+123: 	}
+124: 	_W("configured algorithm %s and fallback %s are unavailable; "
+125: 		"using kernel current algorithm %s",
+126: 		zram_control.comp_algorithm, DEFAULT_ZRAM_COMPRESSOR,
+127: 		selected + 1);
+128: 	return 0;
+129: }
+130: 
+131: static int swap_zram_activate(void *data)
+132: {
+133: 	struct swap_module_ops *swap = (struct swap_module_ops *)data;
+134: 	unsigned long long swap_size_bytes, read_size_bytes;
+135: 	int r;
+136: 
+137: 	swap_size_bytes = KBYTE_TO_BYTE(swap->k_size);
+138: 	zram_control.zram_reclaim_bytes =
+139: 			swap_size_bytes - (swap_size_bytes * ZRAM_FULLNESS_RATIO);
+140: 
+141: 	if (swap_is_on(swap->path))
+142: 		return -EEXIST;
+143: 
+144: 	r = fwrite_int(SWAP_ZRAM_MAX_COMP_STREAMS,
+145: 				zram_control.max_comp_streams);
+146: 	if (r < 0) {
+147: 		_E("fail to write max_comp_streams");
+148: 		return r;
+149: 	}
+150: 
+151: 	r = fwrite_str(SWAP_ZRAM_COMP_ALGORITHM,
+152: 				zram_control.comp_algorithm);
+153: 	if (r == -EINVAL && strcmp(zram_control.comp_algorithm,
+154: 				DEFAULT_ZRAM_COMPRESSOR)) {
+155: 		/* Try the default only when the configured algorithm is unavailable. */
+156: 		_I("failed to write comp_algorithm: %s, try default: %s",
+157: 				zram_control.comp_algorithm, DEFAULT_ZRAM_COMPRESSOR);
+158: 		r = fwrite_str(SWAP_ZRAM_COMP_ALGORITHM, DEFAULT_ZRAM_COMPRESSOR);
+159: 	}
+160: 	if (r == -EBUSY || r == -EINVAL)
+161: 		r = swap_zram_use_current_algorithm(r == -EBUSY);
+162: 	if (r < 0)
+163: 		return r;
+LINES 165-205
+165: 	r = fread_ulonglong(SWAP_ZRAM_DISK_SIZE, &read_size_bytes);
+166: 	if (r < 0) {
+167: 		_E("fail to read zram disk_size");
+168: 		return r;
+169: 	}
+170: 
+171: 	/* disksize can be pre-fixed by other means, do not set size in that case */
+172: 	if (read_size_bytes == 0) {
+173: 		r = fwrite_ulonglong(SWAP_ZRAM_DISK_SIZE, swap_size_bytes);
+174: 		if (r < 0) {
+175: 			_E("fail to write disk_size");
+176: 			return r;
+177: 		}
+178: 
+179: 		r = fread_ulonglong(SWAP_ZRAM_DISK_SIZE, &read_size_bytes);
+180: 		if (r < 0) {
+181: 			_E("fail to read zram disk_size");
+182: 			return r;
+183: 		}
+184: 
+185: 		/* Check if zram was sucessfully initialized (zcomp rollback case) */
+186: 		if (read_size_bytes < swap_size_bytes) {
+187: 			_E("swap size (%llu) less than expected swap size (%llu)",
+188: 					read_size_bytes, swap_size_bytes);
+189: 			return RESOURCED_ERROR_OUT_OF_MEMORY;
+190: 		}
+191: 	}
+192: 
+193: 	r = do_mkswap(swap->path);
+194: 	if (r > 0) {
+195: 		_E("Failed to make swap device(%s), exit code: %d", swap->path, r);
+196: 		return -EBUSY;
+197: 	} else if (r < 0) {
+198: 		_E("Failed to make swap device(%s): %m", swap->path);
+199: 		return r;
+200: 	}
+201: 
+202: 	return 0;
+203: }
+204: 
+205: static int swap_zram_reclaim(void *data)
+LINES 259-272
+259: 	if (!swap_total_bytes)
+260: 		swap_total_bytes = KBYTE_TO_BYTE(proc_get_swap_total());
+261: 
+262: 	r = memcg_get_swap_usage(MEMCG_BACKGROUND_LRU_PATH, &swap_usage_bytes);
+263: 	if (r)
+264: 		return r;
+265: 	swapcg_usage_ratio = 0;
+266: 	if (swap_available_bytes < swap_total_bytes)
+267: 		swapcg_usage_ratio = (double)swap_usage_bytes /
+268: 				(swap_total_bytes - swap_available_bytes) * 100;
+269: 	if (swapcg_usage_ratio > SWAPCG_CHECK_RATIO)
+270: 		score = OOM_LEVEL_BACKGROUND_LEAST_RECENTLY_USED;
+271: 	else
+272: 		score = OOM_LEVEL_ALL;
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced show 16d6125d0cbb99eea354eee4315d7ed301e67917:src/resource-optimizer/memory/swap/swap.c
+EXIT=0
+SOURCE=src/resource-optimizer/memory/swap/swap.c @ 16d6125d0cbb99eea354eee4315d7ed301e67917
+LINES 297-320
+297: 		if (root_memcg)
+298: 			ret = cgroup_read_node_ulonglong(memcg, MEMCG_USAGE, &usage_bytes);
+299: 		else
+300: 			ret = memcg_get_anon_usage(memcg, &usage_bytes);
+301: 
+302: 
+303: 		if (ret != RESOURCED_ERROR_NONE)
+304: 			usage_bytes = 0;
+305: 
+306: 		nr_to_reclaim = BYTE_TO_PAGE(usage_bytes);
+307: 		if (nr_to_reclaim <= SWAP_RECLAIM_PAGES_MIN)
+308: 			break; /* don't reclaim if little gain */
+309: 		if (nr_to_reclaim > SWAP_RECLAIM_PAGES_MAX)
+310: 			nr_to_reclaim = SWAP_RECLAIM_PAGES_MAX;
+311: 
+312: 		total_reclaim_pages += nr_to_reclaim;
+313: 		ret = cgroup_force_reclaim(memcg, nr_to_reclaim);
+314: 		if (ret != RESOURCED_ERROR_NONE)
+315: 			break; /* if we can't reclaim don't continue */
+316: 
+317: 		try -= 1;
+318: 	} while (try > 0);
+319: 
+320: 	_D("[SWAP] FORCE_RECLAIM tried %u pages from %s", total_reclaim_pages, memcg);
+LINES 540-594
+540: 	if (!early_reclaim) {
+541: 		int try = arg_swap_at_boot_maxtry;
+542: 		unsigned long long usage_bytes, prev_usage_bytes = 0;
+543: 
+544: 
+545: 		if (memcg_memsw_is_supported()) {
+546: 			r = cgroup_read_node_ulonglong(MEMCG_PATH,
+547: 					MEMCG_SWAP_USAGE, &prev_usage_bytes);
+548: 		}
+549: 		else {
+550: 			r = cgroup_read_node_ulonglong(MEMCG_PATH,
+551: 					MEMCG_USAGE, &prev_usage_bytes);
+552: 		}
+553: 
+554: 		if (r)
+555: 			prev_usage_bytes = ULLONG_MAX;
+556: 
+557: 		for (;;) {
+558: 			try--;
+559: 			swap_start_reclaim(MEMCG_PATH);
+560: 
+561: 			if (memcg_memsw_is_supported()) {
+562: 				r = cgroup_read_node_ulonglong(MEMCG_PATH,
+563: 						MEMCG_SWAP_USAGE, &usage_bytes);
+564: 			}
+565: 			else {
+566: 				r = cgroup_read_node_ulonglong(MEMCG_PATH,
+567: 						MEMCG_USAGE, &usage_bytes);
+568: 			}
+569: 
+570: 			if (r) {
+571: 				_E("[SWAP] Early reclaim is aborted");
+572: 				break;
+573: 			}
+574: 
+575: 			/*
+576: 			 * Continue to reclaim memory at boot time until
+577: 			 * there is no more saving or trial reaches maximum.
+578: 			 * The default threshold is very large, so it may
+579: 			 * reclaim once.
+580: 			 */
+581: 			if (!try || usage_bytes >= prev_usage_bytes ||
+582: 				prev_usage_bytes - usage_bytes < arg_swap_at_boot_threshold_bytes)
+583: 				break;
+584: 
+585: 			prev_usage_bytes = usage_bytes;
+586: 			/*
+587: 			 * To prevent continuous reclaim to harm entire system,
+588: 			 * having relaxation on each reclaim
+589: 			 */
+590: 			sleep(arg_swap_at_boot_interval_sec);
+591: 		}
+592: 
+593: 		early_reclaim = true;
+594: 	}
+LINES 597-643
+597: static void swap_activate_in_module(void)
+598: {
+599: 	int r;
+600: 	GSList *iter, *next;
+601: 	struct swap_module_ops *swaps;
+602: 
+603: 	r = cgroup_read_node_int32(MEMCG_PATH,
+604: 			MEMCG_SWAPPINESS, &current_swappiness);
+605: 	if (r)
+606: 		return;
+607: 
+608: 	if (swap_get_state() == SWAP_ON)
+609: 		return;
+610: 
+611: 	gslist_for_each_safe(swap_module, iter, next, swaps) {
+612: 		int flags = SWAP_FLAG_DISCARD;
+613: 
+614: 		if (!swaps->activate)
+615: 			continue;
+616: 
+617: 		r = swaps->activate(swaps);
+618: 		if (r != 0) {
+619: 			if (r != -EEXIST) {
+620: 				_E("[SWAP] %s activate failed", swaps->name);
+621: 				swap_remove(swaps);
+622: 			} else {
+623: 				swap_set_state(SWAP_ON);
+624: 			}
+625: 			continue;
+626: 		}
+627: 
+628: #ifdef SWAP_FLAG_PREFER
+629: 		if (swaps->priority >= 0) {
+630: 			flags |= SWAP_FLAG_PREFER |
+631: 				(swaps->priority & SWAP_FLAG_PRIO_MASK) << SWAP_FLAG_PRIO_SHIFT;
+632: 		}
+633: #endif
+634: 		r = swapon(swaps->path, flags);
+635: 		if (r < 0) {
+636: 			_E("[SWAP] Failed to turn on swap device(%s): %m", swaps->path);
+637: 			continue;
+638: 		}
+639: 		_I("[SWAP] swap device(%s) was turned on: %s", swaps->name, swaps->path);
+640: 
+641: 
+642: 		swap_set_state(SWAP_ON);
+643: 	}
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced show 16d6125d0cbb99eea354eee4315d7ed301e67917:src/resource-optimizer/memory/compaction.c
+EXIT=0
+SOURCE=src/resource-optimizer/memory/compaction.c @ 16d6125d0cbb99eea354eee4315d7ed301e67917
+LINES 205-231
+205: 
+206: 	pthread_mutex_unlock(&compact->lock);
+207: 
+208: 	if (current_status & COMPACT_WITHDRAW)
+209: 		return;
+210: 
+211: 	mem_info = compact->mem_info;
+212: 
+213: 
+214: 	fd = open(PROC_COMPACT_ENTRY,  O_WRONLY);
+215: 	if (fd < 0) {
+216: 		if (errno == EACCES || errno == EFAULT || errno == ENOENT)
+217: 			current_status |= COMPACT_WITHDRAW;
+218: 		_E("Compaction: failed to open procfs entry [%d]\n", errno);
+219: 		goto leave;
+220: 	}
+221: 	/* The sysctl handler expects a textual integer. */
+222: 	if (write(fd, "1", 1) != 1)
+223: 		current_status |= COMPACT_FAILURE;
+224: 	/*
+225: 	 * Reset the external fragmentation warnings.
+226: 	 * Locking is not required here as all updates will get suspended
+227: 	 * until the compaction status won't indicate all is done here
+228: 	 */
+229: 	if (current_status & COMPACT_FAILURE)
+230: 		goto leave;
+231: 
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced show 16d6125d0cbb99eea354eee4315d7ed301e67917:src/common/conf/config-parser.c
+EXIT=0
+SOURCE=src/common/conf/config-parser.c @ 16d6125d0cbb99eea354eee4315d7ed301e67917
+LINES 154-173
+154: static bool config_parse_bool(const char *value)
+155: {
+156: 	if (!strncmp(value, "yes", 4) ||
+157: 			!strncmp(value, "1", 2) ||
+158: 			!strncmp(value, "ok", 3) ||
+159: 			!strncmp(value, "on", 3) ||
+160: 			!strncmp(value, "true", 5))
+161: 		return true;
+162: 	else if (!strncmp(value, "no", 3) ||
+163: 			!strncmp(value, "0", 2) ||
+164: 			!strncmp(value, "off", 4) ||
+165: 			!strncmp(value, "false", 6))
+166: 		return false;
+167: 	else {
+168: 		_E("Unknown name (%s)", value);
+169: 		return false;
+170: 	}
+171: }
+172: 
+173: static int config_parse_sched_type(const char *value)

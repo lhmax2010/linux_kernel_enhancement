@@ -1,0 +1,17 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced log --reverse --stat '--format=%H | author=%an <%ae> | author_date=%aI | commit_date=%cI | %s' 1d529ce7b24d7b4c3a8fca7c25c4173a228c6f01..16d6125d0cbb99eea354eee4315d7ed301e67917
+16d6125d0cbb99eea354eee4315d7ed301e67917 | author=He Fangyu <fangyu.he@samsung.com> | author_date=2026-10-19T10:13:07+08:00 | commit_date=2026-10-19T10:45:34+08:00 | memory: fix silent failures throughout the reclaim path
+
+ src/common/cgroup/cgroup.c                      | 47 +++++++++++++++++
+ src/common/cgroup/cgroup.h                      |  3 ++
+ src/common/cgroup/watchdog-cgroup.c             | 41 +++++++++++----
+ src/common/conf/config-parser.c                 |  6 ++-
+ src/common/file-helper.c                        | 43 ++++++++++++++--
+ src/common/notifier.c                           |  6 +--
+ src/process/watchdog/proc-watchdog-handler.c    |  7 ++-
+ src/resource-limiter/memory/lowmem-controller.c | 20 +++++---
+ src/resource-optimizer/memory/compaction.c      |  7 +--
+ src/resource-optimizer/memory/swap/swap.c       | 17 +++----
+ src/resource-optimizer/memory/swap/zramswap.c   | 68 +++++++++++++++++++------
+ 11 files changed, 206 insertions(+), 59 deletions(-)
+
+EXIT=0

@@ -1,0 +1,4 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced show -s '--format=%H | author=%an <%ae> | author_date=%aI | commit_date=%cI | %s' 16d6125d0cbb99eea354eee4315d7ed301e67917
+16d6125d0cbb99eea354eee4315d7ed301e67917 | author=He Fangyu <fangyu.he@samsung.com> | author_date=2026-10-19T10:13:07+08:00 | commit_date=2026-10-19T10:45:34+08:00 | memory: fix silent failures throughout the reclaim path
+
+EXIT=0

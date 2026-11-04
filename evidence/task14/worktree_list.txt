@@ -1,0 +1,7 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced -c 'user.name=Hao Lin' -c user.email=hao.lin@samsung.com worktree list --porcelain
+worktree /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced
+HEAD 82e79c09ea80c1977dfb27d3752577c74340f9bc
+branch refs/heads/tizen
+
+
+EXIT=0

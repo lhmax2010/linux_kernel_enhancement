@@ -1,0 +1,14 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task14/try_tizen -c 'user.name=Hao Lin' -c user.email=hao.lin@samsung.com status --porcelain
+M  src/common/cgroup/cgroup.c
+M  src/common/cgroup/cgroup.h
+M  src/common/cgroup/watchdog-cgroup.c
+M  src/common/conf/config-parser.c
+M  src/common/file-helper.c
+M  src/common/notifier.c
+M  src/process/watchdog/proc-watchdog-handler.c
+M  src/resource-limiter/memory/lowmem-controller.c
+M  src/resource-optimizer/memory/compaction.c
+M  src/resource-optimizer/memory/swap/swap.c
+M  src/resource-optimizer/memory/swap/zramswap.c
+
+EXIT=0

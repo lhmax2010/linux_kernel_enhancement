@@ -1,0 +1,4 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/resourced show -s '--format=%H | author=%an <%ae> | author_date=%aI | commit_date=%cI | %s' 1d529ce7b24d7b4c3a8fca7c25c4173a228c6f01
+1d529ce7b24d7b4c3a8fca7c25c4173a228c6f01 | author=DongHun Kwak <dh0128.kwak@samsung.com> | author_date=2026-09-29T17:34:54+09:00 | commit_date=2026-09-29T18:02:10+09:00 | Convert shell scripts from bash to dash compatibility
+
+EXIT=0

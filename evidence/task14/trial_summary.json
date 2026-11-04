@@ -1,0 +1,13 @@
+{
+  "method": "cherry-pick --no-commit",
+  "onto": "82e79c09ea80c1977dfb27d3752577c74340f9bc",
+  "source_commits": [
+    "16d6125d0cbb99eea354eee4315d7ed301e67917"
+  ],
+  "exit": 0,
+  "clean_application": true,
+  "conflicts": [],
+  "conflict_blocks": 0,
+  "created_commit": false,
+  "temporary_worktree_removed": true
+}

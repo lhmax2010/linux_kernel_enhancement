@@ -1,0 +1,40 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi show 'f240c28093027707f5e09f8a9cbbed16a43ebb1a^:mm/memcontrol-v1.c'
+EXIT=0
+SOURCE=mm/memcontrol-v1.c @ f240c28093027707f5e09f8a9cbbed16a43ebb1a^
+LINES 2422-2457
+2422: }
+2423: 
+2424: #if defined(CONFIG_MEMCG_V1) && defined(CONFIG_SWAP)
+2425: static int mem_cgroup_force_reclaim(struct cgroup_subsys_state *css,
+2426: 				struct cftype *cft, u64 val)
+2427: {
+2428: 	struct mem_cgroup *memcg = mem_cgroup_from_css(css);
+2429: 	unsigned long nr_to_reclaim = val;
+2430: 	unsigned long total = 0;
+2431: 	int loop;
+2432: 
+2433: 	for (loop = 0; loop < MEM_CGROUP_MAX_RECLAIM_LOOPS; loop++) {
+2434: 		total += try_to_free_mem_cgroup_pages(memcg, nr_to_reclaim,
+2435: 						GFP_KERNEL, true, NULL);
+2436: 
+2437: 		/*
+2438: 		 * If nothing was reclaimed after two attempts, there
+2439: 		 * may be no reclaimable pages in this hierarchy.
+2440: 		 * If more than nr_to_reclaim pages were already reclaimed,
+2441: 		 * finish force reclaim.
+2442: 		 */
+2443: 		if (loop && (!total || total > nr_to_reclaim))
+2444: 			break;
+2445: 	}
+2446: 
+2447: 	pr_info("%s: [Mem_reclaim] Loop: %d - Total_reclaimed: %lu - nr_to_reclaim: %lu\n",
+2448: 		__func__, loop, total, nr_to_reclaim);
+2449: 
+2450: 	return total;
+2451: }
+2452: #endif
+2453: 
+2454: static u64 mem_cgroup_hierarchy_read(struct cgroup_subsys_state *css,
+2455: 				     struct cftype *cft)
+2456: {
+2457: 	return 1;

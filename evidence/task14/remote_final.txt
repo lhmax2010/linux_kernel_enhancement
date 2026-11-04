@@ -1,0 +1,6 @@
+$ git -C ext/resourced ls-remote origin refs/heads/tizen refs/heads/sandbox/lhmax2025/silent-reclaim-fix
+TIME=2026-11-04T21:37:20.652197+08:00
+16d6125d0cbb99eea354eee4315d7ed301e67917	refs/heads/sandbox/lhmax2025/silent-reclaim-fix
+82e79c09ea80c1977dfb27d3752577c74340f9bc	refs/heads/tizen
+
+EXIT=0
