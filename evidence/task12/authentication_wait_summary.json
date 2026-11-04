@@ -1,0 +1,26 @@
+{
+  "launch_time": "2026-11-04T13:42:54+08:00",
+  "deadline": "2026-11-04T14:12:54+08:00",
+  "final_observation": {
+    "time": "2026-11-04T14:12:54.005935+08:00",
+    "capture_exit": 0,
+    "password_prompt_visible": true,
+    "preflight_ok": false,
+    "failed": false,
+    "supervisor_pgid_exists": false,
+    "deadline_reached": true
+  },
+  "result": "AUTHENTICATION_WAIT_TIMEOUT",
+  "authentication_confirmed": false,
+  "kernel": "PENDING_NOT_STARTED",
+  "modsrc": "PENDING_NOT_STARTED",
+  "modules": "PENDING_NOT_STARTED",
+  "full_build_duration": null,
+  "artifact_verification": "NOT_RUN",
+  "source_crc_compatibility": "UNKNOWN",
+  "session_preserved": true,
+  "script_restarted": false,
+  "signals_sent": false,
+  "direct_sudo_by_agent": false,
+  "authentication_watch_samples": 53
+}

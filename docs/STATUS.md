@@ -1,5 +1,11 @@
 # 项目状态
 
+任务12：类产品基线配置对齐和普通/RT局部检查通过（各43项核对、23条既有警告、0错误）；原tmux会话认证等待满30分钟，完整构建尚未开始。详细内容仅见本地 vendor_local/V3_report.md（不入库），公开记录见[15](15_vbase01_build.md)。任务9文件与linux-rpi主工作树未修改。
+- 计划/进度：源码和配置→便宜检查→独立本地构建分支/通用脚本→原tmux认证等待；前三项完成，14:12:54达到等待上限。
+- 已闭合：每变体43项匹配、无范围外配置差异，局部编译各0错误/23条既有警告，六个检查进程组无残留；脚本bash -n与模板一致性检查通过。[检查](../evidence/task12/prebuild_summary.json)、[脚本一致性](../evidence/task12/runner_parity.json)。
+- 需人工动作：用户连接原lko-task12窗口完成认证；未观察到认证完成，原脚本/锁/会话保留，不得重新启动。截止时preflight RUNNING，三阶段PENDING且无supervisor PGID。[等待摘要](../evidence/task12/authentication_wait_summary.json)。
+- 挂账：三阶段完整构建及耗时/工具链/依赖来源/映像/模块vermagic与CRC/253符号兼容性/容量/部署包/最终配置验收全部待完成；目前不能判断现成外部模块可复用，不满足部署前提。
+
 任务11：第一批厂商特性本地移植完成，详见本地报告 vendor_local/V2_report.md（不入库）；lko/vbase01 可进入采用已验证临时配置的完整构建，产品配置仍待核实。
 
 任务 V1：厂商补丁已本地入库并完成试打，报告在本地 vendor_local/V1_report.md（不入库）

@@ -1,0 +1,14 @@
+{
+  "template": "scripts/run_task9_build.sh",
+  "derived": "scripts/run_task12_build.sh",
+  "allowed_changes": [
+    "task paths and identifiers",
+    "independent build root",
+    "kernel source worktree",
+    "fixed kernel and external-module commits",
+    "per-stage branch names"
+  ],
+  "normalized_byte_for_byte_equal": true,
+  "build_arguments_unchanged": true,
+  "authentication_process_log_residual_mechanisms_unchanged": true
+}
