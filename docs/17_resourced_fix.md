@@ -228,3 +228,40 @@ RPM头的BuildTime为0，不能用于判断真实构建时间；真实时间以�
 工作区外find观察得到22个候选路径，全部“无法归属”；find退出1，且未覆盖root属主、深层及已删除对象。本次进程组stdout/stderr的直接外部路径观察为0，**不能据此宣称没有任何工作区外写入**。未删除、移动或修改外部文件。证据：[外部观察](../evidence/task15/resume_resourced.external_review.txt)。
 
 验收汇总见[resume_verification_summary.json](../evidence/task15/resume_verification_summary.json)。本地构建及新增测试通过，不代表两种目标内核上的实际zram激活、回收和错误路径已经验证；尤其既有swap组为跳过。本轮不部署、不推Gerrit；下一步为PM审核九个补丁及上述取舍，镜像/板测另行安排。PB2单独状态仅登记在STATUS，详细记录不入库。
+
+## 5. PM 审核（任务16）
+
+PM审核结论：**9 个补丁的取舍和实现均认可，唯一待核实项为补丁 3 中 fread_str 的调用约定。** 本轮只读核对该项及补丁4的安全遍历参数，未重编、未改源码或改写提交。
+
+### 5.1 fread_str 的实际约定与补丁3判定
+
+`src/common/file-helper.c:130–145`定义为`int fread_str(const char *path, char **str)`。它在第139行执行`fgets(*str, LINE_MAX, f)`，第143行将返回指针赋回`*str`；**不调用malloc、不为字符串分配内存**。它不能检测调用方缓冲区容量，而是隐含要求调用方提供至少`LINE_MAX`字节的可写区域。成功时fgets最多读`LINE_MAX-1`字节并追加NUL，返回的就是原缓冲区地址。文件通过`_cleanup_fclose_`关闭，字符串不需要free。
+
+超长行只读取前`LINE_MAX-1`字节，helper没有专门的截断检测，仍返回成功；空文件或读取失败返回`-ENODATA`，打开失败返回`-errno`。因此只有成功后才能按C字符串访问缓冲区。补丁3在`src/resource-optimizer/memory/swap/zramswap.c:115`声明`char buf[LINE_MAX], *algorithms = buf`，第122行传`&algorithms`，第123–124行先处理失败；成功后第125–129行搜索方括号，仅在找到非空、闭合选中项后写入NUL。所有搜索/写入均位于上述NUL终止缓冲区内，不存在本次所疑的堆内存泄漏或缓冲区越界。若截断导致选中项缺失/未闭合，则返回`-ENODATA`；若完整选中项已在前缀中，则可识别它，helper不承诺读完后续算法列表。
+
+**结论：符合2(a)，用法正确，无需fixup。** 保持任务15已构建的精确HEAD；补丁4的多余空行仅为格式问题，本轮不进入2(b)的修改分支，亦不为此改变待推送SHA。
+
+### 5.2 gslist_for_each_safe 参数核对
+
+`src/common/macro.h:142–145`原文：
+
+```c
+#define gslist_for_each_safe(head, elem, elem_next, node)		\
+	for (elem = head, elem_next = g_slist_next(elem), node = NULL;	\
+	     elem && ((node = elem->data) != NULL);			\
+	     elem = elem_next, elem_next = g_slist_next(elem), node = NULL)
+```
+
+补丁4在`src/resource-optimizer/memory/swap/swap.c:614`调用`gslist_for_each_safe(swap_module, iter, next, swaps)`，依次对应链表头、当前GSList节点、预存下一节点、当前data，顺序正确。第625行移除当前模块前已保存next；平台GLib的`g_slist_next(NULL)`返回NULL，空表/末尾可正常退出。该结论仅核对当前节点移除，不宣称支持任意并发改链表。
+
+源码原文及行号：[helper_definitions.txt](../evidence/task16/helper_definitions.txt)。HEAD/分支/干净树证据：[source_head.txt](../evidence/task16/source_head.txt)、[source_branch.txt](../evidence/task16/source_branch.txt)、[source_status.txt](../evidence/task16/source_status.txt)。
+
+### 5.3 Gerrit 推送结果
+
+使用既有origin `ssh://lhmax2025@review.tizen.org:29418/platform/core/system/resourced`及任务4/13相同的SSH身份，未改认证配置，未索要凭据。推前`ls-remote`确认目标sandbox不存在、tizen为`82e79c09ea80c1977dfb27d3752577c74340f9bc`。按授权执行：
+
+```sh
+git push origin 94d346c306233803661e8eab8557596549d82be4:refs/heads/sandbox/lhmax2025/kernel_optimization
+```
+
+推送成功；推后sandbox为`94d346c306233803661e8eab8557596549d82be4`，tizen仍为原SHA。未用force或refs/for，未推其他分支。证据：[推前](../evidence/task16/remote_before.txt)、[推送原文](../evidence/task16/sandbox_push.txt)、[推后](../evidence/task16/remote_after.txt)。SR镜像来源和验收建议见[18_sr_baseline_image.md](18_sr_baseline_image.md)。任务15的“尚未推Gerrit”为历史状态，本节更新该结论；构建产物和测试仍对应同一HEAD。

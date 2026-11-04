@@ -1,6 +1,11 @@
 1. 不使用工作目录以外的文件（配置、脚本、数据等）。系统已安装的工具本身（gbs、depanneur、编译器、git 等）不在此限。
 2. 生成的所有东西都必须在工作目录内。
 
+## 任务16：resourced sandbox 推送（PM授权）
+
+- 用户认可任务15九个补丁，核实fread_str调用约定正确后，允许在`platform/core/system/resourced`新建`refs/heads/sandbox/lhmax2025/kernel_optimization`，仅推`94d346c306233803661e8eab8557596549d82be4`；推前要求分支不存在且tizen仍为`82e79c09ea80c1977dfb27d3752577c74340f9bc`，推后核对SHA。本次上述条件满足，普通推送成功。
+- 本条覆盖任务15的“本任务不推Gerrit”历史限制；不允许force、refs/for或其他目标，不改变内核sandbox。后续resourced修复仍由本项目维护并经PM审核后推送。
+
 ## 任务15：resourced维护与本地构建（PM裁决）
 
 resourced的修复由本项目自行维护，sandbox分支名与内核保持一致：platform/core/system/resourced的sandbox/lhmax2025/kernel_optimization。用户已授权创建该分支，但本任务不推Gerrit，推送在PM审核补丁后另行下达。

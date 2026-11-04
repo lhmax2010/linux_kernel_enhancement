@@ -1,0 +1,13 @@
+$ git push origin 94d346c306233803661e8eab8557596549d82be4:refs/heads/sandbox/lhmax2025/kernel_optimization
+remote: 
+remote: Processing changes: refs: 1        
+remote: Processing changes: refs: 1, done            
+remote: commit 94d346c: warning: subject >50 characters; use shorter first paragraph        
+remote: commit 7d418a6: warning: subject >50 characters; use shorter first paragraph        
+remote: commit a8e3344: warning: subject >50 characters; use shorter first paragraph        
+remote: commit 53452fa: warning: subject >50 characters; use shorter first paragraph        
+remote: commit 152161a: warning: subject >50 characters; use shorter first paragraph        
+To ssh://review.tizen.org:29418/platform/core/system/resourced
+ * [new branch]        94d346c306233803661e8eab8557596549d82be4 -> sandbox/lhmax2025/kernel_optimization
+
+EXIT=0

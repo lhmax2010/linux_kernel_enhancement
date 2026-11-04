@@ -1,0 +1,4 @@
+$ git branch --show-current
+lko/resourced-fix
+
+EXIT=0

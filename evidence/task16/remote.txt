@@ -1,0 +1,5 @@
+$ git remote -v
+origin	ssh://lhmax2025@review.tizen.org:29418/platform/core/system/resourced (fetch)
+origin	ssh://lhmax2025@review.tizen.org:29418/platform/core/system/resourced (push)
+
+EXIT=0

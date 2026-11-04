@@ -1,0 +1,98 @@
+HEAD=94d346c306233803661e8eab8557596549d82be4
+
+src/common/file-helper.c
+130: int fread_str(const char *path, char **str)
+131: {
+132: 	_cleanup_fclose_ FILE *f = NULL;
+133: 	char *ret;
+134: 
+135: 	f = fopen(path, "r");
+136: 	ret_value_errno_msg_if(!f, -errno,
+137: 			"Fail to open %s file.", path);
+138: 
+139: 	ret = fgets(*str, LINE_MAX, f);
+140: 	ret_value_errno_msg_if(!ret, -ENODATA,
+141: 			"Fail to read file\n");
+142: 
+143: 	*str = ret;
+144: 	return RESOURCED_ERROR_NONE;
+145: }
+
+src/common/macro.h
+136: #define gslist_for_each_item(item, list)				\
+137: 	for (item = list; item != NULL; item = g_slist_next(item))
+138: 
+139: #define gslist_for_each(head, elem, node)				\
+140: 	for (elem = head, node = NULL; elem && ((node = elem->data) != NULL); elem = elem->next, node = NULL)
+141: 
+142: #define gslist_for_each_safe(head, elem, elem_next, node)		\
+143: 	for (elem = head, elem_next = g_slist_next(elem), node = NULL;	\
+144: 	     elem && ((node = elem->data) != NULL);			\
+145: 	     elem = elem_next, elem_next = g_slist_next(elem), node = NULL)
+
+src/resource-optimizer/memory/swap/zramswap.c
+112: 	r = fwrite_str(SWAP_ZRAM_COMP_ALGORITHM,
+113: 				zram_control.comp_algorithm);
+114: 	if (r == -EINVAL || r == -EBUSY) {
+115: 		char buf[LINE_MAX], *algorithms = buf;
+116: 		char *selected, *end;
+117: 
+118: 		/* Backends differ between kernels. Keep the kernel-selected
+119: 		 * algorithm instead of trying an unavailable fixed fallback.
+120: 		 * EBUSY means an initialized device must retain its algorithm.
+121: 		 */
+122: 		r = fread_str(SWAP_ZRAM_COMP_ALGORITHM, &algorithms);
+123: 		if (r < 0)
+124: 			return r;
+125: 		selected = strchr(algorithms, '[');
+126: 		end = selected ? strchr(selected + 1, ']') : NULL;
+127: 		if (!end || end == selected + 1)
+128: 			return -ENODATA;
+129: 		*end = '\0';
+130: 		_W("Cannot apply configured algorithm %s; retaining kernel algorithm %s",
+131: 				zram_control.comp_algorithm, selected + 1);
+132: 	} else if (r < 0) {
+133: 		return r;
+134: 	}
+
+src/resource-optimizer/memory/swap/swap.c
+597: 	}
+598: }
+599: 
+600: static void swap_activate_in_module(void)
+601: {
+602: 	int r;
+603: 	GSList *iter, *next;
+604: 	struct swap_module_ops *swaps;
+605: 
+606: 	r = cgroup_read_node_int32(MEMCG_PATH,
+607: 			MEMCG_SWAPPINESS, &current_swappiness);
+608: 	if (r)
+609: 		return;
+610: 
+611: 	if (swap_get_state() == SWAP_ON)
+612: 		return;
+613: 
+614: 	gslist_for_each_safe(swap_module, iter, next, swaps) {
+615: 		int flags = SWAP_FLAG_DISCARD;
+616: 
+617: 
+618: 		if (!swaps->activate)
+619: 			continue;
+620: 
+621: 		r = swaps->activate(swaps);
+622: 		if (r != 0) {
+623: 			if (r != -EEXIST) {
+624: 				_E("[SWAP] %s activate failed", swaps->name);
+625: 				swap_remove(swaps);
+626: 			} else {
+627: 				swap_set_state(SWAP_ON);
+628: 			}
+629: 			continue;
+630: 		}
+631: 
+632: #ifdef SWAP_FLAG_PREFER
+633: 		if (swaps->priority >= 0) {
+634: 			flags |= SWAP_FLAG_PREFER |
+635: 				(swaps->priority & SWAP_FLAG_PRIO_MASK) << SWAP_FLAG_PRIO_SHIFT;
+636: 		}

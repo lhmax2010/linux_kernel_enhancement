@@ -1,0 +1,18 @@
+temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/usr/include/glib-2.0/glib/gslist.h
+160:   GLIB_AVAILABLE_MACRO_IN_2_64
+161: 
+162: #define  g_slist_next(slist)	         ((slist) ? (((GSList *)(slist))->next) : NULL)
+163: 
+
+temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/usr/include/bits/posix2_lim.h
+44: #define	_POSIX2_EXPR_NEST_MAX		32
+45: 
+46: /* The maximum length, in bytes, of an input line.  */
+47: #define	_POSIX2_LINE_MAX		2048
+
+temp/task15/GBS-ROOT-RESOURCED/local/BUILD-ROOTS/scratch.armv7l.0/usr/include/bits/posix2_lim.h
+78: #define	EXPR_NEST_MAX		_POSIX2_EXPR_NEST_MAX
+79: #endif
+80: #ifndef	LINE_MAX
+81: #define	LINE_MAX		_POSIX2_LINE_MAX
+82: #endif

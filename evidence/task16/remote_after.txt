@@ -1,0 +1,5 @@
+$ git ls-remote origin refs/heads/tizen refs/heads/sandbox/lhmax2025/kernel_optimization
+94d346c306233803661e8eab8557596549d82be4	refs/heads/sandbox/lhmax2025/kernel_optimization
+82e79c09ea80c1977dfb27d3752577c74340f9bc	refs/heads/tizen
+
+EXIT=0
