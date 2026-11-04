@@ -1,12 +1,14 @@
 # 项目状态
 
+任务13完成：类产品基线源码已快进推送内部sandbox既有分支，待用户出镜像；出镜像须同时重编树外模块包。未新建分支，干净基线按固定提交保留。已闭合源码/祖先关系/无后缀及推前推后SHA核对；详细证据和出镜像说明仅见本地vendor_local/task13_push_report.md、vendor_local/image_build_note.md（不入库）。perf已知偏差按PM裁决沿用；下一步由用户出镜像，板上核验待另行安排。本轮不构建、不连板、不触发Quickbuild。
+
 任务12完成：用户在原tmux窗口认证后继续构建，三阶段全部OK，产物核验通过；未部署、未推Gerrit。详细内容仅在本地vendor_local/V3_report.md，公开结果见[15](15_vbase01_build.md)和[验收汇总](../evidence/task12/verification_summary.json)。
 - 计划/进度：配置对齐/普通RT便宜检查→原会话认证→9轮只读监控→工具链/依赖/映像/模块/配置/容量/部署包核验→同commit记录；本轮完成。原认证超时作为历史保留，未重启脚本、直接sudo或发信号。
 - 已闭合：kernel/modsrc/modules均exit0；time -v为1:10:18 / 1:01.39 / 1:11.69，总监督跨度1:13:42。Clang/LLD22.1.8；devel本次来源与安装载荷匹配。普通zImage14,928,528 B，比base01 +22,160 B（+0.148661%）；普通/RT版本正确。
 - 已闭合：59模块vermagic全符，7模块356项CRC比较0不一致；最终普通配置与便宜检查逐字一致。253个base01导入符号中132个CRC变化、0缺失，**出类产品镜像时必须同步重编linux-tizen-modules**；全部同名导出CRC变化10,208，新增2、删除0。
 - 产物/容量：temp/task12/deploy_lko-vbase01/，74文件哈希与归档复核通过；模块目录3,976 KiB，按既有余量估算原厂+base01+vbase01三套后剩6,696 KiB。部署前需重查现场块/inode；本轮未连板。无后缀lko/vbase01 SHA：b11f669e0cb1c1e26d878430b998d6486c5476a1。
-- 执行偏差/挂账：perf子构建覆盖外层-j10，实际-j20超过上限10，已记录，未干预；后续启动须显式限制perf JOBS，当前固定脚本/spec未改。外部扫描存在无法归属候选，直接观测0不代表完全无外写。[并行偏差](../evidence/task12/perf_parallelism_deviation.json)。
-- 后续前提：内部镜像构建须配套重编外部模块；Gerrit推送、部署与运行实验待PM另行下达。任务9文件及linux-rpi主工作树未修改。
+- 执行偏差/挂账：perf子构建覆盖外层-j10，实际-j20超过上限10，已记录，未干预；任务13 PM已接受该已知偏差，为与镜像构建一致不改spec，后续本地构建沿用。外部扫描存在无法归属候选，直接观测0不代表完全无外写。[并行偏差](../evidence/task12/perf_parallelism_deviation.json)。
+- 后续前提：内部镜像构建须配套重编外部模块；Gerrit推送已在任务13闭合；部署与运行实验待PM另行下达。任务9文件及linux-rpi主工作树未修改。
 
 任务11：第一批厂商特性本地移植完成，详见本地报告 vendor_local/V2_report.md（不入库）；lko/vbase01 可进入采用已验证临时配置的完整构建，产品配置仍待核实。
 

@@ -97,10 +97,18 @@ modules所用普通/RT devel来自本次local仓库：新RPM完整SHA与.srcfile
 
 ### 执行偏差与观测限制
 
-perf日志明确启动`-j20`；其Makefile:19取消MAKEFLAGS继承，:28按在线CPU设置JOBS，:65显式使用-j$(JOBS)，因此覆盖外层-j10。本机nproc=20，项目上限10，**该阶段实际超限**。[日志摘录及源码依据](../evidence/task12/perf_parallelism_deviation.json)。未发信号、修改运行中脚本/spec或重跑；后续构建应显式限制perf JOBS，当前脚本保持已要求的模板机制，待单独修正。
+perf日志明确启动`-j20`；其Makefile:19取消MAKEFLAGS继承，:28按在线CPU设置JOBS，:65显式使用-j$(JOBS)，因此覆盖外层-j10。本机nproc=20，项目上限10，**该阶段实际超限**。[日志摘录及源码依据](../evidence/task12/perf_parallelism_deviation.json)。未发信号、修改运行中脚本/spec或重跑；当时登记后续显式限制perf JOBS；该待办现由下方任务13的PM裁决覆盖，保留为历史。
 
 外部find候选数（kernel/modsrc/modules）为514/54/42，全部无法归属；本进程组直接观测的工作区外输出为0。find均exit1，且不覆盖所有权限、深度、root写入及已删除路径，**不能据此证明完全没有工作区外写入**。无文件删除或移动，其他任务路径不公开。
 
 主linux-rpi HEAD/工作树、任务9脚本和原模块lko/base01引用未变；本任务源码分支干净，未推Gerrit。无后缀lko/vbase01为`b11f669e0cb1c1e26d878430b998d6486c5476a1`，后续内部推送须另行下达。部署与运行测试仍待PM安排。
 
 公开文件提交前已扫描119个配置/来源/补丁标题模式，0命中；vendor_local被忽略且没有受跟踪文件。配置全文、符号明细、完整编译输出和下载RPM仅保留本地；公开文件均小于1 MB。
+
+## 任务13：PM裁决（2026-11-04）
+
+perf 并行数 -j20 来自 spec 自身，为保持本地构建与镜像构建一致，不修改 spec；作为已知偏差记录，后续本地构建沿用。实际覆盖外层并行参数的实现与证据见上文，历史超限事实不变。
+
+PM最新裁决替换新分支方案：不新建分支，直接快进更新platform/kernel/linux-rpi的sandbox/lhmax2025/kernel_optimization，从0fac5de6a63091d141ad1cd3ed9d9e92b8dde708到b11f669e0cb1c1e26d878430b998d6486c5476a1。干净基线以原提交号保留；如需干净基线镜像，必须显式指定0fac5de6，不再使用该分支最新值。仍不force、不走refs/for/*；本轮不构建、不连板、不触发Quickbuild。
+
+任务13执行结果：9个提交与本地报告一致，祖先关系及无后缀spec核对通过；采用任务4原origin和正常SSH环境普通快进推送，推后SHA符合目标，未新建分支。详细提交标题、推送原文与出镜像说明仅保存在vendor_local；镜像必须同步重编配套树外模块。
