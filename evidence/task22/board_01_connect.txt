@@ -1,0 +1,5 @@
+$ /home/linhao/.local/bin/sdb connect 192.168.108.26:26101
+connecting to 192.168.108.26:26101 ...
+failed to connect to 192.168.108.26:26101
+
+TRANSPORT-EXIT=1

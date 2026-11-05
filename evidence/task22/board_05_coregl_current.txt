@@ -1,0 +1,31 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'journalctl --list-boots --no-pager; ls -ld /var/log/journal /run/log/journal; ls -la /var/log; rpm -q coregl; ls -l /usr/lib/libEGL.so.1 /usr/lib/libGLESv2.so.2 /usr/lib/libCOREGL.so.4
+remote_rc=$?
+printf "\nTASK22-REMOTE-EXIT=%s\n" "$remote_rc"'
+-1 4e5c71ff0cf84e7e9f6116602d3c3b57 Thu 2026-11-05 22:08:52 KST—Thu 2026-11-05 22:29:42 KST
+ 0 efb329cec98548358124e7a98c8b4aeb Thu 2026-11-05 22:37:14 KST—Thu 2026-11-05 23:35:13 KST
+ls: cannot access /run/log/journal: No such file or directory
+drwxr-sr-x 3 root systemd-journal 4096 Jan  1  1970 /var/log/journal
+total 64
+drwxr-xr-x  8 root          root              4096 Jan  1  1970 .
+drwxr-xr-x 16 root          root              4096 Jan  1  1970 ..
+-rw-r--r--  1 root          root              3535 Nov  5 06:18 alternatives.log
+drwxr-xr-x  5 root          root              4096 Nov  5 06:14 appfw
+-rw-rw----  1 root          utmp                 0 Jan  1  1970 btmp
+drwxr-xr-x  2 log           log               4096 Nov  5 23:33 dlog
+-rw-------  1 root          root            240000 Nov  5 06:19 faillog
+drwxr-sr-x  3 root          systemd-journal   4096 Jan  1  1970 journal
+-rw-rw-r--  1 root          utmp                 0 Jan  1  1970 lastlog
+drwxr-xr-x  2 owner         users             4096 Jan  1  1970 malort
+drwxr-xr-x  2 multimedia_fw multimedia_fw     4096 Jan  1  1970 mused
+-rw-r--r--  1 root          root             12452 Jan  1  1970 platform-extension-migration.log
+drwx------  2 root          root              4096 Jan  1  1970 private
+-rw-------  1 root          root                 0 Nov  5 06:07 tallylog
+-rw-rw-r--  1 root          utmp              5376 Nov  5 22:49 wtmp
+package coregl is not installed
+ls: cannot access /usr/lib/libEGL.so.1: No such file or directory
+ls: cannot access /usr/lib/libGLESv2.so.2: No such file or directory
+ls: cannot access /usr/lib/libCOREGL.so.4: No such file or directory
+
+TASK22-REMOTE-EXIT=2
+
+TRANSPORT-EXIT=0

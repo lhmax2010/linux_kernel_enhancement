@@ -1,0 +1,177 @@
+SOURCE: temp/task22/logs/vbase_rootfs.img_probe_1.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/sbin/debugfs -R 'stat /usr/lib/libEGL.so.1' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/vbase/rootfs.img.readonly-copy
+Inode: 4896   Type: symlink    Mode:  0777   Flags: 0x0
+Generation: 3088753146    Version: 0x00000000:00000004
+User:     0   Group:     0   Project:     0   Size: 13
+File ACL: 0
+Links: 1   Blockcount: 0
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x6aeb9eac:df110914 -- Wed Nov  4 21:07:56 2026
+ atime: 0x6aeb5e7d:00000000 -- Wed Nov  4 16:34:05 2026
+ mtime: 0x6aeb5e7d:00000000 -- Wed Nov  4 16:34:05 2026
+crtime: 0x6aeb9eac:df110914 -- Wed Nov  4 21:07:56 2026
+Size of extra inode fields: 32
+Extended attributes:
+  security.SMACK64 (1) = "_"
+Inode checksum: 0x83cfbebd
+Fast link dest: "libEGL.so.1.5"
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+SOURCE: temp/task22/logs/vbase_rootfs.img_probe_2.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/sbin/debugfs -R 'stat /usr/lib/libGLESv2.so.2' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/vbase/rootfs.img.readonly-copy
+Inode: 4902   Type: symlink    Mode:  0777   Flags: 0x0
+Generation: 3599443906    Version: 0x00000000:00000004
+User:     0   Group:     0   Project:     0   Size: 16
+File ACL: 0
+Links: 1   Blockcount: 0
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x6aeb9eac:dfc823d0 -- Wed Nov  4 21:07:56 2026
+ atime: 0x6aeb5e7d:00000000 -- Wed Nov  4 16:34:05 2026
+ mtime: 0x6aeb5e7d:00000000 -- Wed Nov  4 16:34:05 2026
+crtime: 0x6aeb9eac:dfc823d0 -- Wed Nov  4 21:07:56 2026
+Size of extra inode fields: 32
+Extended attributes:
+  security.SMACK64 (1) = "_"
+Inode checksum: 0xe6db0732
+Fast link dest: "libGLESv2.so.2.0"
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+SOURCE: temp/task22/logs/vbase_rootfs.img_probe_3.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/sbin/debugfs -R 'stat /usr/lib/libCOREGL.so.4' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/vbase/rootfs.img.readonly-copy
+Inode: 4893   Type: symlink    Mode:  0777   Flags: 0x0
+Generation: 1057849381    Version: 0x00000000:00000004
+User:     0   Group:     0   Project:     0   Size: 16
+File ACL: 0
+Links: 1   Blockcount: 0
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x6aeb9eac:d827068c -- Wed Nov  4 21:07:56 2026
+ atime: 0x6aeb5e7c:00000000 -- Wed Nov  4 16:34:04 2026
+ mtime: 0x6aeb5e7c:00000000 -- Wed Nov  4 16:34:04 2026
+crtime: 0x6aeb9eac:d827068c -- Wed Nov  4 21:07:56 2026
+Size of extra inode fields: 32
+Extended attributes:
+  security.SMACK64 (1) = "_"
+Inode checksum: 0xd978f959
+Fast link dest: "libCOREGL.so.4.0"
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+SOURCE: temp/task22/logs/vbase_rootfs.img_probe_4.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/sbin/debugfs -R 'stat /var' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/vbase/rootfs.img.readonly-copy
+Inode: 20   Type: symlink    Mode:  0777   Flags: 0x0
+Generation: 3807469001    Version: 0x00000000:00000001
+User:     0   Group:     0   Project:     0   Size: 7
+File ACL: 0
+Links: 1   Blockcount: 0
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x6aeba0f2:6d12047c -- Wed Nov  4 21:17:38 2026
+ atime: 0x6aeba0f2:6d12047c -- Wed Nov  4 21:17:38 2026
+ mtime: 0x6aeba0f2:6d12047c -- Wed Nov  4 21:17:38 2026
+crtime: 0x6aeba0f2:6d12047c -- Wed Nov  4 21:17:38 2026
+Size of extra inode fields: 32
+Inode checksum: 0xa973ba64
+Fast link dest: "opt/var"
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+SOURCE: temp/task22/logs/vbase_stat_libEGL.so.1.5.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/sbin/debugfs -R 'stat /usr/lib/libEGL.so.1.5' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/vbase/rootfs.img.readonly-copy
+Inode: 4897   Type: regular    Mode:  0755   Flags: 0x80000
+Generation: 47820046    Version: 0x00000000:00000006
+User:     0   Group:     0   Project:     0   Size: 38144
+File ACL: 0
+Links: 1   Blockcount: 80
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x6aeb9eac:df4e11fc -- Wed Nov  4 21:07:56 2026
+ atime: 0x6aeb5e80:00000000 -- Wed Nov  4 16:34:08 2026
+ mtime: 0x6aeb5e80:00000000 -- Wed Nov  4 16:34:08 2026
+crtime: 0x6aeb9eac:df110914 -- Wed Nov  4 21:07:56 2026
+Size of extra inode fields: 32
+Extended attributes:
+  security.SMACK64 (1) = "_"
+Inode checksum: 0x77e04d37
+EXTENTS:
+(0-9):79630-79639
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+SOURCE: temp/task22/logs/vbase_stat_libGLESv2.so.2.0.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/sbin/debugfs -R 'stat /usr/lib/libGLESv2.so.2.0' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/vbase/rootfs.img.readonly-copy
+Inode: 4903   Type: regular    Mode:  0755   Flags: 0x80000
+Generation: 551555956    Version: 0x00000000:00000008
+User:     0   Group:     0   Project:     0   Size: 230660
+File ACL: 0
+Links: 1   Blockcount: 456
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x6aeb9eac:e07f3e90 -- Wed Nov  4 21:07:56 2026
+ atime: 0x6aeb5e81:00000000 -- Wed Nov  4 16:34:09 2026
+ mtime: 0x6aeb5e81:00000000 -- Wed Nov  4 16:34:09 2026
+crtime: 0x6aeb9eac:dfc823d0 -- Wed Nov  4 21:07:56 2026
+Size of extra inode fields: 32
+Extended attributes:
+  security.SMACK64 (1) = "_"
+Inode checksum: 0x2ea67b35
+EXTENTS:
+(0-56):107844-107900
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+SOURCE: temp/task22/logs/vbase_stat_libCOREGL.so.4.0.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/sbin/debugfs -R 'stat /usr/lib/libCOREGL.so.4.0' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/vbase/rootfs.img.readonly-copy
+Inode: 4894   Type: regular    Mode:  0755   Flags: 0x80000
+Generation: 695762147    Version: 0x00000000:0000001f
+User:     0   Group:     0   Project:     0   Size: 1604388
+File ACL: 0
+Links: 1   Blockcount: 3136
+Fragment:  Address: 0    Number: 0    Size: 0
+ ctime: 0x6aeb9eac:de96f73c -- Wed Nov  4 21:07:56 2026
+ atime: 0x6aeb5e81:00000000 -- Wed Nov  4 16:34:09 2026
+ mtime: 0x6aeb5e81:00000000 -- Wed Nov  4 16:34:09 2026
+crtime: 0x6aeb9eac:d827068c -- Wed Nov  4 21:07:56 2026
+Size of extra inode fields: 32
+Extended attributes:
+  security.SMACK64 (1) = "_"
+Inode checksum: 0x50ab825e
+EXTENTS:
+(0-391):107452-107843
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+SOURCE: temp/task22/logs/vbase_system-data.img_probe_1.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/sbin/debugfs -R 'ls -l /var/lib/rpm' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/vbase/system-data.img.readonly-copy
+    614   40755 (2)      0      0    4096 30-Oct-2026 14:30 .
+     49   40755 (2)      0      0    4096  4-Nov-2026 21:26 ..
+    615  100644 (1)      0      0   73728  4-Nov-2026 21:26 Sigmd5
+    616  100644 (1)      0      0    8192  4-Nov-2026 21:05 Filetriggername
+    617  100644 (1)      0      0   86016  4-Nov-2026 21:26 Name
+    618  100644 (1)      0      0    8192  4-Nov-2026 21:09 Supplementname
+    619  100644 (1)      0      0    8192  4-Nov-2026 21:13 Recommendname
+    620  100644 (1)      0      0   114688  4-Nov-2026 21:26 Sha1header
+    621  100644 (1)      0      0   389120  4-Nov-2026 21:26 Providename
+    622  100644 (1)      0      0    8192  4-Nov-2026 21:08 Triggername
+    623  100644 (1)      0      0   372736  4-Nov-2026 21:26 Dirnames
+    624   40755 (2)      0      0    4096  4-Nov-2026 21:13 alternatives
+    634  100644 (1)      0      0    8192  4-Nov-2026 21:13 Enhancename
+    635  100644 (1)      0      0   32768  4-Nov-2026 21:26 Group
+    636  100644 (1)      0      0    8192  4-Nov-2026 21:05 Transfiletriggername
+    637  100644 (1)      0      0   20480  4-Nov-2026 21:26 Installtid
+    638  100644 (1)      0      0       0  4-Nov-2026 21:05 .rpm.lock
+    639  100644 (1)      0      0   24576  4-Nov-2026 21:13 Suggestname
+    640  100644 (1)      0      0   847872  4-Nov-2026 21:26 Basenames
+    641  100644 (1)      0      0    8192  4-Nov-2026 21:13 Conflictname
+    642  100644 (1)      0      0   9916416  4-Nov-2026 21:26 Packages
+    643  100644 (1)      0      0    8192  4-Nov-2026 21:13 Obsoletename
+    644  100644 (1)      0      0   446464  4-Nov-2026 21:26 Requirename
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0

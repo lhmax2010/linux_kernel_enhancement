@@ -1,0 +1,62 @@
+{
+  "scope": "All committed evidence/**/*command*.jsonl before task22; inspect executable-position rpm erase, distinguish quoted grep/search text",
+  "files": [
+    {
+      "file": "evidence/task19/commands.jsonl",
+      "sha256": "810fac57f23e99c6ee00bc5044429326c287bea02f7c0bcafc349bab2583486f",
+      "commands": 96
+    },
+    {
+      "file": "evidence/task21/commands.jsonl",
+      "sha256": "94bebe3cd295c172ab2180619cb5db89e561855fa4cb419b4276bbbdf355077e",
+      "commands": 24
+    },
+    {
+      "file": "evidence/task5b/board_commands.jsonl",
+      "sha256": "46aff95f9fc5015ec78806a8c45b84c526fb50f16463976c6b5f9b0baca163eb",
+      "commands": 15
+    },
+    {
+      "file": "evidence/task5c/board_commands.jsonl",
+      "sha256": "db70fa39f1c734ff30450123adedc47c3ff6a2a60080e1b02668b893fda698f7",
+      "commands": 16
+    },
+    {
+      "file": "evidence/task6/board_commands.jsonl",
+      "sha256": "72de1e4c2db6b6bc18021277cd17fba78f3f815bc2e16fc90abe6900bc80e84f",
+      "commands": 10
+    },
+    {
+      "file": "evidence/task6/r2/board_commands.jsonl",
+      "sha256": "250046f6ed8d6c9709f30d97206476491acb964707cea9e699b1397b2f70c97a",
+      "commands": 25
+    },
+    {
+      "file": "evidence/task7/board_commands.jsonl",
+      "sha256": "0b8fdbfc5777eb640ca941f9de2bc8a0eedf0fb252908c91361887b41a2b5198",
+      "commands": 135
+    },
+    {
+      "file": "evidence/task7/r2/board_commands.jsonl",
+      "sha256": "8d79f8056d51e3b1f0dc95b0acc18ef6d66d869ac643a05e6062de4eff5ec3ad",
+      "commands": 12
+    },
+    {
+      "file": "evidence/task7/r3/board_commands.jsonl",
+      "sha256": "a6e1c91750617f04f9dab71c0f81b141636f392a54334d46c99fdf901d4594e5",
+      "commands": 130
+    },
+    {
+      "file": "evidence/task7/r4/board_commands.jsonl",
+      "sha256": "fff311fea7de73c15ba12f75b0808c92a7b19948192d1a4ac3c6e2ca92c5875e",
+      "commands": 92
+    }
+  ],
+  "file_count": 10,
+  "record_count": 555,
+  "parse_errors": [],
+  "literal_erase_candidates": [],
+  "executable_erase_candidates": [],
+  "limitation": "Only recorded commands; cannot prove completeness of unrecorded sessions or external users/actions.",
+  "broader_combined_erase_other_managers_and_library_rm_candidates": []
+}

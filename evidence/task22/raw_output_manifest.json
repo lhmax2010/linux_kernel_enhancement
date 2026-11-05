@@ -1,0 +1,860 @@
+[
+  {
+    "path": "temp/task22/logs/a_archive_inspection.txt",
+    "bytes": 2875,
+    "lines": 51,
+    "sha256": "4fcff281df7cecc3a97811fcabc1010020933825cefc7f3a6384e57575d666d9"
+  },
+  {
+    "path": "temp/task22/logs/arm-rpi4-linux-kernel-modules-6.12.80-0.armv7l.rpm_extract.txt",
+    "bytes": 1261,
+    "lines": 3,
+    "sha256": "09ddeda0f10493668deaa105df75b0b342243aaf8744b2c30f7d64fd5e1408fb"
+  },
+  {
+    "path": "temp/task22/logs/arm-rpi4-linux-kernel-modules-6.12.80-0.armv7l.rpm_identity.txt",
+    "bytes": 1303,
+    "lines": 5,
+    "sha256": "fe0f8d8062c23120b1848d014050ea16c0343a356645c65df859598bb1438709"
+  },
+  {
+    "path": "temp/task22/logs/base_archive_sha.txt",
+    "bytes": 1317,
+    "lines": 4,
+    "sha256": "f9daa213b7e0ae165d4ce1a12e6f90958c6b30e810f191cbe3521729d72073fe"
+  },
+  {
+    "path": "temp/task22/logs/base_depmod_readonly.txt",
+    "bytes": 190326,
+    "lines": 3557,
+    "sha256": "774c8340fa0ae23bbcdb1ed4ec017055041cb8d7ef891640446105aff531dbe9"
+  },
+  {
+    "path": "temp/task22/logs/base_extract.txt",
+    "bytes": 1212,
+    "lines": 3,
+    "sha256": "8577cc1f29c074aa50902f80a20f9bed81dd85115b09a8985bb39a05a6b7c386"
+  },
+  {
+    "path": "temp/task22/logs/base_modprobe_depends.txt",
+    "bytes": 1318,
+    "lines": 4,
+    "sha256": "f6111ca11001e224e912fae0e42df427191cd68147ba43e71e7b8dc5a73bbaa0"
+  },
+  {
+    "path": "temp/task22/logs/base_modprobe_dry.txt",
+    "bytes": 1309,
+    "lines": 4,
+    "sha256": "9d610b6cf88847ee278a72a8fb5342441c86a1dcfe8267243a0a236b4392bcd0"
+  },
+  {
+    "path": "temp/task22/logs/base_permissions.txt",
+    "bytes": 1855,
+    "lines": 6,
+    "sha256": "2fbae91413f8dc67a0e91048068e622d917659a6dba164b7577bf2c31a3efd29"
+  },
+  {
+    "path": "temp/task22/logs/base_proc_tsm_info.txt",
+    "bytes": 1542,
+    "lines": 10,
+    "sha256": "c382c9e35130c3932560b99087365d715d99935fa7913901f0043322f8d550f5"
+  },
+  {
+    "path": "temp/task22/logs/base_proc_tsm_versions.txt",
+    "bytes": 1886,
+    "lines": 29,
+    "sha256": "3b8b1b872a88a3c81992a8af302438d91a1b2654852aed6aa1b29672d495ecca"
+  },
+  {
+    "path": "temp/task22/logs/debugfs_version.txt",
+    "bytes": 1377,
+    "lines": 5,
+    "sha256": "86bf2875fefcb603697108553fe29109775e6271f0a66edfad62e4621a9c0bc3"
+  },
+  {
+    "path": "temp/task22/logs/depmod_help.txt",
+    "bytes": 2132,
+    "lines": 30,
+    "sha256": "f761e43442a4b1e49b2b1adca9aad3d82d03ae1bfd92add6ca32db1629f7fd05"
+  },
+  {
+    "path": "temp/task22/logs/e2fsprogs_tools_extract.txt",
+    "bytes": 1249,
+    "lines": 3,
+    "sha256": "ca6c9e9a2f3e45e3b9ddc2196628d5da69be2dc5dde685ef3abbe00a0c94279d"
+  },
+  {
+    "path": "temp/task22/logs/libcom_err_tools_extract.txt",
+    "bytes": 1250,
+    "lines": 3,
+    "sha256": "9235940168fc1ed28ff64ff9aaa05748e435ed636a0225cf28e356fbe9c1cb53"
+  },
+  {
+    "path": "temp/task22/logs/libext2fs_tools_extract.txt",
+    "bytes": 1249,
+    "lines": 3,
+    "sha256": "ab4d47808040f37267f4eaac802182b6a6e01ab26b4e4ba8b5b8085a354a3a4b"
+  },
+  {
+    "path": "temp/task22/logs/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm_extract.txt",
+    "bytes": 1255,
+    "lines": 3,
+    "sha256": "76c4fbc62ff375c8bdbda056156063145797a9a47bf444d0bddfdbc84b737200"
+  },
+  {
+    "path": "temp/task22/logs/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm_identity.txt",
+    "bytes": 1301,
+    "lines": 5,
+    "sha256": "10f3ea9f539c05ec2c1348894a6ecb3f2e889f773e058b2bc51ea5433ad98a1f"
+  },
+  {
+    "path": "temp/task22/logs/modinfo_help.txt",
+    "bytes": 1754,
+    "lines": 18,
+    "sha256": "1009b65c7bd22cb02d238818c25daa6fdf806238f01b862a5b3ecead4867da47"
+  },
+  {
+    "path": "temp/task22/logs/modprobe_help.txt",
+    "bytes": 3474,
+    "lines": 50,
+    "sha256": "4083c7cff1218bcac8177fb7186ee565228f178e10e6febc0f7a376a4b406d25"
+  },
+  {
+    "path": "temp/task22/logs/module_image_comparison.txt",
+    "bytes": 2150,
+    "lines": 8,
+    "sha256": "a43d0a3a0d068fdf8f4b919fd772225d12774e8de32c9ec74c6f5f52205f9e28"
+  },
+  {
+    "path": "temp/task22/logs/module_rpm_comparison.txt",
+    "bytes": 2144,
+    "lines": 8,
+    "sha256": "f7498109ab63b501fc3522a8709f4fea72c716d82ddcc465c8cd8f96f65d3697"
+  },
+  {
+    "path": "temp/task22/logs/modules_image_original_after.txt",
+    "bytes": 1263,
+    "lines": 4,
+    "sha256": "2be92ae4eb229a233f45699e729a05d2d7be53feb031226df1f8c8608bcd0fe1"
+  },
+  {
+    "path": "temp/task22/logs/sr_archive_sha.txt",
+    "bytes": 1387,
+    "lines": 4,
+    "sha256": "597009461d5a38175b9b375527529a04d621e3c949ac81196e9118ce2577687a"
+  },
+  {
+    "path": "temp/task22/logs/sr_dump_build-backup-data.sh.txt",
+    "bytes": 1583,
+    "lines": 4,
+    "sha256": "d73c65ef53b19943ef6ed092f4507f2ffba6ca23ac38d6abbff6c3af2fac7b34"
+  },
+  {
+    "path": "temp/task22/logs/sr_dump_libCOREGL.so.4.0.txt",
+    "bytes": 1575,
+    "lines": 4,
+    "sha256": "ce9f7388c8a9438ae64289a41f9721371962581ab80c6042c3ed7e2b6612ecfc"
+  },
+  {
+    "path": "temp/task22/logs/sr_dump_libEGL.so.1.5.txt",
+    "bytes": 1569,
+    "lines": 4,
+    "sha256": "aa40be85464fe1ac6b27e347a747b21418cb970a90e6627e5e0cab76660f8aaa"
+  },
+  {
+    "path": "temp/task22/logs/sr_dump_libGLESv2.so.2.0.txt",
+    "bytes": 1575,
+    "lines": 4,
+    "sha256": "80f1b9d11c8053bfc07328dbfe2f151453c5cfb5182c8467a6c4494cbd3e782e"
+  },
+  {
+    "path": "temp/task22/logs/sr_dump_modules.txt",
+    "bytes": 27368,
+    "lines": 126,
+    "sha256": "022fd407d6a2ea4ae68e7d59e690b7ac852498132ff91ec6dbc9fb5ded2a19f7"
+  },
+  {
+    "path": "temp/task22/logs/sr_dump_rpmdb.txt",
+    "bytes": 6473,
+    "lines": 35,
+    "sha256": "d448719cffb3a88cf9ac4ea06fe824fda6c51e51294b92678dd89fb69cafc14f"
+  },
+  {
+    "path": "temp/task22/logs/sr_dump_stability-monitor.service.txt",
+    "bytes": 1608,
+    "lines": 4,
+    "sha256": "0307a729491d851d58caa73e56a5545a842460ce441ea8f09256b91588f29912"
+  },
+  {
+    "path": "temp/task22/logs/sr_image_depmod_readonly.txt",
+    "bytes": 190329,
+    "lines": 3557,
+    "sha256": "1dff397a7ab55a78d346895a4f4646968da9b3eedc3f024f9bb56213226c0837"
+  },
+  {
+    "path": "temp/task22/logs/sr_image_modprobe_depends.txt",
+    "bytes": 1324,
+    "lines": 4,
+    "sha256": "03115641614880614b49edea052857aaecc0d1a285e37d39ff3fe49c981726e7"
+  },
+  {
+    "path": "temp/task22/logs/sr_image_modprobe_dry.txt",
+    "bytes": 1315,
+    "lines": 4,
+    "sha256": "2cbc42f80fde79af8d300654a2effabb78a00565e326a314b0b26e427f390323"
+  },
+  {
+    "path": "temp/task22/logs/sr_image_proc_tsm_info.txt",
+    "bytes": 1537,
+    "lines": 10,
+    "sha256": "de753af37a6b82ac137eb1bf0092f4bfcb295520a6e22dd1fc34787ae373e6a4"
+  },
+  {
+    "path": "temp/task22/logs/sr_image_proc_tsm_versions.txt",
+    "bytes": 1889,
+    "lines": 29,
+    "sha256": "9c24f35bd8f2801efc453c3e01f66753a170084901fcaabd8eadb306ee66578e"
+  },
+  {
+    "path": "temp/task22/logs/sr_libCOREGL.so.4.0_sha.txt",
+    "bytes": 1289,
+    "lines": 4,
+    "sha256": "1e75fcfc40ded642c2c48c345afccf2d1f0fc9d04e3c34a6622bb9302b6a9b32"
+  },
+  {
+    "path": "temp/task22/logs/sr_libEGL.so.1.5_sha.txt",
+    "bytes": 1283,
+    "lines": 4,
+    "sha256": "96605583e3f2255438c114cd74e1fdb28828a3e83076ca199b6dc49fff5f7157"
+  },
+  {
+    "path": "temp/task22/logs/sr_libGLESv2.so.2.0_sha.txt",
+    "bytes": 1289,
+    "lines": 4,
+    "sha256": "e91db8d0a826fd5fbaab93c0bb8920d594f9403c511e94f6dc8dc9c02205c8ce"
+  },
+  {
+    "path": "temp/task22/logs/sr_modules_image_copy.txt",
+    "bytes": 1200,
+    "lines": 3,
+    "sha256": "4cfbfd1934d8d831459d0982a8cc335a36a4dcdd8796c61b12e125ad89718565"
+  },
+  {
+    "path": "temp/task22/logs/sr_modules_image_sha.txt",
+    "bytes": 1263,
+    "lines": 4,
+    "sha256": "2be92ae4eb229a233f45699e729a05d2d7be53feb031226df1f8c8608bcd0fe1"
+  },
+  {
+    "path": "temp/task22/logs/sr_modules_probe_0.txt",
+    "bytes": 1876,
+    "lines": 11,
+    "sha256": "387d72c798e7f93b4de5d9e8a6e99898a85ef975223525058b6eafc6d2bd55df"
+  },
+  {
+    "path": "temp/task22/logs/sr_modules_probe_1.txt",
+    "bytes": 1944,
+    "lines": 18,
+    "sha256": "780aa2687601c4a51ff2de7b4cabde0e78514bfcb26bf4bf2369c76cad99e2a9"
+  },
+  {
+    "path": "temp/task22/logs/sr_modules_probe_2.txt",
+    "bytes": 1949,
+    "lines": 18,
+    "sha256": "88a007a1927a2020fcd32b60f4a942324de4d360cacfaa9a1aeb211afd2533c7"
+  },
+  {
+    "path": "temp/task22/logs/sr_modules_probe_3.txt",
+    "bytes": 1952,
+    "lines": 18,
+    "sha256": "0e0adbe946b28f1259c86269a335d6d2bd2e48636e1f64048f13df8a66c7b668"
+  },
+  {
+    "path": "temp/task22/logs/sr_modules_probe_4.txt",
+    "bytes": 2884,
+    "lines": 24,
+    "sha256": "bb23d8a2850f239fac4db44da04449e28b15f401015dc7779d33525be6aa580b"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs.img.readonly-copy_after_sha.txt",
+    "bytes": 1289,
+    "lines": 4,
+    "sha256": "ec1e5f292bac9816c0a0a19998801d70650f5430155371375d32ce61f0f4141c"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs.img_after_sha.txt",
+    "bytes": 1261,
+    "lines": 4,
+    "sha256": "bc67c332141aedae2290487e5f29f8f487bc286aed972dfb1425d1fc32a0b49b"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs.img_copy.txt",
+    "bytes": 1198,
+    "lines": 3,
+    "sha256": "f8d1c1b0eb42f80ff80e0fcebb73e2e95043bb3f6ec1f7db208f9ffef9b18adf"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs.img_probe_0.txt",
+    "bytes": 3071,
+    "lines": 30,
+    "sha256": "a24c180c5c33f177a86e0c76e739f399d30ebcfa7145463e18ee9ad01222bcc9"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs.img_probe_1.txt",
+    "bytes": 2082,
+    "lines": 19,
+    "sha256": "89a91e2fcdf6da3c12875d7e71bce0cce6905cfc656ad2aa16a055f0b1e246a1"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs.img_probe_2.txt",
+    "bytes": 2088,
+    "lines": 19,
+    "sha256": "bc9c5194e026fb78fc9199b6cc7f4670b9b4e0816cd7c4497d2b85ee342c0bb7"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs.img_probe_3.txt",
+    "bytes": 2088,
+    "lines": 19,
+    "sha256": "e3087398c8346da074d9d74f1d94e5dd103ebd94cd2f3c54e2c349a7a8591aa9"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs.img_probe_4.txt",
+    "bytes": 2006,
+    "lines": 17,
+    "sha256": "df4a261e7f64e26f1cb211e96efa2dc90a3cc70c168021d2b053d438be546d41"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs.img_probe_5.txt",
+    "bytes": 1507,
+    "lines": 5,
+    "sha256": "032d9f376c26fa2d2e227ef24548da92c39bbc5a631c33f1ce59e74617c94624"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs.img_probe_6.txt",
+    "bytes": 1515,
+    "lines": 5,
+    "sha256": "5599dbbb0ab110f8d87e69141441c7315017ddac1f19a60d7eda7b8b2525785f"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs_extract.txt",
+    "bytes": 1256,
+    "lines": 3,
+    "sha256": "4ea57d01078808080f53303bff20513555445d71f4701f06043a1266916059c4"
+  },
+  {
+    "path": "temp/task22/logs/sr_rootfs_sha.txt",
+    "bytes": 1261,
+    "lines": 4,
+    "sha256": "bc67c332141aedae2290487e5f29f8f487bc286aed972dfb1425d1fc32a0b49b"
+  },
+  {
+    "path": "temp/task22/logs/sr_rpm_depmod_readonly.txt",
+    "bytes": 190317,
+    "lines": 3557,
+    "sha256": "3d2ce5751cc9b9a4f2148d48adf6548eda1694aed2f20a61f21d4799a14ec49d"
+  },
+  {
+    "path": "temp/task22/logs/sr_rpm_directory_modes.txt",
+    "bytes": 2033,
+    "lines": 15,
+    "sha256": "d15b1a5dbf2da6fd0e62e4a733702436b12d41876d005a6f0372d059cc0efee3"
+  },
+  {
+    "path": "temp/task22/logs/sr_rpm_modprobe_depends.txt",
+    "bytes": 1330,
+    "lines": 4,
+    "sha256": "bde63f9fdb66a4fd68e42d66a3ea9117f31f40158e124ca327bdab714560e67a"
+  },
+  {
+    "path": "temp/task22/logs/sr_rpm_modprobe_dry.txt",
+    "bytes": 1321,
+    "lines": 4,
+    "sha256": "61be780b2c14b6e2d77fa6ae8f2210d0286ef0213c5ec02db56984f76bbfc5c4"
+  },
+  {
+    "path": "temp/task22/logs/sr_rpm_proc_tsm_info.txt",
+    "bytes": 1513,
+    "lines": 10,
+    "sha256": "f2efb8353a22c38fef9989218efdfb55a40c8463b85985e6ee7f3ae717b6f71f"
+  },
+  {
+    "path": "temp/task22/logs/sr_rpm_proc_tsm_versions.txt",
+    "bytes": 1877,
+    "lines": 29,
+    "sha256": "1b67243064ef84e2713d17a53d741d9267678ff9bacfecb00067ebce46fcc8d8"
+  },
+  {
+    "path": "temp/task22/logs/sr_rpmdb_coregl.txt",
+    "bytes": 1264,
+    "lines": 7,
+    "sha256": "84cf3946a09296ed458cd51047e6514792602b1505dad4b55d432f75b81a65ce"
+  },
+  {
+    "path": "temp/task22/logs/sr_rpmdb_packages.txt",
+    "bytes": 50919,
+    "lines": 1237,
+    "sha256": "98c89da9edef3e75a1ca523477a11a1a550fed22228874ea74e455856782347d"
+  },
+  {
+    "path": "temp/task22/logs/sr_stat_libCOREGL.so.4.0.txt",
+    "bytes": 2098,
+    "lines": 20,
+    "sha256": "2f95b6da726d03b0f80c37403624818b08708cea4a066d354d9562ae74df14cc"
+  },
+  {
+    "path": "temp/task22/logs/sr_stat_libEGL.so.1.5.txt",
+    "bytes": 2089,
+    "lines": 20,
+    "sha256": "a269ca680cb777c87268e8b73935b679aad4595439ff401d1c4730240c5a416d"
+  },
+  {
+    "path": "temp/task22/logs/sr_stat_libGLESv2.so.2.0.txt",
+    "bytes": 2094,
+    "lines": 20,
+    "sha256": "da61c15f1d4b6944c02dd9f6525f7ec2b7350ba9709759a4f5a3036fc2bfbb24"
+  },
+  {
+    "path": "temp/task22/logs/sr_system-data.img_after_sha.txt",
+    "bytes": 1271,
+    "lines": 4,
+    "sha256": "603707a10c3fe2975f5b8cab79881eb01205ad9824f6668cf332cf5a75d3544c"
+  },
+  {
+    "path": "temp/task22/logs/sr_system-data.img_copy.txt",
+    "bytes": 1208,
+    "lines": 3,
+    "sha256": "926bcfc5e8ba5307ff9879768c1936ed7470900139395656be453b1997cbc125"
+  },
+  {
+    "path": "temp/task22/logs/sr_system-data.img_probe_0.txt",
+    "bytes": 2463,
+    "lines": 20,
+    "sha256": "79637bc6d8e830d0ed65c724b6f66b87c87102ac8bb190858206d75e62532f40"
+  },
+  {
+    "path": "temp/task22/logs/sr_system-data.img_probe_1.txt",
+    "bytes": 3103,
+    "lines": 28,
+    "sha256": "21ced8af8dc0b7b78c82c88381fdc6df729f6ef515f462ad64c4e98174eef6fb"
+  },
+  {
+    "path": "temp/task22/logs/sr_system_data_extract.txt",
+    "bytes": 1261,
+    "lines": 3,
+    "sha256": "d4ff7f43c4e72731bc2b0a6d1408c707b493534d6859a2cae821716a3569861a"
+  },
+  {
+    "path": "temp/task22/logs/sr_system_data_sha.txt",
+    "bytes": 1271,
+    "lines": 4,
+    "sha256": "603707a10c3fe2975f5b8cab79881eb01205ad9824f6668cf332cf5a75d3544c"
+  },
+  {
+    "path": "temp/task22/logs/stability_strings.txt",
+    "bytes": 12842,
+    "lines": 688,
+    "sha256": "1dcca94a288d10bc6dccd132c1b32625b01b78469b66100aad9fbe7b206b2533"
+  },
+  {
+    "path": "temp/task22/logs/vbase_archive_sha.txt",
+    "bytes": 1393,
+    "lines": 4,
+    "sha256": "662f41ab5687faa2720d6a939d272b156cf202e2ce6cb3b5b43801b520c9635a"
+  },
+  {
+    "path": "temp/task22/logs/vbase_dump_build-backup-data.sh.txt",
+    "bytes": 1589,
+    "lines": 4,
+    "sha256": "dd766b7169bffcd2b35ebbcd7cc2215dc613689dd543d14015c90a198b29daa3"
+  },
+  {
+    "path": "temp/task22/logs/vbase_dump_libCOREGL.so.4.0.txt",
+    "bytes": 1581,
+    "lines": 4,
+    "sha256": "2d507b5c70943ad4cc0598e7e9b988f2adf6ccd8bce9154f119ee2118a6b77f8"
+  },
+  {
+    "path": "temp/task22/logs/vbase_dump_libEGL.so.1.5.txt",
+    "bytes": 1575,
+    "lines": 4,
+    "sha256": "cf21af661c62a88e5474d1c4e182ea1278bea265f2684a56365ef998899d376d"
+  },
+  {
+    "path": "temp/task22/logs/vbase_dump_libGLESv2.so.2.0.txt",
+    "bytes": 1581,
+    "lines": 4,
+    "sha256": "cf5b32f0476a93b9f0d7d8a3d924949bf061e3150d0382f52ad32f6ed7fcc18c"
+  },
+  {
+    "path": "temp/task22/logs/vbase_dump_rpmdb.txt",
+    "bytes": 6572,
+    "lines": 35,
+    "sha256": "cf6e83086fb03eba1991637c39f50c3d7f208e160a064fe22bbb527582a05dea"
+  },
+  {
+    "path": "temp/task22/logs/vbase_dump_stability-monitor.service.txt",
+    "bytes": 1614,
+    "lines": 4,
+    "sha256": "1c2958130739703a93f14a3914252dd2d7feb1edb66290ef6bedef58d3da758e"
+  },
+  {
+    "path": "temp/task22/logs/vbase_libCOREGL.so.4.0_sha.txt",
+    "bytes": 1295,
+    "lines": 4,
+    "sha256": "a5f02f755a64f10c63b34171180db5e196206ea606a14c4cb300aa148152baaf"
+  },
+  {
+    "path": "temp/task22/logs/vbase_libEGL.so.1.5_sha.txt",
+    "bytes": 1289,
+    "lines": 4,
+    "sha256": "4291f909e2d6adb415b7971ebedb71b717d7525f3c970962a39572eba4b443de"
+  },
+  {
+    "path": "temp/task22/logs/vbase_libGLESv2.so.2.0_sha.txt",
+    "bytes": 1295,
+    "lines": 4,
+    "sha256": "8fa3a6de29368c604c90eab17845bee01bae8cf76354c64aa6bedadddc90b61a"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs.img.readonly-copy_after_sha.txt",
+    "bytes": 1295,
+    "lines": 4,
+    "sha256": "4bdc925bc94bbe28671e0c2b0a69d2a46e2738e9b207a8fc44ab61bc286ffae3"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs.img_after_sha.txt",
+    "bytes": 1267,
+    "lines": 4,
+    "sha256": "1494702a9d47c8411672b326c656eae225e839eea8fa9da748024dccb19b18e9"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs.img_copy.txt",
+    "bytes": 1204,
+    "lines": 3,
+    "sha256": "485e66feeece834da934b398f4903746bfa401f1daa405d30b9c329edc9ee200"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs.img_probe_0.txt",
+    "bytes": 3074,
+    "lines": 30,
+    "sha256": "61e0af251abec8e0a29fd43a20c332484fcb95c05dc8454ced49103d64b19d53"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs.img_probe_1.txt",
+    "bytes": 2085,
+    "lines": 19,
+    "sha256": "ec316d635a941fab0e62094e3438b1cf75d09718e1873802f2203f6d01706301"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs.img_probe_2.txt",
+    "bytes": 2091,
+    "lines": 19,
+    "sha256": "798da98a0b80ff44e899039e8fd1c2bc188643ffc07f4a3e1e8132a87d56af9d"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs.img_probe_3.txt",
+    "bytes": 2091,
+    "lines": 19,
+    "sha256": "4737df4dd54d2b01377d4841c21b70c65f135d3f463ebcf2dbc592f55cb005a5"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs.img_probe_4.txt",
+    "bytes": 2010,
+    "lines": 17,
+    "sha256": "1edcb30637e7c2261f3c953502b5c7f6d07cb810475a5a8fc939001ac42d353e"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs.img_probe_5.txt",
+    "bytes": 1510,
+    "lines": 5,
+    "sha256": "a993c1f8c2ab8b38aba2978999f58bc82c16f7b350999fc5ce0774a035f16cdd"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs.img_probe_6.txt",
+    "bytes": 1518,
+    "lines": 5,
+    "sha256": "bd264d0616c43074d14ea323b2eef517db22a29c71b484cf1fd595fd21f643f9"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs_extract.txt",
+    "bytes": 1262,
+    "lines": 3,
+    "sha256": "3ad0d5b9da0aff5a94d940e9955b2a0c56f4d76e842a5bf24977972f483b6e5e"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rootfs_sha.txt",
+    "bytes": 1267,
+    "lines": 4,
+    "sha256": "1494702a9d47c8411672b326c656eae225e839eea8fa9da748024dccb19b18e9"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rpmdb_coregl.txt",
+    "bytes": 1267,
+    "lines": 7,
+    "sha256": "9bc62d591db6a5518fd6bc15373de058130d2413c106d49822b8a05ec76ff477"
+  },
+  {
+    "path": "temp/task22/logs/vbase_rpmdb_packages.txt",
+    "bytes": 50922,
+    "lines": 1237,
+    "sha256": "091978e75ebddcf4c6cab9c06afcdc5e087697ad0395b2d8fdcce266cffd6b74"
+  },
+  {
+    "path": "temp/task22/logs/vbase_stat_libCOREGL.so.4.0.txt",
+    "bytes": 2100,
+    "lines": 20,
+    "sha256": "69ba91ec4d305ec58444fa32b5373c6405b8f7499f99137366127e5c01de31a0"
+  },
+  {
+    "path": "temp/task22/logs/vbase_stat_libEGL.so.1.5.txt",
+    "bytes": 2088,
+    "lines": 20,
+    "sha256": "1b69c467be8ab438cf28654a91cab64b8e8d2505b96e91f13e42412f41627e17"
+  },
+  {
+    "path": "temp/task22/logs/vbase_stat_libGLESv2.so.2.0.txt",
+    "bytes": 2097,
+    "lines": 20,
+    "sha256": "e1a9bc6691d6c77d022e0b5cf763d014e446857d195783ddc91df1665cc9246e"
+  },
+  {
+    "path": "temp/task22/logs/vbase_system-data.img_after_sha.txt",
+    "bytes": 1277,
+    "lines": 4,
+    "sha256": "fd4bf6473b1c46b5f0c97e32f501ad1a6120850ee85735f2c27303dfa0753307"
+  },
+  {
+    "path": "temp/task22/logs/vbase_system-data.img_copy.txt",
+    "bytes": 1214,
+    "lines": 3,
+    "sha256": "5193eb773011a2d50017b2600d4267319ac2fda698addf966424c35e409916da"
+  },
+  {
+    "path": "temp/task22/logs/vbase_system-data.img_probe_0.txt",
+    "bytes": 2466,
+    "lines": 20,
+    "sha256": "592f15a65b280a9f2f5a792b97b36f84c9b09b84c5f2fa1c927f9679ebfcf973"
+  },
+  {
+    "path": "temp/task22/logs/vbase_system-data.img_probe_1.txt",
+    "bytes": 3106,
+    "lines": 28,
+    "sha256": "3956f339357a3a08578b575a55b87eb619fce943526a84e53fd4ba707d211c4b"
+  },
+  {
+    "path": "temp/task22/logs/vbase_system_data_extract.txt",
+    "bytes": 1267,
+    "lines": 3,
+    "sha256": "b44e05a49147296df3f4e27cf6d98cae777e5f5da5aa5643591ec8260c5f50ff"
+  },
+  {
+    "path": "temp/task22/logs/vbase_system_data_sha.txt",
+    "bytes": 1277,
+    "lines": 4,
+    "sha256": "fd4bf6473b1c46b5f0c97e32f501ad1a6120850ee85735f2c27303dfa0753307"
+  },
+  {
+    "path": "temp/task22/board/00_disconnect.raw.txt",
+    "bytes": 1,
+    "lines": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "path": "temp/task22/board/00_disconnect.txt",
+    "bytes": 81,
+    "lines": 4,
+    "sha256": "cd0514b0e0e860eef5881434c596ce5ad265a14783849ca57301dddeea730d61"
+  },
+  {
+    "path": "temp/task22/board/01_connect.raw.txt",
+    "bytes": 81,
+    "lines": 2,
+    "sha256": "f20f70462656d1d91a12a24adafd6e3d484be93d885fa6cc118eeda71e603d82"
+  },
+  {
+    "path": "temp/task22/board/01_connect.txt",
+    "bytes": 158,
+    "lines": 5,
+    "sha256": "7b07150ee745b1c6a8d2d0855c0886530cfc012d36bfb9c46dc0e6b9e2585e55"
+  },
+  {
+    "path": "temp/task22/board/02_identity.raw.txt",
+    "bytes": 790,
+    "lines": 13,
+    "sha256": "3c03df08405500a6ab005785822e699247d8b49149ca425b828759bb299a0a6c"
+  },
+  {
+    "path": "temp/task22/board/02_identity.txt",
+    "bytes": 962,
+    "lines": 18,
+    "sha256": "aa87e9ba8e30a7cfb3bc29e5cf8d9d6ce53ec7ccdb87d91f1a1768be106be3c4"
+  },
+  {
+    "path": "temp/task22/board/03_root.raw.txt",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "temp/task22/board/03_root.txt",
+    "bytes": 80,
+    "lines": 3,
+    "sha256": "8d8733313af41897aa07b0e3c8f710784fc4e68dc902e08a31af94665189580c"
+  },
+  {
+    "path": "temp/task22/board/04_initial.raw.txt",
+    "bytes": 4151,
+    "lines": 49,
+    "sha256": "edd4171353916a2d73c486161cf214c6739b9ed62f2dd415b0c4229a6d1e7541"
+  },
+  {
+    "path": "temp/task22/board/04_initial.txt",
+    "bytes": 4418,
+    "lines": 54,
+    "sha256": "599a0052ffcd2bc0c3a91a20fc08967f58c6dcb14b31cd57952333881c612a8a"
+  },
+  {
+    "path": "temp/task22/board/05_coregl_current.raw.txt",
+    "bytes": 1702,
+    "lines": 26,
+    "sha256": "2000fb1f97a583d38c71d930b49f9f7512ef3725e071b9ca06247eefda2da39b"
+  },
+  {
+    "path": "temp/task22/board/05_coregl_current.txt",
+    "bytes": 2002,
+    "lines": 31,
+    "sha256": "1b362745d0edbe6be0734376cfee83857fe9f680f34ea63a4db357bb9d12760e"
+  },
+  {
+    "path": "temp/task22/board/06_journal_all.raw.txt",
+    "bytes": 337106,
+    "lines": 2892,
+    "sha256": "e06e6789b433c5ea45a7819bf18c3ca742fa23eee9e8b0480fb6298122a8d443"
+  },
+  {
+    "path": "temp/task22/board/06_journal_all.txt",
+    "bytes": 284272,
+    "lines": 2897,
+    "sha256": "e7d2442c34b331c12978b72d6a354b19cfef5dbec399f9c6bc2def50e960005f"
+  },
+  {
+    "path": "temp/task22/board/07_varlog_search.raw.txt",
+    "bytes": 197225,
+    "lines": 869,
+    "sha256": "90074afa96ef0392c5465f8abbd1288dc7273888228fde34382acf73c85562c9"
+  },
+  {
+    "path": "temp/task22/board/07_varlog_search.txt",
+    "bytes": 196626,
+    "lines": 874,
+    "sha256": "80e7e1d91c7660112e95b8468e8bcaef794646c2953aa6716de963db4ef75d3a"
+  },
+  {
+    "path": "temp/task22/board/08_firstboot_search.raw.txt",
+    "bytes": 636,
+    "lines": 12,
+    "sha256": "10905be71e21697648763b39f976a6f1d5f1b9b75733c4277c8a103207a027d4"
+  },
+  {
+    "path": "temp/task22/board/08_firstboot_search.txt",
+    "bytes": 1116,
+    "lines": 17,
+    "sha256": "0fb5c07770fbf75672640cb8419c29053ef7b7b1e50af8ed2e0594d35484ccd5"
+  },
+  {
+    "path": "temp/task22/board/09_connect_2.raw.txt",
+    "bytes": 73,
+    "lines": 2,
+    "sha256": "319707eca638c5888c2984d2e09815e2d2c94708880805cca0b26ac5f12c7016"
+  },
+  {
+    "path": "temp/task22/board/09_connect_2.txt",
+    "bytes": 150,
+    "lines": 5,
+    "sha256": "7896502e88b0b31c337e8f8f9999a9853cfaea29cd603b06bfa2f4d16f44f2cc"
+  },
+  {
+    "path": "temp/task22/board/09_disconnect_2.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task22/board/09_disconnect_2.txt",
+    "bytes": 138,
+    "lines": 4,
+    "sha256": "38210d533a3ae8177c1aa8aa675c38cae147ffde17c090583ccf3006da2865b1"
+  },
+  {
+    "path": "temp/task22/board/10_firstboot_details.raw.txt",
+    "bytes": 5046,
+    "lines": 117,
+    "sha256": "c6ebc100cb958b2ddf967b79987023845fdde7247f276b6a02a8d4606ca51096"
+  },
+  {
+    "path": "temp/task22/board/10_firstboot_details.txt",
+    "bytes": 5430,
+    "lines": 122,
+    "sha256": "930bf6ce3f9f71fae78cddc53f2350b54201860c616b8652a594146f14935ec4"
+  },
+  {
+    "path": "temp/task22/board/11_resize_and_init.raw.txt",
+    "bytes": 783,
+    "lines": 16,
+    "sha256": "c307abaac644a6a9173a1fcaadbdfbe09d8241dca89743e645c3f66237f309a7"
+  },
+  {
+    "path": "temp/task22/board/11_resize_and_init.txt",
+    "bytes": 1149,
+    "lines": 21,
+    "sha256": "a037d7ee459fc7302d0788d9cd2512ebb78053b5f1376f37036122b9938b000e"
+  },
+  {
+    "path": "temp/task22/board/12_startup_units.raw.txt",
+    "bytes": 4366,
+    "lines": 52,
+    "sha256": "1426cecca83b0dfc05a84da5873b7d58ec2865f07fe4306214607b2b633ec37b"
+  },
+  {
+    "path": "temp/task22/board/12_startup_units.txt",
+    "bytes": 4722,
+    "lines": 57,
+    "sha256": "58c6bff1f6dcde4235572b55a41bad4900782c0ba172b6125dcc5d0d5ad2b3e7"
+  },
+  {
+    "path": "temp/task22/board/13_final_state.raw.txt",
+    "bytes": 4981,
+    "lines": 87,
+    "sha256": "2aa5c3161cc8c05ac7d7e10092f44b9373c0e40c5206cd5d3d9f3aa439a53e9f"
+  },
+  {
+    "path": "temp/task22/board/13_final_state.txt",
+    "bytes": 5560,
+    "lines": 92,
+    "sha256": "039b1d6b4432f0f70bbf18c34b84eb67e2e6b67fb0a245888df2f2d9f9a0abad"
+  },
+  {
+    "path": "temp/task22/board/14_root_off.raw.txt",
+    "bytes": 36,
+    "lines": 1,
+    "sha256": "6667042b629240d444116555b8f98368ba464e672980623c2dbdb02741c0089d"
+  },
+  {
+    "path": "temp/task22/board/14_root_off.txt",
+    "bytes": 117,
+    "lines": 4,
+    "sha256": "5d4fb96e819a8357c8a1ae4890991867e1749f2ad6a906dd14936db8495a8cb7"
+  },
+  {
+    "path": "temp/task22/board/15_owner.raw.txt",
+    "bytes": 518,
+    "lines": 3,
+    "sha256": "7324098c99aa8f83e8f702bf81339b83bf13eb51de82e11ce42f8608469a13a6"
+  },
+  {
+    "path": "temp/task22/board/15_owner.txt",
+    "bytes": 659,
+    "lines": 8,
+    "sha256": "a49177b63828fb827d421b4fce5e70e7e34c2b27943518c37e8f526a0316af84"
+  }
+]

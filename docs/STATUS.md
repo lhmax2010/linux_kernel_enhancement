@@ -1,5 +1,7 @@
 # 项目状态
 
+任务22诊断完成：base01归档extra目录root:root/0700阻止非root服务访问，官方目录0755；两边14个索引相同、proc-tsm 26项CRC匹配，跳过重部署C，未修复。两官方镜像均含coregl，D只读追查未找到删除动作/操作者；已撤回20中的用户准备推测。原SR+total_mem=1600保持，10模块/服务/网络正常，owner已恢复；工具与镜像副本已清理。后续需PM安排部署包权限修订/重测，coregl删除来源缺更早记录。详见[22](22_base01_coregl_diagnosis.md)、evidence/task22/。
+
 任务21：只读核实在第1步触发停止条件（当前System→User::Shell有rwxat权限），未修改部署方法、标签或重做演练；原SR内核保持不变，owner已恢复。display-manager的127已定位到缺少coregl提供的库，当前HDMI均disconnected，未做重启对照。内部审读包已本地生成并校验，公开符号文本证据已入库；后续部署待PM处理矛盾证据。详见[21](21_smack_deploy_recheck.md)、evidence/task21/。
 
 任务19完成SR镜像验收、配网、total_mem=1600及60秒/10分钟采样。任务10演练已执行完毕：base01启动成功，但proc_tsm未加载且stability-monitor退出255，未通过部署验收；按既有方案完整回退通过。最终原SR内核、根/模块ro、owner已恢复。模块标签差异需PM裁决后再处理，详见[20第7节](20_sr_board_baseline.md#7-任务10演练依据docs11--docs14)、evidence/task19/kernel_exercise_final.json。

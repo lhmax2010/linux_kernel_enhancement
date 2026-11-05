@@ -1,0 +1,29 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /sbin/modprobe --show-modversions /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/extract/sr_modules/lib/modules/6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko
+0xb1ad28e0	__gnu_mcount_nc
+0xb4debe5b	proc_create
+0x2e5810c6	__aeabi_unwind_cpp_pr1
+0x65ef0eb8	remove_proc_entry
+0xefd6cf06	__aeabi_unwind_cpp_pr0
+0x49d5f475	single_open_size
+0x8f678b07	__stack_chk_guard
+0x5f754e5a	memset
+0xc4f0da12	ktime_get_with_offset
+0x40c7247c	si_meminfo
+0x72398a88	seq_put_decimal_ull
+0x1d81a825	seq_printf
+0x20b1a5e5	init_task
+0xae577d60	_raw_spin_lock
+0x320a7188	security_cred_getsecid
+0xf44d53da	security_secid_to_secctx
+0xe2d5255a	strcmp
+0x2b9a39bb	thread_group_cputime_adjusted
+0xe3d837ab	seq_put_decimal_ll
+0xf0fdf6cb	__stack_chk_fail
+0x834f3813	param_ops_charp
+0xfebc4b42	param_array_ops
+0x4d702855	seq_read
+0xe9d03e87	seq_lseek
+0xe4b661ef	single_release
+0xc8c118b4	module_layout
+
+EXIT=0

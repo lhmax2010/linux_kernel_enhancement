@@ -1,0 +1,48 @@
+{
+  "extra_directory": {
+    "path": "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+    "mode": "0o700",
+    "uid": 0,
+    "gid": 0,
+    "size": 0,
+    "type": "5",
+    "linkname": ""
+  },
+  "directories_with_no_group_or_other_search": [
+    {
+      "path": "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+      "mode": "0o700",
+      "uid": 0,
+      "gid": 0,
+      "size": 0,
+      "type": "5",
+      "linkname": ""
+    },
+    {
+      "path": "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/kdbus",
+      "mode": "0o700",
+      "uid": 0,
+      "gid": 0,
+      "size": 0,
+      "type": "5",
+      "linkname": ""
+    },
+    {
+      "path": "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/zlogger",
+      "mode": "0o700",
+      "uid": 0,
+      "gid": 0,
+      "size": 0,
+      "type": "5",
+      "linkname": ""
+    }
+  ],
+  "service_uid": 204,
+  "service_gid": 204,
+  "service_CapEff": "0000000000090020",
+  "CAP_DAC_OVERRIDE": false,
+  "CAP_DAC_READ_SEARCH": false,
+  "implication": "root-owned extra mode0700 denies search to uid204/gid204 without DAC override/read-search capabilities; module0644 and SMACK read allow cannot bypass missing directory search permission",
+  "reference_service_evidence": "evidence/task21/05_load_path.txt and 07_stability_dependencies.txt; Task19 uses cp -a to preserve modes",
+  "archive_sha256": "583fbb45389f3b98a8498c09f4acb9a2a73a4b074439bdae6df663cbeaeeb61c"
+}

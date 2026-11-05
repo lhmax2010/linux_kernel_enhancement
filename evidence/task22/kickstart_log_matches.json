@@ -1,0 +1,456 @@
+[
+  {
+    "image": "sr",
+    "file": "temp/task17/20261104.160709/images_standard_tizen-headed-armv7l_tizen-unified-toolchain_20261104.160709_tizen-headed-armv7l.log",
+    "matches": [
+      [
+        403,
+        "[11/04 21:06:53 UTC] Retrieving coregl-0.4.0-0.armv7l.rpm [373/1235] ..."
+      ],
+      [
+        1781,
+        "[11/04 21:09:35 UTC] Next install: coregl-0.4.0-0.armv7l.rpm "
+      ],
+      [
+        1782,
+        "[11/04 21:09:35 UTC] Installing: coregl-0.4.0-0.armv7l.rpm                          ++++++                           [ 256/1235]"
+      ]
+    ]
+  },
+  {
+    "image": "sr",
+    "file": "temp/task17/20261104.160709/boot_tizen-unified-toolchain_20261104.160709_tizen-boot-armv7l-rpi.log",
+    "matches": []
+  },
+  {
+    "image": "sr",
+    "file": "temp/task17/20261104.160709/boot_tizen-unified-toolchain_20261104.160709_tizen-boot-armv7l-rpi.ks",
+    "matches": [
+      [
+        53,
+        "%end"
+      ],
+      [
+        57,
+        "%post"
+      ],
+      [
+        64,
+        "\tcp /var/lib/rpm/Packages /hal/lib/rpm/"
+      ],
+      [
+        118,
+        "\tdone | xargs -r rpm -e --justdb --nodeps --noscripts --dbpath=/hal/lib/rpm 2>/dev/null || echo \"WARNING: Could not remove some packages from hal rpmdb\""
+      ],
+      [
+        121,
+        "\t/usr/bin/rm -rf /hal/list"
+      ],
+      [
+        122,
+        "\t/usr/bin/rm -rf /hal/etc/rpm/hal-backend-list.ini"
+      ],
+      [
+        215,
+        "# Generate Platform Extension related cache files"
+      ],
+      [
+        259,
+        "%end"
+      ],
+      [
+        261,
+        "%post --nochroot"
+      ],
+      [
+        263,
+        "%end"
+      ]
+    ]
+  },
+  {
+    "image": "sr",
+    "file": "temp/task17/20261104.160709/images_standard_tizen-headed-armv7l_tizen-unified-toolchain_20261104.160709_tizen-headed-armv7l.ks",
+    "matches": [
+      [
+        12,
+        "part /opt --fstype=\"ext4\" --size=512 --ondisk=mmcblk0 --label system-data --fsoptions=defaults,noatime"
+      ],
+      [
+        13,
+        "part /opt/usr --fstype=\"f2fs\" --size=500 --ondisk=mmcblk0 --label user --fsoptions=defaults,noatime"
+      ],
+      [
+        45,
+        "%end"
+      ],
+      [
+        49,
+        "%post"
+      ],
+      [
+        60,
+        "test ! -e /opt/var && mkdir -p /opt/var"
+      ],
+      [
+        61,
+        "test -d /var && cp -arf /var/* /opt/var/"
+      ],
+      [
+        62,
+        "rm -rf /var"
+      ],
+      [
+        63,
+        "ln -snf opt/var /var"
+      ],
+      [
+        65,
+        "test ! -e /opt/usr/home && mkdir -p /opt/usr/home"
+      ],
+      [
+        66,
+        "test -d /home && cp -arf /home/* /opt/usr/home/"
+      ],
+      [
+        67,
+        "rm -rf /home"
+      ],
+      [
+        89,
+        "# sdx: fix smack labels on /var/log"
+      ],
+      [
+        90,
+        "chsmack -a '*' /var/log"
+      ],
+      [
+        128,
+        "        # By default GUM will create users in /opt/etc/passwd, which is"
+      ],
+      [
+        220,
+        "        rm -f $LICENSE_FILE"
+      ],
+      [
+        225,
+        "        rm -f $MD5_TEMP_FILE"
+      ],
+      [
+        266,
+        "rm -rf $LICENSE_DIR/* $MD5_TEMP_FILE"
+      ],
+      [
+        299,
+        "if [ -e /opt/share/security-config/test/image_test.sh ]; then"
+      ],
+      [
+        301,
+        "\t/opt/share/security-config/test/image_test.sh"
+      ],
+      [
+        312,
+        "if [ -f  /opt/share/bb/make_ABB_tag.sh ]"
+      ],
+      [
+        314,
+        "    /opt/share/bb/make_ABB_tag.sh /opt/share/bb/mapping-bb-rs.xml > /etc/config/tizen_abb_tag.cfg"
+      ],
+      [
+        316,
+        "    echo \"There is no script file - /opt/share/bb/make_ABB_bb.sh\""
+      ],
+      [
+        327,
+        "DOTNET_MIC_DIR=/opt/usr/dotnet/mic"
+      ],
+      [
+        329,
+        "if [ -f  /opt/share/bb/make_tizenfx_from_bb.sh ]"
+      ],
+      [
+        331,
+        "\t/opt/share/bb/make_tizenfx_from_bb.sh"
+      ],
+      [
+        359,
+        "\techo \"There is no script file - /opt/share/bb/make_tizenfx_from_bb.sh\""
+      ],
+      [
+        363,
+        "rm -rf $DOTNET_MIC_DIR"
+      ],
+      [
+        364,
+        "rpm -e patchelf --nodeps"
+      ],
+      [
+        365,
+        "rpm -e crossgen2-mic --nodeps"
+      ],
+      [
+        371,
+        "rm -rf /usr/include"
+      ],
+      [
+        372,
+        "rm -rf /usr/share/man"
+      ],
+      [
+        373,
+        "rm -rf /usr/share/doc"
+      ],
+      [
+        376,
+        "rm -rf /var/log/zypp"
+      ],
+      [
+        410,
+        "%end"
+      ],
+      [
+        412,
+        "%post --nochroot"
+      ],
+      [
+        424,
+        "if [ -e $INSTALL_ROOT/usr/bin/build-backup-data.sh ]; then"
+      ],
+      [
+        425,
+        "    $INSTALL_ROOT/usr/bin/build-backup-data.sh"
+      ],
+      [
+        431,
+        "%end"
+      ]
+    ]
+  },
+  {
+    "image": "vbase",
+    "file": "temp/task17/20261104.160825/images_standard_tizen-headed-armv7l_tizen-unified-toolchain_20261104.160825_tizen-headed-armv7l.log",
+    "matches": [
+      [
+        403,
+        "[11/04 21:05:10 UTC] Retrieving coregl-0.4.0-0.armv7l.rpm [373/1235] ..."
+      ],
+      [
+        1781,
+        "[11/04 21:07:56 UTC] Next install: coregl-0.4.0-0.armv7l.rpm "
+      ],
+      [
+        1782,
+        "[11/04 21:07:56 UTC] Installing: coregl-0.4.0-0.armv7l.rpm                          ++++++                           [ 256/1235]"
+      ]
+    ]
+  },
+  {
+    "image": "vbase",
+    "file": "temp/task17/20261104.160825/boot_tizen-unified-toolchain_20261104.160825_tizen-boot-armv7l-rpi.log",
+    "matches": []
+  },
+  {
+    "image": "vbase",
+    "file": "temp/task17/20261104.160825/images_standard_tizen-headed-armv7l_tizen-unified-toolchain_20261104.160825_tizen-headed-armv7l.ks",
+    "matches": [
+      [
+        12,
+        "part /opt --fstype=\"ext4\" --size=512 --ondisk=mmcblk0 --label system-data --fsoptions=defaults,noatime"
+      ],
+      [
+        13,
+        "part /opt/usr --fstype=\"f2fs\" --size=500 --ondisk=mmcblk0 --label user --fsoptions=defaults,noatime"
+      ],
+      [
+        45,
+        "%end"
+      ],
+      [
+        49,
+        "%post"
+      ],
+      [
+        60,
+        "test ! -e /opt/var && mkdir -p /opt/var"
+      ],
+      [
+        61,
+        "test -d /var && cp -arf /var/* /opt/var/"
+      ],
+      [
+        62,
+        "rm -rf /var"
+      ],
+      [
+        63,
+        "ln -snf opt/var /var"
+      ],
+      [
+        65,
+        "test ! -e /opt/usr/home && mkdir -p /opt/usr/home"
+      ],
+      [
+        66,
+        "test -d /home && cp -arf /home/* /opt/usr/home/"
+      ],
+      [
+        67,
+        "rm -rf /home"
+      ],
+      [
+        89,
+        "# sdx: fix smack labels on /var/log"
+      ],
+      [
+        90,
+        "chsmack -a '*' /var/log"
+      ],
+      [
+        128,
+        "        # By default GUM will create users in /opt/etc/passwd, which is"
+      ],
+      [
+        220,
+        "        rm -f $LICENSE_FILE"
+      ],
+      [
+        225,
+        "        rm -f $MD5_TEMP_FILE"
+      ],
+      [
+        266,
+        "rm -rf $LICENSE_DIR/* $MD5_TEMP_FILE"
+      ],
+      [
+        299,
+        "if [ -e /opt/share/security-config/test/image_test.sh ]; then"
+      ],
+      [
+        301,
+        "\t/opt/share/security-config/test/image_test.sh"
+      ],
+      [
+        312,
+        "if [ -f  /opt/share/bb/make_ABB_tag.sh ]"
+      ],
+      [
+        314,
+        "    /opt/share/bb/make_ABB_tag.sh /opt/share/bb/mapping-bb-rs.xml > /etc/config/tizen_abb_tag.cfg"
+      ],
+      [
+        316,
+        "    echo \"There is no script file - /opt/share/bb/make_ABB_bb.sh\""
+      ],
+      [
+        327,
+        "DOTNET_MIC_DIR=/opt/usr/dotnet/mic"
+      ],
+      [
+        329,
+        "if [ -f  /opt/share/bb/make_tizenfx_from_bb.sh ]"
+      ],
+      [
+        331,
+        "\t/opt/share/bb/make_tizenfx_from_bb.sh"
+      ],
+      [
+        359,
+        "\techo \"There is no script file - /opt/share/bb/make_tizenfx_from_bb.sh\""
+      ],
+      [
+        363,
+        "rm -rf $DOTNET_MIC_DIR"
+      ],
+      [
+        364,
+        "rpm -e patchelf --nodeps"
+      ],
+      [
+        365,
+        "rpm -e crossgen2-mic --nodeps"
+      ],
+      [
+        371,
+        "rm -rf /usr/include"
+      ],
+      [
+        372,
+        "rm -rf /usr/share/man"
+      ],
+      [
+        373,
+        "rm -rf /usr/share/doc"
+      ],
+      [
+        376,
+        "rm -rf /var/log/zypp"
+      ],
+      [
+        410,
+        "%end"
+      ],
+      [
+        412,
+        "%post --nochroot"
+      ],
+      [
+        424,
+        "if [ -e $INSTALL_ROOT/usr/bin/build-backup-data.sh ]; then"
+      ],
+      [
+        425,
+        "    $INSTALL_ROOT/usr/bin/build-backup-data.sh"
+      ],
+      [
+        431,
+        "%end"
+      ]
+    ]
+  },
+  {
+    "image": "vbase",
+    "file": "temp/task17/20261104.160825/boot_tizen-unified-toolchain_20261104.160825_tizen-boot-armv7l-rpi.ks",
+    "matches": [
+      [
+        53,
+        "%end"
+      ],
+      [
+        57,
+        "%post"
+      ],
+      [
+        64,
+        "\tcp /var/lib/rpm/Packages /hal/lib/rpm/"
+      ],
+      [
+        118,
+        "\tdone | xargs -r rpm -e --justdb --nodeps --noscripts --dbpath=/hal/lib/rpm 2>/dev/null || echo \"WARNING: Could not remove some packages from hal rpmdb\""
+      ],
+      [
+        121,
+        "\t/usr/bin/rm -rf /hal/list"
+      ],
+      [
+        122,
+        "\t/usr/bin/rm -rf /hal/etc/rpm/hal-backend-list.ini"
+      ],
+      [
+        215,
+        "# Generate Platform Extension related cache files"
+      ],
+      [
+        259,
+        "%end"
+      ],
+      [
+        261,
+        "%post --nochroot"
+      ],
+      [
+        263,
+        "%end"
+      ]
+    ]
+  }
+]

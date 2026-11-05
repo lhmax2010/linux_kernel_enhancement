@@ -1,0 +1,35 @@
+SOURCE: temp/task22/board/10_firstboot_details.txt
+SHA256: 930bf6ce3f9f71fae78cddc53f2350b54201860c616b8652a594146f14935ec4
+90: # /usr/lib/systemd/system/setup-adaptor.service
+91: [Unit]
+92: Description=Setup-Adaptor daemon
+93: After=connman.service
+94: Requires=connman.service
+95:
+96: [Service]
+97: SmackProcessLabel=System
+98: Type=oneshot
+99: User=system_fw
+100: Group=system_fw
+101: ExecStart=/usr/bin/setup-adaptor
+102:
+103: [Install]
+104: WantedBy=multi-user.target
+105:
+106: ExecStart={ path=/usr/bin/setup-adaptor ; argv[]=/usr/bin/setup-adaptor ; ignore
+107: _errors=no ; start_time=[Thu 1970-01-01 09:00:16 KST] ; stop_time=[Thu 1970-01-0
+108: 1 09:00:16 KST] ; pid=640 ; code=exited ; status=0 }
+109: ActiveState=inactive
+110: /usr/bin/osu
+111: ls: cannot access /usr/sbin/osu: No such file or directory
+112: -rwxr-xr-x 1 root root 16388 Nov  5 02:49 /usr/bin/osu
+113: grep: /usr/lib/systemd/system/sockets.target.wants/amd-tizen-action-service.socket: No such file or directory
+114: grep: /usr/lib/systemd/system/sockets.target.wants/tizen-watcherd.socket: No such file or directory
+115: grep: /usr/lib/systemd/system/sysinit.target.wants/systemd-boot-system-token.service: No such file or directory
+116: grep: /usr/lib/systemd/system/basic.target.wants/privilege-checker-integrity.service: No such file or directory
+117:
+118: SEARCH-RC=2
+119:
+120: TASK22-REMOTE-EXIT=0
+121:
+122: TRANSPORT-EXIT=0

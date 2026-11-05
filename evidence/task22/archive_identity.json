@@ -1,0 +1,19 @@
+[
+  {
+    "kind": "base",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/deploy_lko-base01/deploy_lko-base01.tar.gz",
+    "sha256": "583fbb45389f3b98a8498c09f4acb9a2a73a4b074439bdae6df663cbeaeeb61c"
+  },
+  {
+    "kind": "sr",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/images/tizen-unified-toolchain_20261104.160709_tizen-headed-armv7l.tar.gz",
+    "sha256": "68fe480cf0fa2e9107327ccfc0eb94e6b6aad7fa632f694620a5a8a8cc8abc01",
+    "rootfs_sha256": "9c38e51c60a0eca409168e23370c49cf849699ff96109b19aa960b44b1d45855"
+  },
+  {
+    "kind": "vbase",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/images/tizen-unified-toolchain_20261104.160825_tizen-headed-armv7l.tar.gz",
+    "sha256": "aaa91350f47c7a89f2d44561531791c3bc83e38316e2e318ffa4c13ac0511904",
+    "rootfs_sha256": "ac864e9a315837e35a393013218a12eebdb96d2cb76c46a8231b2e6bb3ab9e92"
+  }
+]

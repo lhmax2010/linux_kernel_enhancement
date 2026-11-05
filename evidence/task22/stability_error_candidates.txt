@@ -1,0 +1,22 @@
+SOURCE: temp/task22/logs/stability_strings.txt
+SHA256: 1dcca94a288d10bc6dccd132c1b32625b01b78469b66100aad9fbe7b206b2533
+1: $ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/strings -a /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/binaries/stability-monitor
+28: kmod_module_new_from_name
+29: kmod_new
+30: kmod_module_get_name
+31: kmod_module_probe_insert_module
+32: kmod_unref
+33: kmod_module_unref
+435: %s::%s(%d): Unable to find any raw data providers
+436: %s::%s(%d): Unable to initialize %s raw data provider: %d
+437: %s::%s(%d): Unable to initialize aul listener: %d
+438: %s::%s(%d): Unable to initialize diagnostic dump module: %d
+481: %s::%s(%d): Unable to initialize new %s data source: %d
+610: /proc/tsm
+612: %s::%s(%d): kmod_new() failed
+613: src/raw_data_providers/proc_tsm.c
+614: %s::%s(%d): Unable to find module proc_tsm
+615: %s::%s(%d): Unable to insert %s: %m
+616: %s::%s(%d): Unable to open /proc/tsm: %m
+619: %s::%s(%d): Unable to close file /proc/tsm: %m
+688: EXIT=0

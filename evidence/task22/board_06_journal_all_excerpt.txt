@@ -1,0 +1,9 @@
+{
+  "source": "temp/task22/board/06_journal_all.txt",
+  "lines": 2897,
+  "sha256": "e7d2442c34b331c12978b72d6a354b19cfef5dbec399f9c6bc2def50e960005f",
+  "coregl_or_erase_hits": 0,
+  "all_match_count": 0
+}
+
+Only first/last10 shown if >30 matches; all raw output stays under temp/task22.

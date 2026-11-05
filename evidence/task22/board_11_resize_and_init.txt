@@ -1,0 +1,21 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'ls -l /usr/bin/*first* /usr/bin/*initial* /usr/bin/*setup* /usr/sbin/*first* /usr/sbin/*setup*; grep -n -E '"'"'coregl|rpm|erase|remove|resize'"'"' /usr/bin/osu /usr/sbin/osu /etc/rc.d/* /etc/init.d/*; printf '"'"'\nSEARCH-RC=%s\n'"'"' "$?"
+remote_rc=$?
+printf "\nTASK22-REMOTE-EXIT=%s\n" "$remote_rc"'
+ls: cannot access /usr/bin/*first*: No such file or directory
+ls: cannot access /usr/sbin/*first*: No such file or directory
+-rwxr-xr-x 1 root root  30376 Nov  5 02:55 /usr/bin/setup-adaptor
+-rwxr-xr-x 1 root root  17816 Nov  5 01:56 /usr/bin/systemd-machine-id-setup
+-rwxr-xr-x 1 root root   9496 Nov  5 02:40 /usr/bin/wae_initializer
+-rwxr-xr-x 1 root root 149740 Nov  5 02:06 /usr/sbin/cryptsetup
+-rwxr-xr-x 1 root root 106464 Nov  5 02:03 /usr/sbin/dmsetup
+-rwxr-xr-x 1 root root  34440 Oct 30 23:54 /usr/sbin/losetup
+-rwxr-xr-x 1 root root  46988 Oct 30 23:54 /usr/sbin/losetup_ori
+-rwxr-xr-x 1 root root  33504 Nov  5 02:06 /usr/sbin/veritysetup
+Binary file /usr/bin/osu matches
+grep: /usr/sbin/osu: No such file or directory
+
+SEARCH-RC=2
+
+TASK22-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

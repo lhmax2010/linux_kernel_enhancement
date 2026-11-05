@@ -12,7 +12,7 @@
 
 默认rpm数据库共1232包；两镜像官方boot+headed并集均1275包，其NVR/arch列表相同，仅来源SHA不同，所以不能靠rpm -qa的版本表区分两者。逐条对照均为新增0、缺43；只对headed则新增0、缺3：coregl-0.4.0-0.armv7l、crossgen2-mic-10.0.10-0.noarch、patchelf-0.16.1-1.13.armv7l。完整差异见evidence/task19/package_comparison.json。
 
-官方headed kickstart的364–365行明确在制镜后处理移除patchelf和crossgen2-mic；coregl缺失与此前记录的用户一次性准备相容，但本轮没有取得其卸载日志，不把推测写为已证实。boot清单包含独立boot/modules/HAL载荷，官方boot kickstart为HAL建立独立rpmdb；默认rpm -qa不能替代全分区安装清单。来源摘录见package_list_scope_sources.txt。未把包清单差异隐藏成完全一致。
+官方headed kickstart的364–365行明确在制镜后处理移除patchelf和crossgen2-mic；此前将coregl缺失联系到用户一次性准备的推测已在任务22撤回：用户确认未手动卸载。任务22直接检查两份官方headed镜像，均有coregl实际库和RPM记录；缺失发生在镜像产出之后，但现有板上日志与操作记录仍不能确定删除者/时间，详见[22](22_base01_coregl_diagnosis.md)。boot清单包含独立boot/modules/HAL载荷，官方boot kickstart为HAL建立独立rpmdb；默认rpm -qa不能替代全分区安装清单。来源摘录见package_list_scope_sources.txt。未把包清单差异隐藏成完全一致。
 
 ## 2. 关键产物交叉核对
 

@@ -1,0 +1,7 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm --dbpath /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/extract/vbase/rpm -q coregl --qf '%{NAME}-%{VERSION}-%{RELEASE}.%{ARCH}
+%{VCS}
+'
+coregl-0.4.0-0.armv7l
+platform/core/uifw/coregl#424afc2f0beeb70d16b84014f761b1fc27256fc7
+
+EXIT=0

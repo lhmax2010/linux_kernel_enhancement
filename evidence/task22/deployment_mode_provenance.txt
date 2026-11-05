@@ -1,0 +1,100 @@
+SOURCE: temp/task9/verify/extract_artifacts.py
+SHA256: 7aec7c9b2afbe605bfc3ce17a8322f8e9d8d51ea2019096044905feaf300e3f6
+1: from platform_tools import *
+2: import hashlib,shutil
+3: repo=T/'GBS-ROOT-LKO-BASE01/local/repos/tizen_unified_standard/armv7l/RPMS'
+4: packages=[
+5:  ('kernel','arm-rpi4-linux-kernel',V/'extract-kernel',['./boot/zImage']),
+6:  ('kernel_rt','arm-rpi4-rt-linux-kernel',V/'extract-kernel-rt',['./boot/zImage_rt']),
+7:  ('kernel_modules','arm-rpi4-linux-kernel-modules',T/'stage',[]),
+8:  ('external_modules','linux-tizen-modules-rpi4',V/'extract-extra',[]),
+9:  ('devel','arm-rpi4-linux-kernel-devel',V/'extract-devel',['*/.config','*/Module.symvers','*/include/generated/compile.h','*/include/config/kernel.release','*/include/generated/utsrelease.h']),
+10:  ('devel_rt','arm-rpi4-rt-linux-kernel-devel',V/'extract-devel-rt',['*/.config','*/Module.symvers','*/include/generated/compile.h','*/include/config/kernel.release','*/include/generated/utsrelease.h'])]
+11: for label,name,dest,patterns in packages:
+12:  f=list(repo.glob(name+'-[0-9]*.armv7l.rpm'));assert len(f)==1,f
+13:  assert not dest.exists(),dest;dest.mkdir()
+14:  p=run(label+'_rpm_files','/usr/bin/rpm','-qpl',f[0]);assert p.returncode==0
+15:  cpio=V/(label+'.cpio');assert not cpio.exists()
+16:  cmd=argv('/usr/bin/rpm2cpio',f[0])
+17:  with cpio.open('wb') as out:r=subprocess.run(cmd,stdout=out,stderr=subprocess.PIPE)
+18:  (V/(label+'_rpm2cpio.txt')).write_text('$ '+shlex.join(cmd)+'\n'+r.stderr.decode(errors='replace')+'\nEXIT='+str(r.returncode)+'\n');assert r.returncode==0
+19:  cmd=argv('/usr/bin/cpio','-id','--no-absolute-filenames','--no-preserve-owner',*patterns,cwd=dest)
+20:  with cpio.open('rb') as inp:r=subprocess.run(cmd,stdin=inp,capture_output=True)
+21:  (V/(label+'_extract.txt')).write_text('$ '+shlex.join(cmd)+'\n'+r.stdout.decode(errors='replace')+r.stderr.decode(errors='replace')+'\nEXIT='+str(r.returncode)+'\n');assert r.returncode==0
+22:  print('EXTRACTED',label,flush=True)
+
+SOURCE: temp/task9/verify/module_audit.py
+SHA256: f81a9b02ebe54b205d35dc06975906e1e5d0708af893f8f29b8c78741b4705d6
+1: from pathlib import Path
+2: import subprocess,json,hashlib
+3: T=Path('/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9');V=T/'verify';rel='6.12.80-arm-rpi4-v7l-lko-base01';base=T/'stage/lib/modules'/rel
+4: expected=rel+' SMP mod_unload modversions ARMv7 p2v8'
+5: mods=sorted(base.rglob('*.ko'));assert mods
+6: records=[];errors=[];versions={};compares=[];imports=[]
+7: sym=V/'extract-devel/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01/Module.symvers'
+8: for line in sym.read_text().splitlines():
+9:  v=line.split();versions[v[1]]=int(v[0],16)
+10: for f in mods:
+11:  cmd=['/usr/bin/qemu-arm','-L','/','/sbin/modinfo','-F','vermagic',str(f)]
+12:  p=subprocess.run(cmd,capture_output=True,text=True)
+13:  item={'file':str(f.relative_to(base)),'command':cmd,'exit':p.returncode,'vermagic':p.stdout.strip(),'stderr':p.stderr,'match':p.returncode==0 and p.stdout.strip()==expected}
+14:  records.append(item)
+15:  if not item['match']:errors.append(item)
+16: for f in sorted((base/'extra').rglob('*.ko')):
+17:  cmd=['/usr/bin/qemu-arm','-L','/','/sbin/modprobe','--show-modversions',str(f)]
+18:  p=subprocess.run(cmd,capture_output=True,text=True)
+19:  (V/('crc_raw_'+f.stem+'.txt')).write_text('COMMAND='+json.dumps(cmd)+'\n'+p.stdout+p.stderr+'\nEXIT='+str(p.returncode)+'\n')
+20:  assert p.returncode==0,(cmd,p.stderr)
+21:  rows=[]
+22:  for line in p.stdout.splitlines():
+23:   fields=line.split();assert len(fields)==2,line
+24:   actual=int(fields[0],16);name=fields[1];expect=versions.get(name)
+25:   row={'module':str(f.relative_to(base)),'symbol':name,'module_crc':f'0x{actual:08x}','kernel_crc':None if expect is None else f'0x{expect:08x}','match':expect==actual}
+26:   rows.append(row);compares.append(row);imports.append((str(f.relative_to(base)),name,row['module_crc']))
+27:  assert rows,f
+28: assert len(list((base/'extra').rglob('*.ko')))==7
+29: summary={'module_count':len(mods),'expected_vermagic':expected,'vermagic_mismatches':errors,'external_modules':7,'crc_comparisons':len(compares),'unique_imported_symbols':len({r['symbol'] for r in compares}),'crc_mismatches':[r for r in compares if not r['match']],'Module.symvers_sha256':hashlib.sha256(sym.read_bytes()).hexdigest()}
+30: (V/'module_vermagic.json').write_text(json.dumps(records,indent=2)+'\n')
+31: (V/'module_crc.json').write_text(json.dumps(compares,indent=2)+'\n')
+32: (V/'module_verification_summary.json').write_text(json.dumps(summary,indent=2)+'\n')
+33: (V/'external_module_imports.tsv').write_text('module\tsymbol\tcrc\n'+''.join('\t'.join(row)+'\n' for row in imports))
+34: print(json.dumps(summary,indent=2));assert not errors and not summary['crc_mismatches']
+
+SOURCE: temp/task9/verify/make_deployment.py
+SHA256: c521fd09be90a55ac38f2fb2a9864436db66b1a4fd67ca0732a9a2bab3472524
+1: from pathlib import Path
+2: import shutil,hashlib,json,os
+3: T=Path('/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9');V=T/'verify';D=T/'deploy_lko-base01';rel='6.12.80-arm-rpi4-v7l-lko-base01'
+4: assert not D.exists();payload=D/'payload';(payload/'boot').mkdir(parents=True);(payload/'lib/modules').mkdir(parents=True)
+5: shutil.copyfile(V/'extract-kernel/boot/zImage',payload/'boot/zImage')
+6: shutil.copytree(T/'stage/lib/modules'/rel,payload/'lib/modules'/rel,symlinks=True)
+7: entries=[];links=[]
+8: for p in sorted(payload.rglob('*')):
+9:  name=str(p.relative_to(payload))
+10:  if p.is_symlink():
+11:   target=os.readlink(p);links.append({'path':name,'target':target,'target_text_sha256':hashlib.sha256(target.encode()).hexdigest()})
+12:  elif p.is_file():
+13:   b=p.read_bytes();entries.append({'path':name,'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest()})
+14: assert sum(x['path'].endswith('.ko') for x in entries)==59
+15: assert not (payload/'lib/modules/modprobe.d').exists() and not (payload/'lib/modules/modules-load.d').exists()
+16: (D/'SHA256SUMS').write_text(''.join(x['sha256']+'  '+x['path']+'\n' for x in entries))
+17: (D/'symlinks.json').write_text(json.dumps(links,indent=2)+'\n')
+18: (D/'manifest.json').write_text(json.dumps({'files':entries,'symlinks':links},indent=2)+'\n')
+19: for x in entries:assert hashlib.sha256((payload/x['path']).read_bytes()).hexdigest()==x['sha256']
+20: print('payload regular files:',len(entries),'symlinks:',len(links),'sha256 checks: PASS')
+
+SOURCE: temp/task19/exercise_install.py
+SHA256: 04175a91e64ba05fd7c5a6cdb53bd96e32a8452a0a9b7666cbc723a149f48fe8
+1: import sys,hashlib
+2: sys.path.insert(0,'temp/task19');from board import *
+3: sys.excepthook=sys.__excepthook__
+4: A=W/'temp/task9/deploy_lko-base01'
+5: assert hashlib.sha256((A/'deploy_lko-base01.tar.gz').read_bytes()).hexdigest()=='583fbb45389f3b98a8498c09f4acb9a2a73a4b074439bdae6df663cbeaeeb61c'
+6: for name in ['deploy_lko-base01.tar.gz','SHA256SUMS']:
+7:  r,s=run(['push',str(A/name),'/opt/usr/lko_task19/'+name],'52_push_'+name.replace('.','_'));assert r==0
+8: r,s=shell('set -e; cd /opt/usr/lko_task19; sha256sum deploy_lko-base01.tar.gz; mkdir stage; tar -xzf deploy_lko-base01.tar.gz -C stage; cd stage; sha256sum -c ../SHA256SUMS; readlink lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/build','53_stage_check');assert r==0 and 'FAILED' not in s;print(s,flush=True)
+9: # Only a new module version is installed. Original directory and shared files stay untouched.
+10: r,s=shell('set -e; test ! -e /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01; mount -o remount,rw /usr/lib/modules; cp -a /opt/usr/lko_task19/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01 /usr/lib/modules/; sync; mount -o remount,ro /usr/lib/modules; grep " /usr/lib/modules " /proc/mounts; du -sk /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01; df -k /usr/lib/modules; cd /usr; grep "  lib/modules/" /opt/usr/lko_task19/SHA256SUMS | sha256sum -c -','54_modules_install');assert r==0 and ' ext4 ro,' in s and 'FAILED' not in s;print(s,flush=True)
+11: r,s=shell('set -e; mount -o rw /dev/mmcblk0p1 /opt/usr/lko_task19/boot; test ! -e /opt/usr/lko_task19/boot/zImage.orig; mv /opt/usr/lko_task19/boot/zImage /opt/usr/lko_task19/boot/zImage.orig; cp /opt/usr/lko_task19/stage/boot/zImage /opt/usr/lko_task19/boot/zImage; sync; sha256sum /opt/usr/lko_task19/boot/zImage /opt/usr/lko_task19/boot/zImage.orig /opt/usr/lko_task19/boot/bcm2711-rpi-4-b.dtb /opt/usr/lko_task19/boot/config.txt; umount /opt/usr/lko_task19/boot','55_kernel_install');assert r==0
+12: for h in ['4bb488d8d7768bde6f9b53b53342d9bde0d996cb37284a6d5547855d20e8c5f1','d5345f13eada3a3aab8b2fca9f511c608469f708d83a6a2445882e68241cc9af','a0561668ec520b0605cdc8b7be6844365ce44f569f363e85f3d7332e1989d6ed','7ecdb662716cab1532da77ff755912775284eb3aab5e3c89fd571dba854f7d07']:assert h in s
+13: print(s,flush=True)

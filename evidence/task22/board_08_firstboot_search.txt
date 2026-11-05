@@ -1,0 +1,17 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'grep -R -n -I -E '"'"'coregl|rpm[[:space:]].*(-e|--erase)|libEGL'"'"' /etc/rc.d /usr/share/upgrade /usr/lib/systemd/system /etc/systemd/system /usr/lib/systemd/scripts 2>/dev/null; printf '"'"'\nGREP-RC=%s\n'"'"' "$?"; ls -ld /etc/rc.d /usr/share/upgrade; systemctl list-unit-files --no-pager | grep -i -E '"'"'first|initial|setup|upgrade|prepar'"'"'
+remote_rc=$?
+printf "\nTASK22-REMOTE-EXIT=%s\n" "$remote_rc"'
+
+GREP-RC=2
+drwxr-xr-x 4 root root 4096 Nov  5 06:14 /etc/rc.d
+drwx------ 8 root root 4096 Nov  5 06:14 /usr/share/upgrade
+lko-net-setup.service                                           enabled
+setup-adaptor.service                                           disabled
+systemd-tmpfiles-setup-dev.service                              static
+systemd-tmpfiles-setup.service                                  static
+systemd-vconsole-setup.service                                  static
+webappenc-initializer.service                                   disabled
+
+TASK22-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

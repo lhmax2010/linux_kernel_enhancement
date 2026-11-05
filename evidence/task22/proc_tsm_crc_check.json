@@ -1,0 +1,163 @@
+{
+  "count": 26,
+  "missing": 0,
+  "mismatch": 0,
+  "symbols": [
+    {
+      "symbol": "__gnu_mcount_nc",
+      "module_crc": "0xb1ad28e0",
+      "kernel_crc": "0xb1ad28e0",
+      "match": true
+    },
+    {
+      "symbol": "proc_create",
+      "module_crc": "0xb4debe5b",
+      "kernel_crc": "0xb4debe5b",
+      "match": true
+    },
+    {
+      "symbol": "__aeabi_unwind_cpp_pr1",
+      "module_crc": "0x2e5810c6",
+      "kernel_crc": "0x2e5810c6",
+      "match": true
+    },
+    {
+      "symbol": "remove_proc_entry",
+      "module_crc": "0x65ef0eb8",
+      "kernel_crc": "0x65ef0eb8",
+      "match": true
+    },
+    {
+      "symbol": "__aeabi_unwind_cpp_pr0",
+      "module_crc": "0xefd6cf06",
+      "kernel_crc": "0xefd6cf06",
+      "match": true
+    },
+    {
+      "symbol": "single_open_size",
+      "module_crc": "0x49d5f475",
+      "kernel_crc": "0x49d5f475",
+      "match": true
+    },
+    {
+      "symbol": "__stack_chk_guard",
+      "module_crc": "0x8f678b07",
+      "kernel_crc": "0x8f678b07",
+      "match": true
+    },
+    {
+      "symbol": "memset",
+      "module_crc": "0x5f754e5a",
+      "kernel_crc": "0x5f754e5a",
+      "match": true
+    },
+    {
+      "symbol": "ktime_get_with_offset",
+      "module_crc": "0xc4f0da12",
+      "kernel_crc": "0xc4f0da12",
+      "match": true
+    },
+    {
+      "symbol": "si_meminfo",
+      "module_crc": "0x40c7247c",
+      "kernel_crc": "0x40c7247c",
+      "match": true
+    },
+    {
+      "symbol": "seq_put_decimal_ull",
+      "module_crc": "0x72398a88",
+      "kernel_crc": "0x72398a88",
+      "match": true
+    },
+    {
+      "symbol": "seq_printf",
+      "module_crc": "0x1d81a825",
+      "kernel_crc": "0x1d81a825",
+      "match": true
+    },
+    {
+      "symbol": "init_task",
+      "module_crc": "0x20b1a5e5",
+      "kernel_crc": "0x20b1a5e5",
+      "match": true
+    },
+    {
+      "symbol": "_raw_spin_lock",
+      "module_crc": "0xae577d60",
+      "kernel_crc": "0xae577d60",
+      "match": true
+    },
+    {
+      "symbol": "security_cred_getsecid",
+      "module_crc": "0x320a7188",
+      "kernel_crc": "0x320a7188",
+      "match": true
+    },
+    {
+      "symbol": "security_secid_to_secctx",
+      "module_crc": "0xf44d53da",
+      "kernel_crc": "0xf44d53da",
+      "match": true
+    },
+    {
+      "symbol": "strcmp",
+      "module_crc": "0xe2d5255a",
+      "kernel_crc": "0xe2d5255a",
+      "match": true
+    },
+    {
+      "symbol": "thread_group_cputime_adjusted",
+      "module_crc": "0x2b9a39bb",
+      "kernel_crc": "0x2b9a39bb",
+      "match": true
+    },
+    {
+      "symbol": "seq_put_decimal_ll",
+      "module_crc": "0xe3d837ab",
+      "kernel_crc": "0xe3d837ab",
+      "match": true
+    },
+    {
+      "symbol": "__stack_chk_fail",
+      "module_crc": "0xf0fdf6cb",
+      "kernel_crc": "0xf0fdf6cb",
+      "match": true
+    },
+    {
+      "symbol": "param_ops_charp",
+      "module_crc": "0x834f3813",
+      "kernel_crc": "0x834f3813",
+      "match": true
+    },
+    {
+      "symbol": "param_array_ops",
+      "module_crc": "0xfebc4b42",
+      "kernel_crc": "0xfebc4b42",
+      "match": true
+    },
+    {
+      "symbol": "seq_read",
+      "module_crc": "0x4d702855",
+      "kernel_crc": "0x4d702855",
+      "match": true
+    },
+    {
+      "symbol": "seq_lseek",
+      "module_crc": "0xe9d03e87",
+      "kernel_crc": "0xe9d03e87",
+      "match": true
+    },
+    {
+      "symbol": "single_release",
+      "module_crc": "0xe4b661ef",
+      "kernel_crc": "0xe4b661ef",
+      "match": true
+    },
+    {
+      "symbol": "module_layout",
+      "module_crc": "0xc8c118b4",
+      "kernel_crc": "0xc8c118b4",
+      "match": true
+    }
+  ]
+}

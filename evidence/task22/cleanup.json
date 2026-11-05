@@ -1,0 +1,39 @@
+{
+  "time": "2026-11-05T22:43:36.960645+08:00",
+  "deleted_only_task22_generated_tools_images_extracted_payloads": [
+    {
+      "path": "temp/task22/tools",
+      "existed": true,
+      "absent_after": true
+    },
+    {
+      "path": "temp/task22/base",
+      "existed": true,
+      "absent_after": true
+    },
+    {
+      "path": "temp/task22/sr_rpm",
+      "existed": true,
+      "absent_after": true
+    },
+    {
+      "path": "temp/task22/extract",
+      "existed": true,
+      "absent_after": true
+    },
+    {
+      "path": "temp/task22/sr",
+      "existed": true,
+      "absent_after": true
+    },
+    {
+      "path": "temp/task22/vbase",
+      "existed": true,
+      "absent_after": true
+    }
+  ],
+  "original_task9_archive_preserved": true,
+  "original_task17_images_preserved": true,
+  "board_task_dir_created": false,
+  "note": "No board files changed/deleted; all analysis was read-only. Existing Task9/17 originals untouched."
+}

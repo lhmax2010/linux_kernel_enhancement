@@ -1,0 +1,28 @@
+{
+  "sr": {
+    "official_packages_file": "temp/task17/20261104.160709/images_standard_tizen-headed-armv7l_tizen-unified-toolchain_20261104.160709_tizen-headed-armv7l.packages",
+    "official_count": 1235,
+    "rpm_database_count": 1233,
+    "missing_from_database": [
+      "crossgen2-mic-10.0.10-0.noarch",
+      "patchelf-0.16.1-1.13.armv7l"
+    ],
+    "extra_in_database": [],
+    "coregl_in_database": [
+      "coregl-0.4.0-0.armv7l"
+    ]
+  },
+  "vbase": {
+    "official_packages_file": "temp/task17/20261104.160825/images_standard_tizen-headed-armv7l_tizen-unified-toolchain_20261104.160825_tizen-headed-armv7l.packages",
+    "official_count": 1235,
+    "rpm_database_count": 1233,
+    "missing_from_database": [
+      "crossgen2-mic-10.0.10-0.noarch",
+      "patchelf-0.16.1-1.13.armv7l"
+    ],
+    "extra_in_database": [],
+    "coregl_in_database": [
+      "coregl-0.4.0-0.armv7l"
+    ]
+  }
+}

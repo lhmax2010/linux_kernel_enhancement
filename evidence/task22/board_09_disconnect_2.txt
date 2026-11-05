@@ -1,0 +1,4 @@
+$ /home/linhao/.local/bin/sdb disconnect 192.168.108.26:26101
+error: remote target '192.168.108.26:26101' not connected
+
+TRANSPORT-EXIT=0

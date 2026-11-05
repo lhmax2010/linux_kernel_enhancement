@@ -1,0 +1,24 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/tools/root/usr/sbin/debugfs -R 'ls -l /6.12.80-arm-rpi4-v7l' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task22/sr/modules.img.readonly-copy
+     12   40755 (2)      0      0    4096  4-Nov-2026 21:07 .
+      2   40555 (2)      0      0    4096  4-Nov-2026 21:07 ..
+     14   40755 (2)      0      0    4096  4-Nov-2026 21:06 kernel
+     13  120777 (7)      0      0      68  4-Nov-2026 17:25 build
+    111  100644 (1)      0      0   159406  4-Nov-2026 21:07 modules.alias.bin
+    118  100644 (1)      0      0   166073  4-Nov-2026 21:07 modules.alias
+    123  100644 (1)      0      0   28901  4-Nov-2026 21:07 modules.builtin.bin
+    113  100644 (1)      0      0   25588  4-Nov-2026 17:25 modules.builtin
+    125   40755 (2)      0      0    4096  4-Nov-2026 21:07 extra
+    115  100644 (1)      0      0   23116  4-Nov-2026 21:07 modules.builtin.alias.bin
+    116  100644 (1)      0      0   164558  4-Nov-2026 17:25 modules.builtin.modinfo
+    139  100644 (1)      0      0    4223  4-Nov-2026 21:07 modules.dep
+    117  100644 (1)      0      0    7028  4-Nov-2026 21:07 modules.dep.bin
+    114  100644 (1)      0      0       0  4-Nov-2026 21:07 modules.devname
+    120  100644 (1)      0      0    2259  4-Nov-2026 17:25 modules.order
+    112  100644 (1)      0      0      55  4-Nov-2026 21:07 modules.softdep
+    124  100644 (1)      0      0   18789  4-Nov-2026 21:07 modules.symbols
+    122  100644 (1)      0      0   24302  4-Nov-2026 21:07 modules.symbols.bin
+    121  100644 (1)      0      0      55  4-Nov-2026 21:07 modules.weakdep
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0

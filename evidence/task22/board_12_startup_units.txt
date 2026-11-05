@@ -1,0 +1,57 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'grep -R -n -I -E '"'"'ConditionFirstBoot|[Ff]irst.?[Bb]oot|^ExecStart.*(init|boot|prepare)'"'"' /usr/lib/systemd/system /etc/systemd/system; printf '"'"'\nSEARCH-RC=%s\n'"'"' "$?"; cat /etc/rc.d/init.d/lbs-server; ls -l /var/log/zypp /var/log/rpm* /var/log/*history*
+remote_rc=$?
+printf "\nTASK22-REMOTE-EXIT=%s\n" "$remote_rc"'
+/usr/lib/systemd/system/multi-user.target.wants/webappenc-initializer.service:12:ExecStart=/usr/bin/wae_initializer
+/usr/lib/systemd/system/shutdown-animation.service:15:ExecStart=/usr/bin/boot-animation-dali --stop
+/usr/lib/systemd/system/recovery.target.wants/recovery-reboot.service:9:ExecStart=/usr/bin/device_board_clear_boot_mode
+/usr/lib/systemd/system/recovery.target.wants/recovery-reboot.service:10:ExecStart=/usr/sbin/reboot -f
+/usr/lib/systemd/system/online-update-failure.service:11:ExecStart=/usr/sbin/reboot -f fota
+/usr/lib/systemd/system/ttrace-marker.service:12:ExecStart=/usr/bin/atrace --init_exec
+/usr/lib/systemd/system/initrd-parse-etc.service:23:ExecStart=-/usr/bin/systemctl --no-block start initrd-fs.target
+/usr/lib/systemd/system/initrd-parse-etc.service:24:ExecStart=/usr/bin/systemctl --no-block start initrd-cleanup.service
+/usr/lib/systemd/system/system-update.service:11:ExecStart=/usr/share/upgrade/update-init.sh
+/usr/lib/systemd/system/recovery-reboot.service:9:ExecStart=/usr/bin/device_board_clear_boot_mode
+/usr/lib/systemd/system/recovery-reboot.service:10:ExecStart=/usr/sbin/reboot -f
+/usr/lib/systemd/system/boot-animation.service:18:ExecStart=/usr/bin/boot-animation-dali --start
+/usr/lib/systemd/system/systemd-nspawn@.service:21:ExecStart=/usr/bin/systemd-nspawn --quiet --keep-unit --boot --link-journal=try-guest --network-veth -U --settings=override --machine=%i
+/usr/lib/systemd/system/systemd-tmpfiles-setup.service:22:ExecStart=/usr/bin/systemd-tmpfiles --create --remove --boot --exclude-prefix=/dev
+/usr/lib/systemd/system/hal-compatibility-checker.service:12:ExecStartPost=/usr/bin/touch /opt/etc/hal/.hal-compatibility-cache-initialized
+/usr/lib/systemd/system/delayed.target.wants/booting-done.service:11:ExecStartPost=-/usr/bin/device_board_set_boot_success
+/usr/lib/systemd/system/systemd-initctl.service:16:ExecStart=/usr/lib/systemd/systemd-initctl
+/usr/lib/systemd/system/systemd-tmpfiles-setup-dev.service:21:ExecStart=/usr/bin/systemd-tmpfiles --prefix=/dev --create --boot
+grep: /usr/lib/systemd/system/sockets.target.wants/amd-tizen-action-service.socket: No such file or directory
+grep: /usr/lib/systemd/system/sockets.target.wants/tizen-watcherd.socket: No such file or directory
+/usr/lib/systemd/system/systemd-boot-check-no-failures.service:21:ExecStart=/usr/lib/systemd/systemd-boot-check-no-failures
+/usr/lib/systemd/system/webappenc-initializer.service:12:ExecStart=/usr/bin/wae_initializer
+/usr/lib/systemd/system/system-update.target.requires/system-update.service:11:ExecStart=/usr/share/upgrade/update-init.sh
+/usr/lib/systemd/system/booting-done.service:11:ExecStartPost=-/usr/bin/device_board_set_boot_success
+/usr/lib/systemd/system/mtp-initiator.service:11:ExecStart=/usr/bin/mtp-initiator
+/usr/lib/systemd/system/sysinit.target.wants/ttrace-marker.service:12:ExecStart=/usr/bin/atrace --init_exec
+/usr/lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup.service:22:ExecStart=/usr/bin/systemd-tmpfiles --create --remove --boot --exclude-prefix=/dev
+/usr/lib/systemd/system/sysinit.target.wants/hal-compatibility-checker.service:12:ExecStartPost=/usr/bin/touch /opt/etc/hal/.hal-compatibility-cache-initialized
+/usr/lib/systemd/system/sysinit.target.wants/systemd-tmpfiles-setup-dev.service:21:ExecStart=/usr/bin/systemd-tmpfiles --prefix=/dev --create --boot
+grep: /usr/lib/systemd/system/sysinit.target.wants/systemd-boot-system-token.service: No such file or directory
+/usr/lib/systemd/system/initrd-cleanup.service:20:ExecStart=/usr/bin/systemctl --no-block isolate initrd-switch-root.target
+/usr/lib/systemd/system/online-update-failure.target.requires/online-update-failure.service:11:ExecStart=/usr/sbin/reboot -f fota
+grep: /usr/lib/systemd/system/basic.target.wants/privilege-checker-integrity.service: No such file or directory
+
+SEARCH-RC=2
+#!/bin/sh
+PATH=/bin:/usr/bin:/sbin:/usr/sbin
+##/etc/init.d/lbs-server Lv : S90
+
+## This file is boot script of /usr/bin/lbs-server
+
+if [ -x /usr/bin/lbs-server ]; then
+	if [ ! -z "`pgrep lbs-server`" ]; then
+		/usr/bin/killall lbs-server
+	fi
+	/usr/bin/lbs-server &
+fi
+ls: cannot access /var/log/zypp: No such file or directory
+ls: cannot access /var/log/rpm*: No such file or directory
+ls: cannot access /var/log/*history*: No such file or directory
+
+TASK22-REMOTE-EXIT=2
+
+TRANSPORT-EXIT=0

@@ -1,0 +1,29 @@
+{
+  "source": "temp/task22/board/07_varlog_search.txt",
+  "lines": 874,
+  "sha256": "80e7e1d91c7660112e95b8468e8bcaef794646c2953aa6716de963db4ef75d3a",
+  "coregl_or_erase_hits": 0,
+  "all_match_count": 865
+}
+4: /var/log/dlog/system.1:10256:01-01 09:00:15.419+0900 E/STDERR_enlightenment (P  528, T  528): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+5: /var/log/dlog/system.1:11753:11-05 21:04:19.174+0900 E/STDERR_enlightenment (P 1014, T 1014): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+6: /var/log/dlog/system.1:11922:11-05 21:04:29.356+0900 E/STDERR_enlightenment (P 1166, T 1166): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+7: /var/log/dlog/system.1:12198:11-05 21:04:39.495+0900 E/STDERR_enlightenment (P 1299, T 1299): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+8: /var/log/dlog/system.1:12228:11-05 21:04:49.643+0900 E/STDERR_enlightenment (P 1419, T 1419): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+9: /var/log/dlog/system.1:12255:11-05 21:04:59.917+0900 E/STDERR_enlightenment (P 1538, T 1538): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+10: /var/log/dlog/system.1:12300:11-05 21:05:10.156+0900 E/STDERR_enlightenment (P 1667, T 1667): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+11: /var/log/dlog/system.1:12327:11-05 21:05:20.511+0900 E/STDERR_enlightenment (P 1786, T 1786): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+12: /var/log/dlog/system.1:12353:11-05 21:05:30.645+0900 E/STDERR_enlightenment (P 1906, T 1906): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+13: /var/log/dlog/system.1:12378:11-05 21:05:40.887+0900 E/STDERR_enlightenment (P 2026, T 2026): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+859: /var/log/dlog/system.1:67625:11-05 23:33:31.092+0900 E/STDERR_enlightenment (P25994, T25994): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+860: /var/log/dlog/system.1:67659:11-05 23:33:41.351+0900 E/STDERR_enlightenment (P26285, T26285): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+861: /var/log/dlog/system:157:11-05 23:33:51.628+0900 E/STDERR_enlightenment (P26554, T26554): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+862: /var/log/dlog/system:192:11-05 23:34:01.847+0900 E/STDERR_enlightenment (P26675, T26675): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+863: /var/log/dlog/system:234:11-05 23:34:12.098+0900 E/STDERR_enlightenment (P26796, T26796): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+864: /var/log/dlog/system:268:11-05 23:34:22.377+0900 E/STDERR_enlightenment (P26921, T26921): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+865: /var/log/dlog/system:304:11-05 23:34:32.597+0900 E/STDERR_enlightenment (P27041, T27041): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+866: /var/log/dlog/system:341:11-05 23:34:42.841+0900 E/STDERR_enlightenment (P27165, T27165): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+867: /var/log/dlog/system:387:11-05 23:34:53.087+0900 E/STDERR_enlightenment (P27287, T27287): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+868: /var/log/dlog/system:421:11-05 23:35:03.337+0900 E/STDERR_enlightenment (P27407, T27407): /usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+
+Only first/last10 shown if >30 matches; all raw output stays under temp/task22.

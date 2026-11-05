@@ -1,0 +1,16 @@
+{
+  "06_journal_all": {
+    "source": "temp/task22/board/06_journal_all.txt",
+    "lines": 2897,
+    "sha256": "e7d2442c34b331c12978b72d6a354b19cfef5dbec399f9c6bc2def50e960005f",
+    "coregl_or_erase_hits": 0,
+    "all_match_count": 0
+  },
+  "07_varlog_search": {
+    "source": "temp/task22/board/07_varlog_search.txt",
+    "lines": 874,
+    "sha256": "80e7e1d91c7660112e95b8468e8bcaef794646c2953aa6716de963db4ef75d3a",
+    "coregl_or_erase_hits": 0,
+    "all_match_count": 865
+  }
+}
