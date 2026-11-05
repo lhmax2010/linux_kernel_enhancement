@@ -1,0 +1,78 @@
+[
+  {
+    "source": "temp/task19/57_base01_dmesg.raw.txt",
+    "sha256": "4a336619532b2747571a33478feada92f8248a0eab0166980656c4329fcf4420",
+    "matches": [
+      {
+        "line": 410,
+        "text": "\u001b[32m[    8.791806] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(8.779:2): lsm=SMACK fn=smack_inode_permission action=denied subject=\"_\" object=\"User::Shell\" requested=x pid=241 comm=\"modprobe\" name=\"6.12.80-arm-rpi4-v7l-lko-base01\" dev=\"mmcblk0p6\" ino=119"
+      },
+      {
+        "line": 411,
+        "text": "\u001b[32m[    8.791823] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(8.779:3): lsm=SMACK fn=smack_inode_permission action=denied subject=\"_\" object=\"User::Shell\" requested=x pid=241 comm=\"modprobe\" name=\"6.12.80-arm-rpi4-v7l-lko-base01\" dev=\"mmcblk0p6\" ino=119"
+      },
+      {
+        "line": 412,
+        "text": "\u001b[32m[    8.791831] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(8.779:4): lsm=SMACK fn=smack_inode_permission action=denied subject=\"_\" object=\"User::Shell\" requested=x pid=241 comm=\"modprobe\" name=\"6.12.80-arm-rpi4-v7l-lko-base01\" dev=\"mmcblk0p6\" ino=119"
+      },
+      {
+        "line": 413,
+        "text": "\u001b[32m[    8.791838] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(8.779:5): lsm=SMACK fn=smack_inode_permission action=denied subject=\"_\" object=\"User::Shell\" requested=x pid=241 comm=\"modprobe\" name=\"6.12.80-arm-rpi4-v7l-lko-base01\" dev=\"mmcblk0p6\" ino=119"
+      },
+      {
+        "line": 414,
+        "text": "\u001b[32m[    8.791844] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(8.779:6): lsm=SMACK fn=smack_inode_permission action=denied subject=\"_\" object=\"User::Shell\" requested=x pid=241 comm=\"modprobe\" name=\"6.12.80-arm-rpi4-v7l-lko-base01\" dev=\"mmcblk0p6\" ino=119"
+      },
+      {
+        "line": 415,
+        "text": "\u001b[32m[    8.791851] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(8.779:7): lsm=SMACK fn=smack_inode_permission action=denied subject=\"_\" object=\"User::Shell\" requested=x pid=241 comm=\"modprobe\" name=\"6.12.80-arm-rpi4-v7l-lko-base01\" dev=\"mmcblk0p6\" ino=119"
+      },
+      {
+        "line": 416,
+        "text": "\u001b[32m[    8.791857] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(8.779:8): lsm=SMACK fn=smack_inode_permission action=denied subject=\"_\" object=\"User::Shell\" requested=x pid=241 comm=\"modprobe\" name=\"6.12.80-arm-rpi4-v7l-lko-base01\" dev=\"mmcblk0p6\" ino=119"
+      },
+      {
+        "line": 464,
+        "text": "\u001b[32m[   10.166016] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(10.159:9): lsm=SMACK fn=smack_inode_permission action=denied subject=\"_\" object=\"User::Shell\" requested=x pid=275 comm=\"modprobe\" name=\"6.12.80-arm-rpi4-v7l-lko-base01\" dev=\"mmcblk0p6\" ino=119"
+      },
+      {
+        "line": 505,
+        "text": "\u001b[32m[   14.639546] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(14.629:16): lsm=SMACK fn=smack_inode_permission action=denied subject=\"User::App::Shared\" object=\"System::Run\" requested=x pid=484 comm=\"gen_rm_msgq\" name=\"/\" dev=\"tmpfs\" ino=1"
+      },
+      {
+        "line": 508,
+        "text": "\u001b[32m[   14.639943] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(14.629:17): lsm=SMACK fn=smack_inode_permission action=denied subject=\"User::App::Shared\" object=\"System::Run\" requested=x pid=484 comm=\"gen_rm_msgq\" name=\"/\" dev=\"tmpfs\" ino=1"
+      },
+      {
+        "line": 511,
+        "text": "\u001b[32m[   14.639981] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(14.629:18): lsm=SMACK fn=smack_inode_permission action=denied subject=\"User::App::Shared\" object=\"System::Shared\" requested=x pid=484 comm=\"gen_rm_msgq\" name=\"etc\" dev=\"mmcblk0p3\" ino=667"
+      },
+      {
+        "line": 514,
+        "text": "\u001b[32m[   14.640019] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(14.629:19): lsm=SMACK fn=smack_inode_permission action=denied subject=\"User::App::Shared\" object=\"System::Run\" requested=x pid=484 comm=\"gen_rm_msgq\" name=\"/\" dev=\"tmpfs\" ino=1"
+      }
+    ]
+  },
+  {
+    "source": "temp/task19/61_rollback_dmesg.raw.txt",
+    "sha256": "8348348445ab9c3261f95e53e49b31be2b28725e7efe8f14611a065783c448ef",
+    "matches": [
+      {
+        "line": 494,
+        "text": "\u001b[32m[   14.486841] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(14.469:2): lsm=SMACK fn=smack_inode_permission action=denied subject=\"User::App::Shared\" object=\"System::Run\" requested=x pid=480 comm=\"gen_rm_msgq\" name=\"/\" dev=\"tmpfs\" ino=1"
+      },
+      {
+        "line": 497,
+        "text": "\u001b[32m[   14.486902] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(14.469:3): lsm=SMACK fn=smack_inode_permission action=denied subject=\"User::App::Shared\" object=\"System::Run\" requested=x pid=480 comm=\"gen_rm_msgq\" name=\"/\" dev=\"tmpfs\" ino=1"
+      },
+      {
+        "line": 500,
+        "text": "\u001b[32m[   14.486944] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(14.479:4): lsm=SMACK fn=smack_inode_permission action=denied subject=\"User::App::Shared\" object=\"System::Shared\" requested=x pid=480 comm=\"gen_rm_msgq\" name=\"etc\" dev=\"mmcblk0p3\" ino=667"
+      },
+      {
+        "line": 503,
+        "text": "\u001b[32m[   14.486982] \u001b[0m\u001b[33maudit: \u001b[0mtype=1400 audit(14.479:5): lsm=SMACK fn=smack_inode_permission action=denied subject=\"User::App::Shared\" object=\"System::Run\" requested=x pid=480 comm=\"gen_rm_msgq\" name=\"/\" dev=\"tmpfs\" ino=1"
+      }
+    ]
+  }
+]

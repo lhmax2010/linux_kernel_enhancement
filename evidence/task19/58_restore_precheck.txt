@@ -1,0 +1,11 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'set -e; mount -o ro /dev/mmcblk0p1 /opt/usr/lko_task19/boot; sha256sum /opt/usr/lko_task19/boot/zImage /opt/usr/lko_task19/boot/zImage.orig /opt/usr/lko_task19/boot/bcm2711-rpi-4-b.dtb /opt/usr/lko_task19/boot/config.txt; umount /opt/usr/lko_task19/boot
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+4bb488d8d7768bde6f9b53b53342d9bde0d996cb37284a6d5547855d20e8c5f1  /opt/usr/lko_task19/boot/zImage
+d5345f13eada3a3aab8b2fca9f511c608469f708d83a6a2445882e68241cc9af  /opt/usr/lko_task19/boot/zImage.orig
+a0561668ec520b0605cdc8b7be6844365ce44f569f363e85f3d7332e1989d6ed  /opt/usr/lko_task19/boot/bcm2711-rpi-4-b.dtb
+7ecdb662716cab1532da77ff755912775284eb3aab5e3c89fd571dba854f7d07  /opt/usr/lko_task19/boot/config.txt
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

@@ -312,6 +312,198 @@
     "sha256": "62a94170fd5188ac85a5779101c79131d3867790d18e2fe3df16f38a4b882175"
   },
   {
+    "file": "temp/task19/44_exercise_identity.raw.txt",
+    "bytes": 802,
+    "lines": 13,
+    "sha256": "2f406c5d5dbe9437a64933389efa90d113045437c9acb58b49dd8379a55bc434"
+  },
+  {
+    "file": "temp/task19/45_exercise_root.raw.txt",
+    "bytes": 32,
+    "lines": 1,
+    "sha256": "525daa895e41827b8cef29d3387114916a532c2624880a49c1614e6c987b6477"
+  },
+  {
+    "file": "temp/task19/46_exercise_preflight.raw.txt",
+    "bytes": 4446,
+    "lines": 53,
+    "sha256": "971aa4bae9c5d3cb933f2bc47968e72416ce2e7556296b2b948248fb964f5418"
+  },
+  {
+    "file": "temp/task19/47_exercise_boot_preflight.raw.txt",
+    "bytes": 4093,
+    "lines": 68,
+    "sha256": "d7689dccb0aedede5a2bc2309895c345906f2ff92019a18505e554cf300423f1"
+  },
+  {
+    "file": "temp/task19/48_backup_bcm2711-rpi-4-b_dtb.raw.txt",
+    "bytes": 243,
+    "lines": 5,
+    "sha256": "296eeaf18162bf9b65b6b1d17d00caa16f0608cfda973a2ae6f013fbe9eefd86"
+  },
+  {
+    "file": "temp/task19/48_backup_config_txt.raw.txt",
+    "bytes": 232,
+    "lines": 5,
+    "sha256": "bb4c8d8116ae094414a60252a3c99c4227f71f4323fc2110145a67bbdeaa274d"
+  },
+  {
+    "file": "temp/task19/48_backup_zImage.raw.txt",
+    "bytes": 297,
+    "lines": 6,
+    "sha256": "05cb594a8a9b86390cbee8c73bbee99648b3ea557759305948dcf99e96dbccd2"
+  },
+  {
+    "file": "temp/task19/49_original_modules_hashes.raw.txt",
+    "bytes": 9444,
+    "lines": 78,
+    "sha256": "82604904d936eae9db577e254762586db58314232986c45f9eb5222092c6cdca"
+  },
+  {
+    "file": "temp/task19/50_original_boot_hashes.raw.txt",
+    "bytes": 39251,
+    "lines": 416,
+    "sha256": "b499176058d2f275288f25d138e43386cdadb965aa74bd8bc78d5d5ba059e7b4"
+  },
+  {
+    "file": "temp/task19/51_backup_unmount.raw.txt",
+    "bytes": 24,
+    "lines": 2,
+    "sha256": "bc73aa8610d7a6463fbbd66e0fe2e222627a4e0140da562f1e13665e4d6703d7"
+  },
+  {
+    "file": "temp/task19/52_push_SHA256SUMS.raw.txt",
+    "bytes": 392,
+    "lines": 6,
+    "sha256": "b964cdec73f54cf615efe23d1eca68bfbdd4db6402b5a71c66c712500ec5836d"
+  },
+  {
+    "file": "temp/task19/52_push_deploy_lko-base01_tar_gz.raw.txt",
+    "bytes": 474,
+    "lines": 7,
+    "sha256": "a94e74a6a4d6508455893e0cba2ad59dd01b1a16bf1094547523b70d046d1131"
+  },
+  {
+    "file": "temp/task19/53_stage_check.raw.txt",
+    "bytes": 6428,
+    "lines": 78,
+    "sha256": "fab327a9f36b488932ceaad0d7952e1434eba2ef8776b5b35cb8e0409282465a"
+  },
+  {
+    "file": "temp/task19/54_modules_install.raw.txt",
+    "bytes": 6500,
+    "lines": 79,
+    "sha256": "749c6932c1b2d326535dca91a2b6bb740773258a4d3d767837530cf2226bc4df"
+  },
+  {
+    "file": "temp/task19/55_kernel_install.raw.txt",
+    "bytes": 442,
+    "lines": 6,
+    "sha256": "95061a6a95c86302869dcdc308f6f06f32b7aecbc2c12ecbb92cab033a15144b"
+  },
+  {
+    "file": "temp/task19/56_base01_runtime.raw.txt",
+    "bytes": 7825,
+    "lines": 146,
+    "sha256": "33c6c5921204861e3067fe84914ce883a22ab2cc8ac738eabc0df6cd8f0dd138"
+  },
+  {
+    "file": "temp/task19/57_base01_dmesg.raw.txt",
+    "bytes": 53377,
+    "lines": 550,
+    "sha256": "4a336619532b2747571a33478feada92f8248a0eab0166980656c4329fcf4420"
+  },
+  {
+    "file": "temp/task19/57_base01_module_diagnostic.raw.txt",
+    "bytes": 1339,
+    "lines": 35,
+    "sha256": "7092055d276cdd02817a294e5c464aee1e5b7887220ba30af916626e741ea16c"
+  },
+  {
+    "file": "temp/task19/58_base01_failure_readonly.raw.txt",
+    "bytes": 1371,
+    "lines": 36,
+    "sha256": "0c6c7353aa542fd19105b87ce5c107d6ac0120dde528680a92bec5dc69d433d9"
+  },
+  {
+    "file": "temp/task19/58_restore_precheck.raw.txt",
+    "bytes": 442,
+    "lines": 6,
+    "sha256": "95061a6a95c86302869dcdc308f6f06f32b7aecbc2c12ecbb92cab033a15144b"
+  },
+  {
+    "file": "temp/task19/59_restore_original_zImage.raw.txt",
+    "bytes": 338,
+    "lines": 5,
+    "sha256": "61a051f22c0cf59a7f77d16e9e56aa76e086f24433c1bca58db72412f20653aa"
+  },
+  {
+    "file": "temp/task19/60_rollback_boot_hashes.raw.txt",
+    "bytes": 338,
+    "lines": 5,
+    "sha256": "61a051f22c0cf59a7f77d16e9e56aa76e086f24433c1bca58db72412f20653aa"
+  },
+  {
+    "file": "temp/task19/60_rollback_runtime.raw.txt",
+    "bytes": 7647,
+    "lines": 148,
+    "sha256": "4a207b16537adfff7c5442c8027c0dbcf15ffac2a9aeb088f8cb2ded35dd6bb4"
+  },
+  {
+    "file": "temp/task19/61_rollback_dmesg.raw.txt",
+    "bytes": 49261,
+    "lines": 525,
+    "sha256": "8348348445ab9c3261f95e53e49b31be2b28725e7efe8f14611a065783c448ef"
+  },
+  {
+    "file": "temp/task19/62_remove_exercise_modules.raw.txt",
+    "bytes": 396,
+    "lines": 8,
+    "sha256": "c1f6c22556b053fa8d6b2ecd5494b61f06f568654ffe2023dd691c1dea9f9f10"
+  },
+  {
+    "file": "temp/task19/63_restored_modules_hashes.raw.txt",
+    "bytes": 9444,
+    "lines": 78,
+    "sha256": "82604904d936eae9db577e254762586db58314232986c45f9eb5222092c6cdca"
+  },
+  {
+    "file": "temp/task19/64_restored_boot_hashes.raw.txt",
+    "bytes": 39251,
+    "lines": 416,
+    "sha256": "b499176058d2f275288f25d138e43386cdadb965aa74bd8bc78d5d5ba059e7b4"
+  },
+  {
+    "file": "temp/task19/65_restored_final_state.raw.txt",
+    "bytes": 4194,
+    "lines": 71,
+    "sha256": "2f38d9a47333f6ae1c62b89e0a247c8257d5f6f337d868a0138ffa9a92726027"
+  },
+  {
+    "file": "temp/task19/66_exercise_cleanup.raw.txt",
+    "bytes": 274,
+    "lines": 4,
+    "sha256": "9f1675a48954a446971bfe5fa6d826fbaae1555ba66cfa76a4ca7185b338ce01"
+  },
+  {
+    "file": "temp/task19/66b_cleanup_confirm.raw.txt",
+    "bytes": 232,
+    "lines": 5,
+    "sha256": "cb0dc356292ef252393b7e42f0366bbda62b649e7623ceb389d11f39df8da0f2"
+  },
+  {
+    "file": "temp/task19/67_exercise_root_off.raw.txt",
+    "bytes": 36,
+    "lines": 1,
+    "sha256": "6667042b629240d444116555b8f98368ba464e672980623c2dbdb02741c0089d"
+  },
+  {
+    "file": "temp/task19/68_exercise_owner.raw.txt",
+    "bytes": 540,
+    "lines": 4,
+    "sha256": "2685ac6a58857086f5663910d0b024bbafd0df0004b8487623eb1e2ac2d5d9dd"
+  },
+  {
     "file": "temp/task19/reboot1_command.raw.txt",
     "bytes": 0,
     "lines": 0,
@@ -574,6 +766,270 @@
     "bytes": 5258,
     "lines": 65,
     "sha256": "89787b6d2bb93c49ebfc52f09b3f9c9898b62d0a0f0338a7f2408a13500db2e3"
+  },
+  {
+    "file": "temp/task19/reboot3_command.raw.txt",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "temp/task19/reboot3_pre.raw.txt",
+    "bytes": 736,
+    "lines": 18,
+    "sha256": "773fab425df615c6f926f3997d2115b9c70e86930a226044294cf4657b4853c1"
+  },
+  {
+    "file": "temp/task19/reboot3_root_on.raw.txt",
+    "bytes": 32,
+    "lines": 1,
+    "sha256": "525daa895e41827b8cef29d3387114916a532c2624880a49c1614e6c987b6477"
+  },
+  {
+    "file": "temp/task19/reboot3_round01_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "file": "temp/task19/reboot3_round01_disconnect.raw.txt",
+    "bytes": 1,
+    "lines": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "file": "temp/task19/reboot3_round01_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "file": "temp/task19/reboot3_round02_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "file": "temp/task19/reboot3_round02_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "file": "temp/task19/reboot3_round02_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "file": "temp/task19/reboot3_round03_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "file": "temp/task19/reboot3_round03_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "file": "temp/task19/reboot3_round03_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "file": "temp/task19/reboot3_round04_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "file": "temp/task19/reboot3_round04_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "file": "temp/task19/reboot3_round04_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "file": "temp/task19/reboot3_round05_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "file": "temp/task19/reboot3_round05_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "file": "temp/task19/reboot3_round05_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "file": "temp/task19/reboot3_round06_connect.raw.txt",
+    "bytes": 73,
+    "lines": 2,
+    "sha256": "319707eca638c5888c2984d2e09815e2d2c94708880805cca0b26ac5f12c7016"
+  },
+  {
+    "file": "temp/task19/reboot3_round06_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "file": "temp/task19/reboot3_round06_probe.raw.txt",
+    "bytes": 333,
+    "lines": 11,
+    "sha256": "761898c25cefc52422734be430d34ed8705116eeefc6840c2ba26a71bd8dc5bd"
+  },
+  {
+    "file": "temp/task19/reboot3_verification.raw.txt",
+    "bytes": 4782,
+    "lines": 61,
+    "sha256": "18b0481a50527b64b9a084c75ac1f408a1cc9e0cf8d1532b14f06be75e88d0e1"
+  },
+  {
+    "file": "temp/task19/reboot4_command.raw.txt",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "file": "temp/task19/reboot4_pre.raw.txt",
+    "bytes": 747,
+    "lines": 18,
+    "sha256": "93a8695d542473553a1e81c49af59a2d83868a5296f5a09b54c32785af7d6052"
+  },
+  {
+    "file": "temp/task19/reboot4_root_on.raw.txt",
+    "bytes": 32,
+    "lines": 1,
+    "sha256": "525daa895e41827b8cef29d3387114916a532c2624880a49c1614e6c987b6477"
+  },
+  {
+    "file": "temp/task19/reboot4_round01_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "file": "temp/task19/reboot4_round01_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "file": "temp/task19/reboot4_round01_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "file": "temp/task19/reboot4_round02_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "file": "temp/task19/reboot4_round02_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "file": "temp/task19/reboot4_round02_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "file": "temp/task19/reboot4_round03_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "file": "temp/task19/reboot4_round03_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "file": "temp/task19/reboot4_round03_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "file": "temp/task19/reboot4_round04_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "file": "temp/task19/reboot4_round04_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "file": "temp/task19/reboot4_round04_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "file": "temp/task19/reboot4_round05_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "file": "temp/task19/reboot4_round05_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "file": "temp/task19/reboot4_round05_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "file": "temp/task19/reboot4_round06_connect.raw.txt",
+    "bytes": 73,
+    "lines": 2,
+    "sha256": "319707eca638c5888c2984d2e09815e2d2c94708880805cca0b26ac5f12c7016"
+  },
+  {
+    "file": "temp/task19/reboot4_round06_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "file": "temp/task19/reboot4_round06_probe.raw.txt",
+    "bytes": 322,
+    "lines": 11,
+    "sha256": "96ca15e0d7469cff5e45fbc19be1ffb89c0abf767454b23d89dee717c1368c0d"
+  },
+  {
+    "file": "temp/task19/reboot4_verification.raw.txt",
+    "bytes": 4000,
+    "lines": 56,
+    "sha256": "cef2fa694106fd7059c23779a0f79c611880b9b4bc7d714f8b38d1cb3770a1b2"
   },
   {
     "file": "temp/task19/snapshot_60.raw.txt",

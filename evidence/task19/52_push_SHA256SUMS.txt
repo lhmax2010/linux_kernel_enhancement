@@ -1,0 +1,7 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 push /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/deploy_lko-base01/SHA256SUMS /opt/usr/lko_task19/SHA256SUMS
+WARNING: Your data are to be sent over an unencrypted connection and could be read by others.
+pushed                     SHA256SUMS	  0%	      0KB	    0KB/spushed                     SHA256SUMS	100%	     10KB	    0KB/s
+1 file(s) pushed. 0 file(s) skipped.
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/deploy_lko-base01/SHA256SUMS   56KB/s (10756 bytes in 0.184s)
+
+TRANSPORT-EXIT=0

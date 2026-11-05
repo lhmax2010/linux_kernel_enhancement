@@ -1,0 +1,17 @@
+{
+  "exercise": "boot succeeds; acceptance FAILED: proc_tsm missing and stability-monitor exit255; no repair attempted",
+  "rollback": "PASS",
+  "original_module_files_verified": 75,
+  "boot_files_verified": 414,
+  "new_module_directory_removed": true,
+  "temp_directory_removed": true,
+  "owner_restored": true,
+  "final_kernel": "6.12.80-arm-rpi4-v7l",
+  "final_boot_id": "4e5c71ff-0cf8-4e7e-9f61-16602d3c3b57",
+  "total_mem": 1600,
+  "notes": [
+    "Reboot4 journal tag had no entries; independent state/network/hash rollback acceptance passed.",
+    "New proc-tsm SMACK label User::Shell differs from original _; potential cause only, not proven.",
+    "Cleanup ls returned expected absence under set -e; subsequent explicit absence check passed."
+  ]
+}

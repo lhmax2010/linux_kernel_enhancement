@@ -45,7 +45,7 @@ inform_reboot 12288 0 - Live 0xbf000000 (O)
     link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
     inet 192.168.108.26/24 brd 192.168.108.255 scope global eth0
        valid_lft forever preferred_lft forever
-    inet6 fe80::2ecf:67ff:fea0:72b5/64 scope link 
+    inet6 fe80::2ecf:67ff:fea0:72b5/64 scope link
        valid_lft forever preferred_lft forever
 Filesystem           1K-blocks      Used Available Use% Mounted on
 /dev/mmcblk0p2         3021464   1080572   1912396  37% /

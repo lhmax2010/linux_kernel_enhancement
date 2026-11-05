@@ -1,0 +1,6 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /opt/usr/lko_task19/boot/config.txt /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/kernel_exercise_backup/config.txt
+pulled                     config.txt	  0%	      0 B	    0KB/spulled                     config.txt	100%	   1738 B	    0KB/s
+1 file(s) pulled. 0 file(s) skipped.
+/opt/usr/lko_task19/boot/config.txt   11KB/s (1738 bytes in 0.145s)
+
+TRANSPORT-EXIT=0

@@ -1,0 +1,22 @@
+{
+  "phase": "rollback",
+  "version": "6.12.80-arm-rpi4-v7l",
+  "loaded_modules": [
+    "proc_tsm",
+    "brcmfmac",
+    "brcmutil",
+    "hci_uart",
+    "btbcm",
+    "kdbus",
+    "logger",
+    "dm_bow",
+    "extcon_usb_fixed",
+    "inform_reboot"
+  ],
+  "vermagic_count": 10,
+  "symbol_error_lines": [],
+  "zimage_sha": "d5345f13eada3a3aab8b2fca9f511c608469f708d83a6a2445882e68241cc9af",
+  "dtb_config_unchanged": true,
+  "resourced_binary_unchanged": true,
+  "result": "PASS"
+}

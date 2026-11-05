@@ -1,0 +1,73 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'mkdir -p /opt/usr/lko_task19/boot && mount -o ro /dev/mmcblk0p1 /opt/usr/lko_task19/boot && ls -la /opt/usr/lko_task19/boot && test ! -e /opt/usr/lko_task19/boot/zImage.orig && sha256sum /opt/usr/lko_task19/boot/zImage /opt/usr/lko_task19/boot/bcm2711-rpi-4-b.dtb /opt/usr/lko_task19/boot/config.txt && cat /proc/modules
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+total 26122
+drwxrwxrwx 3 root root    16384 Jan  1  1970 .
+drwxrwxrwx 3 root root     3488 Nov  5 21:24 ..
+-rwxrwxrwx 1 root root     1594 Nov  5 02:23 LICENCE.broadcom
+-rwxrwxrwx 1 root root    30676 Nov  5 02:23 bcm2708-rpi-b-plus.dtb
+-rwxrwxrwx 1 root root    30035 Nov  5 02:23 bcm2708-rpi-b-rev1.dtb
+-rwxrwxrwx 1 root root    30373 Nov  5 02:23 bcm2708-rpi-b.dtb
+-rwxrwxrwx 1 root root    29976 Nov  5 02:23 bcm2708-rpi-cm.dtb
+-rwxrwxrwx 1 root root    31853 Nov  5 02:23 bcm2708-rpi-zero-w.dtb
+-rwxrwxrwx 1 root root    29986 Nov  5 02:23 bcm2708-rpi-zero.dtb
+-rwxrwxrwx 1 root root    32370 Nov  5 02:23 bcm2709-rpi-2-b.dtb
+-rwxrwxrwx 1 root root    32145 Nov  5 02:23 bcm2709-rpi-cm2.dtb
+-rwxrwxrwx 1 root root    32519 Nov  5 02:23 bcm2710-rpi-2-b.dtb
+-rwxrwxrwx 1 root root    35346 Nov  5 02:23 bcm2710-rpi-3-b-plus.dtb
+-rwxrwxrwx 1 root root    34711 Nov  5 02:23 bcm2710-rpi-3-b.dtb
+-rwxrwxrwx 1 root root    33700 Nov  5 02:23 bcm2710-rpi-cm0.dtb
+-rwxrwxrwx 1 root root    32282 Nov  5 02:23 bcm2710-rpi-cm3.dtb
+-rwxrwxrwx 1 root root    33688 Nov  5 02:23 bcm2710-rpi-zero-2-w.dtb
+-rwxrwxrwx 1 root root    33688 Nov  5 02:23 bcm2710-rpi-zero-2.dtb
+-rwxrwxrwx 1 root root    56450 Nov  5 02:23 bcm2711-rpi-4-b.dtb
+-rwxrwxrwx 1 root root    56454 Nov  5 02:23 bcm2711-rpi-400.dtb
+-rwxrwxrwx 1 root root    39913 Nov  5 02:23 bcm2711-rpi-cm4-io.dtb
+-rwxrwxrwx 1 root root    56890 Nov  5 02:23 bcm2711-rpi-cm4.dtb
+-rwxrwxrwx 1 root root    53880 Nov  5 02:23 bcm2711-rpi-cm4s.dtb
+-rwxrwxrwx 1 root root    19033 Nov  5 02:23 bcm2835-rpi-a-plus.dtb
+-rwxrwxrwx 1 root root    18897 Nov  5 02:23 bcm2835-rpi-a.dtb
+-rwxrwxrwx 1 root root    19328 Nov  5 02:23 bcm2835-rpi-b-plus.dtb
+-rwxrwxrwx 1 root root    19176 Nov  5 02:23 bcm2835-rpi-b-rev2.dtb
+-rwxrwxrwx 1 root root    19039 Nov  5 02:23 bcm2835-rpi-b.dtb
+-rwxrwxrwx 1 root root    19190 Nov  5 02:23 bcm2835-rpi-cm1-io1.dtb
+-rwxrwxrwx 1 root root    19551 Nov  5 02:23 bcm2835-rpi-zero-w.dtb
+-rwxrwxrwx 1 root root    18973 Nov  5 02:23 bcm2835-rpi-zero.dtb
+-rwxrwxrwx 1 root root    20914 Nov  5 02:23 bcm2836-rpi-2-b.dtb
+-rwxrwxrwx 1 root root    21375 Nov  5 02:23 bcm2837-rpi-3-a-plus.dtb
+-rwxrwxrwx 1 root root    22105 Nov  5 02:23 bcm2837-rpi-3-b-plus.dtb
+-rwxrwxrwx 1 root root    21641 Nov  5 02:23 bcm2837-rpi-3-b.dtb
+-rwxrwxrwx 1 root root    20780 Nov  5 02:23 bcm2837-rpi-cm3-io3.dtb
+-rwxrwxrwx 1 root root    21206 Nov  5 02:23 bcm2837-rpi-zero-2-w.dtb
+-rwxrwxrwx 1 root root     7520 Nov  5 01:58 boot.scr.uimg
+-rwxrwxrwx 1 root root     1738 Nov  5 21:05 config.txt
+-rwxrwxrwx 1 root root     1716 Nov  5 21:05 config.txt.task19-before
+-rwxrwxrwx 1 root root     5454 Nov  5 02:23 fixup4.dat
+-rwxrwxrwx 1 root root     3230 Nov  5 02:23 fixup4cd.dat
+-rwxrwxrwx 1 root root     8447 Nov  5 02:23 fixup4db.dat
+-rwxrwxrwx 1 root root     8447 Nov  5 02:23 fixup4x.dat
+drwxrwxrwx 2 root root    32768 Nov  5 06:06 overlays
+-rwxrwxrwx 1 root root  2264064 Nov  5 02:23 start4.elf
+-rwxrwxrwx 1 root root   814172 Nov  5 02:23 start4cd.elf
+-rwxrwxrwx 1 root root  3762440 Nov  5 02:23 start4db.elf
+-rwxrwxrwx 1 root root  3011688 Nov  5 02:23 start4x.elf
+-rwxrwxrwx 1 root root   808272 Nov  5 01:58 u-boot.bin
+-rwxrwxrwx 1 root root    16384 Nov  5 01:58 uboot.env
+-rwxrwxrwx 1 root root 14905760 Nov  5 02:23 zImage
+d5345f13eada3a3aab8b2fca9f511c608469f708d83a6a2445882e68241cc9af  /opt/usr/lko_task19/boot/zImage
+a0561668ec520b0605cdc8b7be6844365ce44f569f363e85f3d7332e1989d6ed  /opt/usr/lko_task19/boot/bcm2711-rpi-4-b.dtb
+7ecdb662716cab1532da77ff755912775284eb3aab5e3c89fd571dba854f7d07  /opt/usr/lko_task19/boot/config.txt
+proc_tsm 12288 0 - Live 0xbf015000 (O)
+brcmfmac 352256 0 - Live 0xbf062000
+hci_uart 32768 0 - Live 0xbf051000
+brcmutil 16384 1 brcmfmac, Live 0xbf022000
+btbcm 20480 1 hci_uart, Live 0xbf006000
+kdbus 98304 84 - Live 0xbf033000 (O)
+extcon_usb_fixed 12288 0 - Live 0xbf029000 (O)
+dm_bow 20480 0 - Live 0xbf01a000 (O)
+logger 16384 177 - Live 0xbf00c000 (O)
+inform_reboot 12288 0 - Live 0xbf000000 (O)
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

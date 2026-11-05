@@ -1,8 +1,8 @@
 $ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'systemctl list-units --all --no-pager | grep -E "resourced|system-resource"; systemctl show resourced.service system-resource.service -p Id -p ActiveState -p SubState -p Result -p ExecMainStatus -p MainPID; ps -eo pid,comm,args | grep -E "resourced|system-resource"
 remote_rc=$?
 printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
-  resourced.service                                                                                                         loaded    active     running      Resource management daemon                                                                                      
-  resourced.socket                                                                                                          loaded    active     running      Resourced cpu-boosting socket                                                                                   
+  resourced.service                                                                                                         loaded    active     running      Resource management daemon
+  resourced.socket                                                                                                          loaded    active     running      Resourced cpu-boosting socket
 MainPID=401
 Result=success
 ExecMainStatus=0

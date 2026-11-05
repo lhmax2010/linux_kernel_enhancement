@@ -1,0 +1,83 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'cd /usr/lib/modules && find 6.12.80-arm-rpi4-v7l modprobe.d modules-load.d -type f -exec sha256sum {} \; | sort; find 6.12.80-arm-rpi4-v7l modprobe.d modules-load.d -type l -exec ls -ld {} \;
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+03ca22d78b676a7a51a761ed1df11f7f955b114ce24bce708308e047e2639257  6.12.80-arm-rpi4-v7l/modules.symbols.bin
+04547aed09e4ccdb668f6517185664d73ebf859f1cc5afe68ef3402b6664f533  6.12.80-arm-rpi4-v7l/kernel/drivers/usb/serial/usb_wwan.ko
+0458f3973ff25274fdd79f0ca3779a710c410c14ad4bfe156a6cc19404e05152  6.12.80-arm-rpi4-v7l/kernel/drivers/bluetooth/btrtl.ko
+054e46ee7ce1ed367e346c0389c3325fda7312592d053c1ce4ae2f66fa0cd8de  6.12.80-arm-rpi4-v7l/modules.builtin.alias.bin
+0f0f5a4a99aafee1ec3d83f44d3852530652cd79005b9f217fd8fefc2a205789  6.12.80-arm-rpi4-v7l/kernel/drivers/block/nbd.ko
+0f212c133b5eb91b11914500e9fbf9693ac78d9ea8ca15ea018d33f797a1c6bb  6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko
+10dbbcbeccb10cac40db5de972e4bdc52e36e12d457e092c7b35fcf45e7d6420  6.12.80-arm-rpi4-v7l/kernel/drivers/media/usb/gspca/gspca_zc3xx.ko
+1186ce63d4c7c5f995fd0099becfe8834d52da35939d285f5c0bd9d62042a576  6.12.80-arm-rpi4-v7l/extra/kdbus/kdbus.ko
+1825939b82c1a3d8b9867bcf1fc62d67fd7314f0ce099cc79f5890a42588abc9  6.12.80-arm-rpi4-v7l/kernel/lib/crc7.ko
+18c32b6cddc6720f574d0786320e409c8143bdd391f6bcf0f616c4ffb7464703  6.12.80-arm-rpi4-v7l/kernel/drivers/usb/gadget/udc/dummy_hcd.ko
+1ba92b83646d1f5638c5e10620582b75e1de72c354ecf2fb2bc6822ace7a6faf  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+1ef482e983ff23916d43d16bea3c23668985c2a5c73c6877e9e5527d214fe2f4  6.12.80-arm-rpi4-v7l/kernel/drivers/i2c/i2c-stub.ko
+2071d3ff62a61d648e254f0fd7fcfab04d8fa9f3aee8f51895caccbaa26f0150  6.12.80-arm-rpi4-v7l/kernel/drivers/usb/serial/option.ko
+22481d75d58437a041b98dc4a5398d6b9d9b7fe839e126412ba0a246f3c96e98  6.12.80-arm-rpi4-v7l/extra/zlogger/zlogger.ko
+237a929af81a1ba0d917de3d0b5021ee0d22a87e6b681f37ed1b8660cf531234  6.12.80-arm-rpi4-v7l/kernel/fs/ecryptfs/ecryptfs.ko
+2544d8f5b6c39c56cb303c5698e17b1739a701a27a908b180fad75abf6f97b4c  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/wcc/brcmfmac-wcc.ko
+2769722272d5e79976d166e7c2e3b0ff7311bfa5011d5713d08fe01a166ff1f8  6.12.80-arm-rpi4-v7l/kernel/sound/soc/codecs/snd-soc-tpa6130a2.ko
+2e08bfebb490c028cba4ccdfd9947a42a72f8ec6f6d96e14de17f61619e7646d  6.12.80-arm-rpi4-v7l/extra/dm-bow.ko
+2f2e0993bd11d75f08e5d8d73813a710af49e15246670c8a87135ac7e6713e9c  modprobe.d/tizen-modprobe-rpi4.conf
+3007de8113e91dec6a37aa30cf050b5596da3a082630f479a106904a5bcc05e5  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921u.ko
+311144d585e582ae92c992f6d21e1fb6a9d90935d7384d121ffe5a9901e5d821  6.12.80-arm-rpi4-v7l/kernel/drivers/input/joydev.ko
+3cebba95c1c6f0c767d2ecacad5004302aabda58c6739dd27a9393f27fe1e994  6.12.80-arm-rpi4-v7l/modules.builtin
+40d34797ea9f478ee7fe1f4b83069f7c0111f4465c0ff8ed64d6dfa79e7b689e  6.12.80-arm-rpi4-v7l/kernel/drivers/bluetooth/btintel.ko
+4c452d1a6fe8a0eb800b3ab0e08ca0a03fc9b90af06e6f1196a5d6d477a6efe6  6.12.80-arm-rpi4-v7l/kernel/drivers/usb/serial/pl2303.ko
+516bfa64c31e52e4fcb18d446350e89243b4f0cdc1bd8745ceb191673cafddf5  6.12.80-arm-rpi4-v7l/modules.dep.bin
+585950a7f86b24a54748057da29312aa3698e94879a9b4485338127948cc8a9c  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/mediatek/mt76/mt792x-usb.ko
+5f1f42e28165cd2467023ebb8ba041e1b432527beb3e2f80a8f3b9b684f88c24  6.12.80-arm-rpi4-v7l/kernel/drivers/misc/bcm2835_smi.ko
+6156d0c00d1392a02f0edf7290c7b56ddb786a0f82e9dba996b85585ca220e1f  6.12.80-arm-rpi4-v7l/kernel/drivers/bluetooth/btusb.ko
+6493031a2318f689f4efbe22605d4c6dd4e6779ae4a1fe09c20bda63aa582d01  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil/brcmutil.ko
+65c04df70aedb20fe68d8a69537ca13b9118804eb75a076cf146141ecfe899bc  6.12.80-arm-rpi4-v7l/kernel/drivers/media/usb/gspca/gspca_main.ko
+68c3e7a5538280dc0c8e114161a507802632c04e2dd7aec14db3ae2bd497254a  6.12.80-arm-rpi4-v7l/kernel/drivers/leds/trigger/ledtrig-camera.ko
+69a7dc21287b5c7850251b512e06a4bddc0ff0d5376101d51cd2c6745f5c7520  6.12.80-arm-rpi4-v7l/extra/logger.ko
+6b51af511b29770a4e45b45ccfc2f1806cfa1d193b773d5b3bc40067561d83cb  6.12.80-arm-rpi4-v7l/kernel/drivers/bluetooth/bcm203x.ko
+6bca45188c7cba616d1ebdb30510e942db23fd96a246ea8bb5c39f7aa5e58e62  6.12.80-arm-rpi4-v7l/kernel/drivers/spi/spi-bcm2835aux.ko
+7a118a097c2b2fe6899e5382f326ac6d28da322b082543efdf23a96b516ffd6c  6.12.80-arm-rpi4-v7l/kernel/fs/binfmt_misc.ko
+7a3d74231cd6dc78da085feb1a492053e2e8d79b955413aed53eedbd8b93be75  6.12.80-arm-rpi4-v7l/modules.alias
+8537a472167809f547ccfa8c566d008b96d91d43b366020e0b9040327ca0c681  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/mediatek/mt76/mt76-connac-lib.ko
+85725f48f3400f2510539131ae08e5afa90d1d84220d7f9fff31cffd5c4e0867  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/mediatek/mt76/mt76.ko
+8acb96969f9806c9cc19b7f36fbf6c6061f1eec7b6476b5c1e691499a58fe364  6.12.80-arm-rpi4-v7l/kernel/drivers/leds/trigger/ledtrig-transient.ko
+8bddc32cf19ade065cd232f7f4ceb53bc3ef51e2599e9ff1b027b4733edb6965  6.12.80-arm-rpi4-v7l/modules.order
+91c1122ab7990cc33b6582c2d1dedd81e2f07678a56bf8d4d245472e0cc138fd  6.12.80-arm-rpi4-v7l/kernel/drivers/hid/hid-led.ko
+9689d8c68273222b2e9487bc2387b1207c2ab05cd225aabfc9ade78d49792aba  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bca/brcmfmac-bca.ko
+96b717d738feba486c8b70a951a983213a0843b579ae1b32e6f1346de18dd57d  6.12.80-arm-rpi4-v7l/kernel/net/netfilter/xt_LED.ko
+97e0a418abc1f97aff58a83e599b1f3cc86b5961ffcf9527429c129cba4b7108  6.12.80-arm-rpi4-v7l/kernel/drivers/usb/serial/ftdi_sio.ko
+9a2590c3712af363ed645a971292862bd4a28c35100abb1cc4166aaba66c0e90  6.12.80-arm-rpi4-v7l/kernel/drivers/i2c/busses/i2c-bcm2708.ko
+9e15a9722ffabd28f87f28ffc6e9b4a2203a1704631f6f1c1e007089b23adc60  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/mediatek/mt76/mt76-usb.ko
+a0c4546ad2d01d9419b66dcfd14bf7f1407f180224a532505aa72a05d901c615  6.12.80-arm-rpi4-v7l/kernel/drivers/bluetooth/btbcm.ko
+a1fffe1059d8150b5d402b3f284f507025a8d4b5881810cb17b3fda8b8ab9304  6.12.80-arm-rpi4-v7l/modules.weakdep
+a32877e861415dba23187dbbd6991273e619f7f926e6ff6e0eb6a75e6017e6bf  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cyw/brcmfmac-cyw.ko
+a8049f8dd4abcbb9c9ba548d9d37d207e375b91f90ce42e5a95ffeadce0a018d  6.12.80-arm-rpi4-v7l/kernel/drivers/usb/class/cdc-acm.ko
+ac2de753255c506934be29e69261f1485f51ee9cf9c2bf467bcc0c4cf95f8713  6.12.80-arm-rpi4-v7l/modules.softdep
+b5ef1e396989725c29834c1bfd3cb0ecb333c4feae8b4814f7fa3d5b777fba9c  6.12.80-arm-rpi4-v7l/kernel/sound/soc/codecs/snd-soc-sgtl5000.ko
+ba420e4993b7e1660bbb180fae4ac66b587b8fd92a682a2f7d3d390fae36e17c  6.12.80-arm-rpi4-v7l/modules.alias.bin
+bf17f454b2359fd690c9654cf68927c58f66e818b7fba568967a86f15eb56a9a  6.12.80-arm-rpi4-v7l/kernel/sound/soc/codecs/snd-soc-cs42xx8-i2c.ko
+c05c9379b2cc71c60e7f06267bd4f4ba478bd7fd09f0085ea2bc4974c2016a07  6.12.80-arm-rpi4-v7l/modules.builtin.bin
+c64659e413fded0faa878831e1fd55e46b6ed61190b85f5993080932c4488a9c  6.12.80-arm-rpi4-v7l/kernel/sound/soc/codecs/snd-soc-pcm512x-i2c.ko
+c8b224d10ccab9e01c09a56b252ed934a981f46b9f286bd4a6fdbe596d50d1bd  6.12.80-arm-rpi4-v7l/kernel/drivers/char/broadcom/bcm2835_smi_dev.ko
+cae6d5fa1a4a8f2dc70caf944a3e29f42847e429e7df2500e0b08372eac29531  6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko
+cd282087a6fe95f4130fbfc52c6b294e37f913ca0744234bdf608de451130dc7  6.12.80-arm-rpi4-v7l/kernel/drivers/bluetooth/hci_uart.ko
+cdc893ef068fa562790307ba89e51a221d8dbb28b4267f217220cede90108fcd  6.12.80-arm-rpi4-v7l/kernel/drivers/watchdog/gpio_wdt.ko
+d484adb46798884aa47cd959f65aab3142b3d246a095f2926de59333fb8d03a9  6.12.80-arm-rpi4-v7l/kernel/sound/soc/codecs/snd-soc-cs42xx8.ko
+d55b93f4d74bbc0f8c1dd2ee22a504bfd7da270f29b740a0ce4a6f89da2f694b  6.12.80-arm-rpi4-v7l/modules.dep
+e2b6521c3dc2357ada8a6f162525ea285366660539676c4488b43234d1f3b421  6.12.80-arm-rpi4-v7l/kernel/drivers/mfd/wl1273-core.ko
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  6.12.80-arm-rpi4-v7l/modules.devname
+e5822cc0141cc6239a6c2cdf5c928fc1218b5828277911eb34309f3ececa8808  6.12.80-arm-rpi4-v7l/kernel/drivers/usb/serial/cp210x-stlink.ko
+ea07d4567b3b49149a4be938bb829c7bc3b7b8f1bb2e68bc6d0defbeaab18f82  6.12.80-arm-rpi4-v7l/kernel/sound/soc/codecs/snd-soc-pcm512x.ko
+ee5212750b3d5439cea779cc0b24aafe00fc575cfee28767df7e706aa49e1b6f  6.12.80-arm-rpi4-v7l/extra/inform-reboot.ko
+ee5e3b2090b366301d972056e51fad562195ff587495d48370f43756ba53a990  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921-common.ko
+ee635fdf9cfc84094816491adba29d89eafba5890208941e82f3588df09f037a  6.12.80-arm-rpi4-v7l/kernel/crypto/md5.ko
+effc337e94838b81b3ffaf7f1bd71837882431622a43e71d59fe9bc230b8b6bc  6.12.80-arm-rpi4-v7l/kernel/sound/soc/codecs/snd-soc-wm8741.ko
+f4ed4a9fe77a4d8c4ce44488b1c2524043d367a5dc39347b3136f0c606303b90  6.12.80-arm-rpi4-v7l/modules.symbols
+f94cd66a549191c2911160b360d72bea5a10f80091c4879cc572b3975a8452cb  6.12.80-arm-rpi4-v7l/modules.builtin.modinfo
+faadfdab4e3be9baefcbc5a41ad2bd80b2ff88ac4d116a9ad120c0c4c28a6bd7  6.12.80-arm-rpi4-v7l/kernel/drivers/usb/serial/cp210x.ko
+faeccd87b2d8fbbf8022134ddd7ea8dc167f6cc19092c600c43503099d40ef72  modules-load.d/tizen-modules-rpi4.conf
+fdcefcef49938a1717474fdb5deda7b04ac9f16ca52e21c7ebca7705889d7709  6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/mediatek/mt76/mt792x-lib.ko
+lrwxrwxrwx 1 root root 68 Nov  5 02:25 6.12.80-arm-rpi4-v7l/build -> /home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

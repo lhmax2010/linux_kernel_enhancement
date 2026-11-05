@@ -1,0 +1,10 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'test ! -e /opt/usr/lko_task19 && test ! -e /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01 && df -k /opt/usr /usr/lib/modules
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/mmcblk0p5       116404224    982796 115421428   1% /opt/usr
+/dev/mmcblk0p6           19396      4020     14648  22% /usr/lib/modules
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

@@ -17,7 +17,7 @@ Filename				Type		Size		Used		Priority
 /dev/zram0                              partition	603196		0		0
 
 /sys/block/zram0/comp_algorithm
-[lzo-rle] lzo 
+[lzo-rle] lzo
 
 /sys/block/zram0/disksize
 617676800

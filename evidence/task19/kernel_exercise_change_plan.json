@@ -1,0 +1,464 @@
+{
+  "authority": "Task19+20 PM confirmation: docs/11 approved plan + docs/14 verified payload",
+  "existing_file_backups": {
+    "config.txt": "7ecdb662716cab1532da77ff755912775284eb3aab5e3c89fd571dba854f7d07",
+    "zImage": "d5345f13eada3a3aab8b2fca9f511c608469f708d83a6a2445882e68241cc9af",
+    "bcm2711-rpi-4-b.dtb": "a0561668ec520b0605cdc8b7be6844365ce44f569f363e85f3d7332e1989d6ed"
+  },
+  "boot_changes": [
+    "rename original zImage to zImage.orig",
+    "copy verified base01 to zImage",
+    "rollback: restore zImage.orig to zImage"
+  ],
+  "module_changes": [
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/dm-bow.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "e453cccb50edea6b4308e5ad71ea7f070c28636ca12aa7ac2e04d08fb6250447",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/extcon-usb-fixed.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "d473195aaa18441ddd62e3ea58557f8bfe30b802f1f472d87d5c07a68d085aed",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/inform-reboot.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "d10219cb883d900d43f517a1541f89954743ec4eec9ffe784082f3d38ad1fa68",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/kdbus/kdbus.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "6567d5c54d83d6c277ab8cf61e138d627bdf2d76535587bb4677bac453024a0e",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/logger.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "b8f72067b680a19e040cdaecf03be0e3828388fe32ba278b4ad3d99ab638cab1",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "2fe9421d332af653c091adaefe325ca4b6e70577272ac4f5b751dae5a3d5b4d9",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/zlogger/zlogger.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "aa7f2a38449c8a052d787fa801ba88f9aa62d143cd5c52afba9a5c2db6101559",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/crypto/md5.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "53a20237c3d3bbdde7b375d3e379a17afeff6412841cc00b77d82b49aaf46bf8",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/block/nbd.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "4ce64650f06733c9a1bc2865afa347da5fa947956028a343e2c5df3d72c18518",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/bcm203x.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "3d4816d6b1140f6b301f5ffdb802134b2ad6307ac25ee7575baf257128fec2bf",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btbcm.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "8db5e9bb5686a41513486444935a86cf8015a2a7f73402d823775ce9ead34434",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btintel.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "64393206953f9fe159f9210585adfbecc8999830911f6427e711def2fed70437",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btrtl.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "81f3f630f5194dc8b7a08bec7af7a3a8de219fc4db2ca9259f50ffc372611758",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btusb.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "19995e2680c08ecf661d56bb8cd9a6f51de8f10bcbe0fdc6d44452b5228d7b69",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/hci_uart.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "15d328853f841af2cad9a66d7f4763b3df864411c49da89aaa63f291aa96c5c9",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/char/broadcom/bcm2835_smi_dev.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "f64e363c91b20b52e24b0f892a1b02e83f2ce6e43ba32d9af81939221ad2b261",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/hid/hid-led.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "7b08ef67ea0ae989613123a13070a0217f2c1251c04b0304e6714ab36bf8a20a",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c/busses/i2c-bcm2708.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "007d81e5cb6b81d729509ba9f8f709802d08656f03142b5e33ffff9cd692afe4",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c/i2c-stub.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "6fbe5bdd6843321c4a48d4e25093b2f313e6983d61cad2712c2b35934b0fb78a",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/input/joydev.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "86ad45d008f300dc2bba999fa5e246d6d6d034ce68ebae0bd245afd962d76a23",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds/trigger/ledtrig-camera.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "e5c765ca40bdb43c294bc603df06390b41ef8d525e4fcacc0312c87ee3753a31",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds/trigger/ledtrig-transient.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "0b6e951df48e120d05331cbc1aa45e4b870e025986dad52e17bc3cf5f02860e0",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb/gspca/gspca_main.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "48bc13ae76d8ebef9894b0835426051b0cbf9f1dce81ba38bc511832b54cffe9",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb/gspca/gspca_zc3xx.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "d2e9c8c740f887d51c5b3c95726f0e78d436283c2fc6dba8405f6c2a7b50ea1c",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/mfd/wl1273-core.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "07bfa53bba63632ef02b3c0974afa91916cd0053c751123c56685f9238677d4d",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/misc/bcm2835_smi.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "5abd7fc2cebaa3eb039cf6a617ab90de476b109c0aa905d6882ffb85c15b1892",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bca/brcmfmac-bca.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "c57dcd469b82cccc65f08d977c550866d364e26a4699969862cbc258919a8ad0",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "95f39149175de7103d9c881a7caf4cdb4b276e265559c0ca98281d9bb87d4cd1",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cyw/brcmfmac-cyw.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "5a80dbafb17277343b50a0d898966b6582c4c6ed7662888b2ecec8e8aafe0bfc",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/wcc/brcmfmac-wcc.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "4f3fb9c648a4153a80bdbcdbc5eccad384166b63e55d86804cca8fcd891668af",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil/brcmutil.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "ba42055f07f51e702d0dae4b9dbb01f4b6538f4ad9e5b044f9722cfc8cedd7ba",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76-connac-lib.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "df53601cca35f6a1c0123271f37e407ddf089ff4de6e24ea4ab934b9290f0a5c",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76-usb.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "359bdb11f80cb3aa56201f63ac7026de61e55acb02b892f97760a0ca4976ac52",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "1bb8ef7fbabc8d9597d1c69a4ea70095bdaa49174df6ce986dd813205732fb5e",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921-common.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "c1d5474c25f2ee4b8a902497a6477ab330eab536341cb0c30f933e3916d9e38d",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921u.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "15dedb3f5236469bba01aa71076132f6194c86edf8b64ac9d96eb2264850bdc5",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt792x-lib.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "44201314543fd18a23e8f06efb730677d6a67fe93c2c37a6ca363061349fb9a3",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt792x-usb.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "524478bb542a24167f1416503e0d7d09b87c87a87a7f8147a8c6ac9d748fb8bc",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/spi/spi-bcm2835aux.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "4ae303a130927eff23d8697404de43f2129d68f30a74efc3d6f1acf426390291",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/class/cdc-acm.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "d20fe84a2b44e907757f530f8113521e49f84b5cf6dee21248ade3802d3cab2f",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/gadget/udc/dummy_hcd.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "60774dea742f06dec61d1d89c52bf8377ef25f4eeaa7bce008cb12e58ece9da2",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/cp210x-stlink.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "6f2f5c04a68e2dffed8296dd7dd2aa85418a6c4af52e4584b4976b51e86e4680",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/cp210x.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "90dd23717100c96b37afbaf48730954b8a838de58fa268dbb4ebb406bc6aebb3",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/ftdi_sio.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "9776c2e0d462d483767b64d409b334a601da78338a9ef8dc454eb98ea622a407",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/option.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "a6850b2661a3e6ec1476a0b81bb3fadaaa3eafa219650c6d5efdfe60faef7572",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/pl2303.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "c72f462b9d0070387f8eb682b14d785917a37c076b005cd36a2b105c30887065",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/usb_wwan.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "4c7c8584eb4e26a6b5aa83a47f8c156bf2244da419903b40c0c7f44de341606e",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/watchdog/gpio_wdt.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "c63ee15f07ab6ab6a858f746b60470edbc11992849ae94b195b5d2efee9b8df5",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs/binfmt_misc.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "899ee57debc4adc7ed34163dd6d7f2cd61b6168b740457b42593866c28488981",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs/ecryptfs/ecryptfs.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "f245028ecba3bce544f49b5d680ec1bee8b50ad759f2117881fb7e8dc2b24e23",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/lib/crc7.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "c28d7a0a54f32e6f26cee6d851a2fd2943b61f31b520acc45c8c065b0b97fff9",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/net/netfilter/xt_LED.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "b510aca466807f57cb3c0fabaf0f2f005af88ba09518985bf429637b5d55c80d",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-cs42xx8-i2c.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "c384b661015dc85151f5d28f4222bea9996ccc464cb49a78ed9c468ccc3044dd",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-cs42xx8.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "ea4a9d9b1a784d46d1be1c5eeb70dc3fa1b2f2dc38ed58ca50efa2e7250029c3",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-pcm512x-i2c.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "9f7cba96340cab2ed41a6c4a871741cecc303361467f5e73e02a4f0ea0205ea5",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-pcm512x.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "d0773d38ae9b86d63cef9b4a7f5e0d6f9c43109cf60c82bad4e4db2a470bd0e4",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-sgtl5000.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "31000a4bad3c4387ce585bafb7b1267f2d2c751614f1d262ba0e8013e787833a",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-tpa6130a2.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "405aac47a05434a999ef55ee73b620197efef03e941e32a04a773770415e68ce",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-wm8741.ko",
+      "before": "ABSENT; no file to back up",
+      "sha256": "f5e7d92ae4921ead513b7d303fe97eb7315f7f2f426c29f1e2ff0e95f7f74373",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.alias",
+      "before": "ABSENT; no file to back up",
+      "sha256": "7a3d74231cd6dc78da085feb1a492053e2e8d79b955413aed53eedbd8b93be75",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.alias.bin",
+      "before": "ABSENT; no file to back up",
+      "sha256": "ba420e4993b7e1660bbb180fae4ac66b587b8fd92a682a2f7d3d390fae36e17c",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin",
+      "before": "ABSENT; no file to back up",
+      "sha256": "3cebba95c1c6f0c767d2ecacad5004302aabda58c6739dd27a9393f27fe1e994",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.alias.bin",
+      "before": "ABSENT; no file to back up",
+      "sha256": "054e46ee7ce1ed367e346c0389c3325fda7312592d053c1ce4ae2f66fa0cd8de",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.bin",
+      "before": "ABSENT; no file to back up",
+      "sha256": "c05c9379b2cc71c60e7f06267bd4f4ba478bd7fd09f0085ea2bc4974c2016a07",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.modinfo",
+      "before": "ABSENT; no file to back up",
+      "sha256": "f94cd66a549191c2911160b360d72bea5a10f80091c4879cc572b3975a8452cb",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.dep",
+      "before": "ABSENT; no file to back up",
+      "sha256": "d55b93f4d74bbc0f8c1dd2ee22a504bfd7da270f29b740a0ce4a6f89da2f694b",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.dep.bin",
+      "before": "ABSENT; no file to back up",
+      "sha256": "516bfa64c31e52e4fcb18d446350e89243b4f0cdc1bd8745ceb191673cafddf5",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.devname",
+      "before": "ABSENT; no file to back up",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.order",
+      "before": "ABSENT; no file to back up",
+      "sha256": "8bddc32cf19ade065cd232f7f4ceb53bc3ef51e2599e9ff1b027b4733edb6965",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.softdep",
+      "before": "ABSENT; no file to back up",
+      "sha256": "ac2de753255c506934be29e69261f1485f51ee9cf9c2bf467bcc0c4cf95f8713",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.symbols",
+      "before": "ABSENT; no file to back up",
+      "sha256": "f4ed4a9fe77a4d8c4ce44488b1c2524043d367a5dc39347b3136f0c606303b90",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.symbols.bin",
+      "before": "ABSENT; no file to back up",
+      "sha256": "03ca22d78b676a7a51a761ed1df11f7f955b114ce24bce708308e047e2639257",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.weakdep",
+      "before": "ABSENT; no file to back up",
+      "sha256": "a1fffe1059d8150b5d402b3f284f507025a8d4b5881810cb17b3fda8b8ab9304",
+      "rollback": "remove only this new version directory after original kernel boot"
+    },
+    {
+      "path": "/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/build",
+      "type": "symlink",
+      "before": "ABSENT",
+      "target": "/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4"
+    }
+  ],
+  "unchanged": [
+    "all DTBs and overlays",
+    "config.txt (retain total_mem=1600)",
+    "original module version and shared configs"
+  ]
+}

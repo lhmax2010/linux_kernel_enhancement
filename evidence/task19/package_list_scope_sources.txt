@@ -3,26 +3,26 @@ temp/task17/20261104.160709/images_standard_tizen-headed-armv7l_tizen-unified-to
 363: rm -rf $DOTNET_MIC_DIR
 364: rpm -e patchelf --nodeps
 365: rpm -e crossgen2-mic --nodeps
-366: 
+366:
 367: #!/bin/sh
 
 temp/task17/20261104.160709/boot_tizen-unified-toolchain_20261104.160709_tizen-boot-armv7l-rpi.ks SHA256=c009fadec34ceb8f60eff6ccd24bfba1e43a9091ee98929e4f5742257872c141
-60: 
+60:
 61: if [ -d /hal ]; then
 62: 	echo "Initialize rpmdb for HaL Backend"
 63: 	mkdir -p /hal/lib/rpm
 64: 	cp /var/lib/rpm/Packages /hal/lib/rpm/
 65: 	rpm --rebuilddb --dbpath=/hal/lib/rpm
 66: fi
-67: 
+67:
 116: 			echo "${packages}"
 117: 		fi
 118: 	done | xargs -r rpm -e --justdb --nodeps --noscripts --dbpath=/hal/lib/rpm 2>/dev/null || echo "WARNING: Could not remove some packages from hal rpmdb"
-119: 
-120: 
+119:
+120:
 178: 	create_backend_dependency_file
-179: 
+179:
 180: 	#Create exportdb file to update a rpmdb of core image
 181: 	/usr/bin/rpmdb --dbpath=/hal/lib/rpm --exportdb > /hal/etc/hal-rpmdb.ini
 182: fi
-183: 
+183:

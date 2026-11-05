@@ -1,0 +1,40 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'cat /proc/uptime; cat /proc/modules; systemctl --failed --no-pager; systemctl show systemd-modules-load.service -p Result -p ExecMainStatus; journalctl -b -u systemd-modules-load.service --no-pager; dmesg | grep -i -E "unknown symbol|disagrees about version|invalid module|proc.tsm|blacklist|kdbus|logger"; cat /usr/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf; cat /usr/lib/modules/modules-load.d/tizen-modules-rpi4.conf
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+86.15 315.21
+brcmfmac 352256 0 - Live 0xbf05e000
+brcmutil 16384 1 brcmfmac, Live 0xbf014000
+hci_uart 32768 0 - Live 0xbf02c000
+btbcm 20480 1 hci_uart, Live 0xbf006000
+kdbus 98304 86 - Live 0xbf033000 (O)
+dm_bow 20480 0 - Live 0xbf024000 (O)
+logger 16384 185 - Live 0xbf016000 (O)
+extcon_usb_fixed 12288 0 - Live 0xbf00c000 (O)
+inform_reboot 12288 0 - Live 0xbf000000 (O)
+  UNIT                      LOAD   ACTIVE SUB    DESCRIPTION
+● stability-monitor.service loaded failed failed Stability monitoring daemon
+
+LOAD   = Reflects whether the unit definition was properly loaded.
+ACTIVE = The high-level unit activation state, i.e. generalization of SUB.
+SUB    = The low-level unit activation state, values depend on unit type.
+
+1 loaded units listed.
+Result=success
+ExecMainStatus=0
+-- Logs begin at Thu 1970-01-01 09:00:16 KST, end at Thu 2026-11-05 21:27:28 KST. --
+-- No entries --
+[    2.439308] logger: created 256K log 'log_main'
+[    2.439444] logger: created 256K log 'log_events'
+[    2.439530] logger: created 256K log 'log_radio'
+[    2.439625] logger: created 256K log 'log_system'
+[    2.442296] kdbus: initialized
+options proc-tsm blacklist=System::TEF
+dm-bow
+extcon-usb-fixed
+inform-reboot
+logger
+kdbus
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

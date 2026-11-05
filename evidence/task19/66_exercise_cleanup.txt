@@ -1,0 +1,9 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'set -e; test "$(uname -r)" = 6.12.80-arm-rpi4-v7l; if grep -q " /opt/usr/lko_task19/boot " /proc/mounts; then exit 1; fi; rm -rf /opt/usr/lko_task19; test ! -e /opt/usr/lko_task19; df -k /opt/usr /usr/lib/modules; ls -ld /opt/usr/lko_task19; test ! -e /opt/usr/lko_task19
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/mmcblk0p5       116404224    982796 115421428   1% /opt/usr
+/dev/mmcblk0p6           19396      4020     14648  22% /usr/lib/modules
+ls: cannot access /opt/usr/lko_task19: No such file or directory
+
+TRANSPORT-EXIT=0

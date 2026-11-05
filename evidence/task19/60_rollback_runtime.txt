@@ -1,0 +1,154 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'uname -r; cat /proc/version; cat /proc/sys/kernel/random/boot_id; cat /proc/meminfo; cat /proc/modules; systemctl show resourced.service -p ActiveState -p SubState -p Result -p ExecMainStatus; systemctl show lko-net-setup.service -p ActiveState -p Result -p ExecMainStatus; ip link show eth0; ip addr show eth0; ip route; cat /proc/swaps; sha256sum /usr/bin/resourced; ls -l /sys/fs/cgroup/memory/memory.force_reclaim; ls -l /proc/config.gz; for m in $(cut -d " " -f 1 /proc/modules); do printf "MODULE=%s
+" "$m"; modinfo -n "$m"; modinfo -F vermagic "$m"; done; cat /proc/mounts
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+6.12.80-arm-rpi4-v7l
+Linux version 6.12.80-arm-rpi4-v7l (abuild@[build-host-redacted]) (clang version 22.1.8, LLD 22.1.8) #1 SMP Wed Nov  4 17:05:36 UTC 2026
+4e5c71ff-0cf8-4e7e-9f61-16602d3c3b57
+MemTotal:        1507996 kB
+MemFree:         1247268 kB
+MemAvailable:    1340316 kB
+Buffers:           10720 kB
+Cached:            94184 kB
+SwapCached:            0 kB
+Active:           130692 kB
+Inactive:          34308 kB
+Active(anon):      61860 kB
+Inactive(anon):        0 kB
+Active(file):      68832 kB
+Inactive(file):    34308 kB
+Unevictable:         144 kB
+Mlocked:             144 kB
+HighTotal:        774144 kB
+HighFree:         592820 kB
+LowTotal:         733852 kB
+LowFree:          654448 kB
+SwapTotal:        603196 kB
+SwapFree:         603196 kB
+Dirty:              1084 kB
+Writeback:             0 kB
+AnonPages:         60132 kB
+Mapped:            47684 kB
+Shmem:              1764 kB
+KReclaimable:      11912 kB
+Slab:              45924 kB
+SReclaimable:      11912 kB
+SUnreclaim:        34012 kB
+KernelStack:        3076 kB
+PageTables:         3912 kB
+SecPageTables:         0 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1357192 kB
+Committed_AS:    3120936 kB
+VmallocTotal:     245760 kB
+VmallocUsed:       17672 kB
+VmallocChunk:          0 kB
+Percpu:             1024 kB
+CmaTotal:         327680 kB
+CmaFree:          319488 kB
+proc_tsm 12288 0 - Live 0xbf014000 (O)
+brcmfmac 352256 0 - Live 0xbf063000
+brcmutil 16384 1 brcmfmac, Live 0xbf057000
+hci_uart 32768 0 - Live 0xbf02c000
+btbcm 20480 1 hci_uart, Live 0xbf006000
+kdbus 98304 92 - Live 0xbf033000 (O)
+logger 16384 223 - Live 0xbf025000 (O)
+dm_bow 20480 0 - Live 0xbf016000 (O)
+extcon_usb_fixed 12288 0 - Live 0xbf00c000 (O)
+inform_reboot 12288 0 - Live 0xbf000000 (O)
+Result=success
+ExecMainStatus=0
+ActiveState=active
+SubState=running
+Result=success
+ExecMainStatus=0
+ActiveState=active
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.108.26/24 brd 192.168.108.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::2ecf:67ff:fea0:72b5/64 scope link
+       valid_lft forever preferred_lft forever
+default via 192.168.108.1 dev eth0
+192.168.108.0/24 dev eth0 proto kernel scope link src 192.168.108.26
+192.168.108.1 dev eth0 scope link
+221.131.143.69 via 192.168.108.1 dev eth0
+Filename				Type		Size		Used		Priority
+/dev/zram0                              partition	603196		0		0
+67a5bee5c9fe0f0eb266875c018089283f9291b6b2516691d6aa96837127d556  /usr/bin/resourced
+--w------- 1 root root 0 Jan  1  1970 /sys/fs/cgroup/memory/memory.force_reclaim
+ls: cannot access /proc/config.gz: No such file or directory
+MODULE=proc_tsm
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko
+6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8
+MODULE=brcmfmac
+/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8
+MODULE=brcmutil
+/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil/brcmutil.ko
+6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8
+MODULE=hci_uart
+/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/bluetooth/hci_uart.ko
+6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8
+MODULE=btbcm
+/lib/modules/6.12.80-arm-rpi4-v7l/kernel/drivers/bluetooth/btbcm.ko
+6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8
+MODULE=kdbus
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/kdbus/kdbus.ko
+6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8
+MODULE=logger
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko
+6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8
+MODULE=dm_bow
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/dm-bow.ko
+6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8
+MODULE=extcon_usb_fixed
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko
+6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8
+MODULE=inform_reboot
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/inform-reboot.ko
+6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8
+devtmpfs /dev devtmpfs rw,nosuid,size=581964k,nr_inodes=97447,mode=755 0 0
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+/dev/mmcblk0p6 /usr/lib/modules ext4 ro,relatime 0 0
+/dev/mmcblk0p2 / ext4 ro,relatime 0 0
+/dev/mmcblk0p3 /opt ext4 rw,relatime 0 0
+/dev/mmcblk0p10 /hal ext4 ro,relatime 0 0
+smackfs /sys/fs/smackfs smackfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev,noexec 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,noexec,mode=755 0 0
+tmpfs /sys/fs/cgroup tmpfs ro,nosuid,nodev,noexec,mode=755 0 0
+cgroup /sys/fs/cgroup/systemd cgroup rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd 0 0
+kdbusfs /sys/fs/kdbus kdbusfs rw,nosuid,nodev,noexec,relatime 0 0
+bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+cgroup /sys/fs/cgroup/cpu,cpuacct cgroup rw,nosuid,nodev,noexec,relatime,cpu,cpuacct 0 0
+cgroup /sys/fs/cgroup/blkio cgroup rw,nosuid,nodev,noexec,relatime,blkio 0 0
+cgroup /sys/fs/cgroup/freezer cgroup rw,nosuid,nodev,noexec,relatime,freezer 0 0
+cgroup /sys/fs/cgroup/memory cgroup rw,nosuid,nodev,noexec,relatime,memory 0 0
+cgroup /sys/fs/cgroup/cpuset cgroup rw,nosuid,nodev,noexec,relatime,cpuset 0 0
+cgroup /sys/fs/cgroup/net_cls cgroup rw,nosuid,nodev,noexec,relatime,net_cls,release_agent=/usr/bin/net-cls-release 0 0
+cgroup /sys/fs/cgroup/devices cgroup rw,nosuid,nodev,noexec,relatime,devices 0 0
+systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=25,pgrp=1,timeout=0,minproto=5,maxproto=5,direct 0 0
+mqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0
+configfs /sys/kernel/config configfs rw,nosuid,nodev,noexec,relatime 0 0
+debugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0
+/dev/mmcblk0p9 /mnt/inform ext4 rw,relatime 0 0
+/dev/mmcblk0p5 /opt/usr f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+tracefs /sys/kernel/debug/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+fusectl /sys/fs/fuse/connections fusectl rw,nosuid,nodev,noexec,relatime 0 0
+/dev/loop0 /opt/usr/home/owner/subsession/__templ_acct_fix__ ext4 rw,relatime 0 0
+cgroup /sys/fs/cgroup/watchdog cgroup rw,nosuid,nodev,noexec,relatime,release_agent=/usr/bin/resourced-watchdog-handler.sh,name=watchdog 0 0
+/dev/loop1 /opt/usr/home/owner/subsession/__templ_prof_fix__ ext4 rw,relatime 0 0
+tmpfs /opt/media tmpfs rw,relatime 0 0
+/dev/mmcblk0p5 /opt/usr/home/owner/media f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

@@ -60,7 +60,7 @@ tmpfs /opt/media tmpfs rw,relatime 0 0
     link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
     inet 192.168.108.26/24 brd 192.168.108.255 scope global eth0
        valid_lft forever preferred_lft forever
-    inet6 fe80::2ecf:67ff:fea0:72b5/64 scope link 
+    inet6 fe80::2ecf:67ff:fea0:72b5/64 scope link
        valid_lft forever preferred_lft forever
 7c924a80-5176-4301-9c17-4c4540933d1f
 25.80 80.34

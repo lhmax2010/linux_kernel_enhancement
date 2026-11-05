@@ -1,0 +1,41 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'systemctl cat stability-monitor.service; systemctl show stability-monitor.service -p Result -p ExecMainStatus -p ExecStart; journalctl -b -u stability-monitor.service --no-pager; modinfo /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko; ls -lZ /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko /usr/lib/modules/6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+# /usr/lib/systemd/system/stability-monitor.service
+[Unit]
+Description=Stability monitoring daemon
+
+[Service]
+Type=simple
+User=stability_monitor
+Group=stability_monitor
+Capabilities=cap_sys_ptrace,cap_sys_module,cap_kill=i
+SecureBits=keep-caps
+SmackProcessLabel=System
+ExecStart=/usr/sbin/stability-monitor
+Restart=on-failure
+RestartSec=0
+MemoryMax=20M
+
+[Install]
+WantedBy=multi-user.target
+Result=exit-code
+ExecMainStatus=255
+ExecStart={ path=/usr/sbin/stability-monitor ; argv[]=/usr/sbin/stability-monito
+r ; ignore_errors=no ; start_time=[Thu 1970-01-01 09:00:16 KST] ; stop_time=[Thu
+ 1970-01-01 09:00:16 KST] ; pid=681 ; code=exited ; status=255 }
+-- Logs begin at Thu 1970-01-01 09:00:16 KST, end at Thu 2026-11-05 21:27:48 KST. --
+-- No entries --
+filename:       /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko
+license:        GPL
+name:           proc_tsm
+depends:
+srcversion:     4AAA2EAB4A1F60715A4F1E3
+vermagic:       6.12.80-arm-rpi4-v7l-lko-base01 SMP mod_unload modversions ARMv7 p2v8
+parm:           blacklist:array of charp
+-rw-r--r-- 1 root root User::Shell 10680 Nov  4 03:42 /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko
+-rw-r--r-- 1 root root _           10680 Nov  5 02:45 /usr/lib/modules/6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0
