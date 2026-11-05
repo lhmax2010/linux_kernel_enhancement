@@ -1,0 +1,14 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/platform-private /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/platform-private --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/sr --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/sr/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/sr/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/strings -a /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/binaries/libkmod.so.2
+Source: temp/task21/sr/libkmod.so.2_strings.txt
+SHA256: f976141cc717bf931381794586c01cfe5447704cb389fc87b8b8e979ba8b7844
+53: kmod_module_new_from_name
+98: kmod_module_new_from_name_lookup
+110: kmod_module_probe_insert_module
+827: /run/modprobe.d
+828: /usr/local/lib/modprobe.d
+829: /usr/lib/modprobe.d
+830: /hal/etc/modprobe.d
+831: /hal/lib/modules/modprobe.d
+871: blacklist=
+
+EXIT=0

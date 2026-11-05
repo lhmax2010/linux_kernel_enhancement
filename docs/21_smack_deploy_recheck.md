@@ -16,7 +16,7 @@
 
 - stability-monitor.service明确`User=stability_monitor`、`Group=stability_monitor`、`SmackProcessLabel=System`、`ExecStart=/usr/sbin/stability-monitor`，配置能力包含cap_sys_module。当前PID493、UID204，`/proc/493/attr/current`为System，服务active/running、退出0。[unit和共享配置](../evidence/task21/05_load_path.txt)、[进程/依赖](../evidence/task21/07_stability_dependencies.txt)
 - ldd解析到libkmod.so.2；平台readelf确认程序导入`kmod_new`、`kmod_module_new_from_name`、`kmod_module_probe_insert_module`等。strings含`src/raw_data_providers/proc_tsm.c`、`Unable to find module proc_tsm`、`Unable to insert %s: %m`。这支持该服务通过libkmod加载proc_tsm，非依赖modules-load.d；本轮没有主动加载或跟踪实际加载syscall。[符号](../evidence/task21/stability-monitor_symbols_excerpt.txt)、[字符串](../evidence/task21/stability-monitor_strings_excerpt.txt)
-- libkmod导入init_module，提供probe_insert/insert接口；未发现finit_module动态符号名不能证明内部不用直接syscall。[libkmod符号](../evidence/task21/libkmod.so.2_symbols_excerpt.txt)
+- libkmod导入init_module，提供probe_insert/insert接口；未发现finit_module动态符号名不能证明内部不用直接syscall。[libkmod符号](../evidence/task21/libkmod_symbols_excerpt.txt)
 - modules-load.d的现有条目为dm-bow、extcon-usb-fixed、inform-reboot、logger、kdbus，没有proc-tsm。当前共10个已加载模块，含proc_tsm；其余模块可能由依赖或设备触发加载，不能把“其余9个都直接写在modules-load.d”当作事实。
 - modprobe.d含`options proc-tsm blacklist=System::TEF`。公开源码`ext/linux-tizen-modules-source/kernel/proc-tsm.c:49–52`将blacklist声明为模块字符串数组参数；`:159–174`在遍历进程时匹配安全标签并跳过相应进程。这是采样过滤参数，不是禁止加载proc-tsm的modprobe blacklist指令。[源码版本/行号证据](../evidence/task21/proc_tsm_parameter_source.txt)
 
