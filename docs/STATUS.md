@@ -1,5 +1,7 @@
 # 项目状态
 
+任务17完成两QB镜像开发机静态核验：1218764/1218766均Successful，页面与公开产物来源链闭合；指定内核/resourced SHA符合，类产品模块按指定源码本次重编。两套各7模块356项CRC（253去重符号）0不一致/0缺失，52内核模块＋7外部模块vermagic全符；普通.config与对应本地构建逐字相同，resourced加载段与任务15一致。**待PM裁决：SR模块并非复用旧RPM，而是本次从458baad0重编；ABI通过但来源/行为偏差仍需接受。** 1275包对照仅3个内核/模块来源不同，无其他版本/来源差异；4份armv7l boot/headed archive哈希通过。报告/烧录清单见[19](19_qb_image_verification.md)、evidence/task17/。浏览器关闭且临时配置目录已删除；未连板/构建/sudo/触发QB/推Gerrit。下一步为PM裁决SR偏差，另行安排烧录和上板运行核验。
+
 任务16：fread_str调用及gslist_for_each_safe参数核对通过，源码94d346c3保持不变；resourced授权sandbox已新建并推后核对一致，tizen仍82e79c09。PM审核结论及证据见[17第5节](17_resourced_fix.md#5-pm-审核任务16)、evidence/task16/；SR出镜像必须固定内核0fac5de6并重编配套resourced五包，见[18](18_sr_baseline_image.md)。未构建、未触发QB、未部署；下一步由用户按说明出镜像，运行时验收另行安排。
 
 PB2 产品板只读探测已完成当前权限下的采集，存在无法读取的项目，详见本地报告（不入库）。

@@ -1,0 +1,52 @@
+{
+  "by_external_module": [
+    {
+      "module": "dm-bow.ko",
+      "comparisons": 56,
+      "mismatch": 0,
+      "missing": 0
+    },
+    {
+      "module": "extcon-usb-fixed.ko",
+      "comparisons": 9,
+      "mismatch": 0,
+      "missing": 0
+    },
+    {
+      "module": "inform-reboot.ko",
+      "comparisons": 16,
+      "mismatch": 0,
+      "missing": 0
+    },
+    {
+      "module": "kdbus.ko",
+      "comparisons": 154,
+      "mismatch": 0,
+      "missing": 0
+    },
+    {
+      "module": "logger.ko",
+      "comparisons": 42,
+      "mismatch": 0,
+      "missing": 0
+    },
+    {
+      "module": "proc-tsm.ko",
+      "comparisons": 26,
+      "mismatch": 0,
+      "missing": 0
+    },
+    {
+      "module": "zlogger.ko",
+      "comparisons": 53,
+      "mismatch": 0,
+      "missing": 0
+    }
+  ],
+  "total_comparisons": 356,
+  "unique_symbols": 253,
+  "vermagic_checked": 59,
+  "vermagic_mismatch": 0,
+  "mismatch_items": [],
+  "full_rows_local_only": "temp/task17/sr/module_crc.json"
+}

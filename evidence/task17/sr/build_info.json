@@ -1,0 +1,168 @@
+{
+  "qb_id": 1218764,
+  "page": "https://quickbuild.tizen.org/build/1218764/overview",
+  "status": "Successful",
+  "begin_page": "2026-11-04 16:07:09",
+  "duration_page": "5 hours 22 minutes 38 seconds",
+  "end_calculated_from_page_begin_plus_duration": "2026-11-04 21:29:47",
+  "timezone": "Page has no timezone label; UTC is inferred from dated UTC package buildlogs within this window, not an explicit QB timezone claim.",
+  "overview": {
+    "id": 1218764,
+    "rows": [
+      {
+        "key": "Build Package List",
+        "values": [
+          "platform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708\nplatform/core/system/resourced@94d346c306233803661e8eab8557596549d82be4"
+        ]
+      },
+      {
+        "key": "Build Type",
+        "values": [
+          "Full"
+        ]
+      },
+      {
+        "key": "Build Reference",
+        "values": [
+          "Ref. Snapshot"
+        ]
+      },
+      {
+        "key": "Profile URL",
+        "values": [
+          "http://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261102.122237"
+        ]
+      },
+      {
+        "key": "Base URL",
+        "values": [
+          "http://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/tizen-base-toolchain_20261030.120529"
+        ]
+      },
+      {
+        "key": "Download_URL",
+        "values": [
+          "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709"
+        ]
+      },
+      {
+        "key": "Manifest_URL",
+        "values": [
+          "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/builddata/manifest"
+        ]
+      },
+      {
+        "key": "standard-armv7l",
+        "values": [
+          "https://quickbuild.tizen.org/build/1218765",
+          "Succeeded",
+          "Link"
+        ]
+      },
+      {
+        "key": "standard-aarch64",
+        "values": [
+          "https://quickbuild.tizen.org/build/1218767",
+          "Succeeded",
+          "Link"
+        ]
+      },
+      {
+        "key": "standard-x86_64",
+        "values": [
+          "https://quickbuild.tizen.org/build/1218768",
+          "Succeeded",
+          "Link"
+        ]
+      },
+      {
+        "key": "tizen-boot-aarch64-rpi",
+        "values": [
+          "https://quickbuild.tizen.org/build/1218894",
+          "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-boot-aarch64-rpi/",
+          "SUCCESSFUL"
+        ]
+      },
+      {
+        "key": "tizen-boot-armv7l-rpi",
+        "values": [
+          "https://quickbuild.tizen.org/build/1218895",
+          "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-boot-armv7l-rpi/",
+          "SUCCESSFUL"
+        ]
+      },
+      {
+        "key": "tizen-headed-aarch64",
+        "values": [
+          "https://quickbuild.tizen.org/build/1218896",
+          "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headed-aarch64/",
+          "SUCCESSFUL"
+        ]
+      },
+      {
+        "key": "tizen-headed-armv7l",
+        "values": [
+          "https://quickbuild.tizen.org/build/1218897",
+          "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headed-armv7l/",
+          "SUCCESSFUL"
+        ]
+      },
+      {
+        "key": "tizen-headless-aarch64",
+        "values": [
+          "https://quickbuild.tizen.org/build/1218898",
+          "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headless-aarch64/",
+          "SUCCESSFUL"
+        ]
+      },
+      {
+        "key": "tizen-headless-armv7l",
+        "values": [
+          "https://quickbuild.tizen.org/build/1218899",
+          "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headless-armv7l/",
+          "SUCCESSFUL"
+        ]
+      }
+    ],
+    "links": [
+      "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709",
+      "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/builddata/manifest",
+      "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-boot-aarch64-rpi/",
+      "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-boot-armv7l-rpi/",
+      "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headed-aarch64/",
+      "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headed-armv7l/",
+      "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headless-aarch64/",
+      "http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headless-armv7l/"
+    ],
+    "time_status_leaves": [
+      {
+        "tag": "TD",
+        "classes": "",
+        "text": "2026-11-04 16:07:09"
+      }
+    ]
+  },
+  "variables_selected": [
+    {
+      "name": "BUILD_PKG_LIST",
+      "value": "platform/core/system/resourced@94d346c306233803661e8eab8557596549d82be4\nplatform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708\nplatform/kernel/linux-tizen-modules@458baad02d812098938663971d1b8560a4813375\nplatform/kernel/linux-tizen-modules-source@25797e8af7ed95a5783bbe84c11959560aaf7e92"
+    },
+    {
+      "name": "BUILD_TYPE",
+      "value": " Full"
+    },
+    {
+      "name": "PROJECT_BRANCH",
+      "value": " tizen"
+    },
+    {
+      "name": "PROJECT_NAME",
+      "value": " Tizen-Unified-Toolchain"
+    },
+    {
+      "name": "USE_BRANCH_POLICY",
+      "value": " false"
+    }
+  ],
+  "capture": "Authenticated visible browser; selected DOM table cells only; no account fields/cookies/headers/tokens captured."
+}

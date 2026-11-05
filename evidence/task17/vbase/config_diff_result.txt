@@ -1,0 +1,4 @@
+scripts/diffconfig exit=0
+output lines=0
+byte-identical=True
+See kernel_summary.json for command and SHA-256; vbase configs remain vendor_local only.

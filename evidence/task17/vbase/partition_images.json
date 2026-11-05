@@ -1,0 +1,60 @@
+[
+  {
+    "archive": "tizen-unified-toolchain_20261104.160825_tizen-boot-armv7l-rpi.tar.gz",
+    "members": [
+      {
+        "name": "modules.img",
+        "bytes": 25133056,
+        "type": "0",
+        "sha256": "a816eedf598882d42613cdaef9eb22c683f1f45c6cd98b7da63302c1037ac31f"
+      },
+      {
+        "name": "boot.img",
+        "bytes": 67108864,
+        "type": "0",
+        "sha256": "2b22360c921a1c0c2b95c9893ad774ac2957bf787d58fe85a2962c6f52f77ecd"
+      },
+      {
+        "name": "hal.img",
+        "bytes": 107606016,
+        "type": "0",
+        "sha256": "577354402a6d1f307739e3d1e74299891ba1094b8b81c28f352537339bda99e9"
+      }
+    ]
+  },
+  {
+    "archive": "tizen-unified-toolchain_20261104.160825_tizen-headed-armv7l.tar.gz",
+    "members": [
+      {
+        "name": "system-data.img",
+        "bytes": 69939200,
+        "type": "0",
+        "sha256": "8a340f6422a4eb07ee900e425500787aeeac30c81e2a52737bbb7cb01e11d704"
+      },
+      {
+        "name": "user.img",
+        "bytes": 524288000,
+        "type": "0",
+        "sha256": "2c4373a11c0ba38725e2bc5b9f916ebec6b261545aa18a975c4644234923502b"
+      },
+      {
+        "name": "rootfs.img",
+        "bytes": 1240301568,
+        "type": "0",
+        "sha256": "ac864e9a315837e35a393013218a12eebdb96d2cb76c46a8231b2e6bb3ab9e92"
+      },
+      {
+        "name": "ramdisk-recovery.img",
+        "bytes": 13456577,
+        "type": "0",
+        "sha256": "1a9fbee723eb8ed498cacedcddcce9b95fe80d3558b01488172b56a091ad72c9"
+      },
+      {
+        "name": "ramdisk.img",
+        "bytes": 7629377,
+        "type": "0",
+        "sha256": "f0fdfa453faae42380221f6d32abbcd046bd3fd78fbc254b38e2524db6de982e"
+      }
+    ]
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "version": "2.1.3",
+  "created": "2026-11-04 21:07:44",
+  "format": "loop",
+  "loop": {
+    "partitions": {
+      "/boot": "boot",
+      "/hal": "hal",
+      "/lib/modules": "modules"
+    },
+    "image_files": [
+      "tizen-unified-toolchain_20261104.160709_tizen-boot-armv7l-rpi.tar.gz"
+    ],
+    "pack": ".160709_tizen-boot-armv7l-rpi.tar.gz"
+  }
+}

@@ -1,0 +1,7 @@
+SOURCE https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/builddata/buildlogs/standard/armv7l/succeeded/linux-tizen-modules.buildlog.txt
+FULL_LOG_SHA256 a2988d516543b1de5560a1c2eb3f9edd71e1c4702eb9f47f55f1a9e6b541fa6f
+Line numbers refer to full downloaded buildlog.
+6: [    0s] [build-worker] started "build linux-tizen-modules.spec" at Wed Nov  4 17:51:07 UTC 2026.
+260: [   53s] + make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4
+357: [   81s] + make -C kernel KERNELDIR=/boot/kernel/devel/kernel-devel-arm-rpi4-rt
+554: [  108s] [build-worker] finished "build linux-tizen-modules.spec" at Wed Nov  4 17:52:55 UTC 2026.

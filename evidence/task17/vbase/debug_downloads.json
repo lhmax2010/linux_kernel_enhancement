@@ -1,0 +1,18 @@
+[
+  {
+    "name": "resourced-bin-debuginfo",
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/debug/resourced-bin-debuginfo-10.0.0-1.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/debug/resourced-bin-debuginfo-10.0.0-1.armv7l.rpm",
+    "bytes": 232212,
+    "sha256": "5de98c73a1a28766c9be6c7a96b5c007bf2f5959c99ff687f3d2dcb024dd0871",
+    "checksum_ok": true
+  },
+  {
+    "name": "resourced-debuginfo",
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/debug/resourced-debuginfo-10.0.0-1.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/debug/resourced-debuginfo-10.0.0-1.armv7l.rpm",
+    "bytes": 148768,
+    "sha256": "e968c2af011e5a4153b878c1107520f2e527efce6a95373b6236985611ab609a",
+    "checksum_ok": true
+  }
+]

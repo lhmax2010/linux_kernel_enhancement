@@ -1,0 +1,79 @@
+[
+  {
+    "name": "arm-rpi4-linux-kernel",
+    "file": "temp/task17/sr/rpms/arm-rpi4-linux-kernel-6.12.80-0.armv7l.rpm",
+    "bytes": 17605980,
+    "sha256": "76baa04df51d5a3edb83660dcb6dd920e9dc6071c58040a0c0deb09f2e487d18",
+    "header": "arm-rpi4-linux-kernel\t6.12.80-0\tarmv7l\t0\tplatform/kernel/linux-rpi#0fac5de6a63091d141ad1cd3ed9d9e92b8dde708\trpi4-linux-kernel-6.12.80-0.src.rpm"
+  },
+  {
+    "name": "arm-rpi4-linux-kernel-devel",
+    "file": "temp/task17/sr/rpms/arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+    "bytes": 115630696,
+    "sha256": "be86caa1374074c2bef9d80f4ae255fa970900d4175836f0d6f7564851cc3058",
+    "header": "arm-rpi4-linux-kernel-devel\t6.12.80-0\tarmv7l\t0\tplatform/kernel/linux-rpi#0fac5de6a63091d141ad1cd3ed9d9e92b8dde708\trpi4-linux-kernel-6.12.80-0.src.rpm"
+  },
+  {
+    "name": "arm-rpi4-linux-kernel-modules",
+    "file": "temp/task17/sr/rpms/arm-rpi4-linux-kernel-modules-6.12.80-0.armv7l.rpm",
+    "bytes": 728772,
+    "sha256": "027798ddb0920bcb8b729eed319c4f548c548deb71d7e420cbc8b987767d587c",
+    "header": "arm-rpi4-linux-kernel-modules\t6.12.80-0\tarmv7l\t0\tplatform/kernel/linux-rpi#0fac5de6a63091d141ad1cd3ed9d9e92b8dde708\trpi4-linux-kernel-6.12.80-0.src.rpm"
+  },
+  {
+    "name": "arm-rpi4-rt-linux-kernel",
+    "file": "temp/task17/sr/rpms/arm-rpi4-rt-linux-kernel-6.12.80-0.armv7l.rpm",
+    "bytes": 17652360,
+    "sha256": "4920cd6698665a8ec77a64e7c003526d23a28d690a7e4fd2f13379ccd2adaba5",
+    "header": "arm-rpi4-rt-linux-kernel\t6.12.80-0\tarmv7l\t0\tplatform/kernel/linux-rpi#0fac5de6a63091d141ad1cd3ed9d9e92b8dde708\trpi4-linux-kernel-6.12.80-0.src.rpm"
+  },
+  {
+    "name": "linux-tizen-modules-rpi4",
+    "file": "temp/task17/sr/rpms/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm",
+    "bytes": 92356,
+    "sha256": "1928589954630cecbfd4515b2221856cb90aae1c6ee122fe80c378b487465f61",
+    "header": "linux-tizen-modules-rpi4\t11.0.0-0\tarmv7l\t0\tplatform/kernel/linux-tizen-modules#458baad02d812098938663971d1b8560a4813375\tlinux-tizen-modules-11.0.0-0.src.rpm"
+  },
+  {
+    "name": "linux-tizen-modules-source",
+    "file": "temp/task17/sr/rpms/linux-tizen-modules-source-11.0.0-0.armv7l.rpm",
+    "bytes": 123460,
+    "sha256": "8d96678eea86c721a560cda96c150e884ed66ec5eb2700550866f773290c7e24",
+    "header": "linux-tizen-modules-source\t11.0.0-0\tarmv7l\t0\tplatform/kernel/linux-tizen-modules-source#25797e8af7ed95a5783bbe84c11959560aaf7e92\tlinux-tizen-modules-source-11.0.0-0.src.rpm"
+  },
+  {
+    "name": "resourced",
+    "file": "temp/task17/sr/rpms/resourced-10.0.0-1.armv7l.rpm",
+    "bytes": 89308,
+    "sha256": "1d111a1d94684be3b09873731021770b7007fac2135c43ab1ed7aaff227032c9",
+    "header": "resourced\t10.0.0-1\tarmv7l\t0\tplatform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4\tresourced-10.0.0-1.src.rpm"
+  },
+  {
+    "name": "resourced-bin",
+    "file": "temp/task17/sr/rpms/resourced-bin-10.0.0-1.armv7l.rpm",
+    "bytes": 121728,
+    "sha256": "a451f347f0351c7babc05f309290940ad621b01be72fa68d02001840942548e7",
+    "header": "resourced-bin\t10.0.0-1\tarmv7l\t0\tplatform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4\tresourced-10.0.0-1.src.rpm"
+  },
+  {
+    "name": "resourced-config",
+    "file": "temp/task17/sr/rpms/resourced-config-10.0.0-1.armv7l.rpm",
+    "bytes": 10216,
+    "sha256": "6601804829b951cad5a55848a9f8e3f1517c4dad29c23df3a7dad4274b18406e",
+    "header": "resourced-config\t10.0.0-1\tarmv7l\t0\tplatform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4\tresourced-10.0.0-1.src.rpm"
+  },
+  {
+    "name": "resourced-isu",
+    "file": "temp/task17/sr/rpms/resourced-isu-10.0.0-1.armv7l.rpm",
+    "bytes": 8256,
+    "sha256": "b51782eefe3c68ff9ada3e33a6a0728a66f501f3a310da126f161c1627bd8393",
+    "header": "resourced-isu\t10.0.0-1\tarmv7l\t0\tplatform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4\tresourced-10.0.0-1.src.rpm"
+  },
+  {
+    "name": "resourced-watchdog-handler",
+    "file": "temp/task17/sr/rpms/resourced-watchdog-handler-10.0.0-1.armv7l.rpm",
+    "bytes": 16356,
+    "sha256": "5b7228c66604bca9ccbba56e07aa72e5376f2802e29eb1c234d0ed90ba42f9a5",
+    "header": "resourced-watchdog-handler\t10.0.0-1\tarmv7l\t0\tplatform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4\tresourced-10.0.0-1.src.rpm"
+  }
+]

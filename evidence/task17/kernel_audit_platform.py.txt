@@ -1,0 +1,28 @@
+from pathlib import Path
+import sys,re,zlib,json,hashlib,subprocess
+W=Path('/home/linhao/Toolchain/development/linux_kernel_optimization');kind=sys.argv[1];D=Path(sys.argv[2]);PY=Path(sys.executable)
+release='6.12.80-arm-rpi4-v7l';expected=release+' SMP mod_unload modversions ARMv7 p2v8';summary={'kind':kind}
+images=[]
+for name,rel,sz in [('arm-rpi4-linux-kernel',release,14906368 if kind=='sr' else 14928528),('arm-rpi4-rt-linux-kernel','6.12.80-arm-rpi4-rt-v7l',14954944 if kind=='sr' else 14977872)]:
+ f=D/('extract-'+name)/'boot'/('zImage' if name=='arm-rpi4-linux-kernel' else 'zImage_rt');b=f.read_bytes();found=[]
+ for m in re.finditer(b'\x1f\x8b\x08',b):
+  try:image=zlib.decompress(b[m.start():],31)
+  except zlib.error:continue
+  banners=re.findall(rb'Linux version [0-9][^\x00\n]+',image)
+  if banners:found.extend(x.decode(errors='replace') for x in banners)
+ images.append({'variant':'normal' if name=='arm-rpi4-linux-kernel' else 'rt','bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'banners':found,'expected_release':rel,'version_match':bool(found) and all(x.startswith('Linux version '+rel+' ') for x in found),'local_bytes':sz,'delta_bytes':len(b)-sz,'delta_percent':100*(len(b)-sz)/sz})
+summary['images']=images
+sym=next((D/'extract-arm-rpi4-linux-kernel-devel').rglob('Module.symvers'));symbols={line.split()[1]:int(line.split()[0],16) for line in sym.read_text().splitlines()};records=[];crcs=[]
+for source,folder in [('kernel','extract-arm-rpi4-linux-kernel-modules'),('external','extract-linux-tizen-modules-rpi4')]:
+ for f in sorted((D/folder).rglob('*.ko')):
+  if '/'+release+'/' not in str(f):continue
+  cmd=['/usr/bin/qemu-arm','-L','/','/sbin/modinfo','-F','vermagic',str(f)];p=subprocess.run(cmd,capture_output=True,text=True);records.append({'type':source,'module':str(f.relative_to(D/folder)),'exit':p.returncode,'vermagic':p.stdout.strip(),'match':p.returncode==0 and p.stdout.strip()==expected,'stderr':p.stderr})
+  if source=='external':
+   cmd=['/usr/bin/qemu-arm','-L','/','/sbin/modprobe','--show-modversions',str(f)];p=subprocess.run(cmd,capture_output=True,text=True);(D/('crc_raw_'+f.stem+'.txt')).write_text('COMMAND='+json.dumps(cmd)+'\n'+p.stdout+p.stderr+'\nEXIT='+str(p.returncode));assert p.returncode==0
+   for line in p.stdout.splitlines():
+    crc,name=line.split();v=int(crc,16);ref=symbols.get(name);crcs.append({'module':f.name,'symbol':name,'module_crc':crc,'kernel_crc':None if ref is None else f'0x{ref:08x}','match':v==ref})
+config=next((D/'extract-arm-rpi4-linux-kernel-devel').rglob('.config'));local=W/('temp/task9/verify/extract-devel/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01/.config' if kind=='sr' else 'vendor_local/temp/task12/verify/extract-devel/boot/kernel/devel/kernel-devel-arm-rpi4-lko-vbase01/.config')
+cmd=['/usr/bin/qemu-arm','-L','/',str(PY),str(W/'linux-rpi/scripts/diffconfig'),str(local),str(config)];p=subprocess.run(cmd,capture_output=True,text=True);(D/'config.diff').write_text(p.stdout+p.stderr);assert p.returncode==0
+summary['config']={'diffconfig_command':cmd,'diffconfig_exit':p.returncode,'diff_lines':len(p.stdout.splitlines()),'byte_identical':config.read_bytes()==local.read_bytes(),'download_sha256':hashlib.sha256(config.read_bytes()).hexdigest(),'local_sha256':hashlib.sha256(local.read_bytes()).hexdigest(),'only_localversion':all('LOCALVERSION' in l for l in p.stdout.splitlines())}
+summary['modules']={'kernel_count':sum(r['type']=='kernel' for r in records),'external_count':sum(r['type']=='external' for r in records),'expected_vermagic':expected,'vermagic_mismatch_count':sum(not r['match'] for r in records),'crc_total':len(crcs),'crc_unique_symbols':len({r['symbol'] for r in crcs}),'crc_mismatch_count':sum(not r['match'] for r in crcs),'crc_missing_count':sum(r['kernel_crc'] is None for r in crcs),'symvers_sha256':hashlib.sha256(sym.read_bytes()).hexdigest()}
+(D/'module_vermagic.json').write_text(json.dumps(records,indent=2)+'\n');(D/'module_crc.json').write_text(json.dumps(crcs,indent=2)+'\n');(D/'kernel_summary.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))

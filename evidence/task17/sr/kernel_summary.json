@@ -1,0 +1,61 @@
+{
+  "kind": "sr",
+  "images": [
+    {
+      "variant": "normal",
+      "bytes": 14905760,
+      "sha256": "d5345f13eada3a3aab8b2fca9f511c608469f708d83a6a2445882e68241cc9af",
+      "banners": [
+        "Linux version 6.12.80-arm-rpi4-v7l ([build identity redacted]) (clang version 22.1.8, LLD 22.1.8) # SMP ",
+        "Linux version 6.12.80-arm-rpi4-v7l ([build identity redacted]) (clang version 22.1.8, LLD 22.1.8) #1 SMP Wed Nov  4 17:05:36 UTC 2026"
+      ],
+      "expected_release": "6.12.80-arm-rpi4-v7l",
+      "version_match": true,
+      "local_bytes": 14906368,
+      "delta_bytes": -608,
+      "delta_percent": -0.004078793707494676
+    },
+    {
+      "variant": "rt",
+      "bytes": 14955176,
+      "sha256": "4df263d3939d0ba549744ce674a63d347df5529ed9d1ee6112f5d9a4344a41af",
+      "banners": [
+        "Linux version 6.12.80-arm-rpi4-rt-v7l ([build identity redacted]) (clang version 22.1.8, LLD 22.1.8) # SMP PREEMPT_RT ",
+        "Linux version 6.12.80-arm-rpi4-rt-v7l ([build identity redacted]) (clang version 22.1.8, LLD 22.1.8) #1 SMP PREEMPT_RT Wed Nov  4 17:22:58 UTC 2026"
+      ],
+      "expected_release": "6.12.80-arm-rpi4-rt-v7l",
+      "version_match": true,
+      "local_bytes": 14954944,
+      "delta_bytes": 232,
+      "delta_percent": 0.0015513264375981615
+    }
+  ],
+  "config": {
+    "diffconfig_command": [
+      "/usr/bin/qemu-arm",
+      "-L",
+      "/",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/platform-python/usr/bin/python3.14",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/linux-rpi/scripts/diffconfig",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/extract-devel/boot/kernel/devel/kernel-devel-arm-rpi4-lko-base01/.config",
+      "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/extract-arm-rpi4-linux-kernel-devel/boot/kernel/devel/kernel-devel-arm-rpi4/.config"
+    ],
+    "diffconfig_exit": 0,
+    "diff_lines": 0,
+    "byte_identical": true,
+    "download_sha256": "62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5",
+    "local_sha256": "62e3b8512d8bd4a336410a9468afd8c1ed338b9030dc69c754dbccf888617ba5",
+    "only_localversion": true
+  },
+  "modules": {
+    "kernel_count": 52,
+    "external_count": 7,
+    "expected_vermagic": "6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8",
+    "vermagic_mismatch_count": 0,
+    "crc_total": 356,
+    "crc_unique_symbols": 253,
+    "crc_mismatch_count": 0,
+    "crc_missing_count": 0,
+    "symvers_sha256": "fd1bf28f859933424c88f0e65c224bf4992c18e78cd0c5d0e59b1f72e8beb28c"
+  }
+}

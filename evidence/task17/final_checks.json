@@ -1,0 +1,37 @@
+{
+  "sr": {
+    "status": "PASS",
+    "crc_comparisons": 356,
+    "crc_mismatches": 0,
+    "missing": 0,
+    "vermagic_count": 59,
+    "config_diff": 0,
+    "resourced_loaded_sections_equal": true,
+    "debuglink_binding": true
+  },
+  "vbase": {
+    "status": "PASS",
+    "crc_comparisons": 356,
+    "crc_mismatches": 0,
+    "missing": 0,
+    "vermagic_count": 59,
+    "config_diff": 0,
+    "resourced_loaded_sections_equal": true,
+    "debuglink_binding": true
+  },
+  "date": "2026-11-05",
+  "downloads_all_checksums_and_sizes_match": true,
+  "browser_profile_absent": true,
+  "package_added": 0,
+  "package_removed": 0,
+  "package_changed": 3,
+  "proprietary_or_credential_value_scan_hits": [],
+  "scan_paths": 44,
+  "all_evidence_files_under_1_MB": true,
+  "link_errors": [],
+  "board_connected": false,
+  "kernel_built": false,
+  "sudo_executed": false,
+  "gerrit_push": false,
+  "known_exception": "SR external modules were rebuilt from 458baad0; PM acceptance pending."
+}

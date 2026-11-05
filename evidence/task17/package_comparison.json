@@ -1,0 +1,43 @@
+{
+  "counts": {
+    "sr": 1275,
+    "vbase": 1275
+  },
+  "added": [],
+  "removed": [],
+  "changed": [
+    {
+      "package": "arm-rpi4-linux-kernel.armv7l",
+      "sr": {
+        "version": "6.12.80-0",
+        "source": "platform/kernel/linux-rpi#0fac5de6a63091d141ad1cd3ed9d9e92b8dde708"
+      },
+      "vbase": {
+        "version": "6.12.80-0",
+        "source": "platform/kernel/linux-rpi#b11f669e0cb1c1e26d878430b998d6486c5476a1"
+      }
+    },
+    {
+      "package": "linux-tizen-modules-rpi4.armv7l",
+      "sr": {
+        "version": "11.0.0-0",
+        "source": "platform/kernel/linux-tizen-modules#458baad02d812098938663971d1b8560a4813375"
+      },
+      "vbase": {
+        "version": "11.0.0-0",
+        "source": "platform/kernel/linux-tizen-modules#36d0925699ac0ffc1ce3854ed838a48d24a56c28"
+      }
+    },
+    {
+      "package": "arm-rpi4-linux-kernel-modules.armv7l",
+      "sr": {
+        "version": "6.12.80-0",
+        "source": "platform/kernel/linux-rpi#0fac5de6a63091d141ad1cd3ed9d9e92b8dde708"
+      },
+      "vbase": {
+        "version": "6.12.80-0",
+        "source": "platform/kernel/linux-rpi#b11f669e0cb1c1e26d878430b998d6486c5476a1"
+      }
+    }
+  ]
+}

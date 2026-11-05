@@ -1,0 +1,94 @@
+[
+  {
+    "label": "main",
+    "path": "/usr/bin/resourced",
+    "image_bytes": 93844,
+    "image_sha256": "67a5bee5c9fe0f0eb266875c018089283f9291b6b2516691d6aa96837127d556",
+    "local_task15_bytes": 93844,
+    "local_task15_sha256": "2ca9b6e91958e46203c2e7b71d91aa9aee9d313279a501a98c1539c7c640cecf",
+    "stripped_no_symtab": true,
+    "debuglink": {
+      "file": "resourced.debug",
+      "expected_crc32": "73500d7f",
+      "actual_crc32": "73500d7f",
+      "match": true
+    },
+    "functions": {
+      "swap_activate_act": [
+        "000076cc 00000140 t swap_activate_act"
+      ],
+      "high_mem_control": [
+        "00006dec 00000148 t high_mem_control"
+      ]
+    },
+    "image_key_strings": [],
+    "local_task15_key_strings": []
+  },
+  {
+    "label": "library",
+    "path": "/usr/lib/libresourced-private-api.so.10.0.0",
+    "image_bytes": 185824,
+    "image_sha256": "353efea9a8f34a66b20f38d1ed11798ff67b19d53c15099073686ccff22bbd5c",
+    "local_task15_bytes": 185824,
+    "local_task15_sha256": "c45e4a1b813445e9fae4cca9ec2adf874eed1d2de4c1451af743e0cfd260463f",
+    "stripped_no_symtab": true,
+    "debuglink": {
+      "file": "libresourced-private-api.so.10.0.0.debug",
+      "expected_crc32": "b0bc6a4e",
+      "actual_crc32": "b0bc6a4e",
+      "match": true
+    },
+    "functions": {
+      "cgroup_write_node_uint32": [
+        "0001668c 00000198 T cgroup_write_node_uint32"
+      ],
+      "fwrite_str": [
+        "000134dc 0000014c T fwrite_str"
+      ],
+      "fread_nth_int": [
+        "00013a7c 00000174 T fread_nth_int"
+      ],
+      "fread_nth_uint": [
+        "00013bf0 00000174 T fread_nth_uint"
+      ],
+      "fread_nth_ulong": [
+        "00013d64 00000174 T fread_nth_ulong"
+      ],
+      "fread_nth_ulonglong": [
+        "00013ed8 00000178 T fread_nth_ulonglong"
+      ]
+    },
+    "image_key_strings": [],
+    "local_task15_key_strings": []
+  },
+  {
+    "label": "swap_plugin",
+    "path": "/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so",
+    "image_bytes": 30744,
+    "image_sha256": "a8b59670acfa0bc502ec4a2b3e2143cf0054365641d28de7419176b9eb420aaf",
+    "local_task15_bytes": 30744,
+    "local_task15_sha256": "d38019d8345389ad165832ac03cea80230d81dcd2fa7f329aece91c9a5c2622f",
+    "stripped_no_symtab": true,
+    "debuglink": {
+      "file": "libplugin-resourced-optimizer-memory-swap.so.debug",
+      "expected_crc32": "983fe104",
+      "actual_crc32": "983fe104",
+      "match": true
+    },
+    "functions": {
+      "swap_zram_activate": [
+        "00003848 000002f4 t swap_zram_activate"
+      ],
+      "swap_activate_in_module": [],
+      "swap_early_reclaim_memcg": [
+        "0000735b 00000001 b swap_early_reclaim_memcg.early_reclaim"
+      ]
+    },
+    "image_key_strings": [
+      "%s: %s(%d) > Cannot apply configured algorithm %s; retaining kernel algorithm %s"
+    ],
+    "local_task15_key_strings": [
+      "%s: %s(%d) > Cannot apply configured algorithm %s; retaining kernel algorithm %s"
+    ]
+  }
+]

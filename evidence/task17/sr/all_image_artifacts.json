@@ -1,0 +1,62 @@
+[
+  {
+    "kind": "sr",
+    "profile": "tizen-boot-aarch64-rpi",
+    "file": "tizen-unified-toolchain_20261104.160709_tizen-boot-aarch64-rpi.tar.gz",
+    "bytes": 28974428,
+    "published_sha256": "adf87847d78b78c2be0d42fc7e57a025505c0788b1b9fcce0972f3d015d24e3f",
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-boot-aarch64-rpi/tizen-unified-toolchain_20261104.160709_tizen-boot-aarch64-rpi.tar.gz",
+    "image_created_as_published": "2026-11-04 21:07:38",
+    "downloaded_and_verified": false
+  },
+  {
+    "kind": "sr",
+    "profile": "tizen-boot-armv7l-rpi",
+    "file": "tizen-unified-toolchain_20261104.160709_tizen-boot-armv7l-rpi.tar.gz",
+    "bytes": 28695321,
+    "published_sha256": "6cf9857866692ed51c540c7d51508c8e7ce27ba4fab3204db87c04be1eb1b01e",
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-boot-armv7l-rpi/tizen-unified-toolchain_20261104.160709_tizen-boot-armv7l-rpi.tar.gz",
+    "image_created_as_published": "2026-11-04 21:07:44",
+    "downloaded_and_verified": true
+  },
+  {
+    "kind": "sr",
+    "profile": "tizen-headed-aarch64",
+    "file": "tizen-unified-toolchain_20261104.160709_tizen-headed-aarch64.tar.gz",
+    "bytes": 598886111,
+    "published_sha256": "88bd88ed8e7e4a22727eede8f0f8ddbf6a3ee58dba926178e9031a60e8aa8c11",
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headed-aarch64/tizen-unified-toolchain_20261104.160709_tizen-headed-aarch64.tar.gz",
+    "image_created_as_published": "2026-11-04 21:29:42",
+    "downloaded_and_verified": false
+  },
+  {
+    "kind": "sr",
+    "profile": "tizen-headed-armv7l",
+    "file": "tizen-unified-toolchain_20261104.160709_tizen-headed-armv7l.tar.gz",
+    "bytes": 550716734,
+    "published_sha256": "68fe480cf0fa2e9107327ccfc0eb94e6b6aad7fa632f694620a5a8a8cc8abc01",
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headed-armv7l/tizen-unified-toolchain_20261104.160709_tizen-headed-armv7l.tar.gz",
+    "image_created_as_published": "2026-11-04 21:28:51",
+    "downloaded_and_verified": true
+  },
+  {
+    "kind": "sr",
+    "profile": "tizen-headless-aarch64",
+    "file": "tizen-unified-toolchain_20261104.160709_tizen-headless-aarch64.tar.gz",
+    "bytes": 317888549,
+    "published_sha256": "1488c9935560b5dd0e123d75ef253f498135a4b9894a17404f5c07c7b30af8a2",
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headless-aarch64/tizen-unified-toolchain_20261104.160709_tizen-headless-aarch64.tar.gz",
+    "image_created_as_published": "2026-11-04 21:21:13",
+    "downloaded_and_verified": false
+  },
+  {
+    "kind": "sr",
+    "profile": "tizen-headless-armv7l",
+    "file": "tizen-unified-toolchain_20261104.160709_tizen-headless-armv7l.tar.gz",
+    "bytes": 293874304,
+    "published_sha256": "45c4b3cf70f45fda28276bd0cb057fbf681c0acaa1cf54ff7949b525c8291199",
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headless-armv7l/tizen-unified-toolchain_20261104.160709_tizen-headless-armv7l.tar.gz",
+    "image_created_as_published": "2026-11-04 21:21:44",
+    "downloaded_and_verified": false
+  }
+]

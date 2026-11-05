@@ -1,0 +1,84 @@
+Selected page text; personal fields excluded before extraction.
+URL: https://quickbuild.tizen.org/build/1218764/overview
+Status: Successful
+Begin Date: 2026-11-04 16:07:09
+Duration: 5 hours 22 minutes 38 seconds
+End (calculated): 2026-11-04 21:29:47
+Timezone: not labelled on page.
+
+Build Package List
+platform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+platform/core/system/resourced@94d346c306233803661e8eab8557596549d82be4
+
+Build Type
+Full
+
+Build Reference
+Ref. Snapshot
+
+Profile URL
+http://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261102.122237
+
+Base URL
+http://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/tizen-base-toolchain_20261030.120529
+
+Download_URL
+http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709
+
+Manifest_URL
+http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/builddata/manifest
+
+standard-armv7l
+https://quickbuild.tizen.org/build/1218765
+Succeeded
+Link
+
+standard-aarch64
+https://quickbuild.tizen.org/build/1218767
+Succeeded
+Link
+
+standard-x86_64
+https://quickbuild.tizen.org/build/1218768
+Succeeded
+Link
+
+tizen-boot-aarch64-rpi
+https://quickbuild.tizen.org/build/1218894
+http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-boot-aarch64-rpi/
+SUCCESSFUL
+
+tizen-boot-armv7l-rpi
+https://quickbuild.tizen.org/build/1218895
+http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-boot-armv7l-rpi/
+SUCCESSFUL
+
+tizen-headed-aarch64
+https://quickbuild.tizen.org/build/1218896
+http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headed-aarch64/
+SUCCESSFUL
+
+tizen-headed-armv7l
+https://quickbuild.tizen.org/build/1218897
+http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headed-armv7l/
+SUCCESSFUL
+
+tizen-headless-aarch64
+https://quickbuild.tizen.org/build/1218898
+http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headless-aarch64/
+SUCCESSFUL
+
+tizen-headless-armv7l
+https://quickbuild.tizen.org/build/1218899
+http://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/images/standard/tizen-headless-armv7l/
+SUCCESSFUL
+
+Selected Variables:
+BUILD_PKG_LIST=platform/core/system/resourced@94d346c306233803661e8eab8557596549d82be4
+platform/kernel/linux-rpi@0fac5de6a63091d141ad1cd3ed9d9e92b8dde708
+platform/kernel/linux-tizen-modules@458baad02d812098938663971d1b8560a4813375
+platform/kernel/linux-tizen-modules-source@25797e8af7ed95a5783bbe84c11959560aaf7e92
+BUILD_TYPE= Full
+PROJECT_BRANCH= tizen
+PROJECT_NAME= Tizen-Unified-Toolchain
+USE_BRANCH_POLICY= false

@@ -1,0 +1,15 @@
+import sys,json,struct,hashlib
+from pathlib import Path
+out=Path(sys.argv[1]);W=Path(sys.argv[2]);rows=[]
+def sections(p):
+ b=p.read_bytes();assert b[:5]==b'\x7fELF\x01' and b[5]==1
+ shoff=struct.unpack_from('<I',b,32)[0];entsize,num,strings=struct.unpack_from('<HHH',b,46)
+ hdrs=[struct.unpack_from('<IIIIIIIIII',b,shoff+i*entsize) for i in range(num)];ss=hdrs[strings];names=b[ss[4]:ss[4]+ss[5]];r={}
+ for h in hdrs:
+  n=names[h[0]:].split(b'\0')[0].decode()
+  if h[2]&2 and h[1]!=8:r[n]={'size':h[5],'sha256':hashlib.sha256(b[h[4]:h[4]+h[5]]).hexdigest()}
+ return r
+for pkg,rel in [('resourced-bin','usr/bin/resourced'),('resourced-bin','usr/lib/libresourced-private-api.so.10.0.0'),('resourced','usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so')]:
+ a=sections(out/('extract-'+pkg)/rel);b=sections(W/'temp/task15/verify'/('payload_new_'+pkg)/rel)
+ rows.append({'path':'/'+rel,'image_sections':a,'local_task15_sections':b,'different_alloc_sections':[n for n in set(a)|set(b) if a.get(n)!=b.get(n)]})
+(out/'resourced_sections.json').write_text(json.dumps(rows,indent=2)+'\n')

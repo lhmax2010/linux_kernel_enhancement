@@ -1,0 +1,66 @@
+bwrap invocation (complete):
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv PYTHONHOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/platform-python/usr --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/platform-python/usr/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/platform-python/usr/bin/python3.14 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/kernel_audit_platform.py sr /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr
+toolchain:
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/clang --version
+clang version 22.1.8
+Target: armv7l-tizen-linux-gnueabi
+Thread model: posix
+InstalledDir: /usr/bin
+Configuration file: /usr/bin/clang.cfg
+
+EXIT=0
+
+RPM query example:
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm -qp --qf '%{NAME}	%{VERSION}-%{RELEASE}	%{ARCH}	%{BUILDTIME}	%{VCS}	%{SOURCERPM}
+' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/rpms/resourced-bin-10.0.0-1.armv7l.rpm
+resourced-bin	10.0.0-1	armv7l	0	platform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4	resourced-10.0.0-1.src.rpm
+
+EXIT=0
+
+ELF section inspection:
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -SW /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/extract-resourced-bin/usr/bin/resourced
+There are 26 section headers, starting at offset 0x16a84:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .interp           PROGBITS        00000134 000134 000013 00   A  0   0  1
+  [ 2] .note.ABI-tag     NOTE            00000148 000148 000020 00   A  0   0  4
+  [ 3] .gnu.hash         GNU_HASH        00000168 000168 000288 04   A  4   0  4
+  [ 4] .dynsym           DYNSYM          000003f0 0003f0 001490 10   A  5   3  4
+  [ 5] .dynstr           STRTAB          00001880 001880 001a07 00   A  0   0  1
+  [ 6] .gnu.version      VERSYM          00003288 003288 000292 02   A  4   0  2
+  [ 7] .gnu.version_r    VERNEED         0000351c 00351c 0000c0 00   A  5   4  4
+  [ 8] .rel.dyn          REL             000035dc 0035dc 000478 08   A  4   0  4
+  [ 9] .rel.plt          REL             00003a54 003a54 0007a8 08  AI  4  21  4
+  [10] .init             PROGBITS        000041fc 0041fc 00000c 00  AX  0   0  4
+  [11] .plt              PROGBITS        00004208 004208 000bc8 04  AX  0   0  4
+  [12] .text             PROGBITS        00004dd0 004dd0 00b150 00  AX  0   0  8
+  [13] .fini             PROGBITS        0000ff20 00ff20 000008 00  AX  0   0  4
+  [14] .rodata           PROGBITS        0000ff28 00ff28 005767 00   A  0   0  8
+  [15] .ARM.exidx        ARM_EXIDX       00015690 015690 000008 00  AL 12   0  4
+  [16] .eh_frame         PROGBITS        00015698 015698 000004 00   A  0   0  4
+  [17] .init_array       INIT_ARRAY      00016000 016000 000024 04  WA  0   0  4
+  [18] .fini_array       FINI_ARRAY      00016024 016024 000024 04  WA  0   0  4
+  [19] .data.rel.ro      PROGBITS        00016048 016048 00011c 00  WA  0   0  8
+  [20] .dynamic          DYNAMIC         00016164 016164 000158 08  WA  5   0  4
+  [21] .got              PROGBITS        000162bc 0162bc 00040c 04  WA  0   0  4
+  [22] .data             PROGBITS        000166c8 0166c8 0002c0 00  WA  0   0  4
+  [23] .bss              NOBITS          00016988 016988 000280 00  WA  0   0  8
+  [24] .gnu_debuglink    PROGBITS        00000000 016988 000014 00      0   0  4
+  [25] .shstrtab         STRTAB          00000000 01699c 0000e5 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)
+
+EXIT=0
+
+symbol commands:
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/nm -S /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/extract-resourced-bin-debuginfo/usr/lib/debug/usr/bin/resourced.debug
+EXIT=0
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/nm -S /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/extract-resourced-bin-debuginfo/usr/lib/debug/usr/lib/libresourced-private-api.so.10.0.0.debug
+EXIT=0
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/nm -S /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/extract-resourced-debuginfo/usr/lib/debug/usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so.debug
+EXIT=0

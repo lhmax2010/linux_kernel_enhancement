@@ -1,0 +1,299 @@
+[
+  {
+    "kind": "vbase",
+    "name": "arm-rpi4-linux-kernel",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "6.12.80",
+      "rel": "0",
+      "vcs": "platform/kernel/linux-rpi#b11f669e0cb1c1e26d878430b998d6486c5476a1"
+    },
+    "expected_sha256": "09d28637e93f075c1f24bb5e79961fe376e58aec1e30f35a12f0c4e700fc1f9f",
+    "checksum_type": "sha256",
+    "expected_bytes": 17626076,
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/packages/armv7l/arm-rpi4-linux-kernel-6.12.80-0.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/arm-rpi4-linux-kernel-6.12.80-0.armv7l.rpm",
+    "rpm_time": {
+      "file": "1793825046",
+      "build": "0"
+    },
+    "bytes": 17626076,
+    "sha256": "09d28637e93f075c1f24bb5e79961fe376e58aec1e30f35a12f0c4e700fc1f9f",
+    "seconds": 9.31,
+    "checksum_ok": true,
+    "size_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "arm-rpi4-linux-kernel-devel",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "6.12.80",
+      "rel": "0",
+      "vcs": "platform/kernel/linux-rpi#b11f669e0cb1c1e26d878430b998d6486c5476a1"
+    },
+    "expected_sha256": "67ef3f19a56153216a137eb748b00370a22dd502ed260f8e2037f669ab51470e",
+    "checksum_type": "sha256",
+    "expected_bytes": 115733380,
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/packages/armv7l/arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/arm-rpi4-linux-kernel-devel-6.12.80-0.armv7l.rpm",
+    "rpm_time": {
+      "file": "1793825046",
+      "build": "0"
+    },
+    "bytes": 115733380,
+    "sha256": "67ef3f19a56153216a137eb748b00370a22dd502ed260f8e2037f669ab51470e",
+    "seconds": 33.03,
+    "checksum_ok": true,
+    "size_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "arm-rpi4-linux-kernel-modules",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "6.12.80",
+      "rel": "0",
+      "vcs": "platform/kernel/linux-rpi#b11f669e0cb1c1e26d878430b998d6486c5476a1"
+    },
+    "expected_sha256": "e9c8fda9f50bf3de60df559bf03718c9f2d0b7a5434eb139c9ccf81665bc25a3",
+    "checksum_type": "sha256",
+    "expected_bytes": 729524,
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/packages/armv7l/arm-rpi4-linux-kernel-modules-6.12.80-0.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/arm-rpi4-linux-kernel-modules-6.12.80-0.armv7l.rpm",
+    "rpm_time": {
+      "file": "1793825047",
+      "build": "0"
+    },
+    "bytes": 729524,
+    "sha256": "e9c8fda9f50bf3de60df559bf03718c9f2d0b7a5434eb139c9ccf81665bc25a3",
+    "seconds": 2.32,
+    "checksum_ok": true,
+    "size_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "arm-rpi4-rt-linux-kernel",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "6.12.80",
+      "rel": "0",
+      "vcs": "platform/kernel/linux-rpi#b11f669e0cb1c1e26d878430b998d6486c5476a1"
+    },
+    "expected_sha256": "65193da863a828aa5a070b15a83df70f4f864d403f0166ff52be8e911bdb212a",
+    "checksum_type": "sha256",
+    "expected_bytes": 17675280,
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/packages/armv7l/arm-rpi4-rt-linux-kernel-6.12.80-0.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/arm-rpi4-rt-linux-kernel-6.12.80-0.armv7l.rpm",
+    "rpm_time": {
+      "file": "1793825048",
+      "build": "0"
+    },
+    "bytes": 17675280,
+    "sha256": "65193da863a828aa5a070b15a83df70f4f864d403f0166ff52be8e911bdb212a",
+    "seconds": 5.27,
+    "checksum_ok": true,
+    "size_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "linux-tizen-modules-rpi4",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "11.0.0",
+      "rel": "0",
+      "vcs": "platform/kernel/linux-tizen-modules#36d0925699ac0ffc1ce3854ed838a48d24a56c28"
+    },
+    "expected_sha256": "98f93292b1a5b00391a4de2345092a037bdb7d8d38ae834af6b7045d3d9584a6",
+    "checksum_type": "sha256",
+    "expected_bytes": 92336,
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/packages/armv7l/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm",
+    "rpm_time": {
+      "file": "1793825046",
+      "build": "0"
+    },
+    "bytes": 92336,
+    "sha256": "98f93292b1a5b00391a4de2345092a037bdb7d8d38ae834af6b7045d3d9584a6",
+    "seconds": 1.86,
+    "checksum_ok": true,
+    "size_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "linux-tizen-modules-source",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "11.0.0",
+      "rel": "0",
+      "vcs": "platform/kernel/linux-tizen-modules-source#25797e8af7ed95a5783bbe84c11959560aaf7e92"
+    },
+    "expected_sha256": "46b152ac8f21c8d461bafda0a70eeae72442263dfefe8939a1e5b9d1e6c61c03",
+    "checksum_type": "sha256",
+    "expected_bytes": 123492,
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/packages/armv7l/linux-tizen-modules-source-11.0.0-0.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/linux-tizen-modules-source-11.0.0-0.armv7l.rpm",
+    "rpm_time": {
+      "file": "1793825045",
+      "build": "0"
+    },
+    "bytes": 123492,
+    "sha256": "46b152ac8f21c8d461bafda0a70eeae72442263dfefe8939a1e5b9d1e6c61c03",
+    "seconds": 1.4,
+    "checksum_ok": true,
+    "size_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "resourced",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "10.0.0",
+      "rel": "1",
+      "vcs": "platform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4"
+    },
+    "expected_sha256": "10d7867311894da1b1b37ca9f877fc5b0d45d0f0d90c9dc06ce53c4412ae227d",
+    "checksum_type": "sha256",
+    "expected_bytes": 89520,
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/packages/armv7l/resourced-10.0.0-1.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/resourced-10.0.0-1.armv7l.rpm",
+    "rpm_time": {
+      "file": "1793825046",
+      "build": "0"
+    },
+    "bytes": 89520,
+    "sha256": "10d7867311894da1b1b37ca9f877fc5b0d45d0f0d90c9dc06ce53c4412ae227d",
+    "seconds": 1.95,
+    "checksum_ok": true,
+    "size_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "resourced-bin",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "10.0.0",
+      "rel": "1",
+      "vcs": "platform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4"
+    },
+    "expected_sha256": "b4e801300fbbeec6ad49ed23e284df0d152a78f15e87086a02af1fcb1ac6128b",
+    "checksum_type": "sha256",
+    "expected_bytes": 121052,
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/packages/armv7l/resourced-bin-10.0.0-1.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/resourced-bin-10.0.0-1.armv7l.rpm",
+    "rpm_time": {
+      "file": "1793825045",
+      "build": "0"
+    },
+    "bytes": 121052,
+    "sha256": "b4e801300fbbeec6ad49ed23e284df0d152a78f15e87086a02af1fcb1ac6128b",
+    "seconds": 1.42,
+    "checksum_ok": true,
+    "size_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "resourced-config",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "10.0.0",
+      "rel": "1",
+      "vcs": "platform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4"
+    },
+    "expected_sha256": "339d5a8ff82ebd1e4f825aab22a8c3f674e6fa00fa1394e0983c05a66cf89c4a",
+    "checksum_type": "sha256",
+    "expected_bytes": 10216,
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/packages/armv7l/resourced-config-10.0.0-1.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/resourced-config-10.0.0-1.armv7l.rpm",
+    "rpm_time": {
+      "file": "1793825046",
+      "build": "0"
+    },
+    "bytes": 10216,
+    "sha256": "339d5a8ff82ebd1e4f825aab22a8c3f674e6fa00fa1394e0983c05a66cf89c4a",
+    "seconds": 1.01,
+    "checksum_ok": true,
+    "size_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "resourced-isu",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "10.0.0",
+      "rel": "1",
+      "vcs": "platform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4"
+    },
+    "expected_sha256": "d5155d695233158a6221c495a4312a58ec6163cdecd898d096a0322dfc779b83",
+    "checksum_type": "sha256",
+    "expected_bytes": 8256,
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/packages/armv7l/resourced-isu-10.0.0-1.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/resourced-isu-10.0.0-1.armv7l.rpm",
+    "rpm_time": {
+      "file": "1793825047",
+      "build": "0"
+    },
+    "bytes": 8256,
+    "sha256": "d5155d695233158a6221c495a4312a58ec6163cdecd898d096a0322dfc779b83",
+    "seconds": 0.99,
+    "checksum_ok": true,
+    "size_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "resourced-watchdog-handler",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "10.0.0",
+      "rel": "1",
+      "vcs": "platform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4"
+    },
+    "expected_sha256": "85c1a2323c3e4c0dfdffdb870cd3c198a2833d7ae1b45a7927788368b747490a",
+    "checksum_type": "sha256",
+    "expected_bytes": 16360,
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/repos/standard/packages/armv7l/resourced-watchdog-handler-10.0.0-1.armv7l.rpm",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/resourced-watchdog-handler-10.0.0-1.armv7l.rpm",
+    "rpm_time": {
+      "file": "1793825045",
+      "build": "0"
+    },
+    "bytes": 16360,
+    "sha256": "85c1a2323c3e4c0dfdffdb870cd3c198a2833d7ae1b45a7927788368b747490a",
+    "seconds": 1.33,
+    "checksum_ok": true,
+    "size_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "tizen-boot-armv7l-rpi",
+    "expected_sha256": "1de3c0101266198be4645e96229f6636e770fddd91ff63d6ddcd05360c173358",
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/images/standard/tizen-boot-armv7l-rpi/tizen-unified-toolchain_20261104.160825_tizen-boot-armv7l-rpi.tar.gz",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/images/tizen-unified-toolchain_20261104.160825_tizen-boot-armv7l-rpi.tar.gz",
+    "bytes": 28716977,
+    "sha256": "1de3c0101266198be4645e96229f6636e770fddd91ff63d6ddcd05360c173358",
+    "seconds": 10.64,
+    "checksum_ok": true
+  },
+  {
+    "kind": "vbase",
+    "name": "tizen-headed-armv7l",
+    "expected_sha256": "aaa91350f47c7a89f2d44561531791c3bc83e38316e2e318ffa4c13ac0511904",
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160825/images/standard/tizen-headed-armv7l/tizen-unified-toolchain_20261104.160825_tizen-headed-armv7l.tar.gz",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/images/tizen-unified-toolchain_20261104.160825_tizen-headed-armv7l.tar.gz",
+    "bytes": 549232942,
+    "sha256": "aaa91350f47c7a89f2d44561531791c3bc83e38316e2e318ffa4c13ac0511904",
+    "seconds": 109.38,
+    "checksum_ok": true
+  }
+]

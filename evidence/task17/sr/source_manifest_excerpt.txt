@@ -1,0 +1,5 @@
+SOURCE https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261104.160709/builddata/manifest/tizen-unified-toolchain_20261104.160709_standard.xml
+  <project name="platform/core/system/resourced" path="platform/core/system/resourced" revision="94d346c306233803661e8eab8557596549d82be4"/>
+  <project name="platform/kernel/linux-rpi" path="platform/kernel/linux-rpi" revision="0fac5de6a63091d141ad1cd3ed9d9e92b8dde708"/>
+  <project name="platform/kernel/linux-tizen-modules" path="platform/kernel/linux-tizen-modules" revision="458baad02d812098938663971d1b8560a4813375"/>
+  <project name="platform/kernel/linux-tizen-modules-source" path="platform/kernel/linux-tizen-modules-source" revision="25797e8af7ed95a5783bbe84c11959560aaf7e92"/>
