@@ -1,0 +1,69 @@
+{
+  "source_package_file_digest_lists_equal": true,
+  "source_package_file_count": 55,
+  "modules": [
+    {
+      "module": "dm-bow.ko",
+      "text_identical": true,
+      "data_identical": true,
+      "different_section_payloads": [
+        "__versions",
+        ".note.gnu.build-id"
+      ]
+    },
+    {
+      "module": "extcon-usb-fixed.ko",
+      "text_identical": true,
+      "data_identical": true,
+      "different_section_payloads": [
+        "__versions",
+        ".note.gnu.build-id"
+      ]
+    },
+    {
+      "module": "inform-reboot.ko",
+      "text_identical": true,
+      "data_identical": true,
+      "different_section_payloads": [
+        "__versions",
+        ".note.gnu.build-id"
+      ]
+    },
+    {
+      "module": "kdbus.ko",
+      "text_identical": true,
+      "data_identical": true,
+      "different_section_payloads": [
+        "__versions",
+        ".note.gnu.build-id"
+      ]
+    },
+    {
+      "module": "logger.ko",
+      "text_identical": true,
+      "data_identical": true,
+      "different_section_payloads": [
+        "__versions",
+        ".note.gnu.build-id"
+      ]
+    },
+    {
+      "module": "proc-tsm.ko",
+      "text_identical": true,
+      "data_identical": true,
+      "different_section_payloads": [
+        "__versions",
+        ".note.gnu.build-id"
+      ]
+    },
+    {
+      "module": "zlogger.ko",
+      "text_identical": true,
+      "data_identical": true,
+      "different_section_payloads": [
+        "__versions",
+        ".note.gnu.build-id"
+      ]
+    }
+  ]
+}

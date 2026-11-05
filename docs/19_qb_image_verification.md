@@ -142,3 +142,75 @@ SR模块日志原始第6/470/763行：2026-11-04 17:44:10 UTC开始、对普通d
 已完成页面核对、公开下载、来源/配置/ABI/resourced检查、包清单比较和烧录准备。下载/原始输出在temp/task17，类产品敏感分析在vendor_local/task17，GitHub仅小体积文本。检查见[final_checks.json](../evidence/task17/final_checks.json)。
 
 待PM接受或处置SR模块重编及458baad0来源偏差；实际uname/config、模块加载无CRC/Unknown symbol错误、resourced来源、/proc/swaps与回收写入仍待上板核验，未在本轮完成。
+
+## 10. 任务17补充：树外模块来源差异的影响（2026-11-05）
+
+**结论：可接受。两基线可直接使用，无需因这两个模块源码提交不同而重出镜像或修改Shelve列表。** 本节闭合第1、3、7、9节中“模块来源差异待裁决”的技术前提；实际板上验证仍未执行。原因是两提交之间仅有(b)类打包修改，(a)类模块源码/编译选项修改为0；实际7模块的大小、全部段大小以及.text/.data字节内容一致。保留两镜像各自配套模块，不跨镜像互换。
+
+### 10.1 远端分支、祖先关系和完整提交列表
+
+在ext/linux-tizen-modules对origin全部refs/heads进行fetch，只更新refs/remotes/origin；未checkout、修改或提交该源码工作树。fetch后本地HEAD仍8e032ef18ae9d9633c1508b48d4778216ab960a0、分支lko/vbase01、工作树干净，见[状态核对](../evidence/task17/modules_source_diff/worktree_unchanged.json)。
+
+远端为platform/kernel/linux-tizen-modules。2026-11-05抓取时：
+
+| 提交 | git branch -r --contains返回的分支 |
+|---|---|
+| 458baad02d812098938663971d1b8560a4813375（SR） | origin/tizen；origin/accepted/tizen_unified；origin/accepted/tizen_unified_dev；origin/accepted/tizen_unified_toolchain；origin/accepted/tizen_unified_x |
+| 36d0925699ac0ffc1ce3854ed838a48d24a56c28（类产品） | 上述5个分支，加origin/accepted/tizen_unified_sc |
+
+458baad0是当前origin/tizen及上述四个accepted分支的tip；accepted/tizen_unified_sc为中间提交17ede413。contains表示提交在历史中，不表示它就是每个分支的tip。[远端列表与fetch](../evidence/task17/modules_source_diff/remote_fetch.txt)、[关系原始输出](../evidence/task17/modules_source_diff/relationship.txt)。
+
+36d09256是458baad0的祖先；正向merge-base --is-ancestor返回0，反向返回1；merge-base正是36d09256，rev-list --left-right --count返回0、2。SR较新，类产品落后**2个提交**，没有分叉。以下为两者之间的全部提交（作者日期保留原时区；提交者日期见*_show.txt）：
+
+| SHA | 作者日期 | 作者 | 标题 |
+|---|---|---|---|
+| 17ede413ff4be202736ca9cb1c52ed679aa9439a | 2026-09-28T09:51:05+09:00 | DongHun Kwak <dh0128.kwak@samsung.com> | Convert shell scripts from bash to dash compatibility |
+| 458baad02d812098938663971d1b8560a4813375 | 2026-10-27T09:59:09+09:00 | DongHun Kwak <dh0128.kwak@samsung.com> | linux-tizen-modules: require /usr/bin/find and drop coreutils in post scripts |
+
+[完整git log](../evidence/task17/modules_source_diff/commits.txt)。git diff --stat如下：
+
+    packaging/linux-tizen-modules.spec | 38 ++++++++++++++------------------------
+    1 file changed, 14 insertions(+), 24 deletions(-)
+
+### 10.2 (a)/(b)分类及行为判断
+
+**(a)：0项。** 两提交未修改7个模块源码、编译开关、logger缓冲大小、RPi4的KERNELDIR、模块装载配置或模块安装后脚本正文。除了spec外的15个Git条目完全相同，spec中%prep/%build逐字相同，见[source_invariants.json](../evidence/task17/modules_source_diff/source_invariants.json)。实际C源码由%prep从linux-tizen-modules-source包复制（新spec第155–158行），两镜像该包均25797e8a，RPM载荷55项文件大小/模式/链接目标/文件摘要清单相同，见[content_comparison.json](../evidence/task17/modules_source_diff/content_comparison.json)及两份rpm_queries.txt。
+
+**(b)：两个提交、一个spec文件，分为下列修改：**
+
+| 提交/位置 | 变化 | 作用和对本次对照的影响 |
+|---|---|---|
+| 17ede413；旧spec 79–94行，新spec 77–92行 | RubikPi3、OrinNano的Requires(post)由bash改为/bin/sh | 其他板型的RPM依赖声明；RPi4原本已用/bin/sh，不改变本次7模块 |
+| 17ede413；旧spec 340–345行，新spec 330–335行 | %install的pushd/popd改为cd lib/modules / cd - | 构建机上复制已经编好的.ko时兼容dash；find/cp命令、源目录和目标目录不变，不是目标板启动脚本，不改Kbuild选项 |
+| 458baad0；新spec 95–114行及其他板型同类位置 | Requires(post): coreutils、findutils改为/usr/bin/find | 改RPM依赖表达，RPi4/RT也涉及，但不改模块代码；实际两镜像coreutils/findutils仍以相同版本/来源存在，未造成安装集差异 |
+
+完整diff：[diff.txt](../evidence/task17/modules_source_diff/diff.txt)；固定版本行号：[旧spec](../evidence/task17/modules_source_diff/36d09256_spec_numbered.txt)、[新spec](../evidence/task17/modules_source_diff/458baad0_spec_numbered.txt)。
+
+对两个实际linux-tizen-modules-rpi4 RPM执行平台rpm -qp --scripts/--requires/-l确认：安装文件列表、postinstall正文及/bin/sh解释器相同；modprobe.d和modules-load.d两配置的SHA也相同。post仍只按既有find/dirname/basename/head方法找到版本并执行depmod，没有新增服务、定时任务或运行时日志。两镜像保留同版本coreutils 6.9-14.3与findutils 4.3.8-1.14，见[rpm_comparison.json](../evidence/task17/modules_source_diff/rpm_comparison.json)、[安装集摘录](../evidence/task17/modules_source_diff/installed_dependency_excerpt.txt)。
+
+因此上述差异只影响打包脚本兼容性/依赖解析；在**这两份已经生成并核验的镜像**中，没有引入额外内存常驻、调度工作、日志量或启动装载行为变化。本结论不以“打包文件修改天然无影响”为前提，而以实际包脚本/配置/依赖安装集一致为依据。
+
+### 10.3 实际7模块的大小与段比较
+
+重新从任务17已验证哈希、与镜像.packages对应的两个linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm解包；未安装RPM。SR使用任务9 root、类产品使用任务12 root，通过bwrap＋qemu-arm运行平台rpm/rpm2cpio/cpio、size -A -d、readelf -SW；段内容哈希由同平台Python读取ELF计算，不使用宿主工具链。
+
+下表单位B，差值均为“类产品−SR”，.text/.data指同名段；proc-tsm没有.data段，以0计。其他段和.bss大小也全部相同，见[binary_diff.json](../evidence/task17/modules_source_diff/binary_diff.json)。原命令/输出/退出码：[SR](../evidence/task17/modules_source_diff/sr_platform_sections.txt)、[类产品](../evidence/task17/modules_source_diff/vbase_platform_sections.txt)。
+
+| 模块 | 文件SR | 文件类产品 | Δ文件 | .text SR/类产品 | Δ.text | .data SR/类产品 | Δ.data |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| dm-bow.ko | 31,868 | 31,868 | 0 | 8,220 / 8,220 | 0 | 204 / 204 | 0 |
+| extcon-usb-fixed.ko | 6,156 | 6,156 | 0 | 184 / 184 | 0 | 520 / 520 | 0 |
+| inform-reboot.ko | 7,052 | 7,052 | 0 | 372 / 372 | 0 | 12 / 12 | 0 |
+| kdbus.ko | 162,584 | 162,584 | 0 | 67,428 / 67,428 | 0 | 52 / 52 | 0 |
+| logger.ko | 23,664 | 23,664 | 0 | 6,312 / 6,312 | 0 | 28 / 28 | 0 |
+| proc-tsm.ko | 10,680 | 10,680 | 0 | 1,420 / 1,420 | 0 | 0 / 0 | 0 |
+| zlogger.ko | 31,628 | 31,628 | 0 | 9,208 / 9,208 | 0 | 16 / 16 | 0 |
+| 合计 | 273,632 | 273,632 | 0 | 93,144 / 93,144 | 0 | 832 / 832 | 0 |
+
+进一步按节比较载荷：7模块的.text、.data不只是同大小，内容SHA也全部相同；全部有文件载荷的节中，仅__versions和.note.gnu.build-id不同。未输出类产品逐符号CRC细节，公开仅留段名/一致性结果。该差异符合两内核具有不同符号CRC、各自重新构建模块的事实；任务17已经分别验证各7模块356项CRC与各自内核匹配，均0不一致。不能因为本节判“可接受”就把SR的.ko复制到类产品内核下使用。
+
+### 10.4 结论与建议
+
+选择 **“可接受”**：两个新增提交均为(b)，(a)为0；RPi4的源码和编译选项不变，实际模块代码/数据段完全一致，安装脚本、装载配置和依赖安装集也无引入对照变量的变化。两现有基线可直接用于后续内存/性能对比，**不需要为统一linux-tizen-modules提交号重出1218764或1218766，也无需调整这次Shelve列表**。
+
+已有镜像中的模块必须继续分别对应各自内核。今后若统一维护包来源，可选较新的origin/tizen@458baad02d812098938663971d1b8560a4813375；这不是本次镜像重出要求，类产品若再构建仍需针对对应kernel-devel重编。实际启动/模块加载等板上验收仍按原任务17后续计划执行。本轮未连板、构建、sudo、触发QB或推Gerrit，只fetch远端引用并分析既有产物。

@@ -1,0 +1,12 @@
+from pathlib import Path
+import struct,hashlib,json,sys
+base=Path(sys.argv[1]);rows=[]
+for p in sorted(base.rglob('*.ko')):
+ b=p.read_bytes();assert b[:6]==b'\x7fELF\x01\x01'
+ shoff=struct.unpack_from('<I',b,32)[0];entsize,num,strings=struct.unpack_from('<HHH',b,46)
+ hs=[struct.unpack_from('<10I',b,shoff+i*entsize) for i in range(num)];ss=hs[strings];names=b[ss[4]:ss[4]+ss[5]];sections={}
+ for h in hs:
+  n=names[h[0]:].split(b'\0')[0].decode()
+  if h[1]!=8:sections[n]={'bytes':h[5],'sha256':hashlib.sha256(b[h[4]:h[4]+h[5]]).hexdigest()}
+ rows.append({'module':p.name,'sections':sections})
+(base.parent/'section_hashes.json').write_text(json.dumps(rows,indent=2)+'\n')

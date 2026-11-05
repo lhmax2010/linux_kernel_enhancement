@@ -1,0 +1,5 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules log --reverse '--format=%H%x09%aI%x09%an <%ae>%x09%s' 36d0925699ac0ffc1ce3854ed838a48d24a56c28..458baad02d812098938663971d1b8560a4813375
+17ede413ff4be202736ca9cb1c52ed679aa9439a	2026-09-28T09:51:05+09:00	DongHun Kwak <dh0128.kwak@samsung.com>	Convert shell scripts from bash to dash compatibility
+458baad02d812098938663971d1b8560a4813375	2026-10-27T09:59:09+09:00	DongHun Kwak <dh0128.kwak@samsung.com>	linux-tizen-modules: require /usr/bin/find and drop coreutils in post scripts
+
+EXIT=0

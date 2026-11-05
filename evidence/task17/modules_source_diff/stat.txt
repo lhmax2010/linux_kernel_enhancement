@@ -1,0 +1,5 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules diff --stat 36d0925699ac0ffc1ce3854ed838a48d24a56c28 458baad02d812098938663971d1b8560a4813375
+ packaging/linux-tizen-modules.spec | 38 ++++++++++++++------------------------
+ 1 file changed, 14 insertions(+), 24 deletions(-)
+
+EXIT=0

@@ -1,0 +1,17 @@
+{
+  "unchanged_paths_excluding_spec": 15,
+  "trees_equal_except_spec": true,
+  "blocks": [
+    {
+      "block": "%prep",
+      "identical": true,
+      "sha256": "f5a8fa0bf876a9cf4fbc44975d7875742c914d500d7b1ea2fc38b4160db4704f"
+    },
+    {
+      "block": "%build",
+      "identical": true,
+      "sha256": "02e1472f60ec5896f4858f13dd65409651be3cde506c2bb7607329bde8f2d774"
+    }
+  ],
+  "tizen_head": "458baad02d812098938663971d1b8560a4813375"
+}

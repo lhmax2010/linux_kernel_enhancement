@@ -1,0 +1,45 @@
+commit 17ede413ff4be202736ca9cb1c52ed679aa9439a
+Author:     DongHun Kwak <dh0128.kwak@samsung.com>
+AuthorDate: Mon Sep 28 09:51:05 2026 +0900
+Commit:     DongHun Kwak <dh0128.kwak@samsung.com>
+CommitDate: Mon Sep 28 09:51:05 2026 +0900
+
+    Convert shell scripts from bash to dash compatibility
+    
+    Change-Id: I762581d46819bdcdb0930da2c863eaf8e1a1693b
+    Signed-off-by: DongHun Kwak <dh0128.kwak@samsung.com>
+
+diff --git a/packaging/linux-tizen-modules.spec b/packaging/linux-tizen-modules.spec
+index 54bc8f6..ef59a4b 100644
+--- a/packaging/linux-tizen-modules.spec
++++ b/packaging/linux-tizen-modules.spec
+@@ -79,7 +79,7 @@ Provides:       stability-monitor-kernel-module
+ Summary:        Tizen modules for Qcom RubikPi3 board
+ AutoReqProv:    no
+ Requires:       linux-qc-modules
+-Requires(post): bash
++Requires(post): /bin/sh
+ Requires(post): coreutils
+ Requires(post): findutils
+ Requires(post): kmod-compat
+@@ -89,7 +89,7 @@ Requires(post): kmod-compat
+ Summary:        Tizen modules for Nvidia orinnano board
+ AutoReqProv:    no
+ Requires:       jetson-linux-kernel-modules
+-Requires(post): bash
++Requires(post): /bin/sh
+ Requires(post): coreutils
+ Requires(post): findutils
+ Requires(post): kmod-compat
+@@ -340,9 +340,9 @@ make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-riscv-b
+ %install
+ mkdir -p %{buildroot}/%{KMOD_PATH}
+ 
+-pushd lib/modules
++cd lib/modules
+ find -name "*.ko" -exec cp -a --parents {} %{buildroot}/%{KMOD_PATH}/ \;
+-popd
++cd -
+ 
+ %ifarch aarch64
+ # module load config

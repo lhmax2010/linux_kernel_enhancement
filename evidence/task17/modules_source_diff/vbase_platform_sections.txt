@@ -1,0 +1,669 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/size -A -d /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/dm-bow.ko
+/home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/dm-bow.ko  :
+section                      size   addr
+.data                         204      0
+.plt                            1      0
+.init.plt                       1      0
+.text                        8220      0
+.ARM.exidx                    184      0
+.init.text                     68      0
+.ARM.exidx.init.text            8      0
+.ARM.extab.init.text           12      0
+.ARM.extab                    144      0
+.text.unlikely.              1180      0
+.ARM.exidx.text.unlikely.       8      0
+.alt.smp.init                   8      0
+.modinfo                      137      0
+.init.data                      4      0
+.exit.data                      4      0
+.rodata.str1.1               1508      0
+.bss                            2      0
+.rodata                        64      0
+.comment                       22      0
+.ARM.attributes                52      0
+.llvm_addrsig                  46      0
+__mcount_loc                  100      0
+.gnu.linkonce.this_module     768      0
+__versions                   3584      0
+.note.Linux                    48      0
+.note.gnu.build-id             36      0
+.note.GNU-stack                 0      0
+.BTF                         3146      0
+.BTF.base                     578      0
+Total                       20137
+
+
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -SW /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/dm-bow.ko
+There are 46 section headers, starting at offset 0x754c:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .data             PROGBITS        00000000 000038 0000cc 00  WA  0   0  8
+  [ 2] .plt              PROGBITS        00000000 000110 000001 00   A  0   0 16
+  [ 3] .init.plt         PROGBITS        00000000 000111 000001 00   A  0   0  1
+  [ 4] .text             PROGBITS        00000000 000114 00201c 00  AX  0   0  4
+  [ 5] .ARM.exidx        ARM_EXIDX       00000000 002130 0000b8 00  AL  4   0  4
+  [ 6] .rel.text         REL             00000000 004014 000b20 08   I 41   4  4
+  [ 7] .init.text        PROGBITS        00000000 0021e8 000044 00  AX  0   0  4
+  [ 8] .ARM.exidx.init.text ARM_EXIDX       00000000 00222c 000008 00  AL  7   0  4
+  [ 9] .rel.init.text    REL             00000000 004b34 000038 08   I 41   7  4
+  [10] .ARM.extab.init.text PROGBITS        00000000 002234 00000c 00   A  0   0  4
+  [11] .rel.ARM.exidx.init.text REL             00000000 004b6c 000018 08   I 41   8  4
+  [12] .rel.ARM.exidx    REL             00000000 004b84 0001d0 08   I 41   5  4
+  [13] .ARM.extab        PROGBITS        00000000 002240 000090 00   A  0   0  4
+  [14] .text.unlikely.   PROGBITS        00000000 0022d0 00049c 00  AX  0   0  4
+  [15] .ARM.exidx.text.unlikely. ARM_EXIDX       00000000 00276c 000008 00  AL 14   0  4
+  [16] .rel.text.unlikely. REL             00000000 004d54 0001b0 08   I 41  14  4
+  [17] .alt.smp.init     PROGBITS        00000000 002774 000008 00   A  0   0  4
+  [18] .rel.alt.smp.init REL             00000000 004f04 000008 08   I 41  17  4
+  [19] .rel.ARM.exidx.text.unlikely. REL             00000000 004f0c 000010 08   I 41  15  4
+  [20] .modinfo          PROGBITS        00000000 00277c 000089 00   A  0   0  1
+  [21] .init.data        PROGBITS        00000000 002808 000004 00  WA  0   0  4
+  [22] .rel.init.data    REL             00000000 004f1c 000008 08   I 41  21  4
+  [23] .exit.data        PROGBITS        00000000 00280c 000004 00  WA  0   0  4
+  [24] .rel.exit.data    REL             00000000 004f24 000008 08   I 41  23  4
+  [25] .rodata.str1.1    PROGBITS        00000000 002810 0005e4 01 AMS  0   0  1
+  [26] .rel.data         REL             00000000 004f2c 0000a8 08   I 41   1  4
+  [27] .bss              NOBITS          00000000 002df4 000002 00  WA  0   0  1
+  [28] .rodata           PROGBITS        00000000 002df4 000040 00   A  0   0  4
+  [29] .rel.rodata       REL             00000000 004fd4 000050 08   I 41  28  4
+  [30] .comment          PROGBITS        00000000 005024 000016 01  MS  0   0  1
+  [31] .ARM.attributes   ARM_ATTRIBUTES  00000000 00503a 000034 00      0   0  1
+  [32] .llvm_addrsig     LLVM_ADDRSIG    00000000 00506e 00002e 00   E  0   0  1
+  [33] __mcount_loc      PROGBITS        00000000 002e34 000064 04   A  0   0  4
+  [34] .rel__mcount_loc  REL             00000000 00509c 0000c8 08   I 41  33  4
+  [35] .gnu.linkonce.this_module PROGBITS        00000000 002ec0 000300 00  WA  0   0 64
+  [36] .rel.gnu.linkonce.this_module REL             00000000 005164 000010 08   I 41  35  4
+  [37] __versions        PROGBITS        00000000 0031c0 000e00 00   A  0   0  4
+  [38] .note.Linux       NOTE            00000000 003fc0 000030 00   A  0   0  4
+  [39] .note.gnu.build-id NOTE            00000000 003ff0 000024 00   A  0   0  4
+  [40] .note.GNU-stack   PROGBITS        00000000 005174 000000 00      0   0  1
+  [41] .symtab           SYMTAB          00000000 005174 000b60 10     43 122  4
+  [42] .shstrtab         STRTAB          00000000 005cd4 0001ba 00      0   0  1
+  [43] .strtab           STRTAB          00000000 005e8e 00082f 00      0   0  1
+  [44] .BTF              PROGBITS        00000000 0066bd 000c4a 00      0   0  1
+  [45] .BTF.base         PROGBITS        00000000 007307 000242 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/size -A -d /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko
+/home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko  :
+section                     size   addr
+.data                        520      0
+.plt                           1      0
+.init.plt                      1      0
+.text                        184      0
+.ARM.exidx                    24      0
+.ARM.extab                    12      0
+.init.data                     4      0
+.exit.data                     4      0
+.modinfo                     234      0
+.rodata                        8      0
+.bss                           4      0
+.rodata.str1.1                17      0
+.comment                      22      0
+.ARM.attributes               54      0
+.llvm_addrsig                 19      0
+__mcount_loc                  12      0
+.gnu.linkonce.this_module    768      0
+__versions                   576      0
+.note.Linux                   48      0
+.note.gnu.build-id            36      0
+.note.GNU-stack                0      0
+.BTF                         137      0
+.BTF.base                     92      0
+Total                       2777
+
+
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -SW /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko
+There are 34 section headers, starting at offset 0x12bc:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .data             PROGBITS        00000000 000038 000208 00  WA  0   0  8
+  [ 2] .plt              PROGBITS        00000000 000240 000001 00   A  0   0 16
+  [ 3] .init.plt         PROGBITS        00000000 000241 000001 00   A  0   0  1
+  [ 4] .text             PROGBITS        00000000 000244 0000b8 00  AX  0   0  4
+  [ 5] .ARM.exidx        ARM_EXIDX       00000000 0002fc 000018 00  AL  4   0  4
+  [ 6] .rel.text         REL             00000000 0009d4 000080 08   I 29   4  4
+  [ 7] .ARM.extab        PROGBITS        00000000 000314 00000c 00   A  0   0  4
+  [ 8] .rel.ARM.exidx    REL             00000000 000a54 000038 08   I 29   5  4
+  [ 9] .init.data        PROGBITS        00000000 000320 000004 00  WA  0   0  4
+  [10] .rel.init.data    REL             00000000 000a8c 000008 08   I 29   9  4
+  [11] .exit.data        PROGBITS        00000000 000324 000004 00  WA  0   0  4
+  [12] .rel.exit.data    REL             00000000 000a94 000008 08   I 29  11  4
+  [13] .modinfo          PROGBITS        00000000 000328 0000ea 00   A  0   0  1
+  [14] .rodata           PROGBITS        00000000 000414 000008 00   A  0   0  4
+  [15] .bss              NOBITS          00000000 00041c 000004 00  WA  0   0  4
+  [16] .rodata.str1.1    PROGBITS        00000000 00041c 000011 01 AMS  0   0  1
+  [17] .rel.data         REL             00000000 000a9c 000010 08   I 29   1  4
+  [18] .comment          PROGBITS        00000000 000aac 000016 01  MS  0   0  1
+  [19] .ARM.attributes   ARM_ATTRIBUTES  00000000 000ac2 000036 00      0   0  1
+  [20] .llvm_addrsig     LLVM_ADDRSIG    00000000 000af8 000013 00   E  0   0  1
+  [21] __mcount_loc      PROGBITS        00000000 000430 00000c 04   A  0   0  4
+  [22] .rel__mcount_loc  REL             00000000 000b0c 000018 08   I 29  21  4
+  [23] .gnu.linkonce.this_module PROGBITS        00000000 000440 000300 00  WA  0   0 64
+  [24] .rel.gnu.linkonce.this_module REL             00000000 000b24 000010 08   I 29  23  4
+  [25] __versions        PROGBITS        00000000 000740 000240 00   A  0   0  4
+  [26] .note.Linux       NOTE            00000000 000980 000030 00   A  0   0  4
+  [27] .note.gnu.build-id NOTE            00000000 0009b0 000024 00   A  0   0  4
+  [28] .note.GNU-stack   PROGBITS        00000000 000b34 000000 00      0   0  1
+  [29] .symtab           SYMTAB          00000000 000b34 000300 10     31  35  4
+  [30] .shstrtab         STRTAB          00000000 000e34 000135 00      0   0  1
+  [31] .strtab           STRTAB          00000000 000f69 00026c 00      0   0  1
+  [32] .BTF              PROGBITS        00000000 0011d5 000089 00      0   0  1
+  [33] .BTF.base         PROGBITS        00000000 00125e 00005c 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/size -A -d /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/inform-reboot.ko
+/home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/inform-reboot.ko  :
+section                     size   addr
+.data                         12      0
+.plt                           1      0
+.init.plt                      1      0
+.text                        372      0
+.ARM.exidx                    16      0
+.init.text                    36      0
+.ARM.exidx.init.text           8      0
+.ARM.extab                    12      0
+.init.data                     4      0
+.exit.data                     4      0
+.modinfo                     144      0
+.rodata.str1.1               174      0
+.comment                      22      0
+.ARM.attributes               52      0
+.llvm_addrsig                 16      0
+__mcount_loc                  12      0
+.gnu.linkonce.this_module    768      0
+__versions                  1024      0
+.note.Linux                   48      0
+.note.gnu.build-id            36      0
+.note.GNU-stack                0      0
+.BTF                         166      0
+.BTF.base                    130      0
+Total                       3058
+
+
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -SW /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/inform-reboot.ko
+There are 36 section headers, starting at offset 0x15ec:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .data             PROGBITS        00000000 000034 00000c 00  WA  0   0  4
+  [ 2] .plt              PROGBITS        00000000 000040 000001 00   A  0   0 16
+  [ 3] .init.plt         PROGBITS        00000000 000041 000001 00   A  0   0  1
+  [ 4] .text             PROGBITS        00000000 000044 000174 00  AX  0   0  4
+  [ 5] .ARM.exidx        ARM_EXIDX       00000000 0001b8 000010 00  AL  4   0  4
+  [ 6] .rel.text         REL             00000000 000ad4 000140 08   I 31   4  4
+  [ 7] .init.text        PROGBITS        00000000 0001c8 000024 00  AX  0   0  4
+  [ 8] .ARM.exidx.init.text ARM_EXIDX       00000000 0001ec 000008 00  AL  7   0  4
+  [ 9] .rel.init.text    REL             00000000 000c14 000020 08   I 31   7  4
+  [10] .rel.ARM.exidx.init.text REL             00000000 000c34 000010 08   I 31   8  4
+  [11] .rel.ARM.exidx    REL             00000000 000c44 000028 08   I 31   5  4
+  [12] .ARM.extab        PROGBITS        00000000 0001f4 00000c 00   A  0   0  4
+  [13] .init.data        PROGBITS        00000000 000200 000004 00  WA  0   0  4
+  [14] .rel.init.data    REL             00000000 000c6c 000008 08   I 31  13  4
+  [15] .exit.data        PROGBITS        00000000 000204 000004 00  WA  0   0  4
+  [16] .rel.exit.data    REL             00000000 000c74 000008 08   I 31  15  4
+  [17] .modinfo          PROGBITS        00000000 000208 000090 00   A  0   0  1
+  [18] .rel.data         REL             00000000 000c7c 000008 08   I 31   1  4
+  [19] .rodata.str1.1    PROGBITS        00000000 000298 0000ae 01 AMS  0   0  1
+  [20] .comment          PROGBITS        00000000 000c84 000016 01  MS  0   0  1
+  [21] .ARM.attributes   ARM_ATTRIBUTES  00000000 000c9a 000034 00      0   0  1
+  [22] .llvm_addrsig     LLVM_ADDRSIG    00000000 000cce 000010 00   E  0   0  1
+  [23] __mcount_loc      PROGBITS        00000000 000348 00000c 04   A  0   0  4
+  [24] .rel__mcount_loc  REL             00000000 000ce0 000018 08   I 31  23  4
+  [25] .gnu.linkonce.this_module PROGBITS        00000000 000380 000300 00  WA  0   0 64
+  [26] .rel.gnu.linkonce.this_module REL             00000000 000cf8 000010 08   I 31  25  4
+  [27] __versions        PROGBITS        00000000 000680 000400 00   A  0   0  4
+  [28] .note.Linux       NOTE            00000000 000a80 000030 00   A  0   0  4
+  [29] .note.gnu.build-id NOTE            00000000 000ab0 000024 00   A  0   0  4
+  [30] .note.GNU-stack   PROGBITS        00000000 000d08 000000 00      0   0  1
+  [31] .symtab           SYMTAB          00000000 000d08 0003e0 10     33  42  4
+  [32] .shstrtab         STRTAB          00000000 0010e8 000150 00      0   0  1
+  [33] .strtab           STRTAB          00000000 001238 00028a 00      0   0  1
+  [34] .BTF              PROGBITS        00000000 0014c2 0000a6 00      0   0  1
+  [35] .BTF.base         PROGBITS        00000000 001568 000082 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/size -A -d /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/kdbus/kdbus.ko
+/home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/kdbus/kdbus.ko  :
+section                       size   addr
+__bug_table                     36      0
+.data                           52      0
+.plt                             1      0
+.init.plt                        1      0
+.text                        67428      0
+.ARM.exidx                    1528      0
+.init.text                     160      0
+.ARM.exidx.init.text             8      0
+.exit.text                      48      0
+.ARM.exidx.exit.text             8      0
+.rodata                       1256      0
+.alt.smp.init                  712      0
+.rodata.str1.1                1559      0
+.rodata.cst16                   32      0
+__mcount_loc                   760      0
+.rodata.cst32                  128      0
+.ARM.extab.init.text            12      0
+.modinfo                       221      0
+.rodata.str                    151      0
+.rodata.cst8                     8      0
+.ARM.extab                    1668      0
+.init.data                       4      0
+.exit.data                       4      0
+.data..once                      3      0
+.bss                            29      0
+.comment                        22      0
+.ARM.attributes                 50      0
+.llvm_addrsig                   77      0
+.gnu.linkonce.this_module      768      0
+__versions                    9856      0
+.note.Linux                     48      0
+.note.gnu.build-id              36      0
+.note.GNU-stack                  0      0
+.BTF                         26749      0
+.BTF.base                      937      0
+Total                       114360
+
+
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -SW /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/kdbus/kdbus.ko
+There are 53 section headers, starting at offset 0x272d0:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] __bug_table       PROGBITS        00000000 000038 000024 00  WA  0   0  8
+  [ 2] .data             PROGBITS        00000000 00005c 000034 00  WA  0   0  4
+  [ 3] .plt              PROGBITS        00000000 000090 000001 00   A  0   0 16
+  [ 4] .init.plt         PROGBITS        00000000 000091 000001 00   A  0   0  1
+  [ 5] .text             PROGBITS        00000000 000094 010764 00  AX  0   0  4
+  [ 6] .ARM.exidx        ARM_EXIDX       00000000 0107f8 0005f8 00  AL  5   0  4
+  [ 7] .rel.text         REL             00000000 015254 0041e0 08   I 48   5  4
+  [ 8] .init.text        PROGBITS        00000000 010df0 0000a0 00  AX  0   0  4
+  [ 9] .ARM.exidx.init.text ARM_EXIDX       00000000 010e90 000008 00  AL  8   0  4
+  [10] .rel.init.text    REL             00000000 019434 000090 08   I 48   8  4
+  [11] .exit.text        PROGBITS        00000000 010e98 000030 00  AX  0   0  4
+  [12] .ARM.exidx.exit.text ARM_EXIDX       00000000 010ec8 000008 00  AL 11   0  4
+  [13] .rel.exit.text    REL             00000000 0194c4 000040 08   I 48  11  4
+  [14] .rodata           PROGBITS        00000000 010f00 0004e8 00   A  0   0 64
+  [15] .rel.rodata       REL             00000000 019504 000098 08   I 48  14  4
+  [16] .alt.smp.init     PROGBITS        00000000 0113e8 0002c8 00   A  0   0  4
+  [17] .rel.alt.smp.init REL             00000000 01959c 0002c8 08   I 48  16  4
+  [18] .rodata.str1.1    PROGBITS        00000000 0116b0 000617 01 AMS  0   0  1
+  [19] .rodata.cst16     PROGBITS        00000000 011cc8 000020 10  AM  0   0  8
+  [20] __mcount_loc      PROGBITS        00000000 011ce8 0002f8 00   A  0   0  4
+  [21] .rel__mcount_loc  REL             00000000 019864 0005f0 08   I 48  20  4
+  [22] .rodata.cst32     PROGBITS        00000000 011fe0 000080 20  AM  0   0  8
+  [23] .ARM.extab.init.text PROGBITS        00000000 012060 00000c 00   A  0   0  4
+  [24] .rel.ARM.exidx.init.text REL             00000000 019e54 000018 08   I 48   9  4
+  [25] .rel.ARM.exidx.exit.text REL             00000000 019e6c 000010 08   I 48  12  4
+  [26] .modinfo          PROGBITS        00000000 01206c 0000dd 00   A  0   0  1
+  [27] .rodata.str       PROGBITS        00000000 012149 000097 01 AMS  0   0  1
+  [28] .rodata.cst8      PROGBITS        00000000 0121e0 000008 08  AM  0   0  1
+  [29] .ARM.extab        PROGBITS        00000000 0121e8 000684 00   A  0   0  4
+  [30] .rel.ARM.exidx    REL             00000000 019e7c 001048 08   I 48   6  4
+  [31] .rel.data         REL             00000000 01aec4 000020 08   I 48   2  4
+  [32] .init.data        PROGBITS        00000000 01286c 000004 00  WA  0   0  4
+  [33] .rel.init.data    REL             00000000 01aee4 000008 08   I 48  32  4
+  [34] .exit.data        PROGBITS        00000000 012870 000004 00  WA  0   0  4
+  [35] .rel.exit.data    REL             00000000 01aeec 000008 08   I 48  34  4
+  [36] .rel__bug_table   REL             00000000 01aef4 000030 08   I 48   1  4
+  [37] .data..once       PROGBITS        00000000 012874 000003 00  WA  0   0  1
+  [38] .bss              NOBITS          00000000 012878 00001d 00  WA  0   0  4
+  [39] .comment          PROGBITS        00000000 01af24 000016 01  MS  0   0  1
+  [40] .ARM.attributes   ARM_ATTRIBUTES  00000000 01af3a 000032 00      0   0  1
+  [41] .llvm_addrsig     LLVM_ADDRSIG    00000000 01af6c 00004d 00   E  0   0  1
+  [42] .gnu.linkonce.this_module PROGBITS        00000000 012880 000300 00  WA  0   0 64
+  [43] .rel.gnu.linkonce.this_module REL             00000000 01afbc 000010 08   I 48  42  4
+  [44] __versions        PROGBITS        00000000 012b80 002680 00   A  0   0  4
+  [45] .note.Linux       NOTE            00000000 015200 000030 00   A  0   0  4
+  [46] .note.gnu.build-id NOTE            00000000 015230 000024 00   A  0   0  4
+  [47] .note.GNU-stack   PROGBITS        00000000 01afcc 000000 00      0   0  1
+  [48] .symtab           SYMTAB          00000000 01afcc 0036d0 10     50 566  4
+  [49] .shstrtab         STRTAB          00000000 01e69c 000201 00      0   0  1
+  [50] .strtab           STRTAB          00000000 01e89d 001e0c 00      0   0  1
+  [51] .BTF              PROGBITS        00000000 0206a9 00687d 00      0   0  1
+  [52] .BTF.base         PROGBITS        00000000 026f26 0003a9 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/size -A -d /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko
+/home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko  :
+section                      size   addr
+__bug_table                    12      0
+.data                          28      0
+.plt                            1      0
+.init.plt                       1      0
+.text                        6312      0
+.ARM.exidx                     64      0
+.init.text                    576      0
+.ARM.exidx.init.text           16      0
+.exit.text                    108      0
+.ARM.exidx.exit.text            8      0
+.ARM.extab.exit.text           12      0
+.ARM.extab.init.text           12      0
+.alt.smp.init                  16      0
+.rodata.str                    71      0
+.ARM.extab                     36      0
+.rodata                       208      0
+__param                        80      0
+.modinfo                      542      0
+.init.data                      4      0
+.exit.data                      4      0
+.rodata.str1.1                179      0
+.bss                            2      0
+.data..once                     1      0
+.comment                       22      0
+.ARM.attributes                52      0
+.llvm_addrsig                  50      0
+__mcount_loc                   40      0
+.gnu.linkonce.this_module     768      0
+__versions                   2688      0
+.note.Linux                    48      0
+.note.gnu.build-id             36      0
+.note.GNU-stack                 0      0
+.BTF                         1996      0
+.BTF.base                     537      0
+Total                       14530
+
+
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -SW /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko
+There are 53 section headers, starting at offset 0x5428:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] __bug_table       PROGBITS        00000000 000038 00000c 00  WA  0   0  8
+  [ 2] .data             PROGBITS        00000000 000044 00001c 00  WA  0   0  4
+  [ 3] .plt              PROGBITS        00000000 000060 000001 00   A  0   0 16
+  [ 4] .init.plt         PROGBITS        00000000 000061 000001 00   A  0   0  1
+  [ 5] .text             PROGBITS        00000000 000064 0018a8 00  AX  0   0  4
+  [ 6] .ARM.exidx        ARM_EXIDX       00000000 00190c 000040 00  AL  5   0  4
+  [ 7] .rel.text         REL             00000000 002ed4 000538 08   I 48   5  4
+  [ 8] .init.text        PROGBITS        00000000 00194c 000240 00  AX  0   0  4
+  [ 9] .ARM.exidx.init.text ARM_EXIDX       00000000 001b8c 000010 00  AL  8   0  4
+  [10] .rel.init.text    REL             00000000 00340c 000190 08   I 48   8  4
+  [11] .rel.ARM.exidx.init.text REL             00000000 00359c 000028 08   I 48   9  4
+  [12] .exit.text        PROGBITS        00000000 001b9c 00006c 00  AX  0   0  4
+  [13] .ARM.exidx.exit.text ARM_EXIDX       00000000 001c08 000008 00  AL 12   0  4
+  [14] .rel.exit.text    REL             00000000 0035c4 000030 08   I 48  12  4
+  [15] .ARM.extab.exit.text PROGBITS        00000000 001c10 00000c 00   A  0   0  4
+  [16] .rel.ARM.exidx.exit.text REL             00000000 0035f4 000018 08   I 48  13  4
+  [17] .ARM.extab.init.text PROGBITS        00000000 001c1c 00000c 00   A  0   0  4
+  [18] .rel.ARM.exidx    REL             00000000 00360c 000098 08   I 48   6  4
+  [19] .alt.smp.init     PROGBITS        00000000 001c28 000010 00   A  0   0  4
+  [20] .rel.alt.smp.init REL             00000000 0036a4 000010 08   I 48  19  4
+  [21] .rodata.str       PROGBITS        00000000 001c38 000047 01 AMS  0   0  1
+  [22] .rel__bug_table   REL             00000000 0036b4 000010 08   I 48   1  4
+  [23] .ARM.extab        PROGBITS        00000000 001c80 000024 00   A  0   0  4
+  [24] .rodata           PROGBITS        00000000 001ca4 0000d0 00   A  0   0  4
+  [25] .rel.rodata       REL             00000000 0036c4 000040 08   I 48  24  4
+  [26] .rel.data         REL             00000000 003704 000010 08   I 48   2  4
+  [27] __param           PROGBITS        00000000 001d74 000050 00   A  0   0  4
+  [28] .rel__param       REL             00000000 003714 000080 08   I 48  27  4
+  [29] .modinfo          PROGBITS        00000000 001dc4 00021e 00   A  0   0  1
+  [30] .init.data        PROGBITS        00000000 001fe4 000004 00  WA  0   0  4
+  [31] .rel.init.data    REL             00000000 003794 000008 08   I 48  30  4
+  [32] .exit.data        PROGBITS        00000000 001fe8 000004 00  WA  0   0  4
+  [33] .rel.exit.data    REL             00000000 00379c 000008 08   I 48  32  4
+  [34] .rodata.str1.1    PROGBITS        00000000 001fec 0000b3 01 AMS  0   0  1
+  [35] .bss              NOBITS          00000000 00209f 000002 00  WA  0   0  1
+  [36] .data..once       PROGBITS        00000000 00209f 000001 00  WA  0   0  1
+  [37] .comment          PROGBITS        00000000 0037a4 000016 01  MS  0   0  1
+  [38] .ARM.attributes   ARM_ATTRIBUTES  00000000 0037ba 000034 00      0   0  1
+  [39] .llvm_addrsig     LLVM_ADDRSIG    00000000 0037ee 000032 00   E  0   0  1
+  [40] __mcount_loc      PROGBITS        00000000 0020a0 000028 04   A  0   0  4
+  [41] .rel__mcount_loc  REL             00000000 003820 000050 08   I 48  40  4
+  [42] .gnu.linkonce.this_module PROGBITS        00000000 002100 000300 00  WA  0   0 64
+  [43] .rel.gnu.linkonce.this_module REL             00000000 003870 000010 08   I 48  42  4
+  [44] __versions        PROGBITS        00000000 002400 000a80 00   A  0   0  4
+  [45] .note.Linux       NOTE            00000000 002e80 000030 00   A  0   0  4
+  [46] .note.gnu.build-id NOTE            00000000 002eb0 000024 00   A  0   0  4
+  [47] .note.GNU-stack   PROGBITS        00000000 003880 000000 00      0   0  1
+  [48] .symtab           SYMTAB          00000000 003880 0008f0 10     50  97  4
+  [49] .shstrtab         STRTAB          00000000 004170 0001f9 00      0   0  1
+  [50] .strtab           STRTAB          00000000 004369 0006d9 00      0   0  1
+  [51] .BTF              PROGBITS        00000000 004a42 0007cc 00      0   0  1
+  [52] .BTF.base         PROGBITS        00000000 00520e 000219 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/size -A -d /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko
+/home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko  :
+section                     size   addr
+.data                          0      0
+.plt                           1      0
+.init.plt                      1      0
+.text                       1420      0
+.ARM.exidx                    16      0
+.init.text                    76      0
+.ARM.exidx.init.text           8      0
+.ARM.extab.init.text          12      0
+.exit.text                    28      0
+.ARM.exidx.exit.text           8      0
+.ARM.extab                    12      0
+.alt.smp.init                 40      0
+.rodata                       76      0
+__param                       20      0
+.modinfo                     173      0
+.init.data                     4      0
+.exit.data                     4      0
+.bss                          48      0
+.rodata.str1.1                 9      0
+.comment                      22      0
+.ARM.attributes               52      0
+.llvm_addrsig                 30      0
+__mcount_loc                  12      0
+.gnu.linkonce.this_module    768      0
+__versions                  1664      0
+.note.Linux                   48      0
+.note.gnu.build-id            36      0
+.note.GNU-stack                0      0
+.BTF                         274      0
+.BTF.base                    150      0
+Total                       5012
+
+
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -SW /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko
+There are 47 section headers, starting at offset 0x2260:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] .data             PROGBITS        00000000 000034 000000 00   A  0   0  1
+  [ 2] .plt              PROGBITS        00000000 000040 000001 00   A  0   0 16
+  [ 3] .init.plt         PROGBITS        00000000 000041 000001 00   A  0   0  1
+  [ 4] .text             PROGBITS        00000000 000044 00058c 00  AX  0   0  4
+  [ 5] .ARM.exidx        ARM_EXIDX       00000000 0005d0 000010 00  AL  4   0  4
+  [ 6] .rel.text         REL             00000000 0011d4 000198 08   I 42   4  4
+  [ 7] .init.text        PROGBITS        00000000 0005e0 00004c 00  AX  0   0  4
+  [ 8] .ARM.exidx.init.text ARM_EXIDX       00000000 00062c 000008 00  AL  7   0  4
+  [ 9] .rel.init.text    REL             00000000 00136c 000040 08   I 42   7  4
+  [10] .ARM.extab.init.text PROGBITS        00000000 000634 00000c 00   A  0   0  4
+  [11] .rel.ARM.exidx.init.text REL             00000000 0013ac 000018 08   I 42   8  4
+  [12] .exit.text        PROGBITS        00000000 000640 00001c 00  AX  0   0  4
+  [13] .ARM.exidx.exit.text ARM_EXIDX       00000000 00065c 000008 00  AL 12   0  4
+  [14] .rel.exit.text    REL             00000000 0013c4 000018 08   I 42  12  4
+  [15] .rel.ARM.exidx.exit.text REL             00000000 0013dc 000010 08   I 42  13  4
+  [16] .ARM.extab        PROGBITS        00000000 000664 00000c 00   A  0   0  4
+  [17] .rel.ARM.exidx    REL             00000000 0013ec 000028 08   I 42   5  4
+  [18] .alt.smp.init     PROGBITS        00000000 000670 000028 00   A  0   0  4
+  [19] .rel.alt.smp.init REL             00000000 001414 000028 08   I 42  18  4
+  [20] .rodata           PROGBITS        00000000 000698 00004c 00   A  0   0  4
+  [21] .rel.rodata       REL             00000000 00143c 000038 08   I 42  20  4
+  [22] __param           PROGBITS        00000000 0006e4 000014 00   A  0   0  4
+  [23] .rel__param       REL             00000000 001474 000020 08   I 42  22  4
+  [24] .modinfo          PROGBITS        00000000 0006f8 0000ad 00   A  0   0  1
+  [25] .init.data        PROGBITS        00000000 0007a8 000004 00  WA  0   0  4
+  [26] .rel.init.data    REL             00000000 001494 000008 08   I 42  25  4
+  [27] .exit.data        PROGBITS        00000000 0007ac 000004 00  WA  0   0  4
+  [28] .rel.exit.data    REL             00000000 00149c 000008 08   I 42  27  4
+  [29] .bss              NOBITS          00000000 0007b0 000030 00  WA  0   0  4
+  [30] .rodata.str1.1    PROGBITS        00000000 0007b0 000009 01 AMS  0   0  1
+  [31] .comment          PROGBITS        00000000 0014a4 000016 01  MS  0   0  1
+  [32] .ARM.attributes   ARM_ATTRIBUTES  00000000 0014ba 000034 00      0   0  1
+  [33] .llvm_addrsig     LLVM_ADDRSIG    00000000 0014ee 00001e 00   E  0   0  1
+  [34] __mcount_loc      PROGBITS        00000000 0007bc 00000c 04   A  0   0  4
+  [35] .rel__mcount_loc  REL             00000000 00150c 000018 08   I 42  34  4
+  [36] .gnu.linkonce.this_module PROGBITS        00000000 000800 000300 00  WA  0   0 64
+  [37] .rel.gnu.linkonce.this_module REL             00000000 001524 000010 08   I 42  36  4
+  [38] __versions        PROGBITS        00000000 000b00 000680 00   A  0   0  4
+  [39] .note.Linux       NOTE            00000000 001180 000030 00   A  0   0  4
+  [40] .note.gnu.build-id NOTE            00000000 0011b0 000024 00   A  0   0  4
+  [41] .note.GNU-stack   PROGBITS        00000000 001534 000000 00      0   0  1
+  [42] .symtab           SYMTAB          00000000 001534 000600 10     44  66  4
+  [43] .shstrtab         STRTAB          00000000 001b34 0001b2 00      0   0  1
+  [44] .strtab           STRTAB          00000000 001ce6 0003d2 00      0   0  1
+  [45] .BTF              PROGBITS        00000000 0020b8 000112 00      0   0  1
+  [46] .BTF.base         PROGBITS        00000000 0021ca 000096 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/size -A -d /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/zlogger/zlogger.ko
+/home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/zlogger/zlogger.ko  :
+section                      size   addr
+__jump_table                  132      0
+.data                          16      0
+.plt                            1      0
+.init.plt                       1      0
+.text                        9208      0
+.ARM.exidx                    136      0
+.ARM.extab                    144      0
+.alt.smp.init                  16      0
+.text.unlikely.                36      0
+.ARM.exidx.text.unlikely.       8      0
+.rodata                       332      0
+__param                        20      0
+.modinfo                      388      0
+.init.data                      4      0
+.exit.data                      4      0
+.rodata.str1.1               1081      0
+.bss                         1228      0
+.comment                       22      0
+.ARM.attributes                54      0
+.llvm_addrsig                  58      0
+__mcount_loc                   72      0
+.gnu.linkonce.this_module     768      0
+__versions                   3392      0
+.note.Linux                    48      0
+.note.gnu.build-id             36      0
+.note.GNU-stack                 0      0
+.BTF                         2621      0
+.BTF.base                     439      0
+Total                       20265
+
+
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -SW /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/extracted/lib/modules/6.12.80-arm-rpi4-v7l/extra/zlogger/zlogger.ko
+There are 45 section headers, starting at offset 0x7484:
+
+Section Headers:
+  [Nr] Name              Type            Addr     Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            00000000 000000 000000 00      0   0  0
+  [ 1] __jump_table      PROGBITS        00000000 000038 000084 00  WA  0   0  8
+  [ 2] .data             PROGBITS        00000000 0000bc 000010 00  WA  0   0  4
+  [ 3] .plt              PROGBITS        00000000 0000d0 000001 00   A  0   0 16
+  [ 4] .init.plt         PROGBITS        00000000 0000d1 000001 00   A  0   0  1
+  [ 5] .text             PROGBITS        00000000 0000d4 0023f8 00  AX  0   0  4
+  [ 6] .ARM.exidx        ARM_EXIDX       00000000 0024cc 000088 00  AL  5   0  4
+  [ 7] .rel.text         REL             00000000 003e54 001080 08   I 40   5  4
+  [ 8] .rel.ARM.exidx    REL             00000000 004ed4 000170 08   I 40   6  4
+  [ 9] .ARM.extab        PROGBITS        00000000 002554 000090 00   A  0   0  4
+  [10] .alt.smp.init     PROGBITS        00000000 0025e4 000010 00   A  0   0  4
+  [11] .rel.alt.smp.init REL             00000000 005044 000010 08   I 40  10  4
+  [12] .rel__jump_table  REL             00000000 005054 000108 08   I 40   1  4
+  [13] .text.unlikely.   PROGBITS        00000000 0025f4 000024 00  AX  0   0  4
+  [14] .ARM.exidx.text.unlikely. ARM_EXIDX       00000000 002618 000008 00  AL 13   0  4
+  [15] .rel.text.unlikely. REL             00000000 00515c 000020 08   I 40  13  4
+  [16] .rel.ARM.exidx.text.unlikely. REL             00000000 00517c 000010 08   I 40  14  4
+  [17] .rodata           PROGBITS        00000000 002620 00014c 00   A  0   0  4
+  [18] .rel.rodata       REL             00000000 00518c 000078 08   I 40  17  4
+  [19] .rel.data         REL             00000000 005204 000010 08   I 40   2  4
+  [20] __param           PROGBITS        00000000 00276c 000014 00   A  0   0  4
+  [21] .rel__param       REL             00000000 005214 000020 08   I 40  20  4
+  [22] .modinfo          PROGBITS        00000000 002780 000184 00   A  0   0  1
+  [23] .init.data        PROGBITS        00000000 002904 000004 00  WA  0   0  4
+  [24] .rel.init.data    REL             00000000 005234 000008 08   I 40  23  4
+  [25] .exit.data        PROGBITS        00000000 002908 000004 00  WA  0   0  4
+  [26] .rel.exit.data    REL             00000000 00523c 000008 08   I 40  25  4
+  [27] .rodata.str1.1    PROGBITS        00000000 00290c 000439 01 AMS  0   0  1
+  [28] .bss              NOBITS          00000000 002d48 0004cc 00  WA  0   0  8
+  [29] .comment          PROGBITS        00000000 005244 000016 01  MS  0   0  1
+  [30] .ARM.attributes   ARM_ATTRIBUTES  00000000 00525a 000036 00      0   0  1
+  [31] .llvm_addrsig     LLVM_ADDRSIG    00000000 005290 00003a 00   E  0   0  1
+  [32] __mcount_loc      PROGBITS        00000000 002d48 000048 04   A  0   0  4
+  [33] .rel__mcount_loc  REL             00000000 0052cc 000090 08   I 40  32  4
+  [34] .gnu.linkonce.this_module PROGBITS        00000000 002dc0 000300 00  WA  0   0 64
+  [35] .rel.gnu.linkonce.this_module REL             00000000 00535c 000010 08   I 40  34  4
+  [36] __versions        PROGBITS        00000000 0030c0 000d40 00   A  0   0  4
+  [37] .note.Linux       NOTE            00000000 003e00 000030 00   A  0   0  4
+  [38] .note.gnu.build-id NOTE            00000000 003e30 000024 00   A  0   0  4
+  [39] .note.GNU-stack   PROGBITS        00000000 00536c 000000 00      0   0  1
+  [40] .symtab           SYMTAB          00000000 00536c 000ab0 10     42 114  4
+  [41] .shstrtab         STRTAB          00000000 005e1c 00019a 00      0   0  1
+  [42] .strtab           STRTAB          00000000 005fb6 0008d8 00      0   0  1
+  [43] .BTF              PROGBITS        00000000 00688e 000a3d 00      0   0  1
+  [44] .BTF.base         PROGBITS        00000000 0072cb 0001b7 00      0   0  1
+Key to Flags:
+  W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
+  L (link order), O (extra OS processing required), G (group), T (TLS),
+  C (compressed), x (unknown), o (OS specific), E (exclude),
+  D (mbind), y (purecode), p (processor specific)
+
+EXIT=0

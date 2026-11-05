@@ -1,0 +1,22 @@
+{
+  "verdict": "可接受",
+  "reason": "Both intervening commits only change packaging; no module source or build-option change. All seven .text/.data payloads and section sizes match; only __versions and build-id payloads differ. Each module set already matches its own kernel CRCs.",
+  "category_a_count": 0,
+  "category_b_commit_count": 2,
+  "newer_commit": "458baad02d812098938663971d1b8560a4813375",
+  "older_commit": "36d0925699ac0ffc1ce3854ed838a48d24a56c28",
+  "ancestor": true,
+  "intervening_commits": 2,
+  "rebuild_image_required": false,
+  "shelve_change_required": false,
+  "totals": {
+    "sr_bytes": 273632,
+    "vbase_bytes": 273632,
+    "sr_text": 93144,
+    "vbase_text": 93144,
+    "sr_data": 832,
+    "vbase_data": 832
+  },
+  "source_payload_file_digest_lists_equal": true,
+  "source_payload_entries": 55
+}

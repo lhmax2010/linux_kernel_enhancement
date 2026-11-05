@@ -1,0 +1,54 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules show -s '--format=%H%nAuthor: %an <%ae>%nAuthorDate: %aI%nCommitDate: %cI%nSubject: %s' 36d0925699ac0ffc1ce3854ed838a48d24a56c28
+36d0925699ac0ffc1ce3854ed838a48d24a56c28
+Author: Seung-Woo Kim <sw0312.kim@samsung.com>
+AuthorDate: 2026-07-30T20:46:10+09:00
+CommitDate: 2026-07-30T20:57:00+09:00
+Subject: packaging: Replace Requires(post): bash with /bin/sh for dash compat
+
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules show -s '--format=%H%nAuthor: %an <%ae>%nAuthorDate: %aI%nCommitDate: %cI%nSubject: %s' 458baad02d812098938663971d1b8560a4813375
+458baad02d812098938663971d1b8560a4813375
+Author: DongHun Kwak <dh0128.kwak@samsung.com>
+AuthorDate: 2026-10-27T09:59:09+09:00
+CommitDate: 2026-10-27T18:11:10+09:00
+Subject: linux-tizen-modules: require /usr/bin/find and drop coreutils in post scripts
+
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules branch -r --contains 36d0925699ac0ffc1ce3854ed838a48d24a56c28
+  origin/accepted/tizen_unified
+  origin/accepted/tizen_unified_dev
+  origin/accepted/tizen_unified_sc
+  origin/accepted/tizen_unified_toolchain
+  origin/accepted/tizen_unified_x
+  origin/tizen
+
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules branch -r --contains 458baad02d812098938663971d1b8560a4813375
+  origin/accepted/tizen_unified
+  origin/accepted/tizen_unified_dev
+  origin/accepted/tizen_unified_toolchain
+  origin/accepted/tizen_unified_x
+  origin/tizen
+
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules merge-base --is-ancestor 36d0925699ac0ffc1ce3854ed838a48d24a56c28 458baad02d812098938663971d1b8560a4813375
+
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules merge-base --is-ancestor 458baad02d812098938663971d1b8560a4813375 36d0925699ac0ffc1ce3854ed838a48d24a56c28
+
+EXIT=1
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules merge-base 36d0925699ac0ffc1ce3854ed838a48d24a56c28 458baad02d812098938663971d1b8560a4813375
+36d0925699ac0ffc1ce3854ed838a48d24a56c28
+
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules rev-list --left-right --count 36d0925699ac0ffc1ce3854ed838a48d24a56c28...458baad02d812098938663971d1b8560a4813375
+0	2
+
+EXIT=0

@@ -1,0 +1,104 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm -qp --qf '%{NAME}\t%{VERSION}-%{RELEASE}\t%{ARCH}\t%{VCS}\n' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm
+linux-tizen-modules-rpi4	11.0.0-0	armv7l	platform/kernel/linux-tizen-modules#36d0925699ac0ffc1ce3854ed838a48d24a56c28
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/sha256sum /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm
+98f93292b1a5b00391a4de2345092a037bdb7d8d38ae834af6b7045d3d9584a6  /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm -qp --scripts /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm
+postinstall scriptlet (using /bin/sh):
+RELEASEVERSION=$(basename $(dirname `find /lib/modules -name extra | head -1`))
+/sbin/depmod -a $RELEASEVERSION
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm -qp --requires /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm
+/bin/sh
+/bin/sh
+arm-rpi4-linux-kernel-modules
+coreutils
+findutils
+kmod-compat
+rpmlib(CompressedFileNames) <= 3.0.4-1
+rpmlib(FileDigests) <= 4.6.0-1
+rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+rpmlib(PayloadIsXz) <= 5.2-1
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm -qp -l /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/linux-tizen-modules-rpi4-11.0.0-0.armv7l.rpm
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/dm-bow.ko
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/inform-reboot.ko
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/kdbus/kdbus.ko
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/zlogger/zlogger.ko
+/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf
+/lib/modules/modules-load.d/tizen-modules-rpi4.conf
+/usr/share/licenses/linux-tizen-modules-rpi4
+/usr/share/licenses/linux-tizen-modules-rpi4/COPYING
+
+EXIT=0
+
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task12/GBS-ROOT-LKO-VBASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task17/modules_source_diff/vbase/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/rpm -qp --dump /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/vbase/rpms/linux-tizen-modules-source-11.0.0-0.armv7l.rpm
+/usr/share/licenses/linux-tizen-modules-source 0 1793808951 0000000000000000000000000000000000000000000000000000000000000000 040755 root root 0 0 0 X
+/usr/share/licenses/linux-tizen-modules-source/COPYING 17992 1781096574 32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/COPYING 17992 1793808948 32b1062f7da84967e7019d01ab805935caa7ab7321a7ced0e30ebe75e5df1670 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/Makefile 1762 1793808948 d4d92cf9f894883a8202ee9288de6b0460075c51cb4226b7231bbceac756e858 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/dm-bow.c 31193 1793808948 ce8babefacf56c660d1dfb74f8d99e047123118484cd41e87c04283b77e2a71c 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/dm-core.h 520 1793808948 a5a681e7e09b8ebb0a466d0cced14a16025ec22591fb87efffbddc7d31a8bb32 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/dm.h 417 1793808948 6e7d025865949d5bb708a6e050492dc3328ef4eda9579106857897ee9d791649 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/extcon-usb-fixed.c 1543 1793808948 9bc125949cd66674f56dd416c280aa7663925599b05556a9939815cd2af644b7 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/include/uapi/linux/kdbus.h 32675 1781096574 7774b1f57127a36b1f537117eab4ca5061eb4b7ac290003f2acf77091722e9db 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/include/uapi/linux/logger.h 3320 1781096574 2480478ee0ecfbb7235577e0e8bcdd8d40c0170a6bbaa1a91b530034b2d2ddad 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/include/uapi/linux/zlogger.h 1813 1781096574 e8da9fd9af1ae0a47f3c2e61ed924164e617f7914928afe16ec0a899e3c3d6a2 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/inform-reboot.c 1842 1793808948 52d6eca54bfdc451e59549faef9ce493090e084a4a23d24a0e93130dd847169a 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/Makefile 245 1793808948 b63ae82a3a8a206e98819e077eece09f9660b39352f4edf48ee7095520379b50 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/bus.c 13642 1793808948 034da0726d289e7e2b90f5530bd211c0d12412a2d0550cc2c87a719f70c81f36 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/bus.h 3165 1793808948 8d31b8b840f3c2d2e3c05a612f09007b7a21380f451dd27dfea769aa684af106 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/connection.c 60545 1793808948 de91142fd908954ce771e36290fd25e5ddb3ee031df8aea2172c1d34cbb23721 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/connection.h 8250 1793808948 e103457a853375c9e45f7207ea9b10095edb645eb3499046665464108fdf1c94 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/domain.c 7175 1793808948 d74165ee457bfe0f0b57eb1705bf10cb3f996c133704171909fa85e76c492a79 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/domain.h 2437 1793808948 63dfa61eef20c369b32fa038ef14209ea5e6bfbf8d244e16c96773e117492ea0 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/endpoint.c 7615 1793808948 b69198de38aa26641a7f90b4a54ef81b50f74847757facc270ebd1e3fad1f21d 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/endpoint.h 2175 1793808948 083a6ec4215283f44195779532644a057957aa2f0dc513935dc9c164d07f66e9 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/fs.c 13391 1793808948 812b5196d7ac927c29103f7ccfa0781675a8fcff0d12b0fac21f9432b1e7331f 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/fs.h 826 1793808948 4658b87bba6d8d9913e7cbbdf4a8aee115319ffe31fda627db6035ee8818ad7a 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/handle.c 17990 1793808948 0ec395a8986b21f0bf0a16cdf71fd1c7e0fe3c0f6a0d9614e18541316caeb23c 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/handle.h 3909 1793808948 b538a130361cc798403a87af3224af2b30e918fc24d368a9532fa89735e90640 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/item.c 7090 1793808948 9756d272ddae7d251805ee782799b7f99339d749e1483eba085ad1826c3caec3 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/item.h 2187 1793808948 29c09ee09fe9357de79b072a522a7b6754c20c921b7ca59cae3d47eba2a8b384 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/limits.h 1878 1793808948 22308795a4775e9322ac896e8db31fddd3befe87f424961c22fc5d11828cd6fd 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/main.c 4140 1793808948 5f5466191fabf213192713c6232ab323dafab5d78e6cab5b1b50b8d472dd6ec3 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/match.c 14967 1793808948 53f32eb006c856b5b148b16876ada5b1e890e507c4136e42c2b2bfe2cbe878ec 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/match.h 1363 1793808948 2e7ddaa0bff599dbeb0de0487c6c0cc7ecd4e1ac4b2e2d7a26f6ab77d55c9399 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/message.c 27498 1793808948 62d9e4323555d1e8c210c16ec8d211d506bec388f2c841ad92d99261d2c69d14 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/message.h 4325 1793808948 72480ef2420657c005f692f260714e4bbfc814f676bb06f7f8cce83718fef342 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/metadata.c 40358 1793808948 ba5d6ff889d08e4a5ff763c4dd386935964a0508222908d59dac0660abee4b40 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/metadata.h 2682 1793808948 ba3710ed2e63aa9d1994abf65bad0e03487cb8d0c540b736989b1892ce503500 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/names.c 20670 1793808948 c9f7318d92f442a8b2705371f87890955c843ce89c385a38406b50593d148cad 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/names.h 3280 1793808948 30c4ef4712cd05d45380aea70c4bfd4e2152d86716640536c2a89417b5141709 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/node.c 32392 1793808948 964ca51ed2c8c6b46bd63409296c843cc6cebdbb854cb1bd7f404cf6d8f2b848 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/node.h 2420 1793808948 9943c5974baf683fbaf2fb9ed4cdba108c5f850598bb5221dd8d145d8b982ee1 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/notify.c 5872 1793808948 60df6aaf2bb8a00195f157356915732a94f20ef49d3084515db2d27876f94553 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/notify.h 1169 1793808948 552902a258f112a46b44bf22c3743ce6fecee985759ebf4d9d6e88361a6cdb6b 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/policy.c 12083 1793808948 bbec511a503ce3b502551dd75dda0b505337395724f60489468c54ce2eaffc82 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/policy.h 1616 1793808948 d8fa23c8fdb57987081ab7bfc1cfc46f3e72058fb7a26ed7e4d9237cb4521e3e 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/pool.c 19467 1793808948 3334f8c324ac27e247a189aebc1c309340c6a27d0eee282f55d34ea0ced135a8 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/pool.h 1995 1793808948 09dcc67149a0da1a40e0f586becc53c701828ca934521260d5dc7f968cdf1e57 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/queue.c 9848 1793808948 6ff5f0319a3751bdd9f6cb28ef2cc0afb481d163060d5effc5e3bef1fe3c3409 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/queue.h 2840 1793808948 11931ec3a350846fb6dd4c3d99cbb0f29c0c43abd464bef9326c081a0ad19a09 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/reply.c 6176 1793808948 aa0d78319f2bcd0fd84f1df5a44df57fbecf5a7ace6fe9abba7bd6b02bae1f6f 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/reply.h 2622 1793808948 26284e600211c965bbb1644d40029e6508b2d2b701361dc2cec2096c630228b8 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/util.c 4497 1793808948 5afe16c663957bd06e9e5c1d61de26faefa4f91f80e4b7799a1f4c4d05f9953c 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/kdbus/util.h 2132 1793808948 0ee32d70d1a4a8625cdfa7b240a32fc8af575b79330e8cba8d317409d5b5fd6d 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/logger.c 34933 1793808948 6ca98a18c96d3b47a402ac0fa3787a050879561c5718f203fe6374ea17dc676c 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/proc-tsm.c 7401 1793808948 4b16e0d55a5dbbfe5a248792bc87fa7be1f306cf96bfd278ea2ff85e65bb3535 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/zlogger/Makefile 122 1793808948 65b3f7ce8e0b1ee088813588f96c41610719d547670ea9c8116f712631f9b183 0100644 root root 0 0 0 X
+/usr/src/linux-tizen-modules-source/zlogger/zlogger.c 29297 1793808948 0c523eee797d45ccd641492e16a7caf162a29fa109806319a343b5ddcfdeb87c 0100644 root root 0 0 0 X
+
+EXIT=0

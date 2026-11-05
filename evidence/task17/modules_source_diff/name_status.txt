@@ -1,0 +1,4 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules diff --name-status 36d0925699ac0ffc1ce3854ed838a48d24a56c28 458baad02d812098938663971d1b8560a4813375
+M	packaging/linux-tizen-modules.spec
+
+EXIT=0

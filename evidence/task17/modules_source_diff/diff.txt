@@ -1,0 +1,123 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules diff --no-ext-diff --no-color 36d0925699ac0ffc1ce3854ed838a48d24a56c28 458baad02d812098938663971d1b8560a4813375
+diff --git a/packaging/linux-tizen-modules.spec b/packaging/linux-tizen-modules.spec
+index 54bc8f6..a0a4274 100644
+--- a/packaging/linux-tizen-modules.spec
++++ b/packaging/linux-tizen-modules.spec
+@@ -58,8 +58,7 @@ Summary:        Tizen modules for Amlogic Khadas VIM3 boards
+ AutoReqProv:    no
+ Requires:       linux-kernel-modules-amlogic-kvim
+ Requires(post): /bin/sh
+-Requires(post): coreutils
+-Requires(post): findutils
++Requires(post): /usr/bin/find
+ Requires(post): kmod-compat
+ Provides:       stability-monitor-kernel-module
+ %description    amlogic-kvim
+@@ -69,8 +68,7 @@ Summary:        Tizen modules for Amlogic Odroid boards
+ AutoReqProv:    no
+ Requires:       linux-kernel-modules-amlogic-odroid
+ Requires(post): /bin/sh
+-Requires(post): coreutils
+-Requires(post): findutils
++Requires(post): /usr/bin/find
+ Requires(post): kmod-compat
+ Provides:       stability-monitor-kernel-module
+ %description    amlogic-odroid
+@@ -79,9 +77,8 @@ Provides:       stability-monitor-kernel-module
+ Summary:        Tizen modules for Qcom RubikPi3 board
+ AutoReqProv:    no
+ Requires:       linux-qc-modules
+-Requires(post): bash
+-Requires(post): coreutils
+-Requires(post): findutils
++Requires(post): /bin/sh
++Requires(post): /usr/bin/find
+ Requires(post): kmod-compat
+ %description    rubikpi3
+ 
+@@ -89,9 +86,8 @@ Requires(post): kmod-compat
+ Summary:        Tizen modules for Nvidia orinnano board
+ AutoReqProv:    no
+ Requires:       jetson-linux-kernel-modules
+-Requires(post): bash
+-Requires(post): coreutils
+-Requires(post): findutils
++Requires(post): /bin/sh
++Requires(post): /usr/bin/find
+ Requires(post): kmod-compat
+ %description    orinnano
+ %endif
+@@ -102,8 +98,7 @@ Summary:        Tizen modules for RaspberryPI 4
+ AutoReqProv:    no
+ Requires:       %{buildarch}-rpi4-linux-kernel-modules
+ Requires(post): /bin/sh
+-Requires(post): coreutils
+-Requires(post): findutils
++Requires(post): /usr/bin/find
+ Requires(post): kmod-compat
+ Provides:       stability-monitor-kernel-module
+ %description    rpi4
+@@ -113,8 +108,7 @@ Summary:        Tizen modules for RaspberryPI 4 RT (real-time)
+ AutoReqProv:    no
+ Requires:       %{buildarch}-rpi4-rt-linux-kernel-modules
+ Requires(post): /bin/sh
+-Requires(post): coreutils
+-Requires(post): findutils
++Requires(post): /usr/bin/find
+ Requires(post): kmod-compat
+ Provides:       stability-monitor-kernel-module
+ %description    rpi4-rt
+@@ -126,8 +120,7 @@ Summary:        Tizen modules for RISCV QEMU
+ Requires:       %{buildarch}-qemu-linux-kernel-modules
+ AutoReqProv:    no
+ Requires(post): /bin/sh
+-Requires(post): coreutils
+-Requires(post): findutils
++Requires(post): /usr/bin/find
+ Requires(post): kmod-compat
+ %description    rv64qemu
+ 
+@@ -136,8 +129,7 @@ Summary:        Tizen modules for VisionFive2
+ Requires:       %{buildarch}-visionfive2-linux-kernel-modules
+ AutoReqProv:    no
+ Requires(post): /bin/sh
+-Requires(post): coreutils
+-Requires(post): findutils
++Requires(post): /usr/bin/find
+ Requires(post): kmod-compat
+ %description    visionfive2
+ 
+@@ -146,8 +138,7 @@ Summary:        Tizen modules for LicheePi4A
+ Requires:       %{buildarch}-lpi4a-linux-kernel-modules
+ AutoReqProv:    no
+ Requires(post): /bin/sh
+-Requires(post): coreutils
+-Requires(post): findutils
++Requires(post): /usr/bin/find
+ Requires(post): kmod-compat
+ %description    lpi4a
+ 
+@@ -156,8 +147,7 @@ Summary:        Tizen modules for BananaPiF3
+ Requires:       %{buildarch}-bpif3-linux-kernel-modules
+ AutoReqProv:    no
+ Requires(post): /bin/sh
+-Requires(post): coreutils
+-Requires(post): findutils
++Requires(post): /usr/bin/find
+ Requires(post): kmod-compat
+ %description    bpif3
+ %endif
+@@ -340,9 +330,9 @@ make -C kernel modules_install KERNELDIR=/boot/kernel/devel/kernel-devel-riscv-b
+ %install
+ mkdir -p %{buildroot}/%{KMOD_PATH}
+ 
+-pushd lib/modules
++cd lib/modules
+ find -name "*.ko" -exec cp -a --parents {} %{buildroot}/%{KMOD_PATH}/ \;
+-popd
++cd -
+ 
+ %ifarch aarch64
+ # module load config
+
+EXIT=0

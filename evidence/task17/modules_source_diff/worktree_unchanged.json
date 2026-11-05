@@ -1,0 +1,13 @@
+{
+  "before": {
+    "head": "8e032ef18ae9d9633c1508b48d4778216ab960a0",
+    "branch": "lko/vbase01",
+    "status": ""
+  },
+  "after": {
+    "head": "8e032ef18ae9d9633c1508b48d4778216ab960a0",
+    "branch": "lko/vbase01",
+    "status": ""
+  },
+  "equal": true
+}

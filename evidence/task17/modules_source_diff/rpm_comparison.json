@@ -1,0 +1,77 @@
+{
+  "sr": {
+    "scripts": "postinstall scriptlet (using /bin/sh):\nRELEASEVERSION=$(basename $(dirname `find /lib/modules -name extra | head -1`))\n/sbin/depmod -a $RELEASEVERSION",
+    "requires": [
+      "/bin/sh",
+      "/bin/sh",
+      "/usr/bin/find",
+      "arm-rpi4-linux-kernel-modules",
+      "kmod-compat",
+      "rpmlib(CompressedFileNames) <= 3.0.4-1",
+      "rpmlib(FileDigests) <= 4.6.0-1",
+      "rpmlib(PayloadFilesHavePrefix) <= 4.0-1",
+      "rpmlib(PayloadIsXz) <= 5.2-1"
+    ],
+    "files": [
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/dm-bow.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/inform-reboot.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/kdbus/kdbus.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/zlogger/zlogger.ko",
+      "/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf",
+      "/lib/modules/modules-load.d/tizen-modules-rpi4.conf",
+      "/usr/share/licenses/linux-tizen-modules-rpi4",
+      "/usr/share/licenses/linux-tizen-modules-rpi4/COPYING"
+    ],
+    "shared_configs": {
+      "lib/modules/modules-load.d/tizen-modules-rpi4.conf": "faeccd87b2d8fbbf8022134ddd7ea8dc167f6cc19092c600c43503099d40ef72",
+      "lib/modules/modprobe.d/tizen-modprobe-rpi4.conf": "2f2e0993bd11d75f08e5d8d73813a710af49e15246670c8a87135ac7e6713e9c"
+    }
+  },
+  "vbase": {
+    "scripts": "postinstall scriptlet (using /bin/sh):\nRELEASEVERSION=$(basename $(dirname `find /lib/modules -name extra | head -1`))\n/sbin/depmod -a $RELEASEVERSION",
+    "requires": [
+      "/bin/sh",
+      "/bin/sh",
+      "arm-rpi4-linux-kernel-modules",
+      "coreutils",
+      "findutils",
+      "kmod-compat",
+      "rpmlib(CompressedFileNames) <= 3.0.4-1",
+      "rpmlib(FileDigests) <= 4.6.0-1",
+      "rpmlib(PayloadFilesHavePrefix) <= 4.0-1",
+      "rpmlib(PayloadIsXz) <= 5.2-1"
+    ],
+    "files": [
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/dm-bow.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/inform-reboot.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/kdbus/kdbus.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/proc-tsm.ko",
+      "/lib/modules/6.12.80-arm-rpi4-v7l/extra/zlogger/zlogger.ko",
+      "/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf",
+      "/lib/modules/modules-load.d/tizen-modules-rpi4.conf",
+      "/usr/share/licenses/linux-tizen-modules-rpi4",
+      "/usr/share/licenses/linux-tizen-modules-rpi4/COPYING"
+    ],
+    "shared_configs": {
+      "lib/modules/modules-load.d/tizen-modules-rpi4.conf": "faeccd87b2d8fbbf8022134ddd7ea8dc167f6cc19092c600c43503099d40ef72",
+      "lib/modules/modprobe.d/tizen-modprobe-rpi4.conf": "2f2e0993bd11d75f08e5d8d73813a710af49e15246670c8a87135ac7e6713e9c"
+    }
+  },
+  "comparison": {
+    "scripts_equal": true,
+    "files_equal": true,
+    "shared_configs_equal": true,
+    "sr_only_requires": [
+      "/usr/bin/find"
+    ],
+    "vbase_only_requires": [
+      "coreutils",
+      "findutils"
+    ]
+  }
+}

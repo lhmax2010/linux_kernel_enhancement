@@ -1,0 +1,81 @@
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules -c 'core.sshCommand=ssh -o BatchMode=yes' ls-remote --heads origin
+ef14d7cfc6b58c10822ecda78bd45598e8bad08f	refs/heads/accepted/tizen_10.0_unified
+ef14d7cfc6b58c10822ecda78bd45598e8bad08f	refs/heads/accepted/tizen_10.0_unified_mr
+ef14d7cfc6b58c10822ecda78bd45598e8bad08f	refs/heads/accepted/tizen_10.1_unified
+cba14617202c589bfbc131ed9840b28ebb6f334a	refs/heads/accepted/tizen_6.5_unified
+d9aa3234c4ffeb8f77965e841d07ac10b136920d	refs/heads/accepted/tizen_7.0_unified
+d9aa3234c4ffeb8f77965e841d07ac10b136920d	refs/heads/accepted/tizen_7.0_unified_hotfix
+344961268abbb77b2313b879c954445306b2e483	refs/heads/accepted/tizen_8.0_unified
+62a8beacecd40dd69ba9cecb52fc9a54980f6524	refs/heads/accepted/tizen_9.0_unified
+458baad02d812098938663971d1b8560a4813375	refs/heads/accepted/tizen_unified
+458baad02d812098938663971d1b8560a4813375	refs/heads/accepted/tizen_unified_dev
+344961268abbb77b2313b879c954445306b2e483	refs/heads/accepted/tizen_unified_riscv
+17ede413ff4be202736ca9cb1c52ed679aa9439a	refs/heads/accepted/tizen_unified_sc
+458baad02d812098938663971d1b8560a4813375	refs/heads/accepted/tizen_unified_toolchain
+458baad02d812098938663971d1b8560a4813375	refs/heads/accepted/tizen_unified_x
+ef14d7cfc6b58c10822ecda78bd45598e8bad08f	refs/heads/accepted/tizen_unified_x_asan
+f9d3bb16ec5e5b7cb1a15a6c1f9e958f06da504e	refs/heads/logger-linux-rpi3
+061fe50aa73652f2eceb4057b4094dbe77160cae	refs/heads/master
+07bf84da49f8261a9ac1948c15a9be1099814270	refs/heads/sandbox/anowak03/tizen-vlogger
+d1d3ac1de950e331c6966623a602125ce42fe46b	refs/heads/sandbox/dkson95/clang_support
+1550b6ecc75cc715256e6537523fe24b4c22aef3	refs/heads/sandbox/dkson95/test
+8950fab1d29dc0bf64b9b8ec7b14c7bc150160ff	refs/heads/sandbox/klewandowski/kdbus-wip
+7277ff862a8635da8ee259acedb9323783b48b5d	refs/heads/sandbox/lstelmach/logger-handle-errors
+a98fedfa98a111b7875e6dc8b6c2b118a23505fe	refs/heads/sandbox/mbloch/fhub-zlogger-wip
+448ca2f2c9b63697c529e0ffbd551012807f9b54	refs/heads/sandbox/mmajewski2/kdbus_rpi4
+ed4216a33b47dbcbcf145958109ed568ba39b3a7	refs/heads/sandbox/mmajewski2/logger-tm1
+b0f43d935426144f1ace0df641485008e36b86c0	refs/heads/sandbox/mmajewski2/mutex
+3c373385b78ab87fa0080fb585cd2dc0364129b9	refs/heads/sandbox/mmajewski2/stuff
+901f4d0ec2c8fcadd996a7a35a36c92efa3b530d	refs/heads/stability-monitor-kmod-rpi3
+458baad02d812098938663971d1b8560a4813375	refs/heads/tizen
+ef14d7cfc6b58c10822ecda78bd45598e8bad08f	refs/heads/tizen_10.0
+ef14d7cfc6b58c10822ecda78bd45598e8bad08f	refs/heads/tizen_10.1
+cba14617202c589bfbc131ed9840b28ebb6f334a	refs/heads/tizen_6.5
+d9aa3234c4ffeb8f77965e841d07ac10b136920d	refs/heads/tizen_7.0
+d9aa3234c4ffeb8f77965e841d07ac10b136920d	refs/heads/tizen_7.0_hotfix
+344961268abbb77b2313b879c954445306b2e483	refs/heads/tizen_8.0
+62a8beacecd40dd69ba9cecb52fc9a54980f6524	refs/heads/tizen_9.0
+
+EXIT=0
+
+$ git -C /home/linhao/Toolchain/development/linux_kernel_optimization/ext/linux-tizen-modules -c 'core.sshCommand=ssh -o BatchMode=yes' fetch --no-tags --no-recurse-submodules origin 'refs/heads/*:refs/remotes/origin/*'
+Total 767 (delta 295), reused 767 (delta 295)
+From ssh://review.tizen.org:29418/platform/kernel/linux-tizen-modules
+ * [new branch]      accepted/tizen_10.0_unified -> origin/accepted/tizen_10.0_unified
+ * [new branch]      accepted/tizen_10.0_unified_mr -> origin/accepted/tizen_10.0_unified_mr
+ * [new branch]      accepted/tizen_10.1_unified -> origin/accepted/tizen_10.1_unified
+ * [new branch]      accepted/tizen_6.5_unified -> origin/accepted/tizen_6.5_unified
+ * [new branch]      accepted/tizen_7.0_unified -> origin/accepted/tizen_7.0_unified
+ * [new branch]      accepted/tizen_7.0_unified_hotfix -> origin/accepted/tizen_7.0_unified_hotfix
+ * [new branch]      accepted/tizen_8.0_unified -> origin/accepted/tizen_8.0_unified
+ * [new branch]      accepted/tizen_9.0_unified -> origin/accepted/tizen_9.0_unified
+ * [new branch]      accepted/tizen_unified -> origin/accepted/tizen_unified
+ * [new branch]      accepted/tizen_unified_dev -> origin/accepted/tizen_unified_dev
+ * [new branch]      accepted/tizen_unified_riscv -> origin/accepted/tizen_unified_riscv
+ * [new branch]      accepted/tizen_unified_sc -> origin/accepted/tizen_unified_sc
+ * [new branch]      accepted/tizen_unified_toolchain -> origin/accepted/tizen_unified_toolchain
+ * [new branch]      accepted/tizen_unified_x -> origin/accepted/tizen_unified_x
+ * [new branch]      accepted/tizen_unified_x_asan -> origin/accepted/tizen_unified_x_asan
+ * [new branch]      logger-linux-rpi3      -> origin/logger-linux-rpi3
+ * [new branch]      master                 -> origin/master
+ * [new branch]      sandbox/anowak03/tizen-vlogger -> origin/sandbox/anowak03/tizen-vlogger
+ * [new branch]      sandbox/dkson95/clang_support -> origin/sandbox/dkson95/clang_support
+ * [new branch]      sandbox/dkson95/test   -> origin/sandbox/dkson95/test
+ * [new branch]      sandbox/klewandowski/kdbus-wip -> origin/sandbox/klewandowski/kdbus-wip
+ * [new branch]      sandbox/lstelmach/logger-handle-errors -> origin/sandbox/lstelmach/logger-handle-errors
+ * [new branch]      sandbox/mbloch/fhub-zlogger-wip -> origin/sandbox/mbloch/fhub-zlogger-wip
+ * [new branch]      sandbox/mmajewski2/kdbus_rpi4 -> origin/sandbox/mmajewski2/kdbus_rpi4
+ * [new branch]      sandbox/mmajewski2/logger-tm1 -> origin/sandbox/mmajewski2/logger-tm1
+ * [new branch]      sandbox/mmajewski2/mutex -> origin/sandbox/mmajewski2/mutex
+ * [new branch]      sandbox/mmajewski2/stuff -> origin/sandbox/mmajewski2/stuff
+ * [new branch]      stability-monitor-kmod-rpi3 -> origin/stability-monitor-kmod-rpi3
+ * [new branch]      tizen                  -> origin/tizen
+ * [new branch]      tizen_10.0             -> origin/tizen_10.0
+ * [new branch]      tizen_10.1             -> origin/tizen_10.1
+ * [new branch]      tizen_6.5              -> origin/tizen_6.5
+ * [new branch]      tizen_7.0              -> origin/tizen_7.0
+ * [new branch]      tizen_7.0_hotfix       -> origin/tizen_7.0_hotfix
+ * [new branch]      tizen_8.0              -> origin/tizen_8.0
+ * [new branch]      tizen_9.0              -> origin/tizen_9.0
+
+EXIT=0
