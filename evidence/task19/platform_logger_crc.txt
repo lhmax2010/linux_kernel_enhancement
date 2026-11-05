@@ -1,0 +1,45 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/platform-private /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/platform-private --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/sr --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/sr/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/sr/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /sbin/modprobe --show-modversions /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/modules/logger.ko
+0xb1ad28e0	__gnu_mcount_nc
+0xefd6cf06	__aeabi_unwind_cpp_pr0
+0x0e758421	misc_deregister
+0x999e8297	vfree
+0x037a0cba	kfree
+0x2e5810c6	__aeabi_unwind_cpp_pr1
+0x1b2fa1a9	vmalloc_noprof
+0x9624f32b	kmalloc_caches
+0x6aaf28b5	__kmalloc_cache_noprof
+0x2d39b0a7	kstrdup
+0x5bbe49f4	__init_waitqueue_head
+0xde4bf88b	__mutex_init
+0xfe3e82f0	misc_register
+0x92997ed8	_printk
+0x8f678b07	__stack_chk_guard
+0xad73041f	autoremove_wake_function
+0x828ce6bb	mutex_lock
+0x6578533e	prepare_to_wait
+0x9618ede0	mutex_unlock
+0x01000e51	schedule
+0x49970de8	finish_wait
+0x9d669763	memcpy
+0x6bedfd14	arm_copy_to_user
+0xf0fdf6cb	__stack_chk_fail
+0x2cfde9a2	warn_slowpath_fmt
+0x9ec6ca96	ktime_get_real_ts64
+0xeb75ce90	file_path
+0xa62b55f8	filp_open
+0xae577d60	_raw_spin_lock
+0x2aa89406	_copy_from_iter
+0x99bb8806	memmove
+0x637493f3	__wake_up
+0x77654516	filp_close
+0x39461d6a	in_egroup_p
+0xc6cbbc89	capable
+0x86c1d099	arm_copy_from_user
+0x9b1485da	__kmalloc_noprof
+0x97255bdf	strlen
+0x5f754e5a	memset
+0x6cb00904	nonseekable_open
+0x08d1b6c1	param_ops_int
+0xc8c118b4	module_layout
+
+EXIT=0

@@ -1,0 +1,12 @@
+{
+  "before_sha256": "38a4959985ed44398e9656392c245b554155805808524fc04e556e31cc472925",
+  "after_sha256": "7ecdb662716cab1532da77ff755912775284eb3aab5e3c89fd571dba854f7d07",
+  "before_bytes": 1716,
+  "after_bytes": 1738,
+  "appended": "\n[all]\ntotal_mem=1600\n",
+  "preexisting_total_mem": false,
+  "host_backup": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/config.txt.before",
+  "board_boot_backup": "config.txt.task19-before",
+  "only_append": true,
+  "rollback": "Restore entire config.txt from verified backup (before SHA), sync and unmount; reboot without arguments; recheck identity and MemTotal. Rollback NOT executed."
+}

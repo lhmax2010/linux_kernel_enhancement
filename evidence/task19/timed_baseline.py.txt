@@ -1,0 +1,23 @@
+import sys,time,json,re
+from board import *
+sys.excepthook=sys.__excepthook__
+deadline=time.monotonic()+310
+while not (T/'reboot2_verification.txt').exists():
+ if time.monotonic()>deadline:raise SystemExit('Reboot2 verification unavailable; no sampling')
+ time.sleep(1)
+r=json.loads((T/'reboot2_reconnect.json').read_text());assert r['result']=='CONNECTED' and r['identity_pass']
+def uptime(label):
+ rc,s=shell('cat /proc/uptime; cat /proc/sys/kernel/random/boot_id',label);assert rc==0 and r['new_boot_id'] in s
+ return float(s.split()[0])
+summary=[]
+for target in [60,600]:
+ now=uptime('time'+str(target)+'_planning');time.sleep(max(0,target-now))
+ cmd='''printf '=== BEGIN UPTIME ===\n'; cat /proc/uptime
+printf '=== BOOT ID ===\n'; cat /proc/sys/kernel/random/boot_id
+printf '=== FREE ===\n'; free -k
+printf '=== MEMINFO ===\n'; cat /proc/meminfo
+printf '=== VMSTAT ===\n'; cat /proc/vmstat
+printf '=== END UPTIME ===\n'; cat /proc/uptime'''
+ rc,s=shell(cmd,'snapshot_'+str(target));assert rc==0 and r['new_boot_id'] in s
+ begin=float(re.search(r'=== BEGIN UPTIME ===\n([0-9.]+)',s).group(1));end=float(re.search(r'=== END UPTIME ===\n([0-9.]+)',s).group(1));entry={'target_seconds':target,'begin_seconds':begin,'end_seconds':end,'offset_seconds':begin-target,'boot_id':r['new_boot_id'],'remote_exit':rc};summary.append(entry)
+ (T/'timed_snapshots.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(entry),flush=True)

@@ -1,0 +1,20 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'systemctl show lko-net-setup.service -p LoadState -p LoadError -p UnitFileState -p ActiveState -p SubState -p ExecStart; systemctl is-enabled lko-net-setup.service; ls -l /etc/systemd/system/multi-user.target.wants/lko-net-setup.service; ls -Z /usr/local/sbin/lko-net-setup.sh /etc/systemd/system/lko-net-setup.service; sha256sum /usr/local/sbin/lko-net-setup.sh /etc/systemd/system/lko-net-setup.service; journalctl --since "-2min" --no-pager | grep -i lko-net
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+ExecStart={ path=/usr/local/sbin/lko-net-setup.sh ; argv[]=/usr/local/sbin/lko-n
+et-setup.sh ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; co
+de=(null) ; status=0/0 }
+LoadState=loaded
+ActiveState=inactive
+SubState=dead
+UnitFileState=enabled
+LoadError=
+enabled
+lrwxrwxrwx 1 root root 41 Nov  5 21:01 /etc/systemd/system/multi-user.target.wants/lko-net-setup.service -> /etc/systemd/system/lko-net-setup.service
+_ /etc/systemd/system/lko-net-setup.service  _ /usr/local/sbin/lko-net-setup.sh
+8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608  /usr/local/sbin/lko-net-setup.sh
+bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78  /etc/systemd/system/lko-net-setup.service
+
+TASK19-REMOTE-EXIT=1
+
+TRANSPORT-EXIT=0

@@ -1,0 +1,12 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'test ! -e /usr/local/sbin/lko-net-setup.sh && test ! -e /etc/systemd/system/lko-net-setup.service &&
+cp /opt/usr/lko_task19/lko-net-setup.sh /usr/local/sbin/lko-net-setup.sh && chmod 0755 /usr/local/sbin/lko-net-setup.sh &&
+cp /opt/usr/lko_task19/lko-net-setup.service /etc/systemd/system/lko-net-setup.service && chmod 0644 /etc/systemd/system/lko-net-setup.service &&
+chsmack -a _ /usr/local/sbin/lko-net-setup.sh && chsmack -a _ /etc/systemd/system/lko-net-setup.service &&
+systemctl daemon-reload && systemctl enable lko-net-setup.service
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+Created symlink /etc/systemd/system/multi-user.target.wants/lko-net-setup.service → /etc/systemd/system/lko-net-setup.service.
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

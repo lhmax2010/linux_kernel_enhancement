@@ -1,0 +1,8 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'journalctl -b --no-pager -o short-monotonic | grep -iE "force_reclaim|limit_in_bytes|retaining kernel algorithm|swap|resourced|system-resource"
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+[   13.620532] localhost systemd[1]: Listening on Resourced cpu-boosting socket.
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

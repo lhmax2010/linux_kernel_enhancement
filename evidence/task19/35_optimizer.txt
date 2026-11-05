@@ -1,0 +1,72 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'ls -la /etc/resourced /usr/share/resourced; for f in /etc/resourced/optimizer.conf /etc/resourced/optimizer-profile-tv.conf /usr/share/resourced/optimizer.conf /usr/share/resourced/optimizer-profile-tv.conf; do if [ -f "$f" ]; then printf "\n%s\n" "$f"; cat "$f"; fi; done
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+ls: cannot access /usr/share/resourced: No such file or directory
+/etc/resourced:
+total 28
+drwxr-xr-x  3 root root 4096 Nov  5 06:10 .
+drwxr-xr-x 76 root root 4096 Nov  5 20:42 ..
+-rw-r--r--  1 root root  892 Nov  4 23:10 limiter.conf
+-rw-r--r--  1 root root  535 Nov  4 23:10 monitor.conf
+-rw-r--r--  1 root root  815 Nov  4 23:10 optimizer.conf
+-rw-r--r--  1 root root  133 Nov  4 23:10 process.conf
+drwxr-xr-x  2 root root 4096 Nov  5 06:14 vip-process.d
+
+/etc/resourced/optimizer.conf
+[MemorySwap]
+ReclaimAtBoot=yes
+SwapType=zram
+BackgroundLruSwappiness=80
+
+[MemoryZram]
+CompAlgorithm=zstd
+ZramRatio=0.4
+
+[MemoryZswap]
+PoolRatio=40
+PoolType=z3fold
+
+[MemoryDedup]
+DedupAtBoot=yes
+ScanOnLowmem=yes
+
+[MemoryKsm]
+KsmMode=oneshot
+#KsmMode=periodic
+
+PagesToScan=100
+PagesToScanWithBoost=1000
+
+[MemoryCompaction]
+FragLevel=800
+
+[MemoryBackgroundReclaim]
+# Unset this option if it causes any unexepcted issue (e.g. jerky animation).
+AfterScreenDim=yes
+
+[CpuSched]
+CpuSchedFeature=no_rt_runtime_share
+CpuRTRuntime=950ms
+CpuRTPeriod=1000ms
+
+[CpuAffinity]
+#ForegroundApps=1,2,4-6
+
+[CpuBoostingLevelStrong]
+CpuSched=rr
+CpuRTPriority=50
+
+[CpuBoostingLevelMedium]
+CpuSched=rr
+CpuRTPriority=1
+
+[CpuBoostingLevelWeak]
+CpuSched=other
+CpuNice=-20 # Priority=100
+
+[CpuBoostingStallGovernor]
+CpuBoostingStallGovernor=no
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

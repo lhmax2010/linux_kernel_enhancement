@@ -1,0 +1,500 @@
+{
+  "files_checked": 98,
+  "max_bytes": 49961,
+  "ansi_zero": true,
+  "device_serial_redacted": true,
+  "resourced_source_unchanged": true,
+  "vendor_tracked_files": 0,
+  "files": [
+    {
+      "file": "23_config_backup.txt",
+      "bytes": 433,
+      "sha256": "7e37a5efd7ba74619d91592d8396eb4aba07384f1d724f4074c914cc77f79409"
+    },
+    {
+      "file": "reboot2_reconnect.json",
+      "bytes": 5872,
+      "sha256": "fcf402b3f80bb109f39d19c39ab69d3a04df2be83de688f19d4e2ffcfdfccd4a"
+    },
+    {
+      "file": "force_reclaim_context.txt",
+      "bytes": 4441,
+      "sha256": "1cf21c82f161ecad14c536162d35b5c0a7c2416118a4a684b0d4db7c088e27d7"
+    },
+    {
+      "file": "36_system_state.txt",
+      "bytes": 511,
+      "sha256": "59945cb7d9c48d7105602f6f504b5ed00117caf30702e77b3b3a13340f220d80"
+    },
+    {
+      "file": "24_config_stage.txt",
+      "bytes": 595,
+      "sha256": "ecc1f3dbc2423aeab5a60346cd5d0bcdd9b7885665e35271eea1f5fa44014df0"
+    },
+    {
+      "file": "11_boot_unmount.txt",
+      "bytes": 195,
+      "sha256": "0b3e16219966b65bd1b2ae79950d8fc3d957bf5c4c67df86dddd0a0bb21cc8d5"
+    },
+    {
+      "file": "13_pull_4.txt",
+      "bytes": 464,
+      "sha256": "e7d2486f06498d80c818bb1ec4f8ab074ce2ccf786564d4b578d1056b5991bb6"
+    },
+    {
+      "file": "01_disconnect.txt",
+      "bytes": 138,
+      "sha256": "38210d533a3ae8177c1aa8aa675c38cae147ffde17c090583ccf3006da2865b1"
+    },
+    {
+      "file": "platform_extcon-usb-fixed_crc.txt",
+      "bytes": 1632,
+      "sha256": "0c1c0bf6e7491ed973f25c29ae51659809c49eb8b3751922d110184f104ad068"
+    },
+    {
+      "file": "12_module_3.txt",
+      "bytes": 322,
+      "sha256": "593ce3d250b45f53404bfaefaa11c359e395564228fd6d080e7bab34b361e4d6"
+    },
+    {
+      "file": "reboot1_reconnect.json",
+      "bytes": 5864,
+      "sha256": "a3a652504756287c98c9983dfeb2f5ca3c6fab363dca67cd5416605e80f46433"
+    },
+    {
+      "file": "06_packages.txt",
+      "bytes": 49961,
+      "sha256": "e6a5f93bc861bb2818f095b9b5c909d57a7d881deb389f6e7b6f7cf0d3ef000d"
+    },
+    {
+      "file": "install_check_correction.json",
+      "bytes": 531,
+      "sha256": "757bb8f4d07e8d29b0ec6730dc57ca568587a066dbb1ff1454c94bef8b0e472a"
+    },
+    {
+      "file": "reboot_once.py.txt",
+      "bytes": 3511,
+      "sha256": "497ef1ce68e515c3637e8fd85d3adf674c2de855d82e144930b37710f395f233"
+    },
+    {
+      "file": "timed_snapshots.json",
+      "bytes": 422,
+      "sha256": "19c5d024ecf0e7795b37a9eb67b219ebd05bed1798925a8c113376849fbc5687"
+    },
+    {
+      "file": "configuration_limits.txt",
+      "bytes": 1069,
+      "sha256": "ed0fb4a31092c672d5c81b25cd6828e2df4652d9cde6a09be26c1e559f44694d"
+    },
+    {
+      "file": "reboot1_verification.txt",
+      "bytes": 5359,
+      "sha256": "8712724feefcac9ecd8528afcb46e71076904cc57c21f8ff23967f0fc3a7c2e7"
+    },
+    {
+      "file": "03_identity.txt",
+      "bytes": 974,
+      "sha256": "f3a0d4bb344861c3bdb2c662738101a672e7460812931b61c85915f51a8a009f"
+    },
+    {
+      "file": "platform_logger_crc.txt",
+      "bytes": 2371,
+      "sha256": "b575831d4e04031c75f9c40e21eaaaf661ba1c56d3b68f78ce988465fc8c9b53"
+    },
+    {
+      "file": "25_config_install.txt",
+      "bytes": 906,
+      "sha256": "9d35dc41a8a19c806fcbe15f74995cbfca4113c1ca9b80a7c4bf7320c31fb157"
+    },
+    {
+      "file": "platform_kdbus_vermagic.txt",
+      "bytes": 1374,
+      "sha256": "cf1940c49ccf1d9d38a32b0a612bdfc8d4f6b456baf0dd739f32cfd42be127d0"
+    },
+    {
+      "file": "timed_baseline.py.txt",
+      "bytes": 1441,
+      "sha256": "90a78be61634cd9e3054f595a0dc9080fec3cb6a9e198efee510847aaafbeb7a"
+    },
+    {
+      "file": "26_config_unmount.txt",
+      "bytes": 195,
+      "sha256": "0b3e16219966b65bd1b2ae79950d8fc3d957bf5c4c67df86dddd0a0bb21cc8d5"
+    },
+    {
+      "file": "package_comparison.json",
+      "bytes": 6335,
+      "sha256": "8f7e8c155b3ac59ba46a77a001fdca63e2393281cb3583b2b5797aa146984478"
+    },
+    {
+      "file": "package_list_scope_sources.txt",
+      "bytes": 1155,
+      "sha256": "9873459fcecdd139cab45369cfc42e5a06815c8d97ebf9f4df825108385386cd"
+    },
+    {
+      "file": "snapshot_600.txt",
+      "bytes": 4771,
+      "sha256": "9aae1b798281a9f1ef92e20f210342f03786665555c6ab3190c12e0381397b42"
+    },
+    {
+      "file": "35_optimizer.txt",
+      "bytes": 1740,
+      "sha256": "501276098c61258af080415f925ac3e440a7b6f9d49db6f9e5b4459f518ea817"
+    },
+    {
+      "file": "config.txt.before",
+      "bytes": 1716,
+      "sha256": "38a4959985ed44398e9656392c245b554155805808524fc04e556e31cc472925"
+    },
+    {
+      "file": "reboot2_verification.txt",
+      "bytes": 5358,
+      "sha256": "3ea6bc57b9ee36b6cae379469311f6fa7893f24344e6c93ae57cc10b130886b5"
+    },
+    {
+      "file": "platform_kdbus_crc.txt",
+      "bytes": 5231,
+      "sha256": "ab9ce5d36c6fb10c359edcc62ea8dd1e2add53e2a2561b2592e06498319d7867"
+    },
+    {
+      "file": "12_module_2.txt",
+      "bytes": 340,
+      "sha256": "166e332730bf32115bf5f1b0512814e5bfec7956c5222d7b847cd9166e53e0bd"
+    },
+    {
+      "file": "commands.jsonl",
+      "bytes": 26828,
+      "sha256": "e81442159cde034cc7b975c42cc5bb9aa6da89c68b8f86b604269106ff46b1f6"
+    },
+    {
+      "file": "22_config_mount_ro.txt",
+      "bytes": 215,
+      "sha256": "9534987b915c6771d271701876f14fcb5c52b3f72fe70d3bf1d107fc2bf24ae2"
+    },
+    {
+      "file": "17_verify_transfer.txt",
+      "bytes": 463,
+      "sha256": "a10b609a6dcdc0ec56c27e0d64eb629e639c006489a2d91db9eed7f3cb0d2374"
+    },
+    {
+      "file": "13_pull_1.txt",
+      "bytes": 492,
+      "sha256": "94c317c9919476e7f3d52d43301e3a9e24e53a235273ed494fa8aef422f7e1c8"
+    },
+    {
+      "file": "19_install_verify.txt",
+      "bytes": 1342,
+      "sha256": "ca323b16081e25e52a6ca8008bae18a732d58553eb17c6eea5aa9230147419c6"
+    },
+    {
+      "file": "43_owner.txt",
+      "bytes": 874,
+      "sha256": "a91be67d009a0094e5914b2744ccf8f14451dd0ce287848a6727c195238bb3de"
+    },
+    {
+      "file": "33_ksm_maps.txt",
+      "bytes": 3696,
+      "sha256": "e4cd91857704200f61ff19272946dfc8f57c00277030faa84c2a6d6cb8470799"
+    },
+    {
+      "file": "12_module_4.txt",
+      "bytes": 319,
+      "sha256": "1a3f3c4cd128df87cc18f56f09430a2c39ffa1767716fa85404afddb6d2d79fc"
+    },
+    {
+      "file": "29_service_status.txt",
+      "bytes": 1634,
+      "sha256": "729d545c2f50b349a22154105e0a589b102c77cda39bb4c9ef82875b4dff4526"
+    },
+    {
+      "file": "02_connect.txt",
+      "bytes": 150,
+      "sha256": "7896502e88b0b31c337e8f8f9999a9853cfaea29cd603b06bfa2f4d16f44f2cc"
+    },
+    {
+      "file": "13_pull_0.txt",
+      "bytes": 464,
+      "sha256": "6e8cce59507fcad347429c86a2c0e49af9695352e81bdab4b4b4419a9721e8ea"
+    },
+    {
+      "file": "00_devices.txt",
+      "bytes": 172,
+      "sha256": "4f32e62aac5b3645a68ec7280933ea0d06152e91dce0bf9f5f06fc21e2991a69"
+    },
+    {
+      "file": "reboot1_pre.txt",
+      "bytes": 1085,
+      "sha256": "0a88c4e2d4560d1cab289dd89d89056f61b63d9d3aa8af25cbceabb815c95d52"
+    },
+    {
+      "file": "28_memory_parameters.txt",
+      "bytes": 1309,
+      "sha256": "8aa9976d4f48ca5f47f3a23a8a7618779a7056bceaf3de6ab8fa279269a95bba"
+    },
+    {
+      "file": "platform_dm-bow_crc.txt",
+      "bytes": 2787,
+      "sha256": "67669b01d2563a8549a319637e64042003c37d36dfcf907e125b6cfe0e9c7bc8"
+    },
+    {
+      "file": "resourced_reclaim_log_excerpt.txt",
+      "bytes": 2044,
+      "sha256": "3de8e31e453b0e4cd63945ea89b970005d5954461638a718bc02502e75dd0d72"
+    },
+    {
+      "file": "40_final_state.txt",
+      "bytes": 5594,
+      "sha256": "8510a60e6eaf1feee3a70ff0523beb857577ebb0536818a8537bd79b805c2da8"
+    },
+    {
+      "file": "04_root_on.txt",
+      "bytes": 112,
+      "sha256": "a69ed252cb8de17306ea088057b3a2708a1cf22c66e71003d6b8ce68ea884a94"
+    },
+    {
+      "file": "platform_logger_vermagic.txt",
+      "bytes": 1375,
+      "sha256": "95c5a673fd81bf141256d39372280313098d3b25e30f338c059068abdc544c00"
+    },
+    {
+      "file": "10_boot_read.txt",
+      "bytes": 2397,
+      "sha256": "91b1df2290495f7d35b43cb16dda2a07cc1cd2a578dd0d26b01aafec4d80553b"
+    },
+    {
+      "file": "20_restore_root_ro.txt",
+      "bytes": 332,
+      "sha256": "3743a912e1634f132e1fbfb49d3bca8392f26c46f30f044a59b69c9e2ade9029"
+    },
+    {
+      "file": "07_key_packages.txt",
+      "bytes": 1596,
+      "sha256": "d8c539cbf8d390e7b25a557de6f217818cf0b4cd8309af7d83b38b0fe43ca0f2"
+    },
+    {
+      "file": "18_install_enable.txt",
+      "bytes": 835,
+      "sha256": "b0d3ef818bd165dc3a38583f398ebcb5b10c4a6b7333857b5ccc42d0fb247ef5"
+    },
+    {
+      "file": "time600_planning.txt",
+      "bytes": 267,
+      "sha256": "68fdaa948e4859518e555ee1f6a4c80f7a33832960d88235dfe59c1b11ec7227"
+    },
+    {
+      "file": "module_sample.json",
+      "bytes": 2088,
+      "sha256": "31141af01c8ef705364774508fb45c3bd8c68a91aa8003a019f6f44924c359fe"
+    },
+    {
+      "file": "platform_inform-reboot_vermagic.txt",
+      "bytes": 1382,
+      "sha256": "b0bad71dbf2b80abe0cee64f27227b8e0fbd25938223c8cb7ecd0b34bd62ea6f"
+    },
+    {
+      "file": "32_extra_baseline.txt",
+      "bytes": 938,
+      "sha256": "02dc38f532736560cc93bcafbc3accc33785cb6d3919b067f1972075444edbce"
+    },
+    {
+      "file": "resourced_log_excerpt.txt",
+      "bytes": 35869,
+      "sha256": "3652c3f89eb1f61bfbe081e616787c490dddcb0a0ac3c31553c24964b39b2780"
+    },
+    {
+      "file": "27_kernel_baseline.txt",
+      "bytes": 2236,
+      "sha256": "5a84e12b88f341ee77c4f20f325eedc7a6046d7bef3ac5bd11e70bc6fcc2129e"
+    },
+    {
+      "file": "09_boot_mount.txt",
+      "bytes": 285,
+      "sha256": "3707002fb6d788026c2028b65a6d74eae77a45c407f776861c9b7f090bdc407e"
+    },
+    {
+      "file": "reboot_results.json",
+      "bytes": 822,
+      "sha256": "3d0283b586a436136c2a3beb292e77c17ef8022ca9e5c072d7998c077779848a"
+    },
+    {
+      "file": "39_final_boot_unmount.txt",
+      "bytes": 195,
+      "sha256": "0b3e16219966b65bd1b2ae79950d8fc3d957bf5c4c67df86dddd0a0bb21cc8d5"
+    },
+    {
+      "file": "time60_planning.txt",
+      "bytes": 266,
+      "sha256": "8732e1a3fe6229066ade598ea4c5c16f3fad1d0dd0dee3a536decf46f669b8c3"
+    },
+    {
+      "file": "reboot2_root_on.txt",
+      "bytes": 112,
+      "sha256": "a69ed252cb8de17306ea088057b3a2708a1cf22c66e71003d6b8ce68ea884a94"
+    },
+    {
+      "file": "38_final_boot_hashes.txt",
+      "bytes": 875,
+      "sha256": "3cc00b9164b6552ed6923d9abdb440a34e3e9f48bd1ad43b481877b2d56607f5"
+    },
+    {
+      "file": "14_image_details.txt",
+      "bytes": 1899,
+      "sha256": "15a99e15254041a37f80386ad2a0816b43b4b6a6fa278b00d7853b30f77eda62"
+    },
+    {
+      "file": "08_boot_device.txt",
+      "bytes": 499,
+      "sha256": "0df0857a0a44b9c540faf60218190725a8c88c37f0355148f6722d2e0c65abd2"
+    },
+    {
+      "file": "42_root_off.txt",
+      "bytes": 117,
+      "sha256": "5d4fb96e819a8357c8a1ae4890991867e1749f2ad6a906dd14936db8495a8cb7"
+    },
+    {
+      "file": "snapshot_60.txt",
+      "bytes": 4701,
+      "sha256": "23d1cb3de3aea820d743bd3e9aba8d2ebde1643e42373eb626b8530ea50f7b88"
+    },
+    {
+      "file": "13_pull_3.txt",
+      "bytes": 475,
+      "sha256": "102366576470f428578762d5a4b621235ebf284e428d56a7ec418d5f508bfd54"
+    },
+    {
+      "file": "kernel_warning_excerpt.txt",
+      "bytes": 850,
+      "sha256": "f612c408220a673bfd493bd9d1f209e4bcee0b9d0c678110812a910cd29930ac"
+    },
+    {
+      "file": "platform_extcon-usb-fixed_vermagic.txt",
+      "bytes": 1385,
+      "sha256": "dfacc1b7759327135ac73f6e0883b85478e380b446fc32ccc4ffc99e60634519"
+    },
+    {
+      "file": "base01_archive_preflight.json",
+      "bytes": 332,
+      "sha256": "eb591c5a14c742ed9ac5f63680167a8eb60707dfa4fc5df95681dc1bb4907a98"
+    },
+    {
+      "file": "README.md",
+      "bytes": 1445,
+      "sha256": "44e0b52446475cf6b81c50d163c3ffbf76f8a9fde178aa02515afe4548a01415"
+    },
+    {
+      "file": "board_packages.sorted.txt",
+      "bytes": 49735,
+      "sha256": "914cd317141ef2e2cda64bbf43aff5b2ab67ea9ab90179c0e15d142c26745d06"
+    },
+    {
+      "file": "platform_inform-reboot_crc.txt",
+      "bytes": 1747,
+      "sha256": "ca598161f36bf2439752b0993a9895dbd5a112580528e86f3f0843572bbaeee9"
+    },
+    {
+      "file": "reboot2_transport.txt",
+      "bytes": 7861,
+      "sha256": "ec80512c0f90f9eef7539fe46aa91571d5a755fa56a497a900aab317c828356d"
+    },
+    {
+      "file": "platform_dm-bow_vermagic.txt",
+      "bytes": 1375,
+      "sha256": "80bc1434227efb5ab98fde266cd6d934458b6d9522d877057f8d27db4f0fc8e2"
+    },
+    {
+      "file": "05_before.txt",
+      "bytes": 5238,
+      "sha256": "b00c2ffc9711a9782b8ab99312a934163c811e00e14a323302b7d3bb6f9c6865"
+    },
+    {
+      "file": "16_push_1.txt",
+      "bytes": 599,
+      "sha256": "176831921cb5044bee8f24b17f15cd0338ef23e2c6abf61920c24795c8e19e9a"
+    },
+    {
+      "file": "37_final_boot_ro.txt",
+      "bytes": 215,
+      "sha256": "9534987b915c6771d271701876f14fcb5c52b3f72fe70d3bf1d107fc2bf24ae2"
+    },
+    {
+      "file": "13_pull_2.txt",
+      "bytes": 483,
+      "sha256": "dabe6dc47477c8fbc496c3d7c3cb99f0b4e14a2cf4f92d6ef7fd3ae7f78b36a9"
+    },
+    {
+      "file": "reboot2_pre.txt",
+      "bytes": 1085,
+      "sha256": "67d69068add47342529287bd5abaf6eaa6500c7fd243030d0682b90704a8ca5e"
+    },
+    {
+      "file": "41_cleanup.txt",
+      "bytes": 1164,
+      "sha256": "4eea4bd37aaa4baf487bd560281e336a12c158c711789790a6e06a663ac9b476"
+    },
+    {
+      "file": "board.py.txt",
+      "bytes": 1594,
+      "sha256": "6ffef169a4c4c5d677b5e05d337d2c2260f31cc916fa08239428ecee2b754aca"
+    },
+    {
+      "file": "12_module_1.txt",
+      "bytes": 349,
+      "sha256": "b6a466390cf7811255524cabddfe79f5daf083902d835079bd76da382df0d893"
+    },
+    {
+      "file": "30_resourced_journal.txt",
+      "bytes": 388,
+      "sha256": "9bb5b39b854b3b53a772b9a586fc932cf83d7ed25190d33fb1e274a8385c0ba5"
+    },
+    {
+      "file": "15_net_preinstall.txt",
+      "bytes": 1399,
+      "sha256": "025819ada2df4a4ea47af4ec87a24daf502fece0498b508fcee0a8daeed1d040"
+    },
+    {
+      "file": "total_mem_change.json",
+      "bytes": 661,
+      "sha256": "33f886723e0575088a74aa15df6f211206ae7217ae22ab1ec5f6f03e8b1c724e"
+    },
+    {
+      "file": "12_module_0.txt",
+      "bytes": 319,
+      "sha256": "cc56c17c63ad67d5d3410ff3e8a811cf2f3c8f3bbd7e3591f321b9250c34f195"
+    },
+    {
+      "file": "16_push_0.txt",
+      "bytes": 586,
+      "sha256": "bf651afe6ea3f6c43924255bfcfc6672f489d613589a03825a9bfa80f82d3df3"
+    },
+    {
+      "file": "snapshot_summary.json",
+      "bytes": 10809,
+      "sha256": "afddf548f671f8b3627520f1bf8ecb0f0be2d5d2dcabdc74d5333e871ffe3b6d"
+    },
+    {
+      "file": "image_gate.json",
+      "bytes": 685,
+      "sha256": "a48b9cc809965f90692e137019a36cfbb21162992cff85638e97e0577eb713f4"
+    },
+    {
+      "file": "config.txt.total_mem1600",
+      "bytes": 1738,
+      "sha256": "7ecdb662716cab1532da77ff755912775284eb3aab5e3c89fd571dba854f7d07"
+    },
+    {
+      "file": "raw_manifest.json",
+      "bytes": 17712,
+      "sha256": "067ee70cab13f2377029f359cf20265cba70424e252f59f5d24efd8b453aa4ef"
+    },
+    {
+      "file": "reboot1_transport.txt",
+      "bytes": 7805,
+      "sha256": "8a48a84d2b3a1a5e81edeaa46e8bd9f18cd63aefd0f904a63995c932d9b1917a"
+    },
+    {
+      "file": "reboot1_root_on.txt",
+      "bytes": 112,
+      "sha256": "a69ed252cb8de17306ea088057b3a2708a1cf22c66e71003d6b8ce68ea884a94"
+    }
+  ]
+}

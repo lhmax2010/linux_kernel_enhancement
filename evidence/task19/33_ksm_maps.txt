@@ -1,0 +1,42 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'ls -ld /sys/kernel/mm/ksm; ls -l /sys/kernel/mm; cat /proc/401/comm; cat /proc/401/maps | grep -E "swap|resourced"; command -v dlogutil
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+ls: cannot access /sys/kernel/mm/ksm: No such file or directory
+total 0
+drwxr-xr-x 2 root root 0 Nov  5 21:08 lru_gen
+drwxr-xr-x 2 root root 0 Nov  5 21:08 swap
+resourced
+004e6000-004fc000 r-xp 00000000 b3:02 15119      /usr/bin/resourced
+004fc000-004fd000 rw-p 00016000 b3:02 15119      /usr/bin/resourced
+b6088000-b608a000 r-xp 00000000 b3:02 15133      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so
+b608a000-b608b000 r--p 00002000 b3:02 15133      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so
+b608b000-b608c000 rw-p 00003000 b3:02 15133      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-dedup.so
+b608c000-b608e000 r-xp 00000000 b3:02 15135      /usr/lib/resourced/plugins/libplugin-resourced-process-block.so
+b608e000-b608f000 r--p 00002000 b3:02 15135      /usr/lib/resourced/plugins/libplugin-resourced-process-block.so
+b608f000-b6090000 rw-p 00003000 b3:02 15135      /usr/lib/resourced/plugins/libplugin-resourced-process-block.so
+b6090000-b60aa000 r-xp 00000000 b3:02 15130      /usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so
+b60aa000-b60ab000 r--p 0001a000 b3:02 15130      /usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so
+b60ab000-b60ac000 rw-p 0001b000 b3:02 15130      /usr/lib/resourced/plugins/libplugin-resourced-monitor-heart.so
+b60e0000-b60e6000 r-xp 00000000 b3:02 15134      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so
+b60e6000-b60e7000 r--p 00006000 b3:02 15134      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so
+b60e7000-b60e8000 rw-p 00007000 b3:02 15134      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-swap.so
+b60f3000-b60f5000 r-xp 00000000 b3:02 15129      /usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so
+b60f5000-b60f6000 r--p 00002000 b3:02 15129      /usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so
+b60f6000-b60f7000 rw-p 00003000 b3:02 15129      /usr/lib/resourced/plugins/libplugin-resourced-limiter-freezer.so
+b60f7000-b60f9000 r-xp 00000000 b3:02 15132      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so
+b60f9000-b60fa000 r--p 00002000 b3:02 15132      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so
+b60fa000-b60fb000 rw-p 00003000 b3:02 15132      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-memory-compaction.so
+b60fb000-b60ff000 r-xp 00000000 b3:02 15131      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so
+b60ff000-b6100000 r--p 00004000 b3:02 15131      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so
+b6100000-b6101000 rw-p 00005000 b3:02 15131      /usr/lib/resourced/plugins/libplugin-resourced-optimizer-cpu-sched.so
+b6e0b000-b6e10000 r-xp 00000000 b3:02 5311       /usr/lib/libsyscommon-plugin-api-resourced.so.0.1.0
+b6e10000-b6e11000 r--p 00005000 b3:02 5311       /usr/lib/libsyscommon-plugin-api-resourced.so.0.1.0
+b6e11000-b6e12000 rw-p 00006000 b3:02 5311       /usr/lib/libsyscommon-plugin-api-resourced.so.0.1.0
+b6ec4000-b6eef000 r-xp 00000000 b3:02 15120      /usr/lib/libresourced-private-api.so.10.0.0
+b6eef000-b6ef0000 r--p 0002b000 b3:02 15120      /usr/lib/libresourced-private-api.so.10.0.0
+b6ef0000-b6ef2000 rw-p 0002c000 b3:02 15120      /usr/lib/libresourced-private-api.so.10.0.0
+/usr/bin/dlogutil
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

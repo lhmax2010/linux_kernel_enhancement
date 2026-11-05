@@ -1,0 +1,16 @@
+SOURCE temp/task19/34_dlog.txt
+Filter actual RESOURCED tag only; SDB command echo excluded
+MATCHES 13
+5635: I/RESOURCED(  401): swap.c: swap_activate_timer_cb(778) > [SWAP] Starting an early memory reclaim (done to retrieve resources used by daemons during system start-up)
+5640: D/RESOURCED(  401): cgroup.c: cgroup_write_node_uint32(155) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/memory.force_reclaim, value = 2560
+5642: D/RESOURCED(  401): cgroup.c: cgroup_write_node_uint32(155) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/memory.force_reclaim, value = 2560
+5644: D/RESOURCED(  401): cgroup.c: cgroup_write_node_uint32(155) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/memory.force_reclaim, value = 2560
+5648: D/RESOURCED(  401): cgroup.c: cgroup_write_node_uint32(155) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/memory.force_reclaim, value = 2560
+5650: D/RESOURCED(  401): cgroup.c: cgroup_write_node_uint32(155) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/memory.force_reclaim, value = 2560
+5651: D/RESOURCED(  401): swap.c: swap_use_force_reclaim(321) > [SWAP] FORCE_RECLAIM tried 12800 pages from /sys/fs/cgroup/memory
+5662: D/RESOURCED(  401): cgroup.c: cgroup_write_node_uint32(155) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/memory.force_reclaim, value = 2560
+5664: D/RESOURCED(  401): cgroup.c: cgroup_write_node_uint32(155) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/memory.force_reclaim, value = 2560
+5667: D/RESOURCED(  401): cgroup.c: cgroup_write_node_uint32(155) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/memory.force_reclaim, value = 2560
+5669: D/RESOURCED(  401): cgroup.c: cgroup_write_node_uint32(155) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/memory.force_reclaim, value = 2560
+5671: D/RESOURCED(  401): cgroup.c: cgroup_write_node_uint32(155) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/memory.force_reclaim, value = 2560
+5672: D/RESOURCED(  401): swap.c: swap_use_force_reclaim(321) > [SWAP] FORCE_RECLAIM tried 12800 pages from /sys/fs/cgroup/memory

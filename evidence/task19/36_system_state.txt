@@ -1,0 +1,14 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'systemctl --failed --no-pager; systemctl show display-manager.service -p ActiveState -p NRestarts -p ExecMainStatus; cat /proc/swaps; cat /proc/uptime
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+0 loaded units listed.
+NRestarts=9
+ExecMainStatus=127
+ActiveState=activating
+Filename				Type		Size		Used		Priority
+/dev/zram0                              partition	603196		15360		0
+109.33 402.48
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

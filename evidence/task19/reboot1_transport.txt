@@ -1,0 +1,182 @@
+FILE reboot1_command.raw.txt
+
+
+FILE reboot1_pre.raw.txt
+442cb7cd-f3fc-470b-b904-1c97234cdc31
+armv7l
+6.12.80-arm-rpi4-v7l
+NAME=Tizen
+VERSION="11.0.0 (Tizen11.0/Unified)"
+ID=tizen
+VERSION_ID=11.0.0
+PRETTY_NAME="Tizen 11.0.0 (Tizen11.0/Unified)"
+ANSI_COLOR="0;36"
+CPE_NAME="cpe:/o:tizen:tizen:11.0.0"
+BUILD_ID=tizen-unified-toolchain_20261104.160709_tizen-headed-armv7l
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608  /usr/local/sbin/lko-net-setup.sh
+bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78  /etc/systemd/system/lko-net-setup.service
+enabled
+
+TASK19-REMOTE-EXIT=0
+
+
+FILE reboot1_root_on.raw.txt
+Switched to 'root' account mode
+
+
+FILE reboot1_round01_connect.raw.txt
+error: failed to connect to remote target '192.168.108.26'
+
+
+FILE reboot1_round01_disconnect.raw.txt
+
+
+
+FILE reboot1_round01_probe.raw.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+
+FILE reboot1_round02_connect.raw.txt
+error: failed to connect to remote target '192.168.108.26'
+
+
+FILE reboot1_round02_disconnect.raw.txt
+error: remote target '192.168.108.26:26101' not connected
+
+
+FILE reboot1_round02_probe.raw.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+
+FILE reboot1_round03_connect.raw.txt
+error: failed to connect to remote target '192.168.108.26'
+
+
+FILE reboot1_round03_disconnect.raw.txt
+error: remote target '192.168.108.26:26101' not connected
+
+
+FILE reboot1_round03_probe.raw.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+
+FILE reboot1_round04_connect.raw.txt
+error: failed to connect to remote target '192.168.108.26'
+
+
+FILE reboot1_round04_disconnect.raw.txt
+error: remote target '192.168.108.26:26101' not connected
+
+
+FILE reboot1_round04_probe.raw.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+
+FILE reboot1_round05_connect.raw.txt
+error: failed to connect to remote target '192.168.108.26'
+
+
+FILE reboot1_round05_disconnect.raw.txt
+error: remote target '192.168.108.26:26101' not connected
+
+
+FILE reboot1_round05_probe.raw.txt
+error: target not found
+error: serial number '192.168.108.26:26101' wrong
+
+
+FILE reboot1_round06_connect.raw.txt
+connecting to 192.168.108.26:26101 ...
+connected to 192.168.108.26:26101
+
+
+FILE reboot1_round06_disconnect.raw.txt
+error: remote target '192.168.108.26:26101' not connected
+
+
+FILE reboot1_round06_probe.raw.txt
+9c7773d9-31a8-42fe-b00b-206b257dcfc1
+armv7l
+6.12.80-arm-rpi4-v7l
+NAME=Tizen
+VERSION="11.0.0 (Tizen11.0/Unified)"
+ID=tizen
+VERSION_ID=11.0.0
+PRETTY_NAME="Tizen 11.0.0 (Tizen11.0/Unified)"
+ANSI_COLOR="0;36"
+CPE_NAME="cpe:/o:tizen:tizen:11.0.0"
+BUILD_ID=tizen-unified-toolchain_20261104.160709_tizen-headed-armv7l
+
+
+FILE reboot1_verification.raw.txt
+-- Logs begin at Thu 1970-01-01 09:00:10 KST, end at Thu 2026-11-05 21:04:21 KST. --
+[   15.960865] localhost lko-net-setup[638]: ip link set eth0 down : exit=0
+[   15.972066] localhost lko-net-setup[640]: ip link set eth0 address 2C:CF:67:A0:72:B5 : exit=0
+[   15.988208] localhost lko-net-setup[644]: ip link set eth0 up : exit=0
+[   15.997524] localhost lko-net-setup[645]: waiting up to 60 seconds for ethernet_2ccf67a072b5_cable
+[   20.144043] localhost lko-net-setup[802]: service found: ethernet_2ccf67a072b5_cable
+[   20.189457] localhost lko-net-setup[805]: connmanctl config ethernet_2ccf67a072b5_cable --ipv4 manual 192.168.108.26 255.255.255.0 192.168.108.1 --nameservers 221.131.143.69 : exit=0
+[   20.193817] localhost lko-net-setup[806]: /etc/resolv.conf is a symbolic link
+[   20.215906] localhost lko-net-setup[809]: DNS target=/opt/etc/resolv.conf; findmnt exit=0; options=rw,relatime
+[   20.224638] localhost lko-net-setup[811]: DNS written successfully
+[   20.229022] localhost lko-net-setup[812]: network setup complete
+Result=success
+ExecMainStartTimestampMonotonic=15820666
+ExecMainExitTimestampMonotonic=20230609
+ExecMainStatus=0
+ActiveState=active
+SubState=exited
+devtmpfs /dev devtmpfs rw,nosuid,size=1816204k,nr_inodes=91975,mode=755 0 0
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+/dev/mmcblk0p6 /usr/lib/modules ext4 ro,relatime 0 0
+/dev/mmcblk0p2 / ext4 ro,relatime 0 0
+/dev/mmcblk0p3 /opt ext4 rw,relatime 0 0
+/dev/mmcblk0p10 /hal ext4 ro,relatime 0 0
+smackfs /sys/fs/smackfs smackfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev,noexec 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,noexec,mode=755 0 0
+tmpfs /sys/fs/cgroup tmpfs ro,nosuid,nodev,noexec,mode=755 0 0
+cgroup /sys/fs/cgroup/systemd cgroup rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd 0 0
+kdbusfs /sys/fs/kdbus kdbusfs rw,nosuid,nodev,noexec,relatime 0 0
+bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+cgroup /sys/fs/cgroup/devices cgroup rw,nosuid,nodev,noexec,relatime,devices 0 0
+cgroup /sys/fs/cgroup/cpu,cpuacct cgroup rw,nosuid,nodev,noexec,relatime,cpu,cpuacct 0 0
+cgroup /sys/fs/cgroup/cpuset cgroup rw,nosuid,nodev,noexec,relatime,cpuset 0 0
+cgroup /sys/fs/cgroup/freezer cgroup rw,nosuid,nodev,noexec,relatime,freezer 0 0
+cgroup /sys/fs/cgroup/net_cls cgroup rw,nosuid,nodev,noexec,relatime,net_cls,release_agent=/usr/bin/net-cls-release 0 0
+cgroup /sys/fs/cgroup/memory cgroup rw,nosuid,nodev,noexec,relatime,memory 0 0
+cgroup /sys/fs/cgroup/blkio cgroup rw,nosuid,nodev,noexec,relatime,blkio 0 0
+systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=25,pgrp=1,timeout=0,minproto=5,maxproto=5,direct 0 0
+mqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0
+configfs /sys/kernel/config configfs rw,nosuid,nodev,noexec,relatime 0 0
+debugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0
+/dev/mmcblk0p9 /mnt/inform ext4 rw,relatime 0 0
+/dev/mmcblk0p5 /opt/usr f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+tracefs /sys/kernel/debug/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+fusectl /sys/fs/fuse/connections fusectl rw,nosuid,nodev,noexec,relatime 0 0
+/dev/loop0 /opt/usr/home/owner/subsession/__templ_acct_fix__ ext4 rw,relatime 0 0
+cgroup /sys/fs/cgroup/watchdog cgroup rw,nosuid,nodev,noexec,relatime,release_agent=/usr/bin/resourced-watchdog-handler.sh,name=watchdog 0 0
+/dev/loop1 /opt/usr/home/owner/subsession/__templ_prof_fix__ ext4 rw,relatime 0 0
+tmpfs /opt/media tmpfs rw,relatime 0 0
+/dev/mmcblk0p5 /opt/usr/home/owner/media f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.108.26/24 brd 192.168.108.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::2ecf:67ff:fea0:72b5/64 scope link 
+       valid_lft forever preferred_lft forever
+9c7773d9-31a8-42fe-b00b-206b257dcfc1
+30.18 98.15
+
+TASK19-REMOTE-EXIT=0

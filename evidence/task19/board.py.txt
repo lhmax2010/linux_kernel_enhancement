@@ -1,0 +1,23 @@
+from pathlib import Path
+import subprocess,os,json,datetime,re,shlex
+W=Path('/home/linhao/Toolchain/development/linux_kernel_optimization');T=W/'temp/task19';Q=W/'vendor_local/task19_20';SDB='/home/linhao/.local/bin/sdb';SERIAL='192.168.108.26:26101'
+(T/'sdb-home').mkdir(exist_ok=True)
+env=dict(os.environ,TMPDIR=str(T),HOME=str(T/'sdb-home'),PYTHONDONTWRITEBYTECODE='1')
+def run(args,label,select=True,out=None,wait=60):
+ out=out or T;path=out/(label+'.raw.txt');assert not path.exists(),path
+ cmd=[SDB]+(['-s',SERIAL] if select else [])+args;start=datetime.datetime.now().astimezone().isoformat()
+ with path.open('wb') as f:
+  p=subprocess.Popen(cmd,stdin=subprocess.DEVNULL,stdout=f,stderr=subprocess.STDOUT,env=env)
+  try:rc=p.wait(timeout=wait)
+  except subprocess.TimeoutExpired:rc=None
+ data=path.read_bytes().decode(errors='replace');data=re.sub(r'\x1b\[[0-?]*[ -/]*[@-~]','',data).replace('\r','')
+ row={'start':start,'end':datetime.datetime.now().astimezone().isoformat(),'command':shlex.join(cmd),'exit':rc,'pid':p.pid,'file':str(path.relative_to(W))}
+ with (out/'commands.jsonl').open('a') as f:f.write(json.dumps(row)+'\n')
+ (out/(label+'.txt')).write_text('$ '+row['command']+'\n'+data+'\nTRANSPORT-EXIT='+str(rc)+'\n')
+ if rc is None:raise RuntimeError('Command still running; no signal sent; stop: '+str(row))
+ return rc,data
+
+def shell(cmd,label,out=None):
+ wrapped=cmd+'\nremote_rc=$?\nprintf "\\nTASK19-REMOTE-EXIT=%s\\n" "$remote_rc"'
+ rc,data=run(['shell',wrapped],label,out=out);m=re.search(r'TASK19-REMOTE-EXIT=(\d+)',data)
+ return (int(m.group(1)) if m else None),data

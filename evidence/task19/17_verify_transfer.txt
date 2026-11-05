@@ -1,0 +1,9 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'sha256sum /opt/usr/lko_task19/lko-net-setup.sh /opt/usr/lko_task19/lko-net-setup.service
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608  /opt/usr/lko_task19/lko-net-setup.sh
+bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78  /opt/usr/lko_task19/lko-net-setup.service
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

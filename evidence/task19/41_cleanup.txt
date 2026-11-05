@@ -1,0 +1,20 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'if grep -q " /opt/usr/lko_task19/" /proc/mounts; then echo STOP_MOUNT_STILL_PRESENT; exit 1; fi; ls -la /opt/usr/lko_task19; rm -r /opt/usr/lko_task19; if [ -e /opt/usr/lko_task19 ]; then exit 1; fi; ls -ld /opt/usr/lko_task19; result=$?; printf "REMOVAL_LS_EXIT=%s\n" "$result"; test "$result" -ne 0; df -k /opt/usr; cat /proc/mounts | grep -E " / | /usr/lib/modules "
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+total 21
+drwxrwxrwx  3 root root 3488 Nov  5 21:05 .
+drwxr-xr-x 12 root root 4096 Nov  5 20:59 ..
+drwxrwxrwx  2 root root 3488 Nov  5 20:59 boot
+-rwxr-xrwx  1 root root 1738 Nov  5 21:05 config.txt.new
+-rwxr-xrwx  1 root root  213 Nov  2 10:50 lko-net-setup.service
+-rwxr-xrwx  1 root root 2642 Nov  2 10:51 lko-net-setup.sh
+ls: cannot access /opt/usr/lko_task19: No such file or directory
+REMOVAL_LS_EXIT=2
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/mmcblk0p5       116404224    982756 115421468   1% /opt/usr
+/dev/mmcblk0p6 /usr/lib/modules ext4 ro,relatime 0 0
+/dev/mmcblk0p2 / ext4 ro,relatime 0 0
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

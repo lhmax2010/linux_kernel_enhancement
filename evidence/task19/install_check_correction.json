@@ -1,0 +1,12 @@
+{
+  "issue": "Host checker required LoadError property absent; systemctl emitted correct empty LoadError=. Corrected to require empty value; service checks pass. Final grep exit1 means no matching journal lines; no board retry or service start.",
+  "properties": {
+    "ExecStart": "{ path=/usr/local/sbin/lko-net-setup.sh ; argv[]=/usr/local/sbin/lko-n",
+    "de": "(null) ; status=0/0 }",
+    "LoadState": "loaded",
+    "ActiveState": "inactive",
+    "SubState": "dead",
+    "UnitFileState": "enabled",
+    "LoadError": ""
+  }
+}

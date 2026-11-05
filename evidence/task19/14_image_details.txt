@@ -1,0 +1,56 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'ls -ld /hal/lib/rpm /hal/var/lib/rpm /hal/usr/lib/sysimage/rpm /usr/lib/sysimage/rpm /var/lib/rpm; rpm -q coregl crossgen2-mic patchelf mesa wlandrv-plugin-tizen; cat /etc/tizen-build.conf; cat /etc/info.ini
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+ls: cannot access /hal/var/lib/rpm: No such file or directory
+ls: cannot access /hal/usr/lib/sysimage/rpm: No such file or directory
+ls: cannot access /usr/lib/sysimage/rpm: No such file or directory
+drwxr-xr-x 2 root root 4096 Nov  5 06:07 /hal/lib/rpm
+drwxr-xr-x 3 root root 4096 Oct 30 23:30 /var/lib/rpm
+package coregl is not installed
+package crossgen2-mic is not installed
+package patchelf is not installed
+package mesa is not installed
+package wlandrv-plugin-tizen is not installed
+TZ_BUILD_RELEASE_NAME="Tizen11.0/Unified"
+TZ_BUILD_VERSION=11.0
+TZ_BUILD_FULLVER=11.0.0
+TZ_BUILD_RELEASE_TYPE=eng
+TZ_BUILD_VARIANT=NONE
+
+TZ_BUILD_PROFILE=common
+TZ_BUILD_PROJECT=Tizen-Unified-Toolchain
+
+TZ_BUILD_VENDOR=tizen
+TZ_BUILD_REPO=standard
+TZ_BUILD_ARCH=arm
+
+TZ_BUILD_ID=tizen-unified-toolchain_20261104.160709
+TZ_BUILD_DATE=20261104.160709
+TZ_BUILD_TIME=21:19:04
+TZ_BUILD_TS=1793827144
+
+TZ_BUILD_URL=http://download.tizen.org
+TZ_BUILD_SNAPSHOT_URL=${TZ_BUILD_URL}/snapshots/TIZEN/Tizen/Tizen-Unified/
+TZ_BUILD_DAILY_URL=${TZ_BUILD_URL}/releases/daily/TIZEN/Tizen/Tizen-Unified/
+TZ_BUILD_WEEKLY_URL=${TZ_BUILD_URL}/releases/weekly/TIZEN/Tizen/Tizen-Unified/
+TZ_BUILD_MILESTONE_URL=${TZ_BUILD_URL}/releases/milestone/TIZEN/Tizen/Tizen-Unified/
+
+TZ_BUILD_WITH_MESA=1
+TZ_BUILD_WITH_WAYLAND=1
+TZ_BUILD_WITH_RDP=1
+TZ_BUILD_WITH_X=
+
+[Version]
+Model=Tizen11.0/Unified;
+Build=tizen-unified-toolchain_20261104.160709;
+Release=20261104.160709;
+[Build]
+Type=eng;
+Date=20261104.160709;
+Time=21:19:04;
+Variant=NONE;
+ID=tizen-unified-toolchain;
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

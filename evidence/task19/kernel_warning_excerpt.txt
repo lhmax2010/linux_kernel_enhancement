@@ -1,0 +1,9 @@
+SOURCE temp/task19/31_health.txt
+359: [    1.255437] mmc-bcm2835 fe300000.mmcnr: mmc_debug:0 mmc_debug2:0
+370: [    1.314839] platform regulatory.0: Direct firmware load for regulatory.db failed with error -2
+371: [    1.314905] cfg80211: failed to load regulatory.db
+421: [    9.550764] systemd[1]: system-serial\x2dgetty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+422: [    9.550781] systemd[1]: (This warning is only shown for the first unit using IP firewalling.)
+481: [   11.099258] brcmfmac mmc1:0001:1: Direct firmware load for brcm/brcmfmac43455-sdio.raspberrypi,4-model-b.bin failed with error -2
+482: [   11.099332] brcmfmac mmc1:0001:1: Direct firmware load for brcm/brcmfmac43455-sdio.bin failed with error -2
+531: [   46.107200] udc fe980000.usb: failed to start hal-gadget: -19

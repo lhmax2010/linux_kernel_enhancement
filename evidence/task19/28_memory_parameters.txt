@@ -1,0 +1,54 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'cat /proc/swaps
+for f in comp_algorithm disksize mm_stat io_stat bd_stat; do printf '"'"'
+/sys/block/zram0/%s
+'"'"' "$f"; cat "/sys/block/zram0/$f"; done
+for f in /sys/kernel/mm/ksm/*; do [ -f "$f" ] || continue; printf '"'"'
+%s
+'"'"' "$f"; cat "$f"; done
+for f in swappiness page-cluster min_free_kbytes watermark_scale_factor vfs_cache_pressure; do printf '"'"'
+/proc/sys/vm/%s
+'"'"' "$f"; cat "/proc/sys/vm/$f"; done
+printf '"'"'
+/sys/kernel/mm/lru_gen/enabled
+'"'"'; cat /sys/kernel/mm/lru_gen/enabled
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+Filename				Type		Size		Used		Priority
+/dev/zram0                              partition	603196		0		0
+
+/sys/block/zram0/comp_algorithm
+[lzo-rle] lzo 
+
+/sys/block/zram0/disksize
+617676800
+
+/sys/block/zram0/mm_stat
+    4096       74     4096        0     4096        0        0        0        0
+
+/sys/block/zram0/io_stat
+       0        0 0   150799
+
+/sys/block/zram0/bd_stat
+cat: /sys/block/zram0/bd_stat: No such file or directory
+
+/proc/sys/vm/swappiness
+60
+
+/proc/sys/vm/page-cluster
+3
+
+/proc/sys/vm/min_free_kbytes
+3388
+
+/proc/sys/vm/watermark_scale_factor
+10
+
+/proc/sys/vm/vfs_cache_pressure
+100
+
+/sys/kernel/mm/lru_gen/enabled
+0x0001
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

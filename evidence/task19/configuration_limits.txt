@@ -1,0 +1,25 @@
+Board /proc/config.gz: absent (27_kernel_baseline). No direct board .config diff possible.
+Image zImage exact SHA matches SR RPM; task17 compared corresponding devel .config with base01, byte-identical.
+Not a runtime .config export.
+34: CONFIG_LOCALVERSION="-v7l"
+35: # CONFIG_LOCALVERSION_AUTO is not set
+154: # CONFIG_IKCONFIG is not set
+845: # CONFIG_KSM is not set
+868: CONFIG_LRU_GEN=y
+869: CONFIG_LRU_GEN_ENABLED=y
+870: # CONFIG_LRU_GEN_STATS is not set
+1687: CONFIG_ZRAM=y
+1688: # CONFIG_ZRAM_BACKEND_LZ4 is not set
+1689: # CONFIG_ZRAM_BACKEND_LZ4HC is not set
+1690: # CONFIG_ZRAM_BACKEND_ZSTD is not set
+1691: # CONFIG_ZRAM_BACKEND_DEFLATE is not set
+1692: # CONFIG_ZRAM_BACKEND_842 is not set
+1693: CONFIG_ZRAM_BACKEND_FORCE_LZO=y
+1694: CONFIG_ZRAM_BACKEND_LZO=y
+1695: CONFIG_ZRAM_DEF_COMP_LZORLE=y
+1696: # CONFIG_ZRAM_DEF_COMP_LZO is not set
+1697: CONFIG_ZRAM_DEF_COMP="lzo-rle"
+1698: # CONFIG_ZRAM_WRITEBACK is not set
+1699: # CONFIG_ZRAM_TRACK_ENTRY_ACTIME is not set
+1700: # CONFIG_ZRAM_MEMORY_TRACKING is not set
+1701: # CONFIG_ZRAM_MULTI_COMP is not set

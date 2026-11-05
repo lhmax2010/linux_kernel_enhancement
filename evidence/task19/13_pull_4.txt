@@ -1,0 +1,6 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/modules/logger.ko
+pulled                      logger.ko	  0%	      0KB	    0KB/spulled                      logger.ko	100%	     23KB	    0KB/s
+1 file(s) pulled. 0 file(s) skipped.
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/logger.ko   170KB/s (23664 bytes in 0.135s)
+
+TRANSPORT-EXIT=0

@@ -1,0 +1,28 @@
+{
+  "1": {
+    "old_boot_id": "442cb7cd-f3fc-470b-b904-1c97234cdc31",
+    "new_boot_id": "9c7773d9-31a8-42fe-b00b-206b257dcfc1",
+    "reconnect_seconds": 62.338022563002596,
+    "kill_server_count": 0,
+    "identity_pass": true,
+    "service_result": "success",
+    "service_exit": 0,
+    "service_seconds": 4.409943,
+    "network_setup_complete": true,
+    "root_readonly": true,
+    "network_ip_ok": true
+  },
+  "2": {
+    "old_boot_id": "9c7773d9-31a8-42fe-b00b-206b257dcfc1",
+    "new_boot_id": "7c924a80-5176-4301-9c17-4c4540933d1f",
+    "reconnect_seconds": 56.98304170699703,
+    "kill_server_count": 0,
+    "identity_pass": true,
+    "service_result": "success",
+    "service_exit": 0,
+    "service_seconds": 4.587014,
+    "network_setup_complete": true,
+    "root_readonly": true,
+    "network_ip_ok": true
+  }
+}

@@ -1,0 +1,40 @@
+from pathlib import Path
+import sys,time,subprocess,json,datetime,re
+from board import *
+sys.excepthook=sys.__excepthook__
+number=sys.argv[1];prefix='reboot'+number
+rc,pre=shell('cat /proc/sys/kernel/random/boot_id; uname -m; uname -r; cat /etc/os-release; ip link show eth0; sha256sum /usr/local/sbin/lko-net-setup.sh /etc/systemd/system/lko-net-setup.service; systemctl is-enabled lko-net-setup.service',prefix+'_pre')
+old=re.search(r'(?m)^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$',pre)
+assert rc==0 and old and 'armv7l' in pre and 'rpi4' in pre and 'ID=tizen' in pre and 'LOWER_UP' in pre and '\nenabled\n' in pre
+assert '8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608' in pre and 'bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78' in pre
+start=time.monotonic();wall=datetime.datetime.now().astimezone().isoformat();calls=[]
+def call(args,label,budget):
+ pth=T/(label+'.raw.txt');assert not pth.exists()
+ cmd=[SDB]+args
+ with pth.open('wb') as f:
+  p=subprocess.Popen(cmd,stdin=subprocess.DEVNULL,stdout=f,stderr=subprocess.STDOUT,env=env)
+  try:r=p.wait(timeout=max(.1,budget))
+  except subprocess.TimeoutExpired:r=None
+ s=pth.read_text(errors='replace').replace('\r','');calls.append({'command':cmd,'pid':p.pid,'exit':r,'file':pth.name,'elapsed':time.monotonic()-start});return r,s
+call(['-s',SERIAL,'shell','reboot'],prefix+'_command',5)
+result={'number':number,'reason':'network autoconfiguration verification' if number=='1' else 'authorized task19 boot configuration verification','start':wall,'old_boot_id':old.group(),'deadline_seconds':300,'kill_server_count':0}
+for n in range(1,100):
+ if time.monotonic()-start>=300:break
+ for op in ['disconnect','connect']:
+  rc,s=call([op,SERIAL],f'{prefix}_round{n:02}_{op}',min(15,300-(time.monotonic()-start)))
+  if rc is None:break
+ if rc is None:
+  result['failure']='SDB host command still running; no signal sent';break
+ rc,s=call(['-s',SERIAL,'shell','cat /proc/sys/kernel/random/boot_id; uname -m; uname -r; cat /etc/os-release'],f'{prefix}_round{n:02}_probe',min(15,300-(time.monotonic()-start)))
+ found=re.search(r'(?m)^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$',s)
+ if rc==0 and found and found.group()!=old.group():
+  result.update({'new_boot_id':found.group(),'identity_pass':'armv7l' in s and 'rpi4' in s and 'ID=tizen' in s,'result':'CONNECTED','seconds':time.monotonic()-start});break
+ if rc is None:result['failure']='SDB probe still running; no signal sent';break
+ time.sleep(max(0,min(10,300-(time.monotonic()-start))))
+else:result['failure']='Unexpected polling bound'
+result.setdefault('result','STOP');result['elapsed']=time.monotonic()-start;result['calls']=calls
+(T/(prefix+'_reconnect.json')).write_text(json.dumps(result,indent=2)+'\n');print(json.dumps({k:v for k,v in result.items() if k!='calls'},indent=2),flush=True)
+if result['result']!='CONNECTED' or not result['identity_pass']:sys.exit(2)
+rc,s=run(['root','on'],prefix+'_root_on');assert rc==0
+rc,s=shell('journalctl -b -t lko-net-setup -o short-monotonic --no-pager; systemctl show lko-net-setup.service -p ActiveState -p SubState -p Result -p ExecMainStatus -p ExecMainStartTimestampMonotonic -p ExecMainExitTimestampMonotonic; cat /proc/mounts; ip link show eth0; ip addr show eth0; cat /proc/sys/kernel/random/boot_id; cat /proc/uptime',prefix+'_verification');print(s,flush=True)
+assert 'Result=success' in s and 'ExecMainStatus=0' in s and 'network setup complete' in s and '192.168.108.26/24' in s and '2c:cf:67:a0:72:b5' in s

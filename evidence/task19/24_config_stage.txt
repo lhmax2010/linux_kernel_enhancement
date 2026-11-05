@@ -1,0 +1,7 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 push /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/config.txt.total_mem1600 /opt/usr/lko_task19/config.txt.new
+WARNING: Your data are to be sent over an unencrypted connection and could be read by others.
+pushed       config.txt.total_mem1600	  0%	      0 B	    0KB/spushed       config.txt.total_mem1600	100%	   1738 B	    0KB/s
+1 file(s) pushed. 0 file(s) skipped.
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/config.txt.total_mem1600   9KB/s (1738 bytes in 0.179s)
+
+TRANSPORT-EXIT=0

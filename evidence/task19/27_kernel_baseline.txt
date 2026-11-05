@@ -1,0 +1,55 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'uname -a; cat /proc/version; ls -l /proc/config.gz; ls -l /sys/fs/cgroup/memory/memory.force_reclaim; cat /proc/meminfo; cat /proc/cmdline
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+Linux localhost 6.12.80-arm-rpi4-v7l #1 SMP Wed Nov  4 17:05:36 UTC 2026 armv7l GNU/Linux
+Linux version 6.12.80-arm-rpi4-v7l (abuild@[build-host-redacted]) (clang version 22.1.8, LLD 22.1.8) #1 SMP Wed Nov  4 17:05:36 UTC 2026
+ls: cannot access /proc/config.gz: No such file or directory
+--w------- 1 root root 0 Jan  1  1970 /sys/fs/cgroup/memory/memory.force_reclaim
+MemTotal:        1507996 kB
+MemFree:         1256916 kB
+MemAvailable:    1350292 kB
+Buffers:           10688 kB
+Cached:            94692 kB
+SwapCached:            0 kB
+Active:           127960 kB
+Inactive:          34316 kB
+Active(anon):      58644 kB
+Inactive(anon):        0 kB
+Active(file):      69316 kB
+Inactive(file):    34316 kB
+Unevictable:         144 kB
+Mlocked:             144 kB
+HighTotal:        774144 kB
+HighFree:         600988 kB
+LowTotal:         733852 kB
+LowFree:          655928 kB
+SwapTotal:        603196 kB
+SwapFree:         603196 kB
+Dirty:               164 kB
+Writeback:             0 kB
+AnonPages:         57088 kB
+Mapped:            45636 kB
+Shmem:              1748 kB
+KReclaimable:      11748 kB
+Slab:              45948 kB
+SReclaimable:      11748 kB
+SUnreclaim:        34200 kB
+KernelStack:        2920 kB
+PageTables:         3576 kB
+SecPageTables:         0 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1357192 kB
+Committed_AS:    2950200 kB
+VmallocTotal:     245760 kB
+VmallocUsed:       17512 kB
+VmallocChunk:          0 kB
+Percpu:             1024 kB
+CmaTotal:         327680 kB
+CmaFree:          319492 kB
+cgroup_enable=memory vc_mem.mem_base=0x3ec00000 vc_mem.mem_size=0x40000000 swiotlb=8192 8250.nr_uarts=1 dma.dmachans=0x7f35 bcm2709.serial=[redacted] snd_bcm2835.enable_compat_alsa=0 snd_bcm2835.enable_hdmi=1 bcm2709.uart_clock=48000000 dwc_otg.lpm_enable=0  bootmode=normal partition_ab=a console=ttyS0,115200n8 earlycon=uart8250,mmio32,0xfe215040 loglevel=4 
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

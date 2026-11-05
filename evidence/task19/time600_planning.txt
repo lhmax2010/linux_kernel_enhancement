@@ -1,0 +1,9 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'cat /proc/uptime; cat /proc/sys/kernel/random/boot_id
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+60.35 215.00
+7c924a80-5176-4301-9c17-4c4540933d1f
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

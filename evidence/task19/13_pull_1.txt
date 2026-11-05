@@ -1,0 +1,6 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /lib/modules/6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task19/modules/extcon-usb-fixed.ko
+pulled            extcon-usb-fixed.ko	  0%	      0 B	    0KB/spulled            extcon-usb-fixed.ko	100%	   6156 B	    0KB/s
+1 file(s) pulled. 0 file(s) skipped.
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko   44KB/s (6156 bytes in 0.135s)
+
+TRANSPORT-EXIT=0

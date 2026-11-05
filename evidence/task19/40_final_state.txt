@@ -1,0 +1,95 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'uname -m; uname -r; cat /etc/os-release; cat /proc/sys/kernel/random/boot_id; cat /proc/uptime; grep MemTotal /proc/meminfo; cat /proc/swaps; systemctl show lko-net-setup.service resourced.service -p Id -p ActiveState -p SubState -p Result -p ExecMainStatus; systemctl show display-manager.service -p ActiveState -p NRestarts -p ExecMainStatus; systemctl --failed --no-pager; cat /proc/modules; ip addr show eth0; df -k / /opt/usr /usr/lib/modules; cat /proc/mounts
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+armv7l
+6.12.80-arm-rpi4-v7l
+NAME=Tizen
+VERSION="11.0.0 (Tizen11.0/Unified)"
+ID=tizen
+VERSION_ID=11.0.0
+PRETTY_NAME="Tizen 11.0.0 (Tizen11.0/Unified)"
+ANSI_COLOR="0;36"
+CPE_NAME="cpe:/o:tizen:tizen:11.0.0"
+BUILD_ID=tizen-unified-toolchain_20261104.160709_tizen-headed-armv7l
+7c924a80-5176-4301-9c17-4c4540933d1f
+642.80 2458.36
+MemTotal:        1507996 kB
+Filename				Type		Size		Used		Priority
+/dev/zram0                              partition	603196		13468		0
+Result=success
+ExecMainStatus=0
+Id=lko-net-setup.service
+ActiveState=active
+SubState=exited
+
+Result=success
+ExecMainStatus=0
+Id=resourced.service
+ActiveState=active
+SubState=running
+NRestarts=61
+ExecMainStatus=127
+ActiveState=activating
+0 loaded units listed.
+proc_tsm 12288 0 - Live 0xbf015000 (O)
+brcmfmac 352256 0 - Live 0xbf062000
+hci_uart 32768 0 - Live 0xbf051000
+brcmutil 16384 1 brcmfmac, Live 0xbf022000
+btbcm 20480 1 hci_uart, Live 0xbf006000
+kdbus 98304 84 - Live 0xbf033000 (O)
+extcon_usb_fixed 12288 0 - Live 0xbf029000 (O)
+dm_bow 20480 0 - Live 0xbf01a000 (O)
+logger 16384 177 - Live 0xbf00c000 (O)
+inform_reboot 12288 0 - Live 0xbf000000 (O)
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.108.26/24 brd 192.168.108.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::2ecf:67ff:fea0:72b5/64 scope link 
+       valid_lft forever preferred_lft forever
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/mmcblk0p2         3021464   1080572   1912396  37% /
+/dev/mmcblk0p5       116404224    982776 115421448   1% /opt/usr
+/dev/mmcblk0p6           19396      4020     14648  22% /usr/lib/modules
+devtmpfs /dev devtmpfs rw,nosuid,size=581964k,nr_inodes=97447,mode=755 0 0
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+/dev/mmcblk0p6 /usr/lib/modules ext4 ro,relatime 0 0
+/dev/mmcblk0p2 / ext4 ro,relatime 0 0
+/dev/mmcblk0p3 /opt ext4 rw,relatime 0 0
+/dev/mmcblk0p10 /hal ext4 ro,relatime 0 0
+smackfs /sys/fs/smackfs smackfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev,noexec 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,noexec,mode=755 0 0
+tmpfs /sys/fs/cgroup tmpfs ro,nosuid,nodev,noexec,mode=755 0 0
+cgroup /sys/fs/cgroup/systemd cgroup rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd 0 0
+kdbusfs /sys/fs/kdbus kdbusfs rw,nosuid,nodev,noexec,relatime 0 0
+bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+cgroup /sys/fs/cgroup/memory cgroup rw,nosuid,nodev,noexec,relatime,memory 0 0
+cgroup /sys/fs/cgroup/cpu,cpuacct cgroup rw,nosuid,nodev,noexec,relatime,cpu,cpuacct 0 0
+cgroup /sys/fs/cgroup/net_cls cgroup rw,nosuid,nodev,noexec,relatime,net_cls,release_agent=/usr/bin/net-cls-release 0 0
+cgroup /sys/fs/cgroup/cpuset cgroup rw,nosuid,nodev,noexec,relatime,cpuset 0 0
+cgroup /sys/fs/cgroup/blkio cgroup rw,nosuid,nodev,noexec,relatime,blkio 0 0
+cgroup /sys/fs/cgroup/devices cgroup rw,nosuid,nodev,noexec,relatime,devices 0 0
+cgroup /sys/fs/cgroup/freezer cgroup rw,nosuid,nodev,noexec,relatime,freezer 0 0
+systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=25,pgrp=1,timeout=0,minproto=5,maxproto=5,direct 0 0
+mqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0
+configfs /sys/kernel/config configfs rw,nosuid,nodev,noexec,relatime 0 0
+debugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0
+/dev/mmcblk0p9 /mnt/inform ext4 rw,relatime 0 0
+/dev/mmcblk0p5 /opt/usr f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+tracefs /sys/kernel/debug/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+fusectl /sys/fs/fuse/connections fusectl rw,nosuid,nodev,noexec,relatime 0 0
+/dev/loop0 /opt/usr/home/owner/subsession/__templ_acct_fix__ ext4 rw,relatime 0 0
+cgroup /sys/fs/cgroup/watchdog cgroup rw,nosuid,nodev,noexec,relatime,release_agent=/usr/bin/resourced-watchdog-handler.sh,name=watchdog 0 0
+/dev/loop1 /opt/usr/home/owner/subsession/__templ_prof_fix__ ext4 rw,relatime 0 0
+tmpfs /opt/media tmpfs rw,relatime 0 0
+/dev/mmcblk0p5 /opt/usr/home/owner/media f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+sdb.default /dev/usb-funcs/sdb/default functionfs rw,relatime 0 0
+mtp.default /dev/usb-funcs/mtp/default functionfs rw,relatime 0 0
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

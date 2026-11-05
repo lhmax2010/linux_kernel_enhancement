@@ -1,0 +1,7 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'test ! -e /opt/usr/lko_task19 && mkdir -p /opt/usr/lko_task19/boot && mount -o ro /dev/mmcblk0p1 /opt/usr/lko_task19/boot
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

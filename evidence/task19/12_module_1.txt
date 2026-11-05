@@ -1,0 +1,9 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'modinfo -n extcon-usb-fixed; modinfo -F vermagic extcon-usb-fixed
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+/lib/modules/6.12.80-arm-rpi4-v7l/extra/extcon-usb-fixed.ko
+6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8 
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

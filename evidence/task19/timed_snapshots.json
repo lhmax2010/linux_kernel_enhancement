@@ -1,0 +1,18 @@
+[
+  {
+    "target_seconds": 60,
+    "begin_seconds": 60.18,
+    "end_seconds": 60.21,
+    "offset_seconds": 0.17999999999999972,
+    "boot_id": "7c924a80-5176-4301-9c17-4c4540933d1f",
+    "remote_exit": 0
+  },
+  {
+    "target_seconds": 600,
+    "begin_seconds": 600.19,
+    "end_seconds": 600.21,
+    "offset_seconds": 0.19000000000005457,
+    "boot_id": "7c924a80-5176-4301-9c17-4c4540933d1f",
+    "remote_exit": 0
+  }
+]

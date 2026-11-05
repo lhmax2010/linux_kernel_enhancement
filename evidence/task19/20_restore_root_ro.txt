@@ -1,0 +1,9 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'sync && mount -o remount,ro / && cat /proc/mounts | grep " / "
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+mount: /: mount point is busy.
+       dmesg(1) may have more information after failed mount system call.
+
+TASK19-REMOTE-EXIT=32
+
+TRANSPORT-EXIT=0

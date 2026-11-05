@@ -1,0 +1,57 @@
+[
+  {
+    "module": "dm-bow.ko",
+    "bytes": 31868,
+    "board_sha256": "2e08bfebb490c028cba4ccdfd9947a42a72f8ec6f6d96e14de17f61619e7646d",
+    "rpm_sha256": "2e08bfebb490c028cba4ccdfd9947a42a72f8ec6f6d96e14de17f61619e7646d",
+    "vermagic": "6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8",
+    "vermagic_match": true,
+    "crc_compared": 56,
+    "crc_differences": [],
+    "same_rpm_bytes": true
+  },
+  {
+    "module": "extcon-usb-fixed.ko",
+    "bytes": 6156,
+    "board_sha256": "0f212c133b5eb91b11914500e9fbf9693ac78d9ea8ca15ea018d33f797a1c6bb",
+    "rpm_sha256": "0f212c133b5eb91b11914500e9fbf9693ac78d9ea8ca15ea018d33f797a1c6bb",
+    "vermagic": "6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8",
+    "vermagic_match": true,
+    "crc_compared": 9,
+    "crc_differences": [],
+    "same_rpm_bytes": true
+  },
+  {
+    "module": "inform-reboot.ko",
+    "bytes": 7052,
+    "board_sha256": "ee5212750b3d5439cea779cc0b24aafe00fc575cfee28767df7e706aa49e1b6f",
+    "rpm_sha256": "ee5212750b3d5439cea779cc0b24aafe00fc575cfee28767df7e706aa49e1b6f",
+    "vermagic": "6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8",
+    "vermagic_match": true,
+    "crc_compared": 16,
+    "crc_differences": [],
+    "same_rpm_bytes": true
+  },
+  {
+    "module": "kdbus.ko",
+    "bytes": 162584,
+    "board_sha256": "1186ce63d4c7c5f995fd0099becfe8834d52da35939d285f5c0bd9d62042a576",
+    "rpm_sha256": "1186ce63d4c7c5f995fd0099becfe8834d52da35939d285f5c0bd9d62042a576",
+    "vermagic": "6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8",
+    "vermagic_match": true,
+    "crc_compared": 154,
+    "crc_differences": [],
+    "same_rpm_bytes": true
+  },
+  {
+    "module": "logger.ko",
+    "bytes": 23664,
+    "board_sha256": "69a7dc21287b5c7850251b512e06a4bddc0ff0d5376101d51cd2c6745f5c7520",
+    "rpm_sha256": "69a7dc21287b5c7850251b512e06a4bddc0ff0d5376101d51cd2c6745f5c7520",
+    "vermagic": "6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8",
+    "vermagic_match": true,
+    "crc_compared": 42,
+    "crc_differences": [],
+    "same_rpm_bytes": true
+  }
+]

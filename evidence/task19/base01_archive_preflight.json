@@ -1,0 +1,8 @@
+{
+  "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/deploy_lko-base01/deploy_lko-base01.tar.gz",
+  "bytes": 15990491,
+  "sha256": "583fbb45389f3b98a8498c09f4acb9a2a73a4b074439bdae6df663cbeaeeb61c",
+  "matches_task9": true,
+  "deployed": false,
+  "pending": "Task10 document/PM plan clarification"
+}

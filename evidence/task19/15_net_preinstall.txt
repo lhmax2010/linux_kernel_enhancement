@@ -1,0 +1,19 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'cat /proc/1/attr/current; ls -ld /usr/local/sbin /etc/systemd/system /etc/systemd/system/multi-user.target.wants; ls -Z /usr/sbin/ip /usr/lib/systemd/system/connman.service; command -v chsmack; test ! -e /usr/local/sbin/lko-net-setup.sh && test ! -e /etc/systemd/system/lko-net-setup.service && test ! -L /etc/systemd/system/multi-user.target.wants/lko-net-setup.service; echo TARGET-PATH-CHECK=$?; ip link show eth0; ls -l /etc/resolv.conf; readlink -f /etc/resolv.conf; cat /proc/mounts | grep " / "; cat /proc/sys/kernel/random/boot_id
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+System::Privilegedls: cannot access /etc/systemd/system/multi-user.target.wants: No such file or directory
+drwxr-xr-x 2 root root 4096 Nov  5 01:54 /etc/systemd/system
+drwxr-xr-x 2 root root 4096 Sep 12 23:16 /usr/local/sbin
+_ /usr/lib/systemd/system/connman.service  _ /usr/sbin/ip
+/usr/bin/chsmack
+TARGET-PATH-CHECK=0
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+lrwxrwxrwx 1 network_fw network_fw 20 Nov  5 02:57 /etc/resolv.conf -> /opt/etc/resolv.conf
+/opt/etc/resolv.conf
+/dev/mmcblk0p2 / ext4 rw,relatime,mb_optimize_scan=0 0 0
+442cb7cd-f3fc-470b-b904-1c97234cdc31
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

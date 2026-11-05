@@ -1,0 +1,9 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'blkid /dev/mmcblk0p1; ls -l /dev/disk/by-partlabel/boot_a; ls /boot
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+/dev/mmcblk0p1: SEC_TYPE="msdos" LABEL_FATBOOT="boot" LABEL="boot" UUID="404C-7537" BLOCK_SIZE="512" TYPE="vfat" PARTLABEL="boot_a" PARTUUID="5466c32b-3f63-fd4b-9d30-acbeb0f0f0ab"
+lrwxrwxrwx 1 root root 15 Jan  1  1970 /dev/disk/by-partlabel/boot_a -> ../../mmcblk0p1
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

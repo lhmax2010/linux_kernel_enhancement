@@ -1,0 +1,206 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'printf '"'"'=== BEGIN UPTIME ===
+'"'"'; cat /proc/uptime
+printf '"'"'=== BOOT ID ===
+'"'"'; cat /proc/sys/kernel/random/boot_id
+printf '"'"'=== FREE ===
+'"'"'; free -k
+printf '"'"'=== MEMINFO ===
+'"'"'; cat /proc/meminfo
+printf '"'"'=== VMSTAT ===
+'"'"'; cat /proc/vmstat
+printf '"'"'=== END UPTIME ===
+'"'"'; cat /proc/uptime
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+=== BEGIN UPTIME ===
+60.18 214.41
+=== BOOT ID ===
+7c924a80-5176-4301-9c17-4c4540933d1f
+=== FREE ===
+               total        used        free      shared  buff/cache   available
+Mem:         1507996      153968     1259512        1776      118296     1354028
+Swap:         603196           0      603196
+=== MEMINFO ===
+MemTotal:        1507996 kB
+MemFree:         1258812 kB
+MemAvailable:    1353328 kB
+Buffers:           10904 kB
+Cached:            95412 kB
+SwapCached:            0 kB
+Active:           126772 kB
+Inactive:          34728 kB
+Active(anon):      56960 kB
+Inactive(anon):        0 kB
+Active(file):      69812 kB
+Inactive(file):    34728 kB
+Unevictable:         144 kB
+Mlocked:             144 kB
+HighTotal:        774144 kB
+HighFree:         603688 kB
+LowTotal:         733852 kB
+LowFree:          655124 kB
+SwapTotal:        603196 kB
+SwapFree:         603196 kB
+Dirty:               152 kB
+Writeback:             0 kB
+AnonPages:         55400 kB
+Mapped:            45448 kB
+Shmem:              1776 kB
+KReclaimable:      11980 kB
+Slab:              46132 kB
+SReclaimable:      11980 kB
+SUnreclaim:        34152 kB
+KernelStack:        2844 kB
+PageTables:         3492 kB
+SecPageTables:         0 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     1357192 kB
+Committed_AS:    2857520 kB
+VmallocTotal:     245760 kB
+VmallocUsed:       17444 kB
+VmallocChunk:          0 kB
+Percpu:             1024 kB
+CmaTotal:         327680 kB
+CmaFree:          319492 kB
+=== VMSTAT ===
+nr_free_pages 314703
+nr_zone_inactive_anon 0
+nr_zone_active_anon 14240
+nr_zone_inactive_file 8682
+nr_zone_active_file 17453
+nr_zone_unevictable 36
+nr_zone_write_pending 38
+nr_mlock 36
+nr_bounce 0
+nr_zspages 1
+nr_free_cma 79873
+nr_inactive_anon 0
+nr_active_anon 14240
+nr_inactive_file 8682
+nr_active_file 17453
+nr_unevictable 36
+nr_slab_reclaimable 2995
+nr_slab_unreclaimable 8538
+nr_isolated_anon 0
+nr_isolated_file 0
+workingset_nodes 0
+workingset_refault_anon 0
+workingset_refault_file 0
+workingset_activate_anon 0
+workingset_activate_file 0
+workingset_restore_anon 0
+workingset_restore_file 0
+workingset_nodereclaim 0
+nr_anon_pages 13825
+nr_mapped 11362
+nr_file_pages 26579
+nr_dirty 38
+nr_writeback 0
+nr_writeback_temp 0
+nr_shmem 444
+nr_shmem_hugepages 0
+nr_shmem_pmdmapped 0
+nr_file_hugepages 0
+nr_file_pmdmapped 0
+nr_anon_transparent_hugepages 0
+nr_vmscan_write 0
+nr_vmscan_immediate_reclaim 0
+nr_dirtied 2676
+nr_written 2644
+nr_throttled_written 0
+nr_kernel_misc_reclaimable 0
+nr_foll_pin_acquired 0
+nr_foll_pin_released 0
+nr_kernel_stack 2844
+nr_page_table_pages 873
+nr_sec_page_table_pages 0
+nr_swapcached 0
+pgdemote_kswapd 0
+pgdemote_direct 0
+pgdemote_khugepaged 0
+nr_dirty_threshold 33130
+nr_dirty_background_threshold 16544
+nr_memmap_pages 0
+nr_memmap_boot_pages 3600
+pgpgin 279436
+pgpgout 12190
+pswpin 0
+pswpout 0
+pgalloc_dma 82700
+pgalloc_normal 0
+pgalloc_high 142924
+pgalloc_movable 0
+allocstall_dma 0
+allocstall_normal 0
+allocstall_high 0
+allocstall_movable 0
+pgskip_dma 0
+pgskip_normal 0
+pgskip_high 0
+pgskip_movable 0
+pgfree 547117
+pgactivate 0
+pgdeactivate 0
+pglazyfree 0
+pgfault 340152
+pgmajfault 825
+pglazyfreed 0
+pgrefill 0
+pgreuse 21463
+pgsteal_kswapd 0
+pgsteal_direct 0
+pgsteal_khugepaged 0
+pgscan_kswapd 0
+pgscan_direct 0
+pgscan_khugepaged 0
+pgscan_direct_throttle 0
+pgscan_anon 0
+pgscan_file 0
+pgsteal_anon 0
+pgsteal_file 0
+pginodesteal 0
+slabs_scanned 0
+kswapd_inodesteal 0
+kswapd_low_wmark_hit_quickly 0
+kswapd_high_wmark_hit_quickly 0
+pageoutrun 0
+pgrotated 3
+drop_pagecache 0
+drop_slab 0
+oom_kill 0
+pgmigrate_success 1339
+pgmigrate_fail 29
+thp_migration_success 0
+thp_migration_fail 0
+thp_migration_split 0
+compact_migrate_scanned 164896
+compact_free_scanned 8000
+compact_isolated 6491
+compact_stall 0
+compact_fail 0
+compact_success 0
+compact_daemon_wake 0
+compact_daemon_migrate_scanned 0
+compact_daemon_free_scanned 0
+cma_alloc_success 60
+cma_alloc_fail 0
+unevictable_pgs_culled 44
+unevictable_pgs_scanned 0
+unevictable_pgs_rescued 8
+unevictable_pgs_mlocked 44
+unevictable_pgs_munlocked 8
+unevictable_pgs_cleared 0
+unevictable_pgs_stranded 0
+swap_ra 0
+swap_ra_hit 0
+swpin_zero 0
+swpout_zero 0
+nr_unstable 0
+=== END UPTIME ===
+60.21 214.49
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

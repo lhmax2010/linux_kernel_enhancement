@@ -1,0 +1,21 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'cat /proc/uptime; df -k / /opt/usr /usr/lib/modules; df -i /usr/lib/modules; du -sk /usr/lib/modules/6.12.80-arm-rpi4-v7l; cat /usr/lib/modules/modprobe.d/tizen-modprobe-rpi4.conf /usr/lib/modules/modules-load.d/tizen-modules-rpi4.conf
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+46.34 160.30
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/mmcblk0p2         3021464   1080572   1912396  37% /
+/dev/mmcblk0p5       116404224    982816 115421408   1% /opt/usr
+/dev/mmcblk0p6           19396      4020     14648  22% /usr/lib/modules
+Filesystem            Inodes   IUsed   IFree IUse% Mounted on
+/dev/mmcblk0p6          8192     138    8054    2% /usr/lib/modules
+4424	/usr/lib/modules/6.12.80-arm-rpi4-v7l
+options proc-tsm blacklist=System::TEF
+dm-bow
+extcon-usb-fixed
+inform-reboot
+logger
+kdbus
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

@@ -1,0 +1,23 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'cat /proc/sys/kernel/random/boot_id; uname -m; uname -r; cat /etc/os-release; ip link show eth0; sha256sum /usr/local/sbin/lko-net-setup.sh /etc/systemd/system/lko-net-setup.service; systemctl is-enabled lko-net-setup.service
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+9c7773d9-31a8-42fe-b00b-206b257dcfc1
+armv7l
+6.12.80-arm-rpi4-v7l
+NAME=Tizen
+VERSION="11.0.0 (Tizen11.0/Unified)"
+ID=tizen
+VERSION_ID=11.0.0
+PRETTY_NAME="Tizen 11.0.0 (Tizen11.0/Unified)"
+ANSI_COLOR="0;36"
+CPE_NAME="cpe:/o:tizen:tizen:11.0.0"
+BUILD_ID=tizen-unified-toolchain_20261104.160709_tizen-headed-armv7l
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+8fecc6d0b5383b04de53bec6ac0b3e795e93c140b8d8ae0c315f6b75855a6608  /usr/local/sbin/lko-net-setup.sh
+bb5be5756fb97065c4adb4b3df3c5041d4f6f148498ff4a9364d8e58799c5d78  /etc/systemd/system/lko-net-setup.service
+enabled
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

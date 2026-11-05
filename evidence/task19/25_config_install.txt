@@ -1,0 +1,14 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'test ! -e /opt/usr/lko_task19/boot/config.txt.task19-before && mount -o remount,rw /opt/usr/lko_task19/boot && cp /opt/usr/lko_task19/boot/config.txt /opt/usr/lko_task19/boot/config.txt.task19-before && cp /opt/usr/lko_task19/config.txt.new /opt/usr/lko_task19/boot/config.txt && sync && sha256sum /opt/usr/lko_task19/boot/config.txt /opt/usr/lko_task19/boot/config.txt.task19-before && tail -n 5 /opt/usr/lko_task19/boot/config.txt
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+7ecdb662716cab1532da77ff755912775284eb3aab5e3c89fd571dba854f7d07  /opt/usr/lko_task19/boot/config.txt
+38a4959985ed44398e9656392c245b554155805808524fc04e556e31cc472925  /opt/usr/lko_task19/boot/config.txt.task19-before
+# Enable i2c1 controller on default GPIO pins
+dtoverlay=i2c1,pins_2_3
+
+[all]
+total_mem=1600
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

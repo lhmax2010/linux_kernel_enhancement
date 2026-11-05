@@ -1,0 +1,14 @@
+{
+  "identity": "RPi4 armv7l Tizen PASS",
+  "image": "QB1218764 SR with installed-package differences",
+  "build_id": "tizen-unified-toolchain_20261104.160709",
+  "zimage_sha256": "d5345f13eada3a3aab8b2fca9f511c608469f708d83a6a2445882e68241cc9af",
+  "zimage_matches_sr": true,
+  "resourced_sha256": "67a5bee5c9fe0f0eb266875c018089283f9291b6b2516691d6aa96837127d556",
+  "resourced_vcs": "94d346c306233803661e8eab8557596549d82be4",
+  "sample_modules": 5,
+  "sample_crc_entries": 277,
+  "crc_mismatches": 0,
+  "package_exact_match": false,
+  "part2_gate": "Proceed: source identity established by build ID and exact artifact hashes; package differences retained, not claimed pristine."
+}

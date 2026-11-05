@@ -1,0 +1,26 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'rpm -q --qf '"'"'%{NAME} %{VERSION}-%{RELEASE} %{ARCH} %{VCS}\n'"'"' arm-rpi4-linux-kernel arm-rpi4-linux-kernel-modules linux-tizen-modules-rpi4 resourced resourced-bin resourced-config resourced-isu resourced-watchdog-handler; sha256sum /usr/bin/resourced; cat /proc/modules
+remote_rc=$?
+printf "\nTASK19-REMOTE-EXIT=%s\n" "$remote_rc"'
+package arm-rpi4-linux-kernel is not installed
+package arm-rpi4-linux-kernel-modules is not installed
+package linux-tizen-modules-rpi4 is not installed
+resourced 10.0.0-1 armv7l platform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4
+resourced-bin 10.0.0-1 armv7l platform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4
+resourced-config 10.0.0-1 armv7l platform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4
+resourced-isu 10.0.0-1 armv7l platform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4
+resourced-watchdog-handler 10.0.0-1 armv7l platform/core/system/resourced#94d346c306233803661e8eab8557596549d82be4
+67a5bee5c9fe0f0eb266875c018089283f9291b6b2516691d6aa96837127d556  /usr/bin/resourced
+proc_tsm 12288 0 - Live 0xbf014000 (O)
+brcmfmac 352256 0 - Live 0xbf05e000
+brcmutil 16384 1 brcmfmac, Live 0xbf057000
+hci_uart 32768 0 - Live 0xbf02c000
+btbcm 20480 1 hci_uart, Live 0xbf00c000
+kdbus 98304 98 - Live 0xbf033000 (O)
+dm_bow 20480 0 - Live 0xbf024000 (O)
+logger 16384 233 - Live 0xbf016000 (O)
+inform_reboot 12288 0 - Live 0xbf002000 (O)
+extcon_usb_fixed 12288 0 - Live 0xbf000000 (O)
+
+TASK19-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0
