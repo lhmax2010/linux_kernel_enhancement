@@ -4,7 +4,7 @@
 
 **base01 的可确定部署缺陷是 DAC 目录权限：部署归档将 `extra/`、`extra/kdbus/`、`extra/zlogger/` 保存为 root:root、0700，官方镜像这三个目录是 root:root、0755。** stability-monitor 以 UID/GID 204 运行，没有 CAP_DAC_OVERRIDE/CAP_DAC_READ_SEARCH，无法穿越 0700 的 `extra/` 来打开 proc-tsm.ko；模块文件本身 0644、SMACK 允许读取、具备 CAP_SYS_MODULE 均不能补足目录搜索权限。任务19的 tar 解包及 cp -a 保留此模式。两边模块路径完整、全部14个索引逐字相同、proc-tsm 的26项CRC均匹配，已具备明确的离线原因，按任务要求**跳过 C，不重做换内核或修复验证**。
 
-**SR 1218764 和类产品 1218766 的官方 headed 镜像均实际包含 coregl，缺失发生在官方镜像产出之后。** 本板当前确实缺包、缺库；D 已执行，但可用日志和所查启动脚本没有删除动作证据，**谁、何时、通过哪个流程删除仍无法确定**。不能归因于用户手动卸载，也不能排除刷写流程、首次准备或其他未留存操作；这些仅是待查范围。
+**SR 1218764 和类产品 1218766 的官方 headed 镜像均实际包含 coregl，缺失发生在官方镜像产出之后。** 本板当前确实缺包、缺库；D当时未找到删除日志。**任务23用户补充确认：刷机后由用户的板子准备脚本卸载。** 该脚本包含coregl、wlandrv-plugin-tizen、HAL mesa的卸载命令，来源挂账已关闭；具体执行时间仍未从板上日志恢复，但不影响来源结论。
 
 本轮未修部署包/权限/标签，未安装包、修改服务/网络、重启或发送信号。结束仍是原 SR 内核、既有 total_mem=1600 状态（MemTotal 1,507,996 KiB），owner 已恢复。未部署，故没有本轮回退动作或“回退通过”的新结论。
 
@@ -118,7 +118,23 @@ rootfs的 `/var -> opt/var`；实际RPM数据库在挂到 `/opt` 的system-data.
 - 已查 `/etc/rc.d`、`/usr/share/upgrade`、`/usr/lib/systemd/system`、`/etc/systemd/system`；没有coregl/libEGL或rpm erase命中。枚举了first/init/setup/upgrade启动项，setup-adaptor本次退出0，未见删包语句；osu为ELF，grep的“binary matches”仅是包含rpm/resize等字样，**不足以排除其或其他二进制内部行为**。部分unit链接悬空导致grep退出2，具体缺路径已记录；没有把搜索结果写成完整排除所有脚本。[搜索](../evidence/task22/board_08_firstboot_search.txt)、[setup/错误边界](../evidence/task22/board_setup_unit_search.txt)、[osu/rc只读结果](../evidence/task22/board_11_resize_and_init.txt)
 - 审计既往evidence中10份command JSONL、555条记录：0解析失败，`rpm -e/--erase`候选为0；本项目**已记录命令中未发现卸载包**。该结论不覆盖未记录会话、外部操作或间接调用，不能据此推断用户做过删除。[逐文件SHA与统计](../evidence/task22/recorded_command_audit.json)
 
-结论闭合到“官方镜像有、当前板上无”；删除具体位置/时刻/操作者**仍未知**，缺少刷写后首次启动至首次采集期间的完整操作和包管理日志。已撤回docs/20此前与用户一次性准备相联系的推测；用户明确未手工卸载，不再将其列为已知事实。
+任务22结束时仅闭合到“官方镜像有、当前板上无”，当时删除流程未知，故撤回docs/20中的推测。任务23用户进一步确认是准备脚本执行了卸载，下面按新证据更新，保留前述只读搜索的历史结果。
+
+### 4.1 任务23追加：用户确认的来源与只读复核
+
+**来源：刷机后由用户的板子准备脚本卸载。** 用户在本任务中提供以下脚本行（用户陈述，不冒充板上审计日志）：
+
+```sh
+rpm -e --nodeps wlandrv-plugin-tizen
+rpm --dbpath=/hal/lib/rpm -e mesa --nodeps
+rpm -e coregl --nodeps
+```
+
+同一脚本还执行`mount -o remount,rw /`、对`/hal`的rw remount以及`osu --resize`；这解释任务19开场根分区为rw。
+
+任务23在当前原SR内核下只读回查：`rpm --dbpath=/hal/lib/rpm -q mesa`、`rpm -q wlandrv-plugin-tizen`、`rpm -q coregl`均输出未安装，各退出1。HAL使用独立数据库，没有用默认rpmdb替代HAL查询。[完整命令和输出](../evidence/task23/board_05_removed_packages.txt)。本轮未安装/卸载任何包。
+
+“删除来源未知”挂账关闭。两官方镜像本身在coregl方面仍对等；当前SR不是完整官方用户态。按用户决定，从下次刷机开始只扩分区、安装lko-net-setup，不再卸载上述三包；任务19缺coregl/mesa时的SR数据标为**仅供参考**，正式测量前重新刷官方镜像并重采。
 
 ## 5. 最终状态与收尾
 
@@ -126,4 +142,4 @@ C跳过；D只读完成。无部署、无重启、无标签/权限修复、无bo
 
 根和模块分区仍ro，前后挂载列表相同；/opt/usr可用115,421,468 KiB、模块分区14,648 KiB前后相同。没有创建板上lko_task22目录，结尾test确认不存在；owner回读uid5001。total_mem未改，保留任务19已验收的1600状态。本轮未重新挂载boot或重算boot文件哈希。[最终状态](../evidence/task22/board_13_final_state.txt)、[owner](../evidence/task22/board_15_owner.txt)
 
-原始命令、退出码、行数与SHA见[原始输出清单](../evidence/task22/raw_output_manifest.json)。公开证据只含本任务Tizen内容，所有文件小于1MB；无需上传RPM、镜像、库、模块或私有材料。后续挂账：PM安排带DAC权限验收的部署包修订与重测；coregl删除来源仍需更早操作记录，display-manager/coregl处理保持未授权修复状态。
+原始命令、退出码、行数与SHA见[原始输出清单](../evidence/task22/raw_output_manifest.json)。公开证据只含本任务Tizen内容，所有文件小于1MB；无需上传RPM、镜像、库、模块或私有材料。后续：带DAC权限验收的部署包修订与重测由任务23执行；coregl删除来源已由用户追加说明闭合。本轮不修复display-manager、不安装coregl；正式测量须按新准备规则重新刷镜像。

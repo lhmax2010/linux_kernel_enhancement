@@ -1,0 +1,10 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'set -e; mount -o ro /dev/mmcblk0p1 /opt/usr/lko_task23/boot; sha256sum /opt/usr/lko_task23/boot/zImage /opt/usr/lko_task23/boot/bcm2711-rpi-4-b.dtb /opt/usr/lko_task23/boot/config.txt; umount /opt/usr/lko_task23/boot
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+4bb488d8d7768bde6f9b53b53342d9bde0d996cb37284a6d5547855d20e8c5f1  /opt/usr/lko_task23/boot/zImage
+a0561668ec520b0605cdc8b7be6844365ce44f569f363e85f3d7332e1989d6ed  /opt/usr/lko_task23/boot/bcm2711-rpi-4-b.dtb
+7ecdb662716cab1532da77ff755912775284eb3aab5e3c89fd571dba854f7d07  /opt/usr/lko_task23/boot/config.txt
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

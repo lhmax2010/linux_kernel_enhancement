@@ -12,7 +12,7 @@
 
 默认rpm数据库共1232包；两镜像官方boot+headed并集均1275包，其NVR/arch列表相同，仅来源SHA不同，所以不能靠rpm -qa的版本表区分两者。逐条对照均为新增0、缺43；只对headed则新增0、缺3：coregl-0.4.0-0.armv7l、crossgen2-mic-10.0.10-0.noarch、patchelf-0.16.1-1.13.armv7l。完整差异见evidence/task19/package_comparison.json。
 
-官方headed kickstart的364–365行明确在制镜后处理移除patchelf和crossgen2-mic；此前将coregl缺失联系到用户一次性准备的推测已在任务22撤回：用户确认未手动卸载。任务22直接检查两份官方headed镜像，均有coregl实际库和RPM记录；缺失发生在镜像产出之后，但现有板上日志与操作记录仍不能确定删除者/时间，详见[22](22_base01_coregl_diagnosis.md)。boot清单包含独立boot/modules/HAL载荷，官方boot kickstart为HAL建立独立rpmdb；默认rpm -qa不能替代全分区安装清单。来源摘录见package_list_scope_sources.txt。未把包清单差异隐藏成完全一致。
+官方headed kickstart的364–365行明确在制镜后处理移除patchelf和crossgen2-mic；任务22直接检查两份官方headed镜像，均有coregl实际库和RPM记录。任务23追加信息已闭合来源：**刷机后由用户的板子准备脚本卸载**coregl、wlandrv-plugin-tizen及HAL数据库中的mesa，非官方制镜删除；此前“用户一次性准备相容”只是推测，本次改为用户确认的事实。脚本还remount根分区和/hal为rw并执行osu --resize，解释本任务开始时根分区rw。命令及只读包查询见[22第4节补充](22_base01_coregl_diagnosis.md)。boot清单包含独立boot/modules/HAL载荷，官方boot kickstart为HAL建立独立rpmdb；默认rpm -qa不能替代全分区安装清单。来源摘录见package_list_scope_sources.txt。未把包清单差异隐藏成完全一致。
 
 ## 2. 关键产物交叉核对
 
@@ -140,3 +140,8 @@ PM确认没有单独任务10文档，允许按11中2026-11-02审核方案和14�
 /opt/usr最终可用115,421,428 KiB，比演练前少40 KiB；任务目录确认不存在，运行中的系统可自行写日志，不能把全分区变化归因于本任务或声称df完全相同。模块分区块数和inode完整恢复。没有发送信号、宿主sudo、改设备树、改用户态或遗留挂载。
 
 结论：**任务10演练流程执行完毕；base01部署验收未通过，回退验收通过。** 后续不得把此作为base01可直接部署的证明。详见[kernel_exercise_final.json](../evidence/task19/kernel_exercise_final.json)、60–68编号证据及reboot3/4记录。
+
+
+## 任务23补充：正式测量资格
+
+用户确认刷机后的准备脚本卸载了coregl与HAL mesa等包。**任务19的SR基线采样是在缺coregl、mesa的状态下得到，只供参考，不能作为正式基线测量。** 从下一次刷机起只做扩分区与安装lko-net-setup，不再卸载wlandrv-plugin-tizen、mesa、coregl；正式测量前重新刷官方镜像后重采。本轮不安装这些包、不修改display-manager。

@@ -1,0 +1,204 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'set -e; cd /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01; find /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01 -exec stat -c '"'"'META|%f|%u|%g|%a|%s|%n'"'"' {} \;; find /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01 -type f -exec sha256sum {} \;; printf '"'"'LINK|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/build|'"'"'; readlink build
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01
+META|81a4|0|0|644|159406|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.alias.bin
+META|81a4|0|0|644|18789|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.symbols
+META|81a4|0|0|644|28901|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.bin
+META|81a4|0|0|644|4223|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.dep
+META|81a4|0|0|644|164558|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.modinfo
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/lib
+META|81a4|0|0|644|4304|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/lib/crc7.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs/ecryptfs
+META|81a4|0|0|644|145900|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs/ecryptfs/ecryptfs.ko
+META|81a4|0|0|644|22484|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs/binfmt_misc.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs
+META|81a4|0|0|644|9348|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-cs42xx8-i2c.ko
+META|81a4|0|0|644|40196|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-sgtl5000.ko
+META|81a4|0|0|644|41568|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-pcm512x.ko
+META|81a4|0|0|644|16036|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-tpa6130a2.ko
+META|81a4|0|0|644|28936|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-cs42xx8.ko
+META|81a4|0|0|644|9876|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-pcm512x-i2c.ko
+META|81a4|0|0|644|19160|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-wm8741.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/net
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/net/netfilter
+META|81a4|0|0|644|9612|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/net/netfilter/xt_LED.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/watchdog
+META|81a4|0|0|644|10296|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/watchdog/gpio_wdt.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c
+META|81a4|0|0|644|12880|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c/i2c-stub.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c/busses
+META|81a4|0|0|644|15660|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c/busses/i2c-bcm2708.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/hid
+META|81a4|0|0|644|15940|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/hid/hid-led.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/input
+META|81a4|0|0|644|26968|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/input/joydev.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth
+META|81a4|0|0|644|20816|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btbcm.ko
+META|81a4|0|0|644|69412|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btintel.ko
+META|81a4|0|0|644|10768|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/bcm203x.ko
+META|81a4|0|0|644|55672|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/hci_uart.ko
+META|81a4|0|0|644|77020|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btusb.ko
+META|81a4|0|0|644|33748|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btrtl.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb/gspca
+META|81a4|0|0|644|42136|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb/gspca/gspca_main.ko
+META|81a4|0|0|644|77204|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb/gspca/gspca_zc3xx.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac
+META|81a4|0|0|644|543984|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cyw
+META|81a4|0|0|644|18352|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cyw/brcmfmac-cyw.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bca
+META|81a4|0|0|644|17772|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bca/brcmfmac-bca.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/wcc
+META|81a4|0|0|644|17120|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/wcc/brcmfmac-wcc.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil
+META|81a4|0|0|644|19788|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil/brcmutil.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt7921
+META|81a4|0|0|644|183324|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921-common.ko
+META|81a4|0|0|644|32436|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921u.ko
+META|81a4|0|0|644|28444|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt792x-usb.ko
+META|81a4|0|0|644|55556|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76-usb.ko
+META|81a4|0|0|644|80936|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt792x-lib.ko
+META|81a4|0|0|644|140048|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76-connac-lib.ko
+META|81a4|0|0|644|164096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/mfd
+META|81a4|0|0|644|11444|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/mfd/wl1273-core.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/spi
+META|81a4|0|0|644|13828|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/spi/spi-bcm2835aux.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/misc
+META|81a4|0|0|644|25360|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/misc/bcm2835_smi.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/class
+META|81a4|0|0|644|55232|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/class/cdc-acm.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial
+META|81a4|0|0|644|21400|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/cp210x-stlink.ko
+META|81a4|0|0|644|51116|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/cp210x.ko
+META|81a4|0|0|644|181868|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/option.ko
+META|81a4|0|0|644|30696|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/pl2303.ko
+META|81a4|0|0|644|129632|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/ftdi_sio.ko
+META|81a4|0|0|644|20640|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/usb_wwan.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/gadget
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/gadget/udc
+META|81a4|0|0|644|42844|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/gadget/udc/dummy_hcd.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/char
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/char/broadcom
+META|81a4|0|0|644|16828|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/char/broadcom/bcm2835_smi_dev.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/block
+META|81a4|0|0|644|76580|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/block/nbd.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds/trigger
+META|81a4|0|0|644|6580|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds/trigger/ledtrig-camera.ko
+META|81a4|0|0|644|9872|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds/trigger/ledtrig-transient.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/crypto
+META|81a4|0|0|644|10480|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/crypto/md5.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra
+META|81a4|0|0|644|10680|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko
+META|81a4|0|0|644|23664|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/logger.ko
+META|81a4|0|0|644|7052|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/inform-reboot.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/zlogger
+META|81a4|0|0|644|31628|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/zlogger/zlogger.ko
+META|41ed|0|0|755|4096|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/kdbus
+META|81a4|0|0|644|162648|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/kdbus/kdbus.ko
+META|81a4|0|0|644|6220|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/extcon-usb-fixed.ko
+META|81a4|0|0|644|31868|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/dm-bow.ko
+META|81a4|0|0|644|7028|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.dep.bin
+META|81a4|0|0|644|23116|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.alias.bin
+META|81a4|0|0|644|0|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.devname
+META|81a4|0|0|644|166073|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.alias
+META|81a4|0|0|644|2259|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.order
+META|81a4|0|0|644|25588|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin
+META|a1ff|0|0|777|68|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/build
+META|81a4|0|0|644|24302|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.symbols.bin
+META|81a4|0|0|644|55|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.weakdep
+META|81a4|0|0|644|55|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.softdep
+ba420e4993b7e1660bbb180fae4ac66b587b8fd92a682a2f7d3d390fae36e17c  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.alias.bin
+f4ed4a9fe77a4d8c4ce44488b1c2524043d367a5dc39347b3136f0c606303b90  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.symbols
+c05c9379b2cc71c60e7f06267bd4f4ba478bd7fd09f0085ea2bc4974c2016a07  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.bin
+d55b93f4d74bbc0f8c1dd2ee22a504bfd7da270f29b740a0ce4a6f89da2f694b  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.dep
+f94cd66a549191c2911160b360d72bea5a10f80091c4879cc572b3975a8452cb  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.modinfo
+c28d7a0a54f32e6f26cee6d851a2fd2943b61f31b520acc45c8c065b0b97fff9  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/lib/crc7.ko
+f245028ecba3bce544f49b5d680ec1bee8b50ad759f2117881fb7e8dc2b24e23  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs/ecryptfs/ecryptfs.ko
+899ee57debc4adc7ed34163dd6d7f2cd61b6168b740457b42593866c28488981  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs/binfmt_misc.ko
+c384b661015dc85151f5d28f4222bea9996ccc464cb49a78ed9c468ccc3044dd  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-cs42xx8-i2c.ko
+31000a4bad3c4387ce585bafb7b1267f2d2c751614f1d262ba0e8013e787833a  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-sgtl5000.ko
+d0773d38ae9b86d63cef9b4a7f5e0d6f9c43109cf60c82bad4e4db2a470bd0e4  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-pcm512x.ko
+405aac47a05434a999ef55ee73b620197efef03e941e32a04a773770415e68ce  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-tpa6130a2.ko
+ea4a9d9b1a784d46d1be1c5eeb70dc3fa1b2f2dc38ed58ca50efa2e7250029c3  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-cs42xx8.ko
+9f7cba96340cab2ed41a6c4a871741cecc303361467f5e73e02a4f0ea0205ea5  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-pcm512x-i2c.ko
+f5e7d92ae4921ead513b7d303fe97eb7315f7f2f426c29f1e2ff0e95f7f74373  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-wm8741.ko
+b510aca466807f57cb3c0fabaf0f2f005af88ba09518985bf429637b5d55c80d  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/net/netfilter/xt_LED.ko
+c63ee15f07ab6ab6a858f746b60470edbc11992849ae94b195b5d2efee9b8df5  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/watchdog/gpio_wdt.ko
+6fbe5bdd6843321c4a48d4e25093b2f313e6983d61cad2712c2b35934b0fb78a  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c/i2c-stub.ko
+007d81e5cb6b81d729509ba9f8f709802d08656f03142b5e33ffff9cd692afe4  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c/busses/i2c-bcm2708.ko
+7b08ef67ea0ae989613123a13070a0217f2c1251c04b0304e6714ab36bf8a20a  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/hid/hid-led.ko
+86ad45d008f300dc2bba999fa5e246d6d6d034ce68ebae0bd245afd962d76a23  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/input/joydev.ko
+8db5e9bb5686a41513486444935a86cf8015a2a7f73402d823775ce9ead34434  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btbcm.ko
+64393206953f9fe159f9210585adfbecc8999830911f6427e711def2fed70437  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btintel.ko
+3d4816d6b1140f6b301f5ffdb802134b2ad6307ac25ee7575baf257128fec2bf  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/bcm203x.ko
+15d328853f841af2cad9a66d7f4763b3df864411c49da89aaa63f291aa96c5c9  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/hci_uart.ko
+19995e2680c08ecf661d56bb8cd9a6f51de8f10bcbe0fdc6d44452b5228d7b69  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btusb.ko
+81f3f630f5194dc8b7a08bec7af7a3a8de219fc4db2ca9259f50ffc372611758  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btrtl.ko
+48bc13ae76d8ebef9894b0835426051b0cbf9f1dce81ba38bc511832b54cffe9  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb/gspca/gspca_main.ko
+d2e9c8c740f887d51c5b3c95726f0e78d436283c2fc6dba8405f6c2a7b50ea1c  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb/gspca/gspca_zc3xx.ko
+95f39149175de7103d9c881a7caf4cdb4b276e265559c0ca98281d9bb87d4cd1  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko
+5a80dbafb17277343b50a0d898966b6582c4c6ed7662888b2ecec8e8aafe0bfc  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cyw/brcmfmac-cyw.ko
+c57dcd469b82cccc65f08d977c550866d364e26a4699969862cbc258919a8ad0  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bca/brcmfmac-bca.ko
+4f3fb9c648a4153a80bdbcdbc5eccad384166b63e55d86804cca8fcd891668af  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/wcc/brcmfmac-wcc.ko
+ba42055f07f51e702d0dae4b9dbb01f4b6538f4ad9e5b044f9722cfc8cedd7ba  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil/brcmutil.ko
+c1d5474c25f2ee4b8a902497a6477ab330eab536341cb0c30f933e3916d9e38d  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921-common.ko
+15dedb3f5236469bba01aa71076132f6194c86edf8b64ac9d96eb2264850bdc5  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921u.ko
+524478bb542a24167f1416503e0d7d09b87c87a87a7f8147a8c6ac9d748fb8bc  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt792x-usb.ko
+359bdb11f80cb3aa56201f63ac7026de61e55acb02b892f97760a0ca4976ac52  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76-usb.ko
+44201314543fd18a23e8f06efb730677d6a67fe93c2c37a6ca363061349fb9a3  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt792x-lib.ko
+df53601cca35f6a1c0123271f37e407ddf089ff4de6e24ea4ab934b9290f0a5c  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76-connac-lib.ko
+1bb8ef7fbabc8d9597d1c69a4ea70095bdaa49174df6ce986dd813205732fb5e  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76.ko
+07bfa53bba63632ef02b3c0974afa91916cd0053c751123c56685f9238677d4d  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/mfd/wl1273-core.ko
+4ae303a130927eff23d8697404de43f2129d68f30a74efc3d6f1acf426390291  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/spi/spi-bcm2835aux.ko
+5abd7fc2cebaa3eb039cf6a617ab90de476b109c0aa905d6882ffb85c15b1892  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/misc/bcm2835_smi.ko
+d20fe84a2b44e907757f530f8113521e49f84b5cf6dee21248ade3802d3cab2f  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/class/cdc-acm.ko
+6f2f5c04a68e2dffed8296dd7dd2aa85418a6c4af52e4584b4976b51e86e4680  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/cp210x-stlink.ko
+90dd23717100c96b37afbaf48730954b8a838de58fa268dbb4ebb406bc6aebb3  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/cp210x.ko
+a6850b2661a3e6ec1476a0b81bb3fadaaa3eafa219650c6d5efdfe60faef7572  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/option.ko
+c72f462b9d0070387f8eb682b14d785917a37c076b005cd36a2b105c30887065  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/pl2303.ko
+9776c2e0d462d483767b64d409b334a601da78338a9ef8dc454eb98ea622a407  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/ftdi_sio.ko
+4c7c8584eb4e26a6b5aa83a47f8c156bf2244da419903b40c0c7f44de341606e  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/usb_wwan.ko
+60774dea742f06dec61d1d89c52bf8377ef25f4eeaa7bce008cb12e58ece9da2  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/gadget/udc/dummy_hcd.ko
+f64e363c91b20b52e24b0f892a1b02e83f2ce6e43ba32d9af81939221ad2b261  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/char/broadcom/bcm2835_smi_dev.ko
+4ce64650f06733c9a1bc2865afa347da5fa947956028a343e2c5df3d72c18518  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/block/nbd.ko
+e5c765ca40bdb43c294bc603df06390b41ef8d525e4fcacc0312c87ee3753a31  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds/trigger/ledtrig-camera.ko
+0b6e951df48e120d05331cbc1aa45e4b870e025986dad52e17bc3cf5f02860e0  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds/trigger/ledtrig-transient.ko
+53a20237c3d3bbdde7b375d3e379a17afeff6412841cc00b77d82b49aaf46bf8  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/crypto/md5.ko
+2fe9421d332af653c091adaefe325ca4b6e70577272ac4f5b751dae5a3d5b4d9  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko
+b8f72067b680a19e040cdaecf03be0e3828388fe32ba278b4ad3d99ab638cab1  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/logger.ko
+d10219cb883d900d43f517a1541f89954743ec4eec9ffe784082f3d38ad1fa68  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/inform-reboot.ko
+aa7f2a38449c8a052d787fa801ba88f9aa62d143cd5c52afba9a5c2db6101559  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/zlogger/zlogger.ko
+6567d5c54d83d6c277ab8cf61e138d627bdf2d76535587bb4677bac453024a0e  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/kdbus/kdbus.ko
+d473195aaa18441ddd62e3ea58557f8bfe30b802f1f472d87d5c07a68d085aed  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/extcon-usb-fixed.ko
+e453cccb50edea6b4308e5ad71ea7f070c28636ca12aa7ac2e04d08fb6250447  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/dm-bow.ko
+516bfa64c31e52e4fcb18d446350e89243b4f0cdc1bd8745ceb191673cafddf5  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.dep.bin
+054e46ee7ce1ed367e346c0389c3325fda7312592d053c1ce4ae2f66fa0cd8de  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.alias.bin
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.devname
+7a3d74231cd6dc78da085feb1a492053e2e8d79b955413aed53eedbd8b93be75  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.alias
+8bddc32cf19ade065cd232f7f4ceb53bc3ef51e2599e9ff1b027b4733edb6965  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.order
+3cebba95c1c6f0c767d2ecacad5004302aabda58c6739dd27a9393f27fe1e994  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin
+03ca22d78b676a7a51a761ed1df11f7f955b114ce24bce708308e047e2639257  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.symbols.bin
+a1fffe1059d8150b5d402b3f284f507025a8d4b5881810cb17b3fda8b8ab9304  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.weakdep
+ac2de753255c506934be29e69261f1485f51ee9cf9c2bf467bcc0c4cf95f8713  /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.softdep
+LINK|/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/build|/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

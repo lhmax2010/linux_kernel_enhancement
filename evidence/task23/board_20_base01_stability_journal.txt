@@ -1,0 +1,9 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'journalctl -b -u stability-monitor.service -o short-monotonic --no-pager
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+-- Logs begin at Thu 2026-11-05 22:56:27 KST, end at Fri 2026-11-06 00:15:16 KST. --
+-- No entries --
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

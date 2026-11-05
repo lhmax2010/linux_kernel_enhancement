@@ -1,0 +1,5 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'set -e; test "$(uname -m)" = armv7l; test "$(uname -r)" = 6.12.80-arm-rpi4-v7l; grep -q "^ID=tizen$" /etc/os-release; test ! -e /opt/usr/lko_task23; test ! -e /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01; test -z "$(grep mmcblk0p1 /proc/mounts)"; mkdir -p /opt/usr/lko_task23/boot; mount -o ro /dev/mmcblk0p1 /opt/usr/lko_task23/boot; grep " /opt/usr/lko_task23/boot " /proc/mounts; test ! -e /opt/usr/lko_task23/boot/zImage.orig; sha256sum /opt/usr/lko_task23/boot/zImage /opt/usr/lko_task23/boot/bcm2711-rpi-4-b.dtb /opt/usr/lko_task23/boot/config.txt; cat /opt/usr/lko_task23/boot/config.txt
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+
+TRANSPORT-EXIT=0

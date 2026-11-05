@@ -1,0 +1,11 @@
+{
+  "entries": 127,
+  "modules_checked": 59,
+  "missing_reference_paths": [],
+  "errors": [],
+  "pass": true,
+  "normalized_after_assembly": [],
+  "unchanged_content_files": 74,
+  "archive_bytes": 15991422,
+  "archive_sha256": "c88dad7d83734f7edad66e49e5712b6d71da7e529e4cacf5ce651e5918b8ea14"
+}

@@ -1,0 +1,13 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv PYTHONHOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/platform-python/usr --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/platform-python/usr/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/platform-python/usr/bin/python3.14 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/compare_payload.py
+{
+  "missing": [],
+  "extra": [],
+  "changed": [
+    "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.dep.bin",
+    "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.alias",
+    "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.dep",
+    "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.alias.bin"
+  ]
+}
+
+EXIT=0

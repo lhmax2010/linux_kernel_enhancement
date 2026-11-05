@@ -1,0 +1,16 @@
+{
+  "exercise_pass": true,
+  "rollback_runtime_pass": true,
+  "original_module_files": 75,
+  "boot_files": 414,
+  "original_metadata_entries": 127,
+  "original_metadata_identical": true,
+  "original_build_symlink_identical": true,
+  "new_version_removed": true,
+  "board_temp_removed": true,
+  "owner_restored": true,
+  "kernel": "6.12.80-arm-rpi4-v7l",
+  "total_mem": 1600,
+  "module_partition_ro": true,
+  "pass": true
+}

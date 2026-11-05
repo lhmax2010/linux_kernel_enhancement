@@ -1,0 +1,7 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'systemctl --failed --no-legend --plain --no-pager
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

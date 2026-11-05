@@ -1,0 +1,13 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'systemctl show display-manager.service -p Id -p ActiveState -p SubState -p Result -p ExecMainStatus -p NRestarts
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+Result=exit-code
+NRestarts=4
+ExecMainStatus=127
+Id=display-manager.service
+ActiveState=activating
+SubState=auto-restart
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

@@ -1,0 +1,110 @@
+{
+  "pass": true,
+  "cases": [
+    {
+      "case": "r2 full archive",
+      "expected": true,
+      "actual": true,
+      "detail": {
+        "entries": 127,
+        "modules_checked": 59,
+        "missing_reference_paths": [],
+        "errors": [],
+        "pass": true
+      }
+    },
+    {
+      "case": "old archive permissions defect",
+      "expected": false,
+      "actual": false,
+      "detail": {
+        "entries": 127,
+        "modules_checked": 59,
+        "missing_reference_paths": [],
+        "errors": [
+          "boot: mode=0775 expected 0755",
+          "boot/zImage: mode=0664 expected 0644",
+          "lib: mode=0775 expected 0755",
+          "lib/modules: mode=0775 expected 0755",
+          "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra: mode=0700 expected 0755",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/kdbus: mode=0700 expected 0755",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/zlogger: mode=0700 expected 0755",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/zlogger",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/kdbus",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra"
+        ],
+        "pass": false
+      }
+    },
+    {
+      "case": "no directory search",
+      "expected": false,
+      "actual": false,
+      "detail": {
+        "entries": 127,
+        "modules_checked": 59,
+        "missing_reference_paths": [],
+        "errors": [
+          "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra: mode=0700 expected 0755",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra",
+          "others cannot search directory: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra"
+        ],
+        "pass": false
+      }
+    },
+    {
+      "case": "no file others read",
+      "expected": false,
+      "actual": false,
+      "detail": {
+        "entries": 127,
+        "modules_checked": 59,
+        "missing_reference_paths": [],
+        "errors": [
+          "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko: mode=0600 expected 0644",
+          "others cannot read module: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko"
+        ],
+        "pass": false
+      }
+    },
+    {
+      "case": "wrong owner",
+      "expected": false,
+      "actual": false,
+      "detail": {
+        "entries": 127,
+        "modules_checked": 59,
+        "missing_reference_paths": [],
+        "errors": [
+          "lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra: uid=1000 expected 0"
+        ],
+        "pass": false
+      }
+    },
+    {
+      "case": "wrong symlink",
+      "expected": false,
+      "actual": false,
+      "detail": {
+        "entries": 127,
+        "modules_checked": 59,
+        "missing_reference_paths": [],
+        "errors": [
+          "link target: lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/build"
+        ],
+        "pass": false
+      }
+    }
+  ]
+}

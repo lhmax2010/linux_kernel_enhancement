@@ -424,3 +424,8 @@ time -v合计2:12:14.26；包含监督器检查/扫描的三阶段跨度2:13:04�
 [逐文件清单](../evidence/task9/resume3_deployment_file_manifest.json)、[SHA清单](../evidence/task9/resume3_deployment_SHA256SUMS.txt)、[归档身份](../evidence/task9/resume3_deployment_archive.json)、[归档复核](../evidence/task9/resume3_deployment_archive_verify.txt)。二进制只留temp，不入库、不上板。
 
 **任务9验收完成，任务10所需构建产物前提满足。** 下一步为“任务10：部署base01到RPi4并验证可以启动和回退（需要用户提前开板、在场）”；仍需PM下发部署执行指令并做现场身份/空间/备份核对。本轮未连接开发板，不推Gerrit，不触发QB，未修改源码或启动脚本，不访问vendor_local。
+
+
+## 13. 部署包权限纠正（任务23）
+
+**旧deploy_lko-base01.tar.gz（SHA256 583fbb45389f3b98a8498c09f4acb9a2a73a4b074439bdae6df663cbeaeeb61c）存在权限缺陷，不再使用；原件保留。** 第12.5节仅凭文件内容和uid/gid的历史验收不足以证明非root服务可加载模块。替代包为`temp/task23/artifacts/deploy_lko-base01-r2/deploy_lko-base01-r2.tar.gz`，SHA256 `c88dad7d83734f7edad66e49e5712b6d71da7e529e4cacf5ce651e5918b8ea14`。74个普通文件内容不变；增加全条目DAC元数据与59个模块路径可达性检查。部署使用docs/11任务23附录，结果见docs/23。

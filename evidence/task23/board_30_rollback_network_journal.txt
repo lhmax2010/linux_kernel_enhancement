@@ -1,0 +1,14 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'journalctl -b -t lko-net-setup -o short-monotonic --no-pager
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+-- Logs begin at Thu 2026-11-05 22:56:27 KST, end at Fri 2026-11-06 00:17:39 KST. --
+[   20.888248] localhost lko-net-setup[792]: service found: ethernet_2ccf67a072b5_cable
+[   20.940227] localhost lko-net-setup[795]: connmanctl config ethernet_2ccf67a072b5_cable --ipv4 manual 192.168.108.26 255.255.255.0 192.168.108.1 --nameservers 221.131.143.69 : exit=0
+[   20.943791] localhost lko-net-setup[796]: /etc/resolv.conf is a symbolic link
+[   20.964946] localhost lko-net-setup[800]: DNS target=/opt/etc/resolv.conf; findmnt exit=0; options=rw,relatime
+[   20.970795] localhost lko-net-setup[802]: DNS written successfully
+[   20.975321] localhost lko-net-setup[803]: network setup complete
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

@@ -1,0 +1,6 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 pull /opt/usr/lko_task23/boot/zImage /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/board/backup/zImage
+pulled                         zImage	  0%	      0MB	    0KB/spulled                         zImage	 60%	      8MB	 8811KB/spulled                         zImage	100%	     14MB	 9781KB/s
+1 file(s) pulled. 0 file(s) skipped.
+/opt/usr/lko_task23/boot/zImage   8638KB/s (14905760 bytes in 1.685s)
+
+TRANSPORT-EXIT=0

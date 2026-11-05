@@ -1,0 +1,11 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'set -e; test ! -e /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01; mount -o remount,rw /usr/lib/modules; cp -a /opt/usr/lko_task23/stage/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01 /usr/lib/modules/; sync; mount -o remount,ro /usr/lib/modules; grep " /usr/lib/modules " /proc/mounts; du -sk /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01; df -k /usr/lib/modules
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+/dev/mmcblk0p6 /usr/lib/modules ext4 ro,relatime 0 0
+4468	/usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/mmcblk0p6           19396      8000     10668  43% /usr/lib/modules
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

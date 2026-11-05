@@ -1,0 +1,28 @@
+--- task9-before/verify_deployment_archive.py
++++ task23-after/verify_deployment_archive.py
+@@ -1,16 +1,10 @@
+ from pathlib import Path
+-import tarfile,json,hashlib
+-D=Path('/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/deploy_lko-base01')
+-m=json.loads((D/'manifest.json').read_text());expected={x['path']:x for x in m['files']};links={x['path']:x for x in m['symlinks']};seen=set();seen_links=set()
+-with tarfile.open(D/'deploy_lko-base01.tar.gz','r:gz') as tf:
+- for x in tf:
+-  assert not x.name.startswith('/') and '..' not in Path(x.name).parts
+-  if x.isfile():
+-   assert x.name in expected,x.name
+-   b=tf.extractfile(x).read();assert hashlib.sha256(b).hexdigest()==expected[x.name]['sha256'];assert len(b)==expected[x.name]['bytes'];seen.add(x.name)
+-  elif x.issym():
+-   assert x.name in links and x.linkname==links[x.name]['target'];seen_links.add(x.name)
+-  else:assert x.isdir(),x.name
+-  assert x.uid==0 and x.gid==0
+-assert seen==set(expected) and seen_links==set(links)
+-print('Archive verification PASS: 74 regular files, 1 preserved build symlink; file SHA256/size, symlink target and root uid/gid match; no extraction performed')
++import os,json,sys
++W=Path('/home/linhao/Toolchain/development/linux_kernel_optimization')
++T=Path(os.environ.get('LKO_TASK_ROOT',W/'temp/task9'));D=T/'deploy_lko-base01-r2'
++sys.path.insert(0,str(W/'scripts/deploy'))
++from module_metadata import load_reference,verify_archive
++ref=load_reference(W/'evidence/task23/sr_module_reference.json')
++manifest=json.loads((D/'metadata.json').read_text())
++r=verify_archive(D/'deploy_lko-base01-r2.tar.gz',manifest['entries'],ref,manifest['release'])
++print(json.dumps(r,indent=2));assert r['pass'],r

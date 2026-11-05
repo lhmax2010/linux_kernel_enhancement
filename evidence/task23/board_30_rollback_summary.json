@@ -1,0 +1,33 @@
+{
+  "phase": "rollback",
+  "version": "6.12.80-arm-rpi4-v7l",
+  "checks": {
+    "identity": true,
+    "ten_original_modules": true,
+    "all_vermagic": true,
+    "stability_running": true,
+    "resourced_running": true,
+    "failed_units_excluding_display_manager": true,
+    "network": true,
+    "resourced_sha": true,
+    "boot_hashes": true,
+    "no_symbol_errors": true,
+    "commands_ok": true
+  },
+  "loaded_modules": [
+    "proc_tsm",
+    "brcmfmac",
+    "brcmutil",
+    "hci_uart",
+    "btbcm",
+    "kdbus",
+    "dm_bow",
+    "logger",
+    "inform_reboot",
+    "extcon_usb_fixed"
+  ],
+  "failed_units": [],
+  "vermagic_count": 10,
+  "symbol_error_lines": [],
+  "pass": true
+}

@@ -1,0 +1,10 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/artifacts/verify/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0/home/abuild /home/abuild --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/artifacts /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/artifacts --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/artifacts/verify --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/artifacts/verify --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/artifacts/verify/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv PYTHONHOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/platform-python/usr --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/platform-python/usr/lib --setenv LKO_TASK_ROOT /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/artifacts -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/platform-python/usr/bin/python3.14 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/verify/verify_deployment_archive.py
+{
+  "entries": 127,
+  "modules_checked": 59,
+  "missing_reference_paths": [],
+  "errors": [],
+  "pass": true
+}
+
+EXIT=0

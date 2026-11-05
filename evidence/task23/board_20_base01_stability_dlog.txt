@@ -1,0 +1,114 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'dlogutil -d | grep -Ei '"'"'stability[-_]monitor|proc.tsm'"'"' || test $? -eq 1
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+I/STABILITY_MONITOR(  513): Registered raw data provider: proc_tsm
+I/STABILITY_MONITOR(  513): Registered data source: tsm_cpu
+I/STABILITY_MONITOR(  513): Registered data source: tsm_mem
+I/STABILITY_MONITOR(  513): Registered data source: tsm_io
+I/STABILITY_MONITOR(  513): Registered data source: tsm_fd
+D/STABILITY_MONITOR(  513): Loaded config /usr/lib/stability-monitor/default.conf
+D/STABILITY_MONITOR(  513): Loaded config /etc/stability-monitor.d/01-public.conf
+I/STABILITY_MONITOR(  513): (1)	[systemd                   | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (275)	[systemd-journald          | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (286)	[tizen-watcherd            | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (375)	[hal-backend-service       | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (381)	[dlog_logger               | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (398)	[amd                       | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (399)	[actd                      | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (400)	[buxton2d                  | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (401)	[key-manager               | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (402)	[esd                       | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (403)	[pkginfo-server            | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (404)	[resourced                 | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (405)	[sessiond                  | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (424)	[sensord                   | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (426)	[bt-service                | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (441)	[contextd                  | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (450)	[cynara                    | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (462)	[deviced                   | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (466)	[license-manager-agent     | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (471)	[media-server              | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (486)	[pipewire                  | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (488)	[pushd                     | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (503)	[systemd                   | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (517)	[stc-manager               | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (518)	[net-config                | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (521)	[wait-target-done          | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (533)	[enlightenment             | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (543)	[pkg_recovery              | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (562)	[connmand                  | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (571)	[rscmgr-service            | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (575)	[stc-iptables              | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (578)	[storaged                  | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (583)	[update-manager            | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (591)	[wifi-tethering-manager    | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (609)	[gumd                      | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (621)	[security-manager          | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (651)	[focus_server              | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (657)	[systemd                   | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (658)	[wfd-manager               | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (697)	[wait-target-done          | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (715)	[launchpad-process-pool    | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (728)	[launchpad-process-pool    | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (777)	[alarmmgr_tool             | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (788)	[dbus-send                 | other_service         ] Start process monitoring
+E/STABILITY_MONITOR(  513): src/process.c::get_uid_by_pid(91): Failed to open file (/proc/789/status) by No such file or directory
+E/STABILITY_MONITOR(  513): src/process.c::process_get_appid(215): Failed to get uid (-1) using pid (789) by get_uid_by_pid()
+D/STABILITY_MONITOR(  513): readlink() failed, pid: 789, No such file or directory
+D/STABILITY_MONITOR(  513): Unable to create process info, it has just died
+I/STABILITY_MONITOR(  513): (426)	[bt-service                | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (533)	[enlightenment             | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (543)	[pkg_recovery              | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (823)	[account-svcd              | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (826)	[contacts-service-ipcd     | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (827)	[efl_config                | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (830)	[isud                      | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (831)	[sync-service              | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (833)	[lbs-server                | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (834)	[pass                      | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (894)	[calendar-serviced         | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (966)	[launchpad-process-pool    | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (286)	[tizen-watcherd            | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (697)	[wait-target-done          | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (521)	[wait-target-done          | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (777)	[alarmmgr_tool             | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (788)	[dbus-send                 | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (399)	[actd                      | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (517)	[stc-manager               | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (591)	[wifi-tethering-manager    | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (831)	[sync-service              | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (405)	[sessiond                  | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (575)	[stc-iptables              | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (823)	[account-svcd              | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (609)	[gumd                      | other_service         ] Stop process monitoring
+D/RESOURCED(  404): cgroup.c: cgroup_read_node_ulonglong(260) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/system.slice/stability-monitor.service/memory.limit_in_bytes, value = 20971520
+D/RESOURCED(  404): cgroup.c: cgroup_write_node_uint32(155) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/system.slice/stability-monitor.service/memory.oom_control, value = 1
+D/RESOURCED(  404): cgroup.c: cgroup_read_node_ulonglong(260) > [SECURE_LOG] cgroup_buf = /sys/fs/cgroup/memory/system.slice/stability-monitor.service/memory.limit_in_bytes, value = 20971520
+D/RESOURCED(  404): memory-cgroup.c: memcg_init_eventfd(661) > /sys/fs/cgroup/memory/system.slice/stability-monitor.service memory.oom_control  registerd
+I/STABILITY_MONITOR(  513): (1367)	[launchpad-process-pool    | other_service         ] Start process monitoring
+I/STABILITY_MONITOR(  513): (830)	[isud                      | other_service         ] Stop process monitoring
+I/STABILITY_MONITOR(  513): (966)	[launchpad-process-pool    | other_service         ] Stop process monitoring
+D/STABILITY_MONITOR(  513): readlink() failed, pid: 1451, No such file or directory
+D/STABILITY_MONITOR(  513): Unable to create process info, it has just died
+D/SDBD_TRACE_SDB( 1045): plugin.c: request_handlecmd_to_plugin(652) > [SECURE_LOG] requested command handling : 1012, systemctl show stability-monitor.service -p Id -p ActiveState -p SubState -p Result -p ExecMainStatus -p NRestarts
+D/SDBD_TRACE_SDB( 1045): default_plugin_basic.c: verify_handle_by_plugin(376) > [SECURE_LOG] shell command : systemctl show stability-monitor.service -p Id -p ActiveState -p SubState -p Result -p ExecMainStatus -p NRestarts
+D/SDBD_TRACE_SDB( 1045): default_plugin_basic.c: verify_shell_cmd(150) > [SECURE_LOG] shell command : systemctl show stability-monitor.service -p Id -p ActiveState -p SubState -p Result -p ExecMainStatus -p NRestarts
+D/SDBD_TRACE_SDB( 1045): default_plugin_basic.c: convert_shell_cmd(177) > [SECURE_LOG] shell command : systemctl show stability-monitor.service -p Id -p ActiveState -p SubState -p Result -p ExecMainStatus -p NRestarts
+D/SDBD_TRACE_SERVICES( 1045): services.c: create_subproc_thread(838) > [SECURE_LOG] converted cmd : systemctl show stability-monitor.service -p Id -p ActiveState -p SubState -p Result -p ExecMainStatus -p NRestarts
+D/SDBD_TRACE_SOCKETS( 1045): sockets.c: create_local_service_socket(446) > [SECURE_LOG] LS(9): bound to 'shell:systemctl show stability-monitor.service -p Id -p ActiveState -p SubState -p Result -p ExecMainStatus -p NRestarts
+D/SDBD_TRACE_SDB( 1045): plugin.c: request_handlecmd_to_plugin(652) > [SECURE_LOG] requested command handling : 1012, journalctl -b -u stability-monitor.service -o short-monotonic --no-pager
+D/SDBD_TRACE_SDB( 1045): default_plugin_basic.c: verify_handle_by_plugin(376) > [SECURE_LOG] shell command : journalctl -b -u stability-monitor.service -o short-monotonic --no-pager
+D/SDBD_TRACE_SDB( 1045): default_plugin_basic.c: verify_shell_cmd(150) > [SECURE_LOG] shell command : journalctl -b -u stability-monitor.service -o short-monotonic --no-pager
+D/SDBD_TRACE_SDB( 1045): default_plugin_basic.c: convert_shell_cmd(177) > [SECURE_LOG] shell command : journalctl -b -u stability-monitor.service -o short-monotonic --no-pager
+D/SDBD_TRACE_SERVICES( 1045): services.c: create_subproc_thread(838) > [SECURE_LOG] converted cmd : journalctl -b -u stability-monitor.service -o short-monotonic --no-pager
+D/SDBD_TRACE_SOCKETS( 1045): sockets.c: create_local_service_socket(446) > [SECURE_LOG] LS(25): bound to 'shell:journalctl -b -u stability-monitor.service -o short-monotonic --no-pager
+D/SDBD_TRACE_SDB( 1045): plugin.c: request_handlecmd_to_plugin(652) > [SECURE_LOG] requested command handling : 1012, dlogutil -d | grep -Ei 'stability[-_]monitor|proc.tsm' || test $? -eq 1
+D/SDBD_TRACE_SDB( 1045): default_plugin_basic.c: verify_handle_by_plugin(376) > [SECURE_LOG] shell command : dlogutil -d | grep -Ei 'stability[-_]monitor|proc.tsm' || test $? -eq 1
+D/SDBD_TRACE_SDB( 1045): default_plugin_basic.c: verify_shell_cmd(150) > [SECURE_LOG] shell command : dlogutil -d | grep -Ei 'stability[-_]monitor|proc.tsm' || test $? -eq 1
+D/SDBD_TRACE_SDB( 1045): default_plugin_basic.c: convert_shell_cmd(177) > [SECURE_LOG] shell command : dlogutil -d | grep -Ei 'stability[-_]monitor|proc.tsm' || test $? -eq 1
+D/SDBD_TRACE_SERVICES( 1045): services.c: create_subproc_thread(838) > [SECURE_LOG] converted cmd : dlogutil -d | grep -Ei 'stability[-_]monitor|proc.tsm' || test $? -eq 1
+D/SDBD_TRACE_SOCKETS( 1045): sockets.c: create_local_service_socket(446) > [SECURE_LOG] LS(27): bound to 'shell:dlogutil -d | grep -Ei 'stability[-_]monitor|proc.tsm' || test $? -eq 1
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

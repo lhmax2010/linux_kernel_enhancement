@@ -1,0 +1,1436 @@
+[
+  {
+    "path": "temp/task23/board/00_disconnect.raw.txt",
+    "bytes": 1,
+    "lines": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "path": "temp/task23/board/00_disconnect.txt",
+    "bytes": 81,
+    "lines": 4,
+    "sha256": "cd0514b0e0e860eef5881434c596ce5ad265a14783849ca57301dddeea730d61"
+  },
+  {
+    "path": "temp/task23/board/01_connect.raw.txt",
+    "bytes": 73,
+    "lines": 2,
+    "sha256": "319707eca638c5888c2984d2e09815e2d2c94708880805cca0b26ac5f12c7016"
+  },
+  {
+    "path": "temp/task23/board/01_connect.txt",
+    "bytes": 150,
+    "lines": 5,
+    "sha256": "7896502e88b0b31c337e8f8f9999a9853cfaea29cd603b06bfa2f4d16f44f2cc"
+  },
+  {
+    "path": "temp/task23/board/02_identity.raw.txt",
+    "bytes": 802,
+    "lines": 13,
+    "sha256": "042ed58fbbbdab4886a259ce0de7b25de88f0050a26fbcdcc3ebaf0f60e61f65"
+  },
+  {
+    "path": "temp/task23/board/02_identity.txt",
+    "bytes": 974,
+    "lines": 18,
+    "sha256": "9e44001e4a948b40f6131fda012efc6f54dfd35a5cc694f6e746dd23f69454cb"
+  },
+  {
+    "path": "temp/task23/board/03_root_on.raw.txt",
+    "bytes": 32,
+    "lines": 1,
+    "sha256": "525daa895e41827b8cef29d3387114916a532c2624880a49c1614e6c987b6477"
+  },
+  {
+    "path": "temp/task23/board/03_root_on.txt",
+    "bytes": 112,
+    "lines": 4,
+    "sha256": "a69ed252cb8de17306ea088057b3a2708a1cf22c66e71003d6b8ce68ea884a94"
+  },
+  {
+    "path": "temp/task23/board/04_preflight.raw.txt",
+    "bytes": 5617,
+    "lines": 87,
+    "sha256": "859bfd2c48d1e2f42cce55dc7e73edeb910552b26ac4eed74ac664f64d3f81f9"
+  },
+  {
+    "path": "temp/task23/board/04_preflight.txt",
+    "bytes": 6151,
+    "lines": 92,
+    "sha256": "2343f8a8b5c052a3753bebcc338eb756521dba9ef0bb0340cb4fa28efabaffa2"
+  },
+  {
+    "path": "temp/task23/board/05_removed_packages.raw.txt",
+    "bytes": 179,
+    "lines": 8,
+    "sha256": "b9f85d1acf68395f15751e0d5da151881b381cd2a274c5e2d3d8795b36c21860"
+  },
+  {
+    "path": "temp/task23/board/05_removed_packages.txt",
+    "bytes": 503,
+    "lines": 13,
+    "sha256": "691da9bcf81cc899aa32c0a7ca5578ed7af8d507124b01230662c9a8a46a39d2"
+  },
+  {
+    "path": "temp/task23/board/06_boot_preflight.raw.txt",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "temp/task23/board/06_boot_preflight.txt",
+    "bytes": 740,
+    "lines": 5,
+    "sha256": "ffc57bf47e127e0ee55652d3bfc1c933264ee63ff9aa25e312ca9c7f9d624831"
+  },
+  {
+    "path": "temp/task23/board/06b_boot_preflight.raw.txt",
+    "bytes": 2316,
+    "lines": 82,
+    "sha256": "aa843bd0a024a234032ed55669bac4a1d3544e2cb8bfaf0ba38819c0f022a84d"
+  },
+  {
+    "path": "temp/task23/board/06b_boot_preflight.txt",
+    "bytes": 2983,
+    "lines": 87,
+    "sha256": "7ad5883eb65e46273f5ed962296a01cb1b37152ba4f46425e9d1bb81f348159e"
+  },
+  {
+    "path": "temp/task23/board/07_backup_bcm2711-rpi-4-b_dtb.raw.txt",
+    "bytes": 243,
+    "lines": 5,
+    "sha256": "3c35abaed63ed3c1ebc616f1cad455a12bfaaf0ea8f7b09e6bdd7aa752db5d31"
+  },
+  {
+    "path": "temp/task23/board/07_backup_bcm2711-rpi-4-b_dtb.txt",
+    "bytes": 469,
+    "lines": 6,
+    "sha256": "6a573c1c6db2d88948b70cff90386637f0b305aff344513f2518264b1c5cc4cd"
+  },
+  {
+    "path": "temp/task23/board/07_backup_config_txt.raw.txt",
+    "bytes": 232,
+    "lines": 5,
+    "sha256": "20729ab0dddbe91e92ae9df01a5da8470c2b39d04bc9a2ab65fedc4e0912b867"
+  },
+  {
+    "path": "temp/task23/board/07_backup_config_txt.txt",
+    "bytes": 440,
+    "lines": 6,
+    "sha256": "a49c7b5090f9a4853c73950f94d1a3a3e3f326daef2d26b6f722a22f88b20d30"
+  },
+  {
+    "path": "temp/task23/board/07_backup_zImage.raw.txt",
+    "bytes": 297,
+    "lines": 6,
+    "sha256": "eea544655be7f87936c8eb6e9c462ee8856b834fdadaf421ec486bf4923b6048"
+  },
+  {
+    "path": "temp/task23/board/07_backup_zImage.txt",
+    "bytes": 496,
+    "lines": 6,
+    "sha256": "cb76e3730088f2c1f30a5f07c86d52a3427e1f84899278c223da8cbab655de67"
+  },
+  {
+    "path": "temp/task23/board/08_boot_hashes.raw.txt",
+    "bytes": 39251,
+    "lines": 416,
+    "sha256": "065f37c6db7c19e7eecc36becebae47227f8f847ae6b51288c839ab65b59d840"
+  },
+  {
+    "path": "temp/task23/board/08_boot_hashes.txt",
+    "bytes": 39051,
+    "lines": 421,
+    "sha256": "9693d0c83dca95979811c17a7e630e0dfeb57ea2912f972a55f583f7e232b045"
+  },
+  {
+    "path": "temp/task23/board/09_modules_hashes.raw.txt",
+    "bytes": 9375,
+    "lines": 78,
+    "sha256": "b8b3aea43f94ca3b5b6eddd7e213448034c1366a0c02e2a0898785baebaae528"
+  },
+  {
+    "path": "temp/task23/board/09_modules_hashes.txt",
+    "bytes": 9632,
+    "lines": 83,
+    "sha256": "79658b8a57a81e916e2d60fd40f223fa3f7fc855a1608743774bf18814531e15"
+  },
+  {
+    "path": "temp/task23/board/10_original_metadata.raw.txt",
+    "bytes": 9033,
+    "lines": 129,
+    "sha256": "21a442f6337d99d2a2c761864689451278aae8520d71ec04052b5ae3f0f0a8d4"
+  },
+  {
+    "path": "temp/task23/board/10_original_metadata.txt",
+    "bytes": 9177,
+    "lines": 134,
+    "sha256": "915b6bff0ae0fc56bdbd4350eb5200ec85b26261ec88e32a6978b505a090efa7"
+  },
+  {
+    "path": "temp/task23/board/11_unmount_backup.raw.txt",
+    "bytes": 24,
+    "lines": 2,
+    "sha256": "49b0d0db6b431e15c190c41bed754c50537586bd5187b4ae36b0b43249ba3eae"
+  },
+  {
+    "path": "temp/task23/board/11_unmount_backup.txt",
+    "bytes": 195,
+    "lines": 7,
+    "sha256": "abb120ab36a0baaf94cf1f23973e195756f3535eeea271a28cbebc139dddf1b2"
+  },
+  {
+    "path": "temp/task23/board/12_push_SHA256SUMS.raw.txt",
+    "bytes": 406,
+    "lines": 6,
+    "sha256": "6b08bdd215baa0ab4f11219ac61b489baad42c3644fb0d41593ac4f18c376ec4"
+  },
+  {
+    "path": "temp/task23/board/12_push_SHA256SUMS.txt",
+    "bytes": 627,
+    "lines": 7,
+    "sha256": "5acb4cf0bcd128e91aa9ac26e47013bcb72b4eb664201ce5eee8d3f4c2757717"
+  },
+  {
+    "path": "temp/task23/board/12_push_deploy_lko-base01-r2_tar_gz.raw.txt",
+    "bytes": 491,
+    "lines": 7,
+    "sha256": "98a6c06bf6a5f6f31cf0070df57ac908e8b52409e7925b838acc2d8d5e9b2c1d"
+  },
+  {
+    "path": "temp/task23/board/12_push_deploy_lko-base01-r2_tar_gz.txt",
+    "bytes": 745,
+    "lines": 7,
+    "sha256": "3058fba958cf2415ea7a78ae9254f90abc43becbd0bf340cc474082260fea3c0"
+  },
+  {
+    "path": "temp/task23/board/13_stage_verify.raw.txt",
+    "bytes": 6361,
+    "lines": 77,
+    "sha256": "188db267195bb8a73f389d940714159fa7466477e712f0b8350fe06d1a184d29"
+  },
+  {
+    "path": "temp/task23/board/13_stage_verify.txt",
+    "bytes": 6593,
+    "lines": 82,
+    "sha256": "1a173124d4a37d8d4792e94736d0f42dcb2aca8f7b7c87f16fcf8f8eeca47c64"
+  },
+  {
+    "path": "temp/task23/board/14_copy_modules.raw.txt",
+    "bytes": 275,
+    "lines": 6,
+    "sha256": "6c46b5994720856887e395f66f0d22d3fe138db81866ff3afa25df0fc574a847"
+  },
+  {
+    "path": "temp/task23/board/14_copy_modules.txt",
+    "bytes": 775,
+    "lines": 11,
+    "sha256": "48d324ab93acb7adec6b317f33cee55e3658b1734b85d9349d9ab9ebf13bc6f9"
+  },
+  {
+    "path": "temp/task23/board/15_new_metadata.raw.txt",
+    "bytes": 24222,
+    "lines": 199,
+    "sha256": "8707eda7a11deea7912f7d3262aa20d36a8e80a2e539f15f725b8cf4caf17c8b"
+  },
+  {
+    "path": "temp/task23/board/15_new_metadata.txt",
+    "bytes": 24512,
+    "lines": 204,
+    "sha256": "6c62be32cf972350afc1e618fd0de46e07ee59de1194ab7e911f0e0818524375"
+  },
+  {
+    "path": "temp/task23/board/16_install_zImage.raw.txt",
+    "bytes": 442,
+    "lines": 6,
+    "sha256": "a02d70bb4dfbddcff5ad398f6e9a830300c839e6274365c475beb77d8119cd36"
+  },
+  {
+    "path": "temp/task23/board/16_install_zImage.txt",
+    "bytes": 1032,
+    "lines": 11,
+    "sha256": "07c084322b664f676dad0a633fadfbeb457e4d046b2a84ed69e9eb33aceb8fa2"
+  },
+  {
+    "path": "temp/task23/board/20_base01_boot_hashes.raw.txt",
+    "bytes": 338,
+    "lines": 5,
+    "sha256": "271bc17f9df29cc684cad74a15bb1a9d0805451be58918a65f29d58f375160ca"
+  },
+  {
+    "path": "temp/task23/board/20_base01_boot_hashes.txt",
+    "bytes": 691,
+    "lines": 10,
+    "sha256": "5b35e8f6ce0f6dfd9234e1532b1b9e71a1aa153eadb6c8bbc551727b6c611339"
+  },
+  {
+    "path": "temp/task23/board/20_base01_display-manager.raw.txt",
+    "bytes": 150,
+    "lines": 8,
+    "sha256": "36b826e40ec67c470b7dcf0381933041c8af34703025855efe13bde986360b6a"
+  },
+  {
+    "path": "temp/task23/board/20_base01_display-manager.txt",
+    "bytes": 396,
+    "lines": 13,
+    "sha256": "5dd2cebcc04e7a3c0490b31f69b6254d8f626fb932d433927119ef7210aa4e6a"
+  },
+  {
+    "path": "temp/task23/board/20_base01_dmesg.raw.txt",
+    "bytes": 52421,
+    "lines": 543,
+    "sha256": "c54bedf6fdf84dcb4ec953cede83767f3e9b14eb664d3c1dba10fc8c22517979"
+  },
+  {
+    "path": "temp/task23/board/20_base01_dmesg.txt",
+    "bytes": 42698,
+    "lines": 548,
+    "sha256": "fd802a83d0ed375d3f627969a475fe1474f9917cfb4002221c4c9ad80536beb6"
+  },
+  {
+    "path": "temp/task23/board/20_base01_failed.raw.txt",
+    "bytes": 24,
+    "lines": 2,
+    "sha256": "49b0d0db6b431e15c190c41bed754c50537586bd5187b4ae36b0b43249ba3eae"
+  },
+  {
+    "path": "temp/task23/board/20_base01_failed.txt",
+    "bytes": 213,
+    "lines": 7,
+    "sha256": "95941c5db4fb46e2350c9ce3b0d32cbeb8a6bbca2acdab5753e8be6f6b50f3c3"
+  },
+  {
+    "path": "temp/task23/board/20_base01_identity.raw.txt",
+    "bytes": 1022,
+    "lines": 17,
+    "sha256": "481e5362d0c3e19c39fcbfbb2b1848bce5dda4cc28a6f49c66a8ccfdfe8ec369"
+  },
+  {
+    "path": "temp/task23/board/20_base01_identity.txt",
+    "bytes": 1293,
+    "lines": 22,
+    "sha256": "07a68589a750a184b80e5e5f1decdcccbf37a25c1393597493201a168ac79fbc"
+  },
+  {
+    "path": "temp/task23/board/20_base01_lko-net-setup.raw.txt",
+    "bytes": 134,
+    "lines": 8,
+    "sha256": "87e02f5c275c99edc595572b22f2184f9eb0cffbbde974d94d29e43fbc5dcd21"
+  },
+  {
+    "path": "temp/task23/board/20_base01_lko-net-setup.txt",
+    "bytes": 378,
+    "lines": 13,
+    "sha256": "d1b8e4b308682fed7fb596a3c1ab864102d6b66861ffa80430eafed6b6c6c5a4"
+  },
+  {
+    "path": "temp/task23/board/20_base01_modules.raw.txt",
+    "bytes": 2111,
+    "lines": 42,
+    "sha256": "cadfa9e58649e99cf0a84a4bba322ef79a62eec70c9f4cfd0d4fb56b3bdd296b"
+  },
+  {
+    "path": "temp/task23/board/20_base01_modules.txt",
+    "bytes": 2350,
+    "lines": 47,
+    "sha256": "7e709691875320f91b0e25b9b8c0a1461a58c02c4c01b70577bcf64011c05f7c"
+  },
+  {
+    "path": "temp/task23/board/20_base01_network.raw.txt",
+    "bytes": 4313,
+    "lines": 59,
+    "sha256": "73e3665a68ab06e51bd6a6b5bee328c6e51d549302169fe256320df3a69997d4"
+  },
+  {
+    "path": "temp/task23/board/20_base01_network.txt",
+    "bytes": 4618,
+    "lines": 64,
+    "sha256": "543c39b7551ff0c634f98f7ce736dddd2ef1b7739e148205cad457cb92020694"
+  },
+  {
+    "path": "temp/task23/board/20_base01_network_journal.raw.txt",
+    "bytes": 909,
+    "lines": 9,
+    "sha256": "47554ba1c7cf6fb6769f720c135b910bb5b2a97a1ea66af8d76d78900a600f06"
+  },
+  {
+    "path": "temp/task23/board/20_base01_network_journal.txt",
+    "bytes": 916,
+    "lines": 14,
+    "sha256": "ea215dce366a8e3f9400418d46251bb243726e17e530ae1fb5b5c7c18931b3a3"
+  },
+  {
+    "path": "temp/task23/board/20_base01_resourced.raw.txt",
+    "bytes": 131,
+    "lines": 8,
+    "sha256": "0302a362aab641415f8469dcc5b3870bcedd7e2ec2674d7cef0e2c5d8d115506"
+  },
+  {
+    "path": "temp/task23/board/20_base01_resourced.txt",
+    "bytes": 371,
+    "lines": 13,
+    "sha256": "25b5d5a5249bcbf8257f073580bc00cee392e019f8b7c088014eb1fe89f58d6b"
+  },
+  {
+    "path": "temp/task23/board/20_base01_stability-monitor.raw.txt",
+    "bytes": 139,
+    "lines": 8,
+    "sha256": "6f8acb3cb8cfcb9eee2dfe4fb8e46d398e42dac8ed02b4c33560c364399db300"
+  },
+  {
+    "path": "temp/task23/board/20_base01_stability-monitor.txt",
+    "bytes": 387,
+    "lines": 13,
+    "sha256": "9c4e6122f4103688c650e62f2d2e71eb84f5ccad2c994032b24f05d8c07b92cd"
+  },
+  {
+    "path": "temp/task23/board/20_base01_stability_dlog.raw.txt",
+    "bytes": 13427,
+    "lines": 109,
+    "sha256": "69443ac0de06e26ab8b7bbf10fa70a45313e5d6699aa70b53c05fc2bda6f33da"
+  },
+  {
+    "path": "temp/task23/board/20_base01_stability_dlog.txt",
+    "bytes": 13539,
+    "lines": 114,
+    "sha256": "c8e25ad16f8bd494f266af07bee8138b4ff72c226fc3cdb52f63623a7c849d08"
+  },
+  {
+    "path": "temp/task23/board/20_base01_stability_journal.raw.txt",
+    "bytes": 128,
+    "lines": 4,
+    "sha256": "10c0148dde2f13db780b01b9784734fa10a2cce97f8f236c1868ad3d6bf52299"
+  },
+  {
+    "path": "temp/task23/board/20_base01_stability_journal.txt",
+    "bytes": 338,
+    "lines": 9,
+    "sha256": "d5aa236f847d0ffbfb3b283f7fec4018092059a390e2fd65332b5ef235360b57"
+  },
+  {
+    "path": "temp/task23/board/29_restore_original.raw.txt",
+    "bytes": 292,
+    "lines": 7,
+    "sha256": "40b393d38240f3d367ececdcd7fe9a7bcb318d2a5ebe25c5369fa7bfa1173d37"
+  },
+  {
+    "path": "temp/task23/board/29_restore_original.txt",
+    "bytes": 890,
+    "lines": 12,
+    "sha256": "c194c5f193cc296f763e7b66ca112ae11064f2aac36a99ae4457770201444840"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_boot_hashes.raw.txt",
+    "bytes": 338,
+    "lines": 5,
+    "sha256": "0afab2a2d66dfdb32826ddde16cd95ee277e7d28b5d6c179dac1463ac34c8a22"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_boot_hashes.txt",
+    "bytes": 691,
+    "lines": 10,
+    "sha256": "3c9da235e4da0cc67ba6fbe33930c7d3e499c71e59159245677fd47151464fde"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_display-manager.raw.txt",
+    "bytes": 150,
+    "lines": 8,
+    "sha256": "f069223c603a013fb7ae94e8fd78faac9169ed6206c4db77da52a518914b08e8"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_display-manager.txt",
+    "bytes": 396,
+    "lines": 13,
+    "sha256": "5d04c14475840972d1ad4684cff45a821f5c91baf3f8df6243b23b89cb85c720"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_dmesg.raw.txt",
+    "bytes": 49832,
+    "lines": 532,
+    "sha256": "1500affc61316116f1252448d2212643881d1e291bda1e84910a163132b5f690"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_dmesg.txt",
+    "bytes": 40326,
+    "lines": 537,
+    "sha256": "6690b8e16fb585b52f4693dfd8dcc67a285eb9e26a96be70ebfc8f35103cb700"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_failed.raw.txt",
+    "bytes": 24,
+    "lines": 2,
+    "sha256": "49b0d0db6b431e15c190c41bed754c50537586bd5187b4ae36b0b43249ba3eae"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_failed.txt",
+    "bytes": 213,
+    "lines": 7,
+    "sha256": "95941c5db4fb46e2350c9ce3b0d32cbeb8a6bbca2acdab5753e8be6f6b50f3c3"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_identity.raw.txt",
+    "bytes": 1005,
+    "lines": 17,
+    "sha256": "6cc53334a57859eb42350bbd4549b9960e187c71f9e7af20575f1392008c838d"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_identity.txt",
+    "bytes": 1276,
+    "lines": 22,
+    "sha256": "4baa521892ac11044ac78f6c54415a9fc26cd61311b398b375a5f677568b3bc4"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_lko-net-setup.raw.txt",
+    "bytes": 134,
+    "lines": 8,
+    "sha256": "87e02f5c275c99edc595572b22f2184f9eb0cffbbde974d94d29e43fbc5dcd21"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_lko-net-setup.txt",
+    "bytes": 378,
+    "lines": 13,
+    "sha256": "d1b8e4b308682fed7fb596a3c1ab864102d6b66861ffa80430eafed6b6c6c5a4"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_modules.raw.txt",
+    "bytes": 1891,
+    "lines": 42,
+    "sha256": "a32002703af996d25b69030fc1778c43e8fcbefb3ead8bfae159971d4823edb8"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_modules.txt",
+    "bytes": 2130,
+    "lines": 47,
+    "sha256": "1df0ede218dc852c69990edd0a189c58b26d16eca61537a74af1218d8bedfac0"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_network.raw.txt",
+    "bytes": 4311,
+    "lines": 59,
+    "sha256": "4f1e914afde930f39ac006626047e3b7b2d1aa15532eef9e549f31fd7be708f1"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_network.txt",
+    "bytes": 4616,
+    "lines": 64,
+    "sha256": "87d00ac5a9702354c83cae83731ff72f2b0d18ca2e0b3e599c8966f16394cc13"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_network_journal.raw.txt",
+    "bytes": 909,
+    "lines": 9,
+    "sha256": "2e144d8bdc185b8e3c3efce8cc13a1e482716a8e131218430f2b08ce02726276"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_network_journal.txt",
+    "bytes": 916,
+    "lines": 14,
+    "sha256": "96599b0d4b9c2cbf19add062282c7cbf23591297a1196d6d0b7d668e7d1e25a4"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_resourced.raw.txt",
+    "bytes": 131,
+    "lines": 8,
+    "sha256": "0302a362aab641415f8469dcc5b3870bcedd7e2ec2674d7cef0e2c5d8d115506"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_resourced.txt",
+    "bytes": 371,
+    "lines": 13,
+    "sha256": "25b5d5a5249bcbf8257f073580bc00cee392e019f8b7c088014eb1fe89f58d6b"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_stability-monitor.raw.txt",
+    "bytes": 139,
+    "lines": 8,
+    "sha256": "6f8acb3cb8cfcb9eee2dfe4fb8e46d398e42dac8ed02b4c33560c364399db300"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_stability-monitor.txt",
+    "bytes": 387,
+    "lines": 13,
+    "sha256": "9c4e6122f4103688c650e62f2d2e71eb84f5ccad2c994032b24f05d8c07b92cd"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_stability_dlog.raw.txt",
+    "bytes": 13445,
+    "lines": 109,
+    "sha256": "460a996c479ac5e576819b056563765730be84f8ec45bf7c0447279c6867a5b9"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_stability_dlog.txt",
+    "bytes": 13557,
+    "lines": 114,
+    "sha256": "c85a32d37d964ebaefbe85ec02f46b7ce71c0e6be05cd1c0b2d757db8a479043"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_stability_journal.raw.txt",
+    "bytes": 128,
+    "lines": 4,
+    "sha256": "65ff8924e98998e0630d3f0b1dc159ff9408eda408aaec11b0566f7929948111"
+  },
+  {
+    "path": "temp/task23/board/30_rollback_stability_journal.txt",
+    "bytes": 338,
+    "lines": 9,
+    "sha256": "99d595474380ff3d48873b7ddb9d77d816ccf28692c4363f4ef8850c37474f86"
+  },
+  {
+    "path": "temp/task23/board/31_remove_new_version.raw.txt",
+    "bytes": 352,
+    "lines": 7,
+    "sha256": "5040a3e1c45c5495abf33c5322506f8b786bc99e50058036c6ff2fd696dd5539"
+  },
+  {
+    "path": "temp/task23/board/31_remove_new_version.txt",
+    "bytes": 881,
+    "lines": 12,
+    "sha256": "367ba55d7386bfa6257500520e38874ab1f375f517047808da5815917420638c"
+  },
+  {
+    "path": "temp/task23/board/32_original_modules_final.raw.txt",
+    "bytes": 9375,
+    "lines": 78,
+    "sha256": "b8b3aea43f94ca3b5b6eddd7e213448034c1366a0c02e2a0898785baebaae528"
+  },
+  {
+    "path": "temp/task23/board/32_original_modules_final.txt",
+    "bytes": 9632,
+    "lines": 83,
+    "sha256": "79658b8a57a81e916e2d60fd40f223fa3f7fc855a1608743774bf18814531e15"
+  },
+  {
+    "path": "temp/task23/board/33_original_metadata_final.raw.txt",
+    "bytes": 9033,
+    "lines": 129,
+    "sha256": "21a442f6337d99d2a2c761864689451278aae8520d71ec04052b5ae3f0f0a8d4"
+  },
+  {
+    "path": "temp/task23/board/33_original_metadata_final.txt",
+    "bytes": 9177,
+    "lines": 134,
+    "sha256": "915b6bff0ae0fc56bdbd4350eb5200ec85b26261ec88e32a6978b505a090efa7"
+  },
+  {
+    "path": "temp/task23/board/34_boot_final.raw.txt",
+    "bytes": 39251,
+    "lines": 416,
+    "sha256": "065f37c6db7c19e7eecc36becebae47227f8f847ae6b51288c839ab65b59d840"
+  },
+  {
+    "path": "temp/task23/board/34_boot_final.txt",
+    "bytes": 39172,
+    "lines": 421,
+    "sha256": "08e4e9e2fb1e707b6c43906d80219e26ade776ece73123aa07bd79960e610da2"
+  },
+  {
+    "path": "temp/task23/board/35_cleanup.raw.txt",
+    "bytes": 3583,
+    "lines": 45,
+    "sha256": "844ea4c264cc71b922440680c0b7d8bce4ca7541b082119ae9b7d2dcdfe4a802"
+  },
+  {
+    "path": "temp/task23/board/35_cleanup.txt",
+    "bytes": 4008,
+    "lines": 50,
+    "sha256": "7be3ec56bf0d0de46f9e07a05959ae16c66565bc3e08eb5b97b45a512d3a2967"
+  },
+  {
+    "path": "temp/task23/board/36_root_off.raw.txt",
+    "bytes": 36,
+    "lines": 1,
+    "sha256": "6667042b629240d444116555b8f98368ba464e672980623c2dbdb02741c0089d"
+  },
+  {
+    "path": "temp/task23/board/36_root_off.txt",
+    "bytes": 117,
+    "lines": 4,
+    "sha256": "5d4fb96e819a8357c8a1ae4890991867e1749f2ad6a906dd14936db8495a8cb7"
+  },
+  {
+    "path": "temp/task23/board/37_owner_final.raw.txt",
+    "bytes": 548,
+    "lines": 5,
+    "sha256": "f0cba42d08ae9882ecbe97d8a966228cfc18ed8bcda5c97e60dde3c541deee0d"
+  },
+  {
+    "path": "temp/task23/board/37_owner_final.txt",
+    "bytes": 798,
+    "lines": 10,
+    "sha256": "b9ae479ca8954acccfa8c69448dedcafd5dd918753bcfd9c814169e83c6269eb"
+  },
+  {
+    "path": "temp/task23/board/reboot1_command.raw.txt",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "temp/task23/board/reboot1_pre.raw.txt",
+    "bytes": 736,
+    "lines": 18,
+    "sha256": "e0fca9999d0f82d00790e4b6a4ad7cae843dbadb80d1adf613926d551ddc3447"
+  },
+  {
+    "path": "temp/task23/board/reboot1_pre.txt",
+    "bytes": 1085,
+    "lines": 23,
+    "sha256": "bce4ec5db4dd84ba9589fbe829a7901c63b6aac41bbc6c81cf51decb49fbd939"
+  },
+  {
+    "path": "temp/task23/board/reboot1_root_on.raw.txt",
+    "bytes": 32,
+    "lines": 1,
+    "sha256": "525daa895e41827b8cef29d3387114916a532c2624880a49c1614e6c987b6477"
+  },
+  {
+    "path": "temp/task23/board/reboot1_root_on.txt",
+    "bytes": 112,
+    "lines": 4,
+    "sha256": "a69ed252cb8de17306ea088057b3a2708a1cf22c66e71003d6b8ce68ea884a94"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round01_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round01_disconnect.raw.txt",
+    "bytes": 1,
+    "lines": 1,
+    "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round01_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round02_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round02_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round02_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round03_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round03_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round03_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round04_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round04_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round04_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round05_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round05_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round05_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round06_connect.raw.txt",
+    "bytes": 73,
+    "lines": 2,
+    "sha256": "319707eca638c5888c2984d2e09815e2d2c94708880805cca0b26ac5f12c7016"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round06_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task23/board/reboot1_round06_probe.raw.txt",
+    "bytes": 333,
+    "lines": 11,
+    "sha256": "644f15be70d1fd625e2891805cf1adef00b5c583a73a896358c82cd5b94d45bd"
+  },
+  {
+    "path": "temp/task23/board/reboot1_verification.raw.txt",
+    "bytes": 4782,
+    "lines": 61,
+    "sha256": "57a474f6b077fd26bc675bc27c0d1017ca6118cb640bc7156725e774ebb5cb3c"
+  },
+  {
+    "path": "temp/task23/board/reboot1_verification.txt",
+    "bytes": 5010,
+    "lines": 66,
+    "sha256": "9238ddfeaae6d976a435401ba1dc7f8bcbe10c1587f85a6cdce20278915155d2"
+  },
+  {
+    "path": "temp/task23/board/reboot2_command.raw.txt",
+    "bytes": 0,
+    "lines": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "path": "temp/task23/board/reboot2_pre.raw.txt",
+    "bytes": 747,
+    "lines": 18,
+    "sha256": "0a9593b30e3093bf452f0dc43176d22d1fc48bd3c3ed87061652b57053a4de8b"
+  },
+  {
+    "path": "temp/task23/board/reboot2_pre.txt",
+    "bytes": 1096,
+    "lines": 23,
+    "sha256": "d4c2a586c42e229eec080be6cc4b65bbaec7ceb6da69941d2ba32ef961a14011"
+  },
+  {
+    "path": "temp/task23/board/reboot2_root_on.raw.txt",
+    "bytes": 32,
+    "lines": 1,
+    "sha256": "525daa895e41827b8cef29d3387114916a532c2624880a49c1614e6c987b6477"
+  },
+  {
+    "path": "temp/task23/board/reboot2_root_on.txt",
+    "bytes": 112,
+    "lines": 4,
+    "sha256": "a69ed252cb8de17306ea088057b3a2708a1cf22c66e71003d6b8ce68ea884a94"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round01_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round01_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round01_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round02_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round02_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round02_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round03_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round03_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round03_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round04_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round04_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round04_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round05_connect.raw.txt",
+    "bytes": 59,
+    "lines": 1,
+    "sha256": "e1c9698d6960aed8e8dbbfd86385f5b223e06e92ec226735f37751266a96abf0"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round05_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round05_probe.raw.txt",
+    "bytes": 74,
+    "lines": 2,
+    "sha256": "7e9556074fc42a125c007dc6d39a92542caeee1c0f85be028b72b27e4eec57b3"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round06_connect.raw.txt",
+    "bytes": 73,
+    "lines": 2,
+    "sha256": "319707eca638c5888c2984d2e09815e2d2c94708880805cca0b26ac5f12c7016"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round06_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task23/board/reboot2_round06_probe.raw.txt",
+    "bytes": 322,
+    "lines": 11,
+    "sha256": "6c4f1798a3614f24658ed1f0e8783d2359268137d96c9ff79ff9ecd23286208a"
+  },
+  {
+    "path": "temp/task23/board/reboot2_verification.raw.txt",
+    "bytes": 4781,
+    "lines": 61,
+    "sha256": "cde9d3abe63bc31b796f8b9cbe8d1b3458028fb6be9bf96d10b5b9588647dfc5"
+  },
+  {
+    "path": "temp/task23/board/reboot2_verification.txt",
+    "bytes": 5009,
+    "lines": 66,
+    "sha256": "f99d79c36a2722497fdcda8df253fd57f2f6cd3dd97fdff2abfc10345bd0203c"
+  },
+  {
+    "path": "temp/task23/logs/board_metadata_gate.txt",
+    "bytes": 1817,
+    "lines": 11,
+    "sha256": "48e3093f74a3e4cc0a8040778b541ff04889a334bee2d4ac657909dfe846e9de"
+  },
+  {
+    "path": "temp/task23/logs/e2fsprogs_tools_extract.txt",
+    "bytes": 1265,
+    "lines": 3,
+    "sha256": "ab1209d45fef51239c912522b9a106a8ee2c8c6d28771cbd4e371b186cc330e7"
+  },
+  {
+    "path": "temp/task23/logs/final_original_hashes.txt",
+    "bytes": 1905,
+    "lines": 6,
+    "sha256": "44792385a508076f0a9f7fbc7e5d6032df3d51e611ef15f77f29dbb852336029"
+  },
+  {
+    "path": "temp/task23/logs/libcom_err_tools_extract.txt",
+    "bytes": 1266,
+    "lines": 3,
+    "sha256": "1582f495c0ad2522e5dc93ca084e14f2f2b4aa21d70664f865a4ca35b5411dee"
+  },
+  {
+    "path": "temp/task23/logs/libext2fs_tools_extract.txt",
+    "bytes": 1265,
+    "lines": 3,
+    "sha256": "0daf2c53684c2eb3c56d3fda187290455eac98f7243faaa5e0201c1ff85adff4"
+  },
+  {
+    "path": "temp/task23/logs/metadata_tests.txt",
+    "bytes": 5555,
+    "lines": 113,
+    "sha256": "49ce3a7fd7c1d2b0c29187a8736cb65a2fee3bb997e4300fd22477f82d58d4a9"
+  },
+  {
+    "path": "temp/task23/logs/namespace_identity.txt",
+    "bytes": 1189,
+    "lines": 4,
+    "sha256": "c4491e97a5d0e3f9d12c99d5a0189a8181453ae5fd7a332739da6f8a1e3f69ee"
+  },
+  {
+    "path": "temp/task23/logs/official_modules_sha.txt",
+    "bytes": 1279,
+    "lines": 4,
+    "sha256": "5ef456a664646ac3b82aa9366d8ab0fbcdf3530eb41ce8c92f0dadff262c8a02"
+  },
+  {
+    "path": "temp/task23/logs/payload_difference.txt",
+    "bytes": 1789,
+    "lines": 13,
+    "sha256": "928963bb9e119d20cedc3c5d2fb5f0e8a59dd362c8d9d2ad7681771d7f4ceb0a"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_0.txt",
+    "bytes": 1620,
+    "lines": 11,
+    "sha256": "f0e41747235c1dd5caee7dfadf1b0e700b1ef57f923b74bf2ae2918d65147da9"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_1.txt",
+    "bytes": 2142,
+    "lines": 24,
+    "sha256": "7b0ca997ca289072eee9bddd83dc4324d74c8bbb7fe2252d3cc3901b0e9b3f17"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_100.txt",
+    "bytes": 1618,
+    "lines": 9,
+    "sha256": "6939e8d1e94b31defa4c4f535592fe7efe7439c9c85721a3a5b127040c7f9ee6"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_102.txt",
+    "bytes": 1578,
+    "lines": 8,
+    "sha256": "c8a1d4598a663ca33cfa25ba613fa2bde7549a7eba0f5fd2ac714895e4322e40"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_103.txt",
+    "bytes": 1573,
+    "lines": 8,
+    "sha256": "df62510587b23e34d20f6323a88c8b0142535533f68f9dc49f395fb29e8e0219"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_104.txt",
+    "bytes": 1579,
+    "lines": 8,
+    "sha256": "92b184bf5b7c3e1ebeed7ef5c8b46e18f943743777a3bde92e51389d34c1b927"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_105.txt",
+    "bytes": 1613,
+    "lines": 9,
+    "sha256": "4df4514842c7b9f04a2eceeab949a6ce4f6887cc4a02992607bd0161a0bedf46"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_107.txt",
+    "bytes": 1759,
+    "lines": 13,
+    "sha256": "ca47ddf83bb3cb8e2eddf00dabf8849bab52f152f2465e5645894fa6c983fd2b"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_113.txt",
+    "bytes": 1668,
+    "lines": 11,
+    "sha256": "d97dad4c7e6041118e36bc59b763ad2229e26181f8945c070be47c60136db829"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_117.txt",
+    "bytes": 1604,
+    "lines": 8,
+    "sha256": "1005ffbbeffec8e6261ca721772ce4f6a9df5b3b7d6c0ff3ef7865b1f98af431"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_118.txt",
+    "bytes": 1636,
+    "lines": 9,
+    "sha256": "608b4bb544c5e1554b4265e4a1eac685de943826d50630e480609efe722fec38"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_120.txt",
+    "bytes": 1612,
+    "lines": 8,
+    "sha256": "bb6b9748b05dae6ae08ca265e9db2dbb5fa504340e4c1d14a9fc4abea89666b6"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_121.txt",
+    "bytes": 1612,
+    "lines": 8,
+    "sha256": "d79c5765073e4f5c51367a42c9750e45e948729849e28875eeb72d31ab2bdbf6"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_122.txt",
+    "bytes": 1612,
+    "lines": 8,
+    "sha256": "d13f9ee69e65f278d806714fd7462346d0910b8c5b2a303628a2c70ae830244c"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_18.txt",
+    "bytes": 1656,
+    "lines": 13,
+    "sha256": "abb504136c17d59aaa13f118cfd34677fe74b97269d1270c68709dccef590f63"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_24.txt",
+    "bytes": 1753,
+    "lines": 14,
+    "sha256": "67781b268b63c6aa9c2d4fa3f6dd16bd3b22051bf64cd6acb4387772cbf62065"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_31.txt",
+    "bytes": 1557,
+    "lines": 8,
+    "sha256": "63791cc160a16e5953af54cedc9c78863a16fe4062fad83de426be3160a1957e"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_32.txt",
+    "bytes": 1843,
+    "lines": 21,
+    "sha256": "13ef74d55f47d424c44dff430492412f1336b41b6c569a0a2c261291976a7660"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_46.txt",
+    "bytes": 1587,
+    "lines": 9,
+    "sha256": "54e09c1d734b524667ae3497732418f95b737c37163ae765528b3092bf5ca29b"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_48.txt",
+    "bytes": 1554,
+    "lines": 8,
+    "sha256": "f385882c6f36541dd3b5a84bde6ce9a913744cd33c4f575e22f7d39d8bd48aca"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_49.txt",
+    "bytes": 1552,
+    "lines": 8,
+    "sha256": "6b166f55f545eeda27677afaf095d367c208273924a440fd99056252abfbc5cc"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_50.txt",
+    "bytes": 1550,
+    "lines": 8,
+    "sha256": "886804d88a914bf9096fb73cd62449ee2d92f24e947a5a678f9df95f0adac728"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_51.txt",
+    "bytes": 1561,
+    "lines": 8,
+    "sha256": "31e1901d0f9830832714d5b27b2515ce4b3db38e0f0fa20b0cb98f5f8320b6ff"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_52.txt",
+    "bytes": 1564,
+    "lines": 8,
+    "sha256": "7f1afb060b2e9607909ec2c0de6a7dd42df9fcebe7459adb165a4c17cded58ff"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_53.txt",
+    "bytes": 1564,
+    "lines": 8,
+    "sha256": "581289eb58f3d9cc90535e2532d9e6468725655eb9072d44e5f0ddbdcaefa5dd"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_54.txt",
+    "bytes": 1732,
+    "lines": 13,
+    "sha256": "dda0404121c08af924db30a0256aee5f66a1adfc33c25ababc159adf766b0420"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_60.txt",
+    "bytes": 1560,
+    "lines": 8,
+    "sha256": "ac2078d223fad60a693eafdcc1c68927ee71beacaf356f47aef8e2b3c3b91c92"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_61.txt",
+    "bytes": 1566,
+    "lines": 8,
+    "sha256": "7c5bd2346f872fa6d60d4ebc176a987a0a5628626acb67533ed39fdf218a883a"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_62.txt",
+    "bytes": 1591,
+    "lines": 9,
+    "sha256": "340be0681307bc22d0cc637d103bc356da50edd46d8ae681d88e81e057c4f0e3"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_64.txt",
+    "bytes": 1567,
+    "lines": 8,
+    "sha256": "5435fdfec0e6a43fc9b598fcfa8df2eea72ccc9aad1b1f9adcbab765979e3854"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_65.txt",
+    "bytes": 1559,
+    "lines": 8,
+    "sha256": "8c5d01d449c7fdaf30513b40a56a699f6e0a9dcd989a17198fb4258c032d1770"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_66.txt",
+    "bytes": 1556,
+    "lines": 8,
+    "sha256": "6a4c3a9fe21f66cb65b236efb9498cc26320025a7c0120a1fb3a530438262ed5"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_67.txt",
+    "bytes": 1570,
+    "lines": 8,
+    "sha256": "2d3ced0cd3a0054cb0a12fd314bc2d0941b9330d421f992e6509078e4e116dbb"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_68.txt",
+    "bytes": 1571,
+    "lines": 8,
+    "sha256": "9f9035b395bb3b363c38cc35ce603b3379ee93f147c337d2c28304b8ab209d67"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_69.txt",
+    "bytes": 1559,
+    "lines": 8,
+    "sha256": "78d00d4d75656922f9bf902cc8f545fc00d29e63846e77042c621713e2b33246"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_70.txt",
+    "bytes": 1573,
+    "lines": 8,
+    "sha256": "002dd75a9ee1457e4d7f3ea42dba7837e9a45951a1a6e323a3cf5d697718cc2a"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_71.txt",
+    "bytes": 1604,
+    "lines": 10,
+    "sha256": "b6e022c40fefde92dd47c203e289514b975a344d9cb34cf6772742af478c6f3f"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_74.txt",
+    "bytes": 1572,
+    "lines": 8,
+    "sha256": "1aeee473f7459171e3a57e84323eae096da9993dd6957a92a79ad38525c042ab"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_75.txt",
+    "bytes": 1568,
+    "lines": 8,
+    "sha256": "3751438ae03e3bd7064539887c8e2a72c6cd02ad1ae9cfc5f01e56993cac7c8a"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_76.txt",
+    "bytes": 1567,
+    "lines": 8,
+    "sha256": "46aca801b4ce249e4502e1e8ebff3d405bf29695f9aff6e36b06cf052c6fffb5"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_77.txt",
+    "bytes": 1558,
+    "lines": 8,
+    "sha256": "f71db73a7b7cb06f201bcc52fd95622e5ad1baa292145960255724d4432c8c07"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_78.txt",
+    "bytes": 1584,
+    "lines": 8,
+    "sha256": "f7e2c127de4fc4e7b54c937a0db9f57646e00133c2f58ec1b75ee9f27deb8195"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_79.txt",
+    "bytes": 1577,
+    "lines": 8,
+    "sha256": "0a01e2c054126a8ade0792779ff44001c28697feef9dfb94c4c72a02f2bf802b"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_80.txt",
+    "bytes": 1623,
+    "lines": 9,
+    "sha256": "83e5956e2a262ddd0872b774d35ed11ba4d14311ea54cb0296cda24c4f515f25"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_82.txt",
+    "bytes": 1562,
+    "lines": 8,
+    "sha256": "7727fc5725554535373b544c555e6baf2741c5430d033aebb9cb2af2467467f3"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_83.txt",
+    "bytes": 1594,
+    "lines": 9,
+    "sha256": "ce074817cbec3f5237cf33d601666c3d095622637948cf7e13b52836265a691f"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_85.txt",
+    "bytes": 1572,
+    "lines": 8,
+    "sha256": "14d7b8367ea5b86c8e9a27a6cb6ff86c23e8cc9a15471d9eba78e02eec65b8d8"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_86.txt",
+    "bytes": 1561,
+    "lines": 8,
+    "sha256": "913eb32f3948a666c6b0e25bbd12b78dbfce316c7e2121cd4dbf19205a0a2a93"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_87.txt",
+    "bytes": 1745,
+    "lines": 13,
+    "sha256": "0681f46b3785df9aa071be6de6bafc49ecbdbbd626849818a83d0988f8d3fe28"
+  },
+  {
+    "path": "temp/task23/logs/reference_ls_93.txt",
+    "bytes": 1842,
+    "lines": 14,
+    "sha256": "7a4f4607ec3fc79239a09a5f3dacdf91518aa7b8e074e0d9f3b6772f3ef5142e"
+  },
+  {
+    "path": "temp/task23/logs/reference_symlink.txt",
+    "bytes": 1941,
+    "lines": 18,
+    "sha256": "0da3bd92a4600dbb74d8c08754211ca28bc56e2fdfc57a0b897347978e3f6324"
+  },
+  {
+    "path": "temp/task23/logs/reference_symlink_contents.txt",
+    "bytes": 1546,
+    "lines": 4,
+    "sha256": "26d6205791bfec973118472bf2f8b892ada7579c7d972cacd7a21af75810309d"
+  },
+  {
+    "path": "temp/task23/logs/source_syntax_check.txt",
+    "bytes": 1787,
+    "lines": 10,
+    "sha256": "248ec2ced55e7ad71c7d2a54ad1deedfd7be4dd886bc05f1c7566d30f997f749"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/external_modules_extract.txt",
+    "bytes": 1351,
+    "lines": 4,
+    "sha256": "683369651dc5d1953f37a0f99cff0b919f200f210be50e25d165ed1acf152866"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/external_modules_normalize.txt",
+    "bytes": 2339,
+    "lines": 12,
+    "sha256": "859697a82670be7b0a5562fd432a92486b227ab5e29b860b9ac190d8e9ce26af"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/external_modules_rpm2cpio.txt",
+    "bytes": 1466,
+    "lines": 3,
+    "sha256": "16bdf0f30959068636d500010e06a997899941310c3c11e642ffcd941fb8edfc"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/external_modules_rpm_files.txt",
+    "bytes": 2125,
+    "lines": 14,
+    "sha256": "1195abfff7298b21ce924bfeae85b408f7590a360008a4a7f2b56c060f51097a"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/kernel_extract.txt",
+    "bytes": 1368,
+    "lines": 4,
+    "sha256": "5fdd75d0aa5f248d0e7ecca6593ca52dadd6e6f8303b4eb59dd5c5750e98231a"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/kernel_modules_extract.txt",
+    "bytes": 1337,
+    "lines": 4,
+    "sha256": "232f5e7016f2f9ec89dbe262e962e3eeb5393348bf8b5f11da4b541cd758ab14"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/kernel_modules_normalize.txt",
+    "bytes": 2258,
+    "lines": 7,
+    "sha256": "8f7ff9c287751c85a5869019e79f870ed7d16afbddcb0a0aebf3d1c5e376bc79"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/kernel_modules_rpm2cpio.txt",
+    "bytes": 1472,
+    "lines": 3,
+    "sha256": "5f0ba491d312ddfd8b804f39c24cd4ac76f5ca00fe83b7b657b8b0fc3eba7768"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/kernel_modules_rpm_files.txt",
+    "bytes": 10292,
+    "lines": 116,
+    "sha256": "cc7ef76b6bd5ff4c42c000d8bce59b4cf4582a2380b7a0b0fe96510a2293a487"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/kernel_rpm2cpio.txt",
+    "bytes": 1464,
+    "lines": 3,
+    "sha256": "ddcc23f894283352d509a1bee4231cf3d8c59a6c42800f784827369b722d7096"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/kernel_rpm_files.txt",
+    "bytes": 14617,
+    "lines": 415,
+    "sha256": "4edac5a56e0e82a4bfe0f39faee8c3293cb7eaac6791a5a886e6b19bc8764e05"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/make_deployment_r2.txt",
+    "bytes": 2167,
+    "lines": 8,
+    "sha256": "3dd8d7b05005edc377dbf8cd1b5bb8aeb2f250483a26c639a02999b177007a64"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/make_deployment_r2_final.txt",
+    "bytes": 2125,
+    "lines": 14,
+    "sha256": "1600f66148771a3bbd1d3cea6f51948961d2fcfdfb235f1449aa1a0b7e2db31d"
+  },
+  {
+    "path": "temp/task23/artifacts/verify/verify_deployment_r2_final.txt",
+    "bytes": 1950,
+    "lines": 10,
+    "sha256": "ef942498ea8021e003ba2c9aeac30eb4b2715f25582e4ccdc5bec81fe226a203"
+  },
+  {
+    "path": "temp/task23/reference_first_attempt/reference_ls_0.txt",
+    "bytes": 1620,
+    "lines": 11,
+    "sha256": "f0e41747235c1dd5caee7dfadf1b0e700b1ef57f923b74bf2ae2918d65147da9"
+  },
+  {
+    "path": "temp/task23/reference_first_attempt/reference_ls_1.txt",
+    "bytes": 2142,
+    "lines": 24,
+    "sha256": "7b0ca997ca289072eee9bddd83dc4324d74c8bbb7fe2252d3cc3901b0e9b3f17"
+  },
+  {
+    "path": "temp/task23/reference_first_attempt/reference_symlink.txt",
+    "bytes": 1941,
+    "lines": 18,
+    "sha256": "0da3bd92a4600dbb74d8c08754211ca28bc56e2fdfc57a0b897347978e3f6324"
+  }
+]

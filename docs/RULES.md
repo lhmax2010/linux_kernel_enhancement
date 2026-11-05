@@ -47,6 +47,7 @@ GBS 内部的 sudo 调用（depanneur 的 sudo /usr/bin/build、认证维持 sud
    - 用户2026-11-02已在开发机验证的重连流程：重启后每10秒一轮，先`sdb disconnect 192.168.108.26:26101`（忽略返回值），再`sdb connect`，再用`timeout 15`执行一条只读shell命令探测。连续3轮失败且宿主`timeout 5 bash -c '</dev/tcp/192.168.108.26/26101'`确认端口可连时，先执行`sdb devices`，仅确认列表无其他设备后执行`sdb kill-server`及`sdb start-server`，再继续轮询。每次重启最多重启宿主SDB服务2次；有其他设备则不重启，记录后继续轮询。总时限仍为10分钟，超时停止。此授权仅针对宿主SDB服务，不允许操作其他进程或板上服务；单轮耗时超过10秒时串行完成、不并发，截止时按剩余时限收紧命令超时。
 
 5. 开机自动配网服务：允许为安装该服务执行一次remount读写，只写入该服务的unit文件和脚本（具体路径在安装任务中登记），装完恢复只读；除此之外仍不改根文件系统、不安装或卸载RPM。刷新镜像后的一次性准备（remount、osu --resize、卸载wlandrv-plugin-tizen/mesa/coregl、首次配网）由用户执行。
+   - 任务23追加决定（2026-11-05）：从下一次刷机起，板子准备只做扩分区和安装lko-net-setup，不再卸载wlandrv-plugin-tizen、HAL mesa、coregl。覆盖本项前述历史准备流程中的卸载做法；正式测量前重刷官方镜像并重采。当前板本轮不装包、不改display-manager。
    - 重启后根分区默认只读（见 r6 的 03_display_inspect 证据，此前的 rw 来自用户刷机后的一次性 remount）；今后任何根分区写入都须在授权范围内先 remount rw，写完恢复 ro 并回读。
    - 任务6 r2（2026-11-02）实际安装登记：`/usr/local/sbin/lko-net-setup.sh`（0755）、`/etc/systemd/system/lko-net-setup.service`（0644）；enable创建`/etc/systemd/system/multi-user.target.wants/lko-net-setup.service`，指向`/etc/systemd/system/lko-net-setup.service`。本次 / 原本为 rw，未执行 remount；前后均rw,relatime。只安装/enable，未start、未手动执行脚本、未重启。
    - PM 2026-11-02替代验收仅适用于本次任务6恢复：不要求板上systemd-analyze；以LoadState=loaded、LoadError为空、UnitFileState=enabled、is-enabled=enabled、enable链接正确及reload后无该unit警告/错误为准。任一不符须disable、删除两文件、daemon-reload并确认恢复；安装前/若为ro则停止第二部分，不remount。本次验收通过；第一次重启验证需要用户在场。

@@ -1,0 +1,87 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'set -e; test "$(uname -m)" = armv7l; test "$(uname -r)" = 6.12.80-arm-rpi4-v7l; grep -q "^ID=tizen$" /etc/os-release; test ! -e /opt/usr/lko_task23; test ! -e /usr/lib/modules/6.12.80-arm-rpi4-v7l-lko-base01; test -z "$(grep "^/dev/mmcblk0p1 " /proc/mounts)"; mkdir -p /opt/usr/lko_task23/boot; mount -o ro /dev/mmcblk0p1 /opt/usr/lko_task23/boot; grep " /opt/usr/lko_task23/boot " /proc/mounts; test ! -e /opt/usr/lko_task23/boot/zImage.orig; sha256sum /opt/usr/lko_task23/boot/zImage /opt/usr/lko_task23/boot/bcm2711-rpi-4-b.dtb /opt/usr/lko_task23/boot/config.txt; cat /opt/usr/lko_task23/boot/config.txt
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+/dev/mmcblk0p1 /opt/usr/lko_task23/boot vfat ro,relatime,fmask=0000,dmask=0000,allow_utime=0022,codepage=437,iocharset=ascii,shortname=mixed,errors=remount-ro 0 0
+d5345f13eada3a3aab8b2fca9f511c608469f708d83a6a2445882e68241cc9af  /opt/usr/lko_task23/boot/zImage
+a0561668ec520b0605cdc8b7be6844365ce44f569f363e85f3d7332e1989d6ed  /opt/usr/lko_task23/boot/bcm2711-rpi-4-b.dtb
+7ecdb662716cab1532da77ff755912775284eb3aab5e3c89fd571dba854f7d07  /opt/usr/lko_task23/boot/config.txt
+# For more options and information see
+# http://rptl.io/configtxt
+# Some settings may impact device functionality. See link above for details
+
+# Uncomment some or all of these to enable the optional hardware interfaces
+#dtparam=i2c_arm=on
+#dtparam=i2s=on
+#dtparam=spi=on
+
+# Enable audio (loads snd_bcm2835)
+dtparam=audio=on
+
+# Additional overlays and parameters are documented
+# /boot/firmware/overlays/README
+
+# Automatically load initramfs files, if found
+auto_initramfs=1
+
+# Don't have the firmware create an initial video= setting in cmdline.txt.
+# Use the kernel's default instead.
+disable_fw_kms_setup=1
+
+# Disable compensation for displays with overscan
+#disable_overscan=1
+
+# Run as fast as firmware / board allows
+#arm_boost=1
+
+[cm4]
+# Enable host mode on the 2711 built-in XHCI USB controller.
+# This line should be removed if the legacy DWC2 controller is required
+# (e.g. for USB device mode) or if USB support is not required.
+otg_mode=1
+
+[cm5]
+dtoverlay=dwc2,dr_mode=host
+
+[pi4]
+# Automatically load overlays for detected DSI displays
+display_auto_detect=1
+
+# Enable DRM VC4 V3D driver
+dtoverlay=vc4-kms-v3d-pi4,cma-320
+max_framebuffers=2
+
+# Disable ID_SC and ID_SD pins to use UART2
+force_eeprom_read=0
+
+# Enable dwc2 driver
+dtoverlay=dwc2,dr_mode=peripheral
+
+kernel=u-boot.bin
+
+[all]
+# Enable serial
+enable_uart=1
+uart_2ndstage=1
+
+# Enable the camera module
+camera_auto_detect=1
+
+# Turn off the red camera LED when recording video or taking a still picture
+disable_camera_led=1
+
+# Defines the HDMI output group DMT, set defualt mode 720p
+hdmi_group=2
+hdmi_mode=85
+
+# Set gpio pins to Input, Pullup mode.
+gpio=6,12,13,16,25=ip,pu
+
+# Enable i2c1 controller on default GPIO pins
+dtoverlay=i2c1,pins_2_3
+
+[all]
+total_mem=1600
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

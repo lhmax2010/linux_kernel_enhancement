@@ -1,0 +1,238 @@
+{
+  "number": "2",
+  "reason": "Task23: rollback to original SR kernel",
+  "start": "2026-11-05T23:15:56.215829+08:00",
+  "old_boot_id": "8701dafa-c547-43fb-adf0-36ea312ad9c9",
+  "deadline_seconds": 300,
+  "kill_server_count": 0,
+  "new_boot_id": "b1cfa3f3-276f-42e7-adc6-148df9cc4ee1",
+  "identity_pass": true,
+  "result": "CONNECTED",
+  "seconds": 56.933117426000535,
+  "elapsed": 56.93312168400007,
+  "calls": [
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "reboot"
+      ],
+      "pid": 960954,
+      "exit": 0,
+      "file": "reboot2_command.raw.txt",
+      "elapsed": 0.6174361209996277
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 960969,
+      "exit": 0,
+      "file": "reboot2_round01_disconnect.raw.txt",
+      "elapsed": 0.6220402000035392
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 960970,
+      "exit": 0,
+      "file": "reboot2_round01_connect.raw.txt",
+      "elapsed": 0.6329309380016639
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "cat /proc/sys/kernel/random/boot_id; uname -m; uname -r; cat /etc/os-release"
+      ],
+      "pid": 960972,
+      "exit": 1,
+      "file": "reboot2_round01_probe.raw.txt",
+      "elapsed": 0.6371002880041488
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 961613,
+      "exit": 0,
+      "file": "reboot2_round02_disconnect.raw.txt",
+      "elapsed": 10.641713493998395
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 961614,
+      "exit": 0,
+      "file": "reboot2_round02_connect.raw.txt",
+      "elapsed": 11.658027065001079
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "cat /proc/sys/kernel/random/boot_id; uname -m; uname -r; cat /etc/os-release"
+      ],
+      "pid": 961623,
+      "exit": 1,
+      "file": "reboot2_round02_probe.raw.txt",
+      "elapsed": 11.661895937999361
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 961656,
+      "exit": 0,
+      "file": "reboot2_round03_disconnect.raw.txt",
+      "elapsed": 21.6665263879986
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 961657,
+      "exit": 0,
+      "file": "reboot2_round03_connect.raw.txt",
+      "elapsed": 22.68464124500315
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "cat /proc/sys/kernel/random/boot_id; uname -m; uname -r; cat /etc/os-release"
+      ],
+      "pid": 961665,
+      "exit": 1,
+      "file": "reboot2_round03_probe.raw.txt",
+      "elapsed": 22.689956346002873
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 961692,
+      "exit": 0,
+      "file": "reboot2_round04_disconnect.raw.txt",
+      "elapsed": 32.69515055500233
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 961693,
+      "exit": 0,
+      "file": "reboot2_round04_connect.raw.txt",
+      "elapsed": 33.71562226900278
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "cat /proc/sys/kernel/random/boot_id; uname -m; uname -r; cat /etc/os-release"
+      ],
+      "pid": 961696,
+      "exit": 1,
+      "file": "reboot2_round04_probe.raw.txt",
+      "elapsed": 33.720416768002906
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 961925,
+      "exit": 0,
+      "file": "reboot2_round05_disconnect.raw.txt",
+      "elapsed": 43.724706453002
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 961926,
+      "exit": 0,
+      "file": "reboot2_round05_connect.raw.txt",
+      "elapsed": 44.74152474699804
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "cat /proc/sys/kernel/random/boot_id; uname -m; uname -r; cat /etc/os-release"
+      ],
+      "pid": 961928,
+      "exit": 1,
+      "file": "reboot2_round05_probe.raw.txt",
+      "elapsed": 44.746145712000725
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "disconnect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 962104,
+      "exit": 0,
+      "file": "reboot2_round06_disconnect.raw.txt",
+      "elapsed": 54.750358247001714
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "connect",
+        "192.168.108.26:26101"
+      ],
+      "pid": 962105,
+      "exit": 0,
+      "file": "reboot2_round06_connect.raw.txt",
+      "elapsed": 56.768359164001595
+    },
+    {
+      "command": [
+        "/home/linhao/.local/bin/sdb",
+        "-s",
+        "192.168.108.26:26101",
+        "shell",
+        "cat /proc/sys/kernel/random/boot_id; uname -m; uname -r; cat /etc/os-release"
+      ],
+      "pid": 962114,
+      "exit": 0,
+      "file": "reboot2_round06_probe.raw.txt",
+      "elapsed": 56.93308875000366
+    }
+  ]
+}

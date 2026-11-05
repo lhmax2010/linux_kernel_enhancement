@@ -1,0 +1,13 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'rpm --dbpath=/hal/lib/rpm -q mesa; a=$?; printf "MESA-EXIT=%s\n" "$a"; rpm -q wlandrv-plugin-tizen; b=$?; printf "WLANDRV-EXIT=%s\n" "$b"; rpm -q coregl; c=$?; printf "COREGL-EXIT=%s\n" "$c"
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+package mesa is not installed
+MESA-EXIT=1
+package wlandrv-plugin-tizen is not installed
+WLANDRV-EXIT=1
+package coregl is not installed
+COREGL-EXIT=1
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

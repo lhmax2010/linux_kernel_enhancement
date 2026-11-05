@@ -1,0 +1,7 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 push /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/artifacts/deploy_lko-base01-r2/deploy_lko-base01-r2.tar.gz /opt/usr/lko_task23/deploy_lko-base01-r2.tar.gz
+WARNING: Your data are to be sent over an unencrypted connection and could be read by others.
+pushed    deploy_lko-base01-r2.tar.gz	  0%	      0MB	    0KB/spushed    deploy_lko-base01-r2.tar.gz	 75%	     11MB	10626KB/spushed    deploy_lko-base01-r2.tar.gz	100%	     15MB	10626KB/s
+1 file(s) pushed. 0 file(s) skipped.
+/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/artifacts/deploy_lko-base01-r2/deploy_lko-base01-r2.tar.gz   6902KB/s (15991422 bytes in 2.262s)
+
+TRANSPORT-EXIT=0

@@ -1,0 +1,22 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'uname -m; uname -r; cat /etc/os-release; cat /proc/sys/kernel/random/boot_id; cat /proc/uptime; cat /proc/version; grep MemTotal /proc/meminfo; id
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+armv7l
+6.12.80-arm-rpi4-v7l
+NAME=Tizen
+VERSION="11.0.0 (Tizen11.0/Unified)"
+ID=tizen
+VERSION_ID=11.0.0
+PRETTY_NAME="Tizen 11.0.0 (Tizen11.0/Unified)"
+ANSI_COLOR="0;36"
+CPE_NAME="cpe:/o:tizen:tizen:11.0.0"
+BUILD_ID=tizen-unified-toolchain_20261104.160709_tizen-headed-armv7l
+b1cfa3f3-276f-42e7-adc6-148df9cc4ee1
+59.36 211.17
+Linux version 6.12.80-arm-rpi4-v7l (abuild@ip-192-168-56-171) (clang version 22.1.8, LLD 22.1.8) #1 SMP Wed Nov  4 17:05:36 UTC 2026
+MemTotal:        1507996 kB
+uid=0(root) gid=0(root) groups=0(root),29(audio),44(video),201(display),1901(log),6505(pulse-access),6506(pulse-rt),6525(usb_device),10001(priv_externalstorage),10013(priv_tee_client),10014(priv_peripheralio),10212(priv_platform),10501(priv_camera),10502(priv_mediastorage),10503(priv_recorder),10704(priv_internet),10705(priv_network_get),10711(priv_tethering_admin),10901(priv_email),10903(priv_message_read),11103(priv_mapservice),11201(priv_appdebugging) context="User::Shell"
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

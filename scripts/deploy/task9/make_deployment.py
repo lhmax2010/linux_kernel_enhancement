@@ -1,0 +1,35 @@
+from pathlib import Path
+import shutil,hashlib,json,os,sys,tarfile,subprocess
+W=Path('/home/linhao/Toolchain/development/linux_kernel_optimization')
+T=Path(os.environ.get('LKO_TASK_ROOT',W/'temp/task9'));V=T/'verify';D=T/'deploy_lko-base01-r2';rel='6.12.80-arm-rpi4-v7l-lko-base01'
+sys.path.insert(0,str(W/'scripts/deploy'))
+from module_metadata import normalize,scan,check,load_reference,verify_archive
+ref=load_reference(W/'evidence/task23/sr_module_reference.json')
+assert not D.exists();payload=D/'payload';(payload/'boot').mkdir(parents=True);(payload/'lib/modules').mkdir(parents=True)
+shutil.copyfile(V/'extract-kernel/boot/zImage',payload/'boot/zImage')
+shutil.copytree(T/'stage/lib/modules'/rel,payload/'lib/modules'/rel,symlinks=True)
+shutil.copytree(V/'extract-extra/lib/modules'/rel/'extra',payload/'lib/modules'/rel/'extra',symlinks=True)
+# Regenerate indices after merging extra/, as in the original task9 flow.
+cmd=['/usr/bin/qemu-arm','-L','/','/sbin/depmod','-b',str(payload),rel]
+r=subprocess.run(cmd,capture_output=True,text=True)
+(D/'depmod.txt').write_text(str(cmd)+'\n'+r.stdout+r.stderr+'\nEXIT='+str(r.returncode)+'\n')
+assert r.returncode==0
+changes=normalize(payload/'lib/modules'/rel,ref)
+for p in [payload,payload/'boot',payload/'lib',payload/'lib/modules']:
+ os.chown(p,0,0);os.chmod(p,0o755)
+os.chown(payload/'boot/zImage',0,0);os.chmod(payload/'boot/zImage',0o644)
+rows=scan(payload);result=check(rows,ref,rel);assert result['pass'],result
+# No content changes: compare against the original verified payload, not only the new extraction.
+old=json.loads((W/'temp/task9/deploy_lko-base01/manifest.json').read_text())
+expected={x['path']:x['sha256'] for x in old['files']}
+actual={k:v['sha256'] for k,v in rows.items() if v['type']=='file'}
+assert expected==actual,'Payload content differs from task9 verified files'
+manifest={'release':rel,'reference_image_sha256':'d0ec6f50ceb59c6f8a4cf3d901df221449705b63bad3db3b69e2c95ed86e939f','directory_hash':None,'entries':rows}
+(D/'metadata.json').write_text(json.dumps(manifest,indent=2)+'\n')
+(D/'SHA256SUMS').write_text(''.join(v+'  '+k+'\n' for k,v in sorted(actual.items())))
+archive=D/'deploy_lko-base01-r2.tar.gz'
+with tarfile.open(archive,'w:gz',dereference=False) as tf:
+ for name in sorted(rows):tf.add(payload/name,arcname=name,recursive=False)
+validation=verify_archive(archive,rows,ref,rel);assert validation['pass'],validation
+validation.update({'normalized_after_assembly':changes,'unchanged_content_files':len(actual),'archive_bytes':archive.stat().st_size,'archive_sha256':hashlib.sha256(archive.read_bytes()).hexdigest()})
+(D/'acceptance.json').write_text(json.dumps(validation,indent=2)+'\n');print(json.dumps(validation,indent=2))

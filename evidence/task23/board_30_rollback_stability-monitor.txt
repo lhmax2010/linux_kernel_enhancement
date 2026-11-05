@@ -1,0 +1,13 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'systemctl show stability-monitor.service -p Id -p ActiveState -p SubState -p Result -p ExecMainStatus -p NRestarts
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+Result=success
+NRestarts=0
+ExecMainStatus=0
+Id=stability-monitor.service
+ActiveState=active
+SubState=running
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

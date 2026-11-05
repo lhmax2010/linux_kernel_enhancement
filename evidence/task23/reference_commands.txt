@@ -1,0 +1,602 @@
+
+## platform_reference_ls_0.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/2/040555/0/0/.//
+/2/040555/0/0/..//
+/11/040700/0/0/lost+found//
+/12/040755/0/0/6.12.80-arm-rpi4-v7l//
+/128/040755/0/0/modprobe.d//
+/129/040755/0/0/modules-load.d//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_1.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/12/040755/0/0/.//
+/2/040555/0/0/..//
+/14/040755/0/0/kernel//
+/13/120777/0/0/build/68/
+/111/100644/0/0/modules.alias.bin/159406/
+/118/100644/0/0/modules.alias/166073/
+/123/100644/0/0/modules.builtin.bin/28901/
+/113/100644/0/0/modules.builtin/25588/
+/125/040755/0/0/extra//
+/115/100644/0/0/modules.builtin.alias.bin/23116/
+/116/100644/0/0/modules.builtin.modinfo/164558/
+/139/100644/0/0/modules.dep/4223/
+/117/100644/0/0/modules.dep.bin/7028/
+/114/100644/0/0/modules.devname/0/
+/120/100644/0/0/modules.order/2259/
+/112/100644/0/0/modules.softdep/55/
+/124/100644/0/0/modules.symbols/18789/
+/122/100644/0/0/modules.symbols.bin/24302/
+/121/100644/0/0/modules.weakdep/55/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_100.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/media/usb/gspca' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/44/040755/0/0/.//
+/43/040755/0/0/..//
+/45/100644/0/0/gspca_main.ko/42136/
+/46/100644/0/0/gspca_zc3xx.ko/77204/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_102.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/53/040755/0/0/.//
+/52/040755/0/0/..//
+/54/040755/0/0/brcm80211//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_103.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/mediatek' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/65/040755/0/0/.//
+/52/040755/0/0/..//
+/66/040755/0/0/mt76//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_104.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/usb/gadget/udc' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/81/040755/0/0/.//
+/80/040755/0/0/..//
+/82/100644/0/0/dummy_hcd.ko/42780/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_105.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/54/040755/0/0/.//
+/53/040755/0/0/..//
+/55/040755/0/0/brcmfmac//
+/63/040755/0/0/brcmutil//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_107.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/mediatek/mt76' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/66/040755/0/0/.//
+/65/040755/0/0/..//
+/70/040755/0/0/mt7921//
+/67/100644/0/0/mt76-connac-lib.ko/140048/
+/68/100644/0/0/mt76-usb.ko/55556/
+/69/100644/0/0/mt76.ko/164096/
+/73/100644/0/0/mt792x-lib.ko/80936/
+/74/100644/0/0/mt792x-usb.ko/28444/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_113.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/55/040755/0/0/.//
+/54/040755/0/0/..//
+/56/040755/0/0/bca//
+/59/040755/0/0/cyw//
+/61/040755/0/0/wcc//
+/58/100644/0/0/brcmfmac.ko/543984/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_117.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/63/040755/0/0/.//
+/54/040755/0/0/..//
+/64/100644/0/0/brcmutil.ko/19788/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_118.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/mediatek/mt76/mt7921' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/70/040755/0/0/.//
+/66/040755/0/0/..//
+/71/100644/0/0/mt7921-common.ko/183324/
+/72/100644/0/0/mt7921u.ko/32372/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_120.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bca' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/56/040755/0/0/.//
+/55/040755/0/0/..//
+/57/100644/0/0/brcmfmac-bca.ko/17772/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_121.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cyw' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/59/040755/0/0/.//
+/55/040755/0/0/..//
+/60/100644/0/0/brcmfmac-cyw.ko/18352/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_122.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/wcc' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/61/040755/0/0/.//
+/55/040755/0/0/..//
+/62/100644/0/0/brcmfmac-wcc.ko/17120/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_18.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/14/040755/0/0/.//
+/12/040755/0/0/..//
+/15/040755/0/0/crypto//
+/17/040755/0/0/drivers//
+/92/040755/0/0/fs//
+/96/040755/0/0/lib//
+/98/040755/0/0/net//
+/101/040755/0/0/sound//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_24.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/extra' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/125/040755/0/0/.//
+/12/040755/0/0/..//
+/126/040755/0/0/kdbus//
+/127/040755/0/0/zlogger//
+/131/100644/0/0/extcon-usb-fixed.ko/6156/
+/130/100644/0/0/dm-bow.ko/31868/
+/132/100644/0/0/inform-reboot.ko/7052/
+/134/100644/0/0/logger.ko/23664/
+/135/100644/0/0/proc-tsm.ko/10680/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_31.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/crypto' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/15/040755/0/0/.//
+/14/040755/0/0/..//
+/16/100644/0/0/md5.ko/10480/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_32.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/17/040755/0/0/.//
+/14/040755/0/0/..//
+/18/040755/0/0/block//
+/20/040755/0/0/bluetooth//
+/27/040755/0/0/char//
+/30/040755/0/0/hid//
+/32/040755/0/0/i2c//
+/36/040755/0/0/input//
+/38/040755/0/0/leds//
+/42/040755/0/0/media//
+/47/040755/0/0/mfd//
+/49/040755/0/0/misc//
+/51/040755/0/0/net//
+/75/040755/0/0/spi//
+/77/040755/0/0/usb//
+/90/040755/0/0/watchdog//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_46.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/fs' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/92/040755/0/0/.//
+/14/040755/0/0/..//
+/94/040755/0/0/ecryptfs//
+/93/100644/0/0/binfmt_misc.ko/22420/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_48.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/lib' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/96/040755/0/0/.//
+/14/040755/0/0/..//
+/97/100644/0/0/crc7.ko/4304/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_49.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/net' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/98/040755/0/0/.//
+/14/040755/0/0/..//
+/99/040755/0/0/netfilter//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_50.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/sound' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/101/040755/0/0/.//
+/14/040755/0/0/..//
+/102/040755/0/0/soc//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_51.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/extra/kdbus' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/126/040755/0/0/.//
+/125/040755/0/0/..//
+/133/100644/0/0/kdbus.ko/162584/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_52.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/extra/zlogger' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/127/040755/0/0/.//
+/125/040755/0/0/..//
+/136/100644/0/0/zlogger.ko/31628/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_53.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/block' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/18/040755/0/0/.//
+/17/040755/0/0/..//
+/19/100644/0/0/nbd.ko/76580/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_54.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/bluetooth' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/20/040755/0/0/.//
+/17/040755/0/0/..//
+/21/100644/0/0/bcm203x.ko/10768/
+/22/100644/0/0/btbcm.ko/20816/
+/23/100644/0/0/btintel.ko/69412/
+/24/100644/0/0/btrtl.ko/33748/
+/25/100644/0/0/btusb.ko/77020/
+/26/100644/0/0/hci_uart.ko/55672/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_60.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/char' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/27/040755/0/0/.//
+/17/040755/0/0/..//
+/28/040755/0/0/broadcom//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_61.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/hid' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/30/040755/0/0/.//
+/17/040755/0/0/..//
+/31/100644/0/0/hid-led.ko/15940/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_62.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/i2c' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/32/040755/0/0/.//
+/17/040755/0/0/..//
+/33/040755/0/0/busses//
+/35/100644/0/0/i2c-stub.ko/12880/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_64.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/input' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/36/040755/0/0/.//
+/17/040755/0/0/..//
+/37/100644/0/0/joydev.ko/26904/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_65.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/leds' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/38/040755/0/0/.//
+/17/040755/0/0/..//
+/39/040755/0/0/trigger//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_66.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/media' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/42/040755/0/0/.//
+/17/040755/0/0/..//
+/43/040755/0/0/usb//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_67.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/mfd' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/47/040755/0/0/.//
+/17/040755/0/0/..//
+/48/100644/0/0/wl1273-core.ko/11380/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_68.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/misc' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/49/040755/0/0/.//
+/17/040755/0/0/..//
+/50/100644/0/0/bcm2835_smi.ko/25360/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_69.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/51/040755/0/0/.//
+/17/040755/0/0/..//
+/52/040755/0/0/wireless//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_70.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/spi' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/75/040755/0/0/.//
+/17/040755/0/0/..//
+/76/100644/0/0/spi-bcm2835aux.ko/13828/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_71.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/usb' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/77/040755/0/0/.//
+/17/040755/0/0/..//
+/78/040755/0/0/class//
+/80/040755/0/0/gadget//
+/83/040755/0/0/serial//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_74.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/watchdog' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/90/040755/0/0/.//
+/17/040755/0/0/..//
+/91/100644/0/0/gpio_wdt.ko/10296/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_75.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/fs/ecryptfs' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/94/040755/0/0/.//
+/92/040755/0/0/..//
+/95/100644/0/0/ecryptfs.ko/145900/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_76.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/net/netfilter' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/99/040755/0/0/.//
+/98/040755/0/0/..//
+/100/100644/0/0/xt_LED.ko/9612/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_77.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/sound/soc' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/102/040755/0/0/.//
+/101/040755/0/0/..//
+/103/040755/0/0/codecs//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_78.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/char/broadcom' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/28/040755/0/0/.//
+/27/040755/0/0/..//
+/29/100644/0/0/bcm2835_smi_dev.ko/16828/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_79.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/i2c/busses' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/33/040755/0/0/.//
+/32/040755/0/0/..//
+/34/100644/0/0/i2c-bcm2708.ko/15596/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_80.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/leds/trigger' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/39/040755/0/0/.//
+/38/040755/0/0/..//
+/41/100644/0/0/ledtrig-transient.ko/9872/
+/40/100644/0/0/ledtrig-camera.ko/6580/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_82.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/media/usb' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/43/040755/0/0/.//
+/42/040755/0/0/..//
+/44/040755/0/0/gspca//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_83.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/net/wireless' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/52/040755/0/0/.//
+/51/040755/0/0/..//
+/53/040755/0/0/broadcom//
+/65/040755/0/0/mediatek//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_85.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/usb/class' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/78/040755/0/0/.//
+/77/040755/0/0/..//
+/79/100644/0/0/cdc-acm.ko/55232/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_86.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/usb/gadget' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/80/040755/0/0/.//
+/77/040755/0/0/..//
+/81/040755/0/0/udc//
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_87.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/drivers/usb/serial' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/83/040755/0/0/.//
+/77/040755/0/0/..//
+/84/100644/0/0/cp210x-stlink.ko/21400/
+/85/100644/0/0/cp210x.ko/51116/
+/86/100644/0/0/ftdi_sio.ko/129632/
+/87/100644/0/0/option.ko/181868/
+/88/100644/0/0/pl2303.ko/30696/
+/89/100644/0/0/usb_wwan.ko/20640/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_ls_93.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'ls -p /6.12.80-arm-rpi4-v7l/kernel/sound/soc/codecs' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/103/040755/0/0/.//
+/102/040755/0/0/..//
+/104/100644/0/0/snd-soc-cs42xx8-i2c.ko/9348/
+/105/100644/0/0/snd-soc-cs42xx8.ko/28936/
+/106/100644/0/0/snd-soc-pcm512x-i2c.ko/9876/
+/107/100644/0/0/snd-soc-pcm512x.ko/41568/
+/108/100644/0/0/snd-soc-sgtl5000.ko/40196/
+/109/100644/0/0/snd-soc-tpa6130a2.ko/16036/
+/110/100644/0/0/snd-soc-wm8741.ko/19160/
+
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_symlink.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'stat /6.12.80-arm-rpi4-v7l/build' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+Inode: 13   Type: symlink    Mode:  0777   Flags: 0x80000
+Generation: 4195891139    Version: 0x00000004
+User:     0   Group:     0   Size: 68
+File ACL: 1293
+Links: 1   Blockcount: 16
+Fragment:  Address: 0    Number: 0    Size: 0
+ctime: 0x6aeb9e4d -- Wed Nov  4 21:06:21 2026
+atime: 0x6aeb6a74 -- Wed Nov  4 17:25:08 2026
+mtime: 0x6aeb6a74 -- Wed Nov  4 17:25:08 2026
+Extended attributes:
+  security.SMACK64 (1) = "_"
+Inode checksum: 0x00000971
+EXTENTS:
+(0):1295
+debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0
+
+## platform_reference_symlink_contents.txt
+$ /usr/bin/bwrap --unshare-user --unshare-pid --uid 0 --gid 0 --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23 --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C --setenv LD_LIBRARY_PATH /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/lib:/home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/lib -- /usr/bin/qemu-arm -L / /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task23/tools/root/usr/sbin/debugfs -R 'cat /6.12.80-arm-rpi4-v7l/build' /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task17/sr/modules.img
+/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4debugfs 1.46.0 (29-Jan-2020)
+
+EXIT=0

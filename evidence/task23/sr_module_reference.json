@@ -1,0 +1,746 @@
+{
+  "source_image": "temp/task17/sr/modules.img",
+  "source_image_sha256": "d0ec6f50ceb59c6f8a4cf3d901df221449705b63bad3db3b69e2c95ed86e939f",
+  "source_release": "6.12.80-arm-rpi4-v7l",
+  "entries": {
+    ".": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "build": {
+      "type": "symlink",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0777",
+      "link_target": "/home/abuild/rpmbuild/BUILD/rpi4-linux-kernel-6.12.80/build/arm-rpi4"
+    },
+    "extra": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "extra/dm-bow.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "extra/extcon-usb-fixed.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "extra/inform-reboot.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "extra/kdbus": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "extra/kdbus/kdbus.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "extra/logger.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "extra/proc-tsm.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "extra/zlogger": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "extra/zlogger/zlogger.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/crypto": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/crypto/md5.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/block": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/block/nbd.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/bluetooth": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/bluetooth/bcm203x.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/bluetooth/btbcm.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/bluetooth/btintel.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/bluetooth/btrtl.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/bluetooth/btusb.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/bluetooth/hci_uart.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/char": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/char/broadcom": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/char/broadcom/bcm2835_smi_dev.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/hid": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/hid/hid-led.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/i2c": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/i2c/busses": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/i2c/busses/i2c-bcm2708.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/i2c/i2c-stub.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/input": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/input/joydev.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/leds": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/leds/trigger": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/leds/trigger/ledtrig-camera.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/leds/trigger/ledtrig-transient.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/media": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/media/usb": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/media/usb/gspca": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/media/usb/gspca/gspca_main.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/media/usb/gspca/gspca_zc3xx.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/mfd": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/mfd/wl1273-core.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/misc": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/misc/bcm2835_smi.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless/broadcom": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless/broadcom/brcm80211": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bca": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bca/brcmfmac-bca.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cyw": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cyw/brcmfmac-cyw.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/wcc": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/wcc/brcmfmac-wcc.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil/brcmutil.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net/wireless/mediatek": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless/mediatek/mt76": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless/mediatek/mt76/mt76-connac-lib.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net/wireless/mediatek/mt76/mt76-usb.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net/wireless/mediatek/mt76/mt76.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net/wireless/mediatek/mt76/mt7921": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921-common.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921u.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net/wireless/mediatek/mt76/mt792x-lib.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/net/wireless/mediatek/mt76/mt792x-usb.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/spi": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/spi/spi-bcm2835aux.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/usb": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/usb/class": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/usb/class/cdc-acm.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/usb/gadget": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/usb/gadget/udc": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/usb/gadget/udc/dummy_hcd.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/usb/serial": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/usb/serial/cp210x-stlink.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/usb/serial/cp210x.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/usb/serial/ftdi_sio.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/usb/serial/option.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/usb/serial/pl2303.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/usb/serial/usb_wwan.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/drivers/watchdog": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/drivers/watchdog/gpio_wdt.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/fs": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/fs/binfmt_misc.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/fs/ecryptfs": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/fs/ecryptfs/ecryptfs.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/lib": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/lib/crc7.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/net": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/net/netfilter": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/net/netfilter/xt_LED.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/sound": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/sound/soc": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/sound/soc/codecs": {
+      "type": "directory",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0755"
+    },
+    "kernel/sound/soc/codecs/snd-soc-cs42xx8-i2c.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/sound/soc/codecs/snd-soc-cs42xx8.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/sound/soc/codecs/snd-soc-pcm512x-i2c.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/sound/soc/codecs/snd-soc-pcm512x.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/sound/soc/codecs/snd-soc-sgtl5000.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/sound/soc/codecs/snd-soc-tpa6130a2.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "kernel/sound/soc/codecs/snd-soc-wm8741.ko": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.alias": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.alias.bin": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.builtin": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.builtin.alias.bin": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.builtin.bin": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.builtin.modinfo": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.dep": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.dep.bin": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.devname": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.order": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.softdep": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.symbols": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.symbols.bin": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    },
+    "modules.weakdep": {
+      "type": "file",
+      "uid": 0,
+      "gid": 0,
+      "mode": "0644"
+    }
+  }
+}

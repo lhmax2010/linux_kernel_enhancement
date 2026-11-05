@@ -1,0 +1,82 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'set -e; cd /opt/usr/lko_task23; sha256sum deploy_lko-base01-r2.tar.gz; mkdir stage; tar -xzf deploy_lko-base01-r2.tar.gz -C stage; cd stage; sha256sum -c ../SHA256SUMS
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+c88dad7d83734f7edad66e49e5712b6d71da7e529e4cacf5ce651e5918b8ea14  deploy_lko-base01-r2.tar.gz
+boot/zImage: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/dm-bow.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/extcon-usb-fixed.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/inform-reboot.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/kdbus/kdbus.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/logger.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/proc-tsm.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/extra/zlogger/zlogger.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/crypto/md5.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/block/nbd.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/bcm203x.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btbcm.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btintel.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btrtl.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/btusb.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/bluetooth/hci_uart.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/char/broadcom/bcm2835_smi_dev.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/hid/hid-led.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c/busses/i2c-bcm2708.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/i2c/i2c-stub.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/input/joydev.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds/trigger/ledtrig-camera.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/leds/trigger/ledtrig-transient.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb/gspca/gspca_main.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/media/usb/gspca/gspca_zc3xx.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/mfd/wl1273-core.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/misc/bcm2835_smi.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/bca/brcmfmac-bca.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/brcmfmac.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/cyw/brcmfmac-cyw.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmfmac/wcc/brcmfmac-wcc.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/broadcom/brcm80211/brcmutil/brcmutil.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76-connac-lib.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76-usb.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt76.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921-common.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt7921/mt7921u.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt792x-lib.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/net/wireless/mediatek/mt76/mt792x-usb.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/spi/spi-bcm2835aux.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/class/cdc-acm.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/gadget/udc/dummy_hcd.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/cp210x-stlink.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/cp210x.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/ftdi_sio.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/option.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/pl2303.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/usb/serial/usb_wwan.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/drivers/watchdog/gpio_wdt.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs/binfmt_misc.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/fs/ecryptfs/ecryptfs.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/lib/crc7.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/net/netfilter/xt_LED.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-cs42xx8-i2c.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-cs42xx8.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-pcm512x-i2c.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-pcm512x.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-sgtl5000.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-tpa6130a2.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/kernel/sound/soc/codecs/snd-soc-wm8741.ko: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.alias: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.alias.bin: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.alias.bin: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.bin: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.builtin.modinfo: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.dep: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.dep.bin: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.devname: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.order: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.softdep: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.symbols: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.symbols.bin: OK
+lib/modules/6.12.80-arm-rpi4-v7l-lko-base01/modules.weakdep: OK
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

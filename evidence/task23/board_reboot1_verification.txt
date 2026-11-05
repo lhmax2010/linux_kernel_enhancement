@@ -1,0 +1,66 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'journalctl -b -t lko-net-setup -o short-monotonic --no-pager; systemctl show lko-net-setup.service -p ActiveState -p SubState -p Result -p ExecMainStatus -p ExecMainStartTimestampMonotonic -p ExecMainExitTimestampMonotonic; cat /proc/mounts; ip link show eth0; ip addr show eth0; cat /proc/sys/kernel/random/boot_id; cat /proc/uptime
+remote_rc=$?
+printf "\nTASK23-REMOTE-EXIT=%s\n" "$remote_rc"'
+-- Logs begin at Thu 2026-11-05 22:56:27 KST, end at Fri 2026-11-06 00:14:28 KST. --
+[   20.278927] localhost lko-net-setup[798]: service found: ethernet_2ccf67a072b5_cable
+[   20.328353] localhost lko-net-setup[802]: connmanctl config ethernet_2ccf67a072b5_cable --ipv4 manual 192.168.108.26 255.255.255.0 192.168.108.1 --nameservers 221.131.143.69 : exit=0
+[   20.332526] localhost lko-net-setup[803]: /etc/resolv.conf is a symbolic link
+[   20.352452] localhost lko-net-setup[806]: DNS target=/opt/etc/resolv.conf; findmnt exit=0; options=rw,relatime
+[   20.358263] localhost lko-net-setup[808]: DNS written successfully
+[   20.361961] localhost lko-net-setup[809]: network setup complete
+Result=success
+ExecMainStartTimestampMonotonic=15396831
+ExecMainExitTimestampMonotonic=20363179
+ExecMainStatus=0
+ActiveState=active
+SubState=exited
+devtmpfs /dev devtmpfs rw,nosuid,size=581964k,nr_inodes=97447,mode=755 0 0
+sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
+proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
+/dev/mmcblk0p6 /usr/lib/modules ext4 ro,relatime 0 0
+/dev/mmcblk0p2 / ext4 ro,relatime 0 0
+/dev/mmcblk0p3 /opt ext4 rw,relatime 0 0
+/dev/mmcblk0p10 /hal ext4 ro,relatime 0 0
+smackfs /sys/fs/smackfs smackfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /dev/shm tmpfs rw,nosuid,nodev,noexec 0 0
+devpts /dev/pts devpts rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000 0 0
+tmpfs /run tmpfs rw,nosuid,nodev,noexec,mode=755 0 0
+tmpfs /sys/fs/cgroup tmpfs ro,nosuid,nodev,noexec,mode=755 0 0
+cgroup /sys/fs/cgroup/systemd cgroup rw,nosuid,nodev,noexec,relatime,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd 0 0
+kdbusfs /sys/fs/kdbus kdbusfs rw,nosuid,nodev,noexec,relatime 0 0
+bpf /sys/fs/bpf bpf rw,nosuid,nodev,noexec,relatime,mode=700 0 0
+cgroup /sys/fs/cgroup/cpu,cpuacct cgroup rw,nosuid,nodev,noexec,relatime,cpu,cpuacct 0 0
+cgroup /sys/fs/cgroup/memory cgroup rw,nosuid,nodev,noexec,relatime,memory 0 0
+cgroup /sys/fs/cgroup/blkio cgroup rw,nosuid,nodev,noexec,relatime,blkio 0 0
+cgroup /sys/fs/cgroup/net_cls cgroup rw,nosuid,nodev,noexec,relatime,net_cls,release_agent=/usr/bin/net-cls-release 0 0
+cgroup /sys/fs/cgroup/devices cgroup rw,nosuid,nodev,noexec,relatime,devices 0 0
+cgroup /sys/fs/cgroup/cpuset cgroup rw,nosuid,nodev,noexec,relatime,cpuset 0 0
+cgroup /sys/fs/cgroup/freezer cgroup rw,nosuid,nodev,noexec,relatime,freezer 0 0
+systemd-1 /proc/sys/fs/binfmt_misc autofs rw,relatime,fd=25,pgrp=1,timeout=0,minproto=5,maxproto=5,direct 0 0
+mqueue /dev/mqueue mqueue rw,nosuid,nodev,noexec,relatime 0 0
+configfs /sys/kernel/config configfs rw,nosuid,nodev,noexec,relatime 0 0
+debugfs /sys/kernel/debug debugfs rw,nosuid,nodev,noexec,relatime 0 0
+tmpfs /tmp tmpfs rw,nosuid,nodev,noexec 0 0
+/dev/mmcblk0p9 /mnt/inform ext4 rw,relatime 0 0
+tracefs /sys/kernel/debug/tracing tracefs rw,nosuid,nodev,noexec,relatime 0 0
+/dev/mmcblk0p5 /opt/usr f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+fusectl /sys/fs/fuse/connections fusectl rw,nosuid,nodev,noexec,relatime 0 0
+/dev/loop0 /opt/usr/home/owner/subsession/__templ_acct_fix__ ext4 rw,relatime 0 0
+cgroup /sys/fs/cgroup/watchdog cgroup rw,nosuid,nodev,noexec,relatime,release_agent=/usr/bin/resourced-watchdog-handler.sh,name=watchdog 0 0
+/dev/loop1 /opt/usr/home/owner/subsession/__templ_prof_fix__ ext4 rw,relatime 0 0
+tmpfs /opt/media tmpfs rw,relatime 0 0
+/dev/mmcblk0p5 /opt/usr/home/owner/media f2fs rw,lazytime,relatime,background_gc=on,nogc_merge,discard,discard_unit=block,user_xattr,inline_xattr,acl,inline_data,inline_dentry,flush_merge,barrier,extent_cache,mode=adaptive,active_logs=6,alloc_mode=default,checkpoint_merge,fsync_mode=posix,memory=normal,errors=continue 0 0
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP mode DEFAULT group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+2: eth0: <BROADCAST,MULTICAST,DYNAMIC,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether 2c:cf:67:a0:72:b5 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.108.26/24 brd 192.168.108.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::2ecf:67ff:fea0:72b5/64 scope link 
+       valid_lft forever preferred_lft forever
+8701dafa-c547-43fb-adf0-36ea312ad9c9
+31.37 102.38
+
+TASK23-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

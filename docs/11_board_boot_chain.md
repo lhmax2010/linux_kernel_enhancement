@@ -562,3 +562,12 @@ error: serial number '192.168.108.26:26101' wrong
 已`sdb root off`，随后只读id回读**uid=5001(owner)**，boot_id仍为第3次的f0f81c95…：[root off](../evidence/task7/r4/07_root_off.transport.txt)、[owner](../evidence/task7/r4/08_owner.transport.txt)。本轮没有创建板上临时目录或推送文件，没有删除现有文件；无板上临时文件需要清理。起止根分区和模块分区均ro；/opt/usr df已用983204、可用115421020 KiB不变，/opt日志占用随重启增加，未声称所有df一致。完整快照见03与06。
 
 宿主原始文件留temp/task7/r4，journal/dmesg全文不上传，只发布相关文本摘录及行号、原始文件大小/行数/SHA-256；[manifest](../evidence/task7/r4/raw_manifest.tsv)。旧r3–r5及超时证据保留，当前结论以本节为准。配网服务验证完成；挂账：**display-manager处理方式待PM决定**、**U-Boot串口命令行能否进入，用户待测**；具体内核替换执行任务仍由PM下发。
+
+
+## 附录：任务23部署元数据门槛（2026-11-05）
+
+任务22确认旧部署包的三个extra目录为root:root/0700，阻止UID204读取模块；本轮修正DAC权限，不改SMACK标签。制作时以官方SR modules.img（SHA256 `d0ec6f50ceb59c6f8a4cf3d901df221449705b63bad3db3b69e2c95ed86e939f`）相同相对路径的类型、数字属主/属组、权限为准；官方没有的新目录用root:root/0755、新普通文件用root:root/0644，不递归增加文件执行位。build符号链接保留字面目标、不跟随。
+
+制作流程解包后校正元数据，合并extra后执行平台depmod，再生成逐条metadata.json（类型、uid/gid、模式、链接目标、内容SHA256）。归档实际条目必须与清单完全一致，且同名路径与官方元数据一致；所有.ko文件对others可读，从版本目录根到文件的每一级目录对others可搜索。任何失败都不生成可用结论。工具见`scripts/deploy/`，参考清单见`evidence/task23/sr_module_reference.json`。
+
+**板上重启前必须再过一次门槛**：复制新版本模块目录后，回读全部条目的类型、数字uid/gid、模式、链接目标和文件哈希，与归档清单逐项比较；再次对每个.ko检查目录链的others x和文件others r。禁止通过后续chmod掩盖制作或复制错误；不符就停止，不替换zImage、不重启。模块分区写完立即恢复ro并回读。通过后才按既有步骤保留zImage.orig、放入实验zImage、sync、卸载boot、无参数reboot。vfat上的zImage没有SMACK标签，不处理。回退仍恢复原zImage，重启原内核后移除本轮新模块版本目录，核对全部boot和原模块文件哈希、元数据、模块/服务/网络。

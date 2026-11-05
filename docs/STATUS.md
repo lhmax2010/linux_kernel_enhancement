@@ -1,10 +1,14 @@
 # 项目状态
 
-任务22诊断完成：base01归档extra目录root:root/0700阻止非root服务访问，官方目录0755；两边14个索引相同、proc-tsm 26项CRC匹配，跳过重部署C，未修复。两官方镜像均含coregl，D只读追查未找到删除动作/操作者；已撤回20中的用户准备推测。原SR+total_mem=1600保持，10模块/服务/网络正常，owner已恢复；工具与镜像副本已清理。后续需PM安排部署包权限修订/重测，coregl删除来源缺更早记录。详见[22](22_base01_coregl_diagnosis.md)、evidence/task22/。
+任务23完成：部署包制作增加官方元数据校正、完整归档清单及非root可达性验收；r2的127条目、59模块检查通过，74文件内容不变，旧包保留并禁用。base01演练通过（proc_tsm等10模块全加载，stability-monitor/resourced正常），完整回退通过（414 boot文件、75模块文件SHA、127条元数据一致）；最终原SR+total_mem=1600，root/模块ro、临时目录删除、owner恢复。详见[23](23_deploy_metadata_rehearsal.md)、evidence/task23/。
+
+用户追加决定（2026-11-05）：coregl、HAL mesa、wlandrv-plugin-tizen由用户刷机后的准备脚本卸载，来源未知挂账关闭；本轮只读查询三包均未安装。**从下一次刷机起，准备只做扩分区与安装lko-net-setup，不再卸载这三个包。任务19 SR数据在缺coregl、mesa状态下取得，仅供参考；正式测量前须重新刷官方镜像后重采。** 本轮未修复display-manager或安装coregl。
+
+任务22诊断完成：base01归档extra目录root:root/0700阻止非root服务访问，官方目录0755；两边14个索引相同、proc-tsm 26项CRC匹配，跳过重部署C，未修复。两官方镜像均含coregl，D只读追查未找到删除动作/操作者；已撤回20中的用户准备推测。原SR+total_mem=1600保持，10模块/服务/网络正常，owner已恢复；工具与镜像副本已清理。权限修订/重测已由任务23完成；coregl删除来源已由本轮用户确认闭合。详见[22](22_base01_coregl_diagnosis.md)、evidence/task22/。
 
 任务21：只读核实在第1步触发停止条件（当前System→User::Shell有rwxat权限），未修改部署方法、标签或重做演练；原SR内核保持不变，owner已恢复。display-manager的127已定位到缺少coregl提供的库，当前HDMI均disconnected，未做重启对照。内部审读包已本地生成并校验，公开符号文本证据已入库；后续部署待PM处理矛盾证据。详见[21](21_smack_deploy_recheck.md)、evidence/task21/。
 
-任务19完成SR镜像验收、配网、total_mem=1600及60秒/10分钟采样。任务10演练已执行完毕：base01启动成功，但proc_tsm未加载且stability-monitor退出255，未通过部署验收；按既有方案完整回退通过。最终原SR内核、根/模块ro、owner已恢复。模块标签差异需PM裁决后再处理，详见[20第7节](20_sr_board_baseline.md#7-任务10演练依据docs11--docs14)、evidence/task19/kernel_exercise_final.json。
+任务19完成SR镜像验收、配网、total_mem=1600及60秒/10分钟采样。任务10演练已执行完毕：base01启动成功，但proc_tsm未加载且stability-monitor退出255，未通过部署验收；按既有方案完整回退通过。最终原SR内核、根/模块ro、owner已恢复。历史标签猜测已由任务21否定，任务22定位DAC目录权限，任务23已通过重测；详见[20第7节](20_sr_board_baseline.md#7-任务10演练依据docs11--docs14)、evidence/task19/kernel_exercise_final.json。
 
 任务20：本地集成、构建及产物验收完成，授权内部目标已推送并复核；原有载荷除预定配置外保持一致，详见本地记录。
 
