@@ -1,0 +1,146 @@
+[
+  {
+    "path": "temp/task21/00_disconnect.raw.txt",
+    "bytes": 58,
+    "lines": 1,
+    "sha256": "68555eadd9ddb1d196e8db1cbb73b27acad34ff39c0122be377f0cb123cc37e8"
+  },
+  {
+    "path": "temp/task21/01_connect.raw.txt",
+    "bytes": 73,
+    "lines": 2,
+    "sha256": "319707eca638c5888c2984d2e09815e2d2c94708880805cca0b26ac5f12c7016"
+  },
+  {
+    "path": "temp/task21/02_identity.raw.txt",
+    "bytes": 856,
+    "lines": 15,
+    "sha256": "15a05b4baac4d5695e00afa5df2e8e3172fa3091e553cc37819c7ef4609e77b3"
+  },
+  {
+    "path": "temp/task21/03_root_on.raw.txt",
+    "bytes": 32,
+    "lines": 1,
+    "sha256": "525daa895e41827b8cef29d3387114916a532c2624880a49c1614e6c987b6477"
+  },
+  {
+    "path": "temp/task21/04_initial_state.raw.txt",
+    "bytes": 10555,
+    "lines": 239,
+    "sha256": "3bc7b424a778b645aca5880ace632f4e1fea8c0b5fe65932507c9ceb7489c361"
+  },
+  {
+    "path": "temp/task21/05_load_path.raw.txt",
+    "bytes": 1722,
+    "lines": 55,
+    "sha256": "8faec756e4935caf5e64c41f610b90ff8a8249595edce151e88bbce25d72eb18"
+  },
+  {
+    "path": "temp/task21/06_original_labels.raw.txt",
+    "bytes": 10457,
+    "lines": 129,
+    "sha256": "7898fa9fc70557416af2578b1bf998b9be7ec30fe6770d224084d679cd3c39b5"
+  },
+  {
+    "path": "temp/task21/07_stability_dependencies.raw.txt",
+    "bytes": 4650,
+    "lines": 122,
+    "sha256": "318531b79915fa1fa703af67c3cdde4fbae490b7d0e3810f78a9bbd351dc360d"
+  },
+  {
+    "path": "temp/task21/08_smack_rules.raw.txt",
+    "bytes": 49677,
+    "lines": 909,
+    "sha256": "d1d72c429a371f935035fb7a2a0cd8d634bab7ba3dea22c17940c7b2d9608997"
+  },
+  {
+    "path": "temp/task21/09_display_details.raw.txt",
+    "bytes": 11612,
+    "lines": 275,
+    "sha256": "28c25ee92f3f6f629343bb02aeac0440f967b91c9f16af3b3bc7fb091b2f1694"
+  },
+  {
+    "path": "temp/task21/10_display_current.raw.txt",
+    "bytes": 10810,
+    "lines": 115,
+    "sha256": "939f890127f6c7fbb2f2c0c72514bc706501fa261042e140ff8fc54041f79592"
+  },
+  {
+    "path": "temp/task21/11_dlog_current.raw.txt",
+    "bytes": 730408,
+    "lines": 7350,
+    "sha256": "6041473c8986972c776ec9f9c6139763d63c182dd89795881b2b53d769f6d0ce"
+  },
+  {
+    "path": "temp/task21/12_paths_and_types.raw.txt",
+    "bytes": 9223,
+    "lines": 135,
+    "sha256": "ccc4870a47e52a2ccfaa95fcef7efa1d31c87156d3dbdf5019abd75820522793"
+  },
+  {
+    "path": "temp/task21/13_pull_enlightenment.raw.txt",
+    "bytes": 232,
+    "lines": 5,
+    "sha256": "5570e69b8a69da369cea1f55dbf7f9de22faf659fe8474f9d57e044cc2ec4a68"
+  },
+  {
+    "path": "temp/task21/13_pull_libkmod.so.2.raw.txt",
+    "bytes": 229,
+    "lines": 5,
+    "sha256": "9bab1884e2e87183f965dfb2ad82fc95dadeb2f18a7117a908285b1a1279a07c"
+  },
+  {
+    "path": "temp/task21/13_pull_stability-monitor.raw.txt",
+    "bytes": 229,
+    "lines": 5,
+    "sha256": "1b8212197b76c559568a1cc23731388c161106df9ef7d191f4f03ef122b79078"
+  },
+  {
+    "path": "temp/task21/14_display_loader.raw.txt",
+    "bytes": 160,
+    "lines": 3,
+    "sha256": "d8bb260ccda596cebfc460a98828e4a5b15d3e34af46dfa057db31de47764708"
+  },
+  {
+    "path": "temp/task21/15_display_later.raw.txt",
+    "bytes": 4009,
+    "lines": 50,
+    "sha256": "4337b91f3abce53d451397c063ab936c94c708c6ab66196a33d289eb25967b25"
+  },
+  {
+    "path": "temp/task21/16_regular_files.raw.txt",
+    "bytes": 5519,
+    "lines": 75,
+    "sha256": "754f6bf4755be36e17b85e683714fe63c868d4da107b56220f0602645b796a46"
+  },
+  {
+    "path": "temp/task21/17_directories.raw.txt",
+    "bytes": 3193,
+    "lines": 51,
+    "sha256": "1e7a000d6db571186d68f1cb59b33b4146df6215dd67fba6aae61d9e8369176d"
+  },
+  {
+    "path": "temp/task21/18_symlinks.raw.txt",
+    "bytes": 69,
+    "lines": 3,
+    "sha256": "393faa85c384cdd59b45b5a06b3fbb360a966cbc0d5d0610051a845b685793ca"
+  },
+  {
+    "path": "temp/task21/19_final_state.raw.txt",
+    "bytes": 4584,
+    "lines": 84,
+    "sha256": "1d51db51a6a8de07592b2647467faec77ca0453c5b22473da7b497ad9152ff9f"
+  },
+  {
+    "path": "temp/task21/20_root_off.raw.txt",
+    "bytes": 36,
+    "lines": 1,
+    "sha256": "6667042b629240d444116555b8f98368ba464e672980623c2dbdb02741c0089d"
+  },
+  {
+    "path": "temp/task21/21_owner.raw.txt",
+    "bytes": 603,
+    "lines": 6,
+    "sha256": "2073dd0bffd7584ba54be9bfbba497caf0c21e2047e2ba551361482aa7fd1177"
+  }
+]

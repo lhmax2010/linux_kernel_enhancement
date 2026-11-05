@@ -1,0 +1,60 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'command -v chsmack; chsmack --help; command -v getfattr; command -v ldd; command -v strings; systemctl cat stability-monitor.service; systemctl show stability-monitor.service -p MainPID -p User -p Group -p SmackProcessLabel -p ExecStart -p ActiveState -p SubState -p ExecMainStatus; cat /usr/lib/modules/modprobe.d/*; cat /usr/lib/modules/modules-load.d/*
+remote_rc=$?
+printf "\nTASK21-REMOTE-EXIT=%s\n" "$remote_rc"'
+/usr/bin/chsmack
+Usage: chsmack [options] <path>
+Options:
+ -v --version         output version information and exit
+ -h --help            output usage information and exit
+ -a --access          set security.SMACK64
+ -e --exec            set security.SMACK64EXEC
+ -m --mmap            set security.SMACK64MMAP
+ -t --transmute       set security.SMACK64TRANSMUTE
+ -L --dereference     tell to follow the symbolic links
+ -D --drop            remove unset attributes
+ -A --drop-access     remove security.SMACK64
+ -E --drop-exec       remove security.SMACK64EXEC
+ -M --drop-mmap       remove security.SMACK64MMAP
+ -T --drop-transmute  remove security.SMACK64TRANSMUTE
+ -r --recursive       list or modify also files in subdirectories
+Obsolete option:
+ -d --remove          tell to remove the attribute
+/usr/bin/ldd
+# /usr/lib/systemd/system/stability-monitor.service
+[Unit]
+Description=Stability monitoring daemon
+
+[Service]
+Type=simple
+User=stability_monitor
+Group=stability_monitor
+Capabilities=cap_sys_ptrace,cap_sys_module,cap_kill=i
+SecureBits=keep-caps
+SmackProcessLabel=System
+ExecStart=/usr/sbin/stability-monitor
+Restart=on-failure
+RestartSec=0
+MemoryMax=20M
+
+[Install]
+WantedBy=multi-user.target
+MainPID=493
+ExecMainStatus=0
+ExecStart={ path=/usr/sbin/stability-monitor ; argv[]=/usr/sbin/stability-monito
+r ; ignore_errors=no ; start_time=[Thu 1970-01-01 09:00:14 KST] ; stop_time=[n/a
+] ; pid=493 ; code=(null) ; status=0/0 }
+User=stability_monitor
+Group=stability_monitor
+SmackProcessLabel=System
+ActiveState=active
+SubState=running
+options proc-tsm blacklist=System::TEF
+dm-bow
+extcon-usb-fixed
+inform-reboot
+logger
+kdbus
+
+TASK21-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

@@ -1,0 +1,8 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'find /usr/lib/modules/6.12.80-arm-rpi4-v7l -type l
+remote_rc=$?
+printf "\nTASK21-REMOTE-EXIT=%s\n" "$remote_rc"'
+/usr/lib/modules/6.12.80-arm-rpi4-v7l/build
+
+TASK21-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

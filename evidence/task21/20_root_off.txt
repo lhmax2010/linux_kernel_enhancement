@@ -1,0 +1,4 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 root off
+Switched to 'sdk user' account mode
+
+TRANSPORT-EXIT=0

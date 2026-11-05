@@ -1,5 +1,7 @@
 # 项目状态
 
+任务21：只读核实在第1步触发停止条件（当前System→User::Shell有rwxat权限），未修改部署方法、标签或重做演练；原SR内核保持不变，owner已恢复。display-manager的127已定位到缺少coregl提供的库，当前HDMI均disconnected，未做重启对照。内部审读包已本地生成并校验；后续部署待PM处理矛盾证据。详见[21](21_smack_deploy_recheck.md)、evidence/task21/。
+
 任务19完成SR镜像验收、配网、total_mem=1600及60秒/10分钟采样。任务10演练已执行完毕：base01启动成功，但proc_tsm未加载且stability-monitor退出255，未通过部署验收；按既有方案完整回退通过。最终原SR内核、根/模块ro、owner已恢复。模块标签差异需PM裁决后再处理，详见[20第7节](20_sr_board_baseline.md#7-任务10演练依据docs11--docs14)、evidence/task19/kernel_exercise_final.json。
 
 任务20：本地集成、构建及产物验收完成，授权内部目标已推送并复核；原有载荷除预定配置外保持一致，详见本地记录。

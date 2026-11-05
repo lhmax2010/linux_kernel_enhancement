@@ -1,0 +1,414 @@
+Command: dlogutil -d; exit=0
+Filter: ^[VDIWEF]/(?:E20_MONITOR|ENLIGHTENMENT|E20|DISPLAY_MANAGER)\(
+Source: temp/task21/11_dlog_current.raw.txt
+SHA256: 6041473c8986972c776ec9f9c6139763d63c182dd89795881b2b53d769f6d0ce
+Matching lines: 409
+296: E/E20_MONITOR(  568): E20_PID_FILE : /run/enlightenment.pid
+297: E/E20_MONITOR(  571): ## Enlightenment is not ready ! ##
+368: E/E20_MONITOR(  575): ## Enlightenment is not ready ! ##
+633: E/E20_MONITOR(  759): E20_PID_FILE : /run/enlightenment.pid
+634: E/E20_MONITOR(  760): ## Enlightenment is not ready ! ##
+1361: E/E20_MONITOR(  937): E20_PID_FILE : /run/enlightenment.pid
+1362: E/E20_MONITOR(  938): ## Enlightenment is not ready ! ##
+1369: E/E20_MONITOR(  971): E20_PID_FILE : /run/enlightenment.pid
+1370: E/E20_MONITOR(  972): ## Enlightenment is not ready ! ##
+1383: E/E20_MONITOR( 1015): E20_PID_FILE : /run/enlightenment.pid
+1384: E/E20_MONITOR( 1017): ## Enlightenment is not ready ! ##
+1392: E/E20_MONITOR( 1049): E20_PID_FILE : /run/enlightenment.pid
+1393: E/E20_MONITOR( 1050): ## Enlightenment is not ready ! ##
+1400: E/E20_MONITOR( 1084): E20_PID_FILE : /run/enlightenment.pid
+1401: E/E20_MONITOR( 1085): ## Enlightenment is not ready ! ##
+1406: E/E20_MONITOR( 1128): E20_PID_FILE : /run/enlightenment.pid
+1407: E/E20_MONITOR( 1129): ## Enlightenment is not ready ! ##
+1408: E/E20_MONITOR( 1161): E20_PID_FILE : /run/enlightenment.pid
+1409: E/E20_MONITOR( 1162): ## Enlightenment is not ready ! ##
+1412: E/E20_MONITOR( 1195): E20_PID_FILE : /run/enlightenment.pid
+1413: E/E20_MONITOR( 1196): ## Enlightenment is not ready ! ##
+1415: E/E20_MONITOR( 1229): E20_PID_FILE : /run/enlightenment.pid
+1416: E/E20_MONITOR( 1230): ## Enlightenment is not ready ! ##
+1438: E/E20_MONITOR( 1295): E20_PID_FILE : /run/enlightenment.pid
+1439: E/E20_MONITOR( 1296): ## Enlightenment is not ready ! ##
+1444: E/E20_MONITOR( 1329): E20_PID_FILE : /run/enlightenment.pid
+1445: E/E20_MONITOR( 1330): ## Enlightenment is not ready ! ##
+1447: E/E20_MONITOR( 1364): E20_PID_FILE : /run/enlightenment.pid
+1448: E/E20_MONITOR( 1365): ## Enlightenment is not ready ! ##
+1452: E/E20_MONITOR( 1405): E20_PID_FILE : /run/enlightenment.pid
+1453: E/E20_MONITOR( 1406): ## Enlightenment is not ready ! ##
+1454: E/E20_MONITOR( 1438): E20_PID_FILE : /run/enlightenment.pid
+1455: E/E20_MONITOR( 1439): ## Enlightenment is not ready ! ##
+1457: E/E20_MONITOR( 1471): E20_PID_FILE : /run/enlightenment.pid
+1458: E/E20_MONITOR( 1472): ## Enlightenment is not ready ! ##
+1459: E/E20_MONITOR( 1512): E20_PID_FILE : /run/enlightenment.pid
+1460: E/E20_MONITOR( 1513): ## Enlightenment is not ready ! ##
+1461: E/E20_MONITOR( 1545): E20_PID_FILE : /run/enlightenment.pid
+1462: E/E20_MONITOR( 1546): ## Enlightenment is not ready ! ##
+1463: E/E20_MONITOR( 1578): E20_PID_FILE : /run/enlightenment.pid
+1464: E/E20_MONITOR( 1579): ## Enlightenment is not ready ! ##
+1467: E/E20_MONITOR( 1617): E20_PID_FILE : /run/enlightenment.pid
+1468: E/E20_MONITOR( 1618): ## Enlightenment is not ready ! ##
+1469: E/E20_MONITOR( 1659): E20_PID_FILE : /run/enlightenment.pid
+1470: E/E20_MONITOR( 1660): ## Enlightenment is not ready ! ##
+1471: E/E20_MONITOR( 1691): E20_PID_FILE : /run/enlightenment.pid
+1472: E/E20_MONITOR( 1692): ## Enlightenment is not ready ! ##
+1473: E/E20_MONITOR( 1724): E20_PID_FILE : /run/enlightenment.pid
+1474: E/E20_MONITOR( 1725): ## Enlightenment is not ready ! ##
+1478: E/E20_MONITOR( 1766): E20_PID_FILE : /run/enlightenment.pid
+1479: E/E20_MONITOR( 1767): ## Enlightenment is not ready ! ##
+1480: E/E20_MONITOR( 1798): E20_PID_FILE : /run/enlightenment.pid
+1481: E/E20_MONITOR( 1799): ## Enlightenment is not ready ! ##
+1482: E/E20_MONITOR( 1831): E20_PID_FILE : /run/enlightenment.pid
+1483: E/E20_MONITOR( 1832): ## Enlightenment is not ready ! ##
+1484: E/E20_MONITOR( 1863): E20_PID_FILE : /run/enlightenment.pid
+1485: E/E20_MONITOR( 1864): ## Enlightenment is not ready ! ##
+1486: E/E20_MONITOR( 1905): E20_PID_FILE : /run/enlightenment.pid
+1487: E/E20_MONITOR( 1906): ## Enlightenment is not ready ! ##
+1488: E/E20_MONITOR( 1938): E20_PID_FILE : /run/enlightenment.pid
+1489: E/E20_MONITOR( 1939): ## Enlightenment is not ready ! ##
+1490: E/E20_MONITOR( 1970): E20_PID_FILE : /run/enlightenment.pid
+1491: E/E20_MONITOR( 1971): ## Enlightenment is not ready ! ##
+1492: E/E20_MONITOR( 2012): E20_PID_FILE : /run/enlightenment.pid
+1493: E/E20_MONITOR( 2013): ## Enlightenment is not ready ! ##
+1495: E/E20_MONITOR( 2046): E20_PID_FILE : /run/enlightenment.pid
+1496: E/E20_MONITOR( 2047): ## Enlightenment is not ready ! ##
+1498: E/E20_MONITOR( 2078): E20_PID_FILE : /run/enlightenment.pid
+1499: E/E20_MONITOR( 2079): ## Enlightenment is not ready ! ##
+1500: E/E20_MONITOR( 2120): E20_PID_FILE : /run/enlightenment.pid
+1501: E/E20_MONITOR( 2121): ## Enlightenment is not ready ! ##
+1502: E/E20_MONITOR( 2152): E20_PID_FILE : /run/enlightenment.pid
+1503: E/E20_MONITOR( 2154): ## Enlightenment is not ready ! ##
+1504: E/E20_MONITOR( 2185): E20_PID_FILE : /run/enlightenment.pid
+1505: E/E20_MONITOR( 2186): ## Enlightenment is not ready ! ##
+1506: E/E20_MONITOR( 2218): E20_PID_FILE : /run/enlightenment.pid
+1507: E/E20_MONITOR( 2219): ## Enlightenment is not ready ! ##
+1508: E/E20_MONITOR( 2259): E20_PID_FILE : /run/enlightenment.pid
+1509: E/E20_MONITOR( 2260): ## Enlightenment is not ready ! ##
+1510: E/E20_MONITOR( 2292): E20_PID_FILE : /run/enlightenment.pid
+1511: E/E20_MONITOR( 2293): ## Enlightenment is not ready ! ##
+1512: E/E20_MONITOR( 2326): E20_PID_FILE : /run/enlightenment.pid
+1513: E/E20_MONITOR( 2327): ## Enlightenment is not ready ! ##
+1514: E/E20_MONITOR( 2367): E20_PID_FILE : /run/enlightenment.pid
+1515: E/E20_MONITOR( 2368): ## Enlightenment is not ready ! ##
+1521: E/E20_MONITOR( 2400): E20_PID_FILE : /run/enlightenment.pid
+1522: E/E20_MONITOR( 2401): ## Enlightenment is not ready ! ##
+1523: E/E20_MONITOR( 2432): E20_PID_FILE : /run/enlightenment.pid
+1524: E/E20_MONITOR( 2434): ## Enlightenment is not ready ! ##
+1525: E/E20_MONITOR( 2465): E20_PID_FILE : /run/enlightenment.pid
+1526: E/E20_MONITOR( 2466): ## Enlightenment is not ready ! ##
+1527: E/E20_MONITOR( 2507): E20_PID_FILE : /run/enlightenment.pid
+1528: E/E20_MONITOR( 2508): ## Enlightenment is not ready ! ##
+1529: E/E20_MONITOR( 2539): E20_PID_FILE : /run/enlightenment.pid
+1530: E/E20_MONITOR( 2540): ## Enlightenment is not ready ! ##
+1531: E/E20_MONITOR( 2572): E20_PID_FILE : /run/enlightenment.pid
+1532: E/E20_MONITOR( 2573): ## Enlightenment is not ready ! ##
+1533: E/E20_MONITOR( 2614): E20_PID_FILE : /run/enlightenment.pid
+1534: E/E20_MONITOR( 2615): ## Enlightenment is not ready ! ##
+1535: E/E20_MONITOR( 2646): E20_PID_FILE : /run/enlightenment.pid
+1536: E/E20_MONITOR( 2647): ## Enlightenment is not ready ! ##
+1537: E/E20_MONITOR( 2679): E20_PID_FILE : /run/enlightenment.pid
+1538: E/E20_MONITOR( 2680): ## Enlightenment is not ready ! ##
+1539: E/E20_MONITOR( 2720): E20_PID_FILE : /run/enlightenment.pid
+1540: E/E20_MONITOR( 2722): ## Enlightenment is not ready ! ##
+1541: E/E20_MONITOR( 2753): E20_PID_FILE : /run/enlightenment.pid
+1542: E/E20_MONITOR( 2754): ## Enlightenment is not ready ! ##
+1543: E/E20_MONITOR( 2786): E20_PID_FILE : /run/enlightenment.pid
+1544: E/E20_MONITOR( 2787): ## Enlightenment is not ready ! ##
+1545: E/E20_MONITOR( 2820): E20_PID_FILE : /run/enlightenment.pid
+1546: E/E20_MONITOR( 2821): ## Enlightenment is not ready ! ##
+1547: E/E20_MONITOR( 2862): E20_PID_FILE : /run/enlightenment.pid
+1548: E/E20_MONITOR( 2863): ## Enlightenment is not ready ! ##
+1549: E/E20_MONITOR( 2895): E20_PID_FILE : /run/enlightenment.pid
+1550: E/E20_MONITOR( 2896): ## Enlightenment is not ready ! ##
+1551: E/E20_MONITOR( 2927): E20_PID_FILE : /run/enlightenment.pid
+1552: E/E20_MONITOR( 2928): ## Enlightenment is not ready ! ##
+1553: E/E20_MONITOR( 2969): E20_PID_FILE : /run/enlightenment.pid
+1554: E/E20_MONITOR( 2970): ## Enlightenment is not ready ! ##
+1555: E/E20_MONITOR( 3001): E20_PID_FILE : /run/enlightenment.pid
+1556: E/E20_MONITOR( 3002): ## Enlightenment is not ready ! ##
+1557: E/E20_MONITOR( 3034): E20_PID_FILE : /run/enlightenment.pid
+1558: E/E20_MONITOR( 3035): ## Enlightenment is not ready ! ##
+1758: E/E20_MONITOR( 3067): E20_PID_FILE : /run/enlightenment.pid
+1759: E/E20_MONITOR( 3068): ## Enlightenment is not ready ! ##
+1792: E/E20_MONITOR( 3109): E20_PID_FILE : /run/enlightenment.pid
+1793: E/E20_MONITOR( 3110): ## Enlightenment is not ready ! ##
+2178: E/E20_MONITOR( 3146): E20_PID_FILE : /run/enlightenment.pid
+2179: E/E20_MONITOR( 3147): ## Enlightenment is not ready ! ##
+2195: E/E20_MONITOR( 3179): E20_PID_FILE : /run/enlightenment.pid
+2196: E/E20_MONITOR( 3180): ## Enlightenment is not ready ! ##
+2211: E/E20_MONITOR( 3220): E20_PID_FILE : /run/enlightenment.pid
+2212: E/E20_MONITOR( 3221): ## Enlightenment is not ready ! ##
+2229: E/E20_MONITOR( 3253): E20_PID_FILE : /run/enlightenment.pid
+2230: E/E20_MONITOR( 3254): ## Enlightenment is not ready ! ##
+2246: E/E20_MONITOR( 3286): E20_PID_FILE : /run/enlightenment.pid
+2247: E/E20_MONITOR( 3287): ## Enlightenment is not ready ! ##
+2264: E/E20_MONITOR( 3327): E20_PID_FILE : /run/enlightenment.pid
+2265: E/E20_MONITOR( 3328): ## Enlightenment is not ready ! ##
+2276: E/E20_MONITOR( 3360): E20_PID_FILE : /run/enlightenment.pid
+2277: E/E20_MONITOR( 3361): ## Enlightenment is not ready ! ##
+2287: E/E20_MONITOR( 3392): E20_PID_FILE : /run/enlightenment.pid
+2288: E/E20_MONITOR( 3393): ## Enlightenment is not ready ! ##
+2298: E/E20_MONITOR( 3425): E20_PID_FILE : /run/enlightenment.pid
+2299: E/E20_MONITOR( 3426): ## Enlightenment is not ready ! ##
+2313: E/E20_MONITOR( 3467): E20_PID_FILE : /run/enlightenment.pid
+2314: E/E20_MONITOR( 3468): ## Enlightenment is not ready ! ##
+2325: E/E20_MONITOR( 3499): E20_PID_FILE : /run/enlightenment.pid
+2326: E/E20_MONITOR( 3500): ## Enlightenment is not ready ! ##
+2336: E/E20_MONITOR( 3532): E20_PID_FILE : /run/enlightenment.pid
+2337: E/E20_MONITOR( 3533): ## Enlightenment is not ready ! ##
+2352: E/E20_MONITOR( 3573): E20_PID_FILE : /run/enlightenment.pid
+2353: E/E20_MONITOR( 3575): ## Enlightenment is not ready ! ##
+2374: E/E20_MONITOR( 3606): E20_PID_FILE : /run/enlightenment.pid
+2375: E/E20_MONITOR( 3607): ## Enlightenment is not ready ! ##
+2385: E/E20_MONITOR( 3639): E20_PID_FILE : /run/enlightenment.pid
+2386: E/E20_MONITOR( 3640): ## Enlightenment is not ready ! ##
+2396: E/E20_MONITOR( 3672): E20_PID_FILE : /run/enlightenment.pid
+2397: E/E20_MONITOR( 3673): ## Enlightenment is not ready ! ##
+2411: E/E20_MONITOR( 3713): E20_PID_FILE : /run/enlightenment.pid
+2412: E/E20_MONITOR( 3714): ## Enlightenment is not ready ! ##
+2427: E/E20_MONITOR( 3746): E20_PID_FILE : /run/enlightenment.pid
+2428: E/E20_MONITOR( 3747): ## Enlightenment is not ready ! ##
+2439: E/E20_MONITOR( 3778): E20_PID_FILE : /run/enlightenment.pid
+2440: E/E20_MONITOR( 3779): ## Enlightenment is not ready ! ##
+2454: E/E20_MONITOR( 3820): E20_PID_FILE : /run/enlightenment.pid
+2455: E/E20_MONITOR( 3821): ## Enlightenment is not ready ! ##
+2475: E/E20_MONITOR( 3852): E20_PID_FILE : /run/enlightenment.pid
+2476: E/E20_MONITOR( 3853): ## Enlightenment is not ready ! ##
+2486: E/E20_MONITOR( 3885): E20_PID_FILE : /run/enlightenment.pid
+2487: E/E20_MONITOR( 3886): ## Enlightenment is not ready ! ##
+2535: E/E20_MONITOR( 3927): E20_PID_FILE : /run/enlightenment.pid
+2536: E/E20_MONITOR( 3928): ## Enlightenment is not ready ! ##
+2573: E/E20_MONITOR( 3959): E20_PID_FILE : /run/enlightenment.pid
+2574: E/E20_MONITOR( 3960): ## Enlightenment is not ready ! ##
+2591: E/E20_MONITOR( 3992): E20_PID_FILE : /run/enlightenment.pid
+2592: E/E20_MONITOR( 3993): ## Enlightenment is not ready ! ##
+2635: E/E20_MONITOR( 4025): E20_PID_FILE : /run/enlightenment.pid
+2636: E/E20_MONITOR( 4026): ## Enlightenment is not ready ! ##
+2659: E/E20_MONITOR( 4066): E20_PID_FILE : /run/enlightenment.pid
+2660: E/E20_MONITOR( 4067): ## Enlightenment is not ready ! ##
+2703: E/E20_MONITOR( 4099): E20_PID_FILE : /run/enlightenment.pid
+2704: E/E20_MONITOR( 4100): ## Enlightenment is not ready ! ##
+2740: E/E20_MONITOR( 4132): E20_PID_FILE : /run/enlightenment.pid
+2741: E/E20_MONITOR( 4133): ## Enlightenment is not ready ! ##
+2762: E/E20_MONITOR( 4173): E20_PID_FILE : /run/enlightenment.pid
+2763: E/E20_MONITOR( 4174): ## Enlightenment is not ready ! ##
+2807: E/E20_MONITOR( 4206): E20_PID_FILE : /run/enlightenment.pid
+2808: E/E20_MONITOR( 4207): ## Enlightenment is not ready ! ##
+2820: E/E20_MONITOR( 4238): E20_PID_FILE : /run/enlightenment.pid
+2821: E/E20_MONITOR( 4239): ## Enlightenment is not ready ! ##
+2869: E/E20_MONITOR( 4280): E20_PID_FILE : /run/enlightenment.pid
+2870: E/E20_MONITOR( 4281): ## Enlightenment is not ready ! ##
+2906: E/E20_MONITOR( 4313): E20_PID_FILE : /run/enlightenment.pid
+2907: E/E20_MONITOR( 4314): ## Enlightenment is not ready ! ##
+2924: E/E20_MONITOR( 4345): E20_PID_FILE : /run/enlightenment.pid
+2925: E/E20_MONITOR( 4346): ## Enlightenment is not ready ! ##
+2968: E/E20_MONITOR( 4379): E20_PID_FILE : /run/enlightenment.pid
+2969: E/E20_MONITOR( 4380): ## Enlightenment is not ready ! ##
+2992: E/E20_MONITOR( 4421): E20_PID_FILE : /run/enlightenment.pid
+2993: E/E20_MONITOR( 4422): ## Enlightenment is not ready ! ##
+3037: E/E20_MONITOR( 4453): E20_PID_FILE : /run/enlightenment.pid
+3038: E/E20_MONITOR( 4454): ## Enlightenment is not ready ! ##
+3074: E/E20_MONITOR( 4486): E20_PID_FILE : /run/enlightenment.pid
+3075: E/E20_MONITOR( 4487): ## Enlightenment is not ready ! ##
+3096: E/E20_MONITOR( 4529): E20_PID_FILE : /run/enlightenment.pid
+3098: E/E20_MONITOR( 4530): ## Enlightenment is not ready ! ##
+3142: E/E20_MONITOR( 4561): E20_PID_FILE : /run/enlightenment.pid
+3143: E/E20_MONITOR( 4562): ## Enlightenment is not ready ! ##
+3153: E/E20_MONITOR( 4594): E20_PID_FILE : /run/enlightenment.pid
+3154: E/E20_MONITOR( 4595): ## Enlightenment is not ready ! ##
+3197: E/E20_MONITOR( 4626): E20_PID_FILE : /run/enlightenment.pid
+3198: E/E20_MONITOR( 4628): ## Enlightenment is not ready ! ##
+3239: E/E20_MONITOR( 4669): E20_PID_FILE : /run/enlightenment.pid
+3240: E/E20_MONITOR( 4670): ## Enlightenment is not ready ! ##
+3257: E/E20_MONITOR( 4702): E20_PID_FILE : /run/enlightenment.pid
+3258: E/E20_MONITOR( 4703): ## Enlightenment is not ready ! ##
+3315: E/E20_MONITOR( 4734): E20_PID_FILE : /run/enlightenment.pid
+3316: E/E20_MONITOR( 4735): ## Enlightenment is not ready ! ##
+3339: E/E20_MONITOR( 4776): E20_PID_FILE : /run/enlightenment.pid
+3340: E/E20_MONITOR( 4777): ## Enlightenment is not ready ! ##
+3385: E/E20_MONITOR( 4809): E20_PID_FILE : /run/enlightenment.pid
+3386: E/E20_MONITOR( 4810): ## Enlightenment is not ready ! ##
+3422: E/E20_MONITOR( 4841): E20_PID_FILE : /run/enlightenment.pid
+3423: E/E20_MONITOR( 4842): ## Enlightenment is not ready ! ##
+3444: E/E20_MONITOR( 4883): E20_PID_FILE : /run/enlightenment.pid
+3445: E/E20_MONITOR( 4884): ## Enlightenment is not ready ! ##
+3490: E/E20_MONITOR( 4915): E20_PID_FILE : /run/enlightenment.pid
+3491: E/E20_MONITOR( 4916): ## Enlightenment is not ready ! ##
+3501: E/E20_MONITOR( 4949): E20_PID_FILE : /run/enlightenment.pid
+3502: E/E20_MONITOR( 4950): ## Enlightenment is not ready ! ##
+3545: E/E20_MONITOR( 4982): E20_PID_FILE : /run/enlightenment.pid
+3546: E/E20_MONITOR( 4983): ## Enlightenment is not ready ! ##
+3586: E/E20_MONITOR( 5023): E20_PID_FILE : /run/enlightenment.pid
+3587: E/E20_MONITOR( 5024): ## Enlightenment is not ready ! ##
+3604: E/E20_MONITOR( 5056): E20_PID_FILE : /run/enlightenment.pid
+3605: E/E20_MONITOR( 5057): ## Enlightenment is not ready ! ##
+3648: E/E20_MONITOR( 5089): E20_PID_FILE : /run/enlightenment.pid
+3649: E/E20_MONITOR( 5090): ## Enlightenment is not ready ! ##
+3673: E/E20_MONITOR( 5130): E20_PID_FILE : /run/enlightenment.pid
+3674: E/E20_MONITOR( 5131): ## Enlightenment is not ready ! ##
+3717: E/E20_MONITOR( 5163): E20_PID_FILE : /run/enlightenment.pid
+3718: E/E20_MONITOR( 5164): ## Enlightenment is not ready ! ##
+3754: E/E20_MONITOR( 5195): E20_PID_FILE : /run/enlightenment.pid
+3755: E/E20_MONITOR( 5197): ## Enlightenment is not ready ! ##
+3772: E/E20_MONITOR( 5228): E20_PID_FILE : /run/enlightenment.pid
+3773: E/E20_MONITOR( 5229): ## Enlightenment is not ready ! ##
+3821: E/E20_MONITOR( 5270): E20_PID_FILE : /run/enlightenment.pid
+3822: E/E20_MONITOR( 5271): ## Enlightenment is not ready ! ##
+3832: E/E20_MONITOR( 5302): E20_PID_FILE : /run/enlightenment.pid
+3833: E/E20_MONITOR( 5303): ## Enlightenment is not ready ! ##
+3876: E/E20_MONITOR( 5335): E20_PID_FILE : /run/enlightenment.pid
+3877: E/E20_MONITOR( 5336): ## Enlightenment is not ready ! ##
+3925: E/E20_MONITOR( 5376): E20_PID_FILE : /run/enlightenment.pid
+3926: E/E20_MONITOR( 5378): ## Enlightenment is not ready ! ##
+3936: E/E20_MONITOR( 5409): E20_PID_FILE : /run/enlightenment.pid
+3937: E/E20_MONITOR( 5410): ## Enlightenment is not ready ! ##
+3982: E/E20_MONITOR( 5442): E20_PID_FILE : /run/enlightenment.pid
+3983: E/E20_MONITOR( 5443): ## Enlightenment is not ready ! ##
+4032: E/E20_MONITOR( 5484): E20_PID_FILE : /run/enlightenment.pid
+4033: E/E20_MONITOR( 5485): ## Enlightenment is not ready ! ##
+4051: E/E20_MONITOR( 5517): E20_PID_FILE : /run/enlightenment.pid
+4052: E/E20_MONITOR( 5518): ## Enlightenment is not ready ! ##
+4095: E/E20_MONITOR( 5550): E20_PID_FILE : /run/enlightenment.pid
+4096: E/E20_MONITOR( 5551): ## Enlightenment is not ready ! ##
+4106: E/E20_MONITOR( 5582): E20_PID_FILE : /run/enlightenment.pid
+4107: E/E20_MONITOR( 5583): ## Enlightenment is not ready ! ##
+4156: E/E20_MONITOR( 5625): E20_PID_FILE : /run/enlightenment.pid
+4157: E/E20_MONITOR( 5626): ## Enlightenment is not ready ! ##
+4193: E/E20_MONITOR( 5658): E20_PID_FILE : /run/enlightenment.pid
+4194: E/E20_MONITOR( 5659): ## Enlightenment is not ready ! ##
+4211: E/E20_MONITOR( 5690): E20_PID_FILE : /run/enlightenment.pid
+4212: E/E20_MONITOR( 5691): ## Enlightenment is not ready ! ##
+4259: E/E20_MONITOR( 5732): E20_PID_FILE : /run/enlightenment.pid
+4260: E/E20_MONITOR( 5733): ## Enlightenment is not ready ! ##
+4270: E/E20_MONITOR( 5764): E20_PID_FILE : /run/enlightenment.pid
+4271: E/E20_MONITOR( 5766): ## Enlightenment is not ready ! ##
+4314: E/E20_MONITOR( 5797): E20_PID_FILE : /run/enlightenment.pid
+4315: E/E20_MONITOR( 5798): ## Enlightenment is not ready ! ##
+4361: E/E20_MONITOR( 5830): E20_PID_FILE : /run/enlightenment.pid
+4362: E/E20_MONITOR( 5831): ## Enlightenment is not ready ! ##
+4383: E/E20_MONITOR( 5872): E20_PID_FILE : /run/enlightenment.pid
+4384: E/E20_MONITOR( 5873): ## Enlightenment is not ready ! ##
+4428: E/E20_MONITOR( 5905): E20_PID_FILE : /run/enlightenment.pid
+4429: E/E20_MONITOR( 5906): ## Enlightenment is not ready ! ##
+4439: E/E20_MONITOR( 5938): E20_PID_FILE : /run/enlightenment.pid
+4440: E/E20_MONITOR( 5939): ## Enlightenment is not ready ! ##
+4488: E/E20_MONITOR( 5979): E20_PID_FILE : /run/enlightenment.pid
+4489: E/E20_MONITOR( 5980): ## Enlightenment is not ready ! ##
+4525: E/E20_MONITOR( 6012): E20_PID_FILE : /run/enlightenment.pid
+4526: E/E20_MONITOR( 6013): ## Enlightenment is not ready ! ##
+4543: E/E20_MONITOR( 6045): E20_PID_FILE : /run/enlightenment.pid
+4544: E/E20_MONITOR( 6046): ## Enlightenment is not ready ! ##
+4592: E/E20_MONITOR( 6087): E20_PID_FILE : /run/enlightenment.pid
+4593: E/E20_MONITOR( 6088): ## Enlightenment is not ready ! ##
+4603: E/E20_MONITOR( 6120): E20_PID_FILE : /run/enlightenment.pid
+4604: E/E20_MONITOR( 6121): ## Enlightenment is not ready ! ##
+4649: E/E20_MONITOR( 6152): E20_PID_FILE : /run/enlightenment.pid
+4650: E/E20_MONITOR( 6153): ## Enlightenment is not ready ! ##
+4695: E/E20_MONITOR( 6185): E20_PID_FILE : /run/enlightenment.pid
+4696: E/E20_MONITOR( 6186): ## Enlightenment is not ready ! ##
+4717: E/E20_MONITOR( 6227): E20_PID_FILE : /run/enlightenment.pid
+4718: E/E20_MONITOR( 6228): ## Enlightenment is not ready ! ##
+4761: E/E20_MONITOR( 6259): E20_PID_FILE : /run/enlightenment.pid
+4763: E/E20_MONITOR( 6260): ## Enlightenment is not ready ! ##
+4773: E/E20_MONITOR( 6292): E20_PID_FILE : /run/enlightenment.pid
+4775: E/E20_MONITOR( 6293): ## Enlightenment is not ready ! ##
+4822: E/E20_MONITOR( 6334): E20_PID_FILE : /run/enlightenment.pid
+4823: E/E20_MONITOR( 6335): ## Enlightenment is not ready ! ##
+4859: E/E20_MONITOR( 6366): E20_PID_FILE : /run/enlightenment.pid
+4860: E/E20_MONITOR( 6367): ## Enlightenment is not ready ! ##
+4878: E/E20_MONITOR( 6399): E20_PID_FILE : /run/enlightenment.pid
+4879: E/E20_MONITOR( 6400): ## Enlightenment is not ready ! ##
+4922: E/E20_MONITOR( 6432): E20_PID_FILE : /run/enlightenment.pid
+4923: E/E20_MONITOR( 6434): ## Enlightenment is not ready ! ##
+4937: E/E20_MONITOR( 6473): E20_PID_FILE : /run/enlightenment.pid
+4939: E/E20_MONITOR( 6474): ## Enlightenment is not ready ! ##
+4982: E/E20_MONITOR( 6506): E20_PID_FILE : /run/enlightenment.pid
+4983: E/E20_MONITOR( 6507): ## Enlightenment is not ready ! ##
+5029: E/E20_MONITOR( 6538): E20_PID_FILE : /run/enlightenment.pid
+5030: E/E20_MONITOR( 6539): ## Enlightenment is not ready ! ##
+5051: E/E20_MONITOR( 6580): E20_PID_FILE : /run/enlightenment.pid
+5052: E/E20_MONITOR( 6581): ## Enlightenment is not ready ! ##
+5095: E/E20_MONITOR( 6613): E20_PID_FILE : /run/enlightenment.pid
+5096: E/E20_MONITOR( 6614): ## Enlightenment is not ready ! ##
+5106: E/E20_MONITOR( 6645): E20_PID_FILE : /run/enlightenment.pid
+5107: E/E20_MONITOR( 6646): ## Enlightenment is not ready ! ##
+5154: E/E20_MONITOR( 6687): E20_PID_FILE : /run/enlightenment.pid
+5155: E/E20_MONITOR( 6688): ## Enlightenment is not ready ! ##
+5191: E/E20_MONITOR( 6719): E20_PID_FILE : /run/enlightenment.pid
+5192: E/E20_MONITOR( 6721): ## Enlightenment is not ready ! ##
+5210: E/E20_MONITOR( 6752): E20_PID_FILE : /run/enlightenment.pid
+5211: E/E20_MONITOR( 6753): ## Enlightenment is not ready ! ##
+5255: E/E20_MONITOR( 6785): E20_PID_FILE : /run/enlightenment.pid
+5256: E/E20_MONITOR( 6786): ## Enlightenment is not ready ! ##
+5270: E/E20_MONITOR( 6826): E20_PID_FILE : /run/enlightenment.pid
+5271: E/E20_MONITOR( 6827): ## Enlightenment is not ready ! ##
+5314: E/E20_MONITOR( 6859): E20_PID_FILE : /run/enlightenment.pid
+5315: E/E20_MONITOR( 6860): ## Enlightenment is not ready ! ##
+5360: E/E20_MONITOR( 6892): E20_PID_FILE : /run/enlightenment.pid
+5361: E/E20_MONITOR( 6893): ## Enlightenment is not ready ! ##
+5382: E/E20_MONITOR( 6933): E20_PID_FILE : /run/enlightenment.pid
+5383: E/E20_MONITOR( 6934): ## Enlightenment is not ready ! ##
+5426: E/E20_MONITOR( 6966): E20_PID_FILE : /run/enlightenment.pid
+5427: E/E20_MONITOR( 6967): ## Enlightenment is not ready ! ##
+5440: E/E20_MONITOR( 6999): E20_PID_FILE : /run/enlightenment.pid
+5441: E/E20_MONITOR( 7000): ## Enlightenment is not ready ! ##
+5502: E/E20_MONITOR( 7040): E20_PID_FILE : /run/enlightenment.pid
+5503: E/E20_MONITOR( 7041): ## Enlightenment is not ready ! ##
+5539: E/E20_MONITOR( 7073): E20_PID_FILE : /run/enlightenment.pid
+5540: E/E20_MONITOR( 7074): ## Enlightenment is not ready ! ##
+5558: E/E20_MONITOR( 7105): E20_PID_FILE : /run/enlightenment.pid
+5559: E/E20_MONITOR( 7106): ## Enlightenment is not ready ! ##
+5602: E/E20_MONITOR( 7138): E20_PID_FILE : /run/enlightenment.pid
+5603: E/E20_MONITOR( 7139): ## Enlightenment is not ready ! ##
+5643: E/E20_MONITOR( 7180): E20_PID_FILE : /run/enlightenment.pid
+5644: E/E20_MONITOR( 7181): ## Enlightenment is not ready ! ##
+5661: E/E20_MONITOR( 7212): E20_PID_FILE : /run/enlightenment.pid
+5662: E/E20_MONITOR( 7214): ## Enlightenment is not ready ! ##
+5715: E/E20_MONITOR( 7245): E20_PID_FILE : /run/enlightenment.pid
+5716: E/E20_MONITOR( 7246): ## Enlightenment is not ready ! ##
+5730: E/E20_MONITOR( 7287): E20_PID_FILE : /run/enlightenment.pid
+5731: E/E20_MONITOR( 7288): ## Enlightenment is not ready ! ##
+5774: E/E20_MONITOR( 7319): E20_PID_FILE : /run/enlightenment.pid
+5775: E/E20_MONITOR( 7320): ## Enlightenment is not ready ! ##
+5811: E/E20_MONITOR( 7352): E20_PID_FILE : /run/enlightenment.pid
+5812: E/E20_MONITOR( 7353): ## Enlightenment is not ready ! ##
+5829: E/E20_MONITOR( 7385): E20_PID_FILE : /run/enlightenment.pid
+5830: E/E20_MONITOR( 7386): ## Enlightenment is not ready ! ##
+5878: E/E20_MONITOR( 7426): E20_PID_FILE : /run/enlightenment.pid
+5879: E/E20_MONITOR( 7427): ## Enlightenment is not ready ! ##
+5890: E/E20_MONITOR( 7459): E20_PID_FILE : /run/enlightenment.pid
+5892: E/E20_MONITOR( 7460): ## Enlightenment is not ready ! ##
+6103: E/E20_MONITOR( 7507): E20_PID_FILE : /run/enlightenment.pid
+6104: E/E20_MONITOR( 7508): ## Enlightenment is not ready ! ##
+6144: E/E20_MONITOR( 7550): E20_PID_FILE : /run/enlightenment.pid
+6145: E/E20_MONITOR( 7551): ## Enlightenment is not ready ! ##
+6162: E/E20_MONITOR( 7583): E20_PID_FILE : /run/enlightenment.pid
+6163: E/E20_MONITOR( 7584): ## Enlightenment is not ready ! ##
+6215: E/E20_MONITOR( 7615): E20_PID_FILE : /run/enlightenment.pid
+6216: E/E20_MONITOR( 7617): ## Enlightenment is not ready ! ##
+6230: E/E20_MONITOR( 7657): E20_PID_FILE : /run/enlightenment.pid
+6231: E/E20_MONITOR( 7658): ## Enlightenment is not ready ! ##
+6274: E/E20_MONITOR( 7690): E20_PID_FILE : /run/enlightenment.pid
+6275: E/E20_MONITOR( 7691): ## Enlightenment is not ready ! ##
+6312: E/E20_MONITOR( 7722): E20_PID_FILE : /run/enlightenment.pid
+6313: E/E20_MONITOR( 7723): ## Enlightenment is not ready ! ##
+6513: E/E20_MONITOR( 7776): E20_PID_FILE : /run/enlightenment.pid
+6514: E/E20_MONITOR( 7777): ## Enlightenment is not ready ! ##
+6562: E/E20_MONITOR( 7817): E20_PID_FILE : /run/enlightenment.pid
+6563: E/E20_MONITOR( 7818): ## Enlightenment is not ready ! ##
+6573: E/E20_MONITOR( 7850): E20_PID_FILE : /run/enlightenment.pid
+6574: E/E20_MONITOR( 7851): ## Enlightenment is not ready ! ##
+6617: E/E20_MONITOR( 7883): E20_PID_FILE : /run/enlightenment.pid
+6618: E/E20_MONITOR( 7884): ## Enlightenment is not ready ! ##
+6658: E/E20_MONITOR( 7924): E20_PID_FILE : /run/enlightenment.pid
+6659: E/E20_MONITOR( 7925): ## Enlightenment is not ready ! ##
+6676: E/E20_MONITOR( 7958): E20_PID_FILE : /run/enlightenment.pid
+6677: E/E20_MONITOR( 7959): ## Enlightenment is not ready ! ##
+6732: E/E20_MONITOR( 7990): E20_PID_FILE : /run/enlightenment.pid
+6733: E/E20_MONITOR( 7992): ## Enlightenment is not ready ! ##
+6757: E/E20_MONITOR( 8023): E20_PID_FILE : /run/enlightenment.pid
+6758: E/E20_MONITOR( 8024): ## Enlightenment is not ready ! ##
+6805: E/E20_MONITOR( 8065): E20_PID_FILE : /run/enlightenment.pid
+6806: E/E20_MONITOR( 8066): ## Enlightenment is not ready ! ##
+6835: E/E20_MONITOR( 8097): E20_PID_FILE : /run/enlightenment.pid
+6836: E/E20_MONITOR( 8098): ## Enlightenment is not ready ! ##
+7178: E/E20_MONITOR( 8173): E20_PID_FILE : /run/enlightenment.pid
+7179: E/E20_MONITOR( 8174): ## Enlightenment is not ready ! ##

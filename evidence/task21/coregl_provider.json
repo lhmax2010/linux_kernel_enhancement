@@ -1,0 +1,45 @@
+[
+  {
+    "name": "coregl",
+    "arch": "armv7l",
+    "version": {
+      "epoch": "0",
+      "ver": "0.4.0",
+      "rel": "0",
+      "vcs": "platform/core/uifw/coregl#424afc2f0beeb70d16b84014f761b1fc27256fc7"
+    },
+    "location": {
+      "href": "armv7l/coregl-0.4.0-0.armv7l.rpm"
+    },
+    "provides": [
+      {
+        "name": "coregl",
+        "flags": "EQ",
+        "epoch": "0",
+        "ver": "0.4.0",
+        "rel": "0"
+      },
+      {
+        "name": "coregl(armv7l-32)",
+        "flags": "EQ",
+        "epoch": "0",
+        "ver": "0.4.0",
+        "rel": "0"
+      },
+      {
+        "name": "libCOREGL.so.4"
+      },
+      {
+        "name": "libEGL.so.1"
+      },
+      {
+        "name": "libGLESv1_CM.so.1"
+      },
+      {
+        "name": "libGLESv2.so.2"
+      }
+    ],
+    "files": [],
+    "metadata": "temp/task17/20261104.160709/primary.gz"
+  }
+]

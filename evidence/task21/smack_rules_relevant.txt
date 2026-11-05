@@ -1,0 +1,6 @@
+Command: cat /sys/fs/smackfs/load2; exit=0
+Source: temp/task21/08_smack_rules.raw.txt
+SHA256: d1d72c429a371f935035fb7a2a0cd8d634bab7ba3dea22c17940c7b2d9608997
+540: User::Shell System wx
+773: System User::Shell rwxat
+785: System _ rwxa

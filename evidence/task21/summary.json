@@ -1,0 +1,54 @@
+{
+  "step1": "STOP: explicit System -> User::Shell rwxat includes read; contradicts proposed missing-read-permission cause",
+  "original_label_entries": 123,
+  "regular_files": 73,
+  "directories": 49,
+  "symlinks": 1,
+  "all_access_labels": "_",
+  "special_labels": 0,
+  "stability_pid": 493,
+  "stability_uid": 204,
+  "stability_smack": "System",
+  "modules_loaded": 10,
+  "display_samples": [
+    {
+      "uptime_s": 629.38,
+      "restarts": 59
+    },
+    {
+      "uptime_s": 706.58,
+      "restarts": 67
+    }
+  ],
+  "display_exit": 127,
+  "display_state": "activating/auto-restart",
+  "missing_libraries": [
+    "libEGL.so.1",
+    "libGLESv2.so.2"
+  ],
+  "coregl_installed": false,
+  "loader_readonly_dependency_check_exit": 127,
+  "HDMI_A_1": "disconnected",
+  "HDMI_A_2": "disconnected",
+  "step2_method_update": "NOT EXECUTED: gate stopped",
+  "step3_deployment_reboot_rollback": "NOT EXECUTED: gate stopped",
+  "board_reboots": 0,
+  "board_file_label_mount_changes": 0,
+  "boot_id": "efb329ce-c985-4835-8124-e7a98c8b4aeb",
+  "owner_restored": true,
+  "temp_board_directory_created": false,
+  "mounts_equal": true,
+  "df_opt_usr_available_kib": 115421468,
+  "df_modules_available_kib": 14648,
+  "MemTotal_kib": 1507996,
+  "final_kernel": "6.12.80-arm-rpi4-v7l",
+  "dlog_counts": {
+    "stability": 69,
+    "display": 409
+  },
+  "limits": [
+    "Current boot differs from task19 failed boot: no claim about historical SMACK rules",
+    "No kernel-switch test or connected-display cold boot comparison; stop gate honored",
+    "Host first identity assertion used an unnecessary leading newline; corrected against actual complete lines before any root operation"
+  ]
+}

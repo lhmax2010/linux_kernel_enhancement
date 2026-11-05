@@ -1,0 +1,74 @@
+Command: dlogutil -d; exit=0
+Filter: ^[VDIWEF]/STABILITY_MONITOR\(
+Source: temp/task21/11_dlog_current.raw.txt
+SHA256: 6041473c8986972c776ec9f9c6139763d63c182dd89795881b2b53d769f6d0ce
+Matching lines: 69
+1099: I/STABILITY_MONITOR(  493): (287)	[tizen-watcherd            | other_service         ] io_bytes < io_bytes_last, ignoring sample
+1100: I/STABILITY_MONITOR(  493): (563)	[connmand                  | other_service         ] Start process monitoring
+1101: I/STABILITY_MONITOR(  493): (569)	[rscmgr-service            | other_service         ] Start process monitoring
+1102: I/STABILITY_MONITOR(  493): (580)	[security-manager          | other_service         ] Start process monitoring
+1103: I/STABILITY_MONITOR(  493): (584)	[stc-iptables              | other_service         ] Start process monitoring
+1104: I/STABILITY_MONITOR(  493): (597)	[storaged                  | other_service         ] Start process monitoring
+1105: I/STABILITY_MONITOR(  493): (602)	[update-manager            | other_service         ] Start process monitoring
+1106: I/STABILITY_MONITOR(  493): (613)	[wifi-tethering-manager    | other_service         ] Start process monitoring
+1107: I/STABILITY_MONITOR(  493): (627)	[focus_server              | other_service         ] Start process monitoring
+1108: I/STABILITY_MONITOR(  493): (633)	[gumd                      | other_service         ] Start process monitoring
+1109: I/STABILITY_MONITOR(  493): (644)	[wfd-manager               | other_service         ] Start process monitoring
+1110: I/STABILITY_MONITOR(  493): (663)	[systemd                   | other_service         ] Start process monitoring
+1111: I/STABILITY_MONITOR(  493): (715)	[launchpad-process-pool    | other_service         ] Start process monitoring
+1112: I/STABILITY_MONITOR(  493): (729)	[launchpad-process-pool    | other_service         ] Start process monitoring
+1113: I/STABILITY_MONITOR(  493): (798)	[contacts-service-ipcd     | other_service         ] Start process monitoring
+1114: I/STABILITY_MONITOR(  493): (799)	[efl_config                | other_service         ] Start process monitoring
+1115: I/STABILITY_MONITOR(  493): (800)	[sync-service              | other_service         ] Start process monitoring
+1116: I/STABILITY_MONITOR(  493): (802)	[account-svcd              | other_service         ] Start process monitoring
+1123: I/STABILITY_MONITOR(  493): (806)	[wait-target-done          | other_service         ] Start process monitoring
+1124: I/STABILITY_MONITOR(  493): (808)	[isud                      | other_service         ] Start process monitoring
+1125: I/STABILITY_MONITOR(  493): (809)	[lbs-server                | other_service         ] Start process monitoring
+1126: I/STABILITY_MONITOR(  493): (816)	[pass                      | other_service         ] Start process monitoring
+1127: I/STABILITY_MONITOR(  493): (847)	[alarmmgr_tool             | other_service         ] Start process monitoring
+1128: I/STABILITY_MONITOR(  493): (424)	[bt-service                | other_service         ] Stop process monitoring
+1129: I/STABILITY_MONITOR(  493): (504)	[wait-target-done          | other_service         ] Stop process monitoring
+1130: I/STABILITY_MONITOR(  493): (505)	[wifi-tethering-manager    | other_service         ] Stop process monitoring
+1131: I/STABILITY_MONITOR(  493): (517)	[dlog-log-critical         | other_service         ] Stop process monitoring
+1132: I/STABILITY_MONITOR(  493): (528)	[dlog-log-critical         | other_service         ] Stop process monitoring
+1372: I/STABILITY_MONITOR(  493): (866)	[calendar-serviced         | other_service         ] Start process monitoring
+1373: I/STABILITY_MONITOR(  493): (942)	[launchpad-process-pool    | other_service         ] Start process monitoring
+1374: I/STABILITY_MONITOR(  493): (806)	[wait-target-done          | other_service         ] Stop process monitoring
+1375: I/STABILITY_MONITOR(  493): (847)	[alarmmgr_tool             | other_service         ] Stop process monitoring
+1376: I/STABILITY_MONITOR(  493): (287)	[tizen-watcherd            | other_service         ] Stop process monitoring
+1377: I/STABILITY_MONITOR(  493): (494)	[stc-manager               | other_service         ] Stop process monitoring
+1378: I/STABILITY_MONITOR(  493): (398)	[actd                      | other_service         ] Stop process monitoring
+1391: I/STABILITY_MONITOR(  493): (613)	[wifi-tethering-manager    | other_service         ] Stop process monitoring
+1402: I/STABILITY_MONITOR(  493): (800)	[sync-service              | other_service         ] Stop process monitoring
+1410: I/STABILITY_MONITOR(  493): (404)	[sessiond                  | other_service         ] Stop process monitoring
+1411: I/STABILITY_MONITOR(  493): (584)	[stc-iptables              | other_service         ] Stop process monitoring
+1414: I/STABILITY_MONITOR(  493): (802)	[account-svcd              | other_service         ] Stop process monitoring
+1440: I/STABILITY_MONITOR(  493): (1242)	[mtp-responder             | other_service         ] Start process monitoring
+1441: I/STABILITY_MONITOR(  493): (1247)	[sysapp-launcher           | other_service         ] Start process monitoring
+1442: I/STABILITY_MONITOR(  493): (808)	[isud                      | other_service         ] Stop process monitoring
+1443: I/STABILITY_MONITOR(  493): (633)	[gumd                      | other_service         ] Stop process monitoring
+1449: I/STABILITY_MONITOR(  493): (1332)	[launchpad-process-pool    | other_service         ] Start process monitoring
+1450: I/STABILITY_MONITOR(  493): (1247)	[sysapp-launcher           | other_service         ] Stop process monitoring
+1451: I/STABILITY_MONITOR(  493): (942)	[launchpad-process-pool    | other_service         ] Stop process monitoring
+1475: D/STABILITY_MONITOR(  493): readlink() failed, pid: 1722, No such file or directory
+1476: D/STABILITY_MONITOR(  493): Unable to create process info, it has just died
+1477: I/STABILITY_MONITOR(  493): (1332)	[launchpad-process-pool    | other_service         ] Stop process monitoring
+1497: I/STABILITY_MONITOR(  493): (866)	[calendar-serviced         | other_service         ] Stop process monitoring
+1516: E/STABILITY_MONITOR(  493): src/process.c::get_uid_by_pid(91): Failed to open file (/proc/2375/status) by No such file or directory
+1517: E/STABILITY_MONITOR(  493): src/process.c::process_get_appid(215): Failed to get uid (-1) using pid (2375) by get_uid_by_pid()
+1518: D/STABILITY_MONITOR(  493): readlink() failed, pid: 2375, No such file or directory
+1519: D/STABILITY_MONITOR(  493): Unable to create process info, it has just died
+1520: I/STABILITY_MONITOR(  493): (644)	[wfd-manager               | other_service         ] Stop process monitoring
+2150: I/STABILITY_MONITOR(  493): (3132)	[alarmmgr_tool             | other_service         ] Start process monitoring
+2151: I/STABILITY_MONITOR(  493): (798)	[contacts-service-ipcd     | other_service         ] Stop process monitoring
+2201: I/STABILITY_MONITOR(  493): (3132)	[alarmmgr_tool             | other_service         ] Stop process monitoring
+2416: E/STABILITY_MONITOR(  493): src/process.c::get_uid_by_pid(91): Failed to open file (/proc/3723/status) by No such file or directory
+2417: E/STABILITY_MONITOR(  493): src/process.c::process_get_appid(215): Failed to get uid (-1) using pid (3723) by get_uid_by_pid()
+2418: D/STABILITY_MONITOR(  493): readlink() failed, pid: 3723, No such file or directory
+2419: D/STABILITY_MONITOR(  493): Unable to create process info, it has just died
+4413: E/STABILITY_MONITOR(  493): src/process.c::get_uid_by_pid(91): Failed to open file (/proc/5890/status) by No such file or directory
+4414: E/STABILITY_MONITOR(  493): src/process.c::process_get_appid(215): Failed to get uid (-1) using pid (5890) by get_uid_by_pid()
+4415: D/STABILITY_MONITOR(  493): readlink() failed, pid: 5890, No such file or directory
+4416: D/STABILITY_MONITOR(  493): Unable to create process info, it has just died
+6832: D/STABILITY_MONITOR(  493): readlink() failed, pid: 8090, No such file or directory
+6833: D/STABILITY_MONITOR(  493): Unable to create process info, it has just died

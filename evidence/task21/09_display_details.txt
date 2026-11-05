@@ -1,0 +1,280 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'systemctl cat display-manager.service; systemctl show display-manager.service -p ActiveState -p SubState -p NRestarts -p ExecMainStatus -p ExecStart -p ExecStartPre; ldd /usr/bin/enlightenment; ls -l /usr/lib/libCOREGL* /usr/lib/libEGL* /usr/lib/libGLES*; rpm -q coregl; cat /usr/bin/keymap_update.sh
+remote_rc=$?
+printf "\nTASK21-REMOTE-EXIT=%s\n" "$remote_rc"'
+# /usr/lib/systemd/system/display-manager.service
+[Unit]
+Description=Display manager
+
+[Service]
+Type=notify
+NotifyAccess=all
+EnvironmentFile=/etc/sysconfig/enlightenment
+SmackProcessLabel=System
+ExecStartPre=-/usr/bin/keymap_update.sh
+ExecStart=/usr/bin/enlightenment
+ExecStartPost=/usr/bin/bash -c "/usr/bin/touch $XDG_RUNTIME_DIR/.wm_ready; echo 
+$MAINPID > $XDG_RUNTIME_DIR/enlightenment.pid"
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=graphical.target
+NRestarts=59
+ExecMainStatus=127
+ExecStartPre={ path=/usr/bin/keymap_update.sh ; argv[]=/usr/bin/keymap_update.sh
+ ; ignore_errors=yes ; start_time=[Thu 2026-11-05 22:47:14 KST] ; stop_time=[Thu
+ 2026-11-05 22:47:14 KST] ; pid=8028 ; code=exited ; status=0 }
+ExecStart={ path=/usr/bin/enlightenment ; argv[]=/usr/bin/enlightenment ; ignore
+_errors=no ; start_time=[Thu 2026-11-05 22:47:14 KST] ; stop_time=[Thu 2026-11-0
+5 22:47:14 KST] ; pid=8036 ; code=exited ; status=127 }
+ActiveState=activating
+SubState=auto-restart
+	linux-vdso.so.1 (0xbef4e000)
+	libm.so.6 => /lib/libm.so.6 (0xb6ccd000)
+	libtbm.so.1 => /lib/libtbm.so.1 (0xb6ca3000)
+	libtdm.so.1 => /lib/libtdm.so.1 (0xb6c5a000)
+	libglib-2.0.so.0 => /lib/libglib-2.0.so.0 (0xb6b76000)
+	libgobject-2.0.so.0 => /lib/libgobject-2.0.so.0 (0xb6b3a000)
+	libgio-2.0.so.0 => /lib/libgio-2.0.so.0 (0xb6a20000)
+	libcapi-system-device.so.0 => /lib/libcapi-system-device.so.0 (0xb6a12000)
+	libcapi-system-resource.so.1 => /lib/libcapi-system-resource.so.1 (0xb6a0f000)
+	libtzsh_server.so.0 => /lib/libtzsh_server.so.0 (0xb6a09000)
+	libpixman-1.so.0 => /lib/libpixman-1.so.0 (0xb6992000)
+	libEGL.so.1 => not found
+	libGLESv2.so.2 => not found
+	libudev.so.1 => /lib/libudev.so.1 (0xb696a000)
+	libsystemd.so.0 => /lib/libsystemd.so.0 (0xb68db000)
+	libjson-glib-1.0.so.0 => /lib/libjson-glib-1.0.so.0 (0xb68bf000)
+	libinput.so.10 => /lib/libinput.so.10 (0xb6885000)
+	libwayland-server.so.0 => /lib/libwayland-server.so.0 (0xb6877000)
+	libxkbcommon.so.0 => /lib/libxkbcommon.so.0 (0xb6833000)
+	libuuid.so.1 => /lib/libuuid.so.1 (0xb682c000)
+	libxdg-shell-unstable-v5-server.so.0 => /lib/libxdg-shell-unstable-v5-server.so.0 (0xb6829000)
+	libtizen-remote-surface-server.so.0 => /lib/libtizen-remote-surface-server.so.0 (0xb6826000)
+	libwayland-tbm-server.so.0 => /lib/libwayland-tbm-server.so.0 (0xb6814000)
+	libscreenshooter-server.so.0 => /lib/libscreenshooter-server.so.0 (0xb6811000)
+	libtizen-extension-server.so.0 => /lib/libtizen-extension-server.so.0 (0xb680b000)
+	libtizen-launch-server.so.0 => /lib/libtizen-launch-server.so.0 (0xb6808000)
+	libtizen-surface-server.so.0 => /lib/libtizen-surface-server.so.0 (0xb6805000)
+	libtizen-dpms-server.so.0 => /lib/libtizen-dpms-server.so.0 (0xb6800000)
+	libpresentation-time-server.so.0 => /lib/libpresentation-time-server.so.0 (0xb67fd000)
+	libwtz-foreign-server.so.0 => /lib/libwtz-foreign-server.so.0 (0xb67fa000)
+	libwtz-shell-server.so.0 => /lib/libwtz-shell-server.so.0 (0xb67f7000)
+	libwtz-screen-server.so.0 => /lib/libwtz-screen-server.so.0 (0xb67f4000)
+	librelative-pointer-unstable-v1-server.so.0 => /lib/librelative-pointer-unstable-v1-server.so.0 (0xb67f1000)
+	libpointer-constraints-unstable-v1-server.so.0 => /lib/libpointer-constraints-unstable-v1-server.so.0 (0xb67ee000)
+	libwtz-video-shell-server.so.0 => /lib/libwtz-video-shell-server.so.0 (0xb67eb000)
+	libgbm.so.1 => /lib/libgbm.so.1 (0xb67e7000)
+	libds.so.0 => /lib/libds.so.0 (0xb679b000)
+	libds-tizen.so.0 => /lib/libds-tizen.so.0 (0xb6778000)
+	libds-xdg-shell-v6.so.0 => /lib/libds-xdg-shell-v6.so.0 (0xb6772000)
+	libpointer-warp-v1-server.so.0 => /lib/libpointer-warp-v1-server.so.0 (0xb676f000)
+	libwtz-test-server.so.0 => /lib/libwtz-test-server.so.0 (0xb676b000)
+	libcursor-shape-v1-server.so.0 => /lib/libcursor-shape-v1-server.so.0 (0xb6768000)
+	libcynara-client.so.0 => /lib/libcynara-client.so.0 (0xb675e000)
+	libcynara-client-helpers.so.0 => /lib/libcynara-client-helpers.so.0 (0xb674b000)
+	libttrace.so.1 => /lib/libttrace.so.1 (0xb6747000)
+	libdlog.so.0 => /lib/libdlog.so.0 (0xb6733000)
+	libtizen-core.so.0 => /lib/libtizen-core.so.0 (0xb6715000)
+	libgcc_s.so.1 => /lib/libgcc_s.so.1 (0xb66fa000)
+	libpthread.so.0 => /lib/libpthread.so.0 (0xb66f6000)
+	libc.so.6 => /lib/libc.so.6 (0xb6594000)
+	/lib/ld-linux.so.3 (0xb6ee1000)
+	libhal-api-tbm.so.1 => /usr/lib/hal/libhal-api-tbm.so.1 (0xb658d000)
+	libdrm.so.2 => /lib/libdrm.so.2 (0xb6580000)
+	libcapi-base-common.so.0 => /lib/libcapi-base-common.so.0 (0xb6570000)
+	libwayland-client.so.0 => /lib/libwayland-client.so.0 (0xb6565000)
+	libpng16.so.16 => /lib/libpng16.so.16 (0xb6541000)
+	libiniparser.so.4 => /lib/libiniparser.so.4 (0xb653c000)
+	libhal-api-tdm.so.0 => /usr/lib/hal/libhal-api-tdm.so.0 (0xb6530000)
+	libpcre2-8.so.0 => /lib/libpcre2-8.so.0 (0xb64c7000)
+	libffi.so.8 => /lib/libffi.so.8 (0xb64bc000)
+	libgmodule-2.0.so.0 => /lib/libgmodule-2.0.so.0 (0xb64b8000)
+	libz.so.1 => /lib/libz.so.1 (0xb64a8000)
+	libmount.so.1 => /lib/libmount.so.1 (0xb6473000)
+	libdbuspolicy1.so.1 => /lib/libdbuspolicy1.so.1 (0xb645a000)
+	libvconf.so.0 => /lib/libvconf.so.0 (0xb6450000)
+	libcapi-system-info.so.0 => /lib/libcapi-system-info.so.0 (0xb644b000)
+	libtracker.so.1 => /lib/libtracker.so.1 (0xb6448000)
+	libsyscommon.so.5.0.0 => /lib/libsyscommon.so.5.0.0 (0xb6439000)
+	libhal-api-device.so.1 => /usr/lib/hal/libhal-api-device.so.1 (0xb63e3000)
+	liblzma.so.5 => /lib/liblzma.so.5 (0xb63c5000)
+	libcap.so.2 => /lib/libcap.so.2 (0xb63bd000)
+	libmtdev.so.1 => /lib/libmtdev.so.1 (0xb63b8000)
+	libevdev.so.2 => /lib/libevdev.so.2 (0xb63a6000)
+	libEGL.so.1 => not found
+	libGLESv2.so.2 => not found
+	libwayland-cursor.so.0 => /lib/libwayland-cursor.so.0 (0xb639f000)
+	libcynara-commons.so.0 => /lib/libcynara-commons.so.0 (0xb6351000)
+	libtizen-hwc-server.so.0 => /lib/libtizen-hwc-server.so.0 (0xb634e000)
+	libtext-server.so.0 => /lib/libtext-server.so.0 (0xb634b000)
+	libinput-method-server.so.0 => /lib/libinput-method-server.so.0 (0xb6347000)
+	libscaler-server.so.0 => /lib/libscaler-server.so.0 (0xb6342000)
+	libwtz-blender-server.so.0 => /lib/libwtz-blender-server.so.0 (0xb633f000)
+	libwtz-blur-server.so.0 => /lib/libwtz-blur-server.so.0 (0xb633c000)
+	liblinux-explicit-synchronization-unstable-v1-server.so.0 => /lib/liblinux-explicit-synchronization-unstable-v1-server.so.0 (0xb6339000)
+	libstdc++.so.6 => /usr/lib/libstdc++.so.6 (0xb619b000)
+	libhal-api-common.so.0 => /usr/lib/hal/libhal-api-common.so.0 (0xb6185000)
+	libblkid.so.1 => /lib/libblkid.so.1 (0xb6160000)
+	libexpat.so.1 => /lib/libexpat.so.1 (0xb6148000)
+	libbuxton2.so.1 => /lib/libbuxton2.so.1 (0xb613b000)
+	libjson-c.so.5 => /lib/libjson-c.so.5 (0xb612f000)
+	libcapi-appfw-app-common.so.0 => /lib/libcapi-appfw-app-common.so.0 (0xb6127000)
+	libcapi-appfw-app-manager.so.0 => /lib/libcapi-appfw-app-manager.so.0 (0xb611b000)
+	librpc-port.so.1 => /lib/librpc-port.so.1 (0xb60cd000)
+	libxml2.so.16 => /lib/libxml2.so.16 (0xb5ffb000)
+	libapp-core-cpp.so.1 => /lib/libapp-core-cpp.so.1 (0xb5fe9000)
+	libaul.so.0 => /lib/libaul.so.0 (0xb5f5e000)
+	libpkgmgr-info.so.0 => /lib/libpkgmgr-info.so.0 (0xb5ee5000)
+	libpkgmgr-client.so.0 => /lib/libpkgmgr-client.so.0 (0xb5eba000)
+	libbundle.so.0 => /lib/libbundle.so.0 (0xb5ea2000)
+	libtzplatform-config-2.0.so.2 => /lib/libtzplatform-config-2.0.so.2 (0xb5e96000)
+	libparcel.so.0 => /lib/libparcel.so.0 (0xb5e8e000)
+	libsessiond.so.0 => /lib/libsessiond.so.0 (0xb5e83000)
+	libxdgmime.so.1 => /lib/libxdgmime.so.1 (0xb5e7c000)
+	libunwind-ptrace.so.0 => /lib/libunwind-ptrace.so.0 (0xb5e76000)
+	libunwind-arm.so.8 => /lib/libunwind-arm.so.8 (0xb5e52000)
+	libaul-blink.so.0 => /lib/libaul-blink.so.0 (0xb5e4f000)
+	libminizip.so.1 => /lib/libminizip.so.1 (0xb5e47000)
+	libpkgmgr_common.so.0 => /lib/libpkgmgr_common.so.0 (0xb5e42000)
+ls: cannot access /usr/lib/libCOREGL*: No such file or directory
+ls: cannot access /usr/lib/libEGL*: No such file or directory
+ls: cannot access /usr/lib/libGLES*: No such file or directory
+package coregl is not installed
+#!/bin/sh
+
+PATH="/usr/bin:/bin:/usr/sbin:/sbin"
+
+KEYMAP_CACHE_FILE_PATH="/var/lib/xkb/"
+BUILTIN_KEYMAP_CACHE_FILE_PATH="/usr/share/X11/xkb/"
+KEYMAP_CACHE_VERSION_FILE="${KEYMAP_CACHE_FILE_PATH}cache_version.txt"
+TZ_BUILD_CONF_FILE="/etc/tizen-build.conf"
+
+function get_current_keymap_time() {
+	_current_date="$(date -r ${KEYMAP_CACHE_FILE_PATH}dummy.xkb "+%Y%m%d")_1"
+	eval "$1='${_current_date}'"
+}
+
+function get_current_build_time() {
+	_current_date="$(date -r ${BUILTIN_KEYMAP_CACHE_FILE_PATH}tizen_key_layout.txt "+%Y%m%d")_1"
+	eval "$1='${_current_date}'"
+}
+
+function get_keymap_version() {
+	if [ -e ${KEYMAP_CACHE_VERSION_FILE} ]
+	then
+		_tizen_keymap_version=`cat ${KEYMAP_CACHE_VERSION_FILE}`
+	else
+		get_current_keymap_time _tizen_keymap_version
+	fi
+
+	eval "$1='${_tizen_keymap_version}'"
+}
+
+function get_build_version() {
+	if [ -e ${TZ_BUILD_CONF_FILE} ]; then
+		_tizen_build_version=`grep "TZ_BUILD_DATE" ${TZ_BUILD_CONF_FILE} | awk -F '[=]' '{ print $2 }'`
+	else
+		get_current_build_time _tizen_build_version
+	fi
+	eval "$1='${_tizen_build_version}'"
+}
+
+function create_build_version_file() {
+	if [ -e ${KEYMAP_CACHE_VERSION_FILE} ]
+	then
+		rm -rf ${KEYMAP_CACHE_VERSION_FILE}
+	fi
+
+	get_build_version version
+
+	echo "${version}" > ${KEYMAP_CACHE_VERSION_FILE}
+}
+
+function copy_builtin_cache_file() {
+	if [ -e ${BUILTIN_KEYMAP_CACHE_FILE_PATH}*.xkb ]
+	then
+		echo "Copy builtin keymap cache file"
+		cp ${BUILTIN_KEYMAP_CACHE_FILE_PATH}*.xkb ${KEYMAP_CACHE_FILE_PATH}
+	fi
+}
+
+function remove_cache_files() {
+	_path="$1"
+	for _cache_file in ${_path}*.xkb; do
+		if [ ${_cache_file} == "${KEYMAP_CACHE_FILE_PATH}dummy.xkb" ]; then
+			continue
+		fi
+		rm "${_cache_file}"
+	done
+}
+
+function find_cache_files() {
+	_path="$1"
+	_value=0
+	for _cache_file in ${_path}*.xkb; do
+		if [ ${_cache_file} == "${KEYMAP_CACHE_FILE_PATH}dummy.xkb" ]; then
+			continue
+		else
+			_value=1
+			break
+		fi
+	done
+	return "${_value}"
+}
+
+# Create a keymap cache file directory
+mkdir -p ${KEYMAP_CACHE_FILE_PATH}/compiled/
+
+if [ -e ${KEYMAP_CACHE_FILE_PATH}/compiled/ ]
+then
+	:
+else
+# There are some problems in system if mkdir is failed.
+# sometimes some partition is not mounted, in that case do not make cache
+	echo "keymap_update is failed. cannot create ${KEYMAP_CACHE_FILE_PATH}/"
+	echo "This system couldn't use keymap cache, so booting time will be increase"
+# Altought cannot using keymap cache, enlightenment will be processed successfully,
+# so return true in this script
+	exit 0
+fi
+
+get_build_version _current_build_version
+get_keymap_version _current_keymap_version
+
+echo "build: ${_current_build_version}"
+echo "keymap: ${_current_keymap_version}"
+
+if [ -e ${KEYMAP_CACHE_VERSION_FILE} ]
+then
+	echo "We have a keymap cache version file"
+	if [ ${_current_build_version} != ${_current_keymap_version} ]
+	then
+		#Platform Update
+		echo "Current keymap is built in the past. Remove a keymap cache file."
+		remove_cache_files ${KEYMAP_CACHE_FILE_PATH}
+
+		create_build_version_file
+		copy_builtin_cache_file
+	else
+		#find_cache_files ${KEYMAP_CACHE_FILE_PATH}
+		#cache_exist=$?
+		#if [ "${cache_exist}" == "0" ]
+		#then
+			# User remove cache file
+		#else
+			# Normal booting
+		#fi
+		:
+	fi
+else
+	#First Booting
+	echo "We do not have a keymap cache version file"
+	create_build_version_file
+	remove_cache_files ${KEYMAP_CACHE_FILE_PATH}
+	copy_builtin_cache_file
+fi
+
+TASK21-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

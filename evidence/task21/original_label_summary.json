@@ -1,0 +1,12 @@
+{
+  "entries": 123,
+  "labels": {
+    "{'access': '_'}": 123
+  },
+  "special": [],
+  "types": {
+    "files": 73,
+    "directories": 49,
+    "symlinks": 1
+  }
+}

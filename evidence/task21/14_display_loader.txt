@@ -1,0 +1,8 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell '/lib/ld-linux.so.3 --list /usr/bin/enlightenment
+remote_rc=$?
+printf "\nTASK21-REMOTE-EXIT=%s\n" "$remote_rc"'
+/usr/bin/enlightenment: error while loading shared libraries: libEGL.so.1: cannot open shared object file: No such file or directory
+
+TASK21-REMOTE-EXIT=127
+
+TRANSPORT-EXIT=0

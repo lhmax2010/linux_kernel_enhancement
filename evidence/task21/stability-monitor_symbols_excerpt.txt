@@ -1,0 +1,11 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/platform-private /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/platform-private --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/sr --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/sr/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/sr/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -Ws /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/binaries/stability-monitor
+Source: temp/task21/sr/stability-monitor_symbols.txt
+SHA256: a057be820607e852b8e61657e3cc8f156b14e50a1e0b5b89d75c3720a116dc44
+32:     27: 00000000     0 FUNC    GLOBAL DEFAULT  UND kmod_unref@LIBKMOD_5 (5)
+56:     51: 00000000     0 FUNC    GLOBAL DEFAULT  UND kmod_module_new_from_name@LIBKMOD_5 (5)
+64:     59: 00000000     0 FUNC    GLOBAL DEFAULT  UND kmod_module_get_name@LIBKMOD_5 (5)
+69:     64: 00000000     0 FUNC    GLOBAL DEFAULT  UND kmod_module_unref@LIBKMOD_5 (5)
+78:     73: 00000000     0 FUNC    GLOBAL DEFAULT  UND kmod_new@LIBKMOD_5 (5)
+111:    106: 00000000     0 FUNC    GLOBAL DEFAULT  UND kmod_module_probe_insert_module@LIBKMOD_5 (5)
+
+EXIT=0

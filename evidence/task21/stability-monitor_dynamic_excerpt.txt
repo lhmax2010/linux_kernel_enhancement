@@ -1,0 +1,19 @@
+$ /usr/bin/bwrap --unshare-user --unshare-pid --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task9/GBS-ROOT-LKO-BASE01/local/BUILD-ROOTS/scratch.armv7l.0 / --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/namespace_home /home --ro-bind /home/linhao/Toolchain/development/linux_kernel_optimization /home/linhao/Toolchain/development/linux_kernel_optimization --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21 /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21 --bind /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/platform-private /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/platform-private --proc /proc --dev /dev --chdir /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/sr --clearenv --setenv HOME /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/sr/tmp --setenv TMPDIR /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/sr/tmp --setenv PYTHONDONTWRITEBYTECODE 1 --setenv PATH /usr/bin:/bin:/usr/sbin:/sbin --setenv LC_ALL C -- /usr/bin/qemu-arm -L / /usr/bin/readelf -d /home/linhao/Toolchain/development/linux_kernel_optimization/temp/task21/binaries/stability-monitor
+Source: temp/task21/sr/stability-monitor_dynamic.txt
+SHA256: a4d49e75b750878dc4fc1461b6f148b39b5eaa6e9fb56b9c8103062b1260cab6
+5:  0x00000001 (NEEDED)                     Shared library: [libjson-c.so.5]
+6:  0x00000001 (NEEDED)                     Shared library: [libpkgmgr-info.so.0]
+7:  0x00000001 (NEEDED)                     Shared library: [libbugreport.so.1]
+8:  0x00000001 (NEEDED)                     Shared library: [libkmod.so.2]
+9:  0x00000001 (NEEDED)                     Shared library: [libdiagnostics.so.1]
+10:  0x00000001 (NEEDED)                     Shared library: [libgio-2.0.so.0]
+11:  0x00000001 (NEEDED)                     Shared library: [libgobject-2.0.so.0]
+12:  0x00000001 (NEEDED)                     Shared library: [libaul.so.0]
+13:  0x00000001 (NEEDED)                     Shared library: [libglib-2.0.so.0]
+14:  0x00000001 (NEEDED)                     Shared library: [libdlog.so.0]
+15:  0x00000001 (NEEDED)                     Shared library: [libbundle.so.0]
+16:  0x00000001 (NEEDED)                     Shared library: [libgcc_s.so.1]
+17:  0x00000001 (NEEDED)                     Shared library: [libc.so.6]
+18:  0x00000001 (NEEDED)                     Shared library: [ld-linux.so.3]
+
+EXIT=0

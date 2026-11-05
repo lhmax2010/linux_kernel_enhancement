@@ -1,0 +1,127 @@
+$ /home/linhao/.local/bin/sdb -s 192.168.108.26:26101 shell 'ldd /usr/sbin/stability-monitor; systemctl show stability-monitor.service -p MainPID; cat /proc/493/attr/current; cat /proc/493/status; cat /proc/modules; cat /sys/fs/smackfs/ambient; cat /sys/fs/smackfs/onlycap
+remote_rc=$?
+printf "\nTASK21-REMOTE-EXIT=%s\n" "$remote_rc"'
+	linux-vdso.so.1 (0xbeb4e000)
+	libjson-c.so.5 => /lib/libjson-c.so.5 (0xb6f7a000)
+	libpkgmgr-info.so.0 => /lib/libpkgmgr-info.so.0 (0xb6f01000)
+	libbugreport.so.1 => /lib/libbugreport.so.1 (0xb6efe000)
+	libkmod.so.2 => /lib/libkmod.so.2 (0xb6eef000)
+	libdiagnostics.so.1 => /lib/libdiagnostics.so.1 (0xb6ee9000)
+	libgio-2.0.so.0 => /lib/libgio-2.0.so.0 (0xb6dcf000)
+	libgobject-2.0.so.0 => /lib/libgobject-2.0.so.0 (0xb6d93000)
+	libaul.so.0 => /lib/libaul.so.0 (0xb6d0a000)
+	libglib-2.0.so.0 => /lib/libglib-2.0.so.0 (0xb6c24000)
+	libdlog.so.0 => /lib/libdlog.so.0 (0xb6c12000)
+	libbundle.so.0 => /lib/libbundle.so.0 (0xb6bfa000)
+	libgcc_s.so.1 => /lib/libgcc_s.so.1 (0xb6bdf000)
+	libc.so.6 => /lib/libc.so.6 (0xb6a7d000)
+	/lib/ld-linux.so.3 (0xb6fa3000)
+	libcapi-system-resource.so.1 => /lib/libcapi-system-resource.so.1 (0xb6a7a000)
+	libcynara-client-helpers.so.0 => /lib/libcynara-client-helpers.so.0 (0xb6a67000)
+	libsystemd.so.0 => /lib/libsystemd.so.0 (0xb69d8000)
+	libtzplatform-config-2.0.so.2 => /lib/libtzplatform-config-2.0.so.2 (0xb69cc000)
+	libxml2.so.16 => /lib/libxml2.so.16 (0xb68f8000)
+	libminizip.so.1 => /lib/libminizip.so.1 (0xb68f0000)
+	libparcel.so.0 => /lib/libparcel.so.0 (0xb68e8000)
+	libvconf.so.0 => /lib/libvconf.so.0 (0xb68e0000)
+	libstdc++.so.6 => /lib/libstdc++.so.6 (0xb6742000)
+	libpthread.so.0 => /lib/libpthread.so.0 (0xb673e000)
+	libzstd.so.1 => /lib/libzstd.so.1 (0xb66a3000)
+	liblzma.so.5 => /lib/liblzma.so.5 (0xb6685000)
+	libz.so.1 => /lib/libz.so.1 (0xb6675000)
+	libdumpsys.so.1 => /lib/libdumpsys.so.1 (0xb6670000)
+	libdumpsys-system.so.1 => /lib/libdumpsys-system.so.1 (0xb666c000)
+	libcapi-system-info.so.0 => /lib/libcapi-system-info.so.0 (0xb6667000)
+	libgmodule-2.0.so.0 => /lib/libgmodule-2.0.so.0 (0xb6663000)
+	libmount.so.1 => /lib/libmount.so.1 (0xb662e000)
+	libdbuspolicy1.so.1 => /lib/libdbuspolicy1.so.1 (0xb6615000)
+	libffi.so.8 => /lib/libffi.so.8 (0xb660a000)
+	libcapi-base-common.so.0 => /lib/libcapi-base-common.so.0 (0xb65fa000)
+	libttrace.so.1 => /lib/libttrace.so.1 (0xb65f6000)
+	libuuid.so.1 => /lib/libuuid.so.1 (0xb65ed000)
+	libxdgmime.so.1 => /lib/libxdgmime.so.1 (0xb65e6000)
+	libunwind-ptrace.so.0 => /lib/libunwind-ptrace.so.0 (0xb65e2000)
+	libunwind-arm.so.8 => /lib/libunwind-arm.so.8 (0xb65be000)
+	libaul-blink.so.0 => /lib/libaul-blink.so.0 (0xb65bb000)
+	libm.so.6 => /lib/libm.so.6 (0xb656d000)
+	libpcre2-8.so.0 => /lib/libpcre2-8.so.0 (0xb6504000)
+	libjson-glib-1.0.so.0 => /lib/libjson-glib-1.0.so.0 (0xb64e8000)
+	libcynara-commons.so.0 => /usr/lib/libcynara-commons.so.0 (0xb649a000)
+	libcap.so.2 => /lib/libcap.so.2 (0xb6490000)
+	libbuxton2.so.1 => /lib/libbuxton2.so.1 (0xb6485000)
+	libblkid.so.1 => /lib/libblkid.so.1 (0xb6460000)
+	libexpat.so.1 => /lib/libexpat.so.1 (0xb6448000)
+	libcynara-client.so.0 => /lib/libcynara-client.so.0 (0xb643e000)
+MainPID=493
+SystemName:	stability-monit
+Umask:	0022
+State:	S (sleeping)
+Tgid:	493
+Ngid:	0
+Pid:	493
+PPid:	1
+TracerPid:	0
+Uid:	204	204	204	204
+Gid:	204	204	204	204
+FDSize:	256
+Groups:	29 44 201 204 1901 6525 10001 10013 10014 10212 10501 10502 10503 10704 10705 10711 10901 10903 11103 11201 11301 
+NStgid:	493
+NSpid:	493
+NSpgid:	493
+NSsid:	493
+Kthread:	0
+VmPeak:	   57384 kB
+VmSize:	   56800 kB
+VmLck:	       0 kB
+VmPin:	       0 kB
+VmHWM:	    8420 kB
+VmRSS:	    4524 kB
+RssAnon:	     620 kB
+RssFile:	    3904 kB
+RssShmem:	       0 kB
+VmData:	   25732 kB
+VmStk:	     132 kB
+VmExe:	      32 kB
+VmLib:	   11364 kB
+VmPTE:	      72 kB
+VmSwap:	     316 kB
+CoreDumping:	0
+THP_enabled:	0
+untag_mask:	0xffffffff
+Threads:	4
+SigQ:	0/9093
+SigPnd:	0000000000000000
+ShdPnd:	0000000000000000
+SigBlk:	0000000000000000
+SigIgn:	0000000000001000
+SigCgt:	0000000100004002
+CapInh:	0000000000090020
+CapPrm:	0000000000090020
+CapEff:	0000000000090020
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+NoNewPrivs:	0
+Seccomp:	0
+Seccomp_filters:	0
+Speculation_Store_Bypass:	unknown
+SpeculationIndirectBranch:	unsupported
+Cpus_allowed:	f
+Cpus_allowed_list:	0-3
+Mems_allowed:	1
+Mems_allowed_list:	0
+voluntary_ctxt_switches:	1038
+nonvoluntary_ctxt_switches:	186
+proc_tsm 12288 0 - Live 0xbf014000 (O)
+brcmfmac 352256 0 - Live 0xbf063000
+brcmutil 16384 1 brcmfmac, Live 0xbf057000
+hci_uart 32768 0 - Live 0xbf02c000
+btbcm 20480 1 hci_uart, Live 0xbf006000
+kdbus 98304 84 - Live 0xbf033000 (O)
+logger 16384 183 - Live 0xbf025000 (O)
+dm_bow 20480 0 - Live 0xbf016000 (O)
+extcon_usb_fixed 12288 0 - Live 0xbf00c000 (O)
+inform_reboot 12288 0 - Live 0xbf000000 (O)
+System::Privileged<NUL>System::Privileged User::Shell 
+TASK21-REMOTE-EXIT=0
+
+TRANSPORT-EXIT=0

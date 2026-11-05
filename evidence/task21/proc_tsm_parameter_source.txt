@@ -1,0 +1,50 @@
+Repository: ext/linux-tizen-modules-source
+HEAD: 25797e8af7ed95a5783bbe84c11959560aaf7e92
+File: kernel/proc-tsm.c
+SHA256: 4b16e0d55a5dbbfe5a248792bc87fa7be1f306cf96bfd278ea2ff85e65bb3535
+45: #define DEBUG 0
+46: #define PAGE_TO_KB(x) ((x) << (PAGE_SHIFT - 10))
+47: 
+48: static struct proc_dir_entry* proc_file;
+49: static char *blacklist[10] = {0, };
+50: static int blacklist_c = 0;
+51: 
+52: module_param_array(blacklist, charp, &blacklist_c, 0000);
+53: 
+140:     for_each_process(task) {
+141:         ppid = task->real_parent->pid;
+142:         pid = task_pgrp(task);
+143:         if (!pid)
+144:             continue;
+145: 
+146:         task_lock(task);
+147: 
+148:         if (!task->mm) {
+149:             task_unlock(task);
+150:             continue;
+151:         }
+152: 
+153:         if (task->flags & (PF_DUMPCORE|PF_SIGNALED|PF_EXITING)) {
+154:             task_unlock(task);
+155:             continue;
+156:         }
+157: 
+158: #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 17, 0)
+159:         security_cred_getsecid(((struct cred *)task->real_cred), &secid);
+160: #else
+161: 	security_task_getsecid(task, &secid);
+162: #endif
+163:         if (!security_secid_to_secctx(secid, &label, &label_len)) {
+164:             blacklisted = 0;
+165:             for (i = 0; i < blacklist_c; i++) {
+166:                 if (strcmp(label, blacklist[i]) == 0) {
+167:                     blacklisted = 1;
+168:                     break;
+169:                 }
+170:             }
+171:             if (blacklisted) {
+172:                 task_unlock(task);
+173:                 continue;
+174:             }
+175:         }
+176: 
