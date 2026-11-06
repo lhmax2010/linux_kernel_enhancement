@@ -1,0 +1,56 @@
+[
+  {
+    "path": "vendor_local/task24/images/modules.img",
+    "sha256": "8269d15520527e1e9ab9858eb0a943e22235351f56480e3ffea2cea77d6ab9ec",
+    "expected": "8269d15520527e1e9ab9858eb0a943e22235351f56480e3ffea2cea77d6ab9ec",
+    "match": true
+  },
+  {
+    "path": "vendor_local/task24/images/modules.img.readonly-copy",
+    "sha256": "8269d15520527e1e9ab9858eb0a943e22235351f56480e3ffea2cea77d6ab9ec",
+    "expected": "8269d15520527e1e9ab9858eb0a943e22235351f56480e3ffea2cea77d6ab9ec",
+    "match": true
+  },
+  {
+    "path": "vendor_local/task24/images/boot.img",
+    "sha256": "eddc40edee7271c196408b4b66cb5c329abbad88845d2c741b591ea6bd360447",
+    "expected": "eddc40edee7271c196408b4b66cb5c329abbad88845d2c741b591ea6bd360447",
+    "match": true
+  },
+  {
+    "path": "vendor_local/task24/images/hal.img",
+    "sha256": "3492acfe1785fa106948de8bd6589029fbe71db53ace08e2d8767734fc7a8f1e",
+    "expected": "3492acfe1785fa106948de8bd6589029fbe71db53ace08e2d8767734fc7a8f1e",
+    "match": true
+  },
+  {
+    "path": "vendor_local/task24/images/hal.img.readonly-copy",
+    "sha256": "3492acfe1785fa106948de8bd6589029fbe71db53ace08e2d8767734fc7a8f1e",
+    "expected": "3492acfe1785fa106948de8bd6589029fbe71db53ace08e2d8767734fc7a8f1e",
+    "match": true
+  },
+  {
+    "path": "vendor_local/task24/images/system-data.img",
+    "sha256": "2c93a32a2d366332ed61ae915bd7fa5e22349f3b8eb5984eadbbe9506220e8e8",
+    "expected": "2c93a32a2d366332ed61ae915bd7fa5e22349f3b8eb5984eadbbe9506220e8e8",
+    "match": true
+  },
+  {
+    "path": "vendor_local/task24/images/system-data.img.readonly-copy",
+    "sha256": "2c93a32a2d366332ed61ae915bd7fa5e22349f3b8eb5984eadbbe9506220e8e8",
+    "expected": "2c93a32a2d366332ed61ae915bd7fa5e22349f3b8eb5984eadbbe9506220e8e8",
+    "match": true
+  },
+  {
+    "path": "vendor_local/task24/images/rootfs.img",
+    "sha256": "4d633fcc181cc4902ca1a75d47196a5ace8e97dce1707e187789e43b542a13f6",
+    "expected": "4d633fcc181cc4902ca1a75d47196a5ace8e97dce1707e187789e43b542a13f6",
+    "match": true
+  },
+  {
+    "path": "vendor_local/task24/images/rootfs.img.readonly-copy",
+    "sha256": "4d633fcc181cc4902ca1a75d47196a5ace8e97dce1707e187789e43b542a13f6",
+    "expected": "4d633fcc181cc4902ca1a75d47196a5ace8e97dce1707e187789e43b542a13f6",
+    "match": true
+  }
+]

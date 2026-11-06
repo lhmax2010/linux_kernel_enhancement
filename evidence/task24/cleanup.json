@@ -1,0 +1,17 @@
+{
+  "time": "2026-11-06T03:03:28.302151+00:00",
+  "removed": [
+    "vendor_local/task24/images/hal.img.readonly-copy",
+    "vendor_local/task24/images/modules.img.readonly-copy",
+    "vendor_local/task24/images/rootfs.img.readonly-copy",
+    "vendor_local/task24/images/system-data.img.readonly-copy",
+    "temp/task24/tools"
+  ],
+  "removed_paths_absent": true,
+  "browser_profile_absent": true,
+  "source_images_retained_and_sha_verified": true,
+  "sr_reference_unchanged_vs_start_commit": true,
+  "sr_reference_sha256": "7235211d76c9e9606ccfda15a3328bdd120b29ef207965c3a2e6efef3d3464cb",
+  "board_accessed": false,
+  "commands": "Only unlink the four checked *.readonly-copy files and remove this task tools directory; no images, archives, other-task directories or buildroots removed."
+}

@@ -1,0 +1,58 @@
+{
+  "build": 1220056,
+  "stage": "offline only; board phase not started",
+  "offline_acceptance": "FAILED",
+  "build_status": "Successful",
+  "project": "Tizen-Unified-Toolchain",
+  "page_start": "2026-11-05 13:47:28",
+  "duration": "5h19m58s",
+  "end_calculated": "2026-11-05 19:07:26; page timezone unspecified",
+  "reference": "tizen-unified-toolchain_20261102.122237",
+  "base": "tizen-base-toolchain_20261030.120529",
+  "selected_configuration_delta_except_sources": 0,
+  "required_source_checks_passed": 3,
+  "rpm_source_headers_checked": 11,
+  "rpm_source_headers_matched": 11,
+  "boot_packages_old_new": [
+    187,
+    187
+  ],
+  "headed_packages_old_new": [
+    1235,
+    1236
+  ],
+  "changed_package_sources": 5,
+  "new_packages": 1,
+  "unexpected_manifest_differences": 0,
+  "abi": {
+    "release": "6.12.80-arm-rpi4-v7l",
+    "expected_vermagic": "6.12.80-arm-rpi4-v7l SMP mod_unload modversions ARMv7 p2v8",
+    "module_count": 59,
+    "external_module_count": 7,
+    "symbol_comparisons": 356,
+    "unique_symbols": 253
+  },
+  "abi_mismatches": 0,
+  "image_findings": {
+    "required_new_services_in_unit_directory": 0,
+    "required_new_services_in_quarantine": 2,
+    "dangling_wants_links": 2,
+    "coregl": "0.4.0-0 present",
+    "hal_mesa": "24.3.4-0 present",
+    "wlandrv-plugin-tizen": "absent in both RPM databases and both old/new profile package lists",
+    "EGL_GLES_COREGL_libraries": "links and target files present"
+  },
+  "metadata_reference": {
+    "image_entries": 129,
+    "version_entries": 123,
+    "stored_privately": true,
+    "sr_reference_unchanged": true
+  },
+  "board_connected": false,
+  "browser_profile_deleted": true,
+  "pending": [
+    "PM decision on offline failures",
+    "user flashing confirmation",
+    "B0-B3 and runtime evidence"
+  ]
+}

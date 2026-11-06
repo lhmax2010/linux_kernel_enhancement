@@ -1,5 +1,7 @@
 # 项目状态
 
+任务24离线核对完成，**验收未通过、尚未连板**：QB1220056为Successful，指定来源/参考快照通过，包清单仅预期的5项来源变化和1项新增；59模块vermagic及7树外模块356项CRC（253符号）全部通过。两个待验服务被制镜安全检查隔离、正常unit文件缺失且wants链接悬空；wlandrv-plugin-tizen未安装（1218766清单也未包含），待PM裁决。coregl、HAL mesa及EGL/GLES库在镜像内。归档/镜像哈希、独立模块元数据基准已留底，SR基准未改；详见[24](24_qb1220056_baseline.md)、evidence/task24/，内部细节仅在本地报告。下一步先处理离线不符项；用户明确“已刷好”后再做B0–B3，当前HDMI、display-manager及运行基线均未采集。新准备流程不卸载三包，任务19旧SR采样仍仅供参考。
+
 任务23完成：部署包制作增加官方元数据校正、完整归档清单及非root可达性验收；r2的127条目、59模块检查通过，74文件内容不变，旧包保留并禁用。base01演练通过（proc_tsm等10模块全加载，stability-monitor/resourced正常），完整回退通过（414 boot文件、75模块文件SHA、127条元数据一致）；最终原SR+total_mem=1600，root/模块ro、临时目录删除、owner恢复。详见[23](23_deploy_metadata_rehearsal.md)、evidence/task23/。
 
 用户追加决定（2026-11-05）：coregl、HAL mesa、wlandrv-plugin-tizen由用户刷机后的准备脚本卸载，来源未知挂账关闭；本轮只读查询三包均未安装。**从下一次刷机起，准备只做扩分区与安装lko-net-setup，不再卸载这三个包。任务19 SR数据在缺coregl、mesa状态下取得，仅供参考；正式测量前须重新刷官方镜像后重采。** 本轮未修复display-manager或安装coregl。

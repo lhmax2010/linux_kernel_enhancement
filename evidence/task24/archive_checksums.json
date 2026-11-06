@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261105.134728/images/standard/tizen-boot-armv7l-rpi/tizen-unified-toolchain_20261105.134728_tizen-boot-armv7l-rpi.tar.gz",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task24/download/tizen-unified-toolchain_20261105.134728_tizen-boot-armv7l-rpi.tar.gz",
+    "bytes": 28707458,
+    "sha256": "ac024be4b7a1b5401ac041c487c9ebaf038120c1a598c9ebd09b8e0b3e010a40",
+    "seconds": 4.89,
+    "expected_sha256": "ac024be4b7a1b5401ac041c487c9ebaf038120c1a598c9ebd09b8e0b3e010a40",
+    "checksum_ok": true
+  },
+  {
+    "url": "https://download.tizen.org/RBS/TIZEN/Tizen/Tizen-Unified-Toolchain/tizen-unified-toolchain_20261105.134728/images/standard/tizen-headed-armv7l/tizen-unified-toolchain_20261105.134728_tizen-headed-armv7l.tar.gz",
+    "path": "/home/linhao/Toolchain/development/linux_kernel_optimization/vendor_local/task24/download/tizen-unified-toolchain_20261105.134728_tizen-headed-armv7l.tar.gz",
+    "bytes": 555272491,
+    "sha256": "92eef40309b651d06fdba1202cb57310a187ec496abc410dab13af61bd6c2aaf",
+    "seconds": 63.54,
+    "expected_sha256": "92eef40309b651d06fdba1202cb57310a187ec496abc410dab13af61bd6c2aaf",
+    "checksum_ok": true
+  }
+]
