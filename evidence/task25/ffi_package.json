@@ -1,0 +1,16 @@
+{
+  "metadata_url": "https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/tizen-base-toolchain_20261030.120529/repos/standard/packages/repodata/b3ec543a10f9d593f50a226248910b1f7fd205e118e878014b3a405570f907aa-primary.xml.gz",
+  "metadata_sha256": "b3ec543a10f9d593f50a226248910b1f7fd205e118e878014b3a405570f907aa",
+  "repomd_sha256": "e432f1c6ab0d1278222e4ca24035bcd828289385ef28594877913f75a62365ac",
+  "packages": [
+    {
+      "name": "libffi",
+      "nvr": "libffi-3.4.7-1.16",
+      "arch": "armv7l",
+      "url": "https://download.tizen.org/snapshots/TIZEN/Tizen/Tizen-Base-Toolchain/tizen-base-toolchain_20261030.120529/repos/standard/packages/armv7l/libffi-3.4.7-1.16.armv7l.rpm",
+      "metadata_sha256": "d0572c43e3c085cf794992a400a3790970ec0e5c1daef878794ae21d75fe2f20",
+      "download_sha256": "d0572c43e3c085cf794992a400a3790970ec0e5c1daef878794ae21d75fe2f20",
+      "bytes": 22693
+    }
+  ]
+}

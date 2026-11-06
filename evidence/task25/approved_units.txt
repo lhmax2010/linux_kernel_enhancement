@@ -1,0 +1,67 @@
+Display note: numbered excerpts omit trailing whitespace; source SHA values refer to original files.
+
+FILE /usr/lib/systemd/system/resourced.service
+1: [Unit]
+2: Description=Resource management daemon
+3: # resourced monitors AUL (lauchpad) d-bus signals to learn about existence
+4: # and the state of applications.  Consequently, it has to start before
+5: # launchpad to have knowledge of all applications.  The Before= line below
+6: # refers to user-sessions, because tlm, and consequently user@.service
+7: # starts after user-sessions are allowed.
+8: Before=systemd-user-sessions.service
+9: DefaultDependencies=no
+10: Requires=resourced.socket
+11:
+12: [Service]
+13: Type=simple
+14: SmackProcessLabel=System
+15: ExecStart=/usr/bin/resourced
+16: MemoryMax=50M
+17: Restart=on-failure
+18: RestartSec=0
+19:
+20: [Install]
+21: WantedBy=multi-user.target
+
+FILE /usr/lib/systemd/system/stability-monitor.service
+1: [Unit]
+2: Description=Stability monitoring daemon
+3:
+4: [Service]
+5: Type=simple
+6: User=stability_monitor
+7: Group=stability_monitor
+8: Capabilities=cap_sys_ptrace,cap_sys_module,cap_kill=i
+9: SecureBits=keep-caps
+10: SmackProcessLabel=System
+11: ExecStart=/usr/sbin/stability-monitor
+12: Restart=on-failure
+13: RestartSec=0
+14: MemoryMax=20M
+15:
+16: [Install]
+17: WantedBy=multi-user.target
+
+FILE /usr/lib/systemd/system/connman.service
+1: [Unit]
+2: Description=Connection service
+3: Conflicts=shutdown.target
+4: RequiresMountsFor=/var/lib/connman
+5: After=dbus.service network-pre.target systemd-sysusers.service net-config.service
+6: Before=network.target multi-user.target shutdown.target
+7: Wants=network.target
+8:
+9: [Service]
+10: Type=dbus
+11: User=network_fw
+12: Group=network_fw
+13: BusName=net.connman
+14: Restart=on-failure
+15: SmackProcessLabel=System
+16: ExecStart=/usr/bin/connmand -n --nobacktrace --noplugin vpn
+17: StandardOutput=null
+18: Capabilities=cap_setgid,cap_net_admin,cap_net_bind_service,cap_net_broadcast,cap_net_raw,cap_dac_override=i
+19: SecureBits=keep-caps
+20:
+21: [Install]
+22: WantedBy=multi-user.target

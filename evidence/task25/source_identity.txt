@@ -1,0 +1,2 @@
+Remote: ssh://lhmax2025@review.tizen.org:29418/platform/core/security/security-config
+Commit: 1e550298b147a50f85e188dff15b2c457262c324 2026-09-18T09:18:28+02:00 Reduce profiles to common and tv

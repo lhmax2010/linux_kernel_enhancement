@@ -1,0 +1,11 @@
+{
+  "scope": [
+    "docs/25_security_service_rules.md",
+    "evidence/task25/",
+    "new STATUS task25 paragraph"
+  ],
+  "internal_detail_keyword_hits": 0,
+  "all_public_evidence_files_below_1MB": true,
+  "private_report_and_archive_excluded": true,
+  "implementation_diffs_not_applied": true
+}

@@ -1,0 +1,6 @@
+{
+  "source_ends_with_newline": false,
+  "last_line": "tizen-watcherd.socket,,,0666,*,@,1,1,1",
+  "replayed_list_equals_image": true,
+  "watcherd_present_in_generated_list": false
+}

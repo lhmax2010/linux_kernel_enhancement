@@ -1,0 +1,569 @@
+Display note: numbered excerpts omit trailing whitespace; source SHA values refer to original files.
+security-config commit 1e550298b147a50f85e188dff15b2c457262c324
+Read-only git show extraction; no test scripts executed.
+
+FILE test/image_test.sh SHA256 9de2d8c2ad6f4a2fbcbd7a25fb5171e99251a50e1d2c025a5b3f0c4d551db42e
+1: #!/bin/bash
+2:
+3: PATH=/bin:/usr/bin:/sbin:/usr/sbin
+4: security_test_path="/usr/share/security-config/test"
+5: log_path="/opt/share/security-config/log"
+6: log_file="$log_path/image_test_log"
+7:
+8: # This script is running automatically at the time of image build.
+9:
+10: # Init log
+11: if [ -e "$log_file" ]
+12: then
+13: 	rm $log_file
+14: fi
+15:
+16: # ASLR test for all excutable files
+17: #aslr_test="$security_test_path/aslr_test/scripts/run_aslr_test.sh"
+18: aslr_test="$security_test_path/aslr_test/scripts/run_aslr_test_all_files.sh"
+19: aslr_log="$log_path/aslr_not_applied_files"
+20: if [ -e  $aslr_test ]
+21: then
+22: 	$aslr_test 1>/dev/null 2>/dev/null
+23: 	if [ -e "$aslr_log" ]
+24: 	then
+25: 		echo "###### ASLR not applied list ######" >> $log_file
+26: 		cat $aslr_log >> $log_file
+27: 	fi
+28: fi
+29:
+30: # DEP test
+31: dep_test="$security_test_path/dep_test/scripts/run_dep_test.sh"
+32: dep_log="$log_path/dep_test.log"
+33: if [ -e  $dep_test ]
+34: then
+35: 	$dep_test 1>/dev/null 2>/dev/null
+36: 	if [ -e "$dep_log" ]
+37: 	then
+38: 		echo "###### DEP not applied list ######" >> $log_file
+39: 		cat $dep_log >> $log_file
+40: 	fi
+41: fi
+42:
+43: # PATH test
+44: path_check_test="$security_test_path/path_check_test/path_check.sh"
+45: path_log="$log_path/path_check.log"
+46: if [ -e  $path_check_test ]
+47: then
+48: 	$path_check_test 1>/dev/null 2>/dev/null
+49: 	if [ -e "$path_log" ]
+50: 	then
+51: 		echo "###### path check error list ######" >> $log_file
+52: 		cat $path_log >> $log_file
+53: 	fi
+54: fi
+55:
+56: # capability test
+57: check_new_capability_test="$security_test_path/capability_test/check_new_capabilities.sh"
+58: check_new_capability_log="$log_path/check_new_capabilities.log"
+59: if [ -e  $check_new_capability_test ]
+60: then
+61: 	$check_new_capability_test 1>/dev/null 2>/dev/null
+62: 	if [ -e "$check_new_capability_log" ]
+63: 	then
+64: 		echo "###### new capabilites list ######" >> $log_file
+65: 		cat $check_new_capability_log >> $log_file
+66: 	fi
+67: fi
+68:
+69: # systemd service test
+70: new_service_test="$security_test_path/new_service_test/check_new_service.sh"
+71: new_service_log="$log_path/new_service.log"
+72: if [ -e  $new_service_test ]
+73: then
+74: 	$new_service_test 1>/dev/null 2>/dev/null
+75: 	if [ -e "$new_service_log" ]
+76: 	then
+77: 		echo "###### not permitted service list ######" >> $log_file
+78: 		cat $new_service_log >> $log_file
+79: 	fi
+80: fi
+81:
+82:
+83: # Print the failed lists in build log
+84: if [ -e "$log_file" ]
+85: then
+86: 	cat $log_file
+87: fi
+88:
+89: # Remove utils
+90: echo "###### Security test done. Remove util files. ######"
+91: rm -rf /usr/share/security-config/test/utils
+92:
+
+FILE test/new_service_test/check_new_service.sh SHA256 504bc5d3671ea335f5561cf46e7cea37efdefdb9bd1726f4729689b1e8f35a0a
+1: #!/bin/bash
+2:
+3: PATH=/bin:/usr/bin:/sbin:/usr/sbin
+4: source /usr/share/security-config/test/new_service_test/systemd_test_util
+5: log_file="$log_dir/new_service.log"
+6: echo "run all systemd test"
+7:
+8:
+9: if [ -e "$log_file" ]
+10: then
+11: 	rm $log_file
+12: fi
+13:
+14: $cur_dir/check_systemd_service.sh
+15: if [ -e "$log_dir/system_service.log" ]
+16: then
+17: 	cat "$log_dir/system_service.log" >> $log_file
+18: fi
+19:
+20: $cur_dir/check_systemd_socket.sh
+21: if [ -e "$log_dir/systemd_socket.log" ]
+22: then
+23: 	cat "$log_dir/systemd_socket.log" >> $log_file
+24: fi
+25:
+26: $cur_dir/check_dbus_service.sh
+27: if [ -e "$log_dir/dbus_service.log" ]
+28: then
+29: 	cat "$log_dir/dbus_service.log" >> $log_file
+30: fi
+
+FILE test/new_service_test/check_systemd_service.sh SHA256 56e352322722421a98d5249d154fe83240b3f0eb08284d77fc19f9039dac2076
+1: #!/bin/bash
+2:
+3: PATH=/bin:/usr/bin:/sbin:/usr/sbin
+4: source /usr/share/security-config/test/new_service_test/systemd_test_util
+5:
+6: result_file="$result_dir/system_service.result"
+7: log_file="$log_dir/system_service.log"
+8:
+9: # function to check whether it is included in systemd list files (system session)
+10: # args : $1 - service file path, $2 - uid, $3 - gid, $4 - smacklabel
+11: function check_system_service
+12: {
+13: 	service_name=$(echo $1 | rev | cut -f1 -d "/" | rev)
+14: 	if [ "$2" == "" ]
+15: 	then
+16: 		uid="root"
+17: 	else
+18: 		uid="$2"
+19: 	fi
+20: 	if [ "$3" == "" ]
+21: 	then
+22: 		gid="root"
+23: 	else
+24: 		gid="$3"
+25: 	fi
+26: 	# systemd does provide special .service units with no [Service] section, these have to be treated specially
+27: 	if grep -qE '^\[Service\]$' $1; then
+28: 		check_smack_label="$4;"
+29: 	else
+30: 		check_smack_label=""
+31: 	fi
+32: 	result=$(cat $systemd_service_list | grep ";$service_name;$uid;$gid;$check_smack_label")
+33: 	if [ "$result" == "" ]
+34: 	then
+35: 		echo "Not permitted Systemd Service (system session) : $1"
+36: 		echo $1 >> $log_file
+37: 		move_systemd_unit $1 $service_name
+38: 	fi
+39: }
+40:
+41: # function to check prefix in Exec***=
+42: # If one of "+", "!", "!!" is included, it will be executed with the elevated privileges.
+43: # pattern : '^Exec[a-zA-Z]*=[!+]'
+44: function check_prefix_in_exec
+45: {
+46: 	service_list_with_prefix=$(grep -n '^Exec[a-zA-Z]*=[!+]' /usr/lib/systemd/system/* | cut -d ":" -f1)
+47: 	for line in $service_list_with_prefix
+48: 	do
+49: 		echo "Not permitted Systemd Service (system session), prefix one of !, !!, +  : $line"
+50: 		echo $line >> $log_file
+51: 		move_systemd_unit $line $(echo $line | rev | cut -f1 -d "/" | rev)
+52: 	done
+53: }
+54:
+55: # function to find and check service file in systemd directory (system session)
+56: function find_system_service
+57: {
+58: 	for line in `find "$system_unit_dir" $isu_system_unit_dir -type f -name "*service" 2> /dev/null`
+59: 	do
+60: 		uid="$(cat $line | grep "User=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+61: 		gid="$(cat $line | grep "Group=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+62: 		smacklabel="$(cat $line | grep "SmackProcessLabel=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+63: 		check_system_service "$line" "$uid" "$gid" "$smacklabel"
+64: 	done
+65: }
+66:
+67: # Initialize
+68: echo "Run check new service test"
+69: init_test $log_file $result_file
+70:
+71: # MAIN
+72: check_prefix_in_exec
+73: find_system_service
+74:
+75: check_result $log_file "systemd services" $result_file
+
+FILE test/new_service_test/check_systemd_socket.sh SHA256 62020b084341637d39c015eafb9ca59ad711441fa7bfb3e6f16662177baad84f
+1: #!/bin/bash
+2:
+3: PATH=/bin:/usr/bin:/sbin:/usr/sbin
+4: source /usr/share/security-config/test/new_service_test/systemd_test_util
+5:
+6: result_file="$result_dir/systemd_socket.result"
+7: log_file="$log_dir/systemd_socket.log"
+8:
+9: # function to check whether it is included in systemd socket list file
+10: # args : $1 - socket unit path, $2 - SocketUser, $3 - SocketGroup, $4 - SocketMode, $5 - $SmackLabelIPIn, $6 - $SmackLabelIPOut
+11: function check_systemd_socket
+12: {
+13: 	socket_name=$(echo $1 | rev | cut -f1 -d "/" | rev)
+14: 	result=$(cat $systemd_socket_list | grep -F ";$socket_name;$2;$3;$4;$5;$6;")
+15: 	if [ "$result" == "" ]
+16: 	then
+17: 		echo "Not permitted Systemd Unit Socket : $socket_name"
+18: 		echo $1 >> $log_file
+19: 		move_systemd_unit $1 $socket_name
+20: 	fi
+21: }
+22:
+23: # function to check special cases which a unit file has multiple sockets
+24: # read each lines of file
+25: # args : $1 - socket unit path
+26: function check_multi_socket_case
+27: {
+28: 	is_first="true"
+29: 	SocketUser=""
+30: 	SocketGroup=""
+31: 	SocketMode=""
+32: 	SmackLabelIPIn=""
+33: 	SmackLabelIPOut=""
+34: 	while read -r line
+35: 	do
+36: 		if [[ "$line" =~ "[Socket]" ]] && [ $is_first == "true" ]
+37: 		then
+38: 			is_first="false"
+39: 		elif [[ "$line" =~ "[Socket]" ]] && [ $is_first == "false" ]
+40: 		then
+41: 			check_systemd_socket "$1" "$SocketUser" "$SocketGroup" "$SocketMode" "$SmackLabelIPIn" "$SmackLabelIPOut"
+42: 			SocketUser=""
+43: 			SocketGroup=""
+44: 			SocketMode=""
+45: 			SmackLabelIPIn=""
+46: 			SmackLabelIPOut=""
+47: 		elif [[ "$line" =~ "SocketUser=" ]]
+48: 		then
+49: 			SocketUser="$(echo $line | grep "SocketUser=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+50: 		elif [[ "$line" =~ "SocketGroup=" ]]
+51: 		then
+52: 			SocketGroup="$(echo $line | grep "SocketGroup=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+53: 		elif [[ "$line" =~ "SocketMode=" ]]
+54: 		then
+55: 			SocketMode="$(echo $line | grep "SocketMode=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+56: 		elif [[ "$line" =~ "SmackLabelIPIn=" ]]
+57: 		then
+58: 			SmackLabelIPIn="$(echo $line | grep "SmackLabelIPIn=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+59: 		elif [[ "$line" =~ "SmackLabelIPOut=" ]]
+60: 		then
+61: 			SmackLabelIPOut="$(echo $line | grep "SmackLabelIPOut=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+62: 		fi
+63: 	done < $1
+64: 	# last line
+65: 	check_systemd_socket "$1" "$SocketUser" "$SocketGroup" "$SocketMode" "$SmackLabelIPIn" "$SmackLabelIPOut"
+66: }
+67:
+68: # function to find and check service file in systemd directory
+69: function find_system_socket
+70: {
+71: 	for line in `find "$system_unit_dir" $isu_system_unit_dir -type f -name "*.socket" 2> /dev/null`
+72: 	do
+73: 		# check # of [Socket]
+74: 		if [ "$(cat $line | grep '\[Socket\]' | wc -l)" != "1" ]
+75: 		then
+76: 			check_multi_socket_case $line
+77: 		else
+78: 			SocketUser="$(cat $line | grep "SocketUser=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+79: 			SocketGroup="$(cat $line | grep "SocketGroup=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+80: 			SocketMode="$(cat $line | grep "SocketMode=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+81: 			SmackLabelIPIn="$(cat $line | grep "SmackLabelIPIn=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+82: 			SmackLabelIPOut="$(cat $line | grep "SmackLabelIPOut=" | grep -v "#" | cut -d "=" -f2 | tr -d '\015')"
+83: 			check_systemd_socket "$line" "$SocketUser" "$SocketGroup" "$SocketMode" "$SmackLabelIPIn" "$SmackLabelIPOut"
+84: 		fi
+85: 	done
+86: }
+87:
+88: # Initialize
+89: echo "Run check Systemd Unit Socket"
+90: init_test $log_file $result_file
+91:
+92: # MAIN
+93: find_system_socket
+94:
+95: check_result $log_file "systemd sockets" $result_file
+
+FILE test/new_service_test/systemd_test_util SHA256 2d2cc4000e8dd16cd1e6e3b6cf179ad68cd0f40370da9002f9108ea88fd057c3
+1: #!/bin/bash
+2: PATH=/bin:/usr/bin:/sbin:/usr/sbin
+3:
+4: result_dir="/opt/share/security-config/result"
+5: log_dir="/opt/share/security-config/log"
+6: cur_dir="/usr/share/security-config/test/new_service_test"
+7: not_permitted_unit_path="/opt/share/security-config/not_permitted_service/"
+8: system_unit_dir="/usr/lib/systemd/system/"
+9: dbus_service_dir="/usr/share/dbus-1/system-services/"
+10: systemd_service_list_csv="$cur_dir/systemd_service.csv"
+11: systemd_socket_list_csv="$cur_dir/systemd_socket.csv"
+12: systemd_service_list="$cur_dir/systemd_service.list"
+13: systemd_socket_list="$cur_dir/systemd_socket.list"
+14: # asterisk represents configuration subdirectories for ISU packages
+15: # their names must directly correspond to the package names
+16: # (e.g., dlog for the dlog package, deviced for the deviced package etc.)
+17: isu_system_unit_dir="/etc/isu/*/system-services/"
+18:
+19: # function to move service file to another directory. This socket cannot be used.
+20: # $1 : file path, $2 : file name
+21: function move_systemd_unit
+22: {
+23: 	if [ ! -d $not_permitted_unit_path ]
+24: 	then
+25: 		mkdir $not_permitted_unit_path
+26: 	fi
+27: 	mv "$1" "$not_permitted_unit_path$2"
+28: }
+29:
+30:
+31: # init test (move unit file in not_permitted_list to real dir and remove log and result files)
+32: # $1 : log path, $2 : result path
+33: function init_test
+34: {
+35: 	if [ -e "$1" ]
+36: 	then
+37: 		# Restore not permitted service
+38: 		for line in `cat $1`
+39: 		do
+40: 			unit_name=$(echo $line | rev | cut -f1 -d "/" | rev)
+41: 			if [ -e "$not_permitted_unit_path$unit_name" ]
+42: 			then
+43: 				mv $not_permitted_unit_path$unit_name $line
+44: 			fi
+45: 		done
+46: 		rm $1
+47: 	fi
+48: 	if [ -e "$2" ]
+49: 	then
+50: 		rm $2
+51: 	fi
+52: }
+53:
+54: # check a log file and make a result
+55: # $1 : log path, $2 : test name, $3 : result path
+56: function check_result
+57: {
+58: 	if [ ! -e $1 ]
+59: 	then
+60: 		echo "Success! All $2 are in the list"
+61: 		echo "YES" > $3
+62: 	else
+63: 		echo "Fail! Please check the log and "$not_permitted_unit_path
+64: 		echo "NO" > $3
+65: 	fi
+66: }
+67:
+
+FILE test/new_service_test/create_list.sh SHA256 68a29ff9328d8aa2de402bcc543799a37e6d12f4fd248a2305ec20f19c8a66a8
+1: #!/bin/bash
+2:
+3: PATH=/bin:/usr/bin:/sbin:/usr/sbin
+4:
+5: source /usr/share/security-config/test/new_service_test/systemd_test_util
+6:
+7: PROFILE=$1
+8: if [ "$(cat /etc/tizen-build.conf | grep TZ_BUILD_REPO | cut -d "=" -f2)" == "emulator" ]
+9: then
+10: 	PROFILE+="_EMUL"
+11: fi
+12:
+13: # An unknown profile has no column in the CSVs (e.g. TV on an emulator build), so no
+14: # whitelist can be generated. Warn and leave any existing lists untouched rather than
+15: # failing the %post scriptlet.
+16: if ! head -1 $systemd_service_list_csv | tr ',' '\n' | grep -qx "$PROFILE"
+17: then
+18: 	echo "create_list.sh: warning: no column '$PROFILE' in $systemd_service_list_csv, keeping existing lists" >&2
+19: 	exit 0
+20: fi
+21:
+22: if [ -e "$systemd_service_list" ]
+23: then
+24: 	rm $systemd_service_list
+25: fi
+26:
+27: if [ -e "$systemd_socket_list" ]
+28: then
+29: 	rm $systemd_socket_list
+30: fi
+31:
+32: sed 1d $systemd_service_list_csv | while IFS=, read -r SERVICE_NAME USER GROUP SMACK COMMON TV COMMON_EMUL
+33: do
+34: 	if [ "${!PROFILE}" == "1" ]
+35: 	then
+36: 		echo ";$SERVICE_NAME;$USER;$GROUP;$SMACK;" >> $systemd_service_list
+37: 	fi
+38: done
+39:
+40: sed 1d $systemd_socket_list_csv | while IFS=, read -r SOCKET_NAME USER GROUP MODE SMACK_IP_IN SMACK_IP_OUT COMMON TV COMMON_EMUL
+41: do
+42: 	if [ "${!PROFILE}" == "1" ]
+43: 	then
+44: 		echo ";$SOCKET_NAME;$USER;$GROUP;$MODE;$SMACK_IP_IN;$SMACK_IP_OUT;" >> $systemd_socket_list
+45: 	fi
+46: done
+47:
+
+FILE test/new_service_test/systemd_service.csv SHA256 80b2616a884b0c9b596c12089caad15da77fb81004730f2e751ce010356c0967
+1: SERVICE_NAME,USER,GROUP,SMACK,COMMON,TV,COMMON_EMUL
+2: __user@.service,%i,,User,1,1,1
+50: clone_partitions.service,root,root,System,1,1,1
+51: connman-vpn.service,network_fw,network_fw,System,1,1,1
+52: connman.service,network_fw,network_fw,System,1,1,1
+53: console-getty.service,root,root,System,1,1,1
+54: console-shell.service,root,root,System,1,1,1
+168: recovery.service,root,root,System,1,1,1
+169: rescue.service,root,root,System,1,1,1
+170: resize2fs@.service,root,root,System,1,1,1
+171: resourced.service,root,root,System,1,1,1
+172: rndis.service,network_fw,network_fw,System,1,1,1
+173: rscmgr-msgq.service,root,root,System,1,1,1
+190: smartreply.service,ui_fw,ui_fw,System,1,1,0
+191: sound-server.service,multimedia_fw,multimedia_fw,System,1,1,1
+192: stability-monitor.service,stability_monitor,stability_monitor,System,1,1,1
+193: stc-iptables.service,network_fw,network_fw,System,1,1,1
+194: stc-manager.service,root,root,System,1,1,1
+
+FILE test/new_service_test/systemd_socket.csv SHA256 a5beb32c41f1494d058851c93dcb0ba5c9f49c6801bc46c410945475d7cb7141
+65: pass-resource-monitor.socket,,,0777,*,@,1,1,1
+66: webauthn.socket,,,0777,*,@,1,1,1
+67: hal-backend-service.socket,,,0777,*,@,1,1,1
+68: hal-backend-service-codec.socket,,,0777,*,@,1,1,1
+69: system-server.socket,root,root,0777,*,@,1,1,1
+70: tizen-watcherd.socket,,,0666,*,@,1,1,1
+
+FILE packaging/security-config.spec SHA256 ede06357f6809f56a5cf8f329fde1d357c1a9f92ccaf9ddf7c325a1119ce8ccd
+93: /usr/share/security-config/group_id_setting
+94: %if "%{?dev_wos}" == "1" || "%{?uid_app_sandboxing}" == "1"
+95: /usr/share/security-config/configure_uid_sandboxing
+96: %endif
+97: /usr/share/security-config/set_label
+98: mkdir -p /opt/share/security-config/result
+99: mkdir -p /opt/share/security-config/log
+100: #hard coded as we cannot use system-info-tool here
+101: /usr/share/security-config/configure_askuser.sh DISABLE
+102: rm -r /opt/share/security-config/test
+103: ln -s %{SECURITY_TEST_DIR} /opt/share/security-config/test
+104: touch /opt/share/security-config/dummy_file
+105: chmod 600 /opt/share/security-config/dummy_file
+106: %{SECURITY_TEST_DIR}/new_service_test/create_list.sh COMMON
+107:
+108: %post profile_common
+109: mv /usr/share/security-config/mount_list/common/additional_mount_list /usr/share/security-config/additional_mount_list
+110: rm -r /usr/share/security-config/mount_list/
+111: %if "%{?dev_wos}" != "1"
+112: chsmack -a "System::NoUse" /etc/smack/onlycap
+113: %endif
+114: %{SECURITY_TEST_DIR}/new_service_test/create_list.sh COMMON
+115:
+116: %post profile_tv
+117: mv /usr/share/security-config/mount_list/tv/additional_mount_list /usr/share/security-config/additional_mount_list
+118: rm -r /usr/share/security-config/mount_list/
+119: %if "%{?dev_wos}" != "1"
+120: chsmack -a "System::NoUse" /etc/smack/onlycap
+121: %endif
+122: %{SECURITY_TEST_DIR}/new_service_test/create_list.sh TV
+123:
+
+FILE config/set_capability SHA256 a820c6b06f67b5e4bfbe5c15b23b918a84463afa3c7edd87953c6e166df744cb
+1: #!/bin/bash
+2:
+3: PATH=/bin:/usr/bin:/sbin:/usr/sbin
+4:
+5: ## Setting capability in binary image creation stage(via mic)
+6:
+7: # Package        bluetooth-frwk
+8: # Owner          Wootak Jung(wootak.jung@samsung.com)
+9: # Date           May 8, 2024
+10: # Required       /usr/bin/bt-core : cap_sys_module, cap_kill, cap_net_admin, cap_net_raw : ei
+11: # cap_sys_module To control bt interface
+12: # cap_kill       To kill processes
+13: # cap_net_admin  To use network-related operations
+14: # cap_net_raw    To use HCI socket
+15:
+187: if [ -e "/usr/bin/connmand" ]
+188: then /usr/sbin/setcap cap_net_admin,cap_net_bind_service,cap_net_broadcast,cap_net_raw,cap_dac_override=ei /usr/bin/connmand
+189: fi
+190:
+191: if [ -e "/usr/bin/connman-vpnd" ]
+192: then /usr/sbin/setcap cap_net_admin,cap_net_bind_service,cap_net_broadcast,cap_net_raw,cap_dac_override=ei /usr/bin/connman-vpnd
+193: fi
+194:
+710: fi
+711:
+712: # Package               platform/core/system/stability-monitor
+713: # Date                  Nov 20, 2019
+714: # Required              /usr/sbin/stability-monitor : cap_sys_ptrace,cap_sys_module,cap_kill : ei
+715: # cap_sys_ptrace	To attach in process and readlink for working
+716: # cap_sys_module	To load/unload kernel module
+717: # cap_kill		To kill processes
+718:
+719: if [ -e "/usr/sbin/stability-monitor" ]
+720: then /usr/sbin/setcap cap_sys_ptrace,cap_sys_module,cap_kill=ei /usr/sbin/stability-monitor
+721: fi
+722:
+
+FILE test/capability_test/check_new_capabilities.sh SHA256 a93cf4d51cd1cd7690a7ef85dca7354b86254dd2f6ed858387fc143e5aca9515
+33:
+34: # parse cap list
+35: function create_cap_list_file
+36: {
+37: 	cat $setcap_script_path \
+38: 	| grep "# Required" \
+39: 	| sed -n -e 's/^.*# Required//p' \
+40: 	| sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' \
+41: 	| awk -F':' '{system("readlink -n -f " $1)} {print " :" $2 ":" $3}' \
+42: 	> $tmp_target_list_file
+43: }
+44:
+88:
+89: create_cap_list_file
+90:
+91: # list capabilities
+92: /usr/sbin/getcap / -r 2>/dev/null > $tmp_source_list_file
+93: while read LINE
+94: do
+95: 	source_path=$(echo $LINE | cut -d " " -f1)
+96: 	source_cap_list_and_option=$(echo $LINE | cut -d " " -f2)
+97: 	check_capability "$source_path" "$source_cap_list_and_option"
+98: 	if [ "$?" == 0 ]
+99: 	then
+100: 		echo "Failure list : " $LINE
+101: 		echo $LINE >> $log_file
+102: 	fi
+103: done < $tmp_source_list_file
+104:
+105: if [ -e $tmp_source_list_file ]
+106: then
+107: 	rm $tmp_source_list_file
+108: fi
+109:
+110: if [ -e $tmp_target_list_file ]
+111: then
+112: 	rm $tmp_target_list_file
+113: fi
+114:
+115: if [ ! -e $log_file ]
+116: then
+117: 	echo "capability test pass"
+118: 	echo "YES" > $result_file
+119: else
+120: 	echo "capability test fail"
+121: 	echo "NO" > $result_file
+122: fi

@@ -1,0 +1,57 @@
+{
+  "kind": "Static replay of the exact grep predicates only; did not execute image_test.sh or move any units",
+  "source": "1e550298b147a50f85e188dff15b2c457262c324",
+  "common_list_equals_image": true,
+  "csv_equals_image": true,
+  "rows": [
+    {
+      "name": "amd-tizen-action-service.socket",
+      "pattern": ";amd-tizen-action-service.socket;;;0666;*;@;",
+      "match": false,
+      "exec_prefix_rejected": false
+    },
+    {
+      "name": "privilege-checker-integrity.service",
+      "pattern": ";privilege-checker-integrity.service;security_fw;security_fw;System::Privileged;",
+      "match": false,
+      "exec_prefix_rejected": false
+    },
+    {
+      "name": "systemd-bless-boot.service",
+      "pattern": ";systemd-bless-boot.service;root;root;;",
+      "match": false,
+      "exec_prefix_rejected": false
+    },
+    {
+      "name": "systemd-boot-system-token.service",
+      "pattern": ";systemd-boot-system-token.service;root;root;;",
+      "match": false,
+      "exec_prefix_rejected": false
+    },
+    {
+      "name": "tizen-watcherd.socket",
+      "pattern": ";tizen-watcherd.socket;;;0666;*;@;",
+      "match": false,
+      "exec_prefix_rejected": false
+    },
+    {
+      "name": "resourced.service",
+      "pattern": ";resourced.service;root;root;System;",
+      "match": true,
+      "exec_prefix_rejected": false
+    },
+    {
+      "name": "stability-monitor.service",
+      "pattern": ";stability-monitor.service;stability_monitor;stability_monitor;System;",
+      "match": true,
+      "exec_prefix_rejected": false
+    },
+    {
+      "name": "connman.service",
+      "pattern": ";connman.service;network_fw;network_fw;System;",
+      "match": true,
+      "exec_prefix_rejected": false
+    }
+  ],
+  "note": "Only open-source unit examples are published. Full internal-unit predicate replay stays local."
+}

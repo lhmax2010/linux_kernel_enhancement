@@ -1,0 +1,21 @@
+{
+  "images": [
+    {
+      "name": "rootfs.img",
+      "expected_task24_sha256": "4d633fcc181cc4902ca1a75d47196a5ace8e97dce1707e187789e43b542a13f6",
+      "original_sha256_after": "4d633fcc181cc4902ca1a75d47196a5ace8e97dce1707e187789e43b542a13f6",
+      "copy_sha256_after_readonly_use": "4d633fcc181cc4902ca1a75d47196a5ace8e97dce1707e187789e43b542a13f6"
+    },
+    {
+      "name": "system-data.img",
+      "expected_task24_sha256": "2c93a32a2d366332ed61ae915bd7fa5e22349f3b8eb5984eadbbe9506220e8e8",
+      "original_sha256_after": "2c93a32a2d366332ed61ae915bd7fa5e22349f3b8eb5984eadbbe9506220e8e8",
+      "copy_sha256_after_readonly_use": "2c93a32a2d366332ed61ae915bd7fa5e22349f3b8eb5984eadbbe9506220e8e8"
+    }
+  ],
+  "original_images_unchanged": true,
+  "task25_image_copies_deleted": true,
+  "temporary_tools_deleted": true,
+  "no_board_connection": true,
+  "no_source_changes_or_gerrit_push": true
+}
