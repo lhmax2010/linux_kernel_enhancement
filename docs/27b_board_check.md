@@ -1,50 +1,108 @@
-# 任务27后半：板上核对与预备基线
+# 任务27后半：板上核对与预备Idle基线
 
-2026-11-09。**身份和受控回收验证通过；首轮重启后五分钟无法恢复SDB，已停止板上操作。三轮Idle采集未完成。** 详细原始输出和按进程数据仅在本地`vendor_local/task27b/`，本页不含内部服务名。
+2026-11-09。**网络持久化单次验证及三轮重启采集完成；身份、显示、评估服务运行与受控回收检查通过。** Used三轮均值 **495.99MiB**、极差 **15.49MiB**。这是观察波动的预备基线，不是正式测量；内部服务名、unit和按进程数据仅在本地`vendor_local/task27b/`。
 
-## 完成情况
+## 身份、显示与服务结论
 
-| 部分 | 结果 | 证据和限制 |
-| --- | --- | --- |
-| 身份 | 通过 | armv7l、6.12.80-arm-rpi4-v7l、Tizen；tizen-build.conf实际字段TZ_BUILD_ID为tizen-unified-toolchain_20261106.063932。先owner断言，后进入root。 |
-| 准备状态 | 已记录 | MemTotal=3,976,468KiB；boot配置没有total_mem，本轮未更改。根分区、HAL初始均rw,relatime。 |
-| 图形依赖 | 通过 | coregl0.4.0-0和HAL mesa24.3.4-0安装，三个图形库链接和目标存在，显示程序ldd未发现缺库。 |
-| 显示 | **正常显示** | 用户2026-11-09确认开机后已出现正常Home画面；display-manager active/running、0重启、退出码0，Home/launcher进程存在。原始两个HDMI connector均disconnected、modes为空，与实际画面不一致，保留为软件读数差异，未修复。 |
-| 评估服务 | 状态与压力路径通过 | 初始化服务active/exited，守护服务active/running、0重启；本次回收路径无open/ioctl权限失败。 |
-| swap管理分离 | 运行证据符合，路径核验未全闭合 | 读取配置SwapEnable=no，运行进程maps无swap插件；实际选中文件的三个高优先级路径仍待补查。 |
-| Idle三轮 | 未完成 | 第一次reboot后300秒未重连；后两次未执行，不能计算三轮均值和极差。 |
-| memps | 源码口径闭合，数值对照待补 | 已取RPM指定的源码；尚未取得Idle期间memps全文及同步meminfo。 |
+| 项目 | 结果 |
+| --- | --- |
+| 身份 | 每次root/写入和重启前后断言armv7l、6.12.80-arm-rpi4-v7l、Tizen；TZ_BUILD_ID=tizen-unified-toolchain_20261106.063932。 |
+| 内存设置 | MemTotal=3,976,468KiB；boot配置没有total_mem，本轮未设置1600、未修改boot。 |
+| 图形依赖 | coregl0.4.0-0、HAL mesa24.3.4-0安装；EGL/GLES/COREGL链接与目标存在，显示程序无缺库。 |
+| 显示 | **正常显示**：用户目视确认开机后正常Home；三轮display-manager均active/running、NRestarts=0、退出0。初采两个HDMI节点均disconnected；最终回读HDMI-A-1已connected、HDMI-A-2 disconnected，与Home正常显示一致；未修改显示配置。 |
+| 评估服务 | 三轮初始化服务active/exited、守护服务active/running、0重启、退出0。 |
+| swap管理分离 | 三个更高优先级配置路径均不存在；有效配置只有一处SwapEnable=no，运行进程maps无swap插件，优先级核验已补齐。 |
+| failed units | 三轮均0。 |
+| 收尾 | 根分区与HAL均ro,relatime；任务临时目录不存在；SDB已恢复owner并回读。 |
 
-本地证据：`logs/04_identity_owner_recheck.txt`、`07_mounts.txt`、`08_graphics_packages.txt`、`29_display_details.txt`、`32_boot_config_read.txt`、`pressure_summary.json`、`idle1_progress.json`及`commands.jsonl`。
+证据：本地`logs/resume2_identity_owner.txt`、`config_priority_closed.txt`、`idle_r2_[1-3]_snapshot.raw.txt`、`final_completed_board.txt`、`final_completed_owner.txt`及`commands.jsonl`。按进程详情不进入公开仓库。
 
-## 受控压力结果
+## 受控回收（前一阶段已完成）
 
-使用板上已有工具解释/tmp测试脚本；/tmp的noexec属性未改。逐步分配匿名内存，目标约400MiB，保持60秒；总142秒、143样本，间隔中位数1.01秒。worker有限额和绝对寿命，低内存/OOM触发停止；只结束四个本任务测试进程，没有操作其他进程。
+最低MemAvailable385.26MiB，目标区间保持60秒，总142秒/143样本；pswpout增加15,084页（58.92MiB），zram原始数据增加55.68MiB、实际内存增加31.70MiB；OOM增量0，本服务open/ioctl权限失败0。四个测试worker及/tmp脚本已删除。服务回收调用与系统换出增长同时观测到，确认实际触发；未隔离内核后台回收，不把全部系统增量独占归因于服务。当前运行身份组合对此路径够用，不推导最小权限。
 
-| 指标 | 结果 |
-| --- | ---: |
-| 最低MemAvailable | 394,504KiB / 385.26MiB |
-| pswpout增量 | 15,084页 / 58.92MiB |
-| 压缩设备原始数据增量 | 55.68MiB |
-| 压缩设备实际内存增量 | 31.70MiB |
-| OOM计数增量 | 0 |
-| 本次服务open/ioctl权限失败 | 0 |
-| 释放后MemAvailable | 3,412,744KiB |
+逐秒证据为`pressure_samples.json`、`pressure_summary.json`、相关journal/dlog及清理日志，均仅本地保存。此次续跑未重复压力测试。
 
-服务回收调用与系统换出/压缩数据增长同时被观测到，可确认此次路径实际触发；没有单独隔离内核后台回收，不把全部系统增量独占归因于该服务。另有测试前即存在的其他进程SMACK拒绝，不算本服务失败。运行身份组合在此次测试中足够使用，不推导最小权限结论。所有测试进程及/tmp文件在reboot前已核验清理。
+## 板上本地改动：网络持久化
 
-## Idle汇总与停止点
+此配置**不属于QB镜像**。后续SR基线须安装同一文件并核对SHA、完成同样的自动恢复验证，才能保持本地准备一致。
 
-| 轮次 | 结果 | Used / PSS / GPU / 内核分项 / memps |
-| --- | --- | --- |
-| 1 | 18:21:54发出无参数reboot；18:26:54达到五分钟重连上限 | 未采集 |
-| 2 | 未重启 | 未采集 |
-| 3 | 未重启 | 未采集 |
-| 均值、极差 | 无有效三轮样本 | 不可计算 |
+先把ConnMan目录及相关网络配置备份到/tmp再拉回；备份`network_resume/network-before.tar`为75,264B，SHA-256 `49755e38cc5462405fb804d03cbc545bb11a52bd40dd6068fb4cf8c81d171361`，板端/宿主核对一致。完整成员、原权限/标签和配置只留本地。
 
-自动配网服务不存在；静态IP配置对应手动设置的MAC，另一原始MAC配置仍为DHCP。这是重连失败的候选原因，重启后未取得板上证据，不能断言唯一根因。没有安装配网服务、修改网络、重启宿主SDB服务或继续第二次重启；需用户串口查看并恢复网络。板上重启后身份、挂载和owner状态未回读，收尾恢复状态不能确认。
+实际持久写入仅两项：
 
-## memps口径
+| 路径 | 内容/元数据 |
+| --- | --- |
+| /etc/systemd/system/ethernet-mac-setup.service | root:root、0644、SMACK `_`、432B，SHA-256 `f319a1842879a317e33006ed1ce8ae4d109c54bf09fecadb96e28c72be80b14c` |
+| /etc/systemd/system/multi-user.target.wants/ethernet-mac-setup.service | enable符号链接，指向上一行绝对路径；root:root、SMACK System::Privileged；以readlink核验链接目标，解引用SHA同unit |
+
+unit全文：
+
+```ini
+[Unit]
+Description=Set Ethernet address before connection management
+Requires=sys-subsystem-net-devices-eth0.device
+After=sys-subsystem-net-devices-eth0.device
+Before=connman.service
+Wants=connman.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/ip link set eth0 down
+ExecStart=/usr/sbin/ip link set eth0 address 2c:cf:67:a0:72:b5
+ExecStart=/usr/sbin/ip link set eth0 up
+
+[Install]
+WantedBy=multi-user.target
+```
+
+沿用原配网脚本的ip down→MAC→up序列；按本轮授权改为Before=connman.service，仅设置MAC，现有ConnMan配置提供IP/网关/DNS，没有重复写静态配置。网卡device依赖已确认active。无新脚本、无常驻进程，不改/usr/lib、不装卸包。安装前根分区已rw，故**未remount**；装完仍rw，第一次验证重启后按镜像默认回到ro。仅daemon-reload/enable，未手动start断网。
+
+单次验证：reboot发出后56.793秒自动连回，首次成功uptime=24.17秒，满足3分钟上限；身份、MAC、IP正确。oneshot active/exited、success/0，MainPID/ControlPID=0且cgroup不存在，没有常驻进程；退出15.490956秒，ConnMan开始15.585124秒，顺序正确。其后每轮也都自动恢复；未使用宿主SDB服务重启或人工网络干预。
+
+撤销步骤（未执行）：连接并断言身份后记录根分区状态，必要时remount rw；执行`systemctl disable ethernet-mac-setup.service`（不带--now），仅删除以上unit及残存enable链接，daemon-reload、确认路径不存在，恢复根分区原状态。已有ConnMan配置不动，不自动重启；撤销后下次重启须预先安排网络恢复。
+
+## 三轮Idle结果
+
+每轮在首次SDB连接及身份核对后，不再操作板子，到**网络恢复起满600秒**才采集；验证重启不计入三轮。首次成功时uptime是“开机到可达”的观测上界，轮询有时间分辨率限制，不等同链路实际up的精确时刻。
+
+| 轮次 | reboot发出→首次SDB成功(s) | 首次成功时uptime(s) | 静置(s) | 快照uptime起–止(s) |
+| --- | ---: | ---: | ---: | --- |
+| 1 | 60.819 | 23.96 | 600.000 | 624.31–628.29 |
+| 2 | 56.747 | 23.96 | 600.000 | 624.20–628.32 |
+| 3 | 56.664 | 24.10 | 600.000 | 624.29–628.32 |
+
+| 指标（KiB） | 第1轮 | 第2轮 | 第3轮 | 均值 | 极差 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Used（Total−Available） | 501,692 | 504,440 | 517,556 | 507,896 | 15,864 |
+| MemTotal | 3,976,468 | 3,976,468 | 3,976,468 | 3,976,468 | 0 |
+| MemAvailable | 3,474,776 | 3,472,028 | 3,458,912 | 3,468,572 | 15,864 |
+| MemFree | 3,310,176 | 3,310,236 | 3,297,156 | 3,305,856 | 13,080 |
+| Cached | 368,676 | 365,552 | 384,664 | 372,964 | 19,112 |
+| Shmem | 187,536 | 187,072 | 206,012 | 193,540 | 18,940 |
+| 用户态PSS合计 | 200,364 | 199,464 | 199,379 | 199,735.67 | 985 |
+| Pss_Anon | 121,557 | 121,007 | 120,787 | 121,117 | 770 |
+| Pss_File | 77,990 | 77,636 | 77,772 | 77,799.33 | 354 |
+| Pss_Shmem | 807 | 807 | 807 | 807 | 0 |
+| Slab | 51,700 | 51,828 | 51,524 | 51,684 | 304 |
+| SReclaimable | 13,516 | 13,520 | 13,516 | 13,517.33 | 4 |
+| SUnreclaim | 38,184 | 38,308 | 38,008 | 38,166.67 | 300 |
+| PageTables | 5,064 | 5,192 | 5,128 | 5,128 | 128 |
+| KernelStack | 3,264 | 3,264 | 3,256 | 3,261.33 | 8 |
+| zram实际占用 | 684 | 684 | 684 | 684 | 0 |
+| V3D BO统计 | 248,308 | 247,288 | 245,308 | 246,968 | 3,000 |
+| 显示设备命名GEM对象 | 53,696 | 53,696 | 52,944 | 53,445.33 | 752 |
+| CmaTotal | 327,680 | 327,680 | 327,680 | 327,680 | 0 |
+| CmaFree | 263,080 | 263,060 | 263,828 | 263,322.67 | 768 |
+| SwapTotal | 2,584,700 | 2,584,700 | 2,584,700 | 2,584,700 | 0 |
+| SwapFree | 2,583,932 | 2,583,932 | 2,583,932 | 2,583,932 | 0 |
+
+PSS逐个读取全部枚举进程的smaps_rollup：第1轮51个可读用户进程、146个无用户地址空间的内核线程、0个其他不可读项, 第2轮49个可读用户进程、146个无用户地址空间的内核线程、0个其他不可读项, 第3轮50个可读用户进程、146个无用户地址空间的内核线程、0个其他不可读项。内核线程以/proc/PID/stat的PF_KTHREAD（include/linux/sched.h:1691）区分，不把无用户地址空间当PSS读权限故障；逐进程表仅本地。PSS及其分项按KiB取整，求和可能存在少量舍入差。
+
+GPU统计来自规范路径`/sys/kernel/debug/dri/fec00000.v3d/bo_stats`和`/sys/kernel/debug/dri/gpu/gem_names`；0/1/128是别名，不重复加总。V3D量是驱动BO页数统计（drivers/gpu/drm/v3d/v3d_debugfs.c:212–223），显示GEM量只涵盖命名对象。跨设备导入和PSS仍可能重叠，二者不能相加当物理GPU总量。PSS、GPU、Slab、页表、内核栈、zram、CMA是不同视图，也不能简单相加闭合Used；Cached和Shmem等有包含关系。
+
+## memps口径与数值核验
 
 板上RPM为memps0.2.0-0.armv7l；对应Tizen项目`platform/core/system/memps`提交`dd28371a426bf75c7cb307acc571fbcc1aa3331f`。以下均为该提交memps.c行号，完整源码和编号摘录仅本地留底。
 
@@ -68,29 +126,20 @@
 
 **系统Used不额外相加GEM/3D**，但GPU使用的系统RAM可以经MemAvailable反映；不能说GPU必然被排除。进程TOTAL会显式相加图形指标，映射分类不等于物理页去重，不能保证与原始smaps_rollup PSS无重叠；缺图形统计节点时显示0也不代表实际零占用。Slab、页表、内核栈、PSS、GPU、zram和CMA属于不同视图，不能简单相加闭合Used。
 
-`-v`走smaps，`-q`优先smaps_rollup；跳过memps自身与不可读/已退出进程（1270–1291、1569–1581）。已准备在memps前后读取meminfo和uptime的采集脚本，注明非原子读数漂移；因本次重连停止，实际数值验证和三轮分项仍待完成。
+`-v`走smaps，`-q`优先smaps_rollup；跳过memps自身与不可读/已退出进程（1270–1291、1569–1581）。三轮均已保存memps全文及前后meminfo/uptime，实际数值核验见下表。
 
-## 收尾
+以下为同一次采集窗口的KiB数值；memps读取前后都记录meminfo，并核对其自己打印的Total/Available/Free。三轮Used=Total−Available、Mem+Swap行与Mem行相同、Mem+Reclaimable=Total−Free均通过。
 
-仅公开本页及STATUS。内部服务日志、按进程记录、逐秒样本、测试和采集脚本、memps源码摘录与执行偏差说明均在本地`vendor_local/task27b/TASK27B_REPORT.md`及审读包。初始只读采集曾遇引号和分页问题，已保留错误并修正非交互调用；未把这些错误当作板上服务故障。
+| 轮次 | 采集起点Used | memps前Used | memps报告Used | memps后Used | 算术核验 |
+| --- | ---: | ---: | ---: | ---: | --- |
+| 1 | 501,692 | 536,260 | 535,500 | 535,352 | 通过 |
+| 2 | 504,440 | 552,968 | 552,032 | 552,432 | 通过 |
+| 3 | 517,556 | 535,968 | 535,760 | 535,760 | 通过 |
 
-宿主重任务按CPUQuota400%/MemoryMax8G、nice10、ionice-c3限额；未sudo或向宿主进程发信号。未改镜像内文件、包、标签、显示配置或总内存设置。下一步按下节新增授权，在用户恢复一次现有连接后安装网络持久化配置；验证通过后续做三轮Idle、memps数值验证与未闭合只读项。
+采集起点与后续memps不是同一原子时刻；期间逐进程/GPU读取及系统活动可能改变内存，保留前后读数漂移，不将差额当作公式错误或GPU额外加项。完整memps输出、源码编号摘录和比较JSON见本地。
 
+## 历史停止与执行限制
 
-## 2026-11-09补充：显示确认与网络持久化授权
+18:21:54首次尝试重启、18:26:54达到五分钟无SDB上限后停止；随后再次连接失败也未越权安装。用户恢复一次网络并明确授权持久化后，本轮才继续。旧失败不混入三轮，也不删除原始日志。初次采集的引号/分页错误及本轮可选systemd-analyze缺失的只读预检早退均保留，未把它们当板上服务故障。
 
-用户目视确认开机后已正常显示Home，显示结论更正为**正常显示**。此前依据DRM断连读数作出的暂定分类被此确认替代，原始读数保留，不把它继续当作没有画面的证据。
-
-本轮重新执行disconnect/connect及只读shell探测，SDB仍失败，TCP26101连接超时（19:05:40 +08收尾）；因此没有进入root、进行备份、修改板上文件或重启。证据仅本地`logs/resume_connection.log`、`resume_connect_result.json`。安装必须先恢复当前网络连接，不能通过断开的SDB远程完成；已请求用户串口恢复一次。
-
-### 板上本地改动：已获授权，尚未实施
-
-用户允许安装一个Type=oneshot的MAC设置unit，Before=connman.service，已有ConnMan服务配置继续提供静态IP；不增加常驻进程，不改/usr/lib的unit、不装卸包。与历史配网脚本相比，本轮按新要求将MAC设置提前，删除重复写IP/DNS的操作。已在宿主准备`ethernet-mac-setup.service`，候选SHA-256为`f319a1842879a317e33006ed1ce8ae4d109c54bf09fecadb96e28c72be80b14c`，**未安装，未验证**。完整候选内容、历史依据、备份/安装顺序与撤销说明在本地`network_resume/INSTALL_PLAN.md`及同目录unit文件。
-
-待写路径为`/etc/systemd/system/ethernet-mac-setup.service`及enable产生的`/etc/systemd/system/multi-user.target.wants/ethernet-mac-setup.service`；先备份ConnMan及相关网络配置到/tmp并拉回宿主、核对SHA，才可安装。按需一次remount rw，装完恢复原挂载状态。候选只执行eth0 down→设置本次实测MAC→up；安装前须再次核对实时MAC、静态配置及unit依赖。
-
-先进行一次验证重启：要求三分钟内无需人工干预恢复192.168.108.26，身份和BUILD_ID通过，oneshot active/exited、无常驻进程；失败即停，不重复尝试。通过后再做三轮独立重启，每轮记录开机到网络恢复耗时，并从网络恢复时刻开始静置满600秒。此次连接失败不计作验证重启，三轮仍未执行。
-
-撤销说明（未执行）：身份通过后按需remount rw，disable该unit（不加--now），仅删除本任务unit及enable链接，daemon-reload并恢复原挂载状态；已有ConnMan配置保持不动。撤销后下次重启应预先安排串口恢复，不自动重启。
-
-此配置属于**板上本地配置，不属于QB镜像**。后续SR基线必须安装同一份文件并核对SHA，使两套基线的本地准备一致；实际安装路径/内容/哈希及验证结果仍须在恢复连接后补录。
+宿主重任务经CPUQuota400%/MemoryMax8G、nice10、ionice-c3限额；未sudo、输入密码或向宿主进程发信号。除授权网络unit外，未改镜像文件、显示、内核参数或包；未设置total_mem。原始材料、按进程PSS、网络备份和审读包仅本地；公开只提交本页及STATUS。
