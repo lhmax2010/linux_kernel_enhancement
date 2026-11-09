@@ -9,7 +9,7 @@
 | 身份 | 通过 | armv7l、6.12.80-arm-rpi4-v7l、Tizen；tizen-build.conf实际字段TZ_BUILD_ID为tizen-unified-toolchain_20261106.063932。先owner断言，后进入root。 |
 | 准备状态 | 已记录 | MemTotal=3,976,468KiB；boot配置没有total_mem，本轮未更改。根分区、HAL初始均rw,relatime。 |
 | 图形依赖 | 通过 | coregl0.4.0-0和HAL mesa24.3.4-0安装，三个图形库链接和目标存在，显示程序ldd未发现缺库。 |
-| 显示 | 服务起来但无画面（软件侧判定） | display-manager active/running、0重启、退出码0，Home/launcher进程存在；两个HDMI connector均disconnected、modes为空。未取得用户实屏确认，连接检测异常原因未闭合，未修复。 |
+| 显示 | **正常显示** | 用户2026-11-09确认开机后已出现正常Home画面；display-manager active/running、0重启、退出码0，Home/launcher进程存在。原始两个HDMI connector均disconnected、modes为空，与实际画面不一致，保留为软件读数差异，未修复。 |
 | 评估服务 | 状态与压力路径通过 | 初始化服务active/exited，守护服务active/running、0重启；本次回收路径无open/ioctl权限失败。 |
 | swap管理分离 | 运行证据符合，路径核验未全闭合 | 读取配置SwapEnable=no，运行进程maps无swap插件；实际选中文件的三个高优先级路径仍待补查。 |
 | Idle三轮 | 未完成 | 第一次reboot后300秒未重连；后两次未执行，不能计算三轮均值和极差。 |
@@ -74,4 +74,23 @@
 
 仅公开本页及STATUS。内部服务日志、按进程记录、逐秒样本、测试和采集脚本、memps源码摘录与执行偏差说明均在本地`vendor_local/task27b/TASK27B_REPORT.md`及审读包。初始只读采集曾遇引号和分页问题，已保留错误并修正非交互调用；未把这些错误当作板上服务故障。
 
-宿主重任务按CPUQuota400%/MemoryMax8G、nice10、ionice-c3限额；未sudo或向宿主进程发信号。未改镜像内文件、包、标签、显示配置或总内存设置。下一步先由用户串口恢复并明确重启后网络的恢复方式，再续做三轮Idle、memps数值验证与未闭合只读项。
+宿主重任务按CPUQuota400%/MemoryMax8G、nice10、ionice-c3限额；未sudo或向宿主进程发信号。未改镜像内文件、包、标签、显示配置或总内存设置。下一步按下节新增授权，在用户恢复一次现有连接后安装网络持久化配置；验证通过后续做三轮Idle、memps数值验证与未闭合只读项。
+
+
+## 2026-11-09补充：显示确认与网络持久化授权
+
+用户目视确认开机后已正常显示Home，显示结论更正为**正常显示**。此前依据DRM断连读数作出的暂定分类被此确认替代，原始读数保留，不把它继续当作没有画面的证据。
+
+本轮重新执行disconnect/connect及只读shell探测，SDB仍失败，TCP26101连接超时（19:05:40 +08收尾）；因此没有进入root、进行备份、修改板上文件或重启。证据仅本地`logs/resume_connection.log`、`resume_connect_result.json`。安装必须先恢复当前网络连接，不能通过断开的SDB远程完成；已请求用户串口恢复一次。
+
+### 板上本地改动：已获授权，尚未实施
+
+用户允许安装一个Type=oneshot的MAC设置unit，Before=connman.service，已有ConnMan服务配置继续提供静态IP；不增加常驻进程，不改/usr/lib的unit、不装卸包。与历史配网脚本相比，本轮按新要求将MAC设置提前，删除重复写IP/DNS的操作。已在宿主准备`ethernet-mac-setup.service`，候选SHA-256为`f319a1842879a317e33006ed1ce8ae4d109c54bf09fecadb96e28c72be80b14c`，**未安装，未验证**。完整候选内容、历史依据、备份/安装顺序与撤销说明在本地`network_resume/INSTALL_PLAN.md`及同目录unit文件。
+
+待写路径为`/etc/systemd/system/ethernet-mac-setup.service`及enable产生的`/etc/systemd/system/multi-user.target.wants/ethernet-mac-setup.service`；先备份ConnMan及相关网络配置到/tmp并拉回宿主、核对SHA，才可安装。按需一次remount rw，装完恢复原挂载状态。候选只执行eth0 down→设置本次实测MAC→up；安装前须再次核对实时MAC、静态配置及unit依赖。
+
+先进行一次验证重启：要求三分钟内无需人工干预恢复192.168.108.26，身份和BUILD_ID通过，oneshot active/exited、无常驻进程；失败即停，不重复尝试。通过后再做三轮独立重启，每轮记录开机到网络恢复耗时，并从网络恢复时刻开始静置满600秒。此次连接失败不计作验证重启，三轮仍未执行。
+
+撤销说明（未执行）：身份通过后按需remount rw，disable该unit（不加--now），仅删除本任务unit及enable链接，daemon-reload并恢复原挂载状态；已有ConnMan配置保持不动。撤销后下次重启应预先安排串口恢复，不自动重启。
+
+此配置属于**板上本地配置，不属于QB镜像**。后续SR基线必须安装同一份文件并核对SHA，使两套基线的本地准备一致；实际安装路径/内容/哈希及验证结果仍须在恢复连接后补录。
