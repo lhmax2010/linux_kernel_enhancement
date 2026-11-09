@@ -1,5 +1,7 @@
 # 项目状态
 
+任务27后半部分完成并按停止条件暂停板上操作：QB1220670身份通过，未设置total_mem（MemTotal3,976,468KiB），图形依赖完整；显示服务active/running且0重启，但两HDMI均disconnected，实屏待确认。评估服务运行及受控压力路径通过：最低MemAvailable385.26MiB、无OOM、pswpout增加15,084页，本服务无权限失败，测试进程和/tmp文件已清理。首轮reboot后300秒SDB未恢复，未执行后两轮；Idle均值/极差及memps同次采样数值对照均未完成，重启后身份/owner未回读。memps源码口径已核验；精确配置优先路径仍待补。见[27b](27b_board_check.md)，完整材料仅vendor_local/task27b/。需用户串口恢复网络并明确后续重启恢复方式，再续做三轮；未修复网络/显示、未改镜像，既有其他挂账保留。
+
 任务27前半完成：QB1220670离线核对全部通过，可交用户烧录；构建设置及来源符合，boot/headed清单仅批准的安全配置系列来源变化，两个待验unit及wants恢复正常，其他五个通用隔离项不变。59模块vermagic、7树外模块356项CRC（253符号）均通过且与任务24一致；coregl/HAL mesa及图形库链接完整；SR1218764补查也仅五个通用隔离项、无resourced。归档原件哈希通过并留存，浏览器profile和临时检查副本已清理；未连板/修改镜像/推sandbox。公开结果和烧录清单见[27](27_new_image_offline_check.md)，完整证据与审读包仅在vendor_local/task27/。下一步等待用户刷机后另行做运行核验，运行时标签等挂账保留；任务24旧镜像结论不变。
 
 任务26完成：按PM方案二仅增加两条精确服务身份登记，内部授权目标已推送并核对；源码与实际RPM的unit一致，COMMON名单266→268且原行不丢，187项全量离线重放失败5→3、仅授权两项改变，其他profile与Exec前缀判定不变。公开结论见[26](26_service_admission_fix.md)，完整证据及审读包仅在本地vendor_local/task26/。未连板/构建/触发QB；下一步由用户按本地提交表重制镜并核验实际来源、unit/wants及运行状态，未声明SMACK的运行时标签待上板确认。任务24旧镜像隔离结论保持，其他service/socket挂账不在本轮处理。
