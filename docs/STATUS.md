@@ -1,5 +1,7 @@
 # 项目状态
 
+任务28：身份门槛停止，未进入SR上板采集。宿主QB1218764两归档SHA和任务27采集脚本/网络unit逐字核对通过，但板上TZ_BUILD_ID实际为tizen-unified-toolchain_20261106.063932，不是要求的tizen-unified-toolchain_20261104.160709；armv7l/rpi4/Tizen三项通过，精确镜像门槛不通过。始终owner，未root/写文件/安装网络unit/重启；三轮Idle、swap启用归属及采集开销定位均未执行，SR均值/极差无数据。候选网络unit与任务27完全一致，尚不能声称两板已安装一致。见[28](28_sr_board_idle.md)，原始证据和审读包仅vendor_local/task28/；待用户确认SR刷机和网络后重新做身份断言，其他挂账不变。
+
 任务27后半完成：QB1220670身份通过，用户确认正常Home显示；三轮显示及评估服务正常、0重启/0 failed unit。受控回收已触发，pswpout增加15,084页，无本服务权限失败或OOM。经用户新增授权安装单个MAC持久化oneshot并验证自动恢复，三轮网络恢复后静置600秒采集完成：Used均值495.99MiB、极差15.49MiB；memps公式及同窗口数值已核验，系统Used不额外加GEM/3D。当前仍无total_mem限制（MemTotal3,976,468KiB），仅为预备基线；根/HAL为ro，任务临时目录删除，owner恢复。网络unit是板上本地配置，不属于镜像，后续SR必须安装同一文件并核对SHA。见[27b](27b_board_check.md)，完整材料仅vendor_local/task27b/；初次重连停止历史保留，配置优先级挂账已闭合，其他任务挂账不变。
 
 任务27前半完成：QB1220670离线核对全部通过，可交用户烧录；构建设置及来源符合，boot/headed清单仅批准的安全配置系列来源变化，两个待验unit及wants恢复正常，其他五个通用隔离项不变。59模块vermagic、7树外模块356项CRC（253符号）均通过且与任务24一致；coregl/HAL mesa及图形库链接完整；SR1218764补查也仅五个通用隔离项、无resourced。归档原件哈希通过并留存，浏览器profile和临时检查副本已清理；未连板/修改镜像/推sandbox。公开结果和烧录清单见[27](27_new_image_offline_check.md)，完整证据与审读包仅在vendor_local/task27/。下一步等待用户刷机后另行做运行核验，运行时标签等挂账保留；任务24旧镜像结论不变。
