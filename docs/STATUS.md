@@ -1,5 +1,7 @@
 # 项目状态
 
+任务28 r2：用户重新烧录后重新断言，实际TZ_BUILD_ID为tizen-unified-toolchain_20261105.134728（与上轮不同），仍不符SR要求的20261104.160709，按门槛再次停止。三重身份通过、始终owner；未root、未安装网络unit、未写文件或重启，显示/swap/Idle与采集开销均未执行。新证据仅vendor_local/task28/r2/，上次停止记录和审读包保留，见[28的r2记录](28_sr_board_idle.md)。需用户核对20261104.160709对应boot与headed归档及刷机目标后继续。
+
 任务28：身份门槛停止，未进入SR上板采集。宿主QB1218764两归档SHA和任务27采集脚本/网络unit逐字核对通过，但板上TZ_BUILD_ID实际为tizen-unified-toolchain_20261106.063932，不是要求的tizen-unified-toolchain_20261104.160709；armv7l/rpi4/Tizen三项通过，精确镜像门槛不通过。始终owner，未root/写文件/安装网络unit/重启；三轮Idle、swap启用归属及采集开销定位均未执行，SR均值/极差无数据。候选网络unit与任务27完全一致，尚不能声称两板已安装一致。见[28](28_sr_board_idle.md)，原始证据和审读包仅vendor_local/task28/；待用户确认SR刷机和网络后重新做身份断言，其他挂账不变。
 
 任务27后半完成：QB1220670身份通过，用户确认正常Home显示；三轮显示及评估服务正常、0重启/0 failed unit。受控回收已触发，pswpout增加15,084页，无本服务权限失败或OOM。经用户新增授权安装单个MAC持久化oneshot并验证自动恢复，三轮网络恢复后静置600秒采集完成：Used均值495.99MiB、极差15.49MiB；memps公式及同窗口数值已核验，系统Used不额外加GEM/3D。当前仍无total_mem限制（MemTotal3,976,468KiB），仅为预备基线；根/HAL为ro，任务临时目录删除，owner恢复。网络unit是板上本地配置，不属于镜像，后续SR必须安装同一文件并核对SHA。见[27b](27b_board_check.md)，完整材料仅vendor_local/task27b/；初次重连停止历史保留，配置优先级挂账已闭合，其他任务挂账不变。
