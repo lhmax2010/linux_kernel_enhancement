@@ -1,5 +1,7 @@
 # 项目状态
 
+任务29完成：v5阶段0a只读源码与两套离线镜像盘点已记录于[29](29_readonly_inventory.md)，未连板或实现方案。确认MGLRU开启时v1软限制回收不生效；mrelease权限、zram读回路径、可执行页保护版本差异及systemd v1 MemoryHigh判断需修订；完整版本对照和纯文本审读材料仅vendor_local/task29/review/。其余任务挂账不变。
+
 design v5 更新（与总部方向的冲突处理原则、Home 不被杀、3.13 冻结、3.14 前台感知回收、3.15 按进程内存预算），待外部评审
 
 design v5 发布，待外部评审
